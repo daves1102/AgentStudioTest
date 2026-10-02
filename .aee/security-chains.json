@@ -1,0 +1,59 @@
+[
+  {
+    "chainId": "chain-001",
+    "status": "confirmed",
+    "source": {
+      "file": "src/tools/seam_index.py",
+      "lineRange": {"start": 88, "end": 88},
+      "kind": "cli-argument",
+      "description": "sys.argv[1] assigned to `root` without normalisation, restriction, or existence check"
+    },
+    "hops": [
+      {
+        "file": "src/tools/seam_index.py",
+        "lineRange": {"start": 89, "end": 89},
+        "symbol": "scan",
+        "crossComponent": false,
+        "note": "`root` passed as argument to scan(); no sanitisation applied before or at the call site"
+      },
+      {
+        "file": "src/tools/seam_index.py",
+        "lineRange": {"start": 43, "end": 43},
+        "symbol": "os.walk",
+        "crossComponent": false,
+        "note": "`root` used directly as the top-level argument to os.walk(); no path normalisation or containment check"
+      },
+      {
+        "file": "src/tools/seam_index.py",
+        "lineRange": {"start": 46, "end": 46},
+        "symbol": "os.path.join",
+        "crossComponent": false,
+        "note": "`path` constructed via os.path.join(base, name) from os.walk output; value inherits traversal scope of `root`"
+      }
+    ],
+    "sink": {
+      "file": "src/tools/seam_index.py",
+      "lineRange": {"start": 52, "end": 52},
+      "kind": "file-read",
+      "description": "open(path, encoding='utf-8', errors='ignore') reads arbitrary files reachable from the user-supplied root; enables unauthorized disclosure of files outside the intended source tree"
+    },
+    "owaspCategory": "A01 Broken Access Control",
+    "cweId": "CWE-22",
+    "severity": "medium",
+    "confidence": "confirmed",
+    "severityUpgraded": false,
+    "severityUpgradeReason": null,
+    "sanitisationGaps": [
+      {
+        "file": "src/tools/seam_index.py",
+        "lineRange": {"start": 88, "end": 88},
+        "description": "No path normalisation (os.path.realpath/abspath) or prefix check applied to sys.argv[1] before use as root"
+      },
+      {
+        "file": "src/tools/seam_index.py",
+        "lineRange": {"start": 44, "end": 44},
+        "description": "Directory blocklist ({'.git','node_modules','build','target'}) only filters named directories; it does not prevent traversal outside root when root itself is a relative or absolute path supplied by an untrusted caller"
+      }
+    ]
+  }
+]
