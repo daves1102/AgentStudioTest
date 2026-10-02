@@ -1,0 +1,12 @@
+[
+  {
+    "file": "src/tools/seam_index.py",
+    "lineRange": {"start": 88, "end": 89},
+    "title": "Unsanitised CLI path argument passed to os.walk() and open() — path traversal possible",
+    "detail": "At line 88, the first positional CLI argument is assigned to `root` without any normalisation, restriction, or existence check. This value is passed directly to `os.walk(root)` at line 43, which then constructs `path` values that are opened with `open(path, encoding='utf-8', errors='ignore')` at line 52. If an untrusted caller (e.g., a CI pipeline step whose inputs are externally influenced) supplies a value such as `../../etc` or an absolute path outside the intended source tree, the tool will silently traverse and read files it should never access. The blocklist applied to `dirs` (line 44) excludes `.git`, `node_modules`, `build`, and `target` by name but does not prevent traversal outside the root.",
+    "owaspCategory": "A01 Broken Access Control",
+    "cweId": "CWE-22",
+    "severity": "medium",
+    "confidence": "confirmed"
+  }
+]
