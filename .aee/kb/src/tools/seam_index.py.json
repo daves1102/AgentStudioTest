@@ -1,0 +1,111 @@
+{
+  "file": "src/tools/seam_index.py",
+  "language": "Python",
+  "component": "tools",
+  "hash": "b8ef7a55a49c2327ad6cbdfc37c3a377ab24598d0d6daab89a13fb91f384b301",
+  "symbols": [
+    {
+      "name": "PATTERNS",
+      "kind": "module-level constant",
+      "type": "list[tuple[str, re.Pattern]]",
+      "lineRange": {"startLine": 18, "endLine": 28}
+    },
+    {
+      "name": "EXTENSIONS",
+      "kind": "module-level constant",
+      "type": "dict[str, str]",
+      "lineRange": {"startLine": 30, "endLine": 32}
+    },
+    {
+      "name": "NOISE",
+      "kind": "module-level constant",
+      "type": "set[str]",
+      "lineRange": {"startLine": 34, "endLine": 34}
+    },
+    {
+      "name": "component_of",
+      "kind": "function",
+      "signature": "(rel: str) -> str",
+      "lineRange": {"startLine": 37, "endLine": 38}
+    },
+    {
+      "name": "scan",
+      "kind": "function",
+      "signature": "(root: str) -> defaultdict",
+      "lineRange": {"startLine": 41, "endLine": 62}
+    },
+    {
+      "name": "cross_component",
+      "kind": "function",
+      "signature": "(hits: dict) -> list",
+      "lineRange": {"startLine": 65, "endLine": 81}
+    },
+    {
+      "name": "main",
+      "kind": "function",
+      "signature": "() -> int",
+      "lineRange": {"startLine": 84, "endLine": 100}
+    }
+  ],
+  "referencedSymbols": [
+    {"name": "json", "inferredKind": "module", "category": "imported", "firstReferenceLine": 11},
+    {"name": "os", "inferredKind": "module", "category": "imported", "firstReferenceLine": 12},
+    {"name": "re", "inferredKind": "module", "category": "imported", "firstReferenceLine": 13},
+    {"name": "sys", "inferredKind": "module", "category": "imported", "firstReferenceLine": 14},
+    {"name": "defaultdict", "inferredKind": "class", "category": "imported", "firstReferenceLine": 15},
+    {"name": "__doc__", "inferredKind": "str", "category": "builtin", "firstReferenceLine": 86},
+    {"name": "SystemExit", "inferredKind": "exception", "category": "builtin", "firstReferenceLine": 104}
+  ],
+  "externalDependencies": [
+    {"module": "json", "alias": null, "line": 11},
+    {"module": "os", "alias": null, "line": 12},
+    {"module": "re", "alias": null, "line": 13},
+    {"module": "sys", "alias": null, "line": 14},
+    {"module": "collections", "importedName": "defaultdict", "alias": null, "line": 15}
+  ],
+  "sideEffects": [
+    {
+      "kind": "directory traversal",
+      "target": "<root> argument directory tree via os.walk",
+      "lineRange": {"startLine": 43, "endLine": 61}
+    },
+    {
+      "kind": "file-system read",
+      "target": "every file under <root> with a recognised extension",
+      "lineRange": {"startLine": 52, "endLine": 52}
+    },
+    {
+      "kind": "stdout write",
+      "target": "sys.stdout — JSON dump of seams",
+      "lineRange": {"startLine": 91, "endLine": 91}
+    },
+    {
+      "kind": "stdout write",
+      "target": "sys.stdout — plain text seam report",
+      "lineRange": {"startLine": 93, "endLine": 99}
+    }
+  ],
+  "securitySurface": [
+    {
+      "kind": "CLI argument — path parameter",
+      "description": "sys.argv[1] supplies the source root directory; passed directly to os.walk() and open() with no sanitisation — path traversal is possible if caller is untrusted",
+      "lineRange": {"startLine": 88, "endLine": 88}
+    },
+    {
+      "kind": "CLI argument — flag",
+      "description": "sys.argv checked for '--json' to select output format",
+      "lineRange": {"startLine": 90, "endLine": 90}
+    },
+    {
+      "kind": "file read — arbitrary paths",
+      "description": "Opens every file under <root> via open(path, encoding='utf-8', errors='ignore'); reads full file contents",
+      "lineRange": {"startLine": 52, "endLine": 52}
+    },
+    {
+      "kind": "stdout sink",
+      "description": "Extracted string literals from scanned source files are written verbatim to stdout (JSON or plain text)",
+      "lineRange": {"startLine": 91, "endLine": 99}
+    }
+  ],
+  "injectionFlags": []
+}
