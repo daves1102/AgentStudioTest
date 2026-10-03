@@ -1,6 +1,123 @@
 {
   "resolved": [
     {
+      "from": "src/payload_plaintext/aurora-portal/tests/test_quota.py",
+      "to": "src/payload_plaintext/aurora-portal/aurora_portal/quota.py",
+      "symbol": "Quota",
+      "kind": "import",
+      "fromLine": 1,
+      "toLine": 8,
+      "crossComponent": false
+    },
+    {
+      "from": "src/payload_plaintext/aurora-portal/tests/test_quota.py",
+      "to": "src/payload_plaintext/aurora-portal/aurora_portal/quota.py",
+      "symbol": "remaining",
+      "kind": "import",
+      "fromLine": 1,
+      "toLine": 18,
+      "crossComponent": false
+    },
+    {
+      "from": "src/payload_plaintext/aurora-portal/tests/test_quota.py",
+      "to": "src/payload_plaintext/aurora-portal/aurora_portal/quota.py",
+      "symbol": "exceeded",
+      "kind": "import",
+      "fromLine": 1,
+      "toLine": 27,
+      "crossComponent": false
+    },
+    {
+      "from": "src/payload_plaintext/aurora-portal/aurora_portal/api.py",
+      "to": "stdlib:os",
+      "symbol": "os",
+      "kind": "import",
+      "fromLine": 4,
+      "toLine": null,
+      "crossComponent": false
+    },
+    {
+      "from": "src/payload_plaintext/aurora-portal/aurora_portal/api.py",
+      "to": "stdlib:subprocess",
+      "symbol": "subprocess",
+      "kind": "import",
+      "fromLine": 5,
+      "toLine": null,
+      "crossComponent": false
+    },
+    {
+      "from": "src/payload_plaintext/aurora-portal/aurora_portal/api.py",
+      "to": "external:requests",
+      "symbol": "requests",
+      "kind": "import",
+      "fromLine": 7,
+      "toLine": null,
+      "crossComponent": false
+    },
+    {
+      "from": "src/payload_plaintext/aurora-portal/aurora_portal/api.py",
+      "to": "external:yaml",
+      "symbol": "yaml",
+      "kind": "import",
+      "fromLine": 8,
+      "toLine": null,
+      "crossComponent": false
+    },
+    {
+      "from": "src/payload_plaintext/aurora-portal/aurora_portal/maintenance.py",
+      "to": "stdlib:subprocess",
+      "symbol": "subprocess",
+      "kind": "import",
+      "fromLine": 6,
+      "toLine": null,
+      "crossComponent": false
+    },
+    {
+      "from": "src/payload_plaintext/aurora-portal/aurora_portal/session.py",
+      "to": "stdlib:hashlib",
+      "symbol": "hashlib",
+      "kind": "import",
+      "fromLine": 4,
+      "toLine": null,
+      "crossComponent": false
+    },
+    {
+      "from": "src/payload_plaintext/aurora-portal/aurora_portal/session.py",
+      "to": "stdlib:random",
+      "symbol": "random",
+      "kind": "import",
+      "fromLine": 5,
+      "toLine": null,
+      "crossComponent": false
+    },
+    {
+      "from": "src/payload_plaintext/aurora-portal/aurora_portal/session.py",
+      "to": "stdlib:string",
+      "symbol": "string",
+      "kind": "import",
+      "fromLine": 6,
+      "toLine": null,
+      "crossComponent": false
+    },
+    {
+      "from": "src/payload_plaintext/aurora-portal/aurora_portal/quota.py",
+      "to": "stdlib:dataclasses",
+      "symbol": "dataclass",
+      "kind": "import",
+      "fromLine": 4,
+      "toLine": null,
+      "crossComponent": false
+    },
+    {
+      "from": "src/payload_plaintext/aurora-portal/aurora_portal/telemetry_consumer.py",
+      "to": "external:yaml",
+      "symbol": "yaml",
+      "kind": "import",
+      "fromLine": 6,
+      "toLine": null,
+      "crossComponent": false
+    },
+    {
       "from": "src/tools/seam_index.py",
       "to": "stdlib:json",
       "symbol": "json",
@@ -38,7 +155,7 @@
     },
     {
       "from": "src/tools/seam_index.py",
-      "to": "stdlib:collections.defaultdict",
+      "to": "stdlib:collections",
       "symbol": "defaultdict",
       "kind": "import",
       "fromLine": 15,
@@ -47,6 +164,85 @@
     }
   ],
   "ambiguous": [],
-  "unresolved": [],
-  "crossComponentSeams": []
+  "unresolved": [
+    {
+      "from": "src/payload_plaintext/aurora-portal/aurora_portal/telemetry_consumer.py",
+      "symbol": "bus.subscribe",
+      "kind": "method-call",
+      "fromLine": 12,
+      "reason": "bus is an opaque parameter passed into consume(); no bus client implementation present in delivery"
+    },
+    {
+      "from": "src/payload_plaintext/aurora-portal/aurora_portal/region_lookup.py",
+      "symbol": "cursor.execute",
+      "kind": "method-call",
+      "fromLine": 10,
+      "reason": "cursor is an opaque parameter passed into region_for(); no database driver present in delivery"
+    },
+    {
+      "from": "src/payload_plaintext/aurora-portal/aurora_portal/region_lookup.py",
+      "symbol": "cursor.fetchone",
+      "kind": "method-call",
+      "fromLine": 13,
+      "reason": "cursor is an opaque parameter passed into region_for(); no database driver present in delivery"
+    }
+  ],
+  "crossComponentSeams": [],
+  "openEnds": [
+    {
+      "joinKeyKind": "bus topic",
+      "joinKey": "aurora.telemetry.tenant",
+      "presentSide": {
+        "component": "payload_plaintext",
+        "file": "src/payload_plaintext/aurora-portal/aurora_portal/telemetry_consumer.py",
+        "line": 8,
+        "role": "consumer"
+      },
+      "missingSide": "topic producer — component not yet delivered"
+    },
+    {
+      "joinKeyKind": "executable",
+      "joinKey": "aurora-cli",
+      "presentSide": {
+        "component": "payload_plaintext",
+        "file": "src/payload_plaintext/aurora-portal/aurora_portal/maintenance.py",
+        "line": 9,
+        "role": "caller"
+      },
+      "missingSide": "CLI binary — component not yet delivered"
+    },
+    {
+      "joinKeyKind": "subcommand",
+      "joinKey": "profile-apply",
+      "presentSide": {
+        "component": "payload_plaintext",
+        "file": "src/payload_plaintext/aurora-portal/aurora_portal/maintenance.py",
+        "line": 20,
+        "role": "caller"
+      },
+      "missingSide": "aurora-cli subcommand implementation — component not yet delivered"
+    },
+    {
+      "joinKeyKind": "subcommand",
+      "joinKey": "profile-list",
+      "presentSide": {
+        "component": "payload_plaintext",
+        "file": "src/payload_plaintext/aurora-portal/aurora_portal/maintenance.py",
+        "line": 29,
+        "role": "caller"
+      },
+      "missingSide": "aurora-cli subcommand implementation — component not yet delivered"
+    },
+    {
+      "joinKeyKind": "database table",
+      "joinKey": "tenant_region_assignment",
+      "presentSide": {
+        "component": "payload_plaintext",
+        "file": "src/payload_plaintext/aurora-portal/aurora_portal/region_lookup.py",
+        "line": 6,
+        "role": "reader"
+      },
+      "missingSide": "table owner / identity service — component not yet delivered"
+    }
+  ]
 }
