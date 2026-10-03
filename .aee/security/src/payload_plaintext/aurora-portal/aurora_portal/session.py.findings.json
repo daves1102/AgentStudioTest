@@ -1,0 +1,22 @@
+[
+  {
+    "file": "src/payload_plaintext/aurora-portal/aurora_portal/session.py",
+    "lineRange": {"start": 9, "end": 11},
+    "title": "Cryptographically weak PRNG used to generate session identifiers",
+    "detail": "`new_session_id()` generates session tokens using `random.choice()` from Python's `random` module (line 11). The `random` module uses a Mersenne Twister PRNG, which is not cryptographically secure and whose state can be reconstructed after observing a modest number of outputs. Session IDs must be unguessable; the standard remedy is `secrets.token_urlsafe(32)` or equivalent.",
+    "owaspCategory": "A07 Identification and Authentication Failures",
+    "cweId": "CWE-338",
+    "severity": "high",
+    "confidence": "confirmed"
+  },
+  {
+    "file": "src/payload_plaintext/aurora-portal/aurora_portal/session.py",
+    "lineRange": {"start": 14, "end": 15},
+    "title": "SHA-1 used for password hashing — insufficient computational effort",
+    "detail": "`password_hash()` hashes passwords with `hashlib.sha1((salt + password).encode()).hexdigest()` at line 15. SHA-1 is a general-purpose fast hash: on commodity hardware, billions of SHA-1 digests can be computed per second, making offline dictionary and brute-force attacks trivial. Password storage requires a slow, memory-hard function such as bcrypt, scrypt, or Argon2.",
+    "owaspCategory": "A02 Cryptographic Failures",
+    "cweId": "CWE-916",
+    "severity": "high",
+    "confidence": "confirmed"
+  }
+]
