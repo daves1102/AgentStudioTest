@@ -1,0 +1,57 @@
+{
+  "file": "src/payload_plaintext/aurora-portal/aurora_portal/maintenance.py",
+  "language": "Python",
+  "component": "payload_plaintext",
+  "hash": "a0b467d6c06f3c530e878abf082d6a3786b0e984e99de2e3dad4a9739c70199e",
+  "symbols": [
+    {
+      "name": "CLI_BINARY",
+      "kind": "module-level constant",
+      "type": "str",
+      "lineRange": {"startLine": 9, "endLine": 9}
+    },
+    {
+      "name": "apply_profile",
+      "kind": "function",
+      "signature": "(request: dict) -> dict",
+      "lineRange": {"startLine": 12, "endLine": 24}
+    },
+    {
+      "name": "list_profiles",
+      "kind": "function",
+      "signature": "() -> list[str]",
+      "lineRange": {"startLine": 27, "endLine": 31}
+    }
+  ],
+  "referencedSymbols": [
+    {"name": "subprocess", "inferredKind": "module", "category": "imported", "firstReferenceLine": 6}
+  ],
+  "externalDependencies": [
+    {"module": "subprocess", "alias": null, "line": 6}
+  ],
+  "sideEffects": [
+    {
+      "kind": "process spawn",
+      "target": "aurora-cli profile-apply --name <profile_name> via subprocess.run",
+      "lineRange": {"startLine": 19, "endLine": 23}
+    },
+    {
+      "kind": "process spawn",
+      "target": "aurora-cli profile-list via subprocess.run",
+      "lineRange": {"startLine": 28, "endLine": 30}
+    }
+  ],
+  "securitySurface": [
+    {
+      "kind": "input entry point — form data",
+      "description": "apply_profile(request): profile_name is read from request[\"form\"][\"profile_name\"] — user-supplied form input passed as CLI argument value",
+      "lineRange": {"startLine": 18, "endLine": 18}
+    },
+    {
+      "kind": "process spawn with user-controlled argument",
+      "description": "profile_name from form input is passed as the --name argument to subprocess.run() as a list (not shell string) — no shell injection, but value is unvalidated user input",
+      "lineRange": {"startLine": 19, "endLine": 23}
+    }
+  ],
+  "injectionFlags": []
+}

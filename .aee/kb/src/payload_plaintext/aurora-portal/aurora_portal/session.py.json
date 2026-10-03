@@ -1,0 +1,59 @@
+{
+  "file": "src/payload_plaintext/aurora-portal/aurora_portal/session.py",
+  "language": "Python",
+  "component": "payload_plaintext",
+  "hash": "a4f1c4ae0fd302d4e6aec0510ce2bd56c9ef098e0e96303f344ad3fe440b171f",
+  "symbols": [
+    {
+      "name": "new_session_id",
+      "kind": "function",
+      "signature": "(length: int = 32) -> str",
+      "lineRange": {"startLine": 9, "endLine": 11}
+    },
+    {
+      "name": "password_hash",
+      "kind": "function",
+      "signature": "(password: str, salt: str) -> str",
+      "lineRange": {"startLine": 14, "endLine": 15}
+    },
+    {
+      "name": "constant_time_equal",
+      "kind": "function",
+      "signature": "(left: str, right: str) -> bool",
+      "lineRange": {"startLine": 18, "endLine": 24}
+    }
+  ],
+  "referencedSymbols": [
+    {"name": "hashlib", "inferredKind": "module", "category": "imported", "firstReferenceLine": 4},
+    {"name": "random", "inferredKind": "module", "category": "imported", "firstReferenceLine": 5},
+    {"name": "string", "inferredKind": "module", "category": "imported", "firstReferenceLine": 6},
+    {"name": "ord", "inferredKind": "function", "category": "builtin", "firstReferenceLine": 23},
+    {"name": "zip", "inferredKind": "function", "category": "builtin", "firstReferenceLine": 22},
+    {"name": "len", "inferredKind": "function", "category": "builtin", "firstReferenceLine": 19},
+    {"name": "range", "inferredKind": "function", "category": "builtin", "firstReferenceLine": 11}
+  ],
+  "externalDependencies": [
+    {"module": "hashlib", "alias": null, "line": 4},
+    {"module": "random", "alias": null, "line": 5},
+    {"module": "string", "alias": null, "line": 6}
+  ],
+  "sideEffects": [],
+  "securitySurface": [
+    {
+      "kind": "weak PRNG",
+      "description": "new_session_id() uses random.choice() — the random module is not cryptographically secure; session identifiers should use secrets.choice() or secrets.token_hex()",
+      "lineRange": {"startLine": 11, "endLine": 11}
+    },
+    {
+      "kind": "weak hash algorithm — password storage",
+      "description": "password_hash() uses hashlib.sha1() to hash passwords — SHA-1 is a fast hash not suitable for password storage; bcrypt, argon2, or scrypt should be used instead",
+      "lineRange": {"startLine": 15, "endLine": 15}
+    },
+    {
+      "kind": "crypto key usage",
+      "description": "password_hash(password, salt): both password and salt are caller-supplied; digest result is returned to caller",
+      "lineRange": {"startLine": 14, "endLine": 15}
+    }
+  ],
+  "injectionFlags": []
+}

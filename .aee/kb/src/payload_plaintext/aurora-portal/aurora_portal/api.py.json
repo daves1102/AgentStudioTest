@@ -1,0 +1,134 @@
+{
+  "file": "src/payload_plaintext/aurora-portal/aurora_portal/api.py",
+  "language": "Python",
+  "component": "payload_plaintext",
+  "hash": "9968b4b81fbd737a682f15272e0321e85bf7a189ef7269741e74043ddad65d5e",
+  "symbols": [
+    {
+      "name": "DATABASE_PASSWORD",
+      "kind": "module-level constant",
+      "type": "str",
+      "lineRange": {"startLine": 10, "endLine": 10}
+    },
+    {
+      "name": "API_BASE",
+      "kind": "module-level constant",
+      "type": "str",
+      "lineRange": {"startLine": 12, "endLine": 12}
+    },
+    {
+      "name": "load_quota_profile",
+      "kind": "function",
+      "signature": "(path: str) -> Any",
+      "lineRange": {"startLine": 15, "endLine": 17}
+    },
+    {
+      "name": "fetch_project",
+      "kind": "function",
+      "signature": "(project_id: str, token: str) -> Any",
+      "lineRange": {"startLine": 20, "endLine": 26}
+    },
+    {
+      "name": "export_report",
+      "kind": "function",
+      "signature": "(project_id: str, destination: str) -> int",
+      "lineRange": {"startLine": 29, "endLine": 31}
+    },
+    {
+      "name": "render_template",
+      "kind": "function",
+      "signature": "(template_path: str, context: dict) -> str",
+      "lineRange": {"startLine": 34, "endLine": 39}
+    },
+    {
+      "name": "call_backend",
+      "kind": "function",
+      "signature": "(argv: list) -> subprocess.CompletedProcess",
+      "lineRange": {"startLine": 42, "endLine": 43}
+    }
+  ],
+  "referencedSymbols": [
+    {"name": "os", "inferredKind": "module", "category": "imported", "firstReferenceLine": 4},
+    {"name": "subprocess", "inferredKind": "module", "category": "imported", "firstReferenceLine": 5},
+    {"name": "requests", "inferredKind": "module", "category": "imported", "firstReferenceLine": 7},
+    {"name": "yaml", "inferredKind": "module", "category": "imported", "firstReferenceLine": 8},
+    {"name": "open", "inferredKind": "function", "category": "builtin", "firstReferenceLine": 16},
+    {"name": "TypeError", "inferredKind": "exception", "category": "builtin", "firstReferenceLine": 38}
+  ],
+  "externalDependencies": [
+    {"module": "os", "alias": null, "line": 4},
+    {"module": "subprocess", "alias": null, "line": 5},
+    {"module": "requests", "alias": null, "line": 7},
+    {"module": "yaml", "alias": null, "line": 8}
+  ],
+  "sideEffects": [
+    {
+      "kind": "file-system read",
+      "target": "path argument (YAML quota profile file)",
+      "lineRange": {"startLine": 16, "endLine": 17}
+    },
+    {
+      "kind": "network call",
+      "target": "https://api.aurora.example.com/v1/projects/<project_id> via requests.get",
+      "lineRange": {"startLine": 21, "endLine": 25}
+    },
+    {
+      "kind": "process spawn",
+      "target": "aurora-cli shell command via os.system",
+      "lineRange": {"startLine": 30, "endLine": 31}
+    },
+    {
+      "kind": "file-system read",
+      "target": "template_path argument (template file)",
+      "lineRange": {"startLine": 35, "endLine": 36}
+    },
+    {
+      "kind": "process spawn",
+      "target": "argv argument passed to subprocess.run",
+      "lineRange": {"startLine": 43, "endLine": 43}
+    }
+  ],
+  "securitySurface": [
+    {
+      "kind": "hardcoded credential",
+      "description": "DATABASE_PASSWORD is assigned a literal plaintext password string",
+      "lineRange": {"startLine": 10, "endLine": 10}
+    },
+    {
+      "kind": "command injection",
+      "description": "export_report() constructs a shell command via string interpolation of project_id and destination, then executes it with os.system() — no sanitisation of either argument",
+      "lineRange": {"startLine": 30, "endLine": 31}
+    },
+    {
+      "kind": "insecure deserialization",
+      "description": "yaml.load(handle.read()) called without a Loader argument in load_quota_profile — allows arbitrary Python object deserialization from caller-supplied file path",
+      "lineRange": {"startLine": 17, "endLine": 17}
+    },
+    {
+      "kind": "TLS verification disabled",
+      "description": "requests.get() called with verify=False in fetch_project — disables certificate verification for all outbound HTTPS requests",
+      "lineRange": {"startLine": 24, "endLine": 24}
+    },
+    {
+      "kind": "input entry point — function parameter",
+      "description": "fetch_project(project_id, token): project_id is interpolated into a URL; token is sent as a Bearer header",
+      "lineRange": {"startLine": 20, "endLine": 26}
+    },
+    {
+      "kind": "input entry point — function parameter",
+      "description": "export_report(project_id, destination): both parameters are interpolated into a shell command string executed by os.system()",
+      "lineRange": {"startLine": 29, "endLine": 31}
+    },
+    {
+      "kind": "input entry point — function parameter",
+      "description": "call_backend(argv): argv is passed directly to subprocess.run() without validation",
+      "lineRange": {"startLine": 42, "endLine": 43}
+    },
+    {
+      "kind": "network sink",
+      "description": "requests.get() sends outbound HTTP request; response body returned to caller",
+      "lineRange": {"startLine": 21, "endLine": 26}
+    }
+  ],
+  "injectionFlags": []
+}

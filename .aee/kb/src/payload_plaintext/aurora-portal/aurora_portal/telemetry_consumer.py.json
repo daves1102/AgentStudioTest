@@ -1,0 +1,53 @@
+{
+  "file": "src/payload_plaintext/aurora-portal/aurora_portal/telemetry_consumer.py",
+  "language": "Python",
+  "component": "payload_plaintext",
+  "hash": "08ca2b89206ea91ac68e3e8f20661404570dea5bd486835af89ebf32cd9db960",
+  "symbols": [
+    {
+      "name": "TENANT_TOPIC",
+      "kind": "module-level constant",
+      "type": "str",
+      "lineRange": {"startLine": 8, "endLine": 8}
+    },
+    {
+      "name": "consume",
+      "kind": "generator function",
+      "signature": "(bus: Any) -> Generator",
+      "lineRange": {"startLine": 11, "endLine": 13}
+    },
+    {
+      "name": "handle",
+      "kind": "function",
+      "signature": "(message: Any) -> dict",
+      "lineRange": {"startLine": 16, "endLine": 22}
+    }
+  ],
+  "referencedSymbols": [
+    {"name": "yaml", "inferredKind": "module", "category": "imported", "firstReferenceLine": 6},
+    {"name": "bus.subscribe", "inferredKind": "method", "category": "unknown", "firstReferenceLine": 12}
+  ],
+  "externalDependencies": [
+    {"module": "yaml", "alias": null, "line": 6}
+  ],
+  "sideEffects": [
+    {
+      "kind": "external I/O — message bus subscription",
+      "target": "topic aurora.telemetry.tenant via caller-supplied bus object",
+      "lineRange": {"startLine": 12, "endLine": 12}
+    }
+  ],
+  "securitySurface": [
+    {
+      "kind": "insecure deserialization",
+      "description": "handle() calls yaml.load(message.body) without a Loader argument — allows arbitrary Python object instantiation from bus message content",
+      "lineRange": {"startLine": 17, "endLine": 17}
+    },
+    {
+      "kind": "input entry point — deserialization",
+      "description": "message.body from the bus topic aurora.telemetry.tenant is deserialized with unsafe yaml.load; any subscriber to this topic can craft a payload that executes arbitrary Python",
+      "lineRange": {"startLine": 17, "endLine": 17}
+    }
+  ],
+  "injectionFlags": []
+}

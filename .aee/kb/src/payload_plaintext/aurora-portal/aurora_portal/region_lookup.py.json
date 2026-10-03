@@ -1,0 +1,45 @@
+{
+  "file": "src/payload_plaintext/aurora-portal/aurora_portal/region_lookup.py",
+  "language": "Python",
+  "component": "payload_plaintext",
+  "hash": "4e29f660fcc255a7744254c01519ff34d1aee3b28b6a722cc9b5d53ab7658f33",
+  "symbols": [
+    {
+      "name": "TABLE",
+      "kind": "module-level constant",
+      "type": "str",
+      "lineRange": {"startLine": 6, "endLine": 6}
+    },
+    {
+      "name": "region_for",
+      "kind": "function",
+      "signature": "(cursor: Any, project: str) -> dict | None",
+      "lineRange": {"startLine": 9, "endLine": 14}
+    }
+  ],
+  "referencedSymbols": [
+    {"name": "cursor.execute", "inferredKind": "method", "category": "unknown", "firstReferenceLine": 10},
+    {"name": "cursor.fetchone", "inferredKind": "method", "category": "unknown", "firstReferenceLine": 13}
+  ],
+  "externalDependencies": [],
+  "sideEffects": [
+    {
+      "kind": "database query",
+      "target": "table tenant_region_assignment via caller-supplied cursor",
+      "lineRange": {"startLine": 10, "endLine": 12}
+    }
+  ],
+  "securitySurface": [
+    {
+      "kind": "SQL injection",
+      "description": "region_for() builds a SELECT query by string interpolation of the project parameter directly into the SQL string using '%s' % — project is not parameterised and can break out of the quoted literal",
+      "lineRange": {"startLine": 10, "endLine": 12}
+    },
+    {
+      "kind": "input entry point — function parameter",
+      "description": "region_for(cursor, project): project value is caller-supplied and used unescaped in a raw SQL string",
+      "lineRange": {"startLine": 9, "endLine": 9}
+    }
+  ],
+  "injectionFlags": []
+}
