@@ -1,8 +1,8 @@
 # Verification Summary
 
-**Round:** 1  
-**Generated:** 2026-10-03  
-**Result:** All documents and findings verified — zero errors
+**Round:** 2  
+**Generated:** 2026-10-04  
+**Result:** Revisions Required — 2 errors found in `docs/components/payload_plaintext.md`
 
 ---
 
@@ -10,74 +10,72 @@
 
 | Issue Type | Error | Warning | Info | Total |
 |---|---|---|---|---|
-| (none) | 0 | 0 | 0 | 0 |
-
-**Overall: 0 issues across all documents and findings.**
+| `wrong-citation` | 2 | 0 | 0 | 2 |
+| **Total** | **2** | **0** | **0** | **2** |
 
 ---
 
-## Errors
+## Errors (must be corrected)
 
-No errors found.
+| # | Document | Location | Issue | Source File | Line |
+|---|---|---|---|---|---|
+| 1 | `docs/components/payload_plaintext.md` | Local Data Flow / Path 1 — command injection | Command string described as `"aurora-cli export %s %s"` but source L30 contains `"aurora-cli report --project %s > %s"` | `api.py` | L30 |
+| 2 | `docs/components/payload_plaintext.md` | Cross-Component Interfaces / Executable caller row (api.py L30–31) | Interface labelled `os.system("aurora-cli export ...")` but source L30 shows `os.system("aurora-cli report --project %s > %s")` | `api.py` | L30 |
+
+**Fix required:** In `docs/components/payload_plaintext.md`, replace both occurrences of `"aurora-cli export"` / `aurora-cli export` with `"aurora-cli report --project"` / `aurora-cli report`. Source: `src/payload_plaintext/aurora-portal/aurora_portal/api.py`, line 30: `command = "aurora-cli report --project %s > %s" % (project_id, destination)`.
 
 ---
 
 ## Documents Verified Clean (zero errors)
 
-| Document Type | Document Ref | Notes |
+### File documents (18 verified)
+
+| Document | Notes |
+|---|---|
+| `docs/src/tools/seam_index.py.md` | Previously verified Round 1 — no changes, still passes |
+| `docs/src/payload_plaintext/aurora-portal/aurora_portal/adapter.py.md` | 6 symbols, 0 deps, 1 security-surface — all citations accurate |
+| `docs/src/payload_plaintext/aurora-portal/aurora_portal/api.py.md` | 7 symbols, 4 deps, 5 side effects, 8 security-surface — all citations accurate; note: command string correctly rendered as `"aurora-cli report --project %s > %s"` ✓ |
+| `docs/src/payload_plaintext/aurora-portal/aurora_portal/collector.py.md` | 6 symbols, 0 deps, 1 security-surface — all citations accurate |
+| `docs/src/payload_plaintext/aurora-portal/aurora_portal/dispatcher.py.md` | 6 symbols, 0 deps, 1 security-surface — all citations accurate |
+| `docs/src/payload_plaintext/aurora-portal/aurora_portal/formatter.py.md` | 6 symbols, 0 deps, 1 security-surface — all citations accurate |
+| `docs/src/payload_plaintext/aurora-portal/aurora_portal/indexer.py.md` | 6 symbols, 0 deps, 1 security-surface — all citations accurate |
+| `docs/src/payload_plaintext/aurora-portal/aurora_portal/maintenance.py.md` | 3 symbols, 1 dep, 2 side effects, 2 security-surface — all citations accurate |
+| `docs/src/payload_plaintext/aurora-portal/aurora_portal/notifier.py.md` | 6 symbols, 0 deps, 1 security-surface — all citations accurate |
+| `docs/src/payload_plaintext/aurora-portal/aurora_portal/publisher.py.md` | 6 symbols, 0 deps, 1 security-surface — all citations accurate |
+| `docs/src/payload_plaintext/aurora-portal/aurora_portal/quota.py.md` | 8 symbols (incl. 4 dataclass fields), 1 dep — all citations accurate |
+| `docs/src/payload_plaintext/aurora-portal/aurora_portal/region_lookup.py.md` | 2 symbols, 0 deps, 1 side effect, 2 security-surface — all citations accurate |
+| `docs/src/payload_plaintext/aurora-portal/aurora_portal/resolver.py.md` | 6 symbols, 0 deps, 1 security-surface — all citations accurate |
+| `docs/src/payload_plaintext/aurora-portal/aurora_portal/session.py.md` | 3 symbols, 3 deps, 3 security-surface — all citations accurate |
+| `docs/src/payload_plaintext/aurora-portal/aurora_portal/telemetry_consumer.py.md` | 3 symbols, 1 dep, 1 side effect, 2 security-surface — all citations accurate |
+| `docs/src/payload_plaintext/aurora-portal/aurora_portal/throttle.py.md` | 6 symbols, 0 deps, 1 security-surface — all citations accurate |
+| `docs/src/payload_plaintext/aurora-portal/aurora_portal/validator.py.md` | 6 symbols, 0 deps, 1 security-surface — all citations accurate |
+| `docs/src/payload_plaintext/aurora-portal/tests/test_quota.py.md` | 2 symbols, 1 dep — all citations accurate |
+
+### Component documents (3 clean, 1 with errors)
+
+| Document | Verdict | Notes |
 |---|---|---|
-| file-doc | `docs/src/tools/seam_index.py.md` | All 7 symbols, 5 deps, 4 side effects, 4 security-surface entries cited accurately |
-| component-doc | `docs/components/tools.md` | All symbol/dep/side-effect/flow claims verified against source and KB |
-| component-doc | `docs/components/src.md` | Stub — no source to cite; skip/triage rationale correctly documented |
-| component-index | `docs/components/index.md` | Delivery status accurately reflects partial delivery (1 of 6 components) |
-| security-finding | `src/tools/seam_index.py` (finding 1) | lineRange {88–89} confirmed; OWASP A01/CWE-22 consistent; severity medium/confidence confirmed accurate |
-| security-chain | `chain-001` | All hops (L88→L89→L43→L46→L52) verified; sink at L52 confirmed; severity not upgraded (no cross-component hop) |
+| `docs/components/src.md` | ✓ Clean | Stub for unparseable `.gitkeep` — correct |
+| `docs/components/tools.md` | ✓ Clean | Previously verified Round 1 — no changes |
+| `docs/components/index.md` | ✓ Clean | Updated component count accurate; 5 distinct open-end interfaces count verified |
+| `docs/components/payload_plaintext.md` | ✗ **2 errors** | See Errors table above |
 
----
+### Security findings (9 verified — all pass)
 
-## Verification Detail
+| File | Finding | CWE | OWASP | Verdict |
+|---|---|---|---|---|
+| `src/tools/seam_index.py` | Path traversal via unsanitised CLI path | CWE-22 | A01 | ✓ lineRange {88–89} confirmed; severity medium/confidence confirmed accurate |
+| `src/payload_plaintext/.../api.py` | Hardcoded DATABASE_PASSWORD | CWE-798 | A07 | ✓ lineRange {10,10} confirmed |
+| `src/payload_plaintext/.../api.py` | yaml.load without SafeLoader | CWE-502 | A08 | ✓ lineRange {15–17} confirmed; needs_cross_file appropriate |
+| `src/payload_plaintext/.../api.py` | TLS verify=False | CWE-295 | A02 | ✓ lineRange {20–26} confirmed; L24 = `verify=False` |
+| `src/payload_plaintext/.../api.py` | os.system command injection | CWE-78 | A03 | ✓ lineRange {29–31} confirmed; severity critical appropriate |
+| `src/payload_plaintext/.../session.py` | random.choice for session IDs | CWE-338 | A07 | ✓ lineRange {9–11} confirmed; L11 = `random.choice(...)` |
+| `src/payload_plaintext/.../session.py` | SHA-1 for password hashing | CWE-916 | A02 | ✓ lineRange {14–15} confirmed; L15 = `hashlib.sha1(...)` |
+| `src/payload_plaintext/.../region_lookup.py` | SQL injection via `% project` | CWE-89 | A03 | ✓ lineRange {9–12} confirmed; L11 = SQL with unparameterised `project` |
+| `src/payload_plaintext/.../telemetry_consumer.py` | yaml.load on bus messages | CWE-502 | A08 | ✓ lineRange {16–17} confirmed; L17 = `yaml.load(message.body)` |
 
-### File Document: `docs/src/tools/seam_index.py.md`
+### Security chains (1 verified — passes)
 
-- **Citation completeness:** All factual claims in the Defined Symbols, Dependencies, Side Effects, and Security Surface sections carry explicit `seam_index.py:Lstart–Lend` citations. ✓
-- **Citation accuracy:**
-  - `PATTERNS` L18–28 → source lines 18–28 (`PATTERNS = [` … `]`) ✓
-  - `EXTENSIONS` L30–32 → source lines 30–32 ✓
-  - `NOISE` L34 → source line 34 ✓
-  - `component_of` L37–38 → source lines 37–38 ✓
-  - `scan` L41–62 → source lines 41–62 ✓
-  - `cross_component` L65–81 → source lines 65–81 ✓
-  - `main` L84–100 → source lines 84–100 ✓
-  - All dependency import line citations (L11–L15) ✓
-  - All side-effect and security-surface line citations ✓
-- **Unsupported claims:** None. ✓
-- **Missing symbols:** None — all 7 KB symbols present in document. ✓
-
-### Component Document: `docs/components/tools.md`
-
-- **Citation accuracy:** All line ranges in the Defined Symbols and External Dependencies tables match the KB record and source. All side-effect and data-flow line references verified. ✓
-- **Cross-Component Interfaces claim:** `crossComponentSeams` in `.aee/link-graph.json` confirmed empty. ✓
-- **File Inventory hash:** SHA-256 prefix `b8ef7a55` matches KB record. ✓
-- **Unsupported claims:** None. ✓
-
-### Component Document: `docs/components/src.md`
-
-- **Stub correctness:** `src/.gitkeep` is correctly identified as UNKNOWN language, empty, unparseable. No fabricated content. ✓
-- Per team convention: stub document for error:unparseable files is appropriate. ✓
-
-### Security Finding: `src/tools/seam_index.py` (finding 1)
-
-- `lineRange {88–89}`: line 88 = `root = sys.argv[1]`; line 89 = `seams = cross_component(scan(root))`. Unsanitised path assignment and immediate use confirmed. ✓
-- Referenced lines 43 (`os.walk(root)`), 44 (directory blocklist), 52 (`open(path, …)`) all verified accurate. ✓
-- OWASP A01 Broken Access Control + CWE-22 (Path Traversal): consistent with described unsanitised `sys.argv[1]` → `os.walk()` → `open()` flow. ✓
-- Severity `medium` and confidence `confirmed`: appropriate for a developer CLI tool where the taint path is direct and confirmed in source. ✓
-
-### Security Chain: `chain-001`
-
-- **Source** L88 (`sys.argv[1]` → `root`): confirmed. ✓
-- **Hop 1** L89 (`scan(root)` call): `root` passed to `scan()` without sanitisation — confirmed. ✓
-- **Hop 2** L43 (`os.walk(root)`): `root` used as `os.walk` top-level argument — confirmed. ✓
-- **Hop 3** L46 (`os.path.join(base, name)`): `path` constructed from `os.walk` output, inheriting root's traversal scope — confirmed. ✓
-- **Sink** L52 (`open(path, encoding='utf-8', errors='ignore')`): arbitrary file read from user-supplied root — confirmed. ✓
-- **Severity not upgraded:** all hops have `crossComponent: false` — consistent with convention (intra-component chains retain original severity). ✓
-- **Sanitisation gaps** at L88 and L44: both verified accurate. ✓
+| Chain | Verdict | Notes |
+|---|---|---|
+| `chain-001` (seam_index.py path traversal) | ✓ Clean | Previously verified Round 1; source, 3 hops, and sink all confirmed; no cross-component hops → no severity upgrade correct |

@@ -1,1 +1,22 @@
-[]
+[
+  {
+    "documentType": "component-doc",
+    "documentRef": "docs/components/payload_plaintext.md",
+    "issueType": "wrong-citation",
+    "location": "Local Data Flow / Path 1 — command injection (line ~239 of document)",
+    "description": "Shell command string is described as '\"aurora-cli export %s %s\" % (project_id, destination)' but the cited source line L30 actually contains '\"aurora-cli report --project %s > %s\" % (project_id, destination)'. The subcommand and argument structure differ from what appears in the source.",
+    "sourceFile": "src/payload_plaintext/aurora-portal/aurora_portal/api.py",
+    "lineRange": {"start": 30, "end": 30},
+    "severity": "error"
+  },
+  {
+    "documentType": "component-doc",
+    "documentRef": "docs/components/payload_plaintext.md",
+    "issueType": "wrong-citation",
+    "location": "Cross-Component Interfaces / Executable caller row (api.py L30–31)",
+    "description": "Open-end interface is labelled 'os.system(\"aurora-cli export ...\")' but the cited source L30 shows 'os.system(\"aurora-cli report --project %s > %s\" % (project_id, destination))'. Command name 'export' is incorrect; the actual subcommand is 'report'.",
+    "sourceFile": "src/payload_plaintext/aurora-portal/aurora_portal/api.py",
+    "lineRange": {"start": 30, "end": 30},
+    "severity": "error"
+  }
+]
