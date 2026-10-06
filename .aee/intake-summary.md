@@ -1,20 +1,20 @@
 # Intake Summary
 
-**Batch:** `c2135f0071b2da326e99a76cb66f1304ece43f88`
-**Run date:** 2026-10-03T10:19:12Z
+**Batch:** `2082c134801e921e2b8a537b6d200ae78c4c0379`
+**Run date:** 2026-10-06T10:22:00Z
 
-## Counts by Language
+## Counts by Language (this batch)
 
 | Language | Files |
 |----------|-------|
-| Python   | 17    |
-| UNKNOWN  | 2     |
+| Go       | 18    |
+| UNKNOWN  | 1     |
 
-## Counts by Component
+## Counts by Component (this batch)
 
-| Component        | Files |
-|------------------|-------|
-| payload_plaintext | 19   |
+| Component         | Files |
+|-------------------|-------|
+| payload_plaintext | 19    |
 
 ## Skips
 
@@ -24,9 +24,23 @@ None — all 19 file hashes were new.
 
 | File | Reason |
 |------|--------|
-| `src/payload_plaintext/aurora-portal/.env.example` | Extension `.example` is not a recognised source extension; content is a dotenv template. Language recorded as **UNKNOWN**. |
-| `src/payload_plaintext/aurora-portal/requirements.txt` | Extension `.txt` is not a recognised source extension; content is a pip package manifest. Language recorded as **UNKNOWN**. |
+| `src/payload_plaintext/aurora-compute/go.mod` | Extension `.mod` is not a recognised source extension; content is a Go module manifest. Language recorded as **UNKNOWN**. |
 
 ---
 
-*Prior batch (`929829695f4d25ba1a7c53fd306113e417a6762e`) summary: 1 Python (`src/tools/seam_index.py`), 1 UNKNOWN (`src/.gitkeep`).*
+## Cumulative Totals (all batches)
+
+| Language | Files |
+|----------|-------|
+| Go       | 18    |
+| Python   | 17    |
+| UNKNOWN  | 5     |
+| **Total**| **40** |
+
+| Component         | Files |
+|-------------------|-------|
+| payload_plaintext | 38    |
+| tools             | 1     |
+| src               | 1     |
+
+*Prior batches: `929829695` (2 files: 1 Python, 1 UNKNOWN), `c2135f007` (19 files: 17 Python, 2 UNKNOWN).*
