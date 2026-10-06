@@ -1,9 +1,11 @@
 [
   {
     "file": "src/payload_plaintext/aurora-portal/aurora_portal/telemetry_consumer.py",
+    "tool": "bandit",
+    "ruleId": "B506",
     "lineRange": {"start": 16, "end": 17},
     "title": "yaml.load() without SafeLoader on bus messages — arbitrary object instantiation possible",
-    "detail": "`handle()` calls `yaml.load(message.body)` at line 17 without a Loader argument. Messages are received from the `aurora.telemetry.tenant` bus topic, which may accept input from tenant systems outside the service's trust boundary. PyYAML's default Loader supports `!!python/object/apply` and related tags, allowing an attacker who can publish to the topic to achieve arbitrary Python code execution in the consumer process. The fix is `yaml.safe_load()` or `yaml.load(..., Loader=yaml.SafeLoader)`.",
+    "detail": "`handle()` calls `yaml.load(message.body)` at line 17 without a Loader argument. Messages are received from the `aurora.telemetry.tenant` bus topic, which may accept input from tenant systems outside the service's trust boundary. PyYAML's default Loader supports `!!python/object/apply` and related tags, allowing an attacker who can publish to the topic to achieve arbitrary Python code execution in the consumer process. The fix is `yaml.safe_load()` or `yaml.load(..., Loader=yaml.SafeLoader)`. Confirmed by bandit B506 (MEDIUM/HIGH).",
     "owaspCategory": "A08 Software and Data Integrity Failures",
     "cweId": "CWE-502",
     "severity": "high",

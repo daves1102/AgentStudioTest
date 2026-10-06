@@ -1,9 +1,11 @@
 [
   {
     "file": "src/payload_plaintext/aurora-portal/aurora_portal/region_lookup.py",
+    "tool": "bandit",
+    "ruleId": "B608",
     "lineRange": {"start": 9, "end": 12},
     "title": "SQL injection via direct string interpolation of caller-supplied project parameter",
-    "detail": "`region_for()` constructs a raw SQL string at line 11 using `% (TABLE, project)` — the `TABLE` constant is safe, but `project` is a function parameter supplied by the caller. A value such as `' OR '1'='1` or `'; DROP TABLE tenant_region_assignment; --` would be interpreted by the database engine as SQL. The string is passed verbatim to `cursor.execute()` at line 10 with no parameterisation. Callers and the origin of the `project` value are not visible in this file.",
+    "detail": "`region_for()` constructs a raw SQL string at line 11 using `% (TABLE, project)` — the `TABLE` constant is safe, but `project` is a function parameter supplied by the caller. A value such as `' OR '1'='1` or `'; DROP TABLE tenant_region_assignment; --` would be interpreted by the database engine as SQL. The string is passed verbatim to `cursor.execute()` at line 10 with no parameterisation. Callers and the origin of the `project` value are not visible in this file. Confirmed by bandit B608 (MEDIUM/MEDIUM).",
     "owaspCategory": "A03 Injection",
     "cweId": "CWE-89",
     "severity": "critical",

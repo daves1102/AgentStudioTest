@@ -1,9 +1,11 @@
 [
   {
     "file": "src/payload_plaintext/aurora-compute/api/server.go",
+    "tool": "manual",
+    "ruleId": null,
     "lineRange": {"start": 13, "end": 13},
     "title": "Hardcoded AWS-format access key committed to source",
-    "detail": "Line 13 declares `const metricsToken = \"AKIAIOSFODNN7EXAMPLE\"`. The value matches the AWS IAM access key ID pattern (`AKIA[A-Z0-9]{16}`). Committing credentials in source permanently embeds them in the version history and exposes them to every reader of the repository. Even if this specific value is a documentation placeholder, the pattern teaches callers to supply a real key in the same position, making future accidental commits likely. The token has no callers visible in this file.",
+    "detail": "Line 13 declares `const metricsToken = \"AKIAIOSFODNN7EXAMPLE\"`. The value matches the AWS IAM access key ID pattern (`AKIA[A-Z0-9]{16}`). Committing credentials in source permanently embeds them in the version history and exposes them to every reader of the repository. Even if this specific value is a documentation placeholder, the pattern teaches callers to supply a real key in the same position, making future accidental commits likely. Gitleaks did not flag this value (it is on the gitleaks example-key allowlist); the finding is based on manual inspection.",
     "owaspCategory": "A07 Identification and Authentication Failures",
     "cweId": "CWE-798",
     "severity": "critical",
@@ -11,9 +13,11 @@
   },
   {
     "file": "src/payload_plaintext/aurora-compute/api/server.go",
+    "tool": "manual",
+    "ruleId": null,
     "lineRange": {"start": 15, "end": 20},
     "title": "TLS certificate verification disabled in HTTP client (InsecureSkipVerify: true)",
-    "detail": "`newClient()` at lines 15–20 constructs an `http.Client` whose `TLSClientConfig` sets `InsecureSkipVerify: true`. This suppresses all certificate validation — expired, self-signed, or fraudulent certificates are silently accepted. Any caller using this client is therefore susceptible to man-in-the-middle attacks that can intercept or alter traffic, including any token or credential it carries.",
+    "detail": "`newClient()` at lines 15–20 constructs an `http.Client` whose `TLSClientConfig` sets `InsecureSkipVerify: true`. This suppresses all certificate validation — expired, self-signed, or fraudulent certificates are silently accepted. Any caller using this client is therefore susceptible to man-in-the-middle attacks that can intercept or alter traffic, including any token or credential it carries. Semgrep flagged the same `tls.Config` block under the adjacent `missing-ssl-minversion` rule (see separate finding).",
     "owaspCategory": "A02 Cryptographic Failures",
     "cweId": "CWE-295",
     "severity": "high",
@@ -21,12 +25,26 @@
   },
   {
     "file": "src/payload_plaintext/aurora-compute/api/server.go",
+    "tool": "manual",
+    "ruleId": null,
     "lineRange": {"start": 23, "end": 26},
     "title": "OS command injection via exec.Command(\"sh\",\"-c\",...) with unsanitised instance parameter",
-    "detail": "`Console()` constructs a shell command at line 24 using `fmt.Sprintf(\"virsh console %s\", instance)` and executes it through `exec.Command(\"sh\", \"-c\", ...)`. Because the command is interpreted by a shell, any shell metacharacter in `instance` (e.g. `;`, `|`, `$(...)`, `` ` ``) allows execution of arbitrary commands with the process's privileges. `instance` is a caller-supplied function parameter with no sanitisation visible in this file.",
+    "detail": "`Console()` constructs a shell command at line 24 using `fmt.Sprintf(\"virsh console %s\", instance)` and executes it through `exec.Command(\"sh\", \"-c\", ...)`. Because the command is interpreted by a shell, any shell metacharacter in `instance` (e.g. `;`, `|`, `$(...)`, `` ` ``) allows execution of arbitrary commands with the process's privileges. `instance` is a caller-supplied function parameter with no sanitisation visible in this file. Semgrep did not flag this pattern with the rulesets used (`p/security-audit`, `p/owasp-top-ten`).",
     "owaspCategory": "A03 Injection",
     "cweId": "CWE-78",
     "severity": "critical",
     "confidence": "needs_cross_file"
+  },
+  {
+    "file": "src/payload_plaintext/aurora-compute/api/server.go",
+    "tool": "semgrep",
+    "ruleId": "go.lang.security.audit.crypto.missing-ssl-minversion.missing-ssl-minversion",
+    "lineRange": {"start": 17, "end": 17},
+    "title": "TLS MinVersion not set — minimum TLS version relies on Go runtime default",
+    "detail": "The `tls.Config` at line 17 does not set `MinVersion`, meaning the minimum TLS version is governed by the Go runtime default (TLS 1.2 as of Go 1.22). While TLS 1.2 is currently acceptable, omitting an explicit `MinVersion: tls.VersionTLS13` leaves the floor open to future Go default changes or library misuse. This finding is informational in the context of the same config block already setting `InsecureSkipVerify: true`, which completely disables certificate validation regardless. Flagged by semgrep `missing-ssl-minversion` (WARNING).",
+    "owaspCategory": "A02 Cryptographic Failures",
+    "cweId": "CWE-326",
+    "severity": "informational",
+    "confidence": "confirmed"
   }
 ]

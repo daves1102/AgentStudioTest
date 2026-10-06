@@ -1,9 +1,11 @@
 [
   {
     "file": "src/payload_plaintext/aurora-portal/aurora_portal/api.py",
+    "tool": "manual",
+    "ruleId": null,
     "lineRange": {"start": 10, "end": 10},
     "title": "Hardcoded production database password in source",
-    "detail": "Line 10 assigns the literal string `\"Aur0ra-Portal-Prod-2026!\"` to the module-level constant `DATABASE_PASSWORD`. Committing a real credential to version control permanently exposes it to anyone with repository access, including historical clones. The value is not referenced elsewhere in this file but is available to any importing module.",
+    "detail": "Line 10 assigns the literal string `\"Aur0ra-Portal-Prod-2026!\"` to the module-level constant `DATABASE_PASSWORD`. Committing a real credential to version control permanently exposes it to anyone with repository access, including historical clones. The value is not referenced elsewhere in this file but is available to any importing module. Gitleaks did not flag this value (it does not match a standard API-key format); the finding is based on manual inspection.",
     "owaspCategory": "A07 Identification and Authentication Failures",
     "cweId": "CWE-798",
     "severity": "critical",
@@ -11,9 +13,11 @@
   },
   {
     "file": "src/payload_plaintext/aurora-portal/aurora_portal/api.py",
+    "tool": "bandit",
+    "ruleId": "B506",
     "lineRange": {"start": 15, "end": 17},
     "title": "yaml.load() called without SafeLoader — arbitrary object instantiation possible",
-    "detail": "`load_quota_profile()` opens a caller-supplied file path and passes its contents to `yaml.load(handle.read())` at line 17 without a Loader argument. PyYAML's default Loader allows deserialization of arbitrary Python objects (e.g. `!!python/object/apply:os.system`). If the file at `path` is attacker-controlled, code execution is possible. The caller of this function and the source of `path` are not visible in this file.",
+    "detail": "`load_quota_profile()` opens a caller-supplied file path and passes its contents to `yaml.load(handle.read())` at line 17 without a Loader argument. PyYAML's default Loader allows deserialization of arbitrary Python objects (e.g. `!!python/object/apply:os.system`). If the file at `path` is attacker-controlled, code execution is possible. The caller of this function and the source of `path` are not visible in this file. Confirmed by bandit B506 (MEDIUM/HIGH).",
     "owaspCategory": "A08 Software and Data Integrity Failures",
     "cweId": "CWE-502",
     "severity": "high",
@@ -21,9 +25,11 @@
   },
   {
     "file": "src/payload_plaintext/aurora-portal/aurora_portal/api.py",
+    "tool": "bandit, semgrep",
+    "ruleId": "B501, python.requests.security.disabled-cert-validation.disabled-cert-validation",
     "lineRange": {"start": 20, "end": 26},
     "title": "TLS certificate verification disabled in outbound HTTPS request",
-    "detail": "`fetch_project()` calls `requests.get()` with `verify=False` at line 24, disabling SSL/TLS certificate validation for all connections to `API_BASE`. This makes every request transparent to a network-level attacker who can present a self-signed or fraudulent certificate, enabling credential theft (the Bearer token in the Authorization header) and response tampering.",
+    "detail": "`fetch_project()` calls `requests.get()` with `verify=False` at line 24, disabling SSL/TLS certificate validation for all connections to `API_BASE`. This makes every request transparent to a network-level attacker who can present a self-signed or fraudulent certificate, enabling credential theft (the Bearer token in the Authorization header) and response tampering. Confirmed by bandit B501 (HIGH/HIGH) and semgrep `disabled-cert-validation` (ERROR).",
     "owaspCategory": "A02 Cryptographic Failures",
     "cweId": "CWE-295",
     "severity": "high",
@@ -31,12 +37,26 @@
   },
   {
     "file": "src/payload_plaintext/aurora-portal/aurora_portal/api.py",
+    "tool": "bandit",
+    "ruleId": "B605",
     "lineRange": {"start": 29, "end": 31},
     "title": "OS command injection via os.system() with unsanitised string interpolation",
-    "detail": "`export_report()` constructs a shell command string at line 30 by interpolating `project_id` and `destination` with `%s` formatting, then executes it with `os.system()` at line 31. `os.system()` passes its argument to the system shell, so shell metacharacters (`;`, `|`, `$(...)`, backticks) in either parameter allow arbitrary command execution. Neither parameter is sanitised in this file; their origin is unknown without cross-file analysis.",
+    "detail": "`export_report()` constructs a shell command string at line 30 by interpolating `project_id` and `destination` with `%s` formatting, then executes it with `os.system()` at line 31. `os.system()` passes its argument to the system shell, so shell metacharacters (`;`, `|`, `$(...)`, backticks) in either parameter allow arbitrary command execution. Neither parameter is sanitised in this file; their origin is unknown without cross-file analysis. Confirmed by bandit B605 (HIGH/HIGH).",
     "owaspCategory": "A03 Injection",
     "cweId": "CWE-78",
     "severity": "critical",
     "confidence": "needs_cross_file"
+  },
+  {
+    "file": "src/payload_plaintext/aurora-portal/aurora_portal/api.py",
+    "tool": "bandit",
+    "ruleId": "B113",
+    "lineRange": {"start": 21, "end": 25},
+    "title": "HTTP request issued without a timeout — resource exhaustion possible",
+    "detail": "`fetch_project()` calls `requests.get()` at line 21 without a `timeout` parameter. If the remote server holds the connection open indefinitely (deliberately or due to network failure), the calling thread blocks forever. In a multi-tenant or high-concurrency context this can exhaust the thread pool, causing a service-level denial of service. Flagged by bandit B113 (MEDIUM/LOW).",
+    "owaspCategory": "A05 Security Misconfiguration",
+    "cweId": "CWE-400",
+    "severity": "low",
+    "confidence": "confirmed"
   }
 ]
