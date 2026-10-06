@@ -1,0 +1,30 @@
+{
+  "file": "src/payload_plaintext/aurora-compute/services/scheduler2/scheduler2.go",
+  "language": "Go",
+  "component": "payload_plaintext",
+  "hash": "76437e06b3916ea119336f34ee84a35949b04f3b4418d80a6d7cbb990406807d",
+  "symbols": [
+    {"name": "Record", "kind": "struct", "exported": true, "fields": [{"name": "ID", "type": "string"}, {"name": "Project", "type": "string"}, {"name": "Value", "type": "int64"}, {"name": "Tags", "type": "[]string"}], "lineRange": {"startLine": 12, "endLine": 17}},
+    {"name": "ErrNotFound", "kind": "variable", "exported": true, "type": "error", "lineRange": {"startLine": 19, "endLine": 19}},
+    {"name": "Store", "kind": "struct", "exported": true, "fields": [{"name": "records", "type": "map[string]Record", "exported": false}], "lineRange": {"startLine": 21, "endLine": 23}},
+    {"name": "NewStore", "kind": "function", "exported": true, "signature": "() *Store", "lineRange": {"startLine": 25, "endLine": 27}},
+    {"name": "Store.Put", "kind": "receiver method", "exported": true, "receiver": "*Store", "signature": "(r Record)", "lineRange": {"startLine": 29, "endLine": 31}},
+    {"name": "Store.Get", "kind": "receiver method", "exported": true, "receiver": "*Store", "signature": "(id string) (Record, error)", "lineRange": {"startLine": 33, "endLine": 39}},
+    {"name": "Store.ByProject", "kind": "receiver method", "exported": true, "receiver": "*Store", "signature": "(project string) []Record", "lineRange": {"startLine": 41, "endLine": 49}},
+    {"name": "Store.Total", "kind": "receiver method", "exported": true, "receiver": "*Store", "signature": "(project string) int64", "lineRange": {"startLine": 51, "endLine": 57}},
+    {"name": "Normalise", "kind": "function", "exported": true, "signature": "(tag string) string", "lineRange": {"startLine": 59, "endLine": 61}},
+    {"name": "Store.Count", "kind": "receiver method", "exported": true, "receiver": "*Store", "signature": "() int", "lineRange": {"startLine": 63, "endLine": 65}}
+  ],
+  "referencedSymbols": [
+    {"name": "errors.New", "inferredKind": "function", "category": "imported", "firstReferenceLine": 19},
+    {"name": "strings.ToLower", "inferredKind": "function", "category": "imported", "firstReferenceLine": 60},
+    {"name": "strings.TrimSpace", "inferredKind": "function", "category": "imported", "firstReferenceLine": 60}
+  ],
+  "externalDependencies": [
+    {"module": "errors", "alias": null, "line": 7},
+    {"module": "strings", "alias": null, "line": 8}
+  ],
+  "sideEffects": [],
+  "securitySurface": [],
+  "injectionFlags": []
+}

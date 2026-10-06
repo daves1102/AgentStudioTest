@@ -1,0 +1,87 @@
+{
+  "file": "src/payload_plaintext/aurora-compute/api/server.go",
+  "language": "Go",
+  "component": "payload_plaintext",
+  "hash": "54476f853369203be7fb205293dd9063d892621746648355f55d526b489ea50d",
+  "symbols": [
+    {
+      "name": "metricsToken",
+      "kind": "constant",
+      "exported": false,
+      "type": "string",
+      "lineRange": {"startLine": 13, "endLine": 13}
+    },
+    {
+      "name": "newClient",
+      "kind": "function",
+      "exported": false,
+      "signature": "() *http.Client",
+      "lineRange": {"startLine": 15, "endLine": 20}
+    },
+    {
+      "name": "Console",
+      "kind": "function",
+      "exported": true,
+      "signature": "(instance string) ([]byte, error)",
+      "lineRange": {"startLine": 23, "endLine": 26}
+    },
+    {
+      "name": "Health",
+      "kind": "function",
+      "exported": true,
+      "signature": "(w http.ResponseWriter, r *http.Request)",
+      "lineRange": {"startLine": 28, "endLine": 31}
+    }
+  ],
+  "referencedSymbols": [
+    {"name": "tls.Config", "inferredKind": "struct", "category": "imported", "firstReferenceLine": 17},
+    {"name": "http.Transport", "inferredKind": "struct", "category": "imported", "firstReferenceLine": 16},
+    {"name": "http.Client", "inferredKind": "struct", "category": "imported", "firstReferenceLine": 19},
+    {"name": "http.ResponseWriter", "inferredKind": "interface", "category": "imported", "firstReferenceLine": 28},
+    {"name": "http.Request", "inferredKind": "struct", "category": "imported", "firstReferenceLine": 28},
+    {"name": "exec.Command", "inferredKind": "function", "category": "imported", "firstReferenceLine": 24},
+    {"name": "fmt.Sprintf", "inferredKind": "function", "category": "imported", "firstReferenceLine": 24},
+    {"name": "fmt.Fprintf", "inferredKind": "function", "category": "imported", "firstReferenceLine": 30}
+  ],
+  "externalDependencies": [
+    {"module": "crypto/tls", "alias": null, "line": 7},
+    {"module": "fmt", "alias": null, "line": 8},
+    {"module": "net/http", "alias": null, "line": 9},
+    {"module": "os/exec", "alias": null, "line": 10}
+  ],
+  "sideEffects": [
+    {
+      "kind": "process spawn",
+      "target": "sh -c 'virsh console <instance>' via exec.Command",
+      "lineRange": {"startLine": 24, "endLine": 25}
+    },
+    {
+      "kind": "HTTP response write",
+      "target": "http.ResponseWriter w (health check response)",
+      "lineRange": {"startLine": 29, "endLine": 30}
+    }
+  ],
+  "securitySurface": [
+    {
+      "kind": "hardcoded credential",
+      "description": "metricsToken is assigned a hardcoded string \"AKIAIOSFODNN7EXAMPLE\" — matches AWS access key format",
+      "lineRange": {"startLine": 13, "endLine": 13}
+    },
+    {
+      "kind": "TLS verification disabled",
+      "description": "newClient() creates an http.Client with tls.Config{InsecureSkipVerify: true} — disables certificate validation for all outbound TLS connections using this client",
+      "lineRange": {"startLine": 17, "endLine": 17}
+    },
+    {
+      "kind": "command injection",
+      "description": "Console() constructs a shell command via fmt.Sprintf(\"virsh console %s\", instance) and passes it to exec.Command(\"sh\", \"-c\", ...) — instance is caller-supplied and unvalidated",
+      "lineRange": {"startLine": 24, "endLine": 24}
+    },
+    {
+      "kind": "input entry point — function parameter",
+      "description": "Console(instance string): instance value is used unvalidated in shell command construction",
+      "lineRange": {"startLine": 23, "endLine": 23}
+    }
+  ],
+  "injectionFlags": []
+}
