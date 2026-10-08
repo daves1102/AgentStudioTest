@@ -28,7 +28,7 @@
         "lineRange": {"start": 46, "end": 46},
         "symbol": "os.path.join",
         "crossComponent": false,
-        "note": "`path` constructed via os.path.join(base, name) from os.walk output; value inherits traversal scope of `root`"
+        "note": "`path` constructed via os.path.join(base, name) from os.walk output; inherits full traversal scope of `root`"
       }
     ],
     "sink": {
@@ -47,62 +47,70 @@
       {
         "file": "src/tools/seam_index.py",
         "lineRange": {"start": 88, "end": 88},
-        "description": "No os.path.realpath/abspath normalisation or prefix containment check applied to sys.argv[1] before use as root"
+        "description": "No os.path.realpath/abspath normalisation or prefix containment check on sys.argv[1] before use as root"
       },
       {
         "file": "src/tools/seam_index.py",
         "lineRange": {"start": 44, "end": 44},
-        "description": "Directory blocklist ({'.git','node_modules','build','target'}) only filters named subdirectories; does not constrain root from pointing outside the intended source tree"
+        "description": "Directory blocklist only filters named subdirectories; does not constrain root from pointing outside the intended source tree"
       }
     ]
   },
   {
     "chainId": "chain-002",
     "status": "confirmed",
+    "revisionNote": "Severity upgraded high→critical on 2026-10-08: aurora-compute publish.go now delivered; link graph records crossComponent:true seam for aurora.telemetry.tenant bus topic (publish.go:9 → telemetry_consumer.py:8). Cross-component upgrade rule applies.",
     "source": {
-      "file": "src/payload_plaintext/aurora-portal/aurora_portal/telemetry_consumer.py",
-      "lineRange": {"start": 8, "end": 12},
-      "kind": "message-bus",
-      "description": "Messages from the external `aurora.telemetry.tenant` bus topic are received in consume() via bus.subscribe(); message.body originates from tenant systems outside the service trust boundary"
+      "file": "src/payload_plaintext/aurora-compute/services/telemetry/publish.go",
+      "lineRange": {"start": 24, "end": 29},
+      "kind": "bus-publish",
+      "description": "Publish() marshals a Sample struct to YAML via yaml.Marshal and sends the bytes to the aurora.telemetry.tenant bus topic via bus.Send(). The Go producer itself is safe (yaml.Marshal of a typed struct cannot produce !!python/object payloads); however, the bus topic is an open network channel — any bus client that can publish to the topic (including compromised or external producers not present in this delivery) can send arbitrary bytes. The consumer trusts all messages equally."
     },
     "hops": [
       {
+        "file": "src/payload_plaintext/aurora-compute/services/telemetry/publish.go",
+        "lineRange": {"start": 29, "end": 29},
+        "symbol": "bus.Send",
+        "crossComponent": true,
+        "note": "bus.Send(TenantTopic, body) transmits the YAML payload across the aurora.telemetry.tenant bus topic. This is a confirmed cross-component seam (crossComponent: true in link graph, resolved by secondary literal-match pass). The receiving component is aurora-portal."
+      },
+      {
         "file": "src/payload_plaintext/aurora-portal/aurora_portal/telemetry_consumer.py",
-        "lineRange": {"start": 12, "end": 13},
-        "symbol": "bus.subscribe",
+        "lineRange": {"start": 11, "end": 13},
+        "symbol": "consume / bus.subscribe",
         "crossComponent": false,
-        "note": "consume() iterates over bus messages from TENANT_TOPIC; each message (including its .body) is forwarded to handle() at line 13. bus.subscribe is unresolved in the link graph (opaque parameter), but the data flow within this file is unambiguous."
+        "note": "consume() subscribes to TENANT_TOPIC via bus.subscribe() and yields each received message to handle(). No schema validation, type check, or size limit is applied to message.body before forwarding."
       },
       {
         "file": "src/payload_plaintext/aurora-portal/aurora_portal/telemetry_consumer.py",
         "lineRange": {"start": 16, "end": 16},
         "symbol": "handle",
         "crossComponent": false,
-        "note": "handle() receives the full message object; message.body carries the untrusted bus payload with no sanitisation, filtering, or schema validation before the next hop"
+        "note": "handle() receives the message object; message.body carries the raw bus payload. No sanitisation is applied between receipt and deserialisation."
       }
     ],
     "sink": {
       "file": "src/payload_plaintext/aurora-portal/aurora_portal/telemetry_consumer.py",
       "lineRange": {"start": 17, "end": 17},
       "kind": "unsafe-deserialization",
-      "description": "yaml.load(message.body) called without a Loader argument; PyYAML default Loader supports !!python/object/apply and related tags, allowing a malicious bus publisher to achieve arbitrary Python code execution in the consumer process"
+      "description": "yaml.load(message.body) called without a Loader argument. PyYAML's default Loader supports !!python/object/apply and related tags; a malicious publisher on the aurora.telemetry.tenant bus topic can achieve arbitrary Python code execution in the aurora-portal consumer process."
     },
     "owaspCategory": "A08 Software and Data Integrity Failures",
     "cweId": "CWE-502",
-    "severity": "high",
+    "severity": "critical",
     "confidence": "confirmed",
-    "severityUpgraded": false,
-    "severityUpgradeReason": "No crossComponent:true hops present in the Link Graph for this chain; bus.subscribe is an open end (producer component not yet delivered) rather than a resolved cross-component seam, so the severity upgrade rule does not apply",
+    "severityUpgraded": true,
+    "severityUpgradeReason": "Chain crosses one crossComponent:true hop in the link graph (aurora.telemetry.tenant bus seam, publish.go:29 → telemetry_consumer.py:8, resolved in this run). Severity upgraded from high to critical per the cross-component upgrade rule.",
     "sanitisationGaps": [
       {
         "file": "src/payload_plaintext/aurora-portal/aurora_portal/telemetry_consumer.py",
         "lineRange": {"start": 17, "end": 17},
-        "description": "yaml.load() called with no Loader; should be yaml.safe_load() or yaml.load(..., Loader=yaml.SafeLoader) to prevent arbitrary object instantiation from attacker-controlled bus messages"
+        "description": "yaml.load() must be replaced with yaml.safe_load() or yaml.load(..., Loader=yaml.SafeLoader) to prevent arbitrary object instantiation from bus messages of any origin"
       },
       {
         "file": "src/payload_plaintext/aurora-portal/aurora_portal/telemetry_consumer.py",
-        "lineRange": {"start": 12, "end": 13},
-        "description": "No schema validation, type checking, or size limit applied to message.body before passing it to the deserialiser"
+        "lineRange": {"start": 11, "end": 13},
+        "description": "No schema validation, field-type check, or maximum payload size enforced on message.body before deserialisation — any bus publisher (legitimate or not) can send arbitrary bytes"
       }
     ]
   },
@@ -112,13 +120,13 @@
     "stoppedAt": {
       "file": "src/payload_plaintext/aurora-portal/aurora_portal/api.py",
       "lineRange": {"start": 29, "end": 29},
-      "reason": "No callers of export_report() found anywhere in the delivered source tree; the origin of project_id and destination parameters cannot be determined statically from available files"
+      "reason": "No callers of export_report() found in the delivered source tree. The upstream origin of project_id and destination cannot be determined statically."
     },
     "source": {
       "file": "src/payload_plaintext/aurora-portal/aurora_portal/api.py",
       "lineRange": {"start": 29, "end": 29},
       "kind": "function-parameter",
-      "description": "export_report(project_id, destination) — both parameters are caller-supplied; their upstream origin (HTTP request, CLI, env var, etc.) is unknown because no callers exist in the delivered source"
+      "description": "export_report(project_id, destination) — both parameters are caller-supplied; upstream origin unknown"
     },
     "hops": [
       {
@@ -126,14 +134,14 @@
         "lineRange": {"start": 30, "end": 30},
         "symbol": "command",
         "crossComponent": false,
-        "note": "project_id and destination are interpolated without escaping into a shell command string via %-formatting: 'aurora-cli report --project %s > %s' % (project_id, destination)"
+        "note": "project_id and destination interpolated without shell escaping into command string via %-formatting"
       }
     ],
     "sink": {
       "file": "src/payload_plaintext/aurora-portal/aurora_portal/api.py",
       "lineRange": {"start": 31, "end": 31},
       "kind": "shell-execution",
-      "description": "os.system(command) executes the constructed string via the system shell; shell metacharacters in project_id or destination (e.g. ';', '|', '$(...)', backticks) enable arbitrary command execution"
+      "description": "os.system(command) executes the constructed string via the system shell; metacharacters in project_id or destination enable arbitrary command execution"
     },
     "owaspCategory": "A03 Injection",
     "cweId": "CWE-78",
@@ -145,7 +153,7 @@
       {
         "file": "src/payload_plaintext/aurora-portal/aurora_portal/api.py",
         "lineRange": {"start": 30, "end": 30},
-        "description": "No shell escaping (shlex.quote) or argument-list form (subprocess.run with list) applied to project_id or destination before string interpolation into the shell command"
+        "description": "No shlex.quote() or subprocess.run(list) conversion applied; both parameters interpolated raw into a shell command"
       }
     ]
   },
@@ -155,13 +163,13 @@
     "stoppedAt": {
       "file": "src/payload_plaintext/aurora-portal/aurora_portal/region_lookup.py",
       "lineRange": {"start": 9, "end": 9},
-      "reason": "No callers of region_for() found anywhere in the delivered source tree; the origin of the project parameter cannot be determined statically"
+      "reason": "No callers of region_for() found in the delivered source tree. The upstream origin of the project parameter cannot be determined statically."
     },
     "source": {
       "file": "src/payload_plaintext/aurora-portal/aurora_portal/region_lookup.py",
       "lineRange": {"start": 9, "end": 9},
       "kind": "function-parameter",
-      "description": "region_for(cursor, project) — project is a caller-supplied string; upstream origin (HTTP request param, form field, etc.) is unknown because no callers exist in the delivered source"
+      "description": "region_for(cursor, project) — project is caller-supplied; upstream origin unknown"
     },
     "hops": [
       {
@@ -169,14 +177,14 @@
         "lineRange": {"start": 11, "end": 11},
         "symbol": "sql-string-interpolation",
         "crossComponent": false,
-        "note": "project is interpolated directly into the SQL string via %-formatting: \"SELECT region, note FROM %s WHERE project = '%s'\" % (TABLE, project). No parameterisation, quoting, or allowlist check is applied."
+        "note": "project interpolated directly into SQL string via %-formatting with no parameterisation or allowlist check"
       }
     ],
     "sink": {
       "file": "src/payload_plaintext/aurora-portal/aurora_portal/region_lookup.py",
       "lineRange": {"start": 10, "end": 12},
       "kind": "sql-execution",
-      "description": "cursor.execute() receives the raw, user-influenced SQL string; a value such as \\\"' OR '1'='1\\\" or \\\"; DROP TABLE tenant_region_assignment; --\\\" would be interpreted by the database engine, enabling data exfiltration or destruction"
+      "description": "cursor.execute() receives the raw, user-influenced SQL string; enables data exfiltration or destruction via SQL injection"
     },
     "owaspCategory": "A03 Injection",
     "cweId": "CWE-89",
@@ -188,7 +196,7 @@
       {
         "file": "src/payload_plaintext/aurora-portal/aurora_portal/region_lookup.py",
         "lineRange": {"start": 10, "end": 12},
-        "description": "cursor.execute() must use parameterised queries (cursor.execute(sql, (project,))) rather than string interpolation; no input validation or allowlist check on project is applied anywhere in this file"
+        "description": "Must use parameterised query (cursor.execute(sql, (project,))); no input validation or allowlist check on project"
       }
     ]
   },
@@ -198,13 +206,13 @@
     "stoppedAt": {
       "file": "src/payload_plaintext/aurora-portal/aurora_portal/api.py",
       "lineRange": {"start": 15, "end": 15},
-      "reason": "No callers of load_quota_profile() found anywhere in the delivered source tree; the origin of the path parameter cannot be determined statically"
+      "reason": "No callers of load_quota_profile() found in the delivered source tree. The upstream origin of the path parameter cannot be determined statically."
     },
     "source": {
       "file": "src/payload_plaintext/aurora-portal/aurora_portal/api.py",
       "lineRange": {"start": 15, "end": 15},
       "kind": "function-parameter",
-      "description": "load_quota_profile(path) — path is a caller-supplied file path; upstream origin is unknown because no callers exist in the delivered source"
+      "description": "load_quota_profile(path) — path is caller-supplied; upstream origin unknown"
     },
     "hops": [
       {
@@ -212,14 +220,14 @@
         "lineRange": {"start": 16, "end": 16},
         "symbol": "open",
         "crossComponent": false,
-        "note": "open(path, 'r', encoding='utf-8') opens a file at the caller-supplied path with no normalisation or containment check; the file contents (fully attacker-controlled if path is attacker-controlled) are passed to yaml.load()"
+        "note": "open(path, 'r') reads file at caller-supplied path with no normalisation; contents passed to yaml.load()"
       }
     ],
     "sink": {
       "file": "src/payload_plaintext/aurora-portal/aurora_portal/api.py",
       "lineRange": {"start": 17, "end": 17},
       "kind": "unsafe-deserialization",
-      "description": "yaml.load(handle.read()) deserialises the file contents without a Loader argument; if path points to an attacker-controlled file, !!python/object/apply payloads enable arbitrary code execution"
+      "description": "yaml.load(handle.read()) without Loader; attacker-controlled file can contain !!python/object/apply payloads enabling code execution"
     },
     "owaspCategory": "A08 Software and Data Integrity Failures",
     "cweId": "CWE-502",
@@ -231,7 +239,107 @@
       {
         "file": "src/payload_plaintext/aurora-portal/aurora_portal/api.py",
         "lineRange": {"start": 16, "end": 17},
-        "description": "yaml.load() must be replaced with yaml.safe_load(); additionally, if path is caller-supplied, a prefix containment check (os.path.realpath) should be applied before opening"
+        "description": "yaml.load() must be replaced with yaml.safe_load(); if path is externally supplied, os.path.realpath prefix check required before opening"
+      }
+    ]
+  },
+  {
+    "chainId": "chain-006",
+    "status": "partial",
+    "stoppedAt": {
+      "file": "src/payload_plaintext/aurora-compute/api/profile.go",
+      "lineRange": {"start": 32, "end": 32},
+      "reason": "C.aurora_profile_label() is defined in aurora-network/src/profile_label.h, which is not in the delivered source tree. Cannot verify whether the C function performs bounds-safe buffer operations or is vulnerable to buffer overflow."
+    },
+    "source": {
+      "file": "src/payload_plaintext/aurora-compute/api/routes.go",
+      "lineRange": {"start": 13, "end": 13},
+      "kind": "http-request-body",
+      "description": "POST /v1/profile/apply is registered via mux.HandleFunc at routes.go:13 and wrapped in requireToken(), which checks X-Aurora-Token against AURORA_ADMIN_TOKEN env var. Any authenticated HTTP client can supply an arbitrary JSON body. The token gate reduces but does not eliminate exposure (insider, stolen-token, or misconfigured-token scenarios)."
+    },
+    "hops": [
+      {
+        "file": "src/payload_plaintext/aurora-compute/api/routes.go",
+        "lineRange": {"start": 18, "end": 25},
+        "symbol": "requireToken",
+        "crossComponent": false,
+        "note": "Token check validates X-Aurora-Token header; does NOT inspect or sanitise the request body. Passes the full request to ApplyProfile on success."
+      },
+      {
+        "file": "src/payload_plaintext/aurora-compute/api/profile.go",
+        "lineRange": {"start": 23, "end": 28},
+        "symbol": "ApplyProfile",
+        "crossComponent": false,
+        "note": "json.NewDecoder(r.Body).Decode(&req) populates req.Label from the HTTP body. No length limit, null-byte rejection, character allowlist, or content validation applied to req.Label before the next hop."
+      },
+      {
+        "file": "src/payload_plaintext/aurora-compute/api/profile.go",
+        "lineRange": {"start": 30, "end": 30},
+        "symbol": "C.CString",
+        "crossComponent": false,
+        "note": "C.CString(req.Label) converts the unvalidated Go string to a C char* with no length or content check. An arbitrarily long label is accepted."
+      }
+    ],
+    "sink": {
+      "file": "src/payload_plaintext/aurora-compute/api/profile.go",
+      "lineRange": {"start": 32, "end": 32},
+      "kind": "cgo-native-call",
+      "description": "C.aurora_profile_label(clabel) passes the unvalidated C string to the aurora-network native library (definition not in delivery). If the C function copies the input into a fixed-size stack or heap buffer without bounds checking, a long label triggers a buffer overflow or memory corruption exploitable for code execution."
+    },
+    "owaspCategory": "A04 Insecure Design",
+    "cweId": "CWE-20",
+    "severity": "high",
+    "confidence": "needs_cross_file",
+    "severityUpgraded": false,
+    "severityUpgradeReason": "Routes.go → profile.go link is crossComponent:false (same Go package); cgo boundary to aurora-network is an unresolved open end, not a resolved crossComponent seam. Upgrade rule does not apply.",
+    "sanitisationGaps": [
+      {
+        "file": "src/payload_plaintext/aurora-compute/api/profile.go",
+        "lineRange": {"start": 25, "end": 30},
+        "description": "No maximum length check (e.g. len(req.Label) > 255) and no null-byte rejection applied to req.Label before C.CString conversion and native call"
+      }
+    ]
+  },
+  {
+    "chainId": "chain-007",
+    "status": "partial",
+    "stoppedAt": {
+      "file": "src/payload_plaintext/aurora-compute/api/server.go",
+      "lineRange": {"start": 23, "end": 23},
+      "reason": "No callers of Console() found anywhere in the delivered source tree. The function is not registered as an HTTP route handler in routes.go. The upstream origin of the instance parameter cannot be determined statically."
+    },
+    "source": {
+      "file": "src/payload_plaintext/aurora-compute/api/server.go",
+      "lineRange": {"start": 23, "end": 23},
+      "kind": "function-parameter",
+      "description": "Console(instance string) — instance is caller-supplied; upstream origin unknown. Function is not wired to any HTTP route in the delivered source."
+    },
+    "hops": [
+      {
+        "file": "src/payload_plaintext/aurora-compute/api/server.go",
+        "lineRange": {"start": 24, "end": 24},
+        "symbol": "fmt.Sprintf",
+        "crossComponent": false,
+        "note": "fmt.Sprintf(\"virsh console %s\", instance) interpolates instance without shell escaping into a shell command string"
+      }
+    ],
+    "sink": {
+      "file": "src/payload_plaintext/aurora-compute/api/server.go",
+      "lineRange": {"start": 24, "end": 24},
+      "kind": "shell-execution",
+      "description": "exec.Command(\"sh\", \"-c\", ...) executes the constructed string via /bin/sh; shell metacharacters in instance (e.g. ';', '|', '$(...)', backticks) enable arbitrary command execution with the process's privileges on the hypervisor host"
+    },
+    "owaspCategory": "A03 Injection",
+    "cweId": "CWE-78",
+    "severity": "critical",
+    "confidence": "needs_cross_file",
+    "severityUpgraded": false,
+    "severityUpgradeReason": null,
+    "sanitisationGaps": [
+      {
+        "file": "src/payload_plaintext/aurora-compute/api/server.go",
+        "lineRange": {"start": 24, "end": 24},
+        "description": "exec.Command should be called with a list (exec.Command(\"virsh\", \"console\", instance)) rather than via \"sh -c\" with string interpolation; list form prevents shell interpretation of metacharacters"
       }
     ]
   }
