@@ -1,6 +1,6 @@
 # Infrastructure Analysis Summary
 
-Generated: 2026-10-03
+Generated: 2026-10-08
 
 ## Infrastructure Inventory
 
@@ -22,4 +22,11 @@ No secrets were detected (0 infrastructure files scanned).
 
 ## Notes
 
-The repository contains the aurora-portal Python service (`src/payload_plaintext/aurora-portal/`) with modules covering api, adapter, collector, dispatcher, formatter, indexer, maintenance, notifier, publisher, quota, region_lookup, resolver, session, telemetry_consumer, throttle, and validator — but no container or infrastructure-as-code configuration has been added. The application runs without any Dockerfile, Compose file, Kubernetes manifests, or Terraform configuration present in the repository. If infrastructure files are added in the future, this agent will produce findings on the next invocation.
+The repository contains two application services with no accompanying infrastructure-as-code:
+
+| Service | Language | Location |
+|---|---|---|
+| aurora-portal | Python | `src/payload_plaintext/aurora-portal/` |
+| aurora-compute | Go | `src/payload_plaintext/aurora-compute/` |
+
+Neither service ships a Dockerfile, Docker Compose file, Kubernetes manifests, or Terraform configuration. If infrastructure files are added in the future, this agent will produce findings on the next invocation.
