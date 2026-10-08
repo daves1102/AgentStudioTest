@@ -12,20 +12,520 @@
     "scope": "runtime",
     "advisories": [
       {
-        "advisoryId": "PYSEC-2019-16",
-        "title": "Django SQL injection via key and index lookups in JSONField/HStoreField",
-        "severity": "high",
+        "advisoryId": "PYSEC-2019-13",
+        "title": "Django: SQL injection possibility in key and index lookups for JSONField/HStoreField",
+        "severity": "critical",
         "cveId": "CVE-2019-14234",
-        "fixedIn": "2.2.4",
-        "description": "Django before 2.2.4 allows SQL injection via key and index lookups for JSONField/HStoreField on PostgreSQL."
+        "fixedIn": "1.11.23, 2.1.11, 2.2.4",
+        "description": "An issue was discovered in Django 1.11.x before 1.11.23, 2.1.x before 2.1.11, and 2.2.x before 2.2.4.",
+        "tools": [
+          "osv-scanner",
+          "trivy"
+        ]
+      },
+      {
+        "advisoryId": "PYSEC-2019-16",
+        "title": "Django: crafted email address allows account takeover",
+        "severity": "critical",
+        "cveId": "CVE-2019-19844",
+        "fixedIn": "1.11.27, 2.2.9, 3.0.1",
+        "description": "Django before 1.11.27, 2.x before 2.2.9, and 3.x before 3.0.1 allows account takeover.",
+        "tools": [
+          "osv-scanner",
+          "trivy"
+        ]
+      },
+      {
+        "advisoryId": "PYSEC-2020-35",
+        "title": "django: potential SQL injection via StringAgg(delimiter)",
+        "severity": "critical",
+        "cveId": "CVE-2020-7471",
+        "fixedIn": "1.11.28, 2.2.10, 3.0.3",
+        "description": "Django 1.11 before 1.11.28, 2.2 before 2.2.10, and 3.0 before 3.0.3 allows SQL Injection if untrusted data is used as a StringAgg delimiter (e.g., in Django applications that offer downloads of data as a series of rows with a user-specified column delimiter).",
+        "tools": [
+          "osv-scanner",
+          "trivy"
+        ]
+      },
+      {
+        "advisoryId": "PYSEC-2022-190",
+        "title": "Django: SQL injection in QuerySet.annotate(),aggregate() and extra()",
+        "severity": "critical",
+        "cveId": "CVE-2022-28346",
+        "fixedIn": "2.2.28, 3.2.13, 4.0.4",
+        "description": "An issue was discovered in Django 2.2 before 2.2.28, 3.2 before 3.2.13, and 4.0 before 4.0.4.",
+        "tools": [
+          "osv-scanner",
+          "trivy"
+        ]
+      },
+      {
+        "advisoryId": "PYSEC-2022-191",
+        "title": "Django: SQL injection via QuerySet.explain(options) on PostgreSQL",
+        "severity": "critical",
+        "cveId": "CVE-2022-28347",
+        "fixedIn": "2.2.28, 3.2.13, 4.0.4",
+        "description": "A SQL injection issue was discovered in QuerySet.explain() in Django 2.2 before 2.2.28, 3.2 before 3.2.13, and 4.0 before 4.0.4.",
+        "tools": [
+          "osv-scanner",
+          "trivy"
+        ]
+      },
+      {
+        "advisoryId": "PYSEC-2025-108",
+        "title": "django: Django SQL injection",
+        "severity": "critical",
+        "cveId": "CVE-2025-64459",
+        "fixedIn": "5.2.8, 5.1.14, 4.2.26",
+        "description": "An issue was discovered in 5.1 before 5.1.14, 4.2 before 4.2.26, and 5.2 before 5.2.8.",
+        "tools": [
+          "osv-scanner",
+          "trivy"
+        ]
+      },
+      {
+        "advisoryId": "PYSEC-2019-11",
+        "title": "Django: backtracking in a regular expression in django.utils.text.Truncator leads to DoS",
+        "severity": "high",
+        "cveId": "CVE-2019-14232",
+        "fixedIn": "1.11.23, 2.1.11, 2.2.4",
+        "description": "An issue was discovered in Django 1.11.x before 1.11.23, 2.1.x before 2.1.11, and 2.2.x before 2.2.4.",
+        "tools": [
+          "osv-scanner",
+          "trivy"
+        ]
+      },
+      {
+        "advisoryId": "PYSEC-2019-12",
+        "title": "Django: the behavior of the underlying HTMLParser leading to DoS",
+        "severity": "high",
+        "cveId": "CVE-2019-14233",
+        "fixedIn": "1.11.23, 2.1.11, 2.2.4",
+        "description": "An issue was discovered in Django 1.11.x before 1.11.23, 2.1.x before 2.1.11, and 2.2.x before 2.2.4.",
+        "tools": [
+          "osv-scanner",
+          "trivy"
+        ]
       },
       {
         "advisoryId": "PYSEC-2019-14",
-        "title": "Django ReDoS via truncation of very long text",
+        "title": "Django: Potential memory exhaustion in django.utils.encoding.uri_to_iri()",
+        "severity": "high",
+        "cveId": "CVE-2019-14235",
+        "fixedIn": "1.11.23, 2.1.11, 2.2.4",
+        "description": "An issue was discovered in Django 1.11.x before 1.11.23, 2.1.x before 2.1.11, and 2.2.x before 2.2.4.",
+        "tools": [
+          "osv-scanner",
+          "trivy"
+        ]
+      },
+      {
+        "advisoryId": "PYSEC-2019-15",
+        "title": "django: privilege escalation in the django admin",
+        "severity": "high",
+        "cveId": "CVE-2019-19118",
+        "fixedIn": "2.1.15, 2.2.8",
+        "description": "Django 2.1 before 2.1.15 and 2.2 before 2.2.8 allows unintended model editing.",
+        "tools": [
+          "osv-scanner",
+          "trivy"
+        ]
+      },
+      {
+        "advisoryId": "PYSEC-2020-31",
+        "title": "django: potential data leakage via malformed memcached keys",
+        "severity": "high",
+        "cveId": "CVE-2020-13254",
+        "fixedIn": "2.2.13, 3.0.7",
+        "description": "An issue was discovered in Django 2.2 before 2.2.13 and 3.0 before 3.0.7.",
+        "tools": [
+          "osv-scanner",
+          "trivy"
+        ]
+      },
+      {
+        "advisoryId": "PYSEC-2020-33",
+        "title": "django: incorrect permissions on intermediate-level directories on Python 3.7+",
+        "severity": "high",
+        "cveId": "CVE-2020-24583",
+        "fixedIn": "2.2.16, 3.0.10, 3.1.1",
+        "description": "An issue was discovered in Django 2.2 before 2.2.16, 3.0 before 3.0.10, and 3.1 before 3.1.1 (when Python 3.7+ is used).",
+        "tools": [
+          "osv-scanner",
+          "trivy"
+        ]
+      },
+      {
+        "advisoryId": "PYSEC-2020-34",
+        "title": "django: permission escalation in intermediate-level directories of the file system cache on Python 3.7+",
+        "severity": "high",
+        "cveId": "CVE-2020-24584",
+        "fixedIn": "2.2.16, 3.0.10, 3.1.1",
+        "description": "An issue was discovered in Django 2.2 before 2.2.16, 3.0 before 3.0.10, and 3.1 before 3.1.1 (when Python 3.7+ is used).",
+        "tools": [
+          "osv-scanner",
+          "trivy"
+        ]
+      },
+      {
+        "advisoryId": "PYSEC-2020-36",
+        "title": "django: potential SQL injection via \"tolerance\" parameter in GIS functions and aggregates on Oracle",
+        "severity": "high",
+        "cveId": "CVE-2020-9402",
+        "fixedIn": "1.11.29, 2.2.11, 3.0.4",
+        "description": "Django 1.11 before 1.11.29, 2.2 before 2.2.11, and 3.0 before 3.0.4 allows SQL Injection if untrusted data is used as a tolerance parameter in GIS functions and aggregates on Oracle.",
+        "tools": [
+          "osv-scanner",
+          "trivy"
+        ]
+      },
+      {
+        "advisoryId": "PYSEC-2021-439",
+        "title": "django: potential bypass of an upstream access control based on URL paths",
+        "severity": "high",
+        "cveId": "CVE-2021-44420",
+        "fixedIn": "2.2.25, 3.1.14, 3.2.10",
+        "description": "In Django 2.2 before 2.2.25, 3.1 before 3.1.14, and 3.2 before 3.2.10, HTTP requests for URLs with trailing newlines could bypass upstream access control based on URL paths.",
+        "tools": [
+          "osv-scanner",
+          "trivy"
+        ]
+      },
+      {
+        "advisoryId": "PYSEC-2021-7",
+        "title": "django: Potential directory-traversal via uploaded files",
+        "severity": "high",
+        "cveId": "CVE-2021-31542",
+        "fixedIn": "2.2.21, 3.1.9, 3.2.1",
+        "description": "In Django 2.2 before 2.2.21, 3.1 before 3.1.9, and 3.2 before 3.2.1, MultiPartParser, UploadedFile, and FieldFile allowed directory traversal via uploaded files with suitably crafted file names.",
+        "tools": [
+          "osv-scanner",
+          "trivy"
+        ]
+      },
+      {
+        "advisoryId": "PYSEC-2021-99",
+        "title": "django: Possible indeterminate SSRF, RFI, and LFI attacks since validators accepted leading zeros in IPv4 addresses",
+        "severity": "high",
+        "cveId": "CVE-2021-33571",
+        "fixedIn": "2.2.24, 3.1.12, 3.2.4",
+        "description": "In Django 2.2 before 2.2.24, 3.x before 3.1.12, and 3.2 before 3.2.4, URLValidator, validate_ipv4_address, and validate_ipv46_address do not prohibit leading zero characters in octal literals.",
+        "tools": [
+          "osv-scanner",
+          "trivy"
+        ]
+      },
+      {
+        "advisoryId": "PYSEC-2022-1",
+        "title": "django: Denial-of-service possibility in UserAttributeSimilarityValidator",
+        "severity": "high",
+        "cveId": "CVE-2021-45115",
+        "fixedIn": "2.2.26, 3.2.11, 4.0.1",
+        "description": "An issue was discovered in Django 2.2 before 2.2.26, 3.2 before 3.2.11, and 4.0 before 4.0.1.",
+        "tools": [
+          "osv-scanner",
+          "trivy"
+        ]
+      },
+      {
+        "advisoryId": "PYSEC-2022-2",
+        "title": "django: Potential information disclosure in dictsort template filter",
+        "severity": "high",
+        "cveId": "CVE-2021-45116",
+        "fixedIn": "2.2.26, 3.2.11, 4.0.1",
+        "description": "An issue was discovered in Django 2.2 before 2.2.26, 3.2 before 3.2.11, and 4.0 before 4.0.1.",
+        "tools": [
+          "osv-scanner",
+          "trivy"
+        ]
+      },
+      {
+        "advisoryId": "PYSEC-2022-20",
+        "title": "django: Denial-of-service possibility in file uploads",
+        "severity": "high",
+        "cveId": "CVE-2022-23833",
+        "fixedIn": "2.2.27, 3.2.12, 4.0.2",
+        "description": "An issue was discovered in MultiPartParser in Django 2.2 before 2.2.27, 3.2 before 3.2.12, and 4.0 before 4.0.2.",
+        "tools": [
+          "osv-scanner",
+          "trivy"
+        ]
+      },
+      {
+        "advisoryId": "PYSEC-2026-4035",
+        "title": "django: Django: Remote code execution via GeoDjango spatial lookups",
+        "severity": "high",
+        "cveId": "CVE-2026-15307",
+        "fixedIn": "5.2.17, 6.0.8",
+        "description": "An issue was discovered in Django 5.2 before 5.2.17 and 6.0 before 6.0.8.",
+        "tools": [
+          "osv-scanner",
+          "trivy"
+        ]
+      },
+      {
+        "advisoryId": "PYSEC-2025-105",
+        "title": "django: Django SQL injection in FilteredRelation column aliases",
+        "severity": "high",
+        "cveId": "CVE-2025-57833",
+        "fixedIn": "4.2.24, 5.1.12, 5.2.6",
+        "description": "An issue was discovered in Django 4.2 before 4.2.24, 5.1 before 5.1.12, and 5.2 before 5.2.6.",
+        "tools": [
+          "osv-scanner",
+          "trivy"
+        ]
+      },
+      {
+        "advisoryId": "PYSEC-2022-245",
+        "title": "An issue was discovered in the HTTP FileResponse class in Django 3.2 b ...",
+        "severity": "high",
+        "cveId": "CVE-2022-36359",
+        "fixedIn": "3.2.15, 4.0.7",
+        "description": "An issue was discovered in the HTTP FileResponse class in Django 3.2 before 3.2.15 and 4.0 before 4.0.7.",
+        "tools": [
+          "osv-scanner",
+          "trivy"
+        ]
+      },
+      {
+        "advisoryId": "PYSEC-2025-107",
+        "title": "Django: Denial-of-service vulnerability in Django on Windows",
+        "severity": "high",
+        "cveId": "CVE-2025-64458",
+        "fixedIn": "5.2.8, 5.1.14, 4.2.26",
+        "description": "An issue was discovered in 5.1 before 5.1.14, 4.2 before 4.2.26, and 5.2 before 5.2.8.",
+        "tools": [
+          "osv-scanner",
+          "trivy"
+        ]
+      },
+      {
+        "advisoryId": "PYSEC-2019-10",
+        "title": "Django: Incorrect HTTP detection with reverse-proxy connecting via HTTPS",
         "severity": "medium",
-        "cveId": "CVE-2019-14232",
-        "fixedIn": "2.2.4",
-        "description": "Django before 2.2.4 is susceptible to ReDoS (regular expression denial of service) in django.utils.text.Truncator."
+        "cveId": "CVE-2019-12781",
+        "fixedIn": "2.1.10, 2.2.3, 1.11.22",
+        "description": "An issue was discovered in Django 1.11 before 1.11.22, 2.1 before 2.1.10, and 2.2 before 2.2.3.",
+        "tools": [
+          "osv-scanner",
+          "trivy"
+        ]
+      },
+      {
+        "advisoryId": "PYSEC-2019-79",
+        "title": "django: missing URL validation by AdminURLFieldWidget leads to generation of clickable unsafe JavaScript link causing cross site scripting",
+        "severity": "medium",
+        "cveId": "CVE-2019-12308",
+        "fixedIn": "1.11.21, 2.1.9, 2.2.2",
+        "description": "An issue was discovered in Django 1.11 before 1.11.21, 2.1 before 2.1.9, and 2.2 before 2.2.2.",
+        "tools": [
+          "osv-scanner",
+          "trivy"
+        ]
+      },
+      {
+        "advisoryId": "PYSEC-2020-32",
+        "title": "django: possible XSS via admin ForeignKeyRawIdWidget",
+        "severity": "medium",
+        "cveId": "CVE-2020-13596",
+        "fixedIn": "2.2.13, 3.0.7",
+        "description": "An issue was discovered in Django 2.2 before 2.2.13 and 3.0 before 3.0.7.",
+        "tools": [
+          "osv-scanner",
+          "trivy"
+        ]
+      },
+      {
+        "advisoryId": "PYSEC-2021-6",
+        "title": "django: potential directory-traversal via uploaded files",
+        "severity": "medium",
+        "cveId": "CVE-2021-28658",
+        "fixedIn": "2.2.20, 3.0.14, 3.1.8",
+        "description": "In Django 2.2 before 2.2.20, 3.0 before 3.0.14, and 3.1 before 3.1.8, MultiPartParser allowed directory traversal via uploaded files with suitably crafted file names.",
+        "tools": [
+          "osv-scanner",
+          "trivy"
+        ]
+      },
+      {
+        "advisoryId": "PYSEC-2021-8",
+        "title": "django: header injection possibility since URLValidator accepted newlines in input on Python 3.9.5+",
+        "severity": "medium",
+        "cveId": "CVE-2021-32052",
+        "fixedIn": "2.2.22, 3.1.10, 3.2.2",
+        "description": "In Django 2.2 before 2.2.22, 3.1 before 3.1.10, and 3.2 before 3.2.2 (with Python 3.9.5+), URLValidator does not prohibit newlines and tabs (unless the URLField form field is used).",
+        "tools": [
+          "osv-scanner",
+          "trivy"
+        ]
+      },
+      {
+        "advisoryId": "PYSEC-2021-9",
+        "title": "django: Potential directory-traversal via archive.extract()",
+        "severity": "medium",
+        "cveId": "CVE-2021-3281",
+        "fixedIn": "2.2.18, 3.1.6, 3.0.12",
+        "description": "In Django 2.2 before 2.2.18, 3.0 before 3.0.12, and 3.1 before 3.1.6, the django.utils.archive.extract method (used by \"startapp --template\" and \"startproject --template\") allows directory traversal via an archive with absolute paths or relative paths with dot segments.",
+        "tools": [
+          "osv-scanner",
+          "trivy"
+        ]
+      },
+      {
+        "advisoryId": "PYSEC-2021-98",
+        "title": "django: Potential directory traversal via ``admindocs``",
+        "severity": "medium",
+        "cveId": "CVE-2021-33203",
+        "fixedIn": "2.2.24, 3.1.12, 3.2.4",
+        "description": "Django before 2.2.24, 3.x before 3.1.12, and 3.2.x before 3.2.4 has a potential directory traversal via django.contrib.admindocs.",
+        "tools": [
+          "osv-scanner",
+          "trivy"
+        ]
+      },
+      {
+        "advisoryId": "PYSEC-2022-19",
+        "title": "django: Possible XSS via '{% debug %}' template tag",
+        "severity": "medium",
+        "cveId": "CVE-2022-22818",
+        "fixedIn": "2.2.27, 3.2.12, 4.0.2",
+        "description": "The {% debug %} template tag in Django 2.2 before 2.2.27, 3.2 before 3.2.12, and 4.0 before 4.0.2 does not properly encode the current context.",
+        "tools": [
+          "osv-scanner",
+          "trivy"
+        ]
+      },
+      {
+        "advisoryId": "PYSEC-2022-3",
+        "title": "django: Potential directory-traversal via Storage.save()",
+        "severity": "medium",
+        "cveId": "CVE-2021-45452",
+        "fixedIn": "2.2.26, 3.2.11, 4.0.1",
+        "description": "Storage.save in Django 2.2 before 2.2.26, 3.2 before 3.2.11, and 4.0 before 4.0.1 allows directory traversal if crafted filenames are directly passed to it.",
+        "tools": [
+          "osv-scanner",
+          "trivy"
+        ]
+      },
+      {
+        "advisoryId": "PYSEC-2026-1297",
+        "title": "python-django: Potential user email enumeration via response status on password reset",
+        "severity": "medium",
+        "cveId": "CVE-2024-45231",
+        "fixedIn": "5.1.1, 5.0.9, 4.2.16",
+        "description": "An issue was discovered in Django v5.1.1, v5.0.9, and v4.2.16.",
+        "tools": [
+          "osv-scanner",
+          "trivy"
+        ]
+      },
+      {
+        "advisoryId": "PYSEC-2026-3717",
+        "title": "django: Django: Denial of Service via parsing deeply nested geometry collections",
+        "severity": "medium",
+        "cveId": "CVE-2026-15830",
+        "fixedIn": "5.2.17, 6.0.8, 6.1.1",
+        "description": "An issue was discovered in Django 5.2 before 5.2.17 and 6.0 before 6.0.8.",
+        "tools": [
+          "osv-scanner",
+          "trivy"
+        ]
+      },
+      {
+        "advisoryId": "PYSEC-2026-628",
+        "title": "jquery: Prototype pollution in object's prototype leading to denial of service, remote code execution, or property injection",
+        "severity": "medium",
+        "cveId": "CVE-2019-11358",
+        "fixedIn": "2.1.9, 2.2.2",
+        "description": "jQuery before 3.4.0, as used in Drupal, Backdrop CMS, and other products, mishandles jQuery.extend(true, {}, ...) because of Object.prototype pollution.",
+        "tools": [
+          "osv-scanner",
+          "trivy"
+        ]
+      },
+      {
+        "advisoryId": "PYSEC-2025-47",
+        "title": "django: Django Path Injection Vulnerability",
+        "severity": "medium",
+        "cveId": "CVE-2025-48432",
+        "fixedIn": "5.2.2, 5.1.10, 4.2.22",
+        "description": "An issue was discovered in Django 5.2 before 5.2.3, 5.1 before 5.1.11, and 4.2 before 4.2.23.",
+        "tools": [
+          "osv-scanner",
+          "trivy"
+        ]
+      },
+      {
+        "advisoryId": "PYSEC-2026-2092",
+        "title": "django: Django: HTTP header injection via DomainNameValidator accepting newlines",
+        "severity": "medium",
+        "cveId": "CVE-2026-53878",
+        "fixedIn": "5.2.16, 6.0.7",
+        "description": "An issue was discovered in Django 6.0 before 6.0.7 and 5.2 before 5.2.16.",
+        "tools": [
+          "osv-scanner",
+          "trivy"
+        ]
+      },
+      {
+        "advisoryId": "PYSEC-2026-2091",
+        "title": "django: Django: Information disclosure via heap buffer over-read in GDALRaster",
+        "severity": "medium",
+        "cveId": "CVE-2026-53877",
+        "fixedIn": "5.2.16, 6.0.7",
+        "description": "An issue was discovered in Django 6.0 before 6.0.7 and 5.2 before 5.2.16.",
+        "tools": [
+          "osv-scanner",
+          "trivy"
+        ]
+      },
+      {
+        "advisoryId": "PYSEC-2026-2090",
+        "title": "django: Django: Information disclosure due to improper caching of Set-Cookie responses",
+        "severity": "low",
+        "cveId": "CVE-2026-48588",
+        "fixedIn": "5.2.16, 6.0.7",
+        "description": "An issue was discovered in Django 6.0 before 6.0.7 and 5.2 before 5.2.16.",
+        "tools": [
+          "osv-scanner",
+          "trivy"
+        ]
+      },
+      {
+        "advisoryId": "PYSEC-2026-201",
+        "title": "Django: Django: Information disclosure due to improper handling of Cache-Control directives",
+        "severity": "low",
+        "cveId": "CVE-2026-8404",
+        "fixedIn": "5.2.15, 6.0.6",
+        "description": "An issue was discovered in Django 5.2 before 5.2.15 and 6.0 before 6.0.6.",
+        "tools": [
+          "osv-scanner",
+          "trivy"
+        ]
+      },
+      {
+        "advisoryId": "PYSEC-2026-198",
+        "title": "django: Django: Information disclosure via improper handling of Vary header whitespace",
+        "severity": "low",
+        "cveId": "CVE-2026-48587",
+        "fixedIn": "5.2.15, 6.0.6",
+        "description": "An issue was discovered in Django 5.2 before 5.2.15 and 6.0 before 6.0.6.",
+        "tools": [
+          "osv-scanner",
+          "trivy"
+        ]
+      },
+      {
+        "advisoryId": "PYSEC-2026-199",
+        "title": "python-django: Django: Information disclosure via non-injective cookie salt derivation",
+        "severity": "low",
+        "cveId": "CVE-2026-6873",
+        "fixedIn": "5.2.15, 6.0.6",
+        "description": "An issue was discovered in Django 6.0 before 6.0.6 and 5.2 before 5.2.15.",
+        "tools": [
+          "osv-scanner",
+          "trivy"
+        ]
       }
     ]
   },
@@ -43,11 +543,63 @@
     "advisories": [
       {
         "advisoryId": "PYSEC-2018-28",
-        "title": "requests sends HTTP authorization credentials to redirect targets",
+        "title": "python-requests: Redirect from HTTPS to HTTP does not remove Authorization header",
         "severity": "high",
         "cveId": "CVE-2018-18074",
         "fixedIn": "2.20.0",
-        "description": "The requests library before 2.20.0 sends HTTP authorization credentials to a redirect target, potentially leaking secrets to third parties."
+        "description": "The Requests package before 2.20.0 for Python sends an HTTP Authorization header to an http URI upon receiving a same-hostname https-to-http redirect, which makes it easier for remote attackers to discover credentials by sniffing the network.",
+        "tools": [
+          "osv-scanner",
+          "trivy"
+        ]
+      },
+      {
+        "advisoryId": "PYSEC-2023-74",
+        "title": "python-requests: Unintended leak of Proxy-Authorization header",
+        "severity": "medium",
+        "cveId": "CVE-2023-32681",
+        "fixedIn": "2.31.0",
+        "description": "Requests is a HTTP library.",
+        "tools": [
+          "osv-scanner",
+          "trivy"
+        ]
+      },
+      {
+        "advisoryId": "PYSEC-2026-1872",
+        "title": "requests: Requests vulnerable to .netrc credentials leak via malicious URLs",
+        "severity": "medium",
+        "cveId": "CVE-2024-47081",
+        "fixedIn": "2.32.4",
+        "description": "Requests is a HTTP library.",
+        "tools": [
+          "osv-scanner",
+          "trivy"
+        ]
+      },
+      {
+        "advisoryId": "PYSEC-2026-1873",
+        "title": "requests: subsequent requests to the same host ignore cert verification",
+        "severity": "medium",
+        "cveId": "CVE-2024-35195",
+        "fixedIn": "2.32.0",
+        "description": "Requests is a HTTP library.",
+        "tools": [
+          "osv-scanner",
+          "trivy"
+        ]
+      },
+      {
+        "advisoryId": "PYSEC-2026-2275",
+        "title": "requests: Requests: Security bypass due to predictable temporary file creation",
+        "severity": "medium",
+        "cveId": "CVE-2026-25645",
+        "fixedIn": "2.33.0",
+        "description": "Requests is a HTTP library.",
+        "tools": [
+          "osv-scanner",
+          "trivy"
+        ]
       }
     ]
   },
@@ -64,12 +616,40 @@
     "scope": "runtime",
     "advisories": [
       {
-        "advisoryId": "PYSEC-2020-89",
-        "title": "PyYAML arbitrary code execution via yaml.load() without Loader",
+        "advisoryId": "PYSEC-2020-176",
+        "title": "PyYAML: command execution through python/object/apply constructor in FullLoader",
+        "severity": "critical",
+        "cveId": "CVE-2019-20477",
+        "fixedIn": "5.2",
+        "description": "PyYAML 5.1 through 5.1.2 has insufficient restrictions on the load and load_all functions because of a class deserialization issue, e.g., Popen is a class in the subprocess module.",
+        "tools": [
+          "osv-scanner",
+          "trivy"
+        ]
+      },
+      {
+        "advisoryId": "PYSEC-2020-96",
+        "title": "PyYAML: arbitrary command execution through python/object/new when FullLoader is used",
         "severity": "critical",
         "cveId": "CVE-2020-1747",
         "fixedIn": "5.3.1",
-        "description": "PyYAML before 5.3.1 allows arbitrary code execution when yaml.load() is called without an explicit Loader argument."
+        "description": "A vulnerability was discovered in the PyYAML library in versions before 5.3.1, where it is susceptible to arbitrary code execution when it processes untrusted YAML files through the full_load method or with the FullLoader loader.",
+        "tools": [
+          "osv-scanner",
+          "trivy"
+        ]
+      },
+      {
+        "advisoryId": "PYSEC-2021-142",
+        "title": "PyYAML: incomplete fix for CVE-2020-1747",
+        "severity": "critical",
+        "cveId": "CVE-2020-14343",
+        "fixedIn": "5.4",
+        "description": "A vulnerability was discovered in the PyYAML library in versions before 5.4, where it is susceptible to arbitrary code execution when it processes untrusted YAML files through the full_load method or with the FullLoader loader.",
+        "tools": [
+          "osv-scanner",
+          "trivy"
+        ]
       }
     ]
   },
@@ -86,20 +666,160 @@
     "scope": "runtime",
     "advisories": [
       {
-        "advisoryId": "PYSEC-2019-132",
-        "title": "urllib3 improper certificate validation when CA certificates not provided",
+        "advisoryId": "PYSEC-2019-133",
+        "title": "python-urllib3: Certification mishandle when error should be thrown",
         "severity": "high",
         "cveId": "CVE-2019-11324",
         "fixedIn": "1.24.2",
-        "description": "urllib3 before 1.24.2 does not validate SSL certificates correctly when a CA bundle is not provided, allowing for man-in-the-middle attacks."
+        "description": "The urllib3 library before 1.24.2 for Python mishandles certain cases where the desired set of CA certificates is different from the OS store of CA certificates, which results in SSL connections succeeding in situations where a verification failure is the correct outcome.",
+        "tools": [
+          "osv-scanner",
+          "trivy"
+        ]
       },
       {
-        "advisoryId": "PYSEC-2019-133",
-        "title": "urllib3 CRLF injection via request parameter",
+        "advisoryId": "PYSEC-2023-192",
+        "title": "python-urllib3: Cookie request header isn't stripped during cross-origin redirects",
+        "severity": "high",
+        "cveId": "CVE-2023-43804",
+        "fixedIn": "2.0.6, 1.26.17",
+        "description": "urllib3 is a user-friendly HTTP client library for Python.",
+        "tools": [
+          "osv-scanner",
+          "trivy"
+        ]
+      },
+      {
+        "advisoryId": "PYSEC-2026-141",
+        "title": "urllib3: urllib3: Information disclosure via cross-origin redirects forwarding sensitive headers",
+        "severity": "high",
+        "cveId": "CVE-2026-44431",
+        "fixedIn": "2.7.0",
+        "description": "urllib3 is an HTTP client library for Python.",
+        "tools": [
+          "osv-scanner",
+          "trivy"
+        ]
+      },
+      {
+        "advisoryId": "PYSEC-2026-1994",
+        "title": "urllib3: urllib3 Streaming API improperly handles highly compressed data",
+        "severity": "high",
+        "cveId": "CVE-2025-66471",
+        "fixedIn": "2.6.0",
+        "description": "urllib3 is a user-friendly HTTP client library for Python.",
+        "tools": [
+          "osv-scanner",
+          "trivy"
+        ]
+      },
+      {
+        "advisoryId": "PYSEC-2026-1996",
+        "title": "urllib3: urllib3 vulnerable to decompression-bomb safeguard bypass when following HTTP redirects (streaming API)",
+        "severity": "high",
+        "cveId": "CVE-2026-21441",
+        "fixedIn": "2.6.3",
+        "description": "urllib3 is an HTTP client library for Python.",
+        "tools": [
+          "osv-scanner",
+          "trivy"
+        ]
+      },
+      {
+        "advisoryId": "PYSEC-2026-1998",
+        "title": "urllib3: urllib3: Unbounded decompression chain leads to resource exhaustion",
+        "severity": "high",
+        "cveId": "CVE-2025-66418",
+        "fixedIn": "2.6.0",
+        "description": "urllib3 is a user-friendly HTTP client library for Python.",
+        "tools": [
+          "osv-scanner",
+          "trivy"
+        ]
+      },
+      {
+        "advisoryId": "PYSEC-2026-4177",
+        "title": "urllib3: urllib3: Denial of Service via unbounded memory allocation in chunk parser",
+        "severity": "high",
+        "cveId": "CVE-2026-97689",
+        "fixedIn": "2.8.0",
+        "description": "urllib3 is an HTTP client library for Python.",
+        "tools": [
+          "osv-scanner",
+          "trivy"
+        ]
+      },
+      {
+        "advisoryId": "PYSEC-2019-132",
+        "title": "python-urllib3: CRLF injection due to not encoding the '\\r\\n' sequence leading to possible attack on internal service",
         "severity": "medium",
         "cveId": "CVE-2019-11236",
         "fixedIn": "1.24.3",
-        "description": "urllib3 before 1.24.3 is vulnerable to CRLF injection via the request parameter, enabling header injection attacks."
+        "description": "In the urllib3 library through 1.24.1 for Python, CRLF injection is possible if the attacker controls the request parameter.",
+        "tools": [
+          "osv-scanner",
+          "trivy"
+        ]
+      },
+      {
+        "advisoryId": "PYSEC-2020-148",
+        "title": "python-urllib3: CRLF injection via HTTP request method",
+        "severity": "medium",
+        "cveId": "CVE-2020-26137",
+        "fixedIn": "1.25.9",
+        "description": "urllib3 before 1.25.9 allows CRLF injection if the attacker controls the HTTP request method, as demonstrated by inserting CR and LF control characters in the first argument of putrequest().",
+        "tools": [
+          "osv-scanner",
+          "trivy"
+        ]
+      },
+      {
+        "advisoryId": "PYSEC-2023-207",
+        "title": "urllib3: urllib3 does not remove the authorization HTTP header when following a cross-origin redirect",
+        "severity": "medium",
+        "cveId": "CVE-2018-25091",
+        "fixedIn": "1.24.2",
+        "description": "urllib3 before 1.24.2 does not remove the authorization HTTP header when following a cross-origin redirect (i.e., a redirect that differs in host, port, or scheme).",
+        "tools": [
+          "osv-scanner",
+          "trivy"
+        ]
+      },
+      {
+        "advisoryId": "PYSEC-2023-212",
+        "title": "urllib3: Request body not stripped after redirect from 303 status changes request method to GET",
+        "severity": "medium",
+        "cveId": "CVE-2023-45803",
+        "fixedIn": "2.0.7, 1.26.18",
+        "description": "urllib3 is a user-friendly HTTP client library for Python.",
+        "tools": [
+          "osv-scanner",
+          "trivy"
+        ]
+      },
+      {
+        "advisoryId": "PYSEC-2026-1995",
+        "title": "urllib3: proxy-authorization request header is not stripped during cross-origin redirects",
+        "severity": "medium",
+        "cveId": "CVE-2024-37891",
+        "fixedIn": "1.26.19, 2.2.2",
+        "description": " urllib3 is a user-friendly HTTP client library for Python.",
+        "tools": [
+          "osv-scanner",
+          "trivy"
+        ]
+      },
+      {
+        "advisoryId": "PYSEC-2026-1999",
+        "title": "urllib3: urllib3 redirects are not disabled when retries are disabled on PoolManager instantiation",
+        "severity": "medium",
+        "cveId": "CVE-2025-50181",
+        "fixedIn": "2.5.0",
+        "description": "urllib3 is a user-friendly HTTP client library for Python.",
+        "tools": [
+          "osv-scanner",
+          "trivy"
+        ]
       }
     ]
   },
@@ -117,11 +837,75 @@
     "advisories": [
       {
         "advisoryId": "PYSEC-2019-217",
-        "title": "Jinja2 sandbox escape via str.format_map",
+        "title": "python-jinja2: str.format_map allows sandbox escape",
         "severity": "high",
         "cveId": "CVE-2019-10906",
         "fixedIn": "2.10.1",
-        "description": "Jinja2 before 2.10.1 allows sandbox escape via the str.format_map method in a crafted template."
+        "description": "In Pallets Jinja before 2.10.1, str.format_map allows a sandbox escape.",
+        "tools": [
+          "osv-scanner",
+          "trivy"
+        ]
+      },
+      {
+        "advisoryId": "PYSEC-2026-1475",
+        "title": "jinja2: Jinja has a sandbox breakout through indirect reference to format method",
+        "severity": "high",
+        "cveId": "CVE-2024-56326",
+        "fixedIn": "3.1.5",
+        "description": "Jinja is an extensible templating engine.",
+        "tools": [
+          "osv-scanner",
+          "trivy"
+        ]
+      },
+      {
+        "advisoryId": "PYSEC-2021-66",
+        "title": "python-jinja2: ReDoS vulnerability in the urlize filter",
+        "severity": "medium",
+        "cveId": "CVE-2020-28493",
+        "fixedIn": "2.11.3",
+        "description": "This affects the package jinja2 from 0.0.0 and before 2.11.3.",
+        "tools": [
+          "osv-scanner",
+          "trivy"
+        ]
+      },
+      {
+        "advisoryId": "PYSEC-2026-1471",
+        "title": "jinja2: Jinja sandbox breakout through attr filter selecting format method",
+        "severity": "medium",
+        "cveId": "CVE-2025-27516",
+        "fixedIn": "3.1.6",
+        "description": "Jinja is an extensible templating engine.",
+        "tools": [
+          "osv-scanner",
+          "trivy"
+        ]
+      },
+      {
+        "advisoryId": "PYSEC-2026-1473",
+        "title": "jinja2: HTML attribute injection when passing user input as keys to xmlattr filter",
+        "severity": "medium",
+        "cveId": "CVE-2024-22195",
+        "fixedIn": "3.1.3",
+        "description": "Jinja is an extensible templating engine.",
+        "tools": [
+          "osv-scanner",
+          "trivy"
+        ]
+      },
+      {
+        "advisoryId": "PYSEC-2026-1474",
+        "title": "jinja2: accepts keys containing non-attribute characters",
+        "severity": "medium",
+        "cveId": "CVE-2024-34064",
+        "fixedIn": "3.1.4",
+        "description": "Jinja is an extensible templating engine.",
+        "tools": [
+          "osv-scanner",
+          "trivy"
+        ]
       }
     ]
   },
@@ -138,12 +922,157 @@
     "scope": "runtime",
     "advisories": [
       {
-        "advisoryId": "PYSEC-2020-265",
-        "title": "cryptography Bleichenbacher timing oracle vulnerability in RSA decryption",
-        "severity": "medium",
+        "advisoryId": "PYSEC-2021-62",
+        "title": "python-cryptography: Bleichenbacher timing oracle attack against RSA decryption",
+        "severity": "high",
         "cveId": "CVE-2020-25659",
         "fixedIn": "3.2",
-        "description": "The cryptography package before 3.2 is vulnerable to Bleichenbacher timing oracle attacks against RSA decryption, potentially allowing key recovery."
+        "description": "python-cryptography 3.2 is vulnerable to Bleichenbacher timing attacks in the RSA decryption API, via timed processing of valid PKCS#1 v1.5 ciphertext.",
+        "tools": [
+          "osv-scanner",
+          "trivy"
+        ]
+      },
+      {
+        "advisoryId": "PYSEC-2024-225",
+        "title": "PYSEC-2024-225",
+        "severity": "high",
+        "cveId": "CVE-2024-26130",
+        "fixedIn": null,
+        "description": "PYSEC-2024-225",
+        "tools": [
+          "osv-scanner"
+        ]
+      },
+      {
+        "advisoryId": "PYSEC-2026-1283",
+        "title": "python-cryptography: Bleichenbacher timing oracle attack against RSA decryption - incomplete fix for CVE-2020-25659",
+        "severity": "high",
+        "cveId": "CVE-2023-50782",
+        "fixedIn": "42.0.0",
+        "description": "A flaw was found in the python-cryptography package.",
+        "tools": [
+          "osv-scanner",
+          "trivy"
+        ]
+      },
+      {
+        "advisoryId": "PYSEC-2026-2141",
+        "title": "cryptography: cryptography Subgroup Attack Due to Missing Subgroup Validation for SECT Curves",
+        "severity": "high",
+        "cveId": "CVE-2026-26007",
+        "fixedIn": "46.0.5",
+        "description": "cryptography is a package designed to expose cryptographic primitives and recipes to Python developers.",
+        "tools": [
+          "osv-scanner",
+          "trivy"
+        ]
+      },
+      {
+        "advisoryId": "PYSEC-2026-3553",
+        "title": "python-cryptography: Duplicate self-signed intermediates can cause exponential path-building",
+        "severity": "high",
+        "cveId": "CVE-2026-69249",
+        "fixedIn": null,
+        "description": "python-cryptography: Duplicate self-signed intermediates can cause exponential path-building",
+        "tools": [
+          "osv-scanner"
+        ]
+      },
+      {
+        "advisoryId": "PYSEC-2026-800",
+        "title": "openssl: X.400 address type confusion in X.509 GeneralName",
+        "severity": "high",
+        "cveId": "CVE-2023-0286",
+        "fixedIn": "39.0.1",
+        "description": "There is a type confusion vulnerability relating to X.400 address processing\ninside an X.509 GeneralName. X.400 addresses were parsed as an ASN1_STRING but\nthe public structure definition for GENERAL_NAME incorrectly specified the type\nof the x400Add",
+        "tools": [
+          "osv-scanner",
+          "trivy"
+        ]
+      },
+      {
+        "advisoryId": "GHSA-537c-gmf6-5ccf",
+        "title": "Vulnerable OpenSSL included in cryptography wheels",
+        "severity": "high",
+        "cveId": null,
+        "fixedIn": "48.0.1",
+        "description": "pyca/cryptography's wheels include a statically linked copy of OpenSSL.",
+        "tools": [
+          "osv-scanner",
+          "trivy"
+        ]
+      },
+      {
+        "advisoryId": "PYSEC-2023-11",
+        "title": "python-cryptography: memory corruption via immutable objects",
+        "severity": "medium",
+        "cveId": "CVE-2023-23931",
+        "fixedIn": "39.0.1",
+        "description": "cryptography is a package designed to expose cryptographic primitives and recipes to Python developers.",
+        "tools": [
+          "osv-scanner",
+          "trivy"
+        ]
+      },
+      {
+        "advisoryId": "PYSEC-2026-1285",
+        "title": "openssl: denial of service via null dereference",
+        "severity": "medium",
+        "cveId": "CVE-2024-0727",
+        "fixedIn": "42.0.2",
+        "description": "Issue summary: Processing a maliciously formatted PKCS12 file may lead OpenSSL\nto crash leading to a potential Denial of Service attack\n\nImpact summary: Applications loading files in the PKCS12 format from untrusted\nsources might terminate abruptly.\n",
+        "tools": [
+          "osv-scanner",
+          "trivy"
+        ]
+      },
+      {
+        "advisoryId": "PYSEC-2026-35",
+        "title": "python-cryptography: Cryptography: Security bypass due to improper DNS name constraint validation",
+        "severity": "medium",
+        "cveId": "CVE-2026-34073",
+        "fixedIn": "46.0.6",
+        "description": "cryptography is a package designed to expose cryptographic primitives and recipes to Python developers.",
+        "tools": [
+          "osv-scanner",
+          "trivy"
+        ]
+      },
+      {
+        "advisoryId": "PYSEC-2026-3554",
+        "title": "python-cryptography verifier accepts wildcard DNS names allowing escape from permittedSubtrees",
+        "severity": "medium",
+        "cveId": "CVE-2026-69248",
+        "fixedIn": null,
+        "description": "python-cryptography verifier accepts wildcard DNS names allowing escape from permittedSubtrees",
+        "tools": [
+          "osv-scanner"
+        ]
+      },
+      {
+        "advisoryId": "GHSA-5cpq-8wj7-hf2v",
+        "title": "Vulnerable OpenSSL included in cryptography wheels",
+        "severity": "low",
+        "cveId": null,
+        "fixedIn": "41.0.0",
+        "description": "pyca/cryptography's wheels include a statically linked copy of OpenSSL.",
+        "tools": [
+          "osv-scanner",
+          "trivy"
+        ]
+      },
+      {
+        "advisoryId": "GHSA-jm77-qphf-c4w8",
+        "title": "pyca/cryptography's wheels include vulnerable OpenSSL",
+        "severity": "low",
+        "cveId": null,
+        "fixedIn": "41.0.3",
+        "description": "pyca/cryptography's wheels include a statically linked copy of OpenSSL.",
+        "tools": [
+          "osv-scanner",
+          "trivy"
+        ]
       }
     ]
   },
@@ -160,14 +1089,179 @@
     "scope": "runtime",
     "advisories": [
       {
-        "advisoryId": "PYSEC-2018-34",
-        "title": "paramiko authentication bypass via crafted SSH message",
-        "severity": "critical",
+        "advisoryId": "PYSEC-2018-69",
+        "title": "python-paramiko: Authentication bypass in auth_handler.py",
+        "severity": "high",
         "cveId": "CVE-2018-1000805",
-        "fixedIn": "2.4.2",
-        "description": "paramiko before 2.4.2 allows authenticated SSH clients to bypass authorization controls via a crafted packet, enabling privilege escalation."
+        "fixedIn": "2.4.2, 2.3.3, 2.2.4, 2.1.6, 2.0.9",
+        "description": "Paramiko version 2.4.1, 2.3.2, 2.2.3, 2.1.5, 2.0.8, 1.18.5, 1.17.6 contains a Incorrect Access Control vulnerability in SSH server that can result in RCE.",
+        "tools": [
+          "osv-scanner",
+          "trivy"
+        ]
+      },
+      {
+        "advisoryId": "PYSEC-2026-2858",
+        "title": "paramiko: Paramiko: Data integrity could be compromised due to SHA-1 algorithm use",
+        "severity": "low",
+        "cveId": "CVE-2026-44405",
+        "fixedIn": null,
+        "description": "In Paramiko through 4.0.0 before a448945, rsakey.py allows the SHA-1 algorithm.",
+        "tools": [
+          "osv-scanner",
+          "trivy"
+        ]
+      },
+      {
+        "advisoryId": "PYSEC-2022-166",
+        "title": "PYSEC-2022-166",
+        "severity": "informational",
+        "cveId": "CVE-2022-24302",
+        "fixedIn": null,
+        "description": "PYSEC-2022-166",
+        "tools": [
+          "osv-scanner"
+        ]
       }
     ]
+  },
+  {
+    "manifest": "src/payload_plaintext/aurora-compute/go.mod",
+    "lineRange": {
+      "start": 6,
+      "end": 6
+    },
+    "name": "github.com/gin-gonic/gin",
+    "version": "v1.6.3",
+    "component": "aurora-compute",
+    "ecosystem": "go",
+    "scope": "compile",
+    "advisories": [
+      {
+        "advisoryId": "GO-2021-0052",
+        "title": "gin: HTTP response splitting",
+        "severity": "high",
+        "cveId": "CVE-2020-28483",
+        "fixedIn": "1.7.7",
+        "description": "This affects all versions of package github.com/gin-gonic/gin.",
+        "tools": [
+          "osv-scanner",
+          "trivy"
+        ]
+      },
+      {
+        "advisoryId": "GO-2023-1737",
+        "title": "golang-github-gin-gonic-gin: Gin Web Framework does not properly sanitize filename parameter of Context.FileAttachment function",
+        "severity": "medium",
+        "cveId": "CVE-2023-29401",
+        "fixedIn": "1.9.1",
+        "description": "The filename parameter of the Context.FileAttachment function is not properly sanitized.",
+        "tools": [
+          "osv-scanner",
+          "trivy"
+        ]
+      },
+      {
+        "advisoryId": "GHSA-3vp4-m3rf-835h",
+        "title": "golang-github-gin-gonic-gin: Improper Input Validation",
+        "severity": "medium",
+        "cveId": "CVE-2023-26125",
+        "fixedIn": "1.9.0",
+        "description": "Versions of the package github.com/gin-gonic/gin before 1.9.0 are vulnerable to Improper Input Validation by allowing an attacker to use a specially crafted request via the X-Forwarded-Prefix header, potentially leading to cache poisoning.",
+        "tools": [
+          "osv-scanner",
+          "trivy"
+        ]
+      }
+    ]
+  },
+  {
+    "manifest": "src/payload_plaintext/aurora-compute/go.mod",
+    "lineRange": {
+      "start": 7,
+      "end": 7
+    },
+    "name": "github.com/dgrijalva/jwt-go",
+    "version": "3.2.0+incompatible",
+    "component": "aurora-compute",
+    "ecosystem": "go",
+    "scope": "compile",
+    "advisories": [
+      {
+        "advisoryId": "GO-2020-0017",
+        "title": "jwt-go: access restriction bypass vulnerability",
+        "severity": "high",
+        "cveId": "CVE-2020-26160",
+        "fixedIn": null,
+        "description": "jwt-go before 4.0.0-preview1 allows attackers to bypass intended access restrictions in situations with []string{} for m[\"aud\"] (which is allowed by the specification).",
+        "tools": [
+          "osv-scanner",
+          "trivy"
+        ]
+      }
+    ]
+  },
+  {
+    "manifest": "src/payload_plaintext/aurora-compute/go.mod",
+    "lineRange": {
+      "start": 8,
+      "end": 8
+    },
+    "name": "gopkg.in/yaml.v2",
+    "version": "v2.2.2",
+    "component": "aurora-compute",
+    "ecosystem": "go",
+    "scope": "compile",
+    "advisories": [
+      {
+        "advisoryId": "GO-2022-0956",
+        "title": "go-yaml: Improve heuristics preventing CPU/memory abuse by parsing malicious or large YAML documents",
+        "severity": "high",
+        "cveId": "CVE-2022-3064",
+        "fixedIn": "2.2.4",
+        "description": "Parsing malicious or large YAML documents can consume excessive amounts of CPU or memory.",
+        "tools": [
+          "osv-scanner",
+          "trivy"
+        ]
+      },
+      {
+        "advisoryId": "GO-2020-0036",
+        "title": "kubernetes: Denial of service in API server via crafted YAML payloads by authorized users",
+        "severity": "medium",
+        "cveId": "CVE-2019-11254",
+        "fixedIn": "2.2.8",
+        "description": "The Kubernetes API Server component in versions 1.1-1.14, and versions prior to 1.15.10, 1.16.7 and 1.17.3 allows an authorized user who sends malicious YAML payloads to cause the kube-apiserver to consume excessive CPU cycles while parsing YAML.",
+        "tools": [
+          "osv-scanner",
+          "trivy"
+        ]
+      },
+      {
+        "advisoryId": "GO-2021-0061",
+        "title": "go-yaml: Denial of Service in go-yaml",
+        "severity": "medium",
+        "cveId": "CVE-2021-4235",
+        "fixedIn": "2.2.3",
+        "description": "Due to unbounded alias chasing, a maliciously crafted YAML file can cause the system to consume significant system resources.",
+        "tools": [
+          "osv-scanner",
+          "trivy"
+        ]
+      }
+    ]
+  },
+  {
+    "manifest": "src/payload_plaintext/aurora-compute/go.mod",
+    "lineRange": {
+      "start": 9,
+      "end": 9
+    },
+    "name": "github.com/miekg/dns",
+    "version": "v1.1.25",
+    "component": "aurora-compute",
+    "ecosystem": "go",
+    "scope": "compile",
+    "advisories": []
   }
 ]
-
