@@ -1,8 +1,91 @@
 {
-  "generatedAt": "2026-10-03T10:57:45Z",
+  "generatedAt": "2026-10-08T14:57:00Z",
+  "scanner": "trivy 0.75.0",
   "productLicense": null,
   "components": [],
   "copyleftConflicts": [],
   "attributionGaps": [],
-  "notes": "Full scan of repository completed. No LICENSE*, LICENCE*, or NOTICE* files were found at any directory depth. No third_party/, third-party/, thirdparty/, or vendor/ directories were found. The aurora-portal Python service (src/payload_plaintext/aurora-portal/) is present but has no vendored third-party source or inline license declarations. Its pip-managed dependencies (requirements.txt: Django, requests, PyYAML, urllib3, Jinja2, cryptography, paramiko — all pinned with ==) are installed from PyPI and are not bundled in this repository; their license obligations are outside the scope of a vendored-code scan. See .aee/dependency-inventory.json for dependency advisory details produced by the Dependency Analyzer. Zero bundled third-party components detected."
+  "packageManagerDependencies": {
+    "aurora-compute": {
+      "manifestFile": "src/payload_plaintext/aurora-compute/go.mod",
+      "type": "gomod",
+      "vendored": false,
+      "dependencies": [
+        {
+          "name": "github.com/dgrijalva/jwt-go",
+          "version": "v3.2.0+incompatible",
+          "spdxId": "UNKNOWN",
+          "notes": "Scanner did not report license; no vendored source present. Known externally as MIT but unconfirmed by scanner or in-repo text."
+        },
+        {
+          "name": "github.com/gin-gonic/gin",
+          "version": "v1.6.3",
+          "spdxId": "UNKNOWN",
+          "notes": "Scanner did not report license; no vendored source present."
+        },
+        {
+          "name": "github.com/miekg/dns",
+          "version": "v1.1.25",
+          "spdxId": "UNKNOWN",
+          "notes": "Scanner did not report license; no vendored source present."
+        },
+        {
+          "name": "gopkg.in/yaml.v2",
+          "version": "v2.2.2",
+          "spdxId": "UNKNOWN",
+          "notes": "Scanner did not report license; no vendored source present."
+        }
+      ]
+    },
+    "aurora-portal": {
+      "manifestFile": "src/payload_plaintext/aurora-portal/requirements.txt",
+      "type": "pip",
+      "vendored": false,
+      "dependencies": [
+        {
+          "name": "Django",
+          "version": "2.2.0",
+          "spdxId": "UNKNOWN",
+          "notes": "Scanner did not report license; no vendored source present. Known externally as BSD-3-Clause."
+        },
+        {
+          "name": "requests",
+          "version": "2.19.1",
+          "spdxId": "UNKNOWN",
+          "notes": "Scanner did not report license; no vendored source present."
+        },
+        {
+          "name": "PyYAML",
+          "version": "5.1",
+          "spdxId": "UNKNOWN",
+          "notes": "Scanner did not report license; no vendored source present."
+        },
+        {
+          "name": "urllib3",
+          "version": "1.24.1",
+          "spdxId": "UNKNOWN",
+          "notes": "Scanner did not report license; no vendored source present."
+        },
+        {
+          "name": "Jinja2",
+          "version": "2.10",
+          "spdxId": "UNKNOWN",
+          "notes": "Scanner did not report license; no vendored source present."
+        },
+        {
+          "name": "cryptography",
+          "version": "2.3",
+          "spdxId": "UNKNOWN",
+          "notes": "Scanner did not report license; no vendored source present."
+        },
+        {
+          "name": "paramiko",
+          "version": "2.4.1",
+          "spdxId": "UNKNOWN",
+          "notes": "Scanner did not report license; no vendored source present. Known externally as LGPL-2.1 — weak copyleft advisory applies if ever vendored."
+        }
+      ]
+    }
+  },
+  "notes": "Full trivy license scan (--license-full) completed against src/. No LICENSE*, LICENCE*, or NOTICE* files found at any directory depth. No third_party/, third-party/, thirdparty/, or vendor/ directories found. Zero vendored third-party components. Two package-manager manifests detected (go.mod, requirements.txt); their dependencies are not vendored and therefore carry no in-repo license obligations. SPDX identifiers are UNKNOWN for all manifest-declared dependencies because trivy did not return license names for unvendored packages and no license text is present in the repository to confirm any identifier."
 }
