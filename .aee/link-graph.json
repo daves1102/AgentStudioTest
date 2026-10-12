@@ -8,7 +8,72 @@
       "fromLine": 9,
       "toLine": 8,
       "crossComponent": true,
-      "note": "seam_index missed this seam because both services share the src/payload_plaintext/ directory prefix and seam_index component_of() uses only the first path segment; literal appears as TenantTopic in aurora-compute (Go producer, bus.Send) and TENANT_TOPIC in aurora-portal (Python consumer, bus.subscribe) — found via secondary pass"
+      "note": "seam_index missed this seam because both services share the src/payload_plaintext/ directory prefix; found via secondary literal match — Go producer (TenantTopic / bus.Send) and Python consumer (TENANT_TOPIC / bus.subscribe)"
+    },
+    {
+      "from": "src/payload_plaintext/aurora-compute/api/profile.go",
+      "to": "src/payload_plaintext/aurora-network/src/profile_label.h",
+      "symbol": "profile_label.h",
+      "kind": "cgo-header-include",
+      "fromLine": 8,
+      "toLine": 15,
+      "crossComponent": true,
+      "note": "#cgo CFLAGS: -I../../aurora-network/src; header now in delivery — declaration at profile_label.h:15"
+    },
+    {
+      "from": "src/payload_plaintext/aurora-compute/api/profile.go",
+      "to": "src/payload_plaintext/aurora-network/src/profile_label.c",
+      "symbol": "aurora_profile_label",
+      "kind": "cgo-link-time-symbol",
+      "fromLine": 32,
+      "toLine": 25,
+      "crossComponent": true,
+      "note": "C.aurora_profile_label() in Go resolves to definition in profile_label.c:25; passes HTTP request Label field directly — network input crosses language boundary into C with no length check (CWE-121 noted in profile_label.c security surface)"
+    },
+    {
+      "from": "src/payload_plaintext/aurora-network/src/profile_label.c",
+      "to": "src/payload_plaintext/aurora-network/src/profile_label.h",
+      "symbol": "profile_label.h",
+      "kind": "c-header-include",
+      "fromLine": 13,
+      "toLine": 15,
+      "crossComponent": false
+    },
+    {
+      "from": "src/payload_plaintext/aurora-network/src/main.c",
+      "to": "src/payload_plaintext/aurora-network/src/packet.h",
+      "symbol": "packet.h",
+      "kind": "c-header-include",
+      "fromLine": 13,
+      "toLine": 1,
+      "crossComponent": false
+    },
+    {
+      "from": "src/payload_plaintext/aurora-network/src/acl.c",
+      "to": "src/payload_plaintext/aurora-network/src/packet.h",
+      "symbol": "packet.h",
+      "kind": "c-header-include",
+      "fromLine": 13,
+      "toLine": 1,
+      "crossComponent": false
+    },
+    {
+      "from": "src/payload_plaintext/aurora-network/src/flow_table.c",
+      "to": "src/payload_plaintext/aurora-network/src/packet.h",
+      "symbol": "packet.h",
+      "kind": "c-header-include",
+      "fromLine": 13,
+      "toLine": 1,
+      "crossComponent": false
+    },
+    {
+      "from": "src/payload_plaintext/aurora-network/src/packet_parse.c",
+      "to": "src/payload_plaintext/aurora-network/src/packet.h",
+      "symbol": "packet.h",
+      "kind": "c-header-include",
+      "fromLine": 14,
+      "toLine": 1,
+      "crossComponent": false
     },
     {
       "from": "src/payload_plaintext/aurora-portal/tests/test_quota.py",
@@ -248,22 +313,6 @@
   "ambiguous": [],
   "unresolved": [
     {
-      "from": "src/payload_plaintext/aurora-compute/api/profile.go",
-      "symbol": "profile_label.h",
-      "kind": "cgo-header-include",
-      "fromLine": 8,
-      "crossComponent": true,
-      "reason": "#cgo CFLAGS: -I../../aurora-network/src; resolves to src/aurora-network/src/profile_label.h — aurora-network component not in delivery"
-    },
-    {
-      "from": "src/payload_plaintext/aurora-compute/api/profile.go",
-      "symbol": "aurora_profile_label",
-      "kind": "cgo-link-time-symbol",
-      "fromLine": 32,
-      "crossComponent": true,
-      "reason": "C.aurora_profile_label() declared in profile_label.h from aurora-network component; aurora-network not in delivery — definition line unknown"
-    },
-    {
       "from": "src/payload_plaintext/aurora-portal/aurora_portal/telemetry_consumer.py",
       "symbol": "bus.subscribe",
       "kind": "method-call",
@@ -294,7 +343,7 @@
       "joinKeyKind": "bus-topic",
       "joinKey": "aurora.telemetry.tenant",
       "componentPair": ["aurora-compute (Go)", "aurora-portal (Python)"],
-      "note": "seam_index missed this seam because both services share the src/payload_plaintext/ directory prefix — seam_index component_of() yields 'payload_plaintext' for both; identified via literal match in secondary pass",
+      "note": "seam_index missed this seam because both services share the src/payload_plaintext/ directory prefix; found via secondary literal match",
       "sites": [
         {
           "role": "producer",
@@ -313,21 +362,42 @@
           "symbol": "TENANT_TOPIC"
         }
       ]
+    },
+    {
+      "source": "secondary-pass",
+      "joinKeyKind": "cgo-link-time-symbol",
+      "joinKey": "aurora_profile_label",
+      "componentPair": ["aurora-compute (Go/cgo)", "aurora-network (C)"],
+      "note": "seam_index missed this seam because both services share the src/payload_plaintext/ directory prefix; found via secondary C/cgo resolution. HTTP request body (Label field) passes through Go → C language boundary with no length validation — see CWE-121 in profile_label.c:28",
+      "sites": [
+        {
+          "role": "caller (cgo)",
+          "service": "aurora-compute",
+          "language": "Go",
+          "file": "src/payload_plaintext/aurora-compute/api/profile.go",
+          "line": 32,
+          "symbol": "C.aurora_profile_label"
+        },
+        {
+          "role": "declaration",
+          "service": "aurora-network",
+          "language": "C",
+          "file": "src/payload_plaintext/aurora-network/src/profile_label.h",
+          "line": 15,
+          "symbol": "aurora_profile_label"
+        },
+        {
+          "role": "definition",
+          "service": "aurora-network",
+          "language": "C",
+          "file": "src/payload_plaintext/aurora-network/src/profile_label.c",
+          "line": 25,
+          "symbol": "aurora_profile_label"
+        }
+      ]
     }
   ],
   "openEnds": [
-    {
-      "joinKeyKind": "cgo-header / native symbol",
-      "joinKey": "aurora_profile_label / profile_label.h",
-      "presentSide": {
-        "service": "aurora-compute",
-        "language": "Go (cgo)",
-        "file": "src/payload_plaintext/aurora-compute/api/profile.go",
-        "line": 8,
-        "role": "caller"
-      },
-      "missingSide": "aurora-network C/C++ component — expected at src/aurora-network/src/profile_label.h"
-    },
     {
       "joinKeyKind": "executable",
       "joinKey": "aurora-cli",
@@ -338,7 +408,7 @@
         "line": 9,
         "role": "caller"
       },
-      "missingSide": "aurora-cli binary — component not yet delivered"
+      "missingSide": "aurora-cli binary — component not yet delivered; likely the intermediary between aurora-portal subprocess calls and aurora-compute HTTP endpoints"
     },
     {
       "joinKeyKind": "subcommand",
@@ -350,7 +420,7 @@
         "line": 20,
         "role": "caller"
       },
-      "missingSide": "aurora-cli subcommand implementation — component not yet delivered"
+      "missingSide": "aurora-cli subcommand — maps to /v1/profile/apply on aurora-compute (probable)"
     },
     {
       "joinKeyKind": "subcommand",
@@ -362,7 +432,7 @@
         "line": 29,
         "role": "caller"
       },
-      "missingSide": "aurora-cli subcommand implementation — component not yet delivered"
+      "missingSide": "aurora-cli subcommand — maps to /v1/profile/list on aurora-compute (probable)"
     },
     {
       "joinKeyKind": "database table",
@@ -386,7 +456,7 @@
         "line": 13,
         "role": "server"
       },
-      "missingSide": "HTTP client caller — not in delivery; likely called via aurora-cli"
+      "missingSide": "HTTP caller — not in delivery; likely aurora-cli"
     },
     {
       "joinKeyKind": "http endpoint",
@@ -398,7 +468,7 @@
         "line": 14,
         "role": "server"
       },
-      "missingSide": "HTTP client caller — not in delivery; likely called via aurora-cli"
+      "missingSide": "HTTP caller — not in delivery; likely aurora-cli"
     },
     {
       "joinKeyKind": "http endpoint",
@@ -422,7 +492,7 @@
         "line": 20,
         "role": "reader"
       },
-      "missingSide": "config provider / secret injector — not in delivery"
+      "missingSide": "config / secret injector — not in delivery"
     }
   ]
 }
