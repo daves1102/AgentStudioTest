@@ -1,0 +1,181 @@
+{
+  "file": "src/payload_plaintext/aurora-network/src/profile_label.c",
+  "language": "C",
+  "component": "payload_plaintext",
+  "hash": "f27a318b1453b86d7c4145f1178cf0a64f3d9b02aead755678ef9d6374fba885",
+  "symbols": [
+    {
+      "name": "#include <stdio.h>",
+      "kind": "import",
+      "scope": "",
+      "lineRange": {
+        "startLine": 11,
+        "endLine": 11
+      },
+      "source": "aee-inventory"
+    },
+    {
+      "name": "#include <string.h>",
+      "kind": "import",
+      "scope": "",
+      "lineRange": {
+        "startLine": 12,
+        "endLine": 12
+      },
+      "source": "aee-inventory"
+    },
+    {
+      "name": "#include \"profile_label.h\"",
+      "kind": "import",
+      "scope": "",
+      "lineRange": {
+        "startLine": 13,
+        "endLine": 13
+      },
+      "source": "aee-inventory"
+    },
+    {
+      "name": "PROFILE_SLOTS",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "startLine": 15,
+        "endLine": 15
+      },
+      "source": "aee-inventory"
+    },
+    {
+      "name": "profile_slot",
+      "kind": "type",
+      "scope": "",
+      "lineRange": {
+        "startLine": 17,
+        "endLine": 20
+      },
+      "source": "aee-inventory"
+    },
+    {
+      "name": "label",
+      "kind": "field",
+      "scope": "profile_slot",
+      "lineRange": {
+        "startLine": 18,
+        "endLine": 18
+      },
+      "source": "aee-inventory"
+    },
+    {
+      "name": "applied",
+      "kind": "field",
+      "scope": "profile_slot",
+      "lineRange": {
+        "startLine": 19,
+        "endLine": 19
+      },
+      "source": "aee-inventory"
+    },
+    {
+      "name": "slots",
+      "kind": "variable",
+      "scope": "",
+      "lineRange": {
+        "startLine": 22,
+        "endLine": 22
+      },
+      "source": "aee-inventory"
+    },
+    {
+      "name": "slot_next",
+      "kind": "variable",
+      "scope": "",
+      "lineRange": {
+        "startLine": 23,
+        "endLine": 23
+      },
+      "source": "aee-inventory"
+    },
+    {
+      "name": "aurora_profile_label",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "startLine": 25,
+        "endLine": 34
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "label",
+          "type": "char*"
+        }
+      ],
+      "returnType": "int",
+      "returns": [
+        {
+          "expr": "0",
+          "line": 33
+        }
+      ],
+      "nloc": 8,
+      "ccn": 1
+    },
+    {
+      "name": "aurora_profile_count",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "startLine": 36,
+        "endLine": 45
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "type": "void"
+        }
+      ],
+      "returnType": "int",
+      "returns": [
+        {
+          "expr": "n",
+          "line": 44
+        }
+      ],
+      "nloc": 10,
+      "ccn": 3
+    }
+  ],
+  "referencedSymbols": [],
+  "externalDependencies": [
+    {
+      "module": "<stdio.h>",
+      "alias": null,
+      "line": 11,
+      "source": "aee-inventory"
+    },
+    {
+      "module": "<string.h>",
+      "alias": null,
+      "line": 12,
+      "source": "aee-inventory"
+    },
+    {
+      "module": "\"profile_label.h\"",
+      "alias": null,
+      "line": 13,
+      "source": "aee-inventory"
+    }
+  ],
+  "sideEffects": [],
+  "securitySurface": [
+    {
+      "kind": "buffer-overflow",
+      "description": "aurora_profile_label: strcpy(slot->label, label) copies caller-supplied label into slot->label[32] with no bounds check; label longer than 31 chars overflows (CWE-121). This function is the CGo callee for aurora-compute/api/profile.go::ApplyProfile, which passes the HTTP request body Label field directly \u2014 network input reachable",
+      "lineRange": {
+        "startLine": 28,
+        "endLine": 28
+      },
+      "source": "manual"
+    }
+  ],
+  "injectionFlags": []
+}

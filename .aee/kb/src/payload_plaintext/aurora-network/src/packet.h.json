@@ -1,0 +1,200 @@
+{
+  "file": "src/payload_plaintext/aurora-network/src/packet.h",
+  "language": "C",
+  "component": "payload_plaintext",
+  "hash": "b88ea323dc85388d49662cb3e1e5ef43ce3fc1baa82602a3495864cb1aca9a26",
+  "symbols": [
+    {
+      "name": "AURORA_PACKET_H",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "startLine": 12,
+        "endLine": 12
+      },
+      "source": "aee-inventory"
+    },
+    {
+      "name": "#include <stddef.h>",
+      "kind": "import",
+      "scope": "",
+      "lineRange": {
+        "startLine": 14,
+        "endLine": 14
+      },
+      "source": "aee-inventory"
+    },
+    {
+      "name": "MAX_LABELS",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "startLine": 16,
+        "endLine": 16
+      },
+      "source": "aee-inventory"
+    },
+    {
+      "name": "flow_key",
+      "kind": "type",
+      "scope": "",
+      "lineRange": {
+        "startLine": 18,
+        "endLine": 23
+      },
+      "source": "aee-inventory"
+    },
+    {
+      "name": "tenant",
+      "kind": "field",
+      "scope": "flow_key",
+      "lineRange": {
+        "startLine": 19,
+        "endLine": 19
+      },
+      "source": "aee-inventory"
+    },
+    {
+      "name": "sport",
+      "kind": "field",
+      "scope": "flow_key",
+      "lineRange": {
+        "startLine": 20,
+        "endLine": 20
+      },
+      "source": "aee-inventory"
+    },
+    {
+      "name": "dport",
+      "kind": "field",
+      "scope": "flow_key",
+      "lineRange": {
+        "startLine": 21,
+        "endLine": 21
+      },
+      "source": "aee-inventory"
+    },
+    {
+      "name": "labels",
+      "kind": "field",
+      "scope": "flow_key",
+      "lineRange": {
+        "startLine": 22,
+        "endLine": 22
+      },
+      "source": "aee-inventory"
+    },
+    {
+      "name": "parse_tenant_tag",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "startLine": 25,
+        "endLine": 25
+      },
+      "signature": "int parse_tenant_tag(const char *header, struct flow_key *key)",
+      "parameters": [
+        {
+          "name": "header",
+          "type": "char*"
+        },
+        {
+          "name": "key",
+          "type": "struct flow_key*"
+        }
+      ],
+      "returnType": "int",
+      "source": "manual"
+    },
+    {
+      "name": "parse_ports",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "startLine": 26,
+        "endLine": 26
+      },
+      "signature": "int parse_ports(const unsigned char *buf, size_t len, struct flow_key *key)",
+      "parameters": [
+        {
+          "name": "buf",
+          "type": "unsigned char*"
+        },
+        {
+          "name": "len",
+          "type": "size_t"
+        },
+        {
+          "name": "key",
+          "type": "struct flow_key*"
+        }
+      ],
+      "returnType": "int",
+      "source": "manual"
+    },
+    {
+      "name": "copy_labels",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "startLine": 27,
+        "endLine": 27
+      },
+      "signature": "int copy_labels(struct flow_key *key, const unsigned char *labels, int count)",
+      "parameters": [
+        {
+          "name": "key",
+          "type": "struct flow_key*"
+        },
+        {
+          "name": "labels",
+          "type": "unsigned char*"
+        },
+        {
+          "name": "count",
+          "type": "int"
+        }
+      ],
+      "returnType": "int",
+      "source": "manual"
+    },
+    {
+      "name": "dump_key",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "startLine": 28,
+        "endLine": 28
+      },
+      "signature": "void dump_key(const struct flow_key *key, char *out, size_t outlen)",
+      "parameters": [
+        {
+          "name": "key",
+          "type": "struct flow_key*"
+        },
+        {
+          "name": "out",
+          "type": "char*"
+        },
+        {
+          "name": "outlen",
+          "type": "size_t"
+        }
+      ],
+      "returnType": "void",
+      "source": "manual"
+    }
+  ],
+  "referencedSymbols": [],
+  "externalDependencies": [
+    {
+      "module": "<stddef.h>",
+      "alias": null,
+      "line": 14,
+      "source": "aee-inventory"
+    }
+  ],
+  "sideEffects": [],
+  "securitySurface": [],
+  "injectionFlags": []
+}

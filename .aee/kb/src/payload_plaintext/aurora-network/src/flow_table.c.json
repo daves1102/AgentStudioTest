@@ -1,0 +1,274 @@
+{
+  "file": "src/payload_plaintext/aurora-network/src/flow_table.c",
+  "language": "C",
+  "component": "payload_plaintext",
+  "hash": "bfadfdd6785811cfb3a1e85e4b81a88307ca938f706053151059b575e12334b7",
+  "symbols": [
+    {
+      "name": "#include <stdlib.h>",
+      "kind": "import",
+      "scope": "",
+      "lineRange": {
+        "startLine": 11,
+        "endLine": 11
+      },
+      "source": "aee-inventory"
+    },
+    {
+      "name": "#include <string.h>",
+      "kind": "import",
+      "scope": "",
+      "lineRange": {
+        "startLine": 12,
+        "endLine": 12
+      },
+      "source": "aee-inventory"
+    },
+    {
+      "name": "#include \"packet.h\"",
+      "kind": "import",
+      "scope": "",
+      "lineRange": {
+        "startLine": 13,
+        "endLine": 13
+      },
+      "source": "aee-inventory"
+    },
+    {
+      "name": "entry",
+      "kind": "type",
+      "scope": "",
+      "lineRange": {
+        "startLine": 15,
+        "endLine": 20
+      },
+      "source": "aee-inventory"
+    },
+    {
+      "name": "key",
+      "kind": "field",
+      "scope": "entry",
+      "lineRange": {
+        "startLine": 16,
+        "endLine": 16
+      },
+      "source": "aee-inventory"
+    },
+    {
+      "name": "packets",
+      "kind": "field",
+      "scope": "entry",
+      "lineRange": {
+        "startLine": 17,
+        "endLine": 17
+      },
+      "source": "aee-inventory"
+    },
+    {
+      "name": "bytes",
+      "kind": "field",
+      "scope": "entry",
+      "lineRange": {
+        "startLine": 18,
+        "endLine": 18
+      },
+      "source": "aee-inventory"
+    },
+    {
+      "name": "next",
+      "kind": "field",
+      "scope": "entry",
+      "lineRange": {
+        "startLine": 19,
+        "endLine": 19
+      },
+      "source": "aee-inventory"
+    },
+    {
+      "name": "table",
+      "kind": "variable",
+      "scope": "",
+      "lineRange": {
+        "startLine": 22,
+        "endLine": 22
+      },
+      "source": "aee-inventory"
+    },
+    {
+      "name": "hash_key",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "startLine": 24,
+        "endLine": 27
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "key",
+          "type": "struct flow_key*"
+        }
+      ],
+      "returnType": "unsigned int",
+      "returns": [
+        {
+          "expr": "(key->tenant * 2654435761u + key->sport * 97u + key->dport) & 4095u",
+          "line": 26
+        }
+      ],
+      "nloc": 4,
+      "ccn": 1
+    },
+    {
+      "name": "flow_lookup",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "startLine": 29,
+        "endLine": 39
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "key",
+          "type": "struct flow_key*"
+        }
+      ],
+      "returnType": "struct entry*",
+      "returns": [
+        {
+          "expr": "e",
+          "line": 34
+        },
+        {
+          "expr": "NULL",
+          "line": 38
+        }
+      ],
+      "nloc": 11,
+      "ccn": 3
+    },
+    {
+      "name": "flow_insert",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "startLine": 41,
+        "endLine": 54
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "key",
+          "type": "struct flow_key*"
+        }
+      ],
+      "returnType": "int",
+      "returns": [
+        {
+          "expr": "-1",
+          "line": 46
+        },
+        {
+          "expr": "0",
+          "line": 53
+        }
+      ],
+      "nloc": 14,
+      "ccn": 2
+    },
+    {
+      "name": "flow_account",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "startLine": 56,
+        "endLine": 60
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "e",
+          "type": "struct entry*"
+        },
+        {
+          "name": "bytes",
+          "type": "unsigned long"
+        }
+      ],
+      "returnType": "void",
+      "returns": [],
+      "nloc": 5,
+      "ccn": 1
+    },
+    {
+      "name": "flow_flush",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "startLine": 62,
+        "endLine": 74
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "type": "void"
+        }
+      ],
+      "returnType": "void",
+      "returns": [],
+      "nloc": 13,
+      "ccn": 3
+    }
+  ],
+  "referencedSymbols": [
+    {
+      "name": "flow_key",
+      "kind": "struct",
+      "category": "imported",
+      "firstReferenceLine": 13
+    }
+  ],
+  "externalDependencies": [
+    {
+      "module": "<stdlib.h>",
+      "alias": null,
+      "line": 11,
+      "source": "aee-inventory"
+    },
+    {
+      "module": "<string.h>",
+      "alias": null,
+      "line": 12,
+      "source": "aee-inventory"
+    },
+    {
+      "module": "\"packet.h\"",
+      "alias": null,
+      "line": 13,
+      "source": "aee-inventory"
+    }
+  ],
+  "sideEffects": [
+    {
+      "kind": "heap-alloc",
+      "target": "struct entry (flow entry)",
+      "lineRange": {
+        "startLine": 43,
+        "endLine": 43
+      },
+      "source": "manual"
+    },
+    {
+      "kind": "heap-free",
+      "target": "struct entry (flow entry)",
+      "lineRange": {
+        "startLine": 67,
+        "endLine": 72
+      },
+      "source": "manual"
+    }
+  ],
+  "securitySurface": [],
+  "injectionFlags": []
+}

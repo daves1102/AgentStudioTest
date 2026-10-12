@@ -1,0 +1,207 @@
+{
+  "file": "src/payload_plaintext/aurora-network/src/acl.c",
+  "language": "C",
+  "component": "payload_plaintext",
+  "hash": "13ff801822ba2608b86b50629c1d26ae85895d86bd7ff339390167f800b86f6f",
+  "symbols": [
+    {
+      "name": "#include <string.h>",
+      "kind": "import",
+      "scope": "",
+      "lineRange": {
+        "startLine": 11,
+        "endLine": 11
+      },
+      "source": "aee-inventory"
+    },
+    {
+      "name": "#include <stdio.h>",
+      "kind": "import",
+      "scope": "",
+      "lineRange": {
+        "startLine": 12,
+        "endLine": 12
+      },
+      "source": "aee-inventory"
+    },
+    {
+      "name": "#include \"packet.h\"",
+      "kind": "import",
+      "scope": "",
+      "lineRange": {
+        "startLine": 13,
+        "endLine": 13
+      },
+      "source": "aee-inventory"
+    },
+    {
+      "name": "acl_rule",
+      "kind": "type",
+      "scope": "",
+      "lineRange": {
+        "startLine": 15,
+        "endLine": 19
+      },
+      "source": "aee-inventory"
+    },
+    {
+      "name": "tenant",
+      "kind": "field",
+      "scope": "acl_rule",
+      "lineRange": {
+        "startLine": 16,
+        "endLine": 16
+      },
+      "source": "aee-inventory"
+    },
+    {
+      "name": "dport",
+      "kind": "field",
+      "scope": "acl_rule",
+      "lineRange": {
+        "startLine": 17,
+        "endLine": 17
+      },
+      "source": "aee-inventory"
+    },
+    {
+      "name": "allow",
+      "kind": "field",
+      "scope": "acl_rule",
+      "lineRange": {
+        "startLine": 18,
+        "endLine": 18
+      },
+      "source": "aee-inventory"
+    },
+    {
+      "name": "rules",
+      "kind": "variable",
+      "scope": "",
+      "lineRange": {
+        "startLine": 21,
+        "endLine": 21
+      },
+      "source": "aee-inventory"
+    },
+    {
+      "name": "rule_count",
+      "kind": "variable",
+      "scope": "",
+      "lineRange": {
+        "startLine": 22,
+        "endLine": 22
+      },
+      "source": "aee-inventory"
+    },
+    {
+      "name": "acl_add",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "startLine": 24,
+        "endLine": 34
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "tenant",
+          "type": "unsigned int"
+        },
+        {
+          "name": "dport",
+          "type": "unsigned int"
+        },
+        {
+          "name": "allow",
+          "type": "int"
+        }
+      ],
+      "returnType": "int",
+      "returns": [
+        {
+          "expr": "-1",
+          "line": 27
+        },
+        {
+          "expr": "0",
+          "line": 33
+        }
+      ],
+      "nloc": 11,
+      "ccn": 2
+    },
+    {
+      "name": "acl_check",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "startLine": 36,
+        "endLine": 45
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "key",
+          "type": "struct flow_key*"
+        }
+      ],
+      "returnType": "int",
+      "returns": [
+        {
+          "expr": "rules[i].allow",
+          "line": 41
+        },
+        {
+          "expr": "0",
+          "line": 44
+        }
+      ],
+      "nloc": 10,
+      "ccn": 4
+    },
+    {
+      "name": "acl_reset",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "startLine": 47,
+        "endLine": 51
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "type": "void"
+        }
+      ],
+      "returnType": "void",
+      "returns": [],
+      "nloc": 5,
+      "ccn": 1
+    }
+  ],
+  "referencedSymbols": [],
+  "externalDependencies": [
+    {
+      "module": "<string.h>",
+      "alias": null,
+      "line": 11,
+      "source": "aee-inventory"
+    },
+    {
+      "module": "<stdio.h>",
+      "alias": null,
+      "line": 12,
+      "source": "aee-inventory"
+    },
+    {
+      "module": "\"packet.h\"",
+      "alias": null,
+      "line": 13,
+      "source": "aee-inventory"
+    }
+  ],
+  "sideEffects": [],
+  "securitySurface": [],
+  "injectionFlags": []
+}
