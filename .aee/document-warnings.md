@@ -12,3 +12,7 @@
 ## 2026-10-06
 
 - **src/payload_plaintext/aurora-compute/go.mod** — skipped. KB record reports `error: unparseable` (`errorDetail: "Go module manifest (go.mod); extension .mod is not a recognised source extension — flagged for human review"`). No document generated.
+
+## 2026-10-12
+
+- **src/payload_plaintext/aurora-network/Makefile** — skipped. KB record reports `error: unparseable` (`errorDetail: "GNU Make build script (Makefile); extension not in recognised source-extension list — flagged for human review"`). No document generated.
