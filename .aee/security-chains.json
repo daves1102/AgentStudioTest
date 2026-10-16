@@ -1,0 +1,44 @@
+{
+  "chains": [
+    {
+      "chainId": "chain-001",
+      "source": {
+        "file": "src/nova/accelerator/cyborg.py",
+        "lineRange": { "start": 337, "end": 337 },
+        "kind": "http-param",
+        "description": "arq_uuid accepted from caller (KB entry-point) and interpolated into Cyborg API URL path in get_arq_by_uuid; all callers are in unresolved nova.* modules outside the source set"
+      },
+      "status": "partial",
+      "hops": [],
+      "sink": {
+        "file": "src/nova/accelerator/cyborg.py",
+        "lineRange": { "start": 358, "end": 359 },
+        "kind": "network-send",
+        "description": "HTTP GET /accelerator_requests/{arq_uuid}: arq_uuid is concatenated directly into the URL path via \"/\".join([self.ARQ_URL, arq_uuid]) without any UUID-format or path-character validation visible in this file"
+      },
+      "stoppedAt": {
+        "file": "src/nova/accelerator/cyborg.py",
+        "lineRange": { "start": 337, "end": 337 },
+        "reason": "no-static-edge",
+        "detail": "get_arq_by_uuid is a public method of _CyborgClient, callable via the module-level get_client() factory. All six nova.* imports in cyborg.py are unresolved in the Link Graph (module-not-found); no resolved or file edges point to cyborg.py from within the source set. Callers that supply arq_uuid cannot be traced statically—whether they validate the UUID format before passing it is unknown."
+      },
+      "owaspCategory": "A03 Injection",
+      "cweId": "CWE-74",
+      "severity": "medium",
+      "confidence": "needs_cross_file",
+      "severityUpgradeReason": null,
+      "sanitisationGaps": [
+        "No UUID format check or path-character filtering is visible between the method parameter (line 337) and the HTTP call (lines 358–359) in get_arq_by_uuid. If a caller passes a value containing path-traversal characters (e.g. '../other-endpoint') or query-string metacharacters, the assembled URL will address a different Cyborg API endpoint than intended."
+      ],
+      "notes": "The security finding for this path has confidence 'needs_cross_file', not 'confirmed' or 'probable'. No confirmed or probable taint source exists in the source set. This partial chain is recorded to flag the gap for human review: callers of get_arq_by_uuid (all outside the analysed source set) must validate arq_uuid before the sink can be cleared."
+    }
+  ],
+  "summary": {
+    "confirmedChains": 0,
+    "partialChains": 1,
+    "terminatedChains": 0,
+    "linkGraphEdgesAvailable": 0,
+    "unresolvedImports": 6,
+    "crossComponentSeams": 0
+  }
+}
