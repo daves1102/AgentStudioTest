@@ -1,0 +1,14 @@
+[
+  {
+    "file": "src/nova/accelerator/cyborg.py",
+    "tool": "manual",
+    "ruleId": null,
+    "lineRange": {"start": 358, "end": 359},
+    "title": "Caller-supplied arq_uuid concatenated into Cyborg API URL path without visible validation",
+    "detail": "In get_arq_by_uuid, the arq_uuid parameter received from the caller is interpolated directly into the Cyborg REST API URL path via \"/\".join([self.ARQ_URL, arq_uuid]) (line 359). No UUID format check is visible in this file before the value reaches the HTTP call. If arq_uuid contains path-traversal characters (e.g. '../other-endpoint') or query-string metacharacters (e.g. '?inject=key=val'), the assembled path could address a different Cyborg API endpoint than intended. The KB security-surface record confirms arq_uuid is accepted from the caller and interpolated into the URL path. Whether callers validate the format before invoking this method requires cross-file inspection.",
+    "owaspCategory": "A03 Injection",
+    "cweId": "CWE-74",
+    "severity": "medium",
+    "confidence": "needs_cross_file"
+  }
+]
