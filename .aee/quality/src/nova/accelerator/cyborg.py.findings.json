@@ -1,0 +1,79 @@
+[
+  {
+    "file": "src/nova/accelerator/cyborg.py",
+    "tool": "pylint",
+    "ruleId": "W0718",
+    "lineRange": {"start": 143, "end": 143},
+    "title": "Overly broad `except Exception` in `_call_cyborg` swallows all errors",
+    "detail": "Line 143 catches `Exception`, which is the base of virtually all non-system exceptions. This includes programming errors such as `AttributeError`, `TypeError`, and `MemoryError` that would ordinarily surface a bug. The caught exception is only logged and converted to an `err_msg` string, discarding the original exception type and traceback for all callers. Any caller that does not inspect `err_msg` will silently succeed with a `None` response. Suggested fix: narrow to the specific network/HTTP exception types the SDK raises (e.g. `openstack.exceptions.SDKException`) and re-raise unexpected exceptions.",
+    "category": "error-handling",
+    "severity": "medium",
+    "confidence": "confirmed"
+  },
+  {
+    "file": "src/nova/accelerator/cyborg.py",
+    "tool": "ruff,pylint",
+    "ruleId": "RUF059,W0612",
+    "lineRange": {"start": 282, "end": 282},
+    "title": "Unused `resp` in bind_arqs, delete_arqs_for_instance, delete_arqs_by_uuid (3 occurrences: lines 282, 378, 406)",
+    "detail": "In each of these three methods the return value of `_call_cyborg` is unpacked as `resp, err_msg`, but `resp` is never read. For write/mutating HTTP calls (PATCH, DELETE) a discarded response body is usually intentional, but the dead variable name `resp` misleads readers into thinking the response is inspected. In `delete_arqs_by_uuid` specifically the docstring notes 404 responses can be safely ignored, yet the response is silently dropped in all cases including unexpected errors that the SDK may surface in the body. Suggested fix: use `_resp` or `_` for the throwaway half of the tuple.",
+    "category": "dead-code",
+    "severity": "low",
+    "confidence": "confirmed"
+  },
+  {
+    "file": "src/nova/accelerator/cyborg.py",
+    "tool": "manual",
+    "ruleId": null,
+    "lineRange": {"start": 240, "end": 240},
+    "title": "Unguarded dict key lookup on `rg_rp_map` may raise KeyError at runtime",
+    "detail": "`create_arqs_and_match_resource_providers` (line 240) accesses `rg_rp_map[requester_id][0]` without checking whether `requester_id` is present in the map. If the scheduler returns a request-group / resource-provider map that does not include every `dp_group_id` from the newly created ARQs (e.g. due to a race condition or a mismatched device profile), this raises an unhandled `KeyError`, leaving the freshly created ARQs orphaned. Suggested fix: check for the key's presence and raise an explicit `AcceleratorRequestOpFailed` with a descriptive message rather than letting a raw `KeyError` propagate.",
+    "category": "bug-risk",
+    "severity": "medium",
+    "confidence": "probable"
+  },
+  {
+    "file": "src/nova/accelerator/cyborg.py",
+    "tool": "pylint",
+    "ruleId": "C0116",
+    "lineRange": {"start": 56, "end": 57},
+    "title": "Missing docstrings on public functions `get_client` (line 56) and `get_device_profile_request_groups` (line 88)",
+    "detail": "Both `get_client` and `get_device_profile_request_groups` are public module-level functions with no docstring. The KB record confirms these are exported entry points called from other files in the nova component. Without a docstring callers cannot discover parameter contracts, return types, or expected exceptions from tool tips or generated documentation. Suggested fix: add a one-line (or multi-line) docstring specifying the parameter types, what is returned, and which exceptions may be raised.",
+    "category": "documentation",
+    "severity": "low",
+    "confidence": "confirmed"
+  },
+  {
+    "file": "src/nova/accelerator/cyborg.py",
+    "tool": "ruff",
+    "ruleId": "I001",
+    "lineRange": {"start": 44, "end": 51},
+    "title": "Import block is not sorted (isort order)",
+    "detail": "The stdlib/third-party/first-party import groups are not ordered according to isort conventions: `oslo_log` (third-party) and several `nova` (first-party) imports are interleaved rather than separated into distinct blocks. This is purely a style convention; ruff provides a safe auto-fix. Suggested fix: run `ruff check --fix` or reorder manually to place `oslo_log` before `nova` imports with a blank line between groups.",
+    "category": "style",
+    "severity": "info",
+    "confidence": "confirmed"
+  },
+  {
+    "file": "src/nova/accelerator/cyborg.py",
+    "tool": "ruff,pylint",
+    "ruleId": "UP004,R0205",
+    "lineRange": {"start": 112, "end": 112},
+    "title": "Class `_CyborgClient` explicitly inherits from `object` (Python 2 remnant)",
+    "detail": "In Python 3 all classes implicitly inherit from `object`, making `class _CyborgClient(object):` redundant. This is a Python 2 compatibility pattern that adds visual noise and may give the impression the codebase still targets Python 2. Suggested fix: change to `class _CyborgClient:`.",
+    "category": "style",
+    "severity": "info",
+    "confidence": "confirmed"
+  },
+  {
+    "file": "src/nova/accelerator/cyborg.py",
+    "tool": "ruff,pylint",
+    "ruleId": "UP031,C0209",
+    "lineRange": {"start": 81, "end": 83},
+    "title": "Legacy `%`-style string formatting in `get_arq_pci_device_profile`",
+    "detail": "`'pci_slot': \"%s:%s:%s.%s\" % (...)` on line 81 uses the older `%`-formatting style. The rest of the codebase also uses `%` for i18n strings (which is required by `oslo.i18n`), but for non-translatable literal strings modern Python prefers f-strings for readability. Suggested fix: replace with an f-string `f\"{pci_info['domain']}:{pci_info['bus']}:{pci_info['device']}.{pci_info['function']}\"`.",
+    "category": "style",
+    "severity": "info",
+    "confidence": "confirmed"
+  }
+]
