@@ -1,0 +1,17 @@
+[
+  {
+    "file": "src/nova/utils.py",
+    "tool": "semgrep",
+    "ruleId": "python.lang.security.audit.sha224-hash.sha224-hash",
+    "lineRange": {
+      "start": 869,
+      "end": 869
+    },
+    "title": "SHA-224 used to generate obfuscated host ID \u2014 deprecated in stricter security policies",
+    "detail": "The generate_hostid function (line 857-871) hashes project_id+host using hashlib.sha224 to produce an opaque identifier returned in API responses. SHA-224 is a truncated variant of SHA-256 and is not cryptographically broken; however, NIST SP 800-131Ar2 and some organisational policies disallow SHA-224 for new constructions in favour of SHA-256 or higher. In the same file, get_sha256_str (line 603) already provides a SHA-256 helper that could replace this usage without changing the function's semantics. This is not a password or key-derivation hash \u2014 it serves solely as an obfuscation identifier for API consumers.",
+    "owaspCategory": "A02 Cryptographic Failures",
+    "cweId": "CWE-327",
+    "severity": "low",
+    "confidence": "confirmed"
+  }
+]
