@@ -1,22 +1,22 @@
-Batch: 823b1a433785100533d3a59a54e28407ea51a545
+Batch: 733c737267c89a04a0ad54b304c4e167bd16c887
 
 ## Overview
 
-- **Files to extract** (new/changed, language not OTHER/UNKNOWN): 2
+- **Files to extract** (new/changed, language not OTHER/UNKNOWN): 53
 - **Skipped files** (unchanged or missing): 0
-- **OTHER files** (non-source): 1
+- **OTHER files** (non-source): 0
 
 ## Counts by Language
 
 | Language | Files | Lines of Code | Comments | Blanks |
 |----------|-------|---------------|----------|--------|
-| Python   | 2     | 346           | 26       | 47     |
+| Python   | 53    | 15088         | 3219     | 3777   |
 
 ## Counts by Component
 
 | Component | Files | Lines of Code | Comments | Blanks |
 |-----------|-------|---------------|----------|--------|
-| nova      | 2     | 346           | 26       | 47     |
+| nova      | 53    | 15088         | 3219     | 3777   |
 
 ## UNKNOWN Files — Flagged for Human Review
 
