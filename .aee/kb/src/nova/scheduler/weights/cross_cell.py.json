@@ -1,0 +1,199 @@
+{
+  "file": "src/nova/scheduler/weights/cross_cell.py",
+  "hash": "f8af338fc12f17a997b660adb818dace62a8e3056796a943bf153481d3588da0",
+  "language": "Python",
+  "component": "nova",
+  "package": null,
+  "lines": {
+    "blank": 7,
+    "code": 37,
+    "comment": 19,
+    "total": 63
+  },
+  "symbols": [
+    {
+      "name": "CONF",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 23,
+        "end": 23
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "CrossCellWeigher",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 26,
+        "end": 63
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "weight_multiplier",
+      "kind": "method",
+      "scope": "CrossCellWeigher",
+      "lineRange": {
+        "start": 28,
+        "end": 32
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "host_state"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "utils.get_weight_multiplier( host_state, 'cross_cell_move_weight_multiplier', CONF.filter_scheduler.cross_cell_move_weight_multiplier)",
+          "line": 30
+        }
+      ],
+      "nloc": 4,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "_weigh_object",
+      "kind": "method",
+      "scope": "CrossCellWeigher",
+      "lineRange": {
+        "start": 34,
+        "end": 63
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "host_state"
+        },
+        {
+          "name": "weight_properties"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "1",
+          "line": 59
+        },
+        {
+          "expr": "-1",
+          "line": 61
+        },
+        {
+          "expr": "0",
+          "line": 63
+        }
+      ],
+      "nloc": 11,
+      "ccn": 7,
+      "visibility": "private"
+    }
+  ],
+  "referencedSymbols": [
+    {
+      "name": "weights.BaseHostWeigher",
+      "usage": "inherit",
+      "via": "nova.scheduler",
+      "count": 1,
+      "lineRange": {
+        "start": 26,
+        "end": 26
+      }
+    },
+    {
+      "name": "utils.get_weight_multiplier",
+      "usage": "call",
+      "via": "nova.scheduler",
+      "count": 1,
+      "lineRange": {
+        "start": 30,
+        "end": 30
+      }
+    }
+  ],
+  "dependencies": [
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "conf"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 19,
+        "end": 19
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.scheduler",
+      "names": [
+        {
+          "alias": null,
+          "name": "utils"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 20,
+        "end": 20
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.scheduler",
+      "names": [
+        {
+          "alias": null,
+          "name": "weights"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 21,
+        "end": 21
+      }
+    }
+  ],
+  "sideEffects": [
+    {
+      "kind": "global-mutation",
+      "target": "CONF = conf.CONF",
+      "lineRange": {
+        "start": 23,
+        "end": 23
+      }
+    }
+  ],
+  "securitySurface": [
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "cells are preferred when moving an instance. In other words, select a host",
+      "lineRange": {
+        "start": 15,
+        "end": 15
+      }
+    }
+  ],
+  "injection_flags": [],
+  "warnings": []
+}

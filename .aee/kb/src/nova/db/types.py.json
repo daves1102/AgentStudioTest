@@ -1,0 +1,517 @@
+{
+  "file": "src/nova/db/types.py",
+  "hash": "484d73211c00e3a247d771f2b64213e8c59c1d7144c920d637f6f8840c211641",
+  "language": "Python",
+  "component": "nova",
+  "package": null,
+  "lines": {
+    "blank": 18,
+    "code": 48,
+    "comment": 21,
+    "total": 87
+  },
+  "symbols": [
+    {
+      "name": "MediumText",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 32,
+        "end": 34
+      },
+      "source": "aee-inventory",
+      "parameters": [],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "sa.Text().with_variant( sqlalchemy.dialects.mysql.MEDIUMTEXT(), 'mysql')",
+          "line": 33
+        }
+      ],
+      "nloc": 3,
+      "ccn": 1,
+      "exported": true
+    },
+    {
+      "name": "IPAddress",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 37,
+        "end": 58
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "impl",
+      "kind": "field",
+      "scope": "IPAddress",
+      "lineRange": {
+        "start": 40,
+        "end": 40
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "cache_ok",
+      "kind": "field",
+      "scope": "IPAddress",
+      "lineRange": {
+        "start": 41,
+        "end": 41
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "load_dialect_impl",
+      "kind": "method",
+      "scope": "IPAddress",
+      "lineRange": {
+        "start": 43,
+        "end": 48
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "dialect"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "dialect.type_descriptor( sqlalchemy.dialects.postgresql.INET())",
+          "line": 45
+        },
+        {
+          "expr": "dialect.type_descriptor(types.String(39))",
+          "line": 48
+        }
+      ],
+      "nloc": 5,
+      "ccn": 2,
+      "visibility": "public"
+    },
+    {
+      "name": "process_bind_param",
+      "kind": "method",
+      "scope": "IPAddress",
+      "lineRange": {
+        "start": 50,
+        "end": 58
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "value"
+        },
+        {
+          "name": "dialect"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "value",
+          "line": 53
+        },
+        {
+          "expr": "utils.get_shortened_ipv6(value)",
+          "line": 57
+        },
+        {
+          "expr": "value",
+          "line": 58
+        }
+      ],
+      "nloc": 6,
+      "ccn": 3,
+      "visibility": "public"
+    },
+    {
+      "name": "CIDR",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 61,
+        "end": 87
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "impl",
+      "kind": "field",
+      "scope": "CIDR",
+      "lineRange": {
+        "start": 64,
+        "end": 64
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "cache_ok",
+      "kind": "field",
+      "scope": "CIDR",
+      "lineRange": {
+        "start": 65,
+        "end": 65
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "load_dialect_impl",
+      "kind": "method",
+      "scope": "CIDR",
+      "lineRange": {
+        "start": 67,
+        "end": 72
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "dialect"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "dialect.type_descriptor( sqlalchemy.dialects.postgresql.INET())",
+          "line": 69
+        },
+        {
+          "expr": "dialect.type_descriptor(types.String(43))",
+          "line": 72
+        }
+      ],
+      "nloc": 5,
+      "ccn": 2,
+      "visibility": "public"
+    },
+    {
+      "name": "process_bind_param",
+      "kind": "method",
+      "scope": "CIDR",
+      "lineRange": {
+        "start": 74,
+        "end": 79
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "value"
+        },
+        {
+          "name": "dialect"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "utils.get_shortened_ipv6_cidr(value)",
+          "line": 78
+        },
+        {
+          "expr": "value",
+          "line": 79
+        }
+      ],
+      "nloc": 4,
+      "ccn": 2,
+      "visibility": "public"
+    },
+    {
+      "name": "process_result_value",
+      "kind": "method",
+      "scope": "CIDR",
+      "lineRange": {
+        "start": 81,
+        "end": 87
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "value"
+        },
+        {
+          "name": "dialect"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "str(netaddr.IPNetwork(value, version=4).cidr)",
+          "line": 83
+        },
+        {
+          "expr": "str(netaddr.IPNetwork(value, version=6).cidr)",
+          "line": 85
+        },
+        {
+          "expr": "None",
+          "line": 87
+        }
+      ],
+      "nloc": 7,
+      "ccn": 3,
+      "visibility": "public"
+    }
+  ],
+  "referencedSymbols": [
+    {
+      "name": "sa.Text",
+      "usage": "call",
+      "via": "sqlalchemy",
+      "count": 1,
+      "lineRange": {
+        "start": 33,
+        "end": 33
+      }
+    },
+    {
+      "name": "sqlalchemy.dialects.mysql.MEDIUMTEXT",
+      "usage": "call",
+      "via": "sqlalchemy.dialects.mysql",
+      "count": 1,
+      "lineRange": {
+        "start": 34,
+        "end": 34
+      }
+    },
+    {
+      "name": "types.TypeDecorator",
+      "usage": "inherit",
+      "via": "sqlalchemy",
+      "count": 2,
+      "lineRange": {
+        "start": 37,
+        "end": 37
+      }
+    },
+    {
+      "name": "sqlalchemy.dialects.postgresql.INET",
+      "usage": "call",
+      "via": "sqlalchemy.dialects.mysql",
+      "count": 2,
+      "lineRange": {
+        "start": 46,
+        "end": 46
+      }
+    },
+    {
+      "name": "types.String",
+      "usage": "call",
+      "via": "sqlalchemy",
+      "count": 2,
+      "lineRange": {
+        "start": 48,
+        "end": 48
+      }
+    },
+    {
+      "name": "netutils.is_valid_ipv6",
+      "usage": "call",
+      "via": "oslo_utils",
+      "count": 1,
+      "lineRange": {
+        "start": 56,
+        "end": 56
+      }
+    },
+    {
+      "name": "utils.get_shortened_ipv6",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 57,
+        "end": 57
+      }
+    },
+    {
+      "name": "netutils.is_valid_ipv6_cidr",
+      "usage": "call",
+      "via": "oslo_utils",
+      "count": 1,
+      "lineRange": {
+        "start": 77,
+        "end": 77
+      }
+    },
+    {
+      "name": "utils.get_shortened_ipv6_cidr",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 78,
+        "end": 78
+      }
+    },
+    {
+      "name": "netaddr.IPNetwork",
+      "usage": "call",
+      "via": "netaddr",
+      "count": 2,
+      "lineRange": {
+        "start": 83,
+        "end": 83
+      }
+    },
+    {
+      "name": "str",
+      "usage": "call",
+      "via": null,
+      "count": 2,
+      "lineRange": {
+        "start": 83,
+        "end": 83
+      }
+    }
+  ],
+  "dependencies": [
+    {
+      "style": "import",
+      "module": "netaddr",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 18,
+        "end": 18
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_utils",
+      "names": [
+        {
+          "alias": null,
+          "name": "netutils"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 19,
+        "end": 19
+      }
+    },
+    {
+      "style": "import",
+      "module": "sqlalchemy",
+      "names": [],
+      "alias": "sa",
+      "relative": false,
+      "lineRange": {
+        "start": 20,
+        "end": 20
+      }
+    },
+    {
+      "style": "import",
+      "module": "sqlalchemy.dialects.mysql",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 21,
+        "end": 21
+      }
+    },
+    {
+      "style": "import",
+      "module": "sqlalchemy.dialects.postgresql",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 22,
+        "end": 22
+      }
+    },
+    {
+      "style": "from",
+      "module": "sqlalchemy",
+      "names": [
+        {
+          "alias": null,
+          "name": "types"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 23,
+        "end": 23
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "utils"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 25,
+        "end": 25
+      }
+    }
+  ],
+  "sideEffects": [],
+  "securitySurface": [
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "return sa.Text().with_variant(",
+      "lineRange": {
+        "start": 33,
+        "end": 33
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "\"\"\"Process/Formats the value before insert it into the db.\"\"\"",
+      "lineRange": {
+        "start": 51,
+        "end": 51
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "\"\"\"Process/Formats the value before insert it into the db.\"\"\"",
+      "lineRange": {
+        "start": 75,
+        "end": 75
+      }
+    }
+  ],
+  "injection_flags": [],
+  "warnings": []
+}

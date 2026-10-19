@@ -1,0 +1,152 @@
+{
+  "file": "src/nova/scheduler/filters/type_filter.py",
+  "hash": "9be07b8c8ca36d880efa970d10e8aa3b907dd1c2a964db36b6c1170a16da20b4",
+  "language": "Python",
+  "component": "nova",
+  "package": null,
+  "lines": {
+    "blank": 8,
+    "code": 16,
+    "comment": 17,
+    "total": 41
+  },
+  "symbols": [
+    {
+      "name": "AggregateTypeAffinityFilter",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 21,
+        "end": 41
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "run_filter_once_per_request",
+      "kind": "field",
+      "scope": "AggregateTypeAffinityFilter",
+      "lineRange": {
+        "start": 29,
+        "end": 29
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "RUN_ON_REBUILD",
+      "kind": "constant",
+      "scope": "AggregateTypeAffinityFilter",
+      "lineRange": {
+        "start": 31,
+        "end": 31
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "host_passes",
+      "kind": "method",
+      "scope": "AggregateTypeAffinityFilter",
+      "lineRange": {
+        "start": 33,
+        "end": 41
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "host_state"
+        },
+        {
+          "name": "spec_obj"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "True",
+          "line": 40
+        },
+        {
+          "expr": "not aggregate_vals",
+          "line": 41
+        }
+      ],
+      "nloc": 7,
+      "ccn": 4,
+      "visibility": "public"
+    }
+  ],
+  "referencedSymbols": [
+    {
+      "name": "filters.BaseHostFilter",
+      "usage": "inherit",
+      "via": "nova.scheduler",
+      "count": 1,
+      "lineRange": {
+        "start": 21,
+        "end": 21
+      }
+    },
+    {
+      "name": "utils.aggregate_values_from_key",
+      "usage": "call",
+      "via": "nova.scheduler.filters",
+      "count": 1,
+      "lineRange": {
+        "start": 35,
+        "end": 35
+      }
+    }
+  ],
+  "dependencies": [
+    {
+      "style": "from",
+      "module": "nova.scheduler",
+      "names": [
+        {
+          "alias": null,
+          "name": "filters"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 17,
+        "end": 17
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.scheduler.filters",
+      "names": [
+        {
+          "alias": null,
+          "name": "utils"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 18,
+        "end": 18
+      }
+    }
+  ],
+  "sideEffects": [
+    {
+      "kind": "global-mutation",
+      "target": "RUN_ON_REBUILD = False",
+      "lineRange": {
+        "start": 31,
+        "end": 31
+      }
+    }
+  ],
+  "securitySurface": [],
+  "injection_flags": [],
+  "warnings": []
+}

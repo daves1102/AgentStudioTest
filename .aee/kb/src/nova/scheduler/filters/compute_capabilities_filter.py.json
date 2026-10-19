@@ -1,0 +1,369 @@
+{
+  "file": "src/nova/scheduler/filters/compute_capabilities_filter.py",
+  "hash": "b0e2d06fe1cfb0c649fcdf43b1be245000bfa6c48d93490d422b5c94de580288",
+  "language": "Python",
+  "component": "nova",
+  "package": null,
+  "lines": {
+    "blank": 16,
+    "code": 82,
+    "comment": 25,
+    "total": 123
+  },
+  "symbols": [
+    {
+      "name": "LOG",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 23,
+        "end": 23
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "ComputeCapabilitiesFilter",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 26,
+        "end": 123
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "run_filter_once_per_request",
+      "kind": "field",
+      "scope": "ComputeCapabilitiesFilter",
+      "lineRange": {
+        "start": 30,
+        "end": 30
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "RUN_ON_REBUILD",
+      "kind": "constant",
+      "scope": "ComputeCapabilitiesFilter",
+      "lineRange": {
+        "start": 32,
+        "end": 32
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "_get_capabilities",
+      "kind": "method",
+      "scope": "ComputeCapabilitiesFilter",
+      "lineRange": {
+        "start": 34,
+        "end": 66
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "host_state"
+        },
+        {
+          "name": "scope"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "None",
+          "line": 47
+        },
+        {
+          "expr": "None",
+          "line": 60
+        },
+        {
+          "expr": "None",
+          "line": 65
+        },
+        {
+          "expr": "cap",
+          "line": 66
+        }
+      ],
+      "nloc": 32,
+      "ccn": 8,
+      "visibility": "private"
+    },
+    {
+      "name": "_satisfies_extra_specs",
+      "kind": "method",
+      "scope": "ComputeCapabilitiesFilter",
+      "lineRange": {
+        "start": 68,
+        "end": 114
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "host_state"
+        },
+        {
+          "name": "flavor"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "True",
+          "line": 73
+        },
+        {
+          "expr": "False",
+          "line": 106
+        },
+        {
+          "expr": "False",
+          "line": 113
+        },
+        {
+          "expr": "True",
+          "line": 114
+        }
+      ],
+      "nloc": 30,
+      "ccn": 10,
+      "visibility": "private"
+    },
+    {
+      "name": "host_passes",
+      "kind": "method",
+      "scope": "ComputeCapabilitiesFilter",
+      "lineRange": {
+        "start": 116,
+        "end": 123
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "host_state"
+        },
+        {
+          "name": "spec_obj"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "False",
+          "line": 122
+        },
+        {
+          "expr": "True",
+          "line": 123
+        }
+      ],
+      "nloc": 7,
+      "ccn": 2,
+      "visibility": "public"
+    }
+  ],
+  "referencedSymbols": [
+    {
+      "name": "logging.getLogger",
+      "usage": "call",
+      "via": "oslo_log",
+      "count": 1,
+      "lineRange": {
+        "start": 23,
+        "end": 23
+      }
+    },
+    {
+      "name": "filters.BaseHostFilter",
+      "usage": "inherit",
+      "via": "nova.scheduler",
+      "count": 1,
+      "lineRange": {
+        "start": 26,
+        "end": 26
+      }
+    },
+    {
+      "name": "len",
+      "usage": "call",
+      "via": null,
+      "count": 2,
+      "lineRange": {
+        "start": 36,
+        "end": 36
+      }
+    },
+    {
+      "name": "range",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 36,
+        "end": 36
+      }
+    },
+    {
+      "name": "isinstance",
+      "usage": "call",
+      "via": null,
+      "count": 2,
+      "lineRange": {
+        "start": 38,
+        "end": 38
+      }
+    },
+    {
+      "name": "jsonutils.loads",
+      "usage": "call",
+      "via": "oslo_serialization",
+      "count": 1,
+      "lineRange": {
+        "start": 40,
+        "end": 40
+      }
+    },
+    {
+      "name": "getattr",
+      "usage": "call",
+      "via": null,
+      "count": 3,
+      "lineRange": {
+        "start": 49,
+        "end": 49
+      }
+    },
+    {
+      "name": "hasattr",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 95,
+        "end": 95
+      }
+    },
+    {
+      "name": "extra_specs_ops.match",
+      "usage": "call",
+      "via": "nova.scheduler.filters",
+      "count": 1,
+      "lineRange": {
+        "start": 108,
+        "end": 108
+      }
+    },
+    {
+      "name": "str",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 108,
+        "end": 108
+      }
+    }
+  ],
+  "dependencies": [
+    {
+      "style": "from",
+      "module": "oslo_log",
+      "names": [
+        {
+          "alias": "logging",
+          "name": "log"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 16,
+        "end": 16
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_serialization",
+      "names": [
+        {
+          "alias": null,
+          "name": "jsonutils"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 17,
+        "end": 17
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.scheduler",
+      "names": [
+        {
+          "alias": null,
+          "name": "filters"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 19,
+        "end": 19
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.scheduler.filters",
+      "names": [
+        {
+          "alias": null,
+          "name": "extra_specs_ops"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 20,
+        "end": 20
+      }
+    }
+  ],
+  "sideEffects": [
+    {
+      "kind": "global-mutation",
+      "target": "LOG = logging.getLogger(__name__)",
+      "lineRange": {
+        "start": 23,
+        "end": 23
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "RUN_ON_REBUILD = False",
+      "lineRange": {
+        "start": 32,
+        "end": 32
+      }
+    }
+  ],
+  "securitySurface": [],
+  "injection_flags": [],
+  "warnings": []
+}

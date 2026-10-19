@@ -1,0 +1,219 @@
+{
+  "file": "src/nova/db/api/api.py",
+  "hash": "7daae1fd18713b2d14237638cd218b06a76c0387180f75ec7ff6aaf653ae43f2",
+  "language": "Python",
+  "component": "nova",
+  "package": null,
+  "lines": {
+    "blank": 13,
+    "code": 23,
+    "comment": 14,
+    "total": 50
+  },
+  "symbols": [
+    {
+      "name": "profiler_sqlalchemy",
+      "kind": "variable",
+      "scope": "",
+      "lineRange": {
+        "start": 19,
+        "end": 19
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "CONF",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 21,
+        "end": 21
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "context_manager",
+      "kind": "variable",
+      "scope": "",
+      "lineRange": {
+        "start": 23,
+        "end": 23
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "_get_db_conf",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 30,
+        "end": 34
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "conf_group"
+        },
+        {
+          "default": "None",
+          "name": "connection"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "kw",
+          "line": 34
+        }
+      ],
+      "nloc": 5,
+      "ccn": 2,
+      "exported": false
+    },
+    {
+      "name": "configure",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 37,
+        "end": 46
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "conf"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 9,
+      "ccn": 4,
+      "exported": true
+    },
+    {
+      "name": "get_engine",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 49,
+        "end": 50
+      },
+      "source": "aee-inventory",
+      "parameters": [],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "context_manager.writer.get_engine()",
+          "line": 50
+        }
+      ],
+      "nloc": 2,
+      "ccn": 1,
+      "exported": true
+    }
+  ],
+  "referencedSymbols": [
+    {
+      "name": "importutils.try_import",
+      "usage": "call",
+      "via": "oslo_utils",
+      "count": 1,
+      "lineRange": {
+        "start": 19,
+        "end": 19
+      }
+    },
+    {
+      "name": "enginefacade.transaction_context",
+      "usage": "call",
+      "via": "oslo_db.sqlalchemy",
+      "count": 1,
+      "lineRange": {
+        "start": 23,
+        "end": 23
+      }
+    },
+    {
+      "name": "dict",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 31,
+        "end": 31
+      }
+    }
+  ],
+  "dependencies": [
+    {
+      "style": "from",
+      "module": "oslo_db.sqlalchemy",
+      "names": [
+        {
+          "alias": null,
+          "name": "enginefacade"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 13,
+        "end": 13
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_utils",
+      "names": [
+        {
+          "alias": null,
+          "name": "importutils"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 14,
+        "end": 14
+      }
+    },
+    {
+      "style": "import",
+      "module": "sqlalchemy",
+      "names": [],
+      "alias": "sa",
+      "relative": false,
+      "lineRange": {
+        "start": 15,
+        "end": 15
+      }
+    },
+    {
+      "style": "import",
+      "module": "nova.conf",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 17,
+        "end": 17
+      }
+    }
+  ],
+  "sideEffects": [
+    {
+      "kind": "global-mutation",
+      "target": "CONF = nova.conf.CONF",
+      "lineRange": {
+        "start": 21,
+        "end": 21
+      }
+    }
+  ],
+  "securitySurface": [],
+  "injection_flags": [],
+  "warnings": []
+}

@@ -1,0 +1,286 @@
+{
+  "file": "src/nova/scheduler/filters/utils.py",
+  "hash": "389a646e243125501298a0e99637de7218bdb5c94ae313968cdae43e2699a850",
+  "language": "Python",
+  "component": "nova",
+  "package": null,
+  "lines": {
+    "blank": 16,
+    "code": 52,
+    "comment": 14,
+    "total": 82
+  },
+  "symbols": [
+    {
+      "name": "LOG",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 21,
+        "end": 21
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "aggregate_values_from_key",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 24,
+        "end": 30
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "host_state"
+        },
+        {
+          "name": "key_name"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "{aggr.metadata[key_name] for aggr in aggrlist if key_name in aggr.metadata }",
+          "line": 27
+        }
+      ],
+      "nloc": 6,
+      "ccn": 3,
+      "exported": true
+    },
+    {
+      "name": "aggregate_metadata_get_by_host",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 33,
+        "end": 43
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "host_state"
+        },
+        {
+          "default": "None",
+          "name": "key"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "metadata",
+          "line": 43
+        }
+      ],
+      "nloc": 8,
+      "ccn": 6,
+      "exported": true
+    },
+    {
+      "name": "validate_num_values",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 46,
+        "end": 68
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "vals"
+        },
+        {
+          "default": "None",
+          "name": "default"
+        },
+        {
+          "default": "int",
+          "name": "cast_to"
+        },
+        {
+          "default": "min",
+          "name": "based_on"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "default",
+          "line": 57
+        },
+        {
+          "expr": "based_on([cast_to(val) for val in vals])",
+          "line": 68
+        }
+      ],
+      "nloc": 14,
+      "ccn": 5,
+      "exported": true
+    },
+    {
+      "name": "instance_uuids_overlap",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 71,
+        "end": 82
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "host_state"
+        },
+        {
+          "name": "uuids"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "bool(host_uuids.intersection(set_uuids))",
+          "line": 82
+        }
+      ],
+      "nloc": 6,
+      "ccn": 2,
+      "exported": true
+    }
+  ],
+  "referencedSymbols": [
+    {
+      "name": "logging.getLogger",
+      "usage": "call",
+      "via": "oslo_log",
+      "count": 1,
+      "lineRange": {
+        "start": 21,
+        "end": 21
+      }
+    },
+    {
+      "name": "collections.defaultdict",
+      "usage": "call",
+      "via": "collections",
+      "count": 1,
+      "lineRange": {
+        "start": 38,
+        "end": 38
+      }
+    },
+    {
+      "name": "len",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 55,
+        "end": 55
+      }
+    },
+    {
+      "name": "based_on",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 68,
+        "end": 68
+      }
+    },
+    {
+      "name": "cast_to",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 68,
+        "end": 68
+      }
+    },
+    {
+      "name": "isinstance",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 77,
+        "end": 77
+      }
+    },
+    {
+      "name": "set",
+      "usage": "call",
+      "via": null,
+      "count": 2,
+      "lineRange": {
+        "start": 79,
+        "end": 79
+      }
+    },
+    {
+      "name": "bool",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 82,
+        "end": 82
+      }
+    }
+  ],
+  "dependencies": [
+    {
+      "style": "import",
+      "module": "collections",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 17,
+        "end": 17
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_log",
+      "names": [
+        {
+          "alias": "logging",
+          "name": "log"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 19,
+        "end": 19
+      }
+    }
+  ],
+  "sideEffects": [
+    {
+      "kind": "global-mutation",
+      "target": "LOG = logging.getLogger(__name__)",
+      "lineRange": {
+        "start": 21,
+        "end": 21
+      }
+    }
+  ],
+  "securitySurface": [
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "metadata[k].update(x.strip() for x in v.split(','))",
+      "lineRange": {
+        "start": 42,
+        "end": 42
+      }
+    }
+  ],
+  "injection_flags": [],
+  "warnings": []
+}

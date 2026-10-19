@@ -1,0 +1,1640 @@
+{
+  "file": "src/nova/scheduler/manager.py",
+  "hash": "b71702390dedd0c9ef147b52c454aa55941c1997cac6197bbf4d99cb35f708cb",
+  "language": "Python",
+  "component": "nova",
+  "package": null,
+  "lines": {
+    "blank": 102,
+    "code": 511,
+    "comment": 225,
+    "total": 838
+  },
+  "symbols": [
+    {
+      "name": "CONF",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 50,
+        "end": 50
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "LOG",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 51,
+        "end": 51
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "QUOTAS",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 53,
+        "end": 53
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "HOST_MAPPING_EXISTS_WARNING",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 55,
+        "end": 55
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "SchedulerManager",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 58,
+        "end": 838
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "target",
+      "kind": "field",
+      "scope": "SchedulerManager",
+      "lineRange": {
+        "start": 65,
+        "end": 65
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "_sentinel",
+      "kind": "field",
+      "scope": "SchedulerManager",
+      "lineRange": {
+        "start": 67,
+        "end": 67
+      },
+      "source": "aee-inventory",
+      "visibility": "private"
+    },
+    {
+      "name": "__init__",
+      "kind": "method",
+      "scope": "SchedulerManager",
+      "lineRange": {
+        "start": 69,
+        "end": 102
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "*args"
+        },
+        {
+          "name": "**kwargs"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 23,
+      "ccn": 4,
+      "visibility": "public"
+    },
+    {
+      "name": "placement_client",
+      "kind": "method",
+      "scope": "SchedulerManager",
+      "lineRange": {
+        "start": 105,
+        "end": 106
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "report.report_client_singleton()",
+          "line": 106
+        }
+      ],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "_discover_hosts_in_cells",
+      "kind": "method",
+      "scope": "SchedulerManager",
+      "lineRange": {
+        "start": 111,
+        "end": 147
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "context"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "",
+          "line": 122
+        }
+      ],
+      "nloc": 35,
+      "ccn": 8,
+      "visibility": "private"
+    },
+    {
+      "name": "reset",
+      "kind": "method",
+      "scope": "SchedulerManager",
+      "lineRange": {
+        "start": 149,
+        "end": 157
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "graceful_shutdown",
+      "kind": "method",
+      "scope": "SchedulerManager",
+      "lineRange": {
+        "start": 159,
+        "end": 185
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "timeout"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 14,
+      "ccn": 2,
+      "visibility": "public"
+    },
+    {
+      "name": "select_destinations",
+      "kind": "method",
+      "scope": "SchedulerManager",
+      "lineRange": {
+        "start": 188,
+        "end": 307
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "context"
+        },
+        {
+          "default": "None",
+          "name": "request_spec"
+        },
+        {
+          "default": "None",
+          "name": "filter_properties"
+        },
+        {
+          "default": "_sentinel",
+          "name": "spec_obj"
+        },
+        {
+          "default": "None",
+          "name": "instance_uuids"
+        },
+        {
+          "default": "False",
+          "name": "return_objects"
+        },
+        {
+          "default": "False",
+          "name": "return_alternates"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "jsonutils.to_primitive(selection_dicts)",
+          "line": 305
+        },
+        {
+          "expr": "selections",
+          "line": 307
+        }
+      ],
+      "nloc": 63,
+      "ccn": 16,
+      "visibility": "public"
+    },
+    {
+      "name": "_select_destinations",
+      "kind": "method",
+      "scope": "SchedulerManager",
+      "lineRange": {
+        "start": 309,
+        "end": 337
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "context"
+        },
+        {
+          "name": "spec_obj"
+        },
+        {
+          "name": "instance_uuids"
+        },
+        {
+          "name": "alloc_reqs_by_rp_uuid"
+        },
+        {
+          "name": "provider_summaries"
+        },
+        {
+          "default": "None",
+          "name": "allocation_request_version"
+        },
+        {
+          "default": "False",
+          "name": "return_alternates"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "selections",
+          "line": 337
+        }
+      ],
+      "nloc": 24,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "_schedule",
+      "kind": "method",
+      "scope": "SchedulerManager",
+      "lineRange": {
+        "start": 339,
+        "end": 540
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "context"
+        },
+        {
+          "name": "spec_obj"
+        },
+        {
+          "name": "instance_uuids"
+        },
+        {
+          "name": "alloc_reqs_by_rp_uuid"
+        },
+        {
+          "name": "provider_summaries"
+        },
+        {
+          "default": "None",
+          "name": "allocation_request_version"
+        },
+        {
+          "default": "False",
+          "name": "return_alternates"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "self._legacy_find_hosts( context, num_instances, spec_obj, hosts, num_alts, instance_uuids=instance_uuids)",
+          "line": 433
+        },
+        {
+          "expr": "self._get_alternate_hosts( claimed_hosts, spec_obj, hosts, num, num_alts, alloc_reqs_by_rp_uuid, allocation_request_version, claimed_alloc_reqs, )",
+          "line": 531
+        }
+      ],
+      "nloc": 67,
+      "ccn": 13,
+      "visibility": "private"
+    },
+    {
+      "name": "hosts_with_alloc_reqs",
+      "kind": "function",
+      "scope": "SchedulerManager._schedule",
+      "lineRange": {
+        "start": 376,
+        "end": 383
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "hosts_gen"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "visibility": "public"
+    },
+    {
+      "name": "_ensure_sufficient_hosts",
+      "kind": "method",
+      "scope": "SchedulerManager",
+      "lineRange": {
+        "start": 542,
+        "end": 572
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "context"
+        },
+        {
+          "name": "hosts"
+        },
+        {
+          "name": "required_count"
+        },
+        {
+          "default": "None",
+          "name": "claimed_uuids"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "",
+          "line": 551
+        }
+      ],
+      "nloc": 15,
+      "ccn": 4,
+      "visibility": "private"
+    },
+    {
+      "name": "_cleanup_allocations",
+      "kind": "method",
+      "scope": "SchedulerManager",
+      "lineRange": {
+        "start": 574,
+        "end": 582
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "context"
+        },
+        {
+          "name": "instance_uuids"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "",
+          "line": 577
+        }
+      ],
+      "nloc": 7,
+      "ccn": 3,
+      "visibility": "private"
+    },
+    {
+      "name": "_legacy_find_hosts",
+      "kind": "method",
+      "scope": "SchedulerManager",
+      "lineRange": {
+        "start": 584,
+        "end": 626
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "context"
+        },
+        {
+          "name": "num_instances"
+        },
+        {
+          "name": "spec_obj"
+        },
+        {
+          "name": "hosts"
+        },
+        {
+          "name": "num_alts"
+        },
+        {
+          "default": "None",
+          "name": "instance_uuids"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "self._get_alternate_hosts( selected_hosts, spec_obj, hosts, num, num_alts)",
+          "line": 625
+        }
+      ],
+      "nloc": 20,
+      "ccn": 5,
+      "visibility": "private"
+    },
+    {
+      "name": "_consume_selected_host",
+      "kind": "method",
+      "scope": "SchedulerManager",
+      "lineRange": {
+        "start": 629,
+        "end": 647
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "selected_host"
+        },
+        {
+          "name": "spec_obj"
+        },
+        {
+          "default": "None",
+          "name": "instance_uuid"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 11,
+      "ccn": 4,
+      "visibility": "private"
+    },
+    {
+      "name": "_get_alternate_hosts",
+      "kind": "method",
+      "scope": "SchedulerManager",
+      "lineRange": {
+        "start": 649,
+        "end": 738
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "selected_hosts"
+        },
+        {
+          "name": "spec_obj"
+        },
+        {
+          "name": "hosts"
+        },
+        {
+          "name": "index"
+        },
+        {
+          "name": "num_alts"
+        },
+        {
+          "default": "None",
+          "name": "alloc_reqs_by_rp_uuid"
+        },
+        {
+          "default": "None",
+          "name": "allocation_request_version"
+        },
+        {
+          "default": "None",
+          "name": "selected_alloc_reqs"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "selections_to_return",
+          "line": 738
+        }
+      ],
+      "nloc": 38,
+      "ccn": 11,
+      "visibility": "private"
+    },
+    {
+      "name": "_get_sorted_hosts",
+      "kind": "method",
+      "scope": "SchedulerManager",
+      "lineRange": {
+        "start": 740,
+        "end": 785
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "spec_obj"
+        },
+        {
+          "name": "host_states"
+        },
+        {
+          "name": "index"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "[]",
+          "line": 751
+        },
+        {
+          "expr": "[chosen_host] + weighed_hosts",
+          "line": 785
+        }
+      ],
+      "nloc": 25,
+      "ccn": 7,
+      "visibility": "private"
+    },
+    {
+      "name": "_get_all_host_states",
+      "kind": "method",
+      "scope": "SchedulerManager",
+      "lineRange": {
+        "start": 787,
+        "end": 798
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "context"
+        },
+        {
+          "name": "spec_obj"
+        },
+        {
+          "name": "provider_summaries"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "self.host_manager.get_host_states_by_uuids( context, compute_uuids, spec_obj)",
+          "line": 797
+        }
+      ],
+      "nloc": 6,
+      "ccn": 2,
+      "visibility": "private"
+    },
+    {
+      "name": "update_aggregates",
+      "kind": "method",
+      "scope": "SchedulerManager",
+      "lineRange": {
+        "start": 800,
+        "end": 808
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "ctxt"
+        },
+        {
+          "name": "aggregates"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "delete_aggregate",
+      "kind": "method",
+      "scope": "SchedulerManager",
+      "lineRange": {
+        "start": 810,
+        "end": 817
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "ctxt"
+        },
+        {
+          "name": "aggregate"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "update_instance_info",
+      "kind": "method",
+      "scope": "SchedulerManager",
+      "lineRange": {
+        "start": 819,
+        "end": 824
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "context"
+        },
+        {
+          "name": "host_name"
+        },
+        {
+          "name": "instance_info"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 3,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "delete_instance_info",
+      "kind": "method",
+      "scope": "SchedulerManager",
+      "lineRange": {
+        "start": 826,
+        "end": 831
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "context"
+        },
+        {
+          "name": "host_name"
+        },
+        {
+          "name": "instance_uuid"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 3,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "sync_instance_info",
+      "kind": "method",
+      "scope": "SchedulerManager",
+      "lineRange": {
+        "start": 833,
+        "end": 838
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "context"
+        },
+        {
+          "name": "host_name"
+        },
+        {
+          "name": "instance_uuids"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 3,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "placement_client",
+      "kind": "property",
+      "scope": "SchedulerManager",
+      "lineRange": {
+        "start": 104,
+        "end": 106
+      },
+      "visibility": "public",
+      "source": "manual"
+    }
+  ],
+  "referencedSymbols": [
+    {
+      "name": "logging.getLogger",
+      "usage": "call",
+      "via": "oslo_log",
+      "count": 1,
+      "lineRange": {
+        "start": 51,
+        "end": 51
+      }
+    },
+    {
+      "name": "manager.Manager",
+      "usage": "inherit",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 58,
+        "end": 58
+      }
+    },
+    {
+      "name": "messaging.Target",
+      "usage": "call",
+      "via": "oslo_messaging",
+      "count": 1,
+      "lineRange": {
+        "start": 65,
+        "end": 65
+      }
+    },
+    {
+      "name": "object",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 67,
+        "end": 67
+      }
+    },
+    {
+      "name": "host_manager.HostManager",
+      "usage": "call",
+      "via": "nova.scheduler",
+      "count": 1,
+      "lineRange": {
+        "start": 70,
+        "end": 70
+      }
+    },
+    {
+      "name": "servicegroup.API",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 71,
+        "end": 71
+      }
+    },
+    {
+      "name": "rpc.get_notifier",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 72,
+        "end": 72
+      }
+    },
+    {
+      "name": "super",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 102,
+        "end": 102
+      }
+    },
+    {
+      "name": "report.report_client_singleton",
+      "usage": "call",
+      "via": "nova.scheduler.client",
+      "count": 1,
+      "lineRange": {
+        "start": 106,
+        "end": 106
+      }
+    },
+    {
+      "name": "periodic_task.periodic_task",
+      "usage": "call",
+      "via": "oslo_service",
+      "count": 1,
+      "lineRange": {
+        "start": 108,
+        "end": 108
+      }
+    },
+    {
+      "name": "obj_service.ServiceList.get_by_binary",
+      "usage": "call",
+      "via": "nova.objects",
+      "count": 1,
+      "lineRange": {
+        "start": 112,
+        "end": 112
+      }
+    },
+    {
+      "name": "sorted",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 114,
+        "end": 114
+      }
+    },
+    {
+      "name": "host_mapping_obj.discover_hosts",
+      "usage": "call",
+      "via": "nova.objects",
+      "count": 1,
+      "lineRange": {
+        "start": 126,
+        "end": 126
+      }
+    },
+    {
+      "name": "len",
+      "usage": "call",
+      "via": null,
+      "count": 7,
+      "lineRange": {
+        "start": 131,
+        "end": 131
+      }
+    },
+    {
+      "name": "str",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 141,
+        "end": 141
+      }
+    },
+    {
+      "name": "min",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 172,
+        "end": 172
+      }
+    },
+    {
+      "name": "max",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 173,
+        "end": 173
+      }
+    },
+    {
+      "name": "thread_pool_factory.shutdown_all_executors",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 181,
+        "end": 181
+      }
+    },
+    {
+      "name": "messaging.expected_exceptions",
+      "usage": "call",
+      "via": "oslo_messaging",
+      "count": 1,
+      "lineRange": {
+        "start": 187,
+        "end": 187
+      }
+    },
+    {
+      "name": "objects.RequestSpec.from_primitives",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 220,
+        "end": 220
+      }
+    },
+    {
+      "name": "utils.request_is_rebuild",
+      "usage": "call",
+      "via": "nova.scheduler",
+      "count": 1,
+      "lineRange": {
+        "start": 223,
+        "end": 223
+      }
+    },
+    {
+      "name": "request_filter.process_reqspec",
+      "usage": "call",
+      "via": "nova.scheduler",
+      "count": 1,
+      "lineRange": {
+        "start": 228,
+        "end": 228
+      }
+    },
+    {
+      "name": "exception.NoValidHost",
+      "usage": "call",
+      "via": "nova",
+      "count": 3,
+      "lineRange": {
+        "start": 230,
+        "end": 230
+      }
+    },
+    {
+      "name": "utils.resources_from_request_spec",
+      "usage": "call",
+      "via": "nova.scheduler",
+      "count": 2,
+      "lineRange": {
+        "start": 232,
+        "end": 232
+      }
+    },
+    {
+      "name": "collections.defaultdict",
+      "usage": "call",
+      "via": "collections",
+      "count": 1,
+      "lineRange": {
+        "start": 288,
+        "end": 288
+      }
+    },
+    {
+      "name": "jsonutils.to_primitive",
+      "usage": "call",
+      "via": "oslo_serialization",
+      "count": 1,
+      "lineRange": {
+        "start": 305,
+        "end": 305
+      }
+    },
+    {
+      "name": "compute_utils.notify_about_scheduler_action",
+      "usage": "call",
+      "via": "nova.compute",
+      "count": 2,
+      "lineRange": {
+        "start": 317,
+        "end": 317
+      }
+    },
+    {
+      "name": "copy.deepcopy",
+      "usage": "call",
+      "via": "copy",
+      "count": 1,
+      "lineRange": {
+        "start": 381,
+        "end": 381
+      }
+    },
+    {
+      "name": "enumerate",
+      "usage": "call",
+      "via": null,
+      "count": 2,
+      "lineRange": {
+        "start": 449,
+        "end": 449
+      }
+    },
+    {
+      "name": "utils.claim_resources",
+      "usage": "call",
+      "via": "nova.scheduler",
+      "count": 1,
+      "lineRange": {
+        "start": 489,
+        "end": 489
+      }
+    },
+    {
+      "name": "_",
+      "usage": "call",
+      "via": "nova.i18n",
+      "count": 1,
+      "lineRange": {
+        "start": 571,
+        "end": 571
+      }
+    },
+    {
+      "name": "range",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 597,
+        "end": 597
+      }
+    },
+    {
+      "name": "objects.Instance",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 646,
+        "end": 646
+      }
+    },
+    {
+      "name": "objects.Selection.from_host_state",
+      "usage": "call",
+      "via": "nova",
+      "count": 3,
+      "lineRange": {
+        "start": 687,
+        "end": 687
+      }
+    },
+    {
+      "name": "random.shuffle",
+      "usage": "call",
+      "via": "random",
+      "count": 1,
+      "lineRange": {
+        "start": 765,
+        "end": 765
+      }
+    },
+    {
+      "name": "random.choice",
+      "usage": "call",
+      "via": "random",
+      "count": 1,
+      "lineRange": {
+        "start": 783,
+        "end": 783
+      }
+    },
+    {
+      "name": "list",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 796,
+        "end": 796
+      }
+    }
+  ],
+  "dependencies": [
+    {
+      "style": "import",
+      "module": "collections",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 22,
+        "end": 22
+      }
+    },
+    {
+      "style": "import",
+      "module": "copy",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 23,
+        "end": 23
+      }
+    },
+    {
+      "style": "import",
+      "module": "random",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 24,
+        "end": 24
+      }
+    },
+    {
+      "style": "from",
+      "module": "keystoneauth1",
+      "names": [
+        {
+          "alias": "ks_exc",
+          "name": "exceptions"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 26,
+        "end": 26
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_log",
+      "names": [
+        {
+          "alias": "logging",
+          "name": "log"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 27,
+        "end": 27
+      }
+    },
+    {
+      "style": "import",
+      "module": "oslo_messaging",
+      "names": [],
+      "alias": "messaging",
+      "relative": false,
+      "lineRange": {
+        "start": 28,
+        "end": 28
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_serialization",
+      "names": [
+        {
+          "alias": null,
+          "name": "jsonutils"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 29,
+        "end": 29
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_service",
+      "names": [
+        {
+          "alias": null,
+          "name": "periodic_task"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 30,
+        "end": 30
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.compute",
+      "names": [
+        {
+          "alias": "compute_utils",
+          "name": "utils"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 32,
+        "end": 32
+      }
+    },
+    {
+      "style": "import",
+      "module": "nova.conf",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 33,
+        "end": 33
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "exception"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 34,
+        "end": 34
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.i18n",
+      "names": [
+        {
+          "alias": null,
+          "name": "_"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 35,
+        "end": 35
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "manager"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 36,
+        "end": 36
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "objects"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 37,
+        "end": 37
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.objects",
+      "names": [
+        {
+          "alias": "fields_obj",
+          "name": "fields"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 38,
+        "end": 38
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.objects",
+      "names": [
+        {
+          "alias": "host_mapping_obj",
+          "name": "host_mapping"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 39,
+        "end": 39
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.objects",
+      "names": [
+        {
+          "alias": "obj_service",
+          "name": "service"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 40,
+        "end": 40
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "quota"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 41,
+        "end": 41
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "rpc"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 42,
+        "end": 42
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.scheduler.client",
+      "names": [
+        {
+          "alias": null,
+          "name": "report"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 43,
+        "end": 43
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.scheduler",
+      "names": [
+        {
+          "alias": null,
+          "name": "host_manager"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 44,
+        "end": 44
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.scheduler",
+      "names": [
+        {
+          "alias": null,
+          "name": "request_filter"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 45,
+        "end": 45
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.scheduler",
+      "names": [
+        {
+          "alias": null,
+          "name": "utils"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 46,
+        "end": 46
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "servicegroup"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 47,
+        "end": 47
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "thread_pool_factory"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 48,
+        "end": 48
+      }
+    }
+  ],
+  "sideEffects": [
+    {
+      "kind": "network",
+      "target": "res = self.placement_client.get_allocation_candidates(",
+      "lineRange": {
+        "start": 235,
+        "end": 235
+      }
+    },
+    {
+      "kind": "network",
+      "target": "res = self.placement_client.get_allocation_candidates(",
+      "lineRange": {
+        "start": 267,
+        "end": 267
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "CONF = nova.conf.CONF",
+      "lineRange": {
+        "start": 50,
+        "end": 50
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "LOG = logging.getLogger(__name__)",
+      "lineRange": {
+        "start": 51,
+        "end": 51
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "QUOTAS = quota.QUOTAS",
+      "lineRange": {
+        "start": 53,
+        "end": 53
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "HOST_MAPPING_EXISTS_WARNING = False",
+      "lineRange": {
+        "start": 55,
+        "end": 55
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "HOST_MAPPING_EXISTS_WARNING = True",
+      "lineRange": {
+        "start": 145,
+        "end": 145
+      }
+    }
+  ],
+  "securitySurface": [
+    {
+      "kind": "privilege",
+      "category": "crypto-key",
+      "description": "from keystoneauth1 import exceptions as ks_exc",
+      "lineRange": {
+        "start": 26,
+        "end": 26
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "provider_summaries.update(provider_summaries_fallback)",
+      "lineRange": {
+        "start": 275,
+        "end": 275
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": ":param aggregates: Aggregate(s) to update",
+      "lineRange": {
+        "start": 803,
+        "end": 803
+      }
+    }
+  ],
+  "injection_flags": [],
+  "warnings": []
+}
