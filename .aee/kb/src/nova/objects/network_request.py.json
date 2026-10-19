@@ -1,0 +1,648 @@
+{
+  "file": "src/nova/objects/network_request.py",
+  "hash": "a56ed82b884a0eb9e538bc5b9932bf263e1017b9223b1f7fb738e290b47538f5",
+  "language": "Python",
+  "component": "nova",
+  "package": null,
+  "lines": {
+    "blank": 21,
+    "code": 77,
+    "comment": 25,
+    "total": 123
+  },
+  "symbols": [
+    {
+      "name": "NETWORK_ID_NONE",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 25,
+        "end": 25
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "NETWORK_ID_AUTO",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 26,
+        "end": 26
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "__all__",
+      "kind": "variable",
+      "scope": "",
+      "lineRange": {
+        "start": 28,
+        "end": 31
+      },
+      "source": "aee-inventory",
+      "exported": false
+    },
+    {
+      "name": "NetworkRequest",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 35,
+        "end": 86
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "VERSION",
+      "kind": "constant",
+      "scope": "NetworkRequest",
+      "lineRange": {
+        "start": 40,
+        "end": 40
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "fields",
+      "kind": "field",
+      "scope": "NetworkRequest",
+      "lineRange": {
+        "start": 41,
+        "end": 52
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "obj_make_compatible",
+      "kind": "method",
+      "scope": "NetworkRequest",
+      "lineRange": {
+        "start": 54,
+        "end": 61
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "primitive"
+        },
+        {
+          "name": "target_version"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 8,
+      "ccn": 7,
+      "visibility": "public"
+    },
+    {
+      "name": "obj_load_attr",
+      "kind": "method",
+      "scope": "NetworkRequest",
+      "lineRange": {
+        "start": 63,
+        "end": 64
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "attr"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "to_tuple",
+      "kind": "method",
+      "scope": "NetworkRequest",
+      "lineRange": {
+        "start": 66,
+        "end": 69
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "(self.network_id, address, self.port_id, self.pci_request_id, self.arq_uuid, self.device_profile)",
+          "line": 68
+        }
+      ],
+      "nloc": 4,
+      "ccn": 2,
+      "visibility": "public"
+    },
+    {
+      "name": "from_tuple",
+      "kind": "method",
+      "scope": "NetworkRequest",
+      "lineRange": {
+        "start": 72,
+        "end": 78
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "cls"
+        },
+        {
+          "name": "net_tuple"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "cls(network_id=network_id, address=address, port_id=port_id, pci_request_id=pci_request_id, arq_uuid=arq_uuid, device_profile=device_profile)",
+          "line": 75
+        }
+      ],
+      "nloc": 7,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "auto_allocate",
+      "kind": "method",
+      "scope": "NetworkRequest",
+      "lineRange": {
+        "start": 81,
+        "end": 82
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "self.network_id == NETWORK_ID_AUTO",
+          "line": 82
+        }
+      ],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "no_allocate",
+      "kind": "method",
+      "scope": "NetworkRequest",
+      "lineRange": {
+        "start": 85,
+        "end": 86
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "self.network_id == NETWORK_ID_NONE",
+          "line": 86
+        }
+      ],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "NetworkRequestList",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 90,
+        "end": 123
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "fields",
+      "kind": "field",
+      "scope": "NetworkRequestList",
+      "lineRange": {
+        "start": 91,
+        "end": 93
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "VERSION",
+      "kind": "constant",
+      "scope": "NetworkRequestList",
+      "lineRange": {
+        "start": 95,
+        "end": 95
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "as_tuples",
+      "kind": "method",
+      "scope": "NetworkRequestList",
+      "lineRange": {
+        "start": 97,
+        "end": 98
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "[x.to_tuple() for x in self.objects]",
+          "line": 98
+        }
+      ],
+      "nloc": 2,
+      "ccn": 2,
+      "visibility": "public"
+    },
+    {
+      "name": "from_tuples",
+      "kind": "method",
+      "scope": "NetworkRequestList",
+      "lineRange": {
+        "start": 101,
+        "end": 110
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "cls"
+        },
+        {
+          "name": "net_tuples"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "requested_networks",
+          "line": 110
+        }
+      ],
+      "nloc": 4,
+      "ccn": 2,
+      "visibility": "public"
+    },
+    {
+      "name": "is_single_unspecified",
+      "kind": "method",
+      "scope": "NetworkRequestList",
+      "lineRange": {
+        "start": 113,
+        "end": 115
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "((len(self.objects) == 1) and (self.objects[0].to_tuple() == NetworkRequest().to_tuple()))",
+          "line": 114
+        }
+      ],
+      "nloc": 3,
+      "ccn": 2,
+      "visibility": "public"
+    },
+    {
+      "name": "auto_allocate",
+      "kind": "method",
+      "scope": "NetworkRequestList",
+      "lineRange": {
+        "start": 118,
+        "end": 119
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "len(self.objects) == 1 and self.objects[0].auto_allocate",
+          "line": 119
+        }
+      ],
+      "nloc": 2,
+      "ccn": 2,
+      "visibility": "public"
+    },
+    {
+      "name": "no_allocate",
+      "kind": "method",
+      "scope": "NetworkRequestList",
+      "lineRange": {
+        "start": 122,
+        "end": 123
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "len(self.objects) == 1 and self.objects[0].no_allocate",
+          "line": 123
+        }
+      ],
+      "nloc": 2,
+      "ccn": 2,
+      "visibility": "public"
+    },
+    {
+      "name": "auto_allocate",
+      "kind": "property",
+      "scope": "NetworkRequest",
+      "lineRange": {
+        "start": 80,
+        "end": 82
+      },
+      "visibility": "public",
+      "source": "manual"
+    },
+    {
+      "name": "no_allocate",
+      "kind": "property",
+      "scope": "NetworkRequest",
+      "lineRange": {
+        "start": 84,
+        "end": 86
+      },
+      "visibility": "public",
+      "source": "manual"
+    },
+    {
+      "name": "is_single_unspecified",
+      "kind": "property",
+      "scope": "NetworkRequestList",
+      "lineRange": {
+        "start": 112,
+        "end": 115
+      },
+      "visibility": "public",
+      "source": "manual"
+    },
+    {
+      "name": "auto_allocate",
+      "kind": "property",
+      "scope": "NetworkRequestList",
+      "lineRange": {
+        "start": 117,
+        "end": 119
+      },
+      "visibility": "public",
+      "source": "manual"
+    },
+    {
+      "name": "no_allocate",
+      "kind": "property",
+      "scope": "NetworkRequestList",
+      "lineRange": {
+        "start": 121,
+        "end": 123
+      },
+      "visibility": "public",
+      "source": "manual"
+    }
+  ],
+  "referencedSymbols": [
+    {
+      "name": "obj_base.NovaObject",
+      "usage": "inherit",
+      "via": "nova.objects",
+      "count": 2,
+      "lineRange": {
+        "start": 35,
+        "end": 35
+      }
+    },
+    {
+      "name": "fields.StringField",
+      "usage": "call",
+      "via": "nova.objects",
+      "count": 3,
+      "lineRange": {
+        "start": 42,
+        "end": 42
+      }
+    },
+    {
+      "name": "fields.IPAddressField",
+      "usage": "call",
+      "via": "nova.objects",
+      "count": 1,
+      "lineRange": {
+        "start": 43,
+        "end": 43
+      }
+    },
+    {
+      "name": "fields.UUIDField",
+      "usage": "call",
+      "via": "nova.objects",
+      "count": 3,
+      "lineRange": {
+        "start": 44,
+        "end": 44
+      }
+    },
+    {
+      "name": "versionutils.convert_version_to_tuple",
+      "usage": "call",
+      "via": "oslo_utils",
+      "count": 1,
+      "lineRange": {
+        "start": 55,
+        "end": 55
+      }
+    },
+    {
+      "name": "setattr",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 64,
+        "end": 64
+      }
+    },
+    {
+      "name": "str",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 67,
+        "end": 67
+      }
+    },
+    {
+      "name": "cls",
+      "usage": "call",
+      "via": null,
+      "count": 2,
+      "lineRange": {
+        "start": 75,
+        "end": 75
+      }
+    },
+    {
+      "name": "obj_base.ObjectListBase",
+      "usage": "inherit",
+      "via": "nova.objects",
+      "count": 1,
+      "lineRange": {
+        "start": 90,
+        "end": 90
+      }
+    },
+    {
+      "name": "fields.ListOfObjectsField",
+      "usage": "call",
+      "via": "nova.objects",
+      "count": 1,
+      "lineRange": {
+        "start": 92,
+        "end": 92
+      }
+    },
+    {
+      "name": "len",
+      "usage": "call",
+      "via": null,
+      "count": 3,
+      "lineRange": {
+        "start": 114,
+        "end": 114
+      }
+    }
+  ],
+  "dependencies": [
+    {
+      "style": "from",
+      "module": "oslo_utils",
+      "names": [
+        {
+          "alias": null,
+          "name": "versionutils"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 15,
+        "end": 15
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.objects",
+      "names": [
+        {
+          "alias": "obj_base",
+          "name": "base"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 17,
+        "end": 17
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.objects",
+      "names": [
+        {
+          "alias": null,
+          "name": "fields"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 18,
+        "end": 18
+      }
+    }
+  ],
+  "sideEffects": [
+    {
+      "kind": "global-mutation",
+      "target": "NETWORK_ID_NONE = 'none'",
+      "lineRange": {
+        "start": 25,
+        "end": 25
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "NETWORK_ID_AUTO = 'auto'",
+      "lineRange": {
+        "start": 26,
+        "end": 26
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "VERSION = '1.3'",
+      "lineRange": {
+        "start": 40,
+        "end": 40
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "VERSION = '1.1'",
+      "lineRange": {
+        "start": 95,
+        "end": 95
+      }
+    }
+  ],
+  "securitySurface": [],
+  "injection_flags": [],
+  "warnings": []
+}

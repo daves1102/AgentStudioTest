@@ -1,0 +1,191 @@
+{
+  "file": "src/nova/objects/virt_cpu_topology.py",
+  "hash": "c8dc79333c3fcba5482d2dbc6cd4912d7f5343105fc16b30c60e6bd32e61b8e1",
+  "language": "Python",
+  "component": "nova",
+  "package": null,
+  "lines": {
+    "blank": 7,
+    "code": 24,
+    "comment": 14,
+    "total": 45
+  },
+  "symbols": [
+    {
+      "name": "__all__",
+      "kind": "variable",
+      "scope": "",
+      "lineRange": {
+        "start": 16,
+        "end": 18
+      },
+      "source": "aee-inventory",
+      "exported": false
+    },
+    {
+      "name": "VirtCPUTopology",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 22,
+        "end": 45
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "VERSION",
+      "kind": "constant",
+      "scope": "VirtCPUTopology",
+      "lineRange": {
+        "start": 24,
+        "end": 24
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "fields",
+      "kind": "field",
+      "scope": "VirtCPUTopology",
+      "lineRange": {
+        "start": 26,
+        "end": 30
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "from_dict",
+      "kind": "method",
+      "scope": "VirtCPUTopology",
+      "lineRange": {
+        "start": 35,
+        "end": 38
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "cls"
+        },
+        {
+          "name": "data"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "cls(sockets=data.get('sockets'), cores=data.get('cores'), threads=data.get('threads'))",
+          "line": 36
+        }
+      ],
+      "nloc": 4,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "to_dict",
+      "kind": "method",
+      "scope": "VirtCPUTopology",
+      "lineRange": {
+        "start": 40,
+        "end": 45
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "{ 'sockets': self.sockets, 'cores': self.cores, 'threads': self.threads }",
+          "line": 41
+        }
+      ],
+      "nloc": 6,
+      "ccn": 1,
+      "visibility": "public"
+    }
+  ],
+  "referencedSymbols": [
+    {
+      "name": "base.NovaObject",
+      "usage": "inherit",
+      "via": "nova.objects",
+      "count": 1,
+      "lineRange": {
+        "start": 22,
+        "end": 22
+      }
+    },
+    {
+      "name": "fields.IntegerField",
+      "usage": "call",
+      "via": "nova.objects",
+      "count": 3,
+      "lineRange": {
+        "start": 27,
+        "end": 27
+      }
+    },
+    {
+      "name": "cls",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 36,
+        "end": 36
+      }
+    }
+  ],
+  "dependencies": [
+    {
+      "style": "from",
+      "module": "nova.objects",
+      "names": [
+        {
+          "alias": null,
+          "name": "base"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 13,
+        "end": 13
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.objects",
+      "names": [
+        {
+          "alias": null,
+          "name": "fields"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 14,
+        "end": 14
+      }
+    }
+  ],
+  "sideEffects": [
+    {
+      "kind": "global-mutation",
+      "target": "VERSION = '1.0'",
+      "lineRange": {
+        "start": 24,
+        "end": 24
+      }
+    }
+  ],
+  "securitySurface": [],
+  "injection_flags": [],
+  "warnings": []
+}

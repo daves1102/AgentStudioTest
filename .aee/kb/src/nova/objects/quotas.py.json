@@ -1,0 +1,2214 @@
+{
+  "file": "src/nova/objects/quotas.py",
+  "hash": "ed78ec7674bdfa6e91497df33833d43a08f92a9af332270c2bcce2b233d78f36",
+  "language": "Python",
+  "component": "nova",
+  "package": null,
+  "lines": {
+    "blank": 76,
+    "code": 504,
+    "comment": 85,
+    "total": 665
+  },
+  "symbols": [
+    {
+      "name": "__all__",
+      "kind": "variable",
+      "scope": "",
+      "lineRange": {
+        "start": 29,
+        "end": 37
+      },
+      "source": "aee-inventory",
+      "exported": false
+    },
+    {
+      "name": "ids_from_instance",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 40,
+        "end": 50
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "context"
+        },
+        {
+          "name": "instance"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "project_id, user_id",
+          "line": 50
+        }
+      ],
+      "nloc": 11,
+      "ccn": 4,
+      "exported": true
+    },
+    {
+      "name": "ids_from_security_group",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 56,
+        "end": 57
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "context"
+        },
+        {
+          "name": "security_group"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "ids_from_instance(context, security_group)",
+          "line": 57
+        }
+      ],
+      "nloc": 2,
+      "ccn": 1,
+      "exported": true
+    },
+    {
+      "name": "ids_from_server_group",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 63,
+        "end": 64
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "context"
+        },
+        {
+          "name": "server_group"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "ids_from_instance(context, server_group)",
+          "line": 64
+        }
+      ],
+      "nloc": 2,
+      "ccn": 1,
+      "exported": true
+    },
+    {
+      "name": "Quotas",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 68,
+        "end": 518
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "VERSION",
+      "kind": "constant",
+      "scope": "Quotas",
+      "lineRange": {
+        "start": 74,
+        "end": 74
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "fields",
+      "kind": "field",
+      "scope": "Quotas",
+      "lineRange": {
+        "start": 76,
+        "end": 84
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "obj_load_attr",
+      "kind": "method",
+      "scope": "Quotas",
+      "lineRange": {
+        "start": 86,
+        "end": 94
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "attr"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 3,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "_get_from_db",
+      "kind": "method",
+      "scope": "Quotas",
+      "lineRange": {
+        "start": 98,
+        "end": 112
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "context"
+        },
+        {
+          "name": "project_id"
+        },
+        {
+          "name": "resource"
+        },
+        {
+          "default": "None",
+          "name": "user_id"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "result",
+          "line": 112
+        }
+      ],
+      "nloc": 15,
+      "ccn": 5,
+      "visibility": "private"
+    },
+    {
+      "name": "_get_all_from_db",
+      "kind": "method",
+      "scope": "Quotas",
+      "lineRange": {
+        "start": 116,
+        "end": 119
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "context"
+        },
+        {
+          "name": "project_id"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "context.session.query(api_models.ProjectUserQuota).\\ filter_by(project_id=project_id).\\ all()",
+          "line": 117
+        }
+      ],
+      "nloc": 4,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "_get_all_from_db_by_project",
+      "kind": "method",
+      "scope": "Quotas",
+      "lineRange": {
+        "start": 123,
+        "end": 131
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "context"
+        },
+        {
+          "name": "project_id"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "result",
+          "line": 131
+        }
+      ],
+      "nloc": 8,
+      "ccn": 2,
+      "visibility": "private"
+    },
+    {
+      "name": "_get_all_from_db_by_project_and_user",
+      "kind": "method",
+      "scope": "Quotas",
+      "lineRange": {
+        "start": 135,
+        "end": 147
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "context"
+        },
+        {
+          "name": "project_id"
+        },
+        {
+          "name": "user_id"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "result",
+          "line": 147
+        }
+      ],
+      "nloc": 11,
+      "ccn": 2,
+      "visibility": "private"
+    },
+    {
+      "name": "_destroy_all_in_db_by_project",
+      "kind": "method",
+      "scope": "Quotas",
+      "lineRange": {
+        "start": 151,
+        "end": 159
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "context"
+        },
+        {
+          "name": "project_id"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 9,
+      "ccn": 3,
+      "visibility": "private"
+    },
+    {
+      "name": "_destroy_all_in_db_by_project_and_user",
+      "kind": "method",
+      "scope": "Quotas",
+      "lineRange": {
+        "start": 163,
+        "end": 170
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "context"
+        },
+        {
+          "name": "project_id"
+        },
+        {
+          "name": "user_id"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 8,
+      "ccn": 2,
+      "visibility": "private"
+    },
+    {
+      "name": "_get_class_from_db",
+      "kind": "method",
+      "scope": "Quotas",
+      "lineRange": {
+        "start": 174,
+        "end": 181
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "context"
+        },
+        {
+          "name": "class_name"
+        },
+        {
+          "name": "resource"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "result",
+          "line": 181
+        }
+      ],
+      "nloc": 8,
+      "ccn": 2,
+      "visibility": "private"
+    },
+    {
+      "name": "_get_all_class_from_db_by_name",
+      "kind": "method",
+      "scope": "Quotas",
+      "lineRange": {
+        "start": 185,
+        "end": 193
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "context"
+        },
+        {
+          "name": "class_name"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "result",
+          "line": 193
+        }
+      ],
+      "nloc": 8,
+      "ccn": 2,
+      "visibility": "private"
+    },
+    {
+      "name": "_create_limit_in_db",
+      "kind": "method",
+      "scope": "Quotas",
+      "lineRange": {
+        "start": 197,
+        "end": 218
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "context"
+        },
+        {
+          "name": "project_id"
+        },
+        {
+          "name": "resource"
+        },
+        {
+          "name": "limit"
+        },
+        {
+          "default": "None",
+          "name": "user_id"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "quota_ref",
+          "line": 218
+        }
+      ],
+      "nloc": 19,
+      "ccn": 5,
+      "visibility": "private"
+    },
+    {
+      "name": "_update_limit_in_db",
+      "kind": "method",
+      "scope": "Quotas",
+      "lineRange": {
+        "start": 222,
+        "end": 244
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "context"
+        },
+        {
+          "name": "project_id"
+        },
+        {
+          "name": "resource"
+        },
+        {
+          "name": "limit"
+        },
+        {
+          "default": "None",
+          "name": "user_id"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 19,
+      "ccn": 6,
+      "visibility": "private"
+    },
+    {
+      "name": "_create_class_in_db",
+      "kind": "method",
+      "scope": "Quotas",
+      "lineRange": {
+        "start": 248,
+        "end": 263
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "context"
+        },
+        {
+          "name": "class_name"
+        },
+        {
+          "name": "resource"
+        },
+        {
+          "name": "limit"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "quota_class_ref",
+          "line": 263
+        }
+      ],
+      "nloc": 14,
+      "ccn": 2,
+      "visibility": "private"
+    },
+    {
+      "name": "_update_class_in_db",
+      "kind": "method",
+      "scope": "Quotas",
+      "lineRange": {
+        "start": 267,
+        "end": 273
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "context"
+        },
+        {
+          "name": "class_name"
+        },
+        {
+          "name": "resource"
+        },
+        {
+          "name": "limit"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 7,
+      "ccn": 2,
+      "visibility": "private"
+    },
+    {
+      "name": "reserve",
+      "kind": "method",
+      "scope": "Quotas",
+      "lineRange": {
+        "start": 277,
+        "end": 285
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "default": "None",
+          "name": "expire"
+        },
+        {
+          "default": "None",
+          "name": "project_id"
+        },
+        {
+          "default": "None",
+          "name": "user_id"
+        },
+        {
+          "name": "**deltas"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 6,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "commit",
+      "kind": "method",
+      "scope": "Quotas",
+      "lineRange": {
+        "start": 289,
+        "end": 290
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "rollback",
+      "kind": "method",
+      "scope": "Quotas",
+      "lineRange": {
+        "start": 294,
+        "end": 295
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "limit_check",
+      "kind": "method",
+      "scope": "Quotas",
+      "lineRange": {
+        "start": 299,
+        "end": 302
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "cls"
+        },
+        {
+          "name": "context"
+        },
+        {
+          "default": "None",
+          "name": "project_id"
+        },
+        {
+          "default": "None",
+          "name": "user_id"
+        },
+        {
+          "name": "**values"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "quota.QUOTAS.limit_check( context, project_id=project_id, user_id=user_id, **values)",
+          "line": 301
+        }
+      ],
+      "nloc": 3,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "limit_check_project_and_user",
+      "kind": "method",
+      "scope": "Quotas",
+      "lineRange": {
+        "start": 306,
+        "end": 312
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "cls"
+        },
+        {
+          "name": "context"
+        },
+        {
+          "default": "None",
+          "name": "project_values"
+        },
+        {
+          "default": "None",
+          "name": "user_values"
+        },
+        {
+          "default": "None",
+          "name": "project_id"
+        },
+        {
+          "default": "None",
+          "name": "user_id"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "quota.QUOTAS.limit_check_project_and_user(context, project_values=project_values, user_values=user_values, project_id=project_id, user_id=user_id)",
+          "line": 310
+        }
+      ],
+      "nloc": 6,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "count",
+      "kind": "method",
+      "scope": "Quotas",
+      "lineRange": {
+        "start": 317,
+        "end": 321
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "cls"
+        },
+        {
+          "name": "context"
+        },
+        {
+          "name": "resource"
+        },
+        {
+          "name": "*args"
+        },
+        {
+          "name": "**kwargs"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "count[key][resource]",
+          "line": 321
+        }
+      ],
+      "nloc": 4,
+      "ccn": 2,
+      "visibility": "public"
+    },
+    {
+      "name": "count_as_dict",
+      "kind": "method",
+      "scope": "Quotas",
+      "lineRange": {
+        "start": 325,
+        "end": 328
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "cls"
+        },
+        {
+          "name": "context"
+        },
+        {
+          "name": "resource"
+        },
+        {
+          "name": "*args"
+        },
+        {
+          "name": "**kwargs"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "quota.QUOTAS.count_as_dict( context, resource, *args, **kwargs)",
+          "line": 327
+        }
+      ],
+      "nloc": 3,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "check_deltas",
+      "kind": "method",
+      "scope": "Quotas",
+      "lineRange": {
+        "start": 332,
+        "end": 395
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "cls"
+        },
+        {
+          "name": "context"
+        },
+        {
+          "name": "deltas"
+        },
+        {
+          "name": "*count_args"
+        },
+        {
+          "name": "**count_kwargs"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 31,
+      "ccn": 13,
+      "visibility": "public"
+    },
+    {
+      "name": "create_limit",
+      "kind": "method",
+      "scope": "Quotas",
+      "lineRange": {
+        "start": 399,
+        "end": 408
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "cls"
+        },
+        {
+          "name": "context"
+        },
+        {
+          "name": "project_id"
+        },
+        {
+          "name": "resource"
+        },
+        {
+          "name": "limit"
+        },
+        {
+          "default": "None",
+          "name": "user_id"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 10,
+      "ccn": 2,
+      "visibility": "public"
+    },
+    {
+      "name": "update_limit",
+      "kind": "method",
+      "scope": "Quotas",
+      "lineRange": {
+        "start": 412,
+        "end": 418
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "cls"
+        },
+        {
+          "name": "context"
+        },
+        {
+          "name": "project_id"
+        },
+        {
+          "name": "resource"
+        },
+        {
+          "name": "limit"
+        },
+        {
+          "default": "None",
+          "name": "user_id"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 7,
+      "ccn": 2,
+      "visibility": "public"
+    },
+    {
+      "name": "create_class",
+      "kind": "method",
+      "scope": "Quotas",
+      "lineRange": {
+        "start": 421,
+        "end": 428
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "cls"
+        },
+        {
+          "name": "context"
+        },
+        {
+          "name": "class_name"
+        },
+        {
+          "name": "resource"
+        },
+        {
+          "name": "limit"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 8,
+      "ccn": 2,
+      "visibility": "public"
+    },
+    {
+      "name": "update_class",
+      "kind": "method",
+      "scope": "Quotas",
+      "lineRange": {
+        "start": 431,
+        "end": 436
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "cls"
+        },
+        {
+          "name": "context"
+        },
+        {
+          "name": "class_name"
+        },
+        {
+          "name": "resource"
+        },
+        {
+          "name": "limit"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 6,
+      "ccn": 2,
+      "visibility": "public"
+    },
+    {
+      "name": "get",
+      "kind": "method",
+      "scope": "Quotas",
+      "lineRange": {
+        "start": 442,
+        "end": 449
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "cls"
+        },
+        {
+          "name": "context"
+        },
+        {
+          "name": "project_id"
+        },
+        {
+          "name": "resource"
+        },
+        {
+          "default": "None",
+          "name": "user_id"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "quota",
+          "line": 449
+        }
+      ],
+      "nloc": 8,
+      "ccn": 2,
+      "visibility": "public"
+    },
+    {
+      "name": "get_all",
+      "kind": "method",
+      "scope": "Quotas",
+      "lineRange": {
+        "start": 452,
+        "end": 455
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "cls"
+        },
+        {
+          "name": "context"
+        },
+        {
+          "name": "project_id"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "api_db_quotas + main_db_quotas",
+          "line": 455
+        }
+      ],
+      "nloc": 4,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "get_all_by_project",
+      "kind": "method",
+      "scope": "Quotas",
+      "lineRange": {
+        "start": 458,
+        "end": 465
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "cls"
+        },
+        {
+          "name": "context"
+        },
+        {
+          "name": "project_id"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "main_db_quotas_dict",
+          "line": 465
+        }
+      ],
+      "nloc": 8,
+      "ccn": 2,
+      "visibility": "public"
+    },
+    {
+      "name": "get_all_by_project_and_user",
+      "kind": "method",
+      "scope": "Quotas",
+      "lineRange": {
+        "start": 468,
+        "end": 475
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "cls"
+        },
+        {
+          "name": "context"
+        },
+        {
+          "name": "project_id"
+        },
+        {
+          "name": "user_id"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "main_db_quotas_dict",
+          "line": 475
+        }
+      ],
+      "nloc": 8,
+      "ccn": 2,
+      "visibility": "public"
+    },
+    {
+      "name": "destroy_all_by_project",
+      "kind": "method",
+      "scope": "Quotas",
+      "lineRange": {
+        "start": 478,
+        "end": 482
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "cls"
+        },
+        {
+          "name": "context"
+        },
+        {
+          "name": "project_id"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 5,
+      "ccn": 2,
+      "visibility": "public"
+    },
+    {
+      "name": "destroy_all_by_project_and_user",
+      "kind": "method",
+      "scope": "Quotas",
+      "lineRange": {
+        "start": 485,
+        "end": 491
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "cls"
+        },
+        {
+          "name": "context"
+        },
+        {
+          "name": "project_id"
+        },
+        {
+          "name": "user_id"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 7,
+      "ccn": 2,
+      "visibility": "public"
+    },
+    {
+      "name": "get_class",
+      "kind": "method",
+      "scope": "Quotas",
+      "lineRange": {
+        "start": 494,
+        "end": 499
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "cls"
+        },
+        {
+          "name": "context"
+        },
+        {
+          "name": "class_name"
+        },
+        {
+          "name": "resource"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "qclass",
+          "line": 499
+        }
+      ],
+      "nloc": 6,
+      "ccn": 2,
+      "visibility": "public"
+    },
+    {
+      "name": "get_default_class",
+      "kind": "method",
+      "scope": "Quotas",
+      "lineRange": {
+        "start": 502,
+        "end": 508
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "cls"
+        },
+        {
+          "name": "context"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "qclass",
+          "line": 508
+        }
+      ],
+      "nloc": 7,
+      "ccn": 2,
+      "visibility": "public"
+    },
+    {
+      "name": "get_all_class_by_name",
+      "kind": "method",
+      "scope": "Quotas",
+      "lineRange": {
+        "start": 511,
+        "end": 518
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "cls"
+        },
+        {
+          "name": "context"
+        },
+        {
+          "name": "class_name"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "main_db_quotas_dict",
+          "line": 518
+        }
+      ],
+      "nloc": 8,
+      "ccn": 2,
+      "visibility": "public"
+    },
+    {
+      "name": "QuotasNoOp",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 522,
+        "end": 537
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "reserve",
+      "kind": "method",
+      "scope": "QuotasNoOp",
+      "lineRange": {
+        "start": 524,
+        "end": 526
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "context"
+        },
+        {
+          "default": "None",
+          "name": "expire"
+        },
+        {
+          "default": "None",
+          "name": "project_id"
+        },
+        {
+          "default": "None",
+          "name": "user_id"
+        },
+        {
+          "name": "**deltas"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 3,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "commit",
+      "kind": "method",
+      "scope": "QuotasNoOp",
+      "lineRange": {
+        "start": 529,
+        "end": 530
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "default": "None",
+          "name": "context"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "rollback",
+      "kind": "method",
+      "scope": "QuotasNoOp",
+      "lineRange": {
+        "start": 533,
+        "end": 534
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "default": "None",
+          "name": "context"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "check_deltas",
+      "kind": "method",
+      "scope": "QuotasNoOp",
+      "lineRange": {
+        "start": 536,
+        "end": 537
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "cls"
+        },
+        {
+          "name": "context"
+        },
+        {
+          "name": "deltas"
+        },
+        {
+          "name": "*count_args"
+        },
+        {
+          "name": "**count_kwargs"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "_get_main_per_project_limits",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 542,
+        "end": 546
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "context"
+        },
+        {
+          "name": "limit"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "context.session.query(main_models.Quota).\\ filter_by(deleted=0).\\ limit(limit).\\ all()",
+          "line": 543
+        }
+      ],
+      "nloc": 5,
+      "ccn": 1,
+      "exported": false
+    },
+    {
+      "name": "_get_main_per_user_limits",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 551,
+        "end": 555
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "context"
+        },
+        {
+          "name": "limit"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "context.session.query(main_models.ProjectUserQuota).\\ filter_by(deleted=0).\\ limit(limit).\\ all()",
+          "line": 552
+        }
+      ],
+      "nloc": 5,
+      "ccn": 1,
+      "exported": false
+    },
+    {
+      "name": "_destroy_main_per_project_limits",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 560,
+        "end": 565
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "context"
+        },
+        {
+          "name": "project_id"
+        },
+        {
+          "name": "resource"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 6,
+      "ccn": 1,
+      "exported": false
+    },
+    {
+      "name": "_destroy_main_per_user_limits",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 570,
+        "end": 576
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "context"
+        },
+        {
+          "name": "project_id"
+        },
+        {
+          "name": "resource"
+        },
+        {
+          "name": "user_id"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 7,
+      "ccn": 1,
+      "exported": false
+    },
+    {
+      "name": "_create_limits_in_api_db",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 580,
+        "end": 585
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "context"
+        },
+        {
+          "name": "db_limits"
+        },
+        {
+          "default": "False",
+          "name": "per_user"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 6,
+      "ccn": 3,
+      "exported": false
+    },
+    {
+      "name": "migrate_quota_limits_to_api_db",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 588,
+        "end": 623
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "context"
+        },
+        {
+          "name": "max_count"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "len(main_per_project_limits), done",
+          "line": 606
+        },
+        {
+          "expr": "len(main_per_project_limits) + len(main_per_user_limits), done",
+          "line": 623
+        }
+      ],
+      "nloc": 24,
+      "ccn": 6,
+      "exported": true
+    },
+    {
+      "name": "_get_main_quota_classes",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 628,
+        "end": 632
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "context"
+        },
+        {
+          "name": "limit"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "context.session.query(main_models.QuotaClass).\\ filter_by(deleted=0).\\ limit(limit).\\ all()",
+          "line": 629
+        }
+      ],
+      "nloc": 5,
+      "ccn": 1,
+      "exported": false
+    },
+    {
+      "name": "_destroy_main_quota_classes",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 636,
+        "end": 641
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "context"
+        },
+        {
+          "name": "db_classes"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 6,
+      "ccn": 2,
+      "exported": false
+    },
+    {
+      "name": "_create_classes_in_api_db",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 645,
+        "end": 648
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "context"
+        },
+        {
+          "name": "db_classes"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 4,
+      "ccn": 2,
+      "exported": false
+    },
+    {
+      "name": "migrate_quota_classes_to_api_db",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 651,
+        "end": 665
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "context"
+        },
+        {
+          "name": "max_count"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "found, done",
+          "line": 665
+        }
+      ],
+      "nloc": 10,
+      "ccn": 2,
+      "exported": true
+    }
+  ],
+  "referencedSymbols": [
+    {
+      "name": "base.NovaObject",
+      "usage": "inherit",
+      "via": "nova.objects",
+      "count": 1,
+      "lineRange": {
+        "start": 68,
+        "end": 68
+      }
+    },
+    {
+      "name": "fields.ListOfStringsField",
+      "usage": "call",
+      "via": "nova.objects",
+      "count": 1,
+      "lineRange": {
+        "start": 78,
+        "end": 78
+      }
+    },
+    {
+      "name": "fields.StringField",
+      "usage": "call",
+      "via": "nova.objects",
+      "count": 2,
+      "lineRange": {
+        "start": 80,
+        "end": 80
+      }
+    },
+    {
+      "name": "exception.ProjectUserQuotaNotFound",
+      "usage": "call",
+      "via": "nova",
+      "count": 3,
+      "lineRange": {
+        "start": 108,
+        "end": 108
+      }
+    },
+    {
+      "name": "exception.ProjectQuotaNotFound",
+      "usage": "call",
+      "via": "nova",
+      "count": 3,
+      "lineRange": {
+        "start": 111,
+        "end": 111
+      }
+    },
+    {
+      "name": "exception.QuotaClassNotFound",
+      "usage": "call",
+      "via": "nova",
+      "count": 2,
+      "lineRange": {
+        "start": 180,
+        "end": 180
+      }
+    },
+    {
+      "name": "main_db_api.quota_get_per_project_resources",
+      "usage": "call",
+      "via": "nova.db.main",
+      "count": 2,
+      "lineRange": {
+        "start": 204,
+        "end": 204
+      }
+    },
+    {
+      "name": "api_models.ProjectUserQuota",
+      "usage": "call",
+      "via": "nova.db.api",
+      "count": 1,
+      "lineRange": {
+        "start": 206,
+        "end": 206
+      }
+    },
+    {
+      "name": "api_models.Quota",
+      "usage": "call",
+      "via": "nova.db.api",
+      "count": 1,
+      "lineRange": {
+        "start": 207,
+        "end": 207
+      }
+    },
+    {
+      "name": "exception.QuotaExists",
+      "usage": "call",
+      "via": "nova",
+      "count": 2,
+      "lineRange": {
+        "start": 216,
+        "end": 216
+      }
+    },
+    {
+      "name": "exception.QuotaClassExists",
+      "usage": "call",
+      "via": "nova",
+      "count": 2,
+      "lineRange": {
+        "start": 256,
+        "end": 256
+      }
+    },
+    {
+      "name": "api_models.QuotaClass",
+      "usage": "call",
+      "via": "nova.db.api",
+      "count": 1,
+      "lineRange": {
+        "start": 258,
+        "end": 258
+      }
+    },
+    {
+      "name": "quota.QUOTAS.limit_check",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 301,
+        "end": 301
+      }
+    },
+    {
+      "name": "quota.QUOTAS.limit_check_project_and_user",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 310,
+        "end": 310
+      }
+    },
+    {
+      "name": "quota.QUOTAS.count_as_dict",
+      "usage": "call",
+      "via": "nova",
+      "count": 2,
+      "lineRange": {
+        "start": 319,
+        "end": 319
+      }
+    },
+    {
+      "name": "collections.defaultdict",
+      "usage": "call",
+      "via": "collections",
+      "count": 1,
+      "lineRange": {
+        "start": 357,
+        "end": 357
+      }
+    },
+    {
+      "name": "main_db_api.quota_get",
+      "usage": "call",
+      "via": "nova.db.main",
+      "count": 2,
+      "lineRange": {
+        "start": 401,
+        "end": 401
+      }
+    },
+    {
+      "name": "main_db_api.quota_update",
+      "usage": "call",
+      "via": "nova.db.main",
+      "count": 1,
+      "lineRange": {
+        "start": 417,
+        "end": 417
+      }
+    },
+    {
+      "name": "main_db_api.quota_class_get",
+      "usage": "call",
+      "via": "nova.db.main",
+      "count": 2,
+      "lineRange": {
+        "start": 423,
+        "end": 423
+      }
+    },
+    {
+      "name": "main_db_api.quota_class_update",
+      "usage": "call",
+      "via": "nova.db.main",
+      "count": 1,
+      "lineRange": {
+        "start": 435,
+        "end": 435
+      }
+    },
+    {
+      "name": "main_db_api.quota_get_all",
+      "usage": "call",
+      "via": "nova.db.main",
+      "count": 1,
+      "lineRange": {
+        "start": 454,
+        "end": 454
+      }
+    },
+    {
+      "name": "main_db_api.quota_get_all_by_project",
+      "usage": "call",
+      "via": "nova.db.main",
+      "count": 1,
+      "lineRange": {
+        "start": 461,
+        "end": 461
+      }
+    },
+    {
+      "name": "main_db_api.quota_get_all_by_project_and_user",
+      "usage": "call",
+      "via": "nova.db.main",
+      "count": 1,
+      "lineRange": {
+        "start": 471,
+        "end": 471
+      }
+    },
+    {
+      "name": "main_db_api.quota_destroy_all_by_project",
+      "usage": "call",
+      "via": "nova.db.main",
+      "count": 1,
+      "lineRange": {
+        "start": 482,
+        "end": 482
+      }
+    },
+    {
+      "name": "main_db_api.quota_destroy_all_by_project_and_user",
+      "usage": "call",
+      "via": "nova.db.main",
+      "count": 1,
+      "lineRange": {
+        "start": 490,
+        "end": 490
+      }
+    },
+    {
+      "name": "main_db_api.quota_class_get_default",
+      "usage": "call",
+      "via": "nova.db.main",
+      "count": 1,
+      "lineRange": {
+        "start": 507,
+        "end": 507
+      }
+    },
+    {
+      "name": "main_db_api.quota_class_get_all_by_name",
+      "usage": "call",
+      "via": "nova.db.main",
+      "count": 1,
+      "lineRange": {
+        "start": 514,
+        "end": 514
+      }
+    },
+    {
+      "name": "len",
+      "usage": "call",
+      "via": null,
+      "count": 4,
+      "lineRange": {
+        "start": 606,
+        "end": 606
+      }
+    }
+  ],
+  "dependencies": [
+    {
+      "style": "import",
+      "module": "collections",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 15,
+        "end": 15
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_db",
+      "names": [
+        {
+          "alias": "db_exc",
+          "name": "exception"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 17,
+        "end": 17
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.db.api",
+      "names": [
+        {
+          "alias": "api_db_api",
+          "name": "api"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 19,
+        "end": 19
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.db.api",
+      "names": [
+        {
+          "alias": "api_models",
+          "name": "models"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 20,
+        "end": 20
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.db.main",
+      "names": [
+        {
+          "alias": "main_db_api",
+          "name": "api"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 21,
+        "end": 21
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.db.main",
+      "names": [
+        {
+          "alias": "main_models",
+          "name": "models"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 22,
+        "end": 22
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.db",
+      "names": [
+        {
+          "alias": "db_utils",
+          "name": "utils"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 23,
+        "end": 23
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "exception"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 24,
+        "end": 24
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.objects",
+      "names": [
+        {
+          "alias": null,
+          "name": "base"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 25,
+        "end": 25
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.objects",
+      "names": [
+        {
+          "alias": null,
+          "name": "fields"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 26,
+        "end": 26
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "quota"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 27,
+        "end": 27
+      }
+    }
+  ],
+  "sideEffects": [
+    {
+      "kind": "network",
+      "target": "query = context.session.query(model).\\",
+      "lineRange": {
+        "start": 100,
+        "end": 100
+      }
+    },
+    {
+      "kind": "network",
+      "target": "return context.session.query(api_models.ProjectUserQuota).\\",
+      "lineRange": {
+        "start": 117,
+        "end": 117
+      }
+    },
+    {
+      "kind": "network",
+      "target": "rows = context.session.query(api_models.Quota).\\",
+      "lineRange": {
+        "start": 125,
+        "end": 125
+      }
+    },
+    {
+      "kind": "network",
+      "target": "user_quotas = context.session.query(*columns).\\",
+      "lineRange": {
+        "start": 140,
+        "end": 140
+      }
+    },
+    {
+      "kind": "network",
+      "target": "per_project = context.session.query(api_models.Quota).\\",
+      "lineRange": {
+        "start": 152,
+        "end": 152
+      }
+    },
+    {
+      "kind": "network",
+      "target": "per_user = context.session.query(api_models.ProjectUserQuota).\\",
+      "lineRange": {
+        "start": 155,
+        "end": 155
+      }
+    },
+    {
+      "kind": "network",
+      "target": "result = context.session.query(api_models.ProjectUserQuota).\\",
+      "lineRange": {
+        "start": 164,
+        "end": 164
+      }
+    },
+    {
+      "kind": "network",
+      "target": "result = context.session.query(api_models.QuotaClass).\\",
+      "lineRange": {
+        "start": 175,
+        "end": 175
+      }
+    },
+    {
+      "kind": "network",
+      "target": "rows = context.session.query(api_models.QuotaClass).\\",
+      "lineRange": {
+        "start": 187,
+        "end": 187
+      }
+    },
+    {
+      "kind": "network",
+      "target": "query = context.session.query(model).\\",
+      "lineRange": {
+        "start": 232,
+        "end": 232
+      }
+    },
+    {
+      "kind": "network",
+      "target": "result = context.session.query(api_models.QuotaClass).\\",
+      "lineRange": {
+        "start": 268,
+        "end": 268
+      }
+    },
+    {
+      "kind": "network",
+      "target": "return context.session.query(main_models.Quota).\\",
+      "lineRange": {
+        "start": 543,
+        "end": 543
+      }
+    },
+    {
+      "kind": "network",
+      "target": "return context.session.query(main_models.ProjectUserQuota).\\",
+      "lineRange": {
+        "start": 552,
+        "end": 552
+      }
+    },
+    {
+      "kind": "network",
+      "target": "context.session.query(main_models.Quota).\\",
+      "lineRange": {
+        "start": 561,
+        "end": 561
+      }
+    },
+    {
+      "kind": "network",
+      "target": "context.session.query(main_models.ProjectUserQuota).\\",
+      "lineRange": {
+        "start": 571,
+        "end": 571
+      }
+    },
+    {
+      "kind": "network",
+      "target": "return context.session.query(main_models.QuotaClass).\\",
+      "lineRange": {
+        "start": 629,
+        "end": 629
+      }
+    },
+    {
+      "kind": "network",
+      "target": "context.session.query(main_models.QuotaClass).\\",
+      "lineRange": {
+        "start": 638,
+        "end": 638
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "VERSION = '1.3'",
+      "lineRange": {
+        "start": 74,
+        "end": 74
+      }
+    }
+  ],
+  "securitySurface": [],
+  "injection_flags": [],
+  "warnings": []
+}

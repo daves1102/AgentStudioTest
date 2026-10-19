@@ -1,0 +1,492 @@
+{
+  "file": "src/nova/objects/volume_usage.py",
+  "hash": "76c1122f768b012f0dbd0476fa08762597ac0300f4df5c547fa023d99af2d605",
+  "language": "Python",
+  "component": "nova",
+  "package": null,
+  "lines": {
+    "blank": 13,
+    "code": 78,
+    "comment": 13,
+    "total": 104
+  },
+  "symbols": [
+    {
+      "name": "__all__",
+      "kind": "variable",
+      "scope": "",
+      "lineRange": {
+        "start": 17,
+        "end": 19
+      },
+      "source": "aee-inventory",
+      "exported": false
+    },
+    {
+      "name": "VolumeUsage",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 23,
+        "end": 104
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "VERSION",
+      "kind": "constant",
+      "scope": "VolumeUsage",
+      "lineRange": {
+        "start": 25,
+        "end": 25
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "fields",
+      "kind": "field",
+      "scope": "VolumeUsage",
+      "lineRange": {
+        "start": 27,
+        "end": 46
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "last_refreshed",
+      "kind": "method",
+      "scope": "VolumeUsage",
+      "lineRange": {
+        "start": 49,
+        "end": 56
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "max(self.tot_last_refreshed, self.curr_last_refreshed)",
+          "line": 51
+        },
+        {
+          "expr": "self.tot_last_refreshed",
+          "line": 53
+        },
+        {
+          "expr": "self.curr_last_refreshed",
+          "line": 56
+        }
+      ],
+      "nloc": 7,
+      "ccn": 4,
+      "visibility": "public"
+    },
+    {
+      "name": "reads",
+      "kind": "method",
+      "scope": "VolumeUsage",
+      "lineRange": {
+        "start": 59,
+        "end": 60
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "self.tot_reads + self.curr_reads",
+          "line": 60
+        }
+      ],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "read_bytes",
+      "kind": "method",
+      "scope": "VolumeUsage",
+      "lineRange": {
+        "start": 63,
+        "end": 64
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "self.tot_read_bytes + self.curr_read_bytes",
+          "line": 64
+        }
+      ],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "writes",
+      "kind": "method",
+      "scope": "VolumeUsage",
+      "lineRange": {
+        "start": 67,
+        "end": 68
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "self.tot_writes + self.curr_writes",
+          "line": 68
+        }
+      ],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "write_bytes",
+      "kind": "method",
+      "scope": "VolumeUsage",
+      "lineRange": {
+        "start": 71,
+        "end": 72
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "self.tot_write_bytes + self.curr_write_bytes",
+          "line": 72
+        }
+      ],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "_from_db_object",
+      "kind": "method",
+      "scope": "VolumeUsage",
+      "lineRange": {
+        "start": 75,
+        "end": 80
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "context"
+        },
+        {
+          "name": "vol_usage"
+        },
+        {
+          "name": "db_vol_usage"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "vol_usage",
+          "line": 80
+        }
+      ],
+      "nloc": 6,
+      "ccn": 2,
+      "visibility": "private"
+    },
+    {
+      "name": "save",
+      "kind": "method",
+      "scope": "VolumeUsage",
+      "lineRange": {
+        "start": 83,
+        "end": 89
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "default": "False",
+          "name": "update_totals"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 7,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "to_dict",
+      "kind": "method",
+      "scope": "VolumeUsage",
+      "lineRange": {
+        "start": 91,
+        "end": 104
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "{ 'volume_id': self.volume_id, 'tenant_id': self.project_id, 'user_id': self.user_id, 'availability_zone': self.availability_zone, 'instance_id': self.instance_uuid, 'last_refreshed': str( self.last_r",
+          "line": 92
+        }
+      ],
+      "nloc": 14,
+      "ccn": 2,
+      "visibility": "public"
+    },
+    {
+      "name": "last_refreshed",
+      "kind": "property",
+      "scope": "VolumeUsage",
+      "lineRange": {
+        "start": 48,
+        "end": 56
+      },
+      "visibility": "public",
+      "source": "manual"
+    },
+    {
+      "name": "reads",
+      "kind": "property",
+      "scope": "VolumeUsage",
+      "lineRange": {
+        "start": 58,
+        "end": 60
+      },
+      "visibility": "public",
+      "source": "manual"
+    },
+    {
+      "name": "read_bytes",
+      "kind": "property",
+      "scope": "VolumeUsage",
+      "lineRange": {
+        "start": 62,
+        "end": 64
+      },
+      "visibility": "public",
+      "source": "manual"
+    },
+    {
+      "name": "writes",
+      "kind": "property",
+      "scope": "VolumeUsage",
+      "lineRange": {
+        "start": 66,
+        "end": 68
+      },
+      "visibility": "public",
+      "source": "manual"
+    },
+    {
+      "name": "write_bytes",
+      "kind": "property",
+      "scope": "VolumeUsage",
+      "lineRange": {
+        "start": 70,
+        "end": 72
+      },
+      "visibility": "public",
+      "source": "manual"
+    }
+  ],
+  "referencedSymbols": [
+    {
+      "name": "base.NovaObject",
+      "usage": "inherit",
+      "via": "nova.objects",
+      "count": 1,
+      "lineRange": {
+        "start": 23,
+        "end": 23
+      }
+    },
+    {
+      "name": "base.NovaPersistentObject",
+      "usage": "inherit",
+      "via": "nova.objects",
+      "count": 1,
+      "lineRange": {
+        "start": 23,
+        "end": 23
+      }
+    },
+    {
+      "name": "fields.IntegerField",
+      "usage": "call",
+      "via": "nova.objects",
+      "count": 9,
+      "lineRange": {
+        "start": 28,
+        "end": 28
+      }
+    },
+    {
+      "name": "fields.UUIDField",
+      "usage": "call",
+      "via": "nova.objects",
+      "count": 2,
+      "lineRange": {
+        "start": 29,
+        "end": 29
+      }
+    },
+    {
+      "name": "fields.StringField",
+      "usage": "call",
+      "via": "nova.objects",
+      "count": 3,
+      "lineRange": {
+        "start": 31,
+        "end": 31
+      }
+    },
+    {
+      "name": "fields.DateTimeField",
+      "usage": "call",
+      "via": "nova.objects",
+      "count": 2,
+      "lineRange": {
+        "start": 34,
+        "end": 34
+      }
+    },
+    {
+      "name": "max",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 51,
+        "end": 51
+      }
+    },
+    {
+      "name": "setattr",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 77,
+        "end": 77
+      }
+    },
+    {
+      "name": "db.vol_usage_update",
+      "usage": "call",
+      "via": "nova.db.main",
+      "count": 1,
+      "lineRange": {
+        "start": 84,
+        "end": 84
+      }
+    },
+    {
+      "name": "str",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 98,
+        "end": 98
+      }
+    }
+  ],
+  "dependencies": [
+    {
+      "style": "from",
+      "module": "nova.db.main",
+      "names": [
+        {
+          "alias": "db",
+          "name": "api"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 13,
+        "end": 13
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.objects",
+      "names": [
+        {
+          "alias": null,
+          "name": "base"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 14,
+        "end": 14
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.objects",
+      "names": [
+        {
+          "alias": null,
+          "name": "fields"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 15,
+        "end": 15
+      }
+    }
+  ],
+  "sideEffects": [
+    {
+      "kind": "global-mutation",
+      "target": "VERSION = '1.0'",
+      "lineRange": {
+        "start": 25,
+        "end": 25
+      }
+    }
+  ],
+  "securitySurface": [],
+  "injection_flags": [],
+  "warnings": []
+}

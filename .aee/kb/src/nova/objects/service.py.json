@@ -1,0 +1,1806 @@
+{
+  "file": "src/nova/objects/service.py",
+  "hash": "4d4a972d248ef9a2bc0caee44800174f0fc0809596d0f95bf0e94fc17055dc72",
+  "language": "Python",
+  "component": "nova",
+  "package": null,
+  "lines": {
+    "blank": 68,
+    "code": 426,
+    "comment": 274,
+    "total": 768
+  },
+  "symbols": [
+    {
+      "name": "LOG",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 30,
+        "end": 30
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "__all__",
+      "kind": "variable",
+      "scope": "",
+      "lineRange": {
+        "start": 32,
+        "end": 36
+      },
+      "source": "aee-inventory",
+      "exported": false
+    },
+    {
+      "name": "SERVICE_VERSION",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 40,
+        "end": 40
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "SERVICE_VERSION_HISTORY",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 65,
+        "end": 264
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "NODE_IDENTITY_VERSION",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 268,
+        "end": 268
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "OLDEST_SUPPORTED_SERVICE_VERSION",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 290,
+        "end": 290
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "SERVICE_VERSION_ALIASES",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 291,
+        "end": 305
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "Service",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 310,
+        "end": 633
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "VERSION",
+      "kind": "constant",
+      "scope": "Service",
+      "lineRange": {
+        "start": 335,
+        "end": 335
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "fields",
+      "kind": "field",
+      "scope": "Service",
+      "lineRange": {
+        "start": 337,
+        "end": 351
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "_MIN_VERSION_CACHE",
+      "kind": "field",
+      "scope": "Service",
+      "lineRange": {
+        "start": 353,
+        "end": 353
+      },
+      "source": "aee-inventory",
+      "visibility": "private"
+    },
+    {
+      "name": "_SERVICE_VERSION_CACHING",
+      "kind": "field",
+      "scope": "Service",
+      "lineRange": {
+        "start": 354,
+        "end": 354
+      },
+      "source": "aee-inventory",
+      "visibility": "private"
+    },
+    {
+      "name": "__init__",
+      "kind": "method",
+      "scope": "Service",
+      "lineRange": {
+        "start": 356,
+        "end": 372
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "*args"
+        },
+        {
+          "name": "**kwargs"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 7,
+      "ccn": 2,
+      "visibility": "public"
+    },
+    {
+      "name": "obj_make_compatible_from_manifest",
+      "kind": "method",
+      "scope": "Service",
+      "lineRange": {
+        "start": 374,
+        "end": 391
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "primitive"
+        },
+        {
+          "name": "target_version"
+        },
+        {
+          "name": "version_manifest"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 16,
+      "ccn": 10,
+      "visibility": "public"
+    },
+    {
+      "name": "_do_compute_node",
+      "kind": "method",
+      "scope": "Service",
+      "lineRange": {
+        "start": 393,
+        "end": 405
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "context"
+        },
+        {
+          "name": "primitive"
+        },
+        {
+          "name": "version_manifest"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "",
+          "line": 402
+        }
+      ],
+      "nloc": 10,
+      "ccn": 2,
+      "visibility": "private"
+    },
+    {
+      "name": "_from_db_object",
+      "kind": "method",
+      "scope": "Service",
+      "lineRange": {
+        "start": 408,
+        "end": 430
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "context"
+        },
+        {
+          "name": "service"
+        },
+        {
+          "name": "db_service"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "service",
+          "line": 430
+        }
+      ],
+      "nloc": 16,
+      "ccn": 8,
+      "visibility": "private"
+    },
+    {
+      "name": "obj_load_attr",
+      "kind": "method",
+      "scope": "Service",
+      "lineRange": {
+        "start": 433,
+        "end": 458
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "attrname"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 19,
+      "ccn": 4,
+      "visibility": "public"
+    },
+    {
+      "name": "get_by_id",
+      "kind": "method",
+      "scope": "Service",
+      "lineRange": {
+        "start": 462,
+        "end": 464
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "cls"
+        },
+        {
+          "name": "context"
+        },
+        {
+          "name": "service_id"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "cls._from_db_object(context, cls(), db_service)",
+          "line": 464
+        }
+      ],
+      "nloc": 3,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "get_by_uuid",
+      "kind": "method",
+      "scope": "Service",
+      "lineRange": {
+        "start": 468,
+        "end": 470
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "cls"
+        },
+        {
+          "name": "context"
+        },
+        {
+          "name": "service_uuid"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "cls._from_db_object(context, cls(), db_service)",
+          "line": 470
+        }
+      ],
+      "nloc": 3,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "get_by_host_and_topic",
+      "kind": "method",
+      "scope": "Service",
+      "lineRange": {
+        "start": 474,
+        "end": 476
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "cls"
+        },
+        {
+          "name": "context"
+        },
+        {
+          "name": "host"
+        },
+        {
+          "name": "topic"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "cls._from_db_object(context, cls(), db_service)",
+          "line": 476
+        }
+      ],
+      "nloc": 3,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "get_by_host_and_binary",
+      "kind": "method",
+      "scope": "Service",
+      "lineRange": {
+        "start": 480,
+        "end": 486
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "cls"
+        },
+        {
+          "name": "context"
+        },
+        {
+          "name": "host"
+        },
+        {
+          "name": "binary"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "",
+          "line": 485
+        },
+        {
+          "expr": "cls._from_db_object(context, cls(), db_service)",
+          "line": 486
+        }
+      ],
+      "nloc": 7,
+      "ccn": 2,
+      "visibility": "public"
+    },
+    {
+      "name": "_db_service_get_by_compute_host",
+      "kind": "method",
+      "scope": "Service",
+      "lineRange": {
+        "start": 490,
+        "end": 491
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "context"
+        },
+        {
+          "name": "host"
+        },
+        {
+          "default": "False",
+          "name": "use_slave"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "db.service_get_by_compute_host(context, host)",
+          "line": 491
+        }
+      ],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "get_by_compute_host",
+      "kind": "method",
+      "scope": "Service",
+      "lineRange": {
+        "start": 495,
+        "end": 498
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "cls"
+        },
+        {
+          "name": "context"
+        },
+        {
+          "name": "host"
+        },
+        {
+          "default": "False",
+          "name": "use_slave"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "cls._from_db_object(context, cls(), db_service)",
+          "line": 498
+        }
+      ],
+      "nloc": 4,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "get_by_args",
+      "kind": "method",
+      "scope": "Service",
+      "lineRange": {
+        "start": 504,
+        "end": 506
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "cls"
+        },
+        {
+          "name": "context"
+        },
+        {
+          "name": "host"
+        },
+        {
+          "name": "binary"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "cls._from_db_object(context, cls(), db_service)",
+          "line": 506
+        }
+      ],
+      "nloc": 3,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "_check_minimum_version",
+      "kind": "method",
+      "scope": "Service",
+      "lineRange": {
+        "start": 508,
+        "end": 530
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "",
+          "line": 524
+        },
+        {
+          "expr": "",
+          "line": 526
+        }
+      ],
+      "nloc": 9,
+      "ccn": 4,
+      "visibility": "private"
+    },
+    {
+      "name": "create",
+      "kind": "method",
+      "scope": "Service",
+      "lineRange": {
+        "start": 533,
+        "end": 546
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 12,
+      "ccn": 3,
+      "visibility": "public"
+    },
+    {
+      "name": "save",
+      "kind": "method",
+      "scope": "Service",
+      "lineRange": {
+        "start": 549,
+        "end": 556
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 7,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "_send_status_update_notification",
+      "kind": "method",
+      "scope": "Service",
+      "lineRange": {
+        "start": 558,
+        "end": 564
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "updates"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 4,
+      "ccn": 2,
+      "visibility": "private"
+    },
+    {
+      "name": "_send_notification",
+      "kind": "method",
+      "scope": "Service",
+      "lineRange": {
+        "start": 566,
+        "end": 575
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "action"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 10,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "destroy",
+      "kind": "method",
+      "scope": "Service",
+      "lineRange": {
+        "start": 578,
+        "end": 580
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 3,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "enable_min_version_cache",
+      "kind": "method",
+      "scope": "Service",
+      "lineRange": {
+        "start": 583,
+        "end": 585
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "cls"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 3,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "clear_min_version_cache",
+      "kind": "method",
+      "scope": "Service",
+      "lineRange": {
+        "start": 588,
+        "end": 589
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "cls"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "_db_service_get_minimum_version",
+      "kind": "method",
+      "scope": "Service",
+      "lineRange": {
+        "start": 593,
+        "end": 594
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "context"
+        },
+        {
+          "name": "binaries"
+        },
+        {
+          "default": "False",
+          "name": "use_slave"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "db.service_get_minimum_version(context, binaries)",
+          "line": 594
+        }
+      ],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "get_minimum_version_multi",
+      "kind": "method",
+      "scope": "Service",
+      "lineRange": {
+        "start": 598,
+        "end": 627
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "cls"
+        },
+        {
+          "name": "context"
+        },
+        {
+          "name": "binaries"
+        },
+        {
+          "default": "False",
+          "name": "use_slave"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "version",
+          "line": 627
+        }
+      ],
+      "nloc": 25,
+      "ccn": 11,
+      "visibility": "public"
+    },
+    {
+      "name": "get_minimum_version",
+      "kind": "method",
+      "scope": "Service",
+      "lineRange": {
+        "start": 631,
+        "end": 633
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "cls"
+        },
+        {
+          "name": "context"
+        },
+        {
+          "name": "binary"
+        },
+        {
+          "default": "False",
+          "name": "use_slave"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "cls.get_minimum_version_multi(context, [binary], use_slave=use_slave)",
+          "line": 632
+        }
+      ],
+      "nloc": 3,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "get_minimum_version_all_cells",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 636,
+        "end": 701
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "context"
+        },
+        {
+          "name": "binaries"
+        },
+        {
+          "default": "False",
+          "name": "require_all"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "min_version or 0",
+          "line": 701
+        }
+      ],
+      "nloc": 31,
+      "ccn": 13,
+      "exported": true
+    },
+    {
+      "name": "ServiceList",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 705,
+        "end": 768
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "VERSION",
+      "kind": "constant",
+      "scope": "ServiceList",
+      "lineRange": {
+        "start": 727,
+        "end": 727
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "fields",
+      "kind": "field",
+      "scope": "ServiceList",
+      "lineRange": {
+        "start": 729,
+        "end": 731
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "get_by_topic",
+      "kind": "method",
+      "scope": "ServiceList",
+      "lineRange": {
+        "start": 735,
+        "end": 737
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "cls"
+        },
+        {
+          "name": "context"
+        },
+        {
+          "name": "topic"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "base.obj_make_list(context, cls(context), db_services)",
+          "line": 737
+        }
+      ],
+      "nloc": 3,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "get_by_binary",
+      "kind": "method",
+      "scope": "ServiceList",
+      "lineRange": {
+        "start": 743,
+        "end": 746
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "cls"
+        },
+        {
+          "name": "context"
+        },
+        {
+          "name": "binary"
+        },
+        {
+          "default": "False",
+          "name": "include_disabled"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "base.obj_make_list(context, cls(context), db_services)",
+          "line": 746
+        }
+      ],
+      "nloc": 4,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "get_by_host",
+      "kind": "method",
+      "scope": "ServiceList",
+      "lineRange": {
+        "start": 750,
+        "end": 752
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "cls"
+        },
+        {
+          "name": "context"
+        },
+        {
+          "name": "host"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "base.obj_make_list(context, cls(context), db_services)",
+          "line": 752
+        }
+      ],
+      "nloc": 3,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "get_all",
+      "kind": "method",
+      "scope": "ServiceList",
+      "lineRange": {
+        "start": 756,
+        "end": 761
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "cls"
+        },
+        {
+          "name": "context"
+        },
+        {
+          "default": "None",
+          "name": "disabled"
+        },
+        {
+          "default": "False",
+          "name": "set_zones"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "base.obj_make_list(context, cls(context), db_services)",
+          "line": 761
+        }
+      ],
+      "nloc": 6,
+      "ccn": 2,
+      "visibility": "public"
+    },
+    {
+      "name": "get_all_computes_by_hv_type",
+      "kind": "method",
+      "scope": "ServiceList",
+      "lineRange": {
+        "start": 765,
+        "end": 768
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "cls"
+        },
+        {
+          "name": "context"
+        },
+        {
+          "name": "hv_type"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "base.obj_make_list(context, cls(context), db_services)",
+          "line": 768
+        }
+      ],
+      "nloc": 4,
+      "ccn": 1,
+      "visibility": "public"
+    }
+  ],
+  "referencedSymbols": [
+    {
+      "name": "logging.getLogger",
+      "usage": "call",
+      "via": "oslo_log",
+      "count": 1,
+      "lineRange": {
+        "start": 30,
+        "end": 30
+      }
+    },
+    {
+      "name": "base.NovaObject",
+      "usage": "inherit",
+      "via": "nova.objects",
+      "count": 2,
+      "lineRange": {
+        "start": 310,
+        "end": 310
+      }
+    },
+    {
+      "name": "base.NovaPersistentObject",
+      "usage": "inherit",
+      "via": "nova.objects",
+      "count": 1,
+      "lineRange": {
+        "start": 310,
+        "end": 310
+      }
+    },
+    {
+      "name": "base.NovaObjectDictCompat",
+      "usage": "inherit",
+      "via": "nova.objects",
+      "count": 1,
+      "lineRange": {
+        "start": 311,
+        "end": 311
+      }
+    },
+    {
+      "name": "fields.IntegerField",
+      "usage": "call",
+      "via": "nova.objects",
+      "count": 3,
+      "lineRange": {
+        "start": 338,
+        "end": 338
+      }
+    },
+    {
+      "name": "fields.UUIDField",
+      "usage": "call",
+      "via": "nova.objects",
+      "count": 1,
+      "lineRange": {
+        "start": 339,
+        "end": 339
+      }
+    },
+    {
+      "name": "fields.StringField",
+      "usage": "call",
+      "via": "nova.objects",
+      "count": 5,
+      "lineRange": {
+        "start": 340,
+        "end": 340
+      }
+    },
+    {
+      "name": "fields.BooleanField",
+      "usage": "call",
+      "via": "nova.objects",
+      "count": 2,
+      "lineRange": {
+        "start": 344,
+        "end": 344
+      }
+    },
+    {
+      "name": "fields.ObjectField",
+      "usage": "call",
+      "via": "nova.objects",
+      "count": 1,
+      "lineRange": {
+        "start": 347,
+        "end": 347
+      }
+    },
+    {
+      "name": "fields.DateTimeField",
+      "usage": "call",
+      "via": "nova.objects",
+      "count": 1,
+      "lineRange": {
+        "start": 348,
+        "end": 348
+      }
+    },
+    {
+      "name": "exception.ObjectActionError",
+      "usage": "call",
+      "via": "nova",
+      "count": 5,
+      "lineRange": {
+        "start": 367,
+        "end": 367
+      }
+    },
+    {
+      "name": "super",
+      "usage": "call",
+      "via": null,
+      "count": 2,
+      "lineRange": {
+        "start": 371,
+        "end": 371
+      }
+    },
+    {
+      "name": "versionutils.convert_version_to_tuple",
+      "usage": "call",
+      "via": "oslo_utils",
+      "count": 1,
+      "lineRange": {
+        "start": 378,
+        "end": 378
+      }
+    },
+    {
+      "name": "objects.ComputeNodeList.get_all_by_host",
+      "usage": "call",
+      "via": "nova",
+      "count": 2,
+      "lineRange": {
+        "start": 399,
+        "end": 399
+      }
+    },
+    {
+      "name": "base.get_attrname",
+      "usage": "call",
+      "via": "nova.objects",
+      "count": 1,
+      "lineRange": {
+        "start": 419,
+        "end": 419
+      }
+    },
+    {
+      "name": "setattr",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 419,
+        "end": 419
+      }
+    },
+    {
+      "name": "exception.OrphanedObjectError",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 435,
+        "end": 435
+      }
+    },
+    {
+      "name": "exception.ServiceNotFound",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 454,
+        "end": 454
+      }
+    },
+    {
+      "name": "db.service_get",
+      "usage": "call",
+      "via": "nova.db.main",
+      "count": 1,
+      "lineRange": {
+        "start": 463,
+        "end": 463
+      }
+    },
+    {
+      "name": "cls",
+      "usage": "call",
+      "via": null,
+      "count": 11,
+      "lineRange": {
+        "start": 464,
+        "end": 464
+      }
+    },
+    {
+      "name": "db.service_get_by_uuid",
+      "usage": "call",
+      "via": "nova.db.main",
+      "count": 1,
+      "lineRange": {
+        "start": 469,
+        "end": 469
+      }
+    },
+    {
+      "name": "db.service_get_by_host_and_topic",
+      "usage": "call",
+      "via": "nova.db.main",
+      "count": 1,
+      "lineRange": {
+        "start": 475,
+        "end": 475
+      }
+    },
+    {
+      "name": "db.service_get_by_host_and_binary",
+      "usage": "call",
+      "via": "nova.db.main",
+      "count": 2,
+      "lineRange": {
+        "start": 482,
+        "end": 482
+      }
+    },
+    {
+      "name": "db.service_get_by_compute_host",
+      "usage": "call",
+      "via": "nova.db.main",
+      "count": 1,
+      "lineRange": {
+        "start": 491,
+        "end": 491
+      }
+    },
+    {
+      "name": "exception.ServiceTooOld",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 529,
+        "end": 529
+      }
+    },
+    {
+      "name": "uuidutils.generate_uuid",
+      "usage": "call",
+      "via": "oslo_utils",
+      "count": 1,
+      "lineRange": {
+        "start": 541,
+        "end": 541
+      }
+    },
+    {
+      "name": "db.service_create",
+      "usage": "call",
+      "via": "nova.db.main",
+      "count": 1,
+      "lineRange": {
+        "start": 544,
+        "end": 544
+      }
+    },
+    {
+      "name": "db.service_update",
+      "usage": "call",
+      "via": "nova.db.main",
+      "count": 1,
+      "lineRange": {
+        "start": 553,
+        "end": 553
+      }
+    },
+    {
+      "name": "set",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 562,
+        "end": 562
+      }
+    },
+    {
+      "name": "service_notification.ServiceStatusPayload",
+      "usage": "call",
+      "via": "nova.notifications.objects",
+      "count": 1,
+      "lineRange": {
+        "start": 567,
+        "end": 567
+      }
+    },
+    {
+      "name": "service_notification.ServiceStatusNotification",
+      "usage": "call",
+      "via": "nova.notifications.objects",
+      "count": 1,
+      "lineRange": {
+        "start": 568,
+        "end": 568
+      }
+    },
+    {
+      "name": "notification.NotificationPublisher.from_service_obj",
+      "usage": "call",
+      "via": "nova.notifications.objects",
+      "count": 1,
+      "lineRange": {
+        "start": 569,
+        "end": 569
+      }
+    },
+    {
+      "name": "notification.EventType",
+      "usage": "call",
+      "via": "nova.notifications.objects",
+      "count": 1,
+      "lineRange": {
+        "start": 571,
+        "end": 571
+      }
+    },
+    {
+      "name": "db.service_destroy",
+      "usage": "call",
+      "via": "nova.db.main",
+      "count": 1,
+      "lineRange": {
+        "start": 579,
+        "end": 579
+      }
+    },
+    {
+      "name": "db.service_get_minimum_version",
+      "usage": "call",
+      "via": "nova.db.main",
+      "count": 1,
+      "lineRange": {
+        "start": 594,
+        "end": 594
+      }
+    },
+    {
+      "name": "all",
+      "usage": "call",
+      "via": null,
+      "count": 2,
+      "lineRange": {
+        "start": 599,
+        "end": 599
+      }
+    },
+    {
+      "name": "any",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 606,
+        "end": 606
+      }
+    },
+    {
+      "name": "min",
+      "usage": "call",
+      "via": null,
+      "count": 3,
+      "lineRange": {
+        "start": 620,
+        "end": 620
+      }
+    },
+    {
+      "name": "int",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 625,
+        "end": 625
+      }
+    },
+    {
+      "name": "nova_context.scatter_gather_all_cells",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 665,
+        "end": 665
+      }
+    },
+    {
+      "name": "exception.CellTimeout",
+      "usage": "call",
+      "via": "nova",
+      "count": 2,
+      "lineRange": {
+        "start": 676,
+        "end": 676
+      }
+    },
+    {
+      "name": "isinstance",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 677,
+        "end": 677
+      }
+    },
+    {
+      "name": "base.ObjectListBase",
+      "usage": "inherit",
+      "via": "nova.objects",
+      "count": 1,
+      "lineRange": {
+        "start": 705,
+        "end": 705
+      }
+    },
+    {
+      "name": "fields.ListOfObjectsField",
+      "usage": "call",
+      "via": "nova.objects",
+      "count": 1,
+      "lineRange": {
+        "start": 730,
+        "end": 730
+      }
+    },
+    {
+      "name": "db.service_get_all_by_topic",
+      "usage": "call",
+      "via": "nova.db.main",
+      "count": 1,
+      "lineRange": {
+        "start": 736,
+        "end": 736
+      }
+    },
+    {
+      "name": "base.obj_make_list",
+      "usage": "call",
+      "via": "nova.objects",
+      "count": 5,
+      "lineRange": {
+        "start": 737,
+        "end": 737
+      }
+    },
+    {
+      "name": "db.service_get_all_by_binary",
+      "usage": "call",
+      "via": "nova.db.main",
+      "count": 1,
+      "lineRange": {
+        "start": 744,
+        "end": 744
+      }
+    },
+    {
+      "name": "db.service_get_all_by_host",
+      "usage": "call",
+      "via": "nova.db.main",
+      "count": 1,
+      "lineRange": {
+        "start": 751,
+        "end": 751
+      }
+    },
+    {
+      "name": "db.service_get_all",
+      "usage": "call",
+      "via": "nova.db.main",
+      "count": 1,
+      "lineRange": {
+        "start": 757,
+        "end": 757
+      }
+    },
+    {
+      "name": "availability_zones.set_availability_zones",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 759,
+        "end": 759
+      }
+    },
+    {
+      "name": "db.service_get_all_computes_by_hv_type",
+      "usage": "call",
+      "via": "nova.db.main",
+      "count": 1,
+      "lineRange": {
+        "start": 766,
+        "end": 766
+      }
+    }
+  ],
+  "dependencies": [
+    {
+      "style": "from",
+      "module": "oslo_log",
+      "names": [
+        {
+          "alias": "logging",
+          "name": "log"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 15,
+        "end": 15
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_utils",
+      "names": [
+        {
+          "alias": null,
+          "name": "uuidutils"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 16,
+        "end": 16
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_utils",
+      "names": [
+        {
+          "alias": null,
+          "name": "versionutils"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 17,
+        "end": 17
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "availability_zones"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 19,
+        "end": 19
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": "nova_context",
+          "name": "context"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 20,
+        "end": 20
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.db.main",
+      "names": [
+        {
+          "alias": "db",
+          "name": "api"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 21,
+        "end": 21
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "exception"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 22,
+        "end": 22
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.notifications.objects",
+      "names": [
+        {
+          "alias": "notification",
+          "name": "base"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 23,
+        "end": 23
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.notifications.objects",
+      "names": [
+        {
+          "alias": "service_notification",
+          "name": "service"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 24,
+        "end": 24
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "objects"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 25,
+        "end": 25
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.objects",
+      "names": [
+        {
+          "alias": null,
+          "name": "base"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 26,
+        "end": 26
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.objects",
+      "names": [
+        {
+          "alias": null,
+          "name": "fields"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 27,
+        "end": 27
+      }
+    }
+  ],
+  "sideEffects": [
+    {
+      "kind": "global-mutation",
+      "target": "LOG = logging.getLogger(__name__)",
+      "lineRange": {
+        "start": 30,
+        "end": 30
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "SERVICE_VERSION = 74",
+      "lineRange": {
+        "start": 40,
+        "end": 40
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "SERVICE_VERSION_HISTORY = (",
+      "lineRange": {
+        "start": 65,
+        "end": 65
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "NODE_IDENTITY_VERSION = 65",
+      "lineRange": {
+        "start": 268,
+        "end": 268
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "OLDEST_SUPPORTED_SERVICE_VERSION = 'Gazpacho'",
+      "lineRange": {
+        "start": 290,
+        "end": 290
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "SERVICE_VERSION_ALIASES = {",
+      "lineRange": {
+        "start": 291,
+        "end": 291
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "VERSION = '1.22'",
+      "lineRange": {
+        "start": 335,
+        "end": 335
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "VERSION = '1.19'",
+      "lineRange": {
+        "start": 727,
+        "end": 727
+      }
+    }
+  ],
+  "securitySurface": [],
+  "injection_flags": [],
+  "warnings": []
+}

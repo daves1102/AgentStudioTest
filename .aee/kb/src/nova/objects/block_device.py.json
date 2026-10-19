@@ -1,0 +1,1902 @@
+{
+  "file": "src/nova/objects/block_device.py",
+  "hash": "2b4dfd838c5c957cd0d607ef131e9d307e7cfc5c8260817ee2aabea3eaf7cc04",
+  "language": "Python",
+  "component": "nova",
+  "package": null,
+  "lines": {
+    "blank": 66,
+    "code": 356,
+    "comment": 82,
+    "total": 504
+  },
+  "symbols": [
+    {
+      "name": "LOG",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 32,
+        "end": 32
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "_BLOCK_DEVICE_OPTIONAL_JOINED_FIELD",
+      "kind": "variable",
+      "scope": "",
+      "lineRange": {
+        "start": 35,
+        "end": 35
+      },
+      "source": "aee-inventory",
+      "exported": false
+    },
+    {
+      "name": "BLOCK_DEVICE_OPTIONAL_ATTRS",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 36,
+        "end": 36
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "__all__",
+      "kind": "variable",
+      "scope": "",
+      "lineRange": {
+        "start": 38,
+        "end": 44
+      },
+      "source": "aee-inventory",
+      "exported": false
+    },
+    {
+      "name": "_expected_cols",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 47,
+        "end": 49
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "expected_attrs"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "[attr for attr in expected_attrs if attr in _BLOCK_DEVICE_OPTIONAL_JOINED_FIELD]",
+          "line": 48
+        }
+      ],
+      "nloc": 3,
+      "ccn": 3,
+      "exported": false
+    },
+    {
+      "name": "BlockDeviceMapping",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 54,
+        "end": 387
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "VERSION",
+      "kind": "constant",
+      "scope": "BlockDeviceMapping",
+      "lineRange": {
+        "start": 81,
+        "end": 81
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "fields",
+      "kind": "field",
+      "scope": "BlockDeviceMapping",
+      "lineRange": {
+        "start": 83,
+        "end": 112
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "obj_make_compatible",
+      "kind": "method",
+      "scope": "BlockDeviceMapping",
+      "lineRange": {
+        "start": 114,
+        "end": 128
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "primitive"
+        },
+        {
+          "name": "target_version"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 15,
+      "ccn": 10,
+      "visibility": "public"
+    },
+    {
+      "name": "populate_uuids",
+      "kind": "method",
+      "scope": "BlockDeviceMapping",
+      "lineRange": {
+        "start": 131,
+        "end": 144
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "cls"
+        },
+        {
+          "name": "context"
+        },
+        {
+          "name": "max_count"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "done, done",
+          "line": 144
+        }
+      ],
+      "nloc": 9,
+      "ccn": 2,
+      "visibility": "public"
+    },
+    {
+      "name": "get_bdms_no_uuid",
+      "kind": "function",
+      "scope": "BlockDeviceMapping.populate_uuids",
+      "lineRange": {
+        "start": 133,
+        "end": 135
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "context"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "context.session.query(db_models.BlockDeviceMapping).\\ filter_by(uuid=None).limit(max_count).all()",
+          "line": 134
+        }
+      ],
+      "visibility": "public"
+    },
+    {
+      "name": "_create_uuid",
+      "kind": "method",
+      "scope": "BlockDeviceMapping",
+      "lineRange": {
+        "start": 148,
+        "end": 182
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "context"
+        },
+        {
+          "name": "bdm_id"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "uuid",
+          "line": 182
+        }
+      ],
+      "nloc": 15,
+      "ccn": 2,
+      "visibility": "private"
+    },
+    {
+      "name": "_from_db_object",
+      "kind": "method",
+      "scope": "BlockDeviceMapping",
+      "lineRange": {
+        "start": 185,
+        "end": 206
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "cls"
+        },
+        {
+          "name": "context"
+        },
+        {
+          "name": "block_device_obj"
+        },
+        {
+          "name": "db_block_device"
+        },
+        {
+          "default": "None",
+          "name": "expected_attrs"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "block_device_obj",
+          "line": 206
+        }
+      ],
+      "nloc": 19,
+      "ccn": 7,
+      "visibility": "private"
+    },
+    {
+      "name": "_create",
+      "kind": "method",
+      "scope": "BlockDeviceMapping",
+      "lineRange": {
+        "start": 208,
+        "end": 237
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "context"
+        },
+        {
+          "default": "False",
+          "name": "update_or_create"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 15,
+      "ccn": 4,
+      "visibility": "private"
+    },
+    {
+      "name": "create",
+      "kind": "method",
+      "scope": "BlockDeviceMapping",
+      "lineRange": {
+        "start": 240,
+        "end": 241
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "update_or_create",
+      "kind": "method",
+      "scope": "BlockDeviceMapping",
+      "lineRange": {
+        "start": 244,
+        "end": 245
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "destroy",
+      "kind": "method",
+      "scope": "BlockDeviceMapping",
+      "lineRange": {
+        "start": 248,
+        "end": 253
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 6,
+      "ccn": 2,
+      "visibility": "public"
+    },
+    {
+      "name": "save",
+      "kind": "method",
+      "scope": "BlockDeviceMapping",
+      "lineRange": {
+        "start": 256,
+        "end": 266
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 11,
+      "ccn": 3,
+      "visibility": "public"
+    },
+    {
+      "name": "get_by_volume_id",
+      "kind": "method",
+      "scope": "BlockDeviceMapping",
+      "lineRange": {
+        "start": 272,
+        "end": 292
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "cls"
+        },
+        {
+          "name": "context"
+        },
+        {
+          "name": "volume_id"
+        },
+        {
+          "default": "None",
+          "name": "instance_uuid"
+        },
+        {
+          "default": "None",
+          "name": "expected_attrs"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "cls._from_db_object(context, cls(), db_bdm, expected_attrs=expected_attrs)",
+          "line": 291
+        }
+      ],
+      "nloc": 19,
+      "ccn": 6,
+      "visibility": "public"
+    },
+    {
+      "name": "get_by_volume_and_instance",
+      "kind": "method",
+      "scope": "BlockDeviceMapping",
+      "lineRange": {
+        "start": 296,
+        "end": 306
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "cls"
+        },
+        {
+          "name": "context"
+        },
+        {
+          "name": "volume_id"
+        },
+        {
+          "name": "instance_uuid"
+        },
+        {
+          "default": "None",
+          "name": "expected_attrs"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "cls._from_db_object(context, cls(), db_bdm, expected_attrs=expected_attrs)",
+          "line": 305
+        }
+      ],
+      "nloc": 11,
+      "ccn": 3,
+      "visibility": "public"
+    },
+    {
+      "name": "get_by_volume",
+      "kind": "method",
+      "scope": "BlockDeviceMapping",
+      "lineRange": {
+        "start": 310,
+        "end": 320
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "cls"
+        },
+        {
+          "name": "context"
+        },
+        {
+          "name": "volume_id"
+        },
+        {
+          "default": "None",
+          "name": "expected_attrs"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "cls._from_db_object(context, cls(), db_bdms[0], expected_attrs=expected_attrs)",
+          "line": 319
+        }
+      ],
+      "nloc": 11,
+      "ccn": 4,
+      "visibility": "public"
+    },
+    {
+      "name": "is_root",
+      "kind": "method",
+      "scope": "BlockDeviceMapping",
+      "lineRange": {
+        "start": 323,
+        "end": 324
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "self.boot_index == 0",
+          "line": 324
+        }
+      ],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "is_volume",
+      "kind": "method",
+      "scope": "BlockDeviceMapping",
+      "lineRange": {
+        "start": 327,
+        "end": 329
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "(self.destination_type == fields.BlockDeviceDestinationType.VOLUME)",
+          "line": 328
+        }
+      ],
+      "nloc": 3,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "is_multiattach",
+      "kind": "method",
+      "scope": "BlockDeviceMapping",
+      "lineRange": {
+        "start": 332,
+        "end": 349
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "False",
+          "line": 343
+        },
+        {
+          "expr": "False",
+          "line": 345
+        },
+        {
+          "expr": "False",
+          "line": 347
+        },
+        {
+          "expr": "info.get(\"multiattach\", False)",
+          "line": 349
+        }
+      ],
+      "nloc": 9,
+      "ccn": 4,
+      "visibility": "public"
+    },
+    {
+      "name": "is_image",
+      "kind": "method",
+      "scope": "BlockDeviceMapping",
+      "lineRange": {
+        "start": 352,
+        "end": 353
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "self.source_type == fields.BlockDeviceSourceType.IMAGE",
+          "line": 353
+        }
+      ],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "is_local",
+      "kind": "method",
+      "scope": "BlockDeviceMapping",
+      "lineRange": {
+        "start": 356,
+        "end": 358
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "(self.destination_type == fields.BlockDeviceDestinationType.LOCAL)",
+          "line": 357
+        }
+      ],
+      "nloc": 3,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "get_image_mapping",
+      "kind": "method",
+      "scope": "BlockDeviceMapping",
+      "lineRange": {
+        "start": 360,
+        "end": 361
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "blockdev.BlockDeviceDict(self).get_image_mapping()",
+          "line": 361
+        }
+      ],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "obj_load_attr",
+      "kind": "method",
+      "scope": "BlockDeviceMapping",
+      "lineRange": {
+        "start": 364,
+        "end": 387
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "attrname"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 22,
+      "ccn": 4,
+      "visibility": "public"
+    },
+    {
+      "name": "BlockDeviceMappingList",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 391,
+        "end": 491
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "VERSION",
+      "kind": "constant",
+      "scope": "BlockDeviceMappingList",
+      "lineRange": {
+        "start": 411,
+        "end": 411
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "fields",
+      "kind": "field",
+      "scope": "BlockDeviceMappingList",
+      "lineRange": {
+        "start": 413,
+        "end": 415
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "instance_uuids",
+      "kind": "method",
+      "scope": "BlockDeviceMappingList",
+      "lineRange": {
+        "start": 418,
+        "end": 422
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "set( bdm.instance_uuid for bdm in self if bdm.obj_attr_is_set('instance_uuid') )",
+          "line": 419
+        }
+      ],
+      "nloc": 5,
+      "ccn": 3,
+      "visibility": "public"
+    },
+    {
+      "name": "bdms_by_instance_uuid",
+      "kind": "method",
+      "scope": "BlockDeviceMappingList",
+      "lineRange": {
+        "start": 425,
+        "end": 428
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "cls"
+        },
+        {
+          "name": "context"
+        },
+        {
+          "name": "instance_uuids"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "base.obj_make_dict_of_lists( context, cls, bdms, 'instance_uuid')",
+          "line": 427
+        }
+      ],
+      "nloc": 4,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "_db_block_device_mapping_get_all_by_instance_uuids",
+      "kind": "method",
+      "scope": "BlockDeviceMappingList",
+      "lineRange": {
+        "start": 432,
+        "end": 435
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "context"
+        },
+        {
+          "name": "instance_uuids"
+        },
+        {
+          "default": "False",
+          "name": "use_slave"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "db.block_device_mapping_get_all_by_instance_uuids( context, instance_uuids)",
+          "line": 434
+        }
+      ],
+      "nloc": 4,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "get_by_instance_uuids",
+      "kind": "method",
+      "scope": "BlockDeviceMappingList",
+      "lineRange": {
+        "start": 439,
+        "end": 442
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "cls"
+        },
+        {
+          "name": "context"
+        },
+        {
+          "name": "instance_uuids"
+        },
+        {
+          "default": "False",
+          "name": "use_slave"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "base.obj_make_list(context, cls(), db_bdms or [])",
+          "line": 442
+        }
+      ],
+      "nloc": 4,
+      "ccn": 2,
+      "visibility": "public"
+    },
+    {
+      "name": "_db_block_device_mapping_get_all_by_instance",
+      "kind": "method",
+      "scope": "BlockDeviceMappingList",
+      "lineRange": {
+        "start": 446,
+        "end": 449
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "context"
+        },
+        {
+          "name": "instance_uuid"
+        },
+        {
+          "default": "False",
+          "name": "use_slave"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "db.block_device_mapping_get_all_by_instance( context, instance_uuid)",
+          "line": 448
+        }
+      ],
+      "nloc": 4,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "get_by_instance_uuid",
+      "kind": "method",
+      "scope": "BlockDeviceMappingList",
+      "lineRange": {
+        "start": 453,
+        "end": 456
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "cls"
+        },
+        {
+          "name": "context"
+        },
+        {
+          "name": "instance_uuid"
+        },
+        {
+          "default": "False",
+          "name": "use_slave"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "base.obj_make_list(context, cls(), db_bdms or [])",
+          "line": 456
+        }
+      ],
+      "nloc": 4,
+      "ccn": 2,
+      "visibility": "public"
+    },
+    {
+      "name": "_db_block_device_mapping_get_all_by_volume",
+      "kind": "method",
+      "scope": "BlockDeviceMappingList",
+      "lineRange": {
+        "start": 460,
+        "end": 463
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "context"
+        },
+        {
+          "name": "volume_id"
+        },
+        {
+          "default": "False",
+          "name": "use_slave"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "db.block_device_mapping_get_all_by_volume_id( context, volume_id)",
+          "line": 462
+        }
+      ],
+      "nloc": 4,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "get_by_volume",
+      "kind": "method",
+      "scope": "BlockDeviceMappingList",
+      "lineRange": {
+        "start": 467,
+        "end": 472
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "cls"
+        },
+        {
+          "name": "context"
+        },
+        {
+          "name": "volume_id"
+        },
+        {
+          "default": "False",
+          "name": "use_slave"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "base.obj_make_list(context, cls(), db_bdms)",
+          "line": 472
+        }
+      ],
+      "nloc": 6,
+      "ccn": 2,
+      "visibility": "public"
+    },
+    {
+      "name": "root_bdm",
+      "kind": "method",
+      "scope": "BlockDeviceMappingList",
+      "lineRange": {
+        "start": 474,
+        "end": 491
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "next(bdm_obj for bdm_obj in self if bdm_obj.is_root)",
+          "line": 489
+        },
+        {
+          "expr": "",
+          "line": 491
+        }
+      ],
+      "nloc": 7,
+      "ccn": 5,
+      "visibility": "public"
+    },
+    {
+      "name": "block_device_make_list",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 494,
+        "end": 498
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "context"
+        },
+        {
+          "name": "db_list"
+        },
+        {
+          "name": "**extra_args"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "base.obj_make_list(context, objects.BlockDeviceMappingList(context), db_list, **extra_args)",
+          "line": 495
+        }
+      ],
+      "nloc": 5,
+      "ccn": 1,
+      "exported": true
+    },
+    {
+      "name": "block_device_make_list_from_dicts",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 501,
+        "end": 504
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "context"
+        },
+        {
+          "name": "bdm_dicts_list"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "BlockDeviceMappingList(objects=bdm_objects)",
+          "line": 504
+        }
+      ],
+      "nloc": 4,
+      "ccn": 2,
+      "exported": true
+    },
+    {
+      "name": "is_root",
+      "kind": "property",
+      "scope": "BlockDeviceMapping",
+      "lineRange": {
+        "start": 322,
+        "end": 324
+      },
+      "visibility": "public",
+      "source": "manual"
+    },
+    {
+      "name": "is_volume",
+      "kind": "property",
+      "scope": "BlockDeviceMapping",
+      "lineRange": {
+        "start": 326,
+        "end": 329
+      },
+      "visibility": "public",
+      "source": "manual"
+    },
+    {
+      "name": "is_multiattach",
+      "kind": "property",
+      "scope": "BlockDeviceMapping",
+      "lineRange": {
+        "start": 331,
+        "end": 349
+      },
+      "visibility": "public",
+      "source": "manual"
+    },
+    {
+      "name": "is_image",
+      "kind": "property",
+      "scope": "BlockDeviceMapping",
+      "lineRange": {
+        "start": 351,
+        "end": 353
+      },
+      "visibility": "public",
+      "source": "manual"
+    },
+    {
+      "name": "is_local",
+      "kind": "property",
+      "scope": "BlockDeviceMapping",
+      "lineRange": {
+        "start": 355,
+        "end": 358
+      },
+      "visibility": "public",
+      "source": "manual"
+    },
+    {
+      "name": "instance_uuids",
+      "kind": "property",
+      "scope": "BlockDeviceMappingList",
+      "lineRange": {
+        "start": 417,
+        "end": 422
+      },
+      "visibility": "public",
+      "source": "manual"
+    }
+  ],
+  "referencedSymbols": [
+    {
+      "name": "logging.getLogger",
+      "usage": "call",
+      "via": "oslo_log",
+      "count": 1,
+      "lineRange": {
+        "start": 32,
+        "end": 32
+      }
+    },
+    {
+      "name": "base.NovaObject",
+      "usage": "inherit",
+      "via": "nova.objects",
+      "count": 2,
+      "lineRange": {
+        "start": 54,
+        "end": 54
+      }
+    },
+    {
+      "name": "base.NovaPersistentObject",
+      "usage": "inherit",
+      "via": "nova.objects",
+      "count": 1,
+      "lineRange": {
+        "start": 54,
+        "end": 54
+      }
+    },
+    {
+      "name": "base.NovaObjectDictCompat",
+      "usage": "inherit",
+      "via": "nova.objects",
+      "count": 1,
+      "lineRange": {
+        "start": 55,
+        "end": 55
+      }
+    },
+    {
+      "name": "fields.IntegerField",
+      "usage": "call",
+      "via": "nova.objects",
+      "count": 3,
+      "lineRange": {
+        "start": 84,
+        "end": 84
+      }
+    },
+    {
+      "name": "fields.UUIDField",
+      "usage": "call",
+      "via": "nova.objects",
+      "count": 4,
+      "lineRange": {
+        "start": 85,
+        "end": 85
+      }
+    },
+    {
+      "name": "fields.ObjectField",
+      "usage": "call",
+      "via": "nova.objects",
+      "count": 1,
+      "lineRange": {
+        "start": 87,
+        "end": 87
+      }
+    },
+    {
+      "name": "fields.BlockDeviceSourceTypeField",
+      "usage": "call",
+      "via": "nova.objects",
+      "count": 1,
+      "lineRange": {
+        "start": 88,
+        "end": 88
+      }
+    },
+    {
+      "name": "fields.BlockDeviceDestinationTypeField",
+      "usage": "call",
+      "via": "nova.objects",
+      "count": 1,
+      "lineRange": {
+        "start": 89,
+        "end": 89
+      }
+    },
+    {
+      "name": "fields.StringField",
+      "usage": "call",
+      "via": "nova.objects",
+      "count": 9,
+      "lineRange": {
+        "start": 91,
+        "end": 91
+      }
+    },
+    {
+      "name": "fields.BlockDeviceTypeField",
+      "usage": "call",
+      "via": "nova.objects",
+      "count": 1,
+      "lineRange": {
+        "start": 92,
+        "end": 92
+      }
+    },
+    {
+      "name": "fields.BooleanField",
+      "usage": "call",
+      "via": "nova.objects",
+      "count": 3,
+      "lineRange": {
+        "start": 96,
+        "end": 96
+      }
+    },
+    {
+      "name": "fields.SensitiveStringField",
+      "usage": "call",
+      "via": "nova.objects",
+      "count": 1,
+      "lineRange": {
+        "start": 102,
+        "end": 102
+      }
+    },
+    {
+      "name": "fields.BlockDeviceEncryptionFormatTypeField",
+      "usage": "call",
+      "via": "nova.objects",
+      "count": 1,
+      "lineRange": {
+        "start": 109,
+        "end": 109
+      }
+    },
+    {
+      "name": "versionutils.convert_version_to_tuple",
+      "usage": "call",
+      "via": "oslo_utils",
+      "count": 1,
+      "lineRange": {
+        "start": 115,
+        "end": 115
+      }
+    },
+    {
+      "name": "oslo_db_api.wrap_db_retry",
+      "usage": "call",
+      "via": "oslo_db",
+      "count": 1,
+      "lineRange": {
+        "start": 147,
+        "end": 147
+      }
+    },
+    {
+      "name": "uuidutils.generate_uuid",
+      "usage": "call",
+      "via": "oslo_utils",
+      "count": 1,
+      "lineRange": {
+        "start": 157,
+        "end": 157
+      }
+    },
+    {
+      "name": "db_models.BlockDeviceMapping",
+      "usage": "call",
+      "via": "nova.db.main",
+      "count": 1,
+      "lineRange": {
+        "start": 159,
+        "end": 159
+      }
+    },
+    {
+      "name": "db.get_context_manager",
+      "usage": "call",
+      "via": "nova.db.main",
+      "count": 1,
+      "lineRange": {
+        "start": 168,
+        "end": 168
+      }
+    },
+    {
+      "name": "objects.Instance",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 199,
+        "end": 199
+      }
+    },
+    {
+      "name": "exception.ObjectActionError",
+      "usage": "call",
+      "via": "nova",
+      "count": 5,
+      "lineRange": {
+        "start": 223,
+        "end": 223
+      }
+    },
+    {
+      "name": "db.block_device_mapping_update_or_create",
+      "usage": "call",
+      "via": "nova.db.main",
+      "count": 1,
+      "lineRange": {
+        "start": 231,
+        "end": 231
+      }
+    },
+    {
+      "name": "db.block_device_mapping_create",
+      "usage": "call",
+      "via": "nova.db.main",
+      "count": 1,
+      "lineRange": {
+        "start": 234,
+        "end": 234
+      }
+    },
+    {
+      "name": "db.block_device_mapping_destroy",
+      "usage": "call",
+      "via": "nova.db.main",
+      "count": 1,
+      "lineRange": {
+        "start": 252,
+        "end": 252
+      }
+    },
+    {
+      "name": "base.get_attrname",
+      "usage": "call",
+      "via": "nova.objects",
+      "count": 1,
+      "lineRange": {
+        "start": 253,
+        "end": 253
+      }
+    },
+    {
+      "name": "delattr",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 253,
+        "end": 253
+      }
+    },
+    {
+      "name": "db.block_device_mapping_update",
+      "usage": "call",
+      "via": "nova.db.main",
+      "count": 1,
+      "lineRange": {
+        "start": 262,
+        "end": 262
+      }
+    },
+    {
+      "name": "exception.BDMNotFound",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 265,
+        "end": 265
+      }
+    },
+    {
+      "name": "db.block_device_mapping_get_all_by_volume_id",
+      "usage": "call",
+      "via": "nova.db.main",
+      "count": 3,
+      "lineRange": {
+        "start": 276,
+        "end": 276
+      }
+    },
+    {
+      "name": "exception.VolumeBDMNotFound",
+      "usage": "call",
+      "via": "nova",
+      "count": 4,
+      "lineRange": {
+        "start": 279,
+        "end": 279
+      }
+    },
+    {
+      "name": "len",
+      "usage": "call",
+      "via": null,
+      "count": 3,
+      "lineRange": {
+        "start": 280,
+        "end": 280
+      }
+    },
+    {
+      "name": "exception.InvalidVolume",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 288,
+        "end": 288
+      }
+    },
+    {
+      "name": "_",
+      "usage": "call",
+      "via": "nova.i18n",
+      "count": 1,
+      "lineRange": {
+        "start": 289,
+        "end": 289
+      }
+    },
+    {
+      "name": "cls",
+      "usage": "call",
+      "via": null,
+      "count": 6,
+      "lineRange": {
+        "start": 291,
+        "end": 291
+      }
+    },
+    {
+      "name": "db.block_device_mapping_get_by_instance_and_volume_id",
+      "usage": "call",
+      "via": "nova.db.main",
+      "count": 1,
+      "lineRange": {
+        "start": 300,
+        "end": 300
+      }
+    },
+    {
+      "name": "exception.VolumeBDMIsMultiAttach",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 318,
+        "end": 318
+      }
+    },
+    {
+      "name": "jsonutils.loads",
+      "usage": "call",
+      "via": "oslo_serialization",
+      "count": 1,
+      "lineRange": {
+        "start": 348,
+        "end": 348
+      }
+    },
+    {
+      "name": "blockdev.BlockDeviceDict",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 361,
+        "end": 361
+      }
+    },
+    {
+      "name": "exception.OrphanedObjectError",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 366,
+        "end": 366
+      }
+    },
+    {
+      "name": "objects.Instance.get_by_uuid",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 385,
+        "end": 385
+      }
+    },
+    {
+      "name": "base.ObjectListBase",
+      "usage": "inherit",
+      "via": "nova.objects",
+      "count": 1,
+      "lineRange": {
+        "start": 391,
+        "end": 391
+      }
+    },
+    {
+      "name": "fields.ListOfObjectsField",
+      "usage": "call",
+      "via": "nova.objects",
+      "count": 1,
+      "lineRange": {
+        "start": 414,
+        "end": 414
+      }
+    },
+    {
+      "name": "set",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 419,
+        "end": 419
+      }
+    },
+    {
+      "name": "base.obj_make_dict_of_lists",
+      "usage": "call",
+      "via": "nova.objects",
+      "count": 1,
+      "lineRange": {
+        "start": 427,
+        "end": 427
+      }
+    },
+    {
+      "name": "db.block_device_mapping_get_all_by_instance_uuids",
+      "usage": "call",
+      "via": "nova.db.main",
+      "count": 1,
+      "lineRange": {
+        "start": 434,
+        "end": 434
+      }
+    },
+    {
+      "name": "base.obj_make_list",
+      "usage": "call",
+      "via": "nova.objects",
+      "count": 4,
+      "lineRange": {
+        "start": 442,
+        "end": 442
+      }
+    },
+    {
+      "name": "db.block_device_mapping_get_all_by_instance",
+      "usage": "call",
+      "via": "nova.db.main",
+      "count": 1,
+      "lineRange": {
+        "start": 448,
+        "end": 448
+      }
+    },
+    {
+      "name": "exception.UndefinedRootBDM",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 487,
+        "end": 487
+      }
+    },
+    {
+      "name": "next",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 489,
+        "end": 489
+      }
+    },
+    {
+      "name": "objects.BlockDeviceMappingList",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 496,
+        "end": 496
+      }
+    },
+    {
+      "name": "objects.BlockDeviceMapping",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 502,
+        "end": 502
+      }
+    }
+  ],
+  "dependencies": [
+    {
+      "style": "from",
+      "module": "oslo_db",
+      "names": [
+        {
+          "alias": "oslo_db_api",
+          "name": "api"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 15,
+        "end": 15
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_db.sqlalchemy",
+      "names": [
+        {
+          "alias": null,
+          "name": "update_match"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 16,
+        "end": 16
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_log",
+      "names": [
+        {
+          "alias": "logging",
+          "name": "log"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 17,
+        "end": 17
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_serialization",
+      "names": [
+        {
+          "alias": null,
+          "name": "jsonutils"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 18,
+        "end": 18
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_utils",
+      "names": [
+        {
+          "alias": null,
+          "name": "uuidutils"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 19,
+        "end": 19
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_utils",
+      "names": [
+        {
+          "alias": null,
+          "name": "versionutils"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 20,
+        "end": 20
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": "blockdev",
+          "name": "block_device"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 22,
+        "end": 22
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.db.main",
+      "names": [
+        {
+          "alias": "db",
+          "name": "api"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 23,
+        "end": 23
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.db.main",
+      "names": [
+        {
+          "alias": "db_models",
+          "name": "models"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 24,
+        "end": 24
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "exception"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 25,
+        "end": 25
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.i18n",
+      "names": [
+        {
+          "alias": null,
+          "name": "_"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 26,
+        "end": 26
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "objects"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 27,
+        "end": 27
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.objects",
+      "names": [
+        {
+          "alias": null,
+          "name": "base"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 28,
+        "end": 28
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.objects",
+      "names": [
+        {
+          "alias": null,
+          "name": "fields"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 29,
+        "end": 29
+      }
+    }
+  ],
+  "sideEffects": [
+    {
+      "kind": "network",
+      "target": "return context.session.query(db_models.BlockDeviceMapping).\\",
+      "lineRange": {
+        "start": 134,
+        "end": 134
+      }
+    },
+    {
+      "kind": "network",
+      "target": "query = context.session.query(db_models.BlockDeviceMapping).\\",
+      "lineRange": {
+        "start": 170,
+        "end": 170
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "LOG = logging.getLogger(__name__)",
+      "lineRange": {
+        "start": 32,
+        "end": 32
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "BLOCK_DEVICE_OPTIONAL_ATTRS = _BLOCK_DEVICE_OPTIONAL_JOINED_FIELD",
+      "lineRange": {
+        "start": 36,
+        "end": 36
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "VERSION = '1.21'",
+      "lineRange": {
+        "start": 81,
+        "end": 81
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "VERSION = '1.18'",
+      "lineRange": {
+        "start": 411,
+        "end": 411
+      }
+    }
+  ],
+  "securitySurface": [],
+  "injection_flags": [],
+  "warnings": []
+}

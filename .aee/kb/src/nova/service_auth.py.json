@@ -1,0 +1,395 @@
+{
+  "file": "src/nova/service_auth.py",
+  "hash": "184d3c45055d2f526356536d5283b1506f4860369d394a9712f952bdeff6cd07",
+  "language": "Python",
+  "component": "nova",
+  "package": null,
+  "lines": {
+    "blank": 25,
+    "code": 63,
+    "comment": 16,
+    "total": 104
+  },
+  "symbols": [
+    {
+      "name": "CONF",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 26,
+        "end": 26
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "LOG",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 27,
+        "end": 27
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "_AUTHS",
+      "kind": "variable",
+      "scope": "",
+      "lineRange": {
+        "start": 31,
+        "end": 31
+      },
+      "source": "aee-inventory",
+      "exported": false
+    },
+    {
+      "name": "_SESSIONS",
+      "kind": "variable",
+      "scope": "",
+      "lineRange": {
+        "start": 32,
+        "end": 32
+      },
+      "source": "aee-inventory",
+      "exported": false
+    },
+    {
+      "name": "reset_globals",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 35,
+        "end": 39
+      },
+      "source": "aee-inventory",
+      "parameters": [],
+      "returnType": null,
+      "returns": [],
+      "nloc": 4,
+      "ccn": 1,
+      "exported": true
+    },
+    {
+      "name": "get_service_auth_plugin",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 42,
+        "end": 50
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "conf_group",
+          "type": "str"
+        }
+      ],
+      "returnType": "'keystoneauth1.plugin.BaseAuthPlugin'",
+      "returns": [
+        {
+          "expr": "auth",
+          "line": 50
+        }
+      ],
+      "nloc": 8,
+      "ccn": 2,
+      "exported": true
+    },
+    {
+      "name": "get_service_auth_session",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 53,
+        "end": 67
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "conf_group",
+          "type": "str"
+        },
+        {
+          "default": "None",
+          "name": "auth",
+          "type": "ty.Optional['keystoneauth1.plugin.BaseAuthPlugin']"
+        }
+      ],
+      "returnType": "'keystoneauth1.session.Session'",
+      "returns": [
+        {
+          "expr": "session",
+          "line": 67
+        }
+      ],
+      "nloc": 10,
+      "ccn": 2,
+      "exported": true
+    },
+    {
+      "name": "get_service_user_token_auth_plugin",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 70,
+        "end": 104
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "context"
+        },
+        {
+          "default": "None",
+          "name": "user_auth"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "user_auth",
+          "line": 100
+        },
+        {
+          "expr": "service_token.ServiceTokenAuthWrapper( user_auth=user_auth, service_auth=service_auth)",
+          "line": 102
+        },
+        {
+          "expr": "user_auth",
+          "line": 104
+        }
+      ],
+      "nloc": 12,
+      "ccn": 4,
+      "exported": true
+    }
+  ],
+  "referencedSymbols": [
+    {
+      "name": "logging.getLogger",
+      "usage": "call",
+      "via": "oslo_log",
+      "count": 1,
+      "lineRange": {
+        "start": 27,
+        "end": 27
+      }
+    },
+    {
+      "name": "ks_loading.load_auth_from_conf_options",
+      "usage": "call",
+      "via": "keystoneauth1",
+      "count": 1,
+      "lineRange": {
+        "start": 48,
+        "end": 48
+      }
+    },
+    {
+      "name": "ks_loading.load_session_from_conf_options",
+      "usage": "call",
+      "via": "keystoneauth1",
+      "count": 1,
+      "lineRange": {
+        "start": 64,
+        "end": 64
+      }
+    },
+    {
+      "name": "service_token.ServiceTokenAuthWrapper",
+      "usage": "call",
+      "via": "keystoneauth1",
+      "count": 1,
+      "lineRange": {
+        "start": 102,
+        "end": 102
+      }
+    }
+  ],
+  "dependencies": [
+    {
+      "style": "import",
+      "module": "typing",
+      "names": [],
+      "alias": "ty",
+      "relative": false,
+      "lineRange": {
+        "start": 14,
+        "end": 14
+      }
+    },
+    {
+      "style": "import",
+      "module": "keystoneauth1.plugin",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 17,
+        "end": 17
+      }
+    },
+    {
+      "style": "from",
+      "module": "keystoneauth1",
+      "names": [
+        {
+          "alias": "ks_loading",
+          "name": "loading"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 19,
+        "end": 19
+      }
+    },
+    {
+      "style": "from",
+      "module": "keystoneauth1",
+      "names": [
+        {
+          "alias": null,
+          "name": "service_token"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 20,
+        "end": 20
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_log",
+      "names": [
+        {
+          "alias": "logging",
+          "name": "log"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 21,
+        "end": 21
+      }
+    },
+    {
+      "style": "import",
+      "module": "nova.conf",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 23,
+        "end": 23
+      }
+    }
+  ],
+  "sideEffects": [
+    {
+      "kind": "network",
+      "target": ") -> 'keystoneauth1.session.Session':",
+      "lineRange": {
+        "start": 56,
+        "end": 56
+      }
+    },
+    {
+      "kind": "network",
+      "target": "def get_service_user_token_auth_plugin(context, user_auth=None):",
+      "lineRange": {
+        "start": 70,
+        "end": 70
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "CONF = nova.conf.CONF",
+      "lineRange": {
+        "start": 26,
+        "end": 26
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "LOG = logging.getLogger(__name__)",
+      "lineRange": {
+        "start": 27,
+        "end": 27
+      }
+    }
+  ],
+  "securitySurface": [
+    {
+      "kind": "privilege",
+      "category": "crypto-key",
+      "description": "import keystoneauth1.plugin",
+      "lineRange": {
+        "start": 17,
+        "end": 17
+      }
+    },
+    {
+      "kind": "privilege",
+      "category": "crypto-key",
+      "description": "from keystoneauth1 import loading as ks_loading",
+      "lineRange": {
+        "start": 19,
+        "end": 19
+      }
+    },
+    {
+      "kind": "privilege",
+      "category": "crypto-key",
+      "description": "from keystoneauth1 import service_token",
+      "lineRange": {
+        "start": 20,
+        "end": 20
+      }
+    },
+    {
+      "kind": "privilege",
+      "category": "crypto-key",
+      "description": ") -> 'keystoneauth1.plugin.BaseAuthPlugin':",
+      "lineRange": {
+        "start": 44,
+        "end": 44
+      }
+    },
+    {
+      "kind": "privilege",
+      "category": "crypto-key",
+      "description": "auth: ty.Optional['keystoneauth1.plugin.BaseAuthPlugin'] = None,",
+      "lineRange": {
+        "start": 55,
+        "end": 55
+      }
+    },
+    {
+      "kind": "privilege",
+      "category": "crypto-key",
+      "description": ") -> 'keystoneauth1.session.Session':",
+      "lineRange": {
+        "start": 56,
+        "end": 56
+      }
+    },
+    {
+      "kind": "privilege",
+      "category": "crypto-key",
+      "description": "def get_service_user_token_auth_plugin(context, user_auth=None):",
+      "lineRange": {
+        "start": 70,
+        "end": 70
+      }
+    }
+  ],
+  "injection_flags": [],
+  "warnings": []
+}

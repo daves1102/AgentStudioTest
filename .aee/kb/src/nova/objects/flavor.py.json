@@ -1,0 +1,2246 @@
+{
+  "file": "src/nova/objects/flavor.py",
+  "hash": "1829180f3dea88eb7810cce67592b4a1bf7918c44ffbc672e39d9039ab0b2943",
+  "language": "Python",
+  "component": "nova",
+  "package": null,
+  "lines": {
+    "blank": 102,
+    "code": 516,
+    "comment": 59,
+    "total": 677
+  },
+  "symbols": [
+    {
+      "name": "OPTIONAL_FIELDS",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 34,
+        "end": 34
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "DEPRECATED_FIELDS",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 36,
+        "end": 36
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "MUTABLE_FIELDS",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 39,
+        "end": 39
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "__all__",
+      "kind": "variable",
+      "scope": "",
+      "lineRange": {
+        "start": 41,
+        "end": 44
+      },
+      "source": "aee-inventory",
+      "exported": false
+    },
+    {
+      "name": "CONF",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 46,
+        "end": 46
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "_dict_with_extra_specs",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 49,
+        "end": 52
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "flavor_model"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "dict(flavor_model, extra_specs=extra_specs)",
+          "line": 52
+        }
+      ],
+      "nloc": 4,
+      "ccn": 2,
+      "exported": false
+    },
+    {
+      "name": "_get_projects_from_db",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 60,
+        "end": 68
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "context"
+        },
+        {
+          "name": "flavorid"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "[x['project_id'] for x in db_flavor['projects']]",
+          "line": 68
+        }
+      ],
+      "nloc": 9,
+      "ccn": 3,
+      "exported": false
+    },
+    {
+      "name": "_flavor_add_project",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 72,
+        "end": 80
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "context"
+        },
+        {
+          "name": "flavor_id"
+        },
+        {
+          "name": "project_id"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 9,
+      "ccn": 2,
+      "exported": false
+    },
+    {
+      "name": "_flavor_del_project",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 84,
+        "end": 91
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "context"
+        },
+        {
+          "name": "flavor_id"
+        },
+        {
+          "name": "project_id"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 8,
+      "ccn": 2,
+      "exported": false
+    },
+    {
+      "name": "_flavor_extra_specs_add",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 95,
+        "end": 128
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "context"
+        },
+        {
+          "name": "flavor_id"
+        },
+        {
+          "name": "specs"
+        },
+        {
+          "default": "10",
+          "name": "max_retries"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "specs",
+          "line": 122
+        }
+      ],
+      "nloc": 29,
+      "ccn": 7,
+      "exported": false
+    },
+    {
+      "name": "_flavor_extra_specs_del",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 132,
+        "end": 139
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "context"
+        },
+        {
+          "name": "flavor_id"
+        },
+        {
+          "name": "key"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 8,
+      "ccn": 2,
+      "exported": false
+    },
+    {
+      "name": "_flavor_create",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 143,
+        "end": 175
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "context"
+        },
+        {
+          "name": "values"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "_dict_with_extra_specs(db_flavor)",
+          "line": 175
+        }
+      ],
+      "nloc": 29,
+      "ccn": 8,
+      "exported": false
+    },
+    {
+      "name": "_flavor_destroy",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 179,
+        "end": 196
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "context"
+        },
+        {
+          "default": "None",
+          "name": "flavor_id"
+        },
+        {
+          "default": "None",
+          "name": "flavorid"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "result",
+          "line": 196
+        }
+      ],
+      "nloc": 15,
+      "ccn": 4,
+      "exported": false
+    },
+    {
+      "name": "Flavor",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 202,
+        "end": 596
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "VERSION",
+      "kind": "constant",
+      "scope": "Flavor",
+      "lineRange": {
+        "start": 209,
+        "end": 209
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "fields",
+      "kind": "field",
+      "scope": "Flavor",
+      "lineRange": {
+        "start": 211,
+        "end": 227
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "__init__",
+      "kind": "method",
+      "scope": "Flavor",
+      "lineRange": {
+        "start": 229,
+        "end": 232
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "*args"
+        },
+        {
+          "name": "**kwargs"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 4,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "obj_make_compatible",
+      "kind": "method",
+      "scope": "Flavor",
+      "lineRange": {
+        "start": 234,
+        "end": 238
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "primitive"
+        },
+        {
+          "name": "target_version"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 5,
+      "ccn": 3,
+      "visibility": "public"
+    },
+    {
+      "name": "_from_db_object",
+      "kind": "method",
+      "scope": "Flavor",
+      "lineRange": {
+        "start": 241,
+        "end": 274
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "context"
+        },
+        {
+          "name": "flavor"
+        },
+        {
+          "name": "db_flavor"
+        },
+        {
+          "default": "None",
+          "name": "expected_attrs"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "flavor",
+          "line": 274
+        }
+      ],
+      "nloc": 26,
+      "ccn": 14,
+      "visibility": "private"
+    },
+    {
+      "name": "_flavor_get_query_from_db",
+      "kind": "method",
+      "scope": "Flavor",
+      "lineRange": {
+        "start": 277,
+        "end": 289
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "context"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "query",
+          "line": 289
+        }
+      ],
+      "nloc": 11,
+      "ccn": 2,
+      "visibility": "private"
+    },
+    {
+      "name": "_flavor_get_from_db",
+      "kind": "method",
+      "scope": "Flavor",
+      "lineRange": {
+        "start": 294,
+        "end": 301
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "context"
+        },
+        {
+          "name": "id"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "_dict_with_extra_specs(result)",
+          "line": 301
+        }
+      ],
+      "nloc": 7,
+      "ccn": 2,
+      "visibility": "private"
+    },
+    {
+      "name": "_flavor_get_by_name_from_db",
+      "kind": "method",
+      "scope": "Flavor",
+      "lineRange": {
+        "start": 306,
+        "end": 313
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "context"
+        },
+        {
+          "name": "name"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "_dict_with_extra_specs(result)",
+          "line": 313
+        }
+      ],
+      "nloc": 7,
+      "ccn": 2,
+      "visibility": "private"
+    },
+    {
+      "name": "_flavor_get_by_flavor_id_from_db",
+      "kind": "method",
+      "scope": "Flavor",
+      "lineRange": {
+        "start": 318,
+        "end": 326
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "context"
+        },
+        {
+          "name": "flavor_id"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "_dict_with_extra_specs(result)",
+          "line": 326
+        }
+      ],
+      "nloc": 8,
+      "ccn": 2,
+      "visibility": "private"
+    },
+    {
+      "name": "_get_projects_from_db",
+      "kind": "method",
+      "scope": "Flavor",
+      "lineRange": {
+        "start": 329,
+        "end": 330
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "context"
+        },
+        {
+          "name": "flavorid"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "_get_projects_from_db(context, flavorid)",
+          "line": 330
+        }
+      ],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "_load_projects",
+      "kind": "method",
+      "scope": "Flavor",
+      "lineRange": {
+        "start": 333,
+        "end": 336
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 4,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "obj_load_attr",
+      "kind": "method",
+      "scope": "Flavor",
+      "lineRange": {
+        "start": 339,
+        "end": 345
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "attrname"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 5,
+      "ccn": 2,
+      "visibility": "public"
+    },
+    {
+      "name": "obj_reset_changes",
+      "kind": "method",
+      "scope": "Flavor",
+      "lineRange": {
+        "start": 347,
+        "end": 357
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "default": "None",
+          "name": "fields"
+        },
+        {
+          "default": "False",
+          "name": "recursive"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 11,
+      "ccn": 7,
+      "visibility": "public"
+    },
+    {
+      "name": "obj_what_changed",
+      "kind": "method",
+      "scope": "Flavor",
+      "lineRange": {
+        "start": 359,
+        "end": 366
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "changes",
+          "line": 366
+        }
+      ],
+      "nloc": 8,
+      "ccn": 5,
+      "visibility": "public"
+    },
+    {
+      "name": "_obj_from_primitive",
+      "kind": "method",
+      "scope": "Flavor",
+      "lineRange": {
+        "start": 369,
+        "end": 383
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "cls"
+        },
+        {
+          "name": "context"
+        },
+        {
+          "name": "objver"
+        },
+        {
+          "name": "primitive"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "self",
+          "line": 383
+        }
+      ],
+      "nloc": 13,
+      "ccn": 5,
+      "visibility": "private"
+    },
+    {
+      "name": "get_by_id",
+      "kind": "method",
+      "scope": "Flavor",
+      "lineRange": {
+        "start": 387,
+        "end": 390
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "cls"
+        },
+        {
+          "name": "context"
+        },
+        {
+          "name": "id"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "cls._from_db_object(context, cls(context), db_flavor, expected_attrs=['extra_specs'])",
+          "line": 389
+        }
+      ],
+      "nloc": 4,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "get_by_name",
+      "kind": "method",
+      "scope": "Flavor",
+      "lineRange": {
+        "start": 394,
+        "end": 397
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "cls"
+        },
+        {
+          "name": "context"
+        },
+        {
+          "name": "name"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "cls._from_db_object(context, cls(context), db_flavor, expected_attrs=['extra_specs'])",
+          "line": 396
+        }
+      ],
+      "nloc": 4,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "get_by_flavor_id",
+      "kind": "method",
+      "scope": "Flavor",
+      "lineRange": {
+        "start": 401,
+        "end": 405
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "cls"
+        },
+        {
+          "name": "context"
+        },
+        {
+          "name": "flavor_id"
+        },
+        {
+          "default": "None",
+          "name": "read_deleted"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "cls._from_db_object(context, cls(context), db_flavor, expected_attrs=['extra_specs'])",
+          "line": 404
+        }
+      ],
+      "nloc": 5,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "_flavor_add_project",
+      "kind": "method",
+      "scope": "Flavor",
+      "lineRange": {
+        "start": 408,
+        "end": 409
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "context"
+        },
+        {
+          "name": "flavor_id"
+        },
+        {
+          "name": "project_id"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "_flavor_add_project(context, flavor_id, project_id)",
+          "line": 409
+        }
+      ],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "_flavor_del_project",
+      "kind": "method",
+      "scope": "Flavor",
+      "lineRange": {
+        "start": 412,
+        "end": 413
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "context"
+        },
+        {
+          "name": "flavor_id"
+        },
+        {
+          "name": "project_id"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "_flavor_del_project(context, flavor_id, project_id)",
+          "line": 413
+        }
+      ],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "_add_access",
+      "kind": "method",
+      "scope": "Flavor",
+      "lineRange": {
+        "start": 415,
+        "end": 416
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "project_id"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "add_access",
+      "kind": "method",
+      "scope": "Flavor",
+      "lineRange": {
+        "start": 419,
+        "end": 425
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "project_id"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 7,
+      "ccn": 2,
+      "visibility": "public"
+    },
+    {
+      "name": "_remove_access",
+      "kind": "method",
+      "scope": "Flavor",
+      "lineRange": {
+        "start": 427,
+        "end": 428
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "project_id"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "remove_access",
+      "kind": "method",
+      "scope": "Flavor",
+      "lineRange": {
+        "start": 431,
+        "end": 437
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "project_id"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 7,
+      "ccn": 2,
+      "visibility": "public"
+    },
+    {
+      "name": "_flavor_create",
+      "kind": "method",
+      "scope": "Flavor",
+      "lineRange": {
+        "start": 440,
+        "end": 441
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "context"
+        },
+        {
+          "name": "updates"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "_flavor_create(context, updates)",
+          "line": 441
+        }
+      ],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "create",
+      "kind": "method",
+      "scope": "Flavor",
+      "lineRange": {
+        "start": 444,
+        "end": 457
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 13,
+      "ccn": 4,
+      "visibility": "public"
+    },
+    {
+      "name": "save_projects",
+      "kind": "method",
+      "scope": "Flavor",
+      "lineRange": {
+        "start": 460,
+        "end": 474
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "default": "None",
+          "name": "to_add"
+        },
+        {
+          "default": "None",
+          "name": "to_delete"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 8,
+      "ccn": 5,
+      "visibility": "public"
+    },
+    {
+      "name": "_flavor_extra_specs_add",
+      "kind": "method",
+      "scope": "Flavor",
+      "lineRange": {
+        "start": 477,
+        "end": 478
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "context"
+        },
+        {
+          "name": "flavor_id"
+        },
+        {
+          "name": "specs"
+        },
+        {
+          "default": "10",
+          "name": "max_retries"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "_flavor_extra_specs_add(context, flavor_id, specs, max_retries)",
+          "line": 478
+        }
+      ],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "_flavor_extra_specs_del",
+      "kind": "method",
+      "scope": "Flavor",
+      "lineRange": {
+        "start": 481,
+        "end": 482
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "context"
+        },
+        {
+          "name": "flavor_id"
+        },
+        {
+          "name": "key"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "_flavor_extra_specs_del(context, flavor_id, key)",
+          "line": 482
+        }
+      ],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "save_extra_specs",
+      "kind": "method",
+      "scope": "Flavor",
+      "lineRange": {
+        "start": 485,
+        "end": 499
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "default": "None",
+          "name": "to_add"
+        },
+        {
+          "default": "None",
+          "name": "to_delete"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 8,
+      "ccn": 5,
+      "visibility": "public"
+    },
+    {
+      "name": "_save",
+      "kind": "method",
+      "scope": "Flavor",
+      "lineRange": {
+        "start": 504,
+        "end": 513
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "context"
+        },
+        {
+          "name": "values"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 9,
+      "ccn": 2,
+      "visibility": "private"
+    },
+    {
+      "name": "save",
+      "kind": "method",
+      "scope": "Flavor",
+      "lineRange": {
+        "start": 515,
+        "end": 552
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 27,
+      "ccn": 14,
+      "visibility": "public"
+    },
+    {
+      "name": "_flavor_destroy",
+      "kind": "method",
+      "scope": "Flavor",
+      "lineRange": {
+        "start": 555,
+        "end": 556
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "context"
+        },
+        {
+          "default": "None",
+          "name": "flavor_id"
+        },
+        {
+          "default": "None",
+          "name": "flavorid"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "_flavor_destroy(context, flavor_id=flavor_id, flavorid=flavorid)",
+          "line": 556
+        }
+      ],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "destroy",
+      "kind": "method",
+      "scope": "Flavor",
+      "lineRange": {
+        "start": 559,
+        "end": 573
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 9,
+      "ccn": 2,
+      "visibility": "public"
+    },
+    {
+      "name": "_send_notification",
+      "kind": "method",
+      "scope": "Flavor",
+      "lineRange": {
+        "start": 575,
+        "end": 596
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "action"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 14,
+      "ccn": 3,
+      "visibility": "private"
+    },
+    {
+      "name": "_flavor_get_all_from_db",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 600,
+        "end": 653
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "context"
+        },
+        {
+          "name": "inactive"
+        },
+        {
+          "name": "filters"
+        },
+        {
+          "name": "sort_key"
+        },
+        {
+          "name": "sort_dir"
+        },
+        {
+          "name": "limit"
+        },
+        {
+          "name": "marker"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "[_dict_with_extra_specs(i) for i in query.all()]",
+          "line": 653
+        }
+      ],
+      "nloc": 43,
+      "ccn": 14,
+      "exported": false
+    },
+    {
+      "name": "FlavorList",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 657,
+        "end": 677
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "VERSION",
+      "kind": "constant",
+      "scope": "FlavorList",
+      "lineRange": {
+        "start": 658,
+        "end": 658
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "fields",
+      "kind": "field",
+      "scope": "FlavorList",
+      "lineRange": {
+        "start": 660,
+        "end": 662
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "get_all",
+      "kind": "method",
+      "scope": "FlavorList",
+      "lineRange": {
+        "start": 666,
+        "end": 677
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "cls"
+        },
+        {
+          "name": "context"
+        },
+        {
+          "default": "False",
+          "name": "inactive"
+        },
+        {
+          "default": "None",
+          "name": "filters"
+        },
+        {
+          "default": "'flavorid'",
+          "name": "sort_key"
+        },
+        {
+          "default": "'asc'",
+          "name": "sort_dir"
+        },
+        {
+          "default": "None",
+          "name": "limit"
+        },
+        {
+          "default": "None",
+          "name": "marker"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "base.obj_make_list(context, cls(context), api_db_flavors, expected_attrs=['extra_specs'])",
+          "line": 675
+        }
+      ],
+      "nloc": 12,
+      "ccn": 1,
+      "visibility": "public"
+    }
+  ],
+  "referencedSymbols": [
+    {
+      "name": "set",
+      "usage": "call",
+      "via": null,
+      "count": 10,
+      "lineRange": {
+        "start": 39,
+        "end": 39
+      }
+    },
+    {
+      "name": "dict",
+      "usage": "call",
+      "via": null,
+      "count": 3,
+      "lineRange": {
+        "start": 52,
+        "end": 52
+      }
+    },
+    {
+      "name": "orm.joinedload",
+      "usage": "call",
+      "via": "sqlalchemy",
+      "count": 2,
+      "lineRange": {
+        "start": 64,
+        "end": 64
+      }
+    },
+    {
+      "name": "exception.FlavorNotFound",
+      "usage": "call",
+      "via": "nova",
+      "count": 5,
+      "lineRange": {
+        "start": 67,
+        "end": 67
+      }
+    },
+    {
+      "name": "api_models.FlavorProjects",
+      "usage": "call",
+      "via": "nova.db.api",
+      "count": 2,
+      "lineRange": {
+        "start": 73,
+        "end": 73
+      }
+    },
+    {
+      "name": "exception.FlavorAccessExists",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 79,
+        "end": 79
+      }
+    },
+    {
+      "name": "exception.FlavorAccessNotFound",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 90,
+        "end": 90
+      }
+    },
+    {
+      "name": "range",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 97,
+        "end": 97
+      }
+    },
+    {
+      "name": "api_models.FlavorExtraSpecs.key.in_",
+      "usage": "call",
+      "via": "nova.db.api",
+      "count": 1,
+      "lineRange": {
+        "start": 102,
+        "end": 102
+      }
+    },
+    {
+      "name": "api_models.FlavorExtraSpecs",
+      "usage": "call",
+      "via": "nova.db.api",
+      "count": 2,
+      "lineRange": {
+        "start": 116,
+        "end": 116
+      }
+    },
+    {
+      "name": "exception.FlavorExtraSpecUpdateCreateFailed",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 127,
+        "end": 127
+      }
+    },
+    {
+      "name": "exception.FlavorExtraSpecsNotFound",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 138,
+        "end": 138
+      }
+    },
+    {
+      "name": "api_models.Flavors",
+      "usage": "call",
+      "via": "nova.db.api",
+      "count": 1,
+      "lineRange": {
+        "start": 163,
+        "end": 163
+      }
+    },
+    {
+      "name": "exception.FlavorIdExists",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 170,
+        "end": 170
+      }
+    },
+    {
+      "name": "exception.FlavorExists",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 171,
+        "end": 171
+      }
+    },
+    {
+      "name": "db_exc.DBError",
+      "usage": "call",
+      "via": "oslo_db",
+      "count": 1,
+      "lineRange": {
+        "start": 173,
+        "end": 173
+      }
+    },
+    {
+      "name": "base.NovaObject",
+      "usage": "inherit",
+      "via": "nova.objects",
+      "count": 2,
+      "lineRange": {
+        "start": 202,
+        "end": 202
+      }
+    },
+    {
+      "name": "base.NovaPersistentObject",
+      "usage": "inherit",
+      "via": "nova.objects",
+      "count": 1,
+      "lineRange": {
+        "start": 202,
+        "end": 202
+      }
+    },
+    {
+      "name": "base.NovaObjectDictCompat",
+      "usage": "inherit",
+      "via": "nova.objects",
+      "count": 1,
+      "lineRange": {
+        "start": 203,
+        "end": 203
+      }
+    },
+    {
+      "name": "fields.IntegerField",
+      "usage": "call",
+      "via": "nova.objects",
+      "count": 7,
+      "lineRange": {
+        "start": 212,
+        "end": 212
+      }
+    },
+    {
+      "name": "fields.StringField",
+      "usage": "call",
+      "via": "nova.objects",
+      "count": 3,
+      "lineRange": {
+        "start": 213,
+        "end": 213
+      }
+    },
+    {
+      "name": "fields.FloatField",
+      "usage": "call",
+      "via": "nova.objects",
+      "count": 1,
+      "lineRange": {
+        "start": 220,
+        "end": 220
+      }
+    },
+    {
+      "name": "fields.BooleanField",
+      "usage": "call",
+      "via": "nova.objects",
+      "count": 2,
+      "lineRange": {
+        "start": 222,
+        "end": 222
+      }
+    },
+    {
+      "name": "fields.DictOfStringsField",
+      "usage": "call",
+      "via": "nova.objects",
+      "count": 1,
+      "lineRange": {
+        "start": 224,
+        "end": 224
+      }
+    },
+    {
+      "name": "fields.ListOfStringsField",
+      "usage": "call",
+      "via": "nova.objects",
+      "count": 1,
+      "lineRange": {
+        "start": 225,
+        "end": 225
+      }
+    },
+    {
+      "name": "super",
+      "usage": "call",
+      "via": null,
+      "count": 5,
+      "lineRange": {
+        "start": 230,
+        "end": 230
+      }
+    },
+    {
+      "name": "versionutils.convert_version_to_tuple",
+      "usage": "call",
+      "via": "oslo_utils",
+      "count": 1,
+      "lineRange": {
+        "start": 236,
+        "end": 236
+      }
+    },
+    {
+      "name": "isinstance",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 251,
+        "end": 251
+      }
+    },
+    {
+      "name": "any",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 259,
+        "end": 259
+      }
+    },
+    {
+      "name": "sql.true",
+      "usage": "call",
+      "via": "sqlalchemy",
+      "count": 1,
+      "lineRange": {
+        "start": 284,
+        "end": 284
+      }
+    },
+    {
+      "name": "api_models.Flavors.projects.any",
+      "usage": "call",
+      "via": "nova.db.api",
+      "count": 2,
+      "lineRange": {
+        "start": 286,
+        "end": 286
+      }
+    },
+    {
+      "name": "sa.or_",
+      "usage": "call",
+      "via": "sqlalchemy",
+      "count": 2,
+      "lineRange": {
+        "start": 288,
+        "end": 288
+      }
+    },
+    {
+      "name": "exception.FlavorNotFoundByName",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 312,
+        "end": 312
+      }
+    },
+    {
+      "name": "expression.asc",
+      "usage": "call",
+      "via": "sqlalchemy.sql",
+      "count": 1,
+      "lineRange": {
+        "start": 322,
+        "end": 322
+      }
+    },
+    {
+      "name": "exception.ObjectActionError",
+      "usage": "call",
+      "via": "nova",
+      "count": 5,
+      "lineRange": {
+        "start": 342,
+        "end": 342
+      }
+    },
+    {
+      "name": "list",
+      "usage": "call",
+      "via": null,
+      "count": 2,
+      "lineRange": {
+        "start": 355,
+        "end": 355
+      }
+    },
+    {
+      "name": "cls",
+      "usage": "call",
+      "via": null,
+      "count": 4,
+      "lineRange": {
+        "start": 389,
+        "end": 389
+      }
+    },
+    {
+      "name": "payload_type",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 589,
+        "end": 589
+      }
+    },
+    {
+      "name": "notification_type",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 590,
+        "end": 590
+      }
+    },
+    {
+      "name": "notification.NotificationPublisher",
+      "usage": "call",
+      "via": "nova.notifications.objects",
+      "count": 1,
+      "lineRange": {
+        "start": 591,
+        "end": 591
+      }
+    },
+    {
+      "name": "notification.EventType",
+      "usage": "call",
+      "via": "nova.notifications.objects",
+      "count": 1,
+      "lineRange": {
+        "start": 593,
+        "end": 593
+      }
+    },
+    {
+      "name": "db_utils.get_regexp_ops",
+      "usage": "call",
+      "via": "nova.db",
+      "count": 1,
+      "lineRange": {
+        "start": 622,
+        "end": 622
+      }
+    },
+    {
+      "name": "api_models.Flavors.name.op",
+      "usage": "call",
+      "via": "nova.db.api",
+      "count": 1,
+      "lineRange": {
+        "start": 625,
+        "end": 625
+      }
+    },
+    {
+      "name": "safe_regex_filter",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 626,
+        "end": 626
+      }
+    },
+    {
+      "name": "len",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 635,
+        "end": 635
+      }
+    },
+    {
+      "name": "exception.MarkerNotFound",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 646,
+        "end": 646
+      }
+    },
+    {
+      "name": "sqlalchemyutils.paginate_query",
+      "usage": "call",
+      "via": "oslo_db.sqlalchemy",
+      "count": 1,
+      "lineRange": {
+        "start": 648,
+        "end": 648
+      }
+    },
+    {
+      "name": "base.ObjectListBase",
+      "usage": "inherit",
+      "via": "nova.objects",
+      "count": 1,
+      "lineRange": {
+        "start": 657,
+        "end": 657
+      }
+    },
+    {
+      "name": "fields.ListOfObjectsField",
+      "usage": "call",
+      "via": "nova.objects",
+      "count": 1,
+      "lineRange": {
+        "start": 661,
+        "end": 661
+      }
+    },
+    {
+      "name": "base.obj_make_list",
+      "usage": "call",
+      "via": "nova.objects",
+      "count": 1,
+      "lineRange": {
+        "start": 675,
+        "end": 675
+      }
+    }
+  ],
+  "dependencies": [
+    {
+      "style": "from",
+      "module": "oslo_db",
+      "names": [
+        {
+          "alias": "db_exc",
+          "name": "exception"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 15,
+        "end": 15
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_db.sqlalchemy",
+      "names": [
+        {
+          "alias": "sqlalchemyutils",
+          "name": "utils"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 16,
+        "end": 16
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_utils",
+      "names": [
+        {
+          "alias": null,
+          "name": "versionutils"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 17,
+        "end": 17
+      }
+    },
+    {
+      "style": "import",
+      "module": "sqlalchemy",
+      "names": [],
+      "alias": "sa",
+      "relative": false,
+      "lineRange": {
+        "start": 18,
+        "end": 18
+      }
+    },
+    {
+      "style": "from",
+      "module": "sqlalchemy",
+      "names": [
+        {
+          "alias": null,
+          "name": "orm"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 19,
+        "end": 19
+      }
+    },
+    {
+      "style": "from",
+      "module": "sqlalchemy",
+      "names": [
+        {
+          "alias": null,
+          "name": "sql"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 20,
+        "end": 20
+      }
+    },
+    {
+      "style": "from",
+      "module": "sqlalchemy.sql",
+      "names": [
+        {
+          "alias": null,
+          "name": "expression"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 21,
+        "end": 21
+      }
+    },
+    {
+      "style": "import",
+      "module": "nova.conf",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 23,
+        "end": 23
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.db.api",
+      "names": [
+        {
+          "alias": "api_db_api",
+          "name": "api"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 24,
+        "end": 24
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.db.api",
+      "names": [
+        {
+          "alias": "api_models",
+          "name": "models"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 25,
+        "end": 25
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.db",
+      "names": [
+        {
+          "alias": "db_utils",
+          "name": "utils"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 26,
+        "end": 26
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "exception"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 27,
+        "end": 27
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.notifications.objects",
+      "names": [
+        {
+          "alias": "notification",
+          "name": "base"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 28,
+        "end": 28
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.notifications.objects",
+      "names": [
+        {
+          "alias": "flavor_notification",
+          "name": "flavor"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 29,
+        "end": 29
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.objects",
+      "names": [
+        {
+          "alias": null,
+          "name": "base"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 30,
+        "end": 30
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.objects",
+      "names": [
+        {
+          "alias": null,
+          "name": "fields"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 31,
+        "end": 31
+      }
+    }
+  ],
+  "sideEffects": [
+    {
+      "kind": "network",
+      "target": "db_flavor = context.session.query(api_models.Flavors).filter_by(",
+      "lineRange": {
+        "start": 61,
+        "end": 61
+      }
+    },
+    {
+      "kind": "network",
+      "target": "result = context.session.query(api_models.FlavorProjects).\\",
+      "lineRange": {
+        "start": 85,
+        "end": 85
+      }
+    },
+    {
+      "kind": "network",
+      "target": "spec_refs = context.session.query(",
+      "lineRange": {
+        "start": 99,
+        "end": 99
+      }
+    },
+    {
+      "kind": "network",
+      "target": "context.session.add(spec_ref)",
+      "lineRange": {
+        "start": 120,
+        "end": 120
+      }
+    },
+    {
+      "kind": "network",
+      "target": "result = context.session.query(api_models.FlavorExtraSpecs).\\",
+      "lineRange": {
+        "start": 133,
+        "end": 133
+      }
+    },
+    {
+      "kind": "network",
+      "target": "query = context.session.query(api_models.Flavors)",
+      "lineRange": {
+        "start": 180,
+        "end": 180
+      }
+    },
+    {
+      "kind": "network",
+      "target": "context.session.query(api_models.FlavorProjects).\\",
+      "lineRange": {
+        "start": 191,
+        "end": 191
+      }
+    },
+    {
+      "kind": "network",
+      "target": "context.session.query(api_models.FlavorExtraSpecs).\\",
+      "lineRange": {
+        "start": 193,
+        "end": 193
+      }
+    },
+    {
+      "kind": "network",
+      "target": "context.session.delete(result)",
+      "lineRange": {
+        "start": 195,
+        "end": 195
+      }
+    },
+    {
+      "kind": "network",
+      "target": "query = context.session.query(api_models.Flavors).options(",
+      "lineRange": {
+        "start": 280,
+        "end": 280
+      }
+    },
+    {
+      "kind": "network",
+      "target": "db_flavor = context.session.query(api_models.Flavors).\\",
+      "lineRange": {
+        "start": 505,
+        "end": 505
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "OPTIONAL_FIELDS = ['extra_specs', 'projects']",
+      "lineRange": {
+        "start": 34,
+        "end": 34
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "DEPRECATED_FIELDS = ['deleted', 'deleted_at']",
+      "lineRange": {
+        "start": 36,
+        "end": 36
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "MUTABLE_FIELDS = set(['description'])",
+      "lineRange": {
+        "start": 39,
+        "end": 39
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "CONF = nova.conf.CONF",
+      "lineRange": {
+        "start": 46,
+        "end": 46
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "VERSION = '1.2'",
+      "lineRange": {
+        "start": 209,
+        "end": 209
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "VERSION = '1.1'",
+      "lineRange": {
+        "start": 658,
+        "end": 658
+      }
+    }
+  ],
+  "securitySurface": [],
+  "injection_flags": [],
+  "warnings": []
+}

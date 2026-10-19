@@ -1,0 +1,796 @@
+{
+  "file": "src/nova/objects/__init__.py",
+  "hash": "71d19dd556ecb4549338b3a0c29d266b88b634bd94f60e6f1155789f9aa46caa",
+  "language": "Python",
+  "component": "nova",
+  "package": null,
+  "lines": {
+    "blank": 5,
+    "code": 95,
+    "comment": 22,
+    "total": 122
+  },
+  "symbols": [
+    {
+      "name": "register_all",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 73,
+        "end": 122
+      },
+      "source": "aee-inventory",
+      "parameters": [],
+      "returnType": null,
+      "returns": [],
+      "nloc": 47,
+      "ccn": 1,
+      "exported": true
+    }
+  ],
+  "referencedSymbols": [
+    {
+      "name": "__import__",
+      "usage": "call",
+      "via": null,
+      "count": 46,
+      "lineRange": {
+        "start": 77,
+        "end": 77
+      }
+    }
+  ],
+  "dependencies": [
+    {
+      "style": "import",
+      "module": "typing",
+      "names": [],
+      "alias": "ty",
+      "relative": false,
+      "lineRange": {
+        "start": 22,
+        "end": 22
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.objects.aggregate",
+      "names": [
+        {
+          "alias": null,
+          "name": "*"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 25,
+        "end": 25
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.objects.block_device",
+      "names": [
+        {
+          "alias": null,
+          "name": "*"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 26,
+        "end": 26
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.objects.build_request",
+      "names": [
+        {
+          "alias": null,
+          "name": "*"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 27,
+        "end": 27
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.objects.cell_mapping",
+      "names": [
+        {
+          "alias": null,
+          "name": "*"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 28,
+        "end": 28
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.objects.compute_node",
+      "names": [
+        {
+          "alias": null,
+          "name": "*"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 29,
+        "end": 29
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.objects.diagnostics",
+      "names": [
+        {
+          "alias": null,
+          "name": "*"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 30,
+        "end": 30
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.objects.console_auth_token",
+      "names": [
+        {
+          "alias": null,
+          "name": "*"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 31,
+        "end": 31
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.objects.ec2",
+      "names": [
+        {
+          "alias": null,
+          "name": "*"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 32,
+        "end": 32
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.objects.external_event",
+      "names": [
+        {
+          "alias": null,
+          "name": "*"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 33,
+        "end": 33
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.objects.flavor",
+      "names": [
+        {
+          "alias": null,
+          "name": "*"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 34,
+        "end": 34
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.objects.host_mapping",
+      "names": [
+        {
+          "alias": null,
+          "name": "*"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 35,
+        "end": 35
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.objects.hv_spec",
+      "names": [
+        {
+          "alias": null,
+          "name": "*"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 36,
+        "end": 36
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.objects.image_meta",
+      "names": [
+        {
+          "alias": null,
+          "name": "*"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 37,
+        "end": 37
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.objects.instance",
+      "names": [
+        {
+          "alias": null,
+          "name": "*"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 38,
+        "end": 38
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.objects.instance_action",
+      "names": [
+        {
+          "alias": null,
+          "name": "*"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 39,
+        "end": 39
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.objects.instance_fault",
+      "names": [
+        {
+          "alias": null,
+          "name": "*"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 40,
+        "end": 40
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.objects.instance_group",
+      "names": [
+        {
+          "alias": null,
+          "name": "*"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 41,
+        "end": 41
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.objects.instance_info_cache",
+      "names": [
+        {
+          "alias": null,
+          "name": "*"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 42,
+        "end": 42
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.objects.instance_mapping",
+      "names": [
+        {
+          "alias": null,
+          "name": "*"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 43,
+        "end": 43
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.objects.instance_numa",
+      "names": [
+        {
+          "alias": null,
+          "name": "*"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 44,
+        "end": 44
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.objects.instance_pci_requests",
+      "names": [
+        {
+          "alias": null,
+          "name": "*"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 45,
+        "end": 45
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.objects.keypair",
+      "names": [
+        {
+          "alias": null,
+          "name": "*"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 46,
+        "end": 46
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.objects.migrate_data",
+      "names": [
+        {
+          "alias": null,
+          "name": "*"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 47,
+        "end": 47
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.objects.virt_device_metadata",
+      "names": [
+        {
+          "alias": null,
+          "name": "*"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 48,
+        "end": 48
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.objects.migration",
+      "names": [
+        {
+          "alias": null,
+          "name": "*"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 49,
+        "end": 49
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.objects.migration_context",
+      "names": [
+        {
+          "alias": null,
+          "name": "*"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 50,
+        "end": 50
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.objects.monitor_metric",
+      "names": [
+        {
+          "alias": null,
+          "name": "*"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 51,
+        "end": 51
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.objects.network_metadata",
+      "names": [
+        {
+          "alias": null,
+          "name": "*"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 52,
+        "end": 52
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.objects.network_request",
+      "names": [
+        {
+          "alias": null,
+          "name": "*"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 53,
+        "end": 53
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.objects.numa",
+      "names": [
+        {
+          "alias": null,
+          "name": "*"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 54,
+        "end": 54
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.objects.pci_device",
+      "names": [
+        {
+          "alias": null,
+          "name": "*"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 55,
+        "end": 55
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.objects.pci_device_pool",
+      "names": [
+        {
+          "alias": null,
+          "name": "*"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 56,
+        "end": 56
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.objects.request_spec",
+      "names": [
+        {
+          "alias": null,
+          "name": "*"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 57,
+        "end": 57
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.objects.tag",
+      "names": [
+        {
+          "alias": null,
+          "name": "*"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 58,
+        "end": 58
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.objects.quotas",
+      "names": [
+        {
+          "alias": null,
+          "name": "*"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 59,
+        "end": 59
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.objects.resource",
+      "names": [
+        {
+          "alias": null,
+          "name": "*"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 60,
+        "end": 60
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.objects.security_group",
+      "names": [
+        {
+          "alias": null,
+          "name": "*"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 61,
+        "end": 61
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.objects.selection",
+      "names": [
+        {
+          "alias": null,
+          "name": "*"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 62,
+        "end": 62
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.objects.service",
+      "names": [
+        {
+          "alias": null,
+          "name": "*"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 63,
+        "end": 63
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.objects.task_log",
+      "names": [
+        {
+          "alias": null,
+          "name": "*"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 64,
+        "end": 64
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.objects.trusted_certs",
+      "names": [
+        {
+          "alias": null,
+          "name": "*"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 65,
+        "end": 65
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.objects.vcpu_model",
+      "names": [
+        {
+          "alias": null,
+          "name": "*"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 66,
+        "end": 66
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.objects.virt_cpu_topology",
+      "names": [
+        {
+          "alias": null,
+          "name": "*"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 67,
+        "end": 67
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.objects.virtual_interface",
+      "names": [
+        {
+          "alias": null,
+          "name": "*"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 68,
+        "end": 68
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.objects.volume_usage",
+      "names": [
+        {
+          "alias": null,
+          "name": "*"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 69,
+        "end": 69
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.objects.share_mapping",
+      "names": [
+        {
+          "alias": null,
+          "name": "*"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 70,
+        "end": 70
+      }
+    }
+  ],
+  "sideEffects": [],
+  "securitySurface": [],
+  "injection_flags": [],
+  "warnings": []
+}

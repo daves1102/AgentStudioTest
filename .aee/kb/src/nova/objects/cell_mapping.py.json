@@ -1,0 +1,1262 @@
+{
+  "file": "src/nova/objects/cell_mapping.py",
+  "hash": "b4d679be3f50343658226665766db716df13e9c446618aa86301e6c1899e3653",
+  "language": "Python",
+  "component": "nova",
+  "package": null,
+  "lines": {
+    "blank": 49,
+    "code": 228,
+    "comment": 23,
+    "total": 300
+  },
+  "symbols": [
+    {
+      "name": "CONF",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 28,
+        "end": 28
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "LOG",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 29,
+        "end": 29
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "__all__",
+      "kind": "variable",
+      "scope": "",
+      "lineRange": {
+        "start": 31,
+        "end": 34
+      },
+      "source": "aee-inventory",
+      "exported": false
+    },
+    {
+      "name": "_parse_netloc",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 37,
+        "end": 63
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "netloc"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "these",
+          "line": 63
+        }
+      ],
+      "nloc": 20,
+      "ccn": 3,
+      "exported": false
+    },
+    {
+      "name": "CellMapping",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 67,
+        "end": 235
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "VERSION",
+      "kind": "constant",
+      "scope": "CellMapping",
+      "lineRange": {
+        "start": 70,
+        "end": 70
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "CELL0_UUID",
+      "kind": "constant",
+      "scope": "CellMapping",
+      "lineRange": {
+        "start": 72,
+        "end": 72
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "fields",
+      "kind": "field",
+      "scope": "CellMapping",
+      "lineRange": {
+        "start": 74,
+        "end": 81
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "obj_make_compatible",
+      "kind": "method",
+      "scope": "CellMapping",
+      "lineRange": {
+        "start": 83,
+        "end": 88
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "primitive"
+        },
+        {
+          "name": "target_version"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 6,
+      "ccn": 3,
+      "visibility": "public"
+    },
+    {
+      "name": "identity",
+      "kind": "method",
+      "scope": "CellMapping",
+      "lineRange": {
+        "start": 91,
+        "end": 95
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "'%s(%s)' % (self.uuid, self.name)",
+          "line": 93
+        },
+        {
+          "expr": "self.uuid",
+          "line": 95
+        }
+      ],
+      "nloc": 5,
+      "ccn": 3,
+      "visibility": "public"
+    },
+    {
+      "name": "_format_url",
+      "kind": "method",
+      "scope": "CellMapping",
+      "lineRange": {
+        "start": 98,
+        "end": 126
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "url"
+        },
+        {
+          "name": "default"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "url.format(**subs)",
+          "line": 126
+        }
+      ],
+      "nloc": 21,
+      "ccn": 4,
+      "visibility": "private"
+    },
+    {
+      "name": "format_db_url",
+      "kind": "method",
+      "scope": "CellMapping",
+      "lineRange": {
+        "start": 129,
+        "end": 140
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "url"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "url",
+          "line": 134
+        },
+        {
+          "expr": "CellMapping._format_url(url, CONF.database.connection)",
+          "line": 136
+        },
+        {
+          "expr": "url",
+          "line": 140
+        }
+      ],
+      "nloc": 12,
+      "ccn": 4,
+      "visibility": "public"
+    },
+    {
+      "name": "format_mq_url",
+      "kind": "method",
+      "scope": "CellMapping",
+      "lineRange": {
+        "start": 143,
+        "end": 154
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "url"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "url",
+          "line": 148
+        },
+        {
+          "expr": "CellMapping._format_url(url, CONF.transport_url)",
+          "line": 150
+        },
+        {
+          "expr": "url",
+          "line": 154
+        }
+      ],
+      "nloc": 12,
+      "ccn": 4,
+      "visibility": "public"
+    },
+    {
+      "name": "_from_db_object",
+      "kind": "method",
+      "scope": "CellMapping",
+      "lineRange": {
+        "start": 157,
+        "end": 167
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "context"
+        },
+        {
+          "name": "cell_mapping"
+        },
+        {
+          "name": "db_cell_mapping"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "cell_mapping",
+          "line": 167
+        }
+      ],
+      "nloc": 11,
+      "ccn": 4,
+      "visibility": "private"
+    },
+    {
+      "name": "_get_by_uuid_from_db",
+      "kind": "method",
+      "scope": "CellMapping",
+      "lineRange": {
+        "start": 171,
+        "end": 178
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "context"
+        },
+        {
+          "name": "uuid"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "db_mapping",
+          "line": 178
+        }
+      ],
+      "nloc": 6,
+      "ccn": 2,
+      "visibility": "private"
+    },
+    {
+      "name": "get_by_uuid",
+      "kind": "method",
+      "scope": "CellMapping",
+      "lineRange": {
+        "start": 182,
+        "end": 185
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "cls"
+        },
+        {
+          "name": "context"
+        },
+        {
+          "name": "uuid"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "cls._from_db_object(context, cls(), db_mapping)",
+          "line": 185
+        }
+      ],
+      "nloc": 3,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "_create_in_db",
+      "kind": "method",
+      "scope": "CellMapping",
+      "lineRange": {
+        "start": 189,
+        "end": 194
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "context"
+        },
+        {
+          "name": "updates"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "db_mapping",
+          "line": 194
+        }
+      ],
+      "nloc": 5,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "create",
+      "kind": "method",
+      "scope": "CellMapping",
+      "lineRange": {
+        "start": 197,
+        "end": 199
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 3,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "_save_in_db",
+      "kind": "method",
+      "scope": "CellMapping",
+      "lineRange": {
+        "start": 203,
+        "end": 212
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "context"
+        },
+        {
+          "name": "uuid"
+        },
+        {
+          "name": "updates"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "db_mapping",
+          "line": 212
+        }
+      ],
+      "nloc": 8,
+      "ccn": 2,
+      "visibility": "private"
+    },
+    {
+      "name": "save",
+      "kind": "method",
+      "scope": "CellMapping",
+      "lineRange": {
+        "start": 215,
+        "end": 219
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 5,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "_destroy_in_db",
+      "kind": "method",
+      "scope": "CellMapping",
+      "lineRange": {
+        "start": 223,
+        "end": 228
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "context"
+        },
+        {
+          "name": "uuid"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 5,
+      "ccn": 2,
+      "visibility": "private"
+    },
+    {
+      "name": "destroy",
+      "kind": "method",
+      "scope": "CellMapping",
+      "lineRange": {
+        "start": 231,
+        "end": 232
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "is_cell0",
+      "kind": "method",
+      "scope": "CellMapping",
+      "lineRange": {
+        "start": 234,
+        "end": 235
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "self.obj_attr_is_set('uuid') and self.uuid == self.CELL0_UUID",
+          "line": 235
+        }
+      ],
+      "nloc": 2,
+      "ccn": 2,
+      "visibility": "public"
+    },
+    {
+      "name": "CellMappingList",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 239,
+        "end": 300
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "VERSION",
+      "kind": "constant",
+      "scope": "CellMappingList",
+      "lineRange": {
+        "start": 242,
+        "end": 242
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "fields",
+      "kind": "field",
+      "scope": "CellMappingList",
+      "lineRange": {
+        "start": 244,
+        "end": 246
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "_get_all_from_db",
+      "kind": "method",
+      "scope": "CellMappingList",
+      "lineRange": {
+        "start": 250,
+        "end": 252
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "context"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "context.session.query(api_db_models.CellMapping).order_by( expression.asc(api_db_models.CellMapping.id)).all()",
+          "line": 251
+        }
+      ],
+      "nloc": 3,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "get_all",
+      "kind": "method",
+      "scope": "CellMappingList",
+      "lineRange": {
+        "start": 256,
+        "end": 258
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "cls"
+        },
+        {
+          "name": "context"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "base.obj_make_list(context, cls(), db_mappings)",
+          "line": 258
+        }
+      ],
+      "nloc": 3,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "_get_by_disabled_from_db",
+      "kind": "method",
+      "scope": "CellMappingList",
+      "lineRange": {
+        "start": 262,
+        "end": 270
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "context"
+        },
+        {
+          "name": "disabled"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "context.session.query(api_db_models.CellMapping)\\ .filter_by(disabled=sql.true())\\ .order_by(expression.asc(api_db_models.CellMapping.id)).all()",
+          "line": 264
+        },
+        {
+          "expr": "context.session.query(api_db_models.CellMapping)\\ .filter_by(disabled=sql.false())\\ .order_by(expression.asc(api_db_models.CellMapping.id)).all()",
+          "line": 268
+        }
+      ],
+      "nloc": 9,
+      "ccn": 2,
+      "visibility": "private"
+    },
+    {
+      "name": "get_by_disabled",
+      "kind": "method",
+      "scope": "CellMappingList",
+      "lineRange": {
+        "start": 274,
+        "end": 276
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "cls"
+        },
+        {
+          "name": "context"
+        },
+        {
+          "name": "disabled"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "base.obj_make_list(context, cls(), db_mappings)",
+          "line": 276
+        }
+      ],
+      "nloc": 3,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "_get_by_project_id_from_db",
+      "kind": "method",
+      "scope": "CellMappingList",
+      "lineRange": {
+        "start": 280,
+        "end": 292
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "context"
+        },
+        {
+          "name": "project_id"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "context.session.query( api_db_models.CellMapping).filter( api_db_models.CellMapping.id.in_(cell_ids) ).all()",
+          "line": 289
+        }
+      ],
+      "nloc": 10,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "get_by_project_id",
+      "kind": "method",
+      "scope": "CellMappingList",
+      "lineRange": {
+        "start": 295,
+        "end": 300
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "cls"
+        },
+        {
+          "name": "context"
+        },
+        {
+          "name": "project_id"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "base.obj_make_list(context, cls(), db_mappings)",
+          "line": 300
+        }
+      ],
+      "nloc": 3,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "identity",
+      "kind": "property",
+      "scope": "CellMapping",
+      "lineRange": {
+        "start": 90,
+        "end": 95
+      },
+      "visibility": "public",
+      "source": "manual"
+    }
+  ],
+  "referencedSymbols": [
+    {
+      "name": "logging.getLogger",
+      "usage": "call",
+      "via": "oslo_log",
+      "count": 1,
+      "lineRange": {
+        "start": 29,
+        "end": 29
+      }
+    },
+    {
+      "name": "netutils.parse_host_port",
+      "usage": "call",
+      "via": "oslo_utils",
+      "count": 1,
+      "lineRange": {
+        "start": 54,
+        "end": 54
+      }
+    },
+    {
+      "name": "base.NovaObject",
+      "usage": "inherit",
+      "via": "nova.objects",
+      "count": 2,
+      "lineRange": {
+        "start": 67,
+        "end": 67
+      }
+    },
+    {
+      "name": "base.NovaTimestampObject",
+      "usage": "inherit",
+      "via": "nova.objects",
+      "count": 1,
+      "lineRange": {
+        "start": 67,
+        "end": 67
+      }
+    },
+    {
+      "name": "fields.IntegerField",
+      "usage": "call",
+      "via": "nova.objects",
+      "count": 1,
+      "lineRange": {
+        "start": 75,
+        "end": 75
+      }
+    },
+    {
+      "name": "fields.UUIDField",
+      "usage": "call",
+      "via": "nova.objects",
+      "count": 1,
+      "lineRange": {
+        "start": 76,
+        "end": 76
+      }
+    },
+    {
+      "name": "fields.StringField",
+      "usage": "call",
+      "via": "nova.objects",
+      "count": 3,
+      "lineRange": {
+        "start": 77,
+        "end": 77
+      }
+    },
+    {
+      "name": "fields.BooleanField",
+      "usage": "call",
+      "via": "nova.objects",
+      "count": 1,
+      "lineRange": {
+        "start": 80,
+        "end": 80
+      }
+    },
+    {
+      "name": "super",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 84,
+        "end": 84
+      }
+    },
+    {
+      "name": "versionutils.convert_version_to_tuple",
+      "usage": "call",
+      "via": "oslo_utils",
+      "count": 1,
+      "lineRange": {
+        "start": 85,
+        "end": 85
+      }
+    },
+    {
+      "name": "urlparse.urlparse",
+      "usage": "call",
+      "via": "urllib",
+      "count": 1,
+      "lineRange": {
+        "start": 99,
+        "end": 99
+      }
+    },
+    {
+      "name": "setattr",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 164,
+        "end": 164
+      }
+    },
+    {
+      "name": "exception.CellMappingNotFound",
+      "usage": "call",
+      "via": "nova",
+      "count": 3,
+      "lineRange": {
+        "start": 176,
+        "end": 176
+      }
+    },
+    {
+      "name": "cls",
+      "usage": "call",
+      "via": null,
+      "count": 4,
+      "lineRange": {
+        "start": 185,
+        "end": 185
+      }
+    },
+    {
+      "name": "api_db_models.CellMapping",
+      "usage": "call",
+      "via": "nova.db.api",
+      "count": 1,
+      "lineRange": {
+        "start": 191,
+        "end": 191
+      }
+    },
+    {
+      "name": "base.ObjectListBase",
+      "usage": "inherit",
+      "via": "nova.objects",
+      "count": 1,
+      "lineRange": {
+        "start": 239,
+        "end": 239
+      }
+    },
+    {
+      "name": "fields.ListOfObjectsField",
+      "usage": "call",
+      "via": "nova.objects",
+      "count": 1,
+      "lineRange": {
+        "start": 245,
+        "end": 245
+      }
+    },
+    {
+      "name": "expression.asc",
+      "usage": "call",
+      "via": "sqlalchemy.sql",
+      "count": 3,
+      "lineRange": {
+        "start": 252,
+        "end": 252
+      }
+    },
+    {
+      "name": "base.obj_make_list",
+      "usage": "call",
+      "via": "nova.objects",
+      "count": 3,
+      "lineRange": {
+        "start": 258,
+        "end": 258
+      }
+    },
+    {
+      "name": "sql.true",
+      "usage": "call",
+      "via": "sqlalchemy",
+      "count": 1,
+      "lineRange": {
+        "start": 265,
+        "end": 265
+      }
+    },
+    {
+      "name": "sql.false",
+      "usage": "call",
+      "via": "sqlalchemy",
+      "count": 1,
+      "lineRange": {
+        "start": 269,
+        "end": 269
+      }
+    },
+    {
+      "name": "api_db_models.CellMapping.id.in_",
+      "usage": "call",
+      "via": "nova.db.api",
+      "count": 1,
+      "lineRange": {
+        "start": 291,
+        "end": 291
+      }
+    }
+  ],
+  "dependencies": [
+    {
+      "style": "from",
+      "module": "urllib",
+      "names": [
+        {
+          "alias": "urlparse",
+          "name": "parse"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 13,
+        "end": 13
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_log",
+      "names": [
+        {
+          "alias": "logging",
+          "name": "log"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 15,
+        "end": 15
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_utils",
+      "names": [
+        {
+          "alias": null,
+          "name": "netutils"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 16,
+        "end": 16
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_utils",
+      "names": [
+        {
+          "alias": null,
+          "name": "versionutils"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 17,
+        "end": 17
+      }
+    },
+    {
+      "style": "from",
+      "module": "sqlalchemy",
+      "names": [
+        {
+          "alias": null,
+          "name": "sql"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 18,
+        "end": 18
+      }
+    },
+    {
+      "style": "from",
+      "module": "sqlalchemy.sql",
+      "names": [
+        {
+          "alias": null,
+          "name": "expression"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 19,
+        "end": 19
+      }
+    },
+    {
+      "style": "import",
+      "module": "nova.conf",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 21,
+        "end": 21
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.db.api",
+      "names": [
+        {
+          "alias": "api_db_api",
+          "name": "api"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 22,
+        "end": 22
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.db.api",
+      "names": [
+        {
+          "alias": "api_db_models",
+          "name": "models"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 23,
+        "end": 23
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "exception"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 24,
+        "end": 24
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.objects",
+      "names": [
+        {
+          "alias": null,
+          "name": "base"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 25,
+        "end": 25
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.objects",
+      "names": [
+        {
+          "alias": null,
+          "name": "fields"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 26,
+        "end": 26
+      }
+    }
+  ],
+  "sideEffects": [
+    {
+      "kind": "network",
+      "target": "db_mapping = context.session.query(",
+      "lineRange": {
+        "start": 205,
+        "end": 205
+      }
+    },
+    {
+      "kind": "network",
+      "target": "context.session.add(db_mapping)",
+      "lineRange": {
+        "start": 211,
+        "end": 211
+      }
+    },
+    {
+      "kind": "network",
+      "target": "result = context.session.query(api_db_models.CellMapping).filter_by(",
+      "lineRange": {
+        "start": 225,
+        "end": 225
+      }
+    },
+    {
+      "kind": "network",
+      "target": "return context.session.query(api_db_models.CellMapping).order_by(",
+      "lineRange": {
+        "start": 251,
+        "end": 251
+      }
+    },
+    {
+      "kind": "network",
+      "target": "return context.session.query(api_db_models.CellMapping)\\",
+      "lineRange": {
+        "start": 264,
+        "end": 264
+      }
+    },
+    {
+      "kind": "network",
+      "target": "return context.session.query(api_db_models.CellMapping)\\",
+      "lineRange": {
+        "start": 268,
+        "end": 268
+      }
+    },
+    {
+      "kind": "network",
+      "target": "cell_ids = context.session.query(",
+      "lineRange": {
+        "start": 283,
+        "end": 283
+      }
+    },
+    {
+      "kind": "network",
+      "target": "return context.session.query(",
+      "lineRange": {
+        "start": 289,
+        "end": 289
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "CONF = nova.conf.CONF",
+      "lineRange": {
+        "start": 28,
+        "end": 28
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "LOG = logging.getLogger(__name__)",
+      "lineRange": {
+        "start": 29,
+        "end": 29
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "VERSION = '1.1'",
+      "lineRange": {
+        "start": 70,
+        "end": 70
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "CELL0_UUID = '00000000-0000-0000-0000-000000000000'",
+      "lineRange": {
+        "start": 72,
+        "end": 72
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "VERSION = '1.1'",
+      "lineRange": {
+        "start": 242,
+        "end": 242
+      }
+    }
+  ],
+  "securitySurface": [],
+  "injection_flags": [],
+  "warnings": []
+}
