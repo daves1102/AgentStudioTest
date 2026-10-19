@@ -1,0 +1,30 @@
+[
+  {
+    "file": "src/nova/objects/aggregate.py",
+    "tool": "pylint",
+    "ruleId": "pointless-statement",
+    "lineRange": {
+      "start": 191,
+      "end": 191
+    },
+    "title": "Bare SQLAlchemy attribute access at line 191 has no explanatory comment",
+    "detail": "`aggregate._metadata` is accessed as a standalone expression after `context.session.expire(aggregate, ['_metadata'])` to force an immediate lazy-load while still inside the session. Without a comment this reads as dead code. The sibling files `host_mapping.py` (line 45) and `instance_mapping.py` (lines 134, 163) have an explanatory NOTE comment for the identical pattern; aggregate.py does not. Suggested fix: add a comment matching the pattern in those files.",
+    "category": "readability",
+    "severity": "low",
+    "confidence": "confirmed"
+  },
+  {
+    "file": "src/nova/objects/aggregate.py",
+    "tool": "pylint",
+    "ruleId": "raise-missing-from",
+    "lineRange": {
+      "start": 81,
+      "end": 81
+    },
+    "title": "3 exception-chain breaks in aggregate.py (lines 81, 128, 233) lose original traceback",
+    "detail": "Exceptions caught in `_host_add_to_db` (line 81), `_metadata_add_to_db` (line 128), and `_aggregate_create_in_db` (line 233) are re-raised as domain exceptions without `raise ... from exc`. This discards the original exception's traceback, making it harder to diagnose failures. Suggested fix: use `raise DomainException(...) from exc` at each site.",
+    "category": "error-handling",
+    "severity": "low",
+    "confidence": "confirmed"
+  }
+]

@@ -1,0 +1,58 @@
+[
+  {
+    "file": "src/nova/utils.py",
+    "tool": "pylint",
+    "ruleId": "too-many-lines",
+    "lineRange": {
+      "start": 1,
+      "end": 1209
+    },
+    "title": "File exceeds 1000 lines (1209 lines total)",
+    "detail": "utils.py contains 1209 lines of heterogeneous utility functions covering time arithmetic, file caching, RPC helpers, and thread-locking primitives. Growing catch-all utility modules accumulate unrelated concerns and become difficult to navigate. Suggested fix: group functions by concern into sub-modules (e.g. utils/time.py, utils/fileutils.py).",
+    "category": "maintainability",
+    "severity": "low",
+    "confidence": "confirmed"
+  },
+  {
+    "file": "src/nova/utils.py",
+    "tool": "ruff",
+    "ruleId": "DTZ001",
+    "lineRange": {
+      "start": 162,
+      "end": 214
+    },
+    "title": "8 `datetime.datetime()` calls without `tzinfo` in `last_completed_audit_period` and `last_completed_audit_period`",
+    "detail": "Ruff DTZ001 flags 8 calls to `datetime.datetime(...)` without a `tzinfo` argument across lines 162\u2013214 in `last_completed_audit_period` and the surrounding helpers. Naive datetimes in a cloud API that serves multi-timezone deployments can produce incorrect audit windows when UTC offset changes (DST) or when timestamps from different time zones are compared. Suggested fix: pass `tzinfo=datetime.timezone.utc` to each constructor, or use `datetime.datetime.now(tz=datetime.timezone.utc)` / `timeutils.utcnow()` consistently.",
+    "category": "bug-risk",
+    "severity": "medium",
+    "confidence": "confirmed"
+  },
+  {
+    "file": "src/nova/utils.py",
+    "tool": "ruff",
+    "ruleId": "S110",
+    "lineRange": {
+      "start": 1103,
+      "end": 1105
+    },
+    "title": "`try: lock.release_write_lock() except Exception: pass` silently swallows lock-release failures",
+    "detail": "Lines 1103\u20131105 attempt to release a write lock in a `finally`-style context and silently ignore any exception. If `release_write_lock()` raises, the lock may remain held, causing subsequent threads to deadlock when they try to acquire it. Suggested fix: at minimum log the exception; consider whether the lock's type guarantees idempotent release or whether the call should be guarded by a condition (e.g. check if the lock is actually held).",
+    "category": "error-handling",
+    "severity": "medium",
+    "confidence": "confirmed"
+  },
+  {
+    "file": "src/nova/utils.py",
+    "tool": "ruff",
+    "ruleId": "TRY401",
+    "lineRange": {
+      "start": 1016,
+      "end": 1016
+    },
+    "title": "Redundant exception object in `logging.exception` call",
+    "detail": "Line 1016 passes the exception as an explicit argument to `logging.exception(...)`, which already captures and formats `sys.exc_info()` automatically. The duplicate argument causes the exception message to appear twice in the log output. Suggested fix: remove the exception variable from the `logging.exception` call arguments.",
+    "category": "readability",
+    "severity": "info",
+    "confidence": "confirmed"
+  }
+]

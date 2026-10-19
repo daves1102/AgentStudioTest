@@ -1,0 +1,30 @@
+[
+  {
+    "file": "src/nova/objects/image_meta.py",
+    "tool": "lizard",
+    "ruleId": null,
+    "lineRange": {
+      "start": 216,
+      "end": 332
+    },
+    "title": "`obj_make_compatible` has cyclomatic complexity 42 and 112 NLOC (thresholds: 15 / 100)",
+    "detail": "Lizard reports CCN=42 and NLOC=112 for `obj_make_compatible` \u2014 the highest complexity in the entire batch. The function contains a deeply nested chain of version-string comparisons that must be read linearly to understand which fields are removed or transformed for each target API version. At CCN=42 there are 42 independent execution paths, making comprehensive testing impractical. Suggested fix: introduce a version-dispatch registry (a `dict` mapping version tuples to transform callables) and apply them in sorted order, reducing each case to a single callable.",
+    "category": "complexity",
+    "severity": "high",
+    "confidence": "confirmed"
+  },
+  {
+    "file": "src/nova/objects/image_meta.py",
+    "tool": "ruff",
+    "ruleId": "B010",
+    "lineRange": {
+      "start": 158,
+      "end": 158
+    },
+    "title": "5 `setattr(self, 'literal_name', value)` calls; direct attribute assignment is equivalent and clearer",
+    "detail": "Lines 158, 699, 701, 702 and one more use `setattr(obj, 'constant_string', value)` with a plain string literal. Ruff B010 notes that for known literal names this is no safer than `obj.attr_name = value` and is less readable. Suggested fix: replace each `setattr(obj, 'hw_disk_bus', ...)` with the equivalent direct assignment.",
+    "category": "readability",
+    "severity": "info",
+    "confidence": "confirmed"
+  }
+]

@@ -1,0 +1,16 @@
+[
+  {
+    "file": "src/nova/objects/flavor.py",
+    "tool": "ruff",
+    "ruleId": "BLE001",
+    "lineRange": {
+      "start": 172,
+      "end": 173
+    },
+    "title": "`except Exception as e: raise db_exc.DBError(e)` hides the original exception type",
+    "detail": "Line 172 catches `Exception` and re-raises as `db_exc.DBError`, discarding the original exception type and the chained traceback. Any caller catching `db_exc.DBError` will not be able to distinguish a network error from a logic error. Suggested fix: use `raise db_exc.DBError(e) from e` to preserve the chain, and narrow the catch to only the DB driver exceptions that `DBError` is meant to wrap.",
+    "category": "error-handling",
+    "severity": "medium",
+    "confidence": "confirmed"
+  }
+]

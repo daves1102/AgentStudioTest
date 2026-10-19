@@ -1,0 +1,30 @@
+[
+  {
+    "file": "src/nova/objects/fields.py",
+    "tool": "pylint",
+    "ruleId": "too-many-lines",
+    "lineRange": {
+      "start": 1,
+      "end": 1469
+    },
+    "title": "File exceeds 1000 lines (1469 lines total)",
+    "detail": "fields.py contains 1469 lines defining all OVo field types and their validators. Files of this size are hard to navigate and slow IDE tooling. Suggested fix: split into sub-modules (e.g. fields/primitives.py, fields/compound.py, fields/enums.py).",
+    "category": "maintainability",
+    "severity": "low",
+    "confidence": "confirmed"
+  },
+  {
+    "file": "src/nova/objects/fields.py",
+    "tool": "ruff",
+    "ruleId": "TRY004",
+    "lineRange": {
+      "start": 1164,
+      "end": 1192
+    },
+    "title": "Two validator methods raise `ValueError` for invalid type; `TypeError` is more appropriate",
+    "detail": "Lines 1164 and 1192 raise `ValueError` to signal a wrong-type argument. Python's convention (and PEP 8) is that `TypeError` is raised when the type of an argument is wrong, while `ValueError` signals a value that is the right type but outside the allowed range. Callers that distinguish these exception types (e.g. in generic validation frameworks) will misclassify the error. Suggested fix: replace `raise ValueError(...)` with `raise TypeError(...)` at both sites.",
+    "category": "bug-risk",
+    "severity": "low",
+    "confidence": "confirmed"
+  }
+]

@@ -1,0 +1,44 @@
+[
+  {
+    "file": "src/nova/objects/request_spec.py",
+    "tool": "pylint",
+    "ruleId": "too-many-lines",
+    "lineRange": {
+      "start": 1,
+      "end": 1565
+    },
+    "title": "File exceeds 1000 lines (1565 lines total)",
+    "detail": "request_spec.py is 1565 lines. It combines request-spec object logic, versioning, pagination and DB-layer helpers. Suggested fix: consider splitting the DB helper functions into a db sub-module.",
+    "category": "maintainability",
+    "severity": "low",
+    "confidence": "confirmed"
+  },
+  {
+    "file": "src/nova/objects/request_spec.py",
+    "tool": "lizard",
+    "ruleId": null,
+    "lineRange": {
+      "start": 459,
+      "end": 489
+    },
+    "title": "`to_legacy_filter_properties_dict` has cyclomatic complexity 18 (threshold: 15)",
+    "detail": "Lizard reports CCN=18 (21 NLOC). The method translates a RequestSpec into a flat scheduler filter-properties dict through many conditional key insertions. Suggested fix: decompose into per-section helpers (flavor, retry, limits, scheduler hints).",
+    "category": "complexity",
+    "severity": "high",
+    "confidence": "confirmed"
+  },
+  {
+    "file": "src/nova/objects/request_spec.py",
+    "tool": "lizard",
+    "ruleId": null,
+    "lineRange": {
+      "start": 132,
+      "end": 155
+    },
+    "title": "`obj_make_compatible` has cyclomatic complexity 17 (threshold: 15)",
+    "detail": "Lizard reports CCN=17 (24 NLOC). Version-compatibility branching pattern as seen in other OVo files. Suggested fix: version-dispatch table.",
+    "category": "complexity",
+    "severity": "high",
+    "confidence": "confirmed"
+  }
+]

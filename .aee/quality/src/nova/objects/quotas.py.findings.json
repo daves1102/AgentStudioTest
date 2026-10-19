@@ -1,0 +1,16 @@
+[
+  {
+    "file": "src/nova/objects/quotas.py",
+    "tool": "pylint",
+    "ruleId": "no-self-argument,arguments-renamed",
+    "lineRange": {
+      "start": 524,
+      "end": 536
+    },
+    "title": "`QuotasNoOp.reserve` and `QuotasNoOp.check_deltas` use wrong first-parameter names (`context`, `cls`) without `@staticmethod`/`@classmethod`",
+    "detail": "Lines 524\u2013536: `QuotasNoOp.reserve(context, ...)` has `context` where `self` should be; `QuotasNoOp.check_deltas(cls, ...)` has `cls` without a `@classmethod` decorator. As undecorated instance methods, Python passes the instance as the first positional argument. Any caller invoking `noop_instance.reserve(context, ...)` passes `noop_instance` into `context`, shifting all remaining arguments by one position. The TODO comments on both methods say they will be removed in version 2.0, but until removed they can cause subtle call-site failures. Suggested fix: either add `@staticmethod` / `@classmethod` decorators or rename the first parameter to `self`.",
+    "category": "bug-risk",
+    "severity": "medium",
+    "confidence": "confirmed"
+  }
+]

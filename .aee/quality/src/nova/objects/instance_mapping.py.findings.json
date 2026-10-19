@@ -1,0 +1,16 @@
+[
+  {
+    "file": "src/nova/objects/instance_mapping.py",
+    "tool": "ruff",
+    "ruleId": "BLE001",
+    "lineRange": {
+      "start": 281,
+      "end": 282
+    },
+    "title": "Broad `except Exception` in cross-cell query loop logs but loses exception type",
+    "detail": "Line 281 catches `Exception` broadly when querying instances from a cell, logs a warning, and continues to the next cell. The broad catch masks unexpected programming errors (e.g. `AttributeError`) that would look identical to a genuine cell connectivity failure. Suggested fix: narrow to the specific RPC/network exceptions the cell client can raise; let unexpected exceptions propagate.",
+    "category": "error-handling",
+    "severity": "low",
+    "confidence": "confirmed"
+  }
+]

@@ -1,0 +1,16 @@
+[
+  {
+    "file": "src/nova/objects/service.py",
+    "tool": "ruff",
+    "ruleId": "BLE001",
+    "lineRange": {
+      "start": 401,
+      "end": 402
+    },
+    "title": "`except Exception: return` in `_obj_make_compatible` silently suppresses all errors",
+    "detail": "Line 401 catches `Exception` and immediately returns, with no logging or error signalling. The code is trying to fetch a compute node to embed in a versioned service object. If this fails for any reason (network error, programming bug, missing attribute) the failure is silently swallowed and the object is returned without the compute_node field \u2014 which may cause subtle downstream failures. Suggested fix: at minimum, add a `LOG.warning(...)` call; ideally catch only the specific `ComputeNodeNotFound` or RPC exceptions that are genuinely benign.",
+    "category": "error-handling",
+    "severity": "medium",
+    "confidence": "confirmed"
+  }
+]

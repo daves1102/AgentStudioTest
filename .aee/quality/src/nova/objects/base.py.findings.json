@@ -1,0 +1,30 @@
+[
+  {
+    "file": "src/nova/objects/base.py",
+    "tool": "ruff",
+    "ruleId": "B004",
+    "lineRange": {
+      "start": 399,
+      "end": 407
+    },
+    "title": "`hasattr(fn, '__call__')` used twice to test callability; use `callable()` instead",
+    "detail": "Lines 399 and 407 use `hasattr(fn, '__call__')` to distinguish a plain function from a descriptor. Ruff B004 warns that this is unreliable: some objects override `__getattr__` such that `hasattr(..., '__call__')` returns `True` even for non-callables. `callable(fn)` is the correct Python 3 API and delegates to `tp_call` in CPython. Suggested fix: replace both occurrences with `callable(fn)`.",
+    "category": "bug-risk",
+    "severity": "low",
+    "confidence": "confirmed"
+  },
+  {
+    "file": "src/nova/objects/base.py",
+    "tool": "pylint",
+    "ruleId": "abstract-method",
+    "lineRange": {
+      "start": 223,
+      "end": 223
+    },
+    "title": "`NovaEphemeralObject` does not override abstract `should_migrate_data` from `NovaObject`",
+    "detail": "Pylint reports that `should_migrate_data` is abstract in `NovaObject` but not overridden in `NovaEphemeralObject` (line 223). If `should_migrate_data` is ever called on an `EphemeralObject` subclass the call will raise `TypeError: Can't instantiate abstract class`. Suggested fix: add an explicit `should_migrate_data` implementation (likely returning `False`) on `NovaEphemeralObject`.",
+    "category": "bug-risk",
+    "severity": "low",
+    "confidence": "probable"
+  }
+]

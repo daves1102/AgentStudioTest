@@ -1,0 +1,16 @@
+[
+  {
+    "file": "src/nova/objects/compute_node.py",
+    "tool": "lizard",
+    "ruleId": null,
+    "lineRange": {
+      "start": 105,
+      "end": 147
+    },
+    "title": "`obj_make_compatible` has cyclomatic complexity 25 (threshold: 15)",
+    "detail": "Lizard reports CCN=25 for `obj_make_compatible` (36 lines). The function encodes object version compatibility logic through a deep if/elif chain over version strings. Each nova release adds another branch, making this a perpetual complexity hot-spot. Suggested fix: replace the nested version comparisons with a version-dispatch table mapping each version to the fields it removes or transforms.",
+    "category": "complexity",
+    "severity": "high",
+    "confidence": "confirmed"
+  }
+]

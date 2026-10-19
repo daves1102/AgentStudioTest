@@ -1,0 +1,16 @@
+[
+  {
+    "file": "src/nova/objects/instance_action.py",
+    "tool": "pylint",
+    "ruleId": "redundant-keyword-arg",
+    "lineRange": {
+      "start": 264,
+      "end": 264
+    },
+    "title": "`InstanceActionEvent.finish` passes `exc_val` both positionally and by keyword",
+    "detail": "Line 264 calls `self.finish_with_failure(self._context, exc_val=None, exc_tb=None)`. The signature of `finish_with_failure` is `(self, exc_val, exc_tb)`, so `self._context` maps positionally to `exc_val`, and `exc_val=None` is then passed again as a keyword argument. Under pure Python semantics this raises `TypeError: got multiple values for argument 'exc_val'` at runtime. If the `@base.remotable` decorator consumes the context before forwarding the call this does not error, but the dependency on that internal behaviour is fragile. Suggested fix: verify the remotable calling convention and either remove `self._context` from the positional args or rename the method parameter.",
+    "category": "bug-risk",
+    "severity": "medium",
+    "confidence": "probable"
+  }
+]

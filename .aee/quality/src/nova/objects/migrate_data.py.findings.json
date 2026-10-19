@@ -1,0 +1,30 @@
+[
+  {
+    "file": "src/nova/objects/migrate_data.py",
+    "tool": "lizard",
+    "ruleId": null,
+    "lineRange": {
+      "start": 303,
+      "end": 361
+    },
+    "title": "`obj_make_compatible` has cyclomatic complexity 31 (threshold: 15)",
+    "detail": "Lizard reports CCN=31 (51 NLOC). The function chains version comparisons with nested if/elif to strip or rename fields for each target version. Suggested fix: use a version-dispatch table (same pattern as recommended for image_meta.py and compute_node.py).",
+    "category": "complexity",
+    "severity": "high",
+    "confidence": "confirmed"
+  },
+  {
+    "file": "src/nova/objects/migrate_data.py",
+    "tool": "pylint",
+    "ruleId": "fixme",
+    "lineRange": {
+      "start": 264,
+      "end": 264
+    },
+    "title": "FIXME comment on load-bearing `image_type` field",
+    "detail": "Line 264 contains `# FIXME: image_type should be enum?` on the definition of the `image_type` field. The field is used throughout the migration data path; if the type is wrong or incomplete, live-migration operations may silently accept invalid values. Suggested fix: resolve the enum question and either introduce a typed enum field or close the FIXME with a documented rationale.",
+    "category": "maintainability",
+    "severity": "low",
+    "confidence": "confirmed"
+  }
+]

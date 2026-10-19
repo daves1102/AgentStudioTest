@@ -1,0 +1,16 @@
+[
+  {
+    "file": "src/nova/service_auth.py",
+    "tool": "pylint",
+    "ruleId": "global-statement",
+    "lineRange": {
+      "start": 37,
+      "end": 37
+    },
+    "title": "`global` statement used to cache the auth plugin",
+    "detail": "Line 37 uses a `global` statement to cache a module-level auth plugin instance. Module-level mutable globals make unit-testing harder (requiring explicit reset between tests) and create thread-safety concerns if the module is ever imported in a multi-threaded context before initialisation. Suggested fix: use a module-level sentinel (e.g. `_AUTH_PLUGIN = None`) with a thread-safe initialiser, or inject the plugin as a dependency.",
+    "category": "maintainability",
+    "severity": "info",
+    "confidence": "confirmed"
+  }
+]

@@ -1,0 +1,44 @@
+[
+  {
+    "file": "src/nova/exception.py",
+    "tool": "pylint",
+    "ruleId": "too-many-lines",
+    "lineRange": {
+      "start": 1,
+      "end": 2682
+    },
+    "title": "File exceeds 1000 lines (2682 lines total)",
+    "detail": "The file contains 2682 lines, well above the 1000-line maintainability threshold. The file defines the entire Nova exception hierarchy in a single module. Files of this size are hard to navigate, slow CI linting passes, and make it difficult for reviewers to reason about which exceptions are related. Suggested fix: split into sub-modules (e.g. nova/exceptions/compute.py, nova/exceptions/network.py) grouped by subsystem.",
+    "category": "maintainability",
+    "severity": "low",
+    "confidence": "confirmed"
+  },
+  {
+    "file": "src/nova/exception.py",
+    "tool": "pylint",
+    "ruleId": "broad-exception-caught",
+    "lineRange": {
+      "start": 85,
+      "end": 86
+    },
+    "title": "Broad `except Exception` in NovaException.__init__ swallows formatting errors",
+    "detail": "Line 85 catches the base `Exception` to handle a failed `%`-interpolation of `msg_fmt`. While the intent is to fall back gracefully on a formatting bug, catching `Exception` masks every possible error including programming mistakes outside the message formatting. The fallback calls `self._log_exception()` and continues, so the original error type is lost. Suggested fix: catch only `KeyError` and `TypeError` \u2014 the only exceptions that `%`-formatting can plausibly raise.",
+    "category": "error-handling",
+    "severity": "low",
+    "confidence": "confirmed"
+  },
+  {
+    "file": "src/nova/exception.py",
+    "tool": "pylint",
+    "ruleId": "super-with-arguments",
+    "lineRange": {
+      "start": 55,
+      "end": 55
+    },
+    "title": "59 `super(ClassName, self)` calls use Python 2-style super()",
+    "detail": "Throughout exception.py, every `super()` call passes explicit class and instance arguments (e.g. `super(NovaException, self).__init__(message)`), a Python 2 idiom that is redundant in Python 3. While not a defect, it adds noise and suggests the codebase has not been fully modernised. First occurrence: line 55. Suggested fix: replace with zero-argument `super().__init__(...)`.",
+    "category": "style",
+    "severity": "info",
+    "confidence": "confirmed"
+  }
+]
