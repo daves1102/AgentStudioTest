@@ -1,0 +1,32 @@
+[
+  {
+    "file": "src/nova/privsep/libvirt.py",
+    "tool": "manual",
+    "ruleId": null,
+    "lineRange": {
+      "start": 81,
+      "end": 84
+    },
+    "title": "ploop disk image set world-readable (S_IROTH) inside privsep",
+    "detail": "ploop_init (lines 63-84) calls os.chmod(disk_path, st.st_mode | stat.S_IROTH) to add world-read permission to a newly-created ploop disk image file. The inline comment acknowledges this is undesirable: \"it would be good to create the loop file with the right owner or group such that we don't need to have it world readable\". Any local user process on the compute host can read the disk image at disk_path, potentially exposing guest data. The function runs inside the sys_admin_pctxt privsep context with CAP_FOWNER. Least-privilege alternative: set ownership to the nova user and group rather than granting world-read.",
+    "owaspCategory": "A05 Security Misconfiguration",
+    "cweId": "CWE-732",
+    "severity": "low",
+    "confidence": "confirmed"
+  },
+  {
+    "file": "src/nova/privsep/libvirt.py",
+    "tool": "manual",
+    "ruleId": null,
+    "lineRange": {
+      "start": 150,
+      "end": 161
+    },
+    "title": "readpty opens unvalidated path as root with CAP_DAC_READ_SEARCH",
+    "detail": "readpty(path) is a privsep entrypoint with CAP_DAC_READ_SEARCH (from sys_admin_pctxt). It calls open(path, \"r\") with no validation that path is actually a PTY device. The developer's own TODO (line 151) states: \"I'm not a huge fan that we don't enforce a valid pty path here, but I haven't come up with a great way of doing that.\" If the caller passes an arbitrary path (e.g., /etc/shadow, an SSH private key, or any file otherwise protected by DAC), the function reads and returns it as root. Whether path is attacker-controlled cannot be determined from this file alone.",
+    "owaspCategory": "A01 Broken Access Control",
+    "cweId": "CWE-73",
+    "severity": "medium",
+    "confidence": "needs_cross_file"
+  }
+]
