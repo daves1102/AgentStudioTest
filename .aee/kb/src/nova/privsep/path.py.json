@@ -1,0 +1,675 @@
+{
+  "file": "src/nova/privsep/path.py",
+  "hash": "77b7f30a5555036aa061a4b52bff95172a98f02e705bc72390d92eda847727de",
+  "language": "Python",
+  "component": "nova",
+  "package": null,
+  "lines": {
+    "blank": 26,
+    "code": 65,
+    "comment": 21,
+    "total": 112
+  },
+  "symbols": [
+    {
+      "name": "writefile",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 29,
+        "end": 33
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "path"
+        },
+        {
+          "name": "mode"
+        },
+        {
+          "name": "content"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 5,
+      "ccn": 2,
+      "exported": true
+    },
+    {
+      "name": "chown",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 37,
+        "end": 51
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "path",
+          "type": "str"
+        },
+        {
+          "default": "-1",
+          "name": "uid",
+          "type": "int"
+        },
+        {
+          "default": "-1",
+          "name": "gid",
+          "type": "int"
+        },
+        {
+          "default": "False",
+          "name": "recursive",
+          "type": "bool"
+        }
+      ],
+      "returnType": "None",
+      "returns": [
+        {
+          "expr": "os.chown(path, uid, gid)",
+          "line": 44
+        }
+      ],
+      "nloc": 13,
+      "ccn": 7,
+      "exported": true
+    },
+    {
+      "name": "makedirs",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 55,
+        "end": 56
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "path"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 2,
+      "ccn": 1,
+      "exported": true
+    },
+    {
+      "name": "chmod",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 60,
+        "end": 63
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "path"
+        },
+        {
+          "name": "mode"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 4,
+      "ccn": 2,
+      "exported": true
+    },
+    {
+      "name": "move_tree",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 67,
+        "end": 68
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "source_path",
+          "type": "str"
+        },
+        {
+          "name": "dest_path",
+          "type": "str"
+        }
+      ],
+      "returnType": "None",
+      "returns": [],
+      "nloc": 2,
+      "ccn": 1,
+      "exported": true
+    },
+    {
+      "name": "utime",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 72,
+        "end": 80
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "path"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 4,
+      "ccn": 2,
+      "exported": true
+    },
+    {
+      "name": "rmdir",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 84,
+        "end": 87
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "path"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 4,
+      "ccn": 2,
+      "exported": true
+    },
+    {
+      "name": "last_bytes",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 91,
+        "end": 112
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "path"
+        },
+        {
+          "name": "num"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "(f.read(), remaining)",
+          "line": 112
+        }
+      ],
+      "nloc": 11,
+      "ccn": 3,
+      "exported": true
+    }
+  ],
+  "referencedSymbols": [
+    {
+      "name": "os.path.dirname",
+      "usage": "call",
+      "via": "os",
+      "count": 1,
+      "lineRange": {
+        "start": 30,
+        "end": 30
+      }
+    },
+    {
+      "name": "os.path.exists",
+      "usage": "call",
+      "via": "os",
+      "count": 5,
+      "lineRange": {
+        "start": 30,
+        "end": 30
+      }
+    },
+    {
+      "name": "exception.FileNotFound",
+      "usage": "call",
+      "via": "nova",
+      "count": 5,
+      "lineRange": {
+        "start": 31,
+        "end": 31
+      }
+    },
+    {
+      "name": "open",
+      "usage": "call",
+      "via": null,
+      "count": 2,
+      "lineRange": {
+        "start": 32,
+        "end": 32
+      }
+    },
+    {
+      "name": "os.path.isfile",
+      "usage": "call",
+      "via": "os",
+      "count": 1,
+      "lineRange": {
+        "start": 43,
+        "end": 43
+      }
+    },
+    {
+      "name": "os.chown",
+      "usage": "call",
+      "via": "os",
+      "count": 4,
+      "lineRange": {
+        "start": 44,
+        "end": 44
+      }
+    },
+    {
+      "name": "os.walk",
+      "usage": "call",
+      "via": "os",
+      "count": 1,
+      "lineRange": {
+        "start": 46,
+        "end": 46
+      }
+    },
+    {
+      "name": "os.path.join",
+      "usage": "call",
+      "via": "os",
+      "count": 2,
+      "lineRange": {
+        "start": 49,
+        "end": 49
+      }
+    },
+    {
+      "name": "fileutils.ensure_tree",
+      "usage": "call",
+      "via": "oslo_utils",
+      "count": 1,
+      "lineRange": {
+        "start": 56,
+        "end": 56
+      }
+    },
+    {
+      "name": "os.chmod",
+      "usage": "call",
+      "via": "os",
+      "count": 1,
+      "lineRange": {
+        "start": 63,
+        "end": 63
+      }
+    },
+    {
+      "name": "shutil.move",
+      "usage": "call",
+      "via": "shutil",
+      "count": 1,
+      "lineRange": {
+        "start": 68,
+        "end": 68
+      }
+    },
+    {
+      "name": "os.utime",
+      "usage": "call",
+      "via": "os",
+      "count": 1,
+      "lineRange": {
+        "start": 80,
+        "end": 80
+      }
+    },
+    {
+      "name": "os.rmdir",
+      "usage": "call",
+      "via": "os",
+      "count": 1,
+      "lineRange": {
+        "start": 87,
+        "end": 87
+      }
+    }
+  ],
+  "dependencies": [
+    {
+      "style": "import",
+      "module": "errno",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 18,
+        "end": 18
+      }
+    },
+    {
+      "style": "import",
+      "module": "os",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 19,
+        "end": 19
+      }
+    },
+    {
+      "style": "import",
+      "module": "shutil",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 20,
+        "end": 20
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_utils",
+      "names": [
+        {
+          "alias": null,
+          "name": "fileutils"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 22,
+        "end": 22
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "exception"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 24,
+        "end": 24
+      }
+    },
+    {
+      "style": "import",
+      "module": "nova.privsep",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 25,
+        "end": 25
+      }
+    }
+  ],
+  "sideEffects": [
+    {
+      "kind": "process-spawn",
+      "target": "@nova.privsep.sys_admin_pctxt.entrypoint",
+      "lineRange": {
+        "start": 28,
+        "end": 28
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "if not os.path.exists(os.path.dirname(path)):",
+      "lineRange": {
+        "start": 30,
+        "end": 30
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "with open(path, mode) as f:",
+      "lineRange": {
+        "start": 32,
+        "end": 32
+      }
+    },
+    {
+      "kind": "process-spawn",
+      "target": "@nova.privsep.sys_admin_pctxt.entrypoint",
+      "lineRange": {
+        "start": 36,
+        "end": 36
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "if not os.path.exists(path):",
+      "lineRange": {
+        "start": 40,
+        "end": 40
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "if not recursive or os.path.isfile(path):",
+      "lineRange": {
+        "start": 43,
+        "end": 43
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "os.chown(os.path.join(root, item), uid, gid)",
+      "lineRange": {
+        "start": 49,
+        "end": 49
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "os.chown(os.path.join(root, item), uid, gid)",
+      "lineRange": {
+        "start": 51,
+        "end": 51
+      }
+    },
+    {
+      "kind": "process-spawn",
+      "target": "@nova.privsep.sys_admin_pctxt.entrypoint",
+      "lineRange": {
+        "start": 54,
+        "end": 54
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "fileutils.ensure_tree(path)",
+      "lineRange": {
+        "start": 56,
+        "end": 56
+      }
+    },
+    {
+      "kind": "process-spawn",
+      "target": "@nova.privsep.sys_admin_pctxt.entrypoint",
+      "lineRange": {
+        "start": 59,
+        "end": 59
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "if not os.path.exists(path):",
+      "lineRange": {
+        "start": 61,
+        "end": 61
+      }
+    },
+    {
+      "kind": "process-spawn",
+      "target": "@nova.privsep.sys_admin_pctxt.entrypoint",
+      "lineRange": {
+        "start": 66,
+        "end": 66
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "shutil.move(source_path, dest_path)",
+      "lineRange": {
+        "start": 68,
+        "end": 68
+      }
+    },
+    {
+      "kind": "process-spawn",
+      "target": "@nova.privsep.sys_admin_pctxt.entrypoint",
+      "lineRange": {
+        "start": 71,
+        "end": 71
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "if not os.path.exists(path):",
+      "lineRange": {
+        "start": 73,
+        "end": 73
+      }
+    },
+    {
+      "kind": "process-spawn",
+      "target": "@nova.privsep.sys_admin_pctxt.entrypoint",
+      "lineRange": {
+        "start": 83,
+        "end": 83
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "if not os.path.exists(path):",
+      "lineRange": {
+        "start": 85,
+        "end": 85
+      }
+    },
+    {
+      "kind": "process-spawn",
+      "target": "@nova.privsep.sys_admin_pctxt.entrypoint",
+      "lineRange": {
+        "start": 90,
+        "end": 90
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "with open(path, 'rb') as f:",
+      "lineRange": {
+        "start": 99,
+        "end": 99
+      }
+    }
+  ],
+  "securitySurface": [
+    {
+      "kind": "privilege",
+      "category": "privsep-entrypoint",
+      "description": "@nova.privsep.sys_admin_pctxt.entrypoint",
+      "lineRange": {
+        "start": 28,
+        "end": 28
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "file-write",
+      "description": "f.write(content)",
+      "lineRange": {
+        "start": 33,
+        "end": 33
+      }
+    },
+    {
+      "kind": "privilege",
+      "category": "privsep-entrypoint",
+      "description": "@nova.privsep.sys_admin_pctxt.entrypoint",
+      "lineRange": {
+        "start": 36,
+        "end": 36
+      }
+    },
+    {
+      "kind": "privilege",
+      "category": "privsep-entrypoint",
+      "description": "@nova.privsep.sys_admin_pctxt.entrypoint",
+      "lineRange": {
+        "start": 54,
+        "end": 54
+      }
+    },
+    {
+      "kind": "privilege",
+      "category": "privsep-entrypoint",
+      "description": "@nova.privsep.sys_admin_pctxt.entrypoint",
+      "lineRange": {
+        "start": 59,
+        "end": 59
+      }
+    },
+    {
+      "kind": "privilege",
+      "category": "privsep-entrypoint",
+      "description": "@nova.privsep.sys_admin_pctxt.entrypoint",
+      "lineRange": {
+        "start": 66,
+        "end": 66
+      }
+    },
+    {
+      "kind": "privilege",
+      "category": "privsep-entrypoint",
+      "description": "@nova.privsep.sys_admin_pctxt.entrypoint",
+      "lineRange": {
+        "start": 71,
+        "end": 71
+      }
+    },
+    {
+      "kind": "privilege",
+      "category": "privsep-entrypoint",
+      "description": "@nova.privsep.sys_admin_pctxt.entrypoint",
+      "lineRange": {
+        "start": 83,
+        "end": 83
+      }
+    },
+    {
+      "kind": "privilege",
+      "category": "privsep-entrypoint",
+      "description": "@nova.privsep.sys_admin_pctxt.entrypoint",
+      "lineRange": {
+        "start": 90,
+        "end": 90
+      }
+    }
+  ],
+  "injection_flags": [],
+  "warnings": []
+}

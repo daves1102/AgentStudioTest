@@ -1,0 +1,269 @@
+{
+  "file": "src/nova/policies/servers.py",
+  "hash": "c5d0dbf7f6b1d06a6e2912cb72387de2dd37f0377d7b8e20bdba8a1a2e83818e",
+  "language": "Python",
+  "component": "nova",
+  "package": null,
+  "lines": {
+    "blank": 18,
+    "code": 458,
+    "comment": 16,
+    "total": 492
+  },
+  "symbols": [
+    {
+      "name": "SERVERS",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 19,
+        "end": 19
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "NETWORK_ATTACH_EXTERNAL",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 20,
+        "end": 20
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "ZERO_DISK_FLAVOR",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 21,
+        "end": 21
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "REQUESTED_DESTINATION",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 22,
+        "end": 22
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "CROSS_CELL_RESIZE",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 23,
+        "end": 23
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "DEPRECATED_POLICY",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 25,
+        "end": 28
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "DEPRECATED_REASON",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 30,
+        "end": 34
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "rules",
+      "kind": "variable",
+      "scope": "",
+      "lineRange": {
+        "start": 36,
+        "end": 488
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "list_rules",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 491,
+        "end": 492
+      },
+      "source": "aee-inventory",
+      "parameters": [],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "rules",
+          "line": 492
+        }
+      ],
+      "nloc": 2,
+      "ccn": 1,
+      "exported": true
+    }
+  ],
+  "referencedSymbols": [
+    {
+      "name": "policy.DeprecatedRule",
+      "usage": "call",
+      "via": "oslo_policy",
+      "count": 1,
+      "lineRange": {
+        "start": 25,
+        "end": 25
+      }
+    },
+    {
+      "name": "policy.DocumentedRuleDefault",
+      "usage": "call",
+      "via": "oslo_policy",
+      "count": 31,
+      "lineRange": {
+        "start": 37,
+        "end": 37
+      }
+    }
+  ],
+  "dependencies": [
+    {
+      "style": "from",
+      "module": "oslo_policy",
+      "names": [
+        {
+          "alias": null,
+          "name": "policy"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 14,
+        "end": 14
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.policies",
+      "names": [
+        {
+          "alias": null,
+          "name": "base"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 16,
+        "end": 16
+      }
+    }
+  ],
+  "sideEffects": [
+    {
+      "kind": "global-mutation",
+      "target": "SERVERS = 'os_compute_api:servers:%s'",
+      "lineRange": {
+        "start": 19,
+        "end": 19
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "NETWORK_ATTACH_EXTERNAL = 'network:attach_external_network'",
+      "lineRange": {
+        "start": 20,
+        "end": 20
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "ZERO_DISK_FLAVOR = SERVERS % 'create:zero_disk_flavor'",
+      "lineRange": {
+        "start": 21,
+        "end": 21
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "REQUESTED_DESTINATION = 'compute:servers:create:requested_destination'",
+      "lineRange": {
+        "start": 22,
+        "end": 22
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "CROSS_CELL_RESIZE = 'compute:servers:resize:cross_cell'",
+      "lineRange": {
+        "start": 23,
+        "end": 23
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "DEPRECATED_POLICY = policy.DeprecatedRule(",
+      "lineRange": {
+        "start": 25,
+        "end": 25
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "DEPRECATED_REASON = \"\"\"",
+      "lineRange": {
+        "start": 30,
+        "end": 30
+      }
+    }
+  ],
+  "securitySurface": [
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "cannot select the compute host based on the virtual image size. Therefore, 0",
+      "lineRange": {
+        "start": 297,
+        "end": 297
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "name=SERVERS % 'update',",
+      "lineRange": {
+        "start": 342,
+        "end": 342
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "description=\"Update a server\",",
+      "lineRange": {
+        "start": 344,
+        "end": 344
+      }
+    }
+  ],
+  "injection_flags": [],
+  "warnings": []
+}

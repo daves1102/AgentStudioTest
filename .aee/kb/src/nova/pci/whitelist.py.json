@@ -1,0 +1,333 @@
+{
+  "file": "src/nova/pci/whitelist.py",
+  "hash": "643d1f773c9c0e6d565ac1dc09c3a752b14bdcba04dd4fb2ed520bf80ac74d54",
+  "language": "Python",
+  "component": "nova",
+  "package": null,
+  "lines": {
+    "blank": 18,
+    "code": 74,
+    "comment": 15,
+    "total": 107
+  },
+  "symbols": [
+    {
+      "name": "Whitelist",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 27,
+        "end": 107
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "__init__",
+      "kind": "method",
+      "scope": "Whitelist",
+      "lineRange": {
+        "start": 36,
+        "end": 53
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "default": "None",
+          "name": "whitelist_spec",
+          "type": "str | None"
+        }
+      ],
+      "returnType": "None",
+      "returns": [],
+      "nloc": 5,
+      "ccn": 2,
+      "visibility": "public"
+    },
+    {
+      "name": "_parse_white_list_from_config",
+      "kind": "method",
+      "scope": "Whitelist",
+      "lineRange": {
+        "start": 56,
+        "end": 83
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "whitelists",
+          "type": "str"
+        }
+      ],
+      "returnType": "list[devspec.PciDeviceSpec]",
+      "returns": [
+        {
+          "expr": "specs",
+          "line": 83
+        }
+      ],
+      "nloc": 24,
+      "ccn": 7,
+      "visibility": "private"
+    },
+    {
+      "name": "device_assignable",
+      "kind": "method",
+      "scope": "Whitelist",
+      "lineRange": {
+        "start": 85,
+        "end": 98
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "dev",
+          "type": "dict[str, ty.Any]"
+        }
+      ],
+      "returnType": "devspec.PciDeviceSpec | None",
+      "returns": [
+        {
+          "expr": "spec",
+          "line": 97
+        },
+        {
+          "expr": "None",
+          "line": 98
+        }
+      ],
+      "nloc": 7,
+      "ccn": 3,
+      "visibility": "public"
+    },
+    {
+      "name": "get_devspec",
+      "kind": "method",
+      "scope": "Whitelist",
+      "lineRange": {
+        "start": 100,
+        "end": 107
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "pci_dev",
+          "type": "'objects.PciDevice'"
+        }
+      ],
+      "returnType": "devspec.PciDeviceSpec | None",
+      "returns": [
+        {
+          "expr": "spec",
+          "line": 105
+        },
+        {
+          "expr": "None",
+          "line": 107
+        }
+      ],
+      "nloc": 7,
+      "ccn": 3,
+      "visibility": "public"
+    },
+    {
+      "name": "_parse_white_list_from_config",
+      "kind": "staticmethod",
+      "scope": "Whitelist",
+      "lineRange": {
+        "start": 55,
+        "end": 83
+      },
+      "visibility": "private",
+      "source": "manual"
+    }
+  ],
+  "referencedSymbols": [
+    {
+      "name": "object",
+      "usage": "inherit",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 27,
+        "end": 27
+      }
+    },
+    {
+      "name": "list",
+      "usage": "type",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 58,
+        "end": 58
+      }
+    },
+    {
+      "name": "jsonutils.loads",
+      "usage": "call",
+      "via": "oslo_serialization",
+      "count": 1,
+      "lineRange": {
+        "start": 63,
+        "end": 63
+      }
+    },
+    {
+      "name": "exception.PciConfigInvalidSpec",
+      "usage": "call",
+      "via": "nova",
+      "count": 3,
+      "lineRange": {
+        "start": 65,
+        "end": 65
+      }
+    },
+    {
+      "name": "_",
+      "usage": "call",
+      "via": "nova.i18n",
+      "count": 3,
+      "lineRange": {
+        "start": 66,
+        "end": 66
+      }
+    },
+    {
+      "name": "isinstance",
+      "usage": "call",
+      "via": null,
+      "count": 3,
+      "lineRange": {
+        "start": 67,
+        "end": 67
+      }
+    },
+    {
+      "name": "devspec.PciDeviceSpec",
+      "usage": "call",
+      "via": "nova.pci",
+      "count": 1,
+      "lineRange": {
+        "start": 80,
+        "end": 80
+      }
+    },
+    {
+      "name": "dict",
+      "usage": "type",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 86,
+        "end": 86
+      }
+    }
+  ],
+  "dependencies": [
+    {
+      "style": "import",
+      "module": "typing",
+      "names": [],
+      "alias": "ty",
+      "relative": false,
+      "lineRange": {
+        "start": 17,
+        "end": 17
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_serialization",
+      "names": [
+        {
+          "alias": null,
+          "name": "jsonutils"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 19,
+        "end": 19
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "exception"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 21,
+        "end": 21
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.i18n",
+      "names": [
+        {
+          "alias": null,
+          "name": "_"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 22,
+        "end": 22
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "objects"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 23,
+        "end": 23
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.pci",
+      "names": [
+        {
+          "alias": null,
+          "name": "devspec"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 24,
+        "end": 24
+      }
+    }
+  ],
+  "sideEffects": [],
+  "securitySurface": [],
+  "injection_flags": [],
+  "warnings": []
+}

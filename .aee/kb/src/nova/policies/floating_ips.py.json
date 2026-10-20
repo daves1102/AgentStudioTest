@@ -1,0 +1,184 @@
+{
+  "file": "src/nova/policies/floating_ips.py",
+  "hash": "fd2e6e5956e1c38c614a418479eedcb18af76b4acf618fb79c3a06cf54b2e3d0",
+  "language": "Python",
+  "component": "nova",
+  "package": null,
+  "lines": {
+    "blank": 10,
+    "code": 93,
+    "comment": 14,
+    "total": 117
+  },
+  "symbols": [
+    {
+      "name": "ROOT_POLICY",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 21,
+        "end": 21
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "BASE_POLICY_NAME",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 22,
+        "end": 22
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "DEPRECATED_REASON",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 24,
+        "end": 28
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "DEPRECATED_FIP_POLICY",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 30,
+        "end": 35
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "floating_ips_policies",
+      "kind": "variable",
+      "scope": "",
+      "lineRange": {
+        "start": 38,
+        "end": 113
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "list_rules",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 116,
+        "end": 117
+      },
+      "source": "aee-inventory",
+      "parameters": [],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "floating_ips_policies",
+          "line": 117
+        }
+      ],
+      "nloc": 2,
+      "ccn": 1,
+      "exported": true
+    }
+  ],
+  "referencedSymbols": [
+    {
+      "name": "policy.DeprecatedRule",
+      "usage": "call",
+      "via": "oslo_policy",
+      "count": 1,
+      "lineRange": {
+        "start": 30,
+        "end": 30
+      }
+    },
+    {
+      "name": "policy.DocumentedRuleDefault",
+      "usage": "call",
+      "via": "oslo_policy",
+      "count": 6,
+      "lineRange": {
+        "start": 39,
+        "end": 39
+      }
+    }
+  ],
+  "dependencies": [
+    {
+      "style": "from",
+      "module": "oslo_policy",
+      "names": [
+        {
+          "alias": null,
+          "name": "policy"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 16,
+        "end": 16
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.policies",
+      "names": [
+        {
+          "alias": null,
+          "name": "base"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 18,
+        "end": 18
+      }
+    }
+  ],
+  "sideEffects": [
+    {
+      "kind": "global-mutation",
+      "target": "ROOT_POLICY = 'os_compute_api:os-floating-ips'",
+      "lineRange": {
+        "start": 21,
+        "end": 21
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "BASE_POLICY_NAME = 'os_compute_api:os-floating-ips:%s'",
+      "lineRange": {
+        "start": 22,
+        "end": 22
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "DEPRECATED_REASON = \"\"\"",
+      "lineRange": {
+        "start": 24,
+        "end": 24
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "DEPRECATED_FIP_POLICY = policy.DeprecatedRule(",
+      "lineRange": {
+        "start": 30,
+        "end": 30
+      }
+    }
+  ],
+  "securitySurface": [],
+  "injection_flags": [],
+  "warnings": []
+}

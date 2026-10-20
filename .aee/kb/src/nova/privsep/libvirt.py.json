@@ -1,0 +1,1006 @@
+{
+  "file": "src/nova/privsep/libvirt.py",
+  "hash": "1450c881fa7c4ecd7550b2124f5e0011ca24949e8d4f7da2f247521447d1799f",
+  "language": "Python",
+  "component": "nova",
+  "package": null,
+  "lines": {
+    "blank": 52,
+    "code": 135,
+    "comment": 49,
+    "total": 236
+  },
+  "symbols": [
+    {
+      "name": "LOG",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 31,
+        "end": 31
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "dmcrypt_create_volume",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 35,
+        "end": 52
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "target"
+        },
+        {
+          "name": "device"
+        },
+        {
+          "name": "cipher"
+        },
+        {
+          "name": "key_size"
+        },
+        {
+          "name": "key"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 10,
+      "ccn": 1,
+      "exported": true
+    },
+    {
+      "name": "dmcrypt_delete_volume",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 56,
+        "end": 61
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "target"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 2,
+      "ccn": 1,
+      "exported": true
+    },
+    {
+      "name": "ploop_init",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 65,
+        "end": 84
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "size"
+        },
+        {
+          "name": "disk_format"
+        },
+        {
+          "name": "fs_type"
+        },
+        {
+          "name": "disk_path"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 5,
+      "ccn": 1,
+      "exported": true
+    },
+    {
+      "name": "ploop_resize",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 88,
+        "end": 98
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "disk_path"
+        },
+        {
+          "name": "size"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 6,
+      "ccn": 1,
+      "exported": true
+    },
+    {
+      "name": "ploop_restore_descriptor",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 102,
+        "end": 111
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "image_dir"
+        },
+        {
+          "name": "base_delta"
+        },
+        {
+          "name": "fmt"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 4,
+      "ccn": 1,
+      "exported": true
+    },
+    {
+      "name": "plug_infiniband_vif",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 115,
+        "end": 117
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "vnic_mac"
+        },
+        {
+          "name": "device_id"
+        },
+        {
+          "name": "fabric"
+        },
+        {
+          "name": "net_model"
+        },
+        {
+          "name": "pci_slot"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 3,
+      "ccn": 1,
+      "exported": true
+    },
+    {
+      "name": "unplug_infiniband_vif",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 121,
+        "end": 122
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "fabric"
+        },
+        {
+          "name": "vnic_mac"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 2,
+      "ccn": 1,
+      "exported": true
+    },
+    {
+      "name": "plug_midonet_vif",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 126,
+        "end": 127
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "port_id"
+        },
+        {
+          "name": "dev"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 2,
+      "ccn": 1,
+      "exported": true
+    },
+    {
+      "name": "unplug_midonet_vif",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 131,
+        "end": 132
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "port_id"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 2,
+      "ccn": 1,
+      "exported": true
+    },
+    {
+      "name": "plug_plumgrid_vif",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 136,
+        "end": 140
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "dev"
+        },
+        {
+          "name": "iface_id"
+        },
+        {
+          "name": "vif_address"
+        },
+        {
+          "name": "net_id"
+        },
+        {
+          "name": "tenant_id"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 5,
+      "ccn": 1,
+      "exported": true
+    },
+    {
+      "name": "unplug_plumgrid_vif",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 144,
+        "end": 146
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "dev"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 3,
+      "ccn": 1,
+      "exported": true
+    },
+    {
+      "name": "readpty",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 150,
+        "end": 190
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "path"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "f.read()",
+          "line": 166
+        },
+        {
+          "expr": "''",
+          "line": 190
+        }
+      ],
+      "nloc": 13,
+      "ccn": 2,
+      "exported": true
+    },
+    {
+      "name": "systemd_run_qb_mount",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 194,
+        "end": 201
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "qb_vol"
+        },
+        {
+          "name": "mnt_base"
+        },
+        {
+          "default": "None",
+          "name": "cfg_file"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "processutils.execute(*sysdr_cmd)",
+          "line": 201
+        }
+      ],
+      "nloc": 6,
+      "ccn": 2,
+      "exported": true
+    },
+    {
+      "name": "unprivileged_qb_mount",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 205,
+        "end": 210
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "qb_vol"
+        },
+        {
+          "name": "mnt_base"
+        },
+        {
+          "default": "None",
+          "name": "cfg_file"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "processutils.execute(*mnt_cmd)",
+          "line": 210
+        }
+      ],
+      "nloc": 5,
+      "ccn": 2,
+      "exported": true
+    },
+    {
+      "name": "umount",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 214,
+        "end": 216
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "mnt_base"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 2,
+      "ccn": 1,
+      "exported": true
+    },
+    {
+      "name": "unprivileged_umount",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 220,
+        "end": 223
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "mnt_base"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "processutils.execute(*umnt_cmd)",
+          "line": 223
+        }
+      ],
+      "nloc": 3,
+      "ccn": 1,
+      "exported": true
+    },
+    {
+      "name": "get_pmem_namespaces",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 227,
+        "end": 230
+      },
+      "source": "aee-inventory",
+      "parameters": [],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "nss_info",
+          "line": 230
+        }
+      ],
+      "nloc": 4,
+      "ccn": 1,
+      "exported": true
+    },
+    {
+      "name": "cleanup_vpmem",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 234,
+        "end": 236
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "devpath"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 3,
+      "ccn": 1,
+      "exported": true
+    }
+  ],
+  "referencedSymbols": [
+    {
+      "name": "logging.getLogger",
+      "usage": "call",
+      "via": "oslo_log",
+      "count": 1,
+      "lineRange": {
+        "start": 31,
+        "end": 31
+      }
+    },
+    {
+      "name": "str",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 49,
+        "end": 49
+      }
+    },
+    {
+      "name": "binascii.hexlify",
+      "usage": "call",
+      "via": "binascii",
+      "count": 1,
+      "lineRange": {
+        "start": 51,
+        "end": 51
+      }
+    },
+    {
+      "name": "processutils.execute",
+      "usage": "call",
+      "via": "oslo_concurrency",
+      "count": 18,
+      "lineRange": {
+        "start": 52,
+        "end": 52
+      }
+    },
+    {
+      "name": "os.stat",
+      "usage": "call",
+      "via": "os",
+      "count": 1,
+      "lineRange": {
+        "start": 83,
+        "end": 83
+      }
+    },
+    {
+      "name": "os.chmod",
+      "usage": "call",
+      "via": "os",
+      "count": 1,
+      "lineRange": {
+        "start": 84,
+        "end": 84
+      }
+    },
+    {
+      "name": "open",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 161,
+        "end": 161
+      }
+    },
+    {
+      "name": "fcntl.fcntl",
+      "usage": "call",
+      "via": "fcntl",
+      "count": 2,
+      "lineRange": {
+        "start": 162,
+        "end": 162
+      }
+    }
+  ],
+  "dependencies": [
+    {
+      "style": "import",
+      "module": "binascii",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 20,
+        "end": 20
+      }
+    },
+    {
+      "style": "import",
+      "module": "os",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 21,
+        "end": 21
+      }
+    },
+    {
+      "style": "import",
+      "module": "stat",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 22,
+        "end": 22
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_concurrency",
+      "names": [
+        {
+          "alias": null,
+          "name": "processutils"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 24,
+        "end": 24
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_log",
+      "names": [
+        {
+          "alias": "logging",
+          "name": "log"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 25,
+        "end": 25
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_utils",
+      "names": [
+        {
+          "alias": null,
+          "name": "units"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 26,
+        "end": 26
+      }
+    },
+    {
+      "style": "import",
+      "module": "nova.privsep",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 28,
+        "end": 28
+      }
+    },
+    {
+      "style": "import",
+      "module": "fcntl",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 158,
+        "end": 158
+      }
+    }
+  ],
+  "sideEffects": [
+    {
+      "kind": "process-spawn",
+      "target": "@nova.privsep.sys_admin_pctxt.entrypoint",
+      "lineRange": {
+        "start": 34,
+        "end": 34
+      }
+    },
+    {
+      "kind": "process-spawn",
+      "target": "@nova.privsep.sys_admin_pctxt.entrypoint",
+      "lineRange": {
+        "start": 55,
+        "end": 55
+      }
+    },
+    {
+      "kind": "process-spawn",
+      "target": "@nova.privsep.sys_admin_pctxt.entrypoint",
+      "lineRange": {
+        "start": 64,
+        "end": 64
+      }
+    },
+    {
+      "kind": "process-spawn",
+      "target": "@nova.privsep.sys_admin_pctxt.entrypoint",
+      "lineRange": {
+        "start": 87,
+        "end": 87
+      }
+    },
+    {
+      "kind": "process-spawn",
+      "target": "@nova.privsep.sys_admin_pctxt.entrypoint",
+      "lineRange": {
+        "start": 101,
+        "end": 101
+      }
+    },
+    {
+      "kind": "process-spawn",
+      "target": "@nova.privsep.sys_admin_pctxt.entrypoint",
+      "lineRange": {
+        "start": 114,
+        "end": 114
+      }
+    },
+    {
+      "kind": "process-spawn",
+      "target": "@nova.privsep.sys_admin_pctxt.entrypoint",
+      "lineRange": {
+        "start": 120,
+        "end": 120
+      }
+    },
+    {
+      "kind": "process-spawn",
+      "target": "@nova.privsep.sys_admin_pctxt.entrypoint",
+      "lineRange": {
+        "start": 125,
+        "end": 125
+      }
+    },
+    {
+      "kind": "process-spawn",
+      "target": "@nova.privsep.sys_admin_pctxt.entrypoint",
+      "lineRange": {
+        "start": 130,
+        "end": 130
+      }
+    },
+    {
+      "kind": "process-spawn",
+      "target": "@nova.privsep.sys_admin_pctxt.entrypoint",
+      "lineRange": {
+        "start": 135,
+        "end": 135
+      }
+    },
+    {
+      "kind": "process-spawn",
+      "target": "@nova.privsep.sys_admin_pctxt.entrypoint",
+      "lineRange": {
+        "start": 143,
+        "end": 143
+      }
+    },
+    {
+      "kind": "process-spawn",
+      "target": "@nova.privsep.sys_admin_pctxt.entrypoint",
+      "lineRange": {
+        "start": 149,
+        "end": 149
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "with open(path, 'r') as f:",
+      "lineRange": {
+        "start": 161,
+        "end": 161
+      }
+    },
+    {
+      "kind": "process-spawn",
+      "target": "@nova.privsep.sys_admin_pctxt.entrypoint",
+      "lineRange": {
+        "start": 193,
+        "end": 193
+      }
+    },
+    {
+      "kind": "syscall",
+      "target": "def systemd_run_qb_mount(qb_vol, mnt_base, cfg_file=None):",
+      "lineRange": {
+        "start": 194,
+        "end": 194
+      }
+    },
+    {
+      "kind": "syscall",
+      "target": "def unprivileged_qb_mount(qb_vol, mnt_base, cfg_file=None):",
+      "lineRange": {
+        "start": 205,
+        "end": 205
+      }
+    },
+    {
+      "kind": "process-spawn",
+      "target": "@nova.privsep.sys_admin_pctxt.entrypoint",
+      "lineRange": {
+        "start": 213,
+        "end": 213
+      }
+    },
+    {
+      "kind": "syscall",
+      "target": "def umount(mnt_base):",
+      "lineRange": {
+        "start": 214,
+        "end": 214
+      }
+    },
+    {
+      "kind": "syscall",
+      "target": "unprivileged_umount(mnt_base)",
+      "lineRange": {
+        "start": 216,
+        "end": 216
+      }
+    },
+    {
+      "kind": "syscall",
+      "target": "def unprivileged_umount(mnt_base):",
+      "lineRange": {
+        "start": 220,
+        "end": 220
+      }
+    },
+    {
+      "kind": "process-spawn",
+      "target": "@nova.privsep.sys_admin_pctxt.entrypoint",
+      "lineRange": {
+        "start": 226,
+        "end": 226
+      }
+    },
+    {
+      "kind": "process-spawn",
+      "target": "@nova.privsep.sys_admin_pctxt.entrypoint",
+      "lineRange": {
+        "start": 233,
+        "end": 233
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "LOG = logging.getLogger(__name__)",
+      "lineRange": {
+        "start": 31,
+        "end": 31
+      }
+    }
+  ],
+  "securitySurface": [
+    {
+      "kind": "privilege",
+      "category": "privsep-entrypoint",
+      "description": "@nova.privsep.sys_admin_pctxt.entrypoint",
+      "lineRange": {
+        "start": 34,
+        "end": 34
+      }
+    },
+    {
+      "kind": "privilege",
+      "category": "privsep-entrypoint",
+      "description": "@nova.privsep.sys_admin_pctxt.entrypoint",
+      "lineRange": {
+        "start": 55,
+        "end": 55
+      }
+    },
+    {
+      "kind": "privilege",
+      "category": "privsep-entrypoint",
+      "description": "@nova.privsep.sys_admin_pctxt.entrypoint",
+      "lineRange": {
+        "start": 64,
+        "end": 64
+      }
+    },
+    {
+      "kind": "privilege",
+      "category": "privsep-entrypoint",
+      "description": "@nova.privsep.sys_admin_pctxt.entrypoint",
+      "lineRange": {
+        "start": 87,
+        "end": 87
+      }
+    },
+    {
+      "kind": "privilege",
+      "category": "privsep-entrypoint",
+      "description": "@nova.privsep.sys_admin_pctxt.entrypoint",
+      "lineRange": {
+        "start": 101,
+        "end": 101
+      }
+    },
+    {
+      "kind": "privilege",
+      "category": "privsep-entrypoint",
+      "description": "@nova.privsep.sys_admin_pctxt.entrypoint",
+      "lineRange": {
+        "start": 114,
+        "end": 114
+      }
+    },
+    {
+      "kind": "privilege",
+      "category": "privsep-entrypoint",
+      "description": "@nova.privsep.sys_admin_pctxt.entrypoint",
+      "lineRange": {
+        "start": 120,
+        "end": 120
+      }
+    },
+    {
+      "kind": "privilege",
+      "category": "privsep-entrypoint",
+      "description": "@nova.privsep.sys_admin_pctxt.entrypoint",
+      "lineRange": {
+        "start": 125,
+        "end": 125
+      }
+    },
+    {
+      "kind": "privilege",
+      "category": "privsep-entrypoint",
+      "description": "@nova.privsep.sys_admin_pctxt.entrypoint",
+      "lineRange": {
+        "start": 130,
+        "end": 130
+      }
+    },
+    {
+      "kind": "privilege",
+      "category": "privsep-entrypoint",
+      "description": "@nova.privsep.sys_admin_pctxt.entrypoint",
+      "lineRange": {
+        "start": 135,
+        "end": 135
+      }
+    },
+    {
+      "kind": "privilege",
+      "category": "privsep-entrypoint",
+      "description": "@nova.privsep.sys_admin_pctxt.entrypoint",
+      "lineRange": {
+        "start": 143,
+        "end": 143
+      }
+    },
+    {
+      "kind": "privilege",
+      "category": "privsep-entrypoint",
+      "description": "@nova.privsep.sys_admin_pctxt.entrypoint",
+      "lineRange": {
+        "start": 149,
+        "end": 149
+      }
+    },
+    {
+      "kind": "privilege",
+      "category": "privsep-entrypoint",
+      "description": "@nova.privsep.sys_admin_pctxt.entrypoint",
+      "lineRange": {
+        "start": 193,
+        "end": 193
+      }
+    },
+    {
+      "kind": "privilege",
+      "category": "privsep-entrypoint",
+      "description": "@nova.privsep.sys_admin_pctxt.entrypoint",
+      "lineRange": {
+        "start": 213,
+        "end": 213
+      }
+    },
+    {
+      "kind": "privilege",
+      "category": "privsep-entrypoint",
+      "description": "@nova.privsep.sys_admin_pctxt.entrypoint",
+      "lineRange": {
+        "start": 226,
+        "end": 226
+      }
+    },
+    {
+      "kind": "privilege",
+      "category": "privsep-entrypoint",
+      "description": "@nova.privsep.sys_admin_pctxt.entrypoint",
+      "lineRange": {
+        "start": 233,
+        "end": 233
+      }
+    }
+  ],
+  "injection_flags": [],
+  "warnings": []
+}

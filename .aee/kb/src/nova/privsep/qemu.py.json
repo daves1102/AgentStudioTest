@@ -1,0 +1,679 @@
+{
+  "file": "src/nova/privsep/qemu.py",
+  "hash": "9648c86c4318d287b98283fd8bbe80154a0a7eb59e2473b3475db9a7fc1f7be8",
+  "language": "Python",
+  "component": "nova",
+  "package": null,
+  "lines": {
+    "blank": 39,
+    "code": 152,
+    "comment": 79,
+    "total": 270
+  },
+  "symbols": [
+    {
+      "name": "LOG",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 33,
+        "end": 33
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "CONF",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 35,
+        "end": 35
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "QEMU_IMG_LIMITS",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 37,
+        "end": 39
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "EncryptionOptions",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 42,
+        "end": 44
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "secret",
+      "kind": "field",
+      "scope": "EncryptionOptions",
+      "lineRange": {
+        "start": 43,
+        "end": 43
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "format",
+      "kind": "field",
+      "scope": "EncryptionOptions",
+      "lineRange": {
+        "start": 44,
+        "end": 44
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "convert_image",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 48,
+        "end": 53
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "source"
+        },
+        {
+          "name": "dest"
+        },
+        {
+          "name": "in_format"
+        },
+        {
+          "name": "out_format"
+        },
+        {
+          "name": "instances_path"
+        },
+        {
+          "name": "compress"
+        },
+        {
+          "default": "None",
+          "name": "src_encryption"
+        },
+        {
+          "default": "None",
+          "name": "dest_encryption"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 6,
+      "ccn": 1,
+      "exported": true
+    },
+    {
+      "name": "unprivileged_convert_image",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 57,
+        "end": 222
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "source",
+          "type": "str"
+        },
+        {
+          "name": "dest",
+          "type": "str"
+        },
+        {
+          "name": "in_format",
+          "type": "str | None"
+        },
+        {
+          "name": "out_format",
+          "type": "str"
+        },
+        {
+          "name": "instances_path",
+          "type": "str"
+        },
+        {
+          "name": "compress",
+          "type": "bool"
+        },
+        {
+          "default": "None",
+          "name": "src_encryption",
+          "type": "EncryptionOptions | None"
+        },
+        {
+          "default": "None",
+          "name": "dest_encryption",
+          "type": "EncryptionOptions | None"
+        }
+      ],
+      "returnType": "None",
+      "returns": [],
+      "nloc": 70,
+      "ccn": 14,
+      "exported": true
+    },
+    {
+      "name": "privileged_qemu_img_info",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 226,
+        "end": 232
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "path"
+        },
+        {
+          "default": "None",
+          "name": "format"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "unprivileged_qemu_img_info(path, format=format)",
+          "line": 232
+        }
+      ],
+      "nloc": 2,
+      "ccn": 1,
+      "exported": true
+    },
+    {
+      "name": "unprivileged_qemu_img_info",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 235,
+        "end": 270
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "path"
+        },
+        {
+          "default": "None",
+          "name": "format"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "out",
+          "line": 270
+        }
+      ],
+      "nloc": 27,
+      "ccn": 9,
+      "exported": true
+    }
+  ],
+  "referencedSymbols": [
+    {
+      "name": "logging.getLogger",
+      "usage": "call",
+      "via": "oslo_log",
+      "count": 1,
+      "lineRange": {
+        "start": 33,
+        "end": 33
+      }
+    },
+    {
+      "name": "processutils.ProcessLimits",
+      "usage": "call",
+      "via": "oslo_concurrency",
+      "count": 1,
+      "lineRange": {
+        "start": 37,
+        "end": 37
+      }
+    },
+    {
+      "name": "ty.TypedDict",
+      "usage": "inherit",
+      "via": "typing",
+      "count": 1,
+      "lineRange": {
+        "start": 42,
+        "end": 42
+      }
+    },
+    {
+      "name": "nova.privsep.utils.supports_direct_io",
+      "usage": "call",
+      "via": "nova.conf",
+      "count": 1,
+      "lineRange": {
+        "start": 111,
+        "end": 111
+      }
+    },
+    {
+      "name": "list",
+      "usage": "type",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 132,
+        "end": 132
+      }
+    },
+    {
+      "name": "contextlib.ExitStack",
+      "usage": "call",
+      "via": "contextlib",
+      "count": 1,
+      "lineRange": {
+        "start": 133,
+        "end": 133
+      }
+    },
+    {
+      "name": "tempfile.NamedTemporaryFile",
+      "usage": "call",
+      "via": "tempfile",
+      "count": 2,
+      "lineRange": {
+        "start": 136,
+        "end": 136
+      }
+    },
+    {
+      "name": "processutils.execute",
+      "usage": "call",
+      "via": "oslo_concurrency",
+      "count": 2,
+      "lineRange": {
+        "start": 222,
+        "end": 222
+      }
+    },
+    {
+      "name": "os.path.isdir",
+      "usage": "call",
+      "via": "os",
+      "count": 1,
+      "lineRange": {
+        "start": 240,
+        "end": 240
+      }
+    },
+    {
+      "name": "os.path.exists",
+      "usage": "call",
+      "via": "os",
+      "count": 1,
+      "lineRange": {
+        "start": 241,
+        "end": 241
+      }
+    },
+    {
+      "name": "os.path.join",
+      "usage": "call",
+      "via": "os",
+      "count": 2,
+      "lineRange": {
+        "start": 241,
+        "end": 241
+      }
+    },
+    {
+      "name": "_",
+      "usage": "call",
+      "via": "nova.i18n",
+      "count": 3,
+      "lineRange": {
+        "start": 254,
+        "end": 254
+      }
+    },
+    {
+      "name": "exception.DiskNotFound",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 260,
+        "end": 260
+      }
+    },
+    {
+      "name": "exception.InvalidDiskInfo",
+      "usage": "call",
+      "via": "nova",
+      "count": 2,
+      "lineRange": {
+        "start": 264,
+        "end": 264
+      }
+    }
+  ],
+  "dependencies": [
+    {
+      "style": "import",
+      "module": "contextlib",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 19,
+        "end": 19
+      }
+    },
+    {
+      "style": "import",
+      "module": "os",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 20,
+        "end": 20
+      }
+    },
+    {
+      "style": "import",
+      "module": "tempfile",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 21,
+        "end": 21
+      }
+    },
+    {
+      "style": "import",
+      "module": "typing",
+      "names": [],
+      "alias": "ty",
+      "relative": false,
+      "lineRange": {
+        "start": 22,
+        "end": 22
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_concurrency",
+      "names": [
+        {
+          "alias": null,
+          "name": "processutils"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 24,
+        "end": 24
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_log",
+      "names": [
+        {
+          "alias": "logging",
+          "name": "log"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 25,
+        "end": 25
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_utils",
+      "names": [
+        {
+          "alias": null,
+          "name": "units"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 26,
+        "end": 26
+      }
+    },
+    {
+      "style": "import",
+      "module": "nova.conf",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 28,
+        "end": 28
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "exception"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 29,
+        "end": 29
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.i18n",
+      "names": [
+        {
+          "alias": null,
+          "name": "_"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 30,
+        "end": 30
+      }
+    },
+    {
+      "style": "import",
+      "module": "nova.privsep.utils",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 31,
+        "end": 31
+      }
+    }
+  ],
+  "sideEffects": [
+    {
+      "kind": "process-spawn",
+      "target": "import nova.privsep.utils",
+      "lineRange": {
+        "start": 31,
+        "end": 31
+      }
+    },
+    {
+      "kind": "process-spawn",
+      "target": "@nova.privsep.sys_admin_pctxt.entrypoint",
+      "lineRange": {
+        "start": 47,
+        "end": 47
+      }
+    },
+    {
+      "kind": "process-spawn",
+      "target": "if nova.privsep.utils.supports_direct_io(instances_path):",
+      "lineRange": {
+        "start": 111,
+        "end": 111
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "tempfile.NamedTemporaryFile(mode='tr+', encoding='utf-8'))",
+      "lineRange": {
+        "start": 136,
+        "end": 136
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "tempfile.NamedTemporaryFile(mode='tr+', encoding='utf-8'))",
+      "lineRange": {
+        "start": 163,
+        "end": 163
+      }
+    },
+    {
+      "kind": "process-spawn",
+      "target": "@nova.privsep.sys_admin_pctxt.entrypoint",
+      "lineRange": {
+        "start": 225,
+        "end": 225
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "if (os.path.isdir(path) and",
+      "lineRange": {
+        "start": 240,
+        "end": 240
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "os.path.exists(os.path.join(path, \"DiskDescriptor.xml\"))):",
+      "lineRange": {
+        "start": 241,
+        "end": 241
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "path = os.path.join(path, \"root.hds\")",
+      "lineRange": {
+        "start": 242,
+        "end": 242
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "LOG = logging.getLogger(__name__)",
+      "lineRange": {
+        "start": 33,
+        "end": 33
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "CONF = nova.conf.CONF",
+      "lineRange": {
+        "start": 35,
+        "end": 35
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "QEMU_IMG_LIMITS = processutils.ProcessLimits(",
+      "lineRange": {
+        "start": 37,
+        "end": 37
+      }
+    }
+  ],
+  "securitySurface": [
+    {
+      "kind": "privilege",
+      "category": "privsep-entrypoint",
+      "description": "import nova.privsep.utils",
+      "lineRange": {
+        "start": 31,
+        "end": 31
+      }
+    },
+    {
+      "kind": "privilege",
+      "category": "privsep-entrypoint",
+      "description": "@nova.privsep.sys_admin_pctxt.entrypoint",
+      "lineRange": {
+        "start": 47,
+        "end": 47
+      }
+    },
+    {
+      "kind": "privilege",
+      "category": "privsep-entrypoint",
+      "description": "if nova.privsep.utils.supports_direct_io(instances_path):",
+      "lineRange": {
+        "start": 111,
+        "end": 111
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "file-write",
+      "description": "src_secret_file.write(src_encryption['secret'])",
+      "lineRange": {
+        "start": 139,
+        "end": 139
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "file-write",
+      "description": "dest_secret_file.write(dest_encryption['secret'])",
+      "lineRange": {
+        "start": 166,
+        "end": 166
+      }
+    },
+    {
+      "kind": "privilege",
+      "category": "privsep-entrypoint",
+      "description": "@nova.privsep.sys_admin_pctxt.entrypoint",
+      "lineRange": {
+        "start": 225,
+        "end": 225
+      }
+    }
+  ],
+  "injection_flags": [],
+  "warnings": []
+}

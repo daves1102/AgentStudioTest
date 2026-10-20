@@ -1,0 +1,1055 @@
+{
+  "file": "src/nova/pci/manager.py",
+  "hash": "ffc7eebbdbe15bb510013ed3c59bf1b8549ab818a2ed1abef817cc9db11a8487",
+  "language": "Python",
+  "component": "nova",
+  "package": null,
+  "lines": {
+    "blank": 62,
+    "code": 344,
+    "comment": 99,
+    "total": 505
+  },
+  "symbols": [
+    {
+      "name": "CONF",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 32,
+        "end": 32
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "LOG",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 33,
+        "end": 33
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "MappingType",
+      "kind": "variable",
+      "scope": "",
+      "lineRange": {
+        "start": 35,
+        "end": 35
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "PCIInvType",
+      "kind": "variable",
+      "scope": "",
+      "lineRange": {
+        "start": 36,
+        "end": 36
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "PciDevTracker",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 39,
+        "end": 505
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "__init__",
+      "kind": "method",
+      "scope": "PciDevTracker",
+      "lineRange": {
+        "start": 60,
+        "end": 86
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "context",
+          "type": "ctx.RequestContext"
+        },
+        {
+          "name": "compute_node",
+          "type": "'objects.ComputeNode'"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 19,
+      "ccn": 2,
+      "visibility": "public"
+    },
+    {
+      "name": "_initial_instance_usage",
+      "kind": "method",
+      "scope": "PciDevTracker",
+      "lineRange": {
+        "start": 88,
+        "end": 99
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": "None",
+      "returns": [],
+      "nloc": 11,
+      "ccn": 5,
+      "visibility": "private"
+    },
+    {
+      "name": "save",
+      "kind": "method",
+      "scope": "PciDevTracker",
+      "lineRange": {
+        "start": 101,
+        "end": 108
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "context",
+          "type": "ctx.RequestContext"
+        }
+      ],
+      "returnType": "None",
+      "returns": [],
+      "nloc": 8,
+      "ccn": 4,
+      "visibility": "public"
+    },
+    {
+      "name": "pci_stats",
+      "kind": "method",
+      "scope": "PciDevTracker",
+      "lineRange": {
+        "start": 111,
+        "end": 112
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": "stats.PciDeviceStats",
+      "returns": [
+        {
+          "expr": "self.stats",
+          "line": 112
+        }
+      ],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "update_devices_from_hypervisor_resources",
+      "kind": "method",
+      "scope": "PciDevTracker",
+      "lineRange": {
+        "start": 114,
+        "end": 177
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "devices_json",
+          "type": "str"
+        }
+      ],
+      "returnType": "None",
+      "returns": [],
+      "nloc": 18,
+      "ccn": 6,
+      "visibility": "public"
+    },
+    {
+      "name": "_build_device_tree",
+      "kind": "method",
+      "scope": "PciDevTracker",
+      "lineRange": {
+        "start": 180,
+        "end": 215
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "all_devs",
+          "type": "list['objects.PciDevice']"
+        }
+      ],
+      "returnType": "None",
+      "returns": [],
+      "nloc": 16,
+      "ccn": 6,
+      "visibility": "private"
+    },
+    {
+      "name": "_set_hvdevs",
+      "kind": "method",
+      "scope": "PciDevTracker",
+      "lineRange": {
+        "start": 217,
+        "end": 308
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "devices",
+          "type": "list[dict[str, ty.Any]]"
+        }
+      ],
+      "returnType": "None",
+      "returns": [],
+      "nloc": 48,
+      "ccn": 13,
+      "visibility": "private"
+    },
+    {
+      "name": "_claim_instance",
+      "kind": "method",
+      "scope": "PciDevTracker",
+      "lineRange": {
+        "start": 310,
+        "end": 333
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "context",
+          "type": "ctx.RequestContext"
+        },
+        {
+          "name": "pci_requests",
+          "type": "'objects.InstancePCIRequests'"
+        },
+        {
+          "name": "instance_numa_topology",
+          "type": "'objects.InstanceNUMATopology'"
+        }
+      ],
+      "returnType": "list['objects.PciDevice']",
+      "returns": [
+        {
+          "expr": "[]",
+          "line": 323
+        },
+        {
+          "expr": "devs",
+          "line": 333
+        }
+      ],
+      "nloc": 22,
+      "ccn": 7,
+      "visibility": "private"
+    },
+    {
+      "name": "claim_instance",
+      "kind": "method",
+      "scope": "PciDevTracker",
+      "lineRange": {
+        "start": 335,
+        "end": 350
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "context",
+          "type": "ctx.RequestContext"
+        },
+        {
+          "name": "pci_requests",
+          "type": "'objects.InstancePCIRequests'"
+        },
+        {
+          "name": "instance_numa_topology",
+          "type": "'objects.InstanceNUMATopology'"
+        }
+      ],
+      "returnType": "list['objects.PciDevice']",
+      "returns": [
+        {
+          "expr": "devs",
+          "line": 350
+        }
+      ],
+      "nloc": 14,
+      "ccn": 4,
+      "visibility": "public"
+    },
+    {
+      "name": "_allocate_instance",
+      "kind": "method",
+      "scope": "PciDevTracker",
+      "lineRange": {
+        "start": 352,
+        "end": 356
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "instance",
+          "type": "'objects.Instance'"
+        },
+        {
+          "name": "devs",
+          "type": "list['objects.PciDevice']"
+        }
+      ],
+      "returnType": "None",
+      "returns": [],
+      "nloc": 5,
+      "ccn": 2,
+      "visibility": "private"
+    },
+    {
+      "name": "allocate_instance",
+      "kind": "method",
+      "scope": "PciDevTracker",
+      "lineRange": {
+        "start": 358,
+        "end": 362
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "instance",
+          "type": "'objects.Instance'"
+        }
+      ],
+      "returnType": "None",
+      "returns": [],
+      "nloc": 5,
+      "ccn": 2,
+      "visibility": "public"
+    },
+    {
+      "name": "free_device",
+      "kind": "method",
+      "scope": "PciDevTracker",
+      "lineRange": {
+        "start": 364,
+        "end": 382
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "dev",
+          "type": "'objects.PciDevice'"
+        },
+        {
+          "name": "instance",
+          "type": "'objects.Instance'"
+        }
+      ],
+      "returnType": "None",
+      "returns": [],
+      "nloc": 11,
+      "ccn": 4,
+      "visibility": "public"
+    },
+    {
+      "name": "_remove_device_from_pci_mapping",
+      "kind": "method",
+      "scope": "PciDevTracker",
+      "lineRange": {
+        "start": 384,
+        "end": 398
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "instance_uuid",
+          "type": "str"
+        },
+        {
+          "name": "pci_device",
+          "type": "'objects.PciDevice'"
+        },
+        {
+          "name": "pci_mapping",
+          "type": "MappingType"
+        }
+      ],
+      "returnType": "None",
+      "returns": [],
+      "nloc": 11,
+      "ccn": 3,
+      "visibility": "private"
+    },
+    {
+      "name": "_free_device",
+      "kind": "method",
+      "scope": "PciDevTracker",
+      "lineRange": {
+        "start": 400,
+        "end": 417
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "dev",
+          "type": "'objects.PciDevice'"
+        },
+        {
+          "default": "None",
+          "name": "instance",
+          "type": "'objects.Instance | None'"
+        }
+      ],
+      "returnType": "None",
+      "returns": [],
+      "nloc": 17,
+      "ccn": 5,
+      "visibility": "private"
+    },
+    {
+      "name": "free_instance_allocations",
+      "kind": "method",
+      "scope": "PciDevTracker",
+      "lineRange": {
+        "start": 419,
+        "end": 433
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "context",
+          "type": "ctx.RequestContext"
+        },
+        {
+          "name": "instance",
+          "type": "'objects.Instance'"
+        }
+      ],
+      "returnType": "None",
+      "returns": [
+        {
+          "expr": "",
+          "line": 428
+        }
+      ],
+      "nloc": 9,
+      "ccn": 5,
+      "visibility": "public"
+    },
+    {
+      "name": "free_instance_claims",
+      "kind": "method",
+      "scope": "PciDevTracker",
+      "lineRange": {
+        "start": 435,
+        "end": 449
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "context",
+          "type": "ctx.RequestContext"
+        },
+        {
+          "name": "instance",
+          "type": "'objects.Instance'"
+        }
+      ],
+      "returnType": "None",
+      "returns": [
+        {
+          "expr": "",
+          "line": 444
+        }
+      ],
+      "nloc": 9,
+      "ccn": 5,
+      "visibility": "public"
+    },
+    {
+      "name": "free_instance",
+      "kind": "method",
+      "scope": "PciDevTracker",
+      "lineRange": {
+        "start": 451,
+        "end": 465
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "context",
+          "type": "ctx.RequestContext"
+        },
+        {
+          "name": "instance",
+          "type": "'objects.Instance'"
+        }
+      ],
+      "returnType": "None",
+      "returns": [],
+      "nloc": 5,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "update_pci_for_instance",
+      "kind": "method",
+      "scope": "PciDevTracker",
+      "lineRange": {
+        "start": 467,
+        "end": 480
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "context",
+          "type": "ctx.RequestContext"
+        },
+        {
+          "name": "instance",
+          "type": "'objects.Instance'"
+        },
+        {
+          "name": "sign",
+          "type": "int"
+        }
+      ],
+      "returnType": "None",
+      "returns": [
+        {
+          "expr": "",
+          "line": 475
+        }
+      ],
+      "nloc": 12,
+      "ccn": 4,
+      "visibility": "public"
+    },
+    {
+      "name": "clean_usage",
+      "kind": "method",
+      "scope": "PciDevTracker",
+      "lineRange": {
+        "start": 482,
+        "end": 505
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "instances",
+          "type": "'objects.InstanceList'"
+        },
+        {
+          "name": "migrations",
+          "type": "'objects.MigrationList'"
+        }
+      ],
+      "returnType": "None",
+      "returns": [],
+      "nloc": 17,
+      "ccn": 9,
+      "visibility": "public"
+    },
+    {
+      "name": "pci_stats",
+      "kind": "property",
+      "scope": "PciDevTracker",
+      "lineRange": {
+        "start": 110,
+        "end": 112
+      },
+      "visibility": "public",
+      "source": "manual"
+    },
+    {
+      "name": "_build_device_tree",
+      "kind": "staticmethod",
+      "scope": "PciDevTracker",
+      "lineRange": {
+        "start": 179,
+        "end": 215
+      },
+      "visibility": "private",
+      "source": "manual"
+    }
+  ],
+  "referencedSymbols": [
+    {
+      "name": "logging.getLogger",
+      "usage": "call",
+      "via": "oslo_log",
+      "count": 1,
+      "lineRange": {
+        "start": 33,
+        "end": 33
+      }
+    },
+    {
+      "name": "object",
+      "usage": "inherit",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 39,
+        "end": 39
+      }
+    },
+    {
+      "name": "dict",
+      "usage": "type",
+      "via": null,
+      "count": 4,
+      "lineRange": {
+        "start": 71,
+        "end": 71
+      }
+    },
+    {
+      "name": "whitelist.Whitelist",
+      "usage": "call",
+      "via": "nova.pci",
+      "count": 1,
+      "lineRange": {
+        "start": 74,
+        "end": 74
+      }
+    },
+    {
+      "name": "objects.NUMATopology.obj_from_db_obj",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 79,
+        "end": 79
+      }
+    },
+    {
+      "name": "stats.PciDeviceStats",
+      "usage": "call",
+      "via": "nova.pci",
+      "count": 1,
+      "lineRange": {
+        "start": 80,
+        "end": 80
+      }
+    },
+    {
+      "name": "objects.PciDeviceList.get_by_compute_node",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 83,
+        "end": 83
+      }
+    },
+    {
+      "name": "collections.defaultdict",
+      "usage": "call",
+      "via": "collections",
+      "count": 2,
+      "lineRange": {
+        "start": 89,
+        "end": 89
+      }
+    },
+    {
+      "name": "copy.copy",
+      "usage": "call",
+      "via": "copy",
+      "count": 1,
+      "lineRange": {
+        "start": 102,
+        "end": 102
+      }
+    },
+    {
+      "name": "jsonutils.loads",
+      "usage": "call",
+      "via": "oslo_serialization",
+      "count": 1,
+      "lineRange": {
+        "start": 135,
+        "end": 135
+      }
+    },
+    {
+      "name": "str",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 174,
+        "end": 174
+      }
+    },
+    {
+      "name": "list",
+      "usage": "type",
+      "via": null,
+      "count": 5,
+      "lineRange": {
+        "start": 180,
+        "end": 180
+      }
+    },
+    {
+      "name": "set",
+      "usage": "call",
+      "via": null,
+      "count": 4,
+      "lineRange": {
+        "start": 218,
+        "end": 218
+      }
+    },
+    {
+      "name": "next",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 277,
+        "end": 277
+      }
+    },
+    {
+      "name": "objects.PciDevice.create",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 304,
+        "end": 304
+      }
+    },
+    {
+      "name": "any",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 328,
+        "end": 328
+      }
+    },
+    {
+      "name": "len",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 397,
+        "end": 397
+      }
+    },
+    {
+      "name": "list",
+      "usage": "call",
+      "via": null,
+      "count": 2,
+      "lineRange": {
+        "start": 495,
+        "end": 495
+      }
+    }
+  ],
+  "dependencies": [
+    {
+      "style": "import",
+      "module": "collections",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 17,
+        "end": 17
+      }
+    },
+    {
+      "style": "import",
+      "module": "copy",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 18,
+        "end": 18
+      }
+    },
+    {
+      "style": "import",
+      "module": "typing",
+      "names": [],
+      "alias": "ty",
+      "relative": false,
+      "lineRange": {
+        "start": 19,
+        "end": 19
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_config",
+      "names": [
+        {
+          "alias": null,
+          "name": "cfg"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 21,
+        "end": 21
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_log",
+      "names": [
+        {
+          "alias": "logging",
+          "name": "log"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 22,
+        "end": 22
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_serialization",
+      "names": [
+        {
+          "alias": null,
+          "name": "jsonutils"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 23,
+        "end": 23
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": "ctx",
+          "name": "context"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 25,
+        "end": 25
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "exception"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 26,
+        "end": 26
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "objects"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 27,
+        "end": 27
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.objects",
+      "names": [
+        {
+          "alias": null,
+          "name": "fields"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 28,
+        "end": 28
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.pci",
+      "names": [
+        {
+          "alias": null,
+          "name": "stats"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 29,
+        "end": 29
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.pci",
+      "names": [
+        {
+          "alias": null,
+          "name": "whitelist"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 30,
+        "end": 30
+      }
+    }
+  ],
+  "sideEffects": [
+    {
+      "kind": "global-mutation",
+      "target": "CONF = cfg.CONF",
+      "lineRange": {
+        "start": 32,
+        "end": 32
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "LOG = logging.getLogger(__name__)",
+      "lineRange": {
+        "start": 33,
+        "end": 33
+      }
+    }
+  ],
+  "securitySurface": [
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "devices to/from instances, and to update the available pci passthrough",
+      "lineRange": {
+        "start": 46,
+        "end": 46
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "It is unsafe to fetch PciDevice objects elsewhere in the code for update",
+      "lineRange": {
+        "start": 55,
+        "end": 55
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "update the tracker and sync the DB information.",
+      "lineRange": {
+        "start": 121,
+        "end": 121
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "\"\"\"Update PCI usage information if devices are de/allocated.\"\"\"",
+      "lineRange": {
+        "start": 473,
+        "end": 473
+      }
+    }
+  ],
+  "injection_flags": [],
+  "warnings": []
+}

@@ -1,0 +1,136 @@
+{
+  "file": "src/nova/policies/flavor_extra_specs.py",
+  "hash": "11e43b12eb7466ca788ab485d138d8ac6ba7774c2d7b88d89e2a490b3ead6f86",
+  "language": "Python",
+  "component": "nova",
+  "package": null,
+  "lines": {
+    "blank": 6,
+    "code": 88,
+    "comment": 15,
+    "total": 109
+  },
+  "symbols": [
+    {
+      "name": "POLICY_ROOT",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 20,
+        "end": 20
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "flavor_extra_specs_policies",
+      "kind": "variable",
+      "scope": "",
+      "lineRange": {
+        "start": 22,
+        "end": 105
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "list_rules",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 108,
+        "end": 109
+      },
+      "source": "aee-inventory",
+      "parameters": [],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "flavor_extra_specs_policies",
+          "line": 109
+        }
+      ],
+      "nloc": 2,
+      "ccn": 1,
+      "exported": true
+    }
+  ],
+  "referencedSymbols": [
+    {
+      "name": "policy.DocumentedRuleDefault",
+      "usage": "call",
+      "via": "oslo_policy",
+      "count": 5,
+      "lineRange": {
+        "start": 23,
+        "end": 23
+      }
+    }
+  ],
+  "dependencies": [
+    {
+      "style": "from",
+      "module": "oslo_policy",
+      "names": [
+        {
+          "alias": null,
+          "name": "policy"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 16,
+        "end": 16
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.policies",
+      "names": [
+        {
+          "alias": null,
+          "name": "base"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 18,
+        "end": 18
+      }
+    }
+  ],
+  "sideEffects": [
+    {
+      "kind": "global-mutation",
+      "target": "POLICY_ROOT = 'os_compute_api:os-flavor-extra-specs:%s'",
+      "lineRange": {
+        "start": 20,
+        "end": 20
+      }
+    }
+  ],
+  "securitySurface": [
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "name=POLICY_ROOT % 'update',",
+      "lineRange": {
+        "start": 49,
+        "end": 49
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "description=\"Update an extra spec for a flavor\",",
+      "lineRange": {
+        "start": 51,
+        "end": 51
+      }
+    }
+  ],
+  "injection_flags": [],
+  "warnings": []
+}

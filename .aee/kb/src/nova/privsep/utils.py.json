@@ -1,0 +1,325 @@
+{
+  "file": "src/nova/privsep/utils.py",
+  "hash": "e08e17b5a5a58fa594c5e236ebf427ab036f825c36ec7d25fe452c258a8ab67c",
+  "language": "Python",
+  "component": "nova",
+  "package": null,
+  "lines": {
+    "blank": 14,
+    "code": 48,
+    "comment": 28,
+    "total": 90
+  },
+  "symbols": [
+    {
+      "name": "LOG",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 36,
+        "end": 36
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "generate_random_string",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 39,
+        "end": 40
+      },
+      "source": "aee-inventory",
+      "parameters": [],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "str(random.randint(0, sys.maxsize))",
+          "line": 40
+        }
+      ],
+      "nloc": 2,
+      "ccn": 1,
+      "exported": true
+    },
+    {
+      "name": "supports_direct_io",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 43,
+        "end": 90
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "dirpath"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "False",
+          "line": 47
+        },
+        {
+          "expr": "hasDirectIO",
+          "line": 90
+        }
+      ],
+      "nloc": 38,
+      "ccn": 8,
+      "exported": true
+    }
+  ],
+  "referencedSymbols": [
+    {
+      "name": "logging.getLogger",
+      "usage": "call",
+      "via": "oslo_log",
+      "count": 1,
+      "lineRange": {
+        "start": 36,
+        "end": 36
+      }
+    },
+    {
+      "name": "random.randint",
+      "usage": "call",
+      "via": "random",
+      "count": 1,
+      "lineRange": {
+        "start": 40,
+        "end": 40
+      }
+    },
+    {
+      "name": "str",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 40,
+        "end": 40
+      }
+    },
+    {
+      "name": "hasattr",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 45,
+        "end": 45
+      }
+    },
+    {
+      "name": "os.path.join",
+      "usage": "call",
+      "via": "os",
+      "count": 1,
+      "lineRange": {
+        "start": 52,
+        "end": 52
+      }
+    },
+    {
+      "name": "os.open",
+      "usage": "call",
+      "via": "os",
+      "count": 1,
+      "lineRange": {
+        "start": 57,
+        "end": 57
+      }
+    },
+    {
+      "name": "mmap.mmap",
+      "usage": "call",
+      "via": "mmap",
+      "count": 1,
+      "lineRange": {
+        "start": 60,
+        "end": 60
+      }
+    },
+    {
+      "name": "os.write",
+      "usage": "call",
+      "via": "os",
+      "count": 1,
+      "lineRange": {
+        "start": 62,
+        "end": 62
+      }
+    },
+    {
+      "name": "excutils.save_and_reraise_exception",
+      "usage": "call",
+      "via": "oslo_utils",
+      "count": 2,
+      "lineRange": {
+        "start": 71,
+        "end": 71
+      }
+    },
+    {
+      "name": "os.close",
+      "usage": "call",
+      "via": "os",
+      "count": 1,
+      "lineRange": {
+        "start": 83,
+        "end": 83
+      }
+    },
+    {
+      "name": "os.unlink",
+      "usage": "call",
+      "via": "os",
+      "count": 1,
+      "lineRange": {
+        "start": 86,
+        "end": 86
+      }
+    }
+  ],
+  "dependencies": [
+    {
+      "style": "import",
+      "module": "errno",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 23,
+        "end": 23
+      }
+    },
+    {
+      "style": "import",
+      "module": "mmap",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 24,
+        "end": 24
+      }
+    },
+    {
+      "style": "import",
+      "module": "os",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 25,
+        "end": 25
+      }
+    },
+    {
+      "style": "import",
+      "module": "random",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 26,
+        "end": 26
+      }
+    },
+    {
+      "style": "import",
+      "module": "sys",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 27,
+        "end": 27
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_log",
+      "names": [
+        {
+          "alias": "logging",
+          "name": "log"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 29,
+        "end": 29
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_utils",
+      "names": [
+        {
+          "alias": null,
+          "name": "excutils"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 30,
+        "end": 30
+      }
+    }
+  ],
+  "sideEffects": [
+    {
+      "kind": "file-io",
+      "target": "testfile = os.path.join(dirpath, file_name)",
+      "lineRange": {
+        "start": 52,
+        "end": 52
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "fd = os.open(testfile, os.O_CREAT | os.O_WRONLY | os.O_DIRECT)",
+      "lineRange": {
+        "start": 57,
+        "end": 57
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "LOG = logging.getLogger(__name__)",
+      "lineRange": {
+        "start": 36,
+        "end": 36
+      }
+    }
+  ],
+  "securitySurface": [
+    {
+      "kind": "sink",
+      "category": "file-write",
+      "description": "m.write(b\"x\" * align_size)",
+      "lineRange": {
+        "start": 61,
+        "end": 61
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "file-write",
+      "description": "os.write(fd, m)",
+      "lineRange": {
+        "start": 62,
+        "end": 62
+      }
+    }
+  ],
+  "injection_flags": [],
+  "warnings": []
+}

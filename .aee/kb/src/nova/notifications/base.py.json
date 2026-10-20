@@ -1,0 +1,935 @@
+{
+  "file": "src/nova/notifications/base.py",
+  "hash": "225dd37d1415ae968a784b02f6ac2499507b6415af4d6840208defb6788910ad",
+  "language": "Python",
+  "component": "nova",
+  "package": null,
+  "lines": {
+    "blank": 68,
+    "code": 256,
+    "comment": 75,
+    "total": 399
+  },
+  "symbols": [
+    {
+      "name": "LOG",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 39,
+        "end": 39
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "CONF",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 41,
+        "end": 41
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "send_update",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 44,
+        "end": 92
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "context"
+        },
+        {
+          "name": "old_instance"
+        },
+        {
+          "name": "new_instance"
+        },
+        {
+          "default": "\"compute\"",
+          "name": "service"
+        },
+        {
+          "default": "None",
+          "name": "host"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "",
+          "line": 52
+        }
+      ],
+      "nloc": 32,
+      "ccn": 9,
+      "exported": true
+    },
+    {
+      "name": "send_update_with_states",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 95,
+        "end": 135
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "context"
+        },
+        {
+          "name": "instance"
+        },
+        {
+          "name": "old_vm_state"
+        },
+        {
+          "name": "new_vm_state"
+        },
+        {
+          "name": "old_task_state"
+        },
+        {
+          "name": "new_task_state"
+        },
+        {
+          "default": "\"compute\"",
+          "name": "service"
+        },
+        {
+          "default": "None",
+          "name": "host"
+        },
+        {
+          "default": "False",
+          "name": "verify_states"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "",
+          "line": 104
+        }
+      ],
+      "nloc": 26,
+      "ccn": 9,
+      "exported": true
+    },
+    {
+      "name": "_compute_states_payload",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 138,
+        "end": 163
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "instance"
+        },
+        {
+          "default": "None",
+          "name": "old_vm_state"
+        },
+        {
+          "default": "None",
+          "name": "old_task_state"
+        },
+        {
+          "default": "None",
+          "name": "new_vm_state"
+        },
+        {
+          "default": "None",
+          "name": "new_task_state"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "states_payload",
+          "line": 163
+        }
+      ],
+      "nloc": 17,
+      "ccn": 5,
+      "exported": false
+    },
+    {
+      "name": "send_instance_update_notification",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 166,
+        "end": 199
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "context"
+        },
+        {
+          "name": "instance"
+        },
+        {
+          "default": "None",
+          "name": "old_vm_state"
+        },
+        {
+          "default": "None",
+          "name": "old_task_state"
+        },
+        {
+          "default": "None",
+          "name": "new_vm_state"
+        },
+        {
+          "default": "None",
+          "name": "new_task_state"
+        },
+        {
+          "default": "\"compute\"",
+          "name": "service"
+        },
+        {
+          "default": "None",
+          "name": "host"
+        },
+        {
+          "default": "None",
+          "name": "old_display_name"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 19,
+      "ccn": 2,
+      "exported": true
+    },
+    {
+      "name": "_send_versioned_instance_update",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 203,
+        "end": 237
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "context"
+        },
+        {
+          "name": "instance"
+        },
+        {
+          "name": "payload"
+        },
+        {
+          "name": "host"
+        },
+        {
+          "name": "service"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 26,
+      "ccn": 2,
+      "exported": false
+    },
+    {
+      "name": "_map_legacy_service_to_source",
+      "kind": "function",
+      "scope": "_send_versioned_instance_update",
+      "lineRange": {
+        "start": 205,
+        "end": 209
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "legacy_service"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "'nova-' + service",
+          "line": 207
+        },
+        {
+          "expr": "service",
+          "line": 209
+        }
+      ],
+      "visibility": "private"
+    },
+    {
+      "name": "audit_period_bounds",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 240,
+        "end": 256
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "default": "False",
+          "name": "current_period"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "(audit_start, audit_end)",
+          "line": 256
+        }
+      ],
+      "nloc": 9,
+      "ccn": 2,
+      "exported": true
+    },
+    {
+      "name": "image_meta",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 259,
+        "end": 268
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "system_metadata"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "image_meta",
+          "line": 268
+        }
+      ],
+      "nloc": 6,
+      "ccn": 3,
+      "exported": true
+    },
+    {
+      "name": "null_safe_str",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 271,
+        "end": 272
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "s"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "str(s) if s else ''",
+          "line": 272
+        }
+      ],
+      "nloc": 2,
+      "ccn": 2,
+      "exported": true
+    },
+    {
+      "name": "null_safe_isotime",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 275,
+        "end": 279
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "s"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "utils.strtime(s)",
+          "line": 277
+        },
+        {
+          "expr": "str(s) if s else ''",
+          "line": 279
+        }
+      ],
+      "nloc": 5,
+      "ccn": 3,
+      "exported": true
+    },
+    {
+      "name": "info_from_instance",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 282,
+        "end": 399
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "context"
+        },
+        {
+          "name": "instance"
+        },
+        {
+          "name": "network_info"
+        },
+        {
+          "default": "False",
+          "name": "populate_image_ref_url"
+        },
+        {
+          "name": "**kw"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "instance_info",
+          "line": 399
+        }
+      ],
+      "nloc": 62,
+      "ccn": 8,
+      "exported": true
+    }
+  ],
+  "referencedSymbols": [
+    {
+      "name": "log.getLogger",
+      "usage": "call",
+      "via": "oslo_log",
+      "count": 1,
+      "lineRange": {
+        "start": 39,
+        "end": 39
+      }
+    },
+    {
+      "name": "rpc.get_notifier",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 196,
+        "end": 196
+      }
+    },
+    {
+      "name": "instance_notification.InstanceStateUpdatePayload",
+      "usage": "call",
+      "via": "nova.notifications.objects",
+      "count": 1,
+      "lineRange": {
+        "start": 211,
+        "end": 211
+      }
+    },
+    {
+      "name": "instance_notification.AuditPeriodPayload",
+      "usage": "call",
+      "via": "nova.notifications.objects",
+      "count": 1,
+      "lineRange": {
+        "start": 217,
+        "end": 217
+      }
+    },
+    {
+      "name": "instance_notification.InstanceUpdatePayload",
+      "usage": "call",
+      "via": "nova.notifications.objects",
+      "count": 1,
+      "lineRange": {
+        "start": 221,
+        "end": 221
+      }
+    },
+    {
+      "name": "instance_notification.InstanceUpdateNotification",
+      "usage": "call",
+      "via": "nova.notifications.objects",
+      "count": 1,
+      "lineRange": {
+        "start": 228,
+        "end": 228
+      }
+    },
+    {
+      "name": "notification_base.EventType",
+      "usage": "call",
+      "via": "nova.notifications.objects",
+      "count": 1,
+      "lineRange": {
+        "start": 230,
+        "end": 230
+      }
+    },
+    {
+      "name": "notification_base.NotificationPublisher",
+      "usage": "call",
+      "via": "nova.notifications.objects",
+      "count": 1,
+      "lineRange": {
+        "start": 233,
+        "end": 233
+      }
+    },
+    {
+      "name": "utils.last_completed_audit_period",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 248,
+        "end": 248
+      }
+    },
+    {
+      "name": "timeutils.utcnow",
+      "usage": "call",
+      "via": "oslo_utils",
+      "count": 1,
+      "lineRange": {
+        "start": 251,
+        "end": 251
+      }
+    },
+    {
+      "name": "str",
+      "usage": "call",
+      "via": null,
+      "count": 3,
+      "lineRange": {
+        "start": 272,
+        "end": 272
+      }
+    },
+    {
+      "name": "isinstance",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 276,
+        "end": 276
+      }
+    },
+    {
+      "name": "utils.strtime",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 277,
+        "end": 277
+      }
+    },
+    {
+      "name": "glance.API",
+      "usage": "call",
+      "via": "nova.image",
+      "count": 1,
+      "lineRange": {
+        "start": 302,
+        "end": 302
+      }
+    },
+    {
+      "name": "excutils.save_and_reraise_exception",
+      "usage": "call",
+      "via": "oslo_utils",
+      "count": 1,
+      "lineRange": {
+        "start": 311,
+        "end": 311
+      }
+    },
+    {
+      "name": "dict",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 320,
+        "end": 320
+      }
+    },
+    {
+      "name": "int",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 375,
+        "end": 375
+      }
+    }
+  ],
+  "dependencies": [
+    {
+      "style": "import",
+      "module": "datetime",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 21,
+        "end": 21
+      }
+    },
+    {
+      "style": "from",
+      "module": "keystoneauth1",
+      "names": [
+        {
+          "alias": "ks_exc",
+          "name": "exceptions"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 23,
+        "end": 23
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_log",
+      "names": [
+        {
+          "alias": null,
+          "name": "log"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 24,
+        "end": 24
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_utils",
+      "names": [
+        {
+          "alias": null,
+          "name": "excutils"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 25,
+        "end": 25
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_utils",
+      "names": [
+        {
+          "alias": null,
+          "name": "timeutils"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 26,
+        "end": 26
+      }
+    },
+    {
+      "style": "import",
+      "module": "nova.conf",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 28,
+        "end": 28
+      }
+    },
+    {
+      "style": "import",
+      "module": "nova.context",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 29,
+        "end": 29
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "exception"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 30,
+        "end": 30
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.image",
+      "names": [
+        {
+          "alias": null,
+          "name": "glance"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 31,
+        "end": 31
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.notifications.objects",
+      "names": [
+        {
+          "alias": "notification_base",
+          "name": "base"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 32,
+        "end": 32
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.notifications.objects",
+      "names": [
+        {
+          "alias": "instance_notification",
+          "name": "instance"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 33,
+        "end": 33
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.objects",
+      "names": [
+        {
+          "alias": null,
+          "name": "fields"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 34,
+        "end": 34
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "rpc"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 35,
+        "end": 35
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "utils"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 36,
+        "end": 36
+      }
+    }
+  ],
+  "sideEffects": [
+    {
+      "kind": "global-mutation",
+      "target": "LOG = log.getLogger(__name__)",
+      "lineRange": {
+        "start": 39,
+        "end": 39
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "CONF = nova.conf.CONF",
+      "lineRange": {
+        "start": 41,
+        "end": 41
+      }
+    }
+  ],
+  "securitySurface": [
+    {
+      "kind": "privilege",
+      "category": "crypto-key",
+      "description": "from keystoneauth1 import exceptions as ks_exc",
+      "lineRange": {
+        "start": 23,
+        "end": 23
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "\"\"\"Send compute.instance.update notification to report any changes occurred",
+      "lineRange": {
+        "start": 46,
+        "end": 46
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "LOG.debug('Failed to send instance update notification. The '",
+      "lineRange": {
+        "start": 87,
+        "end": 87
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "LOG.exception(\"Failed to send state update notification\",",
+      "lineRange": {
+        "start": 91,
+        "end": 91
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "\"\"\"Send compute.instance.update notification to report changes if there",
+      "lineRange": {
+        "start": 98,
+        "end": 98
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "LOG.debug('Failed to send instance update notification. The '",
+      "lineRange": {
+        "start": 130,
+        "end": 130
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "LOG.exception(\"Failed to send state update notification\",",
+      "lineRange": {
+        "start": 134,
+        "end": 134
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "\"\"\"Send 'compute.instance.update' notification to inform observers",
+      "lineRange": {
+        "start": 169,
+        "end": 169
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "payload.update(",
+      "lineRange": {
+        "start": 182,
+        "end": 182
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "'compute.instance.update', payload)",
+      "lineRange": {
+        "start": 197,
+        "end": 197
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "action=fields.NotificationAction.UPDATE),",
+      "lineRange": {
+        "start": 232,
+        "end": 232
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "instance_info.update(kw)",
+      "lineRange": {
+        "start": 398,
+        "end": 398
+      }
+    }
+  ],
+  "injection_flags": [],
+  "warnings": []
+}

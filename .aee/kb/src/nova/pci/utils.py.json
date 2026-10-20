@@ -1,0 +1,879 @@
+{
+  "file": "src/nova/pci/utils.py",
+  "hash": "311882bf0f06f685b50fb1fe62b13ea8edf4715823fd48dccf89cbfebcb9717f",
+  "language": "Python",
+  "component": "nova",
+  "package": null,
+  "lines": {
+    "blank": 51,
+    "code": 201,
+    "comment": 21,
+    "total": 273
+  },
+  "symbols": [
+    {
+      "name": "LOG",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 30,
+        "end": 30
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "PCI_VENDOR_PATTERN",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 32,
+        "end": 32
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "_PCI_ADDRESS_PATTERN",
+      "kind": "variable",
+      "scope": "",
+      "lineRange": {
+        "start": 33,
+        "end": 35
+      },
+      "source": "aee-inventory",
+      "exported": false
+    },
+    {
+      "name": "_PCI_ADDRESS_REGEX",
+      "kind": "variable",
+      "scope": "",
+      "lineRange": {
+        "start": 36,
+        "end": 36
+      },
+      "source": "aee-inventory",
+      "exported": false
+    },
+    {
+      "name": "_SRIOV_TOTALVFS",
+      "kind": "variable",
+      "scope": "",
+      "lineRange": {
+        "start": 37,
+        "end": 37
+      },
+      "source": "aee-inventory",
+      "exported": false
+    },
+    {
+      "name": "pci_device_prop_match",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 40,
+        "end": 75
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "pci_dev",
+          "type": "'stats.Pool'"
+        },
+        {
+          "name": "specs",
+          "type": "list[dict[str, str]]"
+        }
+      ],
+      "returnType": "bool",
+      "returns": [
+        {
+          "expr": "any(_matching_devices(spec) for spec in specs)",
+          "line": 75
+        }
+      ],
+      "nloc": 5,
+      "ccn": 2,
+      "exported": true
+    },
+    {
+      "name": "_matching_devices",
+      "kind": "function",
+      "scope": "pci_device_prop_match",
+      "lineRange": {
+        "start": 56,
+        "end": 73
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "spec",
+          "type": "dict[str, str]"
+        }
+      ],
+      "returnType": "bool",
+      "returns": [
+        {
+          "expr": "False",
+          "line": 61
+        },
+        {
+          "expr": "False",
+          "line": 72
+        },
+        {
+          "expr": "True",
+          "line": 73
+        }
+      ],
+      "visibility": "private"
+    },
+    {
+      "name": "parse_address",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 78,
+        "end": 87
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "address",
+          "type": "str"
+        }
+      ],
+      "returnType": "ty.Sequence[str]",
+      "returns": [
+        {
+          "expr": "m.groups()",
+          "line": 87
+        }
+      ],
+      "nloc": 5,
+      "ccn": 2,
+      "exported": true
+    },
+    {
+      "name": "get_pci_address_fields",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 90,
+        "end": 100
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "pci_addr",
+          "type": "str"
+        }
+      ],
+      "returnType": "tuple[str, str, str, str]",
+      "returns": [
+        {
+          "expr": "domain, bus, slot, func",
+          "line": 100
+        }
+      ],
+      "nloc": 4,
+      "ccn": 1,
+      "exported": true
+    },
+    {
+      "name": "get_pci_address",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 103,
+        "end": 111
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "domain",
+          "type": "str"
+        },
+        {
+          "name": "bus",
+          "type": "str"
+        },
+        {
+          "name": "slot",
+          "type": "str"
+        },
+        {
+          "name": "func",
+          "type": "str"
+        }
+      ],
+      "returnType": "str",
+      "returns": [
+        {
+          "expr": "'%s:%s:%s.%s' % (domain, bus, slot, func)",
+          "line": 111
+        }
+      ],
+      "nloc": 2,
+      "ccn": 1,
+      "exported": true
+    },
+    {
+      "name": "get_function_by_ifname",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 114,
+        "end": 129
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "ifname",
+          "type": "str"
+        }
+      ],
+      "returnType": "tuple[str | None, bool]",
+      "returns": [
+        {
+          "expr": "(os.readlink(dev_path).strip(\"./\"), sriov_totalvfs > 0)",
+          "line": 125
+        },
+        {
+          "expr": "os.readlink(dev_path).strip(\"./\"), False",
+          "line": 128
+        },
+        {
+          "expr": "None, False",
+          "line": 129
+        }
+      ],
+      "nloc": 12,
+      "ccn": 3,
+      "exported": true
+    },
+    {
+      "name": "is_physical_function",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 132,
+        "end": 144
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "domain",
+          "type": "str"
+        },
+        {
+          "name": "bus",
+          "type": "str"
+        },
+        {
+          "name": "slot",
+          "type": "str"
+        },
+        {
+          "name": "function",
+          "type": "str"
+        }
+      ],
+      "returnType": "bool",
+      "returns": [
+        {
+          "expr": "sriov_totalvfs > 0",
+          "line": 141
+        },
+        {
+          "expr": "False",
+          "line": 144
+        }
+      ],
+      "nloc": 13,
+      "ccn": 3,
+      "exported": true
+    },
+    {
+      "name": "_get_sysfs_netdev_path",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 147,
+        "end": 154
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "pci_addr",
+          "type": "str"
+        },
+        {
+          "name": "pf_interface",
+          "type": "bool"
+        }
+      ],
+      "returnType": "str",
+      "returns": [
+        {
+          "expr": "\"/sys/bus/pci/devices/%s/physfn/net\" % pci_addr",
+          "line": 153
+        },
+        {
+          "expr": "\"/sys/bus/pci/devices/%s/net\" % pci_addr",
+          "line": 154
+        }
+      ],
+      "nloc": 4,
+      "ccn": 2,
+      "exported": false
+    },
+    {
+      "name": "get_ifname_by_pci_address",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 157,
+        "end": 170
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "pci_addr",
+          "type": "str"
+        },
+        {
+          "default": "False",
+          "name": "pf_interface",
+          "type": "bool"
+        }
+      ],
+      "returnType": "str",
+      "returns": [
+        {
+          "expr": "dev_info.pop()",
+          "line": 168
+        }
+      ],
+      "nloc": 9,
+      "ccn": 2,
+      "exported": true
+    },
+    {
+      "name": "get_mac_by_pci_address",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 173,
+        "end": 191
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "pci_addr",
+          "type": "str"
+        },
+        {
+          "default": "False",
+          "name": "pf_interface",
+          "type": "bool"
+        }
+      ],
+      "returnType": "str",
+      "returns": [
+        {
+          "expr": "mac",
+          "line": 185
+        }
+      ],
+      "nloc": 14,
+      "ccn": 2,
+      "exported": true
+    },
+    {
+      "name": "get_vf_num_by_pci_address",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 194,
+        "end": 213
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "pci_addr",
+          "type": "str"
+        }
+      ],
+      "returnType": "int",
+      "returns": [
+        {
+          "expr": "int(vf_num)",
+          "line": 213
+        }
+      ],
+      "nloc": 13,
+      "ccn": 4,
+      "exported": true
+    },
+    {
+      "name": "get_vf_product_id_by_pf_addr",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 216,
+        "end": 246
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "pci_addr",
+          "type": "str"
+        }
+      ],
+      "returnType": "str",
+      "returns": [
+        {
+          "expr": "vf_product_id",
+          "line": 246
+        }
+      ],
+      "nloc": 17,
+      "ccn": 3,
+      "exported": true
+    },
+    {
+      "name": "get_pci_ids_by_pci_addr",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 249,
+        "end": 273
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "pci_addr",
+          "type": "str"
+        }
+      ],
+      "returnType": "tuple[str, ...]",
+      "returns": [
+        {
+          "expr": "tuple(ids)",
+          "line": 273
+        }
+      ],
+      "nloc": 20,
+      "ccn": 4,
+      "exported": true
+    }
+  ],
+  "referencedSymbols": [
+    {
+      "name": "logging.getLogger",
+      "usage": "call",
+      "via": "oslo_log",
+      "count": 1,
+      "lineRange": {
+        "start": 30,
+        "end": 30
+      }
+    },
+    {
+      "name": "re.compile",
+      "usage": "call",
+      "via": "re",
+      "count": 2,
+      "lineRange": {
+        "start": 36,
+        "end": 36
+      }
+    },
+    {
+      "name": "dict",
+      "usage": "type",
+      "via": null,
+      "count": 2,
+      "lineRange": {
+        "start": 41,
+        "end": 41
+      }
+    },
+    {
+      "name": "list",
+      "usage": "type",
+      "via": null,
+      "count": 2,
+      "lineRange": {
+        "start": 41,
+        "end": 41
+      }
+    },
+    {
+      "name": "isinstance",
+      "usage": "call",
+      "via": null,
+      "count": 4,
+      "lineRange": {
+        "start": 59,
+        "end": 59
+      }
+    },
+    {
+      "name": "all",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 60,
+        "end": 60
+      }
+    },
+    {
+      "name": "any",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 75,
+        "end": 75
+      }
+    },
+    {
+      "name": "exception.PciDeviceWrongAddressFormat",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 86,
+        "end": 86
+      }
+    },
+    {
+      "name": "tuple",
+      "usage": "type",
+      "via": null,
+      "count": 3,
+      "lineRange": {
+        "start": 90,
+        "end": 90
+      }
+    },
+    {
+      "name": "os.path.isdir",
+      "usage": "call",
+      "via": "os",
+      "count": 2,
+      "lineRange": {
+        "start": 120,
+        "end": 120
+      }
+    },
+    {
+      "name": "open",
+      "usage": "call",
+      "via": null,
+      "count": 5,
+      "lineRange": {
+        "start": 123,
+        "end": 123
+      }
+    },
+    {
+      "name": "os.path.join",
+      "usage": "call",
+      "via": "os",
+      "count": 3,
+      "lineRange": {
+        "start": 123,
+        "end": 123
+      }
+    },
+    {
+      "name": "int",
+      "usage": "call",
+      "via": null,
+      "count": 3,
+      "lineRange": {
+        "start": 124,
+        "end": 124
+      }
+    },
+    {
+      "name": "os.readlink",
+      "usage": "call",
+      "via": "os",
+      "count": 3,
+      "lineRange": {
+        "start": 125,
+        "end": 125
+      }
+    },
+    {
+      "name": "os.listdir",
+      "usage": "call",
+      "via": "os",
+      "count": 1,
+      "lineRange": {
+        "start": 167,
+        "end": 167
+      }
+    },
+    {
+      "name": "exception.PciDeviceNotFoundById",
+      "usage": "call",
+      "via": "nova",
+      "count": 5,
+      "lineRange": {
+        "start": 170,
+        "end": 170
+      }
+    },
+    {
+      "name": "next",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 184,
+        "end": 184
+      }
+    },
+    {
+      "name": "glob.iglob",
+      "usage": "call",
+      "via": "glob",
+      "count": 1,
+      "lineRange": {
+        "start": 204,
+        "end": 204
+      }
+    },
+    {
+      "name": "re.search",
+      "usage": "call",
+      "via": "re",
+      "count": 1,
+      "lineRange": {
+        "start": 205,
+        "end": 205
+      }
+    },
+    {
+      "name": "ValueError",
+      "usage": "call",
+      "via": null,
+      "count": 2,
+      "lineRange": {
+        "start": 244,
+        "end": 244
+      }
+    },
+    {
+      "name": "tuple",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 273,
+        "end": 273
+      }
+    }
+  ],
+  "dependencies": [
+    {
+      "style": "import",
+      "module": "glob",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 17,
+        "end": 17
+      }
+    },
+    {
+      "style": "import",
+      "module": "os",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 18,
+        "end": 18
+      }
+    },
+    {
+      "style": "import",
+      "module": "re",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 19,
+        "end": 19
+      }
+    },
+    {
+      "style": "import",
+      "module": "typing",
+      "names": [],
+      "alias": "ty",
+      "relative": false,
+      "lineRange": {
+        "start": 20,
+        "end": 20
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_log",
+      "names": [
+        {
+          "alias": "logging",
+          "name": "log"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 22,
+        "end": 22
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "exception"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 24,
+        "end": 24
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.pci",
+      "names": [
+        {
+          "alias": null,
+          "name": "stats"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 28,
+        "end": 28
+      }
+    }
+  ],
+  "sideEffects": [
+    {
+      "kind": "file-io",
+      "target": "if os.path.isdir(dev_path):",
+      "lineRange": {
+        "start": 120,
+        "end": 120
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "with open(os.path.join(dev_path, _SRIOV_TOTALVFS)) as fd:",
+      "lineRange": {
+        "start": 123,
+        "end": 123
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "if os.path.isdir(dev_path):",
+      "lineRange": {
+        "start": 137,
+        "end": 137
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "with open(dev_path + _SRIOV_TOTALVFS) as fd:",
+      "lineRange": {
+        "start": 139,
+        "end": 139
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "dev_info = os.listdir(dev_path)",
+      "lineRange": {
+        "start": 167,
+        "end": 167
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "addr_file = os.path.join(dev_path, if_name, 'address')",
+      "lineRange": {
+        "start": 180,
+        "end": 180
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "with open(addr_file) as f:",
+      "lineRange": {
+        "start": 183,
+        "end": 183
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "with open(sriov_vf_device_path) as f:",
+      "lineRange": {
+        "start": 233,
+        "end": 233
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "with open(os.path.join(id_prefix, id_name)) as f:",
+      "lineRange": {
+        "start": 259,
+        "end": 259
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "LOG = logging.getLogger(__name__)",
+      "lineRange": {
+        "start": 30,
+        "end": 30
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "PCI_VENDOR_PATTERN = \"^(hex{4})$\".replace(\"hex\", r\"[\\da-fA-F]\")",
+      "lineRange": {
+        "start": 32,
+        "end": 32
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "VIRTFN_RE = re.compile(r\"virtfn(\\d+)\")",
+      "lineRange": {
+        "start": 200,
+        "end": 200
+      }
+    }
+  ],
+  "securitySurface": [],
+  "injection_flags": [],
+  "warnings": []
+}

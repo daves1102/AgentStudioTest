@@ -1,0 +1,175 @@
+{
+  "file": "src/nova/policies/migrations.py",
+  "hash": "176adee19ce627985d5dee0463b9b355bc250912e5cad1f3a89339320b0aaa42",
+  "language": "Python",
+  "component": "nova",
+  "package": null,
+  "lines": {
+    "blank": 10,
+    "code": 56,
+    "comment": 32,
+    "total": 98
+  },
+  "symbols": [
+    {
+      "name": "POLICY_ROOT",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 21,
+        "end": 21
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "DEPRECATED_REASON",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 23,
+        "end": 30
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "DEPRECATED_POLICY",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 32,
+        "end": 37
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "migrations_policies",
+      "kind": "variable",
+      "scope": "",
+      "lineRange": {
+        "start": 40,
+        "end": 94
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "list_rules",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 97,
+        "end": 98
+      },
+      "source": "aee-inventory",
+      "parameters": [],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "migrations_policies",
+          "line": 98
+        }
+      ],
+      "nloc": 2,
+      "ccn": 1,
+      "exported": true
+    }
+  ],
+  "referencedSymbols": [
+    {
+      "name": "policy.DeprecatedRule",
+      "usage": "call",
+      "via": "oslo_policy",
+      "count": 1,
+      "lineRange": {
+        "start": 32,
+        "end": 32
+      }
+    },
+    {
+      "name": "policy.DocumentedRuleDefault",
+      "usage": "call",
+      "via": "oslo_policy",
+      "count": 3,
+      "lineRange": {
+        "start": 49,
+        "end": 49
+      }
+    }
+  ],
+  "dependencies": [
+    {
+      "style": "from",
+      "module": "oslo_policy",
+      "names": [
+        {
+          "alias": null,
+          "name": "policy"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 16,
+        "end": 16
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.policies",
+      "names": [
+        {
+          "alias": null,
+          "name": "base"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 18,
+        "end": 18
+      }
+    }
+  ],
+  "sideEffects": [
+    {
+      "kind": "global-mutation",
+      "target": "POLICY_ROOT = 'os_compute_api:os-migrations:%s'",
+      "lineRange": {
+        "start": 21,
+        "end": 21
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "DEPRECATED_REASON = \"\"\"\\",
+      "lineRange": {
+        "start": 23,
+        "end": 23
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "DEPRECATED_POLICY = policy.DeprecatedRule(",
+      "lineRange": {
+        "start": 32,
+        "end": 32
+      }
+    }
+  ],
+  "securitySurface": [
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "deployment, you must also update the new policy to keep the same",
+      "lineRange": {
+        "start": 28,
+        "end": 28
+      }
+    }
+  ],
+  "injection_flags": [],
+  "warnings": []
+}

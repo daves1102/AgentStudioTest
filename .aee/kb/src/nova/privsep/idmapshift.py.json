@@ -1,0 +1,494 @@
+{
+  "file": "src/nova/privsep/idmapshift.py",
+  "hash": "6bca734609bb8a5a3a7e013b79b1fd7cffda926ae96d1905b6be98d545af5506",
+  "language": "Python",
+  "component": "nova",
+  "package": null,
+  "lines": {
+    "blank": 34,
+    "code": 94,
+    "comment": 13,
+    "total": 141
+  },
+  "symbols": [
+    {
+      "name": "LOG",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 45,
+        "end": 45
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "NOBODY_ID",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 46,
+        "end": 46
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "find_target_id",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 49,
+        "end": 58
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "fsid"
+        },
+        {
+          "name": "mappings"
+        },
+        {
+          "name": "nobody"
+        },
+        {
+          "name": "memo"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "memo[fsid]",
+          "line": 58
+        }
+      ],
+      "nloc": 9,
+      "ccn": 4,
+      "exported": true
+    },
+    {
+      "name": "print_chown",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 61,
+        "end": 62
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "path"
+        },
+        {
+          "name": "uid"
+        },
+        {
+          "name": "gid"
+        },
+        {
+          "name": "target_uid"
+        },
+        {
+          "name": "target_gid"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 2,
+      "ccn": 1,
+      "exported": true
+    },
+    {
+      "name": "shift_path",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 65,
+        "end": 72
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "path"
+        },
+        {
+          "name": "uid_mappings"
+        },
+        {
+          "name": "gid_mappings"
+        },
+        {
+          "name": "nobody"
+        },
+        {
+          "name": "uid_memo"
+        },
+        {
+          "name": "gid_memo"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 8,
+      "ccn": 1,
+      "exported": true
+    },
+    {
+      "name": "shift_dir",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 75,
+        "end": 90
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "fsdir"
+        },
+        {
+          "name": "uid_mappings"
+        },
+        {
+          "name": "gid_mappings"
+        },
+        {
+          "name": "nobody"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 12,
+      "ccn": 4,
+      "exported": true
+    },
+    {
+      "name": "shift_path_short",
+      "kind": "function",
+      "scope": "shift_dir",
+      "lineRange": {
+        "start": 79,
+        "end": 81
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "p"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "visibility": "public"
+    },
+    {
+      "name": "confirm_path",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 93,
+        "end": 112
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "path"
+        },
+        {
+          "name": "uid_ranges"
+        },
+        {
+          "name": "gid_ranges"
+        },
+        {
+          "name": "nobody"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "uid_in_range and gid_in_range",
+          "line": 112
+        }
+      ],
+      "nloc": 16,
+      "ccn": 10,
+      "exported": true
+    },
+    {
+      "name": "get_ranges",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 115,
+        "end": 116
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "maps"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "[(target, target + count - 1) for (start, target, count) in maps]",
+          "line": 116
+        }
+      ],
+      "nloc": 2,
+      "ccn": 2,
+      "exported": true
+    },
+    {
+      "name": "confirm_dir",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 119,
+        "end": 134
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "fsdir"
+        },
+        {
+          "name": "uid_mappings"
+        },
+        {
+          "name": "gid_mappings"
+        },
+        {
+          "name": "nobody"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "False",
+          "line": 124
+        },
+        {
+          "expr": "False",
+          "line": 129
+        },
+        {
+          "expr": "False",
+          "line": 133
+        },
+        {
+          "expr": "True",
+          "line": 134
+        }
+      ],
+      "nloc": 15,
+      "ccn": 7,
+      "exported": true
+    },
+    {
+      "name": "shift",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 138,
+        "end": 141
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "path"
+        },
+        {
+          "name": "uid_map"
+        },
+        {
+          "name": "gid_map"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "",
+          "line": 140
+        }
+      ],
+      "nloc": 4,
+      "ccn": 2,
+      "exported": true
+    }
+  ],
+  "referencedSymbols": [
+    {
+      "name": "logging.getLogger",
+      "usage": "call",
+      "via": "oslo_log",
+      "count": 1,
+      "lineRange": {
+        "start": 45,
+        "end": 45
+      }
+    },
+    {
+      "name": "os.lstat",
+      "usage": "call",
+      "via": "os",
+      "count": 2,
+      "lineRange": {
+        "start": 66,
+        "end": 66
+      }
+    },
+    {
+      "name": "os.lchown",
+      "usage": "call",
+      "via": "os",
+      "count": 1,
+      "lineRange": {
+        "start": 72,
+        "end": 72
+      }
+    },
+    {
+      "name": "dict",
+      "usage": "call",
+      "via": null,
+      "count": 2,
+      "lineRange": {
+        "start": 76,
+        "end": 76
+      }
+    },
+    {
+      "name": "os.walk",
+      "usage": "call",
+      "via": "os",
+      "count": 2,
+      "lineRange": {
+        "start": 84,
+        "end": 84
+      }
+    },
+    {
+      "name": "os.path.join",
+      "usage": "call",
+      "via": "os",
+      "count": 4,
+      "lineRange": {
+        "start": 86,
+        "end": 86
+      }
+    }
+  ],
+  "dependencies": [
+    {
+      "style": "import",
+      "module": "os",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 39,
+        "end": 39
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_log",
+      "names": [
+        {
+          "alias": "logging",
+          "name": "log"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 41,
+        "end": 41
+      }
+    },
+    {
+      "style": "import",
+      "module": "nova.privsep",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 43,
+        "end": 43
+      }
+    }
+  ],
+  "sideEffects": [
+    {
+      "kind": "file-io",
+      "target": "path = os.path.join(root, d)",
+      "lineRange": {
+        "start": 86,
+        "end": 86
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "path = os.path.join(root, f)",
+      "lineRange": {
+        "start": 89,
+        "end": 89
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "path = os.path.join(root, d)",
+      "lineRange": {
+        "start": 127,
+        "end": 127
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "path = os.path.join(root, f)",
+      "lineRange": {
+        "start": 131,
+        "end": 131
+      }
+    },
+    {
+      "kind": "process-spawn",
+      "target": "@nova.privsep.sys_admin_pctxt.entrypoint",
+      "lineRange": {
+        "start": 137,
+        "end": 137
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "LOG = logging.getLogger(__name__)",
+      "lineRange": {
+        "start": 45,
+        "end": 45
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "NOBODY_ID = 65534",
+      "lineRange": {
+        "start": 46,
+        "end": 46
+      }
+    }
+  ],
+  "securitySurface": [
+    {
+      "kind": "privilege",
+      "category": "privsep-entrypoint",
+      "description": "@nova.privsep.sys_admin_pctxt.entrypoint",
+      "lineRange": {
+        "start": 137,
+        "end": 137
+      }
+    }
+  ],
+  "injection_flags": [],
+  "warnings": []
+}

@@ -1,0 +1,184 @@
+{
+  "file": "src/nova/policies/limits.py",
+  "hash": "1a5b57098a7dad130dfe2a998cf78b9d5e273180ea03c3a01ce0650870f0386d",
+  "language": "Python",
+  "component": "nova",
+  "package": null,
+  "lines": {
+    "blank": 10,
+    "code": 46,
+    "comment": 14,
+    "total": 70
+  },
+  "symbols": [
+    {
+      "name": "BASE_POLICY_NAME",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 21,
+        "end": 21
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "OTHER_PROJECT_LIMIT_POLICY_NAME",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 22,
+        "end": 22
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "DEPRECATED_REASON",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 24,
+        "end": 28
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "DEPRECATED_POLICY",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 30,
+        "end": 35
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "limits_policies",
+      "kind": "variable",
+      "scope": "",
+      "lineRange": {
+        "start": 37,
+        "end": 66
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "list_rules",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 69,
+        "end": 70
+      },
+      "source": "aee-inventory",
+      "parameters": [],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "limits_policies",
+          "line": 70
+        }
+      ],
+      "nloc": 2,
+      "ccn": 1,
+      "exported": true
+    }
+  ],
+  "referencedSymbols": [
+    {
+      "name": "policy.DeprecatedRule",
+      "usage": "call",
+      "via": "oslo_policy",
+      "count": 1,
+      "lineRange": {
+        "start": 30,
+        "end": 30
+      }
+    },
+    {
+      "name": "policy.DocumentedRuleDefault",
+      "usage": "call",
+      "via": "oslo_policy",
+      "count": 2,
+      "lineRange": {
+        "start": 38,
+        "end": 38
+      }
+    }
+  ],
+  "dependencies": [
+    {
+      "style": "from",
+      "module": "oslo_policy",
+      "names": [
+        {
+          "alias": null,
+          "name": "policy"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 16,
+        "end": 16
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.policies",
+      "names": [
+        {
+          "alias": null,
+          "name": "base"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 18,
+        "end": 18
+      }
+    }
+  ],
+  "sideEffects": [
+    {
+      "kind": "global-mutation",
+      "target": "BASE_POLICY_NAME = 'os_compute_api:limits'",
+      "lineRange": {
+        "start": 21,
+        "end": 21
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "OTHER_PROJECT_LIMIT_POLICY_NAME = 'os_compute_api:limits:other_project'",
+      "lineRange": {
+        "start": 22,
+        "end": 22
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "DEPRECATED_REASON = \"\"\"",
+      "lineRange": {
+        "start": 24,
+        "end": 24
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "DEPRECATED_POLICY = policy.DeprecatedRule(",
+      "lineRange": {
+        "start": 30,
+        "end": 30
+      }
+    }
+  ],
+  "securitySurface": [],
+  "injection_flags": [],
+  "warnings": []
+}

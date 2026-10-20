@@ -1,0 +1,136 @@
+{
+  "file": "src/nova/policies/quota_class_sets.py",
+  "hash": "62e2f0d34b69b6912ff60c67be08aa6ca85d47cdf1e171b15578839c433a4120",
+  "language": "Python",
+  "component": "nova",
+  "package": null,
+  "lines": {
+    "blank": 8,
+    "code": 29,
+    "comment": 14,
+    "total": 51
+  },
+  "symbols": [
+    {
+      "name": "POLICY_ROOT",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 21,
+        "end": 21
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "quota_class_sets_policies",
+      "kind": "variable",
+      "scope": "",
+      "lineRange": {
+        "start": 24,
+        "end": 47
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "list_rules",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 50,
+        "end": 51
+      },
+      "source": "aee-inventory",
+      "parameters": [],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "quota_class_sets_policies",
+          "line": 51
+        }
+      ],
+      "nloc": 2,
+      "ccn": 1,
+      "exported": true
+    }
+  ],
+  "referencedSymbols": [
+    {
+      "name": "policy.DocumentedRuleDefault",
+      "usage": "call",
+      "via": "oslo_policy",
+      "count": 2,
+      "lineRange": {
+        "start": 25,
+        "end": 25
+      }
+    }
+  ],
+  "dependencies": [
+    {
+      "style": "from",
+      "module": "oslo_policy",
+      "names": [
+        {
+          "alias": null,
+          "name": "policy"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 16,
+        "end": 16
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.policies",
+      "names": [
+        {
+          "alias": null,
+          "name": "base"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 18,
+        "end": 18
+      }
+    }
+  ],
+  "sideEffects": [
+    {
+      "kind": "global-mutation",
+      "target": "POLICY_ROOT = 'os_compute_api:os-quota-class-sets:%s'",
+      "lineRange": {
+        "start": 21,
+        "end": 21
+      }
+    }
+  ],
+  "securitySurface": [
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "name=POLICY_ROOT % 'update',",
+      "lineRange": {
+        "start": 37,
+        "end": 37
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "description='Update quotas for specific quota class',",
+      "lineRange": {
+        "start": 39,
+        "end": 39
+      }
+    }
+  ],
+  "injection_flags": [],
+  "warnings": []
+}
