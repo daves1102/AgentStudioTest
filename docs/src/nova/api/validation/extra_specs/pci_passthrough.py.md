@@ -1,0 +1,23 @@
+# src/nova/api/validation/extra_specs/pci_passthrough.py
+
+## Overview
+
+This file implements the `pci_passthrough` module, defining 1 constant, 1 function, 1 import, 1 side effect.
+
+Lines: total 43, code 23, comment 14, blank 6
+
+## Defined Symbols
+
+| name | kind | signature | visibility | returns | complexity | lines |
+|---|---|---|---|---|---|---|
+| `EXTRA_SPEC_VALIDATORS` | constant | — | exported | not declared | — | `src/nova/api/validation/extra_specs/pci_passthrough.py:L20–L39` |
+| `register` | function | — | exported | `EXTRA_SPEC_VALIDATORS` (src/nova/api/validation/extra_specs/pci_passthrough.py:L43) | 1/2 | `src/nova/api/validation/extra_specs/pci_passthrough.py:L42–L43` |
+
+## Dependencies
+
+- `nova.api.validation.extra_specs`: imports `base` (src/nova/api/validation/extra_specs/pci_passthrough.py:L17)
+
+## Side Effects
+
+- **global-mutation**: EXTRA_SPEC_VALIDATORS = [ (src/nova/api/validation/extra_specs/pci_passthrough.py:L20)
+
