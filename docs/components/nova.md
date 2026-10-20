@@ -2,29 +2,32 @@
 
 ## Overview
 
-The `nova` component encompasses the core OpenStack Compute service subsystems extracted across four batches: the REST API layer (`api/`), accelerator integration (`accelerator/`), exception and internationalisation utilities (`exception.py`, `i18n.py`, `service_auth.py`, `utils.py`), the versioned object layer (`objects/`), the database access layer (`db/`), the network integration layer (`network/`), and the scheduler subsystem (`scheduler/`). All 327 files are classified as component `nova`; no other component exists in the current KB.
+The `nova` component encompasses the core OpenStack Compute service subsystems extracted across five batches: the REST API layer (`api/`), accelerator integration (`accelerator/`), CLI entry points (`cmd/`), compute service (`compute/`), conductor service (`conductor/`), configuration layer (`conf/`), console subsystem (`console/`), exception and internationalisation utilities (`exception.py`, `i18n.py`, `service_auth.py`, `utils.py`), the versioned object layer (`objects/`), the database access layer (`db/`), the network integration layer (`network/`), and the scheduler subsystem (`scheduler/`). All 433 files are classified as component `nova`; no other component exists in the current KB.
 
-**Batch provenance** — batch 1 (`6d56e5a`, 2026-10-16): 2 files; batch 2 (`733c73`, 2026-10-19): 53 files; batch 3 (`868bfe40`, 2026-10-19): 67 files; batch 4 (`caa20451`, 2026-10-20): 205 files.
+**Batch provenance** — batch 1 (`6d56e5a`, 2026-10-16): 2 files; batch 2 (`733c73`, 2026-10-19): 53 files; batch 3 (`868bfe40`, 2026-10-19): 67 files; batch 4 (`caa20451`, 2026-10-20): 205 files; batch 5 (`f56908d5`, 2026-10-20): 106 files.
 
 Subsystem responsibilities:
-- **api/** — WSGI framework, request dispatch, authentication middleware, API versioning, metadata service, and OpenStack Compute REST API (servers, flavors, keypairs, etc.) including JSON schema validation (`api/validation/`) and view serialisers (`api/openstack/compute/views/`).
+- **api/** — WSGI framework, request dispatch, authentication middleware, API versioning, metadata service, and OpenStack Compute REST API (servers, flavors, keypairs, etc.) including JSON schema validation and view serialisers.
 - **accelerator/** — HTTP client façade for the Cyborg accelerator API.
-- **exception.py / i18n.py** — exception class hierarchy and internationalisation factory.
-- **service_auth.py / utils.py** — service-token authentication helpers and general utilities.
-- **objects/** — oslo.versionedobjects-based domain model for all Nova entities (instances, flavors, compute nodes, migrations, etc.).
-- **db/api/** — Alembic-managed API database schema (cell mappings, request specs, flavors, quotas, etc.).
-- **db/main/** — Alembic-managed main database schema (instances, migrations, security groups, PCI devices, etc.) and SQLAlchemy query API (`db/main/api.py`, 4,967 lines).
-- **db/migration.py / db/utils.py / db/types.py / db/constants.py** — database migration entry points, shared column types, and helper utilities.
-- **network/** — Neutron integration: network model (`network/model.py`), Neutron client (`network/neutron.py`), os-vif utilities, and security group API.
-- **scheduler/** — placement-aware scheduling: host manager, request filters, host filters, weighers, RPC API client, and Placement resource-provider report client.
+- **cmd/** — CLI entry points: `nova-api`, `nova-compute`, `nova-conductor`, `nova-scheduler`, `nova-manage`, `nova-novncproxy`, `nova-serialproxy`, `nova-spicehtml5proxy`, `nova-status`.
+- **compute/** — Core compute service API (`compute/api.py`) and compute manager (`compute/manager.py`) handling instance lifecycle.
+- **conductor/** — Conductor service manager (`conductor/manager.py`) coordinating cross-service operations.
+- **conf/** — oslo.config option declarations for all Nova services and sub-systems.
+- **console/** — VNC/RFB, serial, and SPICE console proxy infrastructure.
+- **exception.py / i18n.py** — Exception class hierarchy and internationalisation factory.
+- **service_auth.py / utils.py** — Service-token authentication helpers and general utilities.
+- **objects/** — oslo.versionedobjects-based domain model for all Nova entities.
+- **db/api/** and **db/main/** — Alembic-managed API and main database schemas with SQLAlchemy query API.
+- **network/** — Neutron integration, network model, os-vif utilities, and security group API.
+- **scheduler/** — Placement-aware scheduling: host manager, filters, weighers, RPC client, and Placement report client.
 
-Source: `.aee/intake-summary.md` (batch caa20451); `.aee/link-summary.md`.
+Source: `.aee/intake-summary.md` (batch f56908d5); `.aee/link-summary.md`.
 
 ---
 
 ## File Inventory
 
-All 327 KB records. LOC figures are taken from each record's `lines` block. Source: `.aee/kb/src/nova/**/*.json`.
+All 433 KB records. LOC figures from each record's `lines` block. Source: `.aee/kb/src/nova/**/*.json`.
 
 | File | Total | Code | Comment | Blank |
 |---|---|---|---|---|
@@ -229,6 +232,112 @@ All 327 KB records. LOC figures are taken from each record's `lines` block. Sour
 | `api/validation/response_types.py` | 70 | 51 | 12 | 7 |
 | `api/validation/validators.py` | 346 | 235 | 55 | 56 |
 | `api/wsgi.py` | 260 | 178 | 11 | 71 |
+| `cmd/__init__.py` | 0 | 0 | 0 | 0 |
+| `cmd/baseproxy.py` | 96 | 54 | 25 | 17 |
+| `cmd/common.py` | 192 | 128 | 23 | 41 |
+| `cmd/compute.py` | 80 | 44 | 27 | 9 |
+| `cmd/conductor.py` | 53 | 28 | 15 | 10 |
+| `cmd/manage.py` | 3858 | 2970 | 502 | 386 |
+| `cmd/novncproxy.py` | 46 | 20 | 17 | 9 |
+| `cmd/policy.py` | 192 | 138 | 21 | 33 |
+| `cmd/scheduler.py` | 66 | 28 | 27 | 11 |
+| `cmd/serialproxy.py` | 43 | 19 | 16 | 8 |
+| `cmd/spicehtml5proxy.py` | 41 | 17 | 16 | 8 |
+| `cmd/status.py` | 361 | 238 | 73 | 50 |
+| `compute/__init__.py` | 0 | 0 | 0 | 0 |
+| `compute/api.py` | 7124 | 5092 | 1165 | 867 |
+| `compute/build_results.py` | 34 | 10 | 20 | 4 |
+| `compute/claims.py` | 241 | 174 | 27 | 40 |
+| `compute/flavors.py` | 210 | 127 | 42 | 41 |
+| `compute/instance_actions.py` | 79 | 50 | 23 | 6 |
+| `compute/instance_list.py` | 178 | 108 | 39 | 31 |
+| `compute/manager.py` | 12137 | 8837 | 1993 | 1307 |
+| `compute/migration_list.py` | 85 | 53 | 17 | 15 |
+| `compute/monitors/__init__.py` | 93 | 52 | 30 | 11 |
+| `compute/monitors/base.py` | 74 | 48 | 11 | 15 |
+| `compute/monitors/cpu/__init__.py` | 0 | 0 | 0 | 0 |
+| `compute/monitors/cpu/virt_driver.py` | 101 | 61 | 23 | 17 |
+| `compute/multi_cell_list.py` | 454 | 279 | 109 | 66 |
+| `compute/pci_placement_translator.py` | 793 | 524 | 158 | 111 |
+| `compute/power_state.py` | 46 | 18 | 24 | 4 |
+| `compute/provider_config.py` | 421 | 299 | 88 | 34 |
+| `compute/provider_tree.py` | 794 | 617 | 64 | 113 |
+| `compute/resource_tracker.py` | 2269 | 1527 | 481 | 261 |
+| `compute/rpcapi.py` | 1738 | 1410 | 157 | 171 |
+| `compute/share_management.py` | 763 | 598 | 89 | 76 |
+| `compute/stats.py` | 155 | 97 | 27 | 31 |
+| `compute/task_states.py` | 132 | 59 | 41 | 32 |
+| `compute/utils.py` | 1678 | 1287 | 130 | 261 |
+| `compute/vm_states.py` | 88 | 34 | 29 | 25 |
+| `conductor/__init__.py` | 20 | 3 | 13 | 4 |
+| `conductor/api.py` | 198 | 144 | 28 | 26 |
+| `conductor/manager.py` | 2393 | 1721 | 467 | 205 |
+| `conductor/rpcapi.py` | 517 | 447 | 23 | 47 |
+| `conductor/tasks/__init__.py` | 0 | 0 | 0 | 0 |
+| `conductor/tasks/base.py` | 54 | 33 | 11 | 10 |
+| `conductor/tasks/cross_cell_migrate.py` | 1471 | 987 | 305 | 179 |
+| `conductor/tasks/live_migrate.py` | 615 | 414 | 124 | 77 |
+| `conductor/tasks/migrate.py` | 410 | 253 | 112 | 45 |
+| `conf/__init__.py` | 114 | 92 | 17 | 5 |
+| `conf/api.py` | 409 | 338 | 14 | 57 |
+| `conf/availability_zone.py` | 71 | 39 | 15 | 17 |
+| `conf/base.py` | 215 | 169 | 19 | 27 |
+| `conf/cache.py` | 27 | 5 | 17 | 5 |
+| `conf/cinder.py` | 133 | 91 | 14 | 28 |
+| `conf/compute.py` | 1600 | 1258 | 30 | 312 |
+| `conf/conductor.py` | 62 | 38 | 14 | 10 |
+| `conf/configdrive.py` | 98 | 65 | 13 | 20 |
+| `conf/console.py` | 93 | 60 | 16 | 17 |
+| `conf/consoleauth.py` | 56 | 32 | 15 | 9 |
+| `conf/cyborg.py` | 43 | 21 | 13 | 9 |
+| `conf/database.py` | 65 | 32 | 21 | 12 |
+| `conf/devices.py` | 119 | 75 | 15 | 29 |
+| `conf/ephemeral_storage.py` | 74 | 46 | 15 | 13 |
+| `conf/glance.py` | 219 | 164 | 15 | 40 |
+| `conf/guestfs.py` | 58 | 33 | 14 | 11 |
+| `conf/imagecache.py` | 107 | 80 | 11 | 16 |
+| `conf/ironic.py` | 132 | 102 | 15 | 15 |
+| `conf/key_manager.py` | 64 | 28 | 27 | 9 |
+| `conf/keystone.py` | 44 | 23 | 12 | 9 |
+| `conf/libvirt.py` | 1716 | 1398 | 24 | 294 |
+| `conf/manila.py` | 58 | 34 | 11 | 13 |
+| `conf/mks.py` | 64 | 36 | 14 | 14 |
+| `conf/netconf.py` | 108 | 63 | 20 | 25 |
+| `conf/neutron.py` | 178 | 123 | 20 | 35 |
+| `conf/notifications.py` | 127 | 97 | 15 | 15 |
+| `conf/novnc.py` | 78 | 50 | 14 | 14 |
+| `conf/opts.py` | 79 | 51 | 14 | 14 |
+| `conf/paths.py` | 78 | 42 | 16 | 20 |
+| `conf/pci.py` | 388 | 305 | 15 | 68 |
+| `conf/placement.py` | 42 | 21 | 11 | 10 |
+| `conf/quota.py` | 372 | 288 | 18 | 66 |
+| `conf/rpc.py` | 52 | 26 | 14 | 12 |
+| `conf/scheduler.py` | 1067 | 783 | 20 | 264 |
+| `conf/serial_console.py` | 127 | 86 | 15 | 26 |
+| `conf/service.py` | 91 | 54 | 19 | 18 |
+| `conf/service_token.py` | 63 | 42 | 11 | 10 |
+| `conf/servicegroup.py` | 48 | 25 | 14 | 9 |
+| `conf/spice.py` | 245 | 189 | 14 | 42 |
+| `conf/upgrade_levels.py` | 108 | 72 | 15 | 21 |
+| `conf/utils.py` | 91 | 55 | 21 | 15 |
+| `conf/vendordata.py` | 42 | 22 | 14 | 6 |
+| `conf/vmware.py` | 302 | 230 | 16 | 56 |
+| `conf/vnc.py` | 199 | 140 | 14 | 45 |
+| `conf/workarounds.py` | 449 | 360 | 14 | 75 |
+| `conf/wsgi.py` | 80 | 51 | 14 | 15 |
+| `conf/zvm.py` | 86 | 56 | 13 | 17 |
+| `console/__init__.py` | 21 | 8 | 11 | 2 |
+| `console/rfb/__init__.py` | 0 | 0 | 0 | 0 |
+| `console/rfb/auth.py` | 65 | 38 | 13 | 14 |
+| `console/rfb/authnone.py` | 24 | 6 | 13 | 5 |
+| `console/rfb/auths.py` | 53 | 27 | 13 | 13 |
+| `console/rfb/authvencrypt.py` | 162 | 109 | 22 | 31 |
+| `console/securityproxy/__init__.py` | 0 | 0 | 0 | 0 |
+| `console/securityproxy/base.py` | 44 | 21 | 14 | 9 |
+| `console/securityproxy/rfb.py` | 221 | 147 | 32 | 42 |
+| `console/serial.py` | 90 | 53 | 16 | 21 |
+| `console/type.py` | 46 | 21 | 13 | 12 |
+| `console/websocketproxy.py` | 332 | 221 | 56 | 55 |
 | `db/__init__.py` | 0 | 0 | 0 | 0 |
 | `db/api/__init__.py` | 0 | 0 | 0 | 0 |
 | `db/api/api.py` | 50 | 23 | 14 | 13 |
@@ -355,7 +464,7 @@ All 327 KB records. LOC figures are taken from each record's `lines` block. Sour
 | `scheduler/weights/ram.py` | 42 | 21 | 14 | 7 |
 | `service_auth.py` | 104 | 63 | 16 | 25 |
 | `utils.py` | 1209 | 829 | 155 | 225 |
-| **TOTAL** | **81,517** | **58,276** | | |
+| **TOTAL** | **133,109** | **95,464** | | |
 
 
 ### Top 5 Functions by Cyclomatic Complexity
@@ -365,62 +474,79 @@ Taken from the `ccn` field of each KB symbol record.
 | CCN | Function | File |
 |---|---|---|
 | 50 | `show` | `api/openstack/compute/views/servers.py` |
+| 43 | `_validate_bdm` | `compute/api.py` |
 | 42 | `obj_make_compatible` | `objects/image_meta.py` |
+| 40 | `_init_instance` | `compute/manager.py` |
 | 37 | `_get_servers` | `api/openstack/compute/servers.py` |
-| 32 | `_pass_exact_filters` | `objects/build_request.py` |
-| 31 | `obj_make_compatible` | `objects/migrate_data.py` |
 
 ---
 
 ## Defined Symbols
 
-Across all 327 KB records the component defines **7,399 symbols** in total. Source: `symbols` arrays in `.aee/kb/src/nova/**/*.json`.
+Across all 433 KB records the component defines **9,479 symbols** in total. Source: `symbols` arrays in `.aee/kb/src/nova/**/*.json`.
 
 | Kind | Count |
 |---|---|
-| method | 1,943 |
-| field | 1,297 |
-| variable | 1,225 |
-| class | 1,042 |
-| constant | 1,016 |
-| function | 741 |
-| property | 83 |
-| staticmethod | 35 |
-| classmethod | 10 |
+| method | 3,071 |
+| variable | 1,368 |
+| field | 1,307 |
+| constant | 1,297 |
+| class | 1,123 |
+| function | 1,100 |
+| property | 104 |
+| staticmethod | 91 |
+| classmethod | 11 |
 | import | 7 |
 
 Selected key symbols by subsystem:
 
 **api/**
-- `api/openstack/compute/routes.py` (901 lines): defines the URL routing table mapping HTTP method + path to controller classes for all OpenStack Compute API resources.
-- `api/openstack/wsgi.py` (937 lines): class `Controller` base, `Application`, `ResourceExceptionHandler`, request/response serialisation helpers.
-- `api/openstack/compute/servers.py` (1,639 lines): class `ServersController` with `create`, `show`, `index`, `update`, `delete`, `_get_servers` (CCN 37), and action dispatch methods.
-- `api/openstack/compute/views/servers.py` (823 lines): class `ViewBuilder` with `show` (CCN 50) serialising instance objects to REST responses.
-- `api/openstack/compute/schemas/servers.py` (2,123 lines): JSON schema constants for server create/update/action request bodies.
-- `api/validation/__init__.py` (452 lines): `schema` decorator factory validating request bodies against JSON schema.
-- `api/openstack/api_version_request.py` (441 lines): `APIVersionRequest` class implementing microversion comparison and negotiation.
-- `api/openstack/common.py` (554 lines): pagination helpers (`get_pagination_params`, `limited`), `get_id_from_href`.
-- `api/openstack/urlmap.py` (309 lines): `URLMap` WSGI app building routing from paste-ini configuration.
-- `api/openstack/compute/extension_info.py` (891 lines): `ExtensionInfoController` returning the list of 859 API extension descriptors.
+- `api/openstack/compute/routes.py` (901 lines): URL routing table mapping HTTP method + path to controller classes.
+- `api/openstack/wsgi.py` (937 lines): `Controller` base, `Application`, `ResourceExceptionHandler`, request/response serialisation.
+- `api/openstack/compute/servers.py` (1,639 lines): `ServersController` with `create`, `show`, `index`, `_get_servers` (CCN 37).
+- `api/openstack/compute/views/servers.py` (823 lines): `ViewBuilder.show` (CCN 50) serialising instances to REST responses.
+- `api/openstack/compute/schemas/servers.py` (2,123 lines): JSON schema constants for server create/update/action.
+- `api/validation/__init__.py` (452 lines): `schema` decorator factory for request body validation.
+
+**cmd/**
+- `cmd/manage.py`: `ManageCommands` class with sub-commands for database migrations, user management, floating-IP allocation, and cell operations.
+- `cmd/baseproxy.py`: shared console proxy startup logic.
+- `cmd/policy.py`: policy rule checker accepting OS_ROLES, OS_USER_ID, OS_TENANT_ID from environment.
+- Nine service launcher scripts (`cmd/api.py`, `cmd/compute.py`, `cmd/conductor.py`, `cmd/scheduler.py`, `cmd/novncproxy.py`, `cmd/serialproxy.py`, `cmd/spicehtml5proxy.py`, `cmd/status.py`): each calls `config.parse_args(sys.argv)` as their primary entry point.
+
+**compute/**
+- `compute/api.py`: class `API` — the public compute service interface (instance CRUD, live migration, resize, shelve, snapshot, power operations). CCN-43 function `_validate_bdm`.
+- `compute/manager.py`: class `ComputeManager` — per-hypervisor service process implementing all instance lifecycle operations. CCN-40 function `_init_instance`.
+
+**conductor/**
+- `conductor/manager.py`: class `ConductorManager` coordinating multi-node operations (build instance, migrate, evacuate, unshelve). 18 db-write sinks.
+
+**conf/**
+- One `cfg.OptGroup` + `cfg.Opt` declaration file per Nova sub-system (e.g. `conf/compute.py`, `conf/scheduler.py`, `conf/database.py`); each defines the `nova.conf` option namespace consumed by all other sub-systems.
+
+**console/**
+- `console/websocketproxy.py`: WebSocket proxy base used by noVNC, SPICE, and serial console.
+- `console/securityproxy/rfb.py` and `console/rfb/auths.py`: RFB (VNC) protocol security-handshake handlers.
+- `console/serial.py`: serial console proxy; `network-socket` entry point at `L83`.
 
 **accelerator/**
-- Class `_CyborgClient` (`accelerator/cyborg.py:L118-L419`): 14 public HTTP-wrapper methods.
-- Module-level function `get_client` (`accelerator/cyborg.py:L53-L65`): lazily-created `_CyborgClient` factory.
+- Class `_CyborgClient` (`accelerator/cyborg.py:L118-L419`): 14 HTTP-wrapper methods for Cyborg API.
+- Function `get_client` (`accelerator/cyborg.py:L53-L65`): lazily-created `_CyborgClient` factory.
 
 **exception.py**
-- 1,016 constant symbols (one per Nova exception class: `NovaException`, `NotFound`, `Invalid`, `Conflict`, `Forbidden`, `Unauthorized`, `InstanceNotFound`, `ComputeHostNotFound`, etc.) defined as `class Foo(NovaException)` stubs (`exception.py:L27-L2682`).
-- Class `ConvertedException` (`exception.py:L35`): bridges `webob.exc.WSGIHTTPException` into the Nova exception hierarchy.
+- 1,297 constant symbols (Nova exception class hierarchy, `exception.py:L27-L2682`).
+- Class `ConvertedException` (`exception.py:L35`): bridges `webob.exc.WSGIHTTPException` into nova hierarchy.
 
 **objects/**
-- 45 domain-object classes, one per file (`Instance`, `Flavor`, `ComputeNode`, `Migration`, `RequestSpec`, `InstanceGroup`, `PciDevice`, `Aggregate`, `Service`, etc.).
-- Base classes `NovaObject` and `NovaObjectDictCompat` in `objects/base.py` implement oslo.versionedobjects version negotiation.
-- `objects/fields.py` (1,469 lines): 1,297 field-type classes used across all domain objects.
-- `objects/__init__.py` (122 lines): imports all 45 object modules to register them with the OVO registry.
+- 45 domain-object classes (`Instance`, `Flavor`, `ComputeNode`, `Migration`, `RequestSpec`, `InstanceGroup`, `PciDevice`, `Aggregate`, `Service`, etc.).
+- `objects/base.py`: `NovaObject` and `NovaObjectDictCompat` base classes.
+- `objects/fields.py` (1,469 lines): 1,307 field-type classes.
+- `objects/__init__.py` (122 lines): OVO registry import hub.
 
 **network/**
-- `network/neutron.py` (3,989 lines): class `API` — the primary Neutron client, implementing all port, network, security group, and floating IP operations.
+- `network/neutron.py` (3,989 lines): `API` class — Neutron client for all port, network, security group, and floating-IP operations.
 - `network/model.py` (633 lines): `NetworkInfo`, `Network`, `Subnet`, `FixedIP`, `FloatingIP`, `VIF` data-model classes.
-- `network/security_group_api.py` (709 lines): `SecurityGroupAPI` delegating to Neutron for security group CRUD.
+- `network/security_group_api.py` (709 lines): `SecurityGroupAPI` delegating to Neutron.
 - `network/os_vif_util.py` (551 lines): conversion between Nova VIF objects and os-vif plug-in descriptors.
 
 **db/api/** and **db/main/**
@@ -430,79 +556,71 @@ Selected key symbols by subsystem:
 - `db/migration.py`: `db_sync`, `db_version`, `db_initial_version` (`db/migration.py:L1-L108`).
 
 **scheduler/**
-- `scheduler/manager.py`: class `SchedulerManager` orchestrating host selection via `select_destinations`.
-- `scheduler/host_manager.py`: class `HostManager` building and maintaining the host-state map.
-- `scheduler/client/report.py` (2,688 lines): class `SchedulerReportClient` managing Placement resource-provider records.
-- `scheduler/filters/__init__.py`: abstract base `BaseHostFilter`; 14 concrete filter subclasses.
-- `scheduler/weights/__init__.py`: abstract base `BaseHostWeigher`; 12 concrete weigher subclasses.
-- `scheduler/utils.py` (1,560 lines): 741+ helper functions including `resources_from_request_spec` (CCN 27).
+- `scheduler/manager.py`: `SchedulerManager` orchestrating host selection via `select_destinations`.
+- `scheduler/client/report.py` (2,688 lines): `SchedulerReportClient` managing Placement resource-provider records.
+- `scheduler/filters/__init__.py`: abstract `BaseHostFilter`; 14 concrete filter subclasses.
+- `scheduler/weights/__init__.py`: abstract `BaseHostWeigher`; 12 concrete weigher subclasses.
+- `scheduler/utils.py` (1,560 lines): helper functions including `resources_from_request_spec` (CCN 27).
 
 ---
 
 ## External Dependencies
 
-All non-`nova` modules imported across the 327 KB records. Source: `dependencies` arrays in `.aee/kb/src/nova/**/*.json`.
+All non-`nova` modules imported across the 433 KB records. Source: `dependencies` arrays in `.aee/kb/src/nova/**/*.json`.
 
 | Package | Files importing |
 |---|---|
-| `oslo_utils` | 100 |
+| `oslo_utils` | 130 |
+| `oslo_log` | 106 |
 | `webob` | 86 |
-| `oslo_log` | 79 |
-| `copy` | 58 |
-| `sqlalchemy` | 56 |
-| `oslo_serialization` | 35 |
-| `oslo_db` | 27 |
+| `copy` | 69 |
+| `oslo_config` | 61 |
+| `sqlalchemy` | 59 |
+| `oslo_serialization` | 43 |
+| `oslo_db` | 30 |
+| `keystoneauth1` | 26 |
+| `collections` | 25 |
+| `functools` | 24 |
 | `alembic` | 18 |
-| `collections` | 15 |
-| `functools` | 15 |
-| `re` | 13 |
-| `keystoneauth1` | 9 |
-| `itertools` | 8 |
-| `typing` | 8 |
-| `urllib` | 8 |
-| `os` | 7 |
-| `datetime` | 7 |
-| `netaddr` | 7 |
-| `oslo_versionedobjects` | 6 |
-| `oslo_config` | 5 |
-| `os_resource_classes` | 5 |
-| `oslo_messaging` | 4 |
-| `os_traits` | 4 |
-| `inspect` | 4 |
-| `time` | 4 |
+| `re` | 17 |
+| `sys` | 15 |
+| `os` | 14 |
+| `oslo_messaging` | 13 |
+| `typing` | 11 |
+| `itertools` | 10 |
+| `urllib` | 10 |
+| `oslo_reports` | 10 |
 
-Additional packages used by fewer files: `alembic`, `cursive`, `eventlet`, `hashlib`, `jsonschema`, `netaddr`, `openstack`, `os_service_types`, `oslo_concurrency`, `oslo_i18n`, `oslo_middleware`, `oslo_service`, `osc_lib`, `retrying`, `six`, and standard-library modules (`contextlib`, `logging`, `operator`, `random`, `shutil`, `sys`, `tempfile`, `threading`, `traceback`). Total unique external packages: 58.
+Additional packages used by fewer files: `cursive`, `eventlet`, `greenlet`, `hashlib`, `jsonschema`, `netaddr`, `openstack`, `os_resource_classes`, `os_service_types`, `os_traits`, `oslo_concurrency`, `oslo_i18n`, `oslo_middleware`, `oslo_service`, `oslo_versionedobjects`, `osc_lib`, `retrying`, and standard-library modules. Total unique external packages: 90.
 
 ---
 
 ## Side Effects
 
-1,484 side-effect records across 213 files. Source: `sideEffects` arrays in `.aee/kb/src/nova/**/*.json`.
+1,858 side-effect records across 284 files. Source: `sideEffects` arrays in `.aee/kb/src/nova/**/*.json`.
 
 | Kind | Count | Primary subsystem |
 |---|---|---|
-| global-mutation | 1,016 | objects/ (649), api/ (175+), scheduler/ (89), db/ (18), network/ (60+), core (25+) |
-| network | 454 | api/ (200+), objects/ (108), db/ (42), network/ (80+), scheduler/ (6), accelerator/ (7) |
-| file-io | 14 | core utils/exception (4), db/ (2), api/ (8+) |
+| global-mutation | 1,303 | compute/ (350+), objects/ (649), api/ (175+), scheduler/ (89), conf/ (60+) |
+| network | 527 | api/ (200+), objects/ (108), network/ (80+), compute/ (50+), db/ (42), scheduler/ (6), accelerator/ (7) |
+| file-io | 26 | cmd/ (12), core utils (4), compute/ (6), db/ (2), api/ (2) |
+| syscall | 2 | console/ (2) |
 
-Representative entries (from KB record `sideEffects`):
-
-- `api/auth.py` — `network`: WSGI middleware issuing keystoneauth1 token verification on each inbound request.
-- `api/metadata/handler.py` — `network`: HTTP calls to the metadata service backend.
-- `api/openstack/compute/servers.py` — `global-mutation`: module-level route registration side-effects at import time.
+Representative entries:
+- `cmd/compute.py:L49` — `cli-args` (entry point): `config.parse_args(sys.argv)` processes command-line flags.
+- `compute/api.py` — 350+ `global-mutation` entries recording instance state changes.
+- `compute/manager.py` — 50+ `network` entries: RPC calls to conductor, scheduler, and network services.
+- `console/serial.py:L83` — `network-socket` (entry point): raw socket opened for serial console connection.
+- `network/neutron.py` — 80+ `network` side effects: Neutron REST API calls.
+- `conf/compute.py` — oslo.config option declarations registered at module import time (global-mutation).
+- `db/main/api.py` — 46 `network`-class entries: SQLAlchemy session operations.
 - `accelerator/cyborg.py:L153-L154` — `network`: HTTP GET to Cyborg `/device_profiles`.
-- `db/api/models.py:L23` — `global-mutation`: SQLAlchemy `Base = declarative_base()` at module level.
-- `db/main/api.py` — 46 `network`-class entries (SQLAlchemy session operations).
-- `network/neutron.py` — 80+ `network` entries: Neutron REST API calls (port CRUD, security group, floating IP, network listing).
-- `objects/aggregate.py:L42` — `network`: OVO `remotable` decorator triggers RPC dispatch from non-conductor context.
-- `scheduler/client/report.py:L279` — `network`: HTTP GET to Placement API.
-- `service_auth.py:L56` — `network`: keystoneauth1 token fetch.
 
 ---
 
 ## Component Diagram
 
-All 1,060 file edges are intra-component (`crossComponent: false`). No cross-component seams exist. Source: `.aee/link-graph.json` (commit `6bd3ba5` updated by batch 4).
+All 1,536 file edges are intra-component (`crossComponent: false`). No cross-component seams exist. Source: `.aee/link-graph.json` (batch f56908d5).
 
 ```mermaid
 graph LR
@@ -700,10 +818,108 @@ graph LR
     api-validation-response-types-py["api/validation/response_types.py"]
     api-validation-validators-py["api/validation/validators.py"]
     api-wsgi-py["api/wsgi.py"]
+    cmd-baseproxy-py["cmd/baseproxy.py"]
+    cmd-common-py["cmd/common.py"]
+    cmd-compute-py["cmd/compute.py"]
+    cmd-conductor-py["cmd/conductor.py"]
+    cmd-manage-py["cmd/manage.py"]
+    cmd-novncproxy-py["cmd/novncproxy.py"]
+    cmd-policy-py["cmd/policy.py"]
+    cmd-scheduler-py["cmd/scheduler.py"]
+    cmd-serialproxy-py["cmd/serialproxy.py"]
+    cmd-spicehtml5proxy-py["cmd/spicehtml5proxy.py"]
+    cmd-status-py["cmd/status.py"]
+    compute-api-py["compute/api.py"]
+    compute-build-results-py["compute/build_results.py"]
+    compute-claims-py["compute/claims.py"]
+    compute-flavors-py["compute/flavors.py"]
+    compute-instance-actions-py["compute/instance_actions.py"]
+    compute-instance-list-py["compute/instance_list.py"]
+    compute-manager-py["compute/manager.py"]
+    compute-migration-list-py["compute/migration_list.py"]
+    compute-monitors-base-py["compute/monitors/base.py"]
+    compute-monitors-cpu-virt-driver-py["compute/monitors/cpu/virt_driver.py"]
+    compute-monitors-init["compute/monitors/__init__.py"]
+    compute-multi-cell-list-py["compute/multi_cell_list.py"]
+    compute-pci-placement-translator-py["compute/pci_placement_translator.py"]
+    compute-power-state-py["compute/power_state.py"]
+    compute-provider-config-py["compute/provider_config.py"]
+    compute-provider-tree-py["compute/provider_tree.py"]
+    compute-resource-tracker-py["compute/resource_tracker.py"]
+    compute-rpcapi-py["compute/rpcapi.py"]
+    compute-share-management-py["compute/share_management.py"]
+    compute-stats-py["compute/stats.py"]
+    compute-task-states-py["compute/task_states.py"]
+    compute-utils-py["compute/utils.py"]
+    compute-vm-states-py["compute/vm_states.py"]
+    conductor-api-py["conductor/api.py"]
+    conductor-init["conductor/__init__.py"]
+    conductor-manager-py["conductor/manager.py"]
+    conductor-rpcapi-py["conductor/rpcapi.py"]
+    conductor-tasks-base-py["conductor/tasks/base.py"]
+    conductor-tasks-cross-cell-migrate-py["conductor/tasks/cross_cell_migrate.py"]
+    conductor-tasks-live-migrate-py["conductor/tasks/live_migrate.py"]
+    conductor-tasks-migrate-py["conductor/tasks/migrate.py"]
+    conf-api-py["conf/api.py"]
+    conf-availability-zone-py["conf/availability_zone.py"]
+    conf-base-py["conf/base.py"]
+    conf-cache-py["conf/cache.py"]
+    conf-cinder-py["conf/cinder.py"]
+    conf-compute-py["conf/compute.py"]
+    conf-conductor-py["conf/conductor.py"]
+    conf-configdrive-py["conf/configdrive.py"]
+    conf-console-py["conf/console.py"]
+    conf-consoleauth-py["conf/consoleauth.py"]
+    conf-cyborg-py["conf/cyborg.py"]
+    conf-database-py["conf/database.py"]
+    conf-devices-py["conf/devices.py"]
+    conf-ephemeral-storage-py["conf/ephemeral_storage.py"]
+    conf-glance-py["conf/glance.py"]
+    conf-guestfs-py["conf/guestfs.py"]
+    conf-imagecache-py["conf/imagecache.py"]
+    conf-init["conf/__init__.py"]
+    conf-ironic-py["conf/ironic.py"]
+    conf-key-manager-py["conf/key_manager.py"]
+    conf-keystone-py["conf/keystone.py"]
+    conf-libvirt-py["conf/libvirt.py"]
+    conf-manila-py["conf/manila.py"]
+    conf-mks-py["conf/mks.py"]
+    conf-netconf-py["conf/netconf.py"]
+    conf-neutron-py["conf/neutron.py"]
+    conf-notifications-py["conf/notifications.py"]
+    conf-novnc-py["conf/novnc.py"]
+    conf-paths-py["conf/paths.py"]
+    conf-pci-py["conf/pci.py"]
+    conf-placement-py["conf/placement.py"]
+    conf-quota-py["conf/quota.py"]
+    conf-rpc-py["conf/rpc.py"]
+    conf-scheduler-py["conf/scheduler.py"]
+    conf-serial-console-py["conf/serial_console.py"]
+    conf-service-py["conf/service.py"]
+    conf-service-token-py["conf/service_token.py"]
+    conf-servicegroup-py["conf/servicegroup.py"]
+    conf-spice-py["conf/spice.py"]
+    conf-upgrade-levels-py["conf/upgrade_levels.py"]
+    conf-utils-py["conf/utils.py"]
+    conf-vendordata-py["conf/vendordata.py"]
+    conf-vmware-py["conf/vmware.py"]
+    conf-vnc-py["conf/vnc.py"]
+    conf-workarounds-py["conf/workarounds.py"]
+    conf-wsgi-py["conf/wsgi.py"]
+    conf-zvm-py["conf/zvm.py"]
+    console-rfb-auth-py["console/rfb/auth.py"]
+    console-rfb-authnone-py["console/rfb/authnone.py"]
+    console-rfb-auths-py["console/rfb/auths.py"]
+    console-rfb-authvencrypt-py["console/rfb/authvencrypt.py"]
+    console-securityproxy-base-py["console/securityproxy/base.py"]
+    console-securityproxy-rfb-py["console/securityproxy/rfb.py"]
+    console-serial-py["console/serial.py"]
+    console-websocketproxy-py["console/websocketproxy.py"]
     db-api-api-py["db/api/api.py"]
     db-api-migrations-env-py["db/api/migrations/env.py"]
     db-api-migrations-versions-d67eeaabee36-initial-version-py["db/api/migrations/versions/d67eeaabee36_initial_version.py"]
     db-api-models-py["db/api/models.py"]
+    db-constants-py["db/constants.py"]
     db-main-api-py["db/main/api.py"]
     db-main-migrations-env-py["db/main/migrations/env.py"]
     db-main-migrations-versions-8f2f1571d55b-initial-version-py["db/main/migrations/versions/8f2f1571d55b_initial_version.py"]
@@ -815,10 +1031,12 @@ graph LR
     accelerator-cyborg-py -->|2| service-auth-py
     accelerator-cyborg-py -->|2| utils-py
     api-auth-py -->|2| api-wsgi-py
+    api-auth-py --> conf-init
     api-auth-py -->|2| i18n-py
     api-metadata-base-py -->|2| api-metadata-password-py
     api-metadata-base-py -->|2| api-metadata-vendordata-dynamic-py
     api-metadata-base-py -->|2| api-metadata-vendordata-json-py
+    api-metadata-base-py --> conf-init
     api-metadata-base-py --> exception-py
     api-metadata-base-py -->|2| network-neutron-py
     api-metadata-base-py -->|2| network-security-group-api-py
@@ -827,20 +1045,27 @@ graph LR
     api-metadata-base-py -->|2| utils-py
     api-metadata-handler-py -->|4| api-metadata-base-py
     api-metadata-handler-py -->|2| api-wsgi-py
+    api-metadata-handler-py --> conf-init
     api-metadata-handler-py -->|2| exception-py
     api-metadata-handler-py -->|2| i18n-py
     api-metadata-handler-py -->|2| network-neutron-py
+    api-metadata-password-py --> conf-init
     api-metadata-password-py --> exception-py
     api-metadata-password-py -->|2| i18n-py
     api-metadata-password-py -->|3| objects-init
     api-metadata-password-py -->|2| utils-py
     api-metadata-vendordata-dynamic-py -->|2| api-metadata-vendordata-py
+    api-metadata-vendordata-dynamic-py --> conf-init
     api-metadata-vendordata-dynamic-py -->|3| service-auth-py
     api-metadata-vendordata-json-py -->|2| api-metadata-vendordata-py
+    api-metadata-vendordata-json-py --> conf-init
     api-openstack-api-version-request-py --> api-openstack-wsgi-py
     api-openstack-api-version-request-py -->|2| exception-py
     api-openstack-api-version-request-py -->|2| i18n-py
     api-openstack-common-py -->|2| api-openstack-api-version-request-py
+    api-openstack-common-py -->|2| compute-task-states-py
+    api-openstack-common-py -->|2| compute-vm-states-py
+    api-openstack-common-py --> conf-init
     api-openstack-common-py -->|2| exception-py
     api-openstack-common-py -->|2| i18n-py
     api-openstack-common-py -->|2| objects-init
@@ -849,12 +1074,16 @@ graph LR
     api-openstack-compute-admin-actions-py --> api-openstack-compute-schemas-admin-actions-py
     api-openstack-compute-admin-actions-py -->|6| api-openstack-wsgi-py
     api-openstack-compute-admin-actions-py -->|3| api-validation-init
+    api-openstack-compute-admin-actions-py -->|2| compute-api-py
+    api-openstack-compute-admin-actions-py --> compute-instance-actions-py
+    api-openstack-compute-admin-actions-py --> compute-vm-states-py
     api-openstack-compute-admin-actions-py --> exception-py
     api-openstack-compute-admin-actions-py -->|2| objects-init
     api-openstack-compute-admin-password-py -->|4| api-openstack-common-py
     api-openstack-compute-admin-password-py --> api-openstack-compute-schemas-admin-password-py
     api-openstack-compute-admin-password-py -->|5| api-openstack-wsgi-py
     api-openstack-compute-admin-password-py -->|3| api-validation-init
+    api-openstack-compute-admin-password-py -->|2| compute-api-py
     api-openstack-compute-admin-password-py --> exception-py
     api-openstack-compute-admin-password-py -->|2| i18n-py
     api-openstack-compute-agents-py --> api-openstack-compute-schemas-agents-py
@@ -866,18 +1095,22 @@ graph LR
     api-openstack-compute-aggregates-py --> api-openstack-compute-schemas-aggregates-py
     api-openstack-compute-aggregates-py -->|6| api-openstack-wsgi-py
     api-openstack-compute-aggregates-py -->|4| api-validation-init
+    api-openstack-compute-aggregates-py -->|2| compute-api-py
+    api-openstack-compute-aggregates-py -->|2| conductor-api-py
     api-openstack-compute-aggregates-py --> exception-py
     api-openstack-compute-aggregates-py -->|2| i18n-py
     api-openstack-compute-aggregates-py -->|2| utils-py
     api-openstack-compute-assisted-volume-snapshots-py --> api-openstack-compute-schemas-assisted-volume-snapshots-py
     api-openstack-compute-assisted-volume-snapshots-py -->|4| api-openstack-wsgi-py
     api-openstack-compute-assisted-volume-snapshots-py -->|4| api-validation-init
+    api-openstack-compute-assisted-volume-snapshots-py -->|2| compute-api-py
     api-openstack-compute-assisted-volume-snapshots-py --> exception-py
     api-openstack-compute-attach-interfaces-py -->|2| api-openstack-api-version-request-py
     api-openstack-compute-attach-interfaces-py -->|4| api-openstack-common-py
     api-openstack-compute-attach-interfaces-py --> api-openstack-compute-schemas-attach-interfaces-py
     api-openstack-compute-attach-interfaces-py -->|4| api-openstack-wsgi-py
     api-openstack-compute-attach-interfaces-py -->|4| api-validation-init
+    api-openstack-compute-attach-interfaces-py -->|2| compute-api-py
     api-openstack-compute-attach-interfaces-py --> exception-py
     api-openstack-compute-attach-interfaces-py -->|2| i18n-py
     api-openstack-compute-attach-interfaces-py -->|2| network-neutron-py
@@ -885,10 +1118,13 @@ graph LR
     api-openstack-compute-availability-zone-py --> api-openstack-compute-schemas-availability-zone-py
     api-openstack-compute-availability-zone-py -->|3| api-openstack-wsgi-py
     api-openstack-compute-availability-zone-py -->|3| api-validation-init
+    api-openstack-compute-availability-zone-py -->|2| compute-api-py
+    api-openstack-compute-availability-zone-py --> conf-init
     api-openstack-compute-baremetal-nodes-py --> api-openstack-api-version-request-py
     api-openstack-compute-baremetal-nodes-py --> api-openstack-compute-schemas-baremetal-nodes-py
     api-openstack-compute-baremetal-nodes-py -->|5| api-openstack-wsgi-py
     api-openstack-compute-baremetal-nodes-py -->|4| api-validation-init
+    api-openstack-compute-baremetal-nodes-py --> conf-init
     api-openstack-compute-baremetal-nodes-py -->|2| i18n-py
     api-openstack-compute-baremetal-nodes-py -->|2| utils-py
     api-openstack-compute-cells-py --> api-openstack-compute-schemas-cells-py
@@ -904,12 +1140,14 @@ graph LR
     api-openstack-compute-console-auth-tokens-py --> api-openstack-compute-schemas-console-auth-tokens-py
     api-openstack-compute-console-auth-tokens-py -->|3| api-openstack-wsgi-py
     api-openstack-compute-console-auth-tokens-py -->|3| api-validation-init
+    api-openstack-compute-console-auth-tokens-py --> conf-init
     api-openstack-compute-console-auth-tokens-py -->|2| i18n-py
     api-openstack-compute-console-auth-tokens-py --> objects-init
     api-openstack-compute-console-output-py -->|3| api-openstack-common-py
     api-openstack-compute-console-output-py --> api-openstack-compute-schemas-console-output-py
     api-openstack-compute-console-output-py -->|4| api-openstack-wsgi-py
     api-openstack-compute-console-output-py -->|3| api-validation-init
+    api-openstack-compute-console-output-py -->|2| compute-api-py
     api-openstack-compute-console-output-py --> exception-py
     api-openstack-compute-consoles-py --> api-openstack-compute-schemas-consoles-py
     api-openstack-compute-consoles-py -->|4| api-openstack-wsgi-py
@@ -919,17 +1157,22 @@ graph LR
     api-openstack-compute-create-backup-py --> api-openstack-compute-schemas-create-backup-py
     api-openstack-compute-create-backup-py -->|5| api-openstack-wsgi-py
     api-openstack-compute-create-backup-py -->|3| api-validation-init
+    api-openstack-compute-create-backup-py -->|2| compute-api-py
     api-openstack-compute-create-backup-py --> exception-py
     api-openstack-compute-deferred-delete-py -->|3| api-openstack-common-py
     api-openstack-compute-deferred-delete-py --> api-openstack-compute-schemas-deferred-delete-py
     api-openstack-compute-deferred-delete-py -->|5| api-openstack-wsgi-py
     api-openstack-compute-deferred-delete-py -->|3| api-validation-init
+    api-openstack-compute-deferred-delete-py -->|2| compute-api-py
     api-openstack-compute-deferred-delete-py --> exception-py
     api-openstack-compute-evacuate-py -->|2| api-openstack-api-version-request-py
     api-openstack-compute-evacuate-py -->|3| api-openstack-common-py
     api-openstack-compute-evacuate-py --> api-openstack-compute-schemas-evacuate-py
     api-openstack-compute-evacuate-py -->|4| api-openstack-wsgi-py
     api-openstack-compute-evacuate-py -->|3| api-validation-init
+    api-openstack-compute-evacuate-py -->|3| compute-api-py
+    api-openstack-compute-evacuate-py --> compute-vm-states-py
+    api-openstack-compute-evacuate-py --> conf-init
     api-openstack-compute-evacuate-py -->|2| exception-py
     api-openstack-compute-evacuate-py -->|2| i18n-py
     api-openstack-compute-evacuate-py -->|2| objects-init
@@ -963,6 +1206,7 @@ graph LR
     api-openstack-compute-flavors-py --> api-openstack-compute-views-flavors-py
     api-openstack-compute-flavors-py -->|5| api-openstack-wsgi-py
     api-openstack-compute-flavors-py -->|4| api-validation-init
+    api-openstack-compute-flavors-py -->|3| compute-flavors-py
     api-openstack-compute-flavors-py --> exception-py
     api-openstack-compute-flavors-py -->|2| i18n-py
     api-openstack-compute-flavors-py -->|4| objects-init
@@ -983,6 +1227,7 @@ graph LR
     api-openstack-compute-floating-ips-py --> api-openstack-compute-schemas-floating-ips-py
     api-openstack-compute-floating-ips-py -->|6| api-openstack-wsgi-py
     api-openstack-compute-floating-ips-py -->|4| api-validation-init
+    api-openstack-compute-floating-ips-py -->|2| compute-api-py
     api-openstack-compute-floating-ips-py --> exception-py
     api-openstack-compute-floating-ips-py -->|2| i18n-py
     api-openstack-compute-floating-ips-py -->|2| network-neutron-py
@@ -994,6 +1239,7 @@ graph LR
     api-openstack-compute-hosts-py --> api-openstack-compute-schemas-hosts-py
     api-openstack-compute-hosts-py -->|4| api-openstack-wsgi-py
     api-openstack-compute-hosts-py -->|4| api-validation-init
+    api-openstack-compute-hosts-py -->|2| compute-api-py
     api-openstack-compute-hosts-py --> exception-py
     api-openstack-compute-hosts-py -->|3| objects-init
     api-openstack-compute-hypervisors-py -->|2| api-openstack-api-version-request-py
@@ -1002,6 +1248,7 @@ graph LR
     api-openstack-compute-hypervisors-py --> api-openstack-compute-views-hypervisors-py
     api-openstack-compute-hypervisors-py -->|4| api-openstack-wsgi-py
     api-openstack-compute-hypervisors-py -->|3| api-validation-init
+    api-openstack-compute-hypervisors-py -->|2| compute-api-py
     api-openstack-compute-hypervisors-py --> exception-py
     api-openstack-compute-hypervisors-py -->|2| i18n-py
     api-openstack-compute-hypervisors-py -->|2| utils-py
@@ -1026,12 +1273,15 @@ graph LR
     api-openstack-compute-instance-actions-py --> api-openstack-compute-views-instance-actions-py
     api-openstack-compute-instance-actions-py -->|3| api-openstack-wsgi-py
     api-openstack-compute-instance-actions-py -->|3| api-validation-init
+    api-openstack-compute-instance-actions-py -->|3| compute-api-py
     api-openstack-compute-instance-actions-py --> exception-py
     api-openstack-compute-instance-actions-py -->|2| i18n-py
     api-openstack-compute-instance-actions-py -->|3| utils-py
     api-openstack-compute-instance-usage-audit-log-py --> api-openstack-compute-schemas-instance-usage-audit-log-py
     api-openstack-compute-instance-usage-audit-log-py -->|3| api-openstack-wsgi-py
     api-openstack-compute-instance-usage-audit-log-py -->|3| api-validation-init
+    api-openstack-compute-instance-usage-audit-log-py -->|2| compute-api-py
+    api-openstack-compute-instance-usage-audit-log-py --> compute-rpcapi-py
     api-openstack-compute-instance-usage-audit-log-py -->|2| i18n-py
     api-openstack-compute-instance-usage-audit-log-py -->|2| utils-py
     api-openstack-compute-ips-py -->|3| api-openstack-common-py
@@ -1039,6 +1289,7 @@ graph LR
     api-openstack-compute-ips-py --> api-openstack-compute-views-ips-py
     api-openstack-compute-ips-py -->|3| api-openstack-wsgi-py
     api-openstack-compute-ips-py -->|3| api-validation-init
+    api-openstack-compute-ips-py -->|2| compute-api-py
     api-openstack-compute-ips-py -->|2| i18n-py
     api-openstack-compute-keypairs-py -->|2| api-openstack-api-version-request-py
     api-openstack-compute-keypairs-py -->|3| api-openstack-common-py
@@ -1046,6 +1297,7 @@ graph LR
     api-openstack-compute-keypairs-py --> api-openstack-compute-views-keypairs-py
     api-openstack-compute-keypairs-py -->|4| api-openstack-wsgi-py
     api-openstack-compute-keypairs-py -->|4| api-validation-init
+    api-openstack-compute-keypairs-py -->|2| compute-api-py
     api-openstack-compute-keypairs-py --> exception-py
     api-openstack-compute-keypairs-py --> objects-keypair-py
     api-openstack-compute-limits-py -->|2| api-openstack-api-version-request-py
@@ -1058,11 +1310,13 @@ graph LR
     api-openstack-compute-lock-server-py --> api-openstack-compute-schemas-lock-server-py
     api-openstack-compute-lock-server-py -->|5| api-openstack-wsgi-py
     api-openstack-compute-lock-server-py -->|3| api-validation-init
+    api-openstack-compute-lock-server-py -->|2| compute-api-py
     api-openstack-compute-migrate-server-py -->|2| api-openstack-api-version-request-py
     api-openstack-compute-migrate-server-py -->|3| api-openstack-common-py
     api-openstack-compute-migrate-server-py --> api-openstack-compute-schemas-migrate-server-py
     api-openstack-compute-migrate-server-py -->|5| api-openstack-wsgi-py
     api-openstack-compute-migrate-server-py -->|3| api-validation-init
+    api-openstack-compute-migrate-server-py -->|2| compute-api-py
     api-openstack-compute-migrate-server-py --> exception-py
     api-openstack-compute-migrate-server-py -->|2| i18n-py
     api-openstack-compute-migrations-py -->|2| api-openstack-api-version-request-py
@@ -1071,6 +1325,7 @@ graph LR
     api-openstack-compute-migrations-py --> api-openstack-compute-views-migrations-py
     api-openstack-compute-migrations-py -->|3| api-openstack-wsgi-py
     api-openstack-compute-migrations-py -->|3| api-validation-init
+    api-openstack-compute-migrations-py -->|2| compute-api-py
     api-openstack-compute-migrations-py --> exception-py
     api-openstack-compute-migrations-py -->|2| i18n-py
     api-openstack-compute-migrations-py -->|2| objects-base-py
@@ -1079,6 +1334,7 @@ graph LR
     api-openstack-compute-multinic-py --> api-openstack-compute-schemas-multinic-py
     api-openstack-compute-multinic-py -->|6| api-openstack-wsgi-py
     api-openstack-compute-multinic-py -->|3| api-validation-init
+    api-openstack-compute-multinic-py -->|2| compute-api-py
     api-openstack-compute-multinic-py --> exception-py
     api-openstack-compute-networks-associate-py --> api-openstack-compute-schemas-networks-associate-py
     api-openstack-compute-networks-associate-py -->|5| api-openstack-wsgi-py
@@ -1094,6 +1350,7 @@ graph LR
     api-openstack-compute-pause-server-py --> api-openstack-compute-schemas-pause-server-py
     api-openstack-compute-pause-server-py -->|5| api-openstack-wsgi-py
     api-openstack-compute-pause-server-py -->|3| api-validation-init
+    api-openstack-compute-pause-server-py -->|2| compute-api-py
     api-openstack-compute-pause-server-py --> exception-py
     api-openstack-compute-quota-classes-py -->|2| api-openstack-api-version-request-py
     api-openstack-compute-quota-classes-py --> api-openstack-compute-schemas-quota-classes-py
@@ -1107,6 +1364,7 @@ graph LR
     api-openstack-compute-quota-sets-py -->|2| api-openstack-identity-py
     api-openstack-compute-quota-sets-py -->|5| api-openstack-wsgi-py
     api-openstack-compute-quota-sets-py -->|4| api-validation-init
+    api-openstack-compute-quota-sets-py --> conf-init
     api-openstack-compute-quota-sets-py --> exception-py
     api-openstack-compute-quota-sets-py -->|2| i18n-py
     api-openstack-compute-quota-sets-py -->|5| objects-init
@@ -1114,12 +1372,15 @@ graph LR
     api-openstack-compute-remote-consoles-py --> api-openstack-compute-schemas-remote-consoles-py
     api-openstack-compute-remote-consoles-py -->|6| api-openstack-wsgi-py
     api-openstack-compute-remote-consoles-py -->|3| api-validation-init
+    api-openstack-compute-remote-consoles-py -->|2| compute-api-py
     api-openstack-compute-remote-consoles-py --> exception-py
     api-openstack-compute-rescue-py -->|2| api-openstack-api-version-request-py
     api-openstack-compute-rescue-py -->|3| api-openstack-common-py
     api-openstack-compute-rescue-py --> api-openstack-compute-schemas-rescue-py
     api-openstack-compute-rescue-py -->|5| api-openstack-wsgi-py
     api-openstack-compute-rescue-py -->|3| api-validation-init
+    api-openstack-compute-rescue-py -->|2| compute-api-py
+    api-openstack-compute-rescue-py --> conf-init
     api-openstack-compute-rescue-py --> exception-py
     api-openstack-compute-rescue-py -->|2| utils-py
     api-openstack-compute-routes-py --> api-openstack-compute-admin-actions-py
@@ -1241,6 +1502,7 @@ graph LR
     api-openstack-compute-schemas-shelve-py --> api-validation-parameter-types-py
     api-openstack-compute-schemas-simple-tenant-usage-py -->|2| api-validation-parameter-types-py
     api-openstack-compute-schemas-simple-tenant-usage-py --> api-validation-response-types-py
+    api-openstack-compute-schemas-simple-tenant-usage-py --> compute-vm-states-py
     api-openstack-compute-schemas-snapshots-py -->|2| api-validation-parameter-types-py
     api-openstack-compute-schemas-volume-attachments-py -->|2| api-validation-parameter-types-py
     api-openstack-compute-schemas-volumes-py -->|2| api-validation-parameter-types-py
@@ -1253,6 +1515,7 @@ graph LR
     api-openstack-compute-security-groups-py --> api-openstack-compute-schemas-security-groups-py
     api-openstack-compute-security-groups-py -->|6| api-openstack-wsgi-py
     api-openstack-compute-security-groups-py -->|4| api-validation-init
+    api-openstack-compute-security-groups-py -->|2| compute-api-py
     api-openstack-compute-security-groups-py --> exception-py
     api-openstack-compute-security-groups-py -->|2| i18n-py
     api-openstack-compute-security-groups-py -->|16| network-security-group-api-py
@@ -1262,16 +1525,19 @@ graph LR
     api-openstack-compute-server-diagnostics-py --> api-openstack-compute-views-server-diagnostics-py
     api-openstack-compute-server-diagnostics-py -->|3| api-openstack-wsgi-py
     api-openstack-compute-server-diagnostics-py -->|3| api-validation-init
+    api-openstack-compute-server-diagnostics-py -->|2| compute-api-py
     api-openstack-compute-server-diagnostics-py --> exception-py
     api-openstack-compute-server-external-events-py --> api-openstack-compute-schemas-server-external-events-py
     api-openstack-compute-server-external-events-py -->|5| api-openstack-wsgi-py
     api-openstack-compute-server-external-events-py -->|3| api-validation-init
+    api-openstack-compute-server-external-events-py -->|2| compute-api-py
     api-openstack-compute-server-external-events-py -->|4| objects-init
     api-openstack-compute-server-groups-py -->|2| api-openstack-api-version-request-py
     api-openstack-compute-server-groups-py -->|2| api-openstack-common-py
     api-openstack-compute-server-groups-py --> api-openstack-compute-schemas-server-groups-py
     api-openstack-compute-server-groups-py -->|4| api-openstack-wsgi-py
     api-openstack-compute-server-groups-py -->|4| api-validation-init
+    api-openstack-compute-server-groups-py --> conf-init
     api-openstack-compute-server-groups-py --> exception-py
     api-openstack-compute-server-groups-py -->|2| i18n-py
     api-openstack-compute-server-groups-py -->|8| objects-init
@@ -1280,6 +1546,7 @@ graph LR
     api-openstack-compute-server-metadata-py --> api-openstack-compute-schemas-server-metadata-py
     api-openstack-compute-server-metadata-py -->|4| api-openstack-wsgi-py
     api-openstack-compute-server-metadata-py -->|4| api-validation-init
+    api-openstack-compute-server-metadata-py -->|2| compute-api-py
     api-openstack-compute-server-metadata-py --> exception-py
     api-openstack-compute-server-metadata-py -->|2| i18n-py
     api-openstack-compute-server-migrations-py -->|2| api-openstack-api-version-request-py
@@ -1287,6 +1554,7 @@ graph LR
     api-openstack-compute-server-migrations-py --> api-openstack-compute-schemas-server-migrations-py
     api-openstack-compute-server-migrations-py -->|6| api-openstack-wsgi-py
     api-openstack-compute-server-migrations-py -->|4| api-validation-init
+    api-openstack-compute-server-migrations-py -->|2| compute-api-py
     api-openstack-compute-server-migrations-py --> exception-py
     api-openstack-compute-server-migrations-py -->|2| i18n-py
     api-openstack-compute-server-password-py -->|3| api-metadata-password-py
@@ -1294,11 +1562,14 @@ graph LR
     api-openstack-compute-server-password-py --> api-openstack-compute-schemas-server-password-py
     api-openstack-compute-server-password-py -->|4| api-openstack-wsgi-py
     api-openstack-compute-server-password-py -->|3| api-validation-init
+    api-openstack-compute-server-password-py -->|2| compute-api-py
     api-openstack-compute-server-shares-py -->|3| api-openstack-common-py
     api-openstack-compute-server-shares-py --> api-openstack-compute-schemas-server-shares-py
     api-openstack-compute-server-shares-py --> api-openstack-compute-views-server-shares-py
     api-openstack-compute-server-shares-py -->|5| api-openstack-wsgi-py
     api-openstack-compute-server-shares-py -->|4| api-validation-init
+    api-openstack-compute-server-shares-py -->|2| compute-api-py
+    api-openstack-compute-server-shares-py --> compute-vm-states-py
     api-openstack-compute-server-shares-py -->|6| exception-py
     api-openstack-compute-server-shares-py --> objects-fields-py
     api-openstack-compute-server-shares-py -->|5| objects-init
@@ -1308,6 +1579,8 @@ graph LR
     api-openstack-compute-server-tags-py -->|5| api-openstack-wsgi-py
     api-openstack-compute-server-tags-py -->|4| api-validation-init
     api-openstack-compute-server-tags-py --> api-validation-parameter-types-py
+    api-openstack-compute-server-tags-py -->|2| compute-api-py
+    api-openstack-compute-server-tags-py --> compute-vm-states-py
     api-openstack-compute-server-tags-py -->|2| exception-py
     api-openstack-compute-server-tags-py -->|2| i18n-py
     api-openstack-compute-server-tags-py -->|9| objects-init
@@ -1315,6 +1588,7 @@ graph LR
     api-openstack-compute-server-topology-py --> api-openstack-compute-schemas-server-topology-py
     api-openstack-compute-server-topology-py -->|4| api-openstack-wsgi-py
     api-openstack-compute-server-topology-py -->|3| api-validation-init
+    api-openstack-compute-server-topology-py -->|2| compute-api-py
     api-openstack-compute-servers-py -->|2| api-openstack-api-version-request-py
     api-openstack-compute-servers-py -->|13| api-openstack-common-py
     api-openstack-compute-servers-py -->|3| api-openstack-compute-helpers-py
@@ -1322,6 +1596,10 @@ graph LR
     api-openstack-compute-servers-py --> api-openstack-compute-views-servers-py
     api-openstack-compute-servers-py -->|7| api-openstack-wsgi-py
     api-openstack-compute-servers-py -->|4| api-validation-init
+    api-openstack-compute-servers-py -->|2| compute-api-py
+    api-openstack-compute-servers-py -->|2| compute-flavors-py
+    api-openstack-compute-servers-py -->|2| compute-utils-py
+    api-openstack-compute-servers-py --> conf-init
     api-openstack-compute-servers-py --> exception-py
     api-openstack-compute-servers-py -->|2| i18n-py
     api-openstack-compute-servers-py -->|9| objects-init
@@ -1330,6 +1608,7 @@ graph LR
     api-openstack-compute-services-py --> api-openstack-compute-schemas-services-py
     api-openstack-compute-services-py -->|4| api-openstack-wsgi-py
     api-openstack-compute-services-py -->|4| api-validation-init
+    api-openstack-compute-services-py -->|3| compute-api-py
     api-openstack-compute-services-py --> exception-py
     api-openstack-compute-services-py -->|2| i18n-py
     api-openstack-compute-services-py -->|6| objects-init
@@ -1340,6 +1619,7 @@ graph LR
     api-openstack-compute-shelve-py --> api-openstack-compute-schemas-shelve-py
     api-openstack-compute-shelve-py -->|5| api-openstack-wsgi-py
     api-openstack-compute-shelve-py -->|3| api-validation-init
+    api-openstack-compute-shelve-py -->|2| compute-api-py
     api-openstack-compute-shelve-py --> exception-py
     api-openstack-compute-simple-tenant-usage-py -->|2| api-openstack-api-version-request-py
     api-openstack-compute-simple-tenant-usage-py -->|2| api-openstack-common-py
@@ -1347,6 +1627,7 @@ graph LR
     api-openstack-compute-simple-tenant-usage-py --> api-openstack-compute-views-usages-py
     api-openstack-compute-simple-tenant-usage-py -->|3| api-openstack-wsgi-py
     api-openstack-compute-simple-tenant-usage-py -->|3| api-validation-init
+    api-openstack-compute-simple-tenant-usage-py --> conf-init
     api-openstack-compute-simple-tenant-usage-py -->|3| exception-py
     api-openstack-compute-simple-tenant-usage-py -->|2| i18n-py
     api-openstack-compute-simple-tenant-usage-py -->|4| objects-init
@@ -1360,11 +1641,13 @@ graph LR
     api-openstack-compute-suspend-server-py --> api-openstack-compute-schemas-suspend-server-py
     api-openstack-compute-suspend-server-py -->|5| api-openstack-wsgi-py
     api-openstack-compute-suspend-server-py -->|3| api-validation-init
+    api-openstack-compute-suspend-server-py -->|2| compute-api-py
     api-openstack-compute-suspend-server-py --> exception-py
     api-openstack-compute-tenant-networks-py --> api-openstack-api-version-request-py
     api-openstack-compute-tenant-networks-py --> api-openstack-compute-schemas-tenant-networks-py
     api-openstack-compute-tenant-networks-py -->|5| api-openstack-wsgi-py
     api-openstack-compute-tenant-networks-py -->|4| api-validation-init
+    api-openstack-compute-tenant-networks-py --> conf-init
     api-openstack-compute-tenant-networks-py --> exception-py
     api-openstack-compute-tenant-networks-py -->|2| i18n-py
     api-openstack-compute-tenant-networks-py -->|2| network-neutron-py
@@ -1397,6 +1680,8 @@ graph LR
     api-openstack-compute-views-servers-py -->|2| api-openstack-compute-views-flavors-py
     api-openstack-compute-views-servers-py -->|2| api-openstack-compute-views-images-py
     api-openstack-compute-views-servers-py -->|2| api-openstack-compute-views-ips-py
+    api-openstack-compute-views-servers-py -->|2| compute-api-py
+    api-openstack-compute-views-servers-py --> compute-vm-states-py
     api-openstack-compute-views-servers-py --> exception-py
     api-openstack-compute-views-servers-py -->|2| network-security-group-api-py
     api-openstack-compute-views-servers-py --> objects-fields-py
@@ -1413,6 +1698,8 @@ graph LR
     api-openstack-compute-volume-attachments-py --> api-openstack-compute-schemas-volume-attachments-py
     api-openstack-compute-volume-attachments-py -->|4| api-openstack-wsgi-py
     api-openstack-compute-volume-attachments-py -->|4| api-validation-init
+    api-openstack-compute-volume-attachments-py -->|2| compute-api-py
+    api-openstack-compute-volume-attachments-py --> compute-vm-states-py
     api-openstack-compute-volume-attachments-py -->|2| exception-py
     api-openstack-compute-volume-attachments-py -->|2| i18n-py
     api-openstack-compute-volume-attachments-py -->|3| objects-init
@@ -1430,9 +1717,11 @@ graph LR
     api-openstack-identity-py -->|2| utils-py
     api-openstack-init -->|2| api-openstack-wsgi-py
     api-openstack-init -->|2| api-wsgi-py
+    api-openstack-init --> conf-init
     api-openstack-init -->|2| i18n-py
     api-openstack-requestlog-py --> api-openstack-wsgi-py
     api-openstack-requestlog-py -->|2| api-wsgi-py
+    api-openstack-requestlog-py --> conf-init
     api-openstack-urlmap-py -->|2| api-openstack-wsgi-py
     api-openstack-wsgi-app-py --> exception-py
     api-openstack-wsgi-app-py -->|4| objects-init
@@ -1461,6 +1750,7 @@ graph LR
     api-validation-init -->|2| api-openstack-api-version-request-py
     api-validation-init -->|2| api-openstack-wsgi-py
     api-validation-init -->|2| api-validation-validators-py
+    api-validation-init --> conf-init
     api-validation-init -->|2| exception-py
     api-validation-init -->|2| i18n-py
     api-validation-parameter-types-py -->|2| i18n-py
@@ -1468,12 +1758,370 @@ graph LR
     api-validation-validators-py --> api-validation-parameter-types-py
     api-validation-validators-py -->|3| exception-py
     api-validation-validators-py -->|2| i18n-py
+    api-wsgi-py --> conf-init
     api-wsgi-py -->|3| exception-py
     api-wsgi-py -->|2| i18n-py
+    cmd-baseproxy-py --> conf-init
+    cmd-baseproxy-py -->|2| conf-novnc-py
+    cmd-baseproxy-py -->|2| console-websocketproxy-py
+    cmd-baseproxy-py -->|2| objects-init
+    cmd-common-py --> conf-init
+    cmd-common-py --> db-main-api-py
+    cmd-common-py -->|2| exception-py
+    cmd-common-py -->|2| i18n-py
+    cmd-compute-py --> compute-rpcapi-py
+    cmd-compute-py -->|2| conductor-rpcapi-py
+    cmd-compute-py --> conf-init
+    cmd-compute-py --> db-main-api-py
+    cmd-compute-py --> objects-base-py
+    cmd-compute-py -->|3| objects-init
+    cmd-compute-py -->|3| utils-py
+    cmd-conductor-py --> conductor-rpcapi-py
+    cmd-conductor-py --> conf-init
+    cmd-conductor-py -->|3| objects-init
+    cmd-manage-py -->|3| cmd-common-py
+    cmd-manage-py -->|3| compute-api-py
+    cmd-manage-py --> compute-instance-actions-py
+    cmd-manage-py -->|2| compute-instance-list-py
+    cmd-manage-py -->|2| compute-rpcapi-py
+    cmd-manage-py -->|2| conf-init
+    cmd-manage-py -->|2| conf-utils-py
+    cmd-manage-py --> db-constants-py
+    cmd-manage-py -->|3| db-main-api-py
+    cmd-manage-py -->|3| db-migration-py
+    cmd-manage-py -->|15| exception-py
+    cmd-manage-py -->|2| i18n-py
+    cmd-manage-py --> network-constants-py
+    cmd-manage-py -->|4| network-neutron-py
+    cmd-manage-py --> objects-block-device-py
+    cmd-manage-py --> objects-compute-node-py
+    cmd-manage-py --> objects-fields-py
+    cmd-manage-py -->|2| objects-host-mapping-py
+    cmd-manage-py -->|40| objects-init
+    cmd-manage-py --> objects-instance-mapping-py
+    cmd-manage-py --> objects-instance-py
+    cmd-manage-py --> objects-pci-device-py
+    cmd-manage-py --> objects-quotas-py
+    cmd-manage-py --> objects-virtual-interface-py
+    cmd-manage-py -->|2| scheduler-client-report-py
+    cmd-manage-py -->|4| scheduler-utils-py
+    cmd-manage-py -->|4| utils-py
+    cmd-novncproxy-py -->|2| cmd-baseproxy-py
+    cmd-novncproxy-py --> conf-init
+    cmd-novncproxy-py -->|2| conf-vnc-py
+    cmd-novncproxy-py -->|2| console-securityproxy-rfb-py
+    cmd-policy-py -->|4| cmd-common-py
+    cmd-policy-py --> conf-init
+    cmd-policy-py -->|2| db-main-api-py
+    cmd-policy-py -->|2| exception-py
+    cmd-policy-py -->|2| i18n-py
+    cmd-policy-py -->|2| utils-py
+    cmd-scheduler-py --> conf-init
+    cmd-scheduler-py -->|3| objects-init
+    cmd-scheduler-py --> scheduler-rpcapi-py
+    cmd-serialproxy-py -->|2| cmd-baseproxy-py
+    cmd-serialproxy-py --> conf-init
+    cmd-serialproxy-py -->|2| conf-serial-console-py
+    cmd-spicehtml5proxy-py -->|2| cmd-baseproxy-py
+    cmd-spicehtml5proxy-py --> conf-init
+    cmd-spicehtml5proxy-py -->|2| conf-spice-py
+    cmd-status-py -->|3| cmd-common-py
+    cmd-status-py --> conf-init
+    cmd-status-py -->|2| db-api-api-py
+    cmd-status-py -->|2| db-main-api-py
+    cmd-status-py --> exception-py
+    cmd-status-py -->|2| i18n-py
+    cmd-status-py -->|2| objects-cell-mapping-py
+    cmd-status-py --> objects-image-meta-py
+    cmd-status-py --> objects-instance-py
+    cmd-status-py -->|4| utils-py
+    compute-api-py -->|3| accelerator-cyborg-py
+    compute-api-py -->|2| compute-flavors-py
+    compute-api-py --> compute-instance-actions-py
+    compute-api-py -->|2| compute-instance-list-py
+    compute-api-py -->|2| compute-migration-list-py
+    compute-api-py --> compute-power-state-py
+    compute-api-py -->|2| compute-rpcapi-py
+    compute-api-py --> compute-task-states-py
+    compute-api-py -->|23| compute-utils-py
+    compute-api-py --> compute-vm-states-py
+    compute-api-py -->|2| conductor-init
+    compute-api-py --> conf-init
+    compute-api-py --> db-api-api-py
+    compute-api-py -->|4| db-main-api-py
+    compute-api-py -->|87| exception-py
+    compute-api-py -->|2| i18n-py
+    compute-api-py --> network-constants-py
+    compute-api-py -->|2| network-model-py
+    compute-api-py -->|2| network-neutron-py
+    compute-api-py -->|3| network-security-group-api-py
+    compute-api-py -->|2| objects-block-device-py
+    compute-api-py --> objects-external-event-py
+    compute-api-py -->|2| objects-fields-py
+    compute-api-py -->|2| objects-image-meta-py
+    compute-api-py -->|77| objects-init
+    compute-api-py --> objects-keypair-py
+    compute-api-py -->|2| objects-quotas-py
+    compute-api-py -->|2| objects-service-py
+    compute-api-py -->|2| scheduler-client-query-py
+    compute-api-py -->|2| scheduler-client-report-py
+    compute-api-py -->|3| scheduler-utils-py
+    compute-api-py -->|10| utils-py
+    compute-claims-py -->|2| exception-py
+    compute-claims-py -->|2| i18n-py
+    compute-claims-py -->|3| objects-init
+    compute-flavors-py --> conf-init
+    compute-flavors-py --> db-constants-py
+    compute-flavors-py -->|2| exception-py
+    compute-flavors-py -->|2| i18n-py
+    compute-flavors-py -->|3| objects-init
+    compute-flavors-py -->|3| utils-py
+    compute-instance-list-py -->|3| compute-multi-cell-list-py
+    compute-instance-list-py --> conf-init
+    compute-instance-list-py -->|4| db-main-api-py
+    compute-instance-list-py -->|2| exception-py
+    compute-instance-list-py -->|4| objects-init
+    compute-instance-list-py -->|3| objects-instance-py
+    compute-manager-py -->|2| accelerator-cyborg-py
+    compute-manager-py -->|2| compute-api-py
+    compute-manager-py --> compute-build-results-py
+    compute-manager-py --> compute-claims-py
+    compute-manager-py --> compute-power-state-py
+    compute-manager-py -->|2| compute-resource-tracker-py
+    compute-manager-py -->|3| compute-rpcapi-py
+    compute-manager-py -->|2| compute-share-management-py
+    compute-manager-py --> compute-task-states-py
+    compute-manager-py -->|29| compute-utils-py
+    compute-manager-py --> compute-vm-states-py
+    compute-manager-py -->|2| conductor-init
+    compute-manager-py -->|6| conf-init
+    compute-manager-py -->|42| exception-py
+    compute-manager-py -->|2| i18n-py
+    compute-manager-py -->|4| network-model-py
+    compute-manager-py -->|3| network-neutron-py
+    compute-manager-py -->|2| objects-base-py
+    compute-manager-py --> objects-external-event-py
+    compute-manager-py -->|2| objects-fields-py
+    compute-manager-py -->|42| objects-init
+    compute-manager-py --> objects-instance-py
+    compute-manager-py -->|2| objects-migrate-data-py
+    compute-manager-py --> objects-service-py
+    compute-manager-py -->|2| scheduler-client-query-py
+    compute-manager-py -->|2| scheduler-client-report-py
+    compute-manager-py -->|3| scheduler-utils-py
+    compute-manager-py -->|11| utils-py
+    compute-migration-list-py -->|3| compute-multi-cell-list-py
+    compute-migration-list-py -->|3| db-main-api-py
+    compute-migration-list-py -->|2| exception-py
+    compute-migration-list-py -->|2| objects-base-py
+    compute-migration-list-py -->|2| objects-init
+    compute-monitors-base-py --> objects-fields-py
+    compute-monitors-cpu-virt-driver-py -->|2| compute-monitors-base-py
+    compute-monitors-cpu-virt-driver-py --> conf-init
+    compute-monitors-cpu-virt-driver-py -->|2| exception-py
+    compute-monitors-cpu-virt-driver-py -->|2| objects-init
+    compute-monitors-init --> conf-init
+    compute-multi-cell-list-py --> conf-init
+    compute-multi-cell-list-py -->|3| exception-py
+    compute-multi-cell-list-py -->|2| i18n-py
+    compute-pci-placement-translator-py -->|11| compute-provider-tree-py
+    compute-pci-placement-translator-py --> conf-init
+    compute-pci-placement-translator-py -->|5| exception-py
+    compute-pci-placement-translator-py -->|2| i18n-py
+    compute-pci-placement-translator-py --> objects-fields-py
+    compute-pci-placement-translator-py --> objects-pci-device-py
+    compute-power-state-py -->|2| objects-fields-py
+    compute-provider-config-py -->|2| exception-py
+    compute-provider-config-py -->|2| i18n-py
+    compute-provider-tree-py -->|2| i18n-py
+    compute-resource-tracker-py -->|3| compute-claims-py
+    compute-resource-tracker-py -->|2| compute-monitors-init
+    compute-resource-tracker-py -->|2| compute-pci-placement-translator-py
+    compute-resource-tracker-py -->|2| compute-provider-config-py
+    compute-resource-tracker-py --> compute-stats-py
+    compute-resource-tracker-py --> compute-task-states-py
+    compute-resource-tracker-py -->|3| compute-utils-py
+    compute-resource-tracker-py -->|2| compute-vm-states-py
+    compute-resource-tracker-py --> conf-init
+    compute-resource-tracker-py -->|9| exception-py
+    compute-resource-tracker-py -->|2| i18n-py
+    compute-resource-tracker-py -->|3| objects-base-py
+    compute-resource-tracker-py --> objects-fields-py
+    compute-resource-tracker-py -->|14| objects-init
+    compute-resource-tracker-py -->|2| objects-migration-py
+    compute-resource-tracker-py -->|2| scheduler-client-report-py
+    compute-resource-tracker-py -->|3| utils-py
+    compute-rpcapi-py --> conf-init
+    compute-rpcapi-py -->|7| exception-py
+    compute-rpcapi-py -->|2| i18n-py
+    compute-rpcapi-py -->|3| objects-base-py
+    compute-rpcapi-py -->|2| objects-init
+    compute-rpcapi-py -->|2| objects-service-py
+    compute-share-management-py -->|2| compute-utils-py
+    compute-share-management-py --> compute-vm-states-py
+    compute-share-management-py --> conf-init
+    compute-share-management-py -->|4| exception-py
+    compute-share-management-py --> objects-fields-py
+    compute-share-management-py -->|8| objects-init
+    compute-share-management-py -->|2| utils-py
+    compute-stats-py --> compute-task-states-py
+    compute-stats-py -->|2| compute-vm-states-py
+    compute-stats-py -->|2| i18n-py
+    compute-task-states-py --> objects-fields-py
+    compute-utils-py -->|2| accelerator-cyborg-py
+    compute-utils-py --> compute-power-state-py
+    compute-utils-py --> compute-task-states-py
+    compute-utils-py --> compute-vm-states-py
+    compute-utils-py --> conf-init
+    compute-utils-py -->|7| exception-py
+    compute-utils-py --> objects-fields-py
+    compute-utils-py -->|9| objects-init
+    compute-utils-py -->|5| utils-py
+    compute-vm-states-py --> compute-task-states-py
+    compute-vm-states-py --> objects-fields-py
+    conductor-api-py -->|3| conductor-rpcapi-py
+    conductor-api-py --> conf-init
+    conductor-init --> conductor-api-py
+    conductor-manager-py -->|3| accelerator-cyborg-py
+    conductor-manager-py --> compute-instance-actions-py
+    conductor-manager-py -->|2| compute-rpcapi-py
+    conductor-manager-py --> compute-task-states-py
+    conductor-manager-py -->|14| compute-utils-py
+    conductor-manager-py --> compute-vm-states-py
+    conductor-manager-py -->|3| conductor-tasks-cross-cell-migrate-py
+    conductor-manager-py -->|2| conductor-tasks-live-migrate-py
+    conductor-manager-py -->|2| conductor-tasks-migrate-py
+    conductor-manager-py -->|8| exception-py
+    conductor-manager-py -->|2| i18n-py
+    conductor-manager-py -->|2| network-neutron-py
+    conductor-manager-py -->|2| objects-base-py
+    conductor-manager-py --> objects-fields-py
+    conductor-manager-py -->|27| objects-init
+    conductor-manager-py -->|2| scheduler-client-query-py
+    conductor-manager-py -->|2| scheduler-client-report-py
+    conductor-manager-py -->|9| scheduler-utils-py
+    conductor-manager-py -->|2| utils-py
+    conductor-rpcapi-py --> conf-init
+    conductor-rpcapi-py -->|4| exception-py
+    conductor-rpcapi-py -->|2| i18n-py
+    conductor-rpcapi-py -->|3| objects-base-py
+    conductor-tasks-cross-cell-migrate-py --> compute-instance-actions-py
+    conductor-tasks-cross-cell-migrate-py --> compute-power-state-py
+    conductor-tasks-cross-cell-migrate-py --> compute-task-states-py
+    conductor-tasks-cross-cell-migrate-py -->|6| compute-utils-py
+    conductor-tasks-cross-cell-migrate-py --> compute-vm-states-py
+    conductor-tasks-cross-cell-migrate-py -->|2| conductor-tasks-base-py
+    conductor-tasks-cross-cell-migrate-py --> conf-init
+    conductor-tasks-cross-cell-migrate-py -->|3| exception-py
+    conductor-tasks-cross-cell-migrate-py -->|2| i18n-py
+    conductor-tasks-cross-cell-migrate-py --> network-constants-py
+    conductor-tasks-cross-cell-migrate-py -->|2| network-neutron-py
+    conductor-tasks-cross-cell-migrate-py --> objects-fields-py
+    conductor-tasks-cross-cell-migrate-py -->|18| objects-init
+    conductor-tasks-cross-cell-migrate-py -->|2| scheduler-utils-py
+    conductor-tasks-live-migrate-py --> compute-power-state-py
+    conductor-tasks-live-migrate-py -->|3| compute-utils-py
+    conductor-tasks-live-migrate-py -->|2| conductor-tasks-base-py
+    conductor-tasks-live-migrate-py -->|3| conductor-tasks-migrate-py
+    conductor-tasks-live-migrate-py --> conf-init
+    conductor-tasks-live-migrate-py -->|9| exception-py
+    conductor-tasks-live-migrate-py -->|2| i18n-py
+    conductor-tasks-live-migrate-py -->|2| network-neutron-py
+    conductor-tasks-live-migrate-py --> objects-fields-py
+    conductor-tasks-live-migrate-py -->|9| objects-init
+    conductor-tasks-live-migrate-py -->|4| scheduler-utils-py
+    conductor-tasks-migrate-py -->|2| compute-utils-py
+    conductor-tasks-migrate-py -->|2| conductor-tasks-base-py
+    conductor-tasks-migrate-py -->|2| conductor-tasks-cross-cell-migrate-py
+    conductor-tasks-migrate-py -->|3| exception-py
+    conductor-tasks-migrate-py -->|2| i18n-py
+    conductor-tasks-migrate-py -->|6| objects-init
+    conductor-tasks-migrate-py -->|2| scheduler-client-report-py
+    conductor-tasks-migrate-py -->|6| scheduler-utils-py
+    conf-compute-py -->|3| conf-paths-py
+    conf-cyborg-py -->|3| conf-utils-py
+    conf-glance-py -->|3| conf-utils-py
+    conf-init -->|2| conf-api-py
+    conf-init -->|2| conf-availability-zone-py
+    conf-init -->|2| conf-base-py
+    conf-init -->|2| conf-cache-py
+    conf-init -->|2| conf-cinder-py
+    conf-init -->|2| conf-compute-py
+    conf-init -->|2| conf-conductor-py
+    conf-init -->|2| conf-configdrive-py
+    conf-init -->|2| conf-console-py
+    conf-init -->|2| conf-consoleauth-py
+    conf-init -->|2| conf-cyborg-py
+    conf-init -->|2| conf-database-py
+    conf-init -->|2| conf-devices-py
+    conf-init -->|2| conf-ephemeral-storage-py
+    conf-init -->|2| conf-glance-py
+    conf-init -->|2| conf-guestfs-py
+    conf-init -->|2| conf-imagecache-py
+    conf-init -->|2| conf-ironic-py
+    conf-init -->|2| conf-key-manager-py
+    conf-init -->|2| conf-keystone-py
+    conf-init -->|2| conf-libvirt-py
+    conf-init -->|2| conf-manila-py
+    conf-init -->|2| conf-mks-py
+    conf-init -->|2| conf-netconf-py
+    conf-init -->|2| conf-neutron-py
+    conf-init -->|2| conf-notifications-py
+    conf-init -->|2| conf-novnc-py
+    conf-init -->|2| conf-paths-py
+    conf-init -->|2| conf-pci-py
+    conf-init -->|2| conf-placement-py
+    conf-init -->|2| conf-quota-py
+    conf-init -->|2| conf-rpc-py
+    conf-init -->|2| conf-scheduler-py
+    conf-init -->|2| conf-serial-console-py
+    conf-init -->|2| conf-service-py
+    conf-init -->|2| conf-service-token-py
+    conf-init -->|2| conf-servicegroup-py
+    conf-init -->|2| conf-spice-py
+    conf-init -->|2| conf-upgrade-levels-py
+    conf-init -->|2| conf-vendordata-py
+    conf-init -->|2| conf-vmware-py
+    conf-init -->|2| conf-vnc-py
+    conf-init -->|2| conf-workarounds-py
+    conf-init -->|2| conf-wsgi-py
+    conf-init -->|2| conf-zvm-py
+    conf-ironic-py -->|3| conf-utils-py
+    conf-keystone-py -->|3| conf-utils-py
+    conf-libvirt-py -->|2| conf-paths-py
+    conf-manila-py -->|2| conf-utils-py
+    conf-neutron-py -->|3| conf-utils-py
+    conf-placement-py -->|3| conf-utils-py
+    conf-zvm-py -->|2| conf-paths-py
+    console-rfb-authnone-py -->|2| console-rfb-auth-py
+    console-rfb-auths-py --> console-rfb-authnone-py
+    console-rfb-auths-py --> console-rfb-authvencrypt-py
+    console-rfb-auths-py -->|2| exception-py
+    console-rfb-authvencrypt-py -->|2| console-rfb-auth-py
+    console-rfb-authvencrypt-py -->|2| exception-py
+    console-rfb-authvencrypt-py -->|2| i18n-py
+    console-securityproxy-rfb-py -->|2| console-rfb-auth-py
+    console-securityproxy-rfb-py -->|2| console-rfb-auths-py
+    console-securityproxy-rfb-py -->|2| console-securityproxy-base-py
+    console-securityproxy-rfb-py -->|3| exception-py
+    console-securityproxy-rfb-py -->|2| i18n-py
+    console-serial-py --> conf-init
+    console-serial-py -->|3| exception-py
+    console-serial-py -->|2| utils-py
+    console-websocketproxy-py -->|2| compute-rpcapi-py
+    console-websocketproxy-py --> conf-init
+    console-websocketproxy-py -->|4| exception-py
+    console-websocketproxy-py -->|2| i18n-py
+    console-websocketproxy-py -->|3| objects-init
+    console-websocketproxy-py -->|3| utils-py
+    db-api-api-py --> conf-init
     db-api-migrations-env-py --> db-api-models-py
     db-api-migrations-versions-d67eeaabee36-initial-version-py -->|2| db-types-py
     db-api-migrations-versions-d67eeaabee36-initial-version-py --> objects-keypair-py
     db-api-models-py -->|2| db-types-py
+    db-main-api-py --> compute-task-states-py
+    db-main-api-py --> compute-vm-states-py
+    db-main-api-py -->|3| conf-init
     db-main-api-py -->|46| db-main-models-py
     db-main-api-py -->|4| db-utils-py
     db-main-api-py -->|36| exception-py
@@ -1493,6 +2141,8 @@ graph LR
     network-model-py -->|2| exception-py
     network-model-py -->|2| i18n-py
     network-neutron-py -->|4| accelerator-cyborg-py
+    network-neutron-py -->|2| compute-utils-py
+    network-neutron-py --> conf-init
     network-neutron-py -->|46| exception-py
     network-neutron-py -->|2| i18n-py
     network-neutron-py --> network-constants-py
@@ -1508,6 +2158,7 @@ graph LR
     network-security-group-api-py -->|2| i18n-py
     network-security-group-api-py -->|2| network-neutron-py
     network-security-group-api-py -->|3| objects-security-group-py
+    objects-aggregate-py -->|3| compute-utils-py
     objects-aggregate-py -->|2| db-api-api-py
     objects-aggregate-py -->|6| db-api-models-py
     objects-aggregate-py -->|8| exception-py
@@ -1515,6 +2166,7 @@ graph LR
     objects-aggregate-py -->|5| objects-base-py
     objects-aggregate-py -->|7| objects-fields-py
     objects-aggregate-py -->|2| objects-init
+    objects-base-py -->|2| conductor-init
     objects-base-py -->|2| exception-py
     objects-base-py -->|3| objects-fields-py
     objects-base-py --> objects-init
@@ -1533,11 +2185,13 @@ graph LR
     objects-build-request-py -->|4| objects-base-py
     objects-build-request-py -->|7| objects-fields-py
     objects-build-request-py -->|7| objects-init
+    objects-cell-mapping-py --> conf-init
     objects-cell-mapping-py --> db-api-api-py
     objects-cell-mapping-py -->|3| db-api-models-py
     objects-cell-mapping-py -->|2| exception-py
     objects-cell-mapping-py -->|5| objects-base-py
     objects-cell-mapping-py -->|6| objects-fields-py
+    objects-compute-node-py --> conf-init
     objects-compute-node-py -->|16| db-main-api-py
     objects-compute-node-py -->|2| db-main-models-py
     objects-compute-node-py -->|5| exception-py
@@ -1562,6 +2216,7 @@ graph LR
     objects-fields-py -->|4| exception-py
     objects-fields-py -->|2| i18n-py
     objects-fields-py -->|3| network-model-py
+    objects-flavor-py --> conf-init
     objects-flavor-py --> db-api-api-py
     objects-flavor-py -->|7| db-api-models-py
     objects-flavor-py -->|2| db-utils-py
@@ -1629,6 +2284,7 @@ graph LR
     objects-init --> objects-virt-device-metadata-py
     objects-init --> objects-virtual-interface-py
     objects-init --> objects-volume-usage-py
+    objects-instance-action-py -->|2| compute-utils-py
     objects-instance-action-py -->|9| db-main-api-py
     objects-instance-action-py -->|2| exception-py
     objects-instance-action-py -->|6| objects-base-py
@@ -1637,6 +2293,7 @@ graph LR
     objects-instance-fault-py -->|2| exception-py
     objects-instance-fault-py -->|6| objects-base-py
     objects-instance-fault-py -->|5| objects-fields-py
+    objects-instance-group-py -->|4| compute-utils-py
     objects-instance-group-py --> db-api-api-py
     objects-instance-group-py -->|4| db-api-models-py
     objects-instance-group-py -->|5| exception-py
@@ -1663,6 +2320,8 @@ graph LR
     objects-instance-pci-requests-py -->|2| db-main-api-py
     objects-instance-pci-requests-py -->|2| objects-base-py
     objects-instance-pci-requests-py -->|8| objects-fields-py
+    objects-instance-py --> compute-task-states-py
+    objects-instance-py --> compute-vm-states-py
     objects-instance-py -->|20| db-main-api-py
     objects-instance-py -->|3| db-main-models-py
     objects-instance-py -->|4| exception-py
@@ -1717,6 +2376,8 @@ graph LR
     objects-quotas-py -->|6| exception-py
     objects-quotas-py -->|2| objects-base-py
     objects-quotas-py -->|3| objects-fields-py
+    objects-request-spec-py -->|3| compute-pci-placement-translator-py
+    objects-request-spec-py --> conf-init
     objects-request-spec-py --> db-api-api-py
     objects-request-spec-py -->|3| db-api-models-py
     objects-request-spec-py -->|3| exception-py
@@ -1732,6 +2393,7 @@ graph LR
     objects-security-group-py -->|5| objects-base-py
     objects-security-group-py -->|5| objects-fields-py
     objects-security-group-py -->|3| objects-init
+    objects-selection-py --> conf-init
     objects-selection-py -->|2| objects-base-py
     objects-selection-py -->|2| objects-init
     objects-selection-py -->|2| scheduler-filters-utils-py
@@ -1740,6 +2402,7 @@ graph LR
     objects-service-py -->|7| objects-base-py
     objects-service-py -->|8| objects-fields-py
     objects-service-py -->|2| objects-init
+    objects-share-mapping-py --> conf-init
     objects-share-mapping-py -->|9| db-main-api-py
     objects-share-mapping-py -->|4| exception-py
     objects-share-mapping-py -->|5| objects-base-py
@@ -1772,6 +2435,8 @@ graph LR
     objects-volume-usage-py -->|3| objects-base-py
     objects-volume-usage-py -->|5| objects-fields-py
     scheduler-client-query-py -->|2| scheduler-rpcapi-py
+    scheduler-client-report-py -->|2| compute-provider-tree-py
+    scheduler-client-report-py --> conf-init
     scheduler-client-report-py -->|24| exception-py
     scheduler-client-report-py -->|2| i18n-py
     scheduler-client-report-py --> objects-fields-py
@@ -1779,6 +2444,7 @@ graph LR
     scheduler-client-report-py -->|2| utils-py
     scheduler-filters-affinity-filter-py -->|2| scheduler-filters-init
     scheduler-filters-affinity-filter-py -->|2| scheduler-filters-utils-py
+    scheduler-filters-aggregate-image-properties-isolation-py --> conf-init
     scheduler-filters-aggregate-image-properties-isolation-py -->|2| scheduler-filters-init
     scheduler-filters-aggregate-image-properties-isolation-py -->|2| scheduler-filters-utils-py
     scheduler-filters-aggregate-instance-extra-specs-py -->|2| scheduler-filters-extra-specs-ops-py
@@ -1790,15 +2456,20 @@ graph LR
     scheduler-filters-compute-capabilities-filter-py -->|2| scheduler-filters-extra-specs-ops-py
     scheduler-filters-compute-capabilities-filter-py -->|2| scheduler-filters-init
     scheduler-filters-compute-filter-py -->|2| scheduler-filters-init
+    scheduler-filters-image-props-filter-py --> conf-init
     scheduler-filters-image-props-filter-py -->|4| objects-fields-py
     scheduler-filters-image-props-filter-py -->|2| scheduler-filters-init
     scheduler-filters-init -->|2| scheduler-utils-py
+    scheduler-filters-io-ops-filter-py --> conf-init
     scheduler-filters-io-ops-filter-py -->|2| scheduler-filters-init
     scheduler-filters-io-ops-filter-py -->|3| scheduler-filters-utils-py
+    scheduler-filters-isolated-hosts-filter-py --> conf-init
     scheduler-filters-isolated-hosts-filter-py -->|2| scheduler-filters-init
     scheduler-filters-json-filter-py -->|2| scheduler-filters-init
+    scheduler-filters-metrics-filter-py --> conf-init
     scheduler-filters-metrics-filter-py -->|2| scheduler-filters-init
     scheduler-filters-metrics-filter-py -->|2| scheduler-utils-py
+    scheduler-filters-num-instances-filter-py --> conf-init
     scheduler-filters-num-instances-filter-py -->|2| scheduler-filters-init
     scheduler-filters-num-instances-filter-py -->|3| scheduler-filters-utils-py
     scheduler-filters-numa-topology-filter-py --> objects-fields-py
@@ -1807,11 +2478,14 @@ graph LR
     scheduler-filters-pci-passthrough-filter-py -->|3| scheduler-filters-init
     scheduler-filters-type-filter-py -->|2| scheduler-filters-init
     scheduler-filters-type-filter-py -->|2| scheduler-filters-utils-py
+    scheduler-host-manager-py --> conf-init
     scheduler-host-manager-py -->|2| exception-py
     scheduler-host-manager-py -->|16| objects-init
     scheduler-host-manager-py -->|2| scheduler-filters-init
     scheduler-host-manager-py -->|2| scheduler-weights-init
     scheduler-host-manager-py -->|4| utils-py
+    scheduler-manager-py -->|2| compute-utils-py
+    scheduler-manager-py --> conf-init
     scheduler-manager-py -->|2| exception-py
     scheduler-manager-py -->|2| i18n-py
     scheduler-manager-py --> objects-fields-py
@@ -1822,14 +2496,19 @@ graph LR
     scheduler-manager-py -->|2| scheduler-host-manager-py
     scheduler-manager-py -->|2| scheduler-request-filter-py
     scheduler-manager-py -->|4| scheduler-utils-py
+    scheduler-request-filter-py --> conf-init
     scheduler-request-filter-py -->|2| exception-py
     scheduler-request-filter-py -->|2| i18n-py
     scheduler-request-filter-py -->|2| network-neutron-py
     scheduler-request-filter-py -->|5| objects-init
     scheduler-request-filter-py -->|2| scheduler-client-report-py
     scheduler-request-filter-py -->|4| scheduler-utils-py
+    scheduler-rpcapi-py --> conf-init
     scheduler-rpcapi-py -->|2| exception-py
     scheduler-rpcapi-py -->|2| objects-base-py
+    scheduler-utils-py -->|3| compute-flavors-py
+    scheduler-utils-py -->|5| compute-utils-py
+    scheduler-utils-py --> conf-init
     scheduler-utils-py -->|7| exception-py
     scheduler-utils-py -->|2| i18n-py
     scheduler-utils-py -->|2| objects-base-py
@@ -1840,31 +2519,44 @@ graph LR
     scheduler-utils-py -->|3| scheduler-filters-utils-py
     scheduler-weights-affinity-py -->|2| scheduler-utils-py
     scheduler-weights-affinity-py -->|2| scheduler-weights-init
+    scheduler-weights-compute-py --> conf-init
     scheduler-weights-compute-py -->|2| scheduler-utils-py
     scheduler-weights-compute-py -->|2| scheduler-weights-init
+    scheduler-weights-cpu-py --> conf-init
     scheduler-weights-cpu-py -->|2| scheduler-utils-py
     scheduler-weights-cpu-py -->|2| scheduler-weights-init
+    scheduler-weights-cross-cell-py --> conf-init
     scheduler-weights-cross-cell-py -->|2| scheduler-utils-py
     scheduler-weights-cross-cell-py -->|2| scheduler-weights-init
+    scheduler-weights-disk-py --> conf-init
     scheduler-weights-disk-py -->|2| scheduler-utils-py
     scheduler-weights-disk-py -->|2| scheduler-weights-init
+    scheduler-weights-hypervisor-version-py --> conf-init
     scheduler-weights-hypervisor-version-py -->|2| scheduler-utils-py
     scheduler-weights-hypervisor-version-py -->|2| scheduler-weights-init
+    scheduler-weights-image-props-py --> conf-init
     scheduler-weights-image-props-py --> exception-py
     scheduler-weights-image-props-py -->|3| objects-init
     scheduler-weights-image-props-py -->|3| scheduler-utils-py
     scheduler-weights-image-props-py -->|2| scheduler-weights-init
+    scheduler-weights-io-ops-py --> conf-init
     scheduler-weights-io-ops-py -->|2| scheduler-utils-py
     scheduler-weights-io-ops-py -->|2| scheduler-weights-init
+    scheduler-weights-metrics-py --> conf-init
     scheduler-weights-metrics-py -->|2| exception-py
     scheduler-weights-metrics-py -->|3| scheduler-utils-py
     scheduler-weights-metrics-py -->|2| scheduler-weights-init
+    scheduler-weights-num-instances-py --> conf-init
     scheduler-weights-num-instances-py -->|2| scheduler-utils-py
     scheduler-weights-num-instances-py -->|2| scheduler-weights-init
+    scheduler-weights-pci-py --> conf-init
     scheduler-weights-pci-py -->|2| scheduler-utils-py
     scheduler-weights-pci-py -->|2| scheduler-weights-init
+    scheduler-weights-ram-py --> conf-init
     scheduler-weights-ram-py -->|2| scheduler-utils-py
     scheduler-weights-ram-py -->|2| scheduler-weights-init
+    service-auth-py --> conf-init
+    utils-py --> conf-init
     utils-py -->|5| exception-py
     utils-py -->|2| i18n-py
     utils-py -->|3| objects-service-py
@@ -1876,58 +2568,64 @@ graph LR
 
 Source: `securitySurface` arrays in `.aee/kb/src/nova/**/*.json`.
 
-**Entry points (39 total):**
+**Entry points (53 total):**
 
 | File | Line | Category | Description |
 |---|---|---|---|
-| `accelerator/cyborg.py` | L56 | http-param | `context` carries caller auth/session state into `get_client` and `_CyborgClient.__init__` |
-| `accelerator/cyborg.py` | L88 | http-param | `dp_name` forwarded to Cyborg API query in `_get_device_profile_list` |
-| `accelerator/cyborg.py` | L255 | http-param | `bindings` dict serialised as RFC 6902 JSON patch body sent to Cyborg in `bind_arqs` |
+| `accelerator/cyborg.py` | L56 | http-param | `context` carries caller auth/session state into `_CyborgClient.__init__` |
+| `accelerator/cyborg.py` | L88 | http-param | `dp_name` forwarded to Cyborg API in `_get_device_profile_list` |
+| `accelerator/cyborg.py` | L255 | http-param | `bindings` dict serialised as RFC 6902 JSON patch body in `bind_arqs` |
 | `accelerator/cyborg.py` | L291 | http-param | `instance_uuid` used as Cyborg API query parameter in `get_arqs_for_instance` |
 | `accelerator/cyborg.py` | L337 | http-param | `arq_uuid` interpolated into Cyborg API URL path in `get_arq_by_uuid` |
 | `api/auth.py` | L55 | http-param | `@webob.dec.wsgify` — inbound WSGI request enters auth middleware |
-| `api/auth.py` | L72 | http-param | `@webob.dec.wsgify` — second WSGI entry on NoAuthMiddleware |
-| `api/metadata/handler.py` | L97 | http-param | `@webob.dec.wsgify` — instance metadata request enters handler |
 | `api/openstack/__init__.py` | L91 | http-param | `@webob.dec.wsgify` — request enters API router |
-| `api/openstack/__init__.py` | L138 | http-param | `@webob.dec.wsgify` — request enters versioned API dispatcher |
-| `api/openstack/api_version_request.py` | L324 | http-param | `is_supported(req, version)` — request microversion tested |
 | `api/openstack/common.py` | L155 | http-param | `request.params` — query parameters read for filtering |
-| `api/openstack/common.py` | L179 | http-param | `request` `marker` and `limit` pagination params read |
-| `api/openstack/common.py` | L189 | http-param | `request.GET['limit']` — limit parameter read from query string |
-| `api/openstack/common.py` | L191 | http-param | `request.GET['page_size']` — page size parameter read |
-| `exception.py` | L27 | http-param | `import webob.exc` — webob HTTP exception types enter the exception hierarchy |
-| `exception.py` | L28 | http-param | `from webob import util as woutil` |
-| `exception.py` | L35 | http-param | `class ConvertedException(webob.exc.WSGIHTTPException)` bridges webob into nova hierarchy |
+| `api/openstack/common.py` | L189 | http-param | `request.GET['limit']` — limit parameter from query string |
+| `cmd/common.py` | L135 | cli-args | argparse flag declaration |
+| `cmd/compute.py` | L49 | cli-args | `config.parse_args(sys.argv)` — CLI args parsed |
+| `cmd/conductor.py` | L39 | cli-args | `config.parse_args(sys.argv)` |
+| `cmd/manage.py` | L3821 | cli-args | `config.parse_args(sys.argv)` |
+| `cmd/policy.py` | L48 | env | `os.environ.get('OS_ROLES')` |
+| `cmd/policy.py` | L53 | env | `os.environ.get('OS_USER_ID')` |
+| `cmd/policy.py` | L58 | env | `os.environ.get('OS_TENANT_ID')` |
+| `console/serial.py` | L83 | network-socket | raw socket opened for serial console connection |
+| `exception.py` | L27 | http-param | `import webob.exc` — webob exception types enter nova hierarchy |
+| `exception.py` | L35 | http-param | `ConvertedException(webob.exc.WSGIHTTPException)` |
 
-(21 further entry points exist in `api/` controller files; all are `http-param` category via `webob.dec.wsgify` or `request.GET`/`request.body` reads. Source: `.aee/kb/src/nova/api/**/*.json:securitySurface`.)
+(34 further entry points exist in `api/` controller and `cmd/` launcher files; all are `http-param` or `cli-args` category. Source: `.aee/kb/src/nova/api/**/*.json`, `.aee/kb/src/nova/cmd/**/*.json:securitySurface`.)
 
-**Sinks (537 total):**
+**Sinks (709 total):**
 
 | Category | Count | Primary files |
 |---|---|---|
-| db-write | 530 | `db/main/api.py`, `db/api/migrations/versions/d67eeaabee36_initial_version.py`, `db/main/migrations/versions/8f2f1571d55b_initial_version.py`, `api/openstack/compute/servers.py`, `network/neutron.py`, `scheduler/client/query.py`, `scheduler/client/report.py` |
+| db-write | 700 | `db/main/api.py`, `compute/api.py`, `compute/manager.py`, `conductor/manager.py`, `api/openstack/compute/servers.py`, `network/neutron.py`, `scheduler/client/query.py` |
 | network-send | 7 | `accelerator/cyborg.py` |
+| file-write | 2 | `cmd/baseproxy.py` |
 
 **Data flow paths:**
 
-1. **API layer → downstream services (db-write / RPC).** Inbound HTTP requests enter at `@webob.dec.wsgify`-decorated WSGI callables in `api/auth.py`, `api/openstack/__init__.py`, and individual controller files. Request bodies and query-string parameters are deserialised and validated by `api/validation/__init__.py` (schema decorator, `api/openstack/api_version_request.py` for microversion gating) before being passed to controller action methods (e.g. `ServersController.create`, `KeypairsController.create`). Controller methods invoke compute API stubs (unresolved `nova.compute` symbols in the current KB) and object-layer methods, which issue SQLAlchemy writes via `db/main/api.py`. Source: `.aee/kb/src/nova/api/**/*.json:securitySurface` and link-graph edges `api-openstack-compute-*` → `objects-*` and `db-main-api-py`.
+1. **CLI entry points → service startup.** Each `cmd/*.py` launcher calls `config.parse_args(sys.argv)` as its primary entry point (`cli-args` category), loading oslo.config options from `conf/*.py` declarations and command-line arguments. No database or network sink is reached within the `cmd/` layer itself; control passes to service managers (unresolved `nova.service` in current KB). Source: `.aee/kb/src/nova/cmd/**/*.json:securitySurface`.
 
-2. **Accelerator → Cyborg HTTP path.** Caller-supplied parameters enter at `accelerator/cyborg.py:L56` (`context`), `L88` (`dp_name`), `L255` (`bindings`), `L291` (`instance_uuid`), and `L337` (`arq_uuid`). These values are forwarded without further sanitisation to outbound HTTP calls at `L153-L154` (GET `/device_profiles`), `L205` (POST `/accelerator_requests`), `L282-L283` (PATCH `/accelerator_requests`), `L317` (GET `/accelerator_requests?instance=<value>`), and `L377` (GET `/accelerator_requests/<arq_uuid>`). Source: `.aee/kb/src/nova/accelerator/cyborg.py.json:securitySurface`.
+2. **API layer → downstream services.** Inbound HTTP requests enter at `@webob.dec.wsgify`-decorated callables in `api/auth.py` and `api/openstack/__init__.py`. Request bodies and query parameters are validated by `api/validation/__init__.py` before being passed to controller action methods, which invoke `compute/api.py` (`API` class) and object-layer methods resolving to SQLAlchemy writes via `db/main/api.py`. Source: link-graph edges `api-openstack-compute-*` → `compute-*`, `objects-*`, `db-main-api-py`.
 
-3. **Objects → db/main/api.py (db-write) path.** Domain-object methods (e.g. `Instance.save`, `ComputeNode.create`) resolve to SQLAlchemy write calls inside `db/main/api.py`. Field values pass through `objects/base.py` OVO serialisation before reaching database functions. Source: link-graph edges `objects-instance-py`, `objects-compute-node-py`, etc. → `db-main-api-py`.
+3. **Compute API → instance lifecycle (db-write).** `compute/api.py` (`_validate_bdm`, CCN 43) and `compute/manager.py` (`_init_instance`, CCN 40) issue 105 `db-write` sinks for instance state transitions, block-device mappings, and task-state updates. Source: `.aee/kb/src/nova/compute/api.py.json:securitySurface`.
 
-4. **Network layer → Neutron HTTP path.** `network/neutron.py` (`API` class) issues REST calls to Neutron for port, network, security group, and floating-IP operations; 80+ `network` side-effect entries and 26 `db-write` sinks in the KB record. Source: `.aee/kb/src/nova/network/neutron.py.json:securitySurface` and `sideEffects`.
+4. **Accelerator → Cyborg HTTP.** Parameters enter at `accelerator/cyborg.py:L56/L88/L255/L291/L337` and reach network-send sinks at `L153-L154` (GET `/device_profiles`), `L205` (POST `/accelerator_requests`), `L282-L283` (PATCH), `L317` (GET `?instance=<value>`), `L377` (GET `/<arq_uuid>`). Source: `.aee/kb/src/nova/accelerator/cyborg.py.json:securitySurface`.
 
-5. **Scheduler → Placement HTTP path.** `scheduler/manager.py` and `scheduler/request_filter.py` pass request-spec data into `scheduler/client/report.py` (`SchedulerReportClient`) at `L279` and `L2358`, which issues GET/PUT/POST to the Placement API. Source: `.aee/kb/src/nova/scheduler/client/report.py.json:securitySurface`.
+5. **Objects → db/main/api.py.** Domain-object methods pass field values through OVO serialisation in `objects/base.py` before reaching SQLAlchemy write functions in `db/main/api.py`. Source: link-graph edges `objects-*` → `db-main-api-py`.
 
-6. **exception.py webob path.** `ConvertedException(webob.exc.WSGIHTTPException)` at `exception.py:L35` allows inbound WSGI HTTP exceptions to be re-raised as Nova exceptions; no further database or network sink reached within this component's KB records.
+6. **Network → Neutron HTTP.** `network/neutron.py` issues REST calls (26 `db-write`-category sinks, 80+ `network` side effects) for port, security group, and floating-IP operations. Source: `.aee/kb/src/nova/network/neutron.py.json:securitySurface` and `sideEffects`.
 
-**Privileges (36 entries):** All privilege entries have category `crypto-key` originating from `keystoneauth1` imports in `scheduler/client/report.py`, `service_auth.py`, `api/auth.py`, and `network/neutron.py`. Source: `securitySurface` arrays in those KB records.
+7. **Scheduler → Placement HTTP.** `scheduler/client/report.py` issues GET/PUT/POST to the Placement API at `L279` and `L2358`. Source: `.aee/kb/src/nova/scheduler/client/report.py.json:securitySurface`.
 
-No untrusted-input sanitisation steps are recorded in any `securitySurface` entry across the 327 KB records.
+8. **Console → network socket.** `console/serial.py:L83` opens a raw TCP socket (`network-socket` entry point) for serial console proxying; no further sink is recorded in the current KB. Source: `.aee/kb/src/nova/console/serial.py.json:securitySurface`.
+
+**Privileges (62 entries):** All privilege entries have category `crypto-key` originating from `keystoneauth1` imports in `scheduler/client/report.py`, `service_auth.py`, `api/auth.py`, `network/neutron.py`, `compute/manager.py`, and `conductor/manager.py`. Source: `securitySurface` arrays in those KB records.
+
+No untrusted-input sanitisation steps are recorded in any `securitySurface` entry across the 433 KB records.
 
 ---
 
 ## Cross-Component Interfaces
 
-The link graph records **0 cross-component file edges** and **0 cross-component seams** for this component. All 1,060 file edges are intra-component. The link summary notes 287 unresolved imports: `nova.compute` (66 refs), `nova.policies` (58), `nova.conf` (53), generic `nova` (73), `nova.virt` (11), `nova.pci` (6), `nova.image` (4), `nova.notifications.objects` (4), `nova.limit` (3), `nova.volume` (3), `nova.share` (2), `nova.context` (2), `nova.conductor` (1), `nova.notifications` (1). The new `nova.policies` gap (58 refs) was introduced by the batch-4 API layer extraction. These are expected to produce cross-component edges in subsequent extraction runs. Source: `.aee/link-summary.md`.
+The link graph records **0 cross-component file edges** and **0 cross-component seams**. All 1,536 file edges are intra-component. The link summary notes 302 unresolved imports: bare `nova` (149 refs), `nova.policies` (60), `nova.virt` (23), `nova.notifications.objects` (17), `nova.pci` (13), `nova.limit` (10), `nova.image` (9), `nova.volume` (9), `nova.context` (3), `nova.share` (3), `nova.virt.libvirt` (2), and `nova.notifications`, `nova.quota`, `nova.policy`, `nova.virt.node` (1 each). Resolved in this batch vs. prior: `nova.conf` (was 53 refs) and `nova.compute` (was 66 refs) are now fully in the KB. Source: `.aee/link-summary.md`.
