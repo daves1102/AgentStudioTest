@@ -2,7 +2,7 @@
 
 ## Overview
 
-This file implements Nova's client interface to the OpenStack Cyborg accelerator service. It provides module-level helper functions for retrieving device profile groups, building request group objects, computing accelerator quantities, and constructing PCI device info dictionaries from ARQ data. The private `_CyborgClient` class encapsulates all HTTP communication with the Cyborg REST API, covering the full lifecycle of Accelerator Requests (ARQs): creation, binding, retrieval, and deletion. The adapter to Cyborg is created lazily on first use, deferring endpoint discovery until an actual API call is needed.
+This file implements Nova's client interface to the OpenStack Cyborg accelerator service. It provides module-level helper functions for retrieving device profile groups, building request group objects, computing accelerator quantities, and constructing PCI device info dictionaries from ARQ data. The private `_CyborgClient` class encapsulates all HTTP communication with the Cyborg REST API, covering the full lifecycle of Accelerator Requests (ARQs): creation, binding, retrieval, and deletion. The adapter to Cyborg is created lazily on first use, deferring endpoint discovery until an actual API call is needed (src/nova/accelerator/cyborg.py:L121–L134).
 
 Lines: total 419, code 324, comment 26, blank 69
 
