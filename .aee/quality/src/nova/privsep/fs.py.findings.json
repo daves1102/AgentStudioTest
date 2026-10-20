@@ -1,0 +1,16 @@
+[
+  {
+    "file": "src/nova/privsep/fs.py",
+    "tool": "pylint",
+    "ruleId": "W0613",
+    "lineRange": {
+      "start": 241,
+      "end": 243
+    },
+    "title": "mkfs() privsep entrypoint discards 'label' argument \u2014 passes None to unprivileged_mkfs",
+    "detail": "The privsep entrypoint `mkfs(fs, path, label=None)` calls `unprivileged_mkfs(fs, path, label=None)` with the label hardcoded to None instead of forwarding the `label` parameter. Any caller that passes a volume label to the privileged `mkfs` will have it silently ignored. Change the call to `unprivileged_mkfs(fs, path, label=label)`.",
+    "category": "bug-risk",
+    "severity": "medium",
+    "confidence": "confirmed"
+  }
+]

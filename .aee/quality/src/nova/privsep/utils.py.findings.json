@@ -1,0 +1,16 @@
+[
+  {
+    "file": "src/nova/privsep/utils.py",
+    "tool": "pylint,ruff",
+    "ruleId": "W0703",
+    "lineRange": {
+      "start": 75,
+      "end": 87
+    },
+    "title": "2 broad exception catches swallow errors in privileged helpers",
+    "detail": "At lines 75 and 87, bare `except Exception` blocks in privsep helper functions swallow all errors and continue or return silently. In a privileged context, swallowing unexpected errors hides security-relevant failures. Narrow each catch to the specific exceptions expected from the underlying OS call.",
+    "category": "error-handling",
+    "severity": "medium",
+    "confidence": "confirmed"
+  }
+]

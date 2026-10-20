@@ -1,0 +1,58 @@
+[
+  {
+    "file": "src/nova/scheduler/utils.py",
+    "tool": "lizard",
+    "ruleId": null,
+    "lineRange": {
+      "start": 1,
+      "end": 1
+    },
+    "title": "File exceeds 1000 lines (1560 lines total)",
+    "detail": "At 1560 lines, this utility module mixes request-spec manipulation, group-detail resolution, resource aggregation, and global state management. Splitting into focused sub-modules would improve discoverability and reduce merge conflicts.",
+    "category": "complexity",
+    "severity": "medium",
+    "confidence": "confirmed"
+  },
+  {
+    "file": "src/nova/scheduler/utils.py",
+    "tool": "lizard",
+    "ruleId": null,
+    "lineRange": {
+      "start": 721,
+      "end": 831
+    },
+    "title": "resources_from_request_spec: cyclomatic complexity 27, 67 lines",
+    "detail": "CCN=27 is the highest in the scheduler subsystem. The function builds placement resource requests from a spec, branching on NUMA, CPU pinning, PCIe, memory encryption, and other dimensions. Each branch is a separate concern that could be extracted into a helper. High complexity here increases the risk of missed cases when new resource types are added.",
+    "category": "complexity",
+    "severity": "high",
+    "confidence": "confirmed"
+  },
+  {
+    "file": "src/nova/scheduler/utils.py",
+    "tool": "lizard",
+    "ruleId": null,
+    "lineRange": {
+      "start": 1175,
+      "end": 1235
+    },
+    "title": "_get_group_details: cyclomatic complexity 17, 49 lines",
+    "detail": "CCN=17 for the function that resolves anti-affinity and affinity group membership. The many branches handle different policy types, cross-cell groups, and cache-miss recovery. Extracting per-policy-type logic would reduce complexity.",
+    "category": "complexity",
+    "severity": "medium",
+    "confidence": "confirmed"
+  },
+  {
+    "file": "src/nova/scheduler/utils.py",
+    "tool": "pylint",
+    "ruleId": "R1710",
+    "lineRange": {
+      "start": 1175,
+      "end": 1175
+    },
+    "title": "Inconsistent return statements in _get_group_details",
+    "detail": "_get_group_details has code paths that return a value and paths that fall through to an implicit None return. Callers may not guard against None, leading to AttributeError. Make all return paths explicit.",
+    "category": "bug-risk",
+    "severity": "medium",
+    "confidence": "confirmed"
+  }
+]

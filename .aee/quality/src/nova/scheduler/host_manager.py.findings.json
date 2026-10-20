@@ -1,0 +1,72 @@
+[
+  {
+    "file": "src/nova/scheduler/host_manager.py",
+    "tool": "lizard",
+    "ruleId": null,
+    "lineRange": {
+      "start": 498,
+      "end": 617
+    },
+    "title": "get_filtered_hosts: cyclomatic complexity 19, 31 lines",
+    "detail": "CCN=19 in a 31-line function indicates highly nested conditional logic. The function applies filters, handles rebuild requests, and manages RUN_ON_REBUILD semantics. Extracting the rebuild-filter logic into a helper would reduce complexity.",
+    "category": "complexity",
+    "severity": "medium",
+    "confidence": "confirmed"
+  },
+  {
+    "file": "src/nova/scheduler/host_manager.py",
+    "tool": "pylint",
+    "ruleId": "W0231",
+    "lineRange": {
+      "start": 48,
+      "end": 48
+    },
+    "title": "ReadOnlyDict.__init__ does not call super().__init__",
+    "detail": "The `ReadOnlyDict` class at line 48 inherits from `UserDict` but does not call `super().__init__()`. `UserDict.__init__` initialises the internal `.data` dict; skipping it may leave the object in an inconsistent state if `ReadOnlyDict` is ever instantiated with initial data.",
+    "category": "bug-risk",
+    "severity": "low",
+    "confidence": "confirmed"
+  },
+  {
+    "file": "src/nova/scheduler/host_manager.py",
+    "tool": "pylint",
+    "ruleId": "W0221",
+    "lineRange": {
+      "start": 68,
+      "end": 68
+    },
+    "title": "ReadOnlyDict.update signature differs from MutableMapping.update",
+    "detail": "The `update` method at line 68 removes the variadic `*args` and `**kwargs` accepted by `MutableMapping.update`. Code that calls `obj.update(other_dict)` with keyword arguments on a `ReadOnlyDict` would receive a TypeError at runtime when the object is treated as a MutableMapping. Add `*args, **kwargs` to the signature even if they are rejected.",
+    "category": "bug-risk",
+    "severity": "low",
+    "confidence": "confirmed"
+  },
+  {
+    "file": "src/nova/scheduler/host_manager.py",
+    "tool": "pylint,ruff",
+    "ruleId": "W0703",
+    "lineRange": {
+      "start": 81,
+      "end": 81
+    },
+    "title": "Broad exception catch swallows placement client initialisation errors",
+    "detail": "The `except Exception` at line 81 catches all errors when testing the placement client and logs at exception level, but the service continues. Non-transient errors (e.g., config mistakes) would be silently ignored, leaving the service running in a degraded state. Propagate fatal configuration errors and only swallow transient network exceptions.",
+    "category": "error-handling",
+    "severity": "medium",
+    "confidence": "confirmed"
+  },
+  {
+    "file": "src/nova/scheduler/host_manager.py",
+    "tool": "pylint",
+    "ruleId": "R1710",
+    "lineRange": {
+      "start": 666,
+      "end": 666
+    },
+    "title": "Inconsistent return statements at line 666",
+    "detail": "A function at line 666 has a code path that returns a value and another that returns None implicitly. Make all return paths explicit to avoid caller confusion.",
+    "category": "bug-risk",
+    "severity": "medium",
+    "confidence": "confirmed"
+  }
+]

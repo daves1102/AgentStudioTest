@@ -1,0 +1,30 @@
+[
+  {
+    "file": "src/nova/scheduler/request_filter.py",
+    "tool": "pylint",
+    "ruleId": "W0631",
+    "lineRange": {
+      "start": 377,
+      "end": 377
+    },
+    "title": "possibly-used-before-assignment: 'aggregates' may be undefined at line 377",
+    "detail": "The variable `aggregates` is only assigned inside a `if network_id:` block. If `network_id` is falsy (e.g., no routed-network request), the variable is never assigned, and the `if aggregates:` check at line 377 raises NameError. Initialise `aggregates = None` (or `[]`) before the conditional block.",
+    "category": "bug-risk",
+    "severity": "medium",
+    "confidence": "confirmed"
+  },
+  {
+    "file": "src/nova/scheduler/request_filter.py",
+    "tool": "pylint",
+    "ruleId": "W0613",
+    "lineRange": {
+      "start": 173,
+      "end": 280
+    },
+    "title": "8 filter callback functions have unused interface arguments",
+    "detail": "Eight filter functions at lines 173, 204, 248, 264, 280 (and others) declare `context` or `spec` parameters that are not used in their bodies. These are part of the filter callback interface. Prefix unused parameters with `_` to make the intent explicit.",
+    "category": "maintainability",
+    "severity": "low",
+    "confidence": "confirmed"
+  }
+]

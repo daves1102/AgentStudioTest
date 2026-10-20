@@ -1,0 +1,30 @@
+[
+  {
+    "file": "src/nova/notifications/base.py",
+    "tool": "pylint",
+    "ruleId": "W0703",
+    "lineRange": {
+      "start": 90,
+      "end": 90
+    },
+    "title": "Broad except at L90: notification send failure silently swallowed",
+    "detail": "The bare `except Exception` at line 90 catches all errors from sending a state-update notification, logs at exception level, and continues. This is intentional (notification failures must not disrupt instance operations), but the broad catch hides unexpected errors. Consider catching more specific oslo.messaging exceptions.",
+    "category": "error-handling",
+    "severity": "low",
+    "confidence": "confirmed"
+  },
+  {
+    "file": "src/nova/notifications/base.py",
+    "tool": "pylint",
+    "ruleId": "W0703",
+    "lineRange": {
+      "start": 133,
+      "end": 133
+    },
+    "title": "Broad except at L133: notification send failure silently swallowed",
+    "detail": "Same pattern as L90 \u2014 a bare `except Exception` swallows all notification-send errors. If the notifications subsystem encounters a non-transient failure (e.g., misconfiguration), it will be silently ignored on every call. Narrow the catch to expected transient exceptions.",
+    "category": "error-handling",
+    "severity": "low",
+    "confidence": "confirmed"
+  }
+]

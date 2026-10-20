@@ -1,0 +1,72 @@
+[
+  {
+    "file": "src/nova/pci/stats.py",
+    "tool": "lizard",
+    "ruleId": null,
+    "lineRange": {
+      "start": 1,
+      "end": 1
+    },
+    "title": "File exceeds 1000 lines (1075 lines total)",
+    "detail": "The PCI stats module at 1075 lines combines pool management, NUMA topology allocation, and request matching in a single file. Separating NUMA allocation logic from pool management would improve clarity.",
+    "category": "complexity",
+    "severity": "medium",
+    "confidence": "confirmed"
+  },
+  {
+    "file": "src/nova/pci/stats.py",
+    "tool": "lizard",
+    "ruleId": null,
+    "lineRange": {
+      "start": 656,
+      "end": 790
+    },
+    "title": "_filter_pools: cyclomatic complexity 20, 83 lines",
+    "detail": "CCN=20 in the core pool-filtering function. It branches on device type, SRIOV requirements, NUMA constraints, and tag matching in nested loops. The long body makes it hard to trace which combination of conditions leads to a pool being excluded. Extract per-criterion filter helpers.",
+    "category": "complexity",
+    "severity": "high",
+    "confidence": "confirmed"
+  },
+  {
+    "file": "src/nova/pci/stats.py",
+    "tool": "lizard",
+    "ruleId": null,
+    "lineRange": {
+      "start": 393,
+      "end": 474
+    },
+    "title": "_filter_pools_for_numa_cells: cyclomatic complexity 18",
+    "detail": "CCN=18 for NUMA-cell-aware filtering. The nested iteration over cells and pools, combined with allocation-count tracking, creates a complex state machine. Extract the per-cell allocation logic.",
+    "category": "complexity",
+    "severity": "medium",
+    "confidence": "confirmed"
+  },
+  {
+    "file": "src/nova/pci/stats.py",
+    "tool": "pylint",
+    "ruleId": "W0108",
+    "lineRange": {
+      "start": 93,
+      "end": 221
+    },
+    "title": "2 unnecessary lambda wrappers at lines 93 and 221",
+    "detail": "Two lambda expressions simply call another callable with the same arguments. Replacing `lambda x: f(x)` with `f` directly eliminates the wrapper, reduces indirection, and makes stack traces clearer. Example: `key=lambda p: p.count` \u2192 `key=operator.attrgetter('count')`.",
+    "category": "readability",
+    "severity": "low",
+    "confidence": "confirmed"
+  },
+  {
+    "file": "src/nova/pci/stats.py",
+    "tool": "pylint",
+    "ruleId": "R1710",
+    "lineRange": {
+      "start": 201,
+      "end": 201
+    },
+    "title": "Inconsistent return statements at line 201",
+    "detail": "A function at line 201 has an explicit return path and an implicit-None fallthrough path. Make all return paths explicit to avoid caller confusion.",
+    "category": "bug-risk",
+    "severity": "medium",
+    "confidence": "confirmed"
+  }
+]

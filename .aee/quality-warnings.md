@@ -17,3 +17,35 @@
 - pylint `redefined-outer-name` (63 hits), `duplicate-code` (59 hits), `protected-access` (59 hits) — suppressed (OVo pattern / cross-file metric).
 - Pylint E0401 import errors dropped (environment noise) across all 7 chunks of 50 files.
 - Ruff `S`-prefixed rules (security) deferred to Security Analyzer — not reported here.
+
+## Batch 5 Suppressions (nova/db, nova/scheduler, nova/notifications, nova/pci, nova/policies, nova/privsep)
+
+### False positives suppressed
+- `scheduler/filters/utils.py` L60 `comparison-with-callable`: `if based_on == min:` intentionally compares a callable — the function selects a min/max aggregation strategy. Not a bug.
+- `scheduler/client/report.py` L1373 `try-except-raise`: pattern catches two specific exceptions to let them propagate while wrapping all others with logging. First except clause is necessary to prevent the general wrapper from obscuring domain exceptions.
+- `db/main/api.py` B018 `expression-not-assigned` (multiple): SQLAlchemy lazy-load attribute-access probes in try/except blocks — intentional.
+- `scheduler/manager.py` L76 B018: `self.placement_client` attribute-access probe in try/except during service init — intentional test for endpoint reachability.
+- `notifications/objects/base.py` L157 broad-exception-caught: uses `excutils.save_and_reraise_exception()` — not a swallow, exception is re-raised after logging.
+
+### Framework patterns suppressed (OVo, oslo patterns)
+- `super-with-arguments` across all nova.notifications.objects files: legacy Python 2 super() calls, harmless.
+- `too-few-public-methods` across all scheduler filters, weights, and notification object files: single-method plugin pattern by design.
+- `useless-object-inheritance` across multiple files: Python 2 legacy, no functional impact.
+- `attribute-defined-outside-init` in host_manager.py: framework-managed attribute lifecycle.
+- `too-many-public-methods` in scheduler/client/report.py: placement API client class, interface by design.
+
+### Noise suppressed (style/info level not meeting quality bar)
+- `missing-module-docstring` and `missing-function-docstring` across all nova/policies/*.py files: policy definition modules are formulaic; missing docstrings are convention noise only.
+- `invalid-name` across all migration files (alembic `op`, `sa`, `conn` variables): alembic convention.
+- `consider-using-f-string` (UP031) across all files: batch-level style nit, not individual findings.
+- `no-else-return`, `no-else-raise`, `superfluous-parens` across multiple files: style nits, info level.
+- `unused-variable` for single-character loop counters (`d`, `_`): idiomatic Python.
+- `duplicate-code` in host_manager.py: cross-file analysis required, not in scope.
+
+### Tools not covering JavaScript, Go, C, C++
+No files of these types in batch 5.
+
+### Configuration applied
+- ruff: project's `ruff.toml` / `pyproject.toml` (if present), else defaults
+- pylint: defaults (import errors E0401 dropped as environment noise)
+- lizard: default thresholds (CCN ≥ 15 = medium, CCN > 25 = high)

@@ -1,0 +1,128 @@
+[
+  {
+    "file": "src/nova/db/main/api.py",
+    "tool": "lizard",
+    "ruleId": null,
+    "lineRange": {
+      "start": 1,
+      "end": 1
+    },
+    "title": "File exceeds 1000 lines (4967 lines total)",
+    "detail": "The file is 4967 lines long, far exceeding the 1000-line threshold. It concentrates the entire main-database API layer in one module. This makes navigation, testing in isolation, and partial ownership impractical. Consider splitting into sub-modules (e.g., instance_db, migration_db).",
+    "category": "complexity",
+    "severity": "medium",
+    "confidence": "confirmed"
+  },
+  {
+    "file": "src/nova/db/main/api.py",
+    "tool": "lizard",
+    "ruleId": null,
+    "lineRange": {
+      "start": 1636,
+      "end": 1862
+    },
+    "title": "instance_get_all_by_filters_sort: cyclomatic complexity 24, 122 lines",
+    "detail": "CCN=24 far exceeds the complexity threshold of 15. The function handles sorting, joining, filtering, and pagination in a single monolithic body. This makes it very hard to test exhaustively and easy to introduce regressions when adding new filter keys. Refactor by extracting sort-key building, join assembly, and filter application into smaller helpers.",
+    "category": "complexity",
+    "severity": "high",
+    "confidence": "confirmed"
+  },
+  {
+    "file": "src/nova/db/main/api.py",
+    "tool": "lizard",
+    "ruleId": null,
+    "lineRange": {
+      "start": 4321,
+      "end": 4504
+    },
+    "title": "_archive_deleted_rows_for_table: cyclomatic complexity 20, 77 lines",
+    "detail": "CCN=20 reflects deeply nested logic that handles row archiving across engines and table structures. The function's many branches make it error-prone when table schemas change. Breaking out per-engine logic would reduce complexity.",
+    "category": "complexity",
+    "severity": "high",
+    "confidence": "confirmed"
+  },
+  {
+    "file": "src/nova/db/main/api.py",
+    "tool": "lizard",
+    "ruleId": null,
+    "lineRange": {
+      "start": 3364,
+      "end": 3433
+    },
+    "title": "migration_get_all_by_filters: cyclomatic complexity 20, 62 lines",
+    "detail": "CCN=20 for a function that builds a filtered migration query. The filtering logic has many independent branches for different filter criteria. Extracting filter-clause builders would make each code path testable in isolation.",
+    "category": "complexity",
+    "severity": "high",
+    "confidence": "confirmed"
+  },
+  {
+    "file": "src/nova/db/main/api.py",
+    "tool": "lizard",
+    "ruleId": null,
+    "lineRange": {
+      "start": 2299,
+      "end": 2417
+    },
+    "title": "_instance_update: cyclomatic complexity 18, 64 lines",
+    "detail": "CCN=18 in the core instance-update path. Multiple branches handle extra specs, metadata, system metadata, and security groups in sequence. Each branch is a candidate for extraction into a focused helper.",
+    "category": "complexity",
+    "severity": "medium",
+    "confidence": "confirmed"
+  },
+  {
+    "file": "src/nova/db/main/api.py",
+    "tool": "pylint",
+    "ruleId": "W0707",
+    "lineRange": {
+      "start": 609,
+      "end": 1847
+    },
+    "title": "14 raise statements missing exception chaining (raise-missing-from)",
+    "detail": "14 occurrences of `raise SomeError(...)` inside `except` blocks at lines 609, 1059, 1105, 1432, 1847 (and others). Without `raise ... from e`, the original exception traceback is lost, making it harder to diagnose failures. Add `from exc` or `from None` to each raise.",
+    "category": "maintainability",
+    "severity": "low",
+    "confidence": "confirmed"
+  },
+  {
+    "file": "src/nova/db/main/api.py",
+    "tool": "pylint",
+    "ruleId": "W0622",
+    "lineRange": {
+      "start": 1164,
+      "end": 4657
+    },
+    "title": "4 function parameters named 'id' shadow the builtin",
+    "detail": "Parameters named `id` at lines 1164, 3641, 4064, and 4657 shadow the built-in `id()`. While harmless inside each function body, it makes IDE analysis less accurate and misleads readers. Rename to `record_id`, `instance_id`, etc.",
+    "category": "readability",
+    "severity": "low",
+    "confidence": "confirmed"
+  },
+  {
+    "file": "src/nova/db/main/api.py",
+    "tool": "pylint",
+    "ruleId": "R1710",
+    "lineRange": {
+      "start": 74,
+      "end": 3007
+    },
+    "title": "3 functions have inconsistent return statements",
+    "detail": "Functions at lines 74, 843, and 3007 have paths that return a value and paths that return None implicitly. Callers must handle None defensively or risk AttributeError. Make all return paths explicit.",
+    "category": "bug-risk",
+    "severity": "medium",
+    "confidence": "confirmed"
+  },
+  {
+    "file": "src/nova/db/main/api.py",
+    "tool": "pylint",
+    "ruleId": "R0912",
+    "lineRange": {
+      "start": 1636,
+      "end": 4321
+    },
+    "title": "4 functions exceed the branch limit (too-many-branches)",
+    "detail": "Functions starting at lines 1636, 2299, 3364, and 4321 exceed pylint's branch limit. High branch counts make it harder to achieve full code coverage and to reason about all possible states. See complexity findings above for specific guidance.",
+    "category": "complexity",
+    "severity": "medium",
+    "confidence": "confirmed"
+  }
+]

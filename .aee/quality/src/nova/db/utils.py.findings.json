@@ -1,0 +1,16 @@
+[
+  {
+    "file": "src/nova/db/utils.py",
+    "tool": "ruff, pylint",
+    "ruleId": "B006",
+    "lineRange": {
+      "start": 41,
+      "end": 44
+    },
+    "title": "Mutable default argument [] in process_sort_params",
+    "detail": "The `default_keys` parameter at line 41 has a mutable list default `[]`. Although the list is only read (not mutated) inside the function body, using a mutable default is a well-known Python anti-pattern: if the default is ever mutated in a future refactor, all callers sharing the default will be affected. Replace with `None` and assign an empty list inside the function body.",
+    "category": "bug-risk",
+    "severity": "low",
+    "confidence": "confirmed"
+  }
+]

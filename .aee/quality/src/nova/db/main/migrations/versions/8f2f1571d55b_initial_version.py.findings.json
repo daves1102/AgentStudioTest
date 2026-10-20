@@ -1,0 +1,44 @@
+[
+  {
+    "file": "src/nova/db/main/migrations/versions/8f2f1571d55b_initial_version.py",
+    "tool": "lizard",
+    "ruleId": null,
+    "lineRange": {
+      "start": 1,
+      "end": 1
+    },
+    "title": "File exceeds 1000 lines (1629 lines total)",
+    "detail": "The initial database version migration is 1629 lines, encoding the full schema definition at once. This is inherent to an initial migration and cannot be split, but reviewers should be aware of the scope when validating schema changes.",
+    "category": "complexity",
+    "severity": "medium",
+    "confidence": "confirmed"
+  },
+  {
+    "file": "src/nova/db/main/migrations/versions/8f2f1571d55b_initial_version.py",
+    "tool": "lizard",
+    "ruleId": null,
+    "lineRange": {
+      "start": 55,
+      "end": 185
+    },
+    "title": "_create_shadow_tables: cyclomatic complexity 24, 71 lines",
+    "detail": "CCN=24 reflects the many branches needed to iterate over all tables and columns while handling type overrides and dialect-specific column copies. The complexity is intrinsic to the migration logic but makes the function hard to unit-test. Breaking out column-copy logic into a helper would reduce complexity.",
+    "category": "complexity",
+    "severity": "high",
+    "confidence": "confirmed"
+  },
+  {
+    "file": "src/nova/db/main/migrations/versions/8f2f1571d55b_initial_version.py",
+    "tool": "pylint",
+    "ruleId": "W0106",
+    "lineRange": {
+      "start": 1585,
+      "end": 1591
+    },
+    "title": "3 expression-not-assigned: op.create_index() calls wrapped in tuples",
+    "detail": "At lines 1585, 1590, and 1591, `op.create_index(...)` calls are wrapped in a tuple (e.g. `(op.create_index(...),)`) rather than called as statements. The tuple is never assigned, so the intent is unclear. If the calls have side effects (they do), the comma at the end is a stray character that creates an expression statement tuple instead of a function call. Verify these still execute correctly under the Alembic batch context, and remove the trailing commas.",
+    "category": "bug-risk",
+    "severity": "low",
+    "confidence": "confirmed"
+  }
+]

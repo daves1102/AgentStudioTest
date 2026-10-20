@@ -1,0 +1,30 @@
+[
+  {
+    "file": "src/nova/privsep/libvirt.py",
+    "tool": "pylint,ruff",
+    "ruleId": "W0703",
+    "lineRange": {
+      "start": 168,
+      "end": 168
+    },
+    "title": "Broad exception catch at line 168 in privileged libvirt helper",
+    "detail": "A bare `except Exception` at line 168 swallows unexpected errors from a libvirt operation running with elevated privileges. This hides failures that may indicate system inconsistency. Narrow the catch to the specific exception types the operation can raise.",
+    "category": "error-handling",
+    "severity": "medium",
+    "confidence": "confirmed"
+  },
+  {
+    "file": "src/nova/privsep/libvirt.py",
+    "tool": "pylint",
+    "ruleId": "W1514",
+    "lineRange": {
+      "start": 161,
+      "end": 161
+    },
+    "title": "open() call without explicit encoding at line 161",
+    "detail": "A file open at line 161 uses the platform default encoding. In a privsep context running as root, the locale may differ from the calling process. Add `encoding='utf-8'` to make the behaviour explicit.",
+    "category": "bug-risk",
+    "severity": "low",
+    "confidence": "confirmed"
+  }
+]

@@ -1,0 +1,30 @@
+[
+  {
+    "file": "src/nova/pci/manager.py",
+    "tool": "pylint,ruff",
+    "ruleId": "PLR1704",
+    "lineRange": {
+      "start": 416,
+      "end": 416
+    },
+    "title": "Loop variable 'dev' shadows the 'dev' function parameter at line 416",
+    "detail": "In `_free_device(self, dev, ...)`, the for-loop `for dev in freed_devs:` at line 416 redefines the `dev` parameter. After the else-branch executes, `dev` holds the last element of `freed_devs`, not the original device. Any code added after this block that expects `dev` to be the original argument would silently get the wrong object. Rename the loop variable (e.g., `for freed_dev in freed_devs:`).",
+    "category": "bug-risk",
+    "severity": "low",
+    "confidence": "confirmed"
+  },
+  {
+    "file": "src/nova/pci/manager.py",
+    "tool": "pylint",
+    "ruleId": "W0613",
+    "lineRange": {
+      "start": 312,
+      "end": 436
+    },
+    "title": "3 methods have unused 'context' parameter (interface contract)",
+    "detail": "Methods at lines 312, 420, and 436 declare a `context` parameter that is never used. These follow the oslo convention of always accepting a request context. Prefix the unused parameter with `_` to signal that it is part of the interface but intentionally unused.",
+    "category": "maintainability",
+    "severity": "low",
+    "confidence": "confirmed"
+  }
+]

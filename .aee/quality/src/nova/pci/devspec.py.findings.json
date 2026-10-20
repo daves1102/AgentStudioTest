@@ -1,0 +1,44 @@
+[
+  {
+    "file": "src/nova/pci/devspec.py",
+    "tool": "pylint",
+    "ruleId": "W0231",
+    "lineRange": {
+      "start": 94,
+      "end": 272
+    },
+    "title": "4 subclasses do not call super().__init__ (super-init-not-called)",
+    "detail": "Subclasses at lines 94, 132, 175, and 272 set their attributes directly without calling super().__init__(). The base class may perform initialisation that the subclasses bypass. If the base class init is later updated, the subclasses will silently miss the new initialisation. Add explicit super().__init__() calls.",
+    "category": "maintainability",
+    "severity": "low",
+    "confidence": "confirmed"
+  },
+  {
+    "file": "src/nova/pci/devspec.py",
+    "tool": "pylint",
+    "ruleId": "W0237",
+    "lineRange": {
+      "start": 112,
+      "end": 391
+    },
+    "title": "4 overriding methods rename the 'pci_addr' parameter (arguments-renamed)",
+    "detail": "Methods at lines 112, 157, 188, and 391 override a base-class method but rename the positional parameter (e.g., `pci_addr` \u2192 `phys_pci_addr`). Callers using keyword arguments would receive TypeError. Use the same parameter name as the base class or accept **kwargs.",
+    "category": "bug-risk",
+    "severity": "low",
+    "confidence": "confirmed"
+  },
+  {
+    "file": "src/nova/pci/devspec.py",
+    "tool": "pylint",
+    "ruleId": "W0707",
+    "lineRange": {
+      "start": 76,
+      "end": 186
+    },
+    "title": "3 raise statements missing exception chaining",
+    "detail": "At lines 76, 110, and 186, exceptions are re-raised inside except blocks without `from exc`. The original traceback context is lost, making debugging harder. Add `from exc` to each re-raise.",
+    "category": "maintainability",
+    "severity": "low",
+    "confidence": "confirmed"
+  }
+]

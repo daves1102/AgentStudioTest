@@ -1,0 +1,16 @@
+[
+  {
+    "file": "src/nova/db/migration.py",
+    "tool": "pylint",
+    "ruleId": "R1710",
+    "lineRange": {
+      "start": 31,
+      "end": 31
+    },
+    "title": "Inconsistent return in _get_engine \u2014 falls through to implicit None",
+    "detail": "_get_engine() returns an engine for `database='main'` and `database='api'`, but has no explicit return for any other value, implicitly returning None. Callers that receive None would see AttributeError when calling engine methods. Add an `else: raise ValueError(f'Unknown database: {database}')` guard.",
+    "category": "bug-risk",
+    "severity": "medium",
+    "confidence": "confirmed"
+  }
+]

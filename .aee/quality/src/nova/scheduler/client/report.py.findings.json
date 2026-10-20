@@ -1,0 +1,44 @@
+[
+  {
+    "file": "src/nova/scheduler/client/report.py",
+    "tool": "lizard",
+    "ruleId": null,
+    "lineRange": {
+      "start": 1,
+      "end": 1
+    },
+    "title": "File exceeds 1000 lines (2688 lines total)",
+    "detail": "At 2688 lines, this is the largest file in the scheduler subsystem. It combines all placement API client logic in one class. Splitting by resource type (allocations, resource providers, aggregates) would improve maintainability.",
+    "category": "complexity",
+    "severity": "medium",
+    "confidence": "confirmed"
+  },
+  {
+    "file": "src/nova/scheduler/client/report.py",
+    "tool": "pylint",
+    "ruleId": "R1710",
+    "lineRange": {
+      "start": 117,
+      "end": 2613
+    },
+    "title": "3 functions have inconsistent return statements",
+    "detail": "Functions at lines 117, 208, and 2613 mix explicit returns with implicit None fallthrough. Callers expecting a return value on all code paths may encounter None unexpectedly. Add explicit return statements to all branches.",
+    "category": "bug-risk",
+    "severity": "medium",
+    "confidence": "confirmed"
+  },
+  {
+    "file": "src/nova/scheduler/client/report.py",
+    "tool": "pylint",
+    "ruleId": "W0707",
+    "lineRange": {
+      "start": 451,
+      "end": 2153
+    },
+    "title": "3 raise statements missing exception chaining",
+    "detail": "At lines 451, 1457, and 2153, exceptions are raised inside except blocks without `from e`, discarding the original traceback. Add `raise ... from exc` to preserve context.",
+    "category": "maintainability",
+    "severity": "low",
+    "confidence": "confirmed"
+  }
+]

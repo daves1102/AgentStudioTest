@@ -1,0 +1,30 @@
+[
+  {
+    "file": "src/nova/pci/utils.py",
+    "tool": "pylint",
+    "ruleId": "W1514",
+    "lineRange": {
+      "start": 123,
+      "end": 259
+    },
+    "title": "5 open() calls without explicit encoding at lines 123, 139, 183, 233, 259",
+    "detail": "Five file-open calls rely on the platform default encoding. On systems where the default is not UTF-8, reading sysfs or procfs paths may produce garbled output or decode errors. Add `encoding='utf-8'` (or the appropriate encoding) to each open() call.",
+    "category": "bug-risk",
+    "severity": "low",
+    "confidence": "confirmed"
+  },
+  {
+    "file": "src/nova/pci/utils.py",
+    "tool": "pylint",
+    "ruleId": "W0707",
+    "lineRange": {
+      "start": 170,
+      "end": 170
+    },
+    "title": "raise-missing-from: exception chain lost when raising PciDeviceNotFoundById",
+    "detail": "At line 170, an `except Exception` block raises `PciDeviceNotFoundById` without `from exc`, discarding the original OS error (ENOENT, EACCES, etc.). Adding `from exc` would preserve the root cause in tracebacks.",
+    "category": "maintainability",
+    "severity": "low",
+    "confidence": "confirmed"
+  }
+]
