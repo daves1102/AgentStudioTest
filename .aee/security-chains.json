@@ -20,7 +20,7 @@
         "file": "src/nova/accelerator/cyborg.py",
         "lineRange": { "start": 337, "end": 337 },
         "reason": "no-static-edge",
-        "detail": "get_arq_by_uuid (defined at cyborg.py:337) does not appear anywhere in the 443-file source set — grep over src/ confirms it is only the definition. Five files call into cyborg.py (compute/api.py, compute/manager.py, compute/utils.py, conductor/manager.py, network/neutron.py) but all call get_client, get_device_profile_request_groups, get_arq_pci_device_profile, or get_device_amount_of_dp_groups. The callers of get_arq_by_uuid are in files not yet extracted from the nova codebase. New namespaces added in this pass (nova.hacking, nova.image, nova.keymgr, nova.limit) contain no callers."
+        "detail": "get_arq_by_uuid (defined at cyborg.py:337) does not appear anywhere in the 532-file source set — grep over src/ confirms it is only the definition. Five files call into cyborg.py (compute/api.py, compute/manager.py, compute/utils.py, conductor/manager.py, network/neutron.py) but all call get_client, get_device_profile_request_groups, get_arq_pci_device_profile, or get_device_amount_of_dp_groups. New namespaces added across all passes (nova.hacking, nova.image, nova.keymgr, nova.limit, nova.notifications, nova.pci, nova.policies, nova.privsep) contain no callers. The method's callers remain in source files not yet extracted from the nova codebase."
       },
       "owaspCategory": "A03 Injection",
       "cweId": "CWE-74",
@@ -47,7 +47,7 @@
       "confidence": "needs_cross_file",
       "title": "User-controlled scheduler hint used as getattr attribute on HostState",
       "disposition": "excluded-not-a-source",
-      "reason": "Confidence is needs_cross_file. KB securitySurface is empty. Scheduler filters are loaded by dynamic dispatch from config — no inbound static edges even with 443 files in source set."
+      "reason": "Confidence is needs_cross_file. KB securitySurface is empty. Scheduler filters are loaded by dynamic dispatch from config — no inbound static edges even with 532 files in source set."
     },
     {
       "file": "src/nova/api/metadata/handler.py",
@@ -63,16 +63,32 @@
       "confidence": "confirmed",
       "title": "TLS hostname verification disabled in VeNCrypt security handshake",
       "disposition": "excluded-not-a-source",
-      "reason": "KB securitySurface is empty — no entry-point entries. The finding describes a TLS configuration weakness (CWE-297) on the outbound connection to QEMU VNC backend; it is not an injection taint source. An attacker would need a CA-signed certificate for a different compute node and network access to the management network to exploit this."
+      "reason": "KB securitySurface is empty — no entry-point entries. TLS configuration weakness on outbound connection to QEMU VNC backend."
+    },
+    {
+      "file": "src/nova/privsep/libvirt.py",
+      "lineRange": { "start": 81, "end": 84 },
+      "confidence": "confirmed",
+      "title": "ploop disk image set world-readable (S_IROTH) inside privsep",
+      "disposition": "excluded-not-a-source",
+      "reason": "KB securitySurface has 16 entries, all kind 'privilege' (privsep-entrypoint). No entry-point entries. CWE-732 file-permission misconfiguration is a standalone privilege misuse inside sys_admin_pctxt; no tainted input flows to it."
+    },
+    {
+      "file": "src/nova/privsep/libvirt.py",
+      "lineRange": { "start": 150, "end": 161 },
+      "confidence": "needs_cross_file",
+      "title": "readpty opens unvalidated path as root with CAP_DAC_READ_SEARCH",
+      "disposition": "excluded-no-source-found",
+      "reason": "Confidence is needs_cross_file — used as sink candidate per protocol. KB has no entry-point entries. No inbound static edges to privsep/libvirt.py in the link graph: privsep functions are called via IPC/oslo.privsep dispatch, not direct Python imports (known blind spot). No confirmed/probable taint source elsewhere can be traced to readpty. Partial chain cannot be formed without a source."
     }
   ],
   "summary": {
     "confirmedChains": 0,
     "partialChains": 1,
     "terminatedChains": 0,
-    "filesAnalysed": 443,
-    "linkGraphEdgesAvailable": 1577,
-    "unresolvedImports": 286,
+    "filesAnalysed": 532,
+    "linkGraphEdgesAvailable": 1882,
+    "unresolvedImports": 196,
     "crossComponentSeams": 0,
     "analysedAt": "2026-10-20"
   }
