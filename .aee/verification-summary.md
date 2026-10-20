@@ -1,10 +1,10 @@
-# Verification Summary — Round 1 (Batch 5)
+# Verification Summary — Round 1 (Batch 6)
 
-**Batch:** `f56908d5e0741524fb4cb768d9b52ccb0f3a585b`
+**Batch:** `c7012ab2592eef3f2cf00f50553e7d290ce204fc`
 **Date:** 2026-10-20
-**Prior-batch warning resolved:** The persistent `cyborg.py.md` missing-citation warning (flagged in 4 consecutive rounds) is **resolved** — citation `(src/nova/accelerator/cyborg.py:L121–L134)` added and verified accurate.
+**Files in batch:** 22 changed (10 new Python sources: hacking/, image/, keymgr/, limit/; 12 locale .po files not audited)
 
-**Documents audited:** 439 (433 file documents, 1 component document, 5 security findings, 1 security chain)
+**Documents audited:** 449 (443 file documents, 1 component document, 5 security findings, 1 security chain)
 
 ---
 
@@ -30,82 +30,65 @@
 
 ## What Was Verified
 
-### File documents (433 files)
+### File documents (443 files)
 
 **Automated checks:**
-- All 433 documents present ✓
-- Line counts verified against KB for all 433 files via `aee-inventory` — zero mismatches ✓
-- 9,273 KB `aee-inventory` symbols cross-checked against fresh inventory output — zero wrong-citations, zero missing symbols ✓
-- Property getter/setter disambiguation: list-based lookup handles multiple (scope, name, kind) entries correctly ✓
-- Aggregate totals (133,109 total / 95,464 code) verified against sum of all 433 KB records ✓
-- nova.md claims 9,479 symbols — verified against sum of all KB `symbols` arrays ✓
+- All 443 documents present ✓
+- Line counts verified against KB for all 443 files via `aee-inventory` — zero mismatches ✓
+- 9,522 KB `aee-inventory` symbols cross-checked against fresh inventory — zero wrong-citations, zero missing symbols ✓
+- KB aggregate totals (136,294 total / 97,716 code) computed and verified ✓
+- Total symbols across all 443 KB records: 9,730 ✓
 
-**Nova.md per-file spot-checks (new batch 5 files):**
-- `compute/api.py`: 7,124 total / 5,092 code — matches KB ✓
-- `compute/manager.py`: 12,137 total / 8,837 code — matches KB ✓
-- `conf/api.py`: 409 total / 338 code — matches KB ✓
-- `conf/compute.py`: 1,600 total / 1,258 code — matches KB ✓
-- `console/rfb/authvencrypt.py`: 162 total / 109 code — matches KB ✓
-- `console/websocketproxy.py`: 332 total / 221 code — matches KB ✓
-- `cmd/manage.py`: 3,858 total / 2,970 code — matches KB ✓
-- `cmd/status.py`: 361 total / 238 code — matches KB ✓
+**Nova.md per-file spot-checks (new batch 6 files):**
+- `hacking/__init__.py`: 0 total / 0 code — matches KB ✓
+- `hacking/checks.py`: 1,140 total / 817 code — matches KB ✓
+- `image/__init__.py`: 0 total / 0 code — matches KB ✓
+- `image/glance.py`: 1,248 total / 919 code — matches KB ✓
+- `keymgr/__init__.py`: 0 total / 0 code — matches KB ✓
+- `keymgr/conf_key_mgr.py`: 141 total / 95 code — matches KB ✓
+- `limit/__init__.py`: 0 total / 0 code — matches KB ✓
+- `limit/local.py`: 236 total / 162 code — matches KB ✓
+- `limit/placement.py`: 239 total / 164 code — matches KB ✓
+- `limit/utils.py`: 181 total / 95 code — matches KB ✓
 
 ### Component document: `docs/components/nova.md`
 
-- Aggregate total (133,109) and code (95,464) match exact KB sum across all 433 files ✓
-- Symbol count (9,479) matches sum of all KB `symbols` arrays ✓
-- Per-file line counts for 8 new files spot-checked — all match KB ✓
-- Subsystem descriptions for cmd/, compute/, conductor/, conf/, console/ verified against source directory contents ✓
+- Aggregate total (136,294) and code (97,716) match exact KB sum across all 443 files ✓
+- Symbol count (9,730) matches sum of all KB `symbols` arrays ✓
+- Per-file line counts for all 10 new files spot-checked — all match KB ✓
+- Subsystem descriptions for hacking/, image/, keymgr/, limit/ verified ✓
 
-### cyborg.py.md persistent warning — RESOLVED
+### cyborg.py.md citation (resolved in batch 5)
 
-`docs/src/nova/accelerator/cyborg.py.md` now contains `(src/nova/accelerator/cyborg.py:L121–L134)` after the "adapter created lazily" claim.
-Citation verified: L121–134 is the `_client` property with explicit lazy-init comment "Create the openstacksdk adapter lazily so that merely constructing a client does not contact the Cyborg service" and deferred endpoint discovery logic ✓
+Citation `(src/nova/accelerator/cyborg.py:L121–L134)` still present and accurate ✓
 
-### Security finding: `Security:src/nova/accelerator/cyborg.py`
+### Security findings (unchanged from batch 5)
 
-Unchanged — carries forward verified status from rounds 1–4.
-
-### Security finding: `Security:src/nova/utils.py`
-
-Unchanged — carries forward verified status from rounds 2–4.
-
-### Security finding: `Security:src/nova/scheduler/filters/json_filter.py`
-
-Unchanged — carries forward verified status from rounds 3–4.
-
-### Security finding: `Security:src/nova/api/metadata/handler.py`
-
-Unchanged — carries forward verified status from round 4.
-
-### Security finding: `Security:src/nova/console/rfb/authvencrypt.py` *(new)*
-
-- `tool: manual`, `lineRange: {start: 151, end: 152}`, OWASP A02 / CWE-297, severity medium, confidence confirmed
-- Source L152: `ssl_ctx.check_hostname = False` — explicitly disables hostname verification ✓
-- Source L146: `ssl.PROTOCOL_TLS_CLIENT` sets `check_hostname=True` by default; L152 overrides to False ✓
-- Title "TLS hostname verification disabled in VeNCrypt security handshake" — accurate ✓
-- OWASP A02 Cryptographic Failures / CWE-297 (Improper Validation of Certificate with Host Mismatch): consistent with disabling hostname checking while keeping cert chain validation ✓
-- Severity medium: requires attacker with CA-signed cert for a different compute node and management network access — appropriate ✓
-- Confidence confirmed: explicit assignment at L152 is unambiguous ✓
-- Tool manual; scanner re-run not required. Bandit and semgrep run as sanity check — no overlapping flags ✓
+All 5 carry forward verified status:
+- `Security:src/nova/accelerator/cyborg.py` (cyborg ARQ URL injection, CWE-74/A03) ✓
+- `Security:src/nova/utils.py` (SHA-224, CWE-327/A02) ✓
+- `Security:src/nova/scheduler/filters/json_filter.py` (getattr reflection, CWE-470/A01) ✓
+- `Security:src/nova/api/metadata/handler.py` (HMAC skip, CWE-306/A07) ✓
+- `Security:src/nova/console/rfb/authvencrypt.py` (TLS hostname check, CWE-297/A02) ✓
+- No new security findings in this batch ✓
 
 ### Security chain: `chain-001`
 
-Updated stoppedAt.detail with 5 confirmed callers (compute/api.py, compute/manager.py, compute/utils.py, conductor/manager.py, network/neutron.py) — none call `get_arq_by_uuid` (confirmed via grep). Chain remains partial/needs_cross_file.
-- Source `cyborg.py:L337` / Sink `cyborg.py:L358–359` / OWASP A03 / CWE-74 — previously verified ✓
-- New authvencrypt.py finding listed in `evaluatedFindings` as excluded-not-a-source (KB securitySurface empty, TLS config weakness not a taint source) — consistent ✓
+Unchanged — carries forward verified status from batch 5. Still partial/needs_cross_file.
+- Source `cyborg.py:L337` / Sink `cyborg.py:L358–359` / OWASP A03 / CWE-74 ✓
+- 4 evaluated findings unchanged ✓
 
 ---
 
 ## Documents Passed (zero errors)
 
-All 439 audited items pass with zero errors:
+All 449 audited items pass with zero errors:
 
 | Type | Count | Pass |
 |------|-------|------|
-| file-document | 433 | 433 |
+| file-document | 443 | 443 |
 | component-document | 1 | 1 |
 | security-finding | 5 | 5 |
 | security-chain | 1 | 1 |
 
-**Persistent warning resolved:** `cyborg.py.md` missing citation (5 rounds of tracking) now corrected with `(src/nova/accelerator/cyborg.py:L121–L134)`.
+**Persistent info only:** `docs/src/nova/accelerator/__init__.py.md` — 0-line file, no citation possible (not actionable).
