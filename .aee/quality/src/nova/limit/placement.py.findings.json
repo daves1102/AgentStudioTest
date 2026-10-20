@@ -1,0 +1,44 @@
+[
+  {
+    "file": "src/nova/limit/placement.py",
+    "tool": "lizard",
+    "ruleId": null,
+    "lineRange": {
+      "start": 45,
+      "end": 113
+    },
+    "title": "`_get_usage` cyclomatic complexity 16 (45 lines)",
+    "detail": "`_get_usage` (lines 45\u2013113) has CCN=16 across 45 lines. It dispatches on the unified-limits driver configuration, handles per-resource-class allocation lookups, manages an identity client singleton, and falls back between multiple resource-provider query patterns \u2014 all within one function. Fix: extract the resource-class lookup loop and the identity-client retrieval into separate helpers to reduce branching at each level.",
+    "category": "complexity",
+    "severity": "medium",
+    "confidence": "confirmed"
+  },
+  {
+    "file": "src/nova/limit/placement.py",
+    "tool": "pylint",
+    "ruleId": "W0707",
+    "lineRange": {
+      "start": 209,
+      "end": 209
+    },
+    "title": "Line 209: exception raised without `from` in except block (W0707)",
+    "detail": "`raise exception.TooManyInstances(str(e))` inside `except ValueError` at line 209 does not chain the original exception. The original `ValueError` traceback is discarded, making it harder to diagnose which oslo_limit check triggered the limit violation. Fix: `raise exception.TooManyInstances(str(e)) from e`.",
+    "category": "error-handling",
+    "severity": "low",
+    "confidence": "confirmed"
+  },
+  {
+    "file": "src/nova/limit/placement.py",
+    "tool": "pylint",
+    "ruleId": "W0613",
+    "lineRange": {
+      "start": 143,
+      "end": 143
+    },
+    "title": "Line 143: unused argument `project_id` in oslo_limit callback",
+    "detail": "`_get_usage` accepts `project_id` at line 143 as required by the oslo_limit callback interface, but the argument is never used in the function body. Fix: rename to `_project_id` to make the unused interface slot explicit.",
+    "category": "maintainability",
+    "severity": "low",
+    "confidence": "needs_cross_file"
+  }
+]

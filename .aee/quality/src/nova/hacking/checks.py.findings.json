@@ -1,0 +1,30 @@
+[
+  {
+    "file": "src/nova/hacking/checks.py",
+    "tool": "manual",
+    "ruleId": null,
+    "lineRange": {
+      "start": 1,
+      "end": 1140
+    },
+    "title": "File is 1140 lines (exceeds 1000-line maintainability guideline)",
+    "detail": "At 1140 lines this file exceeds the maintainability threshold. All Nova hacking checks are consolidated here; splitting by check category (import style, string formatting, logging, cross-driver, etc.) would make each section easier to review and extend. Fix: split into focused sub-modules under `nova/hacking/`.",
+    "category": "maintainability",
+    "severity": "medium",
+    "confidence": "confirmed"
+  },
+  {
+    "file": "src/nova/hacking/checks.py",
+    "tool": "pylint",
+    "ruleId": "R1710",
+    "lineRange": {
+      "start": 252,
+      "end": 1123
+    },
+    "title": "4\u00d7 inconsistent return statements (R1710) \u2014 functions at lines 252, 272, 675, 1123",
+    "detail": "Four flake8 checker functions (at/near lines 252, 272, 675, 1123) have code paths that yield or return a value and paths that fall off the end implicitly. For pycodestyle-style check functions this is typically intentional (return nothing to indicate pass), but it can confuse callers and static analysis. Fix: add an explicit `return None` on the implicit paths, or restructure using `yield` consistently throughout each check function.",
+    "category": "bug-risk",
+    "severity": "medium",
+    "confidence": "confirmed"
+  }
+]

@@ -1,0 +1,16 @@
+[
+  {
+    "file": "src/nova/keymgr/conf_key_mgr.py",
+    "tool": "pylint",
+    "ruleId": "W0613",
+    "lineRange": {
+      "start": 75,
+      "end": 91
+    },
+    "title": "4\u00d7 unused argument (W0613): `algorithm`, `length`, `kwargs` (L75); `kwargs` (L91)",
+    "detail": "`create_key` (line 75) accepts `algorithm`, `length`, and `**kwargs` but ignores them \u2014 the implementation unconditionally returns the pre-configured key ID regardless of the requested algorithm or key size. `create_key_pair` (line 91) likewise ignores `**kwargs`. These signatures are required by the key manager abstract interface, so the unused parameters are intentional interface slots. However, silently ignoring `algorithm` and `length` means a caller requesting AES-256 will silently get a key of whatever size is configured, with no error or warning. Fix: log a warning when `algorithm` or `length` differ from the configured key's properties.",
+    "category": "maintainability",
+    "severity": "low",
+    "confidence": "needs_cross_file"
+  }
+]

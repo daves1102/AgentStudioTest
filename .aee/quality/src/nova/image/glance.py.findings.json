@@ -1,0 +1,114 @@
+[
+  {
+    "file": "src/nova/image/glance.py",
+    "tool": "lizard",
+    "ruleId": null,
+    "lineRange": {
+      "start": 389,
+      "end": 460
+    },
+    "title": "`_verify_and_write` cyclomatic complexity 17 (42 lines)",
+    "detail": "`_verify_and_write` (lines 389\u2013460) has CCN=17 across 42 lines. The function handles seven distinct code paths: signature verification with/without a verifier, writing to file vs. data stream, truncation on signature failure, and write-error handling. Each branch is tightly interlocked, making exhaustive testing difficult. Fix: extract the verification path and the write path into separate private helpers.",
+    "category": "complexity",
+    "severity": "medium",
+    "confidence": "confirmed"
+  },
+  {
+    "file": "src/nova/image/glance.py",
+    "tool": "manual",
+    "ruleId": null,
+    "lineRange": {
+      "start": 1,
+      "end": 1248
+    },
+    "title": "File is 1248 lines (exceeds 1000-line maintainability guideline)",
+    "detail": "At 1248 lines the file exceeds the maintainability threshold. It bundles the Glance client wrapper, the v2 image service, the RBD download handler, and two sets of exception translation helpers. Fix: split into focused sub-modules (e.g. `_client.py`, `_service_v2.py`, `_translate.py`).",
+    "category": "maintainability",
+    "severity": "medium",
+    "confidence": "confirmed"
+  },
+  {
+    "file": "src/nova/image/glance.py",
+    "tool": "ruff,pylint",
+    "ruleId": "BLE001",
+    "lineRange": {
+      "start": 354,
+      "end": 358
+    },
+    "title": "Line 354: broad `except Exception` swallows error in `_try_special_handlers`",
+    "detail": "`_try_special_handlers` (line 354) catches `Exception` broadly and logs it, then falls through to `return False`. The caller treats `False` as \"special handling failed, fall back to Glance client\" \u2014 so the actual error type and message are lost, making it impossible to distinguish a transient Ceph connection failure from a code bug. Note: the other five broad catches in this file (lines 249, 302, 377, 440, 696) all call `_reraise_translated_*` or `excutils.save_and_reraise_exception()` and are intentional. Fix: catch the specific exception type(s) expected from the special handlers and re-raise others.",
+    "category": "error-handling",
+    "severity": "medium",
+    "confidence": "confirmed"
+  },
+  {
+    "file": "src/nova/image/glance.py",
+    "tool": "ruff",
+    "ruleId": "B005",
+    "lineRange": {
+      "start": 793,
+      "end": 793
+    },
+    "title": "Line 793: `lstrip(\"property-\")` strips individual characters, not the prefix string",
+    "detail": "`filter_.lstrip(\"property-\")` strips any leading character in the set {'p','r','o','e','t','y','-'} from the key, not the literal prefix \"property-\". For a property filter key like \"property-type\" or \"property-port\", all characters in \"type\"/\"port\" fall within that set, so lstrip removes them too, producing an empty string and silently mapping the filter to the wrong key. Fix: `filter_[len(\"property-\"):]` or `filter_.removeprefix(\"property-\")` (Python 3.9+).",
+    "category": "bug-risk",
+    "severity": "medium",
+    "confidence": "confirmed"
+  },
+  {
+    "file": "src/nova/image/glance.py",
+    "tool": "pylint",
+    "ruleId": "R1710",
+    "lineRange": {
+      "start": 144,
+      "end": 564
+    },
+    "title": "4\u00d7 inconsistent return statements (R1710) \u2014 functions at lines 144, 359, 389, 564",
+    "detail": "Four methods have code paths that return a value and paths that fall off the end implicitly (lines 144, 359, 389, 564). Callers that do not check for `None` will hit an `AttributeError` on the implicit path. Fix: add explicit `return None` on all implicit paths, or ensure all paths return a consistent type.",
+    "category": "bug-risk",
+    "severity": "medium",
+    "confidence": "confirmed"
+  },
+  {
+    "file": "src/nova/image/glance.py",
+    "tool": "pylint",
+    "ruleId": "W0707",
+    "lineRange": {
+      "start": 730,
+      "end": 1058
+    },
+    "title": "5\u00d7 exception raised without `from` in except block (W0707, lines 730, 732, 762, 764, 1058)",
+    "detail": "At lines 730, 732, 762, 764, and 1058, a Nova exception is raised inside an `except` block without `raise ... from exc`. The original Glance HTTP exception traceback is discarded, making it harder to diagnose which Glance call failed. Fix: `raise NovaException(...) from exc` at each site to preserve the exception chain.",
+    "category": "error-handling",
+    "severity": "low",
+    "confidence": "confirmed"
+  },
+  {
+    "file": "src/nova/image/glance.py",
+    "tool": "ruff",
+    "ruleId": "SIM115",
+    "lineRange": {
+      "start": 413,
+      "end": 413
+    },
+    "title": "Line 413: `open(dst_path, \"wb\")` without context manager \u2014 file may leak on exception",
+    "detail": "`data = open(dst_path, \"wb\")` at line 413 uses a manual `close_file` boolean to track closure rather than a `with` statement. If an exception is raised before `data.close()` is reached, the file handle leaks. Fix: use `with open(dst_path, \"wb\") as data:` and restructure the surrounding block.",
+    "category": "error-handling",
+    "severity": "low",
+    "confidence": "confirmed"
+  },
+  {
+    "file": "src/nova/image/glance.py",
+    "tool": "ruff",
+    "ruleId": "RUF059",
+    "lineRange": {
+      "start": 981,
+      "end": 988
+    },
+    "title": "Lines 981, 988: `exc_type` captured from `sys.exc_info()` but never used",
+    "detail": "Both `_reraise_translated_image_exception` and `_reraise_translated_exception` destructure `sys.exc_info()` into `(exc_type, exc_value, exc_trace)` but only use `exc_value` and `exc_trace`. `exc_type` is redundant here (it equals `type(exc_value)`). Fix: use `_, exc_value, exc_trace = sys.exc_info()` to make the intent clear.",
+    "category": "dead-code",
+    "severity": "low",
+    "confidence": "confirmed"
+  }
+]

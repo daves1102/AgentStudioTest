@@ -1,0 +1,16 @@
+[
+  {
+    "file": "src/nova/limit/local.py",
+    "tool": "pylint",
+    "ruleId": "W0613",
+    "lineRange": {
+      "start": 110,
+      "end": 225
+    },
+    "title": "4\u00d7 unused argument (W0613): `project_id` (L110), `args` (L215, L220, L225)",
+    "detail": "The callback functions `always_zero_usage` (line 110) and the internal count helpers `_keypair_count`, `_server_group_count`, `_server_group_members_count` (lines 215\u2013225) accept positional `*args` or `project_id` parameters that are never used. These are oslo_limit callback signatures. The unused `*args` in the count helpers silently absorbs extra arguments; if the oslo_limit API ever changes calling convention, the mismatch will be invisible. Fix: prefix unused parameters with `_` to document intent and make the discard explicit.",
+    "category": "maintainability",
+    "severity": "low",
+    "confidence": "needs_cross_file"
+  }
+]
