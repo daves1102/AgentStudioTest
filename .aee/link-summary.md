@@ -4,18 +4,18 @@
 
 | Metric | Value |
 |---|---|
-| Files | 443 |
-| File edges | 1577 |
+| Files | 532 |
+| File edges | 1882 |
 | Cross-component edges | 0 |
-| Resolved | 4548 |
+| Resolved | 5164 |
 | Ambiguous | 0 |
-| Unresolved | 286 |
-| External imports | 1012 |
+| Unresolved | 196 |
+| External imports | 1148 |
 | Seams | 0 |
 
 ## Component Dependencies
 
-No cross-component file edges found. All 1577 file edges are intra-component (within the `nova` component).
+No cross-component file edges found. All 1882 file edges are intra-component (within the `nova` component).
 
 ## Seams
 
@@ -32,41 +32,41 @@ No cross-component seams found in `src/`. All seam kinds produced no results.
 
 ## Unresolved Imports
 
-286 unresolved imports across 14 distinct symbol roots (down from 302 last run). This batch extracted `nova.image`, `nova.keymgr`, `nova.limit`, and `nova.locale` — resolving `nova.image` (was 9 refs) and `nova.limit` (was 10 refs) completely. New entrant: `nova.storage` (1 ref).
+196 unresolved imports across 10 distinct symbol roots (down from 286 last run — a reduction of 90). This batch extracted `nova.policies.*` and `nova.privsep.*`, resolving three of the top-5 gaps from the previous run: `nova.policies` (was 60), `nova.notifications.objects` (was 17), and `nova.pci` (was 13).
 
 **Summary by unresolved module root:**
 
 | Symbol | Refs | vs prev run |
 |---|---|---|
-| nova | 151 | +2 (was 149) |
-| nova.policies | 60 | — |
+| nova | 151 | — |
 | nova.virt | 23 | — |
-| nova.notifications.objects | 17 | — |
-| nova.pci | 13 | — |
 | nova.volume | 9 | — |
+| nova.context | 4 | +1 (was 3) |
 | nova.share | 3 | — |
-| nova.context | 3 | — |
 | nova.virt.libvirt | 2 | — |
-| nova.notifications | 1 | — |
 | nova.quota | 1 | — |
 | nova.policy | 1 | — |
 | nova.virt.node | 1 | — |
-| nova.storage | 1 | new |
+| nova.storage | 1 | — |
 
-Resolved vs previous run: `nova.image` (was 9 refs), `nova.limit` (was 10 refs) — both now in the KB. The dominant remaining gaps remain unchanged: bare `nova` top-level imports (151), `nova.policies` (60), `nova.virt` (23), and `nova.notifications.objects` (17).
+Resolved vs previous run: `nova.policies` (was 60 refs), `nova.notifications.objects` (was 17 refs), `nova.pci` (was 13 refs) — all now in the KB. The bare `nova` symbol (151 refs) remains the largest group and is structurally distinct from module-level gaps: it represents top-level package re-exports and `nova.<attr>` access patterns spread across many files. `nova.virt` (23) is the next meaningful module-level gap.
 
 **Remaining gap clusters:**
 
-| Gap | Refs | Likely source files |
+| Gap | Refs | Notes |
 |---|---|---|
-| nova | 151 | nova.conf.*, nova.console.*, nova.db.*, nova.api.* (top-level sub-package pattern) |
-| nova.policies | 60 | nova.api.openstack.compute.* |
-| nova.virt | 23 | nova.conf.*, nova.utils, nova.compute.* (not yet extracted) |
-| nova.notifications.objects | 17 | nova.objects.*, nova.compute.* |
-| nova.pci | 13 | nova.objects.pci_device, nova.api.* |
-| nova.volume | 9 | nova.api.*, nova.compute.* |
+| nova | 151 | Top-level package access patterns; will reduce progressively as nova sub-packages are extracted |
+| nova.virt | 23 | Hypervisor abstraction layer — not yet extracted |
+| nova.volume | 9 | Cinder volume integration — not yet extracted |
+| nova.context | 4 | Request context module; may resolve with nova.compute |
+| nova.share | 3 | Manila share integration — not yet extracted |
+| nova.virt.libvirt | 2 | libvirt-specific driver — sub-module of nova.virt |
+| nova.quota | 1 | Quota enforcement — not yet extracted |
+| nova.policy | 1 | Policy enforcer — not yet extracted |
+| nova.virt.node | 1 | Node resource tracking — sub-module of nova.virt |
+| nova.storage | 1 | Storage utility — not yet extracted |
 
-Expected to resolve when `nova/virt/`, `nova/policies/`, `nova/compute/`, and `nova/notifications/` are extracted.
+Expected to resolve primarily when `nova/virt/`, `nova/compute/`, and `nova/volume/` are extracted.
 
 ## Ambiguous References
 
@@ -74,4 +74,4 @@ None.
 
 ## Warnings
 
-None. All 443 KB records were usable.
+None. All 532 KB records were usable.
