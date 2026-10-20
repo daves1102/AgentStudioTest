@@ -1,6 +1,6 @@
 # Component Dependency Matrix
 
-_Batch: `caa20451a7b7df151b4ddbaab06f92e6857e74a6` — 2026-10-20_
+_Batch: `f56908d5e0741524fb4cb768d9b52ccb0f3a585b` — 2026-10-20_
 
 ## N×N Dependency Matrix
 
@@ -8,9 +8,9 @@ Rows are the referencing component; columns are the providing component. Cell va
 
 | | **nova** |
 |---|---|
-| **nova** | 3066 |
+| **nova** | 4451 |
 
-**Derivation:** The Link Graph (`.aee/link-graph.json`, commit `667e0d4`) records 1,060 file edges, all with `crossComponent: false` (`summary.crossComponentEdges: 0`; Link Summary `.aee/link-summary.md`). All 1,060 edges are in the `nova → nova` cell. The sum of their `count` fields equals the total resolved entries: 3,066 (`summary.resolved: 3066`, Link Summary `.aee/link-summary.md`).
+**Derivation:** The Link Graph (`.aee/link-summary.md`, batch `f56908d5`) records 1,536 file edges, all with `crossComponent: false` (`summary.crossComponentEdges: 0`; "All 1536 file edges are intra-component (within the `nova` component)"). All 1,536 edges are in the `nova → nova` cell. The sum of their `count` fields equals the total resolved entries: 4,451 (`summary.resolved: 4451`, Link Summary `.aee/link-summary.md`).
 
 No confirmed taint chains exist (`.aee/security-chains.json`, `summary.confirmedChains: 0`); no cells are bolded.
 
@@ -24,4 +24,4 @@ The Link Graph is incomplete by construction (static imports and shared literals
 |-------------|-------------|------|---------|
 | — | — | — | — |
 
-No cross-component seams were found. (`.aee/link-graph.json`, `crossComponentSeams: []`, `summary.seams: 0`; Link Summary `.aee/link-summary.md`). Seams have no direction and are not counted in the matrix above.
+No cross-component seams were found. (`.aee/link-summary.md`, `summary.seams: 0`). Seams have no direction and are not counted in the matrix above.
