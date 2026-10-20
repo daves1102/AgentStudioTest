@@ -4,18 +4,18 @@
 
 | Metric | Value |
 |---|---|
-| Files | 433 |
-| File edges | 1536 |
+| Files | 443 |
+| File edges | 1577 |
 | Cross-component edges | 0 |
-| Resolved | 4451 |
+| Resolved | 4548 |
 | Ambiguous | 0 |
-| Unresolved | 302 |
-| External imports | 970 |
+| Unresolved | 286 |
+| External imports | 1012 |
 | Seams | 0 |
 
 ## Component Dependencies
 
-No cross-component file edges found. All 1536 file edges are intra-component (within the `nova` component).
+No cross-component file edges found. All 1577 file edges are intra-component (within the `nova` component).
 
 ## Seams
 
@@ -32,44 +32,41 @@ No cross-component seams found in `src/`. All seam kinds produced no results.
 
 ## Unresolved Imports
 
-302 unresolved imports across 15 distinct symbol roots. This run extracted `nova.conf.*` and `nova.console.*` — `nova.conf` (53 refs) and `nova.compute` (66 refs) from the previous run are now fully resolved. New dominant gaps are bare `nova` references and `nova.policies`.
+286 unresolved imports across 14 distinct symbol roots (down from 302 last run). This batch extracted `nova.image`, `nova.keymgr`, `nova.limit`, and `nova.locale` — resolving `nova.image` (was 9 refs) and `nova.limit` (was 10 refs) completely. New entrant: `nova.storage` (1 ref).
 
 **Summary by unresolved module root:**
 
 | Symbol | Refs | vs prev run |
 |---|---|---|
-| nova | 149 | +76 (was 73) |
-| nova.policies | 60 | +2 (was 58) |
-| nova.virt | 23 | +12 (was 11) |
-| nova.notifications.objects | 17 | +13 (was 4) |
-| nova.pci | 13 | +7 (was 6) |
-| nova.limit | 10 | +7 (was 3) |
-| nova.image | 9 | +5 (was 4) |
-| nova.volume | 9 | +6 (was 3) |
-| nova.share | 3 | +1 (was 2) |
-| nova.context | 3 | +1 (was 2) |
-| nova.virt.libvirt | 2 | new |
-| nova.notifications | 1 | new |
-| nova.quota | 1 | new |
-| nova.policy | 1 | new |
-| nova.virt.node | 1 | new |
+| nova | 151 | +2 (was 149) |
+| nova.policies | 60 | — |
+| nova.virt | 23 | — |
+| nova.notifications.objects | 17 | — |
+| nova.pci | 13 | — |
+| nova.volume | 9 | — |
+| nova.share | 3 | — |
+| nova.context | 3 | — |
+| nova.virt.libvirt | 2 | — |
+| nova.notifications | 1 | — |
+| nova.quota | 1 | — |
+| nova.policy | 1 | — |
+| nova.virt.node | 1 | — |
+| nova.storage | 1 | new |
 
-Resolved vs previous run: `nova.conf` (was 53 refs), `nova.compute` (was 66 refs) are now fully in the KB. The bare `nova` symbol count jumped (+76) because newly-extracted console and conf files reference top-level nova sub-packages not yet extracted (`nova.virt`, `nova.policies`, `nova.pci`, etc. via `nova.<module>` wildcard imports).
+Resolved vs previous run: `nova.image` (was 9 refs), `nova.limit` (was 10 refs) — both now in the KB. The dominant remaining gaps remain unchanged: bare `nova` top-level imports (151), `nova.policies` (60), `nova.virt` (23), and `nova.notifications.objects` (17).
 
-**Selected unresolved entries:**
+**Remaining gap clusters:**
 
-| Symbol | Typical ref sites |
-|---|---|
-| nova | nova.conf.*, nova.console.* (top-level sub-package imports) |
-| nova.policies | nova.api.openstack.compute.* |
-| nova.virt | nova.conf.*, nova.console.*, nova.utils |
-| nova.notifications.objects | nova.objects.*, nova.compute.* |
-| nova.pci | nova.objects.pci_device, nova.api.* |
-| nova.limit | nova.api.* |
-| nova.image | nova.api.*, nova.compute.* |
-| nova.volume | nova.api.*, nova.compute.* |
+| Gap | Refs | Likely source files |
+|---|---|---|
+| nova | 151 | nova.conf.*, nova.console.*, nova.db.*, nova.api.* (top-level sub-package pattern) |
+| nova.policies | 60 | nova.api.openstack.compute.* |
+| nova.virt | 23 | nova.conf.*, nova.utils, nova.compute.* (not yet extracted) |
+| nova.notifications.objects | 17 | nova.objects.*, nova.compute.* |
+| nova.pci | 13 | nova.objects.pci_device, nova.api.* |
+| nova.volume | 9 | nova.api.*, nova.compute.* |
 
-These are expected to resolve when `nova/virt/`, `nova/policies/`, `nova/compute/`, and related sub-packages are extracted.
+Expected to resolve when `nova/virt/`, `nova/policies/`, `nova/compute/`, and `nova/notifications/` are extracted.
 
 ## Ambiguous References
 
@@ -77,4 +74,4 @@ None.
 
 ## Warnings
 
-None. All 433 KB records were usable.
+None. All 443 KB records were usable.
