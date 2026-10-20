@@ -4,18 +4,18 @@
 
 | Metric | Value |
 |---|---|
-| Files | 327 |
-| File edges | 1060 |
+| Files | 433 |
+| File edges | 1536 |
 | Cross-component edges | 0 |
-| Resolved | 3066 |
+| Resolved | 4451 |
 | Ambiguous | 0 |
-| Unresolved | 287 |
-| External imports | 649 |
+| Unresolved | 302 |
+| External imports | 970 |
 | Seams | 0 |
 
 ## Component Dependencies
 
-No cross-component file edges found. All 1060 file edges are intra-component (within the `nova` component).
+No cross-component file edges found. All 1536 file edges are intra-component (within the `nova` component).
 
 ## Seams
 
@@ -32,43 +32,44 @@ No cross-component seams found in `src/`. All seam kinds produced no results.
 
 ## Unresolved Imports
 
-287 unresolved imports across 14 distinct symbol roots. This run added `nova.api.*`, `nova.network.*`, and other sub-packages — the `nova.conf` and `nova.compute` gaps from the previous run remain dominant, now joined by `nova.policies`.
+302 unresolved imports across 15 distinct symbol roots. This run extracted `nova.conf.*` and `nova.console.*` — `nova.conf` (53 refs) and `nova.compute` (66 refs) from the previous run are now fully resolved. New dominant gaps are bare `nova` references and `nova.policies`.
 
 **Summary by unresolved module root:**
 
-| Symbol | Refs |
-|---|---|
-| nova | 73 |
-| nova.compute | 66 |
-| nova.policies | 58 |
-| nova.conf | 53 |
-| nova.virt | 11 |
-| nova.pci | 6 |
-| nova.image | 4 |
-| nova.notifications.objects | 4 |
-| nova.limit | 3 |
-| nova.volume | 3 |
-| nova.share | 2 |
-| nova.context | 2 |
-| nova.conductor | 1 |
-| nova.notifications | 1 |
+| Symbol | Refs | vs prev run |
+|---|---|---|
+| nova | 149 | +76 (was 73) |
+| nova.policies | 60 | +2 (was 58) |
+| nova.virt | 23 | +12 (was 11) |
+| nova.notifications.objects | 17 | +13 (was 4) |
+| nova.pci | 13 | +7 (was 6) |
+| nova.limit | 10 | +7 (was 3) |
+| nova.image | 9 | +5 (was 4) |
+| nova.volume | 9 | +6 (was 3) |
+| nova.share | 3 | +1 (was 2) |
+| nova.context | 3 | +1 (was 2) |
+| nova.virt.libvirt | 2 | new |
+| nova.notifications | 1 | new |
+| nova.quota | 1 | new |
+| nova.policy | 1 | new |
+| nova.virt.node | 1 | new |
 
-Resolved vs previous run: `nova.network` (3 refs) is now fully resolved — `nova/network/` was extracted in this batch. New entrant: `nova.policies` (58 refs) introduced by the newly-extracted API layer. Dominant remaining gaps: `nova.compute` (compute service layer), `nova.policies` (policy layer), and `nova.conf` (configuration layer).
+Resolved vs previous run: `nova.conf` (was 53 refs), `nova.compute` (was 66 refs) are now fully in the KB. The bare `nova` symbol count jumped (+76) because newly-extracted console and conf files reference top-level nova sub-packages not yet extracted (`nova.virt`, `nova.policies`, `nova.pci`, etc. via `nova.<module>` wildcard imports).
 
 **Selected unresolved entries:**
 
-| File | Symbol | Reason |
-|---|---|---|
-| src/nova/api/openstack/compute/* | nova.policies | module-not-found |
-| src/nova/api/openstack/compute/* | nova.compute | module-not-found |
-| src/nova/api/openstack/compute/* | nova.conf | module-not-found |
-| src/nova/db/main/api.py | nova.conf | module-not-found |
-| src/nova/db/main/api.py | nova | module-not-found |
-| src/nova/utils.py | nova.virt | module-not-found |
-| src/nova/objects/pci_device.py | nova.pci | module-not-found |
-| src/nova/objects/share_mapping.py | nova.share | module-not-found |
+| Symbol | Typical ref sites |
+|---|---|
+| nova | nova.conf.*, nova.console.* (top-level sub-package imports) |
+| nova.policies | nova.api.openstack.compute.* |
+| nova.virt | nova.conf.*, nova.console.*, nova.utils |
+| nova.notifications.objects | nova.objects.*, nova.compute.* |
+| nova.pci | nova.objects.pci_device, nova.api.* |
+| nova.limit | nova.api.* |
+| nova.image | nova.api.*, nova.compute.* |
+| nova.volume | nova.api.*, nova.compute.* |
 
-These are expected to resolve when `nova/compute/`, `nova/policies/`, `nova/conf/`, and related sub-packages are extracted.
+These are expected to resolve when `nova/virt/`, `nova/policies/`, `nova/compute/`, and related sub-packages are extracted.
 
 ## Ambiguous References
 
@@ -76,4 +77,4 @@ None.
 
 ## Warnings
 
-None. All 327 KB records were usable.
+None. All 433 KB records were usable.
