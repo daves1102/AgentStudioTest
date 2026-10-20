@@ -1,6 +1,6 @@
 # Component Dependency Matrix
 
-_Batch: `c7012ab2592eef3f2cf00f50553e7d290ce204fc` — 2026-10-20_
+_Batch: `10997c0ea56f02ffec4fd9f8c917d68241ae9ea9` — 2026-10-20_
 
 ## N×N Dependency Matrix
 
@@ -8,13 +8,13 @@ Rows are the referencing component; columns are the providing component. Cell va
 
 | | **nova** |
 |---|---|
-| **nova** | 4548 |
+| **nova** | 5164 |
 
-**Derivation:** The Link Graph (`.aee/link-summary.md`, batch `c7012ab2`) records 1,577 file edges, all with `crossComponent: false` (`summary.crossComponentEdges: 0`; "All 1577 file edges are intra-component (within the `nova` component)"). All 1,577 edges are in the `nova → nova` cell. The sum of their `count` fields equals the total resolved entries: 4,548 (`summary.resolved: 4548`, Link Summary `.aee/link-summary.md`).
+**Derivation:** The Link Graph (`.aee/link-summary.md`, batch `10997c0e`) records 1,882 file edges, all with `crossComponent: false` (`summary.crossComponentEdges: 0`; "All 1882 file edges are intra-component (within the `nova` component)"). All 1,882 edges are in the `nova → nova` cell. The sum of their `count` fields equals the total resolved entries: 5,164 (`summary.resolved: 5164`, Link Summary `.aee/link-summary.md`).
 
 No confirmed taint chains exist (`.aee/security-chains.json`, `summary.confirmedChains: 0`); no cells are bolded.
 
-The Link Graph is incomplete by construction (static imports and shared literals only). The absence of an edge does not imply two components are independent; it means no edge was found. Notably, scheduler filters are loaded dynamically by name from configuration — a known link-graph blind spot for dynamic dispatch (`.aee/security-chains.json`, `evaluatedFindings`, json_filter.py entry).
+The Link Graph is incomplete by construction (static imports and shared literals only). The absence of an edge does not imply two components are independent; it means no edge was found. Two known blind spots: (1) scheduler filters are loaded dynamically by name from configuration; (2) `privsep/` functions are called via oslo.privsep IPC dispatch and produce no static import edges (`.aee/security-chains.json`, `evaluatedFindings`, privsep/libvirt.py entry).
 
 ---
 
