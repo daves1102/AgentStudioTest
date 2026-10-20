@@ -1,0 +1,44 @@
+[
+  {
+    "file": "src/nova/api/openstack/compute/security_groups.py",
+    "tool": "pylint",
+    "ruleId": "W0707",
+    "lineRange": {
+      "start": 413,
+      "end": 416
+    },
+    "title": "2\u00d7 exception raised without `from` in except block (W0707, first at line 413)",
+    "detail": "At 2 location(s) (first at line 413), a new exception is raised inside an `except` block without `raise ... from original_exc`. This discards the original traceback and makes debugging harder. Fix: `raise NewExc(...) from exc` to preserve the chain.",
+    "category": "error-handling",
+    "severity": "low",
+    "confidence": "confirmed"
+  },
+  {
+    "file": "src/nova/api/openstack/compute/security_groups.py",
+    "tool": "pylint",
+    "ruleId": "R1710",
+    "lineRange": {
+      "start": 46,
+      "end": 46
+    },
+    "title": "Line 46: inconsistent return statements \u2014 some paths return a value, some don't",
+    "detail": "The function at/near line 46 has paths that return a value and paths that fall off the end (implicit `return None`). Callers expecting a return value silently receive `None` on the implicit path. Fix: add explicit `return None` or ensure all paths return a consistent type.",
+    "category": "bug-risk",
+    "severity": "medium",
+    "confidence": "confirmed"
+  },
+  {
+    "file": "src/nova/api/openstack/compute/security_groups.py",
+    "tool": "pylint",
+    "ruleId": "W0622",
+    "lineRange": {
+      "start": 142,
+      "end": 453
+    },
+    "title": "Builtin `id` shadowed by local variable (W0622)",
+    "detail": "Local variable(s) at lines 142, 163, 231, 343, 429 shadow the builtin(s) id. If the builtin is needed elsewhere in the same scope, the shadowing causes a confusing `TypeError` or silent misbehavior. Fix: rename the local variable to avoid shadowing.",
+    "category": "bug-risk",
+    "severity": "low",
+    "confidence": "confirmed"
+  }
+]

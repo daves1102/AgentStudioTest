@@ -1,0 +1,30 @@
+[
+  {
+    "file": "src/nova/compute/flavors.py",
+    "tool": "pylint",
+    "ruleId": "W0707",
+    "lineRange": {
+      "start": 113,
+      "end": 122
+    },
+    "title": "2\u00d7 exception raised without `from` in except block (W0707, first at line 113)",
+    "detail": "At 2 location(s) (first at line 113), a new exception is raised inside an `except` block without `raise ... from original_exc`. This discards the original traceback and makes debugging harder. Fix: `raise NewExc(...) from exc` to preserve the chain.",
+    "category": "error-handling",
+    "severity": "low",
+    "confidence": "confirmed"
+  },
+  {
+    "file": "src/nova/compute/flavors.py",
+    "tool": "pylint",
+    "ruleId": "R1710",
+    "lineRange": {
+      "start": 40,
+      "end": 40
+    },
+    "title": "Line 40: inconsistent return statements \u2014 some paths return a value, some don't",
+    "detail": "The function at/near line 40 has paths that return a value and paths that fall off the end (implicit `return None`). Callers expecting a return value silently receive `None` on the implicit path. Fix: add explicit `return None` or ensure all paths return a consistent type.",
+    "category": "bug-risk",
+    "severity": "medium",
+    "confidence": "confirmed"
+  }
+]

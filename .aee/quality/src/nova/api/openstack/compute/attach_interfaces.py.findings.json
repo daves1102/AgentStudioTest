@@ -1,0 +1,30 @@
+[
+  {
+    "file": "src/nova/api/openstack/compute/attach_interfaces.py",
+    "tool": "ruff",
+    "ruleId": "BLE001",
+    "lineRange": {
+      "start": 168,
+      "end": 168
+    },
+    "title": "Line 168: broad `except Exception` (BLE001)",
+    "detail": "Catching `Exception` at line 168 prevents distinguishing expected errors from unexpected failures. Fix: catch specific exception types, or re-raise after logging if a broad catch is intentional.",
+    "category": "error-handling",
+    "severity": "medium",
+    "confidence": "confirmed"
+  },
+  {
+    "file": "src/nova/api/openstack/compute/attach_interfaces.py",
+    "tool": "pylint",
+    "ruleId": "W0622",
+    "lineRange": {
+      "start": 118,
+      "end": 219
+    },
+    "title": "Builtin `id` shadowed by local variable (W0622)",
+    "detail": "Local variable(s) at lines 118, 219 shadow the builtin(s) id. If the builtin is needed elsewhere in the same scope, the shadowing causes a confusing `TypeError` or silent misbehavior. Fix: rename the local variable to avoid shadowing.",
+    "category": "bug-risk",
+    "severity": "low",
+    "confidence": "confirmed"
+  }
+]

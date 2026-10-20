@@ -1,0 +1,128 @@
+[
+  {
+    "file": "src/nova/compute/resource_tracker.py",
+    "tool": "lizard",
+    "ruleId": null,
+    "lineRange": {
+      "start": 1788,
+      "end": 1920
+    },
+    "title": "`_remove_deleted_instances_allocations` cyclomatic complexity 17 (79 lines)",
+    "detail": "`_remove_deleted_instances_allocations` (lines 1788\u20131920) has CCN=17 across 79 lines. Each additional branch multiplies test cases needed for full coverage. Fix: extract one or more decision-heavy sub-routines.",
+    "category": "complexity",
+    "severity": "medium",
+    "confidence": "confirmed"
+  },
+  {
+    "file": "src/nova/compute/resource_tracker.py",
+    "tool": "lizard",
+    "ruleId": null,
+    "lineRange": {
+      "start": 2007,
+      "end": 2118
+    },
+    "title": "`_merge_provider_configs` cyclomatic complexity 17 (74 lines)",
+    "detail": "`_merge_provider_configs` (lines 2007\u20132118) has CCN=17 across 74 lines. Each additional branch multiplies test cases needed for full coverage. Fix: extract one or more decision-heavy sub-routines.",
+    "category": "complexity",
+    "severity": "medium",
+    "confidence": "confirmed"
+  },
+  {
+    "file": "src/nova/compute/resource_tracker.py",
+    "tool": "manual",
+    "ruleId": null,
+    "lineRange": {
+      "start": 1,
+      "end": 2269
+    },
+    "title": "File is 2269 lines (exceeds 1000-line maintainability guideline)",
+    "detail": "At 2269 lines this file exceeds the maintainability threshold. Large files blur module responsibilities and slow code review. Fix: split into focused sub-modules.",
+    "category": "maintainability",
+    "severity": "medium",
+    "confidence": "confirmed"
+  },
+  {
+    "file": "src/nova/compute/resource_tracker.py",
+    "tool": "ruff",
+    "ruleId": "BLE001",
+    "lineRange": {
+      "start": 904,
+      "end": 1439
+    },
+    "title": "2\u00d7 broad `except Exception` (BLE001) \u2014 lines 904, 1439",
+    "detail": "2 broad `except Exception` clauses across the file (first at line 904). Each one prevents callers from distinguishing retriable from fatal errors. Fix: catch specific exception types at each site; log + re-raise where the full cause must be preserved.",
+    "category": "error-handling",
+    "severity": "medium",
+    "confidence": "confirmed"
+  },
+  {
+    "file": "src/nova/compute/resource_tracker.py",
+    "tool": "pylint",
+    "ruleId": "W0707",
+    "lineRange": {
+      "start": 810,
+      "end": 2269
+    },
+    "title": "2\u00d7 exception raised without `from` in except block (W0707, first at line 810)",
+    "detail": "At 2 location(s) (first at line 810), a new exception is raised inside an `except` block without `raise ... from original_exc`. This discards the original traceback and makes debugging harder. Fix: `raise NewExc(...) from exc` to preserve the chain.",
+    "category": "error-handling",
+    "severity": "low",
+    "confidence": "confirmed"
+  },
+  {
+    "file": "src/nova/compute/resource_tracker.py",
+    "tool": "pylint",
+    "ruleId": "R1710",
+    "lineRange": {
+      "start": 457,
+      "end": 1114
+    },
+    "title": "2\u00d7 inconsistent return statements (R1710) \u2014 functions at lines 457, 1114",
+    "detail": "2 functions have code paths that return a value and paths that fall through implicitly. Callers expecting a return value silently receive `None` on the implicit path, a latent `AttributeError` or `TypeError` risk. Fix: add explicit `return None` on all implicit paths, or normalize return type.",
+    "category": "bug-risk",
+    "severity": "medium",
+    "confidence": "confirmed"
+  },
+  {
+    "file": "src/nova/compute/resource_tracker.py",
+    "tool": "pylint",
+    "ruleId": "R0912",
+    "lineRange": {
+      "start": 1788,
+      "end": 1788
+    },
+    "title": "too-many-branches (R0912) \u2014 function(s) at line 1788",
+    "detail": "A function has more branches than pylint's threshold. High branch count multiplies test cases needed for coverage and makes the function a defect magnet. Fix: extract decision clusters into named helper functions.",
+    "category": "complexity",
+    "severity": "medium",
+    "confidence": "confirmed"
+  },
+  {
+    "file": "src/nova/compute/resource_tracker.py",
+    "tool": "pylint",
+    "ruleId": "W0612",
+    "lineRange": {
+      "start": 150,
+      "end": 492
+    },
+    "title": "2\u00d7 unused variable assignment (W0612, lines 150, 492)",
+    "detail": "Variables assigned at lines 150, 492 are never used. Dead assignments may indicate a forgotten use. Fix: remove the assignment or prefix with `_`.",
+    "category": "dead-code",
+    "severity": "low",
+    "confidence": "confirmed"
+  },
+  {
+    "file": "src/nova/compute/resource_tracker.py",
+    "tool": "pylint",
+    "ruleId": "W0613",
+    "lineRange": {
+      "start": 499,
+      "end": 983
+    },
+    "title": "4\u00d7 unused argument (W0613) \u2014 e.g. `context`, `context`, `prefix`",
+    "detail": "4 function arguments are never used within their function bodies. This often signals an interface mismatch or a method that should be `@staticmethod`. Fix: use the argument, or prefix with `_` if it's an intentionally unused interface slot.",
+    "category": "maintainability",
+    "severity": "low",
+    "confidence": "needs_cross_file"
+  }
+]

@@ -1,0 +1,72 @@
+[
+  {
+    "file": "src/nova/conductor/tasks/cross_cell_migrate.py",
+    "tool": "manual",
+    "ruleId": null,
+    "lineRange": {
+      "start": 1,
+      "end": 1471
+    },
+    "title": "File is 1471 lines (exceeds 1000-line maintainability guideline)",
+    "detail": "At 1471 lines this file exceeds the maintainability threshold. Large files blur module responsibilities and slow code review. Fix: split into focused sub-modules.",
+    "category": "maintainability",
+    "severity": "medium",
+    "confidence": "confirmed"
+  },
+  {
+    "file": "src/nova/conductor/tasks/cross_cell_migrate.py",
+    "tool": "ruff",
+    "ruleId": "BLE001",
+    "lineRange": {
+      "start": 536,
+      "end": 1238
+    },
+    "title": "2\u00d7 broad `except Exception` (BLE001) \u2014 lines 536, 1238",
+    "detail": "2 broad `except Exception` clauses across the file (first at line 536). Each one prevents callers from distinguishing retriable from fatal errors. Fix: catch specific exception types at each site; log + re-raise where the full cause must be preserved.",
+    "category": "error-handling",
+    "severity": "medium",
+    "confidence": "confirmed"
+  },
+  {
+    "file": "src/nova/conductor/tasks/cross_cell_migrate.py",
+    "tool": "pylint",
+    "ruleId": "W0703",
+    "lineRange": {
+      "start": 363,
+      "end": 867
+    },
+    "title": "4\u00d7 broad `except Exception` (W0703) \u2014 lines 363, 375, 563, 867",
+    "detail": "4 broad `except Exception` clauses (first at line 363). Each swallows unexpected error types. Fix: catch specific exceptions at each site.",
+    "category": "error-handling",
+    "severity": "medium",
+    "confidence": "confirmed"
+  },
+  {
+    "file": "src/nova/conductor/tasks/cross_cell_migrate.py",
+    "tool": "pylint",
+    "ruleId": "W0707",
+    "lineRange": {
+      "start": 274,
+      "end": 352
+    },
+    "title": "2\u00d7 exception raised without `from` in except block (W0707, first at line 274)",
+    "detail": "At 2 location(s) (first at line 274), a new exception is raised inside an `except` block without `raise ... from original_exc`. This discards the original traceback and makes debugging harder. Fix: `raise NewExc(...) from exc` to preserve the chain.",
+    "category": "error-handling",
+    "severity": "low",
+    "confidence": "confirmed"
+  },
+  {
+    "file": "src/nova/conductor/tasks/cross_cell_migrate.py",
+    "tool": "pylint",
+    "ruleId": "W0613",
+    "lineRange": {
+      "start": 204,
+      "end": 452
+    },
+    "title": "3\u00d7 unused argument (W0613) \u2014 e.g. `ex`, `ex`, `ex`",
+    "detail": "3 function arguments are never used within their function bodies. This often signals an interface mismatch or a method that should be `@staticmethod`. Fix: use the argument, or prefix with `_` if it's an intentionally unused interface slot.",
+    "category": "maintainability",
+    "severity": "low",
+    "confidence": "needs_cross_file"
+  }
+]

@@ -1,0 +1,212 @@
+[
+  {
+    "file": "src/nova/conductor/manager.py",
+    "tool": "lizard",
+    "ruleId": null,
+    "lineRange": {
+      "start": 671,
+      "end": 929
+    },
+    "title": "`build_instances` cyclomatic complexity 34 (151 lines)",
+    "detail": "`build_instances` (lines 671\u2013929) has CCN=34 across 151 lines. Functions this complex require an exponential number of test cases to cover all paths and are a defect magnet. Fix: extract well-named helpers for each major decision cluster.",
+    "category": "complexity",
+    "severity": "high",
+    "confidence": "confirmed"
+  },
+  {
+    "file": "src/nova/conductor/manager.py",
+    "tool": "lizard",
+    "ruleId": null,
+    "lineRange": {
+      "start": 1033,
+      "end": 1188
+    },
+    "title": "`unshelve_instance` is 110 lines (exceeds 100-line guideline)",
+    "detail": "`unshelve_instance` spans 110 lines (1033\u20131188). Long functions are difficult to read and test in isolation. Fix: extract sub-units into clearly named helpers.",
+    "category": "maintainability",
+    "severity": "medium",
+    "confidence": "confirmed"
+  },
+  {
+    "file": "src/nova/conductor/manager.py",
+    "tool": "lizard",
+    "ruleId": null,
+    "lineRange": {
+      "start": 1233,
+      "end": 1443
+    },
+    "title": "`rebuild_instance` cyclomatic complexity 21 (142 lines)",
+    "detail": "`rebuild_instance` (lines 1233\u20131443) has CCN=21 across 142 lines. Each additional branch multiplies test cases needed for full coverage. Fix: extract one or more decision-heavy sub-routines.",
+    "category": "complexity",
+    "severity": "medium",
+    "confidence": "confirmed"
+  },
+  {
+    "file": "src/nova/conductor/manager.py",
+    "tool": "lizard",
+    "ruleId": null,
+    "lineRange": {
+      "start": 1233,
+      "end": 1233
+    },
+    "title": "`rebuild_instance` has 16 parameters (line 1233)",
+    "detail": "`rebuild_instance` takes 16 parameters. Long parameter lists increase the risk of argument-order bugs and make call sites unreadable. Fix: group related parameters into a dataclass or split into smaller functions.",
+    "category": "maintainability",
+    "severity": "medium",
+    "confidence": "confirmed"
+  },
+  {
+    "file": "src/nova/conductor/manager.py",
+    "tool": "lizard",
+    "ruleId": null,
+    "lineRange": {
+      "start": 1675,
+      "end": 1868
+    },
+    "title": "`schedule_and_build_instances` cyclomatic complexity 18 (140 lines)",
+    "detail": "`schedule_and_build_instances` (lines 1675\u20131868) has CCN=18 across 140 lines. Each additional branch multiplies test cases needed for full coverage. Fix: extract one or more decision-heavy sub-routines.",
+    "category": "complexity",
+    "severity": "medium",
+    "confidence": "confirmed"
+  },
+  {
+    "file": "src/nova/conductor/manager.py",
+    "tool": "manual",
+    "ruleId": null,
+    "lineRange": {
+      "start": 1,
+      "end": 2393
+    },
+    "title": "File is 2393 lines (exceeds 1000-line maintainability guideline)",
+    "detail": "At 2393 lines this file exceeds the maintainability threshold. Large files blur module responsibilities and slow code review. Fix: split into focused sub-modules.",
+    "category": "maintainability",
+    "severity": "medium",
+    "confidence": "confirmed"
+  },
+  {
+    "file": "src/nova/conductor/manager.py",
+    "tool": "ruff",
+    "ruleId": "BLE001",
+    "lineRange": {
+      "start": 144,
+      "end": 2389
+    },
+    "title": "9\u00d7 broad `except Exception` (BLE001) \u2014 lines 144, 441, 744, 802, 838\u2026",
+    "detail": "9 broad `except Exception` clauses across the file (first at line 144). Each one prevents callers from distinguishing retriable from fatal errors. Fix: catch specific exception types at each site; log + re-raise where the full cause must be preserved.",
+    "category": "error-handling",
+    "severity": "medium",
+    "confidence": "confirmed"
+  },
+  {
+    "file": "src/nova/conductor/manager.py",
+    "tool": "ruff",
+    "ruleId": "B018",
+    "lineRange": {
+      "start": 284,
+      "end": 284
+    },
+    "title": "pointless statement (B018) at line 284",
+    "detail": "A standalone expression at line(s) 284 has no side effects and its value is discarded. If it's a deliberate SQLAlchemy lazy-load trigger, add a `# NOTE:` comment. Otherwise delete it.",
+    "category": "bug-risk",
+    "severity": "low",
+    "confidence": "probable"
+  },
+  {
+    "file": "src/nova/conductor/manager.py",
+    "tool": "ruff",
+    "ruleId": "TRY401",
+    "lineRange": {
+      "start": 913,
+      "end": 1421
+    },
+    "title": "3\u00d7 verbose exception re-raise at lines 913, 1177, 1421",
+    "detail": "`raise exc` replaces the original exception losing the traceback. Use bare `raise` inside `except` to re-raise with the full chain preserved.",
+    "category": "error-handling",
+    "severity": "low",
+    "confidence": "confirmed"
+  },
+  {
+    "file": "src/nova/conductor/manager.py",
+    "tool": "ruff",
+    "ruleId": "RUF059",
+    "lineRange": {
+      "start": 1471,
+      "end": 1471
+    },
+    "title": "unused capture variable at line 1471",
+    "detail": "A walrus/capture expression at line(s) 1471 is assigned but never used. Fix: remove the assignment.",
+    "category": "dead-code",
+    "severity": "low",
+    "confidence": "confirmed"
+  },
+  {
+    "file": "src/nova/conductor/manager.py",
+    "tool": "pylint",
+    "ruleId": "W0703",
+    "lineRange": {
+      "start": 229,
+      "end": 1685
+    },
+    "title": "5\u00d7 broad `except Exception` (W0703) \u2014 lines 229, 479, 912, 1173, 1685",
+    "detail": "5 broad `except Exception` clauses (first at line 229). Each swallows unexpected error types. Fix: catch specific exceptions at each site.",
+    "category": "error-handling",
+    "severity": "medium",
+    "confidence": "confirmed"
+  },
+  {
+    "file": "src/nova/conductor/manager.py",
+    "tool": "pylint",
+    "ruleId": "W0707",
+    "lineRange": {
+      "start": 145,
+      "end": 145
+    },
+    "title": "1\u00d7 exception raised without `from` in except block (W0707, first at line 145)",
+    "detail": "At 1 location(s) (first at line 145), a new exception is raised inside an `except` block without `raise ... from original_exc`. This discards the original traceback and makes debugging harder. Fix: `raise NewExc(...) from exc` to preserve the chain.",
+    "category": "error-handling",
+    "severity": "low",
+    "confidence": "confirmed"
+  },
+  {
+    "file": "src/nova/conductor/manager.py",
+    "tool": "pylint",
+    "ruleId": "R0912",
+    "lineRange": {
+      "start": 671,
+      "end": 1675
+    },
+    "title": "3\u00d7 too-many-branches (R0912) \u2014 function(s) at lines 671, 1233, 1675",
+    "detail": "3 functions have more branches than pylint's threshold. High branch count multiplies test cases needed for coverage and makes the function a defect magnet. Fix: extract decision clusters into named helper functions.",
+    "category": "complexity",
+    "severity": "medium",
+    "confidence": "confirmed"
+  },
+  {
+    "file": "src/nova/conductor/manager.py",
+    "tool": "pylint",
+    "ruleId": "W0612",
+    "lineRange": {
+      "start": 1471,
+      "end": 1471
+    },
+    "title": "unused variable assignment (W0612, line 1471)",
+    "detail": "Variable assigned at line 1471 is never used. Dead assignments may indicate a forgotten use. Fix: remove the assignment or prefix with `_`.",
+    "category": "dead-code",
+    "severity": "low",
+    "confidence": "confirmed"
+  },
+  {
+    "file": "src/nova/conductor/manager.py",
+    "tool": "pylint",
+    "ruleId": "W0613",
+    "lineRange": {
+      "start": 129,
+      "end": 673
+    },
+    "title": "6\u00d7 unused argument (W0613) \u2014 e.g. `context`, `context`, `context`",
+    "detail": "6 function arguments are never used within their function bodies. This often signals an interface mismatch or a method that should be `@staticmethod`. Fix: use the argument, or prefix with `_` if it's an intentionally unused interface slot.",
+    "category": "maintainability",
+    "severity": "low",
+    "confidence": "needs_cross_file"
+  }
+]

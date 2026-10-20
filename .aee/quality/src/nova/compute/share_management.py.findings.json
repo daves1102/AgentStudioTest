@@ -1,0 +1,30 @@
+[
+  {
+    "file": "src/nova/compute/share_management.py",
+    "tool": "ruff",
+    "ruleId": "BLE001",
+    "lineRange": {
+      "start": 408,
+      "end": 408
+    },
+    "title": "Line 408: broad `except Exception` (BLE001)",
+    "detail": "Catching `Exception` at line 408 prevents distinguishing expected errors from unexpected failures. Fix: catch specific exception types, or re-raise after logging if a broad catch is intentional.",
+    "category": "error-handling",
+    "severity": "medium",
+    "confidence": "confirmed"
+  },
+  {
+    "file": "src/nova/compute/share_management.py",
+    "tool": "pylint",
+    "ruleId": "W0703",
+    "lineRange": {
+      "start": 445,
+      "end": 744
+    },
+    "title": "4\u00d7 broad `except Exception` (W0703) \u2014 lines 445, 453, 621, 744",
+    "detail": "4 broad `except Exception` clauses (first at line 445). Each swallows unexpected error types. Fix: catch specific exceptions at each site.",
+    "category": "error-handling",
+    "severity": "medium",
+    "confidence": "confirmed"
+  }
+]

@@ -1,0 +1,128 @@
+[
+  {
+    "file": "src/nova/compute/utils.py",
+    "tool": "manual",
+    "ruleId": null,
+    "lineRange": {
+      "start": 1,
+      "end": 1678
+    },
+    "title": "File is 1678 lines (exceeds 1000-line maintainability guideline)",
+    "detail": "At 1678 lines this file exceeds the maintainability threshold. Large files blur module responsibilities and slow code review. Fix: split into focused sub-modules.",
+    "category": "maintainability",
+    "severity": "medium",
+    "confidence": "confirmed"
+  },
+  {
+    "file": "src/nova/compute/utils.py",
+    "tool": "ruff",
+    "ruleId": "BLE001",
+    "lineRange": {
+      "start": 108,
+      "end": 108
+    },
+    "title": "Line 108: broad `except Exception` (BLE001)",
+    "detail": "Catching `Exception` at line 108 prevents distinguishing expected errors from unexpected failures. Fix: catch specific exception types, or re-raise after logging if a broad catch is intentional.",
+    "category": "error-handling",
+    "severity": "medium",
+    "confidence": "confirmed"
+  },
+  {
+    "file": "src/nova/compute/utils.py",
+    "tool": "ruff",
+    "ruleId": "TRY401",
+    "lineRange": {
+      "start": 1631,
+      "end": 1631
+    },
+    "title": "verbose exception re-raise at line 1631",
+    "detail": "`raise exc` replaces the original exception losing the traceback. Use bare `raise` inside `except` to re-raise with the full chain preserved.",
+    "category": "error-handling",
+    "severity": "low",
+    "confidence": "confirmed"
+  },
+  {
+    "file": "src/nova/compute/utils.py",
+    "tool": "pylint",
+    "ruleId": "W0703",
+    "lineRange": {
+      "start": 441,
+      "end": 1360
+    },
+    "title": "3\u00d7 broad `except Exception` (W0703) \u2014 lines 441, 494, 1360",
+    "detail": "3 broad `except Exception` clauses (first at line 441). Each swallows unexpected error types. Fix: catch specific exceptions at each site.",
+    "category": "error-handling",
+    "severity": "medium",
+    "confidence": "confirmed"
+  },
+  {
+    "file": "src/nova/compute/utils.py",
+    "tool": "pylint",
+    "ruleId": "W0707",
+    "lineRange": {
+      "start": 227,
+      "end": 236
+    },
+    "title": "2\u00d7 exception raised without `from` in except block (W0707, first at line 227)",
+    "detail": "At 2 location(s) (first at line 227), a new exception is raised inside an `except` block without `raise ... from original_exc`. This discards the original traceback and makes debugging harder. Fix: `raise NewExc(...) from exc` to preserve the chain.",
+    "category": "error-handling",
+    "severity": "low",
+    "confidence": "confirmed"
+  },
+  {
+    "file": "src/nova/compute/utils.py",
+    "tool": "pylint",
+    "ruleId": "R1710",
+    "lineRange": {
+      "start": 1383,
+      "end": 1383
+    },
+    "title": "Line 1383: inconsistent return statements \u2014 some paths return a value, some don't",
+    "detail": "The function at/near line 1383 has paths that return a value and paths that fall off the end (implicit `return None`). Callers expecting a return value silently receive `None` on the implicit path. Fix: add explicit `return None` or ensure all paths return a consistent type.",
+    "category": "bug-risk",
+    "severity": "medium",
+    "confidence": "confirmed"
+  },
+  {
+    "file": "src/nova/compute/utils.py",
+    "tool": "pylint",
+    "ruleId": "W0622",
+    "lineRange": {
+      "start": 323,
+      "end": 323
+    },
+    "title": "Builtin `type` shadowed by local variable (W0622)",
+    "detail": "Local variable(s) at line 323 shadow the builtin(s) type. If the builtin is needed elsewhere in the same scope, the shadowing causes a confusing `TypeError` or silent misbehavior. Fix: rename the local variable to avoid shadowing.",
+    "category": "bug-risk",
+    "severity": "low",
+    "confidence": "confirmed"
+  },
+  {
+    "file": "src/nova/compute/utils.py",
+    "tool": "pylint",
+    "ruleId": "W0612",
+    "lineRange": {
+      "start": 1075,
+      "end": 1075
+    },
+    "title": "unused variable assignment (W0612, line 1075)",
+    "detail": "Variable assigned at line 1075 is never used. Dead assignments may indicate a forgotten use. Fix: remove the assignment or prefix with `_`.",
+    "category": "dead-code",
+    "severity": "low",
+    "confidence": "confirmed"
+  },
+  {
+    "file": "src/nova/compute/utils.py",
+    "tool": "pylint",
+    "ruleId": "W0613",
+    "lineRange": {
+      "start": 205,
+      "end": 1045
+    },
+    "title": "3\u00d7 unused argument (W0613) \u2014 e.g. `instance`, `ignore_missing_network_data`, `context`",
+    "detail": "3 function arguments are never used within their function bodies. This often signals an interface mismatch or a method that should be `@staticmethod`. Fix: use the argument, or prefix with `_` if it's an intentionally unused interface slot.",
+    "category": "maintainability",
+    "severity": "low",
+    "confidence": "needs_cross_file"
+  }
+]

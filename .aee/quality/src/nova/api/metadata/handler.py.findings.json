@@ -1,0 +1,30 @@
+[
+  {
+    "file": "src/nova/api/metadata/handler.py",
+    "tool": "ruff",
+    "ruleId": "BLE001",
+    "lineRange": {
+      "start": 232,
+      "end": 232
+    },
+    "title": "Line 232: broad `except Exception` (BLE001)",
+    "detail": "Catching `Exception` at line 232 prevents distinguishing expected errors from unexpected failures. Fix: catch specific exception types, or re-raise after logging if a broad catch is intentional.",
+    "category": "error-handling",
+    "severity": "medium",
+    "confidence": "confirmed"
+  },
+  {
+    "file": "src/nova/api/metadata/handler.py",
+    "tool": "pylint",
+    "ruleId": "W0707",
+    "lineRange": {
+      "start": 130,
+      "end": 326
+    },
+    "title": "3\u00d7 exception raised without `from` in except block (W0707, first at line 130)",
+    "detail": "At 3 location(s) (first at line 130), a new exception is raised inside an `except` block without `raise ... from original_exc`. This discards the original traceback and makes debugging harder. Fix: `raise NewExc(...) from exc` to preserve the chain.",
+    "category": "error-handling",
+    "severity": "low",
+    "confidence": "confirmed"
+  }
+]

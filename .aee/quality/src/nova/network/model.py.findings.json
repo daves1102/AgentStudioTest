@@ -1,0 +1,58 @@
+[
+  {
+    "file": "src/nova/network/model.py",
+    "tool": "lizard",
+    "ruleId": null,
+    "lineRange": {
+      "start": 417,
+      "end": 417
+    },
+    "title": "`__init__` has 16 parameters (line 417)",
+    "detail": "`__init__` takes 16 parameters. Long parameter lists increase the risk of argument-order bugs and make call sites unreadable. Fix: group related parameters into a dataclass or split into smaller functions.",
+    "category": "maintainability",
+    "severity": "medium",
+    "confidence": "confirmed"
+  },
+  {
+    "file": "src/nova/network/model.py",
+    "tool": "pylint",
+    "ruleId": "W0703",
+    "lineRange": {
+      "start": 629,
+      "end": 629
+    },
+    "title": "Line 629: broad `except Exception` (W0703)",
+    "detail": "Catching `Exception` broadly at line 629 hides unexpected error types from callers. Fix: catch only the specific exception(s) expected at this site.",
+    "category": "error-handling",
+    "severity": "medium",
+    "confidence": "confirmed"
+  },
+  {
+    "file": "src/nova/network/model.py",
+    "tool": "pylint",
+    "ruleId": "W0707",
+    "lineRange": {
+      "start": 232,
+      "end": 232
+    },
+    "title": "1\u00d7 exception raised without `from` in except block (W0707, first at line 232)",
+    "detail": "At 1 location(s) (first at line 232), a new exception is raised inside an `except` block without `raise ... from original_exc`. This discards the original traceback and makes debugging harder. Fix: `raise NewExc(...) from exc` to preserve the chain.",
+    "category": "error-handling",
+    "severity": "low",
+    "confidence": "confirmed"
+  },
+  {
+    "file": "src/nova/network/model.py",
+    "tool": "pylint",
+    "ruleId": "W0622",
+    "lineRange": {
+      "start": 217,
+      "end": 417
+    },
+    "title": "Builtins `id`, `type` shadowed by local variable (W0622)",
+    "detail": "Local variable(s) at lines 217, 362, 417 shadow the builtin(s) id, type. If the builtin is needed elsewhere in the same scope, the shadowing causes a confusing `TypeError` or silent misbehavior. Fix: rename the local variable to avoid shadowing.",
+    "category": "bug-risk",
+    "severity": "low",
+    "confidence": "confirmed"
+  }
+]

@@ -1,0 +1,30 @@
+[
+  {
+    "file": "src/nova/conductor/tasks/base.py",
+    "tool": "ruff",
+    "ruleId": "BLE001",
+    "lineRange": {
+      "start": 24,
+      "end": 24
+    },
+    "title": "Line 24: broad `except Exception` (BLE001)",
+    "detail": "Catching `Exception` at line 24 prevents distinguishing expected errors from unexpected failures. Fix: catch specific exception types, or re-raise after logging if a broad catch is intentional.",
+    "category": "error-handling",
+    "severity": "medium",
+    "confidence": "confirmed"
+  },
+  {
+    "file": "src/nova/conductor/tasks/base.py",
+    "tool": "pylint",
+    "ruleId": "R1710",
+    "lineRange": {
+      "start": 21,
+      "end": 21
+    },
+    "title": "Line 21: inconsistent return statements \u2014 some paths return a value, some don't",
+    "detail": "The function at/near line 21 has paths that return a value and paths that fall off the end (implicit `return None`). Callers expecting a return value silently receive `None` on the implicit path. Fix: add explicit `return None` or ensure all paths return a consistent type.",
+    "category": "bug-risk",
+    "severity": "medium",
+    "confidence": "confirmed"
+  }
+]
