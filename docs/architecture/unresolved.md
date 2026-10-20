@@ -1,6 +1,6 @@
 # Unresolved Items Index
 
-_Batch: `868bfe40c13e07d11a2aa58ddb0c8900f9d9744d` — 2026-10-20_
+_Batch: `caa20451a7b7df151b4ddbaab06f92e6857e74a6` — 2026-10-20_
 
 Verification Summary (`.aee/verification-summary.md`) reports 0 errors — this document is not an escalation.
 
@@ -10,41 +10,42 @@ Verification Summary (`.aee/verification-summary.md`) reports 0 errors — this 
 
 Source: `.aee/link-summary.md` (Unresolved Imports table) and `.aee/link-graph.json` (`unresolved` and `ambiguous` arrays).
 
-### Unresolved References (99 total)
+### Unresolved References (287 total)
 
-**Summary by unresolved module root** (9 distinct roots):
+**Summary by unresolved module root** (14 distinct roots):
 
 | Symbol root | Refs | Notes |
 |-------------|------|-------|
-| `nova` | 35 | generic `nova` bare import |
-| `nova.conf` | 31 | configuration layer — not yet extracted |
-| `nova.compute` | 12 | compute service layer — not yet extracted |
-| `nova.virt` | 8 | virt driver layer — not yet extracted |
-| `nova.network` | 4 | network layer — not yet extracted |
+| `nova` | 73 | bare generic import |
+| `nova.compute` | 66 | compute service layer — not yet extracted |
+| `nova.policies` | 58 | policy layer — new in batch 4 (API layer), not yet extracted |
+| `nova.conf` | 53 | configuration layer — not yet extracted |
+| `nova.virt` | 11 | virt driver layer — not yet extracted |
+| `nova.pci` | 6 | PCI management — not yet extracted |
 | `nova.notifications.objects` | 4 | notification objects — not yet extracted |
+| `nova.image` | 4 | image service client — not yet extracted |
+| `nova.limit` | 3 | limit enforcement layer — not yet extracted |
+| `nova.volume` | 3 | volume integration — not yet extracted |
+| `nova.share` | 2 | share mapping — not yet extracted |
 | `nova.context` | 2 | request context — not yet extracted |
-| `nova.pci` | 2 | PCI management — not yet extracted |
-| `nova.share` | 1 | share mapping — not yet extracted |
-| **Total** | **99** | |
+| `nova.conductor` | 1 | conductor service — not yet extracted |
+| `nova.notifications` | 1 | notification helpers — not yet extracted |
+| **Total** | **287** | |
 
-Notable resolved since batch 2: `nova.db.main` (was 32 refs) and `nova.db.api` (was 21 refs) — both now in the KB following batch 3 database layer extraction. Dominant remaining gaps are `nova.conf` and `nova.compute`.
+Notable resolved since batch 3: `nova.network` (was 4 refs) — `nova/network/` was fully extracted in Batch 4. New entrant: `nova.policies` (58 refs), introduced by the newly-extracted API layer (`api/openstack/compute/*`).
 
-**Selected entries** (Link Summary `.aee/link-summary.md`, Unresolved Imports table):
+**Selected unresolved entries** (Link Summary `.aee/link-summary.md`):
 
-| File | Line | Symbol | Reason |
-|------|------|--------|--------|
-| `src/nova/accelerator/cyborg.py` | 49 | `nova.scheduler` | module-not-found |
-| `src/nova/objects/aggregate.py` | 21 | `nova.compute` | module-not-found |
-| `src/nova/objects/instance.py` | — | `nova.notifications.objects` | module-not-found |
-| `src/nova/objects/service.py` | — | `nova.network` | module-not-found |
-| `src/nova/service_auth.py` | — | `nova.conf` | module-not-found |
-| `src/nova/utils.py` | — | `nova.conf` | module-not-found |
-| `src/nova/utils.py` | — | `nova.virt` | module-not-found |
-| `src/nova/objects/share_mapping.py` | — | `nova.share` | module-not-found |
-| `src/nova/db/main/api.py` | — | `nova` | module-not-found |
-| `src/nova/db/main/api.py` | — | `nova.conf` | module-not-found |
-| `src/nova/db/api/api.py` | — | `nova.context` | module-not-found |
-| `src/nova/objects/pci_device.py` | — | `nova.pci` | module-not-found |
+| File | Symbol | Reason |
+|------|--------|--------|
+| `src/nova/api/openstack/compute/*` (multiple) | `nova.policies` | module-not-found |
+| `src/nova/api/openstack/compute/*` (multiple) | `nova.compute` | module-not-found |
+| `src/nova/api/openstack/compute/*` (multiple) | `nova.conf` | module-not-found |
+| `src/nova/db/main/api.py` | `nova.conf` | module-not-found |
+| `src/nova/db/main/api.py` | `nova` | module-not-found |
+| `src/nova/utils.py` | `nova.virt` | module-not-found |
+| `src/nova/objects/pci_device.py` | `nova.pci` | module-not-found |
+| `src/nova/objects/share_mapping.py` | `nova.share` | module-not-found |
 
 ### Ambiguous References
 
@@ -58,7 +59,7 @@ Source: `.aee/security-chains.json` (`chains` array, `status: "partial"`).
 
 | Chain ID | Source File | Source Lines | Sink File | Sink Lines | Stopped-At File | Stopped-At Lines | Reason |
 |----------|------------|-------------|----------|-----------|----------------|-----------------|--------|
-| chain-001 | `src/nova/accelerator/cyborg.py` | 337–337 | `src/nova/accelerator/cyborg.py` | 358–359 | `src/nova/accelerator/cyborg.py` | 337–337 | `no-static-edge` — no file in the 122-file source set has an inbound edge to `cyborg.py`; callers of `_CyborgClient.get_arq_by_uuid` are expected in `nova.compute` or `nova.conductor` (not yet extracted) |
+| chain-001 | `src/nova/accelerator/cyborg.py` | 337–337 | `src/nova/accelerator/cyborg.py` | 358–359 | `src/nova/accelerator/cyborg.py` | 337–337 | `no-static-edge` — `src/nova/network/neutron.py` calls `get_client()`, `get_arq_pci_device_profile`, and `get_device_amount_of_dp_groups` but NOT `get_arq_by_uuid`; callers of `get_arq_by_uuid` are expected in `nova.compute` or `nova.conductor` (not yet extracted) |
 
 No terminated chains. (`.aee/security-chains.json`, `summary.terminatedChains: 0`)
 
@@ -80,4 +81,4 @@ No errors. All issues in the Verification Report (`.aee/verification-report.json
 | warning  | 1     |
 | info     | 1     |
 
-The one open warning (3rd consecutive round): `docs/src/nova/accelerator/cyborg.py.md` overview paragraph "adapter created lazily" claim lacks a `(file:Lstart–Lend)` citation; should cite `src/nova/accelerator/cyborg.py:L121–L134` (Verification Report `.aee/verification-report.json`, item 1).
+The one open warning (4th consecutive round): `docs/src/nova/accelerator/cyborg.py.md` overview paragraph "adapter created lazily" claim lacks a `(file:Lstart–Lend)` citation; should cite `src/nova/accelerator/cyborg.py:L121–L134` (Verification Report `.aee/verification-report.json`, item 1).

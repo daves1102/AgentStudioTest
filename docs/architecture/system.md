@@ -1,10 +1,10 @@
 # Whole-System Architecture
 
-_Batch: `868bfe40c13e07d11a2aa58ddb0c8900f9d9744d` — 2026-10-20_
+_Batch: `caa20451a7b7df151b4ddbaab06f92e6857e74a6` — 2026-10-20_
 
 ## System Overview
 
-The system comprises a single component (`nova`) representing the core subsystems of the OpenStack Compute service, extracted across three batches. The 122 files span: the accelerator integration layer (`accelerator/`) brokering communication with the Cyborg accelerator management service; the exception catalog and internationalisation shim (`exception.py`, `i18n.py`); the service-authentication helpers and general utilities (`service_auth.py`, `utils.py`); the versioned object layer (`objects/`) defining Nova's domain entities; the database access layer (`db/`) providing the Alembic-managed schema for both the API and main databases and a full SQLAlchemy query API; and the scheduler subsystem (`scheduler/`) implementing placement-aware host selection, request filtering, weighing, and Placement resource-provider management.
+The system comprises a single component (`nova`) representing the core subsystems of the OpenStack Compute service, now extracted across four batches to 327 files. The component spans: the REST API layer (`api/`) implementing the WSGI framework, request dispatch, authentication middleware, API versioning, metadata service, JSON schema validation, and the full OpenStack Compute REST API (servers, flavors, keypairs, and more); the accelerator integration layer (`accelerator/`) brokering communication with the Cyborg accelerator management service; exception and internationalisation utilities (`exception.py`, `i18n.py`, `service_auth.py`, `utils.py`); the versioned object layer (`objects/`) defining Nova's domain entities; the database access layer (`db/`) providing Alembic-managed schemas for both the API and main databases with a full SQLAlchemy query API; the network integration layer (`network/`) providing the Neutron client, network model, and security group API; and the scheduler subsystem (`scheduler/`) implementing placement-aware host selection, filtering, weighing, and Placement resource-provider management.
 
 Sources: `docs/components/nova.md` (Overview), `docs/components/index.md`.
 
@@ -16,9 +16,9 @@ Line counts are sums of the code lines stated in each Component document's File 
 
 | Component | Language(s) | File count | Code lines |
 |-----------|-------------|------------|------------|
-| `nova`    | Python      | 122        | 28,982     |
+| `nova`    | Python      | 327        | 58,276     |
 
-Sources: `docs/components/nova.md` (File Inventory; aggregate verified in Verification Summary `.aee/verification-summary.md`: "42,016 total / 28,982 code"); KB records under `.aee/kb/src/nova/`.
+Sources: `docs/components/nova.md` (File Inventory); Verification Summary `.aee/verification-summary.md`: "81,517 total / 58,276 code verified against sum of all 327 KB records".
 
 ---
 
@@ -29,7 +29,7 @@ graph LR
     nova["nova"]
 ```
 
-The Link Graph (`.aee/link-graph.json`, commit `6bd3ba5`) records 382 file edges and zero cross-component edges (`summary.crossComponentEdges: 0`; Link Summary `.aee/link-summary.md`: "All 382 file edges are intra-component (within the `nova` component)"). There is one component in the system; no cross-component directed edges exist. No cross-component seams were found (`crossComponentSeams: []`, `summary.seams: 0`).
+The Link Graph (`.aee/link-graph.json`, commit `667e0d4`) records 1,060 file edges and zero cross-component edges (`summary.crossComponentEdges: 0`; Link Summary `.aee/link-summary.md`: "All 1060 file edges are intra-component (within the `nova` component)"). There is one component in the system; no cross-component directed edges exist. No cross-component seams were found (`crossComponentSeams: []`, `summary.seams: 0`).
 
 The graph is built from static imports and shared literals and may miss other coupling.
 
@@ -37,24 +37,22 @@ The graph is built from static imports and shared literals and may miss other co
 
 ## System-Wide Data Flow
 
-Data enters the system through the public API of the `nova` component. Entry points identified in `docs/components/nova.md` (Local Data Flow > Entry Points):
+Data enters the system through the public interfaces of the `nova` component. Entry points span multiple subsystems (sources: `docs/components/nova.md`, Local Data Flow > Entry Points; KB `securitySurface` arrays):
 
-- **`context`** — caller authentication/session state; accepted at `accelerator/cyborg.py:56` and stored for all outbound Cyborg calls.
-- **`dp_name`** — device profile name; accepted at `accelerator/cyborg.py:88` and forwarded as a Cyborg API query parameter or JSON body.
-- **`instance_uuid`** — instance UUID; accepted at `accelerator/cyborg.py:291, 370` and forwarded to the Cyborg REST API as query parameter `instance`.
-- **`arq_uuid`** — ARQ UUID; accepted at `accelerator/cyborg.py:337` and interpolated into the Cyborg REST API URL path.
-- **`bindings`** — binding dict; accepted at `accelerator/cyborg.py:255` and serialised as RFC 6902 JSON patch body.
-- **HTTP entry via `webob.exc`** — `exception.py:27–35`: `ConvertedException` wraps `webob.exc.WSGIHTTPException`.
-- **Scheduler hints** — user-controlled JSON strings accepted via `spec_obj.get_scheduler_hint('query')` at `scheduler/filters/json_filter.py:135` and parsed by `JsonFilter._parse_string` (lines 93–112).
+- **HTTP API requests** — inbound WSGI requests enter through `api/` routing; `api/auth.py` applies keystoneauth1 token verification middleware on each request.
+- **Metadata proxy requests** — enter `api/metadata/handler.py` at the `@webob.dec.wsgify`-decorated entry (line 97); HMAC validation against `CONF.neutron.metadata_proxy_shared_secret` is applied when the secret is configured (lines 276–280).
+- **Accelerator parameters** — `context`, `dp_name`, `instance_uuid`, `arq_uuid`, `bindings` accepted by `accelerator/cyborg.py` module-level functions and forwarded to the Cyborg REST API.
+- **Scheduler hints** — user-controlled JSON strings accepted via `spec_obj.get_scheduler_hint('query')` at `scheduler/filters/json_filter.py:135` and dispatched through `JsonFilter._parse_string` (lines 93–112).
 
-Data flows through several subsystems:
+Data flows through the following subsystems:
 
-- **Accelerator path:** caller-supplied parameters flow through `_CyborgClient` (cyborg.py:112–419) and exit via seven outbound HTTP calls to the Cyborg REST API (see `docs/components/nova.md`, Sinks table).
-- **Objects/DB path:** OVO objects (`objects/*.py`) issue SQLAlchemy sessions against the Nova API database (`db/api/`) and main database (`db/main/`) via 165 network-class side effects. `db/main/api.py` (4,967 lines) provides the complete query API.
-- **Scheduler path:** `scheduler/manager.py` (class `SchedulerManager`) orchestrates host selection; `scheduler/client/report.py` (class `SchedulerReportClient`) issues HTTP calls to the OpenStack Placement API for resource-provider inventory and allocation records (`scheduler/client/report.py:279`).
-- **Auth path:** `service_auth.py` constructs service-user keystoneauth1 auth plugins and sessions (service_auth.py:56, 70) consumed by `cyborg.py` and `utils.py`.
-
-All outbound Cyborg calls are authenticated using service credentials retrieved via `service_auth.get_service_user_token_auth_plugin` (`accelerator/cyborg.py:130`).
+- **API path:** inbound requests are dispatched through `api/openstack/` routers to compute resource handlers; response serialisers in `api/openstack/compute/views/` format outbound data.
+- **Accelerator path:** caller-supplied parameters flow through `_CyborgClient` (cyborg.py:112–419) and exit via seven outbound HTTP calls to the Cyborg REST API; `network/neutron.py` calls `get_client()` at line 673, `get_arq_pci_device_profile` at line 1715, and `get_device_amount_of_dp_groups` at line 2369.
+- **Metadata path:** `api/metadata/handler.py` issues HTTP calls to the metadata service backend; when shared-secret is absent, provider identity headers are accepted without HMAC validation (finding 4, CWE-306).
+- **Objects/DB path:** OVO objects (`objects/*.py`) issue SQLAlchemy sessions against `db/api/` and `db/main/` (165+ network-class side effects total); `db/main/api.py` (4,967 lines) provides the complete query API.
+- **Network path:** `network/neutron.py` (3,989 lines) issues 80+ outbound Neutron REST API calls (port CRUD, security groups, floating IP, network listing).
+- **Scheduler path:** `scheduler/manager.py` orchestrates host selection; `scheduler/client/report.py` issues HTTP calls to the OpenStack Placement API (line 279).
+- **Auth path:** `service_auth.py` constructs service-user keystoneauth1 auth plugins and sessions (lines 56, 70) consumed by `accelerator/cyborg.py` and `utils.py`.
 
 Sources: `docs/components/nova.md` (Local Data Flow, Side Effects); KB records under `.aee/kb/src/nova/`.
 
@@ -62,31 +60,39 @@ Sources: `docs/components/nova.md` (Local Data Flow, Side Effects); KB records u
 
 ## External Dependencies
 
-Third-party and standard-library packages imported across the 122 files. Source: `docs/components/nova.md` (External Dependencies table).
+Third-party and standard-library packages imported across the 327 files. Source: `docs/components/nova.md` (External Dependencies table).
 
 ### Most widely used (by file count)
 
 | Package | Files importing |
 |---------|----------------|
-| `oslo_utils` | 62 |
+| `oslo_utils` | 100 |
+| `webob` | 86 |
+| `oslo_log` | 79 |
 | `sqlalchemy` | 56 |
-| `oslo_log` | 47 |
-| `oslo_db` | 25 |
-| `oslo_serialization` | 24 |
+| `oslo_serialization` | 35 |
+| `oslo_db` | 27 |
 | `alembic` | 18 |
-| `keystoneauth1` | 6 |
+| `keystoneauth1` | 9 |
+| `netaddr` | 7 |
 | `oslo_versionedobjects` | 6 |
-| `netaddr` | 4 |
-| `os_resource_classes` | 4 |
-| `os_traits` | 3 |
-| `oslo_config` | 3 |
-| `oslo_messaging` | 3 |
-| `oslo_concurrency` | 2 |
-| `oslo_middleware` | 2 |
-| `webob` | 2 |
+| `oslo_config` | 5 |
+| `os_resource_classes` | 5 |
+| `oslo_messaging` | 4 |
+| `os_traits` | 4 |
 
-Additional packages used by fewer files: `cursive`, `eventlet`, `openstack`, `os_service_types`, `oslo_i18n`, `oslo_service`, `retrying`.
+Additional packages (fewer files): `cursive`, `eventlet`, `jsonschema`, `openstack`, `os_service_types`, `oslo_concurrency`, `oslo_i18n`, `oslo_middleware`, `oslo_service`, `osc_lib`, `retrying`. Total unique external packages: 58.
 
 ### Unresolved internal nova imports
 
-The following `nova.*` import roots remain unresolved in `.aee/link-graph.json` (`unresolved` array, reason: `module-not-found`): `nova` (35 refs), `nova.conf` (31), `nova.compute` (12), `nova.virt` (8), `nova.network` (4), `nova.notifications.objects` (4), `nova.context` (2), `nova.pci` (2), `nova.share` (1). The `nova.db.*` family that dominated earlier batches is now resolved — the database layer was extracted in Batch 3. Remaining dominant gaps are `nova.conf` (configuration layer) and `nova.compute` (compute service layer). (Link Summary `.aee/link-summary.md`)
+287 unresolved imports across 14 symbol roots (Link Summary `.aee/link-summary.md`). Dominant gaps:
+
+| Symbol root | Refs | Notes |
+|-------------|------|-------|
+| `nova` | 73 | bare generic import |
+| `nova.compute` | 66 | compute service layer — not yet extracted |
+| `nova.policies` | 58 | policy layer — not yet extracted; introduced by batch 4 API layer |
+| `nova.conf` | 53 | configuration layer — not yet extracted |
+| `nova.virt` | 11 | virt driver layer — not yet extracted |
+
+`nova.network` (3 refs in prior batch) is now fully resolved — `nova/network/` was extracted in Batch 4.
