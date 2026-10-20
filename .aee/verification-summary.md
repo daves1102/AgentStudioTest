@@ -1,10 +1,10 @@
-# Verification Summary — Round 1 (Batch 2)
+# Verification Summary — Round 1 (Batch 3)
 
-**Batch:** `733c737267c89a04a0ad54b304c4e167bd16c887`
-**Date:** 2026-10-19
-**Prior batch warnings resolved:** 2 of 3 (unsupported-claim `instance_uuid` URL key in nova.md fixed; 1 warning carried forward)
+**Batch:** `868bfe40c13e07d11a2aa58ddb0c8900f9d9744d`
+**Date:** 2026-10-20
+**Prior-batch warning carried forward:** 1 (cyborg.py.md missing citation, now flagged 3 consecutive rounds)
 
-**Documents audited:** 59 (55 file documents, 1 component document, 2 security findings, 1 security chain)
+**Documents audited:** 127 (122 file documents, 1 component document, 3 security findings, 1 security chain)
 
 ---
 
@@ -26,62 +26,64 @@
 
 | # | Severity | Document | Issue Type | Description |
 |---|----------|----------|------------|-------------|
-| 1 | warning | `docs/src/nova/accelerator/cyborg.py.md` | `missing-citation` | Overview paragraph "adapter created lazily" claim (L121–134) still lacks a `(file:Lstart–Lend)` citation — carried forward from round 1, not corrected |
+| 1 | warning | `docs/src/nova/accelerator/cyborg.py.md` | `missing-citation` | Overview "adapter created lazily" claim (L121–134) still lacks a `(file:Lstart–Lend)` citation — now flagged in 3 consecutive rounds |
 
 ---
 
 ## What Was Verified
 
-### File documents (55 files)
+### File documents (122 files)
 
-**Automated checks run:**
-- All 55 documents present ✓
-- Line counts (total/code/comment/blank) for all 55 files: zero mismatches against KB ✓
-- Symbol names and line ranges: all KB `aee-inventory` symbols present in documents; 265 symbols spot-checked against actual source — zero wrong-citation issues ✓
-- KB getter/setter pairs (migrate_data.py, migration.py): both entries present in inventory; KB correctly records getter ranges for properties; no mismatch ✓
-- Dependency citation line numbers: spot-checked across files — all accurate ✓
+**Automated checks:**
+- All 122 documents present ✓
+- Line counts verified against KB for all 122 files — zero mismatches ✓
+- 1,471 KB `aee-inventory` symbols checked against fresh inventory for all 122 files — zero wrong-citation issues ✓
+- 184 symbols spot-checked against actual source lines — zero wrong-citation issues ✓
+- Aggregate totals (42,016 total / 28,982 code) verified against sum of all 122 KB records ✓
 
 **Manual/targeted checks:**
-- `cyborg.py.md`: all 32 symbols, 7 dependencies, 8 side effects, 13 security surface entries re-verified against source ✓
-- `utils.py.md`: generate_hostid at L857–871 verified; SHA-224 at L869 verified; security surface citations (L33, L730, L744, L747, L757) verified ✓
-- `migrate_data.py` / `migration.py`: property getter/setter line ranges verified by reading source ✓
+- `scheduler/filters/json_filter.py`: `JsonFilter` class at L24, `RUN_ON_REBUILD` at L29, `_op_compare` at L31, `_parse_string` at L93–112, `host_passes` at L131–149, dependencies at L17/L19/L21 — all verified against source ✓
+- `scheduler/host_manager.py` (976 lines), `scheduler/manager.py` (838 lines), `scheduler/utils.py` (1,560 lines), `scheduler/client/report.py` (2,688 lines), `db/main/api.py` (4,967 lines): per-file counts in nova.md match KB ✓
 
 ### Component document: `docs/components/nova.md`
 
-- Aggregate line counts (22,503 total / 15,164 code / 3,245 comment / 4,094 blank) verified against sum of all 55 KB records ✓
-- 10 per-file line counts spot-checked — all match KB ✓
-- **Round-1 warnings resolved:** `?instance_uuid=` corrected to `?instance=` in both GET and DELETE Sinks rows (L317 and L377 of cyborg.py verified) ✓
+- Per-file line counts for 6 scheduler and db files spot-checked — all match KB ✓
+- Nova.md aggregate total (42,016) and code (28,982) match exact KB sum across all 122 files ✓
+- Subsystem descriptions for db/ and scheduler/ verified against source directory contents ✓
 
 ### Security finding: `Security:src/nova/accelerator/cyborg.py`
 
-Unchanged from round 1 — carries forward verified status.
-- L358–359 URL path concatenation confirmed ✓; OWASP A03 / CWE-74 consistent ✓; tool=manual, no rescan required.
+Unchanged — carries forward verified status from rounds 1 and 2.
 
 ### Security finding: `Security:src/nova/utils.py`
 
-New finding in this batch.
-- `tool: semgrep`, `ruleId: python.lang.security.audit.sha224-hash.sha224-hash`, L869–869
-- Source L869: `sha_hash = hashlib.sha224(data)` confirmed ✓
-- Semgrep re-run confirms rule fires at L869 ✓
-- OWASP A02 Cryptographic Failures / CWE-327: consistent with use of deprecated SHA-224 hash ✓
-- Severity low, confidence confirmed: appropriate — SHA-224 is deprecated by policy but not cryptographically broken; used only for opaque host ID, not passwords or keys ✓
+Unchanged — carries forward verified status from round 2.
+
+### Security finding: `Security:src/nova/scheduler/filters/json_filter.py` *(new)*
+
+- `tool: manual`, `lineRange: {start: 104, end: 112}`, OWASP A01 / CWE-470, severity medium, confidence needs_cross_file
+- Source L104–112 verified: `path = string[1:].split(".")` → `getattr(host_state, path[0], None)` — user-supplied string is used as attribute name in getattr ✓
+- Flow from L135 (`spec_obj.get_scheduler_hint('query')`) through `_process_filter` → `_parse_string` confirmed ✓
+- OWASP A01 Broken Access Control / CWE-470 (Unsafe Reflection): consistent with externally-controlled attribute name passed to getattr ✓
+- Severity medium / confidence needs_cross_file: appropriate — no code execution risk, but impact depends on HostState surface (cross-file) ✓
+- Tool is `manual` — no scanner re-run required ✓
 
 ### Security chain: `chain-001`
 
-Unchanged from round 1 — carries forward verified status.
-- Source L337 / Sink L358–359 verified ✓; partial-chain status with no-static-edge stop reason consistent ✓
+Unchanged from rounds 1 and 2 — carries forward verified status.
+- Source L337 / Sink L358–359 / OWASP A03 CWE-74 / partial status — all previously verified ✓
 
 ---
 
 ## Documents Passed (zero errors)
 
-All 59 audited items pass with zero errors:
+All 127 audited items pass with zero errors:
 
 | Type | Count | Pass |
 |------|-------|------|
-| file-document | 55 | 55 |
+| file-document | 122 | 122 |
 | component-document | 1 | 1 |
-| security-finding | 2 | 2 |
+| security-finding | 3 | 3 |
 | security-chain | 1 | 1 |
 
-**Still-open warning (1):** `cyborg.py.md` overview paragraph missing citation for lazy-adapter claim. File Documenter should add `(src/nova/accelerator/cyborg.py:L121–L134)` after that sentence.
+**Persistent warning (now in 3rd consecutive round):** `cyborg.py.md` overview — "adapter created lazily" lacks a citation for L121–134. File Documenter should add `(src/nova/accelerator/cyborg.py:L121–L134)` after that sentence.
