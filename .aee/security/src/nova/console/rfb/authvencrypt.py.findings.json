@@ -1,0 +1,17 @@
+[
+  {
+    "file": "src/nova/console/rfb/authvencrypt.py",
+    "tool": "manual",
+    "ruleId": null,
+    "lineRange": {
+      "start": 151,
+      "end": 152
+    },
+    "title": "TLS hostname verification disabled in VeNCrypt security handshake",
+    "detail": "ssl.PROTOCOL_TLS_CLIENT sets check_hostname=True and verify_mode=CERT_REQUIRED by default. Line 152 explicitly sets ssl_ctx.check_hostname = False, disabling hostname validation while keeping certificate chain validation. The code's stated goal (comment at line 105) is to prevent MITM attacks; however, without hostname checking, any certificate signed by the same CA (CONF.vnc.vencrypt_ca_certs) from any compute node satisfies verification. An attacker with access to a CA-signed certificate for a different compute node could redirect the proxy connection to a different target within the management network. The server-side socket (compute_sock) connects to the QEMU VNC backend on an internal compute node.",
+    "owaspCategory": "A02 Cryptographic Failures",
+    "cweId": "CWE-297",
+    "severity": "medium",
+    "confidence": "confirmed"
+  }
+]
