@@ -1,6 +1,6 @@
 # Component Dependency Matrix
 
-_Batch: `f56908d5e0741524fb4cb768d9b52ccb0f3a585b` — 2026-10-20_
+_Batch: `c7012ab2592eef3f2cf00f50553e7d290ce204fc` — 2026-10-20_
 
 ## N×N Dependency Matrix
 
@@ -8,9 +8,9 @@ Rows are the referencing component; columns are the providing component. Cell va
 
 | | **nova** |
 |---|---|
-| **nova** | 4451 |
+| **nova** | 4548 |
 
-**Derivation:** The Link Graph (`.aee/link-summary.md`, batch `f56908d5`) records 1,536 file edges, all with `crossComponent: false` (`summary.crossComponentEdges: 0`; "All 1536 file edges are intra-component (within the `nova` component)"). All 1,536 edges are in the `nova → nova` cell. The sum of their `count` fields equals the total resolved entries: 4,451 (`summary.resolved: 4451`, Link Summary `.aee/link-summary.md`).
+**Derivation:** The Link Graph (`.aee/link-summary.md`, batch `c7012ab2`) records 1,577 file edges, all with `crossComponent: false` (`summary.crossComponentEdges: 0`; "All 1577 file edges are intra-component (within the `nova` component)"). All 1,577 edges are in the `nova → nova` cell. The sum of their `count` fields equals the total resolved entries: 4,548 (`summary.resolved: 4548`, Link Summary `.aee/link-summary.md`).
 
 No confirmed taint chains exist (`.aee/security-chains.json`, `summary.confirmedChains: 0`); no cells are bolded.
 
