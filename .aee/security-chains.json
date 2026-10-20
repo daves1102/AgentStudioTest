@@ -20,7 +20,7 @@
         "file": "src/nova/accelerator/cyborg.py",
         "lineRange": { "start": 337, "end": 337 },
         "reason": "no-static-edge",
-        "detail": "No file in the 55-file source set has a resolved or file edge pointing TO cyborg.py. The only remaining unresolved import from cyborg.py is nova.scheduler (line 49); all other nova.* imports now resolve. Callers of _CyborgClient.get_arq_by_uuid exist outside the current source set and cannot be statically traced."
+        "detail": "No file in the 122-file source set has a resolved or file edge pointing TO cyborg.py. All imports within cyborg.py are now fully resolved (nova.scheduler resolved to src/nova/scheduler/utils.py at line 49; cyborg.py line 103 calls schedutils.ResourceRequest.XS_KEYPAT.match for requester-ID pattern matching — this does not carry arq_uuid). Callers of _CyborgClient.get_arq_by_uuid exist outside the current source set, likely in nova.compute or nova.conductor which have not yet been extracted."
       },
       "owaspCategory": "A03 Injection",
       "cweId": "CWE-74",
@@ -29,8 +29,7 @@
       "severityUpgradeReason": null,
       "sanitisationGaps": [
         "No UUID format check or path-character filtering visible between method parameter (line 337) and HTTP call (lines 358-359) in get_arq_by_uuid."
-      ],
-      "notes": "The link graph now resolves cyborg.py's edge to utils.py (import at line 51; cyborg calls utils.get_sdk_adapter at line 132 to construct its HTTP adapter). This edge does not carry arq_uuid and does not affect this chain. The SHA-224 finding in utils.py (line 869, confirmed, CWE-327) was evaluated as a potential taint source but was excluded: utils.py has no securitySurface entry of kind 'entry-point' overlapping generate_hostid (lines 857-871), so the protocol definition of a taint source is not satisfied. That finding is a standalone cryptographic-weakness and is out of scope for cross-file chain analysis."
+      ]
     }
   ],
   "evaluatedFindings": [
@@ -40,17 +39,25 @@
       "confidence": "confirmed",
       "title": "SHA-224 used in generate_hostid",
       "disposition": "excluded-not-a-source",
-      "reason": "No securitySurface entry of kind 'entry-point' overlaps generate_hostid (lines 857-871). SHA-224 is a standalone cryptographic-weakness; no cross-file taint chain originates here. Callers in the source set pass host and project_id to generate_hostid only internally; the return value is a hex string sent to API consumers, not used in a further sink within the analysed graph."
+      "reason": "No securitySurface entry of kind 'entry-point' overlaps generate_hostid (lines 857-871). SHA-224 is a standalone cryptographic-weakness; no cross-file taint chain originates here."
+    },
+    {
+      "file": "src/nova/scheduler/filters/json_filter.py",
+      "lineRange": { "start": 104, "end": 112 },
+      "confidence": "needs_cross_file",
+      "title": "User-controlled scheduler hint used as getattr attribute on HostState",
+      "disposition": "excluded-not-a-source",
+      "reason": "Confidence is needs_cross_file (not confirmed or probable). The KB securitySurface for json_filter.py is empty — no entry-point overlaps lines 104-112. No confirmed or probable taint source exists elsewhere in the source set to trace through this sink. The finding identifies a reflection (CWE-470) risk at _parse_string; the taint origin is API-level scheduler hints submitted by Nova API callers, which are outside the current source set. A future run that includes nova.api or nova.conductor may allow a confirmed chain to be traced."
     }
   ],
   "summary": {
     "confirmedChains": 0,
     "partialChains": 1,
     "terminatedChains": 0,
-    "filesAnalysed": 55,
-    "linkGraphEdgesAvailable": 212,
-    "unresolvedImports": 98,
+    "filesAnalysed": 122,
+    "linkGraphEdgesAvailable": 382,
+    "unresolvedImports": 99,
     "crossComponentSeams": 0,
-    "analysedAt": "2026-10-19"
+    "analysedAt": "2026-10-20"
   }
 }
