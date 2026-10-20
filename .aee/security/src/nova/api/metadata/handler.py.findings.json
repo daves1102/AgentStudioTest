@@ -1,0 +1,17 @@
+[
+  {
+    "file": "src/nova/api/metadata/handler.py",
+    "tool": "manual",
+    "ruleId": null,
+    "lineRange": {
+      "start": 276,
+      "end": 280
+    },
+    "title": "HMAC validation of metadata proxy request conditionally skipped when shared secret is unconfigured",
+    "detail": "In _handle_instance_id_request_from_lb (lines 265-296), the HMAC signature check that authenticates the metadata proxy is guarded by 'if CONF.neutron.metadata_proxy_shared_secret:' (line 277). When the shared secret is not configured, the block at lines 278-280 is skipped entirely, meaning X-Metadata-Provider and X-Forwarded-For headers are accepted without authentication. An entity that can reach the metadata endpoint and craft these headers could supply an arbitrary provider_id and instance_address to retrieve metadata for any instance whose IP appears in that provider's Neutron networks. The constructor (lines 53-57) logs a WARNING when the secret is absent, but does not reject requests. HMAC validation itself is correctly implemented with hmac.compare_digest when the secret IS present (line 305).",
+    "owaspCategory": "A07 Identification and Authentication Failures",
+    "cweId": "CWE-306",
+    "severity": "medium",
+    "confidence": "confirmed"
+  }
+]
