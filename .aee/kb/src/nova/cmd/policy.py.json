@@ -1,0 +1,786 @@
+{
+  "file": "src/nova/cmd/policy.py",
+  "hash": "3606e89c62490ca1acd71187fad26f715270d14312ccdd939fa01cbc8029178f",
+  "language": "Python",
+  "component": "nova",
+  "package": null,
+  "lines": {
+    "blank": 33,
+    "code": 138,
+    "comment": 21,
+    "total": 192
+  },
+  "symbols": [
+    {
+      "name": "CONF",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 41,
+        "end": 41
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "cli_opts",
+      "kind": "variable",
+      "scope": "",
+      "lineRange": {
+        "start": 44,
+        "end": 60
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "PolicyCommands",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 63,
+        "end": 143
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "_ACCEPTABLE_TARGETS",
+      "kind": "field",
+      "scope": "PolicyCommands",
+      "lineRange": {
+        "start": 66,
+        "end": 68
+      },
+      "source": "aee-inventory",
+      "visibility": "private"
+    },
+    {
+      "name": "check",
+      "kind": "method",
+      "scope": "PolicyCommands",
+      "lineRange": {
+        "start": 88,
+        "end": 101
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "default": "None",
+          "name": "api_name"
+        },
+        {
+          "default": "None",
+          "name": "target"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "0",
+          "line": 98
+        },
+        {
+          "expr": "1",
+          "line": 101
+        }
+      ],
+      "nloc": 11,
+      "ccn": 3,
+      "visibility": "public"
+    },
+    {
+      "name": "_get_context",
+      "kind": "method",
+      "scope": "PolicyCommands",
+      "lineRange": {
+        "start": 103,
+        "end": 107
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "nova_context.RequestContext( roles=CONF.os_roles, user_id=CONF.os_user_id, project_id=CONF.os_tenant_id)",
+          "line": 104
+        }
+      ],
+      "nloc": 5,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "_get_target",
+      "kind": "method",
+      "scope": "PolicyCommands",
+      "lineRange": {
+        "start": 109,
+        "end": 138
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "context"
+        },
+        {
+          "name": "target"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "None",
+          "line": 121
+        },
+        {
+          "expr": "new_target",
+          "line": 138
+        }
+      ],
+      "nloc": 16,
+      "ccn": 5,
+      "visibility": "private"
+    },
+    {
+      "name": "_filter_rules",
+      "kind": "method",
+      "scope": "PolicyCommands",
+      "lineRange": {
+        "start": 140,
+        "end": 143
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "context"
+        },
+        {
+          "name": "api_name"
+        },
+        {
+          "name": "target"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "[rule.name for rule in all_rules if api_name in rule.name and context.can(rule.name, target, fatal=False)]",
+          "line": 142
+        }
+      ],
+      "nloc": 4,
+      "ccn": 4,
+      "visibility": "private"
+    },
+    {
+      "name": "CATEGORIES",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 146,
+        "end": 148
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "add_command_parsers",
+      "kind": "variable",
+      "scope": "",
+      "lineRange": {
+        "start": 151,
+        "end": 152
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "category_opt",
+      "kind": "variable",
+      "scope": "",
+      "lineRange": {
+        "start": 155,
+        "end": 158
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "main",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 161,
+        "end": 181
+      },
+      "source": "aee-inventory",
+      "parameters": [],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "0",
+          "line": 169
+        },
+        {
+          "expr": "0",
+          "line": 173
+        },
+        {
+          "expr": "ret",
+          "line": 178
+        },
+        {
+          "expr": "1",
+          "line": 181
+        }
+      ],
+      "nloc": 17,
+      "ccn": 4,
+      "exported": true
+    },
+    {
+      "name": "_at_exit",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 189,
+        "end": 192
+      },
+      "source": "aee-inventory",
+      "parameters": [],
+      "returnType": null,
+      "returns": [],
+      "nloc": 4,
+      "ccn": 2,
+      "exported": false
+    }
+  ],
+  "referencedSymbols": [
+    {
+      "name": "monkey_patch.patch",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 20,
+        "end": 20
+      }
+    },
+    {
+      "name": "cfg.ListOpt",
+      "usage": "call",
+      "via": "oslo_config",
+      "count": 1,
+      "lineRange": {
+        "start": 45,
+        "end": 45
+      }
+    },
+    {
+      "name": "os.environ.get",
+      "usage": "call",
+      "via": "os",
+      "count": 3,
+      "lineRange": {
+        "start": 48,
+        "end": 48
+      }
+    },
+    {
+      "name": "_",
+      "usage": "call",
+      "via": "nova.i18n",
+      "count": 4,
+      "lineRange": {
+        "start": 49,
+        "end": 49
+      }
+    },
+    {
+      "name": "cfg.StrOpt",
+      "usage": "call",
+      "via": "oslo_config",
+      "count": 2,
+      "lineRange": {
+        "start": 50,
+        "end": 50
+      }
+    },
+    {
+      "name": "object",
+      "usage": "inherit",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 63,
+        "end": 63
+      }
+    },
+    {
+      "name": "cmd_common.args",
+      "usage": "call",
+      "via": "nova.cmd",
+      "count": 2,
+      "lineRange": {
+        "start": 70,
+        "end": 70
+      }
+    },
+    {
+      "name": "print",
+      "usage": "call",
+      "via": null,
+      "count": 4,
+      "lineRange": {
+        "start": 97,
+        "end": 97
+      }
+    },
+    {
+      "name": "nova_context.RequestContext",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 104,
+        "end": 104
+      }
+    },
+    {
+      "name": "exception.InvalidAttribute",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 127,
+        "end": 127
+      }
+    },
+    {
+      "name": "nova_context.get_admin_context",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 133,
+        "end": 133
+      }
+    },
+    {
+      "name": "db.instance_get_by_uuid",
+      "usage": "call",
+      "via": "nova.db.main",
+      "count": 1,
+      "lineRange": {
+        "start": 134,
+        "end": 134
+      }
+    },
+    {
+      "name": "policies.list_rules",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 141,
+        "end": 141
+      }
+    },
+    {
+      "name": "functools.partial",
+      "usage": "call",
+      "via": "functools",
+      "count": 1,
+      "lineRange": {
+        "start": 151,
+        "end": 151
+      }
+    },
+    {
+      "name": "cfg.SubCommandOpt",
+      "usage": "call",
+      "via": "oslo_config",
+      "count": 1,
+      "lineRange": {
+        "start": 155,
+        "end": 155
+      }
+    },
+    {
+      "name": "config.parse_args",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 165,
+        "end": 165
+      }
+    },
+    {
+      "name": "version.version_string_with_package",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 168,
+        "end": 168
+      }
+    },
+    {
+      "name": "cmd_common.print_bash_completion",
+      "usage": "call",
+      "via": "nova.cmd",
+      "count": 1,
+      "lineRange": {
+        "start": 172,
+        "end": 172
+      }
+    },
+    {
+      "name": "cmd_common.get_action_fn",
+      "usage": "call",
+      "via": "nova.cmd",
+      "count": 1,
+      "lineRange": {
+        "start": 176,
+        "end": 176
+      }
+    },
+    {
+      "name": "fn",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 177,
+        "end": 177
+      }
+    },
+    {
+      "name": "utils.concurrency_mode_threading",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 190,
+        "end": 190
+      }
+    }
+  ],
+  "dependencies": [
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "monkey_patch"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 20,
+        "end": 20
+      }
+    },
+    {
+      "style": "import",
+      "module": "atexit",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 23,
+        "end": 23
+      }
+    },
+    {
+      "style": "import",
+      "module": "functools",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 24,
+        "end": 24
+      }
+    },
+    {
+      "style": "import",
+      "module": "os",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 25,
+        "end": 25
+      }
+    },
+    {
+      "style": "import",
+      "module": "sys",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 26,
+        "end": 26
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_config",
+      "names": [
+        {
+          "alias": null,
+          "name": "cfg"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 28,
+        "end": 28
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.cmd",
+      "names": [
+        {
+          "alias": "cmd_common",
+          "name": "common"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 30,
+        "end": 30
+      }
+    },
+    {
+      "style": "import",
+      "module": "nova.conf",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 31,
+        "end": 31
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "config"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 32,
+        "end": 32
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": "nova_context",
+          "name": "context"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 33,
+        "end": 33
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.db.main",
+      "names": [
+        {
+          "alias": "db",
+          "name": "api"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 34,
+        "end": 34
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "exception"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 35,
+        "end": 35
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.i18n",
+      "names": [
+        {
+          "alias": null,
+          "name": "_"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 36,
+        "end": 36
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "policies"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 37,
+        "end": 37
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "utils"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 38,
+        "end": 38
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "version"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 39,
+        "end": 39
+      }
+    },
+    {
+      "style": "import",
+      "module": "logging",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 191,
+        "end": 191
+      }
+    }
+  ],
+  "sideEffects": [
+    {
+      "kind": "global-mutation",
+      "target": "CONF = nova.conf.CONF",
+      "lineRange": {
+        "start": 41,
+        "end": 41
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "CATEGORIES = {",
+      "lineRange": {
+        "start": 146,
+        "end": 146
+      }
+    }
+  ],
+  "securitySurface": [
+    {
+      "kind": "entry-point",
+      "category": "env",
+      "description": "default=os.environ.get('OS_ROLES'),",
+      "lineRange": {
+        "start": 48,
+        "end": 48
+      }
+    },
+    {
+      "kind": "entry-point",
+      "category": "env",
+      "description": "default=os.environ.get('OS_USER_ID'),",
+      "lineRange": {
+        "start": 53,
+        "end": 53
+      }
+    },
+    {
+      "kind": "entry-point",
+      "category": "env",
+      "description": "default=os.environ.get('OS_TENANT_ID'),",
+      "lineRange": {
+        "start": 58,
+        "end": 58
+      }
+    },
+    {
+      "kind": "entry-point",
+      "category": "cli-args",
+      "description": "config.parse_args(sys.argv)",
+      "lineRange": {
+        "start": 165,
+        "end": 165
+      }
+    }
+  ],
+  "injection_flags": [],
+  "warnings": []
+}

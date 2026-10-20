@@ -1,0 +1,3664 @@
+{
+  "file": "src/nova/compute/rpcapi.py",
+  "hash": "052766cb4ac5ce4518e92ebc9f11112a39fec980eecd136b22aad34dda23655d",
+  "language": "Python",
+  "component": "nova",
+  "package": null,
+  "lines": {
+    "blank": 171,
+    "code": 1410,
+    "comment": 157,
+    "total": 1738
+  },
+  "symbols": [
+    {
+      "name": "CONF",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 33,
+        "end": 33
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "RPC_TOPIC",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 34,
+        "end": 34
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "RPC_TOPIC_ALT",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 42,
+        "end": 42
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "LOG",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 44,
+        "end": 44
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "LAST_VERSION",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 45,
+        "end": 45
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "NO_COMPUTES_WARNING",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 46,
+        "end": 46
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "_ROUTER",
+      "kind": "variable",
+      "scope": "",
+      "lineRange": {
+        "start": 48,
+        "end": 48
+      },
+      "source": "aee-inventory",
+      "exported": false
+    },
+    {
+      "name": "reset_globals",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 51,
+        "end": 58
+      },
+      "source": "aee-inventory",
+      "parameters": [],
+      "returnType": null,
+      "returns": [],
+      "nloc": 7,
+      "ccn": 1,
+      "exported": true
+    },
+    {
+      "name": "_compute_host",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 61,
+        "end": 77
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "host"
+        },
+        {
+          "name": "instance"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "host",
+          "line": 71
+        },
+        {
+          "expr": "instance.host",
+          "line": 77
+        }
+      ],
+      "nloc": 9,
+      "ccn": 4,
+      "exported": false
+    },
+    {
+      "name": "ComputeAPI",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 81,
+        "end": 1738
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "VERSION_ALIASES",
+      "kind": "constant",
+      "scope": "ComputeAPI",
+      "lineRange": {
+        "start": 420,
+        "end": 447
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "router",
+      "kind": "method",
+      "scope": "ComputeAPI",
+      "lineRange": {
+        "start": 450,
+        "end": 477
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "_ROUTER",
+          "line": 477
+        }
+      ],
+      "nloc": 18,
+      "ccn": 4,
+      "visibility": "public"
+    },
+    {
+      "name": "_ver",
+      "kind": "method",
+      "scope": "ComputeAPI",
+      "lineRange": {
+        "start": 479,
+        "end": 493
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "ctxt"
+        },
+        {
+          "name": "old"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "'6.0'",
+          "line": 491
+        },
+        {
+          "expr": "old",
+          "line": 493
+        }
+      ],
+      "nloc": 6,
+      "ccn": 2,
+      "visibility": "private"
+    },
+    {
+      "name": "_determine_version_cap",
+      "kind": "method",
+      "scope": "ComputeAPI",
+      "lineRange": {
+        "start": 496,
+        "end": 560
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "target"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "LAST_VERSION",
+          "line": 500
+        },
+        {
+          "expr": "history[service_obj.SERVICE_VERSION]['compute_rpc']",
+          "line": 539
+        },
+        {
+          "expr": "target.version",
+          "line": 554
+        },
+        {
+          "expr": "version_cap",
+          "line": 560
+        }
+      ],
+      "nloc": 48,
+      "ccn": 8,
+      "visibility": "private"
+    },
+    {
+      "name": "get_client",
+      "kind": "method",
+      "scope": "ComputeAPI",
+      "lineRange": {
+        "start": 562,
+        "end": 576
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "target"
+        },
+        {
+          "name": "version_cap"
+        },
+        {
+          "name": "serializer"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "rpc.get_client(target, version_cap=version_cap, serializer=serializer, call_monitor_timeout=cmt)",
+          "line": 573
+        }
+      ],
+      "nloc": 9,
+      "ccn": 2,
+      "visibility": "public"
+    },
+    {
+      "name": "prepare_for_alt_rpcserver",
+      "kind": "method",
+      "scope": "ComputeAPI",
+      "lineRange": {
+        "start": 578,
+        "end": 603
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "client"
+        },
+        {
+          "name": "server"
+        },
+        {
+          "name": "version"
+        },
+        {
+          "name": "**kwargs"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "client.prepare(**params)",
+          "line": 603
+        }
+      ],
+      "nloc": 15,
+      "ccn": 2,
+      "visibility": "public"
+    },
+    {
+      "name": "add_fixed_ip_to_instance",
+      "kind": "method",
+      "scope": "ComputeAPI",
+      "lineRange": {
+        "start": 605,
+        "end": 610
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "ctxt"
+        },
+        {
+          "name": "instance"
+        },
+        {
+          "name": "network_id"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 6,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "attach_interface",
+      "kind": "method",
+      "scope": "ComputeAPI",
+      "lineRange": {
+        "start": 612,
+        "end": 621
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "ctxt"
+        },
+        {
+          "name": "instance"
+        },
+        {
+          "name": "network_id"
+        },
+        {
+          "name": "port_id"
+        },
+        {
+          "name": "requested_ip"
+        },
+        {
+          "default": "None",
+          "name": "tag"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "cctxt.call(ctxt, 'attach_interface', **kw)",
+          "line": 621
+        }
+      ],
+      "nloc": 10,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "attach_volume",
+      "kind": "method",
+      "scope": "ComputeAPI",
+      "lineRange": {
+        "start": 623,
+        "end": 627
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "ctxt"
+        },
+        {
+          "name": "instance"
+        },
+        {
+          "name": "bdm"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 5,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "check_can_live_migrate_destination",
+      "kind": "method",
+      "scope": "ComputeAPI",
+      "lineRange": {
+        "start": 629,
+        "end": 654
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "ctxt"
+        },
+        {
+          "name": "instance"
+        },
+        {
+          "name": "destination"
+        },
+        {
+          "name": "block_migration"
+        },
+        {
+          "name": "disk_over_commit"
+        },
+        {
+          "name": "migration"
+        },
+        {
+          "name": "limits"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "cctxt.call(ctxt, 'check_can_live_migrate_destination', **kwargs)",
+          "line": 654
+        }
+      ],
+      "nloc": 20,
+      "ccn": 2,
+      "visibility": "public"
+    },
+    {
+      "name": "check_can_live_migrate_source",
+      "kind": "method",
+      "scope": "ComputeAPI",
+      "lineRange": {
+        "start": 656,
+        "end": 667
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "ctxt"
+        },
+        {
+          "name": "instance"
+        },
+        {
+          "name": "dest_check_data"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "cctxt.call(ctxt, 'check_can_live_migrate_source', instance=instance, dest_check_data=dest_check_data)",
+          "line": 665
+        }
+      ],
+      "nloc": 8,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "check_instance_shared_storage",
+      "kind": "method",
+      "scope": "ComputeAPI",
+      "lineRange": {
+        "start": 669,
+        "end": 686
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "ctxt"
+        },
+        {
+          "name": "data"
+        },
+        {
+          "default": "None",
+          "name": "instance"
+        },
+        {
+          "default": "None",
+          "name": "host"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "cctxt.call(ctxt, 'check_instance_shared_storage', **msg_args)",
+          "line": 686
+        }
+      ],
+      "nloc": 11,
+      "ccn": 2,
+      "visibility": "public"
+    },
+    {
+      "name": "confirm_resize",
+      "kind": "method",
+      "scope": "ComputeAPI",
+      "lineRange": {
+        "start": 688,
+        "end": 696
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "ctxt"
+        },
+        {
+          "name": "instance"
+        },
+        {
+          "name": "migration"
+        },
+        {
+          "name": "host"
+        },
+        {
+          "default": "True",
+          "name": "cast"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "rpc_method(ctxt, 'confirm_resize', instance=instance, migration=migration)",
+          "line": 695
+        }
+      ],
+      "nloc": 9,
+      "ccn": 2,
+      "visibility": "public"
+    },
+    {
+      "name": "confirm_snapshot_based_resize_at_source",
+      "kind": "method",
+      "scope": "ComputeAPI",
+      "lineRange": {
+        "start": 698,
+        "end": 731
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "ctxt"
+        },
+        {
+          "name": "instance"
+        },
+        {
+          "name": "migration"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "cctxt.call( ctxt, 'confirm_snapshot_based_resize_at_source', instance=instance, migration=migration)",
+          "line": 729
+        }
+      ],
+      "nloc": 13,
+      "ccn": 2,
+      "visibility": "public"
+    },
+    {
+      "name": "detach_interface",
+      "kind": "method",
+      "scope": "ComputeAPI",
+      "lineRange": {
+        "start": 733,
+        "end": 738
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "ctxt"
+        },
+        {
+          "name": "instance"
+        },
+        {
+          "name": "port_id"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 6,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "detach_volume",
+      "kind": "method",
+      "scope": "ComputeAPI",
+      "lineRange": {
+        "start": 740,
+        "end": 747
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "ctxt"
+        },
+        {
+          "name": "instance"
+        },
+        {
+          "name": "volume_id"
+        },
+        {
+          "default": "None",
+          "name": "attachment_id"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 8,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "finish_resize",
+      "kind": "method",
+      "scope": "ComputeAPI",
+      "lineRange": {
+        "start": 749,
+        "end": 772
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "ctxt"
+        },
+        {
+          "name": "instance"
+        },
+        {
+          "name": "migration"
+        },
+        {
+          "name": "image"
+        },
+        {
+          "name": "disk_info"
+        },
+        {
+          "name": "host"
+        },
+        {
+          "name": "request_spec"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 18,
+      "ccn": 2,
+      "visibility": "public"
+    },
+    {
+      "name": "finish_revert_resize",
+      "kind": "method",
+      "scope": "ComputeAPI",
+      "lineRange": {
+        "start": 774,
+        "end": 797
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "ctxt"
+        },
+        {
+          "name": "instance"
+        },
+        {
+          "name": "migration"
+        },
+        {
+          "name": "host"
+        },
+        {
+          "name": "request_spec"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 15,
+      "ccn": 2,
+      "visibility": "public"
+    },
+    {
+      "name": "finish_snapshot_based_resize_at_dest",
+      "kind": "method",
+      "scope": "ComputeAPI",
+      "lineRange": {
+        "start": 799,
+        "end": 845
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "ctxt"
+        },
+        {
+          "name": "instance"
+        },
+        {
+          "name": "migration"
+        },
+        {
+          "name": "snapshot_id"
+        },
+        {
+          "name": "request_spec"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "cctxt.call( ctxt, 'finish_snapshot_based_resize_at_dest', **msg_args)",
+          "line": 844
+        }
+      ],
+      "nloc": 18,
+      "ccn": 3,
+      "visibility": "public"
+    },
+    {
+      "name": "finish_revert_snapshot_based_resize_at_source",
+      "kind": "method",
+      "scope": "ComputeAPI",
+      "lineRange": {
+        "start": 847,
+        "end": 887
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "ctxt"
+        },
+        {
+          "name": "instance"
+        },
+        {
+          "name": "migration"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "cctxt.call( ctxt, 'finish_revert_snapshot_based_resize_at_source', instance=instance, migration=migration)",
+          "line": 885
+        }
+      ],
+      "nloc": 15,
+      "ccn": 2,
+      "visibility": "public"
+    },
+    {
+      "name": "get_console_output",
+      "kind": "method",
+      "scope": "ComputeAPI",
+      "lineRange": {
+        "start": 889,
+        "end": 894
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "ctxt"
+        },
+        {
+          "name": "instance"
+        },
+        {
+          "name": "tail_length"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "cctxt.call(ctxt, 'get_console_output', instance=instance, tail_length=tail_length)",
+          "line": 893
+        }
+      ],
+      "nloc": 6,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "get_diagnostics",
+      "kind": "method",
+      "scope": "ComputeAPI",
+      "lineRange": {
+        "start": 896,
+        "end": 900
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "ctxt"
+        },
+        {
+          "name": "instance"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "cctxt.call(ctxt, 'get_diagnostics', instance=instance)",
+          "line": 900
+        }
+      ],
+      "nloc": 5,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "get_instance_diagnostics",
+      "kind": "method",
+      "scope": "ComputeAPI",
+      "lineRange": {
+        "start": 902,
+        "end": 907
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "ctxt"
+        },
+        {
+          "name": "instance"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "cctxt.call(ctxt, 'get_instance_diagnostics', instance=instance)",
+          "line": 907
+        }
+      ],
+      "nloc": 6,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "get_vnc_console",
+      "kind": "method",
+      "scope": "ComputeAPI",
+      "lineRange": {
+        "start": 909,
+        "end": 914
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "ctxt"
+        },
+        {
+          "name": "instance"
+        },
+        {
+          "name": "console_type"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "cctxt.call(ctxt, 'get_vnc_console', instance=instance, console_type=console_type)",
+          "line": 913
+        }
+      ],
+      "nloc": 6,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "get_spice_console",
+      "kind": "method",
+      "scope": "ComputeAPI",
+      "lineRange": {
+        "start": 916,
+        "end": 921
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "ctxt"
+        },
+        {
+          "name": "instance"
+        },
+        {
+          "name": "console_type"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "cctxt.call(ctxt, 'get_spice_console', instance=instance, console_type=console_type)",
+          "line": 920
+        }
+      ],
+      "nloc": 6,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "get_mks_console",
+      "kind": "method",
+      "scope": "ComputeAPI",
+      "lineRange": {
+        "start": 923,
+        "end": 928
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "ctxt"
+        },
+        {
+          "name": "instance"
+        },
+        {
+          "name": "console_type"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "cctxt.call(ctxt, 'get_mks_console', instance=instance, console_type=console_type)",
+          "line": 927
+        }
+      ],
+      "nloc": 6,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "get_serial_console",
+      "kind": "method",
+      "scope": "ComputeAPI",
+      "lineRange": {
+        "start": 930,
+        "end": 935
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "ctxt"
+        },
+        {
+          "name": "instance"
+        },
+        {
+          "name": "console_type"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "cctxt.call(ctxt, 'get_serial_console', instance=instance, console_type=console_type)",
+          "line": 934
+        }
+      ],
+      "nloc": 6,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "validate_console_port",
+      "kind": "method",
+      "scope": "ComputeAPI",
+      "lineRange": {
+        "start": 937,
+        "end": 949
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "ctxt"
+        },
+        {
+          "name": "instance"
+        },
+        {
+          "name": "port"
+        },
+        {
+          "name": "console_type"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "cctxt.call(ctxt, 'validate_console_port', instance=instance, port=port, console_type=console_type)",
+          "line": 947
+        }
+      ],
+      "nloc": 9,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "host_maintenance_mode",
+      "kind": "method",
+      "scope": "ComputeAPI",
+      "lineRange": {
+        "start": 951,
+        "end": 964
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "ctxt"
+        },
+        {
+          "name": "host"
+        },
+        {
+          "name": "host_param"
+        },
+        {
+          "name": "mode"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "cctxt.call(ctxt, 'host_maintenance_mode', host=host_param, mode=mode)",
+          "line": 963
+        }
+      ],
+      "nloc": 6,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "host_power_action",
+      "kind": "method",
+      "scope": "ComputeAPI",
+      "lineRange": {
+        "start": 966,
+        "end": 970
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "ctxt"
+        },
+        {
+          "name": "host"
+        },
+        {
+          "name": "action"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "cctxt.call(ctxt, 'host_power_action', action=action)",
+          "line": 970
+        }
+      ],
+      "nloc": 5,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "inject_network_info",
+      "kind": "method",
+      "scope": "ComputeAPI",
+      "lineRange": {
+        "start": 972,
+        "end": 976
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "ctxt"
+        },
+        {
+          "name": "instance"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 5,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "live_migration",
+      "kind": "method",
+      "scope": "ComputeAPI",
+      "lineRange": {
+        "start": 978,
+        "end": 991
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "ctxt"
+        },
+        {
+          "name": "instance"
+        },
+        {
+          "name": "dest"
+        },
+        {
+          "name": "block_migration"
+        },
+        {
+          "name": "host"
+        },
+        {
+          "name": "migration"
+        },
+        {
+          "default": "None",
+          "name": "migrate_data"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 9,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "live_migration_force_complete",
+      "kind": "method",
+      "scope": "ComputeAPI",
+      "lineRange": {
+        "start": 993,
+        "end": 999
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "ctxt"
+        },
+        {
+          "name": "instance"
+        },
+        {
+          "name": "migration"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 7,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "live_migration_abort",
+      "kind": "method",
+      "scope": "ComputeAPI",
+      "lineRange": {
+        "start": 1001,
+        "end": 1006
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "ctxt"
+        },
+        {
+          "name": "instance"
+        },
+        {
+          "name": "migration_id"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 6,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "pause_instance",
+      "kind": "method",
+      "scope": "ComputeAPI",
+      "lineRange": {
+        "start": 1008,
+        "end": 1012
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "ctxt"
+        },
+        {
+          "name": "instance"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 5,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "post_live_migration_at_destination",
+      "kind": "method",
+      "scope": "ComputeAPI",
+      "lineRange": {
+        "start": 1014,
+        "end": 1027
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "ctxt"
+        },
+        {
+          "name": "instance"
+        },
+        {
+          "name": "block_migration"
+        },
+        {
+          "name": "host"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "cctxt.call(ctxt, 'post_live_migration_at_destination', instance=instance, block_migration=block_migration)",
+          "line": 1026
+        }
+      ],
+      "nloc": 11,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "pre_live_migration",
+      "kind": "method",
+      "scope": "ComputeAPI",
+      "lineRange": {
+        "start": 1031,
+        "end": 1051
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "ctxt"
+        },
+        {
+          "name": "instance"
+        },
+        {
+          "name": "block_migration"
+        },
+        {
+          "name": "disk"
+        },
+        {
+          "name": "host"
+        },
+        {
+          "name": "migrate_data"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "cctxt.call(ctxt, 'pre_live_migration', instance=instance, disk=disk, migrate_data=migrate_data, **msg_args)",
+          "line": 1048
+        }
+      ],
+      "nloc": 17,
+      "ccn": 2,
+      "visibility": "public"
+    },
+    {
+      "name": "prep_resize",
+      "kind": "method",
+      "scope": "ComputeAPI",
+      "lineRange": {
+        "start": 1054,
+        "end": 1088
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "ctxt"
+        },
+        {
+          "name": "instance"
+        },
+        {
+          "name": "image"
+        },
+        {
+          "name": "flavor"
+        },
+        {
+          "name": "host"
+        },
+        {
+          "name": "migration"
+        },
+        {
+          "name": "request_spec"
+        },
+        {
+          "name": "filter_properties"
+        },
+        {
+          "name": "node"
+        },
+        {
+          "name": "clean_shutdown"
+        },
+        {
+          "name": "host_list"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 25,
+      "ccn": 3,
+      "visibility": "public"
+    },
+    {
+      "name": "prep_snapshot_based_resize_at_dest",
+      "kind": "method",
+      "scope": "ComputeAPI",
+      "lineRange": {
+        "start": 1090,
+        "end": 1143
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "ctxt"
+        },
+        {
+          "name": "instance"
+        },
+        {
+          "name": "flavor"
+        },
+        {
+          "name": "nodename"
+        },
+        {
+          "name": "migration"
+        },
+        {
+          "name": "limits"
+        },
+        {
+          "name": "request_spec"
+        },
+        {
+          "name": "destination"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "cctxt.call(ctxt, 'prep_snapshot_based_resize_at_dest', **msg_args)",
+          "line": 1142
+        }
+      ],
+      "nloc": 19,
+      "ccn": 3,
+      "visibility": "public"
+    },
+    {
+      "name": "prep_snapshot_based_resize_at_source",
+      "kind": "method",
+      "scope": "ComputeAPI",
+      "lineRange": {
+        "start": 1145,
+        "end": 1188
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "ctxt"
+        },
+        {
+          "name": "instance"
+        },
+        {
+          "name": "migration"
+        },
+        {
+          "default": "None",
+          "name": "snapshot_id"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "cctxt.call( ctxt, 'prep_snapshot_based_resize_at_source', instance=instance, migration=migration, snapshot_id=snapshot_id)",
+          "line": 1186
+        }
+      ],
+      "nloc": 15,
+      "ccn": 2,
+      "visibility": "public"
+    },
+    {
+      "name": "reboot_instance",
+      "kind": "method",
+      "scope": "ComputeAPI",
+      "lineRange": {
+        "start": 1190,
+        "end": 1198
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "ctxt"
+        },
+        {
+          "name": "instance"
+        },
+        {
+          "name": "block_device_info"
+        },
+        {
+          "name": "reboot_type"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 9,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "rebuild_instance",
+      "kind": "method",
+      "scope": "ComputeAPI",
+      "lineRange": {
+        "start": 1200,
+        "end": 1250
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "ctxt"
+        },
+        {
+          "name": "instance"
+        },
+        {
+          "name": "new_pass"
+        },
+        {
+          "name": "injected_files"
+        },
+        {
+          "name": "image_ref"
+        },
+        {
+          "name": "orig_image_ref"
+        },
+        {
+          "name": "orig_sys_metadata"
+        },
+        {
+          "name": "bdms"
+        },
+        {
+          "name": "recreate"
+        },
+        {
+          "name": "on_shared_storage"
+        },
+        {
+          "name": "host"
+        },
+        {
+          "name": "node"
+        },
+        {
+          "name": "preserve_ephemeral"
+        },
+        {
+          "name": "migration"
+        },
+        {
+          "name": "limits"
+        },
+        {
+          "name": "request_spec"
+        },
+        {
+          "name": "accel_uuids"
+        },
+        {
+          "name": "reimage_boot_volume"
+        },
+        {
+          "name": "target_state"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 48,
+      "ccn": 7,
+      "visibility": "public"
+    },
+    {
+      "name": "remove_fixed_ip_from_instance",
+      "kind": "method",
+      "scope": "ComputeAPI",
+      "lineRange": {
+        "start": 1252,
+        "end": 1257
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "ctxt"
+        },
+        {
+          "name": "instance"
+        },
+        {
+          "name": "address"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 6,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "remove_volume_connection",
+      "kind": "method",
+      "scope": "ComputeAPI",
+      "lineRange": {
+        "start": 1259,
+        "end": 1279
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "ctxt"
+        },
+        {
+          "name": "instance"
+        },
+        {
+          "name": "volume_id"
+        },
+        {
+          "name": "host"
+        },
+        {
+          "default": "False",
+          "name": "delete_attachment"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "cctxt.call(ctxt, 'remove_volume_connection', **kwargs)",
+          "line": 1279
+        }
+      ],
+      "nloc": 17,
+      "ccn": 2,
+      "visibility": "public"
+    },
+    {
+      "name": "rescue_instance",
+      "kind": "method",
+      "scope": "ComputeAPI",
+      "lineRange": {
+        "start": 1281,
+        "end": 1291
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "ctxt"
+        },
+        {
+          "name": "instance"
+        },
+        {
+          "name": "rescue_password"
+        },
+        {
+          "default": "None",
+          "name": "rescue_image_ref"
+        },
+        {
+          "default": "True",
+          "name": "clean_shutdown"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 11,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "resize_instance",
+      "kind": "method",
+      "scope": "ComputeAPI",
+      "lineRange": {
+        "start": 1293,
+        "end": 1321
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "ctxt"
+        },
+        {
+          "name": "instance"
+        },
+        {
+          "name": "migration"
+        },
+        {
+          "name": "image"
+        },
+        {
+          "name": "flavor"
+        },
+        {
+          "name": "request_spec"
+        },
+        {
+          "default": "True",
+          "name": "clean_shutdown"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 22,
+      "ccn": 3,
+      "visibility": "public"
+    },
+    {
+      "name": "resume_instance",
+      "kind": "method",
+      "scope": "ComputeAPI",
+      "lineRange": {
+        "start": 1323,
+        "end": 1327
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "ctxt"
+        },
+        {
+          "name": "instance"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 5,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "revert_resize",
+      "kind": "method",
+      "scope": "ComputeAPI",
+      "lineRange": {
+        "start": 1329,
+        "end": 1351
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "ctxt"
+        },
+        {
+          "name": "instance"
+        },
+        {
+          "name": "migration"
+        },
+        {
+          "name": "host"
+        },
+        {
+          "name": "request_spec"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 14,
+      "ccn": 2,
+      "visibility": "public"
+    },
+    {
+      "name": "revert_snapshot_based_resize_at_dest",
+      "kind": "method",
+      "scope": "ComputeAPI",
+      "lineRange": {
+        "start": 1353,
+        "end": 1387
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "ctxt"
+        },
+        {
+          "name": "instance"
+        },
+        {
+          "name": "migration"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "cctxt.call( ctxt, 'revert_snapshot_based_resize_at_dest', instance=instance, migration=migration)",
+          "line": 1385
+        }
+      ],
+      "nloc": 12,
+      "ccn": 2,
+      "visibility": "public"
+    },
+    {
+      "name": "rollback_live_migration_at_destination",
+      "kind": "method",
+      "scope": "ComputeAPI",
+      "lineRange": {
+        "start": 1389,
+        "end": 1402
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "ctxt"
+        },
+        {
+          "name": "instance"
+        },
+        {
+          "name": "host"
+        },
+        {
+          "name": "destroy_disks"
+        },
+        {
+          "name": "migrate_data"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 10,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "supports_numa_live_migration",
+      "kind": "method",
+      "scope": "ComputeAPI",
+      "lineRange": {
+        "start": 1405,
+        "end": 1410
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "ctxt"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "client.can_send_version(version)",
+          "line": 1410
+        }
+      ],
+      "nloc": 4,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "drop_move_claim_at_destination",
+      "kind": "method",
+      "scope": "ComputeAPI",
+      "lineRange": {
+        "start": 1412,
+        "end": 1429
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "ctxt"
+        },
+        {
+          "name": "instance"
+        },
+        {
+          "name": "host"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 6,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "set_admin_password",
+      "kind": "method",
+      "scope": "ComputeAPI",
+      "lineRange": {
+        "start": 1431,
+        "end": 1436
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "ctxt"
+        },
+        {
+          "name": "instance"
+        },
+        {
+          "name": "new_pass"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "cctxt.call(ctxt, 'set_admin_password', instance=instance, new_pass=new_pass)",
+          "line": 1435
+        }
+      ],
+      "nloc": 6,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "set_host_enabled",
+      "kind": "method",
+      "scope": "ComputeAPI",
+      "lineRange": {
+        "start": 1438,
+        "end": 1444
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "ctxt"
+        },
+        {
+          "name": "host"
+        },
+        {
+          "name": "enabled"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "cctxt.call(ctxt, 'set_host_enabled', enabled=enabled)",
+          "line": 1444
+        }
+      ],
+      "nloc": 7,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "swap_volume",
+      "kind": "method",
+      "scope": "ComputeAPI",
+      "lineRange": {
+        "start": 1446,
+        "end": 1456
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "ctxt"
+        },
+        {
+          "name": "instance"
+        },
+        {
+          "name": "old_volume_id"
+        },
+        {
+          "name": "new_volume_id"
+        },
+        {
+          "name": "new_attachment_id"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 11,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "get_host_uptime",
+      "kind": "method",
+      "scope": "ComputeAPI",
+      "lineRange": {
+        "start": 1458,
+        "end": 1462
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "ctxt"
+        },
+        {
+          "name": "host"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "cctxt.call(ctxt, 'get_host_uptime')",
+          "line": 1462
+        }
+      ],
+      "nloc": 5,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "reserve_block_device_name",
+      "kind": "method",
+      "scope": "ComputeAPI",
+      "lineRange": {
+        "start": 1464,
+        "end": 1477
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "ctxt"
+        },
+        {
+          "name": "instance"
+        },
+        {
+          "name": "device"
+        },
+        {
+          "name": "volume_id"
+        },
+        {
+          "name": "disk_bus"
+        },
+        {
+          "name": "device_type"
+        },
+        {
+          "name": "tag"
+        },
+        {
+          "name": "multiattach"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "cctxt.call(ctxt, 'reserve_block_device_name', **kw)",
+          "line": 1477
+        }
+      ],
+      "nloc": 14,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "backup_instance",
+      "kind": "method",
+      "scope": "ComputeAPI",
+      "lineRange": {
+        "start": 1479,
+        "end": 1488
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "ctxt"
+        },
+        {
+          "name": "instance"
+        },
+        {
+          "name": "image_id"
+        },
+        {
+          "name": "backup_type"
+        },
+        {
+          "name": "rotation"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 10,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "snapshot_instance",
+      "kind": "method",
+      "scope": "ComputeAPI",
+      "lineRange": {
+        "start": 1490,
+        "end": 1496
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "ctxt"
+        },
+        {
+          "name": "instance"
+        },
+        {
+          "name": "image_id"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 7,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "start_instance",
+      "kind": "method",
+      "scope": "ComputeAPI",
+      "lineRange": {
+        "start": 1498,
+        "end": 1502
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "ctxt"
+        },
+        {
+          "name": "instance"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 5,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "stop_instance",
+      "kind": "method",
+      "scope": "ComputeAPI",
+      "lineRange": {
+        "start": 1504,
+        "end": 1511
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "ctxt"
+        },
+        {
+          "name": "instance"
+        },
+        {
+          "default": "True",
+          "name": "do_cast"
+        },
+        {
+          "default": "True",
+          "name": "clean_shutdown"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "rpc_method(ctxt, 'stop_instance', **msg_args)",
+          "line": 1511
+        }
+      ],
+      "nloc": 8,
+      "ccn": 2,
+      "visibility": "public"
+    },
+    {
+      "name": "suspend_instance",
+      "kind": "method",
+      "scope": "ComputeAPI",
+      "lineRange": {
+        "start": 1513,
+        "end": 1517
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "ctxt"
+        },
+        {
+          "name": "instance"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 5,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "terminate_instance",
+      "kind": "method",
+      "scope": "ComputeAPI",
+      "lineRange": {
+        "start": 1519,
+        "end": 1524
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "ctxt"
+        },
+        {
+          "name": "instance"
+        },
+        {
+          "name": "bdms"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 6,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "unpause_instance",
+      "kind": "method",
+      "scope": "ComputeAPI",
+      "lineRange": {
+        "start": 1526,
+        "end": 1530
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "ctxt"
+        },
+        {
+          "name": "instance"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 5,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "unrescue_instance",
+      "kind": "method",
+      "scope": "ComputeAPI",
+      "lineRange": {
+        "start": 1532,
+        "end": 1536
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "ctxt"
+        },
+        {
+          "name": "instance"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 5,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "soft_delete_instance",
+      "kind": "method",
+      "scope": "ComputeAPI",
+      "lineRange": {
+        "start": 1538,
+        "end": 1543
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "ctxt"
+        },
+        {
+          "name": "instance"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 6,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "restore_instance",
+      "kind": "method",
+      "scope": "ComputeAPI",
+      "lineRange": {
+        "start": 1545,
+        "end": 1549
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "ctxt"
+        },
+        {
+          "name": "instance"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 5,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "shelve_instance",
+      "kind": "method",
+      "scope": "ComputeAPI",
+      "lineRange": {
+        "start": 1551,
+        "end": 1571
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "ctxt"
+        },
+        {
+          "name": "instance"
+        },
+        {
+          "default": "None",
+          "name": "image_id"
+        },
+        {
+          "default": "True",
+          "name": "clean_shutdown"
+        },
+        {
+          "default": "None",
+          "name": "accel_uuids"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 21,
+      "ccn": 3,
+      "visibility": "public"
+    },
+    {
+      "name": "shelve_offload_instance",
+      "kind": "method",
+      "scope": "ComputeAPI",
+      "lineRange": {
+        "start": 1573,
+        "end": 1587
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "ctxt"
+        },
+        {
+          "name": "instance"
+        },
+        {
+          "default": "True",
+          "name": "clean_shutdown"
+        },
+        {
+          "default": "None",
+          "name": "accel_uuids"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 15,
+      "ccn": 2,
+      "visibility": "public"
+    },
+    {
+      "name": "unshelve_instance",
+      "kind": "method",
+      "scope": "ComputeAPI",
+      "lineRange": {
+        "start": 1589,
+        "end": 1611
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "ctxt"
+        },
+        {
+          "name": "instance"
+        },
+        {
+          "name": "host"
+        },
+        {
+          "name": "request_spec"
+        },
+        {
+          "default": "None",
+          "name": "image"
+        },
+        {
+          "default": "None",
+          "name": "filter_properties"
+        },
+        {
+          "default": "None",
+          "name": "node"
+        },
+        {
+          "default": "None",
+          "name": "accel_uuids"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 20,
+      "ccn": 3,
+      "visibility": "public"
+    },
+    {
+      "name": "volume_snapshot_create",
+      "kind": "method",
+      "scope": "ComputeAPI",
+      "lineRange": {
+        "start": 1613,
+        "end": 1619
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "ctxt"
+        },
+        {
+          "name": "instance"
+        },
+        {
+          "name": "volume_id"
+        },
+        {
+          "name": "create_info"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 7,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "volume_snapshot_delete",
+      "kind": "method",
+      "scope": "ComputeAPI",
+      "lineRange": {
+        "start": 1621,
+        "end": 1628
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "ctxt"
+        },
+        {
+          "name": "instance"
+        },
+        {
+          "name": "volume_id"
+        },
+        {
+          "name": "snapshot_id"
+        },
+        {
+          "name": "delete_info"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 8,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "allow_share",
+      "kind": "method",
+      "scope": "ComputeAPI",
+      "lineRange": {
+        "start": 1630,
+        "end": 1644
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "ctxt"
+        },
+        {
+          "name": "instance"
+        },
+        {
+          "name": "share_mapping"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 15,
+      "ccn": 2,
+      "visibility": "public"
+    },
+    {
+      "name": "deny_share",
+      "kind": "method",
+      "scope": "ComputeAPI",
+      "lineRange": {
+        "start": 1646,
+        "end": 1660
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "ctxt"
+        },
+        {
+          "name": "instance"
+        },
+        {
+          "name": "share_mapping"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 15,
+      "ccn": 2,
+      "visibility": "public"
+    },
+    {
+      "name": "external_instance_event",
+      "kind": "method",
+      "scope": "ComputeAPI",
+      "lineRange": {
+        "start": 1662,
+        "end": 1674
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "ctxt"
+        },
+        {
+          "name": "instances"
+        },
+        {
+          "name": "events"
+        },
+        {
+          "default": "None",
+          "name": "host"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 10,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "build_and_run_instance",
+      "kind": "method",
+      "scope": "ComputeAPI",
+      "lineRange": {
+        "start": 1676,
+        "end": 1704
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "ctxt"
+        },
+        {
+          "name": "instance"
+        },
+        {
+          "name": "host"
+        },
+        {
+          "name": "image"
+        },
+        {
+          "name": "request_spec"
+        },
+        {
+          "name": "filter_properties"
+        },
+        {
+          "default": "None",
+          "name": "admin_password"
+        },
+        {
+          "default": "None",
+          "name": "injected_files"
+        },
+        {
+          "default": "None",
+          "name": "requested_networks"
+        },
+        {
+          "default": "None",
+          "name": "security_groups"
+        },
+        {
+          "default": "None",
+          "name": "block_device_mapping"
+        },
+        {
+          "default": "None",
+          "name": "node"
+        },
+        {
+          "default": "None",
+          "name": "limits"
+        },
+        {
+          "default": "None",
+          "name": "host_list"
+        },
+        {
+          "default": "None",
+          "name": "accel_uuids"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 28,
+      "ccn": 3,
+      "visibility": "public"
+    },
+    {
+      "name": "quiesce_instance",
+      "kind": "method",
+      "scope": "ComputeAPI",
+      "lineRange": {
+        "start": 1706,
+        "end": 1710
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "ctxt"
+        },
+        {
+          "name": "instance"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "cctxt.call(ctxt, 'quiesce_instance', instance=instance)",
+          "line": 1710
+        }
+      ],
+      "nloc": 5,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "unquiesce_instance",
+      "kind": "method",
+      "scope": "ComputeAPI",
+      "lineRange": {
+        "start": 1712,
+        "end": 1717
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "ctxt"
+        },
+        {
+          "name": "instance"
+        },
+        {
+          "default": "None",
+          "name": "mapping"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 6,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "trigger_crash_dump",
+      "kind": "method",
+      "scope": "ComputeAPI",
+      "lineRange": {
+        "start": 1719,
+        "end": 1724
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "ctxt"
+        },
+        {
+          "name": "instance"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 6,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "cache_images",
+      "kind": "method",
+      "scope": "ComputeAPI",
+      "lineRange": {
+        "start": 1726,
+        "end": 1738
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "ctxt"
+        },
+        {
+          "name": "host"
+        },
+        {
+          "name": "image_ids"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "cctxt.call(ctxt, 'cache_images', image_ids=image_ids)",
+          "line": 1738
+        }
+      ],
+      "nloc": 10,
+      "ccn": 2,
+      "visibility": "public"
+    },
+    {
+      "name": "router",
+      "kind": "property",
+      "scope": "ComputeAPI",
+      "lineRange": {
+        "start": 449,
+        "end": 477
+      },
+      "visibility": "public",
+      "source": "manual"
+    },
+    {
+      "name": "_determine_version_cap",
+      "kind": "staticmethod",
+      "scope": "ComputeAPI",
+      "lineRange": {
+        "start": 495,
+        "end": 560
+      },
+      "visibility": "private",
+      "source": "manual"
+    }
+  ],
+  "referencedSymbols": [
+    {
+      "name": "logging.getLogger",
+      "usage": "call",
+      "via": "oslo_log",
+      "count": 1,
+      "lineRange": {
+        "start": 44,
+        "end": 44
+      }
+    },
+    {
+      "name": "_",
+      "usage": "call",
+      "via": "nova.i18n",
+      "count": 10,
+      "lineRange": {
+        "start": 73,
+        "end": 73
+      }
+    },
+    {
+      "name": "exception.NovaException",
+      "usage": "call",
+      "via": "nova",
+      "count": 4,
+      "lineRange": {
+        "start": 73,
+        "end": 73
+      }
+    },
+    {
+      "name": "profiler.trace_cls",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 80,
+        "end": 80
+      }
+    },
+    {
+      "name": "object",
+      "usage": "inherit",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 81,
+        "end": 81
+      }
+    },
+    {
+      "name": "lockutils.lock",
+      "usage": "call",
+      "via": "oslo_concurrency",
+      "count": 1,
+      "lineRange": {
+        "start": 459,
+        "end": 459
+      }
+    },
+    {
+      "name": "messaging.Target",
+      "usage": "call",
+      "via": "oslo_messaging",
+      "count": 1,
+      "lineRange": {
+        "start": 461,
+        "end": 461
+      }
+    },
+    {
+      "name": "objects_base.NovaObjectSerializer",
+      "usage": "call",
+      "via": "nova.objects",
+      "count": 1,
+      "lineRange": {
+        "start": 468,
+        "end": 468
+      }
+    },
+    {
+      "name": "rpc.get_client",
+      "usage": "call",
+      "via": "nova",
+      "count": 2,
+      "lineRange": {
+        "start": 472,
+        "end": 472
+      }
+    },
+    {
+      "name": "rpc.ClientRouter",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 476,
+        "end": 476
+      }
+    },
+    {
+      "name": "service_obj.get_minimum_version_all_cells",
+      "usage": "call",
+      "via": "nova.objects",
+      "count": 1,
+      "lineRange": {
+        "start": 506,
+        "end": 506
+      }
+    },
+    {
+      "name": "context.get_admin_context",
+      "usage": "call",
+      "via": "nova",
+      "count": 2,
+      "lineRange": {
+        "start": 507,
+        "end": 507
+      }
+    },
+    {
+      "name": "excutils.save_and_reraise_exception",
+      "usage": "call",
+      "via": "oslo_utils",
+      "count": 1,
+      "lineRange": {
+        "start": 515,
+        "end": 515
+      }
+    },
+    {
+      "name": "objects.Service.get_minimum_version",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 522,
+        "end": 522
+      }
+    },
+    {
+      "name": "exception.ServiceTooOld",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 548,
+        "end": 548
+      }
+    },
+    {
+      "name": "rpc_method",
+      "usage": "call",
+      "via": null,
+      "count": 2,
+      "lineRange": {
+        "start": 695,
+        "end": 695
+      }
+    },
+    {
+      "name": "exception.MigrationError",
+      "usage": "call",
+      "via": "nova",
+      "count": 5,
+      "lineRange": {
+        "start": 724,
+        "end": 724
+      }
+    },
+    {
+      "name": "objects_base.obj_to_primitive",
+      "usage": "call",
+      "via": "nova.objects",
+      "count": 1,
+      "lineRange": {
+        "start": 1061,
+        "end": 1061
+      }
+    },
+    {
+      "name": "exception.MigrationPreCheckError",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 1134,
+        "end": 1134
+      }
+    },
+    {
+      "name": "isinstance",
+      "usage": "call",
+      "via": null,
+      "count": 2,
+      "lineRange": {
+        "start": 1208,
+        "end": 1208
+      }
+    },
+    {
+      "name": "exception.UnsupportedRPCVersion",
+      "usage": "call",
+      "via": "nova",
+      "count": 3,
+      "lineRange": {
+        "start": 1225,
+        "end": 1225
+      }
+    },
+    {
+      "name": "dict",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 1450,
+        "end": 1450
+      }
+    },
+    {
+      "name": "exception.ForbiddenWithAccelerators",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 1565,
+        "end": 1565
+      }
+    }
+  ],
+  "dependencies": [
+    {
+      "style": "from",
+      "module": "oslo_concurrency",
+      "names": [
+        {
+          "alias": null,
+          "name": "lockutils"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 18,
+        "end": 18
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_log",
+      "names": [
+        {
+          "alias": "logging",
+          "name": "log"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 19,
+        "end": 19
+      }
+    },
+    {
+      "style": "import",
+      "module": "oslo_messaging",
+      "names": [],
+      "alias": "messaging",
+      "relative": false,
+      "lineRange": {
+        "start": 20,
+        "end": 20
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_utils",
+      "names": [
+        {
+          "alias": null,
+          "name": "excutils"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 21,
+        "end": 21
+      }
+    },
+    {
+      "style": "import",
+      "module": "nova.conf",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 23,
+        "end": 23
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "context"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 24,
+        "end": 24
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "exception"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 25,
+        "end": 25
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.i18n",
+      "names": [
+        {
+          "alias": null,
+          "name": "_"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 26,
+        "end": 26
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "objects"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 27,
+        "end": 27
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.objects",
+      "names": [
+        {
+          "alias": "objects_base",
+          "name": "base"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 28,
+        "end": 28
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.objects",
+      "names": [
+        {
+          "alias": "service_obj",
+          "name": "service"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 29,
+        "end": 29
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "profiler"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 30,
+        "end": 30
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "rpc"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 31,
+        "end": 31
+      }
+    }
+  ],
+  "sideEffects": [
+    {
+      "kind": "network",
+      "target": "rpc.get_client(target, version_cap, serializer)",
+      "lineRange": {
+        "start": 472,
+        "end": 472
+      }
+    },
+    {
+      "kind": "network",
+      "target": "default_client = self.get_client(target, version_cap,",
+      "lineRange": {
+        "start": 474,
+        "end": 474
+      }
+    },
+    {
+      "kind": "network",
+      "target": "return rpc.get_client(target,",
+      "lineRange": {
+        "start": 573,
+        "end": 573
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "CONF = nova.conf.CONF",
+      "lineRange": {
+        "start": 33,
+        "end": 33
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "RPC_TOPIC = \"compute\"",
+      "lineRange": {
+        "start": 34,
+        "end": 34
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "RPC_TOPIC_ALT = \"compute-alt\"",
+      "lineRange": {
+        "start": 42,
+        "end": 42
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "LOG = logging.getLogger(__name__)",
+      "lineRange": {
+        "start": 44,
+        "end": 44
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "LAST_VERSION = None",
+      "lineRange": {
+        "start": 45,
+        "end": 45
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "NO_COMPUTES_WARNING = False",
+      "lineRange": {
+        "start": 46,
+        "end": 46
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "NO_COMPUTES_WARNING = False",
+      "lineRange": {
+        "start": 56,
+        "end": 56
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "LAST_VERSION = None",
+      "lineRange": {
+        "start": 57,
+        "end": 57
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "VERSION_ALIASES = {",
+      "lineRange": {
+        "start": 420,
+        "end": 420
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "NO_COMPUTES_WARNING = True",
+      "lineRange": {
+        "start": 538,
+        "end": 538
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "LAST_VERSION = version_cap",
+      "lineRange": {
+        "start": 555,
+        "end": 555
+      }
+    }
+  ],
+  "securitySurface": [
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "* 3.1 - Update get_spice_console() to take an instance object",
+      "lineRange": {
+        "start": 241,
+        "end": 241
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "* 3.2 - Update get_vnc_console() to take an instance object",
+      "lineRange": {
+        "start": 242,
+        "end": 242
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "* 3.3 - Update validate_console_port() to take an instance object",
+      "lineRange": {
+        "start": 243,
+        "end": 243
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "* 3.4 - Update rebuild_instance() to take an instance object",
+      "lineRange": {
+        "start": 244,
+        "end": 244
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "* 3.7 - Update change_instance_metadata() to take an instance object",
+      "lineRange": {
+        "start": 247,
+        "end": 247
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "* 3.8 - Update set_admin_password() to take an instance object",
+      "lineRange": {
+        "start": 248,
+        "end": 248
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "* 3.9 - Update rescue_instance() to take an instance object",
+      "lineRange": {
+        "start": 249,
+        "end": 249
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "* 3.11 - Update unrescue_instance() to take an object",
+      "lineRange": {
+        "start": 251,
+        "end": 251
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "* 3.12 - Update add_fixed_ip_to_instance() to take an object",
+      "lineRange": {
+        "start": 252,
+        "end": 252
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "* 3.13 - Update remove_fixed_ip_from_instance() to take an object",
+      "lineRange": {
+        "start": 253,
+        "end": 253
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "* 3.14 - Update post_live_migration_at_destination() to take an object",
+      "lineRange": {
+        "start": 254,
+        "end": 254
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "* 3.17 - Update attach_interface and detach_interface to take an object",
+      "lineRange": {
+        "start": 259,
+        "end": 259
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "* 3.18 - Update get_diagnostics() to take an instance object",
+      "lineRange": {
+        "start": 260,
+        "end": 260
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "* 3.19 - Update pre_live_migration to take instance object",
+      "lineRange": {
+        "start": 262,
+        "end": 262
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "* 3.24 - Update rescue_instance() to take optional rescue_image_ref",
+      "lineRange": {
+        "start": 274,
+        "end": 274
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "* 3.28 - Update get_console_output() to accept a new-world object",
+      "lineRange": {
+        "start": 280,
+        "end": 280
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "params.update(kwargs)",
+      "lineRange": {
+        "start": 602,
+        "end": 602
+      }
+    }
+  ],
+  "injection_flags": [],
+  "warnings": []
+}

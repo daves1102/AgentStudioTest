@@ -1,0 +1,614 @@
+{
+  "file": "src/nova/compute/flavors.py",
+  "hash": "d7bed9337482484c066eff8b63c5fd20a09aea90c730afc7a0467cfddd0f9114",
+  "language": "Python",
+  "component": "nova",
+  "package": null,
+  "lines": {
+    "blank": 41,
+    "code": 127,
+    "comment": 42,
+    "total": 210
+  },
+  "symbols": [
+    {
+      "name": "CONF",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 34,
+        "end": 34
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "VALID_EXTRASPEC_NAME_REGEX",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 37,
+        "end": 37
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "_int_or_none",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 40,
+        "end": 42
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "val"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "int(val)",
+          "line": 42
+        }
+      ],
+      "nloc": 3,
+      "ccn": 2,
+      "exported": false
+    },
+    {
+      "name": "system_metadata_flavor_props",
+      "kind": "variable",
+      "scope": "",
+      "lineRange": {
+        "start": 45,
+        "end": 56
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "system_metadata_flavor_extra_props",
+      "kind": "variable",
+      "scope": "",
+      "lineRange": {
+        "start": 59,
+        "end": 61
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "create",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 64,
+        "end": 126
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "name"
+        },
+        {
+          "name": "memory"
+        },
+        {
+          "name": "vcpus"
+        },
+        {
+          "name": "root_gb"
+        },
+        {
+          "default": "0",
+          "name": "ephemeral_gb"
+        },
+        {
+          "default": "None",
+          "name": "flavorid"
+        },
+        {
+          "default": "0",
+          "name": "swap"
+        },
+        {
+          "default": "1.0",
+          "name": "rxtx_factor"
+        },
+        {
+          "default": "True",
+          "name": "is_public"
+        },
+        {
+          "default": "None",
+          "name": "description"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "flavor",
+          "line": 126
+        }
+      ],
+      "nloc": 47,
+      "ccn": 8,
+      "exported": true
+    },
+    {
+      "name": "get_flavor_by_flavor_id",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 131,
+        "end": 136
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "ctxt"
+        },
+        {
+          "name": "flavorid"
+        },
+        {
+          "default": "\"yes\"",
+          "name": "read_deleted"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "objects.Flavor.get_by_flavor_id(ctxt, flavorid, read_deleted)",
+          "line": 136
+        }
+      ],
+      "nloc": 2,
+      "ccn": 1,
+      "exported": true
+    },
+    {
+      "name": "extract_flavor",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 142,
+        "end": 169
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "instance"
+        },
+        {
+          "default": "''",
+          "name": "prefix"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "None",
+          "line": 151
+        },
+        {
+          "expr": "flavor",
+          "line": 169
+        }
+      ],
+      "nloc": 16,
+      "ccn": 7,
+      "exported": true
+    },
+    {
+      "name": "save_flavor_info",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 176,
+        "end": 202
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "metadata"
+        },
+        {
+          "name": "flavor"
+        },
+        {
+          "default": "''",
+          "name": "prefix"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "metadata",
+          "line": 202
+        }
+      ],
+      "nloc": 11,
+      "ccn": 5,
+      "exported": true
+    },
+    {
+      "name": "validate_extra_spec_keys",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 205,
+        "end": 210
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "key_names_list"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 6,
+      "ccn": 3,
+      "exported": true
+    }
+  ],
+  "referencedSymbols": [
+    {
+      "name": "re.compile",
+      "usage": "call",
+      "via": "re",
+      "count": 1,
+      "lineRange": {
+        "start": 37,
+        "end": 37
+      }
+    },
+    {
+      "name": "int",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 42,
+        "end": 42
+      }
+    },
+    {
+      "name": "uuidutils.generate_uuid",
+      "usage": "call",
+      "via": "oslo_utils",
+      "count": 1,
+      "lineRange": {
+        "start": 68,
+        "end": 68
+      }
+    },
+    {
+      "name": "isinstance",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 80,
+        "end": 80
+      }
+    },
+    {
+      "name": "str",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 85,
+        "end": 85
+      }
+    },
+    {
+      "name": "utils.validate_integer",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 99,
+        "end": 99
+      }
+    },
+    {
+      "name": "float",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 105,
+        "end": 105
+      }
+    },
+    {
+      "name": "ValueError",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 110,
+        "end": 110
+      }
+    },
+    {
+      "name": "_",
+      "usage": "call",
+      "via": "nova.i18n",
+      "count": 3,
+      "lineRange": {
+        "start": 112,
+        "end": 112
+      }
+    },
+    {
+      "name": "exception.InvalidInput",
+      "usage": "call",
+      "via": "nova",
+      "count": 3,
+      "lineRange": {
+        "start": 113,
+        "end": 113
+      }
+    },
+    {
+      "name": "strutils.bool_from_string",
+      "usage": "call",
+      "via": "oslo_utils",
+      "count": 1,
+      "lineRange": {
+        "start": 119,
+        "end": 119
+      }
+    },
+    {
+      "name": "context.get_admin_context",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 124,
+        "end": 124
+      }
+    },
+    {
+      "name": "objects.Flavor",
+      "usage": "call",
+      "via": "nova",
+      "count": 2,
+      "lineRange": {
+        "start": 124,
+        "end": 124
+      }
+    },
+    {
+      "name": "objects.Flavor.get_by_flavor_id",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 136,
+        "end": 136
+      }
+    },
+    {
+      "name": "utils.instance_sys_meta",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 148,
+        "end": 148
+      }
+    },
+    {
+      "name": "setattr",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 155,
+        "end": 155
+      }
+    },
+    {
+      "name": "len",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 166,
+        "end": 166
+      }
+    }
+  ],
+  "dependencies": [
+    {
+      "style": "import",
+      "module": "re",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 21,
+        "end": 21
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_utils",
+      "names": [
+        {
+          "alias": null,
+          "name": "strutils"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 23,
+        "end": 23
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_utils",
+      "names": [
+        {
+          "alias": null,
+          "name": "uuidutils"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 24,
+        "end": 24
+      }
+    },
+    {
+      "style": "import",
+      "module": "nova.conf",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 26,
+        "end": 26
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "context"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 27,
+        "end": 27
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.db",
+      "names": [
+        {
+          "alias": "db_const",
+          "name": "constants"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 28,
+        "end": 28
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "exception"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 29,
+        "end": 29
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.i18n",
+      "names": [
+        {
+          "alias": null,
+          "name": "_"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 30,
+        "end": 30
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "objects"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 31,
+        "end": 31
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "utils"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 32,
+        "end": 32
+      }
+    }
+  ],
+  "sideEffects": [
+    {
+      "kind": "global-mutation",
+      "target": "CONF = nova.conf.CONF",
+      "lineRange": {
+        "start": 34,
+        "end": 34
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "VALID_EXTRASPEC_NAME_REGEX = re.compile(r\"[\\w\\.\\- :]+$\", re.UNICODE)",
+      "lineRange": {
+        "start": 37,
+        "end": 37
+      }
+    }
+  ],
+  "securitySurface": [
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "This can be used to update system_metadata in place from a type, as well",
+      "lineRange": {
+        "start": 182,
+        "end": 182
+      }
+    }
+  ],
+  "injection_flags": [],
+  "warnings": []
+}

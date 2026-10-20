@@ -1,0 +1,425 @@
+{
+  "file": "src/nova/console/rfb/auth.py",
+  "hash": "d48081e353cd115551c8150e3e379df1a9f0fa1e9ef96fa83be271a33a82eb21",
+  "language": "Python",
+  "component": "nova",
+  "package": null,
+  "lines": {
+    "blank": 14,
+    "code": 38,
+    "comment": 13,
+    "total": 65
+  },
+  "symbols": [
+    {
+      "name": "VERSION_LENGTH",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 18,
+        "end": 18
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "SUBTYPE_LENGTH",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 19,
+        "end": 19
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "AUTH_STATUS_FAIL",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 21,
+        "end": 21
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "AUTH_STATUS_PASS",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 22,
+        "end": 22
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "AuthType",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 26,
+        "end": 39
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "INVALID",
+      "kind": "constant",
+      "scope": "AuthType",
+      "lineRange": {
+        "start": 28,
+        "end": 28
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "NONE",
+      "kind": "constant",
+      "scope": "AuthType",
+      "lineRange": {
+        "start": 29,
+        "end": 29
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "VNC",
+      "kind": "constant",
+      "scope": "AuthType",
+      "lineRange": {
+        "start": 30,
+        "end": 30
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "RA2",
+      "kind": "constant",
+      "scope": "AuthType",
+      "lineRange": {
+        "start": 31,
+        "end": 31
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "RA2NE",
+      "kind": "constant",
+      "scope": "AuthType",
+      "lineRange": {
+        "start": 32,
+        "end": 32
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "TIGHT",
+      "kind": "constant",
+      "scope": "AuthType",
+      "lineRange": {
+        "start": 33,
+        "end": 33
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "ULTRA",
+      "kind": "constant",
+      "scope": "AuthType",
+      "lineRange": {
+        "start": 34,
+        "end": 34
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "TLS",
+      "kind": "constant",
+      "scope": "AuthType",
+      "lineRange": {
+        "start": 35,
+        "end": 35
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "VENCRYPT",
+      "kind": "constant",
+      "scope": "AuthType",
+      "lineRange": {
+        "start": 36,
+        "end": 36
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "SASL",
+      "kind": "constant",
+      "scope": "AuthType",
+      "lineRange": {
+        "start": 37,
+        "end": 37
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "ARD",
+      "kind": "constant",
+      "scope": "AuthType",
+      "lineRange": {
+        "start": 38,
+        "end": 38
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "MSLOGON",
+      "kind": "constant",
+      "scope": "AuthType",
+      "lineRange": {
+        "start": 39,
+        "end": 39
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "RFBAuthScheme",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 42,
+        "end": 65
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "security_type",
+      "kind": "method",
+      "scope": "RFBAuthScheme",
+      "lineRange": {
+        "start": 45,
+        "end": 51
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "security_handshake",
+      "kind": "method",
+      "scope": "RFBAuthScheme",
+      "lineRange": {
+        "start": 54,
+        "end": 65
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "compute_sock"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "public"
+    }
+  ],
+  "referencedSymbols": [
+    {
+      "name": "enum.IntEnum",
+      "usage": "inherit",
+      "via": "enum",
+      "count": 1,
+      "lineRange": {
+        "start": 26,
+        "end": 26
+      }
+    }
+  ],
+  "dependencies": [
+    {
+      "style": "import",
+      "module": "abc",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 15,
+        "end": 15
+      }
+    },
+    {
+      "style": "import",
+      "module": "enum",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 16,
+        "end": 16
+      }
+    }
+  ],
+  "sideEffects": [
+    {
+      "kind": "global-mutation",
+      "target": "VERSION_LENGTH = 12",
+      "lineRange": {
+        "start": 18,
+        "end": 18
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "SUBTYPE_LENGTH = 4",
+      "lineRange": {
+        "start": 19,
+        "end": 19
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "AUTH_STATUS_FAIL = b\"\\x00\"",
+      "lineRange": {
+        "start": 21,
+        "end": 21
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "AUTH_STATUS_PASS = b\"\\x01\"",
+      "lineRange": {
+        "start": 22,
+        "end": 22
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "INVALID = 0",
+      "lineRange": {
+        "start": 28,
+        "end": 28
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "NONE = 1",
+      "lineRange": {
+        "start": 29,
+        "end": 29
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "VNC = 2",
+      "lineRange": {
+        "start": 30,
+        "end": 30
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "RA2 = 5",
+      "lineRange": {
+        "start": 31,
+        "end": 31
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "RA2NE = 6",
+      "lineRange": {
+        "start": 32,
+        "end": 32
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "TIGHT = 16",
+      "lineRange": {
+        "start": 33,
+        "end": 33
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "ULTRA = 17",
+      "lineRange": {
+        "start": 34,
+        "end": 34
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "TLS = 18  # Used by VINO",
+      "lineRange": {
+        "start": 35,
+        "end": 35
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "VENCRYPT = 19  # Used by VeNCrypt and QEMU",
+      "lineRange": {
+        "start": 36,
+        "end": 36
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "SASL = 20  # SASL type used by VINO and QEMU",
+      "lineRange": {
+        "start": 37,
+        "end": 37
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "ARD = 30  # Apple remote desktop (screen sharing)",
+      "lineRange": {
+        "start": 38,
+        "end": 38
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "MSLOGON = 0xfffffffa  # Used by UltraVNC",
+      "lineRange": {
+        "start": 39,
+        "end": 39
+      }
+    }
+  ],
+  "securitySurface": [],
+  "injection_flags": [],
+  "warnings": []
+}

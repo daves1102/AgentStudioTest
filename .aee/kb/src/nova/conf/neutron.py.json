@@ -1,0 +1,343 @@
+{
+  "file": "src/nova/conf/neutron.py",
+  "hash": "1d9cab69d1a358a646707f4c801397af2d6101506836d6f3c9ed2ff97c13076f",
+  "language": "Python",
+  "component": "nova",
+  "package": null,
+  "lines": {
+    "blank": 35,
+    "code": 123,
+    "comment": 20,
+    "total": 178
+  },
+  "symbols": [
+    {
+      "name": "DEFAULT_SERVICE_TYPE",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 22,
+        "end": 22
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "NEUTRON_GROUP",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 23,
+        "end": 23
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "neutron_group",
+      "kind": "variable",
+      "scope": "",
+      "lineRange": {
+        "start": 25,
+        "end": 30
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "neutron_opts",
+      "kind": "variable",
+      "scope": "",
+      "lineRange": {
+        "start": 32,
+        "end": 111
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "metadata_proxy_opts",
+      "kind": "variable",
+      "scope": "",
+      "lineRange": {
+        "start": 113,
+        "end": 137
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "ALL_OPTS",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 139,
+        "end": 139
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "register_opts",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 142,
+        "end": 145
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "conf"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 4,
+      "ccn": 1,
+      "exported": true
+    },
+    {
+      "name": "register_dynamic_opts",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 148,
+        "end": 165
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "conf"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 5,
+      "ccn": 2,
+      "exported": true
+    },
+    {
+      "name": "list_opts",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 168,
+        "end": 178
+      },
+      "source": "aee-inventory",
+      "parameters": [],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "{ neutron_group: ( ALL_OPTS + ks_loading.get_session_conf_options() + ks_loading.get_auth_common_conf_options() + ks_loading.get_auth_plugin_conf_options('password') + ks_loading.get_auth_plugin_conf_",
+          "line": 169
+        }
+      ],
+      "nloc": 11,
+      "ccn": 1,
+      "exported": true
+    }
+  ],
+  "referencedSymbols": [
+    {
+      "name": "cfg.OptGroup",
+      "usage": "call",
+      "via": "oslo_config",
+      "count": 1,
+      "lineRange": {
+        "start": 25,
+        "end": 25
+      }
+    },
+    {
+      "name": "cfg.StrOpt",
+      "usage": "call",
+      "via": "oslo_config",
+      "count": 3,
+      "lineRange": {
+        "start": 33,
+        "end": 33
+      }
+    },
+    {
+      "name": "cfg.IntOpt",
+      "usage": "call",
+      "via": "oslo_config",
+      "count": 2,
+      "lineRange": {
+        "start": 51,
+        "end": 51
+      }
+    },
+    {
+      "name": "cfg.ListOpt",
+      "usage": "call",
+      "via": "oslo_config",
+      "count": 2,
+      "lineRange": {
+        "start": 61,
+        "end": 61
+      }
+    },
+    {
+      "name": "cfg.BoolOpt",
+      "usage": "call",
+      "via": "oslo_config",
+      "count": 1,
+      "lineRange": {
+        "start": 114,
+        "end": 114
+      }
+    },
+    {
+      "name": "confutils.register_ksa_opts",
+      "usage": "call",
+      "via": "nova.conf",
+      "count": 1,
+      "lineRange": {
+        "start": 145,
+        "end": 145
+      }
+    },
+    {
+      "name": "cfg.types.Integer",
+      "usage": "call",
+      "via": "oslo_config",
+      "count": 1,
+      "lineRange": {
+        "start": 154,
+        "end": 154
+      }
+    },
+    {
+      "name": "ks_loading.get_session_conf_options",
+      "usage": "call",
+      "via": "keystoneauth1",
+      "count": 1,
+      "lineRange": {
+        "start": 172,
+        "end": 172
+      }
+    },
+    {
+      "name": "ks_loading.get_auth_common_conf_options",
+      "usage": "call",
+      "via": "keystoneauth1",
+      "count": 1,
+      "lineRange": {
+        "start": 173,
+        "end": 173
+      }
+    },
+    {
+      "name": "ks_loading.get_auth_plugin_conf_options",
+      "usage": "call",
+      "via": "keystoneauth1",
+      "count": 3,
+      "lineRange": {
+        "start": 174,
+        "end": 174
+      }
+    },
+    {
+      "name": "confutils.get_ksa_adapter_opts",
+      "usage": "call",
+      "via": "nova.conf",
+      "count": 1,
+      "lineRange": {
+        "start": 177,
+        "end": 177
+      }
+    }
+  ],
+  "dependencies": [
+    {
+      "style": "from",
+      "module": "keystoneauth1",
+      "names": [
+        {
+          "alias": "ks_loading",
+          "name": "loading"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 16,
+        "end": 16
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_config",
+      "names": [
+        {
+          "alias": null,
+          "name": "cfg"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 17,
+        "end": 17
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.conf",
+      "names": [
+        {
+          "alias": "confutils",
+          "name": "utils"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 19,
+        "end": 19
+      }
+    }
+  ],
+  "sideEffects": [
+    {
+      "kind": "global-mutation",
+      "target": "DEFAULT_SERVICE_TYPE = 'network'",
+      "lineRange": {
+        "start": 22,
+        "end": 22
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "NEUTRON_GROUP = 'neutron'",
+      "lineRange": {
+        "start": 23,
+        "end": 23
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "ALL_OPTS = (neutron_opts + metadata_proxy_opts)",
+      "lineRange": {
+        "start": 139,
+        "end": 139
+      }
+    }
+  ],
+  "securitySurface": [
+    {
+      "kind": "privilege",
+      "category": "crypto-key",
+      "description": "from keystoneauth1 import loading as ks_loading",
+      "lineRange": {
+        "start": 16,
+        "end": 16
+      }
+    }
+  ],
+  "injection_flags": [],
+  "warnings": []
+}

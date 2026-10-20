@@ -1,0 +1,782 @@
+{
+  "file": "src/nova/compute/instance_actions.py",
+  "hash": "6993f847a51ecefb0a1b90102788021039ae83cfd2b062374c8ef788be7ddde2",
+  "language": "Python",
+  "component": "nova",
+  "package": null,
+  "lines": {
+    "blank": 6,
+    "code": 50,
+    "comment": 23,
+    "total": 79
+  },
+  "symbols": [
+    {
+      "name": "CREATE",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 30,
+        "end": 30
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "DELETE",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 31,
+        "end": 31
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "EVACUATE",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 32,
+        "end": 32
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "RESTORE",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 33,
+        "end": 33
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "STOP",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 34,
+        "end": 34
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "START",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 35,
+        "end": 35
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "REBOOT",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 36,
+        "end": 36
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "REBUILD",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 37,
+        "end": 37
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "REVERT_RESIZE",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 38,
+        "end": 38
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "CONFIRM_RESIZE",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 39,
+        "end": 39
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "RESIZE",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 40,
+        "end": 40
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "MIGRATE",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 41,
+        "end": 41
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "PAUSE",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 42,
+        "end": 42
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "UNPAUSE",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 43,
+        "end": 43
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "SUSPEND",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 44,
+        "end": 44
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "RESUME",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 45,
+        "end": 45
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "RESCUE",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 46,
+        "end": 46
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "UNRESCUE",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 47,
+        "end": 47
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "CHANGE_PASSWORD",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 48,
+        "end": 48
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "SHELVE",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 49,
+        "end": 49
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "SHELVE_OFFLOAD",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 50,
+        "end": 50
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "UNSHELVE",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 51,
+        "end": 51
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "LIVE_MIGRATION",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 52,
+        "end": 52
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "LIVE_MIGRATION_CANCEL",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 53,
+        "end": 53
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "LIVE_MIGRATION_FORCE_COMPLETE",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 54,
+        "end": 54
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "TRIGGER_CRASH_DUMP",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 55,
+        "end": 55
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "EXTEND_VOLUME",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 63,
+        "end": 63
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "ATTACH_INTERFACE",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 64,
+        "end": 64
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "DETACH_INTERFACE",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 65,
+        "end": 65
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "ATTACH_VOLUME",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 66,
+        "end": 66
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "DETACH_VOLUME",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 67,
+        "end": 67
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "ATTACH_SHARE",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 68,
+        "end": 68
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "DETACH_SHARE",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 69,
+        "end": 69
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "SWAP_VOLUME",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 70,
+        "end": 70
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "LOCK",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 71,
+        "end": 71
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "UNLOCK",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 72,
+        "end": 72
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "BACKUP",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 73,
+        "end": 73
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "CREATE_IMAGE",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 74,
+        "end": 74
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "RESET_STATE",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 75,
+        "end": 75
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "NOVA_MANAGE_REFRESH_VOLUME_ATTACHMENT",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 79,
+        "end": 79
+      },
+      "source": "aee-inventory",
+      "exported": true
+    }
+  ],
+  "referencedSymbols": [],
+  "dependencies": [],
+  "sideEffects": [
+    {
+      "kind": "global-mutation",
+      "target": "CREATE = 'create'",
+      "lineRange": {
+        "start": 30,
+        "end": 30
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "DELETE = 'delete'",
+      "lineRange": {
+        "start": 31,
+        "end": 31
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "EVACUATE = 'evacuate'",
+      "lineRange": {
+        "start": 32,
+        "end": 32
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "RESTORE = 'restore'",
+      "lineRange": {
+        "start": 33,
+        "end": 33
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "STOP = 'stop'",
+      "lineRange": {
+        "start": 34,
+        "end": 34
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "START = 'start'",
+      "lineRange": {
+        "start": 35,
+        "end": 35
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "REBOOT = 'reboot'",
+      "lineRange": {
+        "start": 36,
+        "end": 36
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "REBUILD = 'rebuild'",
+      "lineRange": {
+        "start": 37,
+        "end": 37
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "REVERT_RESIZE = 'revertResize'",
+      "lineRange": {
+        "start": 38,
+        "end": 38
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "CONFIRM_RESIZE = 'confirmResize'",
+      "lineRange": {
+        "start": 39,
+        "end": 39
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "RESIZE = 'resize'",
+      "lineRange": {
+        "start": 40,
+        "end": 40
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "MIGRATE = 'migrate'",
+      "lineRange": {
+        "start": 41,
+        "end": 41
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "PAUSE = 'pause'",
+      "lineRange": {
+        "start": 42,
+        "end": 42
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "UNPAUSE = 'unpause'",
+      "lineRange": {
+        "start": 43,
+        "end": 43
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "SUSPEND = 'suspend'",
+      "lineRange": {
+        "start": 44,
+        "end": 44
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "RESUME = 'resume'",
+      "lineRange": {
+        "start": 45,
+        "end": 45
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "RESCUE = 'rescue'",
+      "lineRange": {
+        "start": 46,
+        "end": 46
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "UNRESCUE = 'unrescue'",
+      "lineRange": {
+        "start": 47,
+        "end": 47
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "CHANGE_PASSWORD = 'changePassword'",
+      "lineRange": {
+        "start": 48,
+        "end": 48
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "SHELVE = 'shelve'",
+      "lineRange": {
+        "start": 49,
+        "end": 49
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "SHELVE_OFFLOAD = 'shelveOffload'",
+      "lineRange": {
+        "start": 50,
+        "end": 50
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "UNSHELVE = 'unshelve'",
+      "lineRange": {
+        "start": 51,
+        "end": 51
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "LIVE_MIGRATION = 'live-migration'",
+      "lineRange": {
+        "start": 52,
+        "end": 52
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "LIVE_MIGRATION_CANCEL = 'live_migration_cancel'",
+      "lineRange": {
+        "start": 53,
+        "end": 53
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "LIVE_MIGRATION_FORCE_COMPLETE = 'live_migration_force_complete'",
+      "lineRange": {
+        "start": 54,
+        "end": 54
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "TRIGGER_CRASH_DUMP = 'trigger_crash_dump'",
+      "lineRange": {
+        "start": 55,
+        "end": 55
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "EXTEND_VOLUME = 'extend_volume'",
+      "lineRange": {
+        "start": 63,
+        "end": 63
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "ATTACH_INTERFACE = 'attach_interface'",
+      "lineRange": {
+        "start": 64,
+        "end": 64
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "DETACH_INTERFACE = 'detach_interface'",
+      "lineRange": {
+        "start": 65,
+        "end": 65
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "ATTACH_VOLUME = 'attach_volume'",
+      "lineRange": {
+        "start": 66,
+        "end": 66
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "DETACH_VOLUME = 'detach_volume'",
+      "lineRange": {
+        "start": 67,
+        "end": 67
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "ATTACH_SHARE = 'attach_share'",
+      "lineRange": {
+        "start": 68,
+        "end": 68
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "DETACH_SHARE = 'detach_share'",
+      "lineRange": {
+        "start": 69,
+        "end": 69
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "SWAP_VOLUME = 'swap_volume'",
+      "lineRange": {
+        "start": 70,
+        "end": 70
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "LOCK = 'lock'",
+      "lineRange": {
+        "start": 71,
+        "end": 71
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "UNLOCK = 'unlock'",
+      "lineRange": {
+        "start": 72,
+        "end": 72
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "BACKUP = 'createBackup'",
+      "lineRange": {
+        "start": 73,
+        "end": 73
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "CREATE_IMAGE = 'createImage'",
+      "lineRange": {
+        "start": 74,
+        "end": 74
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "RESET_STATE = 'resetState'",
+      "lineRange": {
+        "start": 75,
+        "end": 75
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "NOVA_MANAGE_REFRESH_VOLUME_ATTACHMENT = 'refresh_volume_attachment'",
+      "lineRange": {
+        "start": 79,
+        "end": 79
+      }
+    }
+  ],
+  "securitySurface": [],
+  "injection_flags": [],
+  "warnings": []
+}

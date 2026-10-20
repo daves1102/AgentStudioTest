@@ -1,0 +1,218 @@
+{
+  "file": "src/nova/conf/cinder.py",
+  "hash": "32b1bf518f165eb2f159a80e547845b8da40e6ce3f4a1a7cab88be7e1c107495",
+  "language": "Python",
+  "component": "nova",
+  "package": null,
+  "lines": {
+    "blank": 28,
+    "code": 91,
+    "comment": 14,
+    "total": 133
+  },
+  "symbols": [
+    {
+      "name": "cinder_group",
+      "kind": "variable",
+      "scope": "",
+      "lineRange": {
+        "start": 19,
+        "end": 22
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "cinder_opts",
+      "kind": "variable",
+      "scope": "",
+      "lineRange": {
+        "start": 24,
+        "end": 113
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "register_opts",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 116,
+        "end": 121
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "conf"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 6,
+      "ccn": 1,
+      "exported": true
+    },
+    {
+      "name": "list_opts",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 124,
+        "end": 133
+      },
+      "source": "aee-inventory",
+      "parameters": [],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "{ cinder_group.name: ( cinder_opts + ks_loading.get_session_conf_options() + ks_loading.get_auth_common_conf_options() + ks_loading.get_auth_plugin_conf_options('password') + ks_loading.get_auth_plugi",
+          "line": 125
+        }
+      ],
+      "nloc": 10,
+      "ccn": 1,
+      "exported": true
+    }
+  ],
+  "referencedSymbols": [
+    {
+      "name": "cfg.OptGroup",
+      "usage": "call",
+      "via": "oslo_config",
+      "count": 1,
+      "lineRange": {
+        "start": 19,
+        "end": 19
+      }
+    },
+    {
+      "name": "cfg.StrOpt",
+      "usage": "call",
+      "via": "oslo_config",
+      "count": 3,
+      "lineRange": {
+        "start": 25,
+        "end": 25
+      }
+    },
+    {
+      "name": "cfg.IntOpt",
+      "usage": "call",
+      "via": "oslo_config",
+      "count": 1,
+      "lineRange": {
+        "start": 72,
+        "end": 72
+      }
+    },
+    {
+      "name": "cfg.BoolOpt",
+      "usage": "call",
+      "via": "oslo_config",
+      "count": 2,
+      "lineRange": {
+        "start": 85,
+        "end": 85
+      }
+    },
+    {
+      "name": "ks_loading.register_session_conf_options",
+      "usage": "call",
+      "via": "keystoneauth1",
+      "count": 1,
+      "lineRange": {
+        "start": 119,
+        "end": 119
+      }
+    },
+    {
+      "name": "ks_loading.register_auth_conf_options",
+      "usage": "call",
+      "via": "keystoneauth1",
+      "count": 1,
+      "lineRange": {
+        "start": 121,
+        "end": 121
+      }
+    },
+    {
+      "name": "ks_loading.get_session_conf_options",
+      "usage": "call",
+      "via": "keystoneauth1",
+      "count": 1,
+      "lineRange": {
+        "start": 128,
+        "end": 128
+      }
+    },
+    {
+      "name": "ks_loading.get_auth_common_conf_options",
+      "usage": "call",
+      "via": "keystoneauth1",
+      "count": 1,
+      "lineRange": {
+        "start": 129,
+        "end": 129
+      }
+    },
+    {
+      "name": "ks_loading.get_auth_plugin_conf_options",
+      "usage": "call",
+      "via": "keystoneauth1",
+      "count": 3,
+      "lineRange": {
+        "start": 130,
+        "end": 130
+      }
+    }
+  ],
+  "dependencies": [
+    {
+      "style": "from",
+      "module": "keystoneauth1",
+      "names": [
+        {
+          "alias": "ks_loading",
+          "name": "loading"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 16,
+        "end": 16
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_config",
+      "names": [
+        {
+          "alias": null,
+          "name": "cfg"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 17,
+        "end": 17
+      }
+    }
+  ],
+  "sideEffects": [],
+  "securitySurface": [
+    {
+      "kind": "privilege",
+      "category": "crypto-key",
+      "description": "from keystoneauth1 import loading as ks_loading",
+      "lineRange": {
+        "start": 16,
+        "end": 16
+      }
+    }
+  ],
+  "injection_flags": [],
+  "warnings": []
+}

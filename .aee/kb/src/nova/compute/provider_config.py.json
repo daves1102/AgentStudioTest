@@ -1,0 +1,528 @@
+{
+  "file": "src/nova/compute/provider_config.py",
+  "hash": "8f5c0318220a981e9940e5c1a88b628dc2c475221b85eed84531dd93adb3bf8f",
+  "language": "Python",
+  "component": "nova",
+  "package": null,
+  "lines": {
+    "blank": 34,
+    "code": 299,
+    "comment": 88,
+    "total": 421
+  },
+  "symbols": [
+    {
+      "name": "LOG",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 26,
+        "end": 26
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "SUPPORTED_SCHEMA_VERSIONS",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 30,
+        "end": 32
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "SCHEMA_V1",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 35,
+        "end": 212
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "_load_yaml_file",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 215,
+        "end": 238
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "path"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "yaml.safe_load(open_file)",
+          "line": 226
+        }
+      ],
+      "nloc": 17,
+      "ccn": 4,
+      "exported": false
+    },
+    {
+      "name": "_validate_provider_config",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 241,
+        "end": 310
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "config"
+        },
+        {
+          "name": "provider_config_path"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "valid_providers",
+          "line": 310
+        }
+      ],
+      "nloc": 21,
+      "ccn": 5,
+      "exported": false
+    },
+    {
+      "name": "_validate_traits",
+      "kind": "function",
+      "scope": "_validate_provider_config",
+      "lineRange": {
+        "start": 251,
+        "end": 263
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "provider"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "additional_traits",
+          "line": 263
+        }
+      ],
+      "visibility": "private"
+    },
+    {
+      "name": "_validate_rc",
+      "kind": "function",
+      "scope": "_validate_provider_config",
+      "lineRange": {
+        "start": 265,
+        "end": 281
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "provider"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "additional_inventories",
+          "line": 281
+        }
+      ],
+      "visibility": "private"
+    },
+    {
+      "name": "_parse_provider_yaml",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 313,
+        "end": 356
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "path"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "yaml_file",
+          "line": 356
+        }
+      ],
+      "nloc": 29,
+      "ccn": 5,
+      "exported": false
+    },
+    {
+      "name": "get_provider_configs",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 359,
+        "end": 421
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "provider_config_dir"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "provider_configs",
+          "line": 394
+        },
+        {
+          "expr": "provider_configs",
+          "line": 421
+        }
+      ],
+      "nloc": 35,
+      "ccn": 6,
+      "exported": true
+    }
+  ],
+  "referencedSymbols": [
+    {
+      "name": "logging.getLogger",
+      "usage": "call",
+      "via": "logging",
+      "count": 1,
+      "lineRange": {
+        "start": 26,
+        "end": 26
+      }
+    },
+    {
+      "name": "open",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 224,
+        "end": 224
+      }
+    },
+    {
+      "name": "yaml.safe_load",
+      "usage": "call",
+      "via": "yaml",
+      "count": 1,
+      "lineRange": {
+        "start": 226,
+        "end": 226
+      }
+    },
+    {
+      "name": "_",
+      "usage": "call",
+      "via": "nova.i18n",
+      "count": 10,
+      "lineRange": {
+        "start": 228,
+        "end": 228
+      }
+    },
+    {
+      "name": "hasattr",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 229,
+        "end": 229
+      }
+    },
+    {
+      "name": "nova_exc.ProviderConfigException",
+      "usage": "call",
+      "via": "nova",
+      "count": 8,
+      "lineRange": {
+        "start": 235,
+        "end": 235
+      }
+    },
+    {
+      "name": "set",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 253,
+        "end": 253
+      }
+    },
+    {
+      "name": "os_traits.is_custom",
+      "usage": "call",
+      "via": "os_traits",
+      "count": 1,
+      "lineRange": {
+        "start": 256,
+        "end": 256
+      }
+    },
+    {
+      "name": "sorted",
+      "usage": "call",
+      "via": null,
+      "count": 3,
+      "lineRange": {
+        "start": 261,
+        "end": 261
+      }
+    },
+    {
+      "name": "os_resource_classes.is_custom",
+      "usage": "call",
+      "via": "os_resource_classes",
+      "count": 1,
+      "lineRange": {
+        "start": 272,
+        "end": 272
+      }
+    },
+    {
+      "name": "microversion_parse.parse_version_string",
+      "usage": "call",
+      "via": "microversion_parse",
+      "count": 1,
+      "lineRange": {
+        "start": 325,
+        "end": 325
+      }
+    },
+    {
+      "name": "jsonschema.validate",
+      "usage": "call",
+      "via": "jsonschema",
+      "count": 1,
+      "lineRange": {
+        "start": 349,
+        "end": 349
+      }
+    },
+    {
+      "name": "glob.glob",
+      "usage": "call",
+      "via": "glob",
+      "count": 1,
+      "lineRange": {
+        "start": 382,
+        "end": 382
+      }
+    },
+    {
+      "name": "os.path.join",
+      "usage": "call",
+      "via": "os",
+      "count": 1,
+      "lineRange": {
+        "start": 383,
+        "end": 383
+      }
+    },
+    {
+      "name": "os.path.basename",
+      "usage": "call",
+      "via": "os",
+      "count": 1,
+      "lineRange": {
+        "start": 402,
+        "end": 402
+      }
+    }
+  ],
+  "dependencies": [
+    {
+      "style": "import",
+      "module": "glob",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 13,
+        "end": 13
+      }
+    },
+    {
+      "style": "import",
+      "module": "jsonschema",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 14,
+        "end": 14
+      }
+    },
+    {
+      "style": "import",
+      "module": "logging",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 15,
+        "end": 15
+      }
+    },
+    {
+      "style": "import",
+      "module": "microversion_parse",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 16,
+        "end": 16
+      }
+    },
+    {
+      "style": "import",
+      "module": "os",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 17,
+        "end": 17
+      }
+    },
+    {
+      "style": "import",
+      "module": "yaml",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 18,
+        "end": 18
+      }
+    },
+    {
+      "style": "import",
+      "module": "os_resource_classes",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 20,
+        "end": 20
+      }
+    },
+    {
+      "style": "import",
+      "module": "os_traits",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 21,
+        "end": 21
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": "nova_exc",
+          "name": "exception"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 23,
+        "end": 23
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.i18n",
+      "names": [
+        {
+          "alias": null,
+          "name": "_"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 24,
+        "end": 24
+      }
+    }
+  ],
+  "sideEffects": [
+    {
+      "kind": "file-io",
+      "target": "with open(path) as open_file:",
+      "lineRange": {
+        "start": 224,
+        "end": 224
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "os.path.join(provider_config_dir, \"*.yaml\"))",
+      "lineRange": {
+        "start": 383,
+        "end": 383
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "provider['__source_file'] = os.path.basename(provider_config_path)",
+      "lineRange": {
+        "start": 402,
+        "end": 402
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "LOG = logging.getLogger(__name__)",
+      "lineRange": {
+        "start": 26,
+        "end": 26
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "SUPPORTED_SCHEMA_VERSIONS = {",
+      "lineRange": {
+        "start": 30,
+        "end": 30
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "SCHEMA_V1 = {",
+      "lineRange": {
+        "start": 35,
+        "end": 35
+      }
+    }
+  ],
+  "securitySurface": [],
+  "injection_flags": [],
+  "warnings": []
+}

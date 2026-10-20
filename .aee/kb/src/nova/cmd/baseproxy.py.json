@@ -1,0 +1,402 @@
+{
+  "file": "src/nova/cmd/baseproxy.py",
+  "hash": "3530da5e343453089cf853117092a5445c2ee7d39b4baf9245e142c0e7989c62",
+  "language": "Python",
+  "component": "nova",
+  "package": null,
+  "lines": {
+    "blank": 17,
+    "code": 54,
+    "comment": 25,
+    "total": 96
+  },
+  "symbols": [
+    {
+      "name": "CONF",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 38,
+        "end": 38
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "exit_with_error",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 46,
+        "end": 48
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "msg"
+        },
+        {
+          "default": "-1",
+          "name": "errno"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 3,
+      "ccn": 1,
+      "exported": true
+    },
+    {
+      "name": "proxy",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 51,
+        "end": 96
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "host"
+        },
+        {
+          "name": "port"
+        },
+        {
+          "default": "None",
+          "name": "security_proxy"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 25,
+      "ccn": 6,
+      "exported": true
+    }
+  ],
+  "referencedSymbols": [
+    {
+      "name": "monkey_patch.patch",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 20,
+        "end": 20
+      }
+    },
+    {
+      "name": "novnc.register_cli_opts",
+      "usage": "call",
+      "via": "nova.conf",
+      "count": 1,
+      "lineRange": {
+        "start": 41,
+        "end": 41
+      }
+    },
+    {
+      "name": "gmr_opts.set_defaults",
+      "usage": "call",
+      "via": "oslo_reports",
+      "count": 1,
+      "lineRange": {
+        "start": 42,
+        "end": 42
+      }
+    },
+    {
+      "name": "objects.register_all",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 43,
+        "end": 43
+      }
+    },
+    {
+      "name": "sys.stderr.write",
+      "usage": "call",
+      "via": "sys",
+      "count": 1,
+      "lineRange": {
+        "start": 47,
+        "end": 47
+      }
+    },
+    {
+      "name": "sys.exit",
+      "usage": "call",
+      "via": "sys",
+      "count": 1,
+      "lineRange": {
+        "start": 48,
+        "end": 48
+      }
+    },
+    {
+      "name": "os.path.exists",
+      "usage": "call",
+      "via": "os",
+      "count": 2,
+      "lineRange": {
+        "start": 62,
+        "end": 62
+      }
+    },
+    {
+      "name": "logging.setup",
+      "usage": "call",
+      "via": "oslo_log",
+      "count": 1,
+      "lineRange": {
+        "start": 69,
+        "end": 69
+      }
+    },
+    {
+      "name": "gmr.TextGuruMeditation.setup_autorun",
+      "usage": "call",
+      "via": "oslo_reports",
+      "count": 1,
+      "lineRange": {
+        "start": 71,
+        "end": 71
+      }
+    },
+    {
+      "name": "multiprocessing.set_start_method",
+      "usage": "call",
+      "via": "multiprocessing",
+      "count": 1,
+      "lineRange": {
+        "start": 77,
+        "end": 77
+      }
+    },
+    {
+      "name": "websocketproxy.NovaWebSocketProxy",
+      "usage": "call",
+      "via": "nova.console",
+      "count": 1,
+      "lineRange": {
+        "start": 80,
+        "end": 80
+      }
+    }
+  ],
+  "dependencies": [
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "monkey_patch"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 20,
+        "end": 20
+      }
+    },
+    {
+      "style": "import",
+      "module": "multiprocessing",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 23,
+        "end": 23
+      }
+    },
+    {
+      "style": "import",
+      "module": "os",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 24,
+        "end": 24
+      }
+    },
+    {
+      "style": "import",
+      "module": "sys",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 25,
+        "end": 25
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_log",
+      "names": [
+        {
+          "alias": "logging",
+          "name": "log"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 27,
+        "end": 27
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_reports",
+      "names": [
+        {
+          "alias": "gmr",
+          "name": "guru_meditation_report"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 28,
+        "end": 28
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_reports",
+      "names": [
+        {
+          "alias": "gmr_opts",
+          "name": "opts"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 29,
+        "end": 29
+      }
+    },
+    {
+      "style": "import",
+      "module": "nova.conf",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 31,
+        "end": 31
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.conf",
+      "names": [
+        {
+          "alias": null,
+          "name": "novnc"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 32,
+        "end": 32
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.console",
+      "names": [
+        {
+          "alias": null,
+          "name": "websocketproxy"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 33,
+        "end": 33
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "objects"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 34,
+        "end": 34
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "version"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 35,
+        "end": 35
+      }
+    }
+  ],
+  "sideEffects": [
+    {
+      "kind": "file-io",
+      "target": "if CONF.ssl_only and not os.path.exists(CONF.cert):",
+      "lineRange": {
+        "start": 62,
+        "end": 62
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "if CONF.web and not os.path.exists(CONF.web):",
+      "lineRange": {
+        "start": 66,
+        "end": 66
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "CONF = nova.conf.CONF",
+      "lineRange": {
+        "start": 38,
+        "end": 38
+      }
+    }
+  ],
+  "securitySurface": [
+    {
+      "kind": "sink",
+      "category": "file-write",
+      "description": "sys.stderr.write(msg + '\\n')",
+      "lineRange": {
+        "start": 47,
+        "end": 47
+      }
+    }
+  ],
+  "injection_flags": [],
+  "warnings": []
+}

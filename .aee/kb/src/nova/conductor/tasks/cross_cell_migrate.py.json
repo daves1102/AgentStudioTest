@@ -1,0 +1,2267 @@
+{
+  "file": "src/nova/conductor/tasks/cross_cell_migrate.py",
+  "hash": "bd5369d708bfed8f8126844c3d76f8f0bbd93891f140c9a5cbf47acc8b7e7efe",
+  "language": "Python",
+  "component": "nova",
+  "package": null,
+  "lines": {
+    "blank": 179,
+    "code": 987,
+    "comment": 305,
+    "total": 1471
+  },
+  "symbols": [
+    {
+      "name": "LOG",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 39,
+        "end": 39
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "CONF",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 40,
+        "end": 40
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "clone_creatable_object",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 43,
+        "end": 71
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "ctxt"
+        },
+        {
+          "name": "obj"
+        },
+        {
+          "default": "None",
+          "name": "delete_fields"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "new_obj",
+          "line": 71
+        }
+      ],
+      "nloc": 14,
+      "ccn": 6,
+      "exported": true
+    },
+    {
+      "name": "TargetDBSetupTask",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 74,
+        "end": 215
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "__init__",
+      "kind": "method",
+      "scope": "TargetDBSetupTask",
+      "lineRange": {
+        "start": 81,
+        "end": 95
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "context"
+        },
+        {
+          "name": "instance"
+        },
+        {
+          "name": "source_migration"
+        },
+        {
+          "name": "target_cell_context"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 6,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "_copy_migrations",
+      "kind": "method",
+      "scope": "TargetDBSetupTask",
+      "lineRange": {
+        "start": 97,
+        "end": 111
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "migrations"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "target_cell_migration",
+          "line": 111
+        }
+      ],
+      "nloc": 8,
+      "ccn": 3,
+      "visibility": "private"
+    },
+    {
+      "name": "_execute",
+      "kind": "method",
+      "scope": "TargetDBSetupTask",
+      "lineRange": {
+        "start": 113,
+        "end": 202
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "inst, target_cell_migration",
+          "line": 202
+        }
+      ],
+      "nloc": 39,
+      "ccn": 8,
+      "visibility": "private"
+    },
+    {
+      "name": "rollback",
+      "kind": "method",
+      "scope": "TargetDBSetupTask",
+      "lineRange": {
+        "start": 204,
+        "end": 215
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "ex"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 6,
+      "ccn": 2,
+      "visibility": "public"
+    },
+    {
+      "name": "PrepResizeAtDestTask",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 218,
+        "end": 379
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "__init__",
+      "kind": "method",
+      "scope": "PrepResizeAtDestTask",
+      "lineRange": {
+        "start": 227,
+        "end": 257
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "context"
+        },
+        {
+          "name": "instance"
+        },
+        {
+          "name": "flavor"
+        },
+        {
+          "name": "target_migration"
+        },
+        {
+          "name": "request_spec"
+        },
+        {
+          "name": "compute_rpcapi"
+        },
+        {
+          "name": "host_selection"
+        },
+        {
+          "name": "network_api"
+        },
+        {
+          "name": "volume_api"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 13,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "_create_port_bindings",
+      "kind": "method",
+      "scope": "PrepResizeAtDestTask",
+      "lineRange": {
+        "start": 259,
+        "end": 276
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 10,
+      "ccn": 2,
+      "visibility": "private"
+    },
+    {
+      "name": "_create_volume_attachments",
+      "kind": "method",
+      "scope": "PrepResizeAtDestTask",
+      "lineRange": {
+        "start": 278,
+        "end": 309
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "volume_bdms",
+          "line": 309
+        }
+      ],
+      "nloc": 12,
+      "ccn": 4,
+      "visibility": "private"
+    },
+    {
+      "name": "_execute",
+      "kind": "method",
+      "scope": "PrepResizeAtDestTask",
+      "lineRange": {
+        "start": 311,
+        "end": 352
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "self.compute_rpcapi.prep_snapshot_based_resize_at_dest( self.context, self.instance, self.flavor, self.host_selection.nodename, self.target_migration, self.host_selection.limits, self.request_spec, de",
+          "line": 345
+        }
+      ],
+      "nloc": 17,
+      "ccn": 2,
+      "visibility": "private"
+    },
+    {
+      "name": "rollback",
+      "kind": "method",
+      "scope": "PrepResizeAtDestTask",
+      "lineRange": {
+        "start": 354,
+        "end": 379
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "ex"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 20,
+      "ccn": 5,
+      "visibility": "public"
+    },
+    {
+      "name": "PrepResizeAtSourceTask",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 382,
+        "end": 467
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "__init__",
+      "kind": "method",
+      "scope": "PrepResizeAtSourceTask",
+      "lineRange": {
+        "start": 400,
+        "end": 421
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "context"
+        },
+        {
+          "name": "instance"
+        },
+        {
+          "name": "flavor"
+        },
+        {
+          "name": "migration"
+        },
+        {
+          "name": "request_spec"
+        },
+        {
+          "name": "compute_rpcapi"
+        },
+        {
+          "name": "image_api"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 11,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "_execute",
+      "kind": "method",
+      "scope": "PrepResizeAtSourceTask",
+      "lineRange": {
+        "start": 423,
+        "end": 450
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "self._image_id",
+          "line": 450
+        }
+      ],
+      "nloc": 17,
+      "ccn": 2,
+      "visibility": "private"
+    },
+    {
+      "name": "rollback",
+      "kind": "method",
+      "scope": "PrepResizeAtSourceTask",
+      "lineRange": {
+        "start": 452,
+        "end": 467
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "ex"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 7,
+      "ccn": 2,
+      "visibility": "public"
+    },
+    {
+      "name": "FinishResizeAtDestTask",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 470,
+        "end": 610
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "__init__",
+      "kind": "method",
+      "scope": "FinishResizeAtDestTask",
+      "lineRange": {
+        "start": 485,
+        "end": 506
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "context"
+        },
+        {
+          "name": "instance"
+        },
+        {
+          "name": "migration"
+        },
+        {
+          "name": "source_cell_instance"
+        },
+        {
+          "name": "compute_rpcapi"
+        },
+        {
+          "name": "target_cell_mapping"
+        },
+        {
+          "name": "snapshot_id"
+        },
+        {
+          "name": "request_spec"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 10,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "_finish_snapshot_based_resize_at_dest",
+      "kind": "method",
+      "scope": "FinishResizeAtDestTask",
+      "lineRange": {
+        "start": 508,
+        "end": 547
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 21,
+      "ccn": 2,
+      "visibility": "private"
+    },
+    {
+      "name": "_copy_latest_fault",
+      "kind": "method",
+      "scope": "FinishResizeAtDestTask",
+      "lineRange": {
+        "start": 549,
+        "end": 566
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "source_cell_context"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 12,
+      "ccn": 3,
+      "visibility": "private"
+    },
+    {
+      "name": "_update_instance_mapping",
+      "kind": "method",
+      "scope": "FinishResizeAtDestTask",
+      "lineRange": {
+        "start": 568,
+        "end": 600
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 12,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "_execute",
+      "kind": "method",
+      "scope": "FinishResizeAtDestTask",
+      "lineRange": {
+        "start": 602,
+        "end": 606
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 3,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "rollback",
+      "kind": "method",
+      "scope": "FinishResizeAtDestTask",
+      "lineRange": {
+        "start": 608,
+        "end": 610
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "ex"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "CrossCellMigrationTask",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 613,
+        "end": 868
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "__init__",
+      "kind": "method",
+      "scope": "CrossCellMigrationTask",
+      "lineRange": {
+        "start": 616,
+        "end": 655
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "context"
+        },
+        {
+          "name": "instance"
+        },
+        {
+          "name": "flavor"
+        },
+        {
+          "name": "request_spec"
+        },
+        {
+          "name": "source_migration"
+        },
+        {
+          "name": "compute_rpcapi"
+        },
+        {
+          "name": "host_selection"
+        },
+        {
+          "name": "alternate_hosts"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 16,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "_get_target_cell_mapping",
+      "kind": "method",
+      "scope": "CrossCellMigrationTask",
+      "lineRange": {
+        "start": 657,
+        "end": 667
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "objects.CellMapping.get_by_uuid( self.context, self.host_selection.cell_uuid)",
+          "line": 666
+        }
+      ],
+      "nloc": 3,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "_setup_target_cell_db",
+      "kind": "method",
+      "scope": "CrossCellMigrationTask",
+      "lineRange": {
+        "start": 669,
+        "end": 693
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "target_cell_migration, target_cell_mapping",
+          "line": 693
+        }
+      ],
+      "nloc": 13,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "_perform_external_api_checks",
+      "kind": "method",
+      "scope": "CrossCellMigrationTask",
+      "lineRange": {
+        "start": 695,
+        "end": 709
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 7,
+      "ccn": 2,
+      "visibility": "private"
+    },
+    {
+      "name": "_prep_resize_at_dest",
+      "kind": "method",
+      "scope": "CrossCellMigrationTask",
+      "lineRange": {
+        "start": 711,
+        "end": 761
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "target_cell_migration"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "self._update_migration_from_dest_after_claim( target_cell_migration)",
+          "line": 760
+        }
+      ],
+      "nloc": 20,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "_update_migration_from_dest_after_claim",
+      "kind": "method",
+      "scope": "CrossCellMigrationTask",
+      "lineRange": {
+        "start": 763,
+        "end": 786
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "target_cell_migration"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "target_cell_migration",
+          "line": 786
+        }
+      ],
+      "nloc": 8,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "_prep_resize_at_source",
+      "kind": "method",
+      "scope": "CrossCellMigrationTask",
+      "lineRange": {
+        "start": 788,
+        "end": 801
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "snapshot_id",
+          "line": 801
+        }
+      ],
+      "nloc": 9,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "_finish_resize_at_dest",
+      "kind": "method",
+      "scope": "CrossCellMigrationTask",
+      "lineRange": {
+        "start": 803,
+        "end": 817
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "target_cell_migration"
+        },
+        {
+          "name": "target_cell_mapping"
+        },
+        {
+          "name": "snapshot_id"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 8,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "_execute",
+      "kind": "method",
+      "scope": "CrossCellMigrationTask",
+      "lineRange": {
+        "start": 819,
+        "end": 853
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 11,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "rollback",
+      "kind": "method",
+      "scope": "CrossCellMigrationTask",
+      "lineRange": {
+        "start": 855,
+        "end": 868
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "ex"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 6,
+      "ccn": 3,
+      "visibility": "public"
+    },
+    {
+      "name": "get_inst_and_cell_map_from_source",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 871,
+        "end": 899
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "target_cell_context"
+        },
+        {
+          "name": "source_compute"
+        },
+        {
+          "name": "instance_uuid"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "instance, source_cell_mapping",
+          "line": 899
+        }
+      ],
+      "nloc": 11,
+      "ccn": 1,
+      "exported": true
+    },
+    {
+      "name": "ConfirmResizeTask",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 902,
+        "end": 1078
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "__init__",
+      "kind": "method",
+      "scope": "ConfirmResizeTask",
+      "lineRange": {
+        "start": 916,
+        "end": 932
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "context"
+        },
+        {
+          "name": "instance"
+        },
+        {
+          "name": "migration"
+        },
+        {
+          "name": "legacy_notifier"
+        },
+        {
+          "name": "compute_rpcapi"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 6,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "_send_resize_confirm_notification",
+      "kind": "method",
+      "scope": "ConfirmResizeTask",
+      "lineRange": {
+        "start": 934,
+        "end": 950
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "instance"
+        },
+        {
+          "name": "phase"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 8,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "_cleanup_source_host",
+      "kind": "method",
+      "scope": "ConfirmResizeTask",
+      "lineRange": {
+        "start": 952,
+        "end": 983
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "source_instance"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 15,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "_finish_confirm_in_target_cell",
+      "kind": "method",
+      "scope": "ConfirmResizeTask",
+      "lineRange": {
+        "start": 985,
+        "end": 1008
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 12,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "_set_vm_and_task_state",
+      "kind": "method",
+      "scope": "ConfirmResizeTask",
+      "lineRange": {
+        "start": 1010,
+        "end": 1030
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 11,
+      "ccn": 2,
+      "visibility": "private"
+    },
+    {
+      "name": "_execute",
+      "kind": "method",
+      "scope": "ConfirmResizeTask",
+      "lineRange": {
+        "start": 1032,
+        "end": 1055
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 13,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "rollback",
+      "kind": "method",
+      "scope": "ConfirmResizeTask",
+      "lineRange": {
+        "start": 1057,
+        "end": 1078
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "ex"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 19,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "RevertResizeTask",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 1081,
+        "end": 1471
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "__init__",
+      "kind": "method",
+      "scope": "RevertResizeTask",
+      "lineRange": {
+        "start": 1093,
+        "end": 1115
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "context"
+        },
+        {
+          "name": "instance"
+        },
+        {
+          "name": "migration"
+        },
+        {
+          "name": "legacy_notifier"
+        },
+        {
+          "name": "compute_rpcapi"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 9,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "_send_resize_revert_notification",
+      "kind": "method",
+      "scope": "RevertResizeTask",
+      "lineRange": {
+        "start": 1117,
+        "end": 1133
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "instance"
+        },
+        {
+          "name": "phase"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 8,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "_update_source_obj_from_target_cell",
+      "kind": "method",
+      "scope": "RevertResizeTask",
+      "lineRange": {
+        "start": 1136,
+        "end": 1167
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "source_obj"
+        },
+        {
+          "name": "target_obj"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 9,
+      "ccn": 5,
+      "visibility": "private"
+    },
+    {
+      "name": "_update_bdms_in_source_cell",
+      "kind": "method",
+      "scope": "RevertResizeTask",
+      "lineRange": {
+        "start": 1169,
+        "end": 1216
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "source_cell_context"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 24,
+      "ccn": 4,
+      "visibility": "private"
+    },
+    {
+      "name": "_delete_orphan_source_cell_bdms",
+      "kind": "method",
+      "scope": "RevertResizeTask",
+      "lineRange": {
+        "start": 1218,
+        "end": 1243
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "source_cell_bdms"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 16,
+      "ccn": 3,
+      "visibility": "private"
+    },
+    {
+      "name": "_update_instance_actions_in_source_cell",
+      "kind": "method",
+      "scope": "RevertResizeTask",
+      "lineRange": {
+        "start": 1245,
+        "end": 1273
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "source_cell_context"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 10,
+      "ccn": 2,
+      "visibility": "private"
+    },
+    {
+      "name": "_update_migration_in_source_cell",
+      "kind": "method",
+      "scope": "RevertResizeTask",
+      "lineRange": {
+        "start": 1275,
+        "end": 1293
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "source_cell_context"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "source_cell_migration",
+          "line": 1293
+        }
+      ],
+      "nloc": 7,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "_update_instance_in_source_cell",
+      "kind": "method",
+      "scope": "RevertResizeTask",
+      "lineRange": {
+        "start": 1295,
+        "end": 1327
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "instance"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "source_cell_migration",
+          "line": 1327
+        }
+      ],
+      "nloc": 14,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "_update_instance_mapping",
+      "kind": "method",
+      "scope": "RevertResizeTask",
+      "lineRange": {
+        "start": 1329,
+        "end": 1362
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "source_cell_instance"
+        },
+        {
+          "name": "source_cell_mapping"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 13,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "_execute",
+      "kind": "method",
+      "scope": "RevertResizeTask",
+      "lineRange": {
+        "start": 1364,
+        "end": 1436
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 36,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "rollback",
+      "kind": "method",
+      "scope": "RevertResizeTask",
+      "lineRange": {
+        "start": 1438,
+        "end": 1471
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "ex"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 22,
+      "ccn": 4,
+      "visibility": "public"
+    },
+    {
+      "name": "_update_source_obj_from_target_cell",
+      "kind": "staticmethod",
+      "scope": "RevertResizeTask",
+      "lineRange": {
+        "start": 1135,
+        "end": 1167
+      },
+      "visibility": "private",
+      "source": "manual"
+    }
+  ],
+  "referencedSymbols": [
+    {
+      "name": "logging.getLogger",
+      "usage": "call",
+      "via": "oslo_log",
+      "count": 1,
+      "lineRange": {
+        "start": 39,
+        "end": 39
+      }
+    },
+    {
+      "name": "delattr",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 66,
+        "end": 66
+      }
+    },
+    {
+      "name": "getattr",
+      "usage": "call",
+      "via": null,
+      "count": 2,
+      "lineRange": {
+        "start": 70,
+        "end": 70
+      }
+    },
+    {
+      "name": "setattr",
+      "usage": "call",
+      "via": null,
+      "count": 2,
+      "lineRange": {
+        "start": 70,
+        "end": 70
+      }
+    },
+    {
+      "name": "base.TaskBase",
+      "usage": "inherit",
+      "via": "nova.conductor.tasks",
+      "count": 7,
+      "lineRange": {
+        "start": 74,
+        "end": 74
+      }
+    },
+    {
+      "name": "super",
+      "usage": "call",
+      "via": null,
+      "count": 7,
+      "lineRange": {
+        "start": 91,
+        "end": 91
+      }
+    },
+    {
+      "name": "objects.VirtualInterfaceList.get_by_instance_uuid",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 141,
+        "end": 141
+      }
+    },
+    {
+      "name": "objects.InstanceActionList.get_by_instance_uuid",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 150,
+        "end": 150
+      }
+    },
+    {
+      "name": "objects.MigrationList.get_by_filters",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 152,
+        "end": 152
+      }
+    },
+    {
+      "name": "objects.TagList.create",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 188,
+        "end": 188
+      }
+    },
+    {
+      "name": "objects.InstanceActionEventList.get_by_action",
+      "usage": "call",
+      "via": "nova",
+      "count": 2,
+      "lineRange": {
+        "start": 194,
+        "end": 194
+      }
+    },
+    {
+      "name": "_",
+      "usage": "call",
+      "via": "nova.i18n",
+      "count": 3,
+      "lineRange": {
+        "start": 274,
+        "end": 274
+      }
+    },
+    {
+      "name": "exception.MigrationPreCheckError",
+      "usage": "call",
+      "via": "nova",
+      "count": 3,
+      "lineRange": {
+        "start": 274,
+        "end": 274
+      }
+    },
+    {
+      "name": "objects.BlockDeviceMappingList",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 292,
+        "end": 292
+      }
+    },
+    {
+      "name": "compute_utils.create_image",
+      "usage": "call",
+      "via": "nova.compute",
+      "count": 1,
+      "lineRange": {
+        "start": 437,
+        "end": 437
+      }
+    },
+    {
+      "name": "compute_utils.delete_image",
+      "usage": "call",
+      "via": "nova.compute",
+      "count": 1,
+      "lineRange": {
+        "start": 455,
+        "end": 455
+      }
+    },
+    {
+      "name": "compute_utils.EventReporter",
+      "usage": "call",
+      "via": "nova.compute",
+      "count": 3,
+      "lineRange": {
+        "start": 527,
+        "end": 527
+      }
+    },
+    {
+      "name": "excutils.save_and_reraise_exception",
+      "usage": "call",
+      "via": "oslo_utils",
+      "count": 3,
+      "lineRange": {
+        "start": 541,
+        "end": 541
+      }
+    },
+    {
+      "name": "objects.InstanceFault.get_latest_for_instance",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 557,
+        "end": 557
+      }
+    },
+    {
+      "name": "objects.InstanceMapping.get_by_instance_uuid",
+      "usage": "call",
+      "via": "nova",
+      "count": 2,
+      "lineRange": {
+        "start": 577,
+        "end": 577
+      }
+    },
+    {
+      "name": "neutron.API",
+      "usage": "call",
+      "via": "nova.network",
+      "count": 1,
+      "lineRange": {
+        "start": 649,
+        "end": 649
+      }
+    },
+    {
+      "name": "cinder.API",
+      "usage": "call",
+      "via": "nova.volume",
+      "count": 2,
+      "lineRange": {
+        "start": 650,
+        "end": 650
+      }
+    },
+    {
+      "name": "glance.API",
+      "usage": "call",
+      "via": "nova.image",
+      "count": 1,
+      "lineRange": {
+        "start": 651,
+        "end": 651
+      }
+    },
+    {
+      "name": "collections.OrderedDict",
+      "usage": "call",
+      "via": "collections",
+      "count": 1,
+      "lineRange": {
+        "start": 655,
+        "end": 655
+      }
+    },
+    {
+      "name": "objects.CellMapping.get_by_uuid",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 666,
+        "end": 666
+      }
+    },
+    {
+      "name": "copy.copy",
+      "usage": "call",
+      "via": "copy",
+      "count": 2,
+      "lineRange": {
+        "start": 685,
+        "end": 685
+      }
+    },
+    {
+      "name": "nova_context.set_target_cell",
+      "usage": "call",
+      "via": "nova",
+      "count": 2,
+      "lineRange": {
+        "start": 686,
+        "end": 686
+      }
+    },
+    {
+      "name": "availability_zones.get_host_availability_zone",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 744,
+        "end": 744
+      }
+    },
+    {
+      "name": "objects.Migration.get_by_uuid",
+      "usage": "call",
+      "via": "nova",
+      "count": 3,
+      "lineRange": {
+        "start": 779,
+        "end": 779
+      }
+    },
+    {
+      "name": "reversed",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 864,
+        "end": 864
+      }
+    },
+    {
+      "name": "objects.HostMapping.get_by_host",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 886,
+        "end": 886
+      }
+    },
+    {
+      "name": "objects.Instance.get_by_uuid",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 896,
+        "end": 896
+      }
+    },
+    {
+      "name": "compute_utils.notify_about_instance_usage",
+      "usage": "call",
+      "via": "nova.compute",
+      "count": 2,
+      "lineRange": {
+        "start": 944,
+        "end": 944
+      }
+    },
+    {
+      "name": "compute_utils.notify_about_instance_action",
+      "usage": "call",
+      "via": "nova.compute",
+      "count": 2,
+      "lineRange": {
+        "start": 947,
+        "end": 947
+      }
+    },
+    {
+      "name": "objects.InstanceAction.action_start",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 967,
+        "end": 967
+      }
+    },
+    {
+      "name": "objects.RequestSpec.get_by_instance_uuid",
+      "usage": "call",
+      "via": "nova",
+      "count": 2,
+      "lineRange": {
+        "start": 1074,
+        "end": 1074
+      }
+    },
+    {
+      "name": "scheduler_utils.set_vm_state_and_notify",
+      "usage": "call",
+      "via": "nova.scheduler",
+      "count": 2,
+      "lineRange": {
+        "start": 1076,
+        "end": 1076
+      }
+    },
+    {
+      "name": "isinstance",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 1163,
+        "end": 1163
+      }
+    },
+    {
+      "name": "exception.ObjectActionError",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 1164,
+        "end": 1164
+      }
+    },
+    {
+      "name": "objects.BlockDeviceMappingList.get_by_instance_uuid",
+      "usage": "call",
+      "via": "nova",
+      "count": 2,
+      "lineRange": {
+        "start": 1182,
+        "end": 1182
+      }
+    },
+    {
+      "name": "objects.InstanceAction.get_by_request_id",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 1264,
+        "end": 1264
+      }
+    },
+    {
+      "name": "objects.InstanceActionEvent.event_finish",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 1429,
+        "end": 1429
+      }
+    }
+  ],
+  "dependencies": [
+    {
+      "style": "import",
+      "module": "collections",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 13,
+        "end": 13
+      }
+    },
+    {
+      "style": "import",
+      "module": "copy",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 14,
+        "end": 14
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_log",
+      "names": [
+        {
+          "alias": "logging",
+          "name": "log"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 16,
+        "end": 16
+      }
+    },
+    {
+      "style": "import",
+      "module": "oslo_messaging",
+      "names": [],
+      "alias": "messaging",
+      "relative": false,
+      "lineRange": {
+        "start": 17,
+        "end": 17
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_utils",
+      "names": [
+        {
+          "alias": null,
+          "name": "excutils"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 18,
+        "end": 18
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "availability_zones"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 20,
+        "end": 20
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.compute",
+      "names": [
+        {
+          "alias": null,
+          "name": "instance_actions"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 21,
+        "end": 21
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.compute",
+      "names": [
+        {
+          "alias": null,
+          "name": "power_state"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 22,
+        "end": 22
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.compute",
+      "names": [
+        {
+          "alias": null,
+          "name": "task_states"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 23,
+        "end": 23
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.compute",
+      "names": [
+        {
+          "alias": "compute_utils",
+          "name": "utils"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 24,
+        "end": 24
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.compute",
+      "names": [
+        {
+          "alias": null,
+          "name": "vm_states"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 25,
+        "end": 25
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.conductor.tasks",
+      "names": [
+        {
+          "alias": null,
+          "name": "base"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 26,
+        "end": 26
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "conf"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 27,
+        "end": 27
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": "nova_context",
+          "name": "context"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 28,
+        "end": 28
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "exception"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 29,
+        "end": 29
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.i18n",
+      "names": [
+        {
+          "alias": null,
+          "name": "_"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 30,
+        "end": 30
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.image",
+      "names": [
+        {
+          "alias": null,
+          "name": "glance"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 31,
+        "end": 31
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.network",
+      "names": [
+        {
+          "alias": "neutron_constants",
+          "name": "constants"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 32,
+        "end": 32
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.network",
+      "names": [
+        {
+          "alias": null,
+          "name": "neutron"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 33,
+        "end": 33
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "objects"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 34,
+        "end": 34
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.objects",
+      "names": [
+        {
+          "alias": null,
+          "name": "fields"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 35,
+        "end": 35
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.scheduler",
+      "names": [
+        {
+          "alias": "scheduler_utils",
+          "name": "utils"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 36,
+        "end": 36
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.volume",
+      "names": [
+        {
+          "alias": null,
+          "name": "cinder"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 37,
+        "end": 37
+      }
+    }
+  ],
+  "sideEffects": [
+    {
+      "kind": "global-mutation",
+      "target": "LOG = logging.getLogger(__name__)",
+      "lineRange": {
+        "start": 39,
+        "end": 39
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "CONF = conf.CONF",
+      "lineRange": {
+        "start": 40,
+        "end": 40
+      }
+    }
+  ],
+  "securitySurface": [
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": ":param delete_fields: list of fields to delete from the new object;",
+      "lineRange": {
+        "start": 51,
+        "end": 51
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "compute service, this method will update the source cell instance",
+      "lineRange": {
+        "start": 512,
+        "end": 512
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "\"\"\"Update the source cell migration record with target cell info.",
+      "lineRange": {
+        "start": 764,
+        "end": 764
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "update the status of the instance in the target cell.",
+      "lineRange": {
+        "start": 909,
+        "end": 909
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "not change during an update. The ``updated_at`` field is also skipped",
+      "lineRange": {
+        "start": 1145,
+        "end": 1145
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "because saving changes to ``source_obj`` will automatically update the",
+      "lineRange": {
+        "start": 1146,
+        "end": 1146
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "\"\"\"Update BlockDeviceMappings in the source cell database.",
+      "lineRange": {
+        "start": 1170,
+        "end": 1170
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "\"\"\"Update instance action records in the source cell database",
+      "lineRange": {
+        "start": 1246,
+        "end": 1246
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "\"\"\"Update the migration record in the source cell database.",
+      "lineRange": {
+        "start": 1276,
+        "end": 1276
+      }
+    }
+  ],
+  "injection_flags": [],
+  "warnings": []
+}

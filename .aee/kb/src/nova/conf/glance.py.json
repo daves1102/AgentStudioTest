@@ -1,0 +1,283 @@
+{
+  "file": "src/nova/conf/glance.py",
+  "hash": "ca457629134a3ce1cf552bcbae27f2ff4a6c95e04197166c59d8c1c5de3fdb99",
+  "language": "Python",
+  "component": "nova",
+  "package": null,
+  "lines": {
+    "blank": 40,
+    "code": 164,
+    "comment": 15,
+    "total": 219
+  },
+  "symbols": [
+    {
+      "name": "DEFAULT_SERVICE_TYPE",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 21,
+        "end": 21
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "glance_group",
+      "kind": "variable",
+      "scope": "",
+      "lineRange": {
+        "start": 23,
+        "end": 26
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "glance_opts",
+      "kind": "variable",
+      "scope": "",
+      "lineRange": {
+        "start": 28,
+        "end": 194
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "deprecated_ksa_opts",
+      "kind": "variable",
+      "scope": "",
+      "lineRange": {
+        "start": 196,
+        "end": 201
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "register_opts",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 204,
+        "end": 210
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "conf"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 6,
+      "ccn": 1,
+      "exported": true
+    },
+    {
+      "name": "list_opts",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 213,
+        "end": 219
+      },
+      "source": "aee-inventory",
+      "parameters": [],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "{glance_group: ( glance_opts + ks_loading.get_session_conf_options() + confutils.get_ksa_adapter_opts(DEFAULT_SERVICE_TYPE, deprecated_opts=deprecated_ksa_opts)) }",
+          "line": 214
+        }
+      ],
+      "nloc": 7,
+      "ccn": 1,
+      "exported": true
+    }
+  ],
+  "referencedSymbols": [
+    {
+      "name": "cfg.OptGroup",
+      "usage": "call",
+      "via": "oslo_config",
+      "count": 1,
+      "lineRange": {
+        "start": 23,
+        "end": 23
+      }
+    },
+    {
+      "name": "cfg.ListOpt",
+      "usage": "call",
+      "via": "oslo_config",
+      "count": 2,
+      "lineRange": {
+        "start": 31,
+        "end": 31
+      }
+    },
+    {
+      "name": "cfg.IntOpt",
+      "usage": "call",
+      "via": "oslo_config",
+      "count": 2,
+      "lineRange": {
+        "start": 54,
+        "end": 54
+      }
+    },
+    {
+      "name": "cfg.BoolOpt",
+      "usage": "call",
+      "via": "oslo_config",
+      "count": 4,
+      "lineRange": {
+        "start": 63,
+        "end": 63
+      }
+    },
+    {
+      "name": "cfg.StrOpt",
+      "usage": "call",
+      "via": "oslo_config",
+      "count": 3,
+      "lineRange": {
+        "start": 149,
+        "end": 149
+      }
+    },
+    {
+      "name": "cfg.DeprecatedOpt",
+      "usage": "call",
+      "via": "oslo_config",
+      "count": 4,
+      "lineRange": {
+        "start": 197,
+        "end": 197
+      }
+    },
+    {
+      "name": "confutils.register_ksa_opts",
+      "usage": "call",
+      "via": "nova.conf",
+      "count": 1,
+      "lineRange": {
+        "start": 208,
+        "end": 208
+      }
+    },
+    {
+      "name": "ks_loading.get_session_conf_options",
+      "usage": "call",
+      "via": "keystoneauth1",
+      "count": 1,
+      "lineRange": {
+        "start": 216,
+        "end": 216
+      }
+    },
+    {
+      "name": "confutils.get_ksa_adapter_opts",
+      "usage": "call",
+      "via": "nova.conf",
+      "count": 1,
+      "lineRange": {
+        "start": 217,
+        "end": 217
+      }
+    }
+  ],
+  "dependencies": [
+    {
+      "style": "from",
+      "module": "keystoneauth1",
+      "names": [
+        {
+          "alias": "ks_loading",
+          "name": "loading"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 15,
+        "end": 15
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_config",
+      "names": [
+        {
+          "alias": null,
+          "name": "cfg"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 16,
+        "end": 16
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.conf",
+      "names": [
+        {
+          "alias": "confutils",
+          "name": "utils"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 18,
+        "end": 18
+      }
+    }
+  ],
+  "sideEffects": [
+    {
+      "kind": "global-mutation",
+      "target": "DEFAULT_SERVICE_TYPE = 'image'",
+      "lineRange": {
+        "start": 21,
+        "end": 21
+      }
+    }
+  ],
+  "securitySurface": [
+    {
+      "kind": "privilege",
+      "category": "crypto-key",
+      "description": "from keystoneauth1 import loading as ks_loading",
+      "lineRange": {
+        "start": 15,
+        "end": 15
+      }
+    },
+    {
+      "kind": "privilege",
+      "category": "crypto-key",
+      "description": "Support for image service configuration via standard keystoneauth1 Adapter",
+      "lineRange": {
+        "start": 35,
+        "end": 35
+      }
+    },
+    {
+      "kind": "privilege",
+      "category": "crypto-key",
+      "description": "NOTE: The preferred mechanism for endpoint discovery is via keystoneauth1",
+      "lineRange": {
+        "start": 45,
+        "end": 45
+      }
+    }
+  ],
+  "injection_flags": [],
+  "warnings": []
+}

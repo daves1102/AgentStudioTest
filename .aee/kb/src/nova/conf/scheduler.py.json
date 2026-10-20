@@ -1,0 +1,287 @@
+{
+  "file": "src/nova/conf/scheduler.py",
+  "hash": "2fec1a4fd3c968af13bb50d88d8a2f982a52c826b2b23af037ebc2ae34b125a1",
+  "language": "Python",
+  "component": "nova",
+  "package": null,
+  "lines": {
+    "blank": 264,
+    "code": 783,
+    "comment": 20,
+    "total": 1067
+  },
+  "symbols": [
+    {
+      "name": "scheduler_group",
+      "kind": "variable",
+      "scope": "",
+      "lineRange": {
+        "start": 21,
+        "end": 22
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "scheduler_opts",
+      "kind": "variable",
+      "scope": "",
+      "lineRange": {
+        "start": 24,
+        "end": 205
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "filter_scheduler_group",
+      "kind": "variable",
+      "scope": "",
+      "lineRange": {
+        "start": 207,
+        "end": 208
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "filter_scheduler_opts",
+      "kind": "variable",
+      "scope": "",
+      "lineRange": {
+        "start": 210,
+        "end": 927
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "metrics_group",
+      "kind": "variable",
+      "scope": "",
+      "lineRange": {
+        "start": 929,
+        "end": 937
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "metrics_weight_opts",
+      "kind": "variable",
+      "scope": "",
+      "lineRange": {
+        "start": 941,
+        "end": 1048
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "register_opts",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 1051,
+        "end": 1059
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "conf"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 7,
+      "ccn": 1,
+      "exported": true
+    },
+    {
+      "name": "list_opts",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 1062,
+        "end": 1067
+      },
+      "source": "aee-inventory",
+      "parameters": [],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "{ scheduler_group: scheduler_opts, filter_scheduler_group: filter_scheduler_opts, metrics_group: metrics_weight_opts, }",
+          "line": 1063
+        }
+      ],
+      "nloc": 6,
+      "ccn": 1,
+      "exported": true
+    }
+  ],
+  "referencedSymbols": [
+    {
+      "name": "cfg.OptGroup",
+      "usage": "call",
+      "via": "oslo_config",
+      "count": 3,
+      "lineRange": {
+        "start": 21,
+        "end": 21
+      }
+    },
+    {
+      "name": "cfg.IntOpt",
+      "usage": "call",
+      "via": "oslo_config",
+      "count": 7,
+      "lineRange": {
+        "start": 25,
+        "end": 25
+      }
+    },
+    {
+      "name": "cfg.BoolOpt",
+      "usage": "call",
+      "via": "oslo_config",
+      "count": 11,
+      "lineRange": {
+        "start": 97,
+        "end": 97
+      }
+    },
+    {
+      "name": "cfg.MultiStrOpt",
+      "usage": "call",
+      "via": "oslo_config",
+      "count": 1,
+      "lineRange": {
+        "start": 302,
+        "end": 302
+      }
+    },
+    {
+      "name": "cfg.ListOpt",
+      "usage": "call",
+      "via": "oslo_config",
+      "count": 6,
+      "lineRange": {
+        "start": 323,
+        "end": 323
+      }
+    },
+    {
+      "name": "cfg.FloatOpt",
+      "usage": "call",
+      "via": "oslo_config",
+      "count": 14,
+      "lineRange": {
+        "start": 373,
+        "end": 373
+      }
+    },
+    {
+      "name": "cfg.StrOpt",
+      "usage": "call",
+      "via": "oslo_config",
+      "count": 3,
+      "lineRange": {
+        "start": 774,
+        "end": 774
+      }
+    },
+    {
+      "name": "float",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 1025,
+        "end": 1025
+      }
+    }
+  ],
+  "dependencies": [
+    {
+      "style": "from",
+      "module": "oslo_config",
+      "names": [
+        {
+          "alias": null,
+          "name": "cfg"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 16,
+        "end": 16
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.virt",
+      "names": [
+        {
+          "alias": null,
+          "name": "arch"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 18,
+        "end": 18
+      }
+    }
+  ],
+  "sideEffects": [
+    {
+      "kind": "network",
+      "target": "See https://docs.openstack.org/neutron/latest/admin/config-routed-networks.html",
+      "lineRange": {
+        "start": 103,
+        "end": 103
+      }
+    },
+    {
+      "kind": "network",
+      "target": "at https://docs.openstack.org/nova/latest/reference/isolate-aggregates.html",
+      "lineRange": {
+        "start": 179,
+        "end": 179
+      }
+    }
+  ],
+  "securitySurface": [
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "every time this runs, we will select any unmapped hosts out of each",
+      "lineRange": {
+        "start": 54,
+        "end": 54
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "scheduler processes handling similar requests will select the same host,",
+      "lineRange": {
+        "start": 221,
+        "end": 221
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "availability to select destination for a server with PCI request. The scheduler",
+      "lineRange": {
+        "start": 917,
+        "end": 917
+      }
+    }
+  ],
+  "injection_flags": [],
+  "warnings": []
+}

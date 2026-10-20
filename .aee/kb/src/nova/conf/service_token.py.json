@@ -1,0 +1,218 @@
+{
+  "file": "src/nova/conf/service_token.py",
+  "hash": "0cd6976384f7a8c7c1f7e77fc0e61b268bb22f6a1fbfae6759053d0cf8544331",
+  "language": "Python",
+  "component": "nova",
+  "package": null,
+  "lines": {
+    "blank": 10,
+    "code": 42,
+    "comment": 11,
+    "total": 63
+  },
+  "symbols": [
+    {
+      "name": "SERVICE_USER_GROUP",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 16,
+        "end": 16
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "service_user",
+      "kind": "variable",
+      "scope": "",
+      "lineRange": {
+        "start": 18,
+        "end": 26
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "service_user_opts",
+      "kind": "variable",
+      "scope": "",
+      "lineRange": {
+        "start": 28,
+        "end": 43
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "register_opts",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 46,
+        "end": 51
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "conf"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 5,
+      "ccn": 1,
+      "exported": true
+    },
+    {
+      "name": "list_opts",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 54,
+        "end": 63
+      },
+      "source": "aee-inventory",
+      "parameters": [],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "{ service_user: ( service_user_opts + ks_loading.get_session_conf_options() + ks_loading.get_auth_common_conf_options() + ks_loading.get_auth_plugin_conf_options('password') + ks_loading.get_auth_plug",
+          "line": 55
+        }
+      ],
+      "nloc": 10,
+      "ccn": 1,
+      "exported": true
+    }
+  ],
+  "referencedSymbols": [
+    {
+      "name": "cfg.OptGroup",
+      "usage": "call",
+      "via": "oslo_config",
+      "count": 1,
+      "lineRange": {
+        "start": 18,
+        "end": 18
+      }
+    },
+    {
+      "name": "cfg.BoolOpt",
+      "usage": "call",
+      "via": "oslo_config",
+      "count": 1,
+      "lineRange": {
+        "start": 29,
+        "end": 29
+      }
+    },
+    {
+      "name": "ks_loading.register_session_conf_options",
+      "usage": "call",
+      "via": "keystoneauth1",
+      "count": 1,
+      "lineRange": {
+        "start": 50,
+        "end": 50
+      }
+    },
+    {
+      "name": "ks_loading.register_auth_conf_options",
+      "usage": "call",
+      "via": "keystoneauth1",
+      "count": 1,
+      "lineRange": {
+        "start": 51,
+        "end": 51
+      }
+    },
+    {
+      "name": "ks_loading.get_session_conf_options",
+      "usage": "call",
+      "via": "keystoneauth1",
+      "count": 1,
+      "lineRange": {
+        "start": 58,
+        "end": 58
+      }
+    },
+    {
+      "name": "ks_loading.get_auth_common_conf_options",
+      "usage": "call",
+      "via": "keystoneauth1",
+      "count": 1,
+      "lineRange": {
+        "start": 59,
+        "end": 59
+      }
+    },
+    {
+      "name": "ks_loading.get_auth_plugin_conf_options",
+      "usage": "call",
+      "via": "keystoneauth1",
+      "count": 3,
+      "lineRange": {
+        "start": 60,
+        "end": 60
+      }
+    }
+  ],
+  "dependencies": [
+    {
+      "style": "from",
+      "module": "keystoneauth1",
+      "names": [
+        {
+          "alias": "ks_loading",
+          "name": "loading"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 13,
+        "end": 13
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_config",
+      "names": [
+        {
+          "alias": null,
+          "name": "cfg"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 14,
+        "end": 14
+      }
+    }
+  ],
+  "sideEffects": [
+    {
+      "kind": "global-mutation",
+      "target": "SERVICE_USER_GROUP = 'service_user'",
+      "lineRange": {
+        "start": 16,
+        "end": 16
+      }
+    }
+  ],
+  "securitySurface": [
+    {
+      "kind": "privilege",
+      "category": "crypto-key",
+      "description": "from keystoneauth1 import loading as ks_loading",
+      "lineRange": {
+        "start": 13,
+        "end": 13
+      }
+    }
+  ],
+  "injection_flags": [],
+  "warnings": []
+}

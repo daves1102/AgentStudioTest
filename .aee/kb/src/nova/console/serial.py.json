@@ -1,0 +1,352 @@
+{
+  "file": "src/nova/console/serial.py",
+  "hash": "126c911237acc19d7cdb9f5b9163925bdde70f5d13646bf67af385900caa3f78",
+  "language": "Python",
+  "component": "nova",
+  "package": null,
+  "lines": {
+    "blank": 21,
+    "code": 53,
+    "comment": 16,
+    "total": 90
+  },
+  "symbols": [
+    {
+      "name": "LOG",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 25,
+        "end": 25
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "ALLOCATED_PORTS",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 27,
+        "end": 27
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "SERIAL_LOCK",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 28,
+        "end": 28
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "CONF",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 30,
+        "end": 30
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "acquire_port",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 38,
+        "end": 57
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "host"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "port",
+          "line": 53
+        }
+      ],
+      "nloc": 12,
+      "ccn": 4,
+      "exported": true
+    },
+    {
+      "name": "release_port",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 61,
+        "end": 63
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "host"
+        },
+        {
+          "name": "port"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 2,
+      "ccn": 1,
+      "exported": true
+    },
+    {
+      "name": "_get_port_range",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 66,
+        "end": 79
+      },
+      "source": "aee-inventory",
+      "parameters": [],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "start, stop",
+          "line": 79
+        }
+      ],
+      "nloc": 13,
+      "ccn": 2,
+      "exported": false
+    },
+    {
+      "name": "_verify_port",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 82,
+        "end": 90
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "host"
+        },
+        {
+          "name": "port"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 9,
+      "ccn": 3,
+      "exported": false
+    }
+  ],
+  "referencedSymbols": [
+    {
+      "name": "logging.getLogger",
+      "usage": "call",
+      "via": "oslo_log",
+      "count": 1,
+      "lineRange": {
+        "start": 25,
+        "end": 25
+      }
+    },
+    {
+      "name": "set",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 27,
+        "end": 27
+      }
+    },
+    {
+      "name": "utils.synchronized",
+      "usage": "call",
+      "via": "nova",
+      "count": 2,
+      "lineRange": {
+        "start": 37,
+        "end": 37
+      }
+    },
+    {
+      "name": "range",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 47,
+        "end": 47
+      }
+    },
+    {
+      "name": "exception.SocketPortRangeExhaustedException",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 57,
+        "end": 57
+      }
+    },
+    {
+      "name": "map",
+      "usage": "call",
+      "via": null,
+      "count": 2,
+      "lineRange": {
+        "start": 69,
+        "end": 69
+      }
+    },
+    {
+      "name": "socket.socket",
+      "usage": "call",
+      "via": "socket",
+      "count": 1,
+      "lineRange": {
+        "start": 83,
+        "end": 83
+      }
+    },
+    {
+      "name": "exception.SocketPortInUseException",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 87,
+        "end": 87
+      }
+    }
+  ],
+  "dependencies": [
+    {
+      "style": "import",
+      "module": "socket",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 17,
+        "end": 17
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_log",
+      "names": [
+        {
+          "alias": "logging",
+          "name": "log"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 19,
+        "end": 19
+      }
+    },
+    {
+      "style": "import",
+      "module": "nova.conf",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 21,
+        "end": 21
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "exception"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 22,
+        "end": 22
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "utils"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 23,
+        "end": 23
+      }
+    }
+  ],
+  "sideEffects": [
+    {
+      "kind": "global-mutation",
+      "target": "LOG = logging.getLogger(__name__)",
+      "lineRange": {
+        "start": 25,
+        "end": 25
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "ALLOCATED_PORTS = set()  # in-memory set of already allocated ports",
+      "lineRange": {
+        "start": 27,
+        "end": 27
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "SERIAL_LOCK = 'serial-lock'",
+      "lineRange": {
+        "start": 28,
+        "end": 28
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "CONF = nova.conf.CONF",
+      "lineRange": {
+        "start": 30,
+        "end": 30
+      }
+    }
+  ],
+  "securitySurface": [
+    {
+      "kind": "entry-point",
+      "category": "network-socket",
+      "description": "s = socket.socket()",
+      "lineRange": {
+        "start": 83,
+        "end": 83
+      }
+    }
+  ],
+  "injection_flags": [],
+  "warnings": []
+}

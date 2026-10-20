@@ -1,0 +1,212 @@
+{
+  "file": "src/nova/conf/cyborg.py",
+  "hash": "c599f031c80a179a0ea18e319ef738284bfe07e4cdf55304ba05e667b7fb98dc",
+  "language": "Python",
+  "component": "nova",
+  "package": null,
+  "lines": {
+    "blank": 9,
+    "code": 21,
+    "comment": 13,
+    "total": 43
+  },
+  "symbols": [
+    {
+      "name": "DEFAULT_SERVICE_TYPE",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 21,
+        "end": 21
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "CYBORG_GROUP",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 22,
+        "end": 22
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "cyborg_group",
+      "kind": "variable",
+      "scope": "",
+      "lineRange": {
+        "start": 24,
+        "end": 29
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "register_opts",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 32,
+        "end": 35
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "conf"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 4,
+      "ccn": 1,
+      "exported": true
+    },
+    {
+      "name": "list_opts",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 38,
+        "end": 43
+      },
+      "source": "aee-inventory",
+      "parameters": [],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "{ cyborg_group: ( ks_loading.get_session_conf_options() + confutils.get_ksa_adapter_opts(DEFAULT_SERVICE_TYPE)) }",
+          "line": 39
+        }
+      ],
+      "nloc": 6,
+      "ccn": 1,
+      "exported": true
+    }
+  ],
+  "referencedSymbols": [
+    {
+      "name": "cfg.OptGroup",
+      "usage": "call",
+      "via": "oslo_config",
+      "count": 1,
+      "lineRange": {
+        "start": 24,
+        "end": 24
+      }
+    },
+    {
+      "name": "confutils.register_ksa_opts",
+      "usage": "call",
+      "via": "nova.conf",
+      "count": 1,
+      "lineRange": {
+        "start": 34,
+        "end": 34
+      }
+    },
+    {
+      "name": "ks_loading.get_session_conf_options",
+      "usage": "call",
+      "via": "keystoneauth1",
+      "count": 1,
+      "lineRange": {
+        "start": 41,
+        "end": 41
+      }
+    },
+    {
+      "name": "confutils.get_ksa_adapter_opts",
+      "usage": "call",
+      "via": "nova.conf",
+      "count": 1,
+      "lineRange": {
+        "start": 42,
+        "end": 42
+      }
+    }
+  ],
+  "dependencies": [
+    {
+      "style": "from",
+      "module": "keystoneauth1",
+      "names": [
+        {
+          "alias": "ks_loading",
+          "name": "loading"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 15,
+        "end": 15
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_config",
+      "names": [
+        {
+          "alias": null,
+          "name": "cfg"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 16,
+        "end": 16
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.conf",
+      "names": [
+        {
+          "alias": "confutils",
+          "name": "utils"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 18,
+        "end": 18
+      }
+    }
+  ],
+  "sideEffects": [
+    {
+      "kind": "global-mutation",
+      "target": "DEFAULT_SERVICE_TYPE = 'accelerator'",
+      "lineRange": {
+        "start": 21,
+        "end": 21
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "CYBORG_GROUP = 'cyborg'",
+      "lineRange": {
+        "start": 22,
+        "end": 22
+      }
+    }
+  ],
+  "securitySurface": [
+    {
+      "kind": "privilege",
+      "category": "crypto-key",
+      "description": "from keystoneauth1 import loading as ks_loading",
+      "lineRange": {
+        "start": 15,
+        "end": 15
+      }
+    }
+  ],
+  "injection_flags": [],
+  "warnings": []
+}

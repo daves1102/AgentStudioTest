@@ -1,0 +1,1824 @@
+{
+  "file": "src/nova/compute/pci_placement_translator.py",
+  "hash": "f442ed44be72e81d7f0644a4c3d9a5d0c3238156820299cd096b4e2119def81f",
+  "language": "Python",
+  "component": "nova",
+  "package": null,
+  "lines": {
+    "blank": 111,
+    "code": 524,
+    "comment": 158,
+    "total": 793
+  },
+  "symbols": [
+    {
+      "name": "CONF",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 34,
+        "end": 34
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "LOG",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 35,
+        "end": 35
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "PARENT_TYPES",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 39,
+        "end": 40
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "CHILD_TYPES",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 43,
+        "end": 44
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "_is_placement_tracking_enabled",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 47,
+        "end": 48
+      },
+      "source": "aee-inventory",
+      "parameters": [],
+      "returnType": "bool",
+      "returns": [
+        {
+          "expr": "CONF.pci.report_in_placement",
+          "line": 48
+        }
+      ],
+      "nloc": 2,
+      "ccn": 1,
+      "exported": false
+    },
+    {
+      "name": "_normalize_traits",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 51,
+        "end": 66
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "traits",
+          "type": "list[str]"
+        }
+      ],
+      "returnType": "list[str]",
+      "returns": [
+        {
+          "expr": "list(standard_traits) + custom_traits",
+          "line": 66
+        }
+      ],
+      "nloc": 10,
+      "ccn": 3,
+      "exported": false
+    },
+    {
+      "name": "get_traits",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 69,
+        "end": 76
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "traits_str",
+          "type": "str"
+        }
+      ],
+      "returnType": "set[str]",
+      "returns": [
+        {
+          "expr": "set()",
+          "line": 75
+        },
+        {
+          "expr": "set(_normalize_traits(traits_str.split(',')))",
+          "line": 76
+        }
+      ],
+      "nloc": 4,
+      "ccn": 2,
+      "exported": true
+    },
+    {
+      "name": "_get_traits_for_dev",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 79,
+        "end": 92
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "dev_spec_tags",
+          "type": "dict[str, str]"
+        }
+      ],
+      "returnType": "set[str]",
+      "returns": [
+        {
+          "expr": "traits",
+          "line": 92
+        }
+      ],
+      "nloc": 10,
+      "ccn": 2,
+      "exported": false
+    },
+    {
+      "name": "_normalize_resource_class",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 95,
+        "end": 105
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "rc",
+          "type": "str"
+        }
+      ],
+      "returnType": "str",
+      "returns": [
+        {
+          "expr": "rc",
+          "line": 105
+        }
+      ],
+      "nloc": 9,
+      "ccn": 3,
+      "exported": false
+    },
+    {
+      "name": "get_resource_class",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 108,
+        "end": 118
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "requested_name",
+          "type": "str | None"
+        },
+        {
+          "name": "vendor_id",
+          "type": "str"
+        },
+        {
+          "name": "product_id",
+          "type": "str"
+        }
+      ],
+      "returnType": "str",
+      "returns": [
+        {
+          "expr": "rc",
+          "line": 118
+        }
+      ],
+      "nloc": 8,
+      "ccn": 2,
+      "exported": true
+    },
+    {
+      "name": "_get_rc_for_dev",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 121,
+        "end": 134
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "dev",
+          "type": "pci_device.PciDevice"
+        },
+        {
+          "name": "dev_spec_tags",
+          "type": "dict[str, str]"
+        }
+      ],
+      "returnType": "str",
+      "returns": [
+        {
+          "expr": "get_resource_class(rc, dev.vendor_id, dev.product_id)",
+          "line": 134
+        }
+      ],
+      "nloc": 6,
+      "ccn": 1,
+      "exported": false
+    },
+    {
+      "name": "PciResourceProvider",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 137,
+        "end": 455
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "__init__",
+      "kind": "method",
+      "scope": "PciResourceProvider",
+      "lineRange": {
+        "start": 140,
+        "end": 152
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "name",
+          "type": "str"
+        }
+      ],
+      "returnType": "None",
+      "returns": [],
+      "nloc": 8,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "devs",
+      "kind": "method",
+      "scope": "PciResourceProvider",
+      "lineRange": {
+        "start": 155,
+        "end": 156
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": "list[pci_device.PciDevice]",
+      "returns": [
+        {
+          "expr": "[self.parent_dev] if self.parent_dev else self.children_devs",
+          "line": 156
+        }
+      ],
+      "nloc": 2,
+      "ccn": 2,
+      "visibility": "public"
+    },
+    {
+      "name": "total",
+      "kind": "method",
+      "scope": "PciResourceProvider",
+      "lineRange": {
+        "start": 159,
+        "end": 160
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "len(self.devs) + self.adjustment",
+          "line": 160
+        }
+      ],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "to_be_deleted",
+      "kind": "method",
+      "scope": "PciResourceProvider",
+      "lineRange": {
+        "start": 163,
+        "end": 164
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "self.total == 0",
+          "line": 164
+        }
+      ],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "add_child",
+      "kind": "method",
+      "scope": "PciResourceProvider",
+      "lineRange": {
+        "start": 166,
+        "end": 201
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "dev"
+        },
+        {
+          "name": "dev_spec_tags",
+          "type": "dict[str, str]"
+        }
+      ],
+      "returnType": "None",
+      "returns": [],
+      "nloc": 31,
+      "ccn": 10,
+      "visibility": "public"
+    },
+    {
+      "name": "add_parent",
+      "kind": "method",
+      "scope": "PciResourceProvider",
+      "lineRange": {
+        "start": 203,
+        "end": 222
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "dev"
+        },
+        {
+          "name": "dev_spec_tags",
+          "type": "dict[str, str]"
+        }
+      ],
+      "returnType": "None",
+      "returns": [],
+      "nloc": 14,
+      "ccn": 5,
+      "visibility": "public"
+    },
+    {
+      "name": "remove_child",
+      "kind": "method",
+      "scope": "PciResourceProvider",
+      "lineRange": {
+        "start": 224,
+        "end": 227
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "dev",
+          "type": "pci_device.PciDevice"
+        }
+      ],
+      "returnType": "None",
+      "returns": [],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "remove_parent",
+      "kind": "method",
+      "scope": "PciResourceProvider",
+      "lineRange": {
+        "start": 229,
+        "end": 231
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "dev",
+          "type": "pci_device.PciDevice"
+        }
+      ],
+      "returnType": "None",
+      "returns": [],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "_get_allocations",
+      "kind": "method",
+      "scope": "PciResourceProvider",
+      "lineRange": {
+        "start": 233,
+        "end": 252
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": "collections.Counter[str]",
+      "returns": [
+        {
+          "expr": "collections.Counter( [ dev.instance_uuid for dev in self.devs if \"instance_uuid\" in dev and dev.instance_uuid ] )",
+          "line": 246
+        }
+      ],
+      "nloc": 8,
+      "ccn": 4,
+      "visibility": "private"
+    },
+    {
+      "name": "_get_inventories",
+      "kind": "method",
+      "scope": "PciResourceProvider",
+      "lineRange": {
+        "start": 254,
+        "end": 269
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "{self.resource_class: inventory}",
+          "line": 269
+        }
+      ],
+      "nloc": 7,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "_handle_one_time_use",
+      "kind": "method",
+      "scope": "PciResourceProvider",
+      "lineRange": {
+        "start": 271,
+        "end": 285
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "inventory",
+          "type": "dict"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 4,
+      "ccn": 4,
+      "visibility": "private"
+    },
+    {
+      "name": "is_allocated",
+      "kind": "function",
+      "scope": "PciResourceProvider._handle_one_time_use",
+      "lineRange": {
+        "start": 274,
+        "end": 275
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "dev",
+          "type": "pci_device.PciDevice"
+        }
+      ],
+      "returnType": "bool",
+      "returns": [
+        {
+          "expr": "'instance_uuid' in dev and dev.instance_uuid",
+          "line": 275
+        }
+      ],
+      "visibility": "public"
+    },
+    {
+      "name": "_adjust_for_removals_and_held_devices",
+      "kind": "method",
+      "scope": "PciResourceProvider",
+      "lineRange": {
+        "start": 287,
+        "end": 328
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "provider_tree",
+          "type": "provider_tree.ProviderTree"
+        },
+        {
+          "name": "rp_rc_usage",
+          "type": "dict[str, dict[str, int]]"
+        }
+      ],
+      "returnType": "None",
+      "returns": [
+        {
+          "expr": "",
+          "line": 307
+        }
+      ],
+      "nloc": 23,
+      "ccn": 4,
+      "visibility": "private"
+    },
+    {
+      "name": "update_provider_tree",
+      "kind": "method",
+      "scope": "PciResourceProvider",
+      "lineRange": {
+        "start": 330,
+        "end": 368
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "provider_tree",
+          "type": "provider_tree.ProviderTree"
+        },
+        {
+          "name": "parent_rp_name",
+          "type": "str"
+        },
+        {
+          "name": "rp_rc_usage",
+          "type": "dict[str, dict[str, int]]"
+        }
+      ],
+      "returnType": "None",
+      "returns": [
+        {
+          "expr": "",
+          "line": 355
+        }
+      ],
+      "nloc": 25,
+      "ccn": 4,
+      "visibility": "public"
+    },
+    {
+      "name": "update_allocations",
+      "kind": "method",
+      "scope": "PciResourceProvider",
+      "lineRange": {
+        "start": 370,
+        "end": 446
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "allocations",
+          "type": "dict"
+        },
+        {
+          "name": "provider_tree",
+          "type": "provider_tree.ProviderTree"
+        },
+        {
+          "name": "same_host_instances",
+          "type": "list[str]"
+        }
+      ],
+      "returnType": "bool",
+      "returns": [
+        {
+          "expr": "updated",
+          "line": 381
+        },
+        {
+          "expr": "updated",
+          "line": 446
+        }
+      ],
+      "nloc": 30,
+      "ccn": 7,
+      "visibility": "public"
+    },
+    {
+      "name": "__str__",
+      "kind": "method",
+      "scope": "PciResourceProvider",
+      "lineRange": {
+        "start": 448,
+        "end": 455
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": "str",
+      "returns": [
+        {
+          "expr": "( f\"RP({self.name}, {self.resource_class}={self.total}, \" f\"traits={','.join(sorted(self.traits or set()))})\" )",
+          "line": 450
+        },
+        {
+          "expr": "f\"RP({self.name}, <to be deleted>)\"",
+          "line": 455
+        }
+      ],
+      "nloc": 8,
+      "ccn": 3,
+      "visibility": "public"
+    },
+    {
+      "name": "PlacementView",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 458,
+        "end": 681
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "__init__",
+      "kind": "method",
+      "scope": "PlacementView",
+      "lineRange": {
+        "start": 461,
+        "end": 468
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "hypervisor_hostname",
+          "type": "str"
+        },
+        {
+          "name": "instances_under_same_host_resize",
+          "type": "list[str]"
+        }
+      ],
+      "returnType": "None",
+      "returns": [],
+      "nloc": 8,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "_get_rp_name_for_address",
+      "kind": "method",
+      "scope": "PlacementView",
+      "lineRange": {
+        "start": 470,
+        "end": 471
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "addr",
+          "type": "str"
+        }
+      ],
+      "returnType": "str",
+      "returns": [
+        {
+          "expr": "f\"{self.root_rp_name}_{addr.upper()}\"",
+          "line": 471
+        }
+      ],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "_ensure_rp",
+      "kind": "method",
+      "scope": "PlacementView",
+      "lineRange": {
+        "start": 473,
+        "end": 474
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "rp_name",
+          "type": "str"
+        }
+      ],
+      "returnType": "PciResourceProvider",
+      "returns": [
+        {
+          "expr": "self.rps.setdefault(rp_name, PciResourceProvider(rp_name))",
+          "line": 474
+        }
+      ],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "_get_rp_name_for_child",
+      "kind": "method",
+      "scope": "PlacementView",
+      "lineRange": {
+        "start": 476,
+        "end": 487
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "dev",
+          "type": "pci_device.PciDevice"
+        }
+      ],
+      "returnType": "str",
+      "returns": [
+        {
+          "expr": "self._get_rp_name_for_address(dev.parent_addr)",
+          "line": 487
+        }
+      ],
+      "nloc": 11,
+      "ccn": 2,
+      "visibility": "private"
+    },
+    {
+      "name": "_add_dev",
+      "kind": "method",
+      "scope": "PlacementView",
+      "lineRange": {
+        "start": 489,
+        "end": 512
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "dev",
+          "type": "pci_device.PciDevice"
+        },
+        {
+          "name": "dev_spec_tags",
+          "type": "dict[str, str]"
+        }
+      ],
+      "returnType": "None",
+      "returns": [
+        {
+          "expr": "",
+          "line": 497
+        }
+      ],
+      "nloc": 19,
+      "ccn": 4,
+      "visibility": "private"
+    },
+    {
+      "name": "_remove_dev",
+      "kind": "method",
+      "scope": "PlacementView",
+      "lineRange": {
+        "start": 514,
+        "end": 522
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "dev",
+          "type": "pci_device.PciDevice"
+        }
+      ],
+      "returnType": "None",
+      "returns": [],
+      "nloc": 6,
+      "ccn": 3,
+      "visibility": "private"
+    },
+    {
+      "name": "_ensure_rp_for_dev",
+      "kind": "method",
+      "scope": "PlacementView",
+      "lineRange": {
+        "start": 524,
+        "end": 540
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "dev",
+          "type": "pci_device.PciDevice"
+        }
+      ],
+      "returnType": "PciResourceProvider",
+      "returns": [
+        {
+          "expr": "self._ensure_rp(rp_name)",
+          "line": 533
+        },
+        {
+          "expr": "self._ensure_rp(rp_name)",
+          "line": 536
+        }
+      ],
+      "nloc": 13,
+      "ccn": 3,
+      "visibility": "private"
+    },
+    {
+      "name": "process_dev",
+      "kind": "method",
+      "scope": "PlacementView",
+      "lineRange": {
+        "start": 542,
+        "end": 611
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "dev",
+          "type": "pci_device.PciDevice"
+        },
+        {
+          "name": "dev_spec",
+          "type": "devspec.PciDeviceSpec | None"
+        }
+      ],
+      "returnType": "None",
+      "returns": [
+        {
+          "expr": "",
+          "line": 609
+        }
+      ],
+      "nloc": 34,
+      "ccn": 4,
+      "visibility": "public"
+    },
+    {
+      "name": "__str__",
+      "kind": "method",
+      "scope": "PlacementView",
+      "lineRange": {
+        "start": 613,
+        "end": 617
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": "str",
+      "returns": [
+        {
+          "expr": "( f\"Placement PCI view on {self.root_rp_name}: \" f\"{', '.join(str(rp) for rp in self.rps.values())}\" )",
+          "line": 614
+        }
+      ],
+      "nloc": 5,
+      "ccn": 2,
+      "visibility": "public"
+    },
+    {
+      "name": "get_usage_per_rc_and_rp",
+      "kind": "method",
+      "scope": "PlacementView",
+      "lineRange": {
+        "start": 620,
+        "end": 634
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "allocations"
+        }
+      ],
+      "returnType": "dict[str, dict[str, int]]",
+      "returns": [
+        {
+          "expr": "rp_rc_usage",
+          "line": 634
+        }
+      ],
+      "nloc": 10,
+      "ccn": 4,
+      "visibility": "public"
+    },
+    {
+      "name": "_remove_managed_rps_from_tree_not_in_view",
+      "kind": "method",
+      "scope": "PlacementView",
+      "lineRange": {
+        "start": 636,
+        "end": 650
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "provider_tree",
+          "type": "provider_tree.ProviderTree"
+        }
+      ],
+      "returnType": "None",
+      "returns": [],
+      "nloc": 12,
+      "ccn": 5,
+      "visibility": "private"
+    },
+    {
+      "name": "update_provider_tree",
+      "kind": "method",
+      "scope": "PlacementView",
+      "lineRange": {
+        "start": 652,
+        "end": 662
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "provider_tree",
+          "type": "provider_tree.ProviderTree"
+        },
+        {
+          "name": "allocations",
+          "type": "dict"
+        }
+      ],
+      "returnType": "None",
+      "returns": [],
+      "nloc": 10,
+      "ccn": 2,
+      "visibility": "public"
+    },
+    {
+      "name": "update_allocations",
+      "kind": "method",
+      "scope": "PlacementView",
+      "lineRange": {
+        "start": 664,
+        "end": 681
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "allocations",
+          "type": "dict"
+        },
+        {
+          "name": "provider_tree",
+          "type": "provider_tree.ProviderTree"
+        }
+      ],
+      "returnType": "bool",
+      "returns": [
+        {
+          "expr": "updated",
+          "line": 681
+        }
+      ],
+      "nloc": 13,
+      "ccn": 2,
+      "visibility": "public"
+    },
+    {
+      "name": "ensure_no_dev_spec_with_devname",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 684,
+        "end": 693
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "dev_specs",
+          "type": "list[devspec.PciDeviceSpec]"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 10,
+      "ccn": 3,
+      "exported": true
+    },
+    {
+      "name": "ensure_tracking_was_not_enabled_before",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 696,
+        "end": 713
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "provider_tree",
+          "type": "provider_tree.ProviderTree"
+        }
+      ],
+      "returnType": "None",
+      "returns": [],
+      "nloc": 14,
+      "ccn": 3,
+      "exported": true
+    },
+    {
+      "name": "update_provider_tree_for_pci",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 716,
+        "end": 793
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "provider_tree",
+          "type": "provider_tree.ProviderTree"
+        },
+        {
+          "name": "nodename",
+          "type": "str"
+        },
+        {
+          "name": "pci_tracker",
+          "type": "pci_manager.PciDevTracker"
+        },
+        {
+          "name": "allocations",
+          "type": "dict"
+        },
+        {
+          "name": "instances_under_same_host_resize",
+          "type": "list[str]"
+        }
+      ],
+      "returnType": "bool",
+      "returns": [
+        {
+          "expr": "False",
+          "line": 757
+        },
+        {
+          "expr": "updated",
+          "line": 793
+        }
+      ],
+      "nloc": 32,
+      "ccn": 4,
+      "exported": true
+    },
+    {
+      "name": "devs",
+      "kind": "property",
+      "scope": "PciResourceProvider",
+      "lineRange": {
+        "start": 154,
+        "end": 156
+      },
+      "visibility": "public",
+      "source": "manual"
+    },
+    {
+      "name": "total",
+      "kind": "property",
+      "scope": "PciResourceProvider",
+      "lineRange": {
+        "start": 158,
+        "end": 160
+      },
+      "visibility": "public",
+      "source": "manual"
+    },
+    {
+      "name": "to_be_deleted",
+      "kind": "property",
+      "scope": "PciResourceProvider",
+      "lineRange": {
+        "start": 162,
+        "end": 164
+      },
+      "visibility": "public",
+      "source": "manual"
+    },
+    {
+      "name": "get_usage_per_rc_and_rp",
+      "kind": "staticmethod",
+      "scope": "PlacementView",
+      "lineRange": {
+        "start": 619,
+        "end": 634
+      },
+      "visibility": "public",
+      "source": "manual"
+    }
+  ],
+  "referencedSymbols": [
+    {
+      "name": "logging.getLogger",
+      "usage": "call",
+      "via": "oslo_log",
+      "count": 1,
+      "lineRange": {
+        "start": 35,
+        "end": 35
+      }
+    },
+    {
+      "name": "list",
+      "usage": "type",
+      "via": null,
+      "count": 8,
+      "lineRange": {
+        "start": 51,
+        "end": 51
+      }
+    },
+    {
+      "name": "os_traits.check_traits",
+      "usage": "call",
+      "via": "os_traits",
+      "count": 1,
+      "lineRange": {
+        "start": 57,
+        "end": 57
+      }
+    },
+    {
+      "name": "os_traits.is_custom",
+      "usage": "call",
+      "via": "os_traits",
+      "count": 1,
+      "lineRange": {
+        "start": 61,
+        "end": 61
+      }
+    },
+    {
+      "name": "os_traits.normalize_name",
+      "usage": "call",
+      "via": "os_traits",
+      "count": 1,
+      "lineRange": {
+        "start": 64,
+        "end": 64
+      }
+    },
+    {
+      "name": "list",
+      "usage": "call",
+      "via": null,
+      "count": 2,
+      "lineRange": {
+        "start": 66,
+        "end": 66
+      }
+    },
+    {
+      "name": "set",
+      "usage": "type",
+      "via": null,
+      "count": 3,
+      "lineRange": {
+        "start": 69,
+        "end": 69
+      }
+    },
+    {
+      "name": "set",
+      "usage": "call",
+      "via": null,
+      "count": 3,
+      "lineRange": {
+        "start": 75,
+        "end": 75
+      }
+    },
+    {
+      "name": "dict",
+      "usage": "type",
+      "via": null,
+      "count": 14,
+      "lineRange": {
+        "start": 80,
+        "end": 80
+      }
+    },
+    {
+      "name": "strutils.bool_from_string",
+      "usage": "call",
+      "via": "oslo_utils",
+      "count": 2,
+      "lineRange": {
+        "start": 88,
+        "end": 88
+      }
+    },
+    {
+      "name": "os_resource_classes.is_custom",
+      "usage": "call",
+      "via": "os_resource_classes",
+      "count": 1,
+      "lineRange": {
+        "start": 99,
+        "end": 99
+      }
+    },
+    {
+      "name": "os_resource_classes.normalize_name",
+      "usage": "call",
+      "via": "os_resource_classes",
+      "count": 1,
+      "lineRange": {
+        "start": 101,
+        "end": 101
+      }
+    },
+    {
+      "name": "len",
+      "usage": "call",
+      "via": null,
+      "count": 2,
+      "lineRange": {
+        "start": 160,
+        "end": 160
+      }
+    },
+    {
+      "name": "exception.PlacementPciDependentDeviceException",
+      "usage": "call",
+      "via": "nova",
+      "count": 2,
+      "lineRange": {
+        "start": 168,
+        "end": 168
+      }
+    },
+    {
+      "name": "exception.PlacementPciMixedResourceClassException",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 175,
+        "end": 175
+      }
+    },
+    {
+      "name": "exception.PlacementPciMixedTraitsException",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 185,
+        "end": 185
+      }
+    },
+    {
+      "name": "sorted",
+      "usage": "call",
+      "via": null,
+      "count": 3,
+      "lineRange": {
+        "start": 186,
+        "end": 186
+      }
+    },
+    {
+      "name": "exception.PlacementPciException",
+      "usage": "call",
+      "via": "nova",
+      "count": 5,
+      "lineRange": {
+        "start": 195,
+        "end": 195
+      }
+    },
+    {
+      "name": "collections.Counter",
+      "usage": "call",
+      "via": "collections",
+      "count": 1,
+      "lineRange": {
+        "start": 246,
+        "end": 246
+      }
+    },
+    {
+      "name": "provider_tree.data",
+      "usage": "call",
+      "via": "nova.compute",
+      "count": 6,
+      "lineRange": {
+        "start": 293,
+        "end": 293
+      }
+    },
+    {
+      "name": "provider_tree.exists",
+      "usage": "call",
+      "via": "nova.compute",
+      "count": 1,
+      "lineRange": {
+        "start": 337,
+        "end": 337
+      }
+    },
+    {
+      "name": "provider_tree.new_child",
+      "usage": "call",
+      "via": "nova.compute",
+      "count": 1,
+      "lineRange": {
+        "start": 343,
+        "end": 343
+      }
+    },
+    {
+      "name": "uuidutils.generate_uuid",
+      "usage": "call",
+      "via": "oslo_utils",
+      "count": 1,
+      "lineRange": {
+        "start": 346,
+        "end": 346
+      }
+    },
+    {
+      "name": "provider_tree.remove",
+      "usage": "call",
+      "via": "nova.compute",
+      "count": 2,
+      "lineRange": {
+        "start": 354,
+        "end": 354
+      }
+    },
+    {
+      "name": "provider_tree.update_inventory",
+      "usage": "call",
+      "via": "nova.compute",
+      "count": 1,
+      "lineRange": {
+        "start": 357,
+        "end": 357
+      }
+    },
+    {
+      "name": "provider_tree.update_traits",
+      "usage": "call",
+      "via": "nova.compute",
+      "count": 1,
+      "lineRange": {
+        "start": 361,
+        "end": 361
+      }
+    },
+    {
+      "name": "provider_tree.add_traits",
+      "usage": "call",
+      "via": "nova.compute",
+      "count": 1,
+      "lineRange": {
+        "start": 362,
+        "end": 362
+      }
+    },
+    {
+      "name": "_",
+      "usage": "call",
+      "via": "nova.i18n",
+      "count": 4,
+      "lineRange": {
+        "start": 478,
+        "end": 478
+      }
+    },
+    {
+      "name": "ValueError",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 538,
+        "end": 538
+      }
+    },
+    {
+      "name": "str",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 616,
+        "end": 616
+      }
+    },
+    {
+      "name": "collections.defaultdict",
+      "usage": "call",
+      "via": "collections",
+      "count": 2,
+      "lineRange": {
+        "start": 628,
+        "end": 628
+      }
+    },
+    {
+      "name": "provider_tree.get_provider_uuids_in_tree",
+      "usage": "call",
+      "via": "nova.compute",
+      "count": 1,
+      "lineRange": {
+        "start": 643,
+        "end": 643
+      }
+    },
+    {
+      "name": "provider_tree.has_traits",
+      "usage": "call",
+      "via": "nova.compute",
+      "count": 1,
+      "lineRange": {
+        "start": 647,
+        "end": 647
+      }
+    },
+    {
+      "name": "provider_tree.get_provider_uuids",
+      "usage": "call",
+      "via": "nova.compute",
+      "count": 1,
+      "lineRange": {
+        "start": 703,
+        "end": 703
+      }
+    },
+    {
+      "name": "copy.deepcopy",
+      "usage": "call",
+      "via": "copy",
+      "count": 1,
+      "lineRange": {
+        "start": 776,
+        "end": 776
+      }
+    }
+  ],
+  "dependencies": [
+    {
+      "style": "import",
+      "module": "collections",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 15,
+        "end": 15
+      }
+    },
+    {
+      "style": "import",
+      "module": "copy",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 16,
+        "end": 16
+      }
+    },
+    {
+      "style": "import",
+      "module": "os_resource_classes",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 18,
+        "end": 18
+      }
+    },
+    {
+      "style": "import",
+      "module": "os_traits",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 19,
+        "end": 19
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_log",
+      "names": [
+        {
+          "alias": "logging",
+          "name": "log"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 20,
+        "end": 20
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_utils",
+      "names": [
+        {
+          "alias": null,
+          "name": "strutils"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 21,
+        "end": 21
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_utils",
+      "names": [
+        {
+          "alias": null,
+          "name": "uuidutils"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 22,
+        "end": 22
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.compute",
+      "names": [
+        {
+          "alias": null,
+          "name": "provider_tree"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 24,
+        "end": 24
+      }
+    },
+    {
+      "style": "import",
+      "module": "nova.conf",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 25,
+        "end": 25
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "exception"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 26,
+        "end": 26
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.i18n",
+      "names": [
+        {
+          "alias": null,
+          "name": "_"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 27,
+        "end": 27
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.objects",
+      "names": [
+        {
+          "alias": null,
+          "name": "fields"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 28,
+        "end": 28
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.objects",
+      "names": [
+        {
+          "alias": null,
+          "name": "pci_device"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 29,
+        "end": 29
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.pci",
+      "names": [
+        {
+          "alias": null,
+          "name": "devspec"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 30,
+        "end": 30
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.pci",
+      "names": [
+        {
+          "alias": "pci_manager",
+          "name": "manager"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 31,
+        "end": 31
+      }
+    }
+  ],
+  "sideEffects": [
+    {
+      "kind": "global-mutation",
+      "target": "CONF = nova.conf.CONF",
+      "lineRange": {
+        "start": 34,
+        "end": 34
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "LOG = logging.getLogger(__name__)",
+      "lineRange": {
+        "start": 35,
+        "end": 35
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "PARENT_TYPES = (",
+      "lineRange": {
+        "start": 39,
+        "end": 39
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "CHILD_TYPES = (",
+      "lineRange": {
+        "start": 43,
+        "end": 43
+      }
+    }
+  ],
+  "securitySurface": [],
+  "injection_flags": [],
+  "warnings": []
+}

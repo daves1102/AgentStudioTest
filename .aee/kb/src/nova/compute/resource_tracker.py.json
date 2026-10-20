@@ -1,0 +1,3413 @@
+{
+  "file": "src/nova/compute/resource_tracker.py",
+  "hash": "f51e3a404ce36136ee95ecf2d38a67802f6bd6fcffeadeedb94e7fb08a874bae",
+  "language": "Python",
+  "component": "nova",
+  "package": null,
+  "lines": {
+    "blank": 261,
+    "code": 1527,
+    "comment": 481,
+    "total": 2269
+  },
+  "symbols": [
+    {
+      "name": "CONF",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 55,
+        "end": 55
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "LOG",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 57,
+        "end": 57
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "COMPUTE_RESOURCE_SEMAPHORE",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 58,
+        "end": 58
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "_instance_in_resize_state",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 61,
+        "end": 76
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "instance"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "True",
+          "line": 70
+        },
+        {
+          "expr": "True",
+          "line": 74
+        },
+        {
+          "expr": "False",
+          "line": 76
+        }
+      ],
+      "nloc": 9,
+      "ccn": 4,
+      "exported": false
+    },
+    {
+      "name": "_instance_is_live_migrating",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 79,
+        "end": 85
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "instance"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "True",
+          "line": 84
+        },
+        {
+          "expr": "False",
+          "line": 85
+        }
+      ],
+      "nloc": 7,
+      "ccn": 3,
+      "exported": false
+    },
+    {
+      "name": "ResourceTracker",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 88,
+        "end": 2269
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "__init__",
+      "kind": "method",
+      "scope": "ResourceTracker",
+      "lineRange": {
+        "start": 93,
+        "end": 127
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "host"
+        },
+        {
+          "name": "driver"
+        },
+        {
+          "default": "None",
+          "name": "reportclient"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 23,
+      "ccn": 2,
+      "visibility": "public"
+    },
+    {
+      "name": "set_service_ref",
+      "kind": "method",
+      "scope": "ResourceTracker",
+      "lineRange": {
+        "start": 129,
+        "end": 139
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "service_ref"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 9,
+      "ccn": 4,
+      "visibility": "public"
+    },
+    {
+      "name": "_invalidate_pci_in_placement_cached_rps",
+      "kind": "method",
+      "scope": "ResourceTracker",
+      "lineRange": {
+        "start": 141,
+        "end": 159
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "allocs"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "",
+          "line": 149
+        }
+      ],
+      "nloc": 11,
+      "ccn": 5,
+      "visibility": "private"
+    },
+    {
+      "name": "instance_claim",
+      "kind": "method",
+      "scope": "ResourceTracker",
+      "lineRange": {
+        "start": 162,
+        "end": 242
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "context"
+        },
+        {
+          "name": "instance"
+        },
+        {
+          "name": "nodename"
+        },
+        {
+          "name": "allocations"
+        },
+        {
+          "default": "None",
+          "name": "limits"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "claim",
+          "line": 242
+        }
+      ],
+      "nloc": 33,
+      "ccn": 5,
+      "visibility": "public"
+    },
+    {
+      "name": "rebuild_claim",
+      "kind": "method",
+      "scope": "ResourceTracker",
+      "lineRange": {
+        "start": 245,
+        "end": 251
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "context"
+        },
+        {
+          "name": "instance"
+        },
+        {
+          "name": "nodename"
+        },
+        {
+          "name": "allocations"
+        },
+        {
+          "default": "None",
+          "name": "limits"
+        },
+        {
+          "default": "None",
+          "name": "image_meta"
+        },
+        {
+          "default": "None",
+          "name": "migration"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "self._move_claim( context, instance, instance.flavor, nodename, migration, allocations, move_type=fields.MigrationType.EVACUATION, image_meta=image_meta, limits=limits)",
+          "line": 248
+        }
+      ],
+      "nloc": 6,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "resize_claim",
+      "kind": "method",
+      "scope": "ResourceTracker",
+      "lineRange": {
+        "start": 254,
+        "end": 265
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "context"
+        },
+        {
+          "name": "instance"
+        },
+        {
+          "name": "flavor"
+        },
+        {
+          "name": "nodename"
+        },
+        {
+          "name": "migration"
+        },
+        {
+          "name": "allocations"
+        },
+        {
+          "default": "None",
+          "name": "image_meta"
+        },
+        {
+          "default": "None",
+          "name": "limits"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "self._move_claim( context, instance, flavor, nodename, migration, allocations, image_meta=image_meta, limits=limits)",
+          "line": 263
+        }
+      ],
+      "nloc": 7,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "live_migration_claim",
+      "kind": "method",
+      "scope": "ResourceTracker",
+      "lineRange": {
+        "start": 268,
+        "end": 290
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "context"
+        },
+        {
+          "name": "instance"
+        },
+        {
+          "name": "nodename"
+        },
+        {
+          "name": "migration"
+        },
+        {
+          "name": "limits"
+        },
+        {
+          "name": "allocs"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "self._move_claim( context, instance, flavor, nodename, migration, allocs, move_type=fields.MigrationType.LIVE_MIGRATION, image_meta=image_meta, limits=limits, )",
+          "line": 286
+        }
+      ],
+      "nloc": 10,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "_move_claim",
+      "kind": "method",
+      "scope": "ResourceTracker",
+      "lineRange": {
+        "start": 292,
+        "end": 410
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "context"
+        },
+        {
+          "name": "instance"
+        },
+        {
+          "name": "new_flavor"
+        },
+        {
+          "name": "nodename"
+        },
+        {
+          "name": "migration"
+        },
+        {
+          "name": "allocations"
+        },
+        {
+          "default": "None",
+          "name": "move_type"
+        },
+        {
+          "default": "None",
+          "name": "image_meta"
+        },
+        {
+          "default": "None",
+          "name": "limits"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "claim",
+          "line": 410
+        }
+      ],
+      "nloc": 54,
+      "ccn": 9,
+      "visibility": "private"
+    },
+    {
+      "name": "_create_migration",
+      "kind": "method",
+      "scope": "ResourceTracker",
+      "lineRange": {
+        "start": 412,
+        "end": 436
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "context"
+        },
+        {
+          "name": "instance"
+        },
+        {
+          "name": "new_flavor"
+        },
+        {
+          "name": "node"
+        },
+        {
+          "default": "None",
+          "name": "move_type"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "migration",
+          "line": 436
+        }
+      ],
+      "nloc": 21,
+      "ccn": 2,
+      "visibility": "private"
+    },
+    {
+      "name": "_claim_existing_migration",
+      "kind": "method",
+      "scope": "ResourceTracker",
+      "lineRange": {
+        "start": 438,
+        "end": 455
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "migration"
+        },
+        {
+          "name": "node"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 8,
+      "ccn": 2,
+      "visibility": "private"
+    },
+    {
+      "name": "_claim_resources",
+      "kind": "method",
+      "scope": "ResourceTracker",
+      "lineRange": {
+        "start": 457,
+        "end": 497
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "allocations"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "None",
+          "line": 462
+        },
+        {
+          "expr": "objects.ResourceList(objects=claimed_resources)",
+          "line": 497
+        }
+      ],
+      "nloc": 29,
+      "ccn": 9,
+      "visibility": "private"
+    },
+    {
+      "name": "_populate_assigned_resources",
+      "kind": "method",
+      "scope": "ResourceTracker",
+      "lineRange": {
+        "start": 499,
+        "end": 527
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "context"
+        },
+        {
+          "name": "instance_by_uuid"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 14,
+      "ccn": 11,
+      "visibility": "private"
+    },
+    {
+      "name": "_check_resources",
+      "kind": "method",
+      "scope": "ResourceTracker",
+      "lineRange": {
+        "start": 529,
+        "end": 548
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "context"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "",
+          "line": 538
+        }
+      ],
+      "nloc": 14,
+      "ccn": 5,
+      "visibility": "private"
+    },
+    {
+      "name": "_release_assigned_resources",
+      "kind": "method",
+      "scope": "ResourceTracker",
+      "lineRange": {
+        "start": 550,
+        "end": 564
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "resources"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "",
+          "line": 553
+        }
+      ],
+      "nloc": 14,
+      "ccn": 4,
+      "visibility": "private"
+    },
+    {
+      "name": "_add_assigned_resources",
+      "kind": "method",
+      "scope": "ResourceTracker",
+      "lineRange": {
+        "start": 566,
+        "end": 573
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "resources"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "",
+          "line": 569
+        }
+      ],
+      "nloc": 7,
+      "ccn": 3,
+      "visibility": "private"
+    },
+    {
+      "name": "_set_instance_host_and_node",
+      "kind": "method",
+      "scope": "ResourceTracker",
+      "lineRange": {
+        "start": 575,
+        "end": 594
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "instance"
+        },
+        {
+          "name": "node"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 7,
+      "ccn": 2,
+      "visibility": "private"
+    },
+    {
+      "name": "_unset_instance_host_and_node",
+      "kind": "method",
+      "scope": "ResourceTracker",
+      "lineRange": {
+        "start": 596,
+        "end": 605
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "instance"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 5,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "abort_instance_claim",
+      "kind": "method",
+      "scope": "ResourceTracker",
+      "lineRange": {
+        "start": 608,
+        "end": 616
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "context"
+        },
+        {
+          "name": "instance"
+        },
+        {
+          "name": "nodename"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 6,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "_drop_pci_devices",
+      "kind": "method",
+      "scope": "ResourceTracker",
+      "lineRange": {
+        "start": 618,
+        "end": 628
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "instance"
+        },
+        {
+          "name": "nodename"
+        },
+        {
+          "name": "prefix"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 9,
+      "ccn": 4,
+      "visibility": "private"
+    },
+    {
+      "name": "drop_move_claim_at_source",
+      "kind": "method",
+      "scope": "ResourceTracker",
+      "lineRange": {
+        "start": 631,
+        "end": 644
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "context"
+        },
+        {
+          "name": "instance"
+        },
+        {
+          "name": "migration"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 7,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "drop_move_claim_at_dest",
+      "kind": "method",
+      "scope": "ResourceTracker",
+      "lineRange": {
+        "start": 647,
+        "end": 662
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "context"
+        },
+        {
+          "name": "instance"
+        },
+        {
+          "name": "migration"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 8,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "drop_move_claim",
+      "kind": "method",
+      "scope": "ResourceTracker",
+      "lineRange": {
+        "start": 665,
+        "end": 668
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "context"
+        },
+        {
+          "name": "instance"
+        },
+        {
+          "name": "nodename"
+        },
+        {
+          "default": "None",
+          "name": "flavor"
+        },
+        {
+          "default": "'new_'",
+          "name": "prefix"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 4,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "_drop_move_claim",
+      "kind": "method",
+      "scope": "ResourceTracker",
+      "lineRange": {
+        "start": 670,
+        "end": 716
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "context"
+        },
+        {
+          "name": "instance"
+        },
+        {
+          "name": "nodename"
+        },
+        {
+          "default": "None",
+          "name": "flavor"
+        },
+        {
+          "default": "'new_'",
+          "name": "prefix"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 22,
+      "ccn": 4,
+      "visibility": "private"
+    },
+    {
+      "name": "update_usage",
+      "kind": "method",
+      "scope": "ResourceTracker",
+      "lineRange": {
+        "start": 719,
+        "end": 732
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "context"
+        },
+        {
+          "name": "instance"
+        },
+        {
+          "name": "nodename"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "",
+          "line": 724
+        }
+      ],
+      "nloc": 7,
+      "ccn": 3,
+      "visibility": "public"
+    },
+    {
+      "name": "disabled",
+      "kind": "method",
+      "scope": "ResourceTracker",
+      "lineRange": {
+        "start": 734,
+        "end": 736
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "nodename"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "(nodename not in self.compute_nodes or not self.driver.node_is_available(nodename))",
+          "line": 735
+        }
+      ],
+      "nloc": 3,
+      "ccn": 2,
+      "visibility": "public"
+    },
+    {
+      "name": "_init_compute_node",
+      "kind": "method",
+      "scope": "ResourceTracker",
+      "lineRange": {
+        "start": 738,
+        "end": 824
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "context"
+        },
+        {
+          "name": "resources"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "False",
+          "line": 771
+        },
+        {
+          "expr": "False",
+          "line": 798
+        },
+        {
+          "expr": "True",
+          "line": 824
+        }
+      ],
+      "nloc": 50,
+      "ccn": 10,
+      "visibility": "private"
+    },
+    {
+      "name": "_setup_pci_tracker",
+      "kind": "method",
+      "scope": "ResourceTracker",
+      "lineRange": {
+        "start": 826,
+        "end": 835
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "context"
+        },
+        {
+          "name": "compute_node"
+        },
+        {
+          "name": "resources"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 9,
+      "ccn": 3,
+      "visibility": "private"
+    },
+    {
+      "name": "_copy_resources",
+      "kind": "method",
+      "scope": "ResourceTracker",
+      "lineRange": {
+        "start": 837,
+        "end": 880
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "compute_node"
+        },
+        {
+          "name": "resources"
+        },
+        {
+          "default": "False",
+          "name": "initial"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 17,
+      "ccn": 4,
+      "visibility": "private"
+    },
+    {
+      "name": "remove_node",
+      "kind": "method",
+      "scope": "ResourceTracker",
+      "lineRange": {
+        "start": 882,
+        "end": 890
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "nodename"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 4,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "_get_host_metrics",
+      "kind": "method",
+      "scope": "ResourceTracker",
+      "lineRange": {
+        "start": 892,
+        "end": 920
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "context"
+        },
+        {
+          "name": "nodename"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "metric_list",
+          "line": 920
+        }
+      ],
+      "nloc": 24,
+      "ccn": 5,
+      "visibility": "private"
+    },
+    {
+      "name": "update_available_resource",
+      "kind": "method",
+      "scope": "ResourceTracker",
+      "lineRange": {
+        "start": 922,
+        "end": 965
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "context"
+        },
+        {
+          "name": "nodename"
+        },
+        {
+          "default": "False",
+          "name": "startup"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 14,
+      "ccn": 4,
+      "visibility": "public"
+    },
+    {
+      "name": "_pair_instances_to_migrations",
+      "kind": "method",
+      "scope": "ResourceTracker",
+      "lineRange": {
+        "start": 967,
+        "end": 981
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "migrations"
+        },
+        {
+          "name": "instance_by_uuid"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 8,
+      "ccn": 3,
+      "visibility": "private"
+    },
+    {
+      "name": "_ensure_compute_id_for_instances",
+      "kind": "method",
+      "scope": "ResourceTracker",
+      "lineRange": {
+        "start": 983,
+        "end": 1001
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "context"
+        },
+        {
+          "name": "instances"
+        },
+        {
+          "name": "node"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 16,
+      "ccn": 6,
+      "visibility": "private"
+    },
+    {
+      "name": "_update_available_resource",
+      "kind": "method",
+      "scope": "ResourceTracker",
+      "lineRange": {
+        "start": 1004,
+        "end": 1112
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "context"
+        },
+        {
+          "name": "resources"
+        },
+        {
+          "default": "False",
+          "name": "startup"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "",
+          "line": 1015
+        }
+      ],
+      "nloc": 50,
+      "ccn": 9,
+      "visibility": "private"
+    },
+    {
+      "name": "_get_compute_node",
+      "kind": "method",
+      "scope": "ResourceTracker",
+      "lineRange": {
+        "start": 1114,
+        "end": 1120
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "context"
+        },
+        {
+          "name": "node_uuid"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "objects.ComputeNode.get_by_uuid(context, node_uuid)",
+          "line": 1117
+        }
+      ],
+      "nloc": 6,
+      "ccn": 2,
+      "visibility": "private"
+    },
+    {
+      "name": "_report_hypervisor_resource_view",
+      "kind": "method",
+      "scope": "ResourceTracker",
+      "lineRange": {
+        "start": 1122,
+        "end": 1155
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "resources"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 21,
+      "ccn": 2,
+      "visibility": "private"
+    },
+    {
+      "name": "_report_final_resource_view",
+      "kind": "method",
+      "scope": "ResourceTracker",
+      "lineRange": {
+        "start": 1157,
+        "end": 1196
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "nodename"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 35,
+      "ccn": 4,
+      "visibility": "private"
+    },
+    {
+      "name": "_resource_change",
+      "kind": "method",
+      "scope": "ResourceTracker",
+      "lineRange": {
+        "start": 1198,
+        "end": 1206
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "compute_node"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "True",
+          "line": 1205
+        },
+        {
+          "expr": "False",
+          "line": 1206
+        }
+      ],
+      "nloc": 8,
+      "ccn": 2,
+      "visibility": "private"
+    },
+    {
+      "name": "_sync_compute_service_disabled_trait",
+      "kind": "method",
+      "scope": "ResourceTracker",
+      "lineRange": {
+        "start": 1208,
+        "end": 1232
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "context"
+        },
+        {
+          "name": "traits"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 11,
+      "ccn": 3,
+      "visibility": "private"
+    },
+    {
+      "name": "_should_expose_remote_managed_ports_trait",
+      "kind": "method",
+      "scope": "ResourceTracker",
+      "lineRange": {
+        "start": 1234,
+        "end": 1254
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "is_supported",
+          "type": "bool"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "(is_supported and self.pci_tracker.pci_stats.has_remote_managed_device_pools())",
+          "line": 1253
+        }
+      ],
+      "nloc": 4,
+      "ccn": 2,
+      "visibility": "private"
+    },
+    {
+      "name": "_get_traits",
+      "kind": "method",
+      "scope": "ResourceTracker",
+      "lineRange": {
+        "start": 1256,
+        "end": 1296
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "context"
+        },
+        {
+          "name": "nodename"
+        },
+        {
+          "name": "provider_tree"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "list(traits)",
+          "line": 1296
+        }
+      ],
+      "nloc": 15,
+      "ccn": 5,
+      "visibility": "private"
+    },
+    {
+      "name": "_update_to_placement",
+      "kind": "method",
+      "scope": "ResourceTracker",
+      "lineRange": {
+        "start": 1308,
+        "end": 1413
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "context"
+        },
+        {
+          "name": "compute_node"
+        },
+        {
+          "name": "startup"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 43,
+      "ccn": 8,
+      "visibility": "private"
+    },
+    {
+      "name": "_update",
+      "kind": "method",
+      "scope": "ResourceTracker",
+      "lineRange": {
+        "start": 1415,
+        "end": 1447
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "context"
+        },
+        {
+          "name": "compute_node"
+        },
+        {
+          "default": "False",
+          "name": "startup"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 15,
+      "ccn": 5,
+      "visibility": "private"
+    },
+    {
+      "name": "_update_usage",
+      "kind": "method",
+      "scope": "ResourceTracker",
+      "lineRange": {
+        "start": 1449,
+        "end": 1486
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "usage"
+        },
+        {
+          "name": "nodename"
+        },
+        {
+          "default": "1",
+          "name": "sign"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 21,
+      "ccn": 3,
+      "visibility": "private"
+    },
+    {
+      "name": "_get_migration_context_resource",
+      "kind": "method",
+      "scope": "ResourceTracker",
+      "lineRange": {
+        "start": 1488,
+        "end": 1494
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "resource"
+        },
+        {
+          "name": "instance"
+        },
+        {
+          "default": "'new_'",
+          "name": "prefix"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "getattr(migration_context, resource)",
+          "line": 1493
+        },
+        {
+          "expr": "None",
+          "line": 1494
+        }
+      ],
+      "nloc": 7,
+      "ccn": 3,
+      "visibility": "private"
+    },
+    {
+      "name": "_update_usage_from_migration",
+      "kind": "method",
+      "scope": "ResourceTracker",
+      "lineRange": {
+        "start": 1496,
+        "end": 1577
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "context"
+        },
+        {
+          "name": "instance"
+        },
+        {
+          "name": "migration"
+        },
+        {
+          "name": "nodename"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 54,
+      "ccn": 15,
+      "visibility": "private"
+    },
+    {
+      "name": "_update_usage_from_migrations",
+      "kind": "method",
+      "scope": "ResourceTracker",
+      "lineRange": {
+        "start": 1579,
+        "end": 1646
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "context"
+        },
+        {
+          "name": "migrations"
+        },
+        {
+          "name": "nodename"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 47,
+      "ccn": 14,
+      "visibility": "private"
+    },
+    {
+      "name": "_release_leaked_move_claims",
+      "kind": "method",
+      "scope": "ResourceTracker",
+      "lineRange": {
+        "start": 1648,
+        "end": 1710
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "context"
+        },
+        {
+          "name": "migrations"
+        },
+        {
+          "name": "instance_by_uuid"
+        },
+        {
+          "name": "nodename"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 27,
+      "ccn": 10,
+      "visibility": "private"
+    },
+    {
+      "name": "_update_usage_from_instance",
+      "kind": "method",
+      "scope": "ResourceTracker",
+      "lineRange": {
+        "start": 1712,
+        "end": 1759
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "context"
+        },
+        {
+          "name": "instance"
+        },
+        {
+          "name": "nodename"
+        },
+        {
+          "default": "False",
+          "name": "is_removed"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 33,
+      "ccn": 11,
+      "visibility": "private"
+    },
+    {
+      "name": "_update_usage_from_instances",
+      "kind": "method",
+      "scope": "ResourceTracker",
+      "lineRange": {
+        "start": 1761,
+        "end": 1786
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "context"
+        },
+        {
+          "name": "instances"
+        },
+        {
+          "name": "nodename"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "instance_by_uuid",
+          "line": 1786
+        }
+      ],
+      "nloc": 18,
+      "ccn": 3,
+      "visibility": "private"
+    },
+    {
+      "name": "_remove_deleted_instances_allocations",
+      "kind": "method",
+      "scope": "ResourceTracker",
+      "lineRange": {
+        "start": 1788,
+        "end": 1920
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "context"
+        },
+        {
+          "name": "cn"
+        },
+        {
+          "name": "migrations"
+        },
+        {
+          "name": "instance_by_uuid"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "",
+          "line": 1805
+        },
+        {
+          "expr": "",
+          "line": 1810
+        }
+      ],
+      "nloc": 79,
+      "ccn": 17,
+      "visibility": "private"
+    },
+    {
+      "name": "delete_allocation_for_evacuated_instance",
+      "kind": "method",
+      "scope": "ResourceTracker",
+      "lineRange": {
+        "start": 1922,
+        "end": 1930
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "context"
+        },
+        {
+          "name": "instance"
+        },
+        {
+          "name": "node"
+        },
+        {
+          "default": "'source'",
+          "name": "node_type"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 8,
+      "ccn": 2,
+      "visibility": "public"
+    },
+    {
+      "name": "delete_allocation_for_shelve_offloaded_instance",
+      "kind": "method",
+      "scope": "ResourceTracker",
+      "lineRange": {
+        "start": 1932,
+        "end": 1935
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "context"
+        },
+        {
+          "name": "instance"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 4,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "_verify_resources",
+      "kind": "method",
+      "scope": "ResourceTracker",
+      "lineRange": {
+        "start": 1937,
+        "end": 1945
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "resources"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 8,
+      "ccn": 4,
+      "visibility": "private"
+    },
+    {
+      "name": "_get_flavor",
+      "kind": "method",
+      "scope": "ResourceTracker",
+      "lineRange": {
+        "start": 1947,
+        "end": 1955
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "instance"
+        },
+        {
+          "name": "prefix"
+        },
+        {
+          "name": "migration"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "getattr(instance, '%sflavor' % prefix)",
+          "line": 1950
+        },
+        {
+          "expr": "instance.flavor",
+          "line": 1955
+        }
+      ],
+      "nloc": 4,
+      "ccn": 2,
+      "visibility": "private"
+    },
+    {
+      "name": "_get_usage_dict",
+      "kind": "method",
+      "scope": "ResourceTracker",
+      "lineRange": {
+        "start": 1957,
+        "end": 2005
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "object_or_dict"
+        },
+        {
+          "name": "instance"
+        },
+        {
+          "name": "**updates"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "usage",
+          "line": 2005
+        }
+      ],
+      "nloc": 22,
+      "ccn": 7,
+      "visibility": "private"
+    },
+    {
+      "name": "_is_bfv",
+      "kind": "function",
+      "scope": "ResourceTracker._get_usage_dict",
+      "lineRange": {
+        "start": 1975,
+        "end": 1983
+      },
+      "source": "aee-inventory",
+      "parameters": [],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "is_bfv",
+          "line": 1983
+        }
+      ],
+      "visibility": "private"
+    },
+    {
+      "name": "_merge_provider_configs",
+      "kind": "method",
+      "scope": "ResourceTracker",
+      "lineRange": {
+        "start": 2007,
+        "end": 2118
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "provider_configs"
+        },
+        {
+          "name": "provider_tree"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 74,
+      "ccn": 17,
+      "visibility": "private"
+    },
+    {
+      "name": "_get_providers_to_update",
+      "kind": "method",
+      "scope": "ResourceTracker",
+      "lineRange": {
+        "start": 2120,
+        "end": 2154
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "uuid_or_name"
+        },
+        {
+          "name": "provider_tree"
+        },
+        {
+          "name": "source_file"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "[root.data() for root in provider_tree.roots if os_traits.COMPUTE_NODE in root.traits]",
+          "line": 2135
+        },
+        {
+          "expr": "providers_to_update",
+          "line": 2154
+        }
+      ],
+      "nloc": 19,
+      "ccn": 6,
+      "visibility": "private"
+    },
+    {
+      "name": "build_failed",
+      "kind": "method",
+      "scope": "ResourceTracker",
+      "lineRange": {
+        "start": 2156,
+        "end": 2158
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "nodename"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "build_succeeded",
+      "kind": "method",
+      "scope": "ResourceTracker",
+      "lineRange": {
+        "start": 2160,
+        "end": 2162
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "nodename"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "claim_pci_devices",
+      "kind": "method",
+      "scope": "ResourceTracker",
+      "lineRange": {
+        "start": 2165,
+        "end": 2178
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "context"
+        },
+        {
+          "name": "pci_requests"
+        },
+        {
+          "name": "instance_numa_topology"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "result",
+          "line": 2178
+        }
+      ],
+      "nloc": 5,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "unclaim_pci_devices",
+      "kind": "method",
+      "scope": "ResourceTracker",
+      "lineRange": {
+        "start": 2181,
+        "end": 2190
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "context"
+        },
+        {
+          "name": "pci_device"
+        },
+        {
+          "name": "instance"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 3,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "allocate_pci_devices_for_instance",
+      "kind": "method",
+      "scope": "ResourceTracker",
+      "lineRange": {
+        "start": 2193,
+        "end": 2200
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "context"
+        },
+        {
+          "name": "instance"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 3,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "free_pci_device_allocations_for_instance",
+      "kind": "method",
+      "scope": "ResourceTracker",
+      "lineRange": {
+        "start": 2203,
+        "end": 2210
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "context"
+        },
+        {
+          "name": "instance"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 3,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "free_pci_device_claims_for_instance",
+      "kind": "method",
+      "scope": "ResourceTracker",
+      "lineRange": {
+        "start": 2213,
+        "end": 2220
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "context"
+        },
+        {
+          "name": "instance"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 3,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "finish_evacuation",
+      "kind": "method",
+      "scope": "ResourceTracker",
+      "lineRange": {
+        "start": 2223,
+        "end": 2241
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "instance"
+        },
+        {
+          "name": "node"
+        },
+        {
+          "name": "migration"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 10,
+      "ccn": 4,
+      "visibility": "public"
+    },
+    {
+      "name": "clean_compute_node_cache",
+      "kind": "method",
+      "scope": "ResourceTracker",
+      "lineRange": {
+        "start": 2244,
+        "end": 2259
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "compute_nodes_in_db"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 7,
+      "ccn": 3,
+      "visibility": "public"
+    },
+    {
+      "name": "get_node_by_name",
+      "kind": "method",
+      "scope": "ResourceTracker",
+      "lineRange": {
+        "start": 2261,
+        "end": 2269
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "nodename"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "self.compute_nodes[nodename]",
+          "line": 2267
+        }
+      ],
+      "nloc": 5,
+      "ccn": 2,
+      "visibility": "public"
+    }
+  ],
+  "referencedSymbols": [
+    {
+      "name": "logging.getLogger",
+      "usage": "call",
+      "via": "oslo_log",
+      "count": 1,
+      "lineRange": {
+        "start": 57,
+        "end": 57
+      }
+    },
+    {
+      "name": "object",
+      "usage": "inherit",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 88,
+        "end": 88
+      }
+    },
+    {
+      "name": "collections.defaultdict",
+      "usage": "call",
+      "via": "collections",
+      "count": 4,
+      "lineRange": {
+        "start": 101,
+        "end": 101
+      }
+    },
+    {
+      "name": "set",
+      "usage": "call",
+      "via": null,
+      "count": 6,
+      "lineRange": {
+        "start": 103,
+        "end": 103
+      }
+    },
+    {
+      "name": "monitors.MonitorHandler",
+      "usage": "call",
+      "via": "nova.compute",
+      "count": 1,
+      "lineRange": {
+        "start": 106,
+        "end": 106
+      }
+    },
+    {
+      "name": "report.report_client_singleton",
+      "usage": "call",
+      "via": "nova.scheduler.client",
+      "count": 1,
+      "lineRange": {
+        "start": 109,
+        "end": 109
+      }
+    },
+    {
+      "name": "provider_config.get_provider_configs",
+      "usage": "call",
+      "via": "nova.compute",
+      "count": 1,
+      "lineRange": {
+        "start": 122,
+        "end": 122
+      }
+    },
+    {
+      "name": "exception.ComputeServiceInUse",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 133,
+        "end": 133
+      }
+    },
+    {
+      "name": "exception.ServiceNotUnique",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 136,
+        "end": 136
+      }
+    },
+    {
+      "name": "utils.synchronized",
+      "usage": "call",
+      "via": "nova",
+      "count": 17,
+      "lineRange": {
+        "start": 161,
+        "end": 161
+      }
+    },
+    {
+      "name": "exception.ComputeResourcesUnavailable",
+      "usage": "call",
+      "via": "nova",
+      "count": 3,
+      "lineRange": {
+        "start": 191,
+        "end": 191
+      }
+    },
+    {
+      "name": "claims.Claim",
+      "usage": "call",
+      "via": "nova.compute",
+      "count": 1,
+      "lineRange": {
+        "start": 210,
+        "end": 210
+      }
+    },
+    {
+      "name": "pci_request.get_pci_requests_from_flavor",
+      "usage": "call",
+      "via": "nova.pci",
+      "count": 1,
+      "lineRange": {
+        "start": 343,
+        "end": 343
+      }
+    },
+    {
+      "name": "claims.MoveClaim",
+      "usage": "call",
+      "via": "nova.compute",
+      "count": 1,
+      "lineRange": {
+        "start": 352,
+        "end": 352
+      }
+    },
+    {
+      "name": "objects.PciDeviceList",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 369,
+        "end": 369
+      }
+    },
+    {
+      "name": "objects.MigrationContext",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 378,
+        "end": 378
+      }
+    },
+    {
+      "name": "copy.deepcopy",
+      "usage": "call",
+      "via": "copy",
+      "count": 2,
+      "lineRange": {
+        "start": 388,
+        "end": 388
+      }
+    },
+    {
+      "name": "objects.Migration",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 419,
+        "end": 419
+      }
+    },
+    {
+      "name": "migration_obj.determine_migration_type",
+      "usage": "call",
+      "via": "nova.objects",
+      "count": 1,
+      "lineRange": {
+        "start": 433,
+        "end": 433
+      }
+    },
+    {
+      "name": "len",
+      "usage": "call",
+      "via": null,
+      "count": 3,
+      "lineRange": {
+        "start": 485,
+        "end": 485
+      }
+    },
+    {
+      "name": "_",
+      "usage": "call",
+      "via": "nova.i18n",
+      "count": 6,
+      "lineRange": {
+        "start": 486,
+        "end": 486
+      }
+    },
+    {
+      "name": "range",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 492,
+        "end": 492
+      }
+    },
+    {
+      "name": "objects.ResourceList",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 497,
+        "end": 497
+      }
+    },
+    {
+      "name": "exception.AssignedResourceNotFound",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 548,
+        "end": 548
+      }
+    },
+    {
+      "name": "utils.temporary_mutation",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 778,
+        "end": 778
+      }
+    },
+    {
+      "name": "objects.ComputeNode",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 803,
+        "end": 803
+      }
+    },
+    {
+      "name": "exception.InvalidConfiguration",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 810,
+        "end": 810
+      }
+    },
+    {
+      "name": "pci_manager.PciDevTracker",
+      "usage": "call",
+      "via": "nova.pci",
+      "count": 1,
+      "lineRange": {
+        "start": 828,
+        "end": 828
+      }
+    },
+    {
+      "name": "getattr",
+      "usage": "call",
+      "via": null,
+      "count": 4,
+      "lineRange": {
+        "start": 869,
+        "end": 869
+      }
+    },
+    {
+      "name": "setattr",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 877,
+        "end": 877
+      }
+    },
+    {
+      "name": "objects.MonitorMetricList",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 896,
+        "end": 896
+      }
+    },
+    {
+      "name": "rpc.get_notifier",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 916,
+        "end": 916
+      }
+    },
+    {
+      "name": "compute_utils.notify_about_metrics_update",
+      "usage": "call",
+      "via": "nova.compute",
+      "count": 1,
+      "lineRange": {
+        "start": 918,
+        "end": 918
+      }
+    },
+    {
+      "name": "node.get_local_node_uuid",
+      "usage": "call",
+      "via": "nova.virt",
+      "count": 1,
+      "lineRange": {
+        "start": 953,
+        "end": 953
+      }
+    },
+    {
+      "name": "objects.InstanceList.get_by_host_and_node",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 1018,
+        "end": 1018
+      }
+    },
+    {
+      "name": "objects.MigrationList.get_in_progress_and_error",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 1026,
+        "end": 1026
+      }
+    },
+    {
+      "name": "jsonutils.dumps",
+      "usage": "call",
+      "via": "oslo_serialization",
+      "count": 1,
+      "lineRange": {
+        "start": 1099,
+        "end": 1099
+      }
+    },
+    {
+      "name": "objects.ComputeNode.get_by_uuid",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 1117,
+        "end": 1117
+      }
+    },
+    {
+      "name": "list",
+      "usage": "call",
+      "via": null,
+      "count": 2,
+      "lineRange": {
+        "start": 1175,
+        "end": 1175
+      }
+    },
+    {
+      "name": "obj_base.obj_equal_prims",
+      "usage": "call",
+      "via": "nova.objects",
+      "count": 1,
+      "lineRange": {
+        "start": 1202,
+        "end": 1202
+      }
+    },
+    {
+      "name": "objects.Service.get_by_compute_host",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 1221,
+        "end": 1221
+      }
+    },
+    {
+      "name": "retrying.retry",
+      "usage": "call",
+      "via": "retrying",
+      "count": 1,
+      "lineRange": {
+        "start": 1298,
+        "end": 1298
+      }
+    },
+    {
+      "name": "isinstance",
+      "usage": "call",
+      "via": null,
+      "count": 3,
+      "lineRange": {
+        "start": 1300,
+        "end": 1300
+      }
+    },
+    {
+      "name": "pci_placement_translator.update_provider_tree_for_pci",
+      "usage": "call",
+      "via": "nova.compute",
+      "count": 1,
+      "lineRange": {
+        "start": 1385,
+        "end": 1385
+      }
+    },
+    {
+      "name": "exception.PlacementPciException",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 1413,
+        "end": 1413
+      }
+    },
+    {
+      "name": "str",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 1413,
+        "end": 1413
+      }
+    },
+    {
+      "name": "excutils.save_and_reraise_exception",
+      "usage": "call",
+      "via": "oslo_utils",
+      "count": 1,
+      "lineRange": {
+        "start": 1443,
+        "end": 1443
+      }
+    },
+    {
+      "name": "objects.NUMATopology.obj_from_db_obj",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 1479,
+        "end": 1479
+      }
+    },
+    {
+      "name": "hardware.numa_usage_from_instance_numa",
+      "usage": "call",
+      "via": "nova.virt",
+      "count": 1,
+      "lineRange": {
+        "start": 1485,
+        "end": 1485
+      }
+    },
+    {
+      "name": "objects.PciDevicePoolList",
+      "usage": "call",
+      "via": "nova",
+      "count": 2,
+      "lineRange": {
+        "start": 1575,
+        "end": 1575
+      }
+    },
+    {
+      "name": "vm_states.allow_resource_removal",
+      "usage": "call",
+      "via": "nova.compute",
+      "count": 2,
+      "lineRange": {
+        "start": 1721,
+        "end": 1721
+      }
+    },
+    {
+      "name": "objects.Instance.get_by_uuid",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 1829,
+        "end": 1829
+      }
+    },
+    {
+      "name": "exception.InvalidInput",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 1945,
+        "end": 1945
+      }
+    },
+    {
+      "name": "compute_utils.is_volume_backed_instance",
+      "usage": "call",
+      "via": "nova.compute",
+      "count": 1,
+      "lineRange": {
+        "start": 1980,
+        "end": 1980
+      }
+    },
+    {
+      "name": "obj_base.obj_to_primitive",
+      "usage": "call",
+      "via": "nova.objects",
+      "count": 1,
+      "lineRange": {
+        "start": 1996,
+        "end": 1996
+      }
+    },
+    {
+      "name": "any",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 2042,
+        "end": 2042
+      }
+    },
+    {
+      "name": "ValueError",
+      "usage": "call",
+      "via": null,
+      "count": 3,
+      "lineRange": {
+        "start": 2051,
+        "end": 2051
+      }
+    },
+    {
+      "name": "exception.ComputeHostNotFound",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 2269,
+        "end": 2269
+      }
+    }
+  ],
+  "dependencies": [
+    {
+      "style": "import",
+      "module": "collections",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 21,
+        "end": 21
+      }
+    },
+    {
+      "style": "import",
+      "module": "copy",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 22,
+        "end": 22
+      }
+    },
+    {
+      "style": "from",
+      "module": "keystoneauth1",
+      "names": [
+        {
+          "alias": "ks_exc",
+          "name": "exceptions"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 24,
+        "end": 24
+      }
+    },
+    {
+      "style": "import",
+      "module": "os_traits",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 25,
+        "end": 25
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_log",
+      "names": [
+        {
+          "alias": "logging",
+          "name": "log"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 26,
+        "end": 26
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_serialization",
+      "names": [
+        {
+          "alias": null,
+          "name": "jsonutils"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 27,
+        "end": 27
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_utils",
+      "names": [
+        {
+          "alias": null,
+          "name": "excutils"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 28,
+        "end": 28
+      }
+    },
+    {
+      "style": "import",
+      "module": "retrying",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 29,
+        "end": 29
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.compute",
+      "names": [
+        {
+          "alias": null,
+          "name": "claims"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 31,
+        "end": 31
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.compute",
+      "names": [
+        {
+          "alias": null,
+          "name": "monitors"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 32,
+        "end": 32
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.compute",
+      "names": [
+        {
+          "alias": null,
+          "name": "pci_placement_translator"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 33,
+        "end": 33
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.compute",
+      "names": [
+        {
+          "alias": null,
+          "name": "provider_config"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 34,
+        "end": 34
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.compute",
+      "names": [
+        {
+          "alias": "compute_stats",
+          "name": "stats"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 35,
+        "end": 35
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.compute",
+      "names": [
+        {
+          "alias": null,
+          "name": "task_states"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 36,
+        "end": 36
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.compute",
+      "names": [
+        {
+          "alias": "compute_utils",
+          "name": "utils"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 37,
+        "end": 37
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.compute",
+      "names": [
+        {
+          "alias": null,
+          "name": "vm_states"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 38,
+        "end": 38
+      }
+    },
+    {
+      "style": "import",
+      "module": "nova.conf",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 39,
+        "end": 39
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "exception"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 40,
+        "end": 40
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.i18n",
+      "names": [
+        {
+          "alias": null,
+          "name": "_"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 41,
+        "end": 41
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "objects"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 42,
+        "end": 42
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.objects",
+      "names": [
+        {
+          "alias": "obj_base",
+          "name": "base"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 43,
+        "end": 43
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.objects",
+      "names": [
+        {
+          "alias": null,
+          "name": "fields"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 44,
+        "end": 44
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.objects",
+      "names": [
+        {
+          "alias": "migration_obj",
+          "name": "migration"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 45,
+        "end": 45
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.pci",
+      "names": [
+        {
+          "alias": "pci_manager",
+          "name": "manager"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 46,
+        "end": 46
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.pci",
+      "names": [
+        {
+          "alias": "pci_request",
+          "name": "request"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 47,
+        "end": 47
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "rpc"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 48,
+        "end": 48
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.scheduler.client",
+      "names": [
+        {
+          "alias": null,
+          "name": "report"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 49,
+        "end": 49
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "utils"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 50,
+        "end": 50
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.virt",
+      "names": [
+        {
+          "alias": null,
+          "name": "hardware"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 51,
+        "end": 51
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.virt",
+      "names": [
+        {
+          "alias": null,
+          "name": "node"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 52,
+        "end": 52
+      }
+    }
+  ],
+  "sideEffects": [
+    {
+      "kind": "global-mutation",
+      "target": "CONF = nova.conf.CONF",
+      "lineRange": {
+        "start": 55,
+        "end": 55
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "LOG = logging.getLogger(__name__)",
+      "lineRange": {
+        "start": 57,
+        "end": 57
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "COMPUTE_RESOURCE_SEMAPHORE = \"compute_resources\"",
+      "lineRange": {
+        "start": 58,
+        "end": 58
+      }
+    }
+  ],
+  "securitySurface": [
+    {
+      "kind": "privilege",
+      "category": "crypto-key",
+      "description": "from keystoneauth1 import exceptions as ks_exc",
+      "lineRange": {
+        "start": 24,
+        "end": 24
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "\"\"\"Update the resource usage and stats after a change in an",
+      "lineRange": {
+        "start": 720,
+        "end": 720
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "notifier.info(context, 'compute.metrics.update', metrics_info)",
+      "lineRange": {
+        "start": 917,
+        "end": 917
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "\"\"\"Update partial stats locally and populate them to Scheduler.\"\"\"",
+      "lineRange": {
+        "start": 1416,
+        "end": 1416
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "\"\"\"Update usage for a single migration.  The record may",
+      "lineRange": {
+        "start": 1498,
+        "end": 1498
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "\"\"\"Update usage for a single instance.\"\"\"",
+      "lineRange": {
+        "start": 1714,
+        "end": 1714
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": ":param updates: key-value pairs to update the passed object.",
+      "lineRange": {
+        "start": 1967,
+        "end": 1967
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "usage.update(object_or_dict)",
+      "lineRange": {
+        "start": 2000,
+        "end": 2000
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "providers in the update that are not present in the tree are logged",
+      "lineRange": {
+        "start": 2009,
+        "end": 2009
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "merged_inventory.update(inventory)",
+      "lineRange": {
+        "start": 2110,
+        "end": 2110
+      }
+    }
+  ],
+  "injection_flags": [],
+  "warnings": []
+}

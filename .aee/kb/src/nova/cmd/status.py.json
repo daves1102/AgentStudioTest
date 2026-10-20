@@ -1,0 +1,1265 @@
+{
+  "file": "src/nova/cmd/status.py",
+  "hash": "d702688a9d9d73f59c27f28395dfdb11c9b772fb832836079b65f356c572f29a",
+  "language": "Python",
+  "component": "nova",
+  "package": null,
+  "lines": {
+    "blank": 50,
+    "code": 238,
+    "comment": 73,
+    "total": 361
+  },
+  "symbols": [
+    {
+      "name": "CONF",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 53,
+        "end": 53
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "MIN_PLACEMENT_MICROVERSION",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 60,
+        "end": 60
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "MIN_CINDER_MICROVERSION",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 64,
+        "end": 64
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "UpgradeCommands",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 67,
+        "end": 312
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "_count_compute_nodes",
+      "kind": "method",
+      "scope": "UpgradeCommands",
+      "lineRange": {
+        "start": 76,
+        "end": 101
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "default": "None",
+          "name": "context"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "conn.execute( sa.select(sqlfunc.count()).select_from(compute_nodes).where( compute_nodes.c.deleted == 0 ) ).scalars().first()",
+          "line": 97
+        }
+      ],
+      "nloc": 10,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "_check_cellsv2",
+      "kind": "method",
+      "scope": "UpgradeCommands",
+      "lineRange": {
+        "start": 103,
+        "end": 159
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "upgradecheck.Result(upgradecheck.Code.FAILURE, msg)",
+          "line": 125
+        },
+        {
+          "expr": "upgradecheck.Result(upgradecheck.Code.FAILURE, msg)",
+          "line": 132
+        },
+        {
+          "expr": "upgradecheck.Result(upgradecheck.Code.FAILURE, msg)",
+          "line": 152
+        },
+        {
+          "expr": "upgradecheck.Result(upgradecheck.Code.SUCCESS, msg)",
+          "line": 157
+        },
+        {
+          "expr": "upgradecheck.Result(upgradecheck.Code.SUCCESS)",
+          "line": 159
+        }
+      ],
+      "nloc": 34,
+      "ccn": 6,
+      "visibility": "private"
+    },
+    {
+      "name": "_placement_get",
+      "kind": "method",
+      "scope": "UpgradeCommands",
+      "lineRange": {
+        "start": 162,
+        "end": 170
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "path"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "client.get(path, raise_exc=True).json()",
+          "line": 170
+        }
+      ],
+      "nloc": 3,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "_check_placement",
+      "kind": "method",
+      "scope": "UpgradeCommands",
+      "lineRange": {
+        "start": 172,
+        "end": 206
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "upgradecheck.Result(upgradecheck.Code.FAILURE, msg)",
+          "line": 189
+        },
+        {
+          "expr": "upgradecheck.Result(upgradecheck.Code.FAILURE, msg)",
+          "line": 192
+        },
+        {
+          "expr": "upgradecheck.Result(upgradecheck.Code.FAILURE, msg)",
+          "line": 195
+        },
+        {
+          "expr": "upgradecheck.Result(upgradecheck.Code.FAILURE, msg)",
+          "line": 198
+        },
+        {
+          "expr": "upgradecheck.Result(upgradecheck.Code.FAILURE, msg)",
+          "line": 201
+        },
+        {
+          "expr": "upgradecheck.Result(upgradecheck.Code.FAILURE, msg)",
+          "line": 204
+        },
+        {
+          "expr": "upgradecheck.Result(upgradecheck.Code.SUCCESS)",
+          "line": 206
+        }
+      ],
+      "nloc": 28,
+      "ccn": 7,
+      "visibility": "private"
+    },
+    {
+      "name": "_get_cell_mappings",
+      "kind": "method",
+      "scope": "UpgradeCommands",
+      "lineRange": {
+        "start": 209,
+        "end": 225
+      },
+      "source": "aee-inventory",
+      "parameters": [],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "cell_mappings",
+          "line": 225
+        }
+      ],
+      "nloc": 4,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "_check_cinder",
+      "kind": "method",
+      "scope": "UpgradeCommands",
+      "lineRange": {
+        "start": 227,
+        "end": 253
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "upgradecheck.Result(upgradecheck.Code.SUCCESS)",
+          "line": 234
+        },
+        {
+          "expr": "upgradecheck.Result( upgradecheck.Code.FAILURE, _('Cinder API %s or greater is required. Deploy at least ' 'Cinder 12.0.0 (Queens).') % MIN_CINDER_MICROVERSION)",
+          "line": 242
+        },
+        {
+          "expr": "upgradecheck.Result( upgradecheck.Code.WARNING, _('Unable to determine Cinder API version due to error: %s') % str(ex))",
+          "line": 249
+        },
+        {
+          "expr": "upgradecheck.Result(upgradecheck.Code.SUCCESS)",
+          "line": 253
+        }
+      ],
+      "nloc": 17,
+      "ccn": 4,
+      "visibility": "private"
+    },
+    {
+      "name": "_check_old_computes",
+      "kind": "method",
+      "scope": "UpgradeCommands",
+      "lineRange": {
+        "start": 255,
+        "end": 263
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "upgradecheck.Result(upgradecheck.Code.FAILURE, str(e))",
+          "line": 261
+        },
+        {
+          "expr": "upgradecheck.Result(upgradecheck.Code.SUCCESS)",
+          "line": 263
+        }
+      ],
+      "nloc": 6,
+      "ccn": 2,
+      "visibility": "private"
+    },
+    {
+      "name": "_check_machine_type_set",
+      "kind": "method",
+      "scope": "UpgradeCommands",
+      "lineRange": {
+        "start": 265,
+        "end": 276
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "upgradecheck.Result(upgradecheck.Code.WARNING, msg)",
+          "line": 274
+        },
+        {
+          "expr": "upgradecheck.Result(upgradecheck.Code.SUCCESS)",
+          "line": 276
+        }
+      ],
+      "nloc": 11,
+      "ccn": 2,
+      "visibility": "private"
+    },
+    {
+      "name": "_check_service_user_token",
+      "kind": "method",
+      "scope": "UpgradeCommands",
+      "lineRange": {
+        "start": 278,
+        "end": 285
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "upgradecheck.Result(upgradecheck.Code.FAILURE, msg)",
+          "line": 284
+        },
+        {
+          "expr": "upgradecheck.Result(upgradecheck.Code.SUCCESS)",
+          "line": 285
+        }
+      ],
+      "nloc": 8,
+      "ccn": 2,
+      "visibility": "private"
+    },
+    {
+      "name": "_upgrade_checks",
+      "kind": "field",
+      "scope": "UpgradeCommands",
+      "lineRange": {
+        "start": 294,
+        "end": 312
+      },
+      "source": "aee-inventory",
+      "visibility": "private"
+    },
+    {
+      "name": "CATEGORIES",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 315,
+        "end": 317
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "add_command_parsers",
+      "kind": "variable",
+      "scope": "",
+      "lineRange": {
+        "start": 320,
+        "end": 321
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "category_opt",
+      "kind": "variable",
+      "scope": "",
+      "lineRange": {
+        "start": 324,
+        "end": 327
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "main",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 330,
+        "end": 350
+      },
+      "source": "aee-inventory",
+      "parameters": [],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "0",
+          "line": 337
+        },
+        {
+          "expr": "0",
+          "line": 341
+        },
+        {
+          "expr": "ret",
+          "line": 346
+        },
+        {
+          "expr": "255",
+          "line": 350
+        }
+      ],
+      "nloc": 16,
+      "ccn": 4,
+      "exported": true
+    },
+    {
+      "name": "_at_exit",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 358,
+        "end": 361
+      },
+      "source": "aee-inventory",
+      "parameters": [],
+      "returnType": null,
+      "returns": [],
+      "nloc": 4,
+      "ccn": 2,
+      "exported": false
+    },
+    {
+      "name": "_placement_get",
+      "kind": "staticmethod",
+      "scope": "UpgradeCommands",
+      "lineRange": {
+        "start": 161,
+        "end": 170
+      },
+      "visibility": "private",
+      "source": "manual"
+    },
+    {
+      "name": "_get_cell_mappings",
+      "kind": "staticmethod",
+      "scope": "UpgradeCommands",
+      "lineRange": {
+        "start": 208,
+        "end": 225
+      },
+      "visibility": "private",
+      "source": "manual"
+    }
+  ],
+  "referencedSymbols": [
+    {
+      "name": "monkey_patch.patch",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 19,
+        "end": 19
+      }
+    },
+    {
+      "name": "upgradecheck.UpgradeCommands",
+      "usage": "inherit",
+      "via": "oslo_upgradecheck",
+      "count": 1,
+      "lineRange": {
+        "start": 67,
+        "end": 67
+      }
+    },
+    {
+      "name": "sa.MetaData",
+      "usage": "call",
+      "via": "sqlalchemy",
+      "count": 2,
+      "lineRange": {
+        "start": 93,
+        "end": 93
+      }
+    },
+    {
+      "name": "main_db_api.get_engine",
+      "usage": "call",
+      "via": "nova.db.main",
+      "count": 1,
+      "lineRange": {
+        "start": 94,
+        "end": 94
+      }
+    },
+    {
+      "name": "sa.Table",
+      "usage": "call",
+      "via": "sqlalchemy",
+      "count": 2,
+      "lineRange": {
+        "start": 95,
+        "end": 95
+      }
+    },
+    {
+      "name": "sa.select",
+      "usage": "call",
+      "via": "sqlalchemy",
+      "count": 2,
+      "lineRange": {
+        "start": 98,
+        "end": 98
+      }
+    },
+    {
+      "name": "sqlfunc.count",
+      "usage": "call",
+      "via": "sqlalchemy",
+      "count": 2,
+      "lineRange": {
+        "start": 98,
+        "end": 98
+      }
+    },
+    {
+      "name": "api_db_api.get_engine",
+      "usage": "call",
+      "via": "nova.db.api",
+      "count": 1,
+      "lineRange": {
+        "start": 115,
+        "end": 115
+      }
+    },
+    {
+      "name": "len",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 118,
+        "end": 118
+      }
+    },
+    {
+      "name": "_",
+      "usage": "call",
+      "via": "nova.i18n",
+      "count": 22,
+      "lineRange": {
+        "start": 121,
+        "end": 121
+      }
+    },
+    {
+      "name": "upgradecheck.Result",
+      "usage": "call",
+      "via": "oslo_upgradecheck",
+      "count": 22,
+      "lineRange": {
+        "start": 125,
+        "end": 125
+      }
+    },
+    {
+      "name": "any",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 127,
+        "end": 127
+      }
+    },
+    {
+      "name": "utils.get_ksa_adapter",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 169,
+        "end": 169
+      }
+    },
+    {
+      "name": "microversion_parse.parse_version_string",
+      "usage": "call",
+      "via": "microversion_parse",
+      "count": 2,
+      "lineRange": {
+        "start": 181,
+        "end": 181
+      }
+    },
+    {
+      "name": "nova_context.get_admin_context",
+      "usage": "call",
+      "via": "nova",
+      "count": 3,
+      "lineRange": {
+        "start": 223,
+        "end": 223
+      }
+    },
+    {
+      "name": "cell_mapping_obj.CellMappingList.get_all",
+      "usage": "call",
+      "via": "nova.objects",
+      "count": 1,
+      "lineRange": {
+        "start": 224,
+        "end": 224
+      }
+    },
+    {
+      "name": "cinder.is_microversion_supported",
+      "usage": "call",
+      "via": "nova.volume",
+      "count": 1,
+      "lineRange": {
+        "start": 239,
+        "end": 239
+      }
+    },
+    {
+      "name": "str",
+      "usage": "call",
+      "via": null,
+      "count": 2,
+      "lineRange": {
+        "start": 252,
+        "end": 252
+      }
+    },
+    {
+      "name": "utils.raise_if_old_compute",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 259,
+        "end": 259
+      }
+    },
+    {
+      "name": "machine_type_utils.get_instances_without_type",
+      "usage": "call",
+      "via": "nova.virt.libvirt",
+      "count": 1,
+      "lineRange": {
+        "start": 267,
+        "end": 267
+      }
+    },
+    {
+      "name": "functools.partial",
+      "usage": "call",
+      "via": "functools",
+      "count": 1,
+      "lineRange": {
+        "start": 320,
+        "end": 320
+      }
+    },
+    {
+      "name": "cfg.SubCommandOpt",
+      "usage": "call",
+      "via": "oslo_config",
+      "count": 1,
+      "lineRange": {
+        "start": 324,
+        "end": 324
+      }
+    },
+    {
+      "name": "config.parse_args",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 333,
+        "end": 333
+      }
+    },
+    {
+      "name": "print",
+      "usage": "call",
+      "via": null,
+      "count": 2,
+      "lineRange": {
+        "start": 336,
+        "end": 336
+      }
+    },
+    {
+      "name": "version.version_string_with_package",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 336,
+        "end": 336
+      }
+    },
+    {
+      "name": "cmd_common.print_bash_completion",
+      "usage": "call",
+      "via": "nova.cmd",
+      "count": 1,
+      "lineRange": {
+        "start": 340,
+        "end": 340
+      }
+    },
+    {
+      "name": "cmd_common.get_action_fn",
+      "usage": "call",
+      "via": "nova.cmd",
+      "count": 1,
+      "lineRange": {
+        "start": 344,
+        "end": 344
+      }
+    },
+    {
+      "name": "fn",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 345,
+        "end": 345
+      }
+    },
+    {
+      "name": "traceback.format_exc",
+      "usage": "call",
+      "via": "traceback",
+      "count": 1,
+      "lineRange": {
+        "start": 348,
+        "end": 348
+      }
+    },
+    {
+      "name": "utils.concurrency_mode_threading",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 359,
+        "end": 359
+      }
+    }
+  ],
+  "dependencies": [
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "monkey_patch"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 19,
+        "end": 19
+      }
+    },
+    {
+      "style": "import",
+      "module": "atexit",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 22,
+        "end": 22
+      }
+    },
+    {
+      "style": "import",
+      "module": "functools",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 23,
+        "end": 23
+      }
+    },
+    {
+      "style": "import",
+      "module": "sys",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 24,
+        "end": 24
+      }
+    },
+    {
+      "style": "import",
+      "module": "traceback",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 25,
+        "end": 25
+      }
+    },
+    {
+      "style": "from",
+      "module": "keystoneauth1",
+      "names": [
+        {
+          "alias": "ks_exc",
+          "name": "exceptions"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 27,
+        "end": 27
+      }
+    },
+    {
+      "style": "import",
+      "module": "microversion_parse",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 28,
+        "end": 28
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_config",
+      "names": [
+        {
+          "alias": null,
+          "name": "cfg"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 29,
+        "end": 29
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_upgradecheck",
+      "names": [
+        {
+          "alias": null,
+          "name": "common_checks"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 30,
+        "end": 30
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_upgradecheck",
+      "names": [
+        {
+          "alias": null,
+          "name": "upgradecheck"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 31,
+        "end": 31
+      }
+    },
+    {
+      "style": "import",
+      "module": "sqlalchemy",
+      "names": [],
+      "alias": "sa",
+      "relative": false,
+      "lineRange": {
+        "start": 32,
+        "end": 32
+      }
+    },
+    {
+      "style": "from",
+      "module": "sqlalchemy",
+      "names": [
+        {
+          "alias": "sqlfunc",
+          "name": "func"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 33,
+        "end": 33
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.cmd",
+      "names": [
+        {
+          "alias": "cmd_common",
+          "name": "common"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 35,
+        "end": 35
+      }
+    },
+    {
+      "style": "import",
+      "module": "nova.conf",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 36,
+        "end": 36
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "config"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 37,
+        "end": 37
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": "nova_context",
+          "name": "context"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 38,
+        "end": 38
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.db.api",
+      "names": [
+        {
+          "alias": "api_db_api",
+          "name": "api"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 39,
+        "end": 39
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.db.main",
+      "names": [
+        {
+          "alias": "main_db_api",
+          "name": "api"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 40,
+        "end": 40
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "exception"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 41,
+        "end": 41
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.i18n",
+      "names": [
+        {
+          "alias": null,
+          "name": "_"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 42,
+        "end": 42
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.objects",
+      "names": [
+        {
+          "alias": "cell_mapping_obj",
+          "name": "cell_mapping"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 43,
+        "end": 43
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.objects",
+      "names": [
+        {
+          "alias": "image_meta_obj",
+          "name": "image_meta"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 46,
+        "end": 46
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.objects",
+      "names": [
+        {
+          "alias": "instance_obj",
+          "name": "instance"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 47,
+        "end": 47
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "utils"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 48,
+        "end": 48
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "version"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 49,
+        "end": 49
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.virt.libvirt",
+      "names": [
+        {
+          "alias": null,
+          "name": "machine_type_utils"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 50,
+        "end": 50
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.volume",
+      "names": [
+        {
+          "alias": null,
+          "name": "cinder"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 51,
+        "end": 51
+      }
+    },
+    {
+      "style": "import",
+      "module": "logging",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 360,
+        "end": 360
+      }
+    }
+  ],
+  "sideEffects": [
+    {
+      "kind": "network",
+      "target": "https://docs.openstack.org/nova/latest/admin/hw-machine-type.html\"\"\"))",
+      "lineRange": {
+        "start": 273,
+        "end": 273
+      }
+    },
+    {
+      "kind": "network",
+      "target": "https://docs.openstack.org/nova/latest/admin/configuration/service-user-token.html\"\"\"))  # noqa",
+      "lineRange": {
+        "start": 283,
+        "end": 283
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "CONF = nova.conf.CONF",
+      "lineRange": {
+        "start": 53,
+        "end": 53
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "MIN_PLACEMENT_MICROVERSION = \"1.36\"",
+      "lineRange": {
+        "start": 60,
+        "end": 60
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "MIN_CINDER_MICROVERSION = '3.44'",
+      "lineRange": {
+        "start": 64,
+        "end": 64
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "CATEGORIES = {",
+      "lineRange": {
+        "start": 315,
+        "end": 315
+      }
+    }
+  ],
+  "securitySurface": [
+    {
+      "kind": "privilege",
+      "category": "crypto-key",
+      "description": "from keystoneauth1 import exceptions as ks_exc",
+      "lineRange": {
+        "start": 27,
+        "end": 27
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "sa.select(sqlfunc.count()).select_from(compute_nodes).where(",
+      "lineRange": {
+        "start": 98,
+        "end": 98
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "sa.select(sqlfunc.count()).select_from(host_mappings)",
+      "lineRange": {
+        "start": 138,
+        "end": 138
+      }
+    },
+    {
+      "kind": "entry-point",
+      "category": "cli-args",
+      "description": "config.parse_args(sys.argv)",
+      "lineRange": {
+        "start": 333,
+        "end": 333
+      }
+    }
+  ],
+  "injection_flags": [],
+  "warnings": []
+}

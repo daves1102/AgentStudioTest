@@ -1,0 +1,175 @@
+{
+  "file": "src/nova/conf/base.py",
+  "hash": "2d64fcc62f6d41804e337d7d6c5a5318fbe2223cd345937b716fd9adb358b87d",
+  "language": "Python",
+  "component": "nova",
+  "package": null,
+  "lines": {
+    "blank": 27,
+    "code": 169,
+    "comment": 19,
+    "total": 215
+  },
+  "symbols": [
+    {
+      "name": "NOVA_DEFAULT_GRACEFUL_SHUTDOWN_TIMEOUT",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 25,
+        "end": 25
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "base_options",
+      "kind": "variable",
+      "scope": "",
+      "lineRange": {
+        "start": 31,
+        "end": 207
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "register_opts",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 210,
+        "end": 211
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "conf"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 2,
+      "ccn": 1,
+      "exported": true
+    },
+    {
+      "name": "list_opts",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 214,
+        "end": 215
+      },
+      "source": "aee-inventory",
+      "parameters": [],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "{'DEFAULT': base_options}",
+          "line": 215
+        }
+      ],
+      "nloc": 2,
+      "ccn": 1,
+      "exported": true
+    }
+  ],
+  "referencedSymbols": [
+    {
+      "name": "opts.set_service_opts_defaults",
+      "usage": "call",
+      "via": "oslo_service",
+      "count": 1,
+      "lineRange": {
+        "start": 26,
+        "end": 26
+      }
+    },
+    {
+      "name": "cfg.IntOpt",
+      "usage": "call",
+      "via": "oslo_config",
+      "count": 6,
+      "lineRange": {
+        "start": 32,
+        "end": 32
+      }
+    },
+    {
+      "name": "cfg.StrOpt",
+      "usage": "call",
+      "via": "oslo_config",
+      "count": 4,
+      "lineRange": {
+        "start": 37,
+        "end": 37
+      }
+    },
+    {
+      "name": "cfg.BoolOpt",
+      "usage": "call",
+      "via": "oslo_config",
+      "count": 1,
+      "lineRange": {
+        "start": 52,
+        "end": 52
+      }
+    }
+  ],
+  "dependencies": [
+    {
+      "style": "from",
+      "module": "oslo_config",
+      "names": [
+        {
+          "alias": null,
+          "name": "cfg"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 18,
+        "end": 18
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_service",
+      "names": [
+        {
+          "alias": null,
+          "name": "opts"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 19,
+        "end": 19
+      }
+    }
+  ],
+  "sideEffects": [
+    {
+      "kind": "network",
+      "target": ".. __: https://docs.openstack.org/nova/latest/admin/concurrency.html",
+      "lineRange": {
+        "start": 128,
+        "end": 128
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "NOVA_DEFAULT_GRACEFUL_SHUTDOWN_TIMEOUT = 180",
+      "lineRange": {
+        "start": 25,
+        "end": 25
+      }
+    }
+  ],
+  "securitySurface": [],
+  "injection_flags": [],
+  "warnings": []
+}

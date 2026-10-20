@@ -1,0 +1,387 @@
+{
+  "file": "src/nova/cmd/conductor.py",
+  "hash": "f9634f218d729a5e6360559306f28554233fc4f616a93e4b7bf21a8b78587921",
+  "language": "Python",
+  "component": "nova",
+  "package": null,
+  "lines": {
+    "blank": 10,
+    "code": 28,
+    "comment": 15,
+    "total": 53
+  },
+  "symbols": [
+    {
+      "name": "CONF",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 35,
+        "end": 35
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "main",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 38,
+        "end": 53
+      },
+      "source": "aee-inventory",
+      "parameters": [],
+      "returnType": null,
+      "returns": [],
+      "nloc": 13,
+      "ccn": 2,
+      "exported": true
+    }
+  ],
+  "referencedSymbols": [
+    {
+      "name": "monkey_patch.patch",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 17,
+        "end": 17
+      }
+    },
+    {
+      "name": "config.parse_args",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 39,
+        "end": 39
+      }
+    },
+    {
+      "name": "logging.setup",
+      "usage": "call",
+      "via": "oslo_log",
+      "count": 1,
+      "lineRange": {
+        "start": 40,
+        "end": 40
+      }
+    },
+    {
+      "name": "objects.register_all",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 41,
+        "end": 41
+      }
+    },
+    {
+      "name": "gmr_opts.set_defaults",
+      "usage": "call",
+      "via": "oslo_reports",
+      "count": 1,
+      "lineRange": {
+        "start": 42,
+        "end": 42
+      }
+    },
+    {
+      "name": "objects.Service.enable_min_version_cache",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 43,
+        "end": 43
+      }
+    },
+    {
+      "name": "gmr.TextGuruMeditation.setup_autorun",
+      "usage": "call",
+      "via": "oslo_reports",
+      "count": 1,
+      "lineRange": {
+        "start": 45,
+        "end": 45
+      }
+    },
+    {
+      "name": "service.Service.create",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 47,
+        "end": 47
+      }
+    },
+    {
+      "name": "processutils.get_worker_count",
+      "usage": "call",
+      "via": "oslo_concurrency",
+      "count": 1,
+      "lineRange": {
+        "start": 49,
+        "end": 49
+      }
+    },
+    {
+      "name": "thread_pool_factory.reset_all_executors",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 51,
+        "end": 51
+      }
+    },
+    {
+      "name": "service.serve",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 52,
+        "end": 52
+      }
+    },
+    {
+      "name": "service.wait",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 53,
+        "end": 53
+      }
+    }
+  ],
+  "dependencies": [
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "monkey_patch"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 17,
+        "end": 17
+      }
+    },
+    {
+      "style": "import",
+      "module": "sys",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 20,
+        "end": 20
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_concurrency",
+      "names": [
+        {
+          "alias": null,
+          "name": "processutils"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 22,
+        "end": 22
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_log",
+      "names": [
+        {
+          "alias": "logging",
+          "name": "log"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 23,
+        "end": 23
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_reports",
+      "names": [
+        {
+          "alias": "gmr",
+          "name": "guru_meditation_report"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 24,
+        "end": 24
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_reports",
+      "names": [
+        {
+          "alias": "gmr_opts",
+          "name": "opts"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 25,
+        "end": 25
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.conductor",
+      "names": [
+        {
+          "alias": null,
+          "name": "rpcapi"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 27,
+        "end": 27
+      }
+    },
+    {
+      "style": "import",
+      "module": "nova.conf",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 28,
+        "end": 28
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "config"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 29,
+        "end": 29
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "objects"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 30,
+        "end": 30
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "service"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 31,
+        "end": 31
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "thread_pool_factory"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 32,
+        "end": 32
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "version"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 33,
+        "end": 33
+      }
+    }
+  ],
+  "sideEffects": [
+    {
+      "kind": "global-mutation",
+      "target": "CONF = nova.conf.CONF",
+      "lineRange": {
+        "start": 35,
+        "end": 35
+      }
+    }
+  ],
+  "securitySurface": [
+    {
+      "kind": "entry-point",
+      "category": "cli-args",
+      "description": "config.parse_args(sys.argv)",
+      "lineRange": {
+        "start": 39,
+        "end": 39
+      }
+    }
+  ],
+  "injection_flags": [],
+  "warnings": []
+}

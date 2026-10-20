@@ -1,0 +1,272 @@
+{
+  "file": "src/nova/conf/utils.py",
+  "hash": "4305c87066fdd8f056319c2547f7d034e5316499e738dfc4f0a8d55a73c0e593",
+  "language": "Python",
+  "component": "nova",
+  "package": null,
+  "lines": {
+    "blank": 15,
+    "code": 55,
+    "comment": 21,
+    "total": 91
+  },
+  "symbols": [
+    {
+      "name": "_ADAPTER_VERSION_OPTS",
+      "kind": "variable",
+      "scope": "",
+      "lineRange": {
+        "start": 22,
+        "end": 22
+      },
+      "source": "aee-inventory",
+      "exported": false
+    },
+    {
+      "name": "get_ksa_adapter_opts",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 25,
+        "end": 49
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "default_service_type"
+        },
+        {
+          "default": "None",
+          "name": "deprecated_opts"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "opts",
+          "line": 49
+        }
+      ],
+      "nloc": 10,
+      "ccn": 3,
+      "exported": true
+    },
+    {
+      "name": "_dummy_opt",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 52,
+        "end": 55
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "name"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "cfg.Opt(name, type=lambda x: None)",
+          "line": 55
+        }
+      ],
+      "nloc": 2,
+      "ccn": 1,
+      "exported": false
+    },
+    {
+      "name": "register_ksa_opts",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 58,
+        "end": 86
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "conf"
+        },
+        {
+          "name": "group"
+        },
+        {
+          "name": "default_service_type"
+        },
+        {
+          "default": "True",
+          "name": "include_auth"
+        },
+        {
+          "default": "None",
+          "name": "deprecated_opts"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 11,
+      "ccn": 3,
+      "exported": true
+    },
+    {
+      "name": "list_opts",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 90,
+        "end": 91
+      },
+      "source": "aee-inventory",
+      "parameters": [],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "{}",
+          "line": 91
+        }
+      ],
+      "nloc": 2,
+      "ccn": 1,
+      "exported": true
+    }
+  ],
+  "referencedSymbols": [
+    {
+      "name": "ks_loading.get_adapter_conf_options",
+      "usage": "call",
+      "via": "keystoneauth1",
+      "count": 1,
+      "lineRange": {
+        "start": 36,
+        "end": 36
+      }
+    },
+    {
+      "name": "cfg.set_defaults",
+      "usage": "call",
+      "via": "oslo_config",
+      "count": 1,
+      "lineRange": {
+        "start": 46,
+        "end": 46
+      }
+    },
+    {
+      "name": "cfg.Opt",
+      "usage": "call",
+      "via": "oslo_config",
+      "count": 1,
+      "lineRange": {
+        "start": 55,
+        "end": 55
+      }
+    },
+    {
+      "name": "getattr",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 77,
+        "end": 77
+      }
+    },
+    {
+      "name": "ks_loading.register_session_conf_options",
+      "usage": "call",
+      "via": "keystoneauth1",
+      "count": 1,
+      "lineRange": {
+        "start": 78,
+        "end": 78
+      }
+    },
+    {
+      "name": "ks_loading.register_auth_conf_options",
+      "usage": "call",
+      "via": "keystoneauth1",
+      "count": 1,
+      "lineRange": {
+        "start": 81,
+        "end": 81
+      }
+    }
+  ],
+  "dependencies": [
+    {
+      "style": "from",
+      "module": "keystoneauth1",
+      "names": [
+        {
+          "alias": "ks_loading",
+          "name": "loading"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 18,
+        "end": 18
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_config",
+      "names": [
+        {
+          "alias": null,
+          "name": "cfg"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 19,
+        "end": 19
+      }
+    }
+  ],
+  "sideEffects": [],
+  "securitySurface": [
+    {
+      "kind": "privilege",
+      "category": "crypto-key",
+      "description": "from keystoneauth1 import loading as ks_loading",
+      "lineRange": {
+        "start": 18,
+        "end": 18
+      }
+    },
+    {
+      "kind": "privilege",
+      "category": "crypto-key",
+      "description": "keystoneauth1.loading.session.Session.register_conf_options",
+      "lineRange": {
+        "start": 33,
+        "end": 33
+      }
+    },
+    {
+      "kind": "privilege",
+      "category": "crypto-key",
+      "description": "\"\"\"Register keystoneauth auth, Session, and Adapter opts.",
+      "lineRange": {
+        "start": 60,
+        "end": 60
+      }
+    },
+    {
+      "kind": "privilege",
+      "category": "crypto-key",
+      "description": "keystoneauth1.loading.session.Session.register_conf_options",
+      "lineRange": {
+        "start": 74,
+        "end": 74
+      }
+    }
+  ],
+  "injection_flags": [],
+  "warnings": []
+}

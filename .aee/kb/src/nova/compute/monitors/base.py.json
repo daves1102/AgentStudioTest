@@ -1,0 +1,183 @@
+{
+  "file": "src/nova/compute/monitors/base.py",
+  "hash": "459a073cea58ce2ab07f0cbc3fce6453eda4e69c96b7e5f5d29a12186c485318",
+  "language": "Python",
+  "component": "nova",
+  "package": null,
+  "lines": {
+    "blank": 15,
+    "code": 48,
+    "comment": 11,
+    "total": 74
+  },
+  "symbols": [
+    {
+      "name": "MonitorBase",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 18,
+        "end": 56
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "__init__",
+      "kind": "method",
+      "scope": "MonitorBase",
+      "lineRange": {
+        "start": 26,
+        "end": 28
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "compute_manager"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 3,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "get_metric_names",
+      "kind": "method",
+      "scope": "MonitorBase",
+      "lineRange": {
+        "start": 31,
+        "end": 40
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "populate_metrics",
+      "kind": "method",
+      "scope": "MonitorBase",
+      "lineRange": {
+        "start": 43,
+        "end": 56
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "metric_list"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "CPUMonitorBase",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 59,
+        "end": 74
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "get_metric_names",
+      "kind": "method",
+      "scope": "CPUMonitorBase",
+      "lineRange": {
+        "start": 62,
+        "end": 74
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "set([ fields.MonitorMetricType.CPU_FREQUENCY, fields.MonitorMetricType.CPU_USER_TIME, fields.MonitorMetricType.CPU_KERNEL_TIME, fields.MonitorMetricType.CPU_IDLE_TIME, fields.MonitorMetricType.CPU_IOW",
+          "line": 63
+        }
+      ],
+      "nloc": 13,
+      "ccn": 1,
+      "visibility": "public"
+    }
+  ],
+  "referencedSymbols": [
+    {
+      "name": "NotImplementedError",
+      "usage": "call",
+      "via": null,
+      "count": 2,
+      "lineRange": {
+        "start": 40,
+        "end": 40
+      }
+    },
+    {
+      "name": "set",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 63,
+        "end": 63
+      }
+    }
+  ],
+  "dependencies": [
+    {
+      "style": "import",
+      "module": "abc",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 13,
+        "end": 13
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.objects",
+      "names": [
+        {
+          "alias": null,
+          "name": "fields"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 15,
+        "end": 15
+      }
+    }
+  ],
+  "sideEffects": [],
+  "securitySurface": [],
+  "injection_flags": [],
+  "warnings": []
+}

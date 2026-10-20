@@ -1,0 +1,6231 @@
+{
+  "file": "src/nova/cmd/manage.py",
+  "hash": "9fc57d375562781c2d966dfeb9f373396898d71a1a713fa77a1f01a68f0724b7",
+  "language": "Python",
+  "component": "nova",
+  "package": null,
+  "lines": {
+    "blank": 386,
+    "code": 2970,
+    "comment": 502,
+    "total": 3858
+  },
+  "symbols": [
+    {
+      "name": "CONF",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 92,
+        "end": 92
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "LOG",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 93,
+        "end": 93
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "_EXTRA_DEFAULT_LOG_LEVELS",
+      "kind": "variable",
+      "scope": "",
+      "lineRange": {
+        "start": 96,
+        "end": 103
+      },
+      "source": "aee-inventory",
+      "exported": false
+    },
+    {
+      "name": "_CREATE",
+      "kind": "variable",
+      "scope": "",
+      "lineRange": {
+        "start": 107,
+        "end": 107
+      },
+      "source": "aee-inventory",
+      "exported": false
+    },
+    {
+      "name": "_UPDATE",
+      "kind": "variable",
+      "scope": "",
+      "lineRange": {
+        "start": 108,
+        "end": 108
+      },
+      "source": "aee-inventory",
+      "exported": false
+    },
+    {
+      "name": "args",
+      "kind": "variable",
+      "scope": "",
+      "lineRange": {
+        "start": 111,
+        "end": 111
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "action_description",
+      "kind": "variable",
+      "scope": "",
+      "lineRange": {
+        "start": 112,
+        "end": 112
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "mask_passwd_in_url",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 115,
+        "end": 122
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "url"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "urlparse.urlunparse(new_parsed)",
+          "line": 122
+        }
+      ],
+      "nloc": 8,
+      "ccn": 1,
+      "exported": true
+    },
+    {
+      "name": "format_dict",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 125,
+        "end": 155
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "dct"
+        },
+        {
+          "default": "\"Property\"",
+          "name": "dict_property"
+        },
+        {
+          "default": "'Value'",
+          "name": "dict_value"
+        },
+        {
+          "default": "None",
+          "name": "sort_key"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "encodeutils.safe_encode(pt.get_string()).decode()",
+          "line": 155
+        }
+      ],
+      "nloc": 18,
+      "ccn": 8,
+      "exported": true
+    },
+    {
+      "name": "locked_instance",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 159,
+        "end": 182
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "cell_mapping"
+        },
+        {
+          "name": "instance"
+        },
+        {
+          "name": "reason"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 14,
+      "ccn": 5,
+      "exported": true
+    },
+    {
+      "name": "DbCommands",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 185,
+        "end": 695
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "online_migrations",
+      "kind": "field",
+      "scope": "DbCommands",
+      "lineRange": {
+        "start": 202,
+        "end": 223
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "sync",
+      "kind": "method",
+      "scope": "DbCommands",
+      "lineRange": {
+        "start": 229,
+        "end": 260
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "default": "None",
+          "name": "version"
+        },
+        {
+          "default": "False",
+          "name": "local_cell"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "1",
+          "line": 258
+        },
+        {
+          "expr": "migration.db_sync(version)",
+          "line": 260
+        }
+      ],
+      "nloc": 28,
+      "ccn": 4,
+      "visibility": "public"
+    },
+    {
+      "name": "version",
+      "kind": "method",
+      "scope": "DbCommands",
+      "lineRange": {
+        "start": 262,
+        "end": 264
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "archive_deleted_rows",
+      "kind": "method",
+      "scope": "DbCommands",
+      "lineRange": {
+        "start": 296,
+        "end": 425
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "default": "1000",
+          "name": "max_rows"
+        },
+        {
+          "default": "False",
+          "name": "verbose"
+        },
+        {
+          "default": "False",
+          "name": "until_complete"
+        },
+        {
+          "default": "False",
+          "name": "purge"
+        },
+        {
+          "default": "None",
+          "name": "before"
+        },
+        {
+          "default": "False",
+          "name": "all_cells"
+        },
+        {
+          "default": "False",
+          "name": "task_log"
+        },
+        {
+          "default": "0",
+          "name": "sleep"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "2",
+          "line": 312
+        },
+        {
+          "expr": "2",
+          "line": 316
+        },
+        {
+          "expr": "3",
+          "line": 329
+        },
+        {
+          "expr": "4",
+          "line": 336
+        },
+        {
+          "expr": "int(bool(table_to_rows_archived))",
+          "line": 425
+        }
+      ],
+      "nloc": 85,
+      "ccn": 22,
+      "visibility": "public"
+    },
+    {
+      "name": "sort_func",
+      "kind": "function",
+      "scope": "DbCommands.archive_deleted_rows",
+      "lineRange": {
+        "start": 359,
+        "end": 361
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "item"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "cell_name, table",
+          "line": 361
+        }
+      ],
+      "visibility": "public"
+    },
+    {
+      "name": "_do_archive",
+      "kind": "method",
+      "scope": "DbCommands",
+      "lineRange": {
+        "start": 427,
+        "end": 508
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "table_to_rows_archived"
+        },
+        {
+          "name": "cctxt"
+        },
+        {
+          "name": "max_rows"
+        },
+        {
+          "name": "until_complete"
+        },
+        {
+          "name": "verbose"
+        },
+        {
+          "name": "before_date"
+        },
+        {
+          "name": "cell_name"
+        },
+        {
+          "name": "task_log"
+        },
+        {
+          "name": "sleep"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "total_rows_archived",
+          "line": 508
+        }
+      ],
+      "nloc": 41,
+      "ccn": 9,
+      "visibility": "private"
+    },
+    {
+      "name": "purge",
+      "kind": "method",
+      "scope": "DbCommands",
+      "lineRange": {
+        "start": 521,
+        "end": 561
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "default": "None",
+          "name": "before"
+        },
+        {
+          "default": "False",
+          "name": "purge_all"
+        },
+        {
+          "default": "False",
+          "name": "verbose"
+        },
+        {
+          "default": "False",
+          "name": "all_cells"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "1",
+          "line": 525
+        },
+        {
+          "expr": "2",
+          "line": 531
+        },
+        {
+          "expr": "4",
+          "line": 548
+        },
+        {
+          "expr": "0",
+          "line": 559
+        },
+        {
+          "expr": "3",
+          "line": 561
+        }
+      ],
+      "nloc": 36,
+      "ccn": 9,
+      "visibility": "public"
+    },
+    {
+      "name": "status",
+      "kind": "function",
+      "scope": "DbCommands.purge",
+      "lineRange": {
+        "start": 535,
+        "end": 537
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "msg"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "visibility": "public"
+    },
+    {
+      "name": "_run_migration",
+      "kind": "method",
+      "scope": "DbCommands",
+      "lineRange": {
+        "start": 563,
+        "end": 594
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "ctxt"
+        },
+        {
+          "name": "max_count"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "migrations, exceptions",
+          "line": 594
+        }
+      ],
+      "nloc": 27,
+      "ccn": 6,
+      "visibility": "private"
+    },
+    {
+      "name": "online_data_migrations",
+      "kind": "method",
+      "scope": "DbCommands",
+      "lineRange": {
+        "start": 598,
+        "end": 654
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "default": "None",
+          "name": "max_count"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "127",
+          "line": 608
+        },
+        {
+          "expr": "2",
+          "line": 650
+        },
+        {
+          "expr": "ran and 1 or 0",
+          "line": 654
+        }
+      ],
+      "nloc": 42,
+      "ccn": 14,
+      "visibility": "public"
+    },
+    {
+      "name": "ironic_compute_node_move",
+      "kind": "method",
+      "scope": "DbCommands",
+      "lineRange": {
+        "start": 661,
+        "end": 695
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "compute_node_uuid"
+        },
+        {
+          "name": "destination_service_host"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 29,
+      "ccn": 5,
+      "visibility": "public"
+    },
+    {
+      "name": "ApiDbCommands",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 698,
+        "end": 711
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "__init__",
+      "kind": "method",
+      "scope": "ApiDbCommands",
+      "lineRange": {
+        "start": 701,
+        "end": 702
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "sync",
+      "kind": "method",
+      "scope": "ApiDbCommands",
+      "lineRange": {
+        "start": 705,
+        "end": 707
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "default": "None",
+          "name": "version"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "migration.db_sync(version, database='api')",
+          "line": 707
+        }
+      ],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "version",
+      "kind": "method",
+      "scope": "ApiDbCommands",
+      "lineRange": {
+        "start": 709,
+        "end": 711
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "CellV2Commands",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 714,
+        "end": 1506
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "_validate_transport_url",
+      "kind": "method",
+      "scope": "CellV2Commands",
+      "lineRange": {
+        "start": 717,
+        "end": 739
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "transport_url"
+        },
+        {
+          "default": "True",
+          "name": "warn_about_none"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "None",
+          "line": 725
+        },
+        {
+          "expr": "None",
+          "line": 737
+        },
+        {
+          "expr": "transport_url",
+          "line": 739
+        }
+      ],
+      "nloc": 21,
+      "ccn": 5,
+      "visibility": "private"
+    },
+    {
+      "name": "_validate_database_connection",
+      "kind": "method",
+      "scope": "CellV2Commands",
+      "lineRange": {
+        "start": 741,
+        "end": 755
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "database_connection"
+        },
+        {
+          "default": "True",
+          "name": "warn_about_none"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "None",
+          "line": 750
+        },
+        {
+          "expr": "CONF.database.connection",
+          "line": 754
+        },
+        {
+          "expr": "database_connection",
+          "line": 755
+        }
+      ],
+      "nloc": 15,
+      "ccn": 4,
+      "visibility": "private"
+    },
+    {
+      "name": "_non_unique_transport_url_database_connection_checker",
+      "kind": "method",
+      "scope": "CellV2Commands",
+      "lineRange": {
+        "start": 757,
+        "end": 775
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "ctxt",
+          "type": "context.RequestContext"
+        },
+        {
+          "name": "cell_mapping",
+          "type": "'objects.CellMapping | None'"
+        },
+        {
+          "name": "transport_url",
+          "type": "str | None"
+        },
+        {
+          "name": "database_connection",
+          "type": "str | None"
+        }
+      ],
+      "returnType": "bool",
+      "returns": [
+        {
+          "expr": "True",
+          "line": 774
+        },
+        {
+          "expr": "False",
+          "line": 775
+        }
+      ],
+      "nloc": 17,
+      "ccn": 6,
+      "visibility": "private"
+    },
+    {
+      "name": "simple_cell_setup",
+      "kind": "method",
+      "scope": "CellV2Commands",
+      "lineRange": {
+        "start": 779,
+        "end": 811
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "default": "None",
+          "name": "transport_url"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "1",
+          "line": 789
+        },
+        {
+          "expr": "1",
+          "line": 809
+        },
+        {
+          "expr": "0",
+          "line": 811
+        }
+      ],
+      "nloc": 21,
+      "ccn": 5,
+      "visibility": "public"
+    },
+    {
+      "name": "map_cell0",
+      "kind": "method",
+      "scope": "CellV2Commands",
+      "lineRange": {
+        "start": 820,
+        "end": 836
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "default": "None",
+          "name": "database_connection"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "0",
+          "line": 836
+        }
+      ],
+      "nloc": 6,
+      "ccn": 2,
+      "visibility": "public"
+    },
+    {
+      "name": "_map_cell0",
+      "kind": "method",
+      "scope": "CellV2Commands",
+      "lineRange": {
+        "start": 838,
+        "end": 869
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "default": "None",
+          "name": "database_connection"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "cell_mapping",
+          "line": 869
+        }
+      ],
+      "nloc": 10,
+      "ccn": 2,
+      "visibility": "private"
+    },
+    {
+      "name": "cell0_default_connection",
+      "kind": "function",
+      "scope": "CellV2Commands._map_cell0",
+      "lineRange": {
+        "start": 842,
+        "end": 857
+      },
+      "source": "aee-inventory",
+      "parameters": [],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "urlparse.unquote(url.render_as_string(hide_password=False))",
+          "line": 857
+        }
+      ],
+      "visibility": "public"
+    },
+    {
+      "name": "_get_and_map_instances",
+      "kind": "method",
+      "scope": "CellV2Commands",
+      "lineRange": {
+        "start": 871,
+        "end": 895
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "ctxt"
+        },
+        {
+          "name": "cell_mapping"
+        },
+        {
+          "name": "limit"
+        },
+        {
+          "name": "marker"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "marker",
+          "line": 895
+        }
+      ],
+      "nloc": 22,
+      "ccn": 5,
+      "visibility": "private"
+    },
+    {
+      "name": "map_instances",
+      "kind": "method",
+      "scope": "CellV2Commands",
+      "lineRange": {
+        "start": 910,
+        "end": 986
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "cell_uuid"
+        },
+        {
+          "default": "None",
+          "name": "max_count"
+        },
+        {
+          "default": "None",
+          "name": "reset_marker"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "127",
+          "line": 945
+        },
+        {
+          "expr": "1",
+          "line": 985
+        },
+        {
+          "expr": "0",
+          "line": 986
+        }
+      ],
+      "nloc": 39,
+      "ccn": 9,
+      "visibility": "public"
+    },
+    {
+      "name": "_map_cell_and_hosts",
+      "kind": "method",
+      "scope": "CellV2Commands",
+      "lineRange": {
+        "start": 988,
+        "end": 1036
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "transport_url"
+        },
+        {
+          "default": "None",
+          "name": "name"
+        },
+        {
+          "default": "False",
+          "name": "verbose"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "None",
+          "line": 995
+        },
+        {
+          "expr": "cell_mapping_uuid",
+          "line": 1017
+        },
+        {
+          "expr": "cell_mapping_uuid",
+          "line": 1036
+        }
+      ],
+      "nloc": 41,
+      "ccn": 10,
+      "visibility": "private"
+    },
+    {
+      "name": "map_cell_and_hosts",
+      "kind": "method",
+      "scope": "CellV2Commands",
+      "lineRange": {
+        "start": 1043,
+        "end": 1062
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "default": "None",
+          "name": "transport_url"
+        },
+        {
+          "default": "None",
+          "name": "name"
+        },
+        {
+          "default": "False",
+          "name": "verbose"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "1",
+          "line": 1057
+        },
+        {
+          "expr": "0",
+          "line": 1062
+        }
+      ],
+      "nloc": 6,
+      "ccn": 2,
+      "visibility": "public"
+    },
+    {
+      "name": "verify_instance",
+      "kind": "method",
+      "scope": "CellV2Commands",
+      "lineRange": {
+        "start": 1068,
+        "end": 1125
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "uuid"
+        },
+        {
+          "default": "False",
+          "name": "quiet"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "1",
+          "line": 1093
+        },
+        {
+          "expr": "2",
+          "line": 1096
+        },
+        {
+          "expr": "3",
+          "line": 1113
+        },
+        {
+          "expr": "4",
+          "line": 1119
+        },
+        {
+          "expr": "0",
+          "line": 1125
+        }
+      ],
+      "nloc": 40,
+      "ccn": 6,
+      "visibility": "public"
+    },
+    {
+      "name": "say",
+      "kind": "function",
+      "scope": "CellV2Commands.verify_instance",
+      "lineRange": {
+        "start": 1081,
+        "end": 1083
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "string"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "visibility": "public"
+    },
+    {
+      "name": "discover_hosts",
+      "kind": "method",
+      "scope": "CellV2Commands",
+      "lineRange": {
+        "start": 1139,
+        "end": 1171
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "default": "None",
+          "name": "cell_uuid"
+        },
+        {
+          "default": "False",
+          "name": "verbose"
+        },
+        {
+          "default": "False",
+          "name": "strict"
+        },
+        {
+          "default": "False",
+          "name": "by_service"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "2",
+          "line": 1168
+        },
+        {
+          "expr": "int(not hosts)",
+          "line": 1171
+        }
+      ],
+      "nloc": 17,
+      "ccn": 3,
+      "visibility": "public"
+    },
+    {
+      "name": "status_fn",
+      "kind": "function",
+      "scope": "CellV2Commands.discover_hosts",
+      "lineRange": {
+        "start": 1153,
+        "end": 1155
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "msg"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "visibility": "public"
+    },
+    {
+      "name": "create_cell",
+      "kind": "method",
+      "scope": "CellV2Commands",
+      "lineRange": {
+        "start": 1187,
+        "end": 1211
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "default": "None",
+          "name": "name"
+        },
+        {
+          "default": "None",
+          "name": "database_connection"
+        },
+        {
+          "default": "None",
+          "name": "transport_url"
+        },
+        {
+          "default": "False",
+          "name": "verbose"
+        },
+        {
+          "default": "False",
+          "name": "disabled"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "1",
+          "line": 1192
+        },
+        {
+          "expr": "1",
+          "line": 1197
+        },
+        {
+          "expr": "2",
+          "line": 1200
+        },
+        {
+          "expr": "0",
+          "line": 1211
+        }
+      ],
+      "nloc": 24,
+      "ccn": 5,
+      "visibility": "public"
+    },
+    {
+      "name": "list_cells",
+      "kind": "method",
+      "scope": "CellV2Commands",
+      "lineRange": {
+        "start": 1215,
+        "end": 1243
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "default": "False",
+          "name": "verbose"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "0",
+          "line": 1243
+        }
+      ],
+      "nloc": 19,
+      "ccn": 5,
+      "visibility": "public"
+    },
+    {
+      "name": "delete_cell",
+      "kind": "method",
+      "scope": "CellV2Commands",
+      "lineRange": {
+        "start": 1250,
+        "end": 1329
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "cell_uuid"
+        },
+        {
+          "default": "False",
+          "name": "force"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "1",
+          "line": 1275
+        },
+        {
+          "expr": "2",
+          "line": 1285
+        },
+        {
+          "expr": "3",
+          "line": 1301
+        },
+        {
+          "expr": "4",
+          "line": 1311
+        },
+        {
+          "expr": "0",
+          "line": 1329
+        }
+      ],
+      "nloc": 43,
+      "ccn": 10,
+      "visibility": "public"
+    },
+    {
+      "name": "update_cell",
+      "kind": "method",
+      "scope": "CellV2Commands",
+      "lineRange": {
+        "start": 1350,
+        "end": 1420
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "cell_uuid"
+        },
+        {
+          "default": "None",
+          "name": "name"
+        },
+        {
+          "default": "None",
+          "name": "transport_url"
+        },
+        {
+          "default": "None",
+          "name": "db_connection"
+        },
+        {
+          "default": "False",
+          "name": "disable"
+        },
+        {
+          "default": "False",
+          "name": "enable"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "1",
+          "line": 1374
+        },
+        {
+          "expr": "3",
+          "line": 1390
+        },
+        {
+          "expr": "4",
+          "line": 1400
+        },
+        {
+          "expr": "5",
+          "line": 1404
+        },
+        {
+          "expr": "2",
+          "line": 1418
+        },
+        {
+          "expr": "0",
+          "line": 1420
+        }
+      ],
+      "nloc": 42,
+      "ccn": 20,
+      "visibility": "public"
+    },
+    {
+      "name": "list_hosts",
+      "kind": "method",
+      "scope": "CellV2Commands",
+      "lineRange": {
+        "start": 1424,
+        "end": 1448
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "default": "None",
+          "name": "cell_uuid"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "1",
+          "line": 1433
+        },
+        {
+          "expr": "0",
+          "line": 1448
+        }
+      ],
+      "nloc": 20,
+      "ccn": 4,
+      "visibility": "public"
+    },
+    {
+      "name": "delete_host",
+      "kind": "method",
+      "scope": "CellV2Commands",
+      "lineRange": {
+        "start": 1454,
+        "end": 1506
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "cell_uuid"
+        },
+        {
+          "name": "host"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "1",
+          "line": 1476
+        },
+        {
+          "expr": "2",
+          "line": 1482
+        },
+        {
+          "expr": "3",
+          "line": 1488
+        },
+        {
+          "expr": "4",
+          "line": 1499
+        },
+        {
+          "expr": "0",
+          "line": 1506
+        }
+      ],
+      "nloc": 31,
+      "ccn": 7,
+      "visibility": "public"
+    },
+    {
+      "name": "PlacementCommands",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 1509,
+        "end": 2849
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "_get_compute_node_uuid",
+      "kind": "method",
+      "scope": "PlacementCommands",
+      "lineRange": {
+        "start": 1513,
+        "end": 1530
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "ctxt"
+        },
+        {
+          "name": "instance"
+        },
+        {
+          "name": "node_cache"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "node_cache[instance.node]",
+          "line": 1524
+        },
+        {
+          "expr": "node_uuid",
+          "line": 1530
+        }
+      ],
+      "nloc": 8,
+      "ccn": 2,
+      "visibility": "private"
+    },
+    {
+      "name": "_get_ports",
+      "kind": "method",
+      "scope": "PlacementCommands",
+      "lineRange": {
+        "start": 1533,
+        "end": 1551
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "ctxt"
+        },
+        {
+          "name": "instance"
+        },
+        {
+          "name": "neutron"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "neutron.list_ports( ctxt, device_id=instance.uuid, fields=['id', constants.RESOURCE_REQUEST, constants.BINDING_PROFILE] )['ports']",
+          "line": 1544
+        }
+      ],
+      "nloc": 10,
+      "ccn": 2,
+      "visibility": "private"
+    },
+    {
+      "name": "_has_request_but_no_allocation",
+      "kind": "method",
+      "scope": "PlacementCommands",
+      "lineRange": {
+        "start": 1554,
+        "end": 1560
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "port"
+        },
+        {
+          "name": "neutron"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "has_res_req and not allocation",
+          "line": 1560
+        }
+      ],
+      "nloc": 6,
+      "ccn": 2,
+      "visibility": "private"
+    },
+    {
+      "name": "_merge_allocations",
+      "kind": "method",
+      "scope": "PlacementCommands",
+      "lineRange": {
+        "start": 1563,
+        "end": 1584
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "alloc1"
+        },
+        {
+          "name": "alloc2"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "allocations",
+          "line": 1584
+        }
+      ],
+      "nloc": 8,
+      "ccn": 4,
+      "visibility": "private"
+    },
+    {
+      "name": "_get_resource_request_from_ports",
+      "kind": "method",
+      "scope": "PlacementCommands",
+      "lineRange": {
+        "start": 1587,
+        "end": 1632
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "ctxt",
+          "type": "context.RequestContext"
+        },
+        {
+          "name": "ports",
+          "type": "list[dict[str, ty.Any]]"
+        }
+      ],
+      "returnType": "tuple[ dict[str, list['objects.RequestGroup']], 'objects.RequestLevelParams']",
+      "returns": [
+        {
+          "expr": "groups, request_level_params",
+          "line": 1632
+        }
+      ],
+      "nloc": 6,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "_get_port_binding_profile_allocation",
+      "kind": "method",
+      "scope": "PlacementCommands",
+      "lineRange": {
+        "start": 1635,
+        "end": 1684
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "ctxt",
+          "type": "context.RequestContext"
+        },
+        {
+          "name": "neutron",
+          "type": "neutron_api.ClientWrapper"
+        },
+        {
+          "name": "port",
+          "type": "dict[str, ty.Any]"
+        },
+        {
+          "name": "request_groups",
+          "type": "list['objects.RequestGroup']"
+        },
+        {
+          "name": "resource_provider_mapping",
+          "type": "dict[str, list[str]]"
+        }
+      ],
+      "returnType": "dict[str, str]",
+      "returns": [
+        {
+          "expr": "allocation",
+          "line": 1684
+        }
+      ],
+      "nloc": 19,
+      "ccn": 3,
+      "visibility": "private"
+    },
+    {
+      "name": "_get_port_allocations_to_heal",
+      "kind": "method",
+      "scope": "PlacementCommands",
+      "lineRange": {
+        "start": 1686,
+        "end": 1834
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "ctxt"
+        },
+        {
+          "name": "instance"
+        },
+        {
+          "name": "node_cache"
+        },
+        {
+          "name": "placement"
+        },
+        {
+          "name": "neutron"
+        },
+        {
+          "name": "output"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "{}, []",
+          "line": 1727
+        },
+        {
+          "expr": "allocations, ports_to_heal",
+          "line": 1834
+        }
+      ],
+      "nloc": 66,
+      "ccn": 13,
+      "visibility": "private"
+    },
+    {
+      "name": "_update_ports",
+      "kind": "method",
+      "scope": "PlacementCommands",
+      "lineRange": {
+        "start": 1836,
+        "end": 1861
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "neutron"
+        },
+        {
+          "name": "ports_to_update"
+        },
+        {
+          "name": "output"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 22,
+      "ccn": 3,
+      "visibility": "private"
+    },
+    {
+      "name": "_rollback_port_updates",
+      "kind": "method",
+      "scope": "PlacementCommands",
+      "lineRange": {
+        "start": 1864,
+        "end": 1897
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "neutron"
+        },
+        {
+          "name": "ports_to_rollback"
+        },
+        {
+          "name": "output"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 26,
+      "ccn": 4,
+      "visibility": "private"
+    },
+    {
+      "name": "_heal_missing_alloc",
+      "kind": "method",
+      "scope": "PlacementCommands",
+      "lineRange": {
+        "start": 1899,
+        "end": 1916
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "ctxt"
+        },
+        {
+          "name": "instance"
+        },
+        {
+          "name": "node_cache"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "payload",
+          "line": 1916
+        }
+      ],
+      "nloc": 14,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "_heal_missing_project_and_user_id",
+      "kind": "method",
+      "scope": "PlacementCommands",
+      "lineRange": {
+        "start": 1918,
+        "end": 1921
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "allocations"
+        },
+        {
+          "name": "instance"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "allocations",
+          "line": 1921
+        }
+      ],
+      "nloc": 4,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "ensure_instance_has_no_vgpu_request",
+      "kind": "method",
+      "scope": "PlacementCommands",
+      "lineRange": {
+        "start": 1924,
+        "end": 1927
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "instance"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 4,
+      "ccn": 2,
+      "visibility": "public"
+    },
+    {
+      "name": "ensure_instance_has_no_cyborg_device_profile_request",
+      "kind": "method",
+      "scope": "PlacementCommands",
+      "lineRange": {
+        "start": 1930,
+        "end": 1933
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "instance"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 4,
+      "ccn": 2,
+      "visibility": "public"
+    },
+    {
+      "name": "_heal_allocations_for_instance",
+      "kind": "method",
+      "scope": "PlacementCommands",
+      "lineRange": {
+        "start": 1935,
+        "end": 2089
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "ctxt"
+        },
+        {
+          "name": "instance"
+        },
+        {
+          "name": "node_cache"
+        },
+        {
+          "name": "output"
+        },
+        {
+          "name": "placement"
+        },
+        {
+          "name": "dry_run"
+        },
+        {
+          "name": "heal_port_allocations"
+        },
+        {
+          "name": "neutron"
+        },
+        {
+          "name": "force"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "",
+          "line": 1976
+        },
+        {
+          "expr": "",
+          "line": 1980
+        },
+        {
+          "expr": "True",
+          "line": 2074
+        },
+        {
+          "expr": "",
+          "line": 2089
+        }
+      ],
+      "nloc": 84,
+      "ccn": 18,
+      "visibility": "private"
+    },
+    {
+      "name": "_heal_instances_in_cell",
+      "kind": "method",
+      "scope": "PlacementCommands",
+      "lineRange": {
+        "start": 2091,
+        "end": 2175
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "ctxt"
+        },
+        {
+          "name": "max_count"
+        },
+        {
+          "name": "unlimited"
+        },
+        {
+          "name": "output"
+        },
+        {
+          "name": "placement"
+        },
+        {
+          "name": "dry_run"
+        },
+        {
+          "name": "instance_uuid"
+        },
+        {
+          "name": "heal_port_allocations"
+        },
+        {
+          "name": "neutron"
+        },
+        {
+          "name": "force"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "num_processed",
+          "line": 2166
+        },
+        {
+          "expr": "num_processed",
+          "line": 2175
+        }
+      ],
+      "nloc": 26,
+      "ccn": 8,
+      "visibility": "private"
+    },
+    {
+      "name": "heal_allocations",
+      "kind": "method",
+      "scope": "PlacementCommands",
+      "lineRange": {
+        "start": 2216,
+        "end": 2380
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "default": "None",
+          "name": "max_count"
+        },
+        {
+          "default": "False",
+          "name": "verbose"
+        },
+        {
+          "default": "False",
+          "name": "dry_run"
+        },
+        {
+          "default": "None",
+          "name": "instance_uuid"
+        },
+        {
+          "default": "False",
+          "name": "skip_port_allocations"
+        },
+        {
+          "default": "None",
+          "name": "cell_uuid"
+        },
+        {
+          "default": "False",
+          "name": "force"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "127",
+          "line": 2255
+        },
+        {
+          "expr": "127",
+          "line": 2260
+        },
+        {
+          "expr": "127",
+          "line": 2277
+        },
+        {
+          "expr": "127",
+          "line": 2296
+        },
+        {
+          "expr": "127",
+          "line": 2305
+        },
+        {
+          "expr": "4",
+          "line": 2310
+        },
+        {
+          "expr": "2",
+          "line": 2342
+        },
+        {
+          "expr": "3",
+          "line": 2349
+        },
+        {
+          "expr": "5",
+          "line": 2352
+        },
+        {
+          "expr": "6",
+          "line": 2355
+        },
+        {
+          "expr": "7",
+          "line": 2358
+        },
+        {
+          "expr": "8",
+          "line": 2364
+        },
+        {
+          "expr": "1",
+          "line": 2375
+        },
+        {
+          "expr": "4",
+          "line": 2379
+        },
+        {
+          "expr": "0",
+          "line": 2380
+        }
+      ],
+      "nloc": 106,
+      "ccn": 28,
+      "visibility": "public"
+    },
+    {
+      "name": "_get_rp_uuid_for_host",
+      "kind": "method",
+      "scope": "PlacementCommands",
+      "lineRange": {
+        "start": 2383,
+        "end": 2419
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "ctxt"
+        },
+        {
+          "name": "host"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "nodes[0].uuid",
+          "line": 2419
+        }
+      ],
+      "nloc": 9,
+      "ccn": 2,
+      "visibility": "private"
+    },
+    {
+      "name": "sync_aggregates",
+      "kind": "method",
+      "scope": "PlacementCommands",
+      "lineRange": {
+        "start": 2436,
+        "end": 2556
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "default": "False",
+          "name": "verbose"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "1",
+          "line": 2497
+        },
+        {
+          "expr": "2",
+          "line": 2516
+        },
+        {
+          "expr": "3",
+          "line": 2526
+        },
+        {
+          "expr": "return_code",
+          "line": 2556
+        }
+      ],
+      "nloc": 75,
+      "ccn": 15,
+      "visibility": "public"
+    },
+    {
+      "name": "_get_instances_and_current_migrations",
+      "kind": "method",
+      "scope": "PlacementCommands",
+      "lineRange": {
+        "start": 2558,
+        "end": 2595
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "ctxt"
+        },
+        {
+          "name": "cn_uuid"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "False",
+          "line": 2571
+        },
+        {
+          "expr": "(inst_uuids, mig_uuids)",
+          "line": 2595
+        }
+      ],
+      "nloc": 29,
+      "ccn": 7,
+      "visibility": "private"
+    },
+    {
+      "name": "_delete_allocations_from_consumer",
+      "kind": "method",
+      "scope": "PlacementCommands",
+      "lineRange": {
+        "start": 2597,
+        "end": 2637
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "ctxt"
+        },
+        {
+          "name": "placement"
+        },
+        {
+          "name": "provider"
+        },
+        {
+          "name": "consumer_uuid"
+        },
+        {
+          "name": "consumer_type"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "False",
+          "line": 2629
+        },
+        {
+          "expr": "False",
+          "line": 2636
+        },
+        {
+          "expr": "True",
+          "line": 2637
+        }
+      ],
+      "nloc": 18,
+      "ccn": 4,
+      "visibility": "private"
+    },
+    {
+      "name": "_check_orphaned_allocations_for_provider",
+      "kind": "method",
+      "scope": "PlacementCommands",
+      "lineRange": {
+        "start": 2639,
+        "end": 2737
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "ctxt"
+        },
+        {
+          "name": "placement"
+        },
+        {
+          "name": "output"
+        },
+        {
+          "name": "provider"
+        },
+        {
+          "name": "delete"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "(num_processed, faults)",
+          "line": 2737
+        }
+      ],
+      "nloc": 63,
+      "ccn": 13,
+      "visibility": "private"
+    },
+    {
+      "name": "_get_resource_provider",
+      "kind": "method",
+      "scope": "PlacementCommands",
+      "lineRange": {
+        "start": 2740,
+        "end": 2757
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "context"
+        },
+        {
+          "name": "placement"
+        },
+        {
+          "name": "uuid"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "resource_providers[0]",
+          "line": 2757
+        }
+      ],
+      "nloc": 6,
+      "ccn": 2,
+      "visibility": "private"
+    },
+    {
+      "name": "_get_resource_providers",
+      "kind": "method",
+      "scope": "PlacementCommands",
+      "lineRange": {
+        "start": 2759,
+        "end": 2782
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "context"
+        },
+        {
+          "name": "placement"
+        },
+        {
+          "name": "**kwargs"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "resource_providers",
+          "line": 2782
+        }
+      ],
+      "nloc": 11,
+      "ccn": 3,
+      "visibility": "private"
+    },
+    {
+      "name": "audit",
+      "kind": "method",
+      "scope": "PlacementCommands",
+      "lineRange": {
+        "start": 2796,
+        "end": 2849
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "default": "False",
+          "name": "verbose"
+        },
+        {
+          "default": "None",
+          "name": "provider_uuid"
+        },
+        {
+          "default": "False",
+          "name": "delete"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "127",
+          "line": 2828
+        },
+        {
+          "expr": "1",
+          "line": 2842
+        },
+        {
+          "expr": "4 if delete else 3",
+          "line": 2848
+        },
+        {
+          "expr": "0",
+          "line": 2849
+        }
+      ],
+      "nloc": 38,
+      "ccn": 9,
+      "visibility": "public"
+    },
+    {
+      "name": "LibvirtCommands",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 2852,
+        "end": 2984
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "get_machine_type",
+      "kind": "method",
+      "scope": "LibvirtCommands",
+      "lineRange": {
+        "start": 2859,
+        "end": 2888
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "default": "None",
+          "name": "instance_uuid"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "0",
+          "line": 2875
+        },
+        {
+          "expr": "3",
+          "line": 2879
+        },
+        {
+          "expr": "2",
+          "line": 2883
+        },
+        {
+          "expr": "1",
+          "line": 2888
+        }
+      ],
+      "nloc": 20,
+      "ccn": 4,
+      "visibility": "public"
+    },
+    {
+      "name": "update_machine_type",
+      "kind": "method",
+      "scope": "LibvirtCommands",
+      "lineRange": {
+        "start": 2900,
+        "end": 2951
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "default": "None",
+          "name": "instance_uuid"
+        },
+        {
+          "default": "None",
+          "name": "machine_type"
+        },
+        {
+          "default": "False",
+          "name": "force"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "5",
+          "line": 2927
+        },
+        {
+          "expr": "4",
+          "line": 2930
+        },
+        {
+          "expr": "3",
+          "line": 2933
+        },
+        {
+          "expr": "2",
+          "line": 2939
+        },
+        {
+          "expr": "1",
+          "line": 2944
+        },
+        {
+          "expr": "0",
+          "line": 2951
+        }
+      ],
+      "nloc": 38,
+      "ccn": 7,
+      "visibility": "public"
+    },
+    {
+      "name": "list_unset_machine_type",
+      "kind": "method",
+      "scope": "LibvirtCommands",
+      "lineRange": {
+        "start": 2958,
+        "end": 2984
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "default": "None",
+          "name": "cell_uuid"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "2",
+          "line": 2972
+        },
+        {
+          "expr": "1",
+          "line": 2977
+        },
+        {
+          "expr": "3",
+          "line": 2981
+        },
+        {
+          "expr": "0",
+          "line": 2984
+        }
+      ],
+      "nloc": 18,
+      "ccn": 5,
+      "visibility": "public"
+    },
+    {
+      "name": "VolumeAttachmentCommands",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 2987,
+        "end": 3276
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "show",
+      "kind": "method",
+      "scope": "VolumeAttachmentCommands",
+      "lineRange": {
+        "start": 3004,
+        "end": 3048
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "default": "None",
+          "name": "instance_uuid"
+        },
+        {
+          "default": "None",
+          "name": "volume_id"
+        },
+        {
+          "default": "False",
+          "name": "connection_info"
+        },
+        {
+          "default": "False",
+          "name": "json"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "0",
+          "line": 3034
+        },
+        {
+          "expr": "3",
+          "line": 3037
+        },
+        {
+          "expr": "2",
+          "line": 3043
+        },
+        {
+          "expr": "1",
+          "line": 3048
+        }
+      ],
+      "nloc": 37,
+      "ccn": 8,
+      "visibility": "public"
+    },
+    {
+      "name": "get_connector",
+      "kind": "method",
+      "scope": "VolumeAttachmentCommands",
+      "lineRange": {
+        "start": 3055,
+        "end": 3078
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "default": "False",
+          "name": "json"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "0",
+          "line": 3073
+        },
+        {
+          "expr": "1",
+          "line": 3078
+        }
+      ],
+      "nloc": 18,
+      "ccn": 3,
+      "visibility": "public"
+    },
+    {
+      "name": "_refresh",
+      "kind": "method",
+      "scope": "VolumeAttachmentCommands",
+      "lineRange": {
+        "start": 3080,
+        "end": 3121
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "instance_uuid"
+        },
+        {
+          "name": "volume_id"
+        },
+        {
+          "name": "connector"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "self._do_refresh( cctxt, instance, volume_id, bdm, connector)",
+          "line": 3120
+        }
+      ],
+      "nloc": 19,
+      "ccn": 2,
+      "visibility": "private"
+    },
+    {
+      "name": "_do_refresh",
+      "kind": "method",
+      "scope": "VolumeAttachmentCommands",
+      "lineRange": {
+        "start": 3123,
+        "end": 3202
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "cctxt"
+        },
+        {
+          "name": "instance"
+        },
+        {
+          "name": "volume_id"
+        },
+        {
+          "name": "bdm"
+        },
+        {
+          "name": "connector"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "0",
+          "line": 3173
+        }
+      ],
+      "nloc": 48,
+      "ccn": 8,
+      "visibility": "private"
+    },
+    {
+      "name": "refresh",
+      "kind": "method",
+      "scope": "VolumeAttachmentCommands",
+      "lineRange": {
+        "start": 3215,
+        "end": 3276
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "default": "None",
+          "name": "instance_uuid"
+        },
+        {
+          "default": "None",
+          "name": "volume_id"
+        },
+        {
+          "default": "None",
+          "name": "connector_path"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "self._refresh(instance_uuid, volume_id, connector)",
+          "line": 3240
+        },
+        {
+          "expr": "7",
+          "line": 3247
+        },
+        {
+          "expr": "6",
+          "line": 3250
+        },
+        {
+          "expr": "5",
+          "line": 3253
+        },
+        {
+          "expr": "4",
+          "line": 3259
+        },
+        {
+          "expr": "3",
+          "line": 3265
+        },
+        {
+          "expr": "3",
+          "line": 3268
+        },
+        {
+          "expr": "2",
+          "line": 3271
+        },
+        {
+          "expr": "1",
+          "line": 3276
+        }
+      ],
+      "nloc": 43,
+      "ccn": 10,
+      "visibility": "public"
+    },
+    {
+      "name": "ImagePropertyCommands",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 3279,
+        "end": 3446
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "show",
+      "kind": "method",
+      "scope": "ImagePropertyCommands",
+      "lineRange": {
+        "start": 3288,
+        "end": 3323
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "default": "None",
+          "name": "instance_uuid"
+        },
+        {
+          "default": "None",
+          "name": "image_property"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "0",
+          "line": 3308
+        },
+        {
+          "expr": "3",
+          "line": 3312
+        },
+        {
+          "expr": "2",
+          "line": 3318
+        },
+        {
+          "expr": "1",
+          "line": 3323
+        }
+      ],
+      "nloc": 28,
+      "ccn": 4,
+      "visibility": "public"
+    },
+    {
+      "name": "_validate_image_properties",
+      "kind": "method",
+      "scope": "ImagePropertyCommands",
+      "lineRange": {
+        "start": 3325,
+        "end": 3353
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "image_properties"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "image_properties",
+          "line": 3353
+        }
+      ],
+      "nloc": 13,
+      "ccn": 8,
+      "visibility": "private"
+    },
+    {
+      "name": "_update_image_properties",
+      "kind": "method",
+      "scope": "ImagePropertyCommands",
+      "lineRange": {
+        "start": 3355,
+        "end": 3389
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "ctxt"
+        },
+        {
+          "name": "instance"
+        },
+        {
+          "name": "image_properties"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "0",
+          "line": 3389
+        }
+      ],
+      "nloc": 21,
+      "ccn": 3,
+      "visibility": "private"
+    },
+    {
+      "name": "set",
+      "kind": "method",
+      "scope": "ImagePropertyCommands",
+      "lineRange": {
+        "start": 3403,
+        "end": 3446
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "default": "None",
+          "name": "instance_uuid"
+        },
+        {
+          "default": "None",
+          "name": "image_properties"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "self._update_image_properties( ctxt, instance, image_properties)",
+          "line": 3422
+        },
+        {
+          "expr": "6",
+          "line": 3426
+        },
+        {
+          "expr": "5",
+          "line": 3429
+        },
+        {
+          "expr": "4",
+          "line": 3432
+        },
+        {
+          "expr": "3",
+          "line": 3435
+        },
+        {
+          "expr": "2",
+          "line": 3441
+        },
+        {
+          "expr": "1",
+          "line": 3446
+        }
+      ],
+      "nloc": 33,
+      "ccn": 7,
+      "visibility": "public"
+    },
+    {
+      "name": "LimitsCommands",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 3449,
+        "end": 3789
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "_create_unified_limits",
+      "kind": "method",
+      "scope": "LimitsCommands",
+      "lineRange": {
+        "start": 3451,
+        "end": 3560
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "ctxt"
+        },
+        {
+          "name": "keystone_api"
+        },
+        {
+          "name": "service_id"
+        },
+        {
+          "name": "legacy_defaults"
+        },
+        {
+          "name": "project_id"
+        },
+        {
+          "name": "region_id"
+        },
+        {
+          "name": "output"
+        },
+        {
+          "name": "dry_run"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "return_code",
+          "line": 3513
+        },
+        {
+          "expr": "return_code",
+          "line": 3560
+        }
+      ],
+      "nloc": 82,
+      "ccn": 16,
+      "visibility": "private"
+    },
+    {
+      "name": "_get_resources_from_flavor",
+      "kind": "method",
+      "scope": "LimitsCommands",
+      "lineRange": {
+        "start": 3563,
+        "end": 3578
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "flavor"
+        },
+        {
+          "name": "warn_output"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "resources",
+          "line": 3578
+        }
+      ],
+      "nloc": 14,
+      "ccn": 6,
+      "visibility": "private"
+    },
+    {
+      "name": "_get_resources_from_api_flavors",
+      "kind": "method",
+      "scope": "LimitsCommands",
+      "lineRange": {
+        "start": 3580,
+        "end": 3594
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "ctxt"
+        },
+        {
+          "name": "output"
+        },
+        {
+          "name": "warn_output"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "resources",
+          "line": 3594
+        }
+      ],
+      "nloc": 15,
+      "ccn": 4,
+      "visibility": "private"
+    },
+    {
+      "name": "_get_resources_from_embedded_flavors",
+      "kind": "method",
+      "scope": "LimitsCommands",
+      "lineRange": {
+        "start": 3596,
+        "end": 3619
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "ctxt"
+        },
+        {
+          "name": "project_id"
+        },
+        {
+          "name": "output"
+        },
+        {
+          "name": "warn_output"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "resources, down_cell_uuids",
+          "line": 3619
+        }
+      ],
+      "nloc": 24,
+      "ccn": 6,
+      "visibility": "private"
+    },
+    {
+      "name": "_scan_flavors",
+      "kind": "method",
+      "scope": "LimitsCommands",
+      "lineRange": {
+        "start": 3621,
+        "end": 3687
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "ctxt"
+        },
+        {
+          "name": "keystone_api"
+        },
+        {
+          "name": "service_id"
+        },
+        {
+          "name": "project_id"
+        },
+        {
+          "name": "region_id"
+        },
+        {
+          "name": "output"
+        },
+        {
+          "name": "warn_output"
+        },
+        {
+          "name": "verbose"
+        },
+        {
+          "name": "no_embedded_flavor_scan"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "return_code",
+          "line": 3687
+        }
+      ],
+      "nloc": 51,
+      "ccn": 9,
+      "visibility": "private"
+    },
+    {
+      "name": "migrate_to_unified_limits",
+      "kind": "method",
+      "scope": "LimitsCommands",
+      "lineRange": {
+        "start": 3707,
+        "end": 3789
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "default": "None",
+          "name": "project_id"
+        },
+        {
+          "default": "None",
+          "name": "region_id"
+        },
+        {
+          "default": "False",
+          "name": "verbose"
+        },
+        {
+          "default": "False",
+          "name": "dry_run"
+        },
+        {
+          "default": "False",
+          "name": "quiet"
+        },
+        {
+          "default": "False",
+          "name": "no_embedded_flavor_scan"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "1",
+          "line": 3720
+        },
+        {
+          "expr": "2",
+          "line": 3743
+        },
+        {
+          "expr": "result",
+          "line": 3772
+        },
+        {
+          "expr": "result",
+          "line": 3776
+        },
+        {
+          "expr": "2",
+          "line": 3783
+        },
+        {
+          "expr": "1",
+          "line": 3789
+        }
+      ],
+      "nloc": 57,
+      "ccn": 12,
+      "visibility": "public"
+    },
+    {
+      "name": "CATEGORIES",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 3792,
+        "end": 3801
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "add_command_parsers",
+      "kind": "variable",
+      "scope": "",
+      "lineRange": {
+        "start": 3804,
+        "end": 3805
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "category_opt",
+      "kind": "variable",
+      "scope": "",
+      "lineRange": {
+        "start": 3808,
+        "end": 3811
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "post_mortem_opt",
+      "kind": "variable",
+      "scope": "",
+      "lineRange": {
+        "start": 3813,
+        "end": 3815
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "main",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 3818,
+        "end": 3847
+      },
+      "source": "aee-inventory",
+      "parameters": [],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "0",
+          "line": 3830
+        },
+        {
+          "expr": "0",
+          "line": 3834
+        },
+        {
+          "expr": "ret",
+          "line": 3840
+        },
+        {
+          "expr": "255",
+          "line": 3847
+        }
+      ],
+      "nloc": 26,
+      "ccn": 5,
+      "exported": true
+    },
+    {
+      "name": "_at_exit",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 3855,
+        "end": 3858
+      },
+      "source": "aee-inventory",
+      "parameters": [],
+      "returnType": null,
+      "returns": [],
+      "nloc": 4,
+      "ccn": 2,
+      "exported": false
+    },
+    {
+      "name": "_get_compute_node_uuid",
+      "kind": "staticmethod",
+      "scope": "PlacementCommands",
+      "lineRange": {
+        "start": 1512,
+        "end": 1530
+      },
+      "visibility": "private",
+      "source": "manual"
+    },
+    {
+      "name": "_get_ports",
+      "kind": "staticmethod",
+      "scope": "PlacementCommands",
+      "lineRange": {
+        "start": 1532,
+        "end": 1551
+      },
+      "visibility": "private",
+      "source": "manual"
+    },
+    {
+      "name": "_has_request_but_no_allocation",
+      "kind": "staticmethod",
+      "scope": "PlacementCommands",
+      "lineRange": {
+        "start": 1553,
+        "end": 1560
+      },
+      "visibility": "private",
+      "source": "manual"
+    },
+    {
+      "name": "_merge_allocations",
+      "kind": "staticmethod",
+      "scope": "PlacementCommands",
+      "lineRange": {
+        "start": 1562,
+        "end": 1584
+      },
+      "visibility": "private",
+      "source": "manual"
+    },
+    {
+      "name": "_get_resource_request_from_ports",
+      "kind": "staticmethod",
+      "scope": "PlacementCommands",
+      "lineRange": {
+        "start": 1586,
+        "end": 1632
+      },
+      "visibility": "private",
+      "source": "manual"
+    },
+    {
+      "name": "_get_port_binding_profile_allocation",
+      "kind": "staticmethod",
+      "scope": "PlacementCommands",
+      "lineRange": {
+        "start": 1634,
+        "end": 1684
+      },
+      "visibility": "private",
+      "source": "manual"
+    },
+    {
+      "name": "_rollback_port_updates",
+      "kind": "staticmethod",
+      "scope": "PlacementCommands",
+      "lineRange": {
+        "start": 1863,
+        "end": 1897
+      },
+      "visibility": "private",
+      "source": "manual"
+    },
+    {
+      "name": "ensure_instance_has_no_vgpu_request",
+      "kind": "staticmethod",
+      "scope": "PlacementCommands",
+      "lineRange": {
+        "start": 1923,
+        "end": 1927
+      },
+      "visibility": "public",
+      "source": "manual"
+    },
+    {
+      "name": "ensure_instance_has_no_cyborg_device_profile_request",
+      "kind": "staticmethod",
+      "scope": "PlacementCommands",
+      "lineRange": {
+        "start": 1929,
+        "end": 1933
+      },
+      "visibility": "public",
+      "source": "manual"
+    },
+    {
+      "name": "_get_rp_uuid_for_host",
+      "kind": "staticmethod",
+      "scope": "PlacementCommands",
+      "lineRange": {
+        "start": 2382,
+        "end": 2419
+      },
+      "visibility": "private",
+      "source": "manual"
+    },
+    {
+      "name": "_get_resources_from_flavor",
+      "kind": "staticmethod",
+      "scope": "LimitsCommands",
+      "lineRange": {
+        "start": 3562,
+        "end": 3578
+      },
+      "visibility": "private",
+      "source": "manual"
+    }
+  ],
+  "referencedSymbols": [
+    {
+      "name": "monkey_patch.patch",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 24,
+        "end": 24
+      }
+    },
+    {
+      "name": "logging.getLogger",
+      "usage": "call",
+      "via": "oslo_log",
+      "count": 1,
+      "lineRange": {
+        "start": 93,
+        "end": 93
+      }
+    },
+    {
+      "name": "urlparse.urlparse",
+      "usage": "call",
+      "via": "urllib",
+      "count": 1,
+      "lineRange": {
+        "start": 116,
+        "end": 116
+      }
+    },
+    {
+      "name": "re.sub",
+      "usage": "call",
+      "via": "re",
+      "count": 1,
+      "lineRange": {
+        "start": 117,
+        "end": 117
+      }
+    },
+    {
+      "name": "urlparse.ParseResult",
+      "usage": "call",
+      "via": "urllib",
+      "count": 1,
+      "lineRange": {
+        "start": 118,
+        "end": 118
+      }
+    },
+    {
+      "name": "urlparse.urlunparse",
+      "usage": "call",
+      "via": "urllib",
+      "count": 1,
+      "lineRange": {
+        "start": 122,
+        "end": 122
+      }
+    },
+    {
+      "name": "prettytable.PrettyTable",
+      "usage": "call",
+      "via": "prettytable",
+      "count": 5,
+      "lineRange": {
+        "start": 134,
+        "end": 134
+      }
+    },
+    {
+      "name": "hasattr",
+      "usage": "call",
+      "via": null,
+      "count": 2,
+      "lineRange": {
+        "start": 138,
+        "end": 138
+      }
+    },
+    {
+      "name": "sorted",
+      "usage": "call",
+      "via": null,
+      "count": 5,
+      "lineRange": {
+        "start": 140,
+        "end": 140
+      }
+    },
+    {
+      "name": "isinstance",
+      "usage": "call",
+      "via": null,
+      "count": 2,
+      "lineRange": {
+        "start": 142,
+        "end": 142
+      }
+    },
+    {
+      "name": "str",
+      "usage": "call",
+      "via": null,
+      "count": 40,
+      "lineRange": {
+        "start": 143,
+        "end": 143
+      }
+    },
+    {
+      "name": "encodeutils.safe_encode",
+      "usage": "call",
+      "via": "oslo_utils",
+      "count": 1,
+      "lineRange": {
+        "start": 155,
+        "end": 155
+      }
+    },
+    {
+      "name": "api.API",
+      "usage": "call",
+      "via": "nova.compute",
+      "count": 1,
+      "lineRange": {
+        "start": 169,
+        "end": 169
+      }
+    },
+    {
+      "name": "context.target_cell",
+      "usage": "call",
+      "via": "nova",
+      "count": 19,
+      "lineRange": {
+        "start": 173,
+        "end": 173
+      }
+    },
+    {
+      "name": "context.get_admin_context",
+      "usage": "call",
+      "via": "nova",
+      "count": 25,
+      "lineRange": {
+        "start": 174,
+        "end": 174
+      }
+    },
+    {
+      "name": "object",
+      "usage": "inherit",
+      "via": null,
+      "count": 6,
+      "lineRange": {
+        "start": 185,
+        "end": 185
+      }
+    },
+    {
+      "name": "context.RequestContext",
+      "usage": "call",
+      "via": "nova",
+      "count": 6,
+      "lineRange": {
+        "start": 232,
+        "end": 232
+      }
+    },
+    {
+      "name": "objects.CellMapping.get_by_uuid",
+      "usage": "call",
+      "via": "nova",
+      "count": 10,
+      "lineRange": {
+        "start": 236,
+        "end": 236
+      }
+    },
+    {
+      "name": "migration.db_sync",
+      "usage": "call",
+      "via": "nova.db",
+      "count": 4,
+      "lineRange": {
+        "start": 240,
+        "end": 240
+      }
+    },
+    {
+      "name": "_",
+      "usage": "call",
+      "via": "nova.i18n",
+      "count": 171,
+      "lineRange": {
+        "start": 242,
+        "end": 242
+      }
+    },
+    {
+      "name": "print",
+      "usage": "call",
+      "via": null,
+      "count": 136,
+      "lineRange": {
+        "start": 245,
+        "end": 245
+      }
+    },
+    {
+      "name": "migration.db_version",
+      "usage": "call",
+      "via": "nova.db",
+      "count": 2,
+      "lineRange": {
+        "start": 264,
+        "end": 264
+      }
+    },
+    {
+      "name": "int",
+      "usage": "call",
+      "via": null,
+      "count": 6,
+      "lineRange": {
+        "start": 309,
+        "end": 309
+      }
+    },
+    {
+      "name": "objects.CellMappingList.get_all",
+      "usage": "call",
+      "via": "nova",
+      "count": 5,
+      "lineRange": {
+        "start": 323,
+        "end": 323
+      }
+    },
+    {
+      "name": "dateutil_parser.parse",
+      "usage": "call",
+      "via": "dateutil",
+      "count": 2,
+      "lineRange": {
+        "start": 333,
+        "end": 333
+      }
+    },
+    {
+      "name": "sys.stdout.write",
+      "usage": "call",
+      "via": "sys",
+      "count": 2,
+      "lineRange": {
+        "start": 342,
+        "end": 342
+      }
+    },
+    {
+      "name": "bool",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 425,
+        "end": 425
+      }
+    },
+    {
+      "name": "db.archive_deleted_rows",
+      "usage": "call",
+      "via": "nova.db.main",
+      "count": 1,
+      "lineRange": {
+        "start": 461,
+        "end": 461
+      }
+    },
+    {
+      "name": "objects.InstanceMappingList.destroy_bulk",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 484,
+        "end": 484
+      }
+    },
+    {
+      "name": "objects.RequestSpec.destroy_bulk",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 488,
+        "end": 488
+      }
+    },
+    {
+      "name": "objects.InstanceGroup.destroy_members_bulk",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 493,
+        "end": 493
+      }
+    },
+    {
+      "name": "any",
+      "usage": "call",
+      "via": null,
+      "count": 3,
+      "lineRange": {
+        "start": 502,
+        "end": 502
+      }
+    },
+    {
+      "name": "time.sleep",
+      "usage": "call",
+      "via": "time",
+      "count": 1,
+      "lineRange": {
+        "start": 507,
+        "end": 507
+      }
+    },
+    {
+      "name": "db.purge_shadow_tables",
+      "usage": "call",
+      "via": "nova.db.main",
+      "count": 2,
+      "lineRange": {
+        "start": 552,
+        "end": 552
+      }
+    },
+    {
+      "name": "migration_meth",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 570,
+        "end": 570
+      }
+    },
+    {
+      "name": "dict",
+      "usage": "call",
+      "via": null,
+      "count": 4,
+      "lineRange": {
+        "start": 572,
+        "end": 572
+      }
+    },
+    {
+      "name": "objects.Service.get_by_compute_host",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 665,
+        "end": 665
+      }
+    },
+    {
+      "name": "exception.NovaException",
+      "usage": "call",
+      "via": "nova",
+      "count": 3,
+      "lineRange": {
+        "start": 668,
+        "end": 668
+      }
+    },
+    {
+      "name": "objects.ComputeNode.get_by_uuid",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 671,
+        "end": 671
+      }
+    },
+    {
+      "name": "objects.Service.get_by_id",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 673,
+        "end": 673
+      }
+    },
+    {
+      "name": "objects.InstanceList.get_by_host_and_node",
+      "usage": "call",
+      "via": "nova",
+      "count": 2,
+      "lineRange": {
+        "start": 679,
+        "end": 679
+      }
+    },
+    {
+      "name": "len",
+      "usage": "call",
+      "via": null,
+      "count": 10,
+      "lineRange": {
+        "start": 682,
+        "end": 682
+      }
+    },
+    {
+      "name": "messaging.TransportURL.parse",
+      "usage": "call",
+      "via": "oslo_messaging",
+      "count": 1,
+      "lineRange": {
+        "start": 732,
+        "end": 732
+      }
+    },
+    {
+      "name": "objects.CellMapping.format_mq_url",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 733,
+        "end": 733
+      }
+    },
+    {
+      "name": "sqla_url.make_url",
+      "usage": "call",
+      "via": "sqlalchemy.engine",
+      "count": 1,
+      "lineRange": {
+        "start": 854,
+        "end": 854
+      }
+    },
+    {
+      "name": "urlparse.unquote",
+      "usage": "call",
+      "via": "urllib",
+      "count": 1,
+      "lineRange": {
+        "start": 857,
+        "end": 857
+      }
+    },
+    {
+      "name": "objects.CellMapping",
+      "usage": "call",
+      "via": "nova",
+      "count": 3,
+      "lineRange": {
+        "start": 864,
+        "end": 864
+      }
+    },
+    {
+      "name": "objects.InstanceList.get_by_filters",
+      "usage": "call",
+      "via": "nova",
+      "count": 3,
+      "lineRange": {
+        "start": 874,
+        "end": 874
+      }
+    },
+    {
+      "name": "objects.InstanceMapping",
+      "usage": "call",
+      "via": "nova",
+      "count": 2,
+      "lineRange": {
+        "start": 881,
+        "end": 881
+      }
+    },
+    {
+      "name": "objects.InstanceMappingList.get_by_project_id",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 957,
+        "end": 957
+      }
+    },
+    {
+      "name": "objects.ComputeNodeList.get_all",
+      "usage": "call",
+      "via": "nova",
+      "count": 2,
+      "lineRange": {
+        "start": 992,
+        "end": 992
+      }
+    },
+    {
+      "name": "objects.HostMapping.get_by_host",
+      "usage": "call",
+      "via": "nova",
+      "count": 3,
+      "lineRange": {
+        "start": 999,
+        "end": 999
+      }
+    },
+    {
+      "name": "uuidutils.generate_uuid",
+      "usage": "call",
+      "via": "oslo_utils",
+      "count": 2,
+      "lineRange": {
+        "start": 1023,
+        "end": 1023
+      }
+    },
+    {
+      "name": "objects.HostMapping",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 1031,
+        "end": 1031
+      }
+    },
+    {
+      "name": "objects.InstanceMapping.get_by_instance_uuid",
+      "usage": "call",
+      "via": "nova",
+      "count": 6,
+      "lineRange": {
+        "start": 1087,
+        "end": 1087
+      }
+    },
+    {
+      "name": "objects.Instance.get_by_uuid",
+      "usage": "call",
+      "via": "nova",
+      "count": 5,
+      "lineRange": {
+        "start": 1100,
+        "end": 1100
+      }
+    },
+    {
+      "name": "host_mapping_obj.discover_hosts",
+      "usage": "call",
+      "via": "nova.objects",
+      "count": 1,
+      "lineRange": {
+        "start": 1159,
+        "end": 1159
+      }
+    },
+    {
+      "name": "context.get_context",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 1189,
+        "end": 1189
+      }
+    },
+    {
+      "name": "objects.HostMappingList.get_by_cell_id",
+      "usage": "call",
+      "via": "nova",
+      "count": 2,
+      "lineRange": {
+        "start": 1278,
+        "end": 1278
+      }
+    },
+    {
+      "name": "objects.InstanceMappingList.get_by_cell_id",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 1292,
+        "end": 1292
+      }
+    },
+    {
+      "name": "objects.InstanceList.get_all",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 1296,
+        "end": 1296
+      }
+    },
+    {
+      "name": "objects.HostMappingList.get_all",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 1438,
+        "end": 1438
+      }
+    },
+    {
+      "name": "objects.InstanceList.get_by_host",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 1491,
+        "end": 1491
+      }
+    },
+    {
+      "name": "objects.ComputeNodeList.get_all_by_host",
+      "usage": "call",
+      "via": "nova",
+      "count": 2,
+      "lineRange": {
+        "start": 1493,
+        "end": 1493
+      }
+    },
+    {
+      "name": "objects.ComputeNode.get_by_host_and_nodename",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 1526,
+        "end": 1526
+      }
+    },
+    {
+      "name": "exception.UnableToQueryPorts",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 1550,
+        "end": 1550
+      }
+    },
+    {
+      "name": "neutron_api.API",
+      "usage": "call",
+      "via": "nova.network",
+      "count": 3,
+      "lineRange": {
+        "start": 1555,
+        "end": 1555
+      }
+    },
+    {
+      "name": "neutron_api.get_binding_profile",
+      "usage": "call",
+      "via": "nova.network",
+      "count": 4,
+      "lineRange": {
+        "start": 1558,
+        "end": 1558
+      }
+    },
+    {
+      "name": "collections.defaultdict",
+      "usage": "call",
+      "via": "collections",
+      "count": 4,
+      "lineRange": {
+        "start": 1577,
+        "end": 1577
+      }
+    },
+    {
+      "name": "dict",
+      "usage": "type",
+      "via": null,
+      "count": 5,
+      "lineRange": {
+        "start": 1589,
+        "end": 1589
+      }
+    },
+    {
+      "name": "list",
+      "usage": "type",
+      "via": null,
+      "count": 4,
+      "lineRange": {
+        "start": 1589,
+        "end": 1589
+      }
+    },
+    {
+      "name": "tuple",
+      "usage": "type",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 1590,
+        "end": 1590
+      }
+    },
+    {
+      "name": "objects.RequestLevelParams",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 1602,
+        "end": 1602
+      }
+    },
+    {
+      "name": "objects.RequestGroup.from_extended_port_request",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 1612,
+        "end": 1612
+      }
+    },
+    {
+      "name": "objects.RequestLevelParams.from_port_request",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 1617,
+        "end": 1617
+      }
+    },
+    {
+      "name": "objects.RequestGroup.from_port_request",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 1627,
+        "end": 1627
+      }
+    },
+    {
+      "name": "scheduler_utils.ResourceRequest.from_request_groups",
+      "usage": "call",
+      "via": "nova.scheduler",
+      "count": 1,
+      "lineRange": {
+        "start": 1763,
+        "end": 1763
+      }
+    },
+    {
+      "name": "exception.PlacementAPIConnectFailure",
+      "usage": "call",
+      "via": "nova",
+      "count": 2,
+      "lineRange": {
+        "start": 1773,
+        "end": 1773
+      }
+    },
+    {
+      "name": "exception.AllocationUpdateFailed",
+      "usage": "call",
+      "via": "nova",
+      "count": 4,
+      "lineRange": {
+        "start": 1778,
+        "end": 1778
+      }
+    },
+    {
+      "name": "output",
+      "usage": "call",
+      "via": null,
+      "count": 43,
+      "lineRange": {
+        "start": 1825,
+        "end": 1825
+      }
+    },
+    {
+      "name": "exception.UnableToUpdatePorts",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 1861,
+        "end": 1861
+      }
+    },
+    {
+      "name": "exception.UnableToRollbackPortUpdates",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 1895,
+        "end": 1895
+      }
+    },
+    {
+      "name": "scheduler_utils.resources_from_flavor",
+      "usage": "call",
+      "via": "nova.scheduler",
+      "count": 1,
+      "lineRange": {
+        "start": 1905,
+        "end": 1905
+      }
+    },
+    {
+      "name": "exception.HealvGPUAllocationNotSupported",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 1926,
+        "end": 1926
+      }
+    },
+    {
+      "name": "exception.HealDeviceProfileAllocationNotSupported",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 1932,
+        "end": 1932
+      }
+    },
+    {
+      "name": "jsonutils.dumps",
+      "usage": "call",
+      "via": "oslo_serialization",
+      "count": 4,
+      "lineRange": {
+        "start": 2041,
+        "end": 2041
+      }
+    },
+    {
+      "name": "objects.CellMappingList",
+      "usage": "call",
+      "via": "nova",
+      "count": 2,
+      "lineRange": {
+        "start": 2290,
+        "end": 2290
+      }
+    },
+    {
+      "name": "report.report_client_singleton",
+      "usage": "call",
+      "via": "nova.scheduler.client",
+      "count": 2,
+      "lineRange": {
+        "start": 2312,
+        "end": 2312
+      }
+    },
+    {
+      "name": "neutron_api.get_client",
+      "usage": "call",
+      "via": "nova.network",
+      "count": 1,
+      "lineRange": {
+        "start": 2316,
+        "end": 2316
+      }
+    },
+    {
+      "name": "exception.TooManyComputesForHost",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 2417,
+        "end": 2417
+      }
+    },
+    {
+      "name": "api.AggregateAPI",
+      "usage": "call",
+      "via": "nova.compute",
+      "count": 1,
+      "lineRange": {
+        "start": 2458,
+        "end": 2458
+      }
+    },
+    {
+      "name": "context.scatter_gather_skip_cell0",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 2563,
+        "end": 2563
+      }
+    },
+    {
+      "name": "context.is_cell_failure_sentinel",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 2566,
+        "end": 2566
+      }
+    },
+    {
+      "name": "objects.MigrationList.get_in_progress_by_host_and_node",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 2591,
+        "end": 2591
+      }
+    },
+    {
+      "name": "exception.ResourceProviderNotFound",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 2756,
+        "end": 2756
+      }
+    },
+    {
+      "name": "machine_type_utils.get_machine_type",
+      "usage": "call",
+      "via": "nova.virt.libvirt",
+      "count": 1,
+      "lineRange": {
+        "start": 2872,
+        "end": 2872
+      }
+    },
+    {
+      "name": "machine_type_utils.update_machine_type",
+      "usage": "call",
+      "via": "nova.virt.libvirt",
+      "count": 1,
+      "lineRange": {
+        "start": 2923,
+        "end": 2923
+      }
+    },
+    {
+      "name": "machine_type_utils.get_instances_without_type",
+      "usage": "call",
+      "via": "nova.virt.libvirt",
+      "count": 1,
+      "lineRange": {
+        "start": 2968,
+        "end": 2968
+      }
+    },
+    {
+      "name": "objects.BlockDeviceMapping.get_by_volume_and_instance",
+      "usage": "call",
+      "via": "nova",
+      "count": 3,
+      "lineRange": {
+        "start": 3024,
+        "end": 3024
+      }
+    },
+    {
+      "name": "jsonutils.loads",
+      "usage": "call",
+      "via": "oslo_serialization",
+      "count": 1,
+      "lineRange": {
+        "start": 3029,
+        "end": 3029
+      }
+    },
+    {
+      "name": "utils.get_root_helper",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 3063,
+        "end": 3063
+      }
+    },
+    {
+      "name": "connector.get_connector_properties",
+      "usage": "call",
+      "via": "os_brick.initiator",
+      "count": 1,
+      "lineRange": {
+        "start": 3064,
+        "end": 3064
+      }
+    },
+    {
+      "name": "exception.InstanceInvalidState",
+      "usage": "call",
+      "via": "nova",
+      "count": 2,
+      "lineRange": {
+        "start": 3109,
+        "end": 3109
+      }
+    },
+    {
+      "name": "cinder.API",
+      "usage": "call",
+      "via": "nova.volume",
+      "count": 1,
+      "lineRange": {
+        "start": 3125,
+        "end": 3125
+      }
+    },
+    {
+      "name": "rpcapi.ComputeAPI",
+      "usage": "call",
+      "via": "nova.compute",
+      "count": 1,
+      "lineRange": {
+        "start": 3126,
+        "end": 3126
+      }
+    },
+    {
+      "name": "objects.InstanceAction.action_start",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 3132,
+        "end": 3132
+      }
+    },
+    {
+      "name": "exception.HostConflict",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 3151,
+        "end": 3151
+      }
+    },
+    {
+      "name": "os.path.exists",
+      "usage": "call",
+      "via": "os",
+      "count": 1,
+      "lineRange": {
+        "start": 3231,
+        "end": 3231
+      }
+    },
+    {
+      "name": "exception.InvalidInput",
+      "usage": "call",
+      "via": "nova",
+      "count": 2,
+      "lineRange": {
+        "start": 3232,
+        "end": 3232
+      }
+    },
+    {
+      "name": "open",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 3236,
+        "end": 3236
+      }
+    },
+    {
+      "name": "jsonutils.load",
+      "usage": "call",
+      "via": "oslo_serialization",
+      "count": 1,
+      "lineRange": {
+        "start": 3237,
+        "end": 3237
+      }
+    },
+    {
+      "name": "exception.InvalidImagePropertyName",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 3346,
+        "end": 3346
+      }
+    },
+    {
+      "name": "objects.ImageMetaProps.from_dict",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 3350,
+        "end": 3350
+      }
+    },
+    {
+      "name": "objects.RequestSpec.get_by_instance_uuid",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 3382,
+        "end": 3382
+      }
+    },
+    {
+      "name": "zip",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 3461,
+        "end": 3461
+      }
+    },
+    {
+      "name": "objects.Quotas.get_all_by_project",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 3516,
+        "end": 3516
+      }
+    },
+    {
+      "name": "scheduler_utils.resources_from_flavor_and_bfv",
+      "usage": "call",
+      "via": "nova.scheduler",
+      "count": 1,
+      "lineRange": {
+        "start": 3569,
+        "end": 3569
+      }
+    },
+    {
+      "name": "warn_output",
+      "usage": "call",
+      "via": null,
+      "count": 6,
+      "lineRange": {
+        "start": 3577,
+        "end": 3577
+      }
+    },
+    {
+      "name": "objects.FlavorList.get_all",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 3586,
+        "end": 3586
+      }
+    },
+    {
+      "name": "list_instances.get_instance_objects_sorted",
+      "usage": "call",
+      "via": "nova.compute",
+      "count": 1,
+      "lineRange": {
+        "start": 3609,
+        "end": 3609
+      }
+    },
+    {
+      "name": "textwrap.fill",
+      "usage": "call",
+      "via": "textwrap",
+      "count": 2,
+      "lineRange": {
+        "start": 3673,
+        "end": 3673
+      }
+    },
+    {
+      "name": "nova.quota.QUOTAS.get_defaults",
+      "usage": "call",
+      "via": "nova.conf",
+      "count": 1,
+      "lineRange": {
+        "start": 3736,
+        "end": 3736
+      }
+    },
+    {
+      "name": "conf_utils.register_ksa_opts",
+      "usage": "call",
+      "via": "nova.conf",
+      "count": 1,
+      "lineRange": {
+        "start": 3759,
+        "end": 3759
+      }
+    },
+    {
+      "name": "utils.get_sdk_adapter",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 3761,
+        "end": 3761
+      }
+    },
+    {
+      "name": "functools.partial",
+      "usage": "call",
+      "via": "functools",
+      "count": 1,
+      "lineRange": {
+        "start": 3804,
+        "end": 3804
+      }
+    },
+    {
+      "name": "cfg.SubCommandOpt",
+      "usage": "call",
+      "via": "oslo_config",
+      "count": 1,
+      "lineRange": {
+        "start": 3808,
+        "end": 3808
+      }
+    },
+    {
+      "name": "cfg.BoolOpt",
+      "usage": "call",
+      "via": "oslo_config",
+      "count": 1,
+      "lineRange": {
+        "start": 3813,
+        "end": 3813
+      }
+    },
+    {
+      "name": "config.parse_args",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 3821,
+        "end": 3821
+      }
+    },
+    {
+      "name": "logging.set_defaults",
+      "usage": "call",
+      "via": "oslo_log",
+      "count": 1,
+      "lineRange": {
+        "start": 3822,
+        "end": 3822
+      }
+    },
+    {
+      "name": "logging.get_default_log_levels",
+      "usage": "call",
+      "via": "oslo_log",
+      "count": 1,
+      "lineRange": {
+        "start": 3823,
+        "end": 3823
+      }
+    },
+    {
+      "name": "logging.setup",
+      "usage": "call",
+      "via": "oslo_log",
+      "count": 1,
+      "lineRange": {
+        "start": 3825,
+        "end": 3825
+      }
+    },
+    {
+      "name": "objects.register_all",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 3826,
+        "end": 3826
+      }
+    },
+    {
+      "name": "version.version_string_with_package",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 3829,
+        "end": 3829
+      }
+    },
+    {
+      "name": "cmd_common.print_bash_completion",
+      "usage": "call",
+      "via": "nova.cmd",
+      "count": 1,
+      "lineRange": {
+        "start": 3833,
+        "end": 3833
+      }
+    },
+    {
+      "name": "cmd_common.get_action_fn",
+      "usage": "call",
+      "via": "nova.cmd",
+      "count": 1,
+      "lineRange": {
+        "start": 3837,
+        "end": 3837
+      }
+    },
+    {
+      "name": "fn",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 3838,
+        "end": 3838
+      }
+    },
+    {
+      "name": "rpc.cleanup",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 3839,
+        "end": 3839
+      }
+    },
+    {
+      "name": "pdb.post_mortem",
+      "usage": "call",
+      "via": "pdb",
+      "count": 1,
+      "lineRange": {
+        "start": 3844,
+        "end": 3844
+      }
+    },
+    {
+      "name": "traceback.format_exc",
+      "usage": "call",
+      "via": "traceback",
+      "count": 1,
+      "lineRange": {
+        "start": 3846,
+        "end": 3846
+      }
+    },
+    {
+      "name": "utils.concurrency_mode_threading",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 3856,
+        "end": 3856
+      }
+    }
+  ],
+  "dependencies": [
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "monkey_patch"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 24,
+        "end": 24
+      }
+    },
+    {
+      "style": "import",
+      "module": "atexit",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 27,
+        "end": 27
+      }
+    },
+    {
+      "style": "import",
+      "module": "collections",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 28,
+        "end": 28
+      }
+    },
+    {
+      "style": "from",
+      "module": "contextlib",
+      "names": [
+        {
+          "alias": null,
+          "name": "contextmanager"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 29,
+        "end": 29
+      }
+    },
+    {
+      "style": "import",
+      "module": "functools",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 30,
+        "end": 30
+      }
+    },
+    {
+      "style": "import",
+      "module": "os",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 31,
+        "end": 31
+      }
+    },
+    {
+      "style": "import",
+      "module": "re",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 32,
+        "end": 32
+      }
+    },
+    {
+      "style": "import",
+      "module": "sys",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 33,
+        "end": 33
+      }
+    },
+    {
+      "style": "import",
+      "module": "textwrap",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 34,
+        "end": 34
+      }
+    },
+    {
+      "style": "import",
+      "module": "time",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 35,
+        "end": 35
+      }
+    },
+    {
+      "style": "import",
+      "module": "traceback",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 36,
+        "end": 36
+      }
+    },
+    {
+      "style": "import",
+      "module": "typing",
+      "names": [],
+      "alias": "ty",
+      "relative": false,
+      "lineRange": {
+        "start": 37,
+        "end": 37
+      }
+    },
+    {
+      "style": "from",
+      "module": "urllib",
+      "names": [
+        {
+          "alias": "urlparse",
+          "name": "parse"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 38,
+        "end": 38
+      }
+    },
+    {
+      "style": "from",
+      "module": "dateutil",
+      "names": [
+        {
+          "alias": "dateutil_parser",
+          "name": "parser"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 40,
+        "end": 40
+      }
+    },
+    {
+      "style": "from",
+      "module": "keystoneauth1",
+      "names": [
+        {
+          "alias": "ks_exc",
+          "name": "exceptions"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 41,
+        "end": 41
+      }
+    },
+    {
+      "style": "from",
+      "module": "neutronclient.common",
+      "names": [
+        {
+          "alias": "neutron_client_exc",
+          "name": "exceptions"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 42,
+        "end": 42
+      }
+    },
+    {
+      "style": "from",
+      "module": "os_brick.initiator",
+      "names": [
+        {
+          "alias": null,
+          "name": "connector"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 43,
+        "end": 43
+      }
+    },
+    {
+      "style": "import",
+      "module": "os_resource_classes",
+      "names": [],
+      "alias": "orc",
+      "relative": false,
+      "lineRange": {
+        "start": 44,
+        "end": 44
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_config",
+      "names": [
+        {
+          "alias": null,
+          "name": "cfg"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 45,
+        "end": 45
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_db",
+      "names": [
+        {
+          "alias": "db_exc",
+          "name": "exception"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 46,
+        "end": 46
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_log",
+      "names": [
+        {
+          "alias": "logging",
+          "name": "log"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 47,
+        "end": 47
+      }
+    },
+    {
+      "style": "import",
+      "module": "oslo_messaging",
+      "names": [],
+      "alias": "messaging",
+      "relative": false,
+      "lineRange": {
+        "start": 48,
+        "end": 48
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_serialization",
+      "names": [
+        {
+          "alias": null,
+          "name": "jsonutils"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 49,
+        "end": 49
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_utils",
+      "names": [
+        {
+          "alias": null,
+          "name": "encodeutils"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 50,
+        "end": 50
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_utils",
+      "names": [
+        {
+          "alias": null,
+          "name": "uuidutils"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 51,
+        "end": 51
+      }
+    },
+    {
+      "style": "import",
+      "module": "prettytable",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 52,
+        "end": 52
+      }
+    },
+    {
+      "style": "from",
+      "module": "sqlalchemy.engine",
+      "names": [
+        {
+          "alias": "sqla_url",
+          "name": "url"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 53,
+        "end": 53
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.cmd",
+      "names": [
+        {
+          "alias": "cmd_common",
+          "name": "common"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 55,
+        "end": 55
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.compute",
+      "names": [
+        {
+          "alias": null,
+          "name": "api"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 56,
+        "end": 56
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.compute",
+      "names": [
+        {
+          "alias": null,
+          "name": "instance_actions"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 57,
+        "end": 57
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.compute",
+      "names": [
+        {
+          "alias": "list_instances",
+          "name": "instance_list"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 58,
+        "end": 58
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.compute",
+      "names": [
+        {
+          "alias": null,
+          "name": "rpcapi"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 59,
+        "end": 59
+      }
+    },
+    {
+      "style": "import",
+      "module": "nova.conf",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 60,
+        "end": 60
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.conf",
+      "names": [
+        {
+          "alias": "conf_utils",
+          "name": "utils"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 61,
+        "end": 61
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "config"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 62,
+        "end": 62
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "context"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 63,
+        "end": 63
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.db",
+      "names": [
+        {
+          "alias": "db_const",
+          "name": "constants"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 64,
+        "end": 64
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.db.main",
+      "names": [
+        {
+          "alias": "db",
+          "name": "api"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 65,
+        "end": 65
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.db",
+      "names": [
+        {
+          "alias": null,
+          "name": "migration"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 66,
+        "end": 66
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "exception"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 67,
+        "end": 67
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.i18n",
+      "names": [
+        {
+          "alias": null,
+          "name": "_"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 68,
+        "end": 68
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.limit",
+      "names": [
+        {
+          "alias": "local_limit",
+          "name": "local"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 69,
+        "end": 69
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.limit",
+      "names": [
+        {
+          "alias": "placement_limit",
+          "name": "placement"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 70,
+        "end": 70
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.network",
+      "names": [
+        {
+          "alias": null,
+          "name": "constants"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 71,
+        "end": 71
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.network",
+      "names": [
+        {
+          "alias": "neutron_api",
+          "name": "neutron"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 72,
+        "end": 72
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "objects"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 73,
+        "end": 73
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.objects",
+      "names": [
+        {
+          "alias": "block_device_obj",
+          "name": "block_device"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 74,
+        "end": 74
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.objects",
+      "names": [
+        {
+          "alias": "compute_node_obj",
+          "name": "compute_node"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 75,
+        "end": 75
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.objects",
+      "names": [
+        {
+          "alias": "obj_fields",
+          "name": "fields"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 76,
+        "end": 76
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.objects",
+      "names": [
+        {
+          "alias": "host_mapping_obj",
+          "name": "host_mapping"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 77,
+        "end": 77
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.objects",
+      "names": [
+        {
+          "alias": "instance_obj",
+          "name": "instance"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 78,
+        "end": 78
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.objects",
+      "names": [
+        {
+          "alias": "instance_mapping_obj",
+          "name": "instance_mapping"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 79,
+        "end": 79
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.objects",
+      "names": [
+        {
+          "alias": "pci_device_obj",
+          "name": "pci_device"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 80,
+        "end": 80
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.objects",
+      "names": [
+        {
+          "alias": "quotas_obj",
+          "name": "quotas"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 81,
+        "end": 81
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.objects",
+      "names": [
+        {
+          "alias": "virtual_interface_obj",
+          "name": "virtual_interface"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 82,
+        "end": 82
+      }
+    },
+    {
+      "style": "import",
+      "module": "nova.quota",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 83,
+        "end": 83
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "rpc"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 84,
+        "end": 84
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.scheduler.client",
+      "names": [
+        {
+          "alias": null,
+          "name": "report"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 85,
+        "end": 85
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.scheduler",
+      "names": [
+        {
+          "alias": "scheduler_utils",
+          "name": "utils"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 86,
+        "end": 86
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "utils"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 87,
+        "end": 87
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "version"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 88,
+        "end": 88
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.virt.libvirt",
+      "names": [
+        {
+          "alias": null,
+          "name": "machine_type_utils"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 89,
+        "end": 89
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.volume",
+      "names": [
+        {
+          "alias": null,
+          "name": "cinder"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 90,
+        "end": 90
+      }
+    },
+    {
+      "style": "import",
+      "module": "pdb",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 3843,
+        "end": 3843
+      }
+    },
+    {
+      "style": "import",
+      "module": "logging",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 3857,
+        "end": 3857
+      }
+    }
+  ],
+  "sideEffects": [
+    {
+      "kind": "network",
+      "target": "from neutronclient.common import exceptions as neutron_client_exc",
+      "lineRange": {
+        "start": 42,
+        "end": 42
+      }
+    },
+    {
+      "kind": "syscall",
+      "target": "enabled/disabled until it is restarted or sent the SIGHUP signal.",
+      "lineRange": {
+        "start": 1367,
+        "end": 1367
+      }
+    },
+    {
+      "kind": "syscall",
+      "target": "SIGHUP signal.",
+      "lineRange": {
+        "start": 1468,
+        "end": 1468
+      }
+    },
+    {
+      "kind": "network",
+      "target": "neutron = neutron_api.get_client(ctxt, admin=True)",
+      "lineRange": {
+        "start": 2316,
+        "end": 2316
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "if not os.path.exists(connector_path):",
+      "lineRange": {
+        "start": 3231,
+        "end": 3231
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "with open(connector_path, 'rb') as connector_file:",
+      "lineRange": {
+        "start": 3236,
+        "end": 3236
+      }
+    },
+    {
+      "kind": "network",
+      "target": "keystone_api = utils.get_sdk_adapter(",
+      "lineRange": {
+        "start": 3761,
+        "end": 3761
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "CONF = nova.conf.CONF",
+      "lineRange": {
+        "start": 92,
+        "end": 92
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "LOG = logging.getLogger(__name__)",
+      "lineRange": {
+        "start": 93,
+        "end": 93
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "NOVA_RCS = [orc.VCPU, orc.MEMORY_MB, orc.DISK_GB, orc.VGPU,",
+      "lineRange": {
+        "start": 2660,
+        "end": 2660
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "CATEGORIES = {",
+      "lineRange": {
+        "start": 3792,
+        "end": 3792
+      }
+    }
+  ],
+  "securitySurface": [
+    {
+      "kind": "privilege",
+      "category": "crypto-key",
+      "description": "from keystoneauth1 import exceptions as ks_exc",
+      "lineRange": {
+        "start": 41,
+        "end": 41
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "_UPDATE = 'update'",
+      "lineRange": {
+        "start": 108,
+        "end": 108
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "file-write",
+      "description": "sys.stdout.write(_('Archiving') + '..')  # noqa",
+      "lineRange": {
+        "start": 342,
+        "end": 342
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "file-write",
+      "description": "sys.stdout.write('.')",
+      "lineRange": {
+        "start": 505,
+        "end": 505
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "required=True, help=_('The uuid of the cell to update.'))",
+      "lineRange": {
+        "start": 1332,
+        "end": 1332
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "print(_('Unable to update CellMapping: %s') % e)",
+      "lineRange": {
+        "start": 1417,
+        "end": 1417
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "f'information to select the proper candidate to heal the'",
+      "lineRange": {
+        "start": 1800,
+        "end": 1800
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "output(_('Rolling back port update for %(port_uuid)s') %",
+      "lineRange": {
+        "start": 1878,
+        "end": 1878
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "_('Rolling back update for port %(port_uuid)s failed: '",
+      "lineRange": {
+        "start": 1883,
+        "end": 1883
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": ":raises: AllocationUpdateFailed if unable to update allocations for",
+      "lineRange": {
+        "start": 1962,
+        "end": 1962
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": ":raise UnableToUpdatePorts: if a port update failed in neutron but any",
+      "lineRange": {
+        "start": 1966,
+        "end": 1966
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "partial update was rolled back successfully.",
+      "lineRange": {
+        "start": 1967,
+        "end": 1967
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": ":raise UnableToRollbackPortUpdates: if a port update failed in neutron",
+      "lineRange": {
+        "start": 1968,
+        "end": 1968
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "output(_('[dry-run] Update allocations for instance '",
+      "lineRange": {
+        "start": 2048,
+        "end": 2048
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": ":raises: AllocationUpdateFailed if unable to update allocations for",
+      "lineRange": {
+        "start": 2118,
+        "end": 2118
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": ":raise UnableToUpdatePorts: if a port update failed in neutron but any",
+      "lineRange": {
+        "start": 2122,
+        "end": 2122
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "partial update was rolled back successfully.",
+      "lineRange": {
+        "start": 2123,
+        "end": 2123
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": ":raise UnableToRollbackPortUpdates: if a port update failed in neutron",
+      "lineRange": {
+        "start": 2124,
+        "end": 2124
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "* 3: Unable to create (or update) allocations for an instance against",
+      "lineRange": {
+        "start": 2226,
+        "end": 2226
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "* 6: Unable to update ports in neutron",
+      "lineRange": {
+        "start": 2230,
+        "end": 2230
+      }
+    },
+    {
+      "kind": "privilege",
+      "category": "crypto-key",
+      "description": ":raises: keystoneauth1.exceptions.base.ClientException on failure to",
+      "lineRange": {
+        "start": 2748,
+        "end": 2748
+      }
+    },
+    {
+      "kind": "privilege",
+      "category": "crypto-key",
+      "description": ":raises: keystoneauth1.exceptions.base.ClientException on failure to",
+      "lineRange": {
+        "start": 2767,
+        "end": 2767
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "_(\"Set or update the stored machine type of the instance in the \"",
+      "lineRange": {
+        "start": 2891,
+        "end": 2891
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "help='UUID of instance to update')",
+      "lineRange": {
+        "start": 2895,
+        "end": 2895
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "help='Force the update of the stored machine type')",
+      "lineRange": {
+        "start": 2899,
+        "end": 2899
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "\"\"\"Set or update the machine type of a given instance.",
+      "lineRange": {
+        "start": 2906,
+        "end": 2906
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "print(_(\"Forcing update of machine type.\"))",
+      "lineRange": {
+        "start": 2920,
+        "end": 2920
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "\"\"\"Update instance image properties",
+      "lineRange": {
+        "start": 3356,
+        "end": 3356
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": ":param instance: The instance to update",
+      "lineRange": {
+        "start": 3359,
+        "end": 3359
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": ":param image_properties: List of image properties and values to update",
+      "lineRange": {
+        "start": 3360,
+        "end": 3360
+      }
+    },
+    {
+      "kind": "entry-point",
+      "category": "cli-args",
+      "description": "config.parse_args(sys.argv)",
+      "lineRange": {
+        "start": 3821,
+        "end": 3821
+      }
+    }
+  ],
+  "injection_flags": [],
+  "warnings": []
+}

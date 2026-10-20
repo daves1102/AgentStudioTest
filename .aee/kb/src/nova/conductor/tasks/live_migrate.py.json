@@ -1,0 +1,1323 @@
+{
+  "file": "src/nova/conductor/tasks/live_migrate.py",
+  "hash": "3a660091c537195c77e9c9ac78e7508bc1f2537b31dd738af49b58e23a9ff1bf",
+  "language": "Python",
+  "component": "nova",
+  "package": null,
+  "lines": {
+    "blank": 77,
+    "code": 414,
+    "comment": 124,
+    "total": 615
+  },
+  "symbols": [
+    {
+      "name": "LOG",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 30,
+        "end": 30
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "CONF",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 31,
+        "end": 31
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "supports_vif_related_pci_allocations",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 34,
+        "end": 44
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "context"
+        },
+        {
+          "name": "host"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "svc.version >= 36",
+          "line": 44
+        }
+      ],
+      "nloc": 3,
+      "ccn": 1,
+      "exported": true
+    },
+    {
+      "name": "supports_vpmem_live_migration",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 47,
+        "end": 55
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "context"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "objects.Service.get_minimum_version(context, 'nova-compute') >= 51",
+          "line": 55
+        }
+      ],
+      "nloc": 2,
+      "ccn": 1,
+      "exported": true
+    },
+    {
+      "name": "LiveMigrationTask",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 58,
+        "end": 615
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "__init__",
+      "kind": "method",
+      "scope": "LiveMigrationTask",
+      "lineRange": {
+        "start": 59,
+        "end": 79
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "context"
+        },
+        {
+          "name": "instance"
+        },
+        {
+          "name": "destination"
+        },
+        {
+          "name": "block_migration"
+        },
+        {
+          "name": "disk_over_commit"
+        },
+        {
+          "name": "migration"
+        },
+        {
+          "name": "compute_rpcapi"
+        },
+        {
+          "name": "servicegroup_api"
+        },
+        {
+          "name": "query_client"
+        },
+        {
+          "name": "report_client"
+        },
+        {
+          "default": "None",
+          "name": "request_spec"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 20,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "_execute",
+      "kind": "method",
+      "scope": "LiveMigrationTask",
+      "lineRange": {
+        "start": 81,
+        "end": 160
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "self.compute_rpcapi.live_migration(self.context, host=self.source, instance=self.instance, dest=self.destination, block_migration=self.block_migration, migration=self.migration, migrate_data=self.migr",
+          "line": 154
+        }
+      ],
+      "nloc": 42,
+      "ccn": 3,
+      "visibility": "private"
+    },
+    {
+      "name": "rollback",
+      "kind": "method",
+      "scope": "LiveMigrationTask",
+      "lineRange": {
+        "start": 162,
+        "end": 172
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "ex"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 6,
+      "ccn": 2,
+      "visibility": "public"
+    },
+    {
+      "name": "_check_instance_is_active",
+      "kind": "method",
+      "scope": "LiveMigrationTask",
+      "lineRange": {
+        "start": 174,
+        "end": 181
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 8,
+      "ccn": 2,
+      "visibility": "private"
+    },
+    {
+      "name": "_check_instance_has_no_numa",
+      "kind": "method",
+      "scope": "LiveMigrationTask",
+      "lineRange": {
+        "start": 183,
+        "end": 225
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "",
+          "line": 188
+        },
+        {
+          "expr": "",
+          "line": 198
+        },
+        {
+          "expr": "",
+          "line": 204
+        }
+      ],
+      "nloc": 30,
+      "ccn": 5,
+      "visibility": "private"
+    },
+    {
+      "name": "_check_can_migrate_pci",
+      "kind": "method",
+      "scope": "LiveMigrationTask",
+      "lineRange": {
+        "start": 227,
+        "end": 278
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "src_host"
+        },
+        {
+          "name": "dest_host"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "",
+          "line": 241
+        },
+        {
+          "expr": "",
+          "line": 262
+        }
+      ],
+      "nloc": 29,
+      "ccn": 10,
+      "visibility": "private"
+    },
+    {
+      "name": "_check_can_migrate_specific_resources",
+      "kind": "method",
+      "scope": "LiveMigrationTask",
+      "lineRange": {
+        "start": 280,
+        "end": 299
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "",
+          "line": 288
+        }
+      ],
+      "nloc": 12,
+      "ccn": 6,
+      "visibility": "private"
+    },
+    {
+      "name": "_check_host_is_up",
+      "kind": "method",
+      "scope": "LiveMigrationTask",
+      "lineRange": {
+        "start": 301,
+        "end": 305
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "host"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 4,
+      "ccn": 2,
+      "visibility": "private"
+    },
+    {
+      "name": "_check_requested_destination",
+      "kind": "method",
+      "scope": "LiveMigrationTask",
+      "lineRange": {
+        "start": 307,
+        "end": 324
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 8,
+      "ccn": 2,
+      "visibility": "private"
+    },
+    {
+      "name": "_check_destination_is_not_source",
+      "kind": "method",
+      "scope": "LiveMigrationTask",
+      "lineRange": {
+        "start": 326,
+        "end": 329
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 4,
+      "ccn": 2,
+      "visibility": "private"
+    },
+    {
+      "name": "_check_destination_has_enough_memory",
+      "kind": "method",
+      "scope": "LiveMigrationTask",
+      "lineRange": {
+        "start": 331,
+        "end": 351
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 16,
+      "ccn": 3,
+      "visibility": "private"
+    },
+    {
+      "name": "_get_compute_info",
+      "kind": "method",
+      "scope": "LiveMigrationTask",
+      "lineRange": {
+        "start": 353,
+        "end": 355
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "host"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "objects.ComputeNode.get_first_node_by_host_for_old_compat( self.context, host)",
+          "line": 354
+        }
+      ],
+      "nloc": 3,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "_check_compatible_with_source_hypervisor",
+      "kind": "method",
+      "scope": "LiveMigrationTask",
+      "lineRange": {
+        "start": 357,
+        "end": 371
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "destination"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "source_info, destination_info",
+          "line": 371
+        }
+      ],
+      "nloc": 13,
+      "ccn": 4,
+      "visibility": "private"
+    },
+    {
+      "name": "_call_livem_checks_on_host",
+      "kind": "method",
+      "scope": "LiveMigrationTask",
+      "lineRange": {
+        "start": 373,
+        "end": 391
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "destination"
+        },
+        {
+          "name": "provider_mapping"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 17,
+      "ccn": 3,
+      "visibility": "private"
+    },
+    {
+      "name": "_get_port_profile_from_provider_mapping",
+      "kind": "method",
+      "scope": "LiveMigrationTask",
+      "lineRange": {
+        "start": 393,
+        "end": 401
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "port_id"
+        },
+        {
+          "name": "provider_mappings"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "{'allocation': allocation}",
+          "line": 399
+        },
+        {
+          "expr": "{}",
+          "line": 401
+        }
+      ],
+      "nloc": 9,
+      "ccn": 2,
+      "visibility": "private"
+    },
+    {
+      "name": "_bind_ports_on_destination",
+      "kind": "method",
+      "scope": "LiveMigrationTask",
+      "lineRange": {
+        "start": 403,
+        "end": 436
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "destination"
+        },
+        {
+          "name": "provider_mappings"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "bindings",
+          "line": 436
+        }
+      ],
+      "nloc": 19,
+      "ccn": 5,
+      "visibility": "private"
+    },
+    {
+      "name": "_update_migrate_vifs_from_bindings",
+      "kind": "method",
+      "scope": "LiveMigrationTask",
+      "lineRange": {
+        "start": 438,
+        "end": 446
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "migrate_vifs"
+        },
+        {
+          "name": "bindings"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 9,
+      "ccn": 4,
+      "visibility": "private"
+    },
+    {
+      "name": "_get_source_cell_mapping",
+      "kind": "method",
+      "scope": "LiveMigrationTask",
+      "lineRange": {
+        "start": 448,
+        "end": 461
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "objects.InstanceMapping.get_by_instance_uuid( self.context, self.instance.uuid).cell_mapping",
+          "line": 456
+        }
+      ],
+      "nloc": 8,
+      "ccn": 2,
+      "visibility": "private"
+    },
+    {
+      "name": "_get_destination_cell_mapping",
+      "kind": "method",
+      "scope": "LiveMigrationTask",
+      "lineRange": {
+        "start": 463,
+        "end": 476
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "objects.HostMapping.get_by_host( self.context, self.destination).cell_mapping",
+          "line": 471
+        }
+      ],
+      "nloc": 8,
+      "ccn": 2,
+      "visibility": "private"
+    },
+    {
+      "name": "_get_request_spec_for_select_destinations",
+      "kind": "method",
+      "scope": "LiveMigrationTask",
+      "lineRange": {
+        "start": 478,
+        "end": 531
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "default": "None",
+          "name": "attempted_hosts"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "request_spec",
+          "line": 531
+        }
+      ],
+      "nloc": 25,
+      "ccn": 3,
+      "visibility": "private"
+    },
+    {
+      "name": "_find_destination",
+      "kind": "method",
+      "scope": "LiveMigrationTask",
+      "lineRange": {
+        "start": 533,
+        "end": 588
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "(selection.service_host, selection.nodename, selection.limits)",
+          "line": 588
+        }
+      ],
+      "nloc": 35,
+      "ccn": 5,
+      "visibility": "private"
+    },
+    {
+      "name": "_remove_host_allocations",
+      "kind": "method",
+      "scope": "LiveMigrationTask",
+      "lineRange": {
+        "start": 590,
+        "end": 600
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "compute_node_uuid"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 3,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "_check_not_over_max_retries",
+      "kind": "method",
+      "scope": "LiveMigrationTask",
+      "lineRange": {
+        "start": 602,
+        "end": 615
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "attempted_hosts"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "",
+          "line": 604
+        }
+      ],
+      "nloc": 13,
+      "ccn": 4,
+      "visibility": "private"
+    }
+  ],
+  "referencedSymbols": [
+    {
+      "name": "logging.getLogger",
+      "usage": "call",
+      "via": "oslo_log",
+      "count": 1,
+      "lineRange": {
+        "start": 30,
+        "end": 30
+      }
+    },
+    {
+      "name": "objects.Service.get_by_host_and_binary",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 43,
+        "end": 43
+      }
+    },
+    {
+      "name": "objects.Service.get_minimum_version",
+      "usage": "call",
+      "via": "nova",
+      "count": 2,
+      "lineRange": {
+        "start": 55,
+        "end": 55
+      }
+    },
+    {
+      "name": "base.TaskBase",
+      "usage": "inherit",
+      "via": "nova.conductor.tasks",
+      "count": 1,
+      "lineRange": {
+        "start": 58,
+        "end": 58
+      }
+    },
+    {
+      "name": "super",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 63,
+        "end": 63
+      }
+    },
+    {
+      "name": "neutron.API",
+      "usage": "call",
+      "via": "nova.network",
+      "count": 1,
+      "lineRange": {
+        "start": 79,
+        "end": 79
+      }
+    },
+    {
+      "name": "migrate.replace_allocation_with_migration",
+      "usage": "call",
+      "via": "nova.conductor.tasks",
+      "count": 1,
+      "lineRange": {
+        "start": 91,
+        "end": 91
+      }
+    },
+    {
+      "name": "scheduler_utils.claim_resources_on_destination",
+      "usage": "call",
+      "via": "nova.scheduler",
+      "count": 1,
+      "lineRange": {
+        "start": 128,
+        "end": 128
+      }
+    },
+    {
+      "name": "excutils.save_and_reraise_exception",
+      "usage": "call",
+      "via": "oslo_utils",
+      "count": 1,
+      "lineRange": {
+        "start": 136,
+        "end": 136
+      }
+    },
+    {
+      "name": "availability_zones.get_host_availability_zone",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 144,
+        "end": 144
+      }
+    },
+    {
+      "name": "migrate.revert_allocation_for_migration",
+      "usage": "call",
+      "via": "nova.conductor.tasks",
+      "count": 1,
+      "lineRange": {
+        "start": 169,
+        "end": 169
+      }
+    },
+    {
+      "name": "exception.InstanceInvalidState",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 177,
+        "end": 177
+      }
+    },
+    {
+      "name": "objects.ComputeNode.get_by_host_and_nodename",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 192,
+        "end": 192
+      }
+    },
+    {
+      "name": "exception.MigrationPreCheckError",
+      "usage": "call",
+      "via": "nova",
+      "count": 11,
+      "lineRange": {
+        "start": 217,
+        "end": 217
+      }
+    },
+    {
+      "name": "len",
+      "usage": "call",
+      "via": null,
+      "count": 2,
+      "lineRange": {
+        "start": 239,
+        "end": 239
+      }
+    },
+    {
+      "name": "objects.Service.get_by_compute_host",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 302,
+        "end": 302
+      }
+    },
+    {
+      "name": "exception.ComputeServiceUnavailable",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 305,
+        "end": 305
+      }
+    },
+    {
+      "name": "_",
+      "usage": "call",
+      "via": "nova.i18n",
+      "count": 6,
+      "lineRange": {
+        "start": 323,
+        "end": 323
+      }
+    },
+    {
+      "name": "exception.UnableToMigrateToSelf",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 328,
+        "end": 328
+      }
+    },
+    {
+      "name": "dict",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 349,
+        "end": 349
+      }
+    },
+    {
+      "name": "objects.ComputeNode.get_first_node_by_host_for_old_compat",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 354,
+        "end": 354
+      }
+    },
+    {
+      "name": "exception.InvalidHypervisorType",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 364,
+        "end": 364
+      }
+    },
+    {
+      "name": "exception.DestinationHypervisorTooOld",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 370,
+        "end": 370
+      }
+    },
+    {
+      "name": "objects.InstanceMapping.get_by_instance_uuid",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 456,
+        "end": 456
+      }
+    },
+    {
+      "name": "objects.HostMapping.get_by_host",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 471,
+        "end": 471
+      }
+    },
+    {
+      "name": "scheduler_utils.setup_instance_group",
+      "usage": "call",
+      "via": "nova.scheduler",
+      "count": 1,
+      "lineRange": {
+        "start": 510,
+        "end": 510
+      }
+    },
+    {
+      "name": "objects.Destination",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 523,
+        "end": 523
+      }
+    },
+    {
+      "name": "compute_utils.heal_reqspec_is_bfv",
+      "usage": "call",
+      "via": "nova.compute",
+      "count": 1,
+      "lineRange": {
+        "start": 528,
+        "end": 528
+      }
+    },
+    {
+      "name": "exception.MigrationSchedulerRPCError",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 557,
+        "end": 557
+      }
+    },
+    {
+      "name": "str",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 557,
+        "end": 557
+      }
+    },
+    {
+      "name": "scheduler_utils.fill_provider_mapping",
+      "usage": "call",
+      "via": "nova.scheduler",
+      "count": 1,
+      "lineRange": {
+        "start": 559,
+        "end": 559
+      }
+    },
+    {
+      "name": "compute_utils.update_pci_request_with_placement_allocations",
+      "usage": "call",
+      "via": "nova.compute",
+      "count": 1,
+      "lineRange": {
+        "start": 568,
+        "end": 568
+      }
+    },
+    {
+      "name": "exception.MaxRetriesExceeded",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 615,
+        "end": 615
+      }
+    }
+  ],
+  "dependencies": [
+    {
+      "style": "from",
+      "module": "oslo_log",
+      "names": [
+        {
+          "alias": "logging",
+          "name": "log"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 13,
+        "end": 13
+      }
+    },
+    {
+      "style": "import",
+      "module": "oslo_messaging",
+      "names": [],
+      "alias": "messaging",
+      "relative": false,
+      "lineRange": {
+        "start": 14,
+        "end": 14
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_utils",
+      "names": [
+        {
+          "alias": null,
+          "name": "excutils"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 15,
+        "end": 15
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "availability_zones"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 17,
+        "end": 17
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.compute",
+      "names": [
+        {
+          "alias": null,
+          "name": "power_state"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 18,
+        "end": 18
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.compute",
+      "names": [
+        {
+          "alias": "compute_utils",
+          "name": "utils"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 19,
+        "end": 19
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.conductor.tasks",
+      "names": [
+        {
+          "alias": null,
+          "name": "base"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 20,
+        "end": 20
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.conductor.tasks",
+      "names": [
+        {
+          "alias": null,
+          "name": "migrate"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 21,
+        "end": 21
+      }
+    },
+    {
+      "style": "import",
+      "module": "nova.conf",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 22,
+        "end": 22
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "exception"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 23,
+        "end": 23
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.i18n",
+      "names": [
+        {
+          "alias": null,
+          "name": "_"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 24,
+        "end": 24
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.network",
+      "names": [
+        {
+          "alias": null,
+          "name": "neutron"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 25,
+        "end": 25
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "objects"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 26,
+        "end": 26
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.objects",
+      "names": [
+        {
+          "alias": "obj_fields",
+          "name": "fields"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 27,
+        "end": 27
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.scheduler",
+      "names": [
+        {
+          "alias": "scheduler_utils",
+          "name": "utils"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 28,
+        "end": 28
+      }
+    }
+  ],
+  "sideEffects": [
+    {
+      "kind": "global-mutation",
+      "target": "LOG = logging.getLogger(__name__)",
+      "lineRange": {
+        "start": 30,
+        "end": 30
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "CONF = nova.conf.CONF",
+      "lineRange": {
+        "start": 31,
+        "end": 31
+      }
+    }
+  ],
+  "securitySurface": [
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "profile.update(",
+      "lineRange": {
+        "start": 423,
+        "end": 423
+      }
+    }
+  ],
+  "injection_flags": [],
+  "warnings": []
+}

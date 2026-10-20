@@ -1,0 +1,142 @@
+{
+  "file": "src/nova/conf/console.py",
+  "hash": "559563fc5ef8a7b5ea4f2d8d5989e7d49f4db6fb77cbd689f00f0dd2e3eea6f6",
+  "language": "Python",
+  "component": "nova",
+  "package": null,
+  "lines": {
+    "blank": 17,
+    "code": 60,
+    "comment": 16,
+    "total": 93
+  },
+  "symbols": [
+    {
+      "name": "console_group",
+      "kind": "variable",
+      "scope": "",
+      "lineRange": {
+        "start": 18,
+        "end": 26
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "console_opts",
+      "kind": "variable",
+      "scope": "",
+      "lineRange": {
+        "start": 28,
+        "end": 82
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "register_opts",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 85,
+        "end": 87
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "conf"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 3,
+      "ccn": 1,
+      "exported": true
+    },
+    {
+      "name": "list_opts",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 90,
+        "end": 93
+      },
+      "source": "aee-inventory",
+      "parameters": [],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "{ console_group: console_opts, }",
+          "line": 91
+        }
+      ],
+      "nloc": 4,
+      "ccn": 1,
+      "exported": true
+    }
+  ],
+  "referencedSymbols": [
+    {
+      "name": "cfg.OptGroup",
+      "usage": "call",
+      "via": "oslo_config",
+      "count": 1,
+      "lineRange": {
+        "start": 18,
+        "end": 18
+      }
+    },
+    {
+      "name": "cfg.ListOpt",
+      "usage": "call",
+      "via": "oslo_config",
+      "count": 1,
+      "lineRange": {
+        "start": 29,
+        "end": 29
+      }
+    },
+    {
+      "name": "cfg.StrOpt",
+      "usage": "call",
+      "via": "oslo_config",
+      "count": 2,
+      "lineRange": {
+        "start": 44,
+        "end": 44
+      }
+    }
+  ],
+  "dependencies": [
+    {
+      "style": "from",
+      "module": "oslo_config",
+      "names": [
+        {
+          "alias": null,
+          "name": "cfg"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 16,
+        "end": 16
+      }
+    }
+  ],
+  "sideEffects": [],
+  "securitySurface": [
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "which allows to select the console proxy service to connect to.",
+      "lineRange": {
+        "start": 25,
+        "end": 25
+      }
+    }
+  ],
+  "injection_flags": [],
+  "warnings": []
+}
