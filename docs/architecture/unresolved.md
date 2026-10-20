@@ -1,6 +1,6 @@
 # Unresolved Items Index
 
-_Batch: `733c737267c89a04a0ad54b304c4e167bd16c887` — 2026-10-19_
+_Batch: `868bfe40c13e07d11a2aa58ddb0c8900f9d9744d` — 2026-10-20_
 
 Verification Summary (`.aee/verification-summary.md`) reports 0 errors — this document is not an escalation.
 
@@ -10,68 +10,41 @@ Verification Summary (`.aee/verification-summary.md`) reports 0 errors — this 
 
 Source: `.aee/link-summary.md` (Unresolved Imports table) and `.aee/link-graph.json` (`unresolved` and `ambiguous` arrays).
 
-### Unresolved References (98 total)
+### Unresolved References (99 total)
+
+**Summary by unresolved module root** (9 distinct roots):
+
+| Symbol root | Refs | Notes |
+|-------------|------|-------|
+| `nova` | 35 | generic `nova` bare import |
+| `nova.conf` | 31 | configuration layer — not yet extracted |
+| `nova.compute` | 12 | compute service layer — not yet extracted |
+| `nova.virt` | 8 | virt driver layer — not yet extracted |
+| `nova.network` | 4 | network layer — not yet extracted |
+| `nova.notifications.objects` | 4 | notification objects — not yet extracted |
+| `nova.context` | 2 | request context — not yet extracted |
+| `nova.pci` | 2 | PCI management — not yet extracted |
+| `nova.share` | 1 | share mapping — not yet extracted |
+| **Total** | **99** | |
+
+Notable resolved since batch 2: `nova.db.main` (was 32 refs) and `nova.db.api` (was 21 refs) — both now in the KB following batch 3 database layer extraction. Dominant remaining gaps are `nova.conf` and `nova.compute`.
+
+**Selected entries** (Link Summary `.aee/link-summary.md`, Unresolved Imports table):
 
 | File | Line | Symbol | Reason |
 |------|------|--------|--------|
 | `src/nova/accelerator/cyborg.py` | 49 | `nova.scheduler` | module-not-found |
 | `src/nova/objects/aggregate.py` | 21 | `nova.compute` | module-not-found |
-| `src/nova/objects/aggregate.py` | 22 | `nova.db.api` | module-not-found |
-| `src/nova/objects/aggregate.py` | 23 | `nova.db.api` | module-not-found |
-| `src/nova/objects/base.py` | 266 | `nova` | module-not-found |
-| `src/nova/objects/block_device.py` | — | `nova.db.main` | module-not-found |
-| `src/nova/objects/build_request.py` | — | `nova.db.main` | module-not-found |
-| `src/nova/objects/cell_mapping.py` | — | `nova.db.main` | module-not-found |
-| `src/nova/objects/compute_node.py` | — | `nova.db.main` | module-not-found |
-| `src/nova/objects/console_auth_token.py` | — | `nova.db.main` | module-not-found |
-| `src/nova/objects/flavor.py` | — | `nova.db.main` | module-not-found |
-| `src/nova/objects/host_mapping.py` | — | `nova.db.main` | module-not-found |
-| `src/nova/objects/instance.py` | — | `nova.compute` | module-not-found |
-| `src/nova/objects/instance.py` | — | `nova.db.main` | module-not-found |
-| `src/nova/objects/instance_group.py` | — | `nova.db.main` | module-not-found |
-| `src/nova/objects/instance_mapping.py` | — | `nova.db.main` | module-not-found |
-| `src/nova/objects/keypair.py` | — | `nova.db.main` | module-not-found |
-| `src/nova/objects/migration.py` | — | `nova.db.main` | module-not-found |
-| `src/nova/objects/pci_device.py` | — | `nova.db.main` | module-not-found |
-| `src/nova/objects/quotas.py` | — | `nova.db.main` | module-not-found |
-| `src/nova/objects/request_spec.py` | — | `nova.db.main` | module-not-found |
-| `src/nova/objects/security_group.py` | — | `nova.db.main` | module-not-found |
-| `src/nova/objects/service.py` | — | `nova.db.main` | module-not-found |
-| `src/nova/objects/share_mapping.py` | — | `nova.db.main` | module-not-found |
-| `src/nova/objects/tag.py` | — | `nova.db.main` | module-not-found |
-| `src/nova/objects/task_log.py` | — | `nova.db.main` | module-not-found |
-| `src/nova/objects/virtual_interface.py` | — | `nova.db.main` | module-not-found |
-| `src/nova/objects/volume_usage.py` | — | `nova.db.main` | module-not-found |
-| `src/nova/objects/ec2.py` | — | `nova.db.api` | module-not-found |
-| `src/nova/objects/instance_action.py` | — | `nova.db.api` | module-not-found |
-| `src/nova/objects/instance_mapping.py` | — | `nova.db.api` | module-not-found |
+| `src/nova/objects/instance.py` | — | `nova.notifications.objects` | module-not-found |
+| `src/nova/objects/service.py` | — | `nova.network` | module-not-found |
 | `src/nova/service_auth.py` | — | `nova.conf` | module-not-found |
 | `src/nova/utils.py` | — | `nova.conf` | module-not-found |
 | `src/nova/utils.py` | — | `nova.virt` | module-not-found |
-| `src/nova/objects/instance.py` | — | `nova.notifications.objects` | module-not-found |
-| `src/nova/objects/migration.py` | — | `nova.notifications.objects` | module-not-found |
-| `src/nova/objects/service.py` | — | `nova.network` | module-not-found |
-| `src/nova/objects/flavor.py` | — | `nova.scheduler.filters` | module-not-found |
 | `src/nova/objects/share_mapping.py` | — | `nova.share` | module-not-found |
-| _(additional refs to same roots — 59 further entries)_ | — | see summary below | module-not-found |
-
-**Summary by unresolved module root** (Link Summary `.aee/link-summary.md`):
-
-| Symbol root | Refs |
-|-------------|------|
-| `nova.db.main` | 32 |
-| `nova.db.api` | 21 |
-| `nova` | 15 |
-| `nova.conf` | 7 |
-| `nova.compute` | 6 |
-| `nova.virt` | 4 |
-| `nova.notifications.objects` | 4 |
-| `nova.db` | 3 |
-| `nova.network` | 3 |
-| `nova.scheduler` | 1 |
-| `nova.scheduler.filters` | 1 |
-| `nova.share` | 1 |
-| **Total** | **98** |
+| `src/nova/db/main/api.py` | — | `nova` | module-not-found |
+| `src/nova/db/main/api.py` | — | `nova.conf` | module-not-found |
+| `src/nova/db/api/api.py` | — | `nova.context` | module-not-found |
+| `src/nova/objects/pci_device.py` | — | `nova.pci` | module-not-found |
 
 ### Ambiguous References
 
@@ -85,7 +58,7 @@ Source: `.aee/security-chains.json` (`chains` array, `status: "partial"`).
 
 | Chain ID | Source File | Source Lines | Sink File | Sink Lines | Stopped-At File | Stopped-At Lines | Reason |
 |----------|------------|-------------|----------|-----------|----------------|-----------------|--------|
-| chain-001 | `src/nova/accelerator/cyborg.py` | 337–337 | `src/nova/accelerator/cyborg.py` | 358–359 | `src/nova/accelerator/cyborg.py` | 337–337 | `no-static-edge` — no file in the 55-file source set has an edge pointing TO `cyborg.py`; callers of `_CyborgClient.get_arq_by_uuid` remain outside the source set |
+| chain-001 | `src/nova/accelerator/cyborg.py` | 337–337 | `src/nova/accelerator/cyborg.py` | 358–359 | `src/nova/accelerator/cyborg.py` | 337–337 | `no-static-edge` — no file in the 122-file source set has an inbound edge to `cyborg.py`; callers of `_CyborgClient.get_arq_by_uuid` are expected in `nova.compute` or `nova.conductor` (not yet extracted) |
 
 No terminated chains. (`.aee/security-chains.json`, `summary.terminatedChains: 0`)
 
@@ -107,4 +80,4 @@ No errors. All issues in the Verification Report (`.aee/verification-report.json
 | warning  | 1     |
 | info     | 1     |
 
-The one open warning: `docs/src/nova/accelerator/cyborg.py.md` overview paragraph missing citation for lazy-adapter claim; should cite `src/nova/accelerator/cyborg.py:L121–L134` (Verification Report `.aee/verification-report.json`, item 1).
+The one open warning (3rd consecutive round): `docs/src/nova/accelerator/cyborg.py.md` overview paragraph "adapter created lazily" claim lacks a `(file:Lstart–Lend)` citation; should cite `src/nova/accelerator/cyborg.py:L121–L134` (Verification Report `.aee/verification-report.json`, item 1).

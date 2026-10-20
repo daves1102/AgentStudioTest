@@ -1,10 +1,10 @@
 # Whole-System Architecture
 
-_Batch: `733c737267c89a04a0ad54b304c4e167bd16c887` — 2026-10-19_
+_Batch: `868bfe40c13e07d11a2aa58ddb0c8900f9d9744d` — 2026-10-20_
 
 ## System Overview
 
-The system comprises a single component (`nova`) that implements the accelerator client, the exception catalog, the internationalisation shim, the versioned-objects (OVO) layer, the service-authentication helpers, and general-purpose utilities of the OpenStack Nova compute service. The accelerator subsystem (`accelerator/`) brokers communication between Nova compute and the Cyborg accelerator management service via a REST HTTP client. The objects layer (`objects/`) provides 47 versioned object modules that define Nova's domain entities as versionable, serialisable Python objects mapping to both the API and the database. Cross-cutting services (`exception.py`, `i18n.py`, `service_auth.py`, `utils.py`) are consumed broadly across all 55 files.
+The system comprises a single component (`nova`) representing the core subsystems of the OpenStack Compute service, extracted across three batches. The 122 files span: the accelerator integration layer (`accelerator/`) brokering communication with the Cyborg accelerator management service; the exception catalog and internationalisation shim (`exception.py`, `i18n.py`); the service-authentication helpers and general utilities (`service_auth.py`, `utils.py`); the versioned object layer (`objects/`) defining Nova's domain entities; the database access layer (`db/`) providing the Alembic-managed schema for both the API and main databases and a full SQLAlchemy query API; and the scheduler subsystem (`scheduler/`) implementing placement-aware host selection, request filtering, weighing, and Placement resource-provider management.
 
 Sources: `docs/components/nova.md` (Overview), `docs/components/index.md`.
 
@@ -16,9 +16,9 @@ Line counts are sums of the code lines stated in each Component document's File 
 
 | Component | Language(s) | File count | Code lines |
 |-----------|-------------|------------|------------|
-| `nova`    | Python      | 55         | 15,164     |
+| `nova`    | Python      | 122        | 28,982     |
 
-Sources: `docs/components/nova.md` (File Inventory Summary); KB records under `.aee/kb/src/nova/`.
+Sources: `docs/components/nova.md` (File Inventory; aggregate verified in Verification Summary `.aee/verification-summary.md`: "42,016 total / 28,982 code"); KB records under `.aee/kb/src/nova/`.
 
 ---
 
@@ -29,7 +29,7 @@ graph LR
     nova["nova"]
 ```
 
-The Link Graph (`.aee/link-graph.json`) records 212 file edges and zero cross-component edges (`summary.crossComponentEdges: 0`; Link Summary `.aee/link-summary.md`: "All 212 file edges are intra-component (within the `nova` component)"). There is one component in the system; no cross-component directed edges exist. No cross-component seams were found (`crossComponentSeams: []`, `summary.seams: 0`).
+The Link Graph (`.aee/link-graph.json`, commit `6bd3ba5`) records 382 file edges and zero cross-component edges (`summary.crossComponentEdges: 0`; Link Summary `.aee/link-summary.md`: "All 382 file edges are intra-component (within the `nova` component)"). There is one component in the system; no cross-component directed edges exist. No cross-component seams were found (`crossComponentSeams: []`, `summary.seams: 0`).
 
 The graph is built from static imports and shared literals and may miss other coupling.
 
@@ -39,28 +39,22 @@ The graph is built from static imports and shared literals and may miss other co
 
 Data enters the system through the public API of the `nova` component. Entry points identified in `docs/components/nova.md` (Local Data Flow > Entry Points):
 
-- **`context`** — caller authentication/session state; accepted at `accelerator/cyborg.py:56` (`get_client`) and stored in `_CyborgClient.__init__` (cyborg.py:116–118) for all outbound Cyborg calls.
-- **`dp_name`** — device profile name from caller; accepted at `accelerator/cyborg.py:88` (`get_device_profile_request_groups`) and forwarded as Cyborg API query parameter or JSON body.
-- **`instance_uuid`** — instance UUID from caller; accepted at `accelerator/cyborg.py:291` and `370`; forwarded as query parameter key `instance` to the Cyborg REST API.
-- **`arq_uuid`** — ARQ UUID from caller; accepted at `accelerator/cyborg.py:337`; interpolated into the Cyborg REST API URL path.
-- **`bindings`** — binding dict from caller; accepted at `accelerator/cyborg.py:255`; serialised as RFC 6902 JSON patch body.
-- **HTTP entry via `webob.exc`** — `exception.py:27–35`: `ConvertedException` wraps `webob.exc.WSGIHTTPException`; HTTP request data enters the exception surface.
+- **`context`** — caller authentication/session state; accepted at `accelerator/cyborg.py:56` and stored for all outbound Cyborg calls.
+- **`dp_name`** — device profile name; accepted at `accelerator/cyborg.py:88` and forwarded as a Cyborg API query parameter or JSON body.
+- **`instance_uuid`** — instance UUID; accepted at `accelerator/cyborg.py:291, 370` and forwarded to the Cyborg REST API as query parameter `instance`.
+- **`arq_uuid`** — ARQ UUID; accepted at `accelerator/cyborg.py:337` and interpolated into the Cyborg REST API URL path.
+- **`bindings`** — binding dict; accepted at `accelerator/cyborg.py:255` and serialised as RFC 6902 JSON patch body.
+- **HTTP entry via `webob.exc`** — `exception.py:27–35`: `ConvertedException` wraps `webob.exc.WSGIHTTPException`.
+- **Scheduler hints** — user-controlled JSON strings accepted via `spec_obj.get_scheduler_hint('query')` at `scheduler/filters/json_filter.py:135` and parsed by `JsonFilter._parse_string` (lines 93–112).
 
-Data flows inward through the `_CyborgClient` class. The `_client` property (cyborg.py:121–134) constructs an authenticated outbound HTTP adapter using `service_auth.get_service_user_token_auth_plugin` (cyborg.py:130) and `utils.get_sdk_adapter` (cyborg.py:132). All outbound Cyborg calls exit through seven HTTP sinks (all in `accelerator/cyborg.py`):
+Data flows through several subsystems:
 
-| Sink | Lines |
-|------|-------|
-| GET `/device_profiles?name=<dp_name>` | 153–154 |
-| POST `/accelerator_requests` with `dp_name` in JSON body | 205 |
-| PATCH `/accelerator_requests` with `bindings` as JSON patch | 282–283 |
-| GET `/accelerator_requests?instance=<instance_uuid>` | 318 |
-| GET `/accelerator_requests/<arq_uuid>` (path-interpolated) | 358–359 |
-| DELETE `/accelerator_requests?instance=<instance_uuid>` | 378–379 |
-| DELETE `/accelerator_requests?arqs=<uuid1,uuid2,...>` | 406–407 |
+- **Accelerator path:** caller-supplied parameters flow through `_CyborgClient` (cyborg.py:112–419) and exit via seven outbound HTTP calls to the Cyborg REST API (see `docs/components/nova.md`, Sinks table).
+- **Objects/DB path:** OVO objects (`objects/*.py`) issue SQLAlchemy sessions against the Nova API database (`db/api/`) and main database (`db/main/`) via 165 network-class side effects. `db/main/api.py` (4,967 lines) provides the complete query API.
+- **Scheduler path:** `scheduler/manager.py` (class `SchedulerManager`) orchestrates host selection; `scheduler/client/report.py` (class `SchedulerReportClient`) issues HTTP calls to the OpenStack Placement API for resource-provider inventory and allocation records (`scheduler/client/report.py:279`).
+- **Auth path:** `service_auth.py` constructs service-user keystoneauth1 auth plugins and sessions (service_auth.py:56, 70) consumed by `cyborg.py` and `utils.py`.
 
-The objects layer (`objects/*.py`) issues 110 SQLAlchemy session queries to the Nova database across 17 object files (side effects listed in `docs/components/nova.md`, Side Effects > Network). `service_auth.py` constructs keystoneauth1 sessions and auth plugins for service-user credentials (service_auth.py:56, 70).
-
-`accelerator/__init__.py` is an empty package marker and participates in no data flow.
+All outbound Cyborg calls are authenticated using service credentials retrieved via `service_auth.get_service_user_token_auth_plugin` (`accelerator/cyborg.py:130`).
 
 Sources: `docs/components/nova.md` (Local Data Flow, Side Effects); KB records under `.aee/kb/src/nova/`.
 
@@ -68,30 +62,31 @@ Sources: `docs/components/nova.md` (Local Data Flow, Side Effects); KB records u
 
 ## External Dependencies
 
-### Third-party external modules
+Third-party and standard-library packages imported across the 122 files. Source: `docs/components/nova.md` (External Dependencies table).
 
-| Module | Component(s) |
-|--------|-------------|
-| `cursive` | `nova` |
-| `keystoneauth1` | `nova` |
-| `netaddr` | `nova` |
-| `openstack` | `nova` |
-| `os_resource_classes` | `nova` |
-| `os_service_types` | `nova` |
-| `oslo_concurrency` | `nova` |
-| `oslo_config` | `nova` |
-| `oslo_db` | `nova` |
-| `oslo_i18n` | `nova` |
-| `oslo_log` | `nova` |
-| `oslo_messaging` | `nova` |
-| `oslo_serialization` | `nova` |
-| `oslo_utils` | `nova` |
-| `oslo_versionedobjects` | `nova` |
-| `sqlalchemy` | `nova` |
-| `webob` | `nova` |
+### Most widely used (by file count)
 
-Source: `docs/components/nova.md` (External Dependencies > Third-party table).
+| Package | Files importing |
+|---------|----------------|
+| `oslo_utils` | 62 |
+| `sqlalchemy` | 56 |
+| `oslo_log` | 47 |
+| `oslo_db` | 25 |
+| `oslo_serialization` | 24 |
+| `alembic` | 18 |
+| `keystoneauth1` | 6 |
+| `oslo_versionedobjects` | 6 |
+| `netaddr` | 4 |
+| `os_resource_classes` | 4 |
+| `os_traits` | 3 |
+| `oslo_config` | 3 |
+| `oslo_messaging` | 3 |
+| `oslo_concurrency` | 2 |
+| `oslo_middleware` | 2 |
+| `webob` | 2 |
+
+Additional packages used by fewer files: `cursive`, `eventlet`, `openstack`, `os_service_types`, `oslo_i18n`, `oslo_service`, `retrying`.
 
 ### Unresolved internal nova imports
 
-The following `nova.*` imports in multiple files are recorded as `module-not-found` in `.aee/link-graph.json` (`unresolved` array) and resolve to modules outside the current repository boundary: `nova.compute`, `nova.conf`, `nova.db.api`, `nova.db.main`, `nova.network`, `nova.notifications.objects`, `nova.quota`, `nova.scheduler`, `nova.scheduler.filters`, `nova.share`, `nova.virt`, and others. The `nova.db.*` family accounts for 56 of the 98 total unresolved references (Link Summary `.aee/link-summary.md`).
+The following `nova.*` import roots remain unresolved in `.aee/link-graph.json` (`unresolved` array, reason: `module-not-found`): `nova` (35 refs), `nova.conf` (31), `nova.compute` (12), `nova.virt` (8), `nova.network` (4), `nova.notifications.objects` (4), `nova.context` (2), `nova.pci` (2), `nova.share` (1). The `nova.db.*` family that dominated earlier batches is now resolved — the database layer was extracted in Batch 3. Remaining dominant gaps are `nova.conf` (configuration layer) and `nova.compute` (compute service layer). (Link Summary `.aee/link-summary.md`)
