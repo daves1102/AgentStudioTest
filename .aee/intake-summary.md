@@ -1,26 +1,22 @@
-Batch: caa20451a7b7df151b4ddbaab06f92e6857e74a6
+Batch: f56908d5e0741524fb4cb768d9b52ccb0f3a585b
 
 ## Overview
 
-- **Files to extract** (new/changed, language not OTHER/UNKNOWN): 205
+- **Files to extract** (new/changed, language not OTHER/UNKNOWN): 106
 - **Skipped files** (unchanged or missing): 0
-- **OTHER files** (non-source): 1
+- **OTHER files** (non-source): 0
 
 ## Counts by Language
 
 | Language | Files | Lines of Code | Comments | Blanks |
 |----------|-------|---------------|----------|--------|
-| Python   | 205   | 29634         | 5277     | 4590   |
+| Python   | 106   | 39359         | 7597     | 4636   |
 
 ## Counts by Component
 
 | Component | Files | Lines of Code | Comments | Blanks |
 |-----------|-------|---------------|----------|--------|
-| nova      | 205   | 29634         | 5277     | 4590   |
-
-## OTHER Files (non-source, not flagged)
-
-- `src/nova/api/openstack/compute/rest_api_version_history.rst` (documentation)
+| nova      | 106   | 39359         | 7597     | 4636   |
 
 ## UNKNOWN Files — Flagged for Human Review
 
