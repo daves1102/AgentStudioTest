@@ -1,0 +1,17 @@
+[
+  {
+    "file": "src/nova/scheduler/filters/json_filter.py",
+    "tool": "manual",
+    "ruleId": null,
+    "lineRange": {
+      "start": 104,
+      "end": 112
+    },
+    "title": "User-controlled scheduler hint string used as getattr attribute name on HostState object",
+    "detail": "In _parse_string (line 93-112), strings from scheduler hint queries that start with '$' are interpreted as attribute paths into the HostState object. The first path segment is passed directly to getattr(host_state, path[0], None) (line 105) where path[0] is user-controlled input from spec_obj.get_scheduler_hint('query') (line 135), parsed via jsonutils.loads(). An API caller can supply arbitrary attribute names (e.g. '$__dict__', '$_sa_instance_state') to probe HostState's internal Python attributes beyond what the API normally returns. While there is no code execution risk (no eval), this reflects externally-controlled input into Python object reflection. Impact depends on what HostState exposes \u2014 cross-file analysis needed to enumerate sensitive fields.",
+    "owaspCategory": "A01 Broken Access Control",
+    "cweId": "CWE-470",
+    "severity": "medium",
+    "confidence": "needs_cross_file"
+  }
+]
