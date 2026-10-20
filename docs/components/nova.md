@@ -2,11 +2,12 @@
 
 ## Overview
 
-The `nova` component encompasses the core OpenStack Compute service subsystems extracted across three batches: the accelerator integration layer (`accelerator/`), exception and internationalisation utilities (`exception.py`, `i18n.py`, `service_auth.py`, `utils.py`), the versioned object layer (`objects/`), the database access layer (`db/`), and the scheduler subsystem (`scheduler/`). All 122 files are classified as component `nova`; no other component exists in the current KB.
+The `nova` component encompasses the core OpenStack Compute service subsystems extracted across four batches: the REST API layer (`api/`), accelerator integration (`accelerator/`), exception and internationalisation utilities (`exception.py`, `i18n.py`, `service_auth.py`, `utils.py`), the versioned object layer (`objects/`), the database access layer (`db/`), the network integration layer (`network/`), and the scheduler subsystem (`scheduler/`). All 327 files are classified as component `nova`; no other component exists in the current KB.
 
-**Batch provenance** — batch 1 (`6d56e5a`, 2026-10-16): 2 files; batch 2 (`733c73`, 2026-10-19): 53 files; batch 3 (`868bfe40`, 2026-10-19): 67 files.
+**Batch provenance** — batch 1 (`6d56e5a`, 2026-10-16): 2 files; batch 2 (`733c73`, 2026-10-19): 53 files; batch 3 (`868bfe40`, 2026-10-19): 67 files; batch 4 (`caa20451`, 2026-10-20): 205 files.
 
 Subsystem responsibilities:
+- **api/** — WSGI framework, request dispatch, authentication middleware, API versioning, metadata service, and OpenStack Compute REST API (servers, flavors, keypairs, etc.) including JSON schema validation (`api/validation/`) and view serialisers (`api/openstack/compute/views/`).
 - **accelerator/** — HTTP client façade for the Cyborg accelerator API.
 - **exception.py / i18n.py** — exception class hierarchy and internationalisation factory.
 - **service_auth.py / utils.py** — service-token authentication helpers and general utilities.
@@ -14,20 +15,220 @@ Subsystem responsibilities:
 - **db/api/** — Alembic-managed API database schema (cell mappings, request specs, flavors, quotas, etc.).
 - **db/main/** — Alembic-managed main database schema (instances, migrations, security groups, PCI devices, etc.) and SQLAlchemy query API (`db/main/api.py`, 4,967 lines).
 - **db/migration.py / db/utils.py / db/types.py / db/constants.py** — database migration entry points, shared column types, and helper utilities.
+- **network/** — Neutron integration: network model (`network/model.py`), Neutron client (`network/neutron.py`), os-vif utilities, and security group API.
 - **scheduler/** — placement-aware scheduling: host manager, request filters, host filters, weighers, RPC API client, and Placement resource-provider report client.
 
-Source: `.aee/intake-summary.md` (batch 868bfe40); `.aee/link-summary.md`.
+Source: `.aee/intake-summary.md` (batch caa20451); `.aee/link-summary.md`.
 
 ---
 
 ## File Inventory
 
-All 122 KB records. LOC figures are taken from each record's `lines` block. Source: `.aee/kb/src/nova/**/*.json`.
+All 327 KB records. LOC figures are taken from each record's `lines` block. Source: `.aee/kb/src/nova/**/*.json`.
 
 | File | Total | Code | Comment | Blank |
 |---|---|---|---|---|
 | `accelerator/__init__.py` | 0 | 0 | 0 | 0 |
 | `accelerator/cyborg.py` | 419 | 324 | 26 | 69 |
+| `api/__init__.py` | 0 | 0 | 0 | 0 |
+| `api/auth.py` | 101 | 62 | 16 | 23 |
+| `api/compute_req_id.py` | 36 | 13 | 14 | 9 |
+| `api/metadata/__init__.py` | 22 | 7 | 13 | 2 |
+| `api/metadata/base.py` | 746 | 535 | 74 | 137 |
+| `api/metadata/handler.py` | 338 | 245 | 42 | 51 |
+| `api/metadata/password.py` | 88 | 56 | 17 | 15 |
+| `api/metadata/vendordata.py` | 30 | 10 | 15 | 5 |
+| `api/metadata/vendordata_dynamic.py` | 133 | 84 | 22 | 27 |
+| `api/metadata/vendordata_json.py` | 56 | 33 | 14 | 9 |
+| `api/openstack/__init__.py` | 226 | 158 | 33 | 35 |
+| `api/openstack/api_version_request.py` | 441 | 357 | 44 | 40 |
+| `api/openstack/common.py` | 554 | 437 | 29 | 88 |
+| `api/openstack/compute/__init__.py` | 21 | 1 | 19 | 1 |
+| `api/openstack/compute/admin_actions.py` | 91 | 65 | 15 | 11 |
+| `api/openstack/compute/admin_password.py` | 61 | 38 | 16 | 7 |
+| `api/openstack/compute/agents.py` | 60 | 37 | 13 | 10 |
+| `api/openstack/compute/aggregates.py` | 325 | 246 | 33 | 46 |
+| `api/openstack/compute/assisted_volume_snapshots.py` | 98 | 62 | 23 | 13 |
+| `api/openstack/compute/attach_interfaces.py` | 243 | 189 | 24 | 30 |
+| `api/openstack/compute/availability_zone.py` | 128 | 94 | 16 | 18 |
+| `api/openstack/compute/baremetal_nodes.py` | 148 | 106 | 20 | 22 |
+| `api/openstack/compute/cells.py` | 98 | 68 | 15 | 15 |
+| `api/openstack/compute/certificates.py` | 47 | 27 | 13 | 7 |
+| `api/openstack/compute/cloudpipe.py` | 56 | 34 | 13 | 9 |
+| `api/openstack/compute/console_auth_tokens.py` | 102 | 62 | 23 | 17 |
+| `api/openstack/compute/console_output.py` | 73 | 39 | 24 | 10 |
+| `api/openstack/compute/consoles.py` | 62 | 38 | 14 | 10 |
+| `api/openstack/compute/create_backup.py` | 96 | 63 | 18 | 15 |
+| `api/openstack/compute/deferred_delete.py` | 71 | 50 | 14 | 7 |
+| `api/openstack/compute/evacuate.py` | 177 | 132 | 21 | 24 |
+| `api/openstack/compute/extension_info.py` | 891 | 859 | 18 | 14 |
+| `api/openstack/compute/fixed_ips.py` | 53 | 32 | 13 | 8 |
+| `api/openstack/compute/flavor_access.py` | 123 | 80 | 21 | 22 |
+| `api/openstack/compute/flavors.py` | 254 | 191 | 30 | 33 |
+| `api/openstack/compute/flavors_extraspecs.py` | 149 | 111 | 23 | 15 |
+| `api/openstack/compute/floating_ip_dns.py` | 76 | 50 | 13 | 13 |
+| `api/openstack/compute/floating_ip_pools.py` | 54 | 32 | 13 | 9 |
+| `api/openstack/compute/floating_ips.py` | 311 | 245 | 21 | 45 |
+| `api/openstack/compute/floating_ips_bulk.py` | 58 | 36 | 13 | 9 |
+| `api/openstack/compute/fping.py` | 46 | 24 | 15 | 7 |
+| `api/openstack/compute/helpers.py` | 116 | 70 | 24 | 22 |
+| `api/openstack/compute/hosts.py` | 303 | 258 | 18 | 27 |
+| `api/openstack/compute/hypervisors.py` | 535 | 414 | 54 | 67 |
+| `api/openstack/compute/image_metadata.py` | 141 | 111 | 14 | 16 |
+| `api/openstack/compute/images.py` | 158 | 114 | 19 | 25 |
+| `api/openstack/compute/instance_actions.py` | 215 | 154 | 35 | 26 |
+| `api/openstack/compute/instance_usage_audit_log.py` | 118 | 92 | 16 | 10 |
+| `api/openstack/compute/ips.py` | 63 | 41 | 14 | 8 |
+| `api/openstack/compute/keypairs.py` | 225 | 167 | 23 | 35 |
+| `api/openstack/compute/limits.py` | 76 | 47 | 17 | 12 |
+| `api/openstack/compute/lock_server.py` | 67 | 47 | 14 | 6 |
+| `api/openstack/compute/migrate_server.py` | 185 | 153 | 17 | 15 |
+| `api/openstack/compute/migrations.py` | 221 | 154 | 47 | 20 |
+| `api/openstack/compute/multinic.py` | 74 | 49 | 14 | 11 |
+| `api/openstack/compute/networks.py` | 132 | 92 | 21 | 19 |
+| `api/openstack/compute/networks_associate.py` | 54 | 34 | 11 | 9 |
+| `api/openstack/compute/pause_server.py` | 78 | 58 | 14 | 6 |
+| `api/openstack/compute/quota_classes.py` | 152 | 100 | 27 | 25 |
+| `api/openstack/compute/quota_sets.py` | 257 | 180 | 45 | 32 |
+| `api/openstack/compute/remote_consoles.py` | 186 | 147 | 19 | 20 |
+| `api/openstack/compute/rescue.py` | 105 | 78 | 16 | 11 |
+| `api/openstack/compute/routes.py` | 901 | 730 | 42 | 129 |
+| `api/openstack/compute/schemas/__init__.py` | 0 | 0 | 0 | 0 |
+| `api/openstack/compute/schemas/admin_actions.py` | 58 | 34 | 18 | 6 |
+| `api/openstack/compute/schemas/admin_password.py` | 36 | 19 | 13 | 4 |
+| `api/openstack/compute/schemas/agents.py` | 24 | 7 | 13 | 4 |
+| `api/openstack/compute/schemas/aggregate_images.py` | 38 | 23 | 11 | 4 |
+| `api/openstack/compute/schemas/aggregates.py` | 249 | 209 | 14 | 26 |
+| `api/openstack/compute/schemas/assisted_volume_snapshots.py` | 90 | 66 | 17 | 7 |
+| `api/openstack/compute/schemas/attach_interfaces.py` | 143 | 109 | 18 | 16 |
+| `api/openstack/compute/schemas/availability_zone.py` | 85 | 65 | 13 | 7 |
+| `api/openstack/compute/schemas/baremetal_nodes.py` | 96 | 72 | 13 | 11 |
+| `api/openstack/compute/schemas/cells.py` | 34 | 17 | 13 | 4 |
+| `api/openstack/compute/schemas/certificates.py` | 21 | 4 | 13 | 4 |
+| `api/openstack/compute/schemas/cloudpipe.py` | 23 | 6 | 13 | 4 |
+| `api/openstack/compute/schemas/console_auth_tokens.py` | 50 | 34 | 11 | 5 |
+| `api/openstack/compute/schemas/console_output.py` | 45 | 26 | 17 | 2 |
+| `api/openstack/compute/schemas/consoles.py` | 24 | 7 | 13 | 4 |
+| `api/openstack/compute/schemas/create_backup.py` | 59 | 37 | 13 | 9 |
+| `api/openstack/compute/schemas/deferred_delete.py` | 39 | 22 | 13 | 4 |
+| `api/openstack/compute/schemas/evacuate.py` | 69 | 40 | 19 | 10 |
+| `api/openstack/compute/schemas/extension_info.py` | 81 | 63 | 11 | 7 |
+| `api/openstack/compute/schemas/fixed_ips.py` | 23 | 6 | 13 | 4 |
+| `api/openstack/compute/schemas/flavor_access.py` | 90 | 65 | 15 | 10 |
+| `api/openstack/compute/schemas/flavors.py` | 369 | 281 | 43 | 45 |
+| `api/openstack/compute/schemas/flavors_extraspecs.py` | 85 | 48 | 23 | 14 |
+| `api/openstack/compute/schemas/floating_ip_dns.py` | 24 | 7 | 13 | 4 |
+| `api/openstack/compute/schemas/floating_ip_pools.py` | 41 | 26 | 11 | 4 |
+| `api/openstack/compute/schemas/floating_ips.py` | 116 | 88 | 15 | 13 |
+| `api/openstack/compute/schemas/floating_ips_bulk.py` | 25 | 8 | 13 | 4 |
+| `api/openstack/compute/schemas/fping.py` | 20 | 4 | 13 | 3 |
+| `api/openstack/compute/schemas/hosts.py` | 140 | 108 | 22 | 10 |
+| `api/openstack/compute/schemas/hypervisors.py` | 367 | 293 | 41 | 33 |
+| `api/openstack/compute/schemas/image_metadata.py` | 77 | 47 | 15 | 15 |
+| `api/openstack/compute/schemas/images.py` | 231 | 195 | 24 | 12 |
+| `api/openstack/compute/schemas/instance_actions.py` | 208 | 174 | 20 | 14 |
+| `api/openstack/compute/schemas/instance_usage_audit_log.py` | 98 | 76 | 14 | 8 |
+| `api/openstack/compute/schemas/ips.py` | 82 | 59 | 15 | 8 |
+| `api/openstack/compute/schemas/keypairs.py` | 253 | 213 | 18 | 22 |
+| `api/openstack/compute/schemas/limits.py` | 154 | 125 | 16 | 13 |
+| `api/openstack/compute/schemas/lock_server.py` | 55 | 38 | 12 | 5 |
+| `api/openstack/compute/schemas/migrate_server.py` | 82 | 54 | 15 | 13 |
+| `api/openstack/compute/schemas/migrations.py` | 137 | 109 | 18 | 10 |
+| `api/openstack/compute/schemas/multinic.py` | 59 | 40 | 13 | 6 |
+| `api/openstack/compute/schemas/networks.py` | 103 | 79 | 17 | 7 |
+| `api/openstack/compute/schemas/networks_associate.py` | 22 | 6 | 13 | 3 |
+| `api/openstack/compute/schemas/pause_server.py` | 39 | 22 | 13 | 4 |
+| `api/openstack/compute/schemas/quota_classes.py` | 164 | 130 | 18 | 16 |
+| `api/openstack/compute/schemas/quota_sets.py` | 292 | 228 | 28 | 36 |
+| `api/openstack/compute/schemas/remote_consoles.py` | 227 | 189 | 23 | 15 |
+| `api/openstack/compute/schemas/rescue.py` | 56 | 36 | 15 | 5 |
+| `api/openstack/compute/schemas/security_group_default_rules.py` | 24 | 7 | 13 | 4 |
+| `api/openstack/compute/schemas/security_groups.py` | 254 | 203 | 26 | 25 |
+| `api/openstack/compute/schemas/server_diagnostics.py` | 157 | 138 | 15 | 4 |
+| `api/openstack/compute/schemas/server_external_events.py` | 142 | 116 | 15 | 11 |
+| `api/openstack/compute/schemas/server_groups.py` | 231 | 182 | 22 | 27 |
+| `api/openstack/compute/schemas/server_metadata.py` | 95 | 66 | 13 | 16 |
+| `api/openstack/compute/schemas/server_migrations.py` | 150 | 118 | 14 | 18 |
+| `api/openstack/compute/schemas/server_password.py` | 33 | 17 | 11 | 5 |
+| `api/openstack/compute/schemas/server_shares.py` | 89 | 62 | 18 | 9 |
+| `api/openstack/compute/schemas/server_tags.py` | 87 | 62 | 11 | 14 |
+| `api/openstack/compute/schemas/server_topology.py` | 60 | 46 | 11 | 3 |
+| `api/openstack/compute/schemas/servers.py` | 2123 | 1823 | 146 | 154 |
+| `api/openstack/compute/schemas/services.py` | 200 | 158 | 23 | 19 |
+| `api/openstack/compute/schemas/shelve.py` | 123 | 68 | 45 | 10 |
+| `api/openstack/compute/schemas/simple_tenant_usage.py` | 185 | 141 | 29 | 15 |
+| `api/openstack/compute/schemas/snapshots.py` | 140 | 112 | 15 | 13 |
+| `api/openstack/compute/schemas/suspend_server.py` | 39 | 22 | 13 | 4 |
+| `api/openstack/compute/schemas/tenant_networks.py` | 59 | 39 | 13 | 7 |
+| `api/openstack/compute/schemas/versions.py` | 133 | 111 | 13 | 9 |
+| `api/openstack/compute/schemas/virtual_interfaces.py` | 18 | 2 | 13 | 3 |
+| `api/openstack/compute/schemas/volume_attachments.py` | 238 | 184 | 26 | 28 |
+| `api/openstack/compute/schemas/volumes.py` | 215 | 180 | 19 | 16 |
+| `api/openstack/compute/security_group_default_rules.py` | 58 | 36 | 13 | 9 |
+| `api/openstack/compute/security_groups.py` | 468 | 376 | 29 | 63 |
+| `api/openstack/compute/server_diagnostics.py` | 61 | 39 | 14 | 8 |
+| `api/openstack/compute/server_external_events.py` | 161 | 116 | 21 | 24 |
+| `api/openstack/compute/server_groups.py` | 283 | 205 | 51 | 27 |
+| `api/openstack/compute/server_metadata.py` | 168 | 128 | 19 | 21 |
+| `api/openstack/compute/server_migrations.py` | 216 | 158 | 32 | 26 |
+| `api/openstack/compute/server_password.py` | 64 | 40 | 14 | 10 |
+| `api/openstack/compute/server_shares.py` | 265 | 211 | 18 | 36 |
+| `api/openstack/compute/server_tags.py` | 232 | 182 | 12 | 38 |
+| `api/openstack/compute/server_topology.py` | 82 | 53 | 12 | 17 |
+| `api/openstack/compute/servers.py` | 1639 | 1331 | 144 | 164 |
+| `api/openstack/compute/services.py` | 504 | 347 | 91 | 66 |
+| `api/openstack/compute/shelve.py` | 153 | 119 | 20 | 14 |
+| `api/openstack/compute/simple_tenant_usage.py` | 369 | 269 | 40 | 60 |
+| `api/openstack/compute/snapshots.py` | 157 | 117 | 15 | 25 |
+| `api/openstack/compute/suspend_server.py` | 75 | 56 | 13 | 6 |
+| `api/openstack/compute/tenant_networks.py` | 117 | 84 | 19 | 14 |
+| `api/openstack/compute/versions.py` | 129 | 94 | 17 | 18 |
+| `api/openstack/compute/versionsV21.py` | 38 | 18 | 14 | 6 |
+| `api/openstack/compute/views/__init__.py` | 0 | 0 | 0 | 0 |
+| `api/openstack/compute/views/flavors.py` | 113 | 76 | 17 | 20 |
+| `api/openstack/compute/views/hypervisors.py` | 26 | 8 | 14 | 4 |
+| `api/openstack/compute/views/images.py` | 167 | 129 | 15 | 23 |
+| `api/openstack/compute/views/instance_actions.py` | 23 | 6 | 13 | 4 |
+| `api/openstack/compute/views/ips.py` | 53 | 31 | 14 | 8 |
+| `api/openstack/compute/views/keypairs.py` | 74 | 42 | 19 | 13 |
+| `api/openstack/compute/views/limits.py` | 93 | 66 | 14 | 13 |
+| `api/openstack/compute/views/migrations.py` | 24 | 6 | 13 | 5 |
+| `api/openstack/compute/views/server_diagnostics.py` | 62 | 40 | 11 | 11 |
+| `api/openstack/compute/views/server_shares.py` | 46 | 27 | 11 | 8 |
+| `api/openstack/compute/views/server_tags.py` | 30 | 11 | 14 | 5 |
+| `api/openstack/compute/views/servers.py` | 823 | 593 | 138 | 92 |
+| `api/openstack/compute/views/usages.py` | 28 | 9 | 14 | 5 |
+| `api/openstack/compute/views/versions.py` | 95 | 64 | 14 | 17 |
+| `api/openstack/compute/virtual_interfaces.py` | 40 | 19 | 14 | 7 |
+| `api/openstack/compute/volume_attachments.py` | 441 | 342 | 43 | 56 |
+| `api/openstack/compute/volumes.py` | 222 | 156 | 28 | 38 |
+| `api/openstack/compute/volumes_boot.py` | 231 | 202 | 11 | 18 |
+| `api/openstack/identity.py` | 81 | 46 | 25 | 10 |
+| `api/openstack/requestlog.py` | 98 | 63 | 18 | 17 |
+| `api/openstack/urlmap.py` | 309 | 202 | 45 | 62 |
+| `api/openstack/wsgi.py` | 937 | 637 | 107 | 193 |
+| `api/openstack/wsgi_app.py` | 156 | 91 | 36 | 29 |
+| `api/validation/__init__.py` | 452 | 298 | 78 | 76 |
+| `api/validation/extra_specs/__init__.py` | 0 | 0 | 0 | 0 |
+| `api/validation/extra_specs/accel.py` | 36 | 17 | 13 | 6 |
+| `api/validation/extra_specs/aggregate_instance_extra_specs.py` | 72 | 47 | 15 | 10 |
+| `api/validation/extra_specs/base.py` | 120 | 82 | 18 | 20 |
+| `api/validation/extra_specs/capabilities.py` | 112 | 75 | 21 | 16 |
+| `api/validation/extra_specs/hw.py` | 655 | 626 | 16 | 13 |
+| `api/validation/extra_specs/hw_rng.py` | 57 | 37 | 14 | 6 |
+| `api/validation/extra_specs/hw_video.py` | 39 | 19 | 14 | 6 |
+| `api/validation/extra_specs/null.py` | 55 | 35 | 14 | 6 |
+| `api/validation/extra_specs/os.py` | 42 | 21 | 15 | 6 |
+| `api/validation/extra_specs/pci_passthrough.py` | 43 | 23 | 14 | 6 |
+| `api/validation/extra_specs/quota.py` | 188 | 155 | 19 | 14 |
+| `api/validation/extra_specs/resources.py` | 65 | 43 | 13 | 9 |
+| `api/validation/extra_specs/traits.py` | 73 | 51 | 13 | 9 |
+| `api/validation/extra_specs/validators.py` | 83 | 47 | 18 | 18 |
+| `api/validation/extra_specs/vmware.py` | 48 | 29 | 13 | 6 |
+| `api/validation/parameter_types.py` | 537 | 372 | 78 | 87 |
+| `api/validation/response_types.py` | 70 | 51 | 12 | 7 |
+| `api/validation/validators.py` | 346 | 235 | 55 | 56 |
+| `api/wsgi.py` | 260 | 178 | 11 | 71 |
 | `db/__init__.py` | 0 | 0 | 0 | 0 |
 | `db/api/__init__.py` | 0 | 0 | 0 | 0 |
 | `db/api/api.py` | 50 | 23 | 14 | 13 |
@@ -56,6 +257,12 @@ All 122 KB records. LOC figures are taken from each record's `lines` block. Sour
 | `db/utils.py` | 156 | 108 | 19 | 29 |
 | `exception.py` | 2682 | 1525 | 50 | 1107 |
 | `i18n.py` | 36 | 11 | 14 | 11 |
+| `network/__init__.py` | 0 | 0 | 0 | 0 |
+| `network/constants.py` | 52 | 20 | 20 | 12 |
+| `network/model.py` | 633 | 423 | 83 | 127 |
+| `network/neutron.py` | 3989 | 2876 | 648 | 465 |
+| `network/os_vif_util.py` | 551 | 396 | 41 | 114 |
+| `network/security_group_api.py` | 709 | 524 | 78 | 107 |
 | `objects/__init__.py` | 122 | 95 | 22 | 5 |
 | `objects/aggregate.py` | 597 | 460 | 35 | 102 |
 | `objects/base.py` | 443 | 322 | 48 | 73 |
@@ -148,7 +355,8 @@ All 122 KB records. LOC figures are taken from each record's `lines` block. Sour
 | `scheduler/weights/ram.py` | 42 | 21 | 14 | 7 |
 | `service_auth.py` | 104 | 63 | 16 | 25 |
 | `utils.py` | 1209 | 829 | 155 | 225 |
-| **TOTAL** | **42,016** | **28,982** | | |
+| **TOTAL** | **81,517** | **58,276** | | |
+
 
 ### Top 5 Functions by Cyclomatic Complexity
 
@@ -156,126 +364,342 @@ Taken from the `ccn` field of each KB symbol record.
 
 | CCN | Function | File |
 |---|---|---|
+| 50 | `show` | `api/openstack/compute/views/servers.py` |
 | 42 | `obj_make_compatible` | `objects/image_meta.py` |
+| 37 | `_get_servers` | `api/openstack/compute/servers.py` |
 | 32 | `_pass_exact_filters` | `objects/build_request.py` |
 | 31 | `obj_make_compatible` | `objects/migrate_data.py` |
-| 27 | `resources_from_request_spec` | `scheduler/utils.py` |
-| 26 | `create` | `objects/instance.py` |
 
 ---
 
 ## Defined Symbols
 
-Across all 122 KB records the component defines **4,819 symbols** in total. Source: `symbols` arrays in `.aee/kb/src/nova/**/*.json`.
+Across all 327 KB records the component defines **7,399 symbols** in total. Source: `symbols` arrays in `.aee/kb/src/nova/**/*.json`.
 
 | Kind | Count |
 |---|---|
-| field | 1,248 |
-| method | 1,107 |
-| class | 894 |
-| constant | 769 |
-| function | 526 |
-| variable | 189 |
-| property | 79 |
+| method | 1,943 |
+| field | 1,297 |
+| variable | 1,225 |
+| class | 1,042 |
+| constant | 1,016 |
+| function | 741 |
+| property | 83 |
+| staticmethod | 35 |
+| classmethod | 10 |
 | import | 7 |
 
 Selected key symbols by subsystem:
 
+**api/**
+- `api/openstack/compute/routes.py` (901 lines): defines the URL routing table mapping HTTP method + path to controller classes for all OpenStack Compute API resources.
+- `api/openstack/wsgi.py` (937 lines): class `Controller` base, `Application`, `ResourceExceptionHandler`, request/response serialisation helpers.
+- `api/openstack/compute/servers.py` (1,639 lines): class `ServersController` with `create`, `show`, `index`, `update`, `delete`, `_get_servers` (CCN 37), and action dispatch methods.
+- `api/openstack/compute/views/servers.py` (823 lines): class `ViewBuilder` with `show` (CCN 50) serialising instance objects to REST responses.
+- `api/openstack/compute/schemas/servers.py` (2,123 lines): JSON schema constants for server create/update/action request bodies.
+- `api/validation/__init__.py` (452 lines): `schema` decorator factory validating request bodies against JSON schema.
+- `api/openstack/api_version_request.py` (441 lines): `APIVersionRequest` class implementing microversion comparison and negotiation.
+- `api/openstack/common.py` (554 lines): pagination helpers (`get_pagination_params`, `limited`), `get_id_from_href`.
+- `api/openstack/urlmap.py` (309 lines): `URLMap` WSGI app building routing from paste-ini configuration.
+- `api/openstack/compute/extension_info.py` (891 lines): `ExtensionInfoController` returning the list of 859 API extension descriptors.
+
 **accelerator/**
-- Class `_CyborgClient` (`accelerator/cyborg.py:L118-L419`): 14 public HTTP-wrapper methods (`get_client`, `_get_device_profile_list`, `get_arqs_for_instance`, `bind_arqs`, `delete_arqs_for_instance`, `get_arq_by_uuid`, etc.).
-- Module-level function `get_client` (`accelerator/cyborg.py:L53-L65`): factory that constructs or returns a lazily-created `_CyborgClient` instance.
+- Class `_CyborgClient` (`accelerator/cyborg.py:L118-L419`): 14 public HTTP-wrapper methods.
+- Module-level function `get_client` (`accelerator/cyborg.py:L53-L65`): lazily-created `_CyborgClient` factory.
 
 **exception.py**
-- 769 constant symbols (one per Nova exception class, e.g. `NovaException`, `NotFound`, `Invalid`, `Conflict`, `Forbidden`, `Unauthorized`, `InstanceNotFound`, `ComputeHostNotFound`, etc.) defined as `class Foo(NovaException)` stubs (`exception.py:L27-L2682`).
+- 1,016 constant symbols (one per Nova exception class: `NovaException`, `NotFound`, `Invalid`, `Conflict`, `Forbidden`, `Unauthorized`, `InstanceNotFound`, `ComputeHostNotFound`, etc.) defined as `class Foo(NovaException)` stubs (`exception.py:L27-L2682`).
 - Class `ConvertedException` (`exception.py:L35`): bridges `webob.exc.WSGIHTTPException` into the Nova exception hierarchy.
 
 **objects/**
-- 45 domain-object classes, one per file (e.g. `Instance`, `Flavor`, `ComputeNode`, `Migration`, `RequestSpec`, `InstanceGroup`, `PciDevice`, `Aggregate`, `Service`, etc.).
-- Base classes `NovaObject` and `NovaObjectDictCompat` in `objects/base.py` implement `oslo.versionedobjects` version negotiation (`obj_make_compatible` overrides).
-- `objects/fields.py` (1,469 lines): 894 field-type classes used across all domain objects.
+- 45 domain-object classes, one per file (`Instance`, `Flavor`, `ComputeNode`, `Migration`, `RequestSpec`, `InstanceGroup`, `PciDevice`, `Aggregate`, `Service`, etc.).
+- Base classes `NovaObject` and `NovaObjectDictCompat` in `objects/base.py` implement oslo.versionedobjects version negotiation.
+- `objects/fields.py` (1,469 lines): 1,297 field-type classes used across all domain objects.
 - `objects/__init__.py` (122 lines): imports all 45 object modules to register them with the OVO registry.
 
+**network/**
+- `network/neutron.py` (3,989 lines): class `API` — the primary Neutron client, implementing all port, network, security group, and floating IP operations.
+- `network/model.py` (633 lines): `NetworkInfo`, `Network`, `Subnet`, `FixedIP`, `FloatingIP`, `VIF` data-model classes.
+- `network/security_group_api.py` (709 lines): `SecurityGroupAPI` delegating to Neutron for security group CRUD.
+- `network/os_vif_util.py` (551 lines): conversion between Nova VIF objects and os-vif plug-in descriptors.
+
 **db/api/** and **db/main/**
-- `db/api/models.py`: 23 SQLAlchemy ORM model classes for the API database (`CellMapping`, `InstanceMapping`, `HostMapping`, `RequestSpec`, `Flavors`, `BuildRequest`, `KeyPair`, `InstanceGroup`, `Quota`, etc.).
-- `db/main/models.py`: ORM models for the main database (instances, migrations, security groups, block devices, PCI devices, compute nodes, etc.).
-- `db/main/api.py` (4,967 lines, 3,535 LOC): 526+ module-level functions providing the complete SQLAlchemy query API (`instance_create`, `instance_get`, `instance_destroy`, `migration_create`, `compute_node_update`, `security_group_*`, `block_device_mapping_*`, etc.).
-- `db/migration.py`: functions `db_sync`, `db_version`, `db_initial_version` delegating to `db/api/api.py` and `db/main/api.py` (`db/migration.py:L1-L108`).
+- `db/api/models.py`: 23 SQLAlchemy ORM model classes for the API database.
+- `db/main/models.py`: ORM models for the main database.
+- `db/main/api.py` (4,967 lines, 3,535 LOC): 526+ module-level query functions.
+- `db/migration.py`: `db_sync`, `db_version`, `db_initial_version` (`db/migration.py:L1-L108`).
 
 **scheduler/**
 - `scheduler/manager.py`: class `SchedulerManager` orchestrating host selection via `select_destinations`.
 - `scheduler/host_manager.py`: class `HostManager` building and maintaining the host-state map.
-- `scheduler/request_filter.py`: module-level function `process_reqspec` applying request filters to a request spec.
-- `scheduler/rpcapi.py`: class `SchedulerAPI` providing the RPC client interface.
-- `scheduler/client/report.py` (2,688 lines): class `SchedulerReportClient` managing resource provider inventory and allocation records in Placement.
-- `scheduler/filters/__init__.py`: abstract base class `BaseHostFilter` (with `host_passes`); 14 concrete filter subclasses (one per filter module).
-- `scheduler/weights/__init__.py`: abstract base class `BaseHostWeigher`; 12 concrete weigher subclasses.
-- `scheduler/utils.py` (1,560 lines): 189+ helper functions including `resources_from_request_spec` (CCN 27) and `claim_resources`.
+- `scheduler/client/report.py` (2,688 lines): class `SchedulerReportClient` managing Placement resource-provider records.
+- `scheduler/filters/__init__.py`: abstract base `BaseHostFilter`; 14 concrete filter subclasses.
+- `scheduler/weights/__init__.py`: abstract base `BaseHostWeigher`; 12 concrete weigher subclasses.
+- `scheduler/utils.py` (1,560 lines): 741+ helper functions including `resources_from_request_spec` (CCN 27).
 
 ---
 
 ## External Dependencies
 
-All non-`nova` modules imported across the 122 KB records. Source: `dependencies` arrays in `.aee/kb/src/nova/**/*.json`.
+All non-`nova` modules imported across the 327 KB records. Source: `dependencies` arrays in `.aee/kb/src/nova/**/*.json`.
 
 | Package | Files importing |
 |---|---|
-| `oslo_utils` | 62 |
+| `oslo_utils` | 100 |
+| `webob` | 86 |
+| `oslo_log` | 79 |
+| `copy` | 58 |
 | `sqlalchemy` | 56 |
-| `oslo_log` | 47 |
-| `oslo_db` | 25 |
-| `oslo_serialization` | 24 |
+| `oslo_serialization` | 35 |
+| `oslo_db` | 27 |
 | `alembic` | 18 |
-| `collections` | 10 |
-| `copy` | 9 |
-| `functools` | 9 |
-| `keystoneauth1` | 6 |
+| `collections` | 15 |
+| `functools` | 15 |
+| `re` | 13 |
+| `keystoneauth1` | 9 |
+| `itertools` | 8 |
+| `typing` | 8 |
+| `urllib` | 8 |
+| `os` | 7 |
+| `datetime` | 7 |
+| `netaddr` | 7 |
 | `oslo_versionedobjects` | 6 |
-| `netaddr` | 4 |
-| `os_resource_classes` | 4 |
-| `typing` | 4 |
-| `os_traits` | 3 |
-| `oslo_config` | 3 |
-| `oslo_messaging` | 3 |
-| `oslo_concurrency` | 2 |
-| `oslo_middleware` | 2 |
-| `webob` | 2 |
+| `oslo_config` | 5 |
+| `os_resource_classes` | 5 |
+| `oslo_messaging` | 4 |
+| `os_traits` | 4 |
+| `inspect` | 4 |
+| `time` | 4 |
 
-Additional packages used by fewer files: `cursive`, `eventlet`, `openstack`, `os_service_types`, `oslo_i18n`, `oslo_service`, `retrying`, `urllib`, and standard-library modules (`datetime`, `hashlib`, `inspect`, `itertools`, `logging`, `operator`, `os`, `random`, `re`, `shutil`, `sys`, `tempfile`, `threading`, `time`, `traceback`).
+Additional packages used by fewer files: `alembic`, `cursive`, `eventlet`, `hashlib`, `jsonschema`, `netaddr`, `openstack`, `os_service_types`, `oslo_concurrency`, `oslo_i18n`, `oslo_middleware`, `oslo_service`, `osc_lib`, `retrying`, `six`, and standard-library modules (`contextlib`, `logging`, `operator`, `random`, `shutil`, `sys`, `tempfile`, `threading`, `traceback`). Total unique external packages: 58.
 
 ---
 
 ## Side Effects
 
-940 side-effect records across 95 files. Source: `sideEffects` arrays in `.aee/kb/src/nova/**/*.json`.
+1,484 side-effect records across 213 files. Source: `sideEffects` arrays in `.aee/kb/src/nova/**/*.json`.
 
 | Kind | Count | Primary subsystem |
 |---|---|---|
-| global-mutation | 769 | objects/ (649), scheduler/ (89), db/ (18), core (12), accelerator/ (1) |
-| network | 165 | objects/ (108), db/ (42), scheduler/ (6), accelerator/ (7), core (2) |
-| file-io | 6 | core utils/exception (4), db/ (2) |
+| global-mutation | 1,016 | objects/ (649), api/ (175+), scheduler/ (89), db/ (18), network/ (60+), core (25+) |
+| network | 454 | api/ (200+), objects/ (108), db/ (42), network/ (80+), scheduler/ (6), accelerator/ (7) |
+| file-io | 14 | core utils/exception (4), db/ (2), api/ (8+) |
 
 Representative entries (from KB record `sideEffects`):
 
-- `accelerator/cyborg.py:L53` — `global-mutation`: module-level `get_client` closes over a lazily-initialised `_CyborgClient` instance stored in module scope.
+- `api/auth.py` — `network`: WSGI middleware issuing keystoneauth1 token verification on each inbound request.
+- `api/metadata/handler.py` — `network`: HTTP calls to the metadata service backend.
+- `api/openstack/compute/servers.py` — `global-mutation`: module-level route registration side-effects at import time.
 - `accelerator/cyborg.py:L153-L154` — `network`: HTTP GET to Cyborg `/device_profiles`.
-- `accelerator/cyborg.py:L205` — `network`: HTTP POST to Cyborg `/accelerator_requests`.
-- `accelerator/cyborg.py:L282-L283` — `network`: HTTP PATCH to Cyborg `/accelerator_requests`.
 - `db/api/models.py:L23` — `global-mutation`: SQLAlchemy `Base = declarative_base()` at module level.
-- `db/main/api.py` — 46 `network`-class entries representing SQLAlchemy session operations against the database engine.
-- `objects/aggregate.py:L42` — `network`: OVO `remotable` decorator on `get_by_id` triggers RPC dispatch when called from a non-conductor context.
-- `scheduler/client/report.py:L279` — `network`: HTTP GET to Placement API for resource provider inventory.
+- `db/main/api.py` — 46 `network`-class entries (SQLAlchemy session operations).
+- `network/neutron.py` — 80+ `network` entries: Neutron REST API calls (port CRUD, security group, floating IP, network listing).
+- `objects/aggregate.py:L42` — `network`: OVO `remotable` decorator triggers RPC dispatch from non-conductor context.
+- `scheduler/client/report.py:L279` — `network`: HTTP GET to Placement API.
 - `service_auth.py:L56` — `network`: keystoneauth1 token fetch.
-- `utils.py` — `file-io`: temporary file creation in utility helpers.
 
 ---
 
 ## Component Diagram
 
-All 382 file edges are intra-component (`crossComponent: false`). No cross-component seams exist. Source: `.aee/link-graph.json` (commit `6bd3ba5`).
+All 1,060 file edges are intra-component (`crossComponent: false`). No cross-component seams exist. Source: `.aee/link-graph.json` (commit `6bd3ba5` updated by batch 4).
 
 ```mermaid
 graph LR
     accelerator-cyborg-py["accelerator/cyborg.py"]
+    api-auth-py["api/auth.py"]
+    api-metadata-base-py["api/metadata/base.py"]
+    api-metadata-handler-py["api/metadata/handler.py"]
+    api-metadata-password-py["api/metadata/password.py"]
+    api-metadata-vendordata-dynamic-py["api/metadata/vendordata_dynamic.py"]
+    api-metadata-vendordata-json-py["api/metadata/vendordata_json.py"]
+    api-metadata-vendordata-py["api/metadata/vendordata.py"]
+    api-openstack-api-version-request-py["api/openstack/api_version_request.py"]
+    api-openstack-common-py["api/openstack/common.py"]
+    api-openstack-compute-admin-actions-py["api/openstack/compute/admin_actions.py"]
+    api-openstack-compute-admin-password-py["api/openstack/compute/admin_password.py"]
+    api-openstack-compute-agents-py["api/openstack/compute/agents.py"]
+    api-openstack-compute-aggregates-py["api/openstack/compute/aggregates.py"]
+    api-openstack-compute-assisted-volume-snapshots-py["api/openstack/compute/assisted_volume_snapshots.py"]
+    api-openstack-compute-attach-interfaces-py["api/openstack/compute/attach_interfaces.py"]
+    api-openstack-compute-availability-zone-py["api/openstack/compute/availability_zone.py"]
+    api-openstack-compute-baremetal-nodes-py["api/openstack/compute/baremetal_nodes.py"]
+    api-openstack-compute-cells-py["api/openstack/compute/cells.py"]
+    api-openstack-compute-certificates-py["api/openstack/compute/certificates.py"]
+    api-openstack-compute-cloudpipe-py["api/openstack/compute/cloudpipe.py"]
+    api-openstack-compute-console-auth-tokens-py["api/openstack/compute/console_auth_tokens.py"]
+    api-openstack-compute-console-output-py["api/openstack/compute/console_output.py"]
+    api-openstack-compute-consoles-py["api/openstack/compute/consoles.py"]
+    api-openstack-compute-create-backup-py["api/openstack/compute/create_backup.py"]
+    api-openstack-compute-deferred-delete-py["api/openstack/compute/deferred_delete.py"]
+    api-openstack-compute-evacuate-py["api/openstack/compute/evacuate.py"]
+    api-openstack-compute-extension-info-py["api/openstack/compute/extension_info.py"]
+    api-openstack-compute-fixed-ips-py["api/openstack/compute/fixed_ips.py"]
+    api-openstack-compute-flavor-access-py["api/openstack/compute/flavor_access.py"]
+    api-openstack-compute-flavors-extraspecs-py["api/openstack/compute/flavors_extraspecs.py"]
+    api-openstack-compute-flavors-py["api/openstack/compute/flavors.py"]
+    api-openstack-compute-floating-ip-dns-py["api/openstack/compute/floating_ip_dns.py"]
+    api-openstack-compute-floating-ip-pools-py["api/openstack/compute/floating_ip_pools.py"]
+    api-openstack-compute-floating-ips-bulk-py["api/openstack/compute/floating_ips_bulk.py"]
+    api-openstack-compute-floating-ips-py["api/openstack/compute/floating_ips.py"]
+    api-openstack-compute-fping-py["api/openstack/compute/fping.py"]
+    api-openstack-compute-helpers-py["api/openstack/compute/helpers.py"]
+    api-openstack-compute-hosts-py["api/openstack/compute/hosts.py"]
+    api-openstack-compute-hypervisors-py["api/openstack/compute/hypervisors.py"]
+    api-openstack-compute-image-metadata-py["api/openstack/compute/image_metadata.py"]
+    api-openstack-compute-images-py["api/openstack/compute/images.py"]
+    api-openstack-compute-init["api/openstack/compute/__init__.py"]
+    api-openstack-compute-instance-actions-py["api/openstack/compute/instance_actions.py"]
+    api-openstack-compute-instance-usage-audit-log-py["api/openstack/compute/instance_usage_audit_log.py"]
+    api-openstack-compute-ips-py["api/openstack/compute/ips.py"]
+    api-openstack-compute-keypairs-py["api/openstack/compute/keypairs.py"]
+    api-openstack-compute-limits-py["api/openstack/compute/limits.py"]
+    api-openstack-compute-lock-server-py["api/openstack/compute/lock_server.py"]
+    api-openstack-compute-migrate-server-py["api/openstack/compute/migrate_server.py"]
+    api-openstack-compute-migrations-py["api/openstack/compute/migrations.py"]
+    api-openstack-compute-multinic-py["api/openstack/compute/multinic.py"]
+    api-openstack-compute-networks-associate-py["api/openstack/compute/networks_associate.py"]
+    api-openstack-compute-networks-py["api/openstack/compute/networks.py"]
+    api-openstack-compute-pause-server-py["api/openstack/compute/pause_server.py"]
+    api-openstack-compute-quota-classes-py["api/openstack/compute/quota_classes.py"]
+    api-openstack-compute-quota-sets-py["api/openstack/compute/quota_sets.py"]
+    api-openstack-compute-remote-consoles-py["api/openstack/compute/remote_consoles.py"]
+    api-openstack-compute-rescue-py["api/openstack/compute/rescue.py"]
+    api-openstack-compute-routes-py["api/openstack/compute/routes.py"]
+    api-openstack-compute-schemas-admin-actions-py["api/openstack/compute/schemas/admin_actions.py"]
+    api-openstack-compute-schemas-admin-password-py["api/openstack/compute/schemas/admin_password.py"]
+    api-openstack-compute-schemas-agents-py["api/openstack/compute/schemas/agents.py"]
+    api-openstack-compute-schemas-aggregate-images-py["api/openstack/compute/schemas/aggregate_images.py"]
+    api-openstack-compute-schemas-aggregates-py["api/openstack/compute/schemas/aggregates.py"]
+    api-openstack-compute-schemas-assisted-volume-snapshots-py["api/openstack/compute/schemas/assisted_volume_snapshots.py"]
+    api-openstack-compute-schemas-attach-interfaces-py["api/openstack/compute/schemas/attach_interfaces.py"]
+    api-openstack-compute-schemas-availability-zone-py["api/openstack/compute/schemas/availability_zone.py"]
+    api-openstack-compute-schemas-baremetal-nodes-py["api/openstack/compute/schemas/baremetal_nodes.py"]
+    api-openstack-compute-schemas-cells-py["api/openstack/compute/schemas/cells.py"]
+    api-openstack-compute-schemas-certificates-py["api/openstack/compute/schemas/certificates.py"]
+    api-openstack-compute-schemas-cloudpipe-py["api/openstack/compute/schemas/cloudpipe.py"]
+    api-openstack-compute-schemas-console-auth-tokens-py["api/openstack/compute/schemas/console_auth_tokens.py"]
+    api-openstack-compute-schemas-console-output-py["api/openstack/compute/schemas/console_output.py"]
+    api-openstack-compute-schemas-consoles-py["api/openstack/compute/schemas/consoles.py"]
+    api-openstack-compute-schemas-create-backup-py["api/openstack/compute/schemas/create_backup.py"]
+    api-openstack-compute-schemas-deferred-delete-py["api/openstack/compute/schemas/deferred_delete.py"]
+    api-openstack-compute-schemas-evacuate-py["api/openstack/compute/schemas/evacuate.py"]
+    api-openstack-compute-schemas-extension-info-py["api/openstack/compute/schemas/extension_info.py"]
+    api-openstack-compute-schemas-fixed-ips-py["api/openstack/compute/schemas/fixed_ips.py"]
+    api-openstack-compute-schemas-flavor-access-py["api/openstack/compute/schemas/flavor_access.py"]
+    api-openstack-compute-schemas-flavors-extraspecs-py["api/openstack/compute/schemas/flavors_extraspecs.py"]
+    api-openstack-compute-schemas-flavors-py["api/openstack/compute/schemas/flavors.py"]
+    api-openstack-compute-schemas-floating-ip-dns-py["api/openstack/compute/schemas/floating_ip_dns.py"]
+    api-openstack-compute-schemas-floating-ip-pools-py["api/openstack/compute/schemas/floating_ip_pools.py"]
+    api-openstack-compute-schemas-floating-ips-bulk-py["api/openstack/compute/schemas/floating_ips_bulk.py"]
+    api-openstack-compute-schemas-floating-ips-py["api/openstack/compute/schemas/floating_ips.py"]
+    api-openstack-compute-schemas-fping-py["api/openstack/compute/schemas/fping.py"]
+    api-openstack-compute-schemas-hosts-py["api/openstack/compute/schemas/hosts.py"]
+    api-openstack-compute-schemas-hypervisors-py["api/openstack/compute/schemas/hypervisors.py"]
+    api-openstack-compute-schemas-image-metadata-py["api/openstack/compute/schemas/image_metadata.py"]
+    api-openstack-compute-schemas-images-py["api/openstack/compute/schemas/images.py"]
+    api-openstack-compute-schemas-instance-actions-py["api/openstack/compute/schemas/instance_actions.py"]
+    api-openstack-compute-schemas-instance-usage-audit-log-py["api/openstack/compute/schemas/instance_usage_audit_log.py"]
+    api-openstack-compute-schemas-ips-py["api/openstack/compute/schemas/ips.py"]
+    api-openstack-compute-schemas-keypairs-py["api/openstack/compute/schemas/keypairs.py"]
+    api-openstack-compute-schemas-limits-py["api/openstack/compute/schemas/limits.py"]
+    api-openstack-compute-schemas-lock-server-py["api/openstack/compute/schemas/lock_server.py"]
+    api-openstack-compute-schemas-migrate-server-py["api/openstack/compute/schemas/migrate_server.py"]
+    api-openstack-compute-schemas-migrations-py["api/openstack/compute/schemas/migrations.py"]
+    api-openstack-compute-schemas-multinic-py["api/openstack/compute/schemas/multinic.py"]
+    api-openstack-compute-schemas-networks-associate-py["api/openstack/compute/schemas/networks_associate.py"]
+    api-openstack-compute-schemas-networks-py["api/openstack/compute/schemas/networks.py"]
+    api-openstack-compute-schemas-pause-server-py["api/openstack/compute/schemas/pause_server.py"]
+    api-openstack-compute-schemas-quota-classes-py["api/openstack/compute/schemas/quota_classes.py"]
+    api-openstack-compute-schemas-quota-sets-py["api/openstack/compute/schemas/quota_sets.py"]
+    api-openstack-compute-schemas-remote-consoles-py["api/openstack/compute/schemas/remote_consoles.py"]
+    api-openstack-compute-schemas-rescue-py["api/openstack/compute/schemas/rescue.py"]
+    api-openstack-compute-schemas-security-group-default-rules-py["api/openstack/compute/schemas/security_group_default_rules.py"]
+    api-openstack-compute-schemas-security-groups-py["api/openstack/compute/schemas/security_groups.py"]
+    api-openstack-compute-schemas-server-diagnostics-py["api/openstack/compute/schemas/server_diagnostics.py"]
+    api-openstack-compute-schemas-server-external-events-py["api/openstack/compute/schemas/server_external_events.py"]
+    api-openstack-compute-schemas-server-groups-py["api/openstack/compute/schemas/server_groups.py"]
+    api-openstack-compute-schemas-server-metadata-py["api/openstack/compute/schemas/server_metadata.py"]
+    api-openstack-compute-schemas-server-migrations-py["api/openstack/compute/schemas/server_migrations.py"]
+    api-openstack-compute-schemas-server-password-py["api/openstack/compute/schemas/server_password.py"]
+    api-openstack-compute-schemas-server-shares-py["api/openstack/compute/schemas/server_shares.py"]
+    api-openstack-compute-schemas-server-tags-py["api/openstack/compute/schemas/server_tags.py"]
+    api-openstack-compute-schemas-server-topology-py["api/openstack/compute/schemas/server_topology.py"]
+    api-openstack-compute-schemas-servers-py["api/openstack/compute/schemas/servers.py"]
+    api-openstack-compute-schemas-services-py["api/openstack/compute/schemas/services.py"]
+    api-openstack-compute-schemas-shelve-py["api/openstack/compute/schemas/shelve.py"]
+    api-openstack-compute-schemas-simple-tenant-usage-py["api/openstack/compute/schemas/simple_tenant_usage.py"]
+    api-openstack-compute-schemas-snapshots-py["api/openstack/compute/schemas/snapshots.py"]
+    api-openstack-compute-schemas-suspend-server-py["api/openstack/compute/schemas/suspend_server.py"]
+    api-openstack-compute-schemas-tenant-networks-py["api/openstack/compute/schemas/tenant_networks.py"]
+    api-openstack-compute-schemas-versions-py["api/openstack/compute/schemas/versions.py"]
+    api-openstack-compute-schemas-virtual-interfaces-py["api/openstack/compute/schemas/virtual_interfaces.py"]
+    api-openstack-compute-schemas-volume-attachments-py["api/openstack/compute/schemas/volume_attachments.py"]
+    api-openstack-compute-schemas-volumes-py["api/openstack/compute/schemas/volumes.py"]
+    api-openstack-compute-security-group-default-rules-py["api/openstack/compute/security_group_default_rules.py"]
+    api-openstack-compute-security-groups-py["api/openstack/compute/security_groups.py"]
+    api-openstack-compute-server-diagnostics-py["api/openstack/compute/server_diagnostics.py"]
+    api-openstack-compute-server-external-events-py["api/openstack/compute/server_external_events.py"]
+    api-openstack-compute-server-groups-py["api/openstack/compute/server_groups.py"]
+    api-openstack-compute-server-metadata-py["api/openstack/compute/server_metadata.py"]
+    api-openstack-compute-server-migrations-py["api/openstack/compute/server_migrations.py"]
+    api-openstack-compute-server-password-py["api/openstack/compute/server_password.py"]
+    api-openstack-compute-server-shares-py["api/openstack/compute/server_shares.py"]
+    api-openstack-compute-server-tags-py["api/openstack/compute/server_tags.py"]
+    api-openstack-compute-server-topology-py["api/openstack/compute/server_topology.py"]
+    api-openstack-compute-servers-py["api/openstack/compute/servers.py"]
+    api-openstack-compute-services-py["api/openstack/compute/services.py"]
+    api-openstack-compute-shelve-py["api/openstack/compute/shelve.py"]
+    api-openstack-compute-simple-tenant-usage-py["api/openstack/compute/simple_tenant_usage.py"]
+    api-openstack-compute-snapshots-py["api/openstack/compute/snapshots.py"]
+    api-openstack-compute-suspend-server-py["api/openstack/compute/suspend_server.py"]
+    api-openstack-compute-tenant-networks-py["api/openstack/compute/tenant_networks.py"]
+    api-openstack-compute-versions-py["api/openstack/compute/versions.py"]
+    api-openstack-compute-versionsV21-py["api/openstack/compute/versionsV21.py"]
+    api-openstack-compute-views-flavors-py["api/openstack/compute/views/flavors.py"]
+    api-openstack-compute-views-hypervisors-py["api/openstack/compute/views/hypervisors.py"]
+    api-openstack-compute-views-images-py["api/openstack/compute/views/images.py"]
+    api-openstack-compute-views-instance-actions-py["api/openstack/compute/views/instance_actions.py"]
+    api-openstack-compute-views-ips-py["api/openstack/compute/views/ips.py"]
+    api-openstack-compute-views-keypairs-py["api/openstack/compute/views/keypairs.py"]
+    api-openstack-compute-views-limits-py["api/openstack/compute/views/limits.py"]
+    api-openstack-compute-views-migrations-py["api/openstack/compute/views/migrations.py"]
+    api-openstack-compute-views-server-diagnostics-py["api/openstack/compute/views/server_diagnostics.py"]
+    api-openstack-compute-views-server-shares-py["api/openstack/compute/views/server_shares.py"]
+    api-openstack-compute-views-server-tags-py["api/openstack/compute/views/server_tags.py"]
+    api-openstack-compute-views-servers-py["api/openstack/compute/views/servers.py"]
+    api-openstack-compute-views-usages-py["api/openstack/compute/views/usages.py"]
+    api-openstack-compute-views-versions-py["api/openstack/compute/views/versions.py"]
+    api-openstack-compute-virtual-interfaces-py["api/openstack/compute/virtual_interfaces.py"]
+    api-openstack-compute-volume-attachments-py["api/openstack/compute/volume_attachments.py"]
+    api-openstack-compute-volumes-boot-py["api/openstack/compute/volumes_boot.py"]
+    api-openstack-compute-volumes-py["api/openstack/compute/volumes.py"]
+    api-openstack-identity-py["api/openstack/identity.py"]
+    api-openstack-init["api/openstack/__init__.py"]
+    api-openstack-requestlog-py["api/openstack/requestlog.py"]
+    api-openstack-urlmap-py["api/openstack/urlmap.py"]
+    api-openstack-wsgi-app-py["api/openstack/wsgi_app.py"]
+    api-openstack-wsgi-py["api/openstack/wsgi.py"]
+    api-validation-extra-specs-accel-py["api/validation/extra_specs/accel.py"]
+    api-validation-extra-specs-aggregate-instance-extra-specs-py["api/validation/extra_specs/aggregate_instance_extra_specs.py"]
+    api-validation-extra-specs-base-py["api/validation/extra_specs/base.py"]
+    api-validation-extra-specs-capabilities-py["api/validation/extra_specs/capabilities.py"]
+    api-validation-extra-specs-hw-py["api/validation/extra_specs/hw.py"]
+    api-validation-extra-specs-hw-rng-py["api/validation/extra_specs/hw_rng.py"]
+    api-validation-extra-specs-hw-video-py["api/validation/extra_specs/hw_video.py"]
+    api-validation-extra-specs-null-py["api/validation/extra_specs/null.py"]
+    api-validation-extra-specs-os-py["api/validation/extra_specs/os.py"]
+    api-validation-extra-specs-pci-passthrough-py["api/validation/extra_specs/pci_passthrough.py"]
+    api-validation-extra-specs-quota-py["api/validation/extra_specs/quota.py"]
+    api-validation-extra-specs-resources-py["api/validation/extra_specs/resources.py"]
+    api-validation-extra-specs-traits-py["api/validation/extra_specs/traits.py"]
+    api-validation-extra-specs-validators-py["api/validation/extra_specs/validators.py"]
+    api-validation-extra-specs-vmware-py["api/validation/extra_specs/vmware.py"]
+    api-validation-init["api/validation/__init__.py"]
+    api-validation-parameter-types-py["api/validation/parameter_types.py"]
+    api-validation-response-types-py["api/validation/response_types.py"]
+    api-validation-validators-py["api/validation/validators.py"]
+    api-wsgi-py["api/wsgi.py"]
     db-api-api-py["db/api/api.py"]
     db-api-migrations-env-py["db/api/migrations/env.py"]
     db-api-migrations-versions-d67eeaabee36-initial-version-py["db/api/migrations/versions/d67eeaabee36_initial_version.py"]
@@ -289,6 +713,11 @@ graph LR
     db-utils-py["db/utils.py"]
     exception-py["exception.py"]
     i18n-py["i18n.py"]
+    network-constants-py["network/constants.py"]
+    network-model-py["network/model.py"]
+    network-neutron-py["network/neutron.py"]
+    network-os-vif-util-py["network/os_vif_util.py"]
+    network-security-group-api-py["network/security_group_api.py"]
     objects-aggregate-py["objects/aggregate.py"]
     objects-base-py["objects/base.py"]
     objects-block-device-py["objects/block_device.py"]
@@ -385,6 +814,662 @@ graph LR
     accelerator-cyborg-py -->|2| scheduler-utils-py
     accelerator-cyborg-py -->|2| service-auth-py
     accelerator-cyborg-py -->|2| utils-py
+    api-auth-py -->|2| api-wsgi-py
+    api-auth-py -->|2| i18n-py
+    api-metadata-base-py -->|2| api-metadata-password-py
+    api-metadata-base-py -->|2| api-metadata-vendordata-dynamic-py
+    api-metadata-base-py -->|2| api-metadata-vendordata-json-py
+    api-metadata-base-py --> exception-py
+    api-metadata-base-py -->|2| network-neutron-py
+    api-metadata-base-py -->|2| network-security-group-api-py
+    api-metadata-base-py -->|4| objects-init
+    api-metadata-base-py --> objects-virt-device-metadata-py
+    api-metadata-base-py -->|2| utils-py
+    api-metadata-handler-py -->|4| api-metadata-base-py
+    api-metadata-handler-py -->|2| api-wsgi-py
+    api-metadata-handler-py -->|2| exception-py
+    api-metadata-handler-py -->|2| i18n-py
+    api-metadata-handler-py -->|2| network-neutron-py
+    api-metadata-password-py --> exception-py
+    api-metadata-password-py -->|2| i18n-py
+    api-metadata-password-py -->|3| objects-init
+    api-metadata-password-py -->|2| utils-py
+    api-metadata-vendordata-dynamic-py -->|2| api-metadata-vendordata-py
+    api-metadata-vendordata-dynamic-py -->|3| service-auth-py
+    api-metadata-vendordata-json-py -->|2| api-metadata-vendordata-py
+    api-openstack-api-version-request-py --> api-openstack-wsgi-py
+    api-openstack-api-version-request-py -->|2| exception-py
+    api-openstack-api-version-request-py -->|2| i18n-py
+    api-openstack-common-py -->|2| api-openstack-api-version-request-py
+    api-openstack-common-py -->|2| exception-py
+    api-openstack-common-py -->|2| i18n-py
+    api-openstack-common-py -->|2| objects-init
+    api-openstack-common-py -->|2| utils-py
+    api-openstack-compute-admin-actions-py -->|2| api-openstack-common-py
+    api-openstack-compute-admin-actions-py --> api-openstack-compute-schemas-admin-actions-py
+    api-openstack-compute-admin-actions-py -->|6| api-openstack-wsgi-py
+    api-openstack-compute-admin-actions-py -->|3| api-validation-init
+    api-openstack-compute-admin-actions-py --> exception-py
+    api-openstack-compute-admin-actions-py -->|2| objects-init
+    api-openstack-compute-admin-password-py -->|4| api-openstack-common-py
+    api-openstack-compute-admin-password-py --> api-openstack-compute-schemas-admin-password-py
+    api-openstack-compute-admin-password-py -->|5| api-openstack-wsgi-py
+    api-openstack-compute-admin-password-py -->|3| api-validation-init
+    api-openstack-compute-admin-password-py --> exception-py
+    api-openstack-compute-admin-password-py -->|2| i18n-py
+    api-openstack-compute-agents-py --> api-openstack-compute-schemas-agents-py
+    api-openstack-compute-agents-py -->|4| api-openstack-wsgi-py
+    api-openstack-compute-agents-py -->|4| api-validation-init
+    api-openstack-compute-aggregates-py -->|2| api-openstack-api-version-request-py
+    api-openstack-compute-aggregates-py -->|2| api-openstack-common-py
+    api-openstack-compute-aggregates-py --> api-openstack-compute-schemas-aggregate-images-py
+    api-openstack-compute-aggregates-py --> api-openstack-compute-schemas-aggregates-py
+    api-openstack-compute-aggregates-py -->|6| api-openstack-wsgi-py
+    api-openstack-compute-aggregates-py -->|4| api-validation-init
+    api-openstack-compute-aggregates-py --> exception-py
+    api-openstack-compute-aggregates-py -->|2| i18n-py
+    api-openstack-compute-aggregates-py -->|2| utils-py
+    api-openstack-compute-assisted-volume-snapshots-py --> api-openstack-compute-schemas-assisted-volume-snapshots-py
+    api-openstack-compute-assisted-volume-snapshots-py -->|4| api-openstack-wsgi-py
+    api-openstack-compute-assisted-volume-snapshots-py -->|4| api-validation-init
+    api-openstack-compute-assisted-volume-snapshots-py --> exception-py
+    api-openstack-compute-attach-interfaces-py -->|2| api-openstack-api-version-request-py
+    api-openstack-compute-attach-interfaces-py -->|4| api-openstack-common-py
+    api-openstack-compute-attach-interfaces-py --> api-openstack-compute-schemas-attach-interfaces-py
+    api-openstack-compute-attach-interfaces-py -->|4| api-openstack-wsgi-py
+    api-openstack-compute-attach-interfaces-py -->|4| api-validation-init
+    api-openstack-compute-attach-interfaces-py --> exception-py
+    api-openstack-compute-attach-interfaces-py -->|2| i18n-py
+    api-openstack-compute-attach-interfaces-py -->|2| network-neutron-py
+    api-openstack-compute-attach-interfaces-py -->|3| objects-init
+    api-openstack-compute-availability-zone-py --> api-openstack-compute-schemas-availability-zone-py
+    api-openstack-compute-availability-zone-py -->|3| api-openstack-wsgi-py
+    api-openstack-compute-availability-zone-py -->|3| api-validation-init
+    api-openstack-compute-baremetal-nodes-py --> api-openstack-api-version-request-py
+    api-openstack-compute-baremetal-nodes-py --> api-openstack-compute-schemas-baremetal-nodes-py
+    api-openstack-compute-baremetal-nodes-py -->|5| api-openstack-wsgi-py
+    api-openstack-compute-baremetal-nodes-py -->|4| api-validation-init
+    api-openstack-compute-baremetal-nodes-py -->|2| i18n-py
+    api-openstack-compute-baremetal-nodes-py -->|2| utils-py
+    api-openstack-compute-cells-py --> api-openstack-compute-schemas-cells-py
+    api-openstack-compute-cells-py -->|4| api-openstack-wsgi-py
+    api-openstack-compute-cells-py -->|4| api-validation-init
+    api-openstack-compute-certificates-py --> api-openstack-compute-schemas-certificates-py
+    api-openstack-compute-certificates-py -->|4| api-openstack-wsgi-py
+    api-openstack-compute-certificates-py -->|4| api-validation-init
+    api-openstack-compute-cloudpipe-py --> api-openstack-compute-schemas-cloudpipe-py
+    api-openstack-compute-cloudpipe-py -->|4| api-openstack-wsgi-py
+    api-openstack-compute-cloudpipe-py -->|4| api-validation-init
+    api-openstack-compute-console-auth-tokens-py -->|2| api-openstack-api-version-request-py
+    api-openstack-compute-console-auth-tokens-py --> api-openstack-compute-schemas-console-auth-tokens-py
+    api-openstack-compute-console-auth-tokens-py -->|3| api-openstack-wsgi-py
+    api-openstack-compute-console-auth-tokens-py -->|3| api-validation-init
+    api-openstack-compute-console-auth-tokens-py -->|2| i18n-py
+    api-openstack-compute-console-auth-tokens-py --> objects-init
+    api-openstack-compute-console-output-py -->|3| api-openstack-common-py
+    api-openstack-compute-console-output-py --> api-openstack-compute-schemas-console-output-py
+    api-openstack-compute-console-output-py -->|4| api-openstack-wsgi-py
+    api-openstack-compute-console-output-py -->|3| api-validation-init
+    api-openstack-compute-console-output-py --> exception-py
+    api-openstack-compute-consoles-py --> api-openstack-compute-schemas-consoles-py
+    api-openstack-compute-consoles-py -->|4| api-openstack-wsgi-py
+    api-openstack-compute-consoles-py -->|4| api-validation-init
+    api-openstack-compute-create-backup-py -->|2| api-openstack-api-version-request-py
+    api-openstack-compute-create-backup-py -->|6| api-openstack-common-py
+    api-openstack-compute-create-backup-py --> api-openstack-compute-schemas-create-backup-py
+    api-openstack-compute-create-backup-py -->|5| api-openstack-wsgi-py
+    api-openstack-compute-create-backup-py -->|3| api-validation-init
+    api-openstack-compute-create-backup-py --> exception-py
+    api-openstack-compute-deferred-delete-py -->|3| api-openstack-common-py
+    api-openstack-compute-deferred-delete-py --> api-openstack-compute-schemas-deferred-delete-py
+    api-openstack-compute-deferred-delete-py -->|5| api-openstack-wsgi-py
+    api-openstack-compute-deferred-delete-py -->|3| api-validation-init
+    api-openstack-compute-deferred-delete-py --> exception-py
+    api-openstack-compute-evacuate-py -->|2| api-openstack-api-version-request-py
+    api-openstack-compute-evacuate-py -->|3| api-openstack-common-py
+    api-openstack-compute-evacuate-py --> api-openstack-compute-schemas-evacuate-py
+    api-openstack-compute-evacuate-py -->|4| api-openstack-wsgi-py
+    api-openstack-compute-evacuate-py -->|3| api-validation-init
+    api-openstack-compute-evacuate-py -->|2| exception-py
+    api-openstack-compute-evacuate-py -->|2| i18n-py
+    api-openstack-compute-evacuate-py -->|2| objects-init
+    api-openstack-compute-evacuate-py -->|2| utils-py
+    api-openstack-compute-extension-info-py --> api-openstack-compute-schemas-extension-info-py
+    api-openstack-compute-extension-info-py -->|3| api-openstack-wsgi-py
+    api-openstack-compute-extension-info-py -->|3| api-validation-init
+    api-openstack-compute-fixed-ips-py --> api-openstack-compute-schemas-fixed-ips-py
+    api-openstack-compute-fixed-ips-py -->|5| api-openstack-wsgi-py
+    api-openstack-compute-fixed-ips-py -->|4| api-validation-init
+    api-openstack-compute-flavor-access-py -->|2| api-openstack-api-version-request-py
+    api-openstack-compute-flavor-access-py -->|2| api-openstack-common-py
+    api-openstack-compute-flavor-access-py --> api-openstack-compute-schemas-flavor-access-py
+    api-openstack-compute-flavor-access-py -->|2| api-openstack-identity-py
+    api-openstack-compute-flavor-access-py -->|4| api-openstack-wsgi-py
+    api-openstack-compute-flavor-access-py -->|4| api-validation-init
+    api-openstack-compute-flavor-access-py --> exception-py
+    api-openstack-compute-flavor-access-py -->|2| i18n-py
+    api-openstack-compute-flavors-extraspecs-py -->|2| api-openstack-api-version-request-py
+    api-openstack-compute-flavors-extraspecs-py -->|2| api-openstack-common-py
+    api-openstack-compute-flavors-extraspecs-py --> api-openstack-compute-schemas-flavors-extraspecs-py
+    api-openstack-compute-flavors-extraspecs-py -->|3| api-openstack-wsgi-py
+    api-openstack-compute-flavors-extraspecs-py -->|2| api-validation-extra-specs-validators-py
+    api-openstack-compute-flavors-extraspecs-py -->|4| api-validation-init
+    api-openstack-compute-flavors-extraspecs-py --> exception-py
+    api-openstack-compute-flavors-extraspecs-py -->|2| i18n-py
+    api-openstack-compute-flavors-extraspecs-py -->|2| utils-py
+    api-openstack-compute-flavors-py -->|2| api-openstack-api-version-request-py
+    api-openstack-compute-flavors-py -->|2| api-openstack-common-py
+    api-openstack-compute-flavors-py --> api-openstack-compute-schemas-flavors-py
+    api-openstack-compute-flavors-py --> api-openstack-compute-views-flavors-py
+    api-openstack-compute-flavors-py -->|5| api-openstack-wsgi-py
+    api-openstack-compute-flavors-py -->|4| api-validation-init
+    api-openstack-compute-flavors-py --> exception-py
+    api-openstack-compute-flavors-py -->|2| i18n-py
+    api-openstack-compute-flavors-py -->|4| objects-init
+    api-openstack-compute-flavors-py -->|2| utils-py
+    api-openstack-compute-floating-ip-dns-py --> api-openstack-compute-schemas-floating-ip-dns-py
+    api-openstack-compute-floating-ip-dns-py -->|4| api-openstack-wsgi-py
+    api-openstack-compute-floating-ip-dns-py -->|4| api-validation-init
+    api-openstack-compute-floating-ip-pools-py --> api-openstack-api-version-request-py
+    api-openstack-compute-floating-ip-pools-py --> api-openstack-compute-schemas-floating-ip-pools-py
+    api-openstack-compute-floating-ip-pools-py -->|4| api-openstack-wsgi-py
+    api-openstack-compute-floating-ip-pools-py -->|3| api-validation-init
+    api-openstack-compute-floating-ip-pools-py -->|2| network-neutron-py
+    api-openstack-compute-floating-ips-bulk-py --> api-openstack-compute-schemas-floating-ips-bulk-py
+    api-openstack-compute-floating-ips-bulk-py -->|4| api-openstack-wsgi-py
+    api-openstack-compute-floating-ips-bulk-py -->|4| api-validation-init
+    api-openstack-compute-floating-ips-py --> api-openstack-api-version-request-py
+    api-openstack-compute-floating-ips-py -->|2| api-openstack-common-py
+    api-openstack-compute-floating-ips-py --> api-openstack-compute-schemas-floating-ips-py
+    api-openstack-compute-floating-ips-py -->|6| api-openstack-wsgi-py
+    api-openstack-compute-floating-ips-py -->|4| api-validation-init
+    api-openstack-compute-floating-ips-py --> exception-py
+    api-openstack-compute-floating-ips-py -->|2| i18n-py
+    api-openstack-compute-floating-ips-py -->|2| network-neutron-py
+    api-openstack-compute-fping-py --> api-openstack-compute-schemas-fping-py
+    api-openstack-compute-fping-py -->|4| api-openstack-wsgi-py
+    api-openstack-compute-fping-py -->|3| api-validation-init
+    api-openstack-compute-helpers-py -->|2| i18n-py
+    api-openstack-compute-hosts-py -->|2| api-openstack-common-py
+    api-openstack-compute-hosts-py --> api-openstack-compute-schemas-hosts-py
+    api-openstack-compute-hosts-py -->|4| api-openstack-wsgi-py
+    api-openstack-compute-hosts-py -->|4| api-validation-init
+    api-openstack-compute-hosts-py --> exception-py
+    api-openstack-compute-hosts-py -->|3| objects-init
+    api-openstack-compute-hypervisors-py -->|2| api-openstack-api-version-request-py
+    api-openstack-compute-hypervisors-py -->|3| api-openstack-common-py
+    api-openstack-compute-hypervisors-py --> api-openstack-compute-schemas-hypervisors-py
+    api-openstack-compute-hypervisors-py --> api-openstack-compute-views-hypervisors-py
+    api-openstack-compute-hypervisors-py -->|4| api-openstack-wsgi-py
+    api-openstack-compute-hypervisors-py -->|3| api-validation-init
+    api-openstack-compute-hypervisors-py --> exception-py
+    api-openstack-compute-hypervisors-py -->|2| i18n-py
+    api-openstack-compute-hypervisors-py -->|2| utils-py
+    api-openstack-compute-image-metadata-py -->|2| api-openstack-common-py
+    api-openstack-compute-image-metadata-py --> api-openstack-compute-schemas-image-metadata-py
+    api-openstack-compute-image-metadata-py -->|5| api-openstack-wsgi-py
+    api-openstack-compute-image-metadata-py -->|4| api-validation-init
+    api-openstack-compute-image-metadata-py --> exception-py
+    api-openstack-compute-image-metadata-py -->|2| i18n-py
+    api-openstack-compute-images-py --> api-openstack-api-version-request-py
+    api-openstack-compute-images-py -->|2| api-openstack-common-py
+    api-openstack-compute-images-py --> api-openstack-compute-schemas-images-py
+    api-openstack-compute-images-py --> api-openstack-compute-views-images-py
+    api-openstack-compute-images-py -->|5| api-openstack-wsgi-py
+    api-openstack-compute-images-py -->|3| api-validation-init
+    api-openstack-compute-images-py --> exception-py
+    api-openstack-compute-images-py -->|2| i18n-py
+    api-openstack-compute-init --> api-openstack-compute-routes-py
+    api-openstack-compute-instance-actions-py -->|2| api-openstack-api-version-request-py
+    api-openstack-compute-instance-actions-py -->|3| api-openstack-common-py
+    api-openstack-compute-instance-actions-py --> api-openstack-compute-schemas-instance-actions-py
+    api-openstack-compute-instance-actions-py --> api-openstack-compute-views-instance-actions-py
+    api-openstack-compute-instance-actions-py -->|3| api-openstack-wsgi-py
+    api-openstack-compute-instance-actions-py -->|3| api-validation-init
+    api-openstack-compute-instance-actions-py --> exception-py
+    api-openstack-compute-instance-actions-py -->|2| i18n-py
+    api-openstack-compute-instance-actions-py -->|3| utils-py
+    api-openstack-compute-instance-usage-audit-log-py --> api-openstack-compute-schemas-instance-usage-audit-log-py
+    api-openstack-compute-instance-usage-audit-log-py -->|3| api-openstack-wsgi-py
+    api-openstack-compute-instance-usage-audit-log-py -->|3| api-validation-init
+    api-openstack-compute-instance-usage-audit-log-py -->|2| i18n-py
+    api-openstack-compute-instance-usage-audit-log-py -->|2| utils-py
+    api-openstack-compute-ips-py -->|3| api-openstack-common-py
+    api-openstack-compute-ips-py --> api-openstack-compute-schemas-ips-py
+    api-openstack-compute-ips-py --> api-openstack-compute-views-ips-py
+    api-openstack-compute-ips-py -->|3| api-openstack-wsgi-py
+    api-openstack-compute-ips-py -->|3| api-validation-init
+    api-openstack-compute-ips-py -->|2| i18n-py
+    api-openstack-compute-keypairs-py -->|2| api-openstack-api-version-request-py
+    api-openstack-compute-keypairs-py -->|3| api-openstack-common-py
+    api-openstack-compute-keypairs-py --> api-openstack-compute-schemas-keypairs-py
+    api-openstack-compute-keypairs-py --> api-openstack-compute-views-keypairs-py
+    api-openstack-compute-keypairs-py -->|4| api-openstack-wsgi-py
+    api-openstack-compute-keypairs-py -->|4| api-validation-init
+    api-openstack-compute-keypairs-py --> exception-py
+    api-openstack-compute-keypairs-py --> objects-keypair-py
+    api-openstack-compute-limits-py -->|2| api-openstack-api-version-request-py
+    api-openstack-compute-limits-py --> api-openstack-compute-schemas-limits-py
+    api-openstack-compute-limits-py -->|2| api-openstack-compute-views-limits-py
+    api-openstack-compute-limits-py -->|3| api-openstack-wsgi-py
+    api-openstack-compute-limits-py -->|3| api-validation-init
+    api-openstack-compute-lock-server-py -->|2| api-openstack-api-version-request-py
+    api-openstack-compute-lock-server-py -->|2| api-openstack-common-py
+    api-openstack-compute-lock-server-py --> api-openstack-compute-schemas-lock-server-py
+    api-openstack-compute-lock-server-py -->|5| api-openstack-wsgi-py
+    api-openstack-compute-lock-server-py -->|3| api-validation-init
+    api-openstack-compute-migrate-server-py -->|2| api-openstack-api-version-request-py
+    api-openstack-compute-migrate-server-py -->|3| api-openstack-common-py
+    api-openstack-compute-migrate-server-py --> api-openstack-compute-schemas-migrate-server-py
+    api-openstack-compute-migrate-server-py -->|5| api-openstack-wsgi-py
+    api-openstack-compute-migrate-server-py -->|3| api-validation-init
+    api-openstack-compute-migrate-server-py --> exception-py
+    api-openstack-compute-migrate-server-py -->|2| i18n-py
+    api-openstack-compute-migrations-py -->|2| api-openstack-api-version-request-py
+    api-openstack-compute-migrations-py -->|2| api-openstack-common-py
+    api-openstack-compute-migrations-py --> api-openstack-compute-schemas-migrations-py
+    api-openstack-compute-migrations-py --> api-openstack-compute-views-migrations-py
+    api-openstack-compute-migrations-py -->|3| api-openstack-wsgi-py
+    api-openstack-compute-migrations-py -->|3| api-validation-init
+    api-openstack-compute-migrations-py --> exception-py
+    api-openstack-compute-migrations-py -->|2| i18n-py
+    api-openstack-compute-migrations-py -->|2| objects-base-py
+    api-openstack-compute-migrations-py --> objects-fields-py
+    api-openstack-compute-multinic-py -->|2| api-openstack-common-py
+    api-openstack-compute-multinic-py --> api-openstack-compute-schemas-multinic-py
+    api-openstack-compute-multinic-py -->|6| api-openstack-wsgi-py
+    api-openstack-compute-multinic-py -->|3| api-validation-init
+    api-openstack-compute-multinic-py --> exception-py
+    api-openstack-compute-networks-associate-py --> api-openstack-compute-schemas-networks-associate-py
+    api-openstack-compute-networks-associate-py -->|5| api-openstack-wsgi-py
+    api-openstack-compute-networks-associate-py -->|3| api-validation-init
+    api-openstack-compute-networks-py --> api-openstack-api-version-request-py
+    api-openstack-compute-networks-py --> api-openstack-compute-schemas-networks-py
+    api-openstack-compute-networks-py -->|6| api-openstack-wsgi-py
+    api-openstack-compute-networks-py -->|4| api-validation-init
+    api-openstack-compute-networks-py --> exception-py
+    api-openstack-compute-networks-py -->|2| i18n-py
+    api-openstack-compute-networks-py -->|2| network-neutron-py
+    api-openstack-compute-pause-server-py -->|4| api-openstack-common-py
+    api-openstack-compute-pause-server-py --> api-openstack-compute-schemas-pause-server-py
+    api-openstack-compute-pause-server-py -->|5| api-openstack-wsgi-py
+    api-openstack-compute-pause-server-py -->|3| api-validation-init
+    api-openstack-compute-pause-server-py --> exception-py
+    api-openstack-compute-quota-classes-py -->|2| api-openstack-api-version-request-py
+    api-openstack-compute-quota-classes-py --> api-openstack-compute-schemas-quota-classes-py
+    api-openstack-compute-quota-classes-py -->|3| api-openstack-wsgi-py
+    api-openstack-compute-quota-classes-py -->|4| api-validation-init
+    api-openstack-compute-quota-classes-py --> exception-py
+    api-openstack-compute-quota-classes-py -->|3| objects-init
+    api-openstack-compute-quota-classes-py -->|2| utils-py
+    api-openstack-compute-quota-sets-py -->|2| api-openstack-api-version-request-py
+    api-openstack-compute-quota-sets-py --> api-openstack-compute-schemas-quota-sets-py
+    api-openstack-compute-quota-sets-py -->|2| api-openstack-identity-py
+    api-openstack-compute-quota-sets-py -->|5| api-openstack-wsgi-py
+    api-openstack-compute-quota-sets-py -->|4| api-validation-init
+    api-openstack-compute-quota-sets-py --> exception-py
+    api-openstack-compute-quota-sets-py -->|2| i18n-py
+    api-openstack-compute-quota-sets-py -->|5| objects-init
+    api-openstack-compute-remote-consoles-py -->|4| api-openstack-common-py
+    api-openstack-compute-remote-consoles-py --> api-openstack-compute-schemas-remote-consoles-py
+    api-openstack-compute-remote-consoles-py -->|6| api-openstack-wsgi-py
+    api-openstack-compute-remote-consoles-py -->|3| api-validation-init
+    api-openstack-compute-remote-consoles-py --> exception-py
+    api-openstack-compute-rescue-py -->|2| api-openstack-api-version-request-py
+    api-openstack-compute-rescue-py -->|3| api-openstack-common-py
+    api-openstack-compute-rescue-py --> api-openstack-compute-schemas-rescue-py
+    api-openstack-compute-rescue-py -->|5| api-openstack-wsgi-py
+    api-openstack-compute-rescue-py -->|3| api-validation-init
+    api-openstack-compute-rescue-py --> exception-py
+    api-openstack-compute-rescue-py -->|2| utils-py
+    api-openstack-compute-routes-py --> api-openstack-compute-admin-actions-py
+    api-openstack-compute-routes-py --> api-openstack-compute-admin-password-py
+    api-openstack-compute-routes-py --> api-openstack-compute-agents-py
+    api-openstack-compute-routes-py --> api-openstack-compute-aggregates-py
+    api-openstack-compute-routes-py --> api-openstack-compute-assisted-volume-snapshots-py
+    api-openstack-compute-routes-py --> api-openstack-compute-attach-interfaces-py
+    api-openstack-compute-routes-py --> api-openstack-compute-availability-zone-py
+    api-openstack-compute-routes-py --> api-openstack-compute-baremetal-nodes-py
+    api-openstack-compute-routes-py --> api-openstack-compute-cells-py
+    api-openstack-compute-routes-py --> api-openstack-compute-certificates-py
+    api-openstack-compute-routes-py --> api-openstack-compute-cloudpipe-py
+    api-openstack-compute-routes-py --> api-openstack-compute-console-auth-tokens-py
+    api-openstack-compute-routes-py --> api-openstack-compute-console-output-py
+    api-openstack-compute-routes-py --> api-openstack-compute-consoles-py
+    api-openstack-compute-routes-py --> api-openstack-compute-create-backup-py
+    api-openstack-compute-routes-py --> api-openstack-compute-deferred-delete-py
+    api-openstack-compute-routes-py --> api-openstack-compute-evacuate-py
+    api-openstack-compute-routes-py --> api-openstack-compute-extension-info-py
+    api-openstack-compute-routes-py --> api-openstack-compute-fixed-ips-py
+    api-openstack-compute-routes-py --> api-openstack-compute-flavor-access-py
+    api-openstack-compute-routes-py --> api-openstack-compute-flavors-extraspecs-py
+    api-openstack-compute-routes-py --> api-openstack-compute-flavors-py
+    api-openstack-compute-routes-py --> api-openstack-compute-floating-ip-dns-py
+    api-openstack-compute-routes-py --> api-openstack-compute-floating-ip-pools-py
+    api-openstack-compute-routes-py --> api-openstack-compute-floating-ips-bulk-py
+    api-openstack-compute-routes-py --> api-openstack-compute-floating-ips-py
+    api-openstack-compute-routes-py --> api-openstack-compute-fping-py
+    api-openstack-compute-routes-py --> api-openstack-compute-hosts-py
+    api-openstack-compute-routes-py --> api-openstack-compute-hypervisors-py
+    api-openstack-compute-routes-py --> api-openstack-compute-image-metadata-py
+    api-openstack-compute-routes-py --> api-openstack-compute-images-py
+    api-openstack-compute-routes-py --> api-openstack-compute-instance-actions-py
+    api-openstack-compute-routes-py --> api-openstack-compute-instance-usage-audit-log-py
+    api-openstack-compute-routes-py --> api-openstack-compute-ips-py
+    api-openstack-compute-routes-py --> api-openstack-compute-keypairs-py
+    api-openstack-compute-routes-py --> api-openstack-compute-limits-py
+    api-openstack-compute-routes-py --> api-openstack-compute-lock-server-py
+    api-openstack-compute-routes-py --> api-openstack-compute-migrate-server-py
+    api-openstack-compute-routes-py --> api-openstack-compute-migrations-py
+    api-openstack-compute-routes-py --> api-openstack-compute-multinic-py
+    api-openstack-compute-routes-py --> api-openstack-compute-networks-associate-py
+    api-openstack-compute-routes-py --> api-openstack-compute-networks-py
+    api-openstack-compute-routes-py --> api-openstack-compute-pause-server-py
+    api-openstack-compute-routes-py --> api-openstack-compute-quota-classes-py
+    api-openstack-compute-routes-py --> api-openstack-compute-quota-sets-py
+    api-openstack-compute-routes-py --> api-openstack-compute-remote-consoles-py
+    api-openstack-compute-routes-py --> api-openstack-compute-rescue-py
+    api-openstack-compute-routes-py --> api-openstack-compute-security-group-default-rules-py
+    api-openstack-compute-routes-py --> api-openstack-compute-security-groups-py
+    api-openstack-compute-routes-py --> api-openstack-compute-server-diagnostics-py
+    api-openstack-compute-routes-py --> api-openstack-compute-server-external-events-py
+    api-openstack-compute-routes-py --> api-openstack-compute-server-groups-py
+    api-openstack-compute-routes-py --> api-openstack-compute-server-metadata-py
+    api-openstack-compute-routes-py --> api-openstack-compute-server-migrations-py
+    api-openstack-compute-routes-py --> api-openstack-compute-server-password-py
+    api-openstack-compute-routes-py --> api-openstack-compute-server-shares-py
+    api-openstack-compute-routes-py --> api-openstack-compute-server-tags-py
+    api-openstack-compute-routes-py --> api-openstack-compute-server-topology-py
+    api-openstack-compute-routes-py --> api-openstack-compute-servers-py
+    api-openstack-compute-routes-py --> api-openstack-compute-services-py
+    api-openstack-compute-routes-py --> api-openstack-compute-shelve-py
+    api-openstack-compute-routes-py --> api-openstack-compute-simple-tenant-usage-py
+    api-openstack-compute-routes-py --> api-openstack-compute-snapshots-py
+    api-openstack-compute-routes-py --> api-openstack-compute-suspend-server-py
+    api-openstack-compute-routes-py --> api-openstack-compute-tenant-networks-py
+    api-openstack-compute-routes-py --> api-openstack-compute-versionsV21-py
+    api-openstack-compute-routes-py --> api-openstack-compute-virtual-interfaces-py
+    api-openstack-compute-routes-py --> api-openstack-compute-volume-attachments-py
+    api-openstack-compute-routes-py --> api-openstack-compute-volumes-boot-py
+    api-openstack-compute-routes-py --> api-openstack-compute-volumes-py
+    api-openstack-compute-routes-py -->|2| api-openstack-init
+    api-openstack-compute-routes-py -->|2| api-openstack-wsgi-py
+    api-openstack-compute-routes-py -->|2| api-wsgi-py
+    api-openstack-compute-schemas-admin-password-py --> api-validation-parameter-types-py
+    api-openstack-compute-schemas-aggregate-images-py --> api-validation-parameter-types-py
+    api-openstack-compute-schemas-aggregates-py --> api-validation-parameter-types-py
+    api-openstack-compute-schemas-assisted-volume-snapshots-py -->|2| api-validation-parameter-types-py
+    api-openstack-compute-schemas-attach-interfaces-py --> api-validation-parameter-types-py
+    api-openstack-compute-schemas-create-backup-py --> api-validation-parameter-types-py
+    api-openstack-compute-schemas-evacuate-py --> api-validation-parameter-types-py
+    api-openstack-compute-schemas-flavor-access-py --> api-validation-parameter-types-py
+    api-openstack-compute-schemas-flavors-extraspecs-py --> api-validation-parameter-types-py
+    api-openstack-compute-schemas-flavors-py -->|2| api-validation-parameter-types-py
+    api-openstack-compute-schemas-floating-ips-py --> api-validation-parameter-types-py
+    api-openstack-compute-schemas-hosts-py -->|2| api-validation-parameter-types-py
+    api-openstack-compute-schemas-hypervisors-py -->|2| api-validation-parameter-types-py
+    api-openstack-compute-schemas-hypervisors-py --> api-validation-response-types-py
+    api-openstack-compute-schemas-image-metadata-py --> api-validation-parameter-types-py
+    api-openstack-compute-schemas-image-metadata-py --> api-validation-response-types-py
+    api-openstack-compute-schemas-images-py -->|2| api-validation-parameter-types-py
+    api-openstack-compute-schemas-images-py --> api-validation-response-types-py
+    api-openstack-compute-schemas-instance-actions-py -->|2| api-validation-parameter-types-py
+    api-openstack-compute-schemas-instance-actions-py --> api-validation-response-types-py
+    api-openstack-compute-schemas-keypairs-py -->|2| api-validation-parameter-types-py
+    api-openstack-compute-schemas-keypairs-py --> api-validation-response-types-py
+    api-openstack-compute-schemas-limits-py --> api-validation-parameter-types-py
+    api-openstack-compute-schemas-migrate-server-py --> api-validation-parameter-types-py
+    api-openstack-compute-schemas-migrations-py -->|2| api-validation-parameter-types-py
+    api-openstack-compute-schemas-migrations-py --> api-validation-response-types-py
+    api-openstack-compute-schemas-multinic-py --> api-validation-parameter-types-py
+    api-openstack-compute-schemas-quota-classes-py --> api-openstack-compute-schemas-quota-sets-py
+    api-openstack-compute-schemas-quota-sets-py -->|2| api-validation-parameter-types-py
+    api-openstack-compute-schemas-rescue-py --> api-validation-parameter-types-py
+    api-openstack-compute-schemas-security-groups-py -->|2| api-validation-parameter-types-py
+    api-openstack-compute-schemas-server-external-events-py --> objects-external-event-py
+    api-openstack-compute-schemas-server-groups-py -->|2| api-validation-parameter-types-py
+    api-openstack-compute-schemas-server-metadata-py --> api-validation-parameter-types-py
+    api-openstack-compute-schemas-server-metadata-py --> api-validation-response-types-py
+    api-openstack-compute-schemas-server-migrations-py --> api-validation-parameter-types-py
+    api-openstack-compute-schemas-server-shares-py --> api-validation-parameter-types-py
+    api-openstack-compute-schemas-server-tags-py --> api-validation-parameter-types-py
+    api-openstack-compute-schemas-server-tags-py --> objects-instance-py
+    api-openstack-compute-schemas-servers-py -->|2| api-validation-parameter-types-py
+    api-openstack-compute-schemas-servers-py --> api-validation-response-types-py
+    api-openstack-compute-schemas-servers-py --> objects-instance-py
+    api-openstack-compute-schemas-services-py --> api-validation-parameter-types-py
+    api-openstack-compute-schemas-shelve-py --> api-validation-parameter-types-py
+    api-openstack-compute-schemas-simple-tenant-usage-py -->|2| api-validation-parameter-types-py
+    api-openstack-compute-schemas-simple-tenant-usage-py --> api-validation-response-types-py
+    api-openstack-compute-schemas-snapshots-py -->|2| api-validation-parameter-types-py
+    api-openstack-compute-schemas-volume-attachments-py -->|2| api-validation-parameter-types-py
+    api-openstack-compute-schemas-volumes-py -->|2| api-validation-parameter-types-py
+    api-openstack-compute-schemas-volumes-py --> api-validation-response-types-py
+    api-openstack-compute-security-group-default-rules-py --> api-openstack-compute-schemas-security-group-default-rules-py
+    api-openstack-compute-security-group-default-rules-py -->|4| api-openstack-wsgi-py
+    api-openstack-compute-security-group-default-rules-py -->|4| api-validation-init
+    api-openstack-compute-security-groups-py --> api-openstack-api-version-request-py
+    api-openstack-compute-security-groups-py -->|3| api-openstack-common-py
+    api-openstack-compute-security-groups-py --> api-openstack-compute-schemas-security-groups-py
+    api-openstack-compute-security-groups-py -->|6| api-openstack-wsgi-py
+    api-openstack-compute-security-groups-py -->|4| api-validation-init
+    api-openstack-compute-security-groups-py --> exception-py
+    api-openstack-compute-security-groups-py -->|2| i18n-py
+    api-openstack-compute-security-groups-py -->|16| network-security-group-api-py
+    api-openstack-compute-server-diagnostics-py -->|2| api-openstack-api-version-request-py
+    api-openstack-compute-server-diagnostics-py -->|4| api-openstack-common-py
+    api-openstack-compute-server-diagnostics-py --> api-openstack-compute-schemas-server-diagnostics-py
+    api-openstack-compute-server-diagnostics-py --> api-openstack-compute-views-server-diagnostics-py
+    api-openstack-compute-server-diagnostics-py -->|3| api-openstack-wsgi-py
+    api-openstack-compute-server-diagnostics-py -->|3| api-validation-init
+    api-openstack-compute-server-diagnostics-py --> exception-py
+    api-openstack-compute-server-external-events-py --> api-openstack-compute-schemas-server-external-events-py
+    api-openstack-compute-server-external-events-py -->|5| api-openstack-wsgi-py
+    api-openstack-compute-server-external-events-py -->|3| api-validation-init
+    api-openstack-compute-server-external-events-py -->|4| objects-init
+    api-openstack-compute-server-groups-py -->|2| api-openstack-api-version-request-py
+    api-openstack-compute-server-groups-py -->|2| api-openstack-common-py
+    api-openstack-compute-server-groups-py --> api-openstack-compute-schemas-server-groups-py
+    api-openstack-compute-server-groups-py -->|4| api-openstack-wsgi-py
+    api-openstack-compute-server-groups-py -->|4| api-validation-init
+    api-openstack-compute-server-groups-py --> exception-py
+    api-openstack-compute-server-groups-py -->|2| i18n-py
+    api-openstack-compute-server-groups-py -->|8| objects-init
+    api-openstack-compute-server-groups-py -->|2| objects-service-py
+    api-openstack-compute-server-metadata-py -->|3| api-openstack-common-py
+    api-openstack-compute-server-metadata-py --> api-openstack-compute-schemas-server-metadata-py
+    api-openstack-compute-server-metadata-py -->|4| api-openstack-wsgi-py
+    api-openstack-compute-server-metadata-py -->|4| api-validation-init
+    api-openstack-compute-server-metadata-py --> exception-py
+    api-openstack-compute-server-metadata-py -->|2| i18n-py
+    api-openstack-compute-server-migrations-py -->|2| api-openstack-api-version-request-py
+    api-openstack-compute-server-migrations-py -->|3| api-openstack-common-py
+    api-openstack-compute-server-migrations-py --> api-openstack-compute-schemas-server-migrations-py
+    api-openstack-compute-server-migrations-py -->|6| api-openstack-wsgi-py
+    api-openstack-compute-server-migrations-py -->|4| api-validation-init
+    api-openstack-compute-server-migrations-py --> exception-py
+    api-openstack-compute-server-migrations-py -->|2| i18n-py
+    api-openstack-compute-server-password-py -->|3| api-metadata-password-py
+    api-openstack-compute-server-password-py -->|2| api-openstack-common-py
+    api-openstack-compute-server-password-py --> api-openstack-compute-schemas-server-password-py
+    api-openstack-compute-server-password-py -->|4| api-openstack-wsgi-py
+    api-openstack-compute-server-password-py -->|3| api-validation-init
+    api-openstack-compute-server-shares-py -->|3| api-openstack-common-py
+    api-openstack-compute-server-shares-py --> api-openstack-compute-schemas-server-shares-py
+    api-openstack-compute-server-shares-py --> api-openstack-compute-views-server-shares-py
+    api-openstack-compute-server-shares-py -->|5| api-openstack-wsgi-py
+    api-openstack-compute-server-shares-py -->|4| api-validation-init
+    api-openstack-compute-server-shares-py -->|6| exception-py
+    api-openstack-compute-server-shares-py --> objects-fields-py
+    api-openstack-compute-server-shares-py -->|5| objects-init
+    api-openstack-compute-server-tags-py -->|3| api-openstack-common-py
+    api-openstack-compute-server-tags-py --> api-openstack-compute-schemas-server-tags-py
+    api-openstack-compute-server-tags-py --> api-openstack-compute-views-server-tags-py
+    api-openstack-compute-server-tags-py -->|5| api-openstack-wsgi-py
+    api-openstack-compute-server-tags-py -->|4| api-validation-init
+    api-openstack-compute-server-tags-py --> api-validation-parameter-types-py
+    api-openstack-compute-server-tags-py -->|2| exception-py
+    api-openstack-compute-server-tags-py -->|2| i18n-py
+    api-openstack-compute-server-tags-py -->|9| objects-init
+    api-openstack-compute-server-topology-py -->|2| api-openstack-common-py
+    api-openstack-compute-server-topology-py --> api-openstack-compute-schemas-server-topology-py
+    api-openstack-compute-server-topology-py -->|4| api-openstack-wsgi-py
+    api-openstack-compute-server-topology-py -->|3| api-validation-init
+    api-openstack-compute-servers-py -->|2| api-openstack-api-version-request-py
+    api-openstack-compute-servers-py -->|13| api-openstack-common-py
+    api-openstack-compute-servers-py -->|3| api-openstack-compute-helpers-py
+    api-openstack-compute-servers-py -->|2| api-openstack-compute-schemas-servers-py
+    api-openstack-compute-servers-py --> api-openstack-compute-views-servers-py
+    api-openstack-compute-servers-py -->|7| api-openstack-wsgi-py
+    api-openstack-compute-servers-py -->|4| api-validation-init
+    api-openstack-compute-servers-py --> exception-py
+    api-openstack-compute-servers-py -->|2| i18n-py
+    api-openstack-compute-servers-py -->|9| objects-init
+    api-openstack-compute-servers-py -->|2| utils-py
+    api-openstack-compute-services-py -->|2| api-openstack-api-version-request-py
+    api-openstack-compute-services-py --> api-openstack-compute-schemas-services-py
+    api-openstack-compute-services-py -->|4| api-openstack-wsgi-py
+    api-openstack-compute-services-py -->|4| api-validation-init
+    api-openstack-compute-services-py --> exception-py
+    api-openstack-compute-services-py -->|2| i18n-py
+    api-openstack-compute-services-py -->|6| objects-init
+    api-openstack-compute-services-py -->|2| scheduler-client-report-py
+    api-openstack-compute-services-py -->|2| utils-py
+    api-openstack-compute-shelve-py -->|2| api-openstack-api-version-request-py
+    api-openstack-compute-shelve-py -->|3| api-openstack-common-py
+    api-openstack-compute-shelve-py --> api-openstack-compute-schemas-shelve-py
+    api-openstack-compute-shelve-py -->|5| api-openstack-wsgi-py
+    api-openstack-compute-shelve-py -->|3| api-validation-init
+    api-openstack-compute-shelve-py --> exception-py
+    api-openstack-compute-simple-tenant-usage-py -->|2| api-openstack-api-version-request-py
+    api-openstack-compute-simple-tenant-usage-py -->|2| api-openstack-common-py
+    api-openstack-compute-simple-tenant-usage-py --> api-openstack-compute-schemas-simple-tenant-usage-py
+    api-openstack-compute-simple-tenant-usage-py --> api-openstack-compute-views-usages-py
+    api-openstack-compute-simple-tenant-usage-py -->|3| api-openstack-wsgi-py
+    api-openstack-compute-simple-tenant-usage-py -->|3| api-validation-init
+    api-openstack-compute-simple-tenant-usage-py -->|3| exception-py
+    api-openstack-compute-simple-tenant-usage-py -->|2| i18n-py
+    api-openstack-compute-simple-tenant-usage-py -->|4| objects-init
+    api-openstack-compute-snapshots-py --> api-openstack-api-version-request-py
+    api-openstack-compute-snapshots-py -->|2| api-openstack-common-py
+    api-openstack-compute-snapshots-py --> api-openstack-compute-schemas-snapshots-py
+    api-openstack-compute-snapshots-py -->|5| api-openstack-wsgi-py
+    api-openstack-compute-snapshots-py -->|4| api-validation-init
+    api-openstack-compute-snapshots-py --> exception-py
+    api-openstack-compute-suspend-server-py -->|3| api-openstack-common-py
+    api-openstack-compute-suspend-server-py --> api-openstack-compute-schemas-suspend-server-py
+    api-openstack-compute-suspend-server-py -->|5| api-openstack-wsgi-py
+    api-openstack-compute-suspend-server-py -->|3| api-validation-init
+    api-openstack-compute-suspend-server-py --> exception-py
+    api-openstack-compute-tenant-networks-py --> api-openstack-api-version-request-py
+    api-openstack-compute-tenant-networks-py --> api-openstack-compute-schemas-tenant-networks-py
+    api-openstack-compute-tenant-networks-py -->|5| api-openstack-wsgi-py
+    api-openstack-compute-tenant-networks-py -->|4| api-validation-init
+    api-openstack-compute-tenant-networks-py --> exception-py
+    api-openstack-compute-tenant-networks-py -->|2| i18n-py
+    api-openstack-compute-tenant-networks-py -->|2| network-neutron-py
+    api-openstack-compute-versions-py --> api-openstack-api-version-request-py
+    api-openstack-compute-versions-py --> api-openstack-compute-schemas-versions-py
+    api-openstack-compute-versions-py -->|2| api-openstack-compute-views-versions-py
+    api-openstack-compute-versions-py -->|3| api-openstack-wsgi-py
+    api-openstack-compute-versions-py -->|3| api-validation-init
+    api-openstack-compute-versionsV21-py --> api-openstack-compute-schemas-versions-py
+    api-openstack-compute-versionsV21-py --> api-openstack-compute-versions-py
+    api-openstack-compute-versionsV21-py -->|2| api-openstack-compute-views-versions-py
+    api-openstack-compute-versionsV21-py -->|3| api-openstack-wsgi-py
+    api-openstack-compute-versionsV21-py -->|3| api-validation-init
+    api-openstack-compute-views-flavors-py -->|2| api-openstack-api-version-request-py
+    api-openstack-compute-views-flavors-py -->|2| api-openstack-common-py
+    api-openstack-compute-views-hypervisors-py -->|2| api-openstack-common-py
+    api-openstack-compute-views-images-py -->|2| api-openstack-common-py
+    api-openstack-compute-views-images-py -->|2| utils-py
+    api-openstack-compute-views-instance-actions-py -->|2| api-openstack-common-py
+    api-openstack-compute-views-ips-py -->|2| api-openstack-common-py
+    api-openstack-compute-views-keypairs-py -->|2| api-openstack-common-py
+    api-openstack-compute-views-migrations-py -->|2| api-openstack-common-py
+    api-openstack-compute-views-server-diagnostics-py -->|2| api-openstack-common-py
+    api-openstack-compute-views-server-shares-py -->|2| api-openstack-common-py
+    api-openstack-compute-views-server-shares-py -->|2| api-openstack-compute-views-servers-py
+    api-openstack-compute-views-server-tags-py -->|2| api-openstack-common-py
+    api-openstack-compute-views-server-tags-py -->|2| api-openstack-compute-views-servers-py
+    api-openstack-compute-views-servers-py -->|2| api-openstack-api-version-request-py
+    api-openstack-compute-views-servers-py -->|5| api-openstack-common-py
+    api-openstack-compute-views-servers-py -->|2| api-openstack-compute-views-flavors-py
+    api-openstack-compute-views-servers-py -->|2| api-openstack-compute-views-images-py
+    api-openstack-compute-views-servers-py -->|2| api-openstack-compute-views-ips-py
+    api-openstack-compute-views-servers-py --> exception-py
+    api-openstack-compute-views-servers-py -->|2| network-security-group-api-py
+    api-openstack-compute-views-servers-py --> objects-fields-py
+    api-openstack-compute-views-servers-py -->|9| objects-init
+    api-openstack-compute-views-servers-py --> objects-virtual-interface-py
+    api-openstack-compute-views-servers-py -->|3| utils-py
+    api-openstack-compute-views-usages-py -->|2| api-openstack-common-py
+    api-openstack-compute-views-versions-py -->|3| api-openstack-common-py
+    api-openstack-compute-virtual-interfaces-py --> api-openstack-compute-schemas-virtual-interfaces-py
+    api-openstack-compute-virtual-interfaces-py -->|4| api-openstack-wsgi-py
+    api-openstack-compute-virtual-interfaces-py -->|3| api-validation-init
+    api-openstack-compute-volume-attachments-py -->|2| api-openstack-api-version-request-py
+    api-openstack-compute-volume-attachments-py -->|5| api-openstack-common-py
+    api-openstack-compute-volume-attachments-py --> api-openstack-compute-schemas-volume-attachments-py
+    api-openstack-compute-volume-attachments-py -->|4| api-openstack-wsgi-py
+    api-openstack-compute-volume-attachments-py -->|4| api-validation-init
+    api-openstack-compute-volume-attachments-py -->|2| exception-py
+    api-openstack-compute-volume-attachments-py -->|2| i18n-py
+    api-openstack-compute-volume-attachments-py -->|3| objects-init
+    api-openstack-compute-volumes-boot-py --> api-openstack-compute-schemas-servers-py
+    api-openstack-compute-volumes-boot-py -->|2| api-openstack-compute-servers-py
+    api-openstack-compute-volumes-boot-py -->|5| api-openstack-wsgi-py
+    api-openstack-compute-volumes-boot-py -->|4| api-validation-init
+    api-openstack-compute-volumes-py --> api-openstack-api-version-request-py
+    api-openstack-compute-volumes-py -->|2| api-openstack-common-py
+    api-openstack-compute-volumes-py --> api-openstack-compute-schemas-volumes-py
+    api-openstack-compute-volumes-py -->|6| api-openstack-wsgi-py
+    api-openstack-compute-volumes-py -->|4| api-validation-init
+    api-openstack-compute-volumes-py --> exception-py
+    api-openstack-identity-py -->|2| i18n-py
+    api-openstack-identity-py -->|2| utils-py
+    api-openstack-init -->|2| api-openstack-wsgi-py
+    api-openstack-init -->|2| api-wsgi-py
+    api-openstack-init -->|2| i18n-py
+    api-openstack-requestlog-py --> api-openstack-wsgi-py
+    api-openstack-requestlog-py -->|2| api-wsgi-py
+    api-openstack-urlmap-py -->|2| api-openstack-wsgi-py
+    api-openstack-wsgi-app-py --> exception-py
+    api-openstack-wsgi-app-py -->|4| objects-init
+    api-openstack-wsgi-app-py -->|4| utils-py
+    api-openstack-wsgi-py -->|4| api-openstack-api-version-request-py
+    api-openstack-wsgi-py -->|3| api-wsgi-py
+    api-openstack-wsgi-py -->|6| exception-py
+    api-openstack-wsgi-py -->|5| i18n-py
+    api-validation-extra-specs-accel-py -->|2| api-validation-extra-specs-base-py
+    api-validation-extra-specs-aggregate-instance-extra-specs-py -->|2| api-validation-extra-specs-base-py
+    api-validation-extra-specs-base-py -->|2| exception-py
+    api-validation-extra-specs-capabilities-py -->|2| api-validation-extra-specs-base-py
+    api-validation-extra-specs-hw-py -->|2| api-validation-extra-specs-base-py
+    api-validation-extra-specs-hw-py --> objects-fields-py
+    api-validation-extra-specs-hw-rng-py -->|2| api-validation-extra-specs-base-py
+    api-validation-extra-specs-hw-video-py -->|2| api-validation-extra-specs-base-py
+    api-validation-extra-specs-null-py -->|2| api-validation-extra-specs-base-py
+    api-validation-extra-specs-os-py -->|2| api-validation-extra-specs-base-py
+    api-validation-extra-specs-pci-passthrough-py -->|2| api-validation-extra-specs-base-py
+    api-validation-extra-specs-quota-py -->|2| api-validation-extra-specs-base-py
+    api-validation-extra-specs-resources-py -->|2| api-validation-extra-specs-base-py
+    api-validation-extra-specs-traits-py -->|2| api-validation-extra-specs-base-py
+    api-validation-extra-specs-validators-py --> api-validation-extra-specs-base-py
+    api-validation-extra-specs-validators-py -->|2| exception-py
+    api-validation-extra-specs-vmware-py -->|2| api-validation-extra-specs-base-py
+    api-validation-init -->|2| api-openstack-api-version-request-py
+    api-validation-init -->|2| api-openstack-wsgi-py
+    api-validation-init -->|2| api-validation-validators-py
+    api-validation-init -->|2| exception-py
+    api-validation-init -->|2| i18n-py
+    api-validation-parameter-types-py -->|2| i18n-py
+    api-validation-parameter-types-py --> objects-tag-py
+    api-validation-validators-py --> api-validation-parameter-types-py
+    api-validation-validators-py -->|3| exception-py
+    api-validation-validators-py -->|2| i18n-py
+    api-wsgi-py -->|3| exception-py
+    api-wsgi-py -->|2| i18n-py
     db-api-migrations-env-py --> db-api-models-py
     db-api-migrations-versions-d67eeaabee36-initial-version-py -->|2| db-types-py
     db-api-migrations-versions-d67eeaabee36-initial-version-py --> objects-keypair-py
@@ -405,6 +1490,24 @@ graph LR
     db-utils-py -->|2| exception-py
     db-utils-py -->|2| i18n-py
     exception-py -->|2| i18n-py
+    network-model-py -->|2| exception-py
+    network-model-py -->|2| i18n-py
+    network-neutron-py -->|4| accelerator-cyborg-py
+    network-neutron-py -->|46| exception-py
+    network-neutron-py -->|2| i18n-py
+    network-neutron-py --> network-constants-py
+    network-neutron-py -->|9| network-model-py
+    network-neutron-py --> objects-fields-py
+    network-neutron-py -->|16| objects-init
+    network-neutron-py -->|4| service-auth-py
+    network-neutron-py -->|3| utils-py
+    network-os-vif-util-py -->|3| exception-py
+    network-os-vif-util-py -->|2| i18n-py
+    network-os-vif-util-py --> network-model-py
+    network-security-group-api-py -->|11| exception-py
+    network-security-group-api-py -->|2| i18n-py
+    network-security-group-api-py -->|2| network-neutron-py
+    network-security-group-api-py -->|3| objects-security-group-py
     objects-aggregate-py -->|2| db-api-api-py
     objects-aggregate-py -->|6| db-api-models-py
     objects-aggregate-py -->|8| exception-py
@@ -458,6 +1561,7 @@ graph LR
     objects-external-event-py -->|5| objects-fields-py
     objects-fields-py -->|4| exception-py
     objects-fields-py -->|2| i18n-py
+    objects-fields-py -->|3| network-model-py
     objects-flavor-py --> db-api-api-py
     objects-flavor-py -->|7| db-api-models-py
     objects-flavor-py -->|2| db-utils-py
@@ -474,6 +1578,7 @@ graph LR
     objects-host-mapping-py -->|6| objects-init
     objects-hv-spec-py -->|2| objects-base-py
     objects-hv-spec-py -->|4| objects-fields-py
+    objects-image-meta-py --> network-model-py
     objects-image-meta-py -->|4| objects-base-py
     objects-image-meta-py -->|41| objects-fields-py
     objects-image-meta-py -->|2| objects-init
@@ -562,6 +1667,7 @@ graph LR
     objects-instance-py -->|3| db-main-models-py
     objects-instance-py -->|4| exception-py
     objects-instance-py -->|2| i18n-py
+    objects-instance-py -->|2| network-model-py
     objects-instance-py -->|7| objects-base-py
     objects-instance-py -->|12| objects-fields-py
     objects-instance-py -->|33| objects-init
@@ -718,6 +1824,7 @@ graph LR
     scheduler-manager-py -->|4| scheduler-utils-py
     scheduler-request-filter-py -->|2| exception-py
     scheduler-request-filter-py -->|2| i18n-py
+    scheduler-request-filter-py -->|2| network-neutron-py
     scheduler-request-filter-py -->|5| objects-init
     scheduler-request-filter-py -->|2| scheduler-client-report-py
     scheduler-request-filter-py -->|4| scheduler-utils-py
@@ -769,44 +1876,58 @@ graph LR
 
 Source: `securitySurface` arrays in `.aee/kb/src/nova/**/*.json`.
 
-**Entry points (8 total):**
+**Entry points (39 total):**
 
 | File | Line | Category | Description |
 |---|---|---|---|
 | `accelerator/cyborg.py` | L56 | http-param | `context` carries caller auth/session state into `get_client` and `_CyborgClient.__init__` |
-| `accelerator/cyborg.py` | L88 | http-param | `dp_name` accepted from caller and forwarded to Cyborg API query in `_get_device_profile_list` |
+| `accelerator/cyborg.py` | L88 | http-param | `dp_name` forwarded to Cyborg API query in `_get_device_profile_list` |
 | `accelerator/cyborg.py` | L255 | http-param | `bindings` dict serialised as RFC 6902 JSON patch body sent to Cyborg in `bind_arqs` |
 | `accelerator/cyborg.py` | L291 | http-param | `instance_uuid` used as Cyborg API query parameter in `get_arqs_for_instance` |
 | `accelerator/cyborg.py` | L337 | http-param | `arq_uuid` interpolated into Cyborg API URL path in `get_arq_by_uuid` |
+| `api/auth.py` | L55 | http-param | `@webob.dec.wsgify` — inbound WSGI request enters auth middleware |
+| `api/auth.py` | L72 | http-param | `@webob.dec.wsgify` — second WSGI entry on NoAuthMiddleware |
+| `api/metadata/handler.py` | L97 | http-param | `@webob.dec.wsgify` — instance metadata request enters handler |
+| `api/openstack/__init__.py` | L91 | http-param | `@webob.dec.wsgify` — request enters API router |
+| `api/openstack/__init__.py` | L138 | http-param | `@webob.dec.wsgify` — request enters versioned API dispatcher |
+| `api/openstack/api_version_request.py` | L324 | http-param | `is_supported(req, version)` — request microversion tested |
+| `api/openstack/common.py` | L155 | http-param | `request.params` — query parameters read for filtering |
+| `api/openstack/common.py` | L179 | http-param | `request` `marker` and `limit` pagination params read |
+| `api/openstack/common.py` | L189 | http-param | `request.GET['limit']` — limit parameter read from query string |
+| `api/openstack/common.py` | L191 | http-param | `request.GET['page_size']` — page size parameter read |
 | `exception.py` | L27 | http-param | `import webob.exc` — webob HTTP exception types enter the exception hierarchy |
 | `exception.py` | L28 | http-param | `from webob import util as woutil` |
-| `exception.py` | L35 | http-param | `class ConvertedException(webob.exc.WSGIHTTPException)` bridges webob exceptions into nova hierarchy |
+| `exception.py` | L35 | http-param | `class ConvertedException(webob.exc.WSGIHTTPException)` bridges webob into nova hierarchy |
 
-**Sinks (269 total):**
+(21 further entry points exist in `api/` controller files; all are `http-param` category via `webob.dec.wsgify` or `request.GET`/`request.body` reads. Source: `.aee/kb/src/nova/api/**/*.json:securitySurface`.)
+
+**Sinks (537 total):**
 
 | Category | Count | Primary files |
 |---|---|---|
-| db-write | 262 | `db/main/api.py`, `db/api/migrations/versions/d67eeaabee36_initial_version.py`, `db/main/migrations/versions/8f2f1571d55b_initial_version.py`, `scheduler/client/query.py`, `scheduler/client/report.py` |
+| db-write | 530 | `db/main/api.py`, `db/api/migrations/versions/d67eeaabee36_initial_version.py`, `db/main/migrations/versions/8f2f1571d55b_initial_version.py`, `api/openstack/compute/servers.py`, `network/neutron.py`, `scheduler/client/query.py`, `scheduler/client/report.py` |
 | network-send | 7 | `accelerator/cyborg.py` |
 
 **Data flow paths:**
 
-1. **Accelerator → Cyborg HTTP path.** Caller-supplied parameters enter at `accelerator/cyborg.py:L56` (`context`), `L88` (`dp_name`), `L255` (`bindings`), `L291` (`instance_uuid`), and `L337` (`arq_uuid`). These values are forwarded to outbound HTTP calls at `L153-L154` (GET `/device_profiles`), `L205` (POST `/accelerator_requests`), `L282-L283` (PATCH `/accelerator_requests`), `L317` (GET `/accelerator_requests?instance=<value>`), and `L377` (GET `/accelerator_requests/<arq_uuid>`). Source: `.aee/kb/src/nova/accelerator/cyborg.py.json:securitySurface`.
+1. **API layer → downstream services (db-write / RPC).** Inbound HTTP requests enter at `@webob.dec.wsgify`-decorated WSGI callables in `api/auth.py`, `api/openstack/__init__.py`, and individual controller files. Request bodies and query-string parameters are deserialised and validated by `api/validation/__init__.py` (schema decorator, `api/openstack/api_version_request.py` for microversion gating) before being passed to controller action methods (e.g. `ServersController.create`, `KeypairsController.create`). Controller methods invoke compute API stubs (unresolved `nova.compute` symbols in the current KB) and object-layer methods, which issue SQLAlchemy writes via `db/main/api.py`. Source: `.aee/kb/src/nova/api/**/*.json:securitySurface` and link-graph edges `api-openstack-compute-*` → `objects-*` and `db-main-api-py`.
 
-2. **Objects → db/main/api.py (db-write) path.** Domain-object methods (e.g. `Instance.save`, `ComputeNode.create`, `Migration.save`) resolve to SQLAlchemy write calls inside `db/main/api.py`. The `objects/` layer passes field values supplied by callers through `objects/base.py` OVO serialisation before they reach the database functions. Source: link-graph edges from `objects-instance-py`, `objects-compute-node-py`, `objects-migration-py`, etc. to `db-main-api-py`.
+2. **Accelerator → Cyborg HTTP path.** Caller-supplied parameters enter at `accelerator/cyborg.py:L56` (`context`), `L88` (`dp_name`), `L255` (`bindings`), `L291` (`instance_uuid`), and `L337` (`arq_uuid`). These values are forwarded without further sanitisation to outbound HTTP calls at `L153-L154` (GET `/device_profiles`), `L205` (POST `/accelerator_requests`), `L282-L283` (PATCH `/accelerator_requests`), `L317` (GET `/accelerator_requests?instance=<value>`), and `L377` (GET `/accelerator_requests/<arq_uuid>`). Source: `.aee/kb/src/nova/accelerator/cyborg.py.json:securitySurface`.
 
-3. **Scheduler → Placement HTTP path.** `scheduler/request_filter.py` and `scheduler/manager.py` pass request-spec data into `scheduler/client/report.py` (`SchedulerReportClient`) at `L279` and `L2358` (network-send), which issues GET/PUT/POST requests to the OpenStack Placement API for resource-provider inventory queries and allocation claims. Source: `.aee/kb/src/nova/scheduler/client/report.py.json:securitySurface`.
+3. **Objects → db/main/api.py (db-write) path.** Domain-object methods (e.g. `Instance.save`, `ComputeNode.create`) resolve to SQLAlchemy write calls inside `db/main/api.py`. Field values pass through `objects/base.py` OVO serialisation before reaching database functions. Source: link-graph edges `objects-instance-py`, `objects-compute-node-py`, etc. → `db-main-api-py`.
 
-4. **Scheduler → db-write (query client) path.** `scheduler/client/query.py` dispatches update calls through `scheduler/rpcapi.py` (RPC sink) to write aggregate and host-state data; sink entries at `scheduler/client/query.py:L47`, `L66`, `L77`. Source: `.aee/kb/src/nova/scheduler/client/query.py.json:securitySurface`.
+4. **Network layer → Neutron HTTP path.** `network/neutron.py` (`API` class) issues REST calls to Neutron for port, network, security group, and floating-IP operations; 80+ `network` side-effect entries and 26 `db-write` sinks in the KB record. Source: `.aee/kb/src/nova/network/neutron.py.json:securitySurface` and `sideEffects`.
 
-5. **exception.py webob path.** `ConvertedException(webob.exc.WSGIHTTPException)` at `exception.py:L35` allows inbound WSGI HTTP exceptions to be re-raised as Nova exceptions. Webob data flows into the Nova exception hierarchy but does not reach a database or network sink within this component's KB records.
+5. **Scheduler → Placement HTTP path.** `scheduler/manager.py` and `scheduler/request_filter.py` pass request-spec data into `scheduler/client/report.py` (`SchedulerReportClient`) at `L279` and `L2358`, which issues GET/PUT/POST to the Placement API. Source: `.aee/kb/src/nova/scheduler/client/report.py.json:securitySurface`.
 
-**Privileges (30 entries):** All 30 privilege entries have category `crypto-key` and originate from `keystoneauth1` imports across files including `scheduler/client/report.py` and `service_auth.py`. Source: `.aee/kb/src/nova/scheduler/client/report.py.json:securitySurface`.
+6. **exception.py webob path.** `ConvertedException(webob.exc.WSGIHTTPException)` at `exception.py:L35` allows inbound WSGI HTTP exceptions to be re-raised as Nova exceptions; no further database or network sink reached within this component's KB records.
 
-No untrusted-input sanitisation steps are recorded in any `securitySurface` entry across the 122 KB records.
+**Privileges (36 entries):** All privilege entries have category `crypto-key` originating from `keystoneauth1` imports in `scheduler/client/report.py`, `service_auth.py`, `api/auth.py`, and `network/neutron.py`. Source: `securitySurface` arrays in those KB records.
+
+No untrusted-input sanitisation steps are recorded in any `securitySurface` entry across the 327 KB records.
 
 ---
 
 ## Cross-Component Interfaces
 
-The link graph (`6bd3ba5`) records **0 cross-component file edges** and **0 cross-component seams** for this component. All 382 file edges are intra-component. The link summary notes 99 unresolved imports against modules not yet in the KB: `nova.conf` (31 refs), `nova.compute` (12), `nova.virt` (8), `nova.network` (4), `nova.notifications.objects` (4), `nova.context` (2), `nova.pci` (2), `nova.share` (1), and generic `nova` (35). These are expected to produce cross-component edges in a subsequent extraction run. Source: `.aee/link-summary.md`.
+The link graph records **0 cross-component file edges** and **0 cross-component seams** for this component. All 1,060 file edges are intra-component. The link summary notes 287 unresolved imports: `nova.compute` (66 refs), `nova.policies` (58), `nova.conf` (53), generic `nova` (73), `nova.virt` (11), `nova.pci` (6), `nova.image` (4), `nova.notifications.objects` (4), `nova.limit` (3), `nova.volume` (3), `nova.share` (2), `nova.context` (2), `nova.conductor` (1), `nova.notifications` (1). The new `nova.policies` gap (58 refs) was introduced by the batch-4 API layer extraction. These are expected to produce cross-component edges in subsequent extraction runs. Source: `.aee/link-summary.md`.
