@@ -1,0 +1,866 @@
+{
+  "file": "src/nova/limit/local.py",
+  "hash": "a84e0b2d7ff29912c2500d28eff169e55a537a53007b6f6e934f13fb11b60003",
+  "language": "Python",
+  "component": "nova",
+  "package": null,
+  "lines": {
+    "blank": 41,
+    "code": 162,
+    "comment": 33,
+    "total": 236
+  },
+  "symbols": [
+    {
+      "name": "LOG",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 27,
+        "end": 27
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "CONF",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 28,
+        "end": 28
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "SERVER_METADATA_ITEMS",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 32,
+        "end": 32
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "INJECTED_FILES",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 33,
+        "end": 33
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "INJECTED_FILES_CONTENT",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 34,
+        "end": 34
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "INJECTED_FILES_PATH",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 35,
+        "end": 35
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "API_LIMITS",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 36,
+        "end": 41
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "KEY_PAIRS",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 45,
+        "end": 45
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "SERVER_GROUPS",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 46,
+        "end": 46
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "SERVER_GROUP_MEMBERS",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 47,
+        "end": 47
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "DB_LIMITS",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 48,
+        "end": 52
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "UNIFIED_LIMITS_DRIVER",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 55,
+        "end": 55
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "EXCEPTIONS",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 60,
+        "end": 68
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "LEGACY_LIMITS",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 71,
+        "end": 79
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "get_in_use",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 82,
+        "end": 106
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "context",
+          "type": "'nova.context.RequestContext'"
+        },
+        {
+          "name": "project_id",
+          "type": "str"
+        }
+      ],
+      "returnType": "dict[str, int]",
+      "returns": [
+        {
+          "expr": "_convert_keys_to_legacy_name(usages)",
+          "line": 106
+        }
+      ],
+      "nloc": 14,
+      "ccn": 1,
+      "exported": true
+    },
+    {
+      "name": "always_zero_usage",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 109,
+        "end": 115
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "project_id",
+          "type": "str"
+        },
+        {
+          "name": "resource_names",
+          "type": "list[str]"
+        }
+      ],
+      "returnType": "dict[str, int]",
+      "returns": [
+        {
+          "expr": "{resource_name: 0 for resource_name in resource_names}",
+          "line": 115
+        }
+      ],
+      "nloc": 4,
+      "ccn": 2,
+      "exported": true
+    },
+    {
+      "name": "enforce_api_limit",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 118,
+        "end": 145
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "entity_type",
+          "type": "str"
+        },
+        {
+          "name": "count",
+          "type": "int"
+        }
+      ],
+      "returnType": "None",
+      "returns": [
+        {
+          "expr": "",
+          "line": 125
+        }
+      ],
+      "nloc": 18,
+      "ccn": 6,
+      "exported": true
+    },
+    {
+      "name": "enforce_db_limit",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 148,
+        "end": 195
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "context",
+          "type": "'nova.context.RequestContext'"
+        },
+        {
+          "name": "entity_type",
+          "type": "str"
+        },
+        {
+          "name": "entity_scope",
+          "type": "ty.Any"
+        },
+        {
+          "name": "delta",
+          "type": "int"
+        }
+      ],
+      "returnType": "None",
+      "returns": [
+        {
+          "expr": "",
+          "line": 170
+        }
+      ],
+      "nloc": 27,
+      "ccn": 7,
+      "exported": true
+    },
+    {
+      "name": "_convert_keys_to_legacy_name",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 198,
+        "end": 205
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "new_dict",
+          "type": "dict[str, int]"
+        }
+      ],
+      "returnType": "dict[str, int]",
+      "returns": [
+        {
+          "expr": "legacy",
+          "line": 205
+        }
+      ],
+      "nloc": 7,
+      "ccn": 3,
+      "exported": false
+    },
+    {
+      "name": "get_legacy_default_limits",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 208,
+        "end": 212
+      },
+      "source": "aee-inventory",
+      "parameters": [],
+      "returnType": "dict[str, int]",
+      "returns": [
+        {
+          "expr": "_convert_keys_to_legacy_name(dict(new_limits))",
+          "line": 212
+        }
+      ],
+      "nloc": 4,
+      "ccn": 1,
+      "exported": true
+    },
+    {
+      "name": "_keypair_count",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 215,
+        "end": 217
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "context"
+        },
+        {
+          "name": "user_id"
+        },
+        {
+          "name": "*args"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "{'server_key_pairs': count}",
+          "line": 217
+        }
+      ],
+      "nloc": 3,
+      "ccn": 1,
+      "exported": false
+    },
+    {
+      "name": "_server_group_count",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 220,
+        "end": 222
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "context"
+        },
+        {
+          "name": "project_id"
+        },
+        {
+          "name": "*args"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "{'server_groups': raw_counts['project']['server_groups']}",
+          "line": 222
+        }
+      ],
+      "nloc": 3,
+      "ccn": 1,
+      "exported": false
+    },
+    {
+      "name": "_server_group_members_count",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 225,
+        "end": 229
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "context"
+        },
+        {
+          "name": "server_group_uuid"
+        },
+        {
+          "name": "*args"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "{'server_group_members': len(server_group.members)}",
+          "line": 229
+        }
+      ],
+      "nloc": 4,
+      "ccn": 1,
+      "exported": false
+    },
+    {
+      "name": "DB_COUNT_FUNCTION",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 232,
+        "end": 236
+      },
+      "source": "aee-inventory",
+      "exported": true
+    }
+  ],
+  "referencedSymbols": [
+    {
+      "name": "logging.getLogger",
+      "usage": "call",
+      "via": "oslo_log",
+      "count": 1,
+      "lineRange": {
+        "start": 27,
+        "end": 27
+      }
+    },
+    {
+      "name": "set",
+      "usage": "call",
+      "via": null,
+      "count": 2,
+      "lineRange": {
+        "start": 36,
+        "end": 36
+      }
+    },
+    {
+      "name": "dict",
+      "usage": "type",
+      "via": null,
+      "count": 5,
+      "lineRange": {
+        "start": 84,
+        "end": 84
+      }
+    },
+    {
+      "name": "list",
+      "usage": "type",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 110,
+        "end": 110
+      }
+    },
+    {
+      "name": "nova_limit_utils.use_unified_limits",
+      "usage": "call",
+      "via": "nova.limit",
+      "count": 2,
+      "lineRange": {
+        "start": 124,
+        "end": 124
+      }
+    },
+    {
+      "name": "ValueError",
+      "usage": "call",
+      "via": null,
+      "count": 3,
+      "lineRange": {
+        "start": 129,
+        "end": 129
+      }
+    },
+    {
+      "name": "limit.Enforcer",
+      "usage": "call",
+      "via": "oslo_limit",
+      "count": 3,
+      "lineRange": {
+        "start": 132,
+        "end": 132
+      }
+    },
+    {
+      "name": "str",
+      "usage": "call",
+      "via": null,
+      "count": 4,
+      "lineRange": {
+        "start": 136,
+        "end": 136
+      }
+    },
+    {
+      "name": "exception.KeystoneConnectionFailed",
+      "usage": "call",
+      "via": "nova",
+      "count": 2,
+      "lineRange": {
+        "start": 137,
+        "end": 137
+      }
+    },
+    {
+      "name": "nova_limit_utils.should_enforce",
+      "usage": "call",
+      "via": "nova.limit",
+      "count": 2,
+      "lineRange": {
+        "start": 142,
+        "end": 142
+      }
+    },
+    {
+      "name": "functools.partial",
+      "usage": "call",
+      "via": "functools",
+      "count": 1,
+      "lineRange": {
+        "start": 182,
+        "end": 182
+      }
+    },
+    {
+      "name": "dict",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 212,
+        "end": 212
+      }
+    },
+    {
+      "name": "objects.KeyPairList.get_count_by_user",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 216,
+        "end": 216
+      }
+    },
+    {
+      "name": "objects.InstanceGroupList.get_counts",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 221,
+        "end": 221
+      }
+    },
+    {
+      "name": "objects.InstanceGroup.get_by_uuid",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 227,
+        "end": 227
+      }
+    },
+    {
+      "name": "len",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 229,
+        "end": 229
+      }
+    }
+  ],
+  "dependencies": [
+    {
+      "style": "import",
+      "module": "functools",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 15,
+        "end": 15
+      }
+    },
+    {
+      "style": "import",
+      "module": "typing",
+      "names": [],
+      "alias": "ty",
+      "relative": false,
+      "lineRange": {
+        "start": 16,
+        "end": 16
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_limit",
+      "names": [
+        {
+          "alias": "limit_exceptions",
+          "name": "exception"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 18,
+        "end": 18
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_limit",
+      "names": [
+        {
+          "alias": null,
+          "name": "limit"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 19,
+        "end": 19
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_log",
+      "names": [
+        {
+          "alias": "logging",
+          "name": "log"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 20,
+        "end": 20
+      }
+    },
+    {
+      "style": "import",
+      "module": "nova.conf",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 22,
+        "end": 22
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "exception"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 23,
+        "end": 23
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.limit",
+      "names": [
+        {
+          "alias": "nova_limit_utils",
+          "name": "utils"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 24,
+        "end": 24
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "objects"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 25,
+        "end": 25
+      }
+    }
+  ],
+  "sideEffects": [
+    {
+      "kind": "global-mutation",
+      "target": "LOG = logging.getLogger(__name__)",
+      "lineRange": {
+        "start": 27,
+        "end": 27
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "CONF = nova.conf.CONF",
+      "lineRange": {
+        "start": 28,
+        "end": 28
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "SERVER_METADATA_ITEMS = \"server_metadata_items\"",
+      "lineRange": {
+        "start": 32,
+        "end": 32
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "INJECTED_FILES = \"server_injected_files\"",
+      "lineRange": {
+        "start": 33,
+        "end": 33
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "INJECTED_FILES_CONTENT = \"server_injected_file_content_bytes\"",
+      "lineRange": {
+        "start": 34,
+        "end": 34
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "INJECTED_FILES_PATH = \"server_injected_file_path_bytes\"",
+      "lineRange": {
+        "start": 35,
+        "end": 35
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "API_LIMITS = set([",
+      "lineRange": {
+        "start": 36,
+        "end": 36
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "KEY_PAIRS = \"server_key_pairs\"",
+      "lineRange": {
+        "start": 45,
+        "end": 45
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "SERVER_GROUPS = \"server_groups\"",
+      "lineRange": {
+        "start": 46,
+        "end": 46
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "SERVER_GROUP_MEMBERS = \"server_group_members\"",
+      "lineRange": {
+        "start": 47,
+        "end": 47
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "DB_LIMITS = set([",
+      "lineRange": {
+        "start": 48,
+        "end": 48
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "UNIFIED_LIMITS_DRIVER = \"nova.quota.UnifiedLimitsDriver\"",
+      "lineRange": {
+        "start": 55,
+        "end": 55
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "EXCEPTIONS = {",
+      "lineRange": {
+        "start": 60,
+        "end": 60
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "LEGACY_LIMITS = {",
+      "lineRange": {
+        "start": 71,
+        "end": 71
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "DB_COUNT_FUNCTION = {",
+      "lineRange": {
+        "start": 232,
+        "end": 232
+      }
+    }
+  ],
+  "securitySurface": [],
+  "injection_flags": [],
+  "warnings": []
+}

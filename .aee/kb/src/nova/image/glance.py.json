@@ -1,0 +1,3504 @@
+{
+  "file": "src/nova/image/glance.py",
+  "hash": "fb055b40405451e62b5ac06b88c5d0a6092ff42e078faccdc60a14798c80d96f",
+  "language": "Python",
+  "component": "nova",
+  "package": null,
+  "lines": {
+    "blank": 197,
+    "code": 919,
+    "comment": 132,
+    "total": 1248
+  },
+  "symbols": [
+    {
+      "name": "LOG",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 51,
+        "end": 51
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "CONF",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 52,
+        "end": 52
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "_session_and_auth",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 55,
+        "end": 61
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "context"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "session, auth",
+          "line": 61
+        }
+      ],
+      "nloc": 5,
+      "ccn": 1,
+      "exported": false
+    },
+    {
+      "name": "_glanceclient_from_endpoint",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 64,
+        "end": 69
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "context"
+        },
+        {
+          "name": "endpoint"
+        },
+        {
+          "name": "version"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "glanceclient.Client(version, session=sess, auth=auth, endpoint_override=endpoint, global_request_id=context.global_id)",
+          "line": 67
+        }
+      ],
+      "nloc": 5,
+      "ccn": 1,
+      "exported": false
+    },
+    {
+      "name": "generate_glance_url",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 72,
+        "end": 74
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "context"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "next(get_api_servers(context))",
+          "line": 74
+        }
+      ],
+      "nloc": 2,
+      "ccn": 1,
+      "exported": true
+    },
+    {
+      "name": "_endpoint_from_image_ref",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 77,
+        "end": 88
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "image_href"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "(image_id, endpoint)",
+          "line": 88
+        }
+      ],
+      "nloc": 5,
+      "ccn": 1,
+      "exported": false
+    },
+    {
+      "name": "get_api_servers",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 91,
+        "end": 116
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "context"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "itertools.cycle(api_servers)",
+          "line": 116
+        }
+      ],
+      "nloc": 15,
+      "ccn": 3,
+      "exported": true
+    },
+    {
+      "name": "GlanceClientWrapper",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 119,
+        "end": 195
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "__init__",
+      "kind": "method",
+      "scope": "GlanceClientWrapper",
+      "lineRange": {
+        "start": 122,
+        "end": 130
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "default": "None",
+          "name": "context"
+        },
+        {
+          "default": "None",
+          "name": "endpoint"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 9,
+      "ccn": 2,
+      "visibility": "public"
+    },
+    {
+      "name": "_create_static_client",
+      "kind": "method",
+      "scope": "GlanceClientWrapper",
+      "lineRange": {
+        "start": 132,
+        "end": 135
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "context"
+        },
+        {
+          "name": "endpoint"
+        },
+        {
+          "name": "version"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "_glanceclient_from_endpoint(context, endpoint, version)",
+          "line": 135
+        }
+      ],
+      "nloc": 3,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "_create_onetime_client",
+      "kind": "method",
+      "scope": "GlanceClientWrapper",
+      "lineRange": {
+        "start": 137,
+        "end": 142
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "context"
+        },
+        {
+          "name": "version"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "_glanceclient_from_endpoint(context, self.api_server, version)",
+          "line": 142
+        }
+      ],
+      "nloc": 5,
+      "ccn": 2,
+      "visibility": "private"
+    },
+    {
+      "name": "call",
+      "kind": "method",
+      "scope": "GlanceClientWrapper",
+      "lineRange": {
+        "start": 144,
+        "end": 195
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "context"
+        },
+        {
+          "name": "version"
+        },
+        {
+          "name": "method"
+        },
+        {
+          "default": "None",
+          "name": "controller"
+        },
+        {
+          "default": "None",
+          "name": "args"
+        },
+        {
+          "default": "None",
+          "name": "kwargs"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "list(result)",
+          "line": 179
+        },
+        {
+          "expr": "result",
+          "line": 180
+        }
+      ],
+      "nloc": 34,
+      "ccn": 10,
+      "visibility": "public"
+    },
+    {
+      "name": "GlanceImageServiceV2",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 198,
+        "end": 770
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "__init__",
+      "kind": "method",
+      "scope": "GlanceImageServiceV2",
+      "lineRange": {
+        "start": 201,
+        "end": 209
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "default": "None",
+          "name": "client"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 5,
+      "ccn": 3,
+      "visibility": "public"
+    },
+    {
+      "name": "rbd_download",
+      "kind": "method",
+      "scope": "GlanceImageServiceV2",
+      "lineRange": {
+        "start": 211,
+        "end": 251
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "context"
+        },
+        {
+          "name": "url_parts"
+        },
+        {
+          "name": "dst_path"
+        },
+        {
+          "default": "None",
+          "name": "metadata"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 25,
+      "ccn": 3,
+      "visibility": "public"
+    },
+    {
+      "name": "show",
+      "kind": "method",
+      "scope": "GlanceImageServiceV2",
+      "lineRange": {
+        "start": 253,
+        "end": 288
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "context"
+        },
+        {
+          "name": "image_id"
+        },
+        {
+          "default": "False",
+          "name": "include_locations"
+        },
+        {
+          "default": "True",
+          "name": "show_deleted"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "image",
+          "line": 288
+        }
+      ],
+      "nloc": 19,
+      "ccn": 8,
+      "visibility": "public"
+    },
+    {
+      "name": "_get_transfer_method",
+      "kind": "method",
+      "scope": "GlanceImageServiceV2",
+      "lineRange": {
+        "start": 290,
+        "end": 295
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "scheme"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "self._download_handlers[scheme]",
+          "line": 293
+        },
+        {
+          "expr": "None",
+          "line": 295
+        }
+      ],
+      "nloc": 5,
+      "ccn": 2,
+      "visibility": "private"
+    },
+    {
+      "name": "detail",
+      "kind": "method",
+      "scope": "GlanceImageServiceV2",
+      "lineRange": {
+        "start": 297,
+        "end": 310
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "context"
+        },
+        {
+          "name": "**kwargs"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "_images",
+          "line": 310
+        }
+      ],
+      "nloc": 11,
+      "ccn": 4,
+      "visibility": "public"
+    },
+    {
+      "name": "_safe_fsync",
+      "kind": "method",
+      "scope": "GlanceImageServiceV2",
+      "lineRange": {
+        "start": 313,
+        "end": 326
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "fh"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 5,
+      "ccn": 3,
+      "visibility": "private"
+    },
+    {
+      "name": "_try_special_handlers",
+      "kind": "method",
+      "scope": "GlanceImageServiceV2",
+      "lineRange": {
+        "start": 328,
+        "end": 357
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "context"
+        },
+        {
+          "name": "image_id"
+        },
+        {
+          "name": "dst_path"
+        },
+        {
+          "name": "verifier"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "True",
+          "line": 343
+        },
+        {
+          "expr": "True",
+          "line": 353
+        },
+        {
+          "expr": "False",
+          "line": 357
+        }
+      ],
+      "nloc": 24,
+      "ccn": 5,
+      "visibility": "private"
+    },
+    {
+      "name": "download",
+      "kind": "method",
+      "scope": "GlanceImageServiceV2",
+      "lineRange": {
+        "start": 359,
+        "end": 387
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "context"
+        },
+        {
+          "name": "image_id"
+        },
+        {
+          "default": "None",
+          "name": "data"
+        },
+        {
+          "default": "None",
+          "name": "dst_path"
+        },
+        {
+          "default": "None",
+          "name": "trusted_certs"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "",
+          "line": 370
+        },
+        {
+          "expr": "self._verify_and_write(context, image_id, verifier, image_chunks, data, dst_path)",
+          "line": 386
+        }
+      ],
+      "nloc": 17,
+      "ccn": 6,
+      "visibility": "public"
+    },
+    {
+      "name": "_verify_and_write",
+      "kind": "method",
+      "scope": "GlanceImageServiceV2",
+      "lineRange": {
+        "start": 389,
+        "end": 460
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "context"
+        },
+        {
+          "name": "image_id"
+        },
+        {
+          "name": "verifier"
+        },
+        {
+          "name": "image_chunks"
+        },
+        {
+          "name": "data"
+        },
+        {
+          "name": "dst_path"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "image_chunks",
+          "line": 423
+        },
+        {
+          "expr": "image_chunks",
+          "line": 460
+        }
+      ],
+      "nloc": 42,
+      "ccn": 17,
+      "visibility": "private"
+    },
+    {
+      "name": "_get_verifier",
+      "kind": "method",
+      "scope": "GlanceImageServiceV2",
+      "lineRange": {
+        "start": 462,
+        "end": 520
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "context"
+        },
+        {
+          "name": "image_id"
+        },
+        {
+          "name": "trusted_certs"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "verifier",
+          "line": 520
+        }
+      ],
+      "nloc": 46,
+      "ccn": 9,
+      "visibility": "private"
+    },
+    {
+      "name": "create",
+      "kind": "method",
+      "scope": "GlanceImageServiceV2",
+      "lineRange": {
+        "start": 522,
+        "end": 546
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "context"
+        },
+        {
+          "name": "image_meta"
+        },
+        {
+          "default": "None",
+          "name": "data"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "_translate_from_glance(image)",
+          "line": 546
+        }
+      ],
+      "nloc": 12,
+      "ccn": 3,
+      "visibility": "public"
+    },
+    {
+      "name": "_add_location",
+      "kind": "method",
+      "scope": "GlanceImageServiceV2",
+      "lineRange": {
+        "start": 548,
+        "end": 562
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "context"
+        },
+        {
+          "name": "image_id"
+        },
+        {
+          "name": "location"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "self._client.call( context, 2, method, args=(image_id, location, {}))",
+          "line": 554
+        }
+      ],
+      "nloc": 14,
+      "ccn": 4,
+      "visibility": "private"
+    },
+    {
+      "name": "_add_image_member",
+      "kind": "method",
+      "scope": "GlanceImageServiceV2",
+      "lineRange": {
+        "start": 564,
+        "end": 579
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "context"
+        },
+        {
+          "name": "image_id"
+        },
+        {
+          "name": "member_id"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "self._client.call( context, 2, 'create', controller='image_members', args=(image_id, member_id))",
+          "line": 575
+        }
+      ],
+      "nloc": 7,
+      "ccn": 2,
+      "visibility": "private"
+    },
+    {
+      "name": "_upload_data",
+      "kind": "method",
+      "scope": "GlanceImageServiceV2",
+      "lineRange": {
+        "start": 581,
+        "end": 587
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "context"
+        },
+        {
+          "name": "image_id"
+        },
+        {
+          "name": "data"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "self._client.call(context, 2, 'get', args=(image_id,))",
+          "line": 587
+        }
+      ],
+      "nloc": 4,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "_get_image_create_disk_format_default",
+      "kind": "method",
+      "scope": "GlanceImageServiceV2",
+      "lineRange": {
+        "start": 589,
+        "end": 630
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "context"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "preferred_format",
+          "line": 619
+        },
+        {
+          "expr": "supported_disk_formats[0]",
+          "line": 624
+        },
+        {
+          "expr": "preferred_disk_formats[0]",
+          "line": 630
+        }
+      ],
+      "nloc": 27,
+      "ccn": 6,
+      "visibility": "private"
+    },
+    {
+      "name": "_create_v2",
+      "kind": "method",
+      "scope": "GlanceImageServiceV2",
+      "lineRange": {
+        "start": 632,
+        "end": 673
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "context"
+        },
+        {
+          "name": "sent_service_image_meta"
+        },
+        {
+          "default": "None",
+          "name": "data"
+        },
+        {
+          "default": "False",
+          "name": "force_activate"
+        },
+        {
+          "default": "None",
+          "name": "sharing_member_id"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "image",
+          "line": 673
+        }
+      ],
+      "nloc": 25,
+      "ccn": 8,
+      "visibility": "private"
+    },
+    {
+      "name": "update",
+      "kind": "method",
+      "scope": "GlanceImageServiceV2",
+      "lineRange": {
+        "start": 675,
+        "end": 699
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "context"
+        },
+        {
+          "name": "image_id"
+        },
+        {
+          "name": "image_meta"
+        },
+        {
+          "default": "None",
+          "name": "data"
+        },
+        {
+          "default": "True",
+          "name": "purge_props"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "_translate_from_glance(image)",
+          "line": 699
+        }
+      ],
+      "nloc": 17,
+      "ccn": 3,
+      "visibility": "public"
+    },
+    {
+      "name": "_update_v2",
+      "kind": "method",
+      "scope": "GlanceImageServiceV2",
+      "lineRange": {
+        "start": 701,
+        "end": 716
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "context"
+        },
+        {
+          "name": "sent_service_image_meta"
+        },
+        {
+          "default": "None",
+          "name": "data"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "image",
+          "line": 716
+        }
+      ],
+      "nloc": 10,
+      "ccn": 3,
+      "visibility": "private"
+    },
+    {
+      "name": "delete",
+      "kind": "method",
+      "scope": "GlanceImageServiceV2",
+      "lineRange": {
+        "start": 718,
+        "end": 735
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "context"
+        },
+        {
+          "name": "image_id"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "True",
+          "line": 735
+        }
+      ],
+      "nloc": 10,
+      "ccn": 4,
+      "visibility": "public"
+    },
+    {
+      "name": "image_import_copy",
+      "kind": "method",
+      "scope": "GlanceImageServiceV2",
+      "lineRange": {
+        "start": 737,
+        "end": 770
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "context"
+        },
+        {
+          "name": "image_id"
+        },
+        {
+          "name": "stores"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 15,
+      "ccn": 5,
+      "visibility": "public"
+    },
+    {
+      "name": "_extract_query_params_v2",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 773,
+        "end": 811
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "params"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "_params",
+          "line": 811
+        }
+      ],
+      "nloc": 27,
+      "ccn": 9,
+      "exported": false
+    },
+    {
+      "name": "_is_image_available",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 814,
+        "end": 852
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "context"
+        },
+        {
+          "name": "image"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "True",
+          "line": 823
+        },
+        {
+          "expr": "True",
+          "line": 837
+        },
+        {
+          "expr": "str(properties['owner_id']) == str(context.project_id)",
+          "line": 842
+        },
+        {
+          "expr": "str(properties['project_id']) == str(context.project_id)",
+          "line": 845
+        },
+        {
+          "expr": "False",
+          "line": 850
+        },
+        {
+          "expr": "str(user_id) == str(context.user_id)",
+          "line": 852
+        }
+      ],
+      "nloc": 16,
+      "ccn": 10,
+      "exported": false
+    },
+    {
+      "name": "_is_image_public",
+      "kind": "function",
+      "scope": "_is_image_available",
+      "lineRange": {
+        "start": 825,
+        "end": 834
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "image"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "str(image.visibility).lower() == 'public'",
+          "line": 832
+        },
+        {
+          "expr": "image.is_public",
+          "line": 834
+        }
+      ],
+      "visibility": "private"
+    },
+    {
+      "name": "_translate_to_glance",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 855,
+        "end": 859
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "image_meta"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "image_meta",
+          "line": 859
+        }
+      ],
+      "nloc": 5,
+      "ccn": 1,
+      "exported": false
+    },
+    {
+      "name": "_convert_to_v2",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 862,
+        "end": 890
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "image_meta"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "output",
+          "line": 890
+        }
+      ],
+      "nloc": 22,
+      "ccn": 13,
+      "exported": false
+    },
+    {
+      "name": "_translate_from_glance",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 893,
+        "end": 899
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "image"
+        },
+        {
+          "default": "False",
+          "name": "include_locations"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "image_meta",
+          "line": 899
+        }
+      ],
+      "nloc": 6,
+      "ccn": 1,
+      "exported": false
+    },
+    {
+      "name": "_convert_timestamps_to_datetimes",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 902,
+        "end": 907
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "image_meta"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "image_meta",
+          "line": 907
+        }
+      ],
+      "nloc": 5,
+      "ccn": 3,
+      "exported": false
+    },
+    {
+      "name": "_json_loads",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 911,
+        "end": 914
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "properties"
+        },
+        {
+          "name": "attr"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 4,
+      "ccn": 2,
+      "exported": false
+    },
+    {
+      "name": "_json_dumps",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 917,
+        "end": 920
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "properties"
+        },
+        {
+          "name": "attr"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 4,
+      "ccn": 2,
+      "exported": false
+    },
+    {
+      "name": "_CONVERT_PROPS",
+      "kind": "variable",
+      "scope": "",
+      "lineRange": {
+        "start": 923,
+        "end": 923
+      },
+      "source": "aee-inventory",
+      "exported": false
+    },
+    {
+      "name": "_convert",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 926,
+        "end": 934
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "method"
+        },
+        {
+          "name": "metadata"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "metadata",
+          "line": 934
+        }
+      ],
+      "nloc": 8,
+      "ccn": 4,
+      "exported": false
+    },
+    {
+      "name": "_convert_from_string",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 937,
+        "end": 938
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "metadata"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "_convert(_json_loads, metadata)",
+          "line": 938
+        }
+      ],
+      "nloc": 2,
+      "ccn": 1,
+      "exported": false
+    },
+    {
+      "name": "_convert_to_string",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 941,
+        "end": 942
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "metadata"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "_convert(_json_dumps, metadata)",
+          "line": 942
+        }
+      ],
+      "nloc": 2,
+      "ccn": 1,
+      "exported": false
+    },
+    {
+      "name": "_extract_attributes_v2",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 945,
+        "end": 967
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "image"
+        },
+        {
+          "default": "False",
+          "name": "include_locations"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "output",
+          "line": 967
+        }
+      ],
+      "nloc": 22,
+      "ccn": 9,
+      "exported": false
+    },
+    {
+      "name": "_remove_read_only",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 970,
+        "end": 976
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "image_meta"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "output",
+          "line": 976
+        }
+      ],
+      "nloc": 7,
+      "ccn": 3,
+      "exported": false
+    },
+    {
+      "name": "_reraise_translated_image_exception",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 979,
+        "end": 983
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "image_id"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 4,
+      "ccn": 1,
+      "exported": false
+    },
+    {
+      "name": "_reraise_translated_exception",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 986,
+        "end": 990
+      },
+      "source": "aee-inventory",
+      "parameters": [],
+      "returnType": null,
+      "returns": [],
+      "nloc": 4,
+      "ccn": 1,
+      "exported": false
+    },
+    {
+      "name": "_translate_image_exception",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 993,
+        "end": 1004
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "image_id"
+        },
+        {
+          "name": "exc_value"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "exception.ImageNotAuthorized(image_id=image_id)",
+          "line": 996
+        },
+        {
+          "expr": "exception.ImageNotFound(image_id=image_id)",
+          "line": 998
+        },
+        {
+          "expr": "exception.ImageBadRequest(image_id=image_id, response=str(exc_value))",
+          "line": 1000
+        },
+        {
+          "expr": "exception.ImageQuotaExceeded(image_id=image_id)",
+          "line": 1003
+        },
+        {
+          "expr": "exc_value",
+          "line": 1004
+        }
+      ],
+      "nloc": 12,
+      "ccn": 5,
+      "exported": false
+    },
+    {
+      "name": "_translate_plain_exception",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 1007,
+        "end": 1015
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "exc_value"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "exception.Forbidden(str(exc_value))",
+          "line": 1010
+        },
+        {
+          "expr": "exception.NotFound(str(exc_value))",
+          "line": 1012
+        },
+        {
+          "expr": "exception.Invalid(str(exc_value))",
+          "line": 1014
+        },
+        {
+          "expr": "exc_value",
+          "line": 1015
+        }
+      ],
+      "nloc": 9,
+      "ccn": 4,
+      "exported": false
+    },
+    {
+      "name": "_verify_certs",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 1018,
+        "end": 1032
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "context"
+        },
+        {
+          "name": "img_sig_cert_uuid"
+        },
+        {
+          "name": "trusted_certs"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 15,
+      "ccn": 2,
+      "exported": false
+    },
+    {
+      "name": "get_remote_image_service",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 1035,
+        "end": 1061
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "context"
+        },
+        {
+          "name": "image_href"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "image_service, image_href",
+          "line": 1051
+        },
+        {
+          "expr": "image_service, image_id",
+          "line": 1061
+        }
+      ],
+      "nloc": 12,
+      "ccn": 3,
+      "exported": true
+    },
+    {
+      "name": "get_default_image_service",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 1064,
+        "end": 1065
+      },
+      "source": "aee-inventory",
+      "parameters": [],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "GlanceImageServiceV2()",
+          "line": 1065
+        }
+      ],
+      "nloc": 2,
+      "ccn": 1,
+      "exported": true
+    },
+    {
+      "name": "API",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 1069,
+        "end": 1248
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "_get_session_and_image_id",
+      "kind": "method",
+      "scope": "API",
+      "lineRange": {
+        "start": 1072,
+        "end": 1084
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "context"
+        },
+        {
+          "name": "id_or_uri"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "get_remote_image_service(context, id_or_uri)",
+          "line": 1084
+        }
+      ],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "_get_session",
+      "kind": "method",
+      "scope": "API",
+      "lineRange": {
+        "start": 1086,
+        "end": 1097
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "_context"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "get_default_image_service()",
+          "line": 1097
+        }
+      ],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "generate_image_url",
+      "kind": "method",
+      "scope": "API",
+      "lineRange": {
+        "start": 1100,
+        "end": 1106
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "image_ref"
+        },
+        {
+          "name": "context"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "\"%s/images/%s\" % (next(get_api_servers(context)), image_ref)",
+          "line": 1106
+        }
+      ],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "get_all",
+      "kind": "method",
+      "scope": "API",
+      "lineRange": {
+        "start": 1108,
+        "end": 1120
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "context"
+        },
+        {
+          "name": "**kwargs"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "session.detail(context, **kwargs)",
+          "line": 1120
+        }
+      ],
+      "nloc": 3,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "get",
+      "kind": "method",
+      "scope": "API",
+      "lineRange": {
+        "start": 1122,
+        "end": 1145
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "context"
+        },
+        {
+          "name": "id_or_uri"
+        },
+        {
+          "default": "False",
+          "name": "include_locations"
+        },
+        {
+          "default": "True",
+          "name": "show_deleted"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "session.show(context, image_id, include_locations=include_locations, show_deleted=show_deleted)",
+          "line": 1143
+        }
+      ],
+      "nloc": 6,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "create",
+      "kind": "method",
+      "scope": "API",
+      "lineRange": {
+        "start": 1147,
+        "end": 1158
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "context"
+        },
+        {
+          "name": "image_info"
+        },
+        {
+          "default": "None",
+          "name": "data"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "session.create(context, image_info, data=data)",
+          "line": 1158
+        }
+      ],
+      "nloc": 3,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "update",
+      "kind": "method",
+      "scope": "API",
+      "lineRange": {
+        "start": 1160,
+        "end": 1182
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "context"
+        },
+        {
+          "name": "id_or_uri"
+        },
+        {
+          "name": "image_info"
+        },
+        {
+          "default": "None",
+          "name": "data"
+        },
+        {
+          "default": "False",
+          "name": "purge_props"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "session.update(context, image_id, image_info, data=data, purge_props=purge_props)",
+          "line": 1181
+        }
+      ],
+      "nloc": 5,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "delete",
+      "kind": "method",
+      "scope": "API",
+      "lineRange": {
+        "start": 1184,
+        "end": 1193
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "context"
+        },
+        {
+          "name": "id_or_uri"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "session.delete(context, image_id)",
+          "line": 1193
+        }
+      ],
+      "nloc": 3,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "download",
+      "kind": "method",
+      "scope": "API",
+      "lineRange": {
+        "start": 1195,
+        "end": 1238
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "context"
+        },
+        {
+          "name": "id_or_uri"
+        },
+        {
+          "default": "None",
+          "name": "data"
+        },
+        {
+          "default": "None",
+          "name": "dest_path"
+        },
+        {
+          "default": "None",
+          "name": "trusted_certs"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "session.download(context, image_id, data=data, dst_path=dest_path, trusted_certs=trusted_certs)",
+          "line": 1236
+        }
+      ],
+      "nloc": 6,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "copy_image_to_store",
+      "kind": "method",
+      "scope": "API",
+      "lineRange": {
+        "start": 1240,
+        "end": 1248
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "context"
+        },
+        {
+          "name": "image_id"
+        },
+        {
+          "name": "store"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "session.image_import_copy(context, image_id, [store])",
+          "line": 1248
+        }
+      ],
+      "nloc": 3,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "_safe_fsync",
+      "kind": "staticmethod",
+      "scope": "GlanceImageServiceV2",
+      "lineRange": {
+        "start": 312,
+        "end": 326
+      },
+      "visibility": "private",
+      "source": "manual"
+    },
+    {
+      "name": "generate_image_url",
+      "kind": "staticmethod",
+      "scope": "API",
+      "lineRange": {
+        "start": 1099,
+        "end": 1106
+      },
+      "visibility": "public",
+      "source": "manual"
+    }
+  ],
+  "referencedSymbols": [
+    {
+      "name": "logging.getLogger",
+      "usage": "call",
+      "via": "oslo_log",
+      "count": 1,
+      "lineRange": {
+        "start": 51,
+        "end": 51
+      }
+    },
+    {
+      "name": "service_auth.get_service_auth_session",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 57,
+        "end": 57
+      }
+    },
+    {
+      "name": "service_auth.get_service_user_token_auth_plugin",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 59,
+        "end": 59
+      }
+    },
+    {
+      "name": "glanceclient.Client",
+      "usage": "call",
+      "via": "glanceclient",
+      "count": 1,
+      "lineRange": {
+        "start": 67,
+        "end": 67
+      }
+    },
+    {
+      "name": "next",
+      "usage": "call",
+      "via": null,
+      "count": 3,
+      "lineRange": {
+        "start": 74,
+        "end": 74
+      }
+    },
+    {
+      "name": "random.shuffle",
+      "usage": "call",
+      "via": "random",
+      "count": 1,
+      "lineRange": {
+        "start": 100,
+        "end": 100
+      }
+    },
+    {
+      "name": "utils.get_ksa_adapter",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 103,
+        "end": 103
+      }
+    },
+    {
+      "name": "re.sub",
+      "usage": "call",
+      "via": "re",
+      "count": 1,
+      "lineRange": {
+        "start": 113,
+        "end": 113
+      }
+    },
+    {
+      "name": "itertools.cycle",
+      "usage": "call",
+      "via": "itertools",
+      "count": 1,
+      "lineRange": {
+        "start": 116,
+        "end": 116
+      }
+    },
+    {
+      "name": "object",
+      "usage": "inherit",
+      "via": null,
+      "count": 3,
+      "lineRange": {
+        "start": 119,
+        "end": 119
+      }
+    },
+    {
+      "name": "str",
+      "usage": "call",
+      "via": null,
+      "count": 21,
+      "lineRange": {
+        "start": 134,
+        "end": 134
+      }
+    },
+    {
+      "name": "range",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 170,
+        "end": 170
+      }
+    },
+    {
+      "name": "getattr",
+      "usage": "call",
+      "via": null,
+      "count": 3,
+      "lineRange": {
+        "start": 174,
+        "end": 174
+      }
+    },
+    {
+      "name": "inspect.isgenerator",
+      "usage": "call",
+      "via": "inspect",
+      "count": 1,
+      "lineRange": {
+        "start": 176,
+        "end": 176
+      }
+    },
+    {
+      "name": "list",
+      "usage": "call",
+      "via": null,
+      "count": 2,
+      "lineRange": {
+        "start": 179,
+        "end": 179
+      }
+    },
+    {
+      "name": "exception.GlanceConnectionFailed",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 193,
+        "end": 193
+      }
+    },
+    {
+      "name": "time.sleep",
+      "usage": "call",
+      "via": "time",
+      "count": 1,
+      "lineRange": {
+        "start": 195,
+        "end": 195
+      }
+    },
+    {
+      "name": "urlparse.unquote",
+      "usage": "call",
+      "via": "urllib.parse",
+      "count": 1,
+      "lineRange": {
+        "start": 227,
+        "end": 227
+      }
+    },
+    {
+      "name": "nova.exception.InvalidParameterValue",
+      "usage": "call",
+      "via": "nova.conf",
+      "count": 1,
+      "lineRange": {
+        "start": 233,
+        "end": 233
+      }
+    },
+    {
+      "name": "rbd_utils.RBDDriver",
+      "usage": "call",
+      "via": "nova.storage",
+      "count": 1,
+      "lineRange": {
+        "start": 235,
+        "end": 235
+      }
+    },
+    {
+      "name": "nova.exception.CouldNotFetchImage",
+      "usage": "call",
+      "via": "nova.conf",
+      "count": 1,
+      "lineRange": {
+        "start": 251,
+        "end": 251
+      }
+    },
+    {
+      "name": "exception.ImageNotFound",
+      "usage": "call",
+      "via": "nova",
+      "count": 5,
+      "lineRange": {
+        "start": 274,
+        "end": 274
+      }
+    },
+    {
+      "name": "os.fstat",
+      "usage": "call",
+      "via": "os",
+      "count": 1,
+      "lineRange": {
+        "start": 323,
+        "end": 323
+      }
+    },
+    {
+      "name": "any",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 325,
+        "end": 325
+      }
+    },
+    {
+      "name": "check",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 325,
+        "end": 325
+      }
+    },
+    {
+      "name": "os.fsync",
+      "usage": "call",
+      "via": "os",
+      "count": 1,
+      "lineRange": {
+        "start": 326,
+        "end": 326
+      }
+    },
+    {
+      "name": "urlparse.urlparse",
+      "usage": "call",
+      "via": "urllib.parse",
+      "count": 1,
+      "lineRange": {
+        "start": 333,
+        "end": 333
+      }
+    },
+    {
+      "name": "xfer_method",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 339,
+        "end": 339
+      }
+    },
+    {
+      "name": "open",
+      "usage": "call",
+      "via": null,
+      "count": 2,
+      "lineRange": {
+        "start": 347,
+        "end": 347
+      }
+    },
+    {
+      "name": "os.path.getsize",
+      "usage": "call",
+      "via": "os",
+      "count": 1,
+      "lineRange": {
+        "start": 348,
+        "end": 348
+      }
+    },
+    {
+      "name": "glance_utils.IterableWithLength",
+      "usage": "call",
+      "via": "glanceclient.common",
+      "count": 1,
+      "lineRange": {
+        "start": 349,
+        "end": 349
+      }
+    },
+    {
+      "name": "exception.ImageUnacceptable",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 383,
+        "end": 383
+      }
+    },
+    {
+      "name": "excutils.save_and_reraise_exception",
+      "usage": "call",
+      "via": "oslo_utils",
+      "count": 4,
+      "lineRange": {
+        "start": 437,
+        "end": 437
+      }
+    },
+    {
+      "name": "objects.TrustedCerts",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 469,
+        "end": 469
+      }
+    },
+    {
+      "name": "objects.ImageMeta.from_dict",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 477,
+        "end": 477
+      }
+    },
+    {
+      "name": "signature_utils.get_verifier",
+      "usage": "call",
+      "via": "cursive",
+      "count": 1,
+      "lineRange": {
+        "start": 489,
+        "end": 489
+      }
+    },
+    {
+      "name": "exception.CertificateValidationFailed",
+      "usage": "call",
+      "via": "nova",
+      "count": 2,
+      "lineRange": {
+        "start": 514,
+        "end": 514
+      }
+    },
+    {
+      "name": "utils.tpool_wrap",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 584,
+        "end": 584
+      }
+    },
+    {
+      "name": "exception.ImageBadRequest",
+      "usage": "call",
+      "via": "nova",
+      "count": 3,
+      "lineRange": {
+        "start": 647,
+        "end": 647
+      }
+    },
+    {
+      "name": "set",
+      "usage": "call",
+      "via": null,
+      "count": 2,
+      "lineRange": {
+        "start": 688,
+        "end": 688
+      }
+    },
+    {
+      "name": "exception.ImageNotAuthorized",
+      "usage": "call",
+      "via": "nova",
+      "count": 3,
+      "lineRange": {
+        "start": 732,
+        "end": 732
+      }
+    },
+    {
+      "name": "exception.ImageDeleteConflict",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 734,
+        "end": 734
+      }
+    },
+    {
+      "name": "exception.ImageImportImpossible",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 766,
+        "end": 766
+      }
+    },
+    {
+      "name": "hasattr",
+      "usage": "call",
+      "via": null,
+      "count": 2,
+      "lineRange": {
+        "start": 822,
+        "end": 822
+      }
+    },
+    {
+      "name": "isinstance",
+      "usage": "call",
+      "via": null,
+      "count": 10,
+      "lineRange": {
+        "start": 877,
+        "end": 877
+      }
+    },
+    {
+      "name": "int",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 883,
+        "end": 883
+      }
+    },
+    {
+      "name": "timeutils.parse_isotime",
+      "usage": "call",
+      "via": "oslo_utils",
+      "count": 1,
+      "lineRange": {
+        "start": 906,
+        "end": 906
+      }
+    },
+    {
+      "name": "jsonutils.loads",
+      "usage": "call",
+      "via": "oslo_serialization",
+      "count": 1,
+      "lineRange": {
+        "start": 914,
+        "end": 914
+      }
+    },
+    {
+      "name": "jsonutils.dumps",
+      "usage": "call",
+      "via": "oslo_serialization",
+      "count": 1,
+      "lineRange": {
+        "start": 920,
+        "end": 920
+      }
+    },
+    {
+      "name": "copy.deepcopy",
+      "usage": "call",
+      "via": "copy",
+      "count": 2,
+      "lineRange": {
+        "start": 927,
+        "end": 927
+      }
+    },
+    {
+      "name": "method",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 932,
+        "end": 932
+      }
+    },
+    {
+      "name": "schemas.Schema",
+      "usage": "call",
+      "via": "glanceclient.v2",
+      "count": 1,
+      "lineRange": {
+        "start": 950,
+        "end": 950
+      }
+    },
+    {
+      "name": "sys.exc_info",
+      "usage": "call",
+      "via": "sys",
+      "count": 2,
+      "lineRange": {
+        "start": 981,
+        "end": 981
+      }
+    },
+    {
+      "name": "exception.ImageQuotaExceeded",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 1003,
+        "end": 1003
+      }
+    },
+    {
+      "name": "exception.Forbidden",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 1010,
+        "end": 1010
+      }
+    },
+    {
+      "name": "exception.NotFound",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 1012,
+        "end": 1012
+      }
+    },
+    {
+      "name": "exception.Invalid",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 1014,
+        "end": 1014
+      }
+    },
+    {
+      "name": "certificate_utils.verify_certificate",
+      "usage": "call",
+      "via": "cursive",
+      "count": 1,
+      "lineRange": {
+        "start": 1020,
+        "end": 1020
+      }
+    },
+    {
+      "name": "exception.InvalidImageRef",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 1058,
+        "end": 1058
+      }
+    },
+    {
+      "name": "profiler.trace_cls",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 1068,
+        "end": 1068
+      }
+    }
+  ],
+  "dependencies": [
+    {
+      "style": "import",
+      "module": "copy",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 18,
+        "end": 18
+      }
+    },
+    {
+      "style": "import",
+      "module": "inspect",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 19,
+        "end": 19
+      }
+    },
+    {
+      "style": "import",
+      "module": "itertools",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 20,
+        "end": 20
+      }
+    },
+    {
+      "style": "import",
+      "module": "os",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 21,
+        "end": 21
+      }
+    },
+    {
+      "style": "import",
+      "module": "random",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 22,
+        "end": 22
+      }
+    },
+    {
+      "style": "import",
+      "module": "re",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 23,
+        "end": 23
+      }
+    },
+    {
+      "style": "import",
+      "module": "stat",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 24,
+        "end": 24
+      }
+    },
+    {
+      "style": "import",
+      "module": "sys",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 25,
+        "end": 25
+      }
+    },
+    {
+      "style": "import",
+      "module": "time",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 26,
+        "end": 26
+      }
+    },
+    {
+      "style": "import",
+      "module": "urllib.parse",
+      "names": [],
+      "alias": "urlparse",
+      "relative": false,
+      "lineRange": {
+        "start": 27,
+        "end": 27
+      }
+    },
+    {
+      "style": "import",
+      "module": "cryptography",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 29,
+        "end": 29
+      }
+    },
+    {
+      "style": "from",
+      "module": "cursive",
+      "names": [
+        {
+          "alias": null,
+          "name": "certificate_utils"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 30,
+        "end": 30
+      }
+    },
+    {
+      "style": "from",
+      "module": "cursive",
+      "names": [
+        {
+          "alias": "cursive_exception",
+          "name": "exception"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 31,
+        "end": 31
+      }
+    },
+    {
+      "style": "from",
+      "module": "cursive",
+      "names": [
+        {
+          "alias": null,
+          "name": "signature_utils"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 32,
+        "end": 32
+      }
+    },
+    {
+      "style": "import",
+      "module": "glanceclient",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 33,
+        "end": 33
+      }
+    },
+    {
+      "style": "from",
+      "module": "glanceclient.common",
+      "names": [
+        {
+          "alias": "glance_utils",
+          "name": "utils"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 34,
+        "end": 34
+      }
+    },
+    {
+      "style": "import",
+      "module": "glanceclient.exc",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 35,
+        "end": 35
+      }
+    },
+    {
+      "style": "from",
+      "module": "glanceclient.v2",
+      "names": [
+        {
+          "alias": null,
+          "name": "schemas"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 36,
+        "end": 36
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_log",
+      "names": [
+        {
+          "alias": "logging",
+          "name": "log"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 37,
+        "end": 37
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_serialization",
+      "names": [
+        {
+          "alias": null,
+          "name": "jsonutils"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 38,
+        "end": 38
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_utils",
+      "names": [
+        {
+          "alias": null,
+          "name": "excutils"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 39,
+        "end": 39
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_utils",
+      "names": [
+        {
+          "alias": null,
+          "name": "timeutils"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 40,
+        "end": 40
+      }
+    },
+    {
+      "style": "import",
+      "module": "nova.conf",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 42,
+        "end": 42
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "exception"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 43,
+        "end": 43
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "objects"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 44,
+        "end": 44
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.objects",
+      "names": [
+        {
+          "alias": null,
+          "name": "fields"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 45,
+        "end": 45
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "profiler"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 46,
+        "end": 46
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "service_auth"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 47,
+        "end": 47
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "utils"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 48,
+        "end": 48
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.storage",
+      "names": [
+        {
+          "alias": null,
+          "name": "rbd_utils"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 222,
+        "end": 222
+      }
+    }
+  ],
+  "sideEffects": [
+    {
+      "kind": "network",
+      "target": "from glanceclient.common import utils as glance_utils",
+      "lineRange": {
+        "start": 34,
+        "end": 34
+      }
+    },
+    {
+      "kind": "network",
+      "target": "import glanceclient.exc",
+      "lineRange": {
+        "start": 35,
+        "end": 35
+      }
+    },
+    {
+      "kind": "network",
+      "target": "from glanceclient.v2 import schemas",
+      "lineRange": {
+        "start": 36,
+        "end": 36
+      }
+    },
+    {
+      "kind": "network",
+      "target": "auth = service_auth.get_service_user_token_auth_plugin(context)",
+      "lineRange": {
+        "start": 59,
+        "end": 59
+      }
+    },
+    {
+      "kind": "network",
+      "target": "return glanceclient.Client(version, session=sess, auth=auth,",
+      "lineRange": {
+        "start": 67,
+        "end": 67
+      }
+    },
+    {
+      "kind": "network",
+      "target": "self.client = self._create_static_client(context,",
+      "lineRange": {
+        "start": 125,
+        "end": 125
+      }
+    },
+    {
+      "kind": "network",
+      "target": "glanceclient.exc.HTTPServiceUnavailable,",
+      "lineRange": {
+        "start": 163,
+        "end": 163
+      }
+    },
+    {
+      "kind": "network",
+      "target": "glanceclient.exc.InvalidEndpoint,",
+      "lineRange": {
+        "start": 164,
+        "end": 164
+      }
+    },
+    {
+      "kind": "network",
+      "target": "glanceclient.exc.CommunicationError,",
+      "lineRange": {
+        "start": 165,
+        "end": 165
+      }
+    },
+    {
+      "kind": "network",
+      "target": "client = self.client or self._create_onetime_client(context,",
+      "lineRange": {
+        "start": 171,
+        "end": 171
+      }
+    },
+    {
+      "kind": "network",
+      "target": "self._client = client or GlanceClientWrapper()",
+      "lineRange": {
+        "start": 202,
+        "end": 202
+      }
+    },
+    {
+      "kind": "network",
+      "target": "image = self._client.call(context, 2, 'get', args=(image_id,))",
+      "lineRange": {
+        "start": 269,
+        "end": 269
+      }
+    },
+    {
+      "kind": "network",
+      "target": "images = self._client.call(context, 2, 'list', kwargs=params)",
+      "lineRange": {
+        "start": 301,
+        "end": 301
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "with open(dst_path, 'rb') as fh:",
+      "lineRange": {
+        "start": 347,
+        "end": 347
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "downloaded_length = os.path.getsize(dst_path)",
+      "lineRange": {
+        "start": 348,
+        "end": 348
+      }
+    },
+    {
+      "kind": "network",
+      "target": "image_chunks = self._client.call(",
+      "lineRange": {
+        "start": 375,
+        "end": 375
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "data = open(dst_path, 'wb')",
+      "lineRange": {
+        "start": 413,
+        "end": 413
+      }
+    },
+    {
+      "kind": "network",
+      "target": "except glanceclient.exc.HTTPException:",
+      "lineRange": {
+        "start": 543,
+        "end": 543
+      }
+    },
+    {
+      "kind": "network",
+      "target": "return self._client.call(",
+      "lineRange": {
+        "start": 554,
+        "end": 554
+      }
+    },
+    {
+      "kind": "network",
+      "target": "except glanceclient.exc.HTTPNotImplemented as e:",
+      "lineRange": {
+        "start": 556,
+        "end": 556
+      }
+    },
+    {
+      "kind": "network",
+      "target": "except glanceclient.exc.HTTPBadRequest as e:",
+      "lineRange": {
+        "start": 559,
+        "end": 559
+      }
+    },
+    {
+      "kind": "network",
+      "target": "return self._client.call(",
+      "lineRange": {
+        "start": 575,
+        "end": 575
+      }
+    },
+    {
+      "kind": "network",
+      "target": "except glanceclient.exc.HTTPBadRequest:",
+      "lineRange": {
+        "start": 578,
+        "end": 578
+      }
+    },
+    {
+      "kind": "network",
+      "target": "self._client.call)(context, 2, 'upload', args=(image_id, data))",
+      "lineRange": {
+        "start": 585,
+        "end": 585
+      }
+    },
+    {
+      "kind": "network",
+      "target": "return self._client.call(context, 2, 'get', args=(image_id,))",
+      "lineRange": {
+        "start": 587,
+        "end": 587
+      }
+    },
+    {
+      "kind": "network",
+      "target": "image_schema = self._client.call(",
+      "lineRange": {
+        "start": 607,
+        "end": 607
+      }
+    },
+    {
+      "kind": "network",
+      "target": "image = self._client.call(",
+      "lineRange": {
+        "start": 654,
+        "end": 654
+      }
+    },
+    {
+      "kind": "network",
+      "target": "image = self._client.call(",
+      "lineRange": {
+        "start": 704,
+        "end": 704
+      }
+    },
+    {
+      "kind": "network",
+      "target": "self._client.call(context, 2, 'delete', args=(image_id,))",
+      "lineRange": {
+        "start": 728,
+        "end": 728
+      }
+    },
+    {
+      "kind": "network",
+      "target": "except glanceclient.exc.HTTPNotFound:",
+      "lineRange": {
+        "start": 729,
+        "end": 729
+      }
+    },
+    {
+      "kind": "network",
+      "target": "except glanceclient.exc.HTTPForbidden:",
+      "lineRange": {
+        "start": 731,
+        "end": 731
+      }
+    },
+    {
+      "kind": "network",
+      "target": "except glanceclient.exc.HTTPConflict as exc:",
+      "lineRange": {
+        "start": 733,
+        "end": 733
+      }
+    },
+    {
+      "kind": "network",
+      "target": "self._client.call(context, 2, 'image_import', args=(image_id,),",
+      "lineRange": {
+        "start": 758,
+        "end": 758
+      }
+    },
+    {
+      "kind": "network",
+      "target": "except glanceclient.exc.HTTPNotFound:",
+      "lineRange": {
+        "start": 761,
+        "end": 761
+      }
+    },
+    {
+      "kind": "network",
+      "target": "except glanceclient.exc.HTTPForbidden:",
+      "lineRange": {
+        "start": 763,
+        "end": 763
+      }
+    },
+    {
+      "kind": "network",
+      "target": "except glanceclient.exc.HTTPConflict as exc:",
+      "lineRange": {
+        "start": 765,
+        "end": 765
+      }
+    },
+    {
+      "kind": "network",
+      "target": "except glanceclient.exc.HTTPBadRequest as exc:",
+      "lineRange": {
+        "start": 768,
+        "end": 768
+      }
+    },
+    {
+      "kind": "network",
+      "target": "if isinstance(exc_value, (glanceclient.exc.HTTPForbidden,",
+      "lineRange": {
+        "start": 994,
+        "end": 994
+      }
+    },
+    {
+      "kind": "network",
+      "target": "glanceclient.exc.HTTPUnauthorized)):",
+      "lineRange": {
+        "start": 995,
+        "end": 995
+      }
+    },
+    {
+      "kind": "network",
+      "target": "if isinstance(exc_value, glanceclient.exc.HTTPNotFound):",
+      "lineRange": {
+        "start": 997,
+        "end": 997
+      }
+    },
+    {
+      "kind": "network",
+      "target": "if isinstance(exc_value, glanceclient.exc.HTTPBadRequest):",
+      "lineRange": {
+        "start": 999,
+        "end": 999
+      }
+    },
+    {
+      "kind": "network",
+      "target": "if isinstance(exc_value, glanceclient.exc.HTTPOverLimit):",
+      "lineRange": {
+        "start": 1002,
+        "end": 1002
+      }
+    },
+    {
+      "kind": "network",
+      "target": "if isinstance(exc_value, (glanceclient.exc.HTTPForbidden,",
+      "lineRange": {
+        "start": 1008,
+        "end": 1008
+      }
+    },
+    {
+      "kind": "network",
+      "target": "glanceclient.exc.HTTPUnauthorized)):",
+      "lineRange": {
+        "start": 1009,
+        "end": 1009
+      }
+    },
+    {
+      "kind": "network",
+      "target": "if isinstance(exc_value, glanceclient.exc.HTTPNotFound):",
+      "lineRange": {
+        "start": 1011,
+        "end": 1011
+      }
+    },
+    {
+      "kind": "network",
+      "target": "if isinstance(exc_value, glanceclient.exc.HTTPBadRequest):",
+      "lineRange": {
+        "start": 1013,
+        "end": 1013
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "LOG = logging.getLogger(__name__)",
+      "lineRange": {
+        "start": 51,
+        "end": 51
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "CONF = nova.conf.CONF",
+      "lineRange": {
+        "start": 52,
+        "end": 52
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "IMAGE_ATTRIBUTES = ['status', 'updated_at', 'created_at', 'deleted_at']",
+      "lineRange": {
+        "start": 971,
+        "end": 971
+      }
+    }
+  ],
+  "securitySurface": [
+    {
+      "kind": "privilege",
+      "category": "crypto-key",
+      "description": "auth = service_auth.get_service_user_token_auth_plugin(context)",
+      "lineRange": {
+        "start": 59,
+        "end": 59
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "file-write",
+      "description": "data = open(dst_path, 'wb')",
+      "lineRange": {
+        "start": 413,
+        "end": 413
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "verifier.update(chunk)",
+      "lineRange": {
+        "start": 427,
+        "end": 427
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "file-write",
+      "description": "data.write(chunk)",
+      "lineRange": {
+        "start": 429,
+        "end": 429
+      }
+    },
+    {
+      "kind": "privilege",
+      "category": "crypto-key",
+      "description": "except cryptography.exceptions.InvalidSignature:",
+      "lineRange": {
+        "start": 434,
+        "end": 434
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "def update(self, context, image_id, image_meta, data=None,",
+      "lineRange": {
+        "start": 675,
+        "end": 675
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "context, 2, 'update', kwargs=sent_service_image_meta)",
+      "lineRange": {
+        "start": 705,
+        "end": 705
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "def update(self, context, id_or_uri, image_info,",
+      "lineRange": {
+        "start": 1160,
+        "end": 1160
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "\"\"\"Update the information about an image, optionally along with a file",
+      "lineRange": {
+        "start": 1162,
+        "end": 1162
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "return session.update(context, image_id, image_info, data=data,",
+      "lineRange": {
+        "start": 1181,
+        "end": 1181
+      }
+    }
+  ],
+  "injection_flags": [],
+  "warnings": []
+}
