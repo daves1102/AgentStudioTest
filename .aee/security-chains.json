@@ -6,7 +6,7 @@
         "file": "src/nova/accelerator/cyborg.py",
         "lineRange": { "start": 337, "end": 337 },
         "kind": "http-param",
-        "description": "arq_uuid accepted from caller (KB entry-point) and interpolated into Cyborg API URL path in get_arq_by_uuid; callers of _CyborgClient are not in the analysed source set"
+        "description": "arq_uuid accepted from caller (KB entry-point) and interpolated into Cyborg API URL path in get_arq_by_uuid"
       },
       "status": "partial",
       "hops": [],
@@ -20,7 +20,7 @@
         "file": "src/nova/accelerator/cyborg.py",
         "lineRange": { "start": 337, "end": 337 },
         "reason": "no-static-edge",
-        "detail": "No file in the 122-file source set has a resolved or file edge pointing TO cyborg.py. All imports within cyborg.py are now fully resolved (nova.scheduler resolved to src/nova/scheduler/utils.py at line 49; cyborg.py line 103 calls schedutils.ResourceRequest.XS_KEYPAT.match for requester-ID pattern matching — this does not carry arq_uuid). Callers of _CyborgClient.get_arq_by_uuid exist outside the current source set, likely in nova.compute or nova.conductor which have not yet been extracted."
+        "detail": "327-file source set has one inbound caller to cyborg.py: src/nova/network/neutron.py. neutron.py calls cyborg.get_client (line 673), cyborg.get_arq_pci_device_profile (line 1715), and cyborg.get_device_amount_of_dp_groups (line 2369) — none call get_arq_by_uuid. No resolved edge in the full 327-file graph names get_arq_by_uuid as a call target. The call likely occurs on a _CyborgClient local variable returned by get_client(), which is a known link-graph blind spot (calls on local variables). Callers with get_arq_by_uuid usage are expected in nova.compute or nova.conductor (not yet extracted)."
       },
       "owaspCategory": "A03 Injection",
       "cweId": "CWE-74",
@@ -39,7 +39,7 @@
       "confidence": "confirmed",
       "title": "SHA-224 used in generate_hostid",
       "disposition": "excluded-not-a-source",
-      "reason": "No securitySurface entry of kind 'entry-point' overlaps generate_hostid (lines 857-871). SHA-224 is a standalone cryptographic-weakness; no cross-file taint chain originates here."
+      "reason": "No securitySurface entry of kind 'entry-point' overlaps generate_hostid (lines 857-871). Standalone cryptographic weakness; no cross-file taint chain originates here."
     },
     {
       "file": "src/nova/scheduler/filters/json_filter.py",
@@ -47,16 +47,24 @@
       "confidence": "needs_cross_file",
       "title": "User-controlled scheduler hint used as getattr attribute on HostState",
       "disposition": "excluded-not-a-source",
-      "reason": "Confidence is needs_cross_file (not confirmed or probable). The KB securitySurface for json_filter.py is empty — no entry-point overlaps lines 104-112. No confirmed or probable taint source exists elsewhere in the source set to trace through this sink. The finding identifies a reflection (CWE-470) risk at _parse_string; the taint origin is API-level scheduler hints submitted by Nova API callers, which are outside the current source set. A future run that includes nova.api or nova.conductor may allow a confirmed chain to be traced."
+      "reason": "Confidence is needs_cross_file. KB securitySurface is empty — no entry-point overlaps lines 104-112. No inbound edges to json_filter.py even with nova.api in the source set (scheduler filters are loaded dynamically by name from config — a link-graph blind spot for dynamic dispatch). No confirmed/probable source to trace into this sink."
+    },
+    {
+      "file": "src/nova/api/metadata/handler.py",
+      "lineRange": { "start": 276, "end": 280 },
+      "confidence": "confirmed",
+      "title": "HMAC validation of metadata proxy request conditionally skipped when shared secret is unconfigured",
+      "disposition": "excluded-not-a-source",
+      "reason": "The confirmed finding's lineRange (276-280) does not overlap the KB securitySurface entry-point (line 97, @webob.dec.wsgify). Per protocol, a source requires the finding to overlap an entry-point — this finding is at the authentication check, not at the HTTP request entry. The finding describes CWE-306 (missing authentication): when CONF.neutron.metadata_proxy_shared_secret is unset, X-Metadata-Provider and X-Forwarded-For headers are accepted without HMAC validation. The unauthenticated provider_id flows to neutron.list_subnets(advanced_service_providers=[provider_id]) at line 209-212 (via _get_instance_id_from_lb). This is an authentication-bypass resulting in information disclosure — not an injection taint chain per the correlation protocol. The vulnerability is real and should be tracked as a standalone finding; a future run could check if the KB adds an entry-point at line 265 (_handle_instance_id_request_from_lb) to enable chain-002."
     }
   ],
   "summary": {
     "confirmedChains": 0,
     "partialChains": 1,
     "terminatedChains": 0,
-    "filesAnalysed": 122,
-    "linkGraphEdgesAvailable": 382,
-    "unresolvedImports": 99,
+    "filesAnalysed": 327,
+    "linkGraphEdgesAvailable": 1060,
+    "unresolvedImports": 287,
     "crossComponentSeams": 0,
     "analysedAt": "2026-10-20"
   }
