@@ -1,0 +1,193 @@
+{
+  "file": "src/nova/api/openstack/compute/views/limits.py",
+  "hash": "40ea7838d8e01f4e639426effd846d909dd6bcb5419acef60706ce109929e38f",
+  "language": "Python",
+  "component": "nova",
+  "package": null,
+  "lines": {
+    "blank": 13,
+    "code": 66,
+    "comment": 14,
+    "total": 93
+  },
+  "symbols": [
+    {
+      "name": "ViewBuilder",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 17,
+        "end": 93
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "limit_names",
+      "kind": "field",
+      "scope": "ViewBuilder",
+      "lineRange": {
+        "start": 20,
+        "end": 20
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "__init__",
+      "kind": "method",
+      "scope": "ViewBuilder",
+      "lineRange": {
+        "start": 22,
+        "end": 36
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 15,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "build",
+      "kind": "method",
+      "scope": "ViewBuilder",
+      "lineRange": {
+        "start": 38,
+        "end": 56
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "request"
+        },
+        {
+          "name": "quotas"
+        },
+        {
+          "default": "None",
+          "name": "filtered_limits"
+        },
+        {
+          "default": "True",
+          "name": "max_image_meta"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "output",
+          "line": 56
+        }
+      ],
+      "nloc": 16,
+      "ccn": 2,
+      "visibility": "public"
+    },
+    {
+      "name": "_build_absolute_limits",
+      "kind": "method",
+      "scope": "ViewBuilder",
+      "lineRange": {
+        "start": 58,
+        "end": 77
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "quotas"
+        },
+        {
+          "default": "None",
+          "name": "filtered_limits"
+        },
+        {
+          "default": "True",
+          "name": "max_image_meta"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "limits",
+          "line": 77
+        }
+      ],
+      "nloc": 12,
+      "ccn": 9,
+      "visibility": "private"
+    },
+    {
+      "name": "_build_used_limits",
+      "kind": "method",
+      "scope": "ViewBuilder",
+      "lineRange": {
+        "start": 79,
+        "end": 93
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "request"
+        },
+        {
+          "name": "quotas"
+        },
+        {
+          "name": "filtered_limits"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "used_limits",
+          "line": 93
+        }
+      ],
+      "nloc": 14,
+      "ccn": 4,
+      "visibility": "private"
+    }
+  ],
+  "referencedSymbols": [
+    {
+      "name": "object",
+      "usage": "inherit",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 17,
+        "end": 17
+      }
+    }
+  ],
+  "dependencies": [],
+  "sideEffects": [],
+  "securitySurface": [
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "absolute_limits.update(used_limits)",
+      "lineRange": {
+        "start": 48,
+        "end": 48
+      }
+    }
+  ],
+  "injection_flags": [],
+  "warnings": []
+}

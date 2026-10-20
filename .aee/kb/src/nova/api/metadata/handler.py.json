@@ -1,0 +1,895 @@
+{
+  "file": "src/nova/api/metadata/handler.py",
+  "hash": "62a55636abb7611e1c2fde2c7c3c683058ff4d293ae9bf1a03888e9eb888005e",
+  "language": "Python",
+  "component": "nova",
+  "package": null,
+  "lines": {
+    "blank": 51,
+    "code": 245,
+    "comment": 42,
+    "total": 338
+  },
+  "symbols": [
+    {
+      "name": "CONF",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 37,
+        "end": 37
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "LOG",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 38,
+        "end": 38
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "MAX_QUERY_NETWORKS",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 44,
+        "end": 44
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "MetadataRequestHandler",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 47,
+        "end": 338
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "__init__",
+      "kind": "method",
+      "scope": "MetadataRequestHandler",
+      "lineRange": {
+        "start": 50,
+        "end": 57
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 8,
+      "ccn": 3,
+      "visibility": "public"
+    },
+    {
+      "name": "get_metadata_by_remote_address",
+      "kind": "method",
+      "scope": "MetadataRequestHandler",
+      "lineRange": {
+        "start": 59,
+        "end": 78
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "address"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "data",
+          "line": 67
+        },
+        {
+          "expr": "None",
+          "line": 73
+        },
+        {
+          "expr": "data",
+          "line": 78
+        }
+      ],
+      "nloc": 16,
+      "ccn": 5,
+      "visibility": "public"
+    },
+    {
+      "name": "get_metadata_by_instance_id",
+      "kind": "method",
+      "scope": "MetadataRequestHandler",
+      "lineRange": {
+        "start": 80,
+        "end": 95
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "instance_id"
+        },
+        {
+          "name": "address"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "data",
+          "line": 85
+        },
+        {
+          "expr": "None",
+          "line": 90
+        },
+        {
+          "expr": "data",
+          "line": 95
+        }
+      ],
+      "nloc": 13,
+      "ccn": 4,
+      "visibility": "public"
+    },
+    {
+      "name": "__call__",
+      "kind": "method",
+      "scope": "MetadataRequestHandler",
+      "lineRange": {
+        "start": 98,
+        "end": 139
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "req"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "req.response",
+          "line": 103
+        },
+        {
+          "expr": "data(req, meta_data)",
+          "line": 133
+        },
+        {
+          "expr": "req.response",
+          "line": 139
+        }
+      ],
+      "nloc": 34,
+      "ccn": 10,
+      "visibility": "public"
+    },
+    {
+      "name": "_handle_remote_ip_request",
+      "kind": "method",
+      "scope": "MetadataRequestHandler",
+      "lineRange": {
+        "start": 141,
+        "end": 157
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "req"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "meta_data",
+          "line": 157
+        }
+      ],
+      "nloc": 14,
+      "ccn": 3,
+      "visibility": "private"
+    },
+    {
+      "name": "_handle_instance_id_request",
+      "kind": "method",
+      "scope": "MetadataRequestHandler",
+      "lineRange": {
+        "start": 159,
+        "end": 187
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "req"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "self._get_meta_by_instance_id(instance_id, tenant_id, remote_address)",
+          "line": 186
+        }
+      ],
+      "nloc": 23,
+      "ccn": 7,
+      "visibility": "private"
+    },
+    {
+      "name": "_get_instance_id_from_lb",
+      "kind": "method",
+      "scope": "MetadataRequestHandler",
+      "lineRange": {
+        "start": 189,
+        "end": 263
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "provider_id"
+        },
+        {
+          "name": "instance_address"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "instance_id, tenant_id",
+          "line": 263
+        }
+      ],
+      "nloc": 48,
+      "ccn": 8,
+      "visibility": "private"
+    },
+    {
+      "name": "_handle_instance_id_request_from_lb",
+      "kind": "method",
+      "scope": "MetadataRequestHandler",
+      "lineRange": {
+        "start": 265,
+        "end": 296
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "req"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "self._get_meta_by_instance_id(instance_id, tenant_id, instance_address)",
+          "line": 295
+        }
+      ],
+      "nloc": 29,
+      "ccn": 6,
+      "visibility": "private"
+    },
+    {
+      "name": "_validate_shared_secret",
+      "kind": "method",
+      "scope": "MetadataRequestHandler",
+      "lineRange": {
+        "start": 298,
+        "end": 315
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "requestor_id"
+        },
+        {
+          "name": "signature"
+        },
+        {
+          "name": "requestor_address"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 18,
+      "ccn": 4,
+      "visibility": "private"
+    },
+    {
+      "name": "_get_meta_by_instance_id",
+      "kind": "method",
+      "scope": "MetadataRequestHandler",
+      "lineRange": {
+        "start": 317,
+        "end": 338
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "instance_id"
+        },
+        {
+          "name": "tenant_id"
+        },
+        {
+          "name": "remote_address"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "meta_data",
+          "line": 338
+        }
+      ],
+      "nloc": 19,
+      "ccn": 4,
+      "visibility": "private"
+    }
+  ],
+  "referencedSymbols": [
+    {
+      "name": "logging.getLogger",
+      "usage": "call",
+      "via": "oslo_log",
+      "count": 1,
+      "lineRange": {
+        "start": 38,
+        "end": 38
+      }
+    },
+    {
+      "name": "wsgi.Application",
+      "usage": "inherit",
+      "via": "nova.api",
+      "count": 1,
+      "lineRange": {
+        "start": 47,
+        "end": 47
+      }
+    },
+    {
+      "name": "cache_utils.get_client",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 51,
+        "end": 51
+      }
+    },
+    {
+      "name": "exception.FixedIpNotFoundForAddress",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 61,
+        "end": 61
+      }
+    },
+    {
+      "name": "base.get_metadata_by_address",
+      "usage": "call",
+      "via": "nova.api.metadata",
+      "count": 1,
+      "lineRange": {
+        "start": 70,
+        "end": 70
+      }
+    },
+    {
+      "name": "base.get_metadata_by_instance_id",
+      "usage": "call",
+      "via": "nova.api.metadata",
+      "count": 1,
+      "lineRange": {
+        "start": 88,
+        "end": 88
+      }
+    },
+    {
+      "name": "webob.dec.wsgify",
+      "usage": "call",
+      "via": "webob.dec",
+      "count": 1,
+      "lineRange": {
+        "start": 97,
+        "end": 97
+      }
+    },
+    {
+      "name": "os.path.normpath",
+      "usage": "call",
+      "via": "os",
+      "count": 1,
+      "lineRange": {
+        "start": 99,
+        "end": 99
+      }
+    },
+    {
+      "name": "base.ec2_md_print",
+      "usage": "call",
+      "via": "nova.api.metadata",
+      "count": 2,
+      "lineRange": {
+        "start": 100,
+        "end": 100
+      }
+    },
+    {
+      "name": "encodeutils.to_utf8",
+      "usage": "call",
+      "via": "oslo_utils",
+      "count": 4,
+      "lineRange": {
+        "start": 101,
+        "end": 101
+      }
+    },
+    {
+      "name": "strutils.mask_dict_password",
+      "usage": "call",
+      "via": "oslo_utils",
+      "count": 1,
+      "lineRange": {
+        "start": 110,
+        "end": 110
+      }
+    },
+    {
+      "name": "webob.exc.HTTPNotFound",
+      "usage": "call",
+      "via": "webob.dec",
+      "count": 2,
+      "lineRange": {
+        "start": 125,
+        "end": 125
+      }
+    },
+    {
+      "name": "callable",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 132,
+        "end": 132
+      }
+    },
+    {
+      "name": "data",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 133,
+        "end": 133
+      }
+    },
+    {
+      "name": "_",
+      "usage": "call",
+      "via": "nova.i18n",
+      "count": 13,
+      "lineRange": {
+        "start": 149,
+        "end": 149
+      }
+    },
+    {
+      "name": "str",
+      "usage": "call",
+      "via": null,
+      "count": 2,
+      "lineRange": {
+        "start": 151,
+        "end": 151
+      }
+    },
+    {
+      "name": "webob.exc.HTTPInternalServerError",
+      "usage": "call",
+      "via": "webob.dec",
+      "count": 2,
+      "lineRange": {
+        "start": 151,
+        "end": 151
+      }
+    },
+    {
+      "name": "isinstance",
+      "usage": "call",
+      "via": null,
+      "count": 3,
+      "lineRange": {
+        "start": 173,
+        "end": 173
+      }
+    },
+    {
+      "name": "webob.exc.HTTPBadRequest",
+      "usage": "call",
+      "via": "webob.dec",
+      "count": 6,
+      "lineRange": {
+        "start": 181,
+        "end": 181
+      }
+    },
+    {
+      "name": "nova_context.get_admin_context",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 192,
+        "end": 192
+      }
+    },
+    {
+      "name": "neutronapi.get_client",
+      "usage": "call",
+      "via": "nova.network",
+      "count": 1,
+      "lineRange": {
+        "start": 193,
+        "end": 193
+      }
+    },
+    {
+      "name": "len",
+      "usage": "call",
+      "via": null,
+      "count": 2,
+      "lineRange": {
+        "start": 245,
+        "end": 245
+      }
+    },
+    {
+      "name": "hmac.new",
+      "usage": "call",
+      "via": "hmac",
+      "count": 1,
+      "lineRange": {
+        "start": 300,
+        "end": 300
+      }
+    },
+    {
+      "name": "hmac.compare_digest",
+      "usage": "call",
+      "via": "hmac",
+      "count": 1,
+      "lineRange": {
+        "start": 305,
+        "end": 305
+      }
+    },
+    {
+      "name": "webob.exc.HTTPForbidden",
+      "usage": "call",
+      "via": "webob.dec",
+      "count": 1,
+      "lineRange": {
+        "start": 315,
+        "end": 315
+      }
+    }
+  ],
+  "dependencies": [
+    {
+      "style": "import",
+      "module": "hashlib",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 18,
+        "end": 18
+      }
+    },
+    {
+      "style": "import",
+      "module": "hmac",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 19,
+        "end": 19
+      }
+    },
+    {
+      "style": "import",
+      "module": "os",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 20,
+        "end": 20
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_log",
+      "names": [
+        {
+          "alias": "logging",
+          "name": "log"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 22,
+        "end": 22
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_utils",
+      "names": [
+        {
+          "alias": null,
+          "name": "encodeutils"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 23,
+        "end": 23
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_utils",
+      "names": [
+        {
+          "alias": null,
+          "name": "strutils"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 24,
+        "end": 24
+      }
+    },
+    {
+      "style": "import",
+      "module": "webob.dec",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 25,
+        "end": 25
+      }
+    },
+    {
+      "style": "import",
+      "module": "webob.exc",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 26,
+        "end": 26
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.api.metadata",
+      "names": [
+        {
+          "alias": null,
+          "name": "base"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 28,
+        "end": 28
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.api",
+      "names": [
+        {
+          "alias": null,
+          "name": "wsgi"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 29,
+        "end": 29
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "cache_utils"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 30,
+        "end": 30
+      }
+    },
+    {
+      "style": "import",
+      "module": "nova.conf",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 31,
+        "end": 31
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": "nova_context",
+          "name": "context"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 32,
+        "end": 32
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "exception"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 33,
+        "end": 33
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.i18n",
+      "names": [
+        {
+          "alias": null,
+          "name": "_"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 34,
+        "end": 34
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.network",
+      "names": [
+        {
+          "alias": "neutronapi",
+          "name": "neutron"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 35,
+        "end": 35
+      }
+    }
+  ],
+  "sideEffects": [
+    {
+      "kind": "file-io",
+      "target": "if os.path.normpath(req.path_info) == \"/\":",
+      "lineRange": {
+        "start": 99,
+        "end": 99
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "CONF = nova.conf.CONF",
+      "lineRange": {
+        "start": 37,
+        "end": 37
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "LOG = logging.getLogger(__name__)",
+      "lineRange": {
+        "start": 38,
+        "end": 38
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "MAX_QUERY_NETWORKS = 160",
+      "lineRange": {
+        "start": 44,
+        "end": 44
+      }
+    }
+  ],
+  "securitySurface": [
+    {
+      "kind": "entry-point",
+      "category": "http-param",
+      "description": "@webob.dec.wsgify(RequestClass=wsgi.Request)",
+      "lineRange": {
+        "start": 97,
+        "end": 97
+      }
+    }
+  ],
+  "injection_flags": [],
+  "warnings": []
+}

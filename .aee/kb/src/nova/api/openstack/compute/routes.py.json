@@ -1,0 +1,2820 @@
+{
+  "file": "src/nova/api/openstack/compute/routes.py",
+  "hash": "4d571feec223f016fea6b20f9b21231978fbb61f215f0386968b6535c40324b1",
+  "language": "Python",
+  "component": "nova",
+  "package": null,
+  "lines": {
+    "blank": 129,
+    "code": 730,
+    "comment": 42,
+    "total": 901
+  },
+  "symbols": [
+    {
+      "name": "_create_controller",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 94,
+        "end": 102
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "main_controller"
+        },
+        {
+          "name": "action_controller_list"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "controller",
+          "line": 102
+        }
+      ],
+      "nloc": 5,
+      "ccn": 2,
+      "exported": false
+    },
+    {
+      "name": "agents_controller",
+      "kind": "variable",
+      "scope": "",
+      "lineRange": {
+        "start": 105,
+        "end": 106
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "aggregates_controller",
+      "kind": "variable",
+      "scope": "",
+      "lineRange": {
+        "start": 109,
+        "end": 110
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "assisted_volume_snapshots_controller",
+      "kind": "variable",
+      "scope": "",
+      "lineRange": {
+        "start": 113,
+        "end": 115
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "availability_zone_controller",
+      "kind": "variable",
+      "scope": "",
+      "lineRange": {
+        "start": 118,
+        "end": 119
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "baremetal_nodes_controller",
+      "kind": "variable",
+      "scope": "",
+      "lineRange": {
+        "start": 122,
+        "end": 123
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "cells_controller",
+      "kind": "variable",
+      "scope": "",
+      "lineRange": {
+        "start": 126,
+        "end": 127
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "certificates_controller",
+      "kind": "variable",
+      "scope": "",
+      "lineRange": {
+        "start": 130,
+        "end": 131
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "cloudpipe_controller",
+      "kind": "variable",
+      "scope": "",
+      "lineRange": {
+        "start": 134,
+        "end": 135
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "extensions_controller",
+      "kind": "variable",
+      "scope": "",
+      "lineRange": {
+        "start": 138,
+        "end": 139
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "fixed_ips_controller",
+      "kind": "variable",
+      "scope": "",
+      "lineRange": {
+        "start": 142,
+        "end": 143
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "flavor_controller",
+      "kind": "variable",
+      "scope": "",
+      "lineRange": {
+        "start": 146,
+        "end": 151
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "flavor_access_controller",
+      "kind": "variable",
+      "scope": "",
+      "lineRange": {
+        "start": 154,
+        "end": 155
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "flavor_extraspec_controller",
+      "kind": "variable",
+      "scope": "",
+      "lineRange": {
+        "start": 158,
+        "end": 159
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "floating_ip_dns_controller",
+      "kind": "variable",
+      "scope": "",
+      "lineRange": {
+        "start": 162,
+        "end": 163
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "floating_ip_dnsentry_controller",
+      "kind": "variable",
+      "scope": "",
+      "lineRange": {
+        "start": 166,
+        "end": 167
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "floating_ip_pools_controller",
+      "kind": "variable",
+      "scope": "",
+      "lineRange": {
+        "start": 170,
+        "end": 171
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "floating_ips_controller",
+      "kind": "variable",
+      "scope": "",
+      "lineRange": {
+        "start": 174,
+        "end": 175
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "floating_ips_bulk_controller",
+      "kind": "variable",
+      "scope": "",
+      "lineRange": {
+        "start": 178,
+        "end": 179
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "fping_controller",
+      "kind": "variable",
+      "scope": "",
+      "lineRange": {
+        "start": 182,
+        "end": 183
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "hosts_controller",
+      "kind": "variable",
+      "scope": "",
+      "lineRange": {
+        "start": 186,
+        "end": 187
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "hypervisors_controller",
+      "kind": "variable",
+      "scope": "",
+      "lineRange": {
+        "start": 190,
+        "end": 191
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "images_controller",
+      "kind": "variable",
+      "scope": "",
+      "lineRange": {
+        "start": 194,
+        "end": 195
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "image_metadata_controller",
+      "kind": "variable",
+      "scope": "",
+      "lineRange": {
+        "start": 198,
+        "end": 199
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "instance_actions_controller",
+      "kind": "variable",
+      "scope": "",
+      "lineRange": {
+        "start": 202,
+        "end": 203
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "instance_usage_audit_log_controller",
+      "kind": "variable",
+      "scope": "",
+      "lineRange": {
+        "start": 206,
+        "end": 207
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "ips_controller",
+      "kind": "variable",
+      "scope": "",
+      "lineRange": {
+        "start": 210,
+        "end": 211
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "keypairs_controller",
+      "kind": "variable",
+      "scope": "",
+      "lineRange": {
+        "start": 214,
+        "end": 215
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "limits_controller",
+      "kind": "variable",
+      "scope": "",
+      "lineRange": {
+        "start": 218,
+        "end": 219
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "migrations_controller",
+      "kind": "variable",
+      "scope": "",
+      "lineRange": {
+        "start": 222,
+        "end": 223
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "networks_controller",
+      "kind": "variable",
+      "scope": "",
+      "lineRange": {
+        "start": 226,
+        "end": 228
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "quota_classes_controller",
+      "kind": "variable",
+      "scope": "",
+      "lineRange": {
+        "start": 231,
+        "end": 232
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "quota_set_controller",
+      "kind": "variable",
+      "scope": "",
+      "lineRange": {
+        "start": 235,
+        "end": 236
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "security_group_controller",
+      "kind": "variable",
+      "scope": "",
+      "lineRange": {
+        "start": 239,
+        "end": 240
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "security_group_default_rules_controller",
+      "kind": "variable",
+      "scope": "",
+      "lineRange": {
+        "start": 243,
+        "end": 244
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "security_group_rules_controller",
+      "kind": "variable",
+      "scope": "",
+      "lineRange": {
+        "start": 247,
+        "end": 248
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "server_controller",
+      "kind": "variable",
+      "scope": "",
+      "lineRange": {
+        "start": 251,
+        "end": 271
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "console_auth_tokens_controller",
+      "kind": "variable",
+      "scope": "",
+      "lineRange": {
+        "start": 274,
+        "end": 275
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "consoles_controller",
+      "kind": "variable",
+      "scope": "",
+      "lineRange": {
+        "start": 278,
+        "end": 279
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "server_diagnostics_controller",
+      "kind": "variable",
+      "scope": "",
+      "lineRange": {
+        "start": 282,
+        "end": 283
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "server_external_events_controller",
+      "kind": "variable",
+      "scope": "",
+      "lineRange": {
+        "start": 286,
+        "end": 287
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "server_groups_controller",
+      "kind": "variable",
+      "scope": "",
+      "lineRange": {
+        "start": 290,
+        "end": 291
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "server_metadata_controller",
+      "kind": "variable",
+      "scope": "",
+      "lineRange": {
+        "start": 294,
+        "end": 295
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "server_migrations_controller",
+      "kind": "variable",
+      "scope": "",
+      "lineRange": {
+        "start": 298,
+        "end": 299
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "server_os_interface_controller",
+      "kind": "variable",
+      "scope": "",
+      "lineRange": {
+        "start": 302,
+        "end": 303
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "server_password_controller",
+      "kind": "variable",
+      "scope": "",
+      "lineRange": {
+        "start": 306,
+        "end": 307
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "server_remote_consoles_controller",
+      "kind": "variable",
+      "scope": "",
+      "lineRange": {
+        "start": 310,
+        "end": 311
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "server_security_groups_controller",
+      "kind": "variable",
+      "scope": "",
+      "lineRange": {
+        "start": 314,
+        "end": 315
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "server_shares_controller",
+      "kind": "variable",
+      "scope": "",
+      "lineRange": {
+        "start": 317,
+        "end": 318
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "server_tags_controller",
+      "kind": "variable",
+      "scope": "",
+      "lineRange": {
+        "start": 320,
+        "end": 321
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "server_topology_controller",
+      "kind": "variable",
+      "scope": "",
+      "lineRange": {
+        "start": 323,
+        "end": 324
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "server_volume_attachments_controller",
+      "kind": "variable",
+      "scope": "",
+      "lineRange": {
+        "start": 326,
+        "end": 327
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "services_controller",
+      "kind": "variable",
+      "scope": "",
+      "lineRange": {
+        "start": 330,
+        "end": 331
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "simple_tenant_usage_controller",
+      "kind": "variable",
+      "scope": "",
+      "lineRange": {
+        "start": 334,
+        "end": 335
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "snapshots_controller",
+      "kind": "variable",
+      "scope": "",
+      "lineRange": {
+        "start": 338,
+        "end": 339
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "tenant_networks_controller",
+      "kind": "variable",
+      "scope": "",
+      "lineRange": {
+        "start": 342,
+        "end": 343
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "version_controller",
+      "kind": "variable",
+      "scope": "",
+      "lineRange": {
+        "start": 346,
+        "end": 347
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "virtual_interfaces_controller",
+      "kind": "variable",
+      "scope": "",
+      "lineRange": {
+        "start": 350,
+        "end": 351
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "volumes_controller",
+      "kind": "variable",
+      "scope": "",
+      "lineRange": {
+        "start": 354,
+        "end": 355
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "volumes_boot_controller",
+      "kind": "variable",
+      "scope": "",
+      "lineRange": {
+        "start": 358,
+        "end": 359
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "ROUTE_LIST",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 377,
+        "end": 857
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "APIRouterV21",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 860,
+        "end": 901
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "__init__",
+      "kind": "method",
+      "scope": "APIRouterV21",
+      "lineRange": {
+        "start": 866,
+        "end": 893
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "default": "None",
+          "name": "custom_routes"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 12,
+      "ccn": 5,
+      "visibility": "public"
+    },
+    {
+      "name": "factory",
+      "kind": "method",
+      "scope": "APIRouterV21",
+      "lineRange": {
+        "start": 896,
+        "end": 901
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "cls"
+        },
+        {
+          "name": "global_config"
+        },
+        {
+          "name": "**local_config"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "cls()",
+          "line": 901
+        }
+      ],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "factory",
+      "kind": "classmethod",
+      "scope": "APIRouterV21",
+      "lineRange": {
+        "start": 895,
+        "end": 901
+      },
+      "visibility": "public",
+      "source": "manual"
+    }
+  ],
+  "referencedSymbols": [
+    {
+      "name": "main_controller",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 99,
+        "end": 99
+      }
+    },
+    {
+      "name": "wsgi.Resource",
+      "usage": "call",
+      "via": "nova.api.openstack",
+      "count": 1,
+      "lineRange": {
+        "start": 99,
+        "end": 99
+      }
+    },
+    {
+      "name": "ctl",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 101,
+        "end": 101
+      }
+    },
+    {
+      "name": "functools.partial",
+      "usage": "call",
+      "via": "functools",
+      "count": 59,
+      "lineRange": {
+        "start": 105,
+        "end": 105
+      }
+    },
+    {
+      "name": "base_wsgi.Router",
+      "usage": "inherit",
+      "via": "nova.api",
+      "count": 1,
+      "lineRange": {
+        "start": 860,
+        "end": 860
+      }
+    },
+    {
+      "name": "nova.api.openstack.ProjectMapper",
+      "usage": "call",
+      "via": "nova.api.openstack",
+      "count": 1,
+      "lineRange": {
+        "start": 871,
+        "end": 871
+      }
+    },
+    {
+      "name": "super",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 871,
+        "end": 871
+      }
+    },
+    {
+      "name": "tuple",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 874,
+        "end": 874
+      }
+    },
+    {
+      "name": "isinstance",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 883,
+        "end": 883
+      }
+    },
+    {
+      "name": "cls",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 901,
+        "end": 901
+      }
+    }
+  ],
+  "dependencies": [
+    {
+      "style": "import",
+      "module": "functools",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 17,
+        "end": 17
+      }
+    },
+    {
+      "style": "import",
+      "module": "nova.api.openstack",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 19,
+        "end": 19
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.api.openstack.compute",
+      "names": [
+        {
+          "alias": null,
+          "name": "admin_actions"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 20,
+        "end": 20
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.api.openstack.compute",
+      "names": [
+        {
+          "alias": null,
+          "name": "admin_password"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 21,
+        "end": 21
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.api.openstack.compute",
+      "names": [
+        {
+          "alias": null,
+          "name": "agents"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 22,
+        "end": 22
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.api.openstack.compute",
+      "names": [
+        {
+          "alias": null,
+          "name": "aggregates"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 23,
+        "end": 23
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.api.openstack.compute",
+      "names": [
+        {
+          "alias": null,
+          "name": "assisted_volume_snapshots"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 24,
+        "end": 24
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.api.openstack.compute",
+      "names": [
+        {
+          "alias": null,
+          "name": "attach_interfaces"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 25,
+        "end": 25
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.api.openstack.compute",
+      "names": [
+        {
+          "alias": null,
+          "name": "availability_zone"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 26,
+        "end": 26
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.api.openstack.compute",
+      "names": [
+        {
+          "alias": null,
+          "name": "baremetal_nodes"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 27,
+        "end": 27
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.api.openstack.compute",
+      "names": [
+        {
+          "alias": null,
+          "name": "cells"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 28,
+        "end": 28
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.api.openstack.compute",
+      "names": [
+        {
+          "alias": null,
+          "name": "certificates"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 29,
+        "end": 29
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.api.openstack.compute",
+      "names": [
+        {
+          "alias": null,
+          "name": "cloudpipe"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 30,
+        "end": 30
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.api.openstack.compute",
+      "names": [
+        {
+          "alias": null,
+          "name": "console_auth_tokens"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 31,
+        "end": 31
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.api.openstack.compute",
+      "names": [
+        {
+          "alias": null,
+          "name": "console_output"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 32,
+        "end": 32
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.api.openstack.compute",
+      "names": [
+        {
+          "alias": null,
+          "name": "consoles"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 33,
+        "end": 33
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.api.openstack.compute",
+      "names": [
+        {
+          "alias": null,
+          "name": "create_backup"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 34,
+        "end": 34
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.api.openstack.compute",
+      "names": [
+        {
+          "alias": null,
+          "name": "deferred_delete"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 35,
+        "end": 35
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.api.openstack.compute",
+      "names": [
+        {
+          "alias": null,
+          "name": "evacuate"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 36,
+        "end": 36
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.api.openstack.compute",
+      "names": [
+        {
+          "alias": null,
+          "name": "extension_info"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 37,
+        "end": 37
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.api.openstack.compute",
+      "names": [
+        {
+          "alias": null,
+          "name": "fixed_ips"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 38,
+        "end": 38
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.api.openstack.compute",
+      "names": [
+        {
+          "alias": null,
+          "name": "flavor_access"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 39,
+        "end": 39
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.api.openstack.compute",
+      "names": [
+        {
+          "alias": null,
+          "name": "flavors"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 40,
+        "end": 40
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.api.openstack.compute",
+      "names": [
+        {
+          "alias": null,
+          "name": "flavors_extraspecs"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 41,
+        "end": 41
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.api.openstack.compute",
+      "names": [
+        {
+          "alias": null,
+          "name": "floating_ip_dns"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 42,
+        "end": 42
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.api.openstack.compute",
+      "names": [
+        {
+          "alias": null,
+          "name": "floating_ip_pools"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 43,
+        "end": 43
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.api.openstack.compute",
+      "names": [
+        {
+          "alias": null,
+          "name": "floating_ips"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 44,
+        "end": 44
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.api.openstack.compute",
+      "names": [
+        {
+          "alias": null,
+          "name": "floating_ips_bulk"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 45,
+        "end": 45
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.api.openstack.compute",
+      "names": [
+        {
+          "alias": null,
+          "name": "fping"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 46,
+        "end": 46
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.api.openstack.compute",
+      "names": [
+        {
+          "alias": null,
+          "name": "hosts"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 47,
+        "end": 47
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.api.openstack.compute",
+      "names": [
+        {
+          "alias": null,
+          "name": "hypervisors"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 48,
+        "end": 48
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.api.openstack.compute",
+      "names": [
+        {
+          "alias": null,
+          "name": "image_metadata"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 49,
+        "end": 49
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.api.openstack.compute",
+      "names": [
+        {
+          "alias": null,
+          "name": "images"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 50,
+        "end": 50
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.api.openstack.compute",
+      "names": [
+        {
+          "alias": null,
+          "name": "instance_actions"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 51,
+        "end": 51
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.api.openstack.compute",
+      "names": [
+        {
+          "alias": null,
+          "name": "instance_usage_audit_log"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 52,
+        "end": 52
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.api.openstack.compute",
+      "names": [
+        {
+          "alias": null,
+          "name": "ips"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 53,
+        "end": 53
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.api.openstack.compute",
+      "names": [
+        {
+          "alias": null,
+          "name": "keypairs"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 54,
+        "end": 54
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.api.openstack.compute",
+      "names": [
+        {
+          "alias": null,
+          "name": "limits"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 55,
+        "end": 55
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.api.openstack.compute",
+      "names": [
+        {
+          "alias": null,
+          "name": "lock_server"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 56,
+        "end": 56
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.api.openstack.compute",
+      "names": [
+        {
+          "alias": null,
+          "name": "migrate_server"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 57,
+        "end": 57
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.api.openstack.compute",
+      "names": [
+        {
+          "alias": null,
+          "name": "migrations"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 58,
+        "end": 58
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.api.openstack.compute",
+      "names": [
+        {
+          "alias": null,
+          "name": "multinic"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 59,
+        "end": 59
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.api.openstack.compute",
+      "names": [
+        {
+          "alias": null,
+          "name": "networks"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 60,
+        "end": 60
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.api.openstack.compute",
+      "names": [
+        {
+          "alias": null,
+          "name": "networks_associate"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 61,
+        "end": 61
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.api.openstack.compute",
+      "names": [
+        {
+          "alias": null,
+          "name": "pause_server"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 62,
+        "end": 62
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.api.openstack.compute",
+      "names": [
+        {
+          "alias": null,
+          "name": "quota_classes"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 63,
+        "end": 63
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.api.openstack.compute",
+      "names": [
+        {
+          "alias": null,
+          "name": "quota_sets"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 64,
+        "end": 64
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.api.openstack.compute",
+      "names": [
+        {
+          "alias": null,
+          "name": "remote_consoles"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 65,
+        "end": 65
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.api.openstack.compute",
+      "names": [
+        {
+          "alias": null,
+          "name": "rescue"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 66,
+        "end": 66
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.api.openstack.compute",
+      "names": [
+        {
+          "alias": null,
+          "name": "security_group_default_rules"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 67,
+        "end": 67
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.api.openstack.compute",
+      "names": [
+        {
+          "alias": null,
+          "name": "security_groups"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 68,
+        "end": 68
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.api.openstack.compute",
+      "names": [
+        {
+          "alias": null,
+          "name": "server_diagnostics"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 69,
+        "end": 69
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.api.openstack.compute",
+      "names": [
+        {
+          "alias": null,
+          "name": "server_external_events"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 70,
+        "end": 70
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.api.openstack.compute",
+      "names": [
+        {
+          "alias": null,
+          "name": "server_groups"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 71,
+        "end": 71
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.api.openstack.compute",
+      "names": [
+        {
+          "alias": null,
+          "name": "server_metadata"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 72,
+        "end": 72
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.api.openstack.compute",
+      "names": [
+        {
+          "alias": null,
+          "name": "server_migrations"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 73,
+        "end": 73
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.api.openstack.compute",
+      "names": [
+        {
+          "alias": null,
+          "name": "server_password"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 74,
+        "end": 74
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.api.openstack.compute",
+      "names": [
+        {
+          "alias": null,
+          "name": "server_shares"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 75,
+        "end": 75
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.api.openstack.compute",
+      "names": [
+        {
+          "alias": null,
+          "name": "server_tags"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 76,
+        "end": 76
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.api.openstack.compute",
+      "names": [
+        {
+          "alias": null,
+          "name": "server_topology"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 77,
+        "end": 77
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.api.openstack.compute",
+      "names": [
+        {
+          "alias": null,
+          "name": "servers"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 78,
+        "end": 78
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.api.openstack.compute",
+      "names": [
+        {
+          "alias": null,
+          "name": "services"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 79,
+        "end": 79
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.api.openstack.compute",
+      "names": [
+        {
+          "alias": null,
+          "name": "shelve"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 80,
+        "end": 80
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.api.openstack.compute",
+      "names": [
+        {
+          "alias": null,
+          "name": "simple_tenant_usage"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 81,
+        "end": 81
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.api.openstack.compute",
+      "names": [
+        {
+          "alias": null,
+          "name": "snapshots"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 82,
+        "end": 82
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.api.openstack.compute",
+      "names": [
+        {
+          "alias": null,
+          "name": "suspend_server"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 83,
+        "end": 83
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.api.openstack.compute",
+      "names": [
+        {
+          "alias": null,
+          "name": "tenant_networks"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 84,
+        "end": 84
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.api.openstack.compute",
+      "names": [
+        {
+          "alias": null,
+          "name": "versionsV21"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 85,
+        "end": 85
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.api.openstack.compute",
+      "names": [
+        {
+          "alias": null,
+          "name": "virtual_interfaces"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 86,
+        "end": 86
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.api.openstack.compute",
+      "names": [
+        {
+          "alias": null,
+          "name": "volume_attachments"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 87,
+        "end": 87
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.api.openstack.compute",
+      "names": [
+        {
+          "alias": null,
+          "name": "volumes"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 88,
+        "end": 88
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.api.openstack.compute",
+      "names": [
+        {
+          "alias": null,
+          "name": "volumes_boot"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 89,
+        "end": 89
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.api.openstack",
+      "names": [
+        {
+          "alias": null,
+          "name": "wsgi"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 90,
+        "end": 90
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.api",
+      "names": [
+        {
+          "alias": "base_wsgi",
+          "name": "wsgi"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 91,
+        "end": 91
+      }
+    }
+  ],
+  "sideEffects": [
+    {
+      "kind": "network",
+      "target": "from nova.api.openstack.compute import admin_actions",
+      "lineRange": {
+        "start": 20,
+        "end": 20
+      }
+    },
+    {
+      "kind": "network",
+      "target": "from nova.api.openstack.compute import admin_password",
+      "lineRange": {
+        "start": 21,
+        "end": 21
+      }
+    },
+    {
+      "kind": "network",
+      "target": "from nova.api.openstack.compute import agents",
+      "lineRange": {
+        "start": 22,
+        "end": 22
+      }
+    },
+    {
+      "kind": "network",
+      "target": "from nova.api.openstack.compute import aggregates",
+      "lineRange": {
+        "start": 23,
+        "end": 23
+      }
+    },
+    {
+      "kind": "network",
+      "target": "from nova.api.openstack.compute import assisted_volume_snapshots",
+      "lineRange": {
+        "start": 24,
+        "end": 24
+      }
+    },
+    {
+      "kind": "network",
+      "target": "from nova.api.openstack.compute import attach_interfaces",
+      "lineRange": {
+        "start": 25,
+        "end": 25
+      }
+    },
+    {
+      "kind": "network",
+      "target": "from nova.api.openstack.compute import availability_zone",
+      "lineRange": {
+        "start": 26,
+        "end": 26
+      }
+    },
+    {
+      "kind": "network",
+      "target": "from nova.api.openstack.compute import baremetal_nodes",
+      "lineRange": {
+        "start": 27,
+        "end": 27
+      }
+    },
+    {
+      "kind": "network",
+      "target": "from nova.api.openstack.compute import cells",
+      "lineRange": {
+        "start": 28,
+        "end": 28
+      }
+    },
+    {
+      "kind": "network",
+      "target": "from nova.api.openstack.compute import certificates",
+      "lineRange": {
+        "start": 29,
+        "end": 29
+      }
+    },
+    {
+      "kind": "network",
+      "target": "from nova.api.openstack.compute import cloudpipe",
+      "lineRange": {
+        "start": 30,
+        "end": 30
+      }
+    },
+    {
+      "kind": "network",
+      "target": "from nova.api.openstack.compute import console_auth_tokens",
+      "lineRange": {
+        "start": 31,
+        "end": 31
+      }
+    },
+    {
+      "kind": "network",
+      "target": "from nova.api.openstack.compute import console_output",
+      "lineRange": {
+        "start": 32,
+        "end": 32
+      }
+    },
+    {
+      "kind": "network",
+      "target": "from nova.api.openstack.compute import consoles",
+      "lineRange": {
+        "start": 33,
+        "end": 33
+      }
+    },
+    {
+      "kind": "network",
+      "target": "from nova.api.openstack.compute import create_backup",
+      "lineRange": {
+        "start": 34,
+        "end": 34
+      }
+    },
+    {
+      "kind": "network",
+      "target": "from nova.api.openstack.compute import deferred_delete",
+      "lineRange": {
+        "start": 35,
+        "end": 35
+      }
+    },
+    {
+      "kind": "network",
+      "target": "from nova.api.openstack.compute import evacuate",
+      "lineRange": {
+        "start": 36,
+        "end": 36
+      }
+    },
+    {
+      "kind": "network",
+      "target": "from nova.api.openstack.compute import extension_info",
+      "lineRange": {
+        "start": 37,
+        "end": 37
+      }
+    },
+    {
+      "kind": "network",
+      "target": "from nova.api.openstack.compute import fixed_ips",
+      "lineRange": {
+        "start": 38,
+        "end": 38
+      }
+    },
+    {
+      "kind": "network",
+      "target": "from nova.api.openstack.compute import flavor_access",
+      "lineRange": {
+        "start": 39,
+        "end": 39
+      }
+    },
+    {
+      "kind": "network",
+      "target": "from nova.api.openstack.compute import flavors",
+      "lineRange": {
+        "start": 40,
+        "end": 40
+      }
+    },
+    {
+      "kind": "network",
+      "target": "from nova.api.openstack.compute import flavors_extraspecs",
+      "lineRange": {
+        "start": 41,
+        "end": 41
+      }
+    },
+    {
+      "kind": "network",
+      "target": "from nova.api.openstack.compute import floating_ip_dns",
+      "lineRange": {
+        "start": 42,
+        "end": 42
+      }
+    },
+    {
+      "kind": "network",
+      "target": "from nova.api.openstack.compute import floating_ip_pools",
+      "lineRange": {
+        "start": 43,
+        "end": 43
+      }
+    },
+    {
+      "kind": "network",
+      "target": "from nova.api.openstack.compute import floating_ips",
+      "lineRange": {
+        "start": 44,
+        "end": 44
+      }
+    },
+    {
+      "kind": "network",
+      "target": "from nova.api.openstack.compute import floating_ips_bulk",
+      "lineRange": {
+        "start": 45,
+        "end": 45
+      }
+    },
+    {
+      "kind": "network",
+      "target": "from nova.api.openstack.compute import fping",
+      "lineRange": {
+        "start": 46,
+        "end": 46
+      }
+    },
+    {
+      "kind": "network",
+      "target": "from nova.api.openstack.compute import hosts",
+      "lineRange": {
+        "start": 47,
+        "end": 47
+      }
+    },
+    {
+      "kind": "network",
+      "target": "from nova.api.openstack.compute import hypervisors",
+      "lineRange": {
+        "start": 48,
+        "end": 48
+      }
+    },
+    {
+      "kind": "network",
+      "target": "from nova.api.openstack.compute import image_metadata",
+      "lineRange": {
+        "start": 49,
+        "end": 49
+      }
+    },
+    {
+      "kind": "network",
+      "target": "from nova.api.openstack.compute import images",
+      "lineRange": {
+        "start": 50,
+        "end": 50
+      }
+    },
+    {
+      "kind": "network",
+      "target": "from nova.api.openstack.compute import instance_actions",
+      "lineRange": {
+        "start": 51,
+        "end": 51
+      }
+    },
+    {
+      "kind": "network",
+      "target": "from nova.api.openstack.compute import instance_usage_audit_log",
+      "lineRange": {
+        "start": 52,
+        "end": 52
+      }
+    },
+    {
+      "kind": "network",
+      "target": "from nova.api.openstack.compute import ips",
+      "lineRange": {
+        "start": 53,
+        "end": 53
+      }
+    },
+    {
+      "kind": "network",
+      "target": "from nova.api.openstack.compute import keypairs",
+      "lineRange": {
+        "start": 54,
+        "end": 54
+      }
+    },
+    {
+      "kind": "network",
+      "target": "from nova.api.openstack.compute import limits",
+      "lineRange": {
+        "start": 55,
+        "end": 55
+      }
+    },
+    {
+      "kind": "network",
+      "target": "from nova.api.openstack.compute import lock_server",
+      "lineRange": {
+        "start": 56,
+        "end": 56
+      }
+    },
+    {
+      "kind": "network",
+      "target": "from nova.api.openstack.compute import migrate_server",
+      "lineRange": {
+        "start": 57,
+        "end": 57
+      }
+    },
+    {
+      "kind": "network",
+      "target": "from nova.api.openstack.compute import migrations",
+      "lineRange": {
+        "start": 58,
+        "end": 58
+      }
+    },
+    {
+      "kind": "network",
+      "target": "from nova.api.openstack.compute import multinic",
+      "lineRange": {
+        "start": 59,
+        "end": 59
+      }
+    },
+    {
+      "kind": "network",
+      "target": "from nova.api.openstack.compute import networks",
+      "lineRange": {
+        "start": 60,
+        "end": 60
+      }
+    },
+    {
+      "kind": "network",
+      "target": "from nova.api.openstack.compute import networks_associate",
+      "lineRange": {
+        "start": 61,
+        "end": 61
+      }
+    },
+    {
+      "kind": "network",
+      "target": "from nova.api.openstack.compute import pause_server",
+      "lineRange": {
+        "start": 62,
+        "end": 62
+      }
+    },
+    {
+      "kind": "network",
+      "target": "from nova.api.openstack.compute import quota_classes",
+      "lineRange": {
+        "start": 63,
+        "end": 63
+      }
+    },
+    {
+      "kind": "network",
+      "target": "from nova.api.openstack.compute import quota_sets",
+      "lineRange": {
+        "start": 64,
+        "end": 64
+      }
+    },
+    {
+      "kind": "network",
+      "target": "from nova.api.openstack.compute import remote_consoles",
+      "lineRange": {
+        "start": 65,
+        "end": 65
+      }
+    },
+    {
+      "kind": "network",
+      "target": "from nova.api.openstack.compute import rescue",
+      "lineRange": {
+        "start": 66,
+        "end": 66
+      }
+    },
+    {
+      "kind": "network",
+      "target": "from nova.api.openstack.compute import security_group_default_rules",
+      "lineRange": {
+        "start": 67,
+        "end": 67
+      }
+    },
+    {
+      "kind": "network",
+      "target": "from nova.api.openstack.compute import security_groups",
+      "lineRange": {
+        "start": 68,
+        "end": 68
+      }
+    },
+    {
+      "kind": "network",
+      "target": "from nova.api.openstack.compute import server_diagnostics",
+      "lineRange": {
+        "start": 69,
+        "end": 69
+      }
+    },
+    {
+      "kind": "network",
+      "target": "from nova.api.openstack.compute import server_external_events",
+      "lineRange": {
+        "start": 70,
+        "end": 70
+      }
+    },
+    {
+      "kind": "network",
+      "target": "from nova.api.openstack.compute import server_groups",
+      "lineRange": {
+        "start": 71,
+        "end": 71
+      }
+    },
+    {
+      "kind": "network",
+      "target": "from nova.api.openstack.compute import server_metadata",
+      "lineRange": {
+        "start": 72,
+        "end": 72
+      }
+    },
+    {
+      "kind": "network",
+      "target": "from nova.api.openstack.compute import server_migrations",
+      "lineRange": {
+        "start": 73,
+        "end": 73
+      }
+    },
+    {
+      "kind": "network",
+      "target": "from nova.api.openstack.compute import server_password",
+      "lineRange": {
+        "start": 74,
+        "end": 74
+      }
+    },
+    {
+      "kind": "network",
+      "target": "from nova.api.openstack.compute import server_shares",
+      "lineRange": {
+        "start": 75,
+        "end": 75
+      }
+    },
+    {
+      "kind": "network",
+      "target": "from nova.api.openstack.compute import server_tags",
+      "lineRange": {
+        "start": 76,
+        "end": 76
+      }
+    },
+    {
+      "kind": "network",
+      "target": "from nova.api.openstack.compute import server_topology",
+      "lineRange": {
+        "start": 77,
+        "end": 77
+      }
+    },
+    {
+      "kind": "network",
+      "target": "from nova.api.openstack.compute import servers",
+      "lineRange": {
+        "start": 78,
+        "end": 78
+      }
+    },
+    {
+      "kind": "network",
+      "target": "from nova.api.openstack.compute import services",
+      "lineRange": {
+        "start": 79,
+        "end": 79
+      }
+    },
+    {
+      "kind": "network",
+      "target": "from nova.api.openstack.compute import shelve",
+      "lineRange": {
+        "start": 80,
+        "end": 80
+      }
+    },
+    {
+      "kind": "network",
+      "target": "from nova.api.openstack.compute import simple_tenant_usage",
+      "lineRange": {
+        "start": 81,
+        "end": 81
+      }
+    },
+    {
+      "kind": "network",
+      "target": "from nova.api.openstack.compute import snapshots",
+      "lineRange": {
+        "start": 82,
+        "end": 82
+      }
+    },
+    {
+      "kind": "network",
+      "target": "from nova.api.openstack.compute import suspend_server",
+      "lineRange": {
+        "start": 83,
+        "end": 83
+      }
+    },
+    {
+      "kind": "network",
+      "target": "from nova.api.openstack.compute import tenant_networks",
+      "lineRange": {
+        "start": 84,
+        "end": 84
+      }
+    },
+    {
+      "kind": "network",
+      "target": "from nova.api.openstack.compute import versionsV21",
+      "lineRange": {
+        "start": 85,
+        "end": 85
+      }
+    },
+    {
+      "kind": "network",
+      "target": "from nova.api.openstack.compute import virtual_interfaces",
+      "lineRange": {
+        "start": 86,
+        "end": 86
+      }
+    },
+    {
+      "kind": "network",
+      "target": "from nova.api.openstack.compute import volume_attachments",
+      "lineRange": {
+        "start": 87,
+        "end": 87
+      }
+    },
+    {
+      "kind": "network",
+      "target": "from nova.api.openstack.compute import volumes",
+      "lineRange": {
+        "start": 88,
+        "end": 88
+      }
+    },
+    {
+      "kind": "network",
+      "target": "from nova.api.openstack.compute import volumes_boot",
+      "lineRange": {
+        "start": 89,
+        "end": 89
+      }
+    },
+    {
+      "kind": "network",
+      "target": "super(APIRouterV21, self).__init__(nova.api.openstack.ProjectMapper())",
+      "lineRange": {
+        "start": 871,
+        "end": 871
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "ROUTE_LIST = (",
+      "lineRange": {
+        "start": 377,
+        "end": 377
+      }
+    }
+  ],
+  "securitySurface": [
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "'PUT': [flavor_controller, 'update'],",
+      "lineRange": {
+        "start": 403,
+        "end": 403
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "'PUT': [flavor_extraspec_controller, 'update'],",
+      "lineRange": {
+        "start": 415,
+        "end": 415
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "'PUT': [image_metadata_controller, 'update'],",
+      "lineRange": {
+        "start": 438,
+        "end": 438
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "'PUT': [agents_controller, 'update'],",
+      "lineRange": {
+        "start": 449,
+        "end": 449
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "'PUT': [aggregates_controller, 'update'],",
+      "lineRange": {
+        "start": 458,
+        "end": 458
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "'PUT': [cells_controller, 'update'],",
+      "lineRange": {
+        "start": 508,
+        "end": 508
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "'PUT': [cloudpipe_controller, 'update']",
+      "lineRange": {
+        "start": 525,
+        "end": 525
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "'PUT': [floating_ip_dns_controller, 'update'],",
+      "lineRange": {
+        "start": 540,
+        "end": 540
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "'PUT': [floating_ip_dnsentry_controller, 'update'],",
+      "lineRange": {
+        "start": 545,
+        "end": 545
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "'PUT': [floating_ips_bulk_controller, 'update']",
+      "lineRange": {
+        "start": 565,
+        "end": 565
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "'PUT': [hosts_controller, 'update']",
+      "lineRange": {
+        "start": 578,
+        "end": 578
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "'PUT': [quota_classes_controller, 'update']",
+      "lineRange": {
+        "start": 643,
+        "end": 643
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "'PUT': [quota_set_controller, 'update'],",
+      "lineRange": {
+        "start": 647,
+        "end": 647
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "'PUT': [security_group_controller, 'update'],",
+      "lineRange": {
+        "start": 676,
+        "end": 676
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "'PUT': [services_controller, 'update'],",
+      "lineRange": {
+        "start": 694,
+        "end": 694
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "'PUT': [volumes_boot_controller, 'update'],",
+      "lineRange": {
+        "start": 742,
+        "end": 742
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "'PUT': [server_controller, 'update'],",
+      "lineRange": {
+        "start": 757,
+        "end": 757
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "'PUT': [server_metadata_controller, 'update'],",
+      "lineRange": {
+        "start": 787,
+        "end": 787
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "'PUT': [server_volume_attachments_controller, 'update'],",
+      "lineRange": {
+        "start": 827,
+        "end": 827
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "'PUT': [server_tags_controller, 'update'],",
+      "lineRange": {
+        "start": 851,
+        "end": 851
+      }
+    }
+  ],
+  "injection_flags": [],
+  "warnings": []
+}

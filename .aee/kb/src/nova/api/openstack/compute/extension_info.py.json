@@ -1,0 +1,1145 @@
+{
+  "file": "src/nova/api/openstack/compute/extension_info.py",
+  "hash": "26139880f2641949fc8622e6e36ee3c8937f55e1ec4ff95b0decaa38b8b06cd3",
+  "language": "Python",
+  "component": "nova",
+  "package": null,
+  "lines": {
+    "blank": 14,
+    "code": 859,
+    "comment": 18,
+    "total": 891
+  },
+  "symbols": [
+    {
+      "name": "EXTENSION_LIST",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 23,
+        "end": 839
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "EXTENSION_LIST_LEGACY_V2_COMPATIBLE",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 842,
+        "end": 842
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "EXTENSION_LIST_LEGACY_V2_COMPATIBLE",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 851,
+        "end": 852
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "ExtensionInfoController",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 856,
+        "end": 891
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "index",
+      "kind": "method",
+      "scope": "ExtensionInfoController",
+      "lineRange": {
+        "start": 862,
+        "end": 871
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "req"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "dict(extensions=EXTENSION_LIST_LEGACY_V2_COMPATIBLE)",
+          "line": 869
+        },
+        {
+          "expr": "dict(extensions=EXTENSION_LIST)",
+          "line": 871
+        }
+      ],
+      "nloc": 6,
+      "ccn": 2,
+      "visibility": "public"
+    },
+    {
+      "name": "show",
+      "kind": "method",
+      "scope": "ExtensionInfoController",
+      "lineRange": {
+        "start": 877,
+        "end": 891
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "req"
+        },
+        {
+          "name": "id"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "dict(extension=ext)",
+          "line": 889
+        }
+      ],
+      "nloc": 10,
+      "ccn": 4,
+      "visibility": "public"
+    }
+  ],
+  "referencedSymbols": [
+    {
+      "name": "sorted",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 851,
+        "end": 851
+      }
+    },
+    {
+      "name": "wsgi.Controller",
+      "usage": "inherit",
+      "via": "nova.api.openstack",
+      "count": 1,
+      "lineRange": {
+        "start": 856,
+        "end": 856
+      }
+    },
+    {
+      "name": "wsgi.expected_errors",
+      "usage": "call",
+      "via": "nova.api.openstack",
+      "count": 2,
+      "lineRange": {
+        "start": 858,
+        "end": 858
+      }
+    },
+    {
+      "name": "validation.query_schema",
+      "usage": "call",
+      "via": "nova.api",
+      "count": 4,
+      "lineRange": {
+        "start": 859,
+        "end": 859
+      }
+    },
+    {
+      "name": "validation.response_body_schema",
+      "usage": "call",
+      "via": "nova.api",
+      "count": 2,
+      "lineRange": {
+        "start": 861,
+        "end": 861
+      }
+    },
+    {
+      "name": "dict",
+      "usage": "call",
+      "via": null,
+      "count": 3,
+      "lineRange": {
+        "start": 869,
+        "end": 869
+      }
+    },
+    {
+      "name": "webob.exc.HTTPNotFound",
+      "usage": "call",
+      "via": "webob.exc",
+      "count": 1,
+      "lineRange": {
+        "start": 891,
+        "end": 891
+      }
+    }
+  ],
+  "dependencies": [
+    {
+      "style": "import",
+      "module": "webob.exc",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 15,
+        "end": 15
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.api.openstack.compute.schemas",
+      "names": [
+        {
+          "alias": "schema",
+          "name": "extension_info"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 17,
+        "end": 17
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.api.openstack",
+      "names": [
+        {
+          "alias": null,
+          "name": "wsgi"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 18,
+        "end": 18
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.api",
+      "names": [
+        {
+          "alias": null,
+          "name": "validation"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 19,
+        "end": 19
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.policies",
+      "names": [
+        {
+          "alias": "ext_policies",
+          "name": "extensions"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 20,
+        "end": 20
+      }
+    }
+  ],
+  "sideEffects": [
+    {
+      "kind": "network",
+      "target": "from nova.api.openstack.compute.schemas import extension_info as schema",
+      "lineRange": {
+        "start": 17,
+        "end": 17
+      }
+    },
+    {
+      "kind": "network",
+      "target": "\"namespace\": \"http://docs.openstack.org/compute/ext/fake_xml\",",
+      "lineRange": {
+        "start": 29,
+        "end": 29
+      }
+    },
+    {
+      "kind": "network",
+      "target": "\"namespace\": \"http://docs.openstack.org/compute/ext/fake_xml\",",
+      "lineRange": {
+        "start": 37,
+        "end": 37
+      }
+    },
+    {
+      "kind": "network",
+      "target": "\"namespace\": \"http://docs.openstack.org/compute/ext/fake_xml\",",
+      "lineRange": {
+        "start": 45,
+        "end": 45
+      }
+    },
+    {
+      "kind": "network",
+      "target": "\"namespace\": \"http://docs.openstack.org/compute/ext/fake_xml\",",
+      "lineRange": {
+        "start": 53,
+        "end": 53
+      }
+    },
+    {
+      "kind": "network",
+      "target": "\"namespace\": \"http://docs.openstack.org/compute/ext/fake_xml\",",
+      "lineRange": {
+        "start": 61,
+        "end": 61
+      }
+    },
+    {
+      "kind": "network",
+      "target": "\"namespace\": \"http://docs.openstack.org/compute/ext/fake_xml\",",
+      "lineRange": {
+        "start": 69,
+        "end": 69
+      }
+    },
+    {
+      "kind": "network",
+      "target": "\"namespace\": \"http://docs.openstack.org/compute/ext/fake_xml\",",
+      "lineRange": {
+        "start": 77,
+        "end": 77
+      }
+    },
+    {
+      "kind": "network",
+      "target": "\"namespace\": \"http://docs.openstack.org/compute/ext/fake_xml\",",
+      "lineRange": {
+        "start": 85,
+        "end": 85
+      }
+    },
+    {
+      "kind": "network",
+      "target": "\"namespace\": \"http://docs.openstack.org/compute/ext/fake_xml\",",
+      "lineRange": {
+        "start": 93,
+        "end": 93
+      }
+    },
+    {
+      "kind": "network",
+      "target": "\"namespace\": \"http://docs.openstack.org/compute/ext/fake_xml\",",
+      "lineRange": {
+        "start": 101,
+        "end": 101
+      }
+    },
+    {
+      "kind": "network",
+      "target": "\"namespace\": \"http://docs.openstack.org/compute/ext/fake_xml\",",
+      "lineRange": {
+        "start": 109,
+        "end": 109
+      }
+    },
+    {
+      "kind": "network",
+      "target": "\"namespace\": \"http://docs.openstack.org/compute/ext/fake_xml\",",
+      "lineRange": {
+        "start": 117,
+        "end": 117
+      }
+    },
+    {
+      "kind": "network",
+      "target": "\"namespace\": \"http://docs.openstack.org/compute/ext/fake_xml\",",
+      "lineRange": {
+        "start": 125,
+        "end": 125
+      }
+    },
+    {
+      "kind": "network",
+      "target": "\"namespace\": \"http://docs.openstack.org/compute/ext/fake_xml\",",
+      "lineRange": {
+        "start": 135,
+        "end": 135
+      }
+    },
+    {
+      "kind": "network",
+      "target": "\"namespace\": \"http://docs.openstack.org/compute/ext/fake_xml\",",
+      "lineRange": {
+        "start": 143,
+        "end": 143
+      }
+    },
+    {
+      "kind": "network",
+      "target": "\"namespace\": \"http://docs.openstack.org/compute/ext/fake_xml\",",
+      "lineRange": {
+        "start": 151,
+        "end": 151
+      }
+    },
+    {
+      "kind": "network",
+      "target": "\"namespace\": \"http://docs.openstack.org/compute/ext/fake_xml\",",
+      "lineRange": {
+        "start": 159,
+        "end": 159
+      }
+    },
+    {
+      "kind": "network",
+      "target": "\"namespace\": \"http://docs.openstack.org/compute/ext/fake_xml\",",
+      "lineRange": {
+        "start": 167,
+        "end": 167
+      }
+    },
+    {
+      "kind": "network",
+      "target": "\"namespace\": \"http://docs.openstack.org/compute/ext/fake_xml\",",
+      "lineRange": {
+        "start": 175,
+        "end": 175
+      }
+    },
+    {
+      "kind": "network",
+      "target": "\"namespace\": \"http://docs.openstack.org/compute/ext/fake_xml\",",
+      "lineRange": {
+        "start": 185,
+        "end": 185
+      }
+    },
+    {
+      "kind": "network",
+      "target": "\"namespace\": \"http://docs.openstack.org/compute/ext/fake_xml\",",
+      "lineRange": {
+        "start": 193,
+        "end": 193
+      }
+    },
+    {
+      "kind": "network",
+      "target": "\"namespace\": \"http://docs.openstack.org/compute/ext/fake_xml\",",
+      "lineRange": {
+        "start": 201,
+        "end": 201
+      }
+    },
+    {
+      "kind": "network",
+      "target": "\"namespace\": \"http://docs.openstack.org/compute/ext/fake_xml\",",
+      "lineRange": {
+        "start": 209,
+        "end": 209
+      }
+    },
+    {
+      "kind": "network",
+      "target": "\"namespace\": \"http://docs.openstack.org/compute/ext/fake_xml\",",
+      "lineRange": {
+        "start": 217,
+        "end": 217
+      }
+    },
+    {
+      "kind": "network",
+      "target": "\"namespace\": \"http://docs.openstack.org/compute/ext/fake_xml\",",
+      "lineRange": {
+        "start": 225,
+        "end": 225
+      }
+    },
+    {
+      "kind": "network",
+      "target": "\"namespace\": \"http://docs.openstack.org/compute/ext/fake_xml\",",
+      "lineRange": {
+        "start": 235,
+        "end": 235
+      }
+    },
+    {
+      "kind": "network",
+      "target": "\"namespace\": \"http://docs.openstack.org/compute/ext/fake_xml\",",
+      "lineRange": {
+        "start": 243,
+        "end": 243
+      }
+    },
+    {
+      "kind": "network",
+      "target": "\"namespace\": \"http://docs.openstack.org/compute/ext/fake_xml\",",
+      "lineRange": {
+        "start": 257,
+        "end": 257
+      }
+    },
+    {
+      "kind": "network",
+      "target": "\"namespace\": \"http://docs.openstack.org/compute/ext/fake_xml\",",
+      "lineRange": {
+        "start": 266,
+        "end": 266
+      }
+    },
+    {
+      "kind": "network",
+      "target": "\"namespace\": \"http://docs.openstack.org/compute/ext/fake_xml\",",
+      "lineRange": {
+        "start": 274,
+        "end": 274
+      }
+    },
+    {
+      "kind": "network",
+      "target": "\"namespace\": \"http://docs.openstack.org/compute/ext/fake_xml\",",
+      "lineRange": {
+        "start": 282,
+        "end": 282
+      }
+    },
+    {
+      "kind": "network",
+      "target": "\"namespace\": \"http://docs.openstack.org/compute/ext/fake_xml\",",
+      "lineRange": {
+        "start": 290,
+        "end": 290
+      }
+    },
+    {
+      "kind": "network",
+      "target": "\"namespace\": \"http://docs.openstack.org/compute/ext/fake_xml\",",
+      "lineRange": {
+        "start": 298,
+        "end": 298
+      }
+    },
+    {
+      "kind": "network",
+      "target": "\"namespace\": \"http://docs.openstack.org/compute/ext/fake_xml\",",
+      "lineRange": {
+        "start": 306,
+        "end": 306
+      }
+    },
+    {
+      "kind": "network",
+      "target": "\"namespace\": \"http://docs.openstack.org/compute/ext/fake_xml\",",
+      "lineRange": {
+        "start": 314,
+        "end": 314
+      }
+    },
+    {
+      "kind": "network",
+      "target": "\"namespace\": \"http://docs.openstack.org/compute/ext/fake_xml\",",
+      "lineRange": {
+        "start": 322,
+        "end": 322
+      }
+    },
+    {
+      "kind": "network",
+      "target": "\"namespace\": \"http://docs.openstack.org/compute/ext/fake_xml\",",
+      "lineRange": {
+        "start": 330,
+        "end": 330
+      }
+    },
+    {
+      "kind": "network",
+      "target": "\"namespace\": \"http://docs.openstack.org/compute/ext/fake_xml\",",
+      "lineRange": {
+        "start": 339,
+        "end": 339
+      }
+    },
+    {
+      "kind": "network",
+      "target": "\"namespace\": \"http://docs.openstack.org/compute/ext/fake_xml\",",
+      "lineRange": {
+        "start": 348,
+        "end": 348
+      }
+    },
+    {
+      "kind": "network",
+      "target": "\"namespace\": \"http://docs.openstack.org/compute/ext/fake_xml\",",
+      "lineRange": {
+        "start": 356,
+        "end": 356
+      }
+    },
+    {
+      "kind": "network",
+      "target": "\"namespace\": \"http://docs.openstack.org/compute/ext/fake_xml\",",
+      "lineRange": {
+        "start": 364,
+        "end": 364
+      }
+    },
+    {
+      "kind": "network",
+      "target": "\"namespace\": \"http://docs.openstack.org/compute/ext/fake_xml\",",
+      "lineRange": {
+        "start": 373,
+        "end": 373
+      }
+    },
+    {
+      "kind": "network",
+      "target": "\"namespace\": \"http://docs.openstack.org/compute/ext/fake_xml\",",
+      "lineRange": {
+        "start": 382,
+        "end": 382
+      }
+    },
+    {
+      "kind": "network",
+      "target": "\"namespace\": \"http://docs.openstack.org/compute/ext/fake_xml\",",
+      "lineRange": {
+        "start": 390,
+        "end": 390
+      }
+    },
+    {
+      "kind": "network",
+      "target": "\"namespace\": \"http://docs.openstack.org/compute/ext/fake_xml\",",
+      "lineRange": {
+        "start": 398,
+        "end": 398
+      }
+    },
+    {
+      "kind": "network",
+      "target": "\"namespace\": \"http://docs.openstack.org/compute/ext/fake_xml\",",
+      "lineRange": {
+        "start": 406,
+        "end": 406
+      }
+    },
+    {
+      "kind": "network",
+      "target": "\"namespace\": \"http://docs.openstack.org/compute/ext/fake_xml\",",
+      "lineRange": {
+        "start": 414,
+        "end": 414
+      }
+    },
+    {
+      "kind": "network",
+      "target": "\"namespace\": \"http://docs.openstack.org/compute/ext/fake_xml\",",
+      "lineRange": {
+        "start": 422,
+        "end": 422
+      }
+    },
+    {
+      "kind": "network",
+      "target": "\"namespace\": \"http://docs.openstack.org/compute/ext/fake_xml\",",
+      "lineRange": {
+        "start": 430,
+        "end": 430
+      }
+    },
+    {
+      "kind": "network",
+      "target": "\"namespace\": \"http://docs.openstack.org/compute/ext/fake_xml\",",
+      "lineRange": {
+        "start": 438,
+        "end": 438
+      }
+    },
+    {
+      "kind": "network",
+      "target": "\"namespace\": \"http://docs.openstack.org/compute/ext/fake_xml\",",
+      "lineRange": {
+        "start": 446,
+        "end": 446
+      }
+    },
+    {
+      "kind": "network",
+      "target": "\"namespace\": \"http://docs.openstack.org/compute/ext/fake_xml\",",
+      "lineRange": {
+        "start": 454,
+        "end": 454
+      }
+    },
+    {
+      "kind": "network",
+      "target": "\"namespace\": \"http://docs.openstack.org/compute/ext/fake_xml\",",
+      "lineRange": {
+        "start": 462,
+        "end": 462
+      }
+    },
+    {
+      "kind": "network",
+      "target": "\"namespace\": \"http://docs.openstack.org/compute/ext/fake_xml\",",
+      "lineRange": {
+        "start": 470,
+        "end": 470
+      }
+    },
+    {
+      "kind": "network",
+      "target": "\"namespace\": \"http://docs.openstack.org/compute/ext/fake_xml\",",
+      "lineRange": {
+        "start": 478,
+        "end": 478
+      }
+    },
+    {
+      "kind": "network",
+      "target": "\"namespace\": \"http://docs.openstack.org/compute/ext/fake_xml\",",
+      "lineRange": {
+        "start": 486,
+        "end": 486
+      }
+    },
+    {
+      "kind": "network",
+      "target": "\"namespace\": \"http://docs.openstack.org/compute/ext/fake_xml\",",
+      "lineRange": {
+        "start": 494,
+        "end": 494
+      }
+    },
+    {
+      "kind": "network",
+      "target": "\"namespace\": \"http://docs.openstack.org/compute/ext/fake_xml\",",
+      "lineRange": {
+        "start": 502,
+        "end": 502
+      }
+    },
+    {
+      "kind": "network",
+      "target": "\"namespace\": \"http://docs.openstack.org/compute/ext/fake_xml\",",
+      "lineRange": {
+        "start": 510,
+        "end": 510
+      }
+    },
+    {
+      "kind": "network",
+      "target": "\"namespace\": \"http://docs.openstack.org/compute/ext/fake_xml\",",
+      "lineRange": {
+        "start": 518,
+        "end": 518
+      }
+    },
+    {
+      "kind": "network",
+      "target": "\"namespace\": \"http://docs.openstack.org/compute/ext/fake_xml\",",
+      "lineRange": {
+        "start": 526,
+        "end": 526
+      }
+    },
+    {
+      "kind": "network",
+      "target": "\"namespace\": \"http://docs.openstack.org/compute/ext/fake_xml\",",
+      "lineRange": {
+        "start": 534,
+        "end": 534
+      }
+    },
+    {
+      "kind": "network",
+      "target": "\"namespace\": \"http://docs.openstack.org/compute/ext/fake_xml\",",
+      "lineRange": {
+        "start": 543,
+        "end": 543
+      }
+    },
+    {
+      "kind": "network",
+      "target": "\"namespace\": \"http://docs.openstack.org/compute/ext/fake_xml\",",
+      "lineRange": {
+        "start": 551,
+        "end": 551
+      }
+    },
+    {
+      "kind": "network",
+      "target": "\"namespace\": \"http://docs.openstack.org/compute/ext/fake_xml\",",
+      "lineRange": {
+        "start": 559,
+        "end": 559
+      }
+    },
+    {
+      "kind": "network",
+      "target": "\"namespace\": \"http://docs.openstack.org/compute/ext/fake_xml\",",
+      "lineRange": {
+        "start": 567,
+        "end": 567
+      }
+    },
+    {
+      "kind": "network",
+      "target": "\"namespace\": \"http://docs.openstack.org/compute/ext/fake_xml\",",
+      "lineRange": {
+        "start": 575,
+        "end": 575
+      }
+    },
+    {
+      "kind": "network",
+      "target": "\"namespace\": \"http://docs.openstack.org/compute/ext/fake_xml\",",
+      "lineRange": {
+        "start": 583,
+        "end": 583
+      }
+    },
+    {
+      "kind": "network",
+      "target": "\"namespace\": \"http://docs.openstack.org/compute/ext/fake_xml\",",
+      "lineRange": {
+        "start": 591,
+        "end": 591
+      }
+    },
+    {
+      "kind": "network",
+      "target": "\"namespace\": \"http://docs.openstack.org/compute/ext/fake_xml\",",
+      "lineRange": {
+        "start": 599,
+        "end": 599
+      }
+    },
+    {
+      "kind": "network",
+      "target": "\"namespace\": \"http://docs.openstack.org/compute/ext/fake_xml\",",
+      "lineRange": {
+        "start": 607,
+        "end": 607
+      }
+    },
+    {
+      "kind": "network",
+      "target": "\"namespace\": \"http://docs.openstack.org/compute/ext/fake_xml\",",
+      "lineRange": {
+        "start": 615,
+        "end": 615
+      }
+    },
+    {
+      "kind": "network",
+      "target": "\"namespace\": \"http://docs.openstack.org/compute/ext/fake_xml\",",
+      "lineRange": {
+        "start": 623,
+        "end": 623
+      }
+    },
+    {
+      "kind": "network",
+      "target": "\"namespace\": \"http://docs.openstack.org/compute/ext/fake_xml\",",
+      "lineRange": {
+        "start": 632,
+        "end": 632
+      }
+    },
+    {
+      "kind": "network",
+      "target": "\"namespace\": \"http://docs.openstack.org/compute/ext/fake_xml\",",
+      "lineRange": {
+        "start": 640,
+        "end": 640
+      }
+    },
+    {
+      "kind": "network",
+      "target": "\"namespace\": \"http://docs.openstack.org/compute/ext/fake_xml\",",
+      "lineRange": {
+        "start": 648,
+        "end": 648
+      }
+    },
+    {
+      "kind": "network",
+      "target": "\"namespace\": \"http://docs.openstack.org/compute/ext/fake_xml\",",
+      "lineRange": {
+        "start": 656,
+        "end": 656
+      }
+    },
+    {
+      "kind": "network",
+      "target": "\"namespace\": \"http://docs.openstack.org/compute/ext/fake_xml\",",
+      "lineRange": {
+        "start": 664,
+        "end": 664
+      }
+    },
+    {
+      "kind": "network",
+      "target": "\"namespace\": \"http://docs.openstack.org/compute/ext/fake_xml\",",
+      "lineRange": {
+        "start": 672,
+        "end": 672
+      }
+    },
+    {
+      "kind": "network",
+      "target": "\"namespace\": \"http://docs.openstack.org/compute/ext/fake_xml\",",
+      "lineRange": {
+        "start": 681,
+        "end": 681
+      }
+    },
+    {
+      "kind": "network",
+      "target": "\"namespace\": \"http://docs.openstack.org/compute/ext/fake_xml\",",
+      "lineRange": {
+        "start": 689,
+        "end": 689
+      }
+    },
+    {
+      "kind": "network",
+      "target": "\"namespace\": \"http://docs.openstack.org/compute/ext/fake_xml\",",
+      "lineRange": {
+        "start": 697,
+        "end": 697
+      }
+    },
+    {
+      "kind": "network",
+      "target": "\"namespace\": \"http://docs.openstack.org/compute/ext/fake_xml\",",
+      "lineRange": {
+        "start": 705,
+        "end": 705
+      }
+    },
+    {
+      "kind": "network",
+      "target": "\"namespace\": \"http://docs.openstack.org/compute/ext/fake_xml\",",
+      "lineRange": {
+        "start": 714,
+        "end": 714
+      }
+    },
+    {
+      "kind": "network",
+      "target": "\"namespace\": \"http://docs.openstack.org/compute/ext/fake_xml\",",
+      "lineRange": {
+        "start": 722,
+        "end": 722
+      }
+    },
+    {
+      "kind": "network",
+      "target": "\"namespace\": \"http://docs.openstack.org/compute/ext/fake_xml\",",
+      "lineRange": {
+        "start": 730,
+        "end": 730
+      }
+    },
+    {
+      "kind": "network",
+      "target": "\"namespace\": \"http://docs.openstack.org/compute/ext/fake_xml\",",
+      "lineRange": {
+        "start": 738,
+        "end": 738
+      }
+    },
+    {
+      "kind": "network",
+      "target": "\"namespace\": \"http://docs.openstack.org/compute/ext/fake_xml\",",
+      "lineRange": {
+        "start": 746,
+        "end": 746
+      }
+    },
+    {
+      "kind": "network",
+      "target": "\"namespace\": \"http://docs.openstack.org/compute/ext/fake_xml\",",
+      "lineRange": {
+        "start": 754,
+        "end": 754
+      }
+    },
+    {
+      "kind": "network",
+      "target": "\"namespace\": \"http://docs.openstack.org/compute/ext/fake_xml\",",
+      "lineRange": {
+        "start": 762,
+        "end": 762
+      }
+    },
+    {
+      "kind": "network",
+      "target": "\"namespace\": \"http://docs.openstack.org/compute/ext/fake_xml\",",
+      "lineRange": {
+        "start": 770,
+        "end": 770
+      }
+    },
+    {
+      "kind": "network",
+      "target": "\"namespace\": \"http://docs.openstack.org/compute/ext/fake_xml\",",
+      "lineRange": {
+        "start": 778,
+        "end": 778
+      }
+    },
+    {
+      "kind": "network",
+      "target": "\"namespace\": \"http://docs.openstack.org/compute/ext/fake_xml\",",
+      "lineRange": {
+        "start": 787,
+        "end": 787
+      }
+    },
+    {
+      "kind": "network",
+      "target": "\"namespace\": \"http://docs.openstack.org/compute/ext/fake_xml\",",
+      "lineRange": {
+        "start": 796,
+        "end": 796
+      }
+    },
+    {
+      "kind": "network",
+      "target": "\"namespace\": \"http://docs.openstack.org/compute/ext/fake_xml\",",
+      "lineRange": {
+        "start": 804,
+        "end": 804
+      }
+    },
+    {
+      "kind": "network",
+      "target": "\"namespace\": \"http://docs.openstack.org/compute/ext/fake_xml\",",
+      "lineRange": {
+        "start": 812,
+        "end": 812
+      }
+    },
+    {
+      "kind": "network",
+      "target": "\"namespace\": \"http://docs.openstack.org/compute/ext/fake_xml\",",
+      "lineRange": {
+        "start": 820,
+        "end": 820
+      }
+    },
+    {
+      "kind": "network",
+      "target": "\"namespace\": \"http://docs.openstack.org/compute/ext/fake_xml\",",
+      "lineRange": {
+        "start": 828,
+        "end": 828
+      }
+    },
+    {
+      "kind": "network",
+      "target": "\"namespace\": \"http://docs.openstack.org/compute/ext/fake_xml\",",
+      "lineRange": {
+        "start": 836,
+        "end": 836
+      }
+    },
+    {
+      "kind": "network",
+      "target": "'namespace': 'http://docs.openstack.org/compute/ext/fake_xml',",
+      "lineRange": {
+        "start": 848,
+        "end": 848
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "EXTENSION_LIST = [",
+      "lineRange": {
+        "start": 23,
+        "end": 23
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "EXTENSION_LIST_LEGACY_V2_COMPATIBLE = EXTENSION_LIST[:]",
+      "lineRange": {
+        "start": 842,
+        "end": 842
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "EXTENSION_LIST_LEGACY_V2_COMPATIBLE = sorted(",
+      "lineRange": {
+        "start": 851,
+        "end": 851
+      }
+    }
+  ],
+  "securitySurface": [
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "\"alias\": \"os-cloudpipe-update\",",
+      "lineRange": {
+        "start": 261,
+        "end": 261
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "\"Scheduler will select one to target.\",",
+      "lineRange": {
+        "start": 336,
+        "end": 336
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "\"optionally force the update Quota command.\",",
+      "lineRange": {
+        "start": 370,
+        "end": 370
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "\"alias\": \"os-volume-attachment-update\",",
+      "lineRange": {
+        "start": 824,
+        "end": 824
+      }
+    }
+  ],
+  "injection_flags": [],
+  "warnings": []
+}

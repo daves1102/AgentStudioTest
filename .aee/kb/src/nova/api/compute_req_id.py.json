@@ -1,0 +1,91 @@
+{
+  "file": "src/nova/api/compute_req_id.py",
+  "hash": "3d480d35a0f1fa28272460ce972473270f1a0369034f6714baea9f0386604da1",
+  "language": "Python",
+  "component": "nova",
+  "package": null,
+  "lines": {
+    "blank": 9,
+    "code": 13,
+    "comment": 14,
+    "total": 36
+  },
+  "symbols": [
+    {
+      "name": "HTTP_RESP_HEADER_REQUEST_ID",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 32,
+        "end": 32
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "ComputeReqIdMiddleware",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 35,
+        "end": 36
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "compat_headers",
+      "kind": "field",
+      "scope": "ComputeReqIdMiddleware",
+      "lineRange": {
+        "start": 36,
+        "end": 36
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    }
+  ],
+  "referencedSymbols": [
+    {
+      "name": "request_id.RequestId",
+      "usage": "inherit",
+      "via": "oslo_middleware",
+      "count": 1,
+      "lineRange": {
+        "start": 35,
+        "end": 35
+      }
+    }
+  ],
+  "dependencies": [
+    {
+      "style": "from",
+      "module": "oslo_middleware",
+      "names": [
+        {
+          "alias": null,
+          "name": "request_id"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 29,
+        "end": 29
+      }
+    }
+  ],
+  "sideEffects": [
+    {
+      "kind": "global-mutation",
+      "target": "HTTP_RESP_HEADER_REQUEST_ID = 'x-compute-request-id'",
+      "lineRange": {
+        "start": 32,
+        "end": 32
+      }
+    }
+  ],
+  "securitySurface": [],
+  "injection_flags": [],
+  "warnings": []
+}

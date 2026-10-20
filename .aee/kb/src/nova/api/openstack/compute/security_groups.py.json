@@ -1,0 +1,1291 @@
+{
+  "file": "src/nova/api/openstack/compute/security_groups.py",
+  "hash": "e4badbf6d9d1079d5fdba8ffa9393f7d2fe45ad9f25c9250026eb552ba648511",
+  "language": "Python",
+  "component": "nova",
+  "package": null,
+  "lines": {
+    "blank": 63,
+    "code": 376,
+    "comment": 29,
+    "total": 468
+  },
+  "symbols": [
+    {
+      "name": "LOG",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 35,
+        "end": 35
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "SG_NOT_FOUND",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 36,
+        "end": 36
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "SecurityGroupControllerBase",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 39,
+        "end": 131
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "__init__",
+      "kind": "method",
+      "scope": "SecurityGroupControllerBase",
+      "lineRange": {
+        "start": 42,
+        "end": 44
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 3,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "_format_security_group_rule",
+      "kind": "method",
+      "scope": "SecurityGroupControllerBase",
+      "lineRange": {
+        "start": 46,
+        "end": 81
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "context"
+        },
+        {
+          "name": "rule"
+        },
+        {
+          "default": "None",
+          "name": "group_rule_data"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "",
+          "line": 76
+        },
+        {
+          "expr": "sg_rule",
+          "line": 81
+        }
+      ],
+      "nloc": 24,
+      "ccn": 4,
+      "visibility": "private"
+    },
+    {
+      "name": "_format_security_group",
+      "kind": "method",
+      "scope": "SecurityGroupControllerBase",
+      "lineRange": {
+        "start": 83,
+        "end": 103
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "context"
+        },
+        {
+          "name": "group"
+        },
+        {
+          "default": "None",
+          "name": "group_rule_data_by_rule_group_id"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "security_group",
+          "line": 103
+        }
+      ],
+      "nloc": 20,
+      "ccn": 6,
+      "visibility": "private"
+    },
+    {
+      "name": "_get_group_rule_data_by_rule_group_id",
+      "kind": "method",
+      "scope": "SecurityGroupControllerBase",
+      "lineRange": {
+        "start": 105,
+        "end": 131
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "context"
+        },
+        {
+          "name": "groups"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "group_rule_data_by_rule_group_id",
+          "line": 131
+        }
+      ],
+      "nloc": 23,
+      "ccn": 7,
+      "visibility": "private"
+    },
+    {
+      "name": "SecurityGroupController",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 135,
+        "end": 257
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "show",
+      "kind": "method",
+      "scope": "SecurityGroupController",
+      "lineRange": {
+        "start": 142,
+        "end": 157
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "req"
+        },
+        {
+          "name": "id"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "{'security_group': self._format_security_group(context, security_group)}",
+          "line": 156
+        }
+      ],
+      "nloc": 13,
+      "ccn": 3,
+      "visibility": "public"
+    },
+    {
+      "name": "delete",
+      "kind": "method",
+      "scope": "SecurityGroupController",
+      "lineRange": {
+        "start": 163,
+        "end": 176
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "req"
+        },
+        {
+          "name": "id"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 12,
+      "ccn": 3,
+      "visibility": "public"
+    },
+    {
+      "name": "index",
+      "kind": "method",
+      "scope": "SecurityGroupController",
+      "lineRange": {
+        "start": 182,
+        "end": 201
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "req"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "{'security_groups': list(sorted(result, key=lambda k: (k['tenant_id'], k['name'])))}",
+          "line": 199
+        }
+      ],
+      "nloc": 15,
+      "ccn": 2,
+      "visibility": "public"
+    },
+    {
+      "name": "create",
+      "kind": "method",
+      "scope": "SecurityGroupController",
+      "lineRange": {
+        "start": 207,
+        "end": 225
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "req"
+        },
+        {
+          "name": "body"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "{'security_group': self._format_security_group(context, group_ref)}",
+          "line": 224
+        }
+      ],
+      "nloc": 15,
+      "ccn": 3,
+      "visibility": "public"
+    },
+    {
+      "name": "update",
+      "kind": "method",
+      "scope": "SecurityGroupController",
+      "lineRange": {
+        "start": 231,
+        "end": 257
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "req"
+        },
+        {
+          "name": "id"
+        },
+        {
+          "name": "body"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "{'security_group': self._format_security_group(context, group_ref)}",
+          "line": 256
+        }
+      ],
+      "nloc": 22,
+      "ccn": 5,
+      "visibility": "public"
+    },
+    {
+      "name": "SecurityGroupRulesController",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 261,
+        "end": 360
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "create",
+      "kind": "method",
+      "scope": "SecurityGroupRulesController",
+      "lineRange": {
+        "start": 269,
+        "end": 326
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "req"
+        },
+        {
+          "name": "body"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "{\"security_group_rule\": formatted_rule}",
+          "line": 326
+        }
+      ],
+      "nloc": 51,
+      "ccn": 12,
+      "visibility": "public"
+    },
+    {
+      "name": "_rule_args_to_dict",
+      "kind": "method",
+      "scope": "SecurityGroupRulesController",
+      "lineRange": {
+        "start": 328,
+        "end": 337
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "context"
+        },
+        {
+          "default": "None",
+          "name": "to_port"
+        },
+        {
+          "default": "None",
+          "name": "from_port"
+        },
+        {
+          "default": "None",
+          "name": "ip_protocol"
+        },
+        {
+          "default": "None",
+          "name": "cidr"
+        },
+        {
+          "default": "None",
+          "name": "group_id"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "security_group_api.new_group_ingress_rule( group_id, ip_protocol, from_port, to_port)",
+          "line": 332
+        },
+        {
+          "expr": "security_group_api.new_cidr_ingress_rule( cidr, ip_protocol, from_port, to_port)",
+          "line": 336
+        }
+      ],
+      "nloc": 9,
+      "ccn": 2,
+      "visibility": "private"
+    },
+    {
+      "name": "delete",
+      "kind": "method",
+      "scope": "SecurityGroupRulesController",
+      "lineRange": {
+        "start": 343,
+        "end": 360
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "req"
+        },
+        {
+          "name": "id"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 17,
+      "ccn": 4,
+      "visibility": "public"
+    },
+    {
+      "name": "ServerSecurityGroupController",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 364,
+        "end": 398
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "index",
+      "kind": "method",
+      "scope": "ServerSecurityGroupController",
+      "lineRange": {
+        "start": 372,
+        "end": 398
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "req"
+        },
+        {
+          "name": "server_id"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "{'security_groups': list(sorted(result, key=lambda k: (k['tenant_id'], k['name'])))}",
+          "line": 396
+        }
+      ],
+      "nloc": 20,
+      "ccn": 3,
+      "visibility": "public"
+    },
+    {
+      "name": "SecurityGroupActionController",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 402,
+        "end": 468
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "__init__",
+      "kind": "method",
+      "scope": "SecurityGroupActionController",
+      "lineRange": {
+        "start": 403,
+        "end": 405
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 3,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "_parse",
+      "kind": "method",
+      "scope": "SecurityGroupActionController",
+      "lineRange": {
+        "start": 407,
+        "end": 422
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "body"
+        },
+        {
+          "name": "action"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "group_name",
+          "line": 422
+        }
+      ],
+      "nloc": 14,
+      "ccn": 5,
+      "visibility": "private"
+    },
+    {
+      "name": "_addSecurityGroup",
+      "kind": "method",
+      "scope": "SecurityGroupActionController",
+      "lineRange": {
+        "start": 429,
+        "end": 446
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "req"
+        },
+        {
+          "name": "id"
+        },
+        {
+          "name": "body"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 17,
+      "ccn": 4,
+      "visibility": "private"
+    },
+    {
+      "name": "_removeSecurityGroup",
+      "kind": "method",
+      "scope": "SecurityGroupActionController",
+      "lineRange": {
+        "start": 453,
+        "end": 468
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "req"
+        },
+        {
+          "name": "id"
+        },
+        {
+          "name": "body"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 14,
+      "ccn": 3,
+      "visibility": "private"
+    }
+  ],
+  "referencedSymbols": [
+    {
+      "name": "logging.getLogger",
+      "usage": "call",
+      "via": "oslo_log",
+      "count": 1,
+      "lineRange": {
+        "start": 35,
+        "end": 35
+      }
+    },
+    {
+      "name": "object",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 36,
+        "end": 36
+      }
+    },
+    {
+      "name": "object",
+      "usage": "inherit",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 39,
+        "end": 39
+      }
+    },
+    {
+      "name": "super",
+      "usage": "call",
+      "via": null,
+      "count": 2,
+      "lineRange": {
+        "start": 43,
+        "end": 43
+      }
+    },
+    {
+      "name": "compute.API",
+      "usage": "call",
+      "via": "nova.compute",
+      "count": 2,
+      "lineRange": {
+        "start": 44,
+        "end": 44
+      }
+    },
+    {
+      "name": "security_group_api.get",
+      "usage": "call",
+      "via": "nova.network",
+      "count": 8,
+      "lineRange": {
+        "start": 64,
+        "end": 64
+      }
+    },
+    {
+      "name": "wsgi.Controller",
+      "usage": "inherit",
+      "via": "nova.api.openstack",
+      "count": 4,
+      "lineRange": {
+        "start": 135,
+        "end": 135
+      }
+    },
+    {
+      "name": "wsgi.api_version",
+      "usage": "call",
+      "via": "nova.api.openstack",
+      "count": 7,
+      "lineRange": {
+        "start": 138,
+        "end": 138
+      }
+    },
+    {
+      "name": "wsgi.expected_errors",
+      "usage": "call",
+      "via": "nova.api.openstack",
+      "count": 10,
+      "lineRange": {
+        "start": 139,
+        "end": 139
+      }
+    },
+    {
+      "name": "validation.query_schema",
+      "usage": "call",
+      "via": "nova.api",
+      "count": 4,
+      "lineRange": {
+        "start": 140,
+        "end": 140
+      }
+    },
+    {
+      "name": "validation.response_body_schema",
+      "usage": "call",
+      "via": "nova.api",
+      "count": 10,
+      "lineRange": {
+        "start": 141,
+        "end": 141
+      }
+    },
+    {
+      "name": "security_group_api.validate_id",
+      "usage": "call",
+      "via": "nova.network",
+      "count": 4,
+      "lineRange": {
+        "start": 149,
+        "end": 149
+      }
+    },
+    {
+      "name": "exc.HTTPNotFound",
+      "usage": "call",
+      "via": "webob",
+      "count": 10,
+      "lineRange": {
+        "start": 152,
+        "end": 152
+      }
+    },
+    {
+      "name": "exc.HTTPBadRequest",
+      "usage": "call",
+      "via": "webob",
+      "count": 14,
+      "lineRange": {
+        "start": 154,
+        "end": 154
+      }
+    },
+    {
+      "name": "wsgi.response",
+      "usage": "call",
+      "via": "nova.api.openstack",
+      "count": 4,
+      "lineRange": {
+        "start": 161,
+        "end": 161
+      }
+    },
+    {
+      "name": "security_group_api.destroy",
+      "usage": "call",
+      "via": "nova.network",
+      "count": 1,
+      "lineRange": {
+        "start": 172,
+        "end": 172
+      }
+    },
+    {
+      "name": "security_group_api.list",
+      "usage": "call",
+      "via": "nova.network",
+      "count": 1,
+      "lineRange": {
+        "start": 192,
+        "end": 192
+      }
+    },
+    {
+      "name": "common.limited",
+      "usage": "call",
+      "via": "nova.api.openstack",
+      "count": 1,
+      "lineRange": {
+        "start": 195,
+        "end": 195
+      }
+    },
+    {
+      "name": "list",
+      "usage": "call",
+      "via": null,
+      "count": 2,
+      "lineRange": {
+        "start": 200,
+        "end": 200
+      }
+    },
+    {
+      "name": "sorted",
+      "usage": "call",
+      "via": null,
+      "count": 2,
+      "lineRange": {
+        "start": 200,
+        "end": 200
+      }
+    },
+    {
+      "name": "validation.schema",
+      "usage": "call",
+      "via": "nova.api",
+      "count": 5,
+      "lineRange": {
+        "start": 205,
+        "end": 205
+      }
+    },
+    {
+      "name": "security_group_api.create_security_group",
+      "usage": "call",
+      "via": "nova.network",
+      "count": 1,
+      "lineRange": {
+        "start": 217,
+        "end": 217
+      }
+    },
+    {
+      "name": "exc.HTTPForbidden",
+      "usage": "call",
+      "via": "webob",
+      "count": 2,
+      "lineRange": {
+        "start": 222,
+        "end": 222
+      }
+    },
+    {
+      "name": "security_group_api.update_security_group",
+      "usage": "call",
+      "via": "nova.network",
+      "count": 1,
+      "lineRange": {
+        "start": 249,
+        "end": 249
+      }
+    },
+    {
+      "name": "_",
+      "usage": "call",
+      "via": "nova.i18n",
+      "count": 5,
+      "lineRange": {
+        "start": 296,
+        "end": 296
+      }
+    },
+    {
+      "name": "netutils.get_net_and_prefixlen",
+      "usage": "call",
+      "via": "nova.virt",
+      "count": 1,
+      "lineRange": {
+        "start": 302,
+        "end": 302
+      }
+    },
+    {
+      "name": "security_group_api.create_security_group_rule",
+      "usage": "call",
+      "via": "nova.network",
+      "count": 1,
+      "lineRange": {
+        "start": 314,
+        "end": 314
+      }
+    },
+    {
+      "name": "security_group_api.new_group_ingress_rule",
+      "usage": "call",
+      "via": "nova.network",
+      "count": 1,
+      "lineRange": {
+        "start": 332,
+        "end": 332
+      }
+    },
+    {
+      "name": "security_group_api.parse_cidr",
+      "usage": "call",
+      "via": "nova.network",
+      "count": 1,
+      "lineRange": {
+        "start": 335,
+        "end": 335
+      }
+    },
+    {
+      "name": "security_group_api.new_cidr_ingress_rule",
+      "usage": "call",
+      "via": "nova.network",
+      "count": 1,
+      "lineRange": {
+        "start": 336,
+        "end": 336
+      }
+    },
+    {
+      "name": "security_group_api.get_rule",
+      "usage": "call",
+      "via": "nova.network",
+      "count": 1,
+      "lineRange": {
+        "start": 350,
+        "end": 350
+      }
+    },
+    {
+      "name": "security_group_api.remove_rules",
+      "usage": "call",
+      "via": "nova.network",
+      "count": 1,
+      "lineRange": {
+        "start": 353,
+        "end": 353
+      }
+    },
+    {
+      "name": "exc.HTTPConflict",
+      "usage": "call",
+      "via": "webob",
+      "count": 3,
+      "lineRange": {
+        "start": 358,
+        "end": 358
+      }
+    },
+    {
+      "name": "common.get_instance",
+      "usage": "call",
+      "via": "nova.api.openstack",
+      "count": 3,
+      "lineRange": {
+        "start": 375,
+        "end": 375
+      }
+    },
+    {
+      "name": "security_group_api.get_instance_security_groups",
+      "usage": "call",
+      "via": "nova.network",
+      "count": 1,
+      "lineRange": {
+        "start": 379,
+        "end": 379
+      }
+    },
+    {
+      "name": "wsgi.action",
+      "usage": "call",
+      "via": "nova.api.openstack",
+      "count": 2,
+      "lineRange": {
+        "start": 426,
+        "end": 426
+      }
+    },
+    {
+      "name": "security_group_api.add_to_instance",
+      "usage": "call",
+      "via": "nova.network",
+      "count": 1,
+      "lineRange": {
+        "start": 437,
+        "end": 437
+      }
+    },
+    {
+      "name": "security_group_api.remove_from_instance",
+      "usage": "call",
+      "via": "nova.network",
+      "count": 1,
+      "lineRange": {
+        "start": 462,
+        "end": 462
+      }
+    }
+  ],
+  "dependencies": [
+    {
+      "style": "from",
+      "module": "oslo_log",
+      "names": [
+        {
+          "alias": "logging",
+          "name": "log"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 18,
+        "end": 18
+      }
+    },
+    {
+      "style": "from",
+      "module": "webob",
+      "names": [
+        {
+          "alias": null,
+          "name": "exc"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 19,
+        "end": 19
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.api.openstack.api_version_request",
+      "names": [
+        {
+          "alias": null,
+          "name": "MAX_PROXY_API_SUPPORT_VERSION"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 21,
+        "end": 22
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.api.openstack",
+      "names": [
+        {
+          "alias": null,
+          "name": "common"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 23,
+        "end": 23
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.api.openstack.compute.schemas",
+      "names": [
+        {
+          "alias": "schema",
+          "name": "security_groups"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 24,
+        "end": 24
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.api.openstack",
+      "names": [
+        {
+          "alias": null,
+          "name": "wsgi"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 25,
+        "end": 25
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.api",
+      "names": [
+        {
+          "alias": null,
+          "name": "validation"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 26,
+        "end": 26
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.compute",
+      "names": [
+        {
+          "alias": "compute",
+          "name": "api"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 27,
+        "end": 27
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "exception"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 28,
+        "end": 28
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.i18n",
+      "names": [
+        {
+          "alias": null,
+          "name": "_"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 29,
+        "end": 29
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.network",
+      "names": [
+        {
+          "alias": null,
+          "name": "security_group_api"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 30,
+        "end": 30
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.policies",
+      "names": [
+        {
+          "alias": "sg_policies",
+          "name": "security_groups"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 31,
+        "end": 31
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.virt",
+      "names": [
+        {
+          "alias": null,
+          "name": "netutils"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 32,
+        "end": 32
+      }
+    }
+  ],
+  "sideEffects": [
+    {
+      "kind": "network",
+      "target": "from nova.api.openstack.api_version_request \\",
+      "lineRange": {
+        "start": 21,
+        "end": 21
+      }
+    },
+    {
+      "kind": "network",
+      "target": "from nova.api.openstack.compute.schemas import security_groups as schema",
+      "lineRange": {
+        "start": 24,
+        "end": 24
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "LOG = logging.getLogger(__name__)",
+      "lineRange": {
+        "start": 35,
+        "end": 35
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "SG_NOT_FOUND = object()",
+      "lineRange": {
+        "start": 36,
+        "end": 36
+      }
+    }
+  ],
+  "securitySurface": [
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "search_opts.update(req.GET)",
+      "lineRange": {
+        "start": 189,
+        "end": 189
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "@validation.schema(schema.update)",
+      "lineRange": {
+        "start": 229,
+        "end": 229
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "def update(self, req, id, body):",
+      "lineRange": {
+        "start": 231,
+        "end": 231
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "\"\"\"Update a security group.\"\"\"",
+      "lineRange": {
+        "start": 232,
+        "end": 232
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "context.can(sg_policies.POLICY_NAME % 'update',",
+      "lineRange": {
+        "start": 234,
+        "end": 234
+      }
+    }
+  ],
+  "injection_flags": [],
+  "warnings": []
+}

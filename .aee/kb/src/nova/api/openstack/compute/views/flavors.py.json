@@ -1,0 +1,284 @@
+{
+  "file": "src/nova/api/openstack/compute/views/flavors.py",
+  "hash": "f0439b9086492b9d4a7595295c351956576b9783fecf389c643e043ce61ad380",
+  "language": "Python",
+  "component": "nova",
+  "package": null,
+  "lines": {
+    "blank": 20,
+    "code": 76,
+    "comment": 17,
+    "total": 113
+  },
+  "symbols": [
+    {
+      "name": "ViewBuilder",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 20,
+        "end": 113
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "_collection_name",
+      "kind": "field",
+      "scope": "ViewBuilder",
+      "lineRange": {
+        "start": 22,
+        "end": 22
+      },
+      "source": "aee-inventory",
+      "visibility": "private"
+    },
+    {
+      "name": "basic",
+      "kind": "method",
+      "scope": "ViewBuilder",
+      "lineRange": {
+        "start": 24,
+        "end": 41
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "request"
+        },
+        {
+          "name": "flavor"
+        },
+        {
+          "default": "False",
+          "name": "include_extra_specs"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "flavor_dict",
+          "line": 41
+        }
+      ],
+      "nloc": 13,
+      "ccn": 2,
+      "visibility": "public"
+    },
+    {
+      "name": "show",
+      "kind": "method",
+      "scope": "ViewBuilder",
+      "lineRange": {
+        "start": 43,
+        "end": 75
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "request"
+        },
+        {
+          "name": "flavor"
+        },
+        {
+          "default": "False",
+          "name": "include_extra_specs"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "flavor_dict",
+          "line": 75
+        }
+      ],
+      "nloc": 28,
+      "ccn": 8,
+      "visibility": "public"
+    },
+    {
+      "name": "index",
+      "kind": "method",
+      "scope": "ViewBuilder",
+      "lineRange": {
+        "start": 77,
+        "end": 80
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "request"
+        },
+        {
+          "name": "flavors"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "self._list_view(self.basic, request, flavors, coll_name)",
+          "line": 80
+        }
+      ],
+      "nloc": 3,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "detail",
+      "kind": "method",
+      "scope": "ViewBuilder",
+      "lineRange": {
+        "start": 82,
+        "end": 86
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "request"
+        },
+        {
+          "name": "flavors"
+        },
+        {
+          "default": "False",
+          "name": "include_extra_specs"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "self._list_view(self.show, request, flavors, coll_name, include_extra_specs=include_extra_specs)",
+          "line": 85
+        }
+      ],
+      "nloc": 4,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "_list_view",
+      "kind": "method",
+      "scope": "ViewBuilder",
+      "lineRange": {
+        "start": 88,
+        "end": 113
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "func"
+        },
+        {
+          "name": "request"
+        },
+        {
+          "name": "flavors"
+        },
+        {
+          "name": "coll_name"
+        },
+        {
+          "default": "False",
+          "name": "include_extra_specs"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "flavors_dict",
+          "line": 113
+        }
+      ],
+      "nloc": 12,
+      "ccn": 3,
+      "visibility": "private"
+    }
+  ],
+  "referencedSymbols": [
+    {
+      "name": "common.ViewBuilder",
+      "usage": "inherit",
+      "via": "nova.api.openstack",
+      "count": 1,
+      "lineRange": {
+        "start": 20,
+        "end": 20
+      }
+    },
+    {
+      "name": "api_version_request.is_supported",
+      "usage": "call",
+      "via": "nova.api.openstack",
+      "count": 4,
+      "lineRange": {
+        "start": 38,
+        "end": 38
+      }
+    },
+    {
+      "name": "func",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 104,
+        "end": 104
+      }
+    }
+  ],
+  "dependencies": [
+    {
+      "style": "from",
+      "module": "nova.api.openstack",
+      "names": [
+        {
+          "alias": null,
+          "name": "api_version_request"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 16,
+        "end": 16
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.api.openstack",
+      "names": [
+        {
+          "alias": null,
+          "name": "common"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 17,
+        "end": 17
+      }
+    }
+  ],
+  "sideEffects": [],
+  "securitySurface": [],
+  "injection_flags": [],
+  "warnings": []
+}

@@ -1,0 +1,542 @@
+{
+  "file": "src/nova/api/openstack/compute/views/images.py",
+  "hash": "d00fdf96533a7a1ec1dfa851fa7d490e8cc292fe9909b5416ef67ec14bd980ba",
+  "language": "Python",
+  "component": "nova",
+  "package": null,
+  "lines": {
+    "blank": 23,
+    "code": 129,
+    "comment": 15,
+    "total": 167
+  },
+  "symbols": [
+    {
+      "name": "ViewBuilder",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 24,
+        "end": 167
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "_collection_name",
+      "kind": "field",
+      "scope": "ViewBuilder",
+      "lineRange": {
+        "start": 26,
+        "end": 26
+      },
+      "source": "aee-inventory",
+      "visibility": "private"
+    },
+    {
+      "name": "basic",
+      "kind": "method",
+      "scope": "ViewBuilder",
+      "lineRange": {
+        "start": 28,
+        "end": 38
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "request"
+        },
+        {
+          "name": "image"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "{ \"image\": { \"id\": image.get(\"id\"), \"name\": image.get(\"name\"), \"links\": self._get_links(request, image[\"id\"], self._collection_name), }, }",
+          "line": 30
+        }
+      ],
+      "nloc": 10,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "show",
+      "kind": "method",
+      "scope": "ViewBuilder",
+      "lineRange": {
+        "start": 40,
+        "end": 82
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "request"
+        },
+        {
+          "name": "image"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "dict(image=image_dict)",
+          "line": 82
+        }
+      ],
+      "nloc": 38,
+      "ccn": 6,
+      "visibility": "public"
+    },
+    {
+      "name": "detail",
+      "kind": "method",
+      "scope": "ViewBuilder",
+      "lineRange": {
+        "start": 84,
+        "end": 88
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "request"
+        },
+        {
+          "name": "images"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "self._list_view(list_func, request, images, coll_name)",
+          "line": 88
+        }
+      ],
+      "nloc": 4,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "index",
+      "kind": "method",
+      "scope": "ViewBuilder",
+      "lineRange": {
+        "start": 90,
+        "end": 94
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "request"
+        },
+        {
+          "name": "images"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "self._list_view(list_func, request, images, coll_name)",
+          "line": 94
+        }
+      ],
+      "nloc": 4,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "_list_view",
+      "kind": "method",
+      "scope": "ViewBuilder",
+      "lineRange": {
+        "start": 96,
+        "end": 114
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "list_func"
+        },
+        {
+          "name": "request"
+        },
+        {
+          "name": "images"
+        },
+        {
+          "name": "coll_name"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "images_dict",
+          "line": 114
+        }
+      ],
+      "nloc": 7,
+      "ccn": 3,
+      "visibility": "private"
+    },
+    {
+      "name": "_get_links",
+      "kind": "method",
+      "scope": "ViewBuilder",
+      "lineRange": {
+        "start": 116,
+        "end": 132
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "request"
+        },
+        {
+          "name": "identifier"
+        },
+        {
+          "name": "collection_name"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "[{ \"rel\": \"self\", \"href\": self._get_href_link(request, identifier, collection_name), }, { \"rel\": \"bookmark\", \"href\": self._get_bookmark_link(request, identifier, collection_name), }, { \"rel\": \"alterna",
+          "line": 118
+        }
+      ],
+      "nloc": 16,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "_get_alternate_link",
+      "kind": "method",
+      "scope": "ViewBuilder",
+      "lineRange": {
+        "start": 134,
+        "end": 141
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "request"
+        },
+        {
+          "name": "identifier"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "'/'.join([glance_url, self._collection_name, str(identifier)])",
+          "line": 139
+        }
+      ],
+      "nloc": 7,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "_format_date",
+      "kind": "method",
+      "scope": "ViewBuilder",
+      "lineRange": {
+        "start": 144,
+        "end": 147
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "dt"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "utils.isotime(dt)",
+          "line": 147
+        }
+      ],
+      "nloc": 3,
+      "ccn": 2,
+      "visibility": "private"
+    },
+    {
+      "name": "_get_status",
+      "kind": "method",
+      "scope": "ViewBuilder",
+      "lineRange": {
+        "start": 150,
+        "end": 159
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "image"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "{ 'active': 'ACTIVE', 'queued': 'SAVING', 'saving': 'SAVING', 'deleted': 'DELETED', 'pending_delete': 'DELETED', 'killed': 'ERROR', }.get(image.get(\"status\"), 'UNKNOWN')",
+          "line": 152
+        }
+      ],
+      "nloc": 9,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "_get_progress",
+      "kind": "method",
+      "scope": "ViewBuilder",
+      "lineRange": {
+        "start": 162,
+        "end": 167
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "image"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "{ \"queued\": 25, \"saving\": 50, \"active\": 100, }.get(image.get(\"status\"), 0)",
+          "line": 163
+        }
+      ],
+      "nloc": 6,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "_format_date",
+      "kind": "staticmethod",
+      "scope": "ViewBuilder",
+      "lineRange": {
+        "start": 143,
+        "end": 147
+      },
+      "visibility": "private",
+      "source": "manual"
+    },
+    {
+      "name": "_get_status",
+      "kind": "staticmethod",
+      "scope": "ViewBuilder",
+      "lineRange": {
+        "start": 149,
+        "end": 159
+      },
+      "visibility": "private",
+      "source": "manual"
+    },
+    {
+      "name": "_get_progress",
+      "kind": "staticmethod",
+      "scope": "ViewBuilder",
+      "lineRange": {
+        "start": 161,
+        "end": 167
+      },
+      "visibility": "private",
+      "source": "manual"
+    }
+  ],
+  "referencedSymbols": [
+    {
+      "name": "common.ViewBuilder",
+      "usage": "inherit",
+      "via": "nova.api.openstack",
+      "count": 1,
+      "lineRange": {
+        "start": 24,
+        "end": 24
+      }
+    },
+    {
+      "name": "int",
+      "usage": "call",
+      "via": null,
+      "count": 2,
+      "lineRange": {
+        "start": 45,
+        "end": 45
+      }
+    },
+    {
+      "name": "strutils.bool_from_string",
+      "usage": "call",
+      "via": "oslo_utils",
+      "count": 1,
+      "lineRange": {
+        "start": 78,
+        "end": 78
+      }
+    },
+    {
+      "name": "dict",
+      "usage": "call",
+      "via": null,
+      "count": 2,
+      "lineRange": {
+        "start": 82,
+        "end": 82
+      }
+    },
+    {
+      "name": "list_func",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 107,
+        "end": 107
+      }
+    },
+    {
+      "name": "glance.generate_glance_url",
+      "usage": "call",
+      "via": "nova.image",
+      "count": 1,
+      "lineRange": {
+        "start": 136,
+        "end": 136
+      }
+    },
+    {
+      "name": "str",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 141,
+        "end": 141
+      }
+    },
+    {
+      "name": "utils.isotime",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 147,
+        "end": 147
+      }
+    }
+  ],
+  "dependencies": [
+    {
+      "style": "from",
+      "module": "oslo_utils",
+      "names": [
+        {
+          "alias": null,
+          "name": "strutils"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 17,
+        "end": 17
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.api.openstack",
+      "names": [
+        {
+          "alias": null,
+          "name": "common"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 19,
+        "end": 19
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.image",
+      "names": [
+        {
+          "alias": null,
+          "name": "glance"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 20,
+        "end": 20
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "utils"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 21,
+        "end": 21
+      }
+    }
+  ],
+  "sideEffects": [
+    {
+      "kind": "network",
+      "target": "\"type\": \"application/vnd.openstack.image\",",
+      "lineRange": {
+        "start": 130,
+        "end": 130
+      }
+    }
+  ],
+  "securitySurface": [
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "\"\"\"Update the status field to standardize format.\"\"\"",
+      "lineRange": {
+        "start": 151,
+        "end": 151
+      }
+    }
+  ],
+  "injection_flags": [],
+  "warnings": []
+}

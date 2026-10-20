@@ -1,0 +1,1905 @@
+{
+  "file": "src/nova/api/openstack/compute/views/servers.py",
+  "hash": "6e89fb1cb7fa1ad1989e4e03ca5d8104633d00ab7b98c5f4233e33014443c3f8",
+  "language": "Python",
+  "component": "nova",
+  "package": null,
+  "lines": {
+    "blank": 92,
+    "code": 593,
+    "comment": 138,
+    "total": 823
+  },
+  "symbols": [
+    {
+      "name": "LOG",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 40,
+        "end": 40
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "AZ_NOT_IN_REQUEST_SPEC",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 43,
+        "end": 43
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "SCHED_HINTS_NOT_IN_REQUEST_SPEC",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 44,
+        "end": 44
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "ViewBuilder",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 47,
+        "end": 823
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "_collection_name",
+      "kind": "field",
+      "scope": "ViewBuilder",
+      "lineRange": {
+        "start": 50,
+        "end": 50
+      },
+      "source": "aee-inventory",
+      "visibility": "private"
+    },
+    {
+      "name": "_progress_statuses",
+      "kind": "field",
+      "scope": "ViewBuilder",
+      "lineRange": {
+        "start": 52,
+        "end": 59
+      },
+      "source": "aee-inventory",
+      "visibility": "private"
+    },
+    {
+      "name": "_fault_statuses",
+      "kind": "field",
+      "scope": "ViewBuilder",
+      "lineRange": {
+        "start": 61,
+        "end": 63
+      },
+      "source": "aee-inventory",
+      "visibility": "private"
+    },
+    {
+      "name": "_show_expected_attrs",
+      "kind": "field",
+      "scope": "ViewBuilder",
+      "lineRange": {
+        "start": 68,
+        "end": 68
+      },
+      "source": "aee-inventory",
+      "visibility": "private"
+    },
+    {
+      "name": "__init__",
+      "kind": "method",
+      "scope": "ViewBuilder",
+      "lineRange": {
+        "start": 70,
+        "end": 76
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 6,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "create",
+      "kind": "method",
+      "scope": "ViewBuilder",
+      "lineRange": {
+        "start": 78,
+        "end": 100
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "request"
+        },
+        {
+          "name": "body"
+        },
+        {
+          "name": "instance"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "server",
+          "line": 100
+        }
+      ],
+      "nloc": 14,
+      "ccn": 2,
+      "visibility": "public"
+    },
+    {
+      "name": "basic",
+      "kind": "method",
+      "scope": "ViewBuilder",
+      "lineRange": {
+        "start": 102,
+        "end": 131
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "request"
+        },
+        {
+          "name": "instance"
+        },
+        {
+          "default": "False",
+          "name": "show_extra_specs"
+        },
+        {
+          "default": "None",
+          "name": "show_extended_attr"
+        },
+        {
+          "default": "None",
+          "name": "show_host_status"
+        },
+        {
+          "default": "None",
+          "name": "show_sec_grp"
+        },
+        {
+          "default": "None",
+          "name": "bdms"
+        },
+        {
+          "default": "False",
+          "name": "cell_down_support"
+        },
+        {
+          "default": "False",
+          "name": "show_user_data"
+        },
+        {
+          "default": "None",
+          "name": "provided_az"
+        },
+        {
+          "default": "None",
+          "name": "provided_sched_hints"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "{ \"server\": { \"id\": instance.uuid, \"status\": \"UNKNOWN\", \"links\": self._get_links(request, instance.uuid, self._collection_name), }, }",
+          "line": 114
+        },
+        {
+          "expr": "{ \"server\": { \"id\": instance[\"uuid\"], \"name\": instance[\"display_name\"], \"links\": self._get_links(request, instance[\"uuid\"], self._collection_name), }, }",
+          "line": 123
+        }
+      ],
+      "nloc": 24,
+      "ccn": 3,
+      "visibility": "public"
+    },
+    {
+      "name": "get_show_expected_attrs",
+      "kind": "method",
+      "scope": "ViewBuilder",
+      "lineRange": {
+        "start": 133,
+        "end": 151
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "default": "None",
+          "name": "expected_attrs"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "sorted(list(set(self._show_expected_attrs + expected_attrs)))",
+          "line": 151
+        }
+      ],
+      "nloc": 4,
+      "ccn": 2,
+      "visibility": "public"
+    },
+    {
+      "name": "_show_from_down_cell",
+      "kind": "method",
+      "scope": "ViewBuilder",
+      "lineRange": {
+        "start": 153,
+        "end": 192
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "request"
+        },
+        {
+          "name": "instance"
+        },
+        {
+          "name": "show_extra_specs"
+        },
+        {
+          "name": "show_server_groups"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "ret",
+          "line": 192
+        }
+      ],
+      "nloc": 25,
+      "ccn": 5,
+      "visibility": "private"
+    },
+    {
+      "name": "_get_host_status_unknown_only",
+      "kind": "method",
+      "scope": "ViewBuilder",
+      "lineRange": {
+        "start": 195,
+        "end": 228
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "context"
+        },
+        {
+          "default": "None",
+          "name": "instance"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "unknown_only",
+          "line": 228
+        }
+      ],
+      "nloc": 16,
+      "ccn": 4,
+      "visibility": "private"
+    },
+    {
+      "name": "_get_pinned_az",
+      "kind": "method",
+      "scope": "ViewBuilder",
+      "lineRange": {
+        "start": 230,
+        "end": 245
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "context"
+        },
+        {
+          "name": "instance"
+        },
+        {
+          "name": "provided_az"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "pinned_az",
+          "line": 245
+        }
+      ],
+      "nloc": 13,
+      "ccn": 4,
+      "visibility": "private"
+    },
+    {
+      "name": "_get_scheduler_hints",
+      "kind": "method",
+      "scope": "ViewBuilder",
+      "lineRange": {
+        "start": 247,
+        "end": 261
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "context"
+        },
+        {
+          "name": "instance"
+        },
+        {
+          "name": "provided_sched_hints"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "sched_hints",
+          "line": 261
+        }
+      ],
+      "nloc": 13,
+      "ccn": 4,
+      "visibility": "private"
+    },
+    {
+      "name": "show",
+      "kind": "method",
+      "scope": "ViewBuilder",
+      "lineRange": {
+        "start": 263,
+        "end": 472
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "request"
+        },
+        {
+          "name": "instance"
+        },
+        {
+          "default": "True",
+          "name": "extend_address"
+        },
+        {
+          "default": "None",
+          "name": "show_extra_specs"
+        },
+        {
+          "default": "True",
+          "name": "show_AZ"
+        },
+        {
+          "default": "True",
+          "name": "show_config_drive"
+        },
+        {
+          "default": "None",
+          "name": "show_extended_attr"
+        },
+        {
+          "default": "None",
+          "name": "show_host_status"
+        },
+        {
+          "default": "True",
+          "name": "show_keypair"
+        },
+        {
+          "default": "True",
+          "name": "show_srv_usg"
+        },
+        {
+          "default": "True",
+          "name": "show_sec_grp"
+        },
+        {
+          "default": "True",
+          "name": "show_extended_status"
+        },
+        {
+          "default": "True",
+          "name": "show_extended_volumes"
+        },
+        {
+          "default": "None",
+          "name": "bdms"
+        },
+        {
+          "default": "False",
+          "name": "cell_down_support"
+        },
+        {
+          "default": "False",
+          "name": "show_server_groups"
+        },
+        {
+          "default": "True",
+          "name": "show_user_data"
+        },
+        {
+          "default": "None",
+          "name": "provided_az"
+        },
+        {
+          "default": "None",
+          "name": "provided_sched_hints"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "self._show_from_down_cell( request, instance, show_extra_specs, show_server_groups)",
+          "line": 288
+        },
+        {
+          "expr": "server",
+          "line": 472
+        }
+      ],
+      "nloc": 134,
+      "ccn": 50,
+      "visibility": "public"
+    },
+    {
+      "name": "index",
+      "kind": "method",
+      "scope": "ViewBuilder",
+      "lineRange": {
+        "start": 474,
+        "end": 478
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "request"
+        },
+        {
+          "name": "instances"
+        },
+        {
+          "default": "False",
+          "name": "cell_down_support"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "self._list_view(self.basic, request, instances, coll_name, False, cell_down_support=cell_down_support)",
+          "line": 477
+        }
+      ],
+      "nloc": 4,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "detail",
+      "kind": "method",
+      "scope": "ViewBuilder",
+      "lineRange": {
+        "start": 480,
+        "end": 523
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "request"
+        },
+        {
+          "name": "instances"
+        },
+        {
+          "default": "False",
+          "name": "cell_down_support"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "servers_dict",
+          "line": 523
+        }
+      ],
+      "nloc": 29,
+      "ccn": 5,
+      "visibility": "public"
+    },
+    {
+      "name": "_list_view",
+      "kind": "method",
+      "scope": "ViewBuilder",
+      "lineRange": {
+        "start": 525,
+        "end": 589
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "func"
+        },
+        {
+          "name": "request"
+        },
+        {
+          "name": "servers"
+        },
+        {
+          "name": "coll_name"
+        },
+        {
+          "name": "show_extra_specs"
+        },
+        {
+          "default": "None",
+          "name": "show_extended_attr"
+        },
+        {
+          "default": "None",
+          "name": "show_host_status"
+        },
+        {
+          "default": "False",
+          "name": "show_sec_grp"
+        },
+        {
+          "default": "None",
+          "name": "bdms"
+        },
+        {
+          "default": "False",
+          "name": "cell_down_support"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "servers_dict",
+          "line": 589
+        }
+      ],
+      "nloc": 40,
+      "ccn": 11,
+      "visibility": "private"
+    },
+    {
+      "name": "_get_metadata",
+      "kind": "method",
+      "scope": "ViewBuilder",
+      "lineRange": {
+        "start": 592,
+        "end": 593
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "instance"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "instance.metadata or {}",
+          "line": 593
+        }
+      ],
+      "nloc": 2,
+      "ccn": 2,
+      "visibility": "private"
+    },
+    {
+      "name": "_get_vm_status",
+      "kind": "method",
+      "scope": "ViewBuilder",
+      "lineRange": {
+        "start": 596,
+        "end": 601
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "instance"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "\"DELETED\"",
+          "line": 599
+        },
+        {
+          "expr": "common.status_from_state(instance.get(\"vm_state\"), instance.get(\"task_state\"))",
+          "line": 600
+        }
+      ],
+      "nloc": 5,
+      "ccn": 2,
+      "visibility": "private"
+    },
+    {
+      "name": "_get_host_id",
+      "kind": "method",
+      "scope": "ViewBuilder",
+      "lineRange": {
+        "start": 604,
+        "end": 607
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "instance"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "utils.generate_hostid(host, project)",
+          "line": 607
+        }
+      ],
+      "nloc": 4,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "_get_addresses",
+      "kind": "method",
+      "scope": "ViewBuilder",
+      "lineRange": {
+        "start": 609,
+        "end": 619
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "request"
+        },
+        {
+          "name": "instance"
+        },
+        {
+          "default": "False",
+          "name": "extend_address"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "{}",
+          "line": 612
+        },
+        {
+          "expr": "self._ips_builder.index( request, networks, extend_address, )[\"addresses\"]",
+          "line": 617
+        }
+      ],
+      "nloc": 8,
+      "ccn": 2,
+      "visibility": "private"
+    },
+    {
+      "name": "_get_image",
+      "kind": "method",
+      "scope": "ViewBuilder",
+      "lineRange": {
+        "start": 621,
+        "end": 650
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "request"
+        },
+        {
+          "name": "instance"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "image",
+          "line": 648
+        },
+        {
+          "expr": "\"\"",
+          "line": 650
+        }
+      ],
+      "nloc": 28,
+      "ccn": 7,
+      "visibility": "private"
+    },
+    {
+      "name": "_get_flavor_dict",
+      "kind": "method",
+      "scope": "ViewBuilder",
+      "lineRange": {
+        "start": 652,
+        "end": 663
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "request"
+        },
+        {
+          "name": "flavor"
+        },
+        {
+          "name": "show_extra_specs"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "flavordict",
+          "line": 663
+        }
+      ],
+      "nloc": 12,
+      "ccn": 2,
+      "visibility": "private"
+    },
+    {
+      "name": "_get_flavor",
+      "kind": "method",
+      "scope": "ViewBuilder",
+      "lineRange": {
+        "start": 665,
+        "end": 684
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "request"
+        },
+        {
+          "name": "instance"
+        },
+        {
+          "name": "show_extra_specs"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "{}",
+          "line": 670
+        },
+        {
+          "expr": "self._get_flavor_dict(request, flavor, show_extra_specs)",
+          "line": 673
+        },
+        {
+          "expr": "{ \"id\": str(flavor_id), \"links\": [{ \"rel\": \"bookmark\", \"href\": flavor_bookmark, }], }",
+          "line": 678
+        }
+      ],
+      "nloc": 18,
+      "ccn": 3,
+      "visibility": "private"
+    },
+    {
+      "name": "_load_fault",
+      "kind": "method",
+      "scope": "ViewBuilder",
+      "lineRange": {
+        "start": 686,
+        "end": 699
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "request"
+        },
+        {
+          "name": "instance"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "instance.fault",
+          "line": 693
+        },
+        {
+          "expr": "instance.fault",
+          "line": 699
+        }
+      ],
+      "nloc": 11,
+      "ccn": 3,
+      "visibility": "private"
+    },
+    {
+      "name": "_get_fault",
+      "kind": "method",
+      "scope": "ViewBuilder",
+      "lineRange": {
+        "start": 701,
+        "end": 725
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "request"
+        },
+        {
+          "name": "instance"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "None",
+          "line": 708
+        },
+        {
+          "expr": "fault_dict",
+          "line": 725
+        }
+      ],
+      "nloc": 20,
+      "ccn": 7,
+      "visibility": "private"
+    },
+    {
+      "name": "_add_host_status",
+      "kind": "method",
+      "scope": "ViewBuilder",
+      "lineRange": {
+        "start": 727,
+        "end": 752
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "servers"
+        },
+        {
+          "name": "instances"
+        },
+        {
+          "default": "False",
+          "name": "unknown_only"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 9,
+      "ccn": 7,
+      "visibility": "private"
+    },
+    {
+      "name": "_add_security_grps",
+      "kind": "method",
+      "scope": "ViewBuilder",
+      "lineRange": {
+        "start": 754,
+        "end": 765
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "request"
+        },
+        {
+          "name": "servers"
+        },
+        {
+          "name": "instances"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "",
+          "line": 756
+        }
+      ],
+      "nloc": 11,
+      "ccn": 4,
+      "visibility": "private"
+    },
+    {
+      "name": "_add_volumes_attachments",
+      "kind": "method",
+      "scope": "ViewBuilder",
+      "lineRange": {
+        "start": 767,
+        "end": 785
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "request"
+        },
+        {
+          "name": "server"
+        },
+        {
+          "name": "bdms"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 12,
+      "ccn": 4,
+      "visibility": "private"
+    },
+    {
+      "name": "_get_instance_bdms_in_multiple_cells",
+      "kind": "method",
+      "scope": "ViewBuilder",
+      "lineRange": {
+        "start": 788,
+        "end": 814
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "ctxt"
+        },
+        {
+          "name": "instance_uuids"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "bdms",
+          "line": 814
+        }
+      ],
+      "nloc": 25,
+      "ccn": 7,
+      "visibility": "private"
+    },
+    {
+      "name": "_get_server_groups",
+      "kind": "method",
+      "scope": "ViewBuilder",
+      "lineRange": {
+        "start": 817,
+        "end": 823
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "context"
+        },
+        {
+          "name": "instance"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "[sg.uuid]",
+          "line": 821
+        },
+        {
+          "expr": "[]",
+          "line": 823
+        }
+      ],
+      "nloc": 7,
+      "ccn": 2,
+      "visibility": "private"
+    },
+    {
+      "name": "_get_host_status_unknown_only",
+      "kind": "staticmethod",
+      "scope": "ViewBuilder",
+      "lineRange": {
+        "start": 194,
+        "end": 228
+      },
+      "visibility": "private",
+      "source": "manual"
+    },
+    {
+      "name": "_get_metadata",
+      "kind": "staticmethod",
+      "scope": "ViewBuilder",
+      "lineRange": {
+        "start": 591,
+        "end": 593
+      },
+      "visibility": "private",
+      "source": "manual"
+    },
+    {
+      "name": "_get_vm_status",
+      "kind": "staticmethod",
+      "scope": "ViewBuilder",
+      "lineRange": {
+        "start": 595,
+        "end": 601
+      },
+      "visibility": "private",
+      "source": "manual"
+    },
+    {
+      "name": "_get_host_id",
+      "kind": "staticmethod",
+      "scope": "ViewBuilder",
+      "lineRange": {
+        "start": 603,
+        "end": 607
+      },
+      "visibility": "private",
+      "source": "manual"
+    },
+    {
+      "name": "_get_instance_bdms_in_multiple_cells",
+      "kind": "staticmethod",
+      "scope": "ViewBuilder",
+      "lineRange": {
+        "start": 787,
+        "end": 814
+      },
+      "visibility": "private",
+      "source": "manual"
+    },
+    {
+      "name": "_get_server_groups",
+      "kind": "staticmethod",
+      "scope": "ViewBuilder",
+      "lineRange": {
+        "start": 816,
+        "end": 823
+      },
+      "visibility": "private",
+      "source": "manual"
+    }
+  ],
+  "referencedSymbols": [
+    {
+      "name": "logging.getLogger",
+      "usage": "call",
+      "via": "oslo_log",
+      "count": 1,
+      "lineRange": {
+        "start": 40,
+        "end": 40
+      }
+    },
+    {
+      "name": "object",
+      "usage": "call",
+      "via": null,
+      "count": 2,
+      "lineRange": {
+        "start": 43,
+        "end": 43
+      }
+    },
+    {
+      "name": "common.ViewBuilder",
+      "usage": "inherit",
+      "via": "nova.api.openstack",
+      "count": 1,
+      "lineRange": {
+        "start": 47,
+        "end": 47
+      }
+    },
+    {
+      "name": "super",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 72,
+        "end": 72
+      }
+    },
+    {
+      "name": "views_images.ViewBuilder",
+      "usage": "call",
+      "via": "nova.api.openstack.compute.views",
+      "count": 1,
+      "lineRange": {
+        "start": 73,
+        "end": 73
+      }
+    },
+    {
+      "name": "views_ips.ViewBuilder",
+      "usage": "call",
+      "via": "nova.api.openstack.compute.views",
+      "count": 1,
+      "lineRange": {
+        "start": 74,
+        "end": 74
+      }
+    },
+    {
+      "name": "views_flavors.ViewBuilder",
+      "usage": "call",
+      "via": "nova.api.openstack.compute.views",
+      "count": 1,
+      "lineRange": {
+        "start": 75,
+        "end": 75
+      }
+    },
+    {
+      "name": "compute.API",
+      "usage": "call",
+      "via": "nova.compute",
+      "count": 1,
+      "lineRange": {
+        "start": 76,
+        "end": 76
+      }
+    },
+    {
+      "name": "list",
+      "usage": "call",
+      "via": null,
+      "count": 3,
+      "lineRange": {
+        "start": 151,
+        "end": 151
+      }
+    },
+    {
+      "name": "set",
+      "usage": "call",
+      "via": null,
+      "count": 2,
+      "lineRange": {
+        "start": 151,
+        "end": 151
+      }
+    },
+    {
+      "name": "sorted",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 151,
+        "end": 151
+      }
+    },
+    {
+      "name": "utils.isotime",
+      "usage": "call",
+      "via": "nova",
+      "count": 4,
+      "lineRange": {
+        "start": 161,
+        "end": 161
+      }
+    },
+    {
+      "name": "objects.RequestSpec.get_by_instance_uuid",
+      "usage": "call",
+      "via": "nova",
+      "count": 2,
+      "lineRange": {
+        "start": 240,
+        "end": 240
+      }
+    },
+    {
+      "name": "api_version_request.is_supported",
+      "usage": "call",
+      "via": "nova.api.openstack",
+      "count": 18,
+      "lineRange": {
+        "start": 275,
+        "end": 275
+      }
+    },
+    {
+      "name": "str",
+      "usage": "call",
+      "via": null,
+      "count": 5,
+      "lineRange": {
+        "start": 295,
+        "end": 295
+      }
+    },
+    {
+      "name": "avail_zone.get_instance_availability_zone",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 331,
+        "end": 331
+      }
+    },
+    {
+      "name": "getattr",
+      "usage": "call",
+      "via": null,
+      "count": 2,
+      "lineRange": {
+        "start": 388,
+        "end": 388
+      }
+    },
+    {
+      "name": "objects.BlockDeviceMappingList.bdms_by_instance_uuid",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 406,
+        "end": 406
+      }
+    },
+    {
+      "name": "bool",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 411,
+        "end": 411
+      }
+    },
+    {
+      "name": "objects.RequestSpec.get_by_instance_uuids",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 554,
+        "end": 554
+      }
+    },
+    {
+      "name": "func",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 566,
+        "end": 566
+      }
+    },
+    {
+      "name": "dict",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 584,
+        "end": 584
+      }
+    },
+    {
+      "name": "common.status_from_state",
+      "usage": "call",
+      "via": "nova.api.openstack",
+      "count": 1,
+      "lineRange": {
+        "start": 600,
+        "end": 600
+      }
+    },
+    {
+      "name": "utils.generate_hostid",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 607,
+        "end": 607
+      }
+    },
+    {
+      "name": "common.get_networks_for_instance",
+      "usage": "call",
+      "via": "nova.api.openstack",
+      "count": 1,
+      "lineRange": {
+        "start": 615,
+        "end": 615
+      }
+    },
+    {
+      "name": "common.get_id_from_href",
+      "usage": "call",
+      "via": "nova.api.openstack",
+      "count": 1,
+      "lineRange": {
+        "start": 624,
+        "end": 624
+      }
+    },
+    {
+      "name": "len",
+      "usage": "call",
+      "via": null,
+      "count": 2,
+      "lineRange": {
+        "start": 637,
+        "end": 637
+      }
+    },
+    {
+      "name": "itertools.chain",
+      "usage": "call",
+      "via": "itertools",
+      "count": 1,
+      "lineRange": {
+        "start": 639,
+        "end": 639
+      }
+    },
+    {
+      "name": "objects.ImageMetaProps.fields.keys",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 640,
+        "end": 640
+      }
+    },
+    {
+      "name": "objects.ImageMetaProps._legacy_property_map.keys",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 641,
+        "end": 641
+      }
+    },
+    {
+      "name": "objects.InstanceMapping.get_by_instance_uuid",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 688,
+        "end": 688
+      }
+    },
+    {
+      "name": "nova_context.target_cell",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 691,
+        "end": 691
+      }
+    },
+    {
+      "name": "security_group_api.get_instances_security_groups_bindings",
+      "usage": "call",
+      "via": "nova.network",
+      "count": 1,
+      "lineRange": {
+        "start": 760,
+        "end": 760
+      }
+    },
+    {
+      "name": "objects.InstanceMappingList.get_by_instance_uuids",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 789,
+        "end": 789
+      }
+    },
+    {
+      "name": "nova_context.scatter_gather_cells",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 800,
+        "end": 800
+      }
+    },
+    {
+      "name": "isinstance",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 806,
+        "end": 806
+      }
+    },
+    {
+      "name": "objects.InstanceGroup.get_by_instance_uuid",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 819,
+        "end": 819
+      }
+    }
+  ],
+  "dependencies": [
+    {
+      "style": "import",
+      "module": "itertools",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 17,
+        "end": 17
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_log",
+      "names": [
+        {
+          "alias": "logging",
+          "name": "log"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 19,
+        "end": 19
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.api.openstack",
+      "names": [
+        {
+          "alias": null,
+          "name": "api_version_request"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 21,
+        "end": 21
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.api.openstack",
+      "names": [
+        {
+          "alias": null,
+          "name": "common"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 22,
+        "end": 22
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.api.openstack.compute.views",
+      "names": [
+        {
+          "alias": "views_flavors",
+          "name": "flavors"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 23,
+        "end": 23
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.api.openstack.compute.views",
+      "names": [
+        {
+          "alias": "views_images",
+          "name": "images"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 24,
+        "end": 24
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.api.openstack.compute.views",
+      "names": [
+        {
+          "alias": "views_ips",
+          "name": "ips"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 25,
+        "end": 25
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": "avail_zone",
+          "name": "availability_zones"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 26,
+        "end": 26
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.compute",
+      "names": [
+        {
+          "alias": "compute",
+          "name": "api"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 27,
+        "end": 27
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.compute",
+      "names": [
+        {
+          "alias": null,
+          "name": "vm_states"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 28,
+        "end": 28
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": "nova_context",
+          "name": "context"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 29,
+        "end": 29
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "exception"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 30,
+        "end": 30
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.network",
+      "names": [
+        {
+          "alias": null,
+          "name": "security_group_api"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 31,
+        "end": 31
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "objects"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 32,
+        "end": 32
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.objects",
+      "names": [
+        {
+          "alias": null,
+          "name": "fields"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 33,
+        "end": 33
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.objects",
+      "names": [
+        {
+          "alias": null,
+          "name": "virtual_interface"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 34,
+        "end": 34
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.policies",
+      "names": [
+        {
+          "alias": "esa_policies",
+          "name": "extended_server_attributes"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 35,
+        "end": 35
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.policies",
+      "names": [
+        {
+          "alias": "servers_policies",
+          "name": "servers"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 36,
+        "end": 36
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "utils"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 37,
+        "end": 37
+      }
+    }
+  ],
+  "sideEffects": [
+    {
+      "kind": "network",
+      "target": "from nova.api.openstack.compute.views import flavors as views_flavors",
+      "lineRange": {
+        "start": 23,
+        "end": 23
+      }
+    },
+    {
+      "kind": "network",
+      "target": "from nova.api.openstack.compute.views import images as views_images",
+      "lineRange": {
+        "start": 24,
+        "end": 24
+      }
+    },
+    {
+      "kind": "network",
+      "target": "from nova.api.openstack.compute.views import ips as views_ips",
+      "lineRange": {
+        "start": 25,
+        "end": 25
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "LOG = logging.getLogger(__name__)",
+      "lineRange": {
+        "start": 40,
+        "end": 40
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "AZ_NOT_IN_REQUEST_SPEC = object()",
+      "lineRange": {
+        "start": 43,
+        "end": 43
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "SCHED_HINTS_NOT_IN_REQUEST_SPEC = object()",
+      "lineRange": {
+        "start": 44,
+        "end": 44
+      }
+    }
+  ],
+  "securitySurface": [
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "req_specs_dict.update({req.instance_uuid: req.availability_zone",
+      "lineRange": {
+        "start": 556,
+        "end": 556
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "sched_hints_dict.update({",
+      "lineRange": {
+        "start": 560,
+        "end": 560
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "cell_mappings.update(",
+      "lineRange": {
+        "start": 796,
+        "end": 796
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "bdms.update(result)",
+      "lineRange": {
+        "start": 813,
+        "end": 813
+      }
+    }
+  ],
+  "injection_flags": [],
+  "warnings": []
+}
