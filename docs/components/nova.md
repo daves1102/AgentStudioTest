@@ -2,9 +2,9 @@
 
 ## Overview
 
-The `nova` component encompasses the core OpenStack Compute service subsystems extracted across six batches: the REST API layer (`api/`), accelerator integration (`accelerator/`), CLI entry points (`cmd/`), compute service (`compute/`), conductor service (`conductor/`), configuration layer (`conf/`), console subsystem (`console/`), exception and internationalisation utilities (`exception.py`, `i18n.py`, `service_auth.py`, `utils.py`), code-style enforcement (`hacking/`), Glance image client (`image/`), key-manager wrapper (`keymgr/`), quota-limit enforcement (`limit/`), the versioned object layer (`objects/`), the database access layer (`db/`), the network integration layer (`network/`), and the scheduler subsystem (`scheduler/`). All 443 files are classified as component `nova`; no other component exists in the current KB.
+The `nova` component encompasses the core OpenStack Compute service subsystems extracted across seven batches: the REST API layer (`api/`), accelerator integration (`accelerator/`), CLI entry points (`cmd/`), compute service (`compute/`), conductor service (`conductor/`), configuration layer (`conf/`), console subsystem (`console/`), exception and internationalisation utilities (`exception.py`, `i18n.py`, `service_auth.py`, `utils.py`), code-style enforcement (`hacking/`), Glance image client (`image/`), key-manager wrapper (`keymgr/`), quota-limit enforcement (`limit/`), oslo.messaging notification objects (`notifications/`), PCI device management (`pci/`), RBAC policy rules (`policies/`), privilege-separation wrappers (`privsep/`), the versioned object layer (`objects/`), the database access layer (`db/`), the network integration layer (`network/`), and the scheduler subsystem (`scheduler/`). All 532 files are classified as component `nova`; no other component exists in the current KB.
 
-**Batch provenance** — batch 1 (`6d56e5a`, 2026-10-16): 2 files; batch 2 (`733c73`, 2026-10-19): 53 files; batch 3 (`868bfe40`, 2026-10-19): 67 files; batch 4 (`caa20451`, 2026-10-20): 205 files; batch 5 (`f56908d5`, 2026-10-20): 106 files; batch 6 (`c7012ab2`, 2026-10-20): 10 files.
+**Batch provenance** — batch 1 (`6d56e5a`, 2026-10-16): 2 files; batch 2 (`733c73`, 2026-10-19): 53 files; batch 3 (`868bfe40`, 2026-10-19): 67 files; batch 4 (`caa20451`, 2026-10-20): 205 files; batch 5 (`f56908d5`, 2026-10-20): 106 files; batch 6 (`c7012ab2`, 2026-10-20): 10 files; batch 7 (`10997c0e`, 2026-10-20): 89 files.
 
 Subsystem responsibilities:
 - **api/** — WSGI framework, request dispatch, authentication middleware, API versioning, metadata service, and OpenStack Compute REST API (servers, flavors, keypairs, etc.) including JSON schema validation and view serialisers.
@@ -16,22 +16,26 @@ Subsystem responsibilities:
 - **console/** — VNC/RFB, serial, and SPICE console proxy infrastructure.
 - **exception.py / i18n.py** — Exception class hierarchy and internationalisation factory.
 - **service_auth.py / utils.py** — Service-token authentication helpers and general utilities.
-- **hacking/** — pep8/hacking lint-check plug-ins for Nova-specific style rules (`hacking/checks.py`).
-- **image/** — Glance image service client: HTTP session management, image download with signature verification, image metadata conversion (`image/glance.py`).
-- **keymgr/** — oslo.castellan key-manager wrapper for encryption-key storage (`keymgr/conf_key_mgr.py`).
-- **limit/** — oslo_limit–based quota enforcement: API-side limits (`limit/local.py`), Placement-side limits (`limit/placement.py`), and unified-limit detection utilities (`limit/utils.py`).
+- **hacking/** — pep8/hacking lint-check plug-ins for Nova-specific style rules.
+- **image/** — Glance image service client with signature verification.
+- **keymgr/** — oslo.castellan key-manager wrapper for encryption-key storage.
+- **limit/** — oslo_limit–based quota enforcement (API-side, Placement-side, and unified-limit detection).
+- **notifications/** — oslo.messaging versioned notification objects for all Nova events (instance, flavor, scheduler, service, etc.); `notifications/base.py` provides the send-notification helper.
+- **pci/** — PCI device specification (`pci/devspec.py`), per-compute-node tracker (`pci/manager.py`), pool-based stats (`pci/stats.py`), request resolution (`pci/request.py`), and whitelist management (`pci/whitelist.py`).
+- **policies/** — oslo.policy RBAC rule definitions for every Nova API action (56 policy files, one per API resource or action group).
+- **privsep/** — oslo.privsep privilege-separation wrappers; all decorated functions execute in a root-privileged daemon subprocess. Sub-modules: filesystem ops (`privsep/fs.py`), libvirt helpers (`privsep/libvirt.py`), network setup (`privsep/linux_net.py`), path helpers (`privsep/path.py`), QEMU image conversion (`privsep/qemu.py`), uid/gid shifting (`privsep/idmapshift.py`), direct-IO detection (`privsep/utils.py`).
 - **objects/** — oslo.versionedobjects-based domain model for all Nova entities.
 - **db/api/** and **db/main/** — Alembic-managed API and main database schemas with SQLAlchemy query API.
 - **network/** — Neutron integration, network model, os-vif utilities, and security group API.
 - **scheduler/** — Placement-aware scheduling: host manager, filters, weighers, RPC client, and Placement report client.
 
-Source: `.aee/intake-summary.md` (batch c7012ab2); `.aee/link-summary.md`.
+Source: `.aee/intake-summary.md` (batch 10997c0e); `.aee/link-summary.md`.
 
 ---
 
 ## File Inventory
 
-All 443 KB records. LOC figures from each record's `lines` block. Source: `.aee/kb/src/nova/**/*.json`.
+All 532 KB records. LOC figures from each record's `lines` block. Source: `.aee/kb/src/nova/**/*.json`.
 
 | File | LOC (total) | LOC (code) | Component |
 |---|---|---|---|
@@ -386,6 +390,24 @@ All 443 KB records. LOC figures from each record's `lines` block. Source: `.aee/
 | `network/neutron.py` | 3989 | 2876 | nova |
 | `network/os_vif_util.py` | 551 | 396 | nova |
 | `network/security_group_api.py` | 709 | 524 | nova |
+| `notifications/__init__.py` | 25 | 5 | nova |
+| `notifications/base.py` | 399 | 256 | nova |
+| `notifications/objects/__init__.py` | 0 | 0 | nova |
+| `notifications/objects/aggregate.py` | 115 | 74 | nova |
+| `notifications/objects/base.py` | 250 | 120 | nova |
+| `notifications/objects/compute_task.py` | 54 | 30 | nova |
+| `notifications/objects/exception.py` | 85 | 48 | nova |
+| `notifications/objects/flavor.py` | 86 | 53 | nova |
+| `notifications/objects/image.py` | 161 | 71 | nova |
+| `notifications/objects/instance.py` | 815 | 550 | nova |
+| `notifications/objects/keypair.py` | 55 | 35 | nova |
+| `notifications/objects/libvirt.py` | 40 | 21 | nova |
+| `notifications/objects/metrics.py` | 85 | 55 | nova |
+| `notifications/objects/request_spec.py` | 350 | 273 | nova |
+| `notifications/objects/scheduler.py` | 29 | 11 | nova |
+| `notifications/objects/server_group.py` | 69 | 43 | nova |
+| `notifications/objects/service.py` | 68 | 44 | nova |
+| `notifications/objects/volume.py` | 64 | 40 | nova |
 | `objects/__init__.py` | 122 | 95 | nova |
 | `objects/aggregate.py` | 597 | 460 | nova |
 | `objects/base.py` | 443 | 322 | nova |
@@ -435,6 +457,77 @@ All 443 KB records. LOC figures from each record's `lines` block. Source: `.aee/
 | `objects/virt_device_metadata.py` | 165 | 110 | nova |
 | `objects/virtual_interface.py` | 338 | 232 | nova |
 | `objects/volume_usage.py` | 104 | 78 | nova |
+| `pci/__init__.py` | 0 | 0 | nova |
+| `pci/devspec.py` | 434 | 320 | nova |
+| `pci/manager.py` | 505 | 344 | nova |
+| `pci/request.py` | 379 | 294 | nova |
+| `pci/stats.py` | 1075 | 746 | nova |
+| `pci/utils.py` | 273 | 201 | nova |
+| `pci/whitelist.py` | 107 | 74 | nova |
+| `policies/__init__.py` | 130 | 114 | nova |
+| `policies/admin_actions.py` | 51 | 29 | nova |
+| `policies/admin_password.py` | 40 | 18 | nova |
+| `policies/aggregates.py` | 129 | 107 | nova |
+| `policies/assisted_volume_snapshots.py` | 51 | 29 | nova |
+| `policies/attach_interfaces.py` | 90 | 67 | nova |
+| `policies/availability_zone.py` | 53 | 31 | nova |
+| `policies/baremetal_nodes.py` | 70 | 45 | nova |
+| `policies/base.py` | 149 | 90 | nova |
+| `policies/console_auth_tokens.py` | 41 | 19 | nova |
+| `policies/console_output.py` | 40 | 18 | nova |
+| `policies/create_backup.py` | 40 | 18 | nova |
+| `policies/deferred_delete.py` | 65 | 42 | nova |
+| `policies/evacuate.py` | 40 | 18 | nova |
+| `policies/extended_server_attributes.py` | 75 | 49 | nova |
+| `policies/extensions.py` | 45 | 23 | nova |
+| `policies/flavor_access.py` | 88 | 56 | nova |
+| `policies/flavor_extra_specs.py` | 109 | 88 | nova |
+| `policies/flavor_manage.py` | 63 | 40 | nova |
+| `policies/floating_ip_pools.py` | 40 | 18 | nova |
+| `policies/floating_ips.py` | 117 | 93 | nova |
+| `policies/hosts.py` | 127 | 97 | nova |
+| `policies/hypervisors.py` | 130 | 106 | nova |
+| `policies/instance_actions.py` | 105 | 80 | nova |
+| `policies/instance_usage_audit_log.py` | 68 | 44 | nova |
+| `policies/ips.py` | 52 | 30 | nova |
+| `policies/keypairs.py` | 72 | 51 | nova |
+| `policies/limits.py` | 70 | 46 | nova |
+| `policies/lock_server.py` | 68 | 45 | nova |
+| `policies/migrate_server.py` | 105 | 68 | nova |
+| `policies/migrations.py` | 98 | 56 | nova |
+| `policies/multinic.py` | 73 | 47 | nova |
+| `policies/networks.py` | 71 | 45 | nova |
+| `policies/pause_server.py` | 53 | 31 | nova |
+| `policies/quota_class_sets.py` | 51 | 29 | nova |
+| `policies/quota_sets.py` | 87 | 62 | nova |
+| `policies/remote_consoles.py` | 59 | 35 | nova |
+| `policies/rescue.py` | 66 | 42 | nova |
+| `policies/security_groups.py` | 163 | 139 | nova |
+| `policies/server_diagnostics.py` | 40 | 18 | nova |
+| `policies/server_external_events.py` | 40 | 18 | nova |
+| `policies/server_groups.py` | 89 | 67 | nova |
+| `policies/server_metadata.py` | 101 | 79 | nova |
+| `policies/server_password.py` | 68 | 44 | nova |
+| `policies/server_shares.py` | 70 | 51 | nova |
+| `policies/server_tags.py` | 101 | 78 | nova |
+| `policies/server_topology.py` | 50 | 30 | nova |
+| `policies/servers.py` | 492 | 458 | nova |
+| `policies/servers_migrations.py` | 118 | 81 | nova |
+| `policies/services.py` | 79 | 54 | nova |
+| `policies/shelve.py` | 74 | 52 | nova |
+| `policies/simple_tenant_usage.py` | 51 | 29 | nova |
+| `policies/suspend_server.py` | 51 | 29 | nova |
+| `policies/tenant_networks.py` | 71 | 45 | nova |
+| `policies/volumes.py` | 183 | 149 | nova |
+| `policies/volumes_attachments.py` | 102 | 80 | nova |
+| `privsep/__init__.py` | 31 | 14 | nova |
+| `privsep/fs.py` | 305 | 188 | nova |
+| `privsep/idmapshift.py` | 141 | 94 | nova |
+| `privsep/libvirt.py` | 236 | 135 | nova |
+| `privsep/linux_net.py` | 137 | 86 | nova |
+| `privsep/path.py` | 112 | 65 | nova |
+| `privsep/qemu.py` | 270 | 152 | nova |
+| `privsep/utils.py` | 90 | 48 | nova |
 | `scheduler/__init__.py` | 22 | 7 | nova |
 | `scheduler/client/__init__.py` | 0 | 0 | nova |
 | `scheduler/client/query.py` | 95 | 64 | nova |
@@ -478,7 +571,7 @@ All 443 KB records. LOC figures from each record's `lines` block. Source: `.aee/
 | `scheduler/weights/ram.py` | 42 | 21 | nova |
 | `service_auth.py` | 104 | 63 | nova |
 | `utils.py` | 1209 | 829 | nova |
-| **Total (443 files)** | **136,294** | **97,716** | nova |
+| **Total (532 files)** | **147,963** | **105,633** | nova |
 
 ### Top 5 Functions by Cyclomatic Complexity
 
@@ -492,23 +585,25 @@ Taken from the `ccn` field of each KB symbol record.
 | 40 | `_init_instance` | `compute/manager.py` |
 | 37 | `_get_servers` | `api/openstack/compute/servers.py` |
 
+Additional high-complexity functions revealed by batch 7 KB records: `build_instances` (`conductor/manager.py`, CCN 34), `_pass_exact_filters` (`objects/build_request.py`, CCN 32), `obj_make_compatible` (`objects/migrate_data.py`, CCN 31), `_delete` (`compute/api.py`, CCN 29), `resize` (`compute/api.py`, CCN 28).
+
 ---
 
 ## Defined Symbols
 
-Across all 443 KB records the component defines **9,730 symbols** in total. Source: `symbols` arrays in `.aee/kb/src/nova/**/*.json`.
+Across all 532 KB records the component defines **10,536 symbols** in total. Source: `symbols` arrays in `.aee/kb/src/nova/**/*.json`.
 
 | Kind | Count |
 |---|---|
-| method | 3,125 |
-| variable | 1,420 |
-| constant | 1,326 |
-| field | 1,314 |
-| function | 1,198 |
-| class | 1,132 |
-| property | 104 |
-| staticmethod | 93 |
-| classmethod | 11 |
+| method | 3,264 |
+| constant | 1,588 |
+| variable | 1,489 |
+| field | 1,384 |
+| function | 1,370 |
+| class | 1,210 |
+| property | 105 |
+| staticmethod | 98 |
+| classmethod | 21 |
 | import | 7 |
 
 Selected key symbols by subsystem:
@@ -523,130 +618,125 @@ Selected key symbols by subsystem:
 
 **cmd/**
 - `cmd/manage.py`: `ManageCommands` class with sub-commands for database migrations, user management, floating-IP allocation, and cell operations.
-- `cmd/baseproxy.py`: shared console proxy startup logic.
 - `cmd/policy.py`: policy rule checker accepting OS_ROLES, OS_USER_ID, OS_TENANT_ID from environment.
-- Nine service launcher scripts (`cmd/api.py`, `cmd/compute.py`, `cmd/conductor.py`, `cmd/scheduler.py`, `cmd/novncproxy.py`, `cmd/serialproxy.py`, `cmd/spicehtml5proxy.py`, `cmd/status.py`): each calls `config.parse_args(sys.argv)` as their primary entry point.
+- Nine service launcher scripts: each calls `config.parse_args(sys.argv)`.
 
 **compute/**
-- `compute/api.py`: class `API` — the public compute service interface (instance CRUD, live migration, resize, shelve, snapshot, power operations). CCN-43 function `_validate_bdm`.
-- `compute/manager.py`: class `ComputeManager` — per-hypervisor service process implementing all instance lifecycle operations. CCN-40 function `_init_instance`.
+- `compute/api.py`: class `API` — the public compute service interface. CCN-43 `_validate_bdm`, CCN-29 `_delete`, CCN-28 `resize`.
+- `compute/manager.py`: class `ComputeManager`. CCN-40 `_init_instance`.
 
 **conductor/**
-- `conductor/manager.py`: class `ConductorManager` coordinating multi-node operations (build instance, migrate, evacuate, unshelve). 18 db-write sinks.
+- `conductor/manager.py`: class `ConductorManager`. CCN-34 `build_instances`.
 
-**conf/**
-- One `cfg.OptGroup` + `cfg.Opt` declaration file per Nova sub-system (e.g. `conf/compute.py`, `conf/scheduler.py`, `conf/database.py`); each defines the `nova.conf` option namespace consumed by all other sub-systems.
+**notifications/**
+- `notifications/base.py` (256 LOC): function `send_update_with_state` and `send_update` emit oslo.messaging versioned notifications for instance state changes. 12 security-surface entries. Source: `.aee/kb/src/nova/notifications/base.py.json`.
+- `notifications/objects/instance.py` (550 LOC, CCN-10 `__init__` in `RequestSpecPayload`): `InstancePayload`, `InstanceActionPayload`, and related OVO classes; decorated with `@base.notification_sample`. 68 OVO class symbols total across notifications/objects/*.
+- `notifications/objects/base.py` (109 LOC): `NotificationBase`, `NotificationPayloadBase` OVO bases and `@notification_sample` decorator.
 
-**console/**
-- `console/websocketproxy.py`: WebSocket proxy base used by noVNC, SPICE, and serial console.
-- `console/securityproxy/rfb.py` and `console/rfb/auths.py`: RFB (VNC) protocol security-handshake handlers.
-- `console/serial.py`: serial console proxy; `network-socket` entry point at `L83`.
+**pci/**
+- `pci/stats.py` (746 LOC): class `PciDeviceStats` — pool-based PCI device tracker. `_filter_pools` (CCN 20), `_filter_pools_for_numa_cells` (CCN 18). Source: `.aee/kb/src/nova/pci/stats.py.json`.
+- `pci/devspec.py` (320 LOC): class `PciDeviceSpec` parsing device-spec strings; `_init_dev_details` (CCN 14). Source: `.aee/kb/src/nova/pci/devspec.py.json`.
+- `pci/manager.py` (344 LOC): class `PciDevTracker` per-node device lifecycle. Source: `.aee/kb/src/nova/pci/manager.py.json`.
+- `pci/request.py`: `PciRequest` and `PciRequestList` OVO classes.
+- `pci/whitelist.py`: `Whitelist` class managing allowed PCI spec configurations.
 
-**hacking/**
-- `hacking/checks.py` (817 LOC, 121 symbols): 50 AST-visitor functions implementing Nova pep8/hacking rules; classes `CheckForStrUnicode`, `CheckForTransAdd`, `CheckForLogLevels`, `CheckForAssertIsNoneNone` (`hacking/checks.py.json`).
+**policies/**
+- 56 policy-module files; each defines a `list_rules()` function returning `oslo_policy.RuleDefault` or `oslo_policy.DocumentedRuleDefault` instances. All policy constants are `oslo_policy` `PolicyRuleDefault` objects. Source: `.aee/kb/src/nova/policies/**/*.json`. Key files: `policies/base.py` (context-is-admin and other base rules), `policies/servers.py` (server CRUD rules).
+
+**privsep/**
+- `privsep/fs.py` (188 LOC): 20 privilege-separation entry points for filesystem operations (mount, chown, chmod, symlink, etc.). All decorated with `@nova.privsep.sys_admin_pctxt.entrypoint`. Source: `.aee/kb/src/nova/privsep/fs.py.json`.
+- `privsep/libvirt.py` (135 LOC): 16 privsep entry points for libvirt-related operations (network XML config, qemu-img calls). Source: `.aee/kb/src/nova/privsep/libvirt.py.json`.
+- `privsep/linux_net.py` (86 LOC): 9 privsep entry points for Linux network device configuration. Source: `.aee/kb/src/nova/privsep/linux_net.py.json`.
+- `privsep/qemu.py` (152 LOC): `unprivileged_convert_image` (CCN 14) — QEMU image conversion; privsep entry point for disk-secret writes. Source: `.aee/kb/src/nova/privsep/qemu.py.json`.
+- `privsep/path.py` (65 LOC): 9 privsep entry points for privileged path/file operations. Source: `.aee/kb/src/nova/privsep/path.py.json`.
+- `privsep/idmapshift.py` (94 LOC): `confirm_path` (CCN 10) — uid/gid shifting for container namespaces. Source: `.aee/kb/src/nova/privsep/idmapshift.py.json`.
 
 **image/**
-- `image/glance.py` (919 LOC, 68 symbols): classes `GlanceClientWrapper` (session management, retry logic) and `GlanceImageServiceV2` (image CRUD). Method `_verify_and_write` (CCN 17) streams image data and verifies cryptographic signatures. Function `_convert_to_v2` (CCN 13) maps legacy image metadata to Glance v2 schema. Source: `.aee/kb/src/nova/image/glance.py.json`.
-
-**keymgr/**
-- `keymgr/conf_key_mgr.py` (95 LOC, 12 symbols): class `ConfKeyManager` backed by oslo.castellan; methods `get`, `store`. Source: `.aee/kb/src/nova/keymgr/conf_key_mgr.py.json`.
+- `image/glance.py` (919 LOC): `GlanceClientWrapper` and `GlanceImageServiceV2`. `_verify_and_write` (CCN 17).
 
 **limit/**
-- `limit/local.py` (162 LOC, 24 symbols): functions `enforce_api_limit` (CCN 6), `enforce_db_limit` (CCN 7); uses `oslo_limit.limit.Enforcer`. Source: `.aee/kb/src/nova/limit/local.py.json`.
-- `limit/placement.py` (164 LOC, 13 symbols): function `enforce_num_instances_and_resources` (CCN 10), `_get_usage` (CCN 16); integrates with `os_resource_classes`. Source: `.aee/kb/src/nova/limit/placement.py.json`.
-- `limit/utils.py` (95 LOC, 13 symbols): function `should_enforce` (CCN 12), class `LimitEnforcementWrapper`; queries Keystone via `openstack` SDK. Source: `.aee/kb/src/nova/limit/utils.py.json`.
-
-**accelerator/**
-- Class `_CyborgClient` (`accelerator/cyborg.py:L118-L419`): 14 HTTP-wrapper methods for Cyborg API.
-- Function `get_client` (`accelerator/cyborg.py:L53-L65`): lazily-created `_CyborgClient` factory.
-
-**exception.py**
-- 1,297 constant symbols (Nova exception class hierarchy, `exception.py:L27-L2682`).
-- Class `ConvertedException` (`exception.py:L35`): bridges `webob.exc.WSGIHTTPException` into nova hierarchy.
+- `limit/local.py` (162 LOC): `enforce_api_limit` (CCN 6), `enforce_db_limit` (CCN 7).
+- `limit/placement.py` (164 LOC): `enforce_num_instances_and_resources` (CCN 10), `_get_usage` (CCN 16).
+- `limit/utils.py` (95 LOC): `should_enforce` (CCN 12).
 
 **objects/**
-- 45 domain-object classes (`Instance`, `Flavor`, `ComputeNode`, `Migration`, `RequestSpec`, `InstanceGroup`, `PciDevice`, `Aggregate`, `Service`, etc.).
-- `objects/base.py`: `NovaObject` and `NovaObjectDictCompat` base classes.
+- 45 domain-object classes (`Instance`, `Flavor`, `ComputeNode`, `Migration`, `RequestSpec`, etc.).
+- `objects/build_request.py`: `_pass_exact_filters` (CCN 32).
+- `objects/migrate_data.py`: `obj_make_compatible` (CCN 31).
 - `objects/fields.py` (1,469 lines): 1,307 field-type classes.
-- `objects/__init__.py` (122 lines): OVO registry import hub.
 
 **network/**
-- `network/neutron.py` (3,989 lines): `API` class — Neutron client for all port, network, security group, and floating-IP operations.
-- `network/model.py` (633 lines): `NetworkInfo`, `Network`, `Subnet`, `FixedIP`, `FloatingIP`, `VIF` data-model classes.
-- `network/security_group_api.py` (709 lines): `SecurityGroupAPI` delegating to Neutron.
-- `network/os_vif_util.py` (551 lines): conversion between Nova VIF objects and os-vif plug-in descriptors.
+- `network/neutron.py` (3,989 lines): `API` class — Neutron client.
+- `network/model.py` (633 lines): `NetworkInfo`, `VIF`, etc.
 
 **db/api/** and **db/main/**
-- `db/api/models.py`: 23 SQLAlchemy ORM model classes for the API database.
-- `db/main/models.py`: ORM models for the main database.
-- `db/main/api.py` (4,967 lines, 3,535 LOC): 526+ module-level query functions.
-- `db/migration.py`: `db_sync`, `db_version`, `db_initial_version` (`db/migration.py:L1-L108`).
+- `db/main/api.py` (4,967 lines, 3,535 LOC): 526+ query functions.
+- `db/migration.py`: `db_sync`, `db_version`.
 
 **scheduler/**
-- `scheduler/manager.py`: `SchedulerManager` orchestrating host selection via `select_destinations`.
-- `scheduler/client/report.py` (2,688 lines): `SchedulerReportClient` managing Placement resource-provider records.
-- `scheduler/filters/__init__.py`: abstract `BaseHostFilter`; 14 concrete filter subclasses.
-- `scheduler/weights/__init__.py`: abstract `BaseHostWeigher`; 12 concrete weigher subclasses.
-- `scheduler/utils.py` (1,560 lines): helper functions including `resources_from_request_spec` (CCN 27).
+- `scheduler/manager.py`: `SchedulerManager`.
+- `scheduler/client/report.py` (2,688 lines): `SchedulerReportClient`.
+
+**accelerator/**
+- `accelerator/cyborg.py`: class `_CyborgClient`, function `get_client`.
+
+**exception.py**
+- 1,297 constant symbols (Nova exception class hierarchy).
 
 ---
 
 ## External Dependencies
 
-All non-`nova` modules imported across the 443 KB records. Source: `dependencies` arrays in `.aee/kb/src/nova/**/*.json`.
+All non-`nova` modules imported across the 532 KB records. Source: `dependencies` arrays in `.aee/kb/src/nova/**/*.json`.
 
 | Package | Files importing |
 |---|---|
-| `oslo_utils` | 132 |
-| `oslo_log` | 111 |
+| `oslo_utils` | 144 |
+| `oslo_log` | 124 |
 | `webob` | 86 |
-| `copy` | 70 |
-| `oslo_config` | 61 |
+| `copy` | 74 |
+| `oslo_config` | 63 |
 | `sqlalchemy` | 59 |
-| `oslo_serialization` | 44 |
+| `oslo_policy` | 55 |
+| `oslo_serialization` | 47 |
 | `oslo_db` | 30 |
+| `collections` | 28 |
 | `keystoneauth1` | 26 |
 | `functools` | 25 |
-| `collections` | 25 |
 | `alembic` | 18 |
 | `re` | 17 |
+| `oslo_messaging` | 14 |
 | `sys` | 15 |
 | `os` | 14 |
-| `oslo_messaging` | 13 |
-| `typing` | 11 |
-| `itertools` | 10 |
-| `urllib` | 10 |
-| `oslo_reports` | 10 |
+| `typing` | 13 |
+| `itertools` | 11 |
+| `oslo_privsep` | 7 |
 
-Additional packages used by fewer files: `ast`, `binascii`, `castellan`, `cryptography`, `cursive`, `eventlet`, `glanceclient`, `greenlet`, `hacking`, `hashlib`, `inspect`, `jsonschema`, `netaddr`, `openstack`, `os_resource_classes`, `os_service_types`, `os_traits`, `oslo_concurrency`, `oslo_i18n`, `oslo_limit`, `oslo_middleware`, `oslo_service`, `oslo_versionedobjects`, `osc_lib`, `random`, `retrying`, `stat`, `time`, and standard-library modules. Total unique external packages: 95.
+Additional packages (fewer files): `abc`, `ast`, `binascii`, `castellan`, `contextlib`, `cryptography`, `cursive`, `datetime`, `errno`, `fcntl`, `glanceclient`, `glob`, `greenlet`, `hacking`, `hashlib`, `inspect`, `jsonschema`, `mmap`, `netaddr`, `openstack`, `os_resource_classes`, `os_service_types`, `os_traits`, `oslo_concurrency`, `oslo_i18n`, `oslo_limit`, `oslo_middleware`, `oslo_reports`, `oslo_service`, `oslo_versionedobjects`, `osc_lib`, `random`, `retrying`, `shutil`, `stat`, `string`, `tempfile`, `time`, `traceback`, `urllib`, and others. Total unique external packages: 99.
 
-New packages added in batch 6: `glanceclient` (`image/glance.py`), `castellan` (`keymgr/conf_key_mgr.py`), `oslo_limit` (`limit/local.py`, `limit/placement.py`, `limit/utils.py`), `hacking` (`hacking/checks.py`), `cryptography` (`image/glance.py`), `cursive` (`image/glance.py`), `ast` (`hacking/checks.py`), `stat`, `time`, `random`, `inspect` (`image/glance.py`).
+New packages added in batch 7: `oslo_policy` (55 files — all `policies/` files), `oslo_privsep` (`privsep/` subsystem), `oslo_versionedobjects` (`notifications/objects/`), `abc`, `contextlib`, `errno`, `fcntl`, `mmap`, `shutil`, `string`, `tempfile`, `traceback`.
 
 ---
 
 ## Side Effects
 
-1,938 side-effect records across 285+ files. Source: `sideEffects` arrays in `.aee/kb/src/nova/**/*.json`.
+2,302 side-effect records. Source: `sideEffects` arrays in `.aee/kb/src/nova/**/*.json`.
 
 | Kind | Count | Primary subsystem |
 |---|---|---|
-| global-mutation | 1,334 | compute/ (350+), objects/ (649), api/ (175+), scheduler/ (89), conf/ (60+), limit/ (23), hacking/ (3), image/ (3) |
-| network | 571 | api/ (200+), objects/ (108), network/ (80+), image/ (43), compute/ (50+), db/ (42), scheduler/ (6), accelerator/ (7) |
-| file-io | 31 | cmd/ (12), image/ (3), core utils (4), compute/ (6), db/ (2), api/ (2), hacking/ (2) |
-| syscall | 2 | console/ (2) |
+| global-mutation | 1,597 | compute/ (350+), objects/ (649+), api/ (175+), policies/ (128), scheduler/ (89), conf/ (60+), notifications/ (95), limit/ (23), hacking/ (3), image/ (3) |
+| network | 573 | api/ (200+), objects/ (108), network/ (80+), image/ (43), compute/ (50+), db/ (42), scheduler/ (6), accelerator/ (7), notifications/ (2) |
+| file-io | 65 | privsep/ (25), cmd/ (12), compute/ (6), image/ (3), core utils (4), db/ (2), api/ (2), hacking/ (2), pci/ (9) |
+| process-spawn | 58 | privsep/ (58) — oslo.privsep daemon subprocess for all privsep-decorated functions |
+| syscall | 9 | privsep/ (7), console/ (2) |
 
-Representative new entries (batch 6):
-- `image/glance.py` — 43 `network` side effects: HTTP calls to Glance service via `GlanceClientWrapper`.
-- `image/glance.py:L413, L429` — `file-io`: image data written to local file during download.
-- `hacking/checks.py` — 3 `global-mutation`, 2 `file-io`: AST visitor class-state mutations and `os.path` reads.
-- `limit/local.py` — 15 `global-mutation`: oslo_limit enforcer state updates.
-- `limit/utils.py:L(limit/utils.py)` — 1 `network`: Keystone query via `openstack` SDK.
+The `process-spawn` kind (new in batch 7) originates entirely from `privsep/`: every `@nova.privsep.sys_admin_pctxt.entrypoint`-decorated function executes in a privileged subprocess. Source: `.aee/kb/src/nova/privsep/**/*.json:sideEffects`.
 
 ---
 
 ## Component Diagram
 
-All 1,577 file edges are intra-component (`crossComponent: false`). No cross-component seams exist. Source: `.aee/link-graph.json` (batch c7012ab2).
+All 1,882 file edges are intra-component (`crossComponent: false`). No cross-component seams exist. Source: `.aee/link-graph.json` (batch 10997c0e).
 
 ```mermaid
 graph LR
@@ -967,6 +1057,23 @@ graph LR
   network-neutron["neutron.py"]
   network-os-vif-util["os_vif_util.py"]
   network-security-group-api["security_group_api.py"]
+  notifications-base["base.py"]
+  notifications-init["__init__.py"]
+  notifications-objects-aggregate["aggregate.py"]
+  notifications-objects-base["base.py"]
+  notifications-objects-compute-task["compute_task.py"]
+  notifications-objects-exception["exception.py"]
+  notifications-objects-flavor["flavor.py"]
+  notifications-objects-image["image.py"]
+  notifications-objects-instance["instance.py"]
+  notifications-objects-keypair["keypair.py"]
+  notifications-objects-libvirt["libvirt.py"]
+  notifications-objects-metrics["metrics.py"]
+  notifications-objects-request-spec["request_spec.py"]
+  notifications-objects-scheduler["scheduler.py"]
+  notifications-objects-server-group["server_group.py"]
+  notifications-objects-service["service.py"]
+  notifications-objects-volume["volume.py"]
   objects-aggregate["aggregate.py"]
   objects-base["base.py"]
   objects-block-device["block_device.py"]
@@ -1016,6 +1123,75 @@ graph LR
   objects-virt-device-metadata["virt_device_metadata.py"]
   objects-virtual-interface["virtual_interface.py"]
   objects-volume-usage["volume_usage.py"]
+  pci-devspec["devspec.py"]
+  pci-manager["manager.py"]
+  pci-request["request.py"]
+  pci-stats["stats.py"]
+  pci-utils["utils.py"]
+  pci-whitelist["whitelist.py"]
+  policies-admin-actions["admin_actions.py"]
+  policies-admin-password["admin_password.py"]
+  policies-aggregates["aggregates.py"]
+  policies-assisted-volume-snapshots["assisted_volume_snapshots.py"]
+  policies-attach-interfaces["attach_interfaces.py"]
+  policies-availability-zone["availability_zone.py"]
+  policies-baremetal-nodes["baremetal_nodes.py"]
+  policies-base["base.py"]
+  policies-console-auth-tokens["console_auth_tokens.py"]
+  policies-console-output["console_output.py"]
+  policies-create-backup["create_backup.py"]
+  policies-deferred-delete["deferred_delete.py"]
+  policies-evacuate["evacuate.py"]
+  policies-extended-server-attributes["extended_server_attributes.py"]
+  policies-extensions["extensions.py"]
+  policies-flavor-access["flavor_access.py"]
+  policies-flavor-extra-specs["flavor_extra_specs.py"]
+  policies-flavor-manage["flavor_manage.py"]
+  policies-floating-ip-pools["floating_ip_pools.py"]
+  policies-floating-ips["floating_ips.py"]
+  policies-hosts["hosts.py"]
+  policies-hypervisors["hypervisors.py"]
+  policies-init["__init__.py"]
+  policies-instance-actions["instance_actions.py"]
+  policies-instance-usage-audit-log["instance_usage_audit_log.py"]
+  policies-ips["ips.py"]
+  policies-keypairs["keypairs.py"]
+  policies-limits["limits.py"]
+  policies-lock-server["lock_server.py"]
+  policies-migrate-server["migrate_server.py"]
+  policies-migrations["migrations.py"]
+  policies-multinic["multinic.py"]
+  policies-networks["networks.py"]
+  policies-pause-server["pause_server.py"]
+  policies-quota-class-sets["quota_class_sets.py"]
+  policies-quota-sets["quota_sets.py"]
+  policies-remote-consoles["remote_consoles.py"]
+  policies-rescue["rescue.py"]
+  policies-security-groups["security_groups.py"]
+  policies-server-diagnostics["server_diagnostics.py"]
+  policies-server-external-events["server_external_events.py"]
+  policies-server-groups["server_groups.py"]
+  policies-server-metadata["server_metadata.py"]
+  policies-server-password["server_password.py"]
+  policies-server-shares["server_shares.py"]
+  policies-server-tags["server_tags.py"]
+  policies-server-topology["server_topology.py"]
+  policies-servers["servers.py"]
+  policies-servers-migrations["servers_migrations.py"]
+  policies-services["services.py"]
+  policies-shelve["shelve.py"]
+  policies-simple-tenant-usage["simple_tenant_usage.py"]
+  policies-suspend-server["suspend_server.py"]
+  policies-tenant-networks["tenant_networks.py"]
+  policies-volumes["volumes.py"]
+  policies-volumes-attachments["volumes_attachments.py"]
+  privsep-fs["fs.py"]
+  privsep-idmapshift["idmapshift.py"]
+  privsep-init["__init__.py"]
+  privsep-libvirt["libvirt.py"]
+  privsep-path["path.py"]
+  privsep-qemu["qemu.py"]
+  privsep-utils["utils.py"]
   scheduler-client-query["query.py"]
   scheduler-client-report["report.py"]
   scheduler-filters-affinity-filter["affinity_filter.py"]
@@ -1112,6 +1288,7 @@ graph LR
   api-openstack-compute-admin-actions --> compute-vm-states
   api-openstack-compute-admin-actions --> exception
   api-openstack-compute-admin-actions --> objects-init
+  api-openstack-compute-admin-actions --> policies-admin-actions
   api-openstack-compute-admin-password --> api-openstack-common
   api-openstack-compute-admin-password --> api-openstack-compute-schemas-admin-password
   api-openstack-compute-admin-password --> api-openstack-wsgi
@@ -1119,6 +1296,7 @@ graph LR
   api-openstack-compute-admin-password --> compute-api
   api-openstack-compute-admin-password --> exception
   api-openstack-compute-admin-password --> i18n
+  api-openstack-compute-admin-password --> policies-admin-password
   api-openstack-compute-agents --> api-openstack-compute-schemas-agents
   api-openstack-compute-agents --> api-openstack-wsgi
   api-openstack-compute-agents --> api-validation-init
@@ -1132,12 +1310,14 @@ graph LR
   api-openstack-compute-aggregates --> conductor-api
   api-openstack-compute-aggregates --> exception
   api-openstack-compute-aggregates --> i18n
+  api-openstack-compute-aggregates --> policies-aggregates
   api-openstack-compute-aggregates --> utils
   api-openstack-compute-assisted-volume-snapshots --> api-openstack-compute-schemas-assisted-volume-snapshots
   api-openstack-compute-assisted-volume-snapshots --> api-openstack-wsgi
   api-openstack-compute-assisted-volume-snapshots --> api-validation-init
   api-openstack-compute-assisted-volume-snapshots --> compute-api
   api-openstack-compute-assisted-volume-snapshots --> exception
+  api-openstack-compute-assisted-volume-snapshots --> policies-assisted-volume-snapshots
   api-openstack-compute-attach-interfaces --> api-openstack-api-version-request
   api-openstack-compute-attach-interfaces --> api-openstack-common
   api-openstack-compute-attach-interfaces --> api-openstack-compute-schemas-attach-interfaces
@@ -1148,17 +1328,20 @@ graph LR
   api-openstack-compute-attach-interfaces --> i18n
   api-openstack-compute-attach-interfaces --> network-neutron
   api-openstack-compute-attach-interfaces --> objects-init
+  api-openstack-compute-attach-interfaces --> policies-attach-interfaces
   api-openstack-compute-availability-zone --> api-openstack-compute-schemas-availability-zone
   api-openstack-compute-availability-zone --> api-openstack-wsgi
   api-openstack-compute-availability-zone --> api-validation-init
   api-openstack-compute-availability-zone --> compute-api
   api-openstack-compute-availability-zone --> conf-init
+  api-openstack-compute-availability-zone --> policies-availability-zone
   api-openstack-compute-baremetal-nodes --> api-openstack-api-version-request
   api-openstack-compute-baremetal-nodes --> api-openstack-compute-schemas-baremetal-nodes
   api-openstack-compute-baremetal-nodes --> api-openstack-wsgi
   api-openstack-compute-baremetal-nodes --> api-validation-init
   api-openstack-compute-baremetal-nodes --> conf-init
   api-openstack-compute-baremetal-nodes --> i18n
+  api-openstack-compute-baremetal-nodes --> policies-baremetal-nodes
   api-openstack-compute-baremetal-nodes --> utils
   api-openstack-compute-cells --> api-openstack-compute-schemas-cells
   api-openstack-compute-cells --> api-openstack-wsgi
@@ -1176,12 +1359,14 @@ graph LR
   api-openstack-compute-console-auth-tokens --> conf-init
   api-openstack-compute-console-auth-tokens --> i18n
   api-openstack-compute-console-auth-tokens --> objects-init
+  api-openstack-compute-console-auth-tokens --> policies-console-auth-tokens
   api-openstack-compute-console-output --> api-openstack-common
   api-openstack-compute-console-output --> api-openstack-compute-schemas-console-output
   api-openstack-compute-console-output --> api-openstack-wsgi
   api-openstack-compute-console-output --> api-validation-init
   api-openstack-compute-console-output --> compute-api
   api-openstack-compute-console-output --> exception
+  api-openstack-compute-console-output --> policies-console-output
   api-openstack-compute-consoles --> api-openstack-compute-schemas-consoles
   api-openstack-compute-consoles --> api-openstack-wsgi
   api-openstack-compute-consoles --> api-validation-init
@@ -1192,12 +1377,14 @@ graph LR
   api-openstack-compute-create-backup --> api-validation-init
   api-openstack-compute-create-backup --> compute-api
   api-openstack-compute-create-backup --> exception
+  api-openstack-compute-create-backup --> policies-create-backup
   api-openstack-compute-deferred-delete --> api-openstack-common
   api-openstack-compute-deferred-delete --> api-openstack-compute-schemas-deferred-delete
   api-openstack-compute-deferred-delete --> api-openstack-wsgi
   api-openstack-compute-deferred-delete --> api-validation-init
   api-openstack-compute-deferred-delete --> compute-api
   api-openstack-compute-deferred-delete --> exception
+  api-openstack-compute-deferred-delete --> policies-deferred-delete
   api-openstack-compute-evacuate --> api-openstack-api-version-request
   api-openstack-compute-evacuate --> api-openstack-common
   api-openstack-compute-evacuate --> api-openstack-compute-schemas-evacuate
@@ -1209,10 +1396,12 @@ graph LR
   api-openstack-compute-evacuate --> exception
   api-openstack-compute-evacuate --> i18n
   api-openstack-compute-evacuate --> objects-init
+  api-openstack-compute-evacuate --> policies-evacuate
   api-openstack-compute-evacuate --> utils
   api-openstack-compute-extension-info --> api-openstack-compute-schemas-extension-info
   api-openstack-compute-extension-info --> api-openstack-wsgi
   api-openstack-compute-extension-info --> api-validation-init
+  api-openstack-compute-extension-info --> policies-extensions
   api-openstack-compute-fixed-ips --> api-openstack-compute-schemas-fixed-ips
   api-openstack-compute-fixed-ips --> api-openstack-wsgi
   api-openstack-compute-fixed-ips --> api-validation-init
@@ -1224,6 +1413,7 @@ graph LR
   api-openstack-compute-flavor-access --> api-validation-init
   api-openstack-compute-flavor-access --> exception
   api-openstack-compute-flavor-access --> i18n
+  api-openstack-compute-flavor-access --> policies-flavor-access
   api-openstack-compute-flavors --> api-openstack-api-version-request
   api-openstack-compute-flavors --> api-openstack-common
   api-openstack-compute-flavors --> api-openstack-compute-schemas-flavors
@@ -1234,6 +1424,8 @@ graph LR
   api-openstack-compute-flavors --> exception
   api-openstack-compute-flavors --> i18n
   api-openstack-compute-flavors --> objects-init
+  api-openstack-compute-flavors --> policies-flavor-extra-specs
+  api-openstack-compute-flavors --> policies-flavor-manage
   api-openstack-compute-flavors --> utils
   api-openstack-compute-flavors-extraspecs --> api-openstack-api-version-request
   api-openstack-compute-flavors-extraspecs --> api-openstack-common
@@ -1243,6 +1435,7 @@ graph LR
   api-openstack-compute-flavors-extraspecs --> api-validation-init
   api-openstack-compute-flavors-extraspecs --> exception
   api-openstack-compute-flavors-extraspecs --> i18n
+  api-openstack-compute-flavors-extraspecs --> policies-flavor-extra-specs
   api-openstack-compute-flavors-extraspecs --> utils
   api-openstack-compute-floating-ip-dns --> api-openstack-compute-schemas-floating-ip-dns
   api-openstack-compute-floating-ip-dns --> api-openstack-wsgi
@@ -1252,6 +1445,7 @@ graph LR
   api-openstack-compute-floating-ip-pools --> api-openstack-wsgi
   api-openstack-compute-floating-ip-pools --> api-validation-init
   api-openstack-compute-floating-ip-pools --> network-neutron
+  api-openstack-compute-floating-ip-pools --> policies-floating-ip-pools
   api-openstack-compute-floating-ips --> api-openstack-api-version-request
   api-openstack-compute-floating-ips --> api-openstack-common
   api-openstack-compute-floating-ips --> api-openstack-compute-schemas-floating-ips
@@ -1261,6 +1455,7 @@ graph LR
   api-openstack-compute-floating-ips --> exception
   api-openstack-compute-floating-ips --> i18n
   api-openstack-compute-floating-ips --> network-neutron
+  api-openstack-compute-floating-ips --> policies-floating-ips
   api-openstack-compute-floating-ips-bulk --> api-openstack-compute-schemas-floating-ips-bulk
   api-openstack-compute-floating-ips-bulk --> api-openstack-wsgi
   api-openstack-compute-floating-ips-bulk --> api-validation-init
@@ -1275,6 +1470,7 @@ graph LR
   api-openstack-compute-hosts --> compute-api
   api-openstack-compute-hosts --> exception
   api-openstack-compute-hosts --> objects-init
+  api-openstack-compute-hosts --> policies-hosts
   api-openstack-compute-hypervisors --> api-openstack-api-version-request
   api-openstack-compute-hypervisors --> api-openstack-common
   api-openstack-compute-hypervisors --> api-openstack-compute-schemas-hypervisors
@@ -1284,6 +1480,7 @@ graph LR
   api-openstack-compute-hypervisors --> compute-api
   api-openstack-compute-hypervisors --> exception
   api-openstack-compute-hypervisors --> i18n
+  api-openstack-compute-hypervisors --> policies-hypervisors
   api-openstack-compute-hypervisors --> utils
   api-openstack-compute-image-metadata --> api-openstack-common
   api-openstack-compute-image-metadata --> api-openstack-compute-schemas-image-metadata
@@ -1311,6 +1508,7 @@ graph LR
   api-openstack-compute-instance-actions --> compute-api
   api-openstack-compute-instance-actions --> exception
   api-openstack-compute-instance-actions --> i18n
+  api-openstack-compute-instance-actions --> policies-instance-actions
   api-openstack-compute-instance-actions --> utils
   api-openstack-compute-instance-usage-audit-log --> api-openstack-compute-schemas-instance-usage-audit-log
   api-openstack-compute-instance-usage-audit-log --> api-openstack-wsgi
@@ -1318,6 +1516,7 @@ graph LR
   api-openstack-compute-instance-usage-audit-log --> compute-api
   api-openstack-compute-instance-usage-audit-log --> compute-rpcapi
   api-openstack-compute-instance-usage-audit-log --> i18n
+  api-openstack-compute-instance-usage-audit-log --> policies-instance-usage-audit-log
   api-openstack-compute-instance-usage-audit-log --> utils
   api-openstack-compute-ips --> api-openstack-common
   api-openstack-compute-ips --> api-openstack-compute-schemas-ips
@@ -1326,6 +1525,7 @@ graph LR
   api-openstack-compute-ips --> api-validation-init
   api-openstack-compute-ips --> compute-api
   api-openstack-compute-ips --> i18n
+  api-openstack-compute-ips --> policies-ips
   api-openstack-compute-keypairs --> api-openstack-api-version-request
   api-openstack-compute-keypairs --> api-openstack-common
   api-openstack-compute-keypairs --> api-openstack-compute-schemas-keypairs
@@ -1335,17 +1535,20 @@ graph LR
   api-openstack-compute-keypairs --> compute-api
   api-openstack-compute-keypairs --> exception
   api-openstack-compute-keypairs --> objects-keypair
+  api-openstack-compute-keypairs --> policies-keypairs
   api-openstack-compute-limits --> api-openstack-api-version-request
   api-openstack-compute-limits --> api-openstack-compute-schemas-limits
   api-openstack-compute-limits --> api-openstack-compute-views-limits
   api-openstack-compute-limits --> api-openstack-wsgi
   api-openstack-compute-limits --> api-validation-init
+  api-openstack-compute-limits --> policies-limits
   api-openstack-compute-lock-server --> api-openstack-api-version-request
   api-openstack-compute-lock-server --> api-openstack-common
   api-openstack-compute-lock-server --> api-openstack-compute-schemas-lock-server
   api-openstack-compute-lock-server --> api-openstack-wsgi
   api-openstack-compute-lock-server --> api-validation-init
   api-openstack-compute-lock-server --> compute-api
+  api-openstack-compute-lock-server --> policies-lock-server
   api-openstack-compute-migrate-server --> api-openstack-api-version-request
   api-openstack-compute-migrate-server --> api-openstack-common
   api-openstack-compute-migrate-server --> api-openstack-compute-schemas-migrate-server
@@ -1354,6 +1557,7 @@ graph LR
   api-openstack-compute-migrate-server --> compute-api
   api-openstack-compute-migrate-server --> exception
   api-openstack-compute-migrate-server --> i18n
+  api-openstack-compute-migrate-server --> policies-migrate-server
   api-openstack-compute-migrations --> api-openstack-api-version-request
   api-openstack-compute-migrations --> api-openstack-common
   api-openstack-compute-migrations --> api-openstack-compute-schemas-migrations
@@ -1365,12 +1569,14 @@ graph LR
   api-openstack-compute-migrations --> i18n
   api-openstack-compute-migrations --> objects-base
   api-openstack-compute-migrations --> objects-fields
+  api-openstack-compute-migrations --> policies-migrations
   api-openstack-compute-multinic --> api-openstack-common
   api-openstack-compute-multinic --> api-openstack-compute-schemas-multinic
   api-openstack-compute-multinic --> api-openstack-wsgi
   api-openstack-compute-multinic --> api-validation-init
   api-openstack-compute-multinic --> compute-api
   api-openstack-compute-multinic --> exception
+  api-openstack-compute-multinic --> policies-multinic
   api-openstack-compute-networks --> api-openstack-api-version-request
   api-openstack-compute-networks --> api-openstack-compute-schemas-networks
   api-openstack-compute-networks --> api-openstack-wsgi
@@ -1378,6 +1584,7 @@ graph LR
   api-openstack-compute-networks --> exception
   api-openstack-compute-networks --> i18n
   api-openstack-compute-networks --> network-neutron
+  api-openstack-compute-networks --> policies-networks
   api-openstack-compute-networks-associate --> api-openstack-compute-schemas-networks-associate
   api-openstack-compute-networks-associate --> api-openstack-wsgi
   api-openstack-compute-networks-associate --> api-validation-init
@@ -1387,6 +1594,7 @@ graph LR
   api-openstack-compute-pause-server --> api-validation-init
   api-openstack-compute-pause-server --> compute-api
   api-openstack-compute-pause-server --> exception
+  api-openstack-compute-pause-server --> policies-pause-server
   api-openstack-compute-quota-classes --> api-openstack-api-version-request
   api-openstack-compute-quota-classes --> api-openstack-compute-schemas-quota-classes
   api-openstack-compute-quota-classes --> api-openstack-wsgi
@@ -1394,6 +1602,7 @@ graph LR
   api-openstack-compute-quota-classes --> exception
   api-openstack-compute-quota-classes --> limit-utils
   api-openstack-compute-quota-classes --> objects-init
+  api-openstack-compute-quota-classes --> policies-quota-class-sets
   api-openstack-compute-quota-classes --> utils
   api-openstack-compute-quota-sets --> api-openstack-api-version-request
   api-openstack-compute-quota-sets --> api-openstack-compute-schemas-quota-sets
@@ -1405,12 +1614,14 @@ graph LR
   api-openstack-compute-quota-sets --> i18n
   api-openstack-compute-quota-sets --> limit-utils
   api-openstack-compute-quota-sets --> objects-init
+  api-openstack-compute-quota-sets --> policies-quota-sets
   api-openstack-compute-remote-consoles --> api-openstack-common
   api-openstack-compute-remote-consoles --> api-openstack-compute-schemas-remote-consoles
   api-openstack-compute-remote-consoles --> api-openstack-wsgi
   api-openstack-compute-remote-consoles --> api-validation-init
   api-openstack-compute-remote-consoles --> compute-api
   api-openstack-compute-remote-consoles --> exception
+  api-openstack-compute-remote-consoles --> policies-remote-consoles
   api-openstack-compute-rescue --> api-openstack-api-version-request
   api-openstack-compute-rescue --> api-openstack-common
   api-openstack-compute-rescue --> api-openstack-compute-schemas-rescue
@@ -1419,6 +1630,7 @@ graph LR
   api-openstack-compute-rescue --> compute-api
   api-openstack-compute-rescue --> conf-init
   api-openstack-compute-rescue --> exception
+  api-openstack-compute-rescue --> policies-rescue
   api-openstack-compute-rescue --> utils
   api-openstack-compute-routes --> api-openstack-compute-admin-actions
   api-openstack-compute-routes --> api-openstack-compute-admin-password
@@ -1556,6 +1768,7 @@ graph LR
   api-openstack-compute-security-groups --> exception
   api-openstack-compute-security-groups --> i18n
   api-openstack-compute-security-groups --> network-security-group-api
+  api-openstack-compute-security-groups --> policies-security-groups
   api-openstack-compute-server-diagnostics --> api-openstack-api-version-request
   api-openstack-compute-server-diagnostics --> api-openstack-common
   api-openstack-compute-server-diagnostics --> api-openstack-compute-schemas-server-diagnostics
@@ -1564,11 +1777,13 @@ graph LR
   api-openstack-compute-server-diagnostics --> api-validation-init
   api-openstack-compute-server-diagnostics --> compute-api
   api-openstack-compute-server-diagnostics --> exception
+  api-openstack-compute-server-diagnostics --> policies-server-diagnostics
   api-openstack-compute-server-external-events --> api-openstack-compute-schemas-server-external-events
   api-openstack-compute-server-external-events --> api-openstack-wsgi
   api-openstack-compute-server-external-events --> api-validation-init
   api-openstack-compute-server-external-events --> compute-api
   api-openstack-compute-server-external-events --> objects-init
+  api-openstack-compute-server-external-events --> policies-server-external-events
   api-openstack-compute-server-groups --> api-openstack-api-version-request
   api-openstack-compute-server-groups --> api-openstack-common
   api-openstack-compute-server-groups --> api-openstack-compute-schemas-server-groups
@@ -1580,6 +1795,7 @@ graph LR
   api-openstack-compute-server-groups --> limit-local
   api-openstack-compute-server-groups --> objects-init
   api-openstack-compute-server-groups --> objects-service
+  api-openstack-compute-server-groups --> policies-server-groups
   api-openstack-compute-server-metadata --> api-openstack-common
   api-openstack-compute-server-metadata --> api-openstack-compute-schemas-server-metadata
   api-openstack-compute-server-metadata --> api-openstack-wsgi
@@ -1587,6 +1803,7 @@ graph LR
   api-openstack-compute-server-metadata --> compute-api
   api-openstack-compute-server-metadata --> exception
   api-openstack-compute-server-metadata --> i18n
+  api-openstack-compute-server-metadata --> policies-server-metadata
   api-openstack-compute-server-migrations --> api-openstack-api-version-request
   api-openstack-compute-server-migrations --> api-openstack-common
   api-openstack-compute-server-migrations --> api-openstack-compute-schemas-server-migrations
@@ -1595,12 +1812,14 @@ graph LR
   api-openstack-compute-server-migrations --> compute-api
   api-openstack-compute-server-migrations --> exception
   api-openstack-compute-server-migrations --> i18n
+  api-openstack-compute-server-migrations --> policies-servers-migrations
   api-openstack-compute-server-password --> api-metadata-password
   api-openstack-compute-server-password --> api-openstack-common
   api-openstack-compute-server-password --> api-openstack-compute-schemas-server-password
   api-openstack-compute-server-password --> api-openstack-wsgi
   api-openstack-compute-server-password --> api-validation-init
   api-openstack-compute-server-password --> compute-api
+  api-openstack-compute-server-password --> policies-server-password
   api-openstack-compute-server-shares --> api-openstack-common
   api-openstack-compute-server-shares --> api-openstack-compute-schemas-server-shares
   api-openstack-compute-server-shares --> api-openstack-compute-views-server-shares
@@ -1611,6 +1830,7 @@ graph LR
   api-openstack-compute-server-shares --> exception
   api-openstack-compute-server-shares --> objects-fields
   api-openstack-compute-server-shares --> objects-init
+  api-openstack-compute-server-shares --> policies-server-shares
   api-openstack-compute-server-tags --> api-openstack-common
   api-openstack-compute-server-tags --> api-openstack-compute-schemas-server-tags
   api-openstack-compute-server-tags --> api-openstack-compute-views-server-tags
@@ -1621,12 +1841,15 @@ graph LR
   api-openstack-compute-server-tags --> compute-vm-states
   api-openstack-compute-server-tags --> exception
   api-openstack-compute-server-tags --> i18n
+  api-openstack-compute-server-tags --> notifications-base
   api-openstack-compute-server-tags --> objects-init
+  api-openstack-compute-server-tags --> policies-server-tags
   api-openstack-compute-server-topology --> api-openstack-common
   api-openstack-compute-server-topology --> api-openstack-compute-schemas-server-topology
   api-openstack-compute-server-topology --> api-openstack-wsgi
   api-openstack-compute-server-topology --> api-validation-init
   api-openstack-compute-server-topology --> compute-api
+  api-openstack-compute-server-topology --> policies-server-topology
   api-openstack-compute-servers --> api-openstack-api-version-request
   api-openstack-compute-servers --> api-openstack-common
   api-openstack-compute-servers --> api-openstack-compute-helpers
@@ -1642,6 +1865,7 @@ graph LR
   api-openstack-compute-servers --> i18n
   api-openstack-compute-servers --> image-glance
   api-openstack-compute-servers --> objects-init
+  api-openstack-compute-servers --> policies-servers
   api-openstack-compute-servers --> utils
   api-openstack-compute-services --> api-openstack-api-version-request
   api-openstack-compute-services --> api-openstack-compute-schemas-services
@@ -1651,6 +1875,7 @@ graph LR
   api-openstack-compute-services --> exception
   api-openstack-compute-services --> i18n
   api-openstack-compute-services --> objects-init
+  api-openstack-compute-services --> policies-services
   api-openstack-compute-services --> scheduler-client-report
   api-openstack-compute-services --> utils
   api-openstack-compute-shelve --> api-openstack-api-version-request
@@ -1660,6 +1885,7 @@ graph LR
   api-openstack-compute-shelve --> api-validation-init
   api-openstack-compute-shelve --> compute-api
   api-openstack-compute-shelve --> exception
+  api-openstack-compute-shelve --> policies-shelve
   api-openstack-compute-simple-tenant-usage --> api-openstack-api-version-request
   api-openstack-compute-simple-tenant-usage --> api-openstack-common
   api-openstack-compute-simple-tenant-usage --> api-openstack-compute-schemas-simple-tenant-usage
@@ -1670,18 +1896,21 @@ graph LR
   api-openstack-compute-simple-tenant-usage --> exception
   api-openstack-compute-simple-tenant-usage --> i18n
   api-openstack-compute-simple-tenant-usage --> objects-init
+  api-openstack-compute-simple-tenant-usage --> policies-simple-tenant-usage
   api-openstack-compute-snapshots --> api-openstack-api-version-request
   api-openstack-compute-snapshots --> api-openstack-common
   api-openstack-compute-snapshots --> api-openstack-compute-schemas-snapshots
   api-openstack-compute-snapshots --> api-openstack-wsgi
   api-openstack-compute-snapshots --> api-validation-init
   api-openstack-compute-snapshots --> exception
+  api-openstack-compute-snapshots --> policies-volumes
   api-openstack-compute-suspend-server --> api-openstack-common
   api-openstack-compute-suspend-server --> api-openstack-compute-schemas-suspend-server
   api-openstack-compute-suspend-server --> api-openstack-wsgi
   api-openstack-compute-suspend-server --> api-validation-init
   api-openstack-compute-suspend-server --> compute-api
   api-openstack-compute-suspend-server --> exception
+  api-openstack-compute-suspend-server --> policies-suspend-server
   api-openstack-compute-tenant-networks --> api-openstack-api-version-request
   api-openstack-compute-tenant-networks --> api-openstack-compute-schemas-tenant-networks
   api-openstack-compute-tenant-networks --> api-openstack-wsgi
@@ -1690,6 +1919,7 @@ graph LR
   api-openstack-compute-tenant-networks --> exception
   api-openstack-compute-tenant-networks --> i18n
   api-openstack-compute-tenant-networks --> network-neutron
+  api-openstack-compute-tenant-networks --> policies-tenant-networks
   api-openstack-compute-versions --> api-openstack-api-version-request
   api-openstack-compute-versions --> api-openstack-compute-schemas-versions
   api-openstack-compute-versions --> api-openstack-compute-views-versions
@@ -1727,6 +1957,8 @@ graph LR
   api-openstack-compute-views-servers --> objects-fields
   api-openstack-compute-views-servers --> objects-init
   api-openstack-compute-views-servers --> objects-virtual-interface
+  api-openstack-compute-views-servers --> policies-extended-server-attributes
+  api-openstack-compute-views-servers --> policies-servers
   api-openstack-compute-views-servers --> utils
   api-openstack-compute-views-usages --> api-openstack-common
   api-openstack-compute-views-versions --> api-openstack-common
@@ -1743,12 +1975,14 @@ graph LR
   api-openstack-compute-volume-attachments --> exception
   api-openstack-compute-volume-attachments --> i18n
   api-openstack-compute-volume-attachments --> objects-init
+  api-openstack-compute-volume-attachments --> policies-volumes-attachments
   api-openstack-compute-volumes --> api-openstack-api-version-request
   api-openstack-compute-volumes --> api-openstack-common
   api-openstack-compute-volumes --> api-openstack-compute-schemas-volumes
   api-openstack-compute-volumes --> api-openstack-wsgi
   api-openstack-compute-volumes --> api-validation-init
   api-openstack-compute-volumes --> exception
+  api-openstack-compute-volumes --> policies-volumes
   api-openstack-compute-volumes-boot --> api-openstack-compute-schemas-servers
   api-openstack-compute-volumes-boot --> api-openstack-compute-servers
   api-openstack-compute-volumes-boot --> api-openstack-wsgi
@@ -1769,6 +2003,7 @@ graph LR
   api-openstack-wsgi --> i18n
   api-openstack-wsgi-app --> exception
   api-openstack-wsgi-app --> objects-init
+  api-openstack-wsgi-app --> pci-request
   api-openstack-wsgi-app --> utils
   api-validation-extra-specs-accel --> api-validation-extra-specs-base
   api-validation-extra-specs-aggregate-instance-extra-specs --> api-validation-extra-specs-base
@@ -1857,6 +2092,7 @@ graph LR
   cmd-policy --> db-main-api
   cmd-policy --> exception
   cmd-policy --> i18n
+  cmd-policy --> policies-init
   cmd-policy --> utils
   cmd-scheduler --> conf-init
   cmd-scheduler --> objects-init
@@ -1909,6 +2145,9 @@ graph LR
   compute-api --> objects-keypair
   compute-api --> objects-quotas
   compute-api --> objects-service
+  compute-api --> pci-request
+  compute-api --> policies-servers
+  compute-api --> policies-shelve
   compute-api --> scheduler-client-query
   compute-api --> scheduler-client-report
   compute-api --> scheduler-utils
@@ -1953,6 +2192,8 @@ graph LR
   compute-manager --> objects-instance
   compute-manager --> objects-migrate-data
   compute-manager --> objects-service
+  compute-manager --> pci-request
+  compute-manager --> pci-whitelist
   compute-manager --> scheduler-client-query
   compute-manager --> scheduler-client-report
   compute-manager --> scheduler-utils
@@ -1977,6 +2218,8 @@ graph LR
   compute-pci-placement-translator --> i18n
   compute-pci-placement-translator --> objects-fields
   compute-pci-placement-translator --> objects-pci-device
+  compute-pci-placement-translator --> pci-devspec
+  compute-pci-placement-translator --> pci-manager
   compute-power-state --> objects-fields
   compute-provider-config --> exception
   compute-provider-config --> i18n
@@ -1996,6 +2239,8 @@ graph LR
   compute-resource-tracker --> objects-fields
   compute-resource-tracker --> objects-init
   compute-resource-tracker --> objects-migration
+  compute-resource-tracker --> pci-manager
+  compute-resource-tracker --> pci-request
   compute-resource-tracker --> scheduler-client-report
   compute-resource-tracker --> utils
   compute-rpcapi --> conf-init
@@ -2021,6 +2266,20 @@ graph LR
   compute-utils --> compute-vm-states
   compute-utils --> conf-init
   compute-utils --> exception
+  compute-utils --> notifications-init
+  compute-utils --> notifications-objects-aggregate
+  compute-utils --> notifications-objects-base
+  compute-utils --> notifications-objects-compute-task
+  compute-utils --> notifications-objects-exception
+  compute-utils --> notifications-objects-flavor
+  compute-utils --> notifications-objects-instance
+  compute-utils --> notifications-objects-keypair
+  compute-utils --> notifications-objects-libvirt
+  compute-utils --> notifications-objects-metrics
+  compute-utils --> notifications-objects-request-spec
+  compute-utils --> notifications-objects-scheduler
+  compute-utils --> notifications-objects-server-group
+  compute-utils --> notifications-objects-volume
   compute-utils --> objects-fields
   compute-utils --> objects-init
   compute-utils --> utils
@@ -2045,6 +2304,7 @@ graph LR
   conductor-manager --> limit-placement
   conductor-manager --> limit-utils
   conductor-manager --> network-neutron
+  conductor-manager --> notifications-init
   conductor-manager --> objects-base
   conductor-manager --> objects-fields
   conductor-manager --> objects-init
@@ -2223,6 +2483,10 @@ graph LR
   network-neutron --> network-model
   network-neutron --> objects-fields
   network-neutron --> objects-init
+  network-neutron --> pci-request
+  network-neutron --> pci-utils
+  network-neutron --> pci-whitelist
+  network-neutron --> policies-servers
   network-neutron --> service-auth
   network-neutron --> utils
   network-os-vif-util --> exception
@@ -2232,6 +2496,67 @@ graph LR
   network-security-group-api --> i18n
   network-security-group-api --> network-neutron
   network-security-group-api --> objects-security-group
+  notifications-base --> conf-init
+  notifications-base --> exception
+  notifications-base --> image-glance
+  notifications-base --> notifications-objects-base
+  notifications-base --> notifications-objects-instance
+  notifications-base --> objects-fields
+  notifications-base --> utils
+  notifications-init --> notifications-base
+  notifications-objects-aggregate --> notifications-objects-base
+  notifications-objects-aggregate --> objects-base
+  notifications-objects-aggregate --> objects-fields
+  notifications-objects-base --> exception
+  notifications-objects-base --> objects-base
+  notifications-objects-base --> objects-fields
+  notifications-objects-compute-task --> notifications-objects-base
+  notifications-objects-compute-task --> notifications-objects-request-spec
+  notifications-objects-compute-task --> objects-base
+  notifications-objects-compute-task --> objects-fields
+  notifications-objects-exception --> notifications-objects-base
+  notifications-objects-exception --> objects-base
+  notifications-objects-exception --> objects-fields
+  notifications-objects-flavor --> notifications-objects-base
+  notifications-objects-flavor --> objects-base
+  notifications-objects-flavor --> objects-fields
+  notifications-objects-image --> notifications-objects-base
+  notifications-objects-image --> objects-base
+  notifications-objects-image --> objects-fields
+  notifications-objects-image --> objects-image-meta
+  notifications-objects-instance --> conf-init
+  notifications-objects-instance --> notifications-objects-base
+  notifications-objects-instance --> notifications-objects-flavor
+  notifications-objects-instance --> notifications-objects-keypair
+  notifications-objects-instance --> objects-base
+  notifications-objects-instance --> objects-fields
+  notifications-objects-keypair --> notifications-objects-base
+  notifications-objects-keypair --> objects-base
+  notifications-objects-keypair --> objects-fields
+  notifications-objects-libvirt --> notifications-objects-base
+  notifications-objects-libvirt --> objects-base
+  notifications-objects-libvirt --> objects-fields
+  notifications-objects-metrics --> notifications-objects-base
+  notifications-objects-metrics --> objects-base
+  notifications-objects-metrics --> objects-fields
+  notifications-objects-request-spec --> notifications-objects-base
+  notifications-objects-request-spec --> notifications-objects-flavor
+  notifications-objects-request-spec --> notifications-objects-image
+  notifications-objects-request-spec --> notifications-objects-server-group
+  notifications-objects-request-spec --> objects-base
+  notifications-objects-request-spec --> objects-fields
+  notifications-objects-scheduler --> notifications-objects-base
+  notifications-objects-scheduler --> objects-base
+  notifications-objects-scheduler --> objects-fields
+  notifications-objects-server-group --> notifications-objects-base
+  notifications-objects-server-group --> objects-base
+  notifications-objects-server-group --> objects-fields
+  notifications-objects-service --> notifications-objects-base
+  notifications-objects-service --> objects-base
+  notifications-objects-service --> objects-fields
+  notifications-objects-volume --> notifications-objects-base
+  notifications-objects-volume --> objects-base
+  notifications-objects-volume --> objects-fields
   objects-aggregate --> compute-utils
   objects-aggregate --> db-api-api
   objects-aggregate --> db-api-models
@@ -2295,6 +2620,8 @@ graph LR
   objects-flavor --> db-api-models
   objects-flavor --> db-utils
   objects-flavor --> exception
+  objects-flavor --> notifications-objects-base
+  objects-flavor --> notifications-objects-flavor
   objects-flavor --> objects-base
   objects-flavor --> objects-fields
   objects-host-mapping --> db-api-api
@@ -2365,6 +2692,7 @@ graph LR
   objects-instance --> exception
   objects-instance --> i18n
   objects-instance --> network-model
+  objects-instance --> notifications-init
   objects-instance --> objects-base
   objects-instance --> objects-fields
   objects-instance --> objects-init
@@ -2473,6 +2801,8 @@ graph LR
   objects-selection --> scheduler-filters-utils
   objects-service --> db-main-api
   objects-service --> exception
+  objects-service --> notifications-objects-base
+  objects-service --> notifications-objects-service
   objects-service --> objects-base
   objects-service --> objects-fields
   objects-service --> objects-init
@@ -2508,6 +2838,155 @@ graph LR
   objects-volume-usage --> db-main-api
   objects-volume-usage --> objects-base
   objects-volume-usage --> objects-fields
+  pci-devspec --> conf-init
+  pci-devspec --> exception
+  pci-devspec --> i18n
+  pci-devspec --> objects-init
+  pci-devspec --> pci-request
+  pci-devspec --> pci-utils
+  pci-manager --> exception
+  pci-manager --> objects-fields
+  pci-manager --> objects-init
+  pci-manager --> pci-stats
+  pci-manager --> pci-whitelist
+  pci-request --> conf-init
+  pci-request --> exception
+  pci-request --> i18n
+  pci-request --> network-model
+  pci-request --> objects-fields
+  pci-request --> objects-init
+  pci-request --> pci-utils
+  pci-stats --> exception
+  pci-stats --> objects-fields
+  pci-stats --> objects-init
+  pci-stats --> objects-pci-device-pool
+  pci-stats --> pci-request
+  pci-stats --> pci-utils
+  pci-stats --> pci-whitelist
+  pci-utils --> exception
+  pci-utils --> pci-stats
+  pci-whitelist --> exception
+  pci-whitelist --> i18n
+  pci-whitelist --> objects-init
+  pci-whitelist --> pci-devspec
+  policies-admin-actions --> policies-base
+  policies-admin-password --> policies-base
+  policies-aggregates --> policies-base
+  policies-assisted-volume-snapshots --> policies-base
+  policies-attach-interfaces --> policies-base
+  policies-availability-zone --> policies-base
+  policies-baremetal-nodes --> policies-base
+  policies-console-auth-tokens --> policies-base
+  policies-console-output --> policies-base
+  policies-create-backup --> policies-base
+  policies-deferred-delete --> policies-base
+  policies-evacuate --> policies-base
+  policies-extended-server-attributes --> policies-base
+  policies-extensions --> policies-base
+  policies-flavor-access --> policies-base
+  policies-flavor-extra-specs --> policies-base
+  policies-flavor-manage --> policies-base
+  policies-floating-ip-pools --> policies-base
+  policies-floating-ips --> policies-base
+  policies-hosts --> policies-base
+  policies-hypervisors --> policies-base
+  policies-init --> policies-admin-actions
+  policies-init --> policies-admin-password
+  policies-init --> policies-aggregates
+  policies-init --> policies-assisted-volume-snapshots
+  policies-init --> policies-attach-interfaces
+  policies-init --> policies-availability-zone
+  policies-init --> policies-baremetal-nodes
+  policies-init --> policies-base
+  policies-init --> policies-console-auth-tokens
+  policies-init --> policies-console-output
+  policies-init --> policies-create-backup
+  policies-init --> policies-deferred-delete
+  policies-init --> policies-evacuate
+  policies-init --> policies-extended-server-attributes
+  policies-init --> policies-extensions
+  policies-init --> policies-flavor-access
+  policies-init --> policies-flavor-extra-specs
+  policies-init --> policies-flavor-manage
+  policies-init --> policies-floating-ip-pools
+  policies-init --> policies-floating-ips
+  policies-init --> policies-hosts
+  policies-init --> policies-hypervisors
+  policies-init --> policies-instance-actions
+  policies-init --> policies-instance-usage-audit-log
+  policies-init --> policies-ips
+  policies-init --> policies-keypairs
+  policies-init --> policies-limits
+  policies-init --> policies-lock-server
+  policies-init --> policies-migrate-server
+  policies-init --> policies-migrations
+  policies-init --> policies-multinic
+  policies-init --> policies-networks
+  policies-init --> policies-pause-server
+  policies-init --> policies-quota-class-sets
+  policies-init --> policies-quota-sets
+  policies-init --> policies-remote-consoles
+  policies-init --> policies-rescue
+  policies-init --> policies-security-groups
+  policies-init --> policies-server-diagnostics
+  policies-init --> policies-server-external-events
+  policies-init --> policies-server-groups
+  policies-init --> policies-server-metadata
+  policies-init --> policies-server-password
+  policies-init --> policies-server-shares
+  policies-init --> policies-server-tags
+  policies-init --> policies-server-topology
+  policies-init --> policies-servers
+  policies-init --> policies-servers-migrations
+  policies-init --> policies-services
+  policies-init --> policies-shelve
+  policies-init --> policies-simple-tenant-usage
+  policies-init --> policies-suspend-server
+  policies-init --> policies-tenant-networks
+  policies-init --> policies-volumes
+  policies-init --> policies-volumes-attachments
+  policies-instance-actions --> policies-base
+  policies-instance-usage-audit-log --> policies-base
+  policies-ips --> policies-base
+  policies-keypairs --> policies-base
+  policies-limits --> policies-base
+  policies-lock-server --> policies-base
+  policies-migrate-server --> policies-base
+  policies-migrations --> policies-base
+  policies-multinic --> policies-base
+  policies-networks --> policies-base
+  policies-pause-server --> policies-base
+  policies-quota-class-sets --> policies-base
+  policies-quota-sets --> policies-base
+  policies-remote-consoles --> policies-base
+  policies-rescue --> policies-base
+  policies-security-groups --> policies-base
+  policies-server-diagnostics --> policies-base
+  policies-server-external-events --> policies-base
+  policies-server-groups --> policies-base
+  policies-server-metadata --> policies-base
+  policies-server-password --> policies-base
+  policies-server-shares --> policies-base
+  policies-server-tags --> policies-base
+  policies-server-topology --> policies-base
+  policies-servers --> policies-base
+  policies-servers-migrations --> policies-base
+  policies-services --> policies-base
+  policies-shelve --> policies-base
+  policies-simple-tenant-usage --> policies-base
+  policies-suspend-server --> policies-base
+  policies-tenant-networks --> policies-base
+  policies-volumes --> policies-base
+  policies-volumes-attachments --> policies-base
+  privsep-fs --> privsep-init
+  privsep-idmapshift --> privsep-init
+  privsep-libvirt --> privsep-init
+  privsep-path --> exception
+  privsep-path --> privsep-init
+  privsep-qemu --> conf-init
+  privsep-qemu --> exception
+  privsep-qemu --> i18n
+  privsep-qemu --> privsep-utils
   scheduler-client-query --> scheduler-rpcapi
   scheduler-client-report --> compute-provider-tree
   scheduler-client-report --> conf-init
@@ -2555,6 +3034,7 @@ graph LR
   scheduler-host-manager --> conf-init
   scheduler-host-manager --> exception
   scheduler-host-manager --> objects-init
+  scheduler-host-manager --> pci-stats
   scheduler-host-manager --> scheduler-filters-init
   scheduler-host-manager --> scheduler-weights-init
   scheduler-host-manager --> utils
@@ -2589,6 +3069,7 @@ graph LR
   scheduler-utils --> objects-fields
   scheduler-utils --> objects-init
   scheduler-utils --> objects-instance
+  scheduler-utils --> pci-request
   scheduler-utils --> scheduler-client-report
   scheduler-utils --> scheduler-filters-utils
   scheduler-weights-affinity --> scheduler-utils
@@ -2642,21 +3123,21 @@ graph LR
 
 Source: `securitySurface` arrays in `.aee/kb/src/nova/**/*.json`.
 
-**Entry points (53 total — unchanged from batch 5):**
+**Entry points (53 total — unchanged from batch 6):**
 
 | File | Line | Category | Description |
 |---|---|---|---|
 | `accelerator/cyborg.py` | L56 | http-param | `context` carries caller auth/session state into `_CyborgClient.__init__` |
-| `accelerator/cyborg.py` | L88 | http-param | `dp_name` forwarded to Cyborg API in `_get_device_profile_list` |
-| `accelerator/cyborg.py` | L255 | http-param | `bindings` dict serialised as RFC 6902 JSON patch body in `bind_arqs` |
-| `accelerator/cyborg.py` | L291 | http-param | `instance_uuid` used as Cyborg API query parameter in `get_arqs_for_instance` |
-| `accelerator/cyborg.py` | L337 | http-param | `arq_uuid` interpolated into Cyborg API URL path in `get_arq_by_uuid` |
+| `accelerator/cyborg.py` | L88 | http-param | `dp_name` forwarded to Cyborg API |
+| `accelerator/cyborg.py` | L255 | http-param | `bindings` dict serialised as JSON patch body in `bind_arqs` |
+| `accelerator/cyborg.py` | L291 | http-param | `instance_uuid` used as Cyborg API query parameter |
+| `accelerator/cyborg.py` | L337 | http-param | `arq_uuid` interpolated into Cyborg API URL path |
 | `api/auth.py` | L55 | http-param | `@webob.dec.wsgify` — inbound WSGI request enters auth middleware |
 | `api/openstack/__init__.py` | L91 | http-param | `@webob.dec.wsgify` — request enters API router |
 | `api/openstack/common.py` | L155 | http-param | `request.params` — query parameters read for filtering |
 | `api/openstack/common.py` | L189 | http-param | `request.GET['limit']` — limit parameter from query string |
 | `cmd/common.py` | L135 | cli-args | argparse flag declaration |
-| `cmd/compute.py` | L49 | cli-args | `config.parse_args(sys.argv)` — CLI args parsed |
+| `cmd/compute.py` | L49 | cli-args | `config.parse_args(sys.argv)` |
 | `cmd/conductor.py` | L39 | cli-args | `config.parse_args(sys.argv)` |
 | `cmd/manage.py` | L3821 | cli-args | `config.parse_args(sys.argv)` |
 | `cmd/policy.py` | L48 | env | `os.environ.get('OS_ROLES')` |
@@ -2666,53 +3147,64 @@ Source: `securitySurface` arrays in `.aee/kb/src/nova/**/*.json`.
 | `exception.py` | L27 | http-param | `import webob.exc` — webob exception types enter nova hierarchy |
 | `exception.py` | L35 | http-param | `ConvertedException(webob.exc.WSGIHTTPException)` |
 
-(34 further entry points exist in `api/` controller and `cmd/` launcher files; all are `http-param` or `cli-args` category. Source: `.aee/kb/src/nova/api/**/*.json`, `.aee/kb/src/nova/cmd/**/*.json:securitySurface`.)
+(34 further entry points in `api/` controller and `cmd/` launcher files; all `http-param` or `cli-args`. Source: `.aee/kb/src/nova/api/**/*.json`, `.aee/kb/src/nova/cmd/**/*.json:securitySurface`.)
 
-**Sinks (718 total — 9 added in batch 6):**
+**Sinks (775 total — 57 added in batch 7):**
 
 | Category | Count | Primary files |
 |---|---|---|
-| db-write | 709 | `db/main/api.py`, `compute/api.py`, `compute/manager.py`, `conductor/manager.py`, `api/openstack/compute/servers.py`, `network/neutron.py`, `scheduler/client/query.py`, `image/glance.py` (8 sinks), `limit/placement.py` (1 sink) |
+| db-write | 766 | `db/main/api.py`, `compute/api.py`, `compute/manager.py`, `conductor/manager.py`, `api/openstack/compute/servers.py`, `network/neutron.py`, `scheduler/client/query.py`, `image/glance.py`, `limit/placement.py`, `pci/` (8 sinks), `notifications/` (16 sinks), `policies/` (28 sinks) |
 | network-send | 7 | `accelerator/cyborg.py` |
-| file-write | 2 | `image/glance.py:L413, L429` (image download to local file) |
+| file-write | 2 | `image/glance.py:L413, L429` |
+| file-write (privsep) | 5 | `privsep/path.py`, `privsep/qemu.py`, `privsep/utils.py` |
 
-New sinks from batch 6:
-- `image/glance.py:L413` — `file-write`: `data = open(dst_path, 'wb')` (image download file open, `image/glance.py.json:securitySurface`)
-- `image/glance.py:L429` — `file-write`: `data.write(chunk)` (image chunk written to local file, `image/glance.py.json:securitySurface`)
-- `image/glance.py:L427, L675, L705, L1160, L1162, L1181` — `db-write`: Glance API calls (`update`, `session.update`) (`image/glance.py.json:securitySurface`)
-- `limit/placement.py:L191` — `db-write`: `deltas.update(delta_updates)` (`limit/placement.py.json:securitySurface`)
+New sinks from batch 7:
+- `privsep/path.py` — `file-write`: `f.write(content)` executed in privileged subprocess (`privsep/path.py.json:securitySurface`).
+- `privsep/qemu.py` — 2 × `file-write`: disk-encryption secrets written (`src_secret_file.write`, `dest_secret_file.write`) in privileged subprocess (`privsep/qemu.py.json:securitySurface`).
+- `privsep/utils.py` — 2 × `file-write`: `m.write(b"x" * align_size)` and `os.write(fd, m)` for direct-IO probe (`privsep/utils.py.json:securitySurface`).
+- `pci/` — 8 × `db-write`: pool updates and device-spec wildcard insertions (`pci/devspec.py`, `pci/manager.py`, `pci/stats.py:securitySurface`).
+- `notifications/` — 16 × `db-write`: `send_update`/`send_update_with_state` notification dispatches and `@notification_sample`-annotated OVO methods (`notifications/base.py`, `notifications/objects/**:securitySurface`).
+- `policies/` — 28 × `db-write`: `oslo_policy.RuleDefault` registration calls per policy file (`policies/**:securitySurface`).
 
 **Data flow paths:**
 
-1. **CLI entry points → service startup.** Each `cmd/*.py` launcher calls `config.parse_args(sys.argv)` as its primary entry point (`cli-args` category), loading oslo.config options from `conf/*.py` declarations. No database or network sink is reached within the `cmd/` layer itself; control passes to service managers. Source: `.aee/kb/src/nova/cmd/**/*.json:securitySurface`.
+1. **CLI entry points → service startup.** Each `cmd/*.py` launcher calls `config.parse_args(sys.argv)`, loading `conf/*.py` options. No sink reached within `cmd/` itself. Source: `.aee/kb/src/nova/cmd/**/*.json:securitySurface`.
 
-2. **API layer → downstream services.** Inbound HTTP requests enter at `@webob.dec.wsgify`-decorated callables in `api/auth.py` and `api/openstack/__init__.py`. Request bodies and query parameters are validated by `api/validation/__init__.py` before being passed to controller action methods, which invoke `compute/api.py` (`API` class) and object-layer methods resolving to SQLAlchemy writes via `db/main/api.py`. Source: link-graph edges `api-openstack-compute-*` → `compute-*`, `objects-*`, `db-main-api-py`.
+2. **API layer → downstream services.** HTTP requests enter at `@webob.dec.wsgify` callables, are validated by `api/validation/__init__.py`, then dispatch to controller methods → `compute/api.py` → `db/main/api.py` (SQLAlchemy writes). Policy checks are performed against `policies/*.py` RuleDefault objects via `oslo_policy`. Source: link-graph edges `api-openstack-compute-*` → `compute-*`, `objects-*`, `db-main-api-py`.
 
-3. **Compute API → instance lifecycle (db-write).** `compute/api.py` (`_validate_bdm`, CCN 43) and `compute/manager.py` (`_init_instance`, CCN 40) issue 105 `db-write` sinks for instance state transitions, block-device mappings, and task-state updates. Source: `.aee/kb/src/nova/compute/api.py.json:securitySurface`.
+3. **Compute API → instance lifecycle.** `compute/api.py` (`_validate_bdm` CCN 43, `_delete` CCN 29, `resize` CCN 28) and `compute/manager.py` (`_init_instance` CCN 40) issue db-write sinks for instance state. Source: `.aee/kb/src/nova/compute/**/*.json:securitySurface`.
 
-4. **Accelerator → Cyborg HTTP.** Parameters enter at `accelerator/cyborg.py:L56/L88/L255/L291/L337` and reach network-send sinks at `L153-L154` (GET `/device_profiles`), `L205` (POST `/accelerator_requests`), `L282-L283` (PATCH), `L317` (GET `?instance=<value>`), `L377` (GET `/<arq_uuid>`). Source: `.aee/kb/src/nova/accelerator/cyborg.py.json:securitySurface`.
+4. **Conductor → multi-node orchestration.** `conductor/manager.py:build_instances` (CCN 34) coordinates cross-service build flows. Source: `.aee/kb/src/nova/conductor/manager.py.json`.
 
-5. **Image service → Glance HTTP + local file.** `image/glance.py` uses service-token auth obtained at `L59` (`privilege: crypto-key`). Image binary data is streamed from Glance and verified against a cryptographic signature (`_verify_and_write`, CCN 17) before being written to local file at `L413` and `L429` (file-write sinks). Image metadata updates pass through `GlanceImageServiceV2.update` at `L675`, `L705`, `L1160-L1181` (db-write sinks). Cryptographic exception `InvalidSignature` is caught at `L434`. Source: `.aee/kb/src/nova/image/glance.py.json:securitySurface`.
+5. **Accelerator → Cyborg HTTP.** Parameters enter at `accelerator/cyborg.py:L56/L88/L255/L291/L337` and reach network-send sinks. Source: `.aee/kb/src/nova/accelerator/cyborg.py.json:securitySurface`.
 
-6. **Limit enforcement → oslo_limit + Placement.** `limit/local.py` enforces API-side quotas via `oslo_limit.limit.Enforcer`; `limit/placement.py` enforces placement-resource quotas (`_get_usage` CCN 16), recording deltas at `L191` (db-write sink). `limit/utils.py` queries Keystone to detect unified-limit mode (`should_enforce`, CCN 12). Source: `.aee/kb/src/nova/limit/**/*.json:securitySurface`.
+6. **Image service → Glance HTTP + local file.** `image/glance.py` streams image data with signature verification (`_verify_and_write` CCN 17) to file-write sinks at `L413`, `L429`. Service-token auth at `L59` (`privilege: crypto-key`). Source: `.aee/kb/src/nova/image/glance.py.json:securitySurface`.
 
-7. **Objects → db/main/api.py.** Domain-object methods pass field values through OVO serialisation in `objects/base.py` before reaching SQLAlchemy write functions in `db/main/api.py`. Source: link-graph edges `objects-*` → `db-main-api-py`.
+7. **Privsep → privileged subprocess (file-write, syscall).** `privsep/` functions decorated with `@nova.privsep.sys_admin_pctxt.entrypoint` execute in a root-privileged oslo.privsep daemon (`process-spawn` side effect). File-write sinks in `privsep/path.py`, `privsep/qemu.py`, `privsep/utils.py` execute with elevated privilege. Source: `.aee/kb/src/nova/privsep/**/*.json:securitySurface,sideEffects`.
 
-8. **Network → Neutron HTTP.** `network/neutron.py` issues REST calls (26 `db-write`-category sinks, 80+ `network` side effects) for port, security group, and floating-IP operations. Source: `.aee/kb/src/nova/network/neutron.py.json:securitySurface` and `sideEffects`.
+8. **PCI tracker → DB.** `pci/manager.py` and `pci/stats.py` update PCI device records via db-write sinks. Source: `.aee/kb/src/nova/pci/**/*.json:securitySurface`.
 
-9. **Scheduler → Placement HTTP.** `scheduler/client/report.py` issues GET/PUT/POST to the Placement API at `L279` and `L2358`. Source: `.aee/kb/src/nova/scheduler/client/report.py.json:securitySurface`.
+9. **Notifications → oslo.messaging bus.** `notifications/base.py` dispatches versioned notifications for instance state changes; OVO payload classes in `notifications/objects/` serialise event data. Source: `.aee/kb/src/nova/notifications/**/*.json:securitySurface`.
 
-10. **Console → network socket.** `console/serial.py:L83` opens a raw TCP socket (`network-socket` entry point) for serial console proxying; no further sink is recorded in the current KB. Source: `.aee/kb/src/nova/console/serial.py.json:securitySurface`.
+10. **Limit enforcement → oslo_limit + Placement.** `limit/local.py`, `limit/placement.py`, and `limit/utils.py` enforce quotas via oslo_limit and Placement API. Source: `.aee/kb/src/nova/limit/**/*.json:securitySurface`.
 
-**Privileges (64 entries — 2 added in batch 6):**
-- `image/glance.py:L59` — `crypto-key`: service-token auth plugin obtained for Glance session (`image/glance.py.json:securitySurface`).
-- `image/glance.py:L434` — `crypto-key`: `cryptography.exceptions.InvalidSignature` caught in image-signature verification (`image/glance.py.json:securitySurface`).
-- All other privilege entries have category `crypto-key` originating from `keystoneauth1` imports in `scheduler/client/report.py`, `service_auth.py`, `api/auth.py`, `network/neutron.py`, `compute/manager.py`, and `conductor/manager.py`.
+11. **Objects → db/main/api.py.** OVO domain objects serialise field values through `objects/base.py` before reaching SQLAlchemy writes. `objects/build_request.py:_pass_exact_filters` (CCN 32) and `objects/migrate_data.py:obj_make_compatible` (CCN 31) are the highest-CCN paths. Source: link-graph edges `objects-*` → `db-main-api-py`.
 
-No untrusted-input sanitisation steps are recorded in any `securitySurface` entry across the 443 KB records.
+12. **Network → Neutron HTTP.** `network/neutron.py` issues REST calls for port and security-group operations. Source: `.aee/kb/src/nova/network/neutron.py.json`.
+
+13. **Scheduler → Placement HTTP.** `scheduler/client/report.py` issues GET/PUT/POST to Placement API. Source: `.aee/kb/src/nova/scheduler/client/report.py.json:securitySurface`.
+
+14. **Console → network socket.** `console/serial.py:L83` opens a raw TCP socket for serial console proxying. Source: `.aee/kb/src/nova/console/serial.py.json:securitySurface`.
+
+**Privileges (123 entries — 59 added in batch 7):**
+- **privsep/ (58 entries):** All `privsep-entrypoint` category, one per `@nova.privsep.sys_admin_pctxt.entrypoint`-decorated function across `privsep/fs.py` (20), `privsep/libvirt.py` (16), `privsep/linux_net.py` (9), `privsep/path.py` (8), `privsep/qemu.py` (4), `privsep/idmapshift.py` (1). These mark root-privilege escalation boundaries. Source: `.aee/kb/src/nova/privsep/**/*.json:securitySurface`.
+- **notifications/base.py (1 entry):** `crypto-key` — `from keystoneauth1 import exceptions as ks_exc` (`notifications/base.py.json:securitySurface`).
+- All other privilege entries: `crypto-key` category from `keystoneauth1` imports in `scheduler/client/report.py`, `service_auth.py`, `api/auth.py`, `network/neutron.py`, `compute/manager.py`, `conductor/manager.py`, `image/glance.py`.
+
+No untrusted-input sanitisation steps are recorded in any `securitySurface` entry across the 532 KB records.
 
 ---
 
 ## Cross-Component Interfaces
 
-The link graph records **0 cross-component file edges** and **0 cross-component seams**. All 1,577 file edges are intra-component. The link summary notes 286 unresolved imports (down from 302 in batch 5): bare `nova` (151 refs), `nova.policies` (60), `nova.virt` (23), `nova.notifications.objects` (17), `nova.pci` (13), `nova.volume` (9), `nova.share` (3), `nova.context` (3), `nova.virt.libvirt` (2), `nova.notifications`, `nova.quota`, `nova.policy`, `nova.virt.node` (1 each), and new entrant `nova.storage` (1). Batch 6 resolved `nova.image` (was 9 refs) and `nova.limit` (was 10 refs). Source: `.aee/link-summary.md`.
+The link graph records **0 cross-component file edges** and **0 cross-component seams**. All 1,882 file edges are intra-component. The link summary notes 196 unresolved imports (down from 286 in batch 6, a reduction of 90): bare `nova` (151 refs), `nova.virt` (23), `nova.volume` (9), `nova.context` (4), `nova.share` (3), `nova.virt.libvirt` (2), `nova.quota` (1), `nova.policy` (1), `nova.virt.node` (1), `nova.storage` (1). Batch 7 resolved `nova.policies` (was 60 refs), `nova.notifications.objects` (was 17 refs), and `nova.pci` (was 13 refs). Source: `.aee/link-summary.md`.
