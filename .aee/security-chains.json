@@ -20,7 +20,7 @@
         "file": "src/nova/accelerator/cyborg.py",
         "lineRange": { "start": 337, "end": 337 },
         "reason": "no-static-edge",
-        "detail": "327-file source set has one inbound caller to cyborg.py: src/nova/network/neutron.py. neutron.py calls cyborg.get_client (line 673), cyborg.get_arq_pci_device_profile (line 1715), and cyborg.get_device_amount_of_dp_groups (line 2369) — none call get_arq_by_uuid. No resolved edge in the full 327-file graph names get_arq_by_uuid as a call target. The call likely occurs on a _CyborgClient local variable returned by get_client(), which is a known link-graph blind spot (calls on local variables). Callers with get_arq_by_uuid usage are expected in nova.compute or nova.conductor (not yet extracted)."
+        "detail": "get_arq_by_uuid (defined at cyborg.py:337) does not appear anywhere in the 433-file source set — grep over src/ confirms it is only the definition. Five files call into cyborg.py (compute/api.py, compute/manager.py, compute/utils.py, conductor/manager.py, network/neutron.py) but all call get_client, get_device_profile_request_groups, get_arq_pci_device_profile, or get_device_amount_of_dp_groups. The callers of get_arq_by_uuid are in files not yet extracted from the nova codebase."
       },
       "owaspCategory": "A03 Injection",
       "cweId": "CWE-74",
@@ -39,7 +39,7 @@
       "confidence": "confirmed",
       "title": "SHA-224 used in generate_hostid",
       "disposition": "excluded-not-a-source",
-      "reason": "No securitySurface entry of kind 'entry-point' overlaps generate_hostid (lines 857-871). Standalone cryptographic weakness; no cross-file taint chain originates here."
+      "reason": "No securitySurface entry of kind 'entry-point' overlaps generate_hostid (lines 857-871). Standalone cryptographic weakness."
     },
     {
       "file": "src/nova/scheduler/filters/json_filter.py",
@@ -47,7 +47,7 @@
       "confidence": "needs_cross_file",
       "title": "User-controlled scheduler hint used as getattr attribute on HostState",
       "disposition": "excluded-not-a-source",
-      "reason": "Confidence is needs_cross_file. KB securitySurface is empty — no entry-point overlaps lines 104-112. No inbound edges to json_filter.py even with nova.api in the source set (scheduler filters are loaded dynamically by name from config — a link-graph blind spot for dynamic dispatch). No confirmed/probable source to trace into this sink."
+      "reason": "Confidence is needs_cross_file. KB securitySurface is empty. Scheduler filters are loaded by dynamic dispatch from config — no inbound static edges even with 433 files in source set."
     },
     {
       "file": "src/nova/api/metadata/handler.py",
@@ -55,16 +55,24 @@
       "confidence": "confirmed",
       "title": "HMAC validation of metadata proxy request conditionally skipped when shared secret is unconfigured",
       "disposition": "excluded-not-a-source",
-      "reason": "The confirmed finding's lineRange (276-280) does not overlap the KB securitySurface entry-point (line 97, @webob.dec.wsgify). Per protocol, a source requires the finding to overlap an entry-point — this finding is at the authentication check, not at the HTTP request entry. The finding describes CWE-306 (missing authentication): when CONF.neutron.metadata_proxy_shared_secret is unset, X-Metadata-Provider and X-Forwarded-For headers are accepted without HMAC validation. The unauthenticated provider_id flows to neutron.list_subnets(advanced_service_providers=[provider_id]) at line 209-212 (via _get_instance_id_from_lb). This is an authentication-bypass resulting in information disclosure — not an injection taint chain per the correlation protocol. The vulnerability is real and should be tracked as a standalone finding; a future run could check if the KB adds an entry-point at line 265 (_handle_instance_id_request_from_lb) to enable chain-002."
+      "reason": "Finding (276-280) does not overlap the only KB entry-point (line 97). CWE-306 auth-bypass is a standalone information-disclosure vulnerability, not a taint-injection chain."
+    },
+    {
+      "file": "src/nova/console/rfb/authvencrypt.py",
+      "lineRange": { "start": 151, "end": 152 },
+      "confidence": "confirmed",
+      "title": "TLS hostname verification disabled in VeNCrypt security handshake",
+      "disposition": "excluded-not-a-source",
+      "reason": "KB securitySurface is empty — no entry-point entries. The finding describes a TLS configuration weakness (CWE-297) on the outbound connection to QEMU VNC backend; it is not an injection taint source. An attacker would need a CA-signed certificate for a different compute node and network access to the management network to exploit this."
     }
   ],
   "summary": {
     "confirmedChains": 0,
     "partialChains": 1,
     "terminatedChains": 0,
-    "filesAnalysed": 327,
-    "linkGraphEdgesAvailable": 1060,
-    "unresolvedImports": 287,
+    "filesAnalysed": 433,
+    "linkGraphEdgesAvailable": 1536,
+    "unresolvedImports": 302,
     "crossComponentSeams": 0,
     "analysedAt": "2026-10-20"
   }
