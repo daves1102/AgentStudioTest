@@ -2,22 +2,49 @@
 
 ## Overview
 
-The `nova` component encompasses the core OpenStack Compute service subsystems extracted across nine batches. All 1,484 files are classified as component `nova`; no other component exists in the current KB.
+The `nova` component encompasses the full OpenStack Compute service codebase extracted across ten batches. All 1,509 files are classified as component `nova`; no other component exists in the current KB.
 
-**Production subsystems:** `api/`, `accelerator/`, `cmd/`, `compute/`, `conductor/`, `conf/`, `console/`, `exception.py`, `i18n.py`, `service_auth.py`, `utils.py`, `hacking/`, `image/`, `keymgr/`, `limit/`, `notifications/`, `objects/`, `db/`, `network/`, `pci/`, `policies/`, `privsep/`, `scheduler/`, `servicegroup/`, `share/`, `storage/`, `virt/`, `volume/`, `wsgi/`.
+**Production subsystems:** `api/`, `accelerator/`, `cmd/`, `compute/`, `conductor/`, `conf/`, `console/`, `objects/`, `db/`, `network/`, `pci/`, `policies/`, `privsep/`, `scheduler/`, `servicegroup/`, `share/`, `storage/`, `virt/`, `volume/`, `wsgi/`, `hacking/`, `image/`, `keymgr/`, `limit/`, `notifications/`, plus 25 top-level modules (`availability_zones.py`, `baserpc.py`, `block_device.py`, `cache_utils.py`, `config.py`, `context.py`, `crypto.py`, `exception.py`, `exception_wrapper.py`, `filesystem.py`, `filters.py`, `i18n.py`, `loadables.py`, `manager.py`, `middleware.py`, `monkey_patch.py`, `policy.py`, `profiler.py`, `quota.py`, `rpc.py`, `safe_utils.py`, `service.py`, `service_auth.py`, `test.py`, `thread_pool_factory.py`, `utils.py`, `version.py`, `vtpm.py`, `weights.py`).
 
 **Test subsystems:** `tests/unit/` (514 files), `tests/functional/` (314 files), `tests/fixtures/` (16 files).
 
-**Batch provenance** -- batch 1 (`6d56e5a`, 2026-10-16): 2 files; batch 2 (`733c73`, 2026-10-19): 53 files; batch 3 (`868bfe40`, 2026-10-19): 67 files; batch 4 (`caa20451`, 2026-10-20): 205 files; batch 5 (`f56908d5`, 2026-10-20): 106 files; batch 6 (`c7012ab2`, 2026-10-20): 10 files; batch 7 (`10997c0e`, 2026-10-20): 89 files; batch 8 (`da4f90f3`, 2026-10-21): 856 files; batch 9 (`624338e5`, 2026-10-21): 96 files.
+**Batch provenance** -- batch 1 (`6d56e5a`, 2026-10-16): 2 files; batch 2 (`733c73`, 2026-10-19): 53 files; batch 3 (`868bfe40`, 2026-10-19): 67 files; batch 4 (`caa20451`, 2026-10-20): 205 files; batch 5 (`f56908d5`, 2026-10-20): 106 files; batch 6 (`c7012ab2`, 2026-10-20): 10 files; batch 7 (`10997c0e`, 2026-10-20): 89 files; batch 8 (`da4f90f3`, 2026-10-21): 856 files; batch 9 (`624338e5`, 2026-10-21): 96 files; batch 10 (`c7e94e29`, 2026-10-21): 25 files.
 
 Subsystem responsibilities:
 
-**Production:**
-- **api/** -- WSGI framework, request dispatch, authentication middleware, API versioning, metadata service, and OpenStack Compute REST API including JSON schema validation and view serialisers.
+**Top-level modules (batch 10, all at `src/nova/`):**
+- **availability_zones.py** (135 LOC) -- Availability-zone metadata cache and instance AZ lookup. Source: `.aee/kb/src/nova/availability_zones.py.json`.
+- **baserpc.py** (43 LOC) -- Base RPC client/server with ping and backdoor-port methods. Source: `.aee/kb/src/nova/baserpc.py.json`.
+- **block_device.py** (468 LOC) -- `BlockDeviceDict` and mapping helpers: `from_legacy_mapping` (CCN 17), `instance_block_mapping` (CCN 16), `from_api` (CCN 15). Source: `.aee/kb/src/nova/block_device.py.json`.
+- **cache_utils.py** (69 LOC) -- Memcached/dogpile.cache client factory. Source: `.aee/kb/src/nova/cache_utils.py.json`.
+- **config.py** (52 LOC) -- `parse_args` entry point and `set_lib_defaults`/`set_log_defaults` for oslo.config. Source: `.aee/kb/src/nova/config.py.json`.
+- **context.py** (445 LOC) -- `RequestContext` carrying auth token, user, project, and keystoneauth plugin through all nova calls. `scatter_gather_cells` (CCN 6). 6 security-surface entries: 3 crypto-key privileges from keystoneauth1 imports; 3 db-write sinks. Source: `.aee/kb/src/nova/context.py.json`.
+- **crypto.py** (243 LOC) -- X.509 certificate utilities, vTPM secret management via castellan (`ensure_vtpm_secret` CCN 5). 17 security-surface entries: all crypto-key privileges from cryptography/castellan imports. Source: `.aee/kb/src/nova/crypto.py.json`.
+- **exception_wrapper.py** (60 LOC) -- `wrap_exception` decorator for RPC method exception logging. Source: `.aee/kb/src/nova/exception_wrapper.py.json`.
+- **filesystem.py** (78 LOC) -- `read_sys`/`write_sys` for sysfs I/O and `is_mounted` check. 1 file-write sink at L114. Source: `.aee/kb/src/nova/filesystem.py.json`.
+- **filters.py** (82 LOC) -- `BaseFilterHandler.get_filtered_objects` (CCN 7) -- pluggable filter chain base used by scheduler and compute. Source: `.aee/kb/src/nova/filters.py.json`.
+- **loadables.py** (84 LOC) -- Dynamic class loader (`get_all_classes` CCN 6) for plug-in filters and weighers. Source: `.aee/kb/src/nova/loadables.py.json`.
+- **manager.py** (253 LOC) -- `Manager` base class with periodic-task infrastructure (`_record_task_end` CCN 9, `_wait_for_in_progress_tasks` CCN 7). Source: `.aee/kb/src/nova/manager.py.json`.
+- **middleware.py** (25 LOC) -- `set_defaults` wrapper for oslo.middleware configuration. 1 db-write sink. Source: `.aee/kb/src/nova/middleware.py.json`.
+- **monkey_patch.py** (115 LOC) -- Eventlet monkey-patching and config-file argument parsing (`patch` CCN 8). 4 security-surface entries: 2 cli-args entry-points (`L68`: `conf(_config_file_args(sys.argv[1:]))`), 2 env entry-points (`L134`, `L191`: `os.environ.get("OS_NOVA_DISABLE_EVENTLET_PATCHING")`). Source: `.aee/kb/src/nova/monkey_patch.py.json`.
+- **policy.py** (189 LOC) -- `PolicyEngine` wrapping oslo.policy; `authorize` (CCN 6), `init` (CCN 5). 1 db-write sink. Source: `.aee/kb/src/nova/policy.py.json`.
+- **profiler.py** (39 LOC) -- osprofiler integration (`get_traced_meta` CCN 4). Source: `.aee/kb/src/nova/profiler.py.json`.
+- **quota.py** (1,070 LOC) -- `QuotaEngine`, `Quota`, `DbQuotaDriver`; `limit_check_project_and_user` (CCN 29), `limit_check` (CCN 15), `get_project_quotas` (CCN 9). 4 db-write sinks. Source: `.aee/kb/src/nova/quota.py.json`.
+- **rpc.py** (339 LOC) -- oslo.messaging transport/target setup; notification helpers; `_notify` (CCN 4). 3 db-write sinks (context trace-info update, instance.update/metrics.update topics). Source: `.aee/kb/src/nova/rpc.py.json`.
+- **safe_utils.py** (17 LOC) -- `get_wrapped_function` (CCN 3) for safe function introspection. Source: `.aee/kb/src/nova/safe_utils.py.json`.
+- **service.py** (356 LOC) -- `Service` class (`create` CCN 10, `start` CCN 8); `binary = os.path.basename(sys.argv[0])` at L329 (cli-args entry-point). Source: `.aee/kb/src/nova/service.py.json`.
+- **test.py** (663 LOC) -- `TestCase` base (`start_service` CCN 12, `setUp` CCN 6); used by all unit tests. Source: `.aee/kb/src/nova/test.py.json`.
+- **thread_pool_factory.py** (460 LOC) -- `ThreadPoolFactory` with per-service executor pools (`_log_executor_stats` CCN 8). Source: `.aee/kb/src/nova/thread_pool_factory.py.json`.
+- **version.py** (51 LOC) -- `_load_config` (CCN 8) for PBR version loading. Source: `.aee/kb/src/nova/version.py.json`.
+- **vtpm.py** (48 LOC) -- vTPM secret lifecycle helpers calling `crypto.py`. Source: `.aee/kb/src/nova/vtpm.py.json`.
+- **weights.py** (109 LOC) -- `BaseWeightHandler.get_weighed_objects` (CCN 8), `normalize` (CCN 6); base weigher for scheduler and compute. Source: `.aee/kb/src/nova/weights.py.json`.
+
+**Production subsystem descriptions (batches 1-9):**
+- **api/** -- WSGI framework, request dispatch, authentication middleware, API versioning, and OpenStack Compute REST API.
 - **accelerator/** -- HTTP client facade for the Cyborg accelerator API.
 - **cmd/** -- CLI entry points for all Nova service daemons and `nova-manage`.
-- **compute/** -- Core compute service API (`compute/api.py`) and manager (`compute/manager.py`) handling instance lifecycle.
-- **conductor/** -- Conductor service coordinating cross-service operations (`conductor/manager.py`).
+- **compute/** -- Core compute service API and manager handling instance lifecycle.
+- **conductor/** -- Conductor service coordinating cross-service operations.
 - **conf/** -- oslo.config option declarations for all Nova sub-systems.
 - **console/** -- VNC/RFB, serial, and SPICE console proxy infrastructure.
 - **exception.py / i18n.py** -- Exception class hierarchy and internationalisation factory.
@@ -28,31 +55,31 @@ Subsystem responsibilities:
 - **limit/** -- oslo_limit-based quota enforcement (API-side, Placement-side, unified-limit detection).
 - **notifications/** -- oslo.messaging versioned notification objects for all Nova events.
 - **objects/** -- oslo.versionedobjects domain model for all Nova entities.
-- **db/api/** and **db/main/** -- Alembic-managed database schemas with SQLAlchemy query API.
+- **db/** -- Alembic-managed database schemas with SQLAlchemy query API.
 - **network/** -- Neutron integration, network model, os-vif utilities, and security group API.
-- **pci/** -- PCI device specification, per-node tracker, pool-based stats, request resolution, and whitelist management.
+- **pci/** -- PCI device specification, tracker, pool-based stats, request resolution, and whitelist management.
 - **policies/** -- oslo.policy RBAC rule definitions for every Nova API action (56 files).
 - **privsep/** -- oslo.privsep privilege-separation wrappers executing in a root-privileged daemon subprocess.
 - **scheduler/** -- Placement-aware scheduling: host manager, filters, weighers, RPC client, Placement report client.
 - **servicegroup/** -- Service-group membership driver interface with DB and Memcache backends for service heartbeat.
-- **share/** -- Manila share integration client (`share/manila.py`): openstack SDK wrapper for shared filesystem operations.
-- **storage/** -- Ceph/RBD storage utilities (`storage/rbd_utils.py`): snapshot, clone, and image management via rados/rbd bindings.
-- **virt/** -- Hypervisor abstraction layer (91 files): abstract driver interface (`virt/driver.py`), libvirt/KVM driver (`virt/libvirt/`, 40 files), VMware API driver (`virt/vmwareapi/`, 15 files), Ironic baremetal driver (`virt/ironic/`, 4 files), z/VM driver (`virt/zvm/`, 5 files), disk/VFS utilities (`virt/disk/`, 10 files), NUMA/CPU topology (`virt/hardware.py`), image backends (`virt/libvirt/imagebackend.py`), and volume drivers (`virt/libvirt/volume/`, 16 files).
-- **volume/** -- Cinder volume integration (`volume/cinder.py`): block-storage attachment, volume lifecycle, and snapshot management via the cinderclient.
-- **wsgi/** -- WSGI application bootstrapping: `wsgi/metadata.py` and `wsgi/osapi_compute.py` entry-point shims.
+- **share/** -- Manila share integration client via openstack SDK.
+- **storage/** -- Ceph/RBD storage utilities via rados/rbd bindings.
+- **virt/** -- Hypervisor abstraction layer (91 files): libvirt/KVM, VMware, Ironic, z/VM drivers.
+- **volume/** -- Cinder volume integration via cinderclient.
+- **wsgi/** -- WSGI application entry-point shims.
 
 **Test infrastructure:**
-- **tests/unit/** (514 files) -- Unit tests for every production subsystem; uses `unittest.mock` extensively.
-- **tests/functional/** (314 files) -- Functional/API-sample tests exercising the full HTTP stack against an in-process Nova API.
-- **tests/fixtures/** (16 files) -- Shared test fixtures including a libvirt XML stub (`tests/fixtures/libvirt.py`, CCN 41).
+- **tests/unit/** (514 files) -- Unit tests using `unittest.mock`; base class `nova.test.TestCase` (`test.py`).
+- **tests/functional/** (314 files) -- Full-stack functional and API-sample tests.
+- **tests/fixtures/** (16 files) -- Shared test fixtures including libvirt XML stub.
 
-Source: `.aee/intake-summary.md` (batch 624338e5); `.aee/link-summary.md`.
+Source: `.aee/intake-summary.md` (batch c7e94e29); `.aee/link-summary.md`.
 
 ---
 
 ## File Inventory
 
-All 1,484 KB records. LOC figures from each record's `lines` block. Source: `.aee/kb/src/nova/**/*.json`.
+All 1,509 KB records. LOC figures from each record's `lines` block. Source: `.aee/kb/src/nova/**/*.json`.
 
 | File | LOC (total) | LOC (code) | Component |
 |---|---|---|---|
@@ -257,6 +284,10 @@ All 1,484 KB records. LOC figures from each record's `lines` block. Source: `.ae
 | `api/validation/response_types.py` | 70 | 51 | nova |
 | `api/validation/validators.py` | 346 | 235 | nova |
 | `api/wsgi.py` | 260 | 178 | nova |
+| `availability_zones.py` | 212 | 135 | nova |
+| `baserpc.py` | 79 | 43 | nova |
+| `block_device.py` | 695 | 468 | nova |
+| `cache_utils.py` | 116 | 69 | nova |
 | `cmd/__init__.py` | 0 | 0 | nova |
 | `cmd/baseproxy.py` | 96 | 54 | nova |
 | `cmd/common.py` | 192 | 128 | nova |
@@ -351,6 +382,7 @@ All 1,484 KB records. LOC figures from each record's `lines` block. Source: `.ae
 | `conf/workarounds.py` | 449 | 360 | nova |
 | `conf/wsgi.py` | 80 | 51 | nova |
 | `conf/zvm.py` | 86 | 56 | nova |
+| `config.py` | 106 | 52 | nova |
 | `console/__init__.py` | 21 | 8 | nova |
 | `console/rfb/__init__.py` | 0 | 0 | nova |
 | `console/rfb/auth.py` | 65 | 38 | nova |
@@ -363,6 +395,8 @@ All 1,484 KB records. LOC figures from each record's `lines` block. Source: `.ae
 | `console/serial.py` | 90 | 53 | nova |
 | `console/type.py` | 46 | 21 | nova |
 | `console/websocketproxy.py` | 332 | 221 | nova |
+| `context.py` | 612 | 445 | nova |
+| `crypto.py` | 329 | 243 | nova |
 | `db/__init__.py` | 0 | 0 | nova |
 | `db/api/__init__.py` | 0 | 0 | nova |
 | `db/api/api.py` | 50 | 23 | nova |
@@ -390,6 +424,9 @@ All 1,484 KB records. LOC figures from each record's `lines` block. Source: `.ae
 | `db/types.py` | 87 | 48 | nova |
 | `db/utils.py` | 156 | 108 | nova |
 | `exception.py` | 2682 | 1525 | nova |
+| `exception_wrapper.py` | 93 | 60 | nova |
+| `filesystem.py` | 122 | 78 | nova |
+| `filters.py` | 122 | 82 | nova |
 | `hacking/__init__.py` | 0 | 0 | nova |
 | `hacking/checks.py` | 1140 | 817 | nova |
 | `i18n.py` | 36 | 11 | nova |
@@ -401,6 +438,10 @@ All 1,484 KB records. LOC figures from each record's `lines` block. Source: `.ae
 | `limit/local.py` | 236 | 162 | nova |
 | `limit/placement.py` | 239 | 164 | nova |
 | `limit/utils.py` | 181 | 95 | nova |
+| `loadables.py` | 117 | 84 | nova |
+| `manager.py` | 331 | 253 | nova |
+| `middleware.py` | 41 | 25 | nova |
+| `monkey_patch.py` | 200 | 115 | nova |
 | `network/__init__.py` | 0 | 0 | nova |
 | `network/constants.py` | 52 | 20 | nova |
 | `network/model.py` | 633 | 423 | nova |
@@ -537,6 +578,7 @@ All 1,484 KB records. LOC figures from each record's `lines` block. Source: `.ae
 | `policies/tenant_networks.py` | 71 | 45 | nova |
 | `policies/volumes.py` | 183 | 149 | nova |
 | `policies/volumes_attachments.py` | 102 | 80 | nova |
+| `policy.py` | 285 | 189 | nova |
 | `privsep/__init__.py` | 31 | 14 | nova |
 | `privsep/fs.py` | 305 | 188 | nova |
 | `privsep/idmapshift.py` | 141 | 94 | nova |
@@ -545,6 +587,10 @@ All 1,484 KB records. LOC figures from each record's `lines` block. Source: `.ae
 | `privsep/path.py` | 112 | 65 | nova |
 | `privsep/qemu.py` | 270 | 152 | nova |
 | `privsep/utils.py` | 90 | 48 | nova |
+| `profiler.py` | 73 | 39 | nova |
+| `quota.py` | 1468 | 1070 | nova |
+| `rpc.py` | 444 | 339 | nova |
+| `safe_utils.py` | 41 | 17 | nova |
 | `scheduler/__init__.py` | 22 | 7 | nova |
 | `scheduler/client/__init__.py` | 0 | 0 | nova |
 | `scheduler/client/query.py` | 95 | 64 | nova |
@@ -586,6 +632,7 @@ All 1,484 KB records. LOC figures from each record's `lines` block. Source: `.ae
 | `scheduler/weights/num_instances.py` | 41 | 22 | nova |
 | `scheduler/weights/pci.py` | 68 | 29 | nova |
 | `scheduler/weights/ram.py` | 42 | 21 | nova |
+| `service.py` | 515 | 356 | nova |
 | `service_auth.py` | 104 | 63 | nova |
 | `servicegroup/__init__.py` | 24 | 6 | nova |
 | `servicegroup/api.py` | 83 | 47 | nova |
@@ -597,6 +644,7 @@ All 1,484 KB records. LOC figures from each record's `lines` block. Source: `.ae
 | `share/manila.py` | 362 | 301 | nova |
 | `storage/__init__.py` | 0 | 0 | nova |
 | `storage/rbd_utils.py` | 513 | 386 | nova |
+| `test.py` | 1046 | 663 | nova |
 | `tests/__init__.py` | 0 | 0 | nova |
 | `tests/fixtures/__init__.py` | 31 | 19 | nova |
 | `tests/fixtures/cast_as_call.py` | 69 | 42 | nova |
@@ -1443,7 +1491,9 @@ All 1,484 KB records. LOC figures from each record's `lines` block. Source: `.ae
 | `tests/unit/virt/zvm/test_utils.py` | 136 | 100 | nova |
 | `tests/unit/volume/__init__.py` | 0 | 0 | nova |
 | `tests/unit/volume/test_cinder.py` | 1330 | 1064 | nova |
+| `thread_pool_factory.py` | 650 | 460 | nova |
 | `utils.py` | 1209 | 829 | nova |
+| `version.py` | 96 | 51 | nova |
 | `virt/__init__.py` | 0 | 0 | nova |
 | `virt/arch.py` | 65 | 43 | nova |
 | `virt/block_device.py` | 1068 | 775 | nova |
@@ -1537,10 +1587,12 @@ All 1,484 KB records. LOC figures from each record's `lines` block. Source: `.ae
 | `virt/zvm/utils.py` | 125 | 80 | nova |
 | `volume/__init__.py` | 0 | 0 | nova |
 | `volume/cinder.py` | 954 | 712 | nova |
+| `vtpm.py` | 75 | 48 | nova |
+| `weights.py` | 172 | 109 | nova |
 | `wsgi/__init__.py` | 0 | 0 | nova |
 | `wsgi/metadata.py` | 29 | 11 | nova |
 | `wsgi/osapi_compute.py` | 29 | 11 | nova |
-| **Total (1484 files)** | **604,264** | **462,230** | nova |
+| **Total (1509 files)** | **612,304** | **467,723** | nova |
 
 ### Top 5 Functions by Cyclomatic Complexity
 
@@ -1554,67 +1606,34 @@ Taken from the `ccn` field of each KB symbol record.
 | 42 | `obj_make_compatible` | `objects/image_meta.py` |
 | 42 | `numa_get_constraints` | `virt/hardware.py` |
 
-Additional high-complexity functions: `XMLDesc` (`tests/fixtures/libvirt.py`, CCN 41), `_init_instance` (`compute/manager.py`, CCN 40), `_parse_definition` (`tests/fixtures/libvirt.py`, CCN 38), `_compare_result` (`tests/functional/api_samples_test_base.py`, CCN 38), `parse_dom` (`virt/libvirt/config.py`, CCN 37).
+Additional high-complexity functions: `XMLDesc` (`tests/fixtures/libvirt.py`, CCN 41), `_init_instance` (`compute/manager.py`, CCN 40), `_parse_definition` (`tests/fixtures/libvirt.py`, CCN 38), `_compare_result` (`tests/functional/api_samples_test_base.py`, CCN 38), `parse_dom` (`virt/libvirt/config.py`, CCN 37), `limit_check_project_and_user` (`quota.py`, CCN 29).
 
 ---
 
 ## Defined Symbols
 
-Across all 1,484 KB records the component defines **41,277 symbols** in total. Source: `symbols` arrays in `.aee/kb/src/nova/**/*.json`.
+Across all 1,509 KB records the component defines **41,868 symbols** in total. Source: `symbols` arrays in `.aee/kb/src/nova/**/*.json`.
 
 | Kind | Count |
 |---|---|
-| method | 25,123 |
-| class | 4,094 |
-| function | 3,876 |
-| constant | 3,044 |
-| field | 2,829 |
-| variable | 1,828 |
-| staticmethod | 224 |
-| property | 200 |
-| classmethod | 52 |
+| method | 25,328 |
+| class | 4,142 |
+| function | 4,064 |
+| constant | 3,120 |
+| field | 2,846 |
+| variable | 1,859 |
+| staticmethod | 238 |
+| property | 205 |
+| classmethod | 59 |
 | import | 7 |
 
-Production subsystems (batches 1-8) account for 10,536 symbols. Test subsystems add 27,122 symbols. Batch 9 adds 3,423 new production symbols from `virt/` (method 1,966, function 500, constant 393, class 266, staticmethod 66, property 72) plus 60 from `volume/` and 10 from `wsgi/`.
-
-Selected key symbols for new batch 9 subsystems:
-
-**virt/**
-- `virt/driver.py` (1,680 LOC): abstract class `ComputeDriver` -- the hypervisor driver interface. 43 abstract methods defining the virt API. Source: `.aee/kb/src/nova/virt/driver.py.json`.
-- `virt/libvirt/driver.py` (10,031 LOC): class `LibvirtDriver(ComputeDriver)` -- the libvirt/KVM production driver. 70 security-surface entries. `format_dom` (CCN 45) in `virt/libvirt/config.py` generates libvirt XML. Source: `.aee/kb/src/nova/virt/libvirt/driver.py.json`.
-- `virt/libvirt/config.py`: `format_dom` (CCN 45) and `parse_dom` (CCN 37) -- XML serialisation/deserialisation for libvirt domain definitions.
-- `virt/hardware.py` (2,433 LOC): `numa_get_constraints` (CCN 42) -- NUMA topology calculation for instance placement. Source: `.aee/kb/src/nova/virt/hardware.py.json`.
-- `virt/libvirt/vif.py` (646 LOC): 22 security-surface entries -- VIF plug/unplug using privsep `linux_net` calls. Source: `.aee/kb/src/nova/virt/libvirt/vif.py.json`.
-- `virt/ironic/driver.py` (1,795 LOC): class `IronicDriver(ComputeDriver)` -- baremetal compute via Ironic API. Source: `.aee/kb/src/nova/virt/ironic/driver.py.json`.
-- `virt/vmwareapi/driver.py` (573 LOC): class `VMwareAPISession` -- VMware vCenter API driver. Source: `.aee/kb/src/nova/virt/vmwareapi/driver.py.json`.
-- `virt/fake.py` (885 LOC): class `FakeDriver(ComputeDriver)` -- in-memory fake driver for tests and CI.
-- `virt/block_device.py` (775 LOC): `DriverBlockDevice` hierarchy mapping Nova BDM objects to hypervisor block-device representations. 7 db-write sinks. Source: `.aee/kb/src/nova/virt/block_device.py.json`.
-- `virt/configdrive.py` (116 LOC): config-drive assembly; calls `privsep.fs.unprivileged_mkfs` and `privsep.fs.mount`. 8 security-surface entries.
-- `virt/libvirt/utils.py` (561 LOC): 14 security-surface entries including privsep.fs, privsep.idmapshift, privsep.libvirt, privsep.path calls.
-- `virt/libvirt/imagebackend.py` (1,020 LOC): image backend classes for raw, qcow2, LVM, RBD disk formats.
-- `virt/libvirt/migration.py` (627 LOC): live-migration XML surgery functions (10 db-write sinks).
-- `virt/libvirt/host.py` (1,740 LOC): class `Host` -- libvirt connection management and SR-IOV device enumeration.
-- `virt/libvirt/volume/` (16 files): per-backend volume attachment drivers (NFS, iSCSI, Ceph/CephFS, NVMe, Fibre Channel, GPFS, Quobyte, etc.).
-- `virt/disk/api.py` (477 LOC): 13 security-surface entries -- disk image manipulation via privsep.fs calls.
-- `virt/disk/mount/` (4 files): block, loop, NBD mount backends -- all invoke privsep.fs for privileged mount/umount.
-- `virt/zvm/` (5 files): z/VM driver using the zvmsdk; `zvm/driver.py` (359 LOC) with 1 db-write sink.
-- `virt/libvirt/cpu/core.py` (48 LOC): 3 privsep-entrypoint privileges -- CPU pinning via `@sys_admin_pctxt.entrypoint`.
-- `virt/libvirt/storage/dmcrypt.py` (53 LOC): dmcrypt device create/delete via `privsep.libvirt`.
-- `virt/libvirt/storage/lvm.py` (134 LOC): LVM volume operations via `privsep.fs` (lvcreate, lvinfo, vginfo).
-- `virt/node.py` (65 LOC): node UUID persistence to file (1 file-write sink). Source: `.aee/kb/src/nova/virt/node.py.json`.
-- `virt/images.py` (198 LOC): QEMU image conversion via privsep.qemu calls (5 privilege entries).
-
-**volume/**
-- `volume/cinder.py` (712 LOC, 60 symbols): class `API` -- Cinder client for all block-volume lifecycle, attachment, and snapshot operations. Uses cinderclient; service-token auth at L75 (`crypto-key` privilege). 6 db-write sinks. Source: `.aee/kb/src/nova/volume/cinder.py.json`.
-
-**wsgi/**
-- `wsgi/metadata.py` and `wsgi/osapi_compute.py` (22 LOC total): WSGI entry-point shims referencing `nova.api` application. No security-surface entries. Source: `.aee/kb/src/nova/wsgi/**/*.json`.
+Batch 10 adds 591 symbols: key classes include `RequestContext` (context.py), `QuotaEngine`/`Quota`/`DbQuotaDriver` (quota.py), `PolicyEngine` (policy.py), `Service` (service.py), `Manager` (manager.py), `BaseFilterHandler` (filters.py), `BaseWeightHandler` (weights.py), `BlockDeviceDict` (block_device.py), `ThreadPoolFactory` (thread_pool_factory.py).
 
 ---
 
 ## External Dependencies
 
-All non-`nova` modules imported across the 1,484 KB records. Source: `dependencies` arrays in `.aee/kb/src/nova/**/*.json`.
+All non-`nova` modules imported across the 1,509 KB records. Source: `dependencies` arrays in `.aee/kb/src/nova/**/*.json`.
 
 | Package | Files importing |
 |---|---|
@@ -1629,36 +1648,31 @@ All non-`nova` modules imported across the 1,484 KB records. Source: `dependenci
 | `os` | 106 |
 | `collections` | 86 |
 | `oslo_policy` | 55 |
-| `oslo_vmware` | 26 |
-| `os_brick` | 24 |
-| `oslo_concurrency` | 21 |
-| `cinderclient` | 3 |
+| `keystoneauth1` | 52 |
 
-Additional packages (batch 9 additions from virt/volume): `cinderclient`, `guestfs`, `libvirt`, `oslo_vmware`, `os_brick`, `zvmsdk`, `pyudev`, `mmap`. Total unique external packages: 154.
-
-New packages added in batch 9: `oslo_vmware` (`virt/vmwareapi/`), `os_brick` (`virt/libvirt/volume/`), `cinderclient` (`volume/cinder.py`), `guestfs` (`virt/disk/vfs/guestfs.py`), `libvirt` (`virt/libvirt/`), `zvmsdk` (`virt/zvm/`).
+New packages added in batch 10: `dogpile` (`cache_utils.py`), `osprofiler` (`profiler.py`), `pbr` (`version.py`). Total unique external packages: 156.
 
 ---
 
 ## Side Effects
 
-6,646 side-effect records. Source: `sideEffects` arrays in `.aee/kb/src/nova/**/*.json`.
+6,772 side-effect records. Source: `sideEffects` arrays in `.aee/kb/src/nova/**/*.json`.
 
-| Kind | Count | Notes |
-|---|---|---|
-| global-mutation | 3,155 | Production (2,014) + tests (1,141) |
-| network | 1,891 | Production (584) + tests (1,307) -- virt adds 8 network side effects |
-| file-io | 938 | Production (379) + tests (559) -- virt/disk adds 314 file-io (qemu-img, guest FS ops) |
-| process-spawn | 561 | Production (189) + tests (372) -- virt adds 131 (qemu-img subprocesses, libvirt fork) |
-| syscall | 101 | Production (36) + tests (65) -- virt adds 27 (ioctl, sysfs reads) |
+| Kind | Count |
+|---|---|
+| global-mutation | 3,255 |
+| network | 1,898 |
+| file-io | 956 |
+| process-spawn | 562 |
+| syscall | 101 |
 
-`virt/` is the primary source of new `file-io` (314), `process-spawn` (131), and `syscall` (27) entries, reflecting disk image manipulation, QEMU image conversion, and low-level OS calls in the hypervisor layer.
+Batch 10 adds 126 new side effects: `rpc.py` (21 network/global-mutation for oslo.messaging setup), `thread_pool_factory.py` (10), `test.py` (18), `version.py` (9), `context.py` (8). `filesystem.py:L114` adds 6 file-io entries (sysfs read/write).
 
 ---
 
 ## Component Diagram
 
-All 5,884 file edges are intra-component (`crossComponent: false`). No cross-component seams exist. Source: `.aee/link-graph.json` (batch 624338e5).
+All 6,902 file edges are intra-component (`crossComponent: false`). No cross-component seams exist. Source: `.aee/link-graph.json` (batch c7e94e29).
 
 ```mermaid
 graph LR
@@ -1858,6 +1872,10 @@ graph LR
   api-validation-response-types["response_types.py"]
   api-validation-validators["validators.py"]
   api-wsgi["wsgi.py"]
+  availability-zones["availability_zones.py"]
+  baserpc["baserpc.py"]
+  block-device["block_device.py"]
+  cache-utils["cache_utils.py"]
   cmd-baseproxy["baseproxy.py"]
   cmd-common["common.py"]
   cmd-compute["compute.py"]
@@ -1948,6 +1966,7 @@ graph LR
   conf-workarounds["workarounds.py"]
   conf-wsgi["wsgi.py"]
   conf-zvm["zvm.py"]
+  config["config.py"]
   console-rfb-auth["auth.py"]
   console-rfb-authnone["authnone.py"]
   console-rfb-auths["auths.py"]
@@ -1957,6 +1976,8 @@ graph LR
   console-serial["serial.py"]
   console-type["type.py"]
   console-websocketproxy["websocketproxy.py"]
+  context["context.py"]
+  crypto["crypto.py"]
   db-api-api["api.py"]
   db-api-migrations-env["env.py"]
   db-api-migrations-versions-d67eeaabee36-initial-version["d67eeaabee36_initial_version.py"]
@@ -1970,6 +1991,9 @@ graph LR
   db-types["types.py"]
   db-utils["utils.py"]
   exception["exception.py"]
+  exception-wrapper["exception_wrapper.py"]
+  filesystem["filesystem.py"]
+  filters["filters.py"]
   hacking-checks["checks.py"]
   hacking-init["__init__.py"]
   i18n["i18n.py"]
@@ -1978,6 +2002,10 @@ graph LR
   limit-local["local.py"]
   limit-placement["placement.py"]
   limit-utils["utils.py"]
+  loadables["loadables.py"]
+  manager["manager.py"]
+  middleware["middleware.py"]
+  monkey-patch["monkey_patch.py"]
   network-constants["constants.py"]
   network-model["model.py"]
   network-neutron["neutron.py"]
@@ -2111,6 +2139,7 @@ graph LR
   policies-tenant-networks["tenant_networks.py"]
   policies-volumes["volumes.py"]
   policies-volumes-attachments["volumes_attachments.py"]
+  policy["policy.py"]
   privsep-fs["fs.py"]
   privsep-idmapshift["idmapshift.py"]
   privsep-init["__init__.py"]
@@ -2119,6 +2148,10 @@ graph LR
   privsep-path["path.py"]
   privsep-qemu["qemu.py"]
   privsep-utils["utils.py"]
+  profiler["profiler.py"]
+  quota["quota.py"]
+  rpc["rpc.py"]
+  safe-utils["safe_utils.py"]
   scheduler-client-query["query.py"]
   scheduler-client-report["report.py"]
   scheduler-filters-affinity-filter["affinity_filter.py"]
@@ -2158,6 +2191,7 @@ graph LR
   scheduler-weights-num-instances["num_instances.py"]
   scheduler-weights-pci["pci.py"]
   scheduler-weights-ram["ram.py"]
+  service["service.py"]
   service-auth["service_auth.py"]
   servicegroup-api["api.py"]
   servicegroup-drivers-base["base.py"]
@@ -2166,6 +2200,7 @@ graph LR
   servicegroup-init["__init__.py"]
   share-manila["manila.py"]
   storage-rbd-utils["rbd_utils.py"]
+  test["test.py"]
   tests-fixtures-cast-as-call["cast_as_call.py"]
   tests-fixtures-cinder["cinder.py"]
   tests-fixtures-conf["conf.py"]
@@ -2285,6 +2320,7 @@ graph LR
   tests-functional-db-test-security-group["test_security_group.py"]
   tests-functional-db-test-virtual-interface["test_virtual_interface.py"]
   tests-functional-fixtures["fixtures.py"]
+  tests-functional-init["__init__.py"]
   tests-functional-integrated-helpers["integrated_helpers.py"]
   tests-functional-libvirt-base["base.py"]
   tests-functional-libvirt-integrated-helpers["integrated_helpers.py"]
@@ -2331,6 +2367,7 @@ graph LR
   tests-functional-regressions-test-bug-1552888["test_bug_1552888.py"]
   tests-functional-regressions-test-bug-1554631["test_bug_1554631.py"]
   tests-functional-regressions-test-bug-1558866["test_bug_1558866.py"]
+  tests-functional-regressions-test-bug-1568208["test_bug_1568208.py"]
   tests-functional-regressions-test-bug-1595962["test_bug_1595962.py"]
   tests-functional-regressions-test-bug-1620248["test_bug_1620248.py"]
   tests-functional-regressions-test-bug-1628606["test_bug_1628606.py"]
@@ -2833,6 +2870,7 @@ graph LR
   tests-unit-test-availability-zones["test_availability_zones.py"]
   tests-unit-test-baserpc["test_baserpc.py"]
   tests-unit-test-block-device["test_block_device.py"]
+  tests-unit-test-cache["test_cache.py"]
   tests-unit-test-cinder["test_cinder.py"]
   tests-unit-test-conf["test_conf.py"]
   tests-unit-test-configdrive2["test_configdrive2.py"]
@@ -2846,20 +2884,24 @@ graph LR
   tests-unit-test-identity["test_identity.py"]
   tests-unit-test-json-ref["test_json_ref.py"]
   tests-unit-test-loadables["test_loadables.py"]
+  tests-unit-test-manager["test_manager.py"]
   tests-unit-test-manila["test_manila.py"]
   tests-unit-test-matchers["test_matchers.py"]
   tests-unit-test-metadata["test_metadata.py"]
   tests-unit-test-notifications["test_notifications.py"]
+  tests-unit-test-notifier["test_notifier.py"]
   tests-unit-test-policy["test_policy.py"]
   tests-unit-test-profiler["test_profiler.py"]
   tests-unit-test-quota["test_quota.py"]
   tests-unit-test-rpc["test_rpc.py"]
+  tests-unit-test-safeutils["test_safeutils.py"]
   tests-unit-test-service["test_service.py"]
   tests-unit-test-service-auth["test_service_auth.py"]
   tests-unit-test-test["test_test.py"]
   tests-unit-test-test-utils["test_test_utils.py"]
   tests-unit-test-thread-pool-factory["test_thread_pool_factory.py"]
   tests-unit-test-utils["test_utils.py"]
+  tests-unit-test-versions["test_versions.py"]
   tests-unit-test-weights["test_weights.py"]
   tests-unit-utils["utils.py"]
   tests-unit-virt-disk-mount-test-api["test_api.py"]
@@ -2941,7 +2983,9 @@ graph LR
   tests-unit-virt-zvm-test-hypervisor["test_hypervisor.py"]
   tests-unit-virt-zvm-test-utils["test_utils.py"]
   tests-unit-volume-test-cinder["test_cinder.py"]
+  thread-pool-factory["thread_pool_factory.py"]
   utils["utils.py"]
+  version["version.py"]
   virt-arch["arch.py"]
   virt-block-device["block_device.py"]
   virt-configdrive["configdrive.py"]
@@ -3027,6 +3071,8 @@ graph LR
   virt-zvm-utils["utils.py"]
   volume-cinder["cinder.py"]
   volume-init["__init__.py"]
+  vtpm["vtpm.py"]
+  weights["weights.py"]
   wsgi-metadata["metadata.py"]
   wsgi-osapi-compute["osapi_compute.py"]
   accelerator-cyborg --> exception
@@ -3037,11 +3083,14 @@ graph LR
   accelerator-cyborg --> utils
   api-auth --> api-wsgi
   api-auth --> conf-init
+  api-auth --> context
   api-auth --> i18n
   api-metadata-base --> api-metadata-password
   api-metadata-base --> api-metadata-vendordata-dynamic
   api-metadata-base --> api-metadata-vendordata-json
+  api-metadata-base --> block-device
   api-metadata-base --> conf-init
+  api-metadata-base --> context
   api-metadata-base --> exception
   api-metadata-base --> network-neutron
   api-metadata-base --> network-security-group-api
@@ -3051,11 +3100,14 @@ graph LR
   api-metadata-base --> virt-netutils
   api-metadata-handler --> api-metadata-base
   api-metadata-handler --> api-wsgi
+  api-metadata-handler --> cache-utils
   api-metadata-handler --> conf-init
+  api-metadata-handler --> context
   api-metadata-handler --> exception
   api-metadata-handler --> i18n
   api-metadata-handler --> network-neutron
   api-metadata-password --> conf-init
+  api-metadata-password --> context
   api-metadata-password --> exception
   api-metadata-password --> i18n
   api-metadata-password --> objects-init
@@ -3075,6 +3127,7 @@ graph LR
   api-openstack-common --> exception
   api-openstack-common --> i18n
   api-openstack-common --> objects-init
+  api-openstack-common --> quota
   api-openstack-common --> utils
   api-openstack-compute-admin-actions --> api-openstack-common
   api-openstack-compute-admin-actions --> api-openstack-compute-schemas-admin-actions
@@ -3129,6 +3182,7 @@ graph LR
   api-openstack-compute-availability-zone --> api-openstack-compute-schemas-availability-zone
   api-openstack-compute-availability-zone --> api-openstack-wsgi
   api-openstack-compute-availability-zone --> api-validation-init
+  api-openstack-compute-availability-zone --> availability-zones
   api-openstack-compute-availability-zone --> compute-api
   api-openstack-compute-availability-zone --> conf-init
   api-openstack-compute-availability-zone --> policies-availability-zone
@@ -3155,6 +3209,7 @@ graph LR
   api-openstack-compute-console-auth-tokens --> api-openstack-wsgi
   api-openstack-compute-console-auth-tokens --> api-validation-init
   api-openstack-compute-console-auth-tokens --> conf-init
+  api-openstack-compute-console-auth-tokens --> context
   api-openstack-compute-console-auth-tokens --> i18n
   api-openstack-compute-console-auth-tokens --> objects-init
   api-openstack-compute-console-auth-tokens --> policies-console-auth-tokens
@@ -3266,6 +3321,7 @@ graph LR
   api-openstack-compute-hosts --> api-openstack-wsgi
   api-openstack-compute-hosts --> api-validation-init
   api-openstack-compute-hosts --> compute-api
+  api-openstack-compute-hosts --> context
   api-openstack-compute-hosts --> exception
   api-openstack-compute-hosts --> objects-init
   api-openstack-compute-hosts --> policies-hosts
@@ -3341,6 +3397,7 @@ graph LR
   api-openstack-compute-limits --> api-openstack-wsgi
   api-openstack-compute-limits --> api-validation-init
   api-openstack-compute-limits --> policies-limits
+  api-openstack-compute-limits --> quota
   api-openstack-compute-lock-server --> api-openstack-api-version-request
   api-openstack-compute-lock-server --> api-openstack-common
   api-openstack-compute-lock-server --> api-openstack-compute-schemas-lock-server
@@ -3402,6 +3459,7 @@ graph LR
   api-openstack-compute-quota-classes --> limit-utils
   api-openstack-compute-quota-classes --> objects-init
   api-openstack-compute-quota-classes --> policies-quota-class-sets
+  api-openstack-compute-quota-classes --> quota
   api-openstack-compute-quota-classes --> utils
   api-openstack-compute-quota-sets --> api-openstack-api-version-request
   api-openstack-compute-quota-sets --> api-openstack-compute-schemas-quota-sets
@@ -3414,6 +3472,7 @@ graph LR
   api-openstack-compute-quota-sets --> limit-utils
   api-openstack-compute-quota-sets --> objects-init
   api-openstack-compute-quota-sets --> policies-quota-sets
+  api-openstack-compute-quota-sets --> quota
   api-openstack-compute-remote-consoles --> api-openstack-common
   api-openstack-compute-remote-consoles --> api-openstack-compute-schemas-remote-consoles
   api-openstack-compute-remote-consoles --> api-openstack-wsgi
@@ -3582,6 +3641,7 @@ graph LR
   api-openstack-compute-server-external-events --> api-openstack-wsgi
   api-openstack-compute-server-external-events --> api-validation-init
   api-openstack-compute-server-external-events --> compute-api
+  api-openstack-compute-server-external-events --> context
   api-openstack-compute-server-external-events --> objects-init
   api-openstack-compute-server-external-events --> policies-server-external-events
   api-openstack-compute-server-groups --> api-openstack-api-version-request
@@ -3590,6 +3650,7 @@ graph LR
   api-openstack-compute-server-groups --> api-openstack-wsgi
   api-openstack-compute-server-groups --> api-validation-init
   api-openstack-compute-server-groups --> conf-init
+  api-openstack-compute-server-groups --> context
   api-openstack-compute-server-groups --> exception
   api-openstack-compute-server-groups --> i18n
   api-openstack-compute-server-groups --> limit-local
@@ -3627,6 +3688,7 @@ graph LR
   api-openstack-compute-server-shares --> api-validation-init
   api-openstack-compute-server-shares --> compute-api
   api-openstack-compute-server-shares --> compute-vm-states
+  api-openstack-compute-server-shares --> context
   api-openstack-compute-server-shares --> exception
   api-openstack-compute-server-shares --> objects-fields
   api-openstack-compute-server-shares --> objects-init
@@ -3641,6 +3703,7 @@ graph LR
   api-openstack-compute-server-tags --> api-validation-parameter-types
   api-openstack-compute-server-tags --> compute-api
   api-openstack-compute-server-tags --> compute-vm-states
+  api-openstack-compute-server-tags --> context
   api-openstack-compute-server-tags --> exception
   api-openstack-compute-server-tags --> i18n
   api-openstack-compute-server-tags --> notifications-base
@@ -3659,10 +3722,13 @@ graph LR
   api-openstack-compute-servers --> api-openstack-compute-views-servers
   api-openstack-compute-servers --> api-openstack-wsgi
   api-openstack-compute-servers --> api-validation-init
+  api-openstack-compute-servers --> availability-zones
+  api-openstack-compute-servers --> block-device
   api-openstack-compute-servers --> compute-api
   api-openstack-compute-servers --> compute-flavors
   api-openstack-compute-servers --> compute-utils
   api-openstack-compute-servers --> conf-init
+  api-openstack-compute-servers --> context
   api-openstack-compute-servers --> exception
   api-openstack-compute-servers --> i18n
   api-openstack-compute-servers --> image-glance
@@ -3673,6 +3739,7 @@ graph LR
   api-openstack-compute-services --> api-openstack-compute-schemas-services
   api-openstack-compute-services --> api-openstack-wsgi
   api-openstack-compute-services --> api-validation-init
+  api-openstack-compute-services --> availability-zones
   api-openstack-compute-services --> compute-api
   api-openstack-compute-services --> exception
   api-openstack-compute-services --> i18n
@@ -3696,6 +3763,7 @@ graph LR
   api-openstack-compute-simple-tenant-usage --> api-openstack-wsgi
   api-openstack-compute-simple-tenant-usage --> api-validation-init
   api-openstack-compute-simple-tenant-usage --> conf-init
+  api-openstack-compute-simple-tenant-usage --> context
   api-openstack-compute-simple-tenant-usage --> exception
   api-openstack-compute-simple-tenant-usage --> i18n
   api-openstack-compute-simple-tenant-usage --> objects-init
@@ -3720,10 +3788,12 @@ graph LR
   api-openstack-compute-tenant-networks --> api-openstack-wsgi
   api-openstack-compute-tenant-networks --> api-validation-init
   api-openstack-compute-tenant-networks --> conf-init
+  api-openstack-compute-tenant-networks --> context
   api-openstack-compute-tenant-networks --> exception
   api-openstack-compute-tenant-networks --> i18n
   api-openstack-compute-tenant-networks --> network-neutron
   api-openstack-compute-tenant-networks --> policies-tenant-networks
+  api-openstack-compute-tenant-networks --> quota
   api-openstack-compute-versions --> api-openstack-api-version-request
   api-openstack-compute-versions --> api-openstack-compute-schemas-versions
   api-openstack-compute-versions --> api-openstack-compute-views-versions
@@ -3754,8 +3824,10 @@ graph LR
   api-openstack-compute-views-servers --> api-openstack-compute-views-flavors
   api-openstack-compute-views-servers --> api-openstack-compute-views-images
   api-openstack-compute-views-servers --> api-openstack-compute-views-ips
+  api-openstack-compute-views-servers --> availability-zones
   api-openstack-compute-views-servers --> compute-api
   api-openstack-compute-views-servers --> compute-vm-states
+  api-openstack-compute-views-servers --> context
   api-openstack-compute-views-servers --> exception
   api-openstack-compute-views-servers --> network-security-group-api
   api-openstack-compute-views-servers --> objects-fields
@@ -3807,10 +3879,15 @@ graph LR
   api-openstack-wsgi --> api-wsgi
   api-openstack-wsgi --> exception
   api-openstack-wsgi --> i18n
+  api-openstack-wsgi --> version
+  api-openstack-wsgi-app --> config
+  api-openstack-wsgi-app --> context
   api-openstack-wsgi-app --> exception
   api-openstack-wsgi-app --> objects-init
   api-openstack-wsgi-app --> pci-request
+  api-openstack-wsgi-app --> service
   api-openstack-wsgi-app --> utils
+  api-openstack-wsgi-app --> version
   api-validation-extra-specs-accel --> api-validation-extra-specs-base
   api-validation-extra-specs-aggregate-instance-extra-specs --> api-validation-extra-specs-base
   api-validation-extra-specs-base --> exception
@@ -3842,10 +3919,24 @@ graph LR
   api-wsgi --> conf-init
   api-wsgi --> exception
   api-wsgi --> i18n
+  availability-zones --> cache-utils
+  availability-zones --> conf-init
+  availability-zones --> objects-init
+  baserpc --> conf-init
+  baserpc --> rpc
+  block-device --> conf-init
+  block-device --> exception
+  block-device --> i18n
+  block-device --> utils
+  block-device --> virt-driver
+  cache-utils --> conf-init
+  cache-utils --> i18n
   cmd-baseproxy --> conf-init
   cmd-baseproxy --> conf-novnc
   cmd-baseproxy --> console-websocketproxy
+  cmd-baseproxy --> monkey-patch
   cmd-baseproxy --> objects-init
+  cmd-baseproxy --> version
   cmd-common --> conf-init
   cmd-common --> db-main-api
   cmd-common --> exception
@@ -3853,13 +3944,22 @@ graph LR
   cmd-compute --> compute-rpcapi
   cmd-compute --> conductor-rpcapi
   cmd-compute --> conf-init
+  cmd-compute --> config
   cmd-compute --> db-main-api
+  cmd-compute --> monkey-patch
   cmd-compute --> objects-base
   cmd-compute --> objects-init
+  cmd-compute --> service
   cmd-compute --> utils
+  cmd-compute --> version
   cmd-conductor --> conductor-rpcapi
   cmd-conductor --> conf-init
+  cmd-conductor --> config
+  cmd-conductor --> monkey-patch
   cmd-conductor --> objects-init
+  cmd-conductor --> service
+  cmd-conductor --> thread-pool-factory
+  cmd-conductor --> version
   cmd-manage --> cmd-common
   cmd-manage --> compute-api
   cmd-manage --> compute-instance-actions
@@ -3867,6 +3967,8 @@ graph LR
   cmd-manage --> compute-rpcapi
   cmd-manage --> conf-init
   cmd-manage --> conf-utils
+  cmd-manage --> config
+  cmd-manage --> context
   cmd-manage --> db-constants
   cmd-manage --> db-main-api
   cmd-manage --> db-migration
@@ -3874,6 +3976,7 @@ graph LR
   cmd-manage --> i18n
   cmd-manage --> limit-local
   cmd-manage --> limit-placement
+  cmd-manage --> monkey-patch
   cmd-manage --> network-constants
   cmd-manage --> network-neutron
   cmd-manage --> objects-block-device
@@ -3886,44 +3989,68 @@ graph LR
   cmd-manage --> objects-pci-device
   cmd-manage --> objects-quotas
   cmd-manage --> objects-virtual-interface
+  cmd-manage --> quota
+  cmd-manage --> rpc
   cmd-manage --> scheduler-client-report
   cmd-manage --> scheduler-utils
   cmd-manage --> utils
+  cmd-manage --> version
   cmd-manage --> virt-libvirt-machine-type-utils
   cmd-manage --> volume-cinder
   cmd-novncproxy --> cmd-baseproxy
   cmd-novncproxy --> conf-init
   cmd-novncproxy --> conf-vnc
+  cmd-novncproxy --> config
   cmd-novncproxy --> console-securityproxy-rfb
+  cmd-novncproxy --> monkey-patch
   cmd-policy --> cmd-common
   cmd-policy --> conf-init
+  cmd-policy --> config
+  cmd-policy --> context
   cmd-policy --> db-main-api
   cmd-policy --> exception
   cmd-policy --> i18n
+  cmd-policy --> monkey-patch
   cmd-policy --> policies-init
   cmd-policy --> utils
+  cmd-policy --> version
   cmd-scheduler --> conf-init
+  cmd-scheduler --> config
+  cmd-scheduler --> monkey-patch
   cmd-scheduler --> objects-init
   cmd-scheduler --> scheduler-rpcapi
+  cmd-scheduler --> service
+  cmd-scheduler --> thread-pool-factory
+  cmd-scheduler --> version
   cmd-serialproxy --> cmd-baseproxy
   cmd-serialproxy --> conf-init
   cmd-serialproxy --> conf-serial-console
+  cmd-serialproxy --> config
+  cmd-serialproxy --> monkey-patch
   cmd-spicehtml5proxy --> cmd-baseproxy
   cmd-spicehtml5proxy --> conf-init
   cmd-spicehtml5proxy --> conf-spice
+  cmd-spicehtml5proxy --> config
+  cmd-spicehtml5proxy --> monkey-patch
   cmd-status --> cmd-common
   cmd-status --> conf-init
+  cmd-status --> config
+  cmd-status --> context
   cmd-status --> db-api-api
   cmd-status --> db-main-api
   cmd-status --> exception
   cmd-status --> i18n
+  cmd-status --> monkey-patch
   cmd-status --> objects-cell-mapping
   cmd-status --> objects-image-meta
   cmd-status --> objects-instance
   cmd-status --> utils
+  cmd-status --> version
   cmd-status --> virt-libvirt-machine-type-utils
   cmd-status --> volume-cinder
   compute-api --> accelerator-cyborg
+  compute-api --> availability-zones
+  compute-api --> block-device
   compute-api --> compute-flavors
   compute-api --> compute-instance-actions
   compute-api --> compute-instance-list
@@ -3935,9 +4062,12 @@ graph LR
   compute-api --> compute-vm-states
   compute-api --> conductor-init
   compute-api --> conf-init
+  compute-api --> context
+  compute-api --> crypto
   compute-api --> db-api-api
   compute-api --> db-main-api
   compute-api --> exception
+  compute-api --> exception-wrapper
   compute-api --> i18n
   compute-api --> image-glance
   compute-api --> limit-local
@@ -3958,6 +4088,9 @@ graph LR
   compute-api --> pci-request
   compute-api --> policies-servers
   compute-api --> policies-shelve
+  compute-api --> policy
+  compute-api --> profiler
+  compute-api --> rpc
   compute-api --> scheduler-client-query
   compute-api --> scheduler-client-report
   compute-api --> scheduler-utils
@@ -3965,11 +4098,13 @@ graph LR
   compute-api --> utils
   compute-api --> virt-hardware
   compute-api --> volume-cinder
+  compute-api --> vtpm
   compute-claims --> exception
   compute-claims --> i18n
   compute-claims --> objects-init
   compute-claims --> virt-hardware
   compute-flavors --> conf-init
+  compute-flavors --> context
   compute-flavors --> db-constants
   compute-flavors --> exception
   compute-flavors --> i18n
@@ -3977,11 +4112,13 @@ graph LR
   compute-flavors --> utils
   compute-instance-list --> compute-multi-cell-list
   compute-instance-list --> conf-init
+  compute-instance-list --> context
   compute-instance-list --> db-main-api
   compute-instance-list --> exception
   compute-instance-list --> objects-init
   compute-instance-list --> objects-instance
   compute-manager --> accelerator-cyborg
+  compute-manager --> block-device
   compute-manager --> compute-api
   compute-manager --> compute-build-results
   compute-manager --> compute-claims
@@ -3994,9 +4131,12 @@ graph LR
   compute-manager --> compute-vm-states
   compute-manager --> conductor-init
   compute-manager --> conf-init
+  compute-manager --> context
   compute-manager --> exception
+  compute-manager --> exception-wrapper
   compute-manager --> i18n
   compute-manager --> image-glance
+  compute-manager --> manager
   compute-manager --> network-model
   compute-manager --> network-neutron
   compute-manager --> objects-base
@@ -4008,10 +4148,12 @@ graph LR
   compute-manager --> objects-service
   compute-manager --> pci-request
   compute-manager --> pci-whitelist
+  compute-manager --> safe-utils
   compute-manager --> scheduler-client-query
   compute-manager --> scheduler-client-report
   compute-manager --> scheduler-utils
   compute-manager --> share-manila
+  compute-manager --> thread-pool-factory
   compute-manager --> utils
   compute-manager --> virt-block-device
   compute-manager --> virt-configdrive
@@ -4022,7 +4164,9 @@ graph LR
   compute-manager --> virt-storage-users
   compute-manager --> virt-virtapi
   compute-manager --> volume-cinder
+  compute-manager --> vtpm
   compute-migration-list --> compute-multi-cell-list
+  compute-migration-list --> context
   compute-migration-list --> db-main-api
   compute-migration-list --> exception
   compute-migration-list --> objects-base
@@ -4034,6 +4178,7 @@ graph LR
   compute-monitors-cpu-virt-driver --> objects-init
   compute-monitors-init --> conf-init
   compute-multi-cell-list --> conf-init
+  compute-multi-cell-list --> context
   compute-multi-cell-list --> exception
   compute-multi-cell-list --> i18n
   compute-pci-placement-translator --> compute-provider-tree
@@ -4065,16 +4210,20 @@ graph LR
   compute-resource-tracker --> objects-migration
   compute-resource-tracker --> pci-manager
   compute-resource-tracker --> pci-request
+  compute-resource-tracker --> rpc
   compute-resource-tracker --> scheduler-client-report
   compute-resource-tracker --> utils
   compute-resource-tracker --> virt-hardware
   compute-resource-tracker --> virt-node
   compute-rpcapi --> conf-init
+  compute-rpcapi --> context
   compute-rpcapi --> exception
   compute-rpcapi --> i18n
   compute-rpcapi --> objects-base
   compute-rpcapi --> objects-init
   compute-rpcapi --> objects-service
+  compute-rpcapi --> profiler
+  compute-rpcapi --> rpc
   compute-share-management --> compute-utils
   compute-share-management --> compute-vm-states
   compute-share-management --> conf-init
@@ -4087,6 +4236,7 @@ graph LR
   compute-stats --> i18n
   compute-task-states --> objects-fields
   compute-utils --> accelerator-cyborg
+  compute-utils --> block-device
   compute-utils --> compute-power-state
   compute-utils --> compute-task-states
   compute-utils --> compute-vm-states
@@ -4108,14 +4258,18 @@ graph LR
   compute-utils --> notifications-objects-volume
   compute-utils --> objects-fields
   compute-utils --> objects-init
+  compute-utils --> rpc
+  compute-utils --> safe-utils
   compute-utils --> utils
   compute-vm-states --> compute-task-states
   compute-vm-states --> objects-fields
+  conductor-api --> baserpc
   conductor-api --> conductor-rpcapi
   conductor-api --> conf-init
   conductor-api --> image-glance
   conductor-init --> conductor-api
   conductor-manager --> accelerator-cyborg
+  conductor-manager --> availability-zones
   conductor-manager --> compute-instance-actions
   conductor-manager --> compute-rpcapi
   conductor-manager --> compute-task-states
@@ -4124,26 +4278,34 @@ graph LR
   conductor-manager --> conductor-tasks-cross-cell-migrate
   conductor-manager --> conductor-tasks-live-migrate
   conductor-manager --> conductor-tasks-migrate
+  conductor-manager --> context
   conductor-manager --> exception
   conductor-manager --> i18n
   conductor-manager --> image-glance
   conductor-manager --> limit-placement
   conductor-manager --> limit-utils
+  conductor-manager --> manager
   conductor-manager --> network-neutron
   conductor-manager --> notifications-init
   conductor-manager --> objects-base
   conductor-manager --> objects-fields
   conductor-manager --> objects-init
+  conductor-manager --> profiler
+  conductor-manager --> rpc
   conductor-manager --> scheduler-client-query
   conductor-manager --> scheduler-client-report
   conductor-manager --> scheduler-utils
   conductor-manager --> servicegroup-init
+  conductor-manager --> thread-pool-factory
   conductor-manager --> utils
   conductor-manager --> volume-cinder
   conductor-rpcapi --> conf-init
   conductor-rpcapi --> exception
   conductor-rpcapi --> i18n
   conductor-rpcapi --> objects-base
+  conductor-rpcapi --> profiler
+  conductor-rpcapi --> rpc
+  conductor-tasks-cross-cell-migrate --> availability-zones
   conductor-tasks-cross-cell-migrate --> compute-instance-actions
   conductor-tasks-cross-cell-migrate --> compute-power-state
   conductor-tasks-cross-cell-migrate --> compute-task-states
@@ -4151,6 +4313,7 @@ graph LR
   conductor-tasks-cross-cell-migrate --> compute-vm-states
   conductor-tasks-cross-cell-migrate --> conductor-tasks-base
   conductor-tasks-cross-cell-migrate --> conf-init
+  conductor-tasks-cross-cell-migrate --> context
   conductor-tasks-cross-cell-migrate --> exception
   conductor-tasks-cross-cell-migrate --> i18n
   conductor-tasks-cross-cell-migrate --> image-glance
@@ -4160,6 +4323,7 @@ graph LR
   conductor-tasks-cross-cell-migrate --> objects-init
   conductor-tasks-cross-cell-migrate --> scheduler-utils
   conductor-tasks-cross-cell-migrate --> volume-cinder
+  conductor-tasks-live-migrate --> availability-zones
   conductor-tasks-live-migrate --> compute-power-state
   conductor-tasks-live-migrate --> compute-utils
   conductor-tasks-live-migrate --> conductor-tasks-base
@@ -4171,6 +4335,7 @@ graph LR
   conductor-tasks-live-migrate --> objects-fields
   conductor-tasks-live-migrate --> objects-init
   conductor-tasks-live-migrate --> scheduler-utils
+  conductor-tasks-migrate --> availability-zones
   conductor-tasks-migrate --> compute-utils
   conductor-tasks-migrate --> conductor-tasks-base
   conductor-tasks-migrate --> conductor-tasks-cross-cell-migrate
@@ -4235,6 +4400,12 @@ graph LR
   conf-placement --> conf-utils
   conf-scheduler --> virt-arch
   conf-zvm --> conf-paths
+  config --> conf-init
+  config --> db-api-api
+  config --> db-main-api
+  config --> middleware
+  config --> rpc
+  config --> version
   console-rfb-authnone --> console-rfb-auth
   console-rfb-auths --> console-rfb-authnone
   console-rfb-auths --> console-rfb-authvencrypt
@@ -4252,23 +4423,44 @@ graph LR
   console-serial --> utils
   console-websocketproxy --> compute-rpcapi
   console-websocketproxy --> conf-init
+  console-websocketproxy --> context
   console-websocketproxy --> exception
   console-websocketproxy --> i18n
   console-websocketproxy --> objects-init
   console-websocketproxy --> utils
+  context --> conf-init
+  context --> db-main-api
+  context --> exception
+  context --> i18n
+  context --> objects-init
+  context --> policy
+  context --> rpc
+  context --> service-auth
+  context --> thread-pool-factory
+  context --> utils
+  crypto --> conf-init
+  crypto --> context
+  crypto --> exception
+  crypto --> i18n
+  crypto --> objects-init
+  crypto --> utils
+  crypto --> virt-block-device
   db-api-api --> conf-init
   db-api-migrations-env --> db-api-models
   db-api-migrations-versions-d67eeaabee36-initial-version --> db-types
   db-api-migrations-versions-d67eeaabee36-initial-version --> objects-keypair
   db-api-models --> db-types
+  db-main-api --> block-device
   db-main-api --> compute-task-states
   db-main-api --> compute-vm-states
   db-main-api --> conf-init
+  db-main-api --> context
   db-main-api --> db-main-models
   db-main-api --> db-utils
   db-main-api --> exception
   db-main-api --> i18n
   db-main-api --> objects-init
+  db-main-api --> safe-utils
   db-main-migrations-env --> db-main-models
   db-main-migrations-versions-8f2f1571d55b-initial-version --> db-types
   db-main-migrations-versions-8f2f1571d55b-initial-version --> objects-keypair
@@ -4277,14 +4469,24 @@ graph LR
   db-migration --> db-main-api
   db-migration --> exception
   db-types --> utils
+  db-utils --> context
   db-utils --> exception
   db-utils --> i18n
   exception --> i18n
+  exception-wrapper --> conf-init
+  exception-wrapper --> notifications-objects-base
+  exception-wrapper --> notifications-objects-exception
+  exception-wrapper --> objects-fields
+  exception-wrapper --> rpc
+  exception-wrapper --> safe-utils
+  filesystem --> exception
+  filters --> loadables
   hacking-checks --> hacking-init
   image-glance --> conf-init
   image-glance --> exception
   image-glance --> objects-fields
   image-glance --> objects-init
+  image-glance --> profiler
   image-glance --> service-auth
   image-glance --> storage-rbd-utils
   image-glance --> utils
@@ -4299,15 +4501,23 @@ graph LR
   limit-placement --> exception
   limit-placement --> limit-utils
   limit-placement --> objects-init
+  limit-placement --> quota
   limit-placement --> scheduler-client-report
   limit-placement --> scheduler-utils
   limit-utils --> conf-init
   limit-utils --> utils
+  loadables --> exception
+  manager --> conf-init
+  manager --> db-main-api
+  manager --> profiler
+  manager --> rpc
   network-model --> exception
   network-model --> i18n
+  network-model --> thread-pool-factory
   network-neutron --> accelerator-cyborg
   network-neutron --> compute-utils
   network-neutron --> conf-init
+  network-neutron --> context
   network-neutron --> exception
   network-neutron --> i18n
   network-neutron --> network-constants
@@ -4318,21 +4528,25 @@ graph LR
   network-neutron --> pci-utils
   network-neutron --> pci-whitelist
   network-neutron --> policies-servers
+  network-neutron --> profiler
   network-neutron --> service-auth
   network-neutron --> utils
   network-os-vif-util --> exception
   network-os-vif-util --> i18n
   network-os-vif-util --> network-model
+  network-security-group-api --> context
   network-security-group-api --> exception
   network-security-group-api --> i18n
   network-security-group-api --> network-neutron
   network-security-group-api --> objects-security-group
   notifications-base --> conf-init
+  notifications-base --> context
   notifications-base --> exception
   notifications-base --> image-glance
   notifications-base --> notifications-objects-base
   notifications-base --> notifications-objects-instance
   notifications-base --> objects-fields
+  notifications-base --> rpc
   notifications-base --> utils
   notifications-init --> notifications-base
   notifications-objects-aggregate --> notifications-objects-base
@@ -4341,6 +4555,7 @@ graph LR
   notifications-objects-base --> exception
   notifications-objects-base --> objects-base
   notifications-objects-base --> objects-fields
+  notifications-objects-base --> rpc
   notifications-objects-compute-task --> notifications-objects-base
   notifications-objects-compute-task --> notifications-objects-request-spec
   notifications-objects-compute-task --> objects-base
@@ -4401,6 +4616,7 @@ graph LR
   objects-base --> objects-fields
   objects-base --> objects-init
   objects-base --> utils
+  objects-block-device --> block-device
   objects-block-device --> db-main-api
   objects-block-device --> db-main-models
   objects-block-device --> exception
@@ -4437,6 +4653,7 @@ graph LR
   objects-console-auth-token --> utils
   objects-diagnostics --> objects-base
   objects-diagnostics --> objects-fields
+  objects-ec2 --> cache-utils
   objects-ec2 --> db-main-api
   objects-ec2 --> exception
   objects-ec2 --> objects-base
@@ -4456,6 +4673,7 @@ graph LR
   objects-flavor --> notifications-objects-flavor
   objects-flavor --> objects-base
   objects-flavor --> objects-fields
+  objects-host-mapping --> context
   objects-host-mapping --> db-api-api
   objects-host-mapping --> db-api-models
   objects-host-mapping --> exception
@@ -4520,6 +4738,7 @@ graph LR
   objects-init --> objects-volume-usage
   objects-instance --> compute-task-states
   objects-instance --> compute-vm-states
+  objects-instance --> context
   objects-instance --> db-main-api
   objects-instance --> db-main-models
   objects-instance --> exception
@@ -4550,6 +4769,7 @@ graph LR
   objects-instance-info-cache --> exception
   objects-instance-info-cache --> objects-base
   objects-instance-info-cache --> objects-fields
+  objects-instance-mapping --> context
   objects-instance-mapping --> db-api-api
   objects-instance-mapping --> db-api-models
   objects-instance-mapping --> exception
@@ -4613,6 +4833,7 @@ graph LR
   objects-quotas --> exception
   objects-quotas --> objects-base
   objects-quotas --> objects-fields
+  objects-quotas --> quota
   objects-request-spec --> compute-pci-placement-translator
   objects-request-spec --> conf-init
   objects-request-spec --> db-api-api
@@ -4634,6 +4855,8 @@ graph LR
   objects-selection --> objects-base
   objects-selection --> objects-init
   objects-selection --> scheduler-filters-utils
+  objects-service --> availability-zones
+  objects-service --> context
   objects-service --> db-main-api
   objects-service --> exception
   objects-service --> notifications-objects-base
@@ -4664,6 +4887,7 @@ graph LR
   objects-virt-device-metadata --> db-main-api
   objects-virt-device-metadata --> objects-base
   objects-virt-device-metadata --> objects-fields
+  objects-virtual-interface --> context
   objects-virtual-interface --> db-api-api
   objects-virtual-interface --> db-main-api
   objects-virtual-interface --> db-main-models
@@ -4680,12 +4904,14 @@ graph LR
   pci-devspec --> objects-init
   pci-devspec --> pci-request
   pci-devspec --> pci-utils
+  pci-manager --> context
   pci-manager --> exception
   pci-manager --> objects-fields
   pci-manager --> objects-init
   pci-manager --> pci-stats
   pci-manager --> pci-whitelist
   pci-request --> conf-init
+  pci-request --> context
   pci-request --> exception
   pci-request --> i18n
   pci-request --> network-model
@@ -4814,6 +5040,8 @@ graph LR
   policies-tenant-networks --> policies-base
   policies-volumes --> policies-base
   policies-volumes-attachments --> policies-base
+  policy --> exception
+  policy --> policies-init
   privsep-fs --> privsep-init
   privsep-idmapshift --> privsep-init
   privsep-libvirt --> privsep-init
@@ -4823,9 +5051,26 @@ graph LR
   privsep-qemu --> exception
   privsep-qemu --> i18n
   privsep-qemu --> privsep-utils
+  profiler --> conf-init
+  quota --> conf-init
+  quota --> context
+  quota --> db-api-api
+  quota --> db-api-models
+  quota --> db-main-api
+  quota --> exception
+  quota --> limit-local
+  quota --> limit-placement
+  quota --> objects-init
+  quota --> scheduler-client-report
+  rpc --> conf-init
+  rpc --> context
+  rpc --> exception
+  rpc --> i18n
+  rpc --> utils
   scheduler-client-query --> scheduler-rpcapi
   scheduler-client-report --> compute-provider-tree
   scheduler-client-report --> conf-init
+  scheduler-client-report --> context
   scheduler-client-report --> exception
   scheduler-client-report --> i18n
   scheduler-client-report --> objects-fields
@@ -4849,6 +5094,7 @@ graph LR
   scheduler-filters-image-props-filter --> conf-init
   scheduler-filters-image-props-filter --> objects-fields
   scheduler-filters-image-props-filter --> scheduler-filters-init
+  scheduler-filters-init --> filters
   scheduler-filters-init --> scheduler-utils
   scheduler-filters-io-ops-filter --> conf-init
   scheduler-filters-io-ops-filter --> scheduler-filters-init
@@ -4870,27 +5116,34 @@ graph LR
   scheduler-filters-type-filter --> scheduler-filters-init
   scheduler-filters-type-filter --> scheduler-filters-utils
   scheduler-host-manager --> conf-init
+  scheduler-host-manager --> context
   scheduler-host-manager --> exception
   scheduler-host-manager --> objects-init
   scheduler-host-manager --> pci-stats
   scheduler-host-manager --> scheduler-filters-init
   scheduler-host-manager --> scheduler-weights-init
+  scheduler-host-manager --> thread-pool-factory
   scheduler-host-manager --> utils
   scheduler-host-manager --> virt-hardware
   scheduler-manager --> compute-utils
   scheduler-manager --> conf-init
   scheduler-manager --> exception
   scheduler-manager --> i18n
+  scheduler-manager --> manager
   scheduler-manager --> objects-fields
   scheduler-manager --> objects-host-mapping
   scheduler-manager --> objects-init
   scheduler-manager --> objects-service
+  scheduler-manager --> quota
+  scheduler-manager --> rpc
   scheduler-manager --> scheduler-client-report
   scheduler-manager --> scheduler-host-manager
   scheduler-manager --> scheduler-request-filter
   scheduler-manager --> scheduler-utils
   scheduler-manager --> servicegroup-init
+  scheduler-manager --> thread-pool-factory
   scheduler-request-filter --> conf-init
+  scheduler-request-filter --> context
   scheduler-request-filter --> exception
   scheduler-request-filter --> i18n
   scheduler-request-filter --> network-neutron
@@ -4901,9 +5154,12 @@ graph LR
   scheduler-rpcapi --> conf-init
   scheduler-rpcapi --> exception
   scheduler-rpcapi --> objects-base
+  scheduler-rpcapi --> profiler
+  scheduler-rpcapi --> rpc
   scheduler-utils --> compute-flavors
   scheduler-utils --> compute-utils
   scheduler-utils --> conf-init
+  scheduler-utils --> context
   scheduler-utils --> exception
   scheduler-utils --> i18n
   scheduler-utils --> objects-base
@@ -4911,6 +5167,7 @@ graph LR
   scheduler-utils --> objects-init
   scheduler-utils --> objects-instance
   scheduler-utils --> pci-request
+  scheduler-utils --> rpc
   scheduler-utils --> scheduler-client-report
   scheduler-utils --> scheduler-filters-utils
   scheduler-utils --> virt-hardware
@@ -4932,10 +5189,12 @@ graph LR
   scheduler-weights-hypervisor-version --> scheduler-utils
   scheduler-weights-hypervisor-version --> scheduler-weights-init
   scheduler-weights-image-props --> conf-init
+  scheduler-weights-image-props --> context
   scheduler-weights-image-props --> exception
   scheduler-weights-image-props --> objects-init
   scheduler-weights-image-props --> scheduler-utils
   scheduler-weights-image-props --> scheduler-weights-init
+  scheduler-weights-init --> weights
   scheduler-weights-io-ops --> conf-init
   scheduler-weights-io-ops --> scheduler-utils
   scheduler-weights-io-ops --> scheduler-weights-init
@@ -4952,6 +5211,19 @@ graph LR
   scheduler-weights-ram --> conf-init
   scheduler-weights-ram --> scheduler-utils
   scheduler-weights-ram --> scheduler-weights-init
+  service --> baserpc
+  service --> conductor-init
+  service --> conf-init
+  service --> context
+  service --> exception
+  service --> i18n
+  service --> objects-base
+  service --> objects-init
+  service --> objects-service
+  service --> rpc
+  service --> servicegroup-init
+  service --> utils
+  service --> version
   service-auth --> conf-init
   servicegroup-api --> conf-init
   servicegroup-drivers-db --> conf-init
@@ -4959,6 +5231,7 @@ graph LR
   servicegroup-drivers-db --> i18n
   servicegroup-drivers-db --> servicegroup-api
   servicegroup-drivers-db --> servicegroup-drivers-base
+  servicegroup-drivers-mc --> cache-utils
   servicegroup-drivers-mc --> conf-init
   servicegroup-drivers-mc --> i18n
   servicegroup-drivers-mc --> servicegroup-api
@@ -4971,12 +5244,33 @@ graph LR
   storage-rbd-utils --> exception
   storage-rbd-utils --> i18n
   storage-rbd-utils --> utils
+  test --> api-openstack-wsgi-app
+  test --> compute-api
+  test --> compute-rpcapi
+  test --> context
+  test --> crypto
+  test --> db-main-api
+  test --> exception
+  test --> objects-base
+  test --> objects-init
+  test --> pci-request
+  test --> quota
+  test --> scheduler-client-report
+  test --> scheduler-utils
+  test --> service-auth
+  test --> tests-fixtures-init
+  test --> tests-unit-matchers
+  test --> utils
+  test --> virt-images
+  test --> virt-libvirt-driver
   tests-fixtures-cinder --> exception
   tests-fixtures-cinder --> tests-fixtures-nova
   tests-fixtures-conf --> conf-devices
   tests-fixtures-conf --> conf-neutron
   tests-fixtures-conf --> conf-paths
+  tests-fixtures-conf --> config
   tests-fixtures-cyborg --> exception
+  tests-fixtures-filesystem --> filesystem
   tests-fixtures-filesystem --> virt-libvirt-cpu-core
   tests-fixtures-glance --> exception
   tests-fixtures-glance --> objects-fields
@@ -5012,11 +5306,13 @@ graph LR
   tests-fixtures-neutron --> network-constants
   tests-fixtures-neutron --> network-model
   tests-fixtures-neutron --> tests-fixtures-nova
+  tests-fixtures-notifications --> rpc
   tests-fixtures-notifications --> utils
   tests-fixtures-nova --> api-openstack-wsgi-app
   tests-fixtures-nova --> api-wsgi
   tests-fixtures-nova --> compute-multi-cell-list
   tests-fixtures-nova --> compute-rpcapi
+  tests-fixtures-nova --> context
   tests-fixtures-nova --> db-api-api
   tests-fixtures-nova --> db-main-api
   tests-fixtures-nova --> db-migration
@@ -5025,14 +5321,19 @@ graph LR
   tests-fixtures-nova --> objects-init
   tests-fixtures-nova --> objects-service
   tests-fixtures-nova --> privsep-init
+  tests-fixtures-nova --> quota
+  tests-fixtures-nova --> rpc
   tests-fixtures-nova --> scheduler-weights-init
+  tests-fixtures-nova --> service
   tests-fixtures-nova --> tests-functional-api-client
+  tests-fixtures-nova --> thread-pool-factory
   tests-fixtures-nova --> utils
   tests-fixtures-nova --> virt-libvirt-host
   tests-fixtures-nova --> virt-node
   tests-fixtures-policy --> conf-init
   tests-fixtures-policy --> conf-paths
   tests-fixtures-policy --> policies-init
+  tests-fixtures-policy --> policy
   tests-fixtures-policy --> tests-unit-fake-policy
   tests-functional-api-sample-tests-api-sample-base --> conf-init
   tests-functional-api-sample-tests-api-sample-base --> tests-fixtures-init
@@ -5052,6 +5353,7 @@ graph LR
   tests-functional-api-sample-tests-test-block-device-mapping-boot --> tests-functional-api-sample-tests-test-servers
   tests-functional-api-sample-tests-test-block-device-mapping-boot --> tests-unit-api-openstack-fakes
   tests-functional-api-sample-tests-test-cells --> tests-functional-api-sample-tests-api-sample-base
+  tests-functional-api-sample-tests-test-compare-result --> test
   tests-functional-api-sample-tests-test-compare-result --> tests-functional-api-samples-test-base
   tests-functional-api-sample-tests-test-console-auth-tokens --> tests-functional-api-sample-tests-test-servers
   tests-functional-api-sample-tests-test-console-output --> tests-functional-api-sample-tests-test-servers
@@ -5067,6 +5369,7 @@ graph LR
   tests-functional-api-sample-tests-test-flavor-access --> tests-functional-api-sample-tests-api-sample-base
   tests-functional-api-sample-tests-test-flavor-extraspecs --> tests-functional-api-sample-tests-api-sample-base
   tests-functional-api-sample-tests-test-flavor-manage --> tests-functional-api-sample-tests-api-sample-base
+  tests-functional-api-sample-tests-test-flavors --> context
   tests-functional-api-sample-tests-test-flavors --> objects-init
   tests-functional-api-sample-tests-test-flavors --> tests-functional-api-sample-tests-api-sample-base
   tests-functional-api-sample-tests-test-floating-ip-dns --> tests-functional-api-client
@@ -5086,6 +5389,7 @@ graph LR
   tests-functional-api-sample-tests-test-images --> tests-functional-api-sample-tests-api-sample-base
   tests-functional-api-sample-tests-test-instance-actions --> tests-functional-api-sample-tests-test-servers
   tests-functional-api-sample-tests-test-instance-actions --> tests-functional-api-samples-test-base
+  tests-functional-api-sample-tests-test-instance-usage-audit-log --> context
   tests-functional-api-sample-tests-test-instance-usage-audit-log --> objects-init
   tests-functional-api-sample-tests-test-instance-usage-audit-log --> tests-functional-api-sample-tests-api-sample-base
   tests-functional-api-sample-tests-test-keypairs --> objects-keypair
@@ -5096,6 +5400,7 @@ graph LR
   tests-functional-api-sample-tests-test-migrate-server --> exception
   tests-functional-api-sample-tests-test-migrate-server --> objects-init
   tests-functional-api-sample-tests-test-migrate-server --> tests-functional-api-sample-tests-test-servers
+  tests-functional-api-sample-tests-test-migrations --> context
   tests-functional-api-sample-tests-test-migrations --> objects-init
   tests-functional-api-sample-tests-test-migrations --> tests-functional-api-sample-tests-api-sample-base
   tests-functional-api-sample-tests-test-multinic --> tests-fixtures-init
@@ -5123,6 +5428,7 @@ graph LR
   tests-functional-api-sample-tests-test-server-groups --> tests-functional-api-sample-tests-api-sample-base
   tests-functional-api-sample-tests-test-server-metadata --> tests-functional-api-sample-tests-test-servers
   tests-functional-api-sample-tests-test-server-migrations --> conductor-manager
+  tests-functional-api-sample-tests-test-server-migrations --> context
   tests-functional-api-sample-tests-test-server-migrations --> db-main-api
   tests-functional-api-sample-tests-test-server-migrations --> objects-init
   tests-functional-api-sample-tests-test-server-migrations --> tests-functional-api-sample-tests-test-servers
@@ -5169,118 +5475,172 @@ graph LR
   tests-functional-api-sample-tests-test-volume-attachments --> tests-functional-api-sample-tests-test-servers
   tests-functional-api-sample-tests-test-volumes --> tests-functional-api-sample-tests-test-servers
   tests-functional-api-sample-tests-test-volumes --> tests-unit-api-openstack-fakes
+  tests-functional-api-samples-test-base --> test
   tests-functional-api-samples-test-base --> tests-functional-integrated-helpers
+  tests-functional-compute-test-attached-volumes --> context
   tests-functional-compute-test-attached-volumes --> objects-init
   tests-functional-compute-test-attached-volumes --> tests-functional-integrated-helpers
   tests-functional-compute-test-attached-volumes --> tests-functional-libvirt-base
+  tests-functional-compute-test-cache-image --> context
   tests-functional-compute-test-cache-image --> objects-init
+  tests-functional-compute-test-cache-image --> test
   tests-functional-compute-test-cache-image --> tests-fixtures-init
   tests-functional-compute-test-host-api --> compute-api
+  tests-functional-compute-test-host-api --> context
   tests-functional-compute-test-host-api --> exception
   tests-functional-compute-test-host-api --> objects-init
+  tests-functional-compute-test-host-api --> test
   tests-functional-compute-test-host-api --> tests-fixtures-init
   tests-functional-compute-test-init-host --> compute-resource-tracker
+  tests-functional-compute-test-init-host --> context
   tests-functional-compute-test-init-host --> objects-init
+  tests-functional-compute-test-init-host --> service
   tests-functional-compute-test-init-host --> tests-functional-integrated-helpers
   tests-functional-compute-test-instance-list --> compute-instance-list
+  tests-functional-compute-test-instance-list --> context
   tests-functional-compute-test-instance-list --> db-main-api
   tests-functional-compute-test-instance-list --> exception
   tests-functional-compute-test-instance-list --> objects-init
+  tests-functional-compute-test-instance-list --> test
+  tests-functional-compute-test-live-migration --> context
   tests-functional-compute-test-live-migration --> exception
   tests-functional-compute-test-live-migration --> objects-init
+  tests-functional-compute-test-live-migration --> test
   tests-functional-compute-test-live-migration --> tests-fixtures-init
   tests-functional-compute-test-live-migration --> tests-functional-integrated-helpers
   tests-functional-compute-test-migration-list --> compute-migration-list
+  tests-functional-compute-test-migration-list --> context
   tests-functional-compute-test-migration-list --> exception
   tests-functional-compute-test-migration-list --> objects-init
+  tests-functional-compute-test-migration-list --> test
   tests-functional-compute-test-resource-tracker --> compute-power-state
   tests-functional-compute-test-resource-tracker --> compute-resource-tracker
   tests-functional-compute-test-resource-tracker --> compute-task-states
   tests-functional-compute-test-resource-tracker --> compute-utils
   tests-functional-compute-test-resource-tracker --> compute-vm-states
   tests-functional-compute-test-resource-tracker --> conf-init
+  tests-functional-compute-test-resource-tracker --> context
   tests-functional-compute-test-resource-tracker --> objects-init
+  tests-functional-compute-test-resource-tracker --> test
   tests-functional-compute-test-resource-tracker --> tests-functional-fixtures
   tests-functional-compute-test-resource-tracker --> tests-functional-integrated-helpers
   tests-functional-compute-test-resource-tracker --> virt-driver
+  tests-functional-db-test-aggregate --> context
   tests-functional-db-test-aggregate --> db-api-api
   tests-functional-db-test-aggregate --> db-api-models
   tests-functional-db-test-aggregate --> exception
   tests-functional-db-test-aggregate --> objects-aggregate
+  tests-functional-db-test-aggregate --> test
   tests-functional-db-test-aggregate --> tests-unit-matchers
   tests-functional-db-test-aggregate --> tests-unit-objects-test-objects
+  tests-functional-db-test-archive --> context
   tests-functional-db-test-archive --> db-main-api
   tests-functional-db-test-archive --> objects-init
   tests-functional-db-test-archive --> tests-functional-integrated-helpers
   tests-functional-db-test-archive --> utils
+  tests-functional-db-test-build-request --> context
   tests-functional-db-test-build-request --> exception
   tests-functional-db-test-build-request --> objects-build-request
   tests-functional-db-test-build-request --> objects-init
+  tests-functional-db-test-build-request --> test
   tests-functional-db-test-build-request --> tests-fixtures-init
   tests-functional-db-test-build-request --> tests-unit-fake-build-request
   tests-functional-db-test-build-request --> tests-unit-fake-instance
+  tests-functional-db-test-cell-mapping --> context
   tests-functional-db-test-cell-mapping --> exception
   tests-functional-db-test-cell-mapping --> objects-cell-mapping
   tests-functional-db-test-cell-mapping --> objects-init
+  tests-functional-db-test-cell-mapping --> test
   tests-functional-db-test-cell-mapping --> tests-fixtures-init
   tests-functional-db-test-compute-api --> compute-api
+  tests-functional-db-test-compute-api --> context
   tests-functional-db-test-compute-api --> exception
   tests-functional-db-test-compute-api --> objects-init
+  tests-functional-db-test-compute-api --> test
   tests-functional-db-test-compute-api --> tests-fixtures-init
   tests-functional-db-test-compute-node --> conf-init
+  tests-functional-db-test-compute-node --> context
   tests-functional-db-test-compute-node --> db-main-api
   tests-functional-db-test-compute-node --> objects-compute-node
   tests-functional-db-test-compute-node --> objects-fields
   tests-functional-db-test-compute-node --> objects-init
+  tests-functional-db-test-compute-node --> test
+  tests-functional-db-test-connection-switch --> context
   tests-functional-db-test-connection-switch --> exception
   tests-functional-db-test-connection-switch --> objects-init
+  tests-functional-db-test-connection-switch --> test
   tests-functional-db-test-connection-switch --> tests-fixtures-init
+  tests-functional-db-test-console-auth-token --> context
   tests-functional-db-test-console-auth-token --> exception
   tests-functional-db-test-console-auth-token --> objects-init
+  tests-functional-db-test-console-auth-token --> test
+  tests-functional-db-test-flavor --> context
   tests-functional-db-test-flavor --> db-api-api
   tests-functional-db-test-flavor --> db-api-models
   tests-functional-db-test-flavor --> exception
   tests-functional-db-test-flavor --> objects-init
+  tests-functional-db-test-flavor --> test
   tests-functional-db-test-flavor --> tests-fixtures-init
+  tests-functional-db-test-host-mapping --> context
   tests-functional-db-test-host-mapping --> exception
   tests-functional-db-test-host-mapping --> objects-cell-mapping
   tests-functional-db-test-host-mapping --> objects-host-mapping
   tests-functional-db-test-host-mapping --> objects-init
+  tests-functional-db-test-host-mapping --> test
   tests-functional-db-test-host-mapping --> tests-fixtures-init
   tests-functional-db-test-instance --> compute-vm-states
+  tests-functional-db-test-instance --> context
   tests-functional-db-test-instance --> db-main-api
   tests-functional-db-test-instance --> objects-init
+  tests-functional-db-test-instance --> test
   tests-functional-db-test-instance --> utils
+  tests-functional-db-test-instance-group --> context
   tests-functional-db-test-instance-group --> db-api-models
   tests-functional-db-test-instance-group --> exception
   tests-functional-db-test-instance-group --> objects-base
   tests-functional-db-test-instance-group --> objects-init
+  tests-functional-db-test-instance-group --> test
   tests-functional-db-test-instance-mapping --> compute-vm-states
+  tests-functional-db-test-instance-mapping --> context
   tests-functional-db-test-instance-mapping --> exception
   tests-functional-db-test-instance-mapping --> objects-cell-mapping
   tests-functional-db-test-instance-mapping --> objects-instance
   tests-functional-db-test-instance-mapping --> objects-instance-mapping
   tests-functional-db-test-instance-mapping --> objects-virtual-interface
+  tests-functional-db-test-instance-mapping --> test
   tests-functional-db-test-instance-mapping --> tests-fixtures-init
+  tests-functional-db-test-keypair --> context
   tests-functional-db-test-keypair --> exception
   tests-functional-db-test-keypair --> objects-init
   tests-functional-db-test-keypair --> objects-keypair
+  tests-functional-db-test-keypair --> test
+  tests-functional-db-test-quota --> context
   tests-functional-db-test-quota --> objects-init
+  tests-functional-db-test-quota --> quota
+  tests-functional-db-test-quota --> test
   tests-functional-db-test-quota --> tests-fixtures-init
   tests-functional-db-test-quota --> tests-functional-db-test-instance-mapping
   tests-functional-db-test-quota-model --> db-api-models
   tests-functional-db-test-quota-model --> db-main-models
+  tests-functional-db-test-quota-model --> test
+  tests-functional-db-test-quotas --> context
   tests-functional-db-test-quotas --> db-main-api
   tests-functional-db-test-quotas --> exception
   tests-functional-db-test-quotas --> objects-quotas
+  tests-functional-db-test-quotas --> test
   tests-functional-db-test-quotas --> tests-unit-db-main-test-api
+  tests-functional-db-test-request-spec --> context
   tests-functional-db-test-request-spec --> exception
   tests-functional-db-test-request-spec --> objects-base
   tests-functional-db-test-request-spec --> objects-request-spec
+  tests-functional-db-test-request-spec --> test
   tests-functional-db-test-request-spec --> tests-fixtures-init
   tests-functional-db-test-request-spec --> tests-unit-fake-request-spec
+  tests-functional-db-test-security-group --> context
   tests-functional-db-test-security-group --> db-main-api
   tests-functional-db-test-security-group --> objects-init
+  tests-functional-db-test-security-group --> test
+  tests-functional-db-test-virtual-interface --> context
   tests-functional-db-test-virtual-interface --> exception
   tests-functional-db-test-virtual-interface --> network-model
   tests-functional-db-test-virtual-interface --> objects-init
@@ -5290,14 +5650,18 @@ graph LR
   tests-functional-fixtures --> tests-fixtures-nova
   tests-functional-fixtures --> tests-functional-api-client
   tests-functional-fixtures --> utils
+  tests-functional-init --> monkey-patch
   tests-functional-integrated-helpers --> compute-instance-actions
   tests-functional-integrated-helpers --> compute-rpcapi
   tests-functional-integrated-helpers --> compute-utils
   tests-functional-integrated-helpers --> conf-init
+  tests-functional-integrated-helpers --> context
   tests-functional-integrated-helpers --> db-main-api
   tests-functional-integrated-helpers --> image-glance
   tests-functional-integrated-helpers --> objects-base
   tests-functional-integrated-helpers --> objects-init
+  tests-functional-integrated-helpers --> rpc
+  tests-functional-integrated-helpers --> test
   tests-functional-integrated-helpers --> tests-fixtures-init
   tests-functional-integrated-helpers --> tests-functional-api-client
   tests-functional-integrated-helpers --> tests-functional-fixtures
@@ -5315,13 +5679,17 @@ graph LR
   tests-functional-libvirt-test-amd-sev --> virt-libvirt-driver
   tests-functional-libvirt-test-amd-sev --> virt-libvirt-host
   tests-functional-libvirt-test-device-bus-migration --> cmd-manage
+  tests-functional-libvirt-test-device-bus-migration --> context
   tests-functional-libvirt-test-device-bus-migration --> objects-init
+  tests-functional-libvirt-test-device-bus-migration --> test
   tests-functional-libvirt-test-device-bus-migration --> tests-functional-libvirt-base
   tests-functional-libvirt-test-device-bus-migration --> virt-libvirt-config
   tests-functional-libvirt-test-device-bus-migration --> virt-libvirt-driver
   tests-functional-libvirt-test-evacuate --> conf-init
+  tests-functional-libvirt-test-evacuate --> context
   tests-functional-libvirt-test-evacuate --> exception
   tests-functional-libvirt-test-evacuate --> objects-init
+  tests-functional-libvirt-test-evacuate --> test
   tests-functional-libvirt-test-evacuate --> tests-fixtures-init
   tests-functional-libvirt-test-evacuate --> tests-fixtures-libvirt
   tests-functional-libvirt-test-evacuate --> tests-functional-fixtures
@@ -5334,6 +5702,8 @@ graph LR
   tests-functional-libvirt-test-intel-tdx --> virt-libvirt-driver
   tests-functional-libvirt-test-live-migration --> tests-functional-integrated-helpers
   tests-functional-libvirt-test-live-migration --> tests-functional-libvirt-base
+  tests-functional-libvirt-test-live-migration --> thread-pool-factory
+  tests-functional-libvirt-test-machine-type --> context
   tests-functional-libvirt-test-machine-type --> exception
   tests-functional-libvirt-test-machine-type --> objects-init
   tests-functional-libvirt-test-machine-type --> tests-functional-libvirt-base
@@ -5341,12 +5711,14 @@ graph LR
   tests-functional-libvirt-test-migration-addr --> tests-functional-libvirt-base
   tests-functional-libvirt-test-numa-live-migration --> compute-manager
   tests-functional-libvirt-test-numa-live-migration --> compute-resource-tracker
+  tests-functional-libvirt-test-numa-live-migration --> context
   tests-functional-libvirt-test-numa-live-migration --> objects-init
   tests-functional-libvirt-test-numa-live-migration --> tests-fixtures-libvirt
   tests-functional-libvirt-test-numa-live-migration --> tests-functional-integrated-helpers
   tests-functional-libvirt-test-numa-live-migration --> tests-functional-libvirt-base
   tests-functional-libvirt-test-numa-servers --> compute-manager
   tests-functional-libvirt-test-numa-servers --> conf-neutron
+  tests-functional-libvirt-test-numa-servers --> context
   tests-functional-libvirt-test-numa-servers --> objects-init
   tests-functional-libvirt-test-numa-servers --> tests-fixtures-init
   tests-functional-libvirt-test-numa-servers --> tests-fixtures-libvirt
@@ -5356,6 +5728,7 @@ graph LR
   tests-functional-libvirt-test-pci-in-placement --> tests-fixtures-libvirt
   tests-functional-libvirt-test-pci-in-placement --> tests-functional-libvirt-test-pci-sriov-servers
   tests-functional-libvirt-test-pci-sriov-servers --> compute-pci-placement-translator
+  tests-functional-libvirt-test-pci-sriov-servers --> context
   tests-functional-libvirt-test-pci-sriov-servers --> exception
   tests-functional-libvirt-test-pci-sriov-servers --> network-constants
   tests-functional-libvirt-test-pci-sriov-servers --> objects-fields
@@ -5368,6 +5741,7 @@ graph LR
   tests-functional-libvirt-test-pci-sriov-servers --> tests-functional-libvirt-base
   tests-functional-libvirt-test-pci-sriov-servers --> virt-hardware
   tests-functional-libvirt-test-pci-sriov-servers --> virt-libvirt-driver
+  tests-functional-libvirt-test-power-manage --> context
   tests-functional-libvirt-test-power-manage --> exception
   tests-functional-libvirt-test-power-manage --> objects-init
   tests-functional-libvirt-test-power-manage --> tests-fixtures-init
@@ -5380,14 +5754,17 @@ graph LR
   tests-functional-libvirt-test-report-cpu-traits --> tests-functional-libvirt-integrated-helpers
   tests-functional-libvirt-test-report-cpu-traits --> virt-libvirt-host
   tests-functional-libvirt-test-rescue-deleted-base --> conf-init
+  tests-functional-libvirt-test-rescue-deleted-base --> context
   tests-functional-libvirt-test-rescue-deleted-base --> tests-fixtures-init
   tests-functional-libvirt-test-rescue-deleted-base --> tests-functional-libvirt-base
+  tests-functional-libvirt-test-reshape --> context
   tests-functional-libvirt-test-reshape --> objects-init
   tests-functional-libvirt-test-reshape --> tests-fixtures-libvirt
   tests-functional-libvirt-test-reshape --> tests-functional-libvirt-base
   tests-functional-libvirt-test-reshape --> virt-libvirt-utils
   tests-functional-libvirt-test-rt-servers --> tests-functional-api-client
   tests-functional-libvirt-test-rt-servers --> tests-functional-libvirt-base
+  tests-functional-libvirt-test-server-shares --> context
   tests-functional-libvirt-test-server-shares --> exception
   tests-functional-libvirt-test-server-shares --> objects-instance
   tests-functional-libvirt-test-server-shares --> objects-share-mapping
@@ -5399,16 +5776,19 @@ graph LR
   tests-functional-libvirt-test-shared-resource-provider --> tests-functional-libvirt-integrated-helpers
   tests-functional-libvirt-test-shared-resource-provider --> utils
   tests-functional-libvirt-test-stateless-firmware --> conf-init
+  tests-functional-libvirt-test-stateless-firmware --> context
   tests-functional-libvirt-test-stateless-firmware --> objects-init
   tests-functional-libvirt-test-stateless-firmware --> tests-functional-libvirt-base
   tests-functional-libvirt-test-stateless-firmware --> virt-libvirt-driver
   tests-functional-libvirt-test-stateless-firmware --> virt-libvirt-migration
   tests-functional-libvirt-test-uefi --> conf-init
+  tests-functional-libvirt-test-uefi --> context
   tests-functional-libvirt-test-uefi --> objects-init
   tests-functional-libvirt-test-uefi --> tests-functional-libvirt-base
   tests-functional-libvirt-test-uefi --> virt-hardware
   tests-functional-libvirt-test-vgpu --> compute-instance-actions
   tests-functional-libvirt-test-vgpu --> conf-init
+  tests-functional-libvirt-test-vgpu --> context
   tests-functional-libvirt-test-vgpu --> objects-init
   tests-functional-libvirt-test-vgpu --> tests-fixtures-libvirt
   tests-functional-libvirt-test-vgpu --> tests-functional-api-client
@@ -5421,6 +5801,8 @@ graph LR
   tests-functional-libvirt-test-vpmem --> tests-fixtures-libvirt
   tests-functional-libvirt-test-vpmem --> tests-functional-libvirt-integrated-helpers
   tests-functional-libvirt-test-vtpm --> conf-init
+  tests-functional-libvirt-test-vtpm --> context
+  tests-functional-libvirt-test-vtpm --> crypto
   tests-functional-libvirt-test-vtpm --> db-main-api
   tests-functional-libvirt-test-vtpm --> exception
   tests-functional-libvirt-test-vtpm --> objects-init
@@ -5428,6 +5810,7 @@ graph LR
   tests-functional-libvirt-test-vtpm --> tests-functional-api-client
   tests-functional-libvirt-test-vtpm --> tests-functional-libvirt-base
   tests-functional-libvirt-test-vtpm --> utils
+  tests-functional-notification-sample-tests-notification-sample-base --> test
   tests-functional-notification-sample-tests-notification-sample-base --> tests-fixtures-init
   tests-functional-notification-sample-tests-notification-sample-base --> tests-functional-fixtures
   tests-functional-notification-sample-tests-notification-sample-base --> tests-functional-integrated-helpers
@@ -5454,6 +5837,7 @@ graph LR
   tests-functional-notification-sample-tests-test-libvirt --> tests-functional-notification-sample-tests-notification-sample-base
   tests-functional-notification-sample-tests-test-libvirt --> virt-libvirt-host
   tests-functional-notification-sample-tests-test-metrics --> conf-init
+  tests-functional-notification-sample-tests-test-metrics --> context
   tests-functional-notification-sample-tests-test-metrics --> tests-functional-notification-sample-tests-notification-sample-base
   tests-functional-notification-sample-tests-test-server-group --> tests-fixtures-init
   tests-functional-notification-sample-tests-test-server-group --> tests-functional-notification-sample-tests-notification-sample-base
@@ -5462,36 +5846,51 @@ graph LR
   tests-functional-notification-sample-tests-test-service --> tests-fixtures-init
   tests-functional-notification-sample-tests-test-service --> tests-functional-notification-sample-tests-notification-sample-base
   tests-functional-notification-sample-tests-test-service --> tests-unit-api-openstack-compute-test-services
+  tests-functional-notification-sample-tests-test-volume --> context
   tests-functional-notification-sample-tests-test-volume --> tests-fixtures-init
   tests-functional-notification-sample-tests-test-volume --> tests-functional-notification-sample-tests-notification-sample-base
   tests-functional-regressions-test-bug-1404867 --> tests-fixtures-init
   tests-functional-regressions-test-bug-1404867 --> tests-functional-integrated-helpers
+  tests-functional-regressions-test-bug-1522536 --> test
   tests-functional-regressions-test-bug-1522536 --> tests-fixtures-init
   tests-functional-regressions-test-bug-1522536 --> tests-functional-api-client
+  tests-functional-regressions-test-bug-1541691 --> test
   tests-functional-regressions-test-bug-1541691 --> tests-fixtures-init
   tests-functional-regressions-test-bug-1541691 --> tests-functional-api-client
+  tests-functional-regressions-test-bug-1548980 --> test
   tests-functional-regressions-test-bug-1548980 --> tests-fixtures-init
   tests-functional-regressions-test-bug-1548980 --> tests-functional-api-client
+  tests-functional-regressions-test-bug-1552888 --> test
   tests-functional-regressions-test-bug-1552888 --> tests-fixtures-init
+  tests-functional-regressions-test-bug-1554631 --> test
   tests-functional-regressions-test-bug-1554631 --> tests-fixtures-init
   tests-functional-regressions-test-bug-1554631 --> tests-functional-api-client
+  tests-functional-regressions-test-bug-1558866 --> test
   tests-functional-regressions-test-bug-1558866 --> tests-fixtures-init
   tests-functional-regressions-test-bug-1558866 --> tests-functional-api-client
+  tests-functional-regressions-test-bug-1568208 --> test
+  tests-functional-regressions-test-bug-1568208 --> version
+  tests-functional-regressions-test-bug-1595962 --> test
   tests-functional-regressions-test-bug-1595962 --> tests-fixtures-init
   tests-functional-regressions-test-bug-1595962 --> tests-fixtures-libvirt
   tests-functional-regressions-test-bug-1595962 --> tests-functional-fixtures
   tests-functional-regressions-test-bug-1595962 --> virt-libvirt-guest
+  tests-functional-regressions-test-bug-1620248 --> test
   tests-functional-regressions-test-bug-1620248 --> tests-fixtures-init
+  tests-functional-regressions-test-bug-1628606 --> test
   tests-functional-regressions-test-bug-1628606 --> tests-fixtures-init
   tests-functional-regressions-test-bug-1628606 --> tests-functional-api-client
   tests-functional-regressions-test-bug-1628606 --> tests-functional-fixtures
   tests-functional-regressions-test-bug-1628606 --> tests-functional-integrated-helpers
+  tests-functional-regressions-test-bug-1669054 --> context
   tests-functional-regressions-test-bug-1669054 --> objects-init
   tests-functional-regressions-test-bug-1669054 --> tests-functional-integrated-helpers
+  tests-functional-regressions-test-bug-1670627 --> test
   tests-functional-regressions-test-bug-1670627 --> tests-fixtures-init
   tests-functional-regressions-test-bug-1670627 --> tests-functional-api-client
   tests-functional-regressions-test-bug-1671648 --> compute-resource-tracker
   tests-functional-regressions-test-bug-1671648 --> exception
+  tests-functional-regressions-test-bug-1671648 --> test
   tests-functional-regressions-test-bug-1671648 --> tests-fixtures-init
   tests-functional-regressions-test-bug-1671648 --> tests-functional-fixtures
   tests-functional-regressions-test-bug-1671648 --> tests-unit-fake-network
@@ -5500,32 +5899,41 @@ graph LR
   tests-functional-regressions-test-bug-1678326 --> exception
   tests-functional-regressions-test-bug-1678326 --> objects-init
   tests-functional-regressions-test-bug-1678326 --> tests-functional-regressions-test-bug-1670627
+  tests-functional-regressions-test-bug-1679750 --> test
   tests-functional-regressions-test-bug-1679750 --> tests-fixtures-init
   tests-functional-regressions-test-bug-1679750 --> tests-functional-fixtures
   tests-functional-regressions-test-bug-1679750 --> tests-functional-integrated-helpers
+  tests-functional-regressions-test-bug-1682693 --> test
   tests-functional-regressions-test-bug-1682693 --> tests-fixtures-init
   tests-functional-regressions-test-bug-1682693 --> tests-functional-fixtures
   tests-functional-regressions-test-bug-1682693 --> tests-functional-integrated-helpers
+  tests-functional-regressions-test-bug-1689692 --> test
   tests-functional-regressions-test-bug-1689692 --> tests-fixtures-init
   tests-functional-regressions-test-bug-1689692 --> tests-functional-integrated-helpers
+  tests-functional-regressions-test-bug-1702454 --> test
   tests-functional-regressions-test-bug-1702454 --> tests-fixtures-init
   tests-functional-regressions-test-bug-1702454 --> tests-functional-fixtures
   tests-functional-regressions-test-bug-1702454 --> tests-functional-integrated-helpers
   tests-functional-regressions-test-bug-1713783 --> objects-init
+  tests-functional-regressions-test-bug-1713783 --> test
   tests-functional-regressions-test-bug-1713783 --> tests-fixtures-init
   tests-functional-regressions-test-bug-1713783 --> tests-functional-fixtures
   tests-functional-regressions-test-bug-1713783 --> tests-functional-integrated-helpers
   tests-functional-regressions-test-bug-1713783 --> tests-unit-fake-network
+  tests-functional-regressions-test-bug-1718455 --> test
   tests-functional-regressions-test-bug-1718455 --> tests-fixtures-init
   tests-functional-regressions-test-bug-1718455 --> tests-functional-fixtures
   tests-functional-regressions-test-bug-1718455 --> tests-functional-integrated-helpers
   tests-functional-regressions-test-bug-1718455 --> tests-unit-fake-network
   tests-functional-regressions-test-bug-1718512 --> compute-manager
+  tests-functional-regressions-test-bug-1718512 --> context
   tests-functional-regressions-test-bug-1718512 --> objects-init
+  tests-functional-regressions-test-bug-1718512 --> test
   tests-functional-regressions-test-bug-1718512 --> tests-fixtures-init
   tests-functional-regressions-test-bug-1718512 --> tests-functional-fixtures
   tests-functional-regressions-test-bug-1718512 --> tests-functional-integrated-helpers
   tests-functional-regressions-test-bug-1719730 --> exception
+  tests-functional-regressions-test-bug-1719730 --> test
   tests-functional-regressions-test-bug-1719730 --> tests-fixtures-init
   tests-functional-regressions-test-bug-1719730 --> tests-functional-fixtures
   tests-functional-regressions-test-bug-1719730 --> tests-functional-integrated-helpers
@@ -5534,6 +5942,7 @@ graph LR
   tests-functional-regressions-test-bug-1732947 --> tests-fixtures-init
   tests-functional-regressions-test-bug-1732947 --> tests-functional-integrated-helpers
   tests-functional-regressions-test-bug-1735407 --> compute-manager
+  tests-functional-regressions-test-bug-1735407 --> test
   tests-functional-regressions-test-bug-1735407 --> tests-fixtures-init
   tests-functional-regressions-test-bug-1735407 --> tests-functional-fixtures
   tests-functional-regressions-test-bug-1735407 --> tests-functional-integrated-helpers
@@ -5544,34 +5953,45 @@ graph LR
   tests-functional-regressions-test-bug-1741364 --> tests-fixtures-libvirt
   tests-functional-regressions-test-bug-1741364 --> tests-functional-integrated-helpers
   tests-functional-regressions-test-bug-1741364 --> tests-functional-libvirt-base
+  tests-functional-regressions-test-bug-1746483 --> config
+  tests-functional-regressions-test-bug-1746483 --> test
   tests-functional-regressions-test-bug-1746483 --> tests-fixtures-init
   tests-functional-regressions-test-bug-1746483 --> tests-functional-fixtures
   tests-functional-regressions-test-bug-1746483 --> tests-functional-integrated-helpers
   tests-functional-regressions-test-bug-1746483 --> utils
+  tests-functional-regressions-test-bug-1764556 --> context
   tests-functional-regressions-test-bug-1764556 --> db-main-api
+  tests-functional-regressions-test-bug-1764556 --> test
   tests-functional-regressions-test-bug-1764556 --> tests-fixtures-init
   tests-functional-regressions-test-bug-1764556 --> tests-functional-fixtures
   tests-functional-regressions-test-bug-1764556 --> tests-functional-integrated-helpers
   tests-functional-regressions-test-bug-1764556 --> utils
   tests-functional-regressions-test-bug-1764883 --> compute-manager
+  tests-functional-regressions-test-bug-1764883 --> test
   tests-functional-regressions-test-bug-1764883 --> tests-fixtures-init
   tests-functional-regressions-test-bug-1764883 --> tests-functional-fixtures
   tests-functional-regressions-test-bug-1764883 --> tests-functional-integrated-helpers
   tests-functional-regressions-test-bug-1764883 --> tests-unit-fake-network
+  tests-functional-regressions-test-bug-1778305 --> context
   tests-functional-regressions-test-bug-1778305 --> db-main-api
   tests-functional-regressions-test-bug-1778305 --> objects-init
+  tests-functional-regressions-test-bug-1778305 --> test
+  tests-functional-regressions-test-bug-1780373 --> test
   tests-functional-regressions-test-bug-1780373 --> tests-fixtures-init
   tests-functional-regressions-test-bug-1780373 --> tests-functional-fixtures
   tests-functional-regressions-test-bug-1780373 --> tests-functional-integrated-helpers
   tests-functional-regressions-test-bug-1781286 --> compute-manager
   tests-functional-regressions-test-bug-1781286 --> exception
+  tests-functional-regressions-test-bug-1781286 --> test
   tests-functional-regressions-test-bug-1781286 --> tests-fixtures-init
   tests-functional-regressions-test-bug-1781286 --> tests-functional-fixtures
   tests-functional-regressions-test-bug-1781286 --> tests-functional-integrated-helpers
   tests-functional-regressions-test-bug-1781710 --> scheduler-manager
+  tests-functional-regressions-test-bug-1781710 --> test
   tests-functional-regressions-test-bug-1781710 --> tests-fixtures-init
   tests-functional-regressions-test-bug-1781710 --> tests-functional-fixtures
   tests-functional-regressions-test-bug-1781710 --> tests-functional-integrated-helpers
+  tests-functional-regressions-test-bug-1784353 --> test
   tests-functional-regressions-test-bug-1784353 --> tests-fixtures-init
   tests-functional-regressions-test-bug-1784353 --> tests-functional-fixtures
   tests-functional-regressions-test-bug-1784353 --> tests-functional-integrated-helpers
@@ -5579,49 +5999,64 @@ graph LR
   tests-functional-regressions-test-bug-1790204 --> compute-instance-actions
   tests-functional-regressions-test-bug-1790204 --> tests-functional-integrated-helpers
   tests-functional-regressions-test-bug-1794996 --> tests-functional-integrated-helpers
+  tests-functional-regressions-test-bug-1797580 --> test
   tests-functional-regressions-test-bug-1797580 --> tests-fixtures-init
   tests-functional-regressions-test-bug-1797580 --> tests-functional-fixtures
   tests-functional-regressions-test-bug-1797580 --> tests-functional-integrated-helpers
   tests-functional-regressions-test-bug-1806064 --> compute-utils
+  tests-functional-regressions-test-bug-1806064 --> context
   tests-functional-regressions-test-bug-1806064 --> exception
   tests-functional-regressions-test-bug-1806064 --> objects-init
+  tests-functional-regressions-test-bug-1806064 --> test
   tests-functional-regressions-test-bug-1806064 --> tests-fixtures-init
   tests-functional-regressions-test-bug-1806064 --> tests-functional-fixtures
   tests-functional-regressions-test-bug-1806064 --> tests-functional-integrated-helpers
+  tests-functional-regressions-test-bug-1806515 --> test
   tests-functional-regressions-test-bug-1806515 --> tests-fixtures-init
   tests-functional-regressions-test-bug-1806515 --> tests-functional-integrated-helpers
   tests-functional-regressions-test-bug-1815153 --> compute-instance-actions
+  tests-functional-regressions-test-bug-1815153 --> context
   tests-functional-regressions-test-bug-1815153 --> objects-init
+  tests-functional-regressions-test-bug-1815153 --> test
   tests-functional-regressions-test-bug-1815153 --> tests-fixtures-init
   tests-functional-regressions-test-bug-1815153 --> tests-functional-fixtures
   tests-functional-regressions-test-bug-1815153 --> tests-functional-integrated-helpers
   tests-functional-regressions-test-bug-1823370 --> tests-fixtures-init
   tests-functional-regressions-test-bug-1823370 --> tests-functional-integrated-helpers
+  tests-functional-regressions-test-bug-1825020 --> test
   tests-functional-regressions-test-bug-1825020 --> tests-fixtures-init
   tests-functional-regressions-test-bug-1825020 --> tests-functional-fixtures
   tests-functional-regressions-test-bug-1825020 --> tests-functional-integrated-helpers
+  tests-functional-regressions-test-bug-1825034 --> context
   tests-functional-regressions-test-bug-1825034 --> db-main-api
   tests-functional-regressions-test-bug-1825034 --> objects-virtual-interface
+  tests-functional-regressions-test-bug-1825034 --> test
   tests-functional-regressions-test-bug-1825034 --> tests-fixtures-init
   tests-functional-regressions-test-bug-1825034 --> tests-functional-fixtures
   tests-functional-regressions-test-bug-1825034 --> tests-functional-integrated-helpers
   tests-functional-regressions-test-bug-1825537 --> tests-functional-integrated-helpers
   tests-functional-regressions-test-bug-1830747 --> conductor-api
+  tests-functional-regressions-test-bug-1830747 --> context
   tests-functional-regressions-test-bug-1830747 --> objects-init
+  tests-functional-regressions-test-bug-1830747 --> test
   tests-functional-regressions-test-bug-1830747 --> tests-fixtures-init
   tests-functional-regressions-test-bug-1830747 --> tests-functional-fixtures
   tests-functional-regressions-test-bug-1830747 --> tests-functional-integrated-helpers
   tests-functional-regressions-test-bug-1831771 --> compute-task-states
   tests-functional-regressions-test-bug-1831771 --> compute-vm-states
   tests-functional-regressions-test-bug-1831771 --> objects-init
+  tests-functional-regressions-test-bug-1831771 --> test
   tests-functional-regressions-test-bug-1831771 --> tests-functional-integrated-helpers
+  tests-functional-regressions-test-bug-1835822 --> test
   tests-functional-regressions-test-bug-1835822 --> tests-fixtures-init
   tests-functional-regressions-test-bug-1835822 --> tests-functional-fixtures
   tests-functional-regressions-test-bug-1835822 --> tests-functional-integrated-helpers
   tests-functional-regressions-test-bug-1837955 --> exception
   tests-functional-regressions-test-bug-1837955 --> tests-functional-integrated-helpers
+  tests-functional-regressions-test-bug-1839560 --> context
   tests-functional-regressions-test-bug-1839560 --> db-main-api
   tests-functional-regressions-test-bug-1839560 --> objects-init
+  tests-functional-regressions-test-bug-1839560 --> test
   tests-functional-regressions-test-bug-1839560 --> tests-fixtures-init
   tests-functional-regressions-test-bug-1839560 --> tests-functional-fixtures
   tests-functional-regressions-test-bug-1839560 --> tests-functional-integrated-helpers
@@ -5631,6 +6066,7 @@ graph LR
   tests-functional-regressions-test-bug-1843090 --> exception
   tests-functional-regressions-test-bug-1843090 --> tests-fixtures-init
   tests-functional-regressions-test-bug-1843090 --> tests-functional-integrated-helpers
+  tests-functional-regressions-test-bug-1843708 --> context
   tests-functional-regressions-test-bug-1843708 --> objects-init
   tests-functional-regressions-test-bug-1843708 --> tests-functional-integrated-helpers
   tests-functional-regressions-test-bug-1843708 --> tests-unit-fake-crypto
@@ -5641,48 +6077,62 @@ graph LR
   tests-functional-regressions-test-bug-1848343 --> scheduler-client-query
   tests-functional-regressions-test-bug-1848343 --> tests-functional-integrated-helpers
   tests-functional-regressions-test-bug-1849165 --> tests-functional-integrated-helpers
+  tests-functional-regressions-test-bug-1849409 --> test
   tests-functional-regressions-test-bug-1849409 --> tests-fixtures-init
   tests-functional-regressions-test-bug-1849409 --> tests-functional-fixtures
   tests-functional-regressions-test-bug-1849409 --> tests-functional-integrated-helpers
   tests-functional-regressions-test-bug-1852458 --> compute-instance-actions
+  tests-functional-regressions-test-bug-1852458 --> test
   tests-functional-regressions-test-bug-1852458 --> tests-fixtures-init
   tests-functional-regressions-test-bug-1852458 --> tests-functional-fixtures
   tests-functional-regressions-test-bug-1852458 --> tests-functional-integrated-helpers
   tests-functional-regressions-test-bug-1852458 --> utils
+  tests-functional-regressions-test-bug-1853009 --> context
   tests-functional-regressions-test-bug-1853009 --> objects-init
   tests-functional-regressions-test-bug-1853009 --> tests-functional-integrated-helpers
   tests-functional-regressions-test-bug-1853009 --> virt-fake
+  tests-functional-regressions-test-bug-1862633 --> test
   tests-functional-regressions-test-bug-1862633 --> tests-fixtures-init
   tests-functional-regressions-test-bug-1862633 --> tests-functional-fixtures
   tests-functional-regressions-test-bug-1862633 --> tests-functional-integrated-helpers
   tests-functional-regressions-test-bug-1879878 --> compute-resource-tracker
+  tests-functional-regressions-test-bug-1879878 --> context
   tests-functional-regressions-test-bug-1879878 --> objects-init
   tests-functional-regressions-test-bug-1879878 --> policies-base
   tests-functional-regressions-test-bug-1879878 --> policies-servers
+  tests-functional-regressions-test-bug-1879878 --> test
   tests-functional-regressions-test-bug-1879878 --> tests-functional-integrated-helpers
   tests-functional-regressions-test-bug-1879878 --> virt-fake
   tests-functional-regressions-test-bug-1886418 --> tests-functional-integrated-helpers
+  tests-functional-regressions-test-bug-1888395 --> context
   tests-functional-regressions-test-bug-1888395 --> network-constants
   tests-functional-regressions-test-bug-1888395 --> network-neutron
   tests-functional-regressions-test-bug-1888395 --> tests-fixtures-init
   tests-functional-regressions-test-bug-1888395 --> tests-fixtures-libvirt
   tests-functional-regressions-test-bug-1888395 --> tests-functional-libvirt-base
+  tests-functional-regressions-test-bug-1889108 --> test
   tests-functional-regressions-test-bug-1889108 --> tests-fixtures-init
   tests-functional-regressions-test-bug-1889108 --> tests-functional-integrated-helpers
+  tests-functional-regressions-test-bug-1890244 --> context
   tests-functional-regressions-test-bug-1890244 --> objects-init
+  tests-functional-regressions-test-bug-1890244 --> test
   tests-functional-regressions-test-bug-1890244 --> tests-fixtures-init
   tests-functional-regressions-test-bug-1890244 --> tests-functional-fixtures
   tests-functional-regressions-test-bug-1890244 --> tests-functional-integrated-helpers
+  tests-functional-regressions-test-bug-1893284 --> test
   tests-functional-regressions-test-bug-1893284 --> tests-fixtures-init
   tests-functional-regressions-test-bug-1893284 --> tests-functional-api-client
   tests-functional-regressions-test-bug-1893284 --> tests-functional-fixtures
   tests-functional-regressions-test-bug-1893284 --> tests-functional-integrated-helpers
+  tests-functional-regressions-test-bug-1894966 --> test
   tests-functional-regressions-test-bug-1894966 --> tests-fixtures-init
   tests-functional-regressions-test-bug-1894966 --> tests-functional-api-client
   tests-functional-regressions-test-bug-1894966 --> tests-functional-integrated-helpers
   tests-functional-regressions-test-bug-1895696 --> tests-functional-api-client
   tests-functional-regressions-test-bug-1895696 --> tests-functional-integrated-helpers
+  tests-functional-regressions-test-bug-1896463 --> context
   tests-functional-regressions-test-bug-1896463 --> objects-init
+  tests-functional-regressions-test-bug-1896463 --> test
   tests-functional-regressions-test-bug-1896463 --> tests-fixtures-init
   tests-functional-regressions-test-bug-1896463 --> tests-functional-fixtures
   tests-functional-regressions-test-bug-1896463 --> tests-functional-integrated-helpers
@@ -5691,7 +6141,9 @@ graph LR
   tests-functional-regressions-test-bug-1899649 --> tests-fixtures-init
   tests-functional-regressions-test-bug-1899649 --> tests-fixtures-libvirt
   tests-functional-regressions-test-bug-1899649 --> tests-functional-libvirt-base
+  tests-functional-regressions-test-bug-1899835 --> context
   tests-functional-regressions-test-bug-1899835 --> objects-init
+  tests-functional-regressions-test-bug-1899835 --> test
   tests-functional-regressions-test-bug-1899835 --> tests-fixtures-init
   tests-functional-regressions-test-bug-1899835 --> tests-functional-libvirt-base
   tests-functional-regressions-test-bug-1902925 --> tests-fixtures-init
@@ -5700,26 +6152,32 @@ graph LR
   tests-functional-regressions-test-bug-1908075 --> tests-functional-integrated-helpers
   tests-functional-regressions-test-bug-1909120 --> tests-functional-api-client
   tests-functional-regressions-test-bug-1909120 --> tests-functional-integrated-helpers
+  tests-functional-regressions-test-bug-1914777 --> context
   tests-functional-regressions-test-bug-1914777 --> exception
   tests-functional-regressions-test-bug-1914777 --> objects-init
+  tests-functional-regressions-test-bug-1914777 --> test
   tests-functional-regressions-test-bug-1914777 --> tests-fixtures-init
   tests-functional-regressions-test-bug-1914777 --> tests-functional-integrated-helpers
   tests-functional-regressions-test-bug-1922053 --> tests-functional-api-client
   tests-functional-regressions-test-bug-1922053 --> tests-functional-integrated-helpers
   tests-functional-regressions-test-bug-1928063 --> tests-fixtures-libvirt
   tests-functional-regressions-test-bug-1928063 --> tests-functional-libvirt-base
+  tests-functional-regressions-test-bug-1937084 --> context
   tests-functional-regressions-test-bug-1937084 --> exception
   tests-functional-regressions-test-bug-1937084 --> objects-init
   tests-functional-regressions-test-bug-1937084 --> tests-functional-integrated-helpers
+  tests-functional-regressions-test-bug-1937375 --> context
   tests-functional-regressions-test-bug-1937375 --> exception
   tests-functional-regressions-test-bug-1937375 --> objects-init
   tests-functional-regressions-test-bug-1937375 --> tests-functional-integrated-helpers
   tests-functional-regressions-test-bug-1938326 --> tests-functional-api-client
   tests-functional-regressions-test-bug-1938326 --> tests-functional-integrated-helpers
+  tests-functional-regressions-test-bug-1939545 --> context
   tests-functional-regressions-test-bug-1939545 --> objects-init
   tests-functional-regressions-test-bug-1939545 --> tests-fixtures-libvirt
   tests-functional-regressions-test-bug-1939545 --> tests-functional-integrated-helpers
   tests-functional-regressions-test-bug-1939545 --> tests-functional-libvirt-base
+  tests-functional-regressions-test-bug-1943431 --> context
   tests-functional-regressions-test-bug-1943431 --> objects-init
   tests-functional-regressions-test-bug-1943431 --> tests-functional-api-client
   tests-functional-regressions-test-bug-1943431 --> tests-functional-integrated-helpers
@@ -5729,6 +6187,7 @@ graph LR
   tests-functional-regressions-test-bug-1944619 --> tests-fixtures-libvirt
   tests-functional-regressions-test-bug-1944619 --> tests-functional-integrated-helpers
   tests-functional-regressions-test-bug-1944619 --> tests-functional-libvirt-base
+  tests-functional-regressions-test-bug-1978983 --> test
   tests-functional-regressions-test-bug-1978983 --> tests-fixtures-init
   tests-functional-regressions-test-bug-1978983 --> tests-functional-fixtures
   tests-functional-regressions-test-bug-1978983 --> tests-functional-integrated-helpers
@@ -5745,9 +6204,12 @@ graph LR
   tests-functional-regressions-test-bug-2007968 --> tests-fixtures-libvirt
   tests-functional-regressions-test-bug-2007968 --> tests-functional-api-client
   tests-functional-regressions-test-bug-2007968 --> tests-functional-libvirt-base
+  tests-functional-regressions-test-bug-2016173 --> context
   tests-functional-regressions-test-bug-2016173 --> tests-functional-integrated-helpers
   tests-functional-regressions-test-bug-2016173 --> volume-cinder
+  tests-functional-regressions-test-bug-2025480 --> context
   tests-functional-regressions-test-bug-2025480 --> objects-compute-node
+  tests-functional-regressions-test-bug-2025480 --> test
   tests-functional-regressions-test-bug-2025480 --> tests-fixtures-init
   tests-functional-regressions-test-bug-2025480 --> tests-functional-fixtures
   tests-functional-regressions-test-bug-2025480 --> tests-functional-integrated-helpers
@@ -5757,6 +6219,7 @@ graph LR
   tests-functional-regressions-test-bug-2044235 --> tests-functional-integrated-helpers
   tests-functional-regressions-test-bug-2048837 --> tests-functional-libvirt-base
   tests-functional-regressions-test-bug-2048837 --> virt-libvirt-init
+  tests-functional-regressions-test-bug-2062127 --> test
   tests-functional-regressions-test-bug-2062127 --> tests-fixtures-init
   tests-functional-regressions-test-bug-2062127 --> tests-functional-fixtures
   tests-functional-regressions-test-bug-2062127 --> tests-functional-integrated-helpers
@@ -5767,17 +6230,22 @@ graph LR
   tests-functional-regressions-test-bug-2077980 --> tests-functional-integrated-helpers
   tests-functional-regressions-test-bug-2079850 --> conf-init
   tests-functional-regressions-test-bug-2079850 --> objects-init
+  tests-functional-regressions-test-bug-2079850 --> test
   tests-functional-regressions-test-bug-2079850 --> virt-libvirt-driver
   tests-functional-regressions-test-bug-2079850 --> virt-libvirt-imagebackend
   tests-functional-regressions-test-bug-2079850 --> virt-libvirt-utils
+  tests-functional-regressions-test-bug-2080531 --> context
   tests-functional-regressions-test-bug-2080531 --> objects-init
+  tests-functional-regressions-test-bug-2080531 --> test
   tests-functional-regressions-test-bug-2080531 --> tests-fixtures-init
   tests-functional-regressions-test-bug-2080531 --> tests-functional-fixtures
   tests-functional-regressions-test-bug-2080531 --> tests-functional-integrated-helpers
+  tests-functional-regressions-test-bug-2085135 --> context
   tests-functional-regressions-test-bug-2085135 --> db-main-api
   tests-functional-regressions-test-bug-2085135 --> exception
   tests-functional-regressions-test-bug-2085135 --> objects-host-mapping
   tests-functional-regressions-test-bug-2085135 --> objects-init
+  tests-functional-regressions-test-bug-2085135 --> test
   tests-functional-regressions-test-bug-2085135 --> tests-fixtures-init
   tests-functional-regressions-test-bug-2085135 --> utils
   tests-functional-regressions-test-bug-2085975 --> tests-functional-libvirt-base
@@ -5792,6 +6260,7 @@ graph LR
   tests-functional-regressions-test-bug-2102038 --> tests-fixtures-libvirt
   tests-functional-regressions-test-bug-2102038 --> tests-functional-api-client
   tests-functional-regressions-test-bug-2102038 --> tests-functional-libvirt-test-pci-in-placement
+  tests-functional-regressions-test-bug-2108974 --> context
   tests-functional-regressions-test-bug-2108974 --> objects-init
   tests-functional-regressions-test-bug-2108974 --> policies-base
   tests-functional-regressions-test-bug-2108974 --> policies-servers
@@ -5813,7 +6282,9 @@ graph LR
   tests-functional-regressions-test-bug-2127196 --> tests-functional-integrated-helpers
   tests-functional-regressions-test-bug-2127196 --> tests-functional-libvirt-base
   tests-functional-regressions-test-bug-2134375 --> conf-init
+  tests-functional-regressions-test-bug-2134375 --> context
   tests-functional-regressions-test-bug-2134375 --> exception
+  tests-functional-regressions-test-bug-2134375 --> test
   tests-functional-regressions-test-bug-2134375 --> tests-fixtures-init
   tests-functional-regressions-test-bug-2134375 --> tests-functional-fixtures
   tests-functional-regressions-test-bug-2134375 --> tests-functional-integrated-helpers
@@ -5829,12 +6300,14 @@ graph LR
   tests-functional-regressions-test-bug-2140631 --> tests-functional-libvirt-test-pci-in-placement
   tests-functional-regressions-test-bug-2140631 --> tests-functional-test-servers
   tests-functional-regressions-test-bug-2140631 --> tests-functional-test-servers-resource-request
+  tests-functional-regressions-test-bug-2143972 --> test
   tests-functional-regressions-test-bug-2143972 --> tests-fixtures-init
   tests-functional-regressions-test-bug-2143972 --> tests-functional-fixtures
   tests-functional-regressions-test-bug-2143972 --> tests-functional-integrated-helpers
   tests-functional-regressions-test-bug-2152697 --> tests-fixtures-libvirt
   tests-functional-regressions-test-bug-2152697 --> tests-functional-integrated-helpers
   tests-functional-regressions-test-bug-2152697 --> tests-functional-libvirt-base
+  tests-functional-regressions-test-bug-2153425 --> context
   tests-functional-regressions-test-bug-2153425 --> objects-init
   tests-functional-regressions-test-bug-2153425 --> tests-fixtures-libvirt
   tests-functional-regressions-test-bug-2153425 --> tests-functional-integrated-helpers
@@ -5845,6 +6318,7 @@ graph LR
   tests-functional-regressions-test-bug-2154495 --> tests-functional-libvirt-base
   tests-functional-regressions-test-bug-2160224 --> tests-fixtures-init
   tests-functional-regressions-test-bug-2160224 --> tests-functional-libvirt-base
+  tests-functional-regressions-test-bug-2164869 --> test
   tests-functional-regressions-test-bug-2164869 --> tests-fixtures-init
   tests-functional-regressions-test-bug-2164869 --> tests-functional-fixtures
   tests-functional-regressions-test-bug-2164869 --> tests-functional-integrated-helpers
@@ -5854,6 +6328,7 @@ graph LR
   tests-functional-regressions-test-bug-2166786 --> tests-fixtures-libvirt
   tests-functional-regressions-test-bug-2166786 --> tests-functional-libvirt-test-pci-sriov-servers
   tests-functional-test-aggregates --> conf-init
+  tests-functional-test-aggregates --> test
   tests-functional-test-aggregates --> tests-fixtures-init
   tests-functional-test-aggregates --> tests-functional-api-client
   tests-functional-test-aggregates --> tests-functional-fixtures
@@ -5862,34 +6337,44 @@ graph LR
   tests-functional-test-aggregates --> utils
   tests-functional-test-availability-zones --> api-openstack-compute-hosts
   tests-functional-test-availability-zones --> compute-instance-actions
+  tests-functional-test-availability-zones --> context
   tests-functional-test-availability-zones --> objects-init
+  tests-functional-test-availability-zones --> test
   tests-functional-test-availability-zones --> tests-fixtures-init
   tests-functional-test-availability-zones --> tests-functional-api-client
   tests-functional-test-availability-zones --> tests-functional-fixtures
   tests-functional-test-availability-zones --> tests-functional-integrated-helpers
   tests-functional-test-availability-zones --> tests-unit-api-openstack-fakes
+  tests-functional-test-boot-from-volume --> context
   tests-functional-test-boot-from-volume --> objects-init
+  tests-functional-test-boot-from-volume --> test
   tests-functional-test-boot-from-volume --> tests-fixtures-init
   tests-functional-test-boot-from-volume --> tests-functional-api-client
   tests-functional-test-boot-from-volume --> tests-functional-fixtures
   tests-functional-test-boot-from-volume --> tests-functional-integrated-helpers
   tests-functional-test-cold-migrate --> compute-api
+  tests-functional-test-cold-migrate --> context
   tests-functional-test-cold-migrate --> objects-init
+  tests-functional-test-cold-migrate --> test
   tests-functional-test-cold-migrate --> tests-functional-integrated-helpers
+  tests-functional-test-compute-mgr --> context
   tests-functional-test-compute-mgr --> network-model
   tests-functional-test-compute-mgr --> objects-init
+  tests-functional-test-compute-mgr --> test
   tests-functional-test-compute-mgr --> tests-fixtures-init
   tests-functional-test-compute-mgr --> tests-unit-fake-network
   tests-functional-test-compute-mgr --> tests-unit-fake-server-actions
   tests-functional-test-conf-max-attach-disk-devices --> tests-fixtures-init
   tests-functional-test-conf-max-attach-disk-devices --> tests-functional-api-client
   tests-functional-test-conf-max-attach-disk-devices --> tests-functional-integrated-helpers
+  tests-functional-test-cross-az-attach --> test
   tests-functional-test-cross-az-attach --> tests-fixtures-init
   tests-functional-test-cross-az-attach --> tests-functional-api-client
   tests-functional-test-cross-az-attach --> tests-functional-fixtures
   tests-functional-test-cross-az-attach --> tests-functional-integrated-helpers
   tests-functional-test-cross-cell-migrate --> compute-instance-actions
   tests-functional-test-cross-cell-migrate --> conf-init
+  tests-functional-test-cross-cell-migrate --> context
   tests-functional-test-cross-cell-migrate --> db-main-api
   tests-functional-test-cross-cell-migrate --> exception
   tests-functional-test-cross-cell-migrate --> objects-init
@@ -5897,22 +6382,28 @@ graph LR
   tests-functional-test-cross-cell-migrate --> policies-servers
   tests-functional-test-cross-cell-migrate --> scheduler-utils
   tests-functional-test-cross-cell-migrate --> scheduler-weights-init
+  tests-functional-test-cross-cell-migrate --> test
   tests-functional-test-cross-cell-migrate --> tests-fixtures-init
   tests-functional-test-cross-cell-migrate --> tests-functional-integrated-helpers
   tests-functional-test-cross-cell-migrate --> utils
+  tests-functional-test-ephemeral-encryption --> context
   tests-functional-test-ephemeral-encryption --> objects-init
   tests-functional-test-ephemeral-encryption --> tests-functional-integrated-helpers
+  tests-functional-test-external-networks --> test
   tests-functional-test-external-networks --> tests-fixtures-init
   tests-functional-test-external-networks --> tests-functional-fixtures
   tests-functional-test-external-networks --> tests-functional-integrated-helpers
   tests-functional-test-flavor-extraspecs --> tests-functional-api-client
   tests-functional-test-flavor-extraspecs --> tests-functional-integrated-helpers
   tests-functional-test-graceful-shutdown --> conf-init
+  tests-functional-test-graceful-shutdown --> test
   tests-functional-test-graceful-shutdown --> tests-fixtures-init
   tests-functional-test-graceful-shutdown --> tests-functional-integrated-helpers
   tests-functional-test-images --> tests-functional-api-client
   tests-functional-test-images --> tests-functional-integrated-helpers
   tests-functional-test-instance-actions --> exception
+  tests-functional-test-instance-actions --> policy
+  tests-functional-test-instance-actions --> test
   tests-functional-test-instance-actions --> tests-fixtures-init
   tests-functional-test-instance-actions --> tests-functional-api-client
   tests-functional-test-instance-actions --> tests-functional-fixtures
@@ -5925,8 +6416,10 @@ graph LR
   tests-functional-test-legacy-v2-compatible-wrapper --> api-openstack-wsgi
   tests-functional-test-legacy-v2-compatible-wrapper --> tests-functional-api-client
   tests-functional-test-legacy-v2-compatible-wrapper --> tests-functional-integrated-helpers
+  tests-functional-test-list-servers-ip-filter --> test
   tests-functional-test-list-servers-ip-filter --> tests-fixtures-init
   tests-functional-test-list-servers-ip-filter --> tests-functional-fixtures
+  tests-functional-test-metadata --> test
   tests-functional-test-metadata --> tests-fixtures-init
   tests-functional-test-metadata --> tests-functional-fixtures
   tests-functional-test-metadata --> tests-functional-integrated-helpers
@@ -5935,9 +6428,12 @@ graph LR
   tests-functional-test-multiattach --> tests-functional-integrated-helpers
   tests-functional-test-nova-manage --> cmd-manage
   tests-functional-test-nova-manage --> compute-instance-list
+  tests-functional-test-nova-manage --> config
+  tests-functional-test-nova-manage --> context
   tests-functional-test-nova-manage --> exception
   tests-functional-test-nova-manage --> network-constants
   tests-functional-test-nova-manage --> objects-init
+  tests-functional-test-nova-manage --> test
   tests-functional-test-nova-manage --> tests-fixtures-init
   tests-functional-test-nova-manage --> tests-functional-api-client
   tests-functional-test-nova-manage --> tests-functional-fixtures
@@ -5945,6 +6441,7 @@ graph LR
   tests-functional-test-nova-manage --> tests-functional-test-servers-resource-request
   tests-functional-test-nova-manage --> utils
   tests-functional-test-policy --> policies-base
+  tests-functional-test-policy --> test
   tests-functional-test-policy --> tests-fixtures-init
   tests-functional-test-policy --> tests-functional-fixtures
   tests-functional-test-policy --> tests-functional-integrated-helpers
@@ -5953,15 +6450,18 @@ graph LR
   tests-functional-test-report-client --> compute-provider-tree
   tests-functional-test-report-client --> compute-utils
   tests-functional-test-report-client --> conf-init
+  tests-functional-test-report-client --> context
   tests-functional-test-report-client --> exception
   tests-functional-test-report-client --> objects-init
   tests-functional-test-report-client --> scheduler-client-report
   tests-functional-test-report-client --> scheduler-utils
+  tests-functional-test-report-client --> test
   tests-functional-test-report-client --> tests-functional-fixtures
   tests-functional-test-routed-networks --> network-constants
   tests-functional-test-routed-networks --> tests-fixtures-init
   tests-functional-test-routed-networks --> tests-functional-integrated-helpers
   tests-functional-test-scheduler --> compute-instance-actions
+  tests-functional-test-scheduler --> test
   tests-functional-test-scheduler --> tests-fixtures-init
   tests-functional-test-scheduler --> tests-functional-fixtures
   tests-functional-test-scheduler --> tests-functional-integrated-helpers
@@ -5970,12 +6470,15 @@ graph LR
   tests-functional-test-server-external-events --> compute-power-state
   tests-functional-test-server-external-events --> compute-vm-states
   tests-functional-test-server-external-events --> tests-functional-integrated-helpers
+  tests-functional-test-server-faults --> test
   tests-functional-test-server-faults --> tests-fixtures-init
   tests-functional-test-server-faults --> tests-functional-fixtures
   tests-functional-test-server-faults --> tests-functional-integrated-helpers
   tests-functional-test-server-group --> compute-instance-actions
+  tests-functional-test-server-group --> context
   tests-functional-test-server-group --> db-main-api
   tests-functional-test-server-group --> objects-init
+  tests-functional-test-server-group --> test
   tests-functional-test-server-group --> tests-fixtures-init
   tests-functional-test-server-group --> tests-fixtures-notifications
   tests-functional-test-server-group --> tests-functional-api-client
@@ -5990,12 +6493,14 @@ graph LR
   tests-functional-test-servers --> compute-instance-actions
   tests-functional-test-servers --> compute-manager
   tests-functional-test-servers --> compute-rpcapi
+  tests-functional-test-servers --> context
   tests-functional-test-servers --> exception
   tests-functional-test-servers --> network-constants
   tests-functional-test-servers --> network-neutron
   tests-functional-test-servers --> objects-block-device
   tests-functional-test-servers --> objects-init
   tests-functional-test-servers --> scheduler-utils
+  tests-functional-test-servers --> test
   tests-functional-test-servers --> tests-fixtures-init
   tests-functional-test-servers --> tests-functional-api-client
   tests-functional-test-servers --> tests-functional-integrated-helpers
@@ -6006,11 +6511,13 @@ graph LR
   tests-functional-test-servers --> utils
   tests-functional-test-servers --> virt-fake
   tests-functional-test-servers --> volume-init
+  tests-functional-test-servers-provider-tree --> context
   tests-functional-test-servers-provider-tree --> exception
   tests-functional-test-servers-provider-tree --> tests-functional-integrated-helpers
   tests-functional-test-servers-provider-tree --> virt-fake
   tests-functional-test-servers-resource-request --> compute-instance-actions
   tests-functional-test-servers-resource-request --> compute-manager
+  tests-functional-test-servers-resource-request --> context
   tests-functional-test-servers-resource-request --> exception
   tests-functional-test-servers-resource-request --> network-constants
   tests-functional-test-servers-resource-request --> network-neutron
@@ -6018,49 +6525,61 @@ graph LR
   tests-functional-test-servers-resource-request --> policies-base
   tests-functional-test-servers-resource-request --> policies-servers
   tests-functional-test-servers-resource-request --> scheduler-utils
+  tests-functional-test-servers-resource-request --> test
   tests-functional-test-servers-resource-request --> tests-fixtures-init
   tests-functional-test-servers-resource-request --> tests-functional-api-client
   tests-functional-test-servers-resource-request --> tests-functional-integrated-helpers
   tests-functional-test-servers-resource-request --> tests-unit-fake-requests
   tests-functional-test-servers-resource-request --> virt-fake
+  tests-functional-test-service --> context
   tests-functional-test-service --> exception
   tests-functional-test-service --> objects-service
+  tests-functional-test-service --> test
   tests-functional-test-service --> tests-fixtures-init
   tests-functional-test-service --> tests-functional-fixtures
   tests-functional-test-service --> tests-functional-integrated-helpers
   tests-functional-test-service --> virt-node
   tests-functional-test-unified-limits --> conf-init
+  tests-functional-test-unified-limits --> context
   tests-functional-test-unified-limits --> limit-local
   tests-functional-test-unified-limits --> objects-flavor
   tests-functional-test-unified-limits --> objects-instance-group
   tests-functional-test-unified-limits --> tests-fixtures-init
   tests-functional-test-unified-limits --> tests-functional-api-client
   tests-functional-test-unified-limits --> tests-functional-integrated-helpers
+  tests-functional-wsgi-test-flavor-manage --> context
   tests-functional-wsgi-test-flavor-manage --> exception
   tests-functional-wsgi-test-flavor-manage --> objects-init
+  tests-functional-wsgi-test-flavor-manage --> test
   tests-functional-wsgi-test-flavor-manage --> tests-fixtures-init
   tests-functional-wsgi-test-flavor-manage --> tests-functional-integrated-helpers
   tests-functional-wsgi-test-interfaces --> tests-functional-api-client
   tests-functional-wsgi-test-interfaces --> tests-functional-integrated-helpers
+  tests-functional-wsgi-test-secgroup --> test
   tests-functional-wsgi-test-secgroup --> tests-fixtures-init
   tests-functional-wsgi-test-servers --> policies-base
   tests-functional-wsgi-test-servers --> policies-servers
+  tests-functional-wsgi-test-servers --> test
   tests-functional-wsgi-test-servers --> tests-fixtures-init
   tests-functional-wsgi-test-servers --> tests-functional-api-client
   tests-functional-wsgi-test-servers --> tests-functional-fixtures
   tests-functional-wsgi-test-servers --> tests-functional-integrated-helpers
+  tests-functional-wsgi-test-services --> context
   tests-functional-wsgi-test-services --> exception
   tests-functional-wsgi-test-services --> objects-init
   tests-functional-wsgi-test-services --> tests-functional-api-client
   tests-functional-wsgi-test-services --> tests-functional-integrated-helpers
   tests-functional-wsgi-test-services --> utils
   tests-unit-accelerator-test-cyborg --> accelerator-cyborg
+  tests-unit-accelerator-test-cyborg --> context
   tests-unit-accelerator-test-cyborg --> exception
   tests-unit-accelerator-test-cyborg --> objects-init
   tests-unit-accelerator-test-cyborg --> objects-request-spec
+  tests-unit-accelerator-test-cyborg --> test
   tests-unit-accelerator-test-cyborg --> tests-unit-fake-requests
   tests-unit-api-openstack-compute-admin-only-action-common --> compute-vm-states
   tests-unit-api-openstack-compute-admin-only-action-common --> exception
+  tests-unit-api-openstack-compute-admin-only-action-common --> test
   tests-unit-api-openstack-compute-admin-only-action-common --> tests-unit-api-openstack-fakes
   tests-unit-api-openstack-compute-admin-only-action-common --> tests-unit-fake-instance
   tests-unit-api-openstack-compute-dummy-schema --> api-validation-parameter-types
@@ -6071,65 +6590,83 @@ graph LR
   tests-unit-api-openstack-compute-microversions --> tests-unit-api-openstack-compute-dummy-schema
   tests-unit-api-openstack-compute-test-access-ips --> api-openstack-compute-servers
   tests-unit-api-openstack-compute-test-access-ips --> exception
+  tests-unit-api-openstack-compute-test-access-ips --> test
   tests-unit-api-openstack-compute-test-access-ips --> tests-fixtures-init
   tests-unit-api-openstack-compute-test-access-ips --> tests-unit-api-openstack-fakes
   tests-unit-api-openstack-compute-test-admin-actions --> api-openstack-compute-admin-actions
   tests-unit-api-openstack-compute-test-admin-actions --> tests-unit-api-openstack-compute-admin-only-action-common
   tests-unit-api-openstack-compute-test-admin-password --> api-openstack-compute-admin-password
   tests-unit-api-openstack-compute-test-admin-password --> exception
+  tests-unit-api-openstack-compute-test-admin-password --> test
   tests-unit-api-openstack-compute-test-admin-password --> tests-unit-api-openstack-fakes
   tests-unit-api-openstack-compute-test-admin-password --> tests-unit-fake-instance
   tests-unit-api-openstack-compute-test-aggregates --> api-openstack-compute-aggregates
   tests-unit-api-openstack-compute-test-aggregates --> compute-api
+  tests-unit-api-openstack-compute-test-aggregates --> context
   tests-unit-api-openstack-compute-test-aggregates --> exception
   tests-unit-api-openstack-compute-test-aggregates --> objects-base
   tests-unit-api-openstack-compute-test-aggregates --> objects-init
+  tests-unit-api-openstack-compute-test-aggregates --> test
   tests-unit-api-openstack-compute-test-aggregates --> tests-unit-api-openstack-fakes
   tests-unit-api-openstack-compute-test-api --> api-openstack-init
   tests-unit-api-openstack-compute-test-api --> api-openstack-wsgi
   tests-unit-api-openstack-compute-test-api --> exception
+  tests-unit-api-openstack-compute-test-api --> test
   tests-unit-api-openstack-compute-test-api --> tests-unit-api-openstack-fakes
   tests-unit-api-openstack-compute-test-assisted-snapshots --> api-openstack-compute-assisted-volume-snapshots
   tests-unit-api-openstack-compute-test-assisted-snapshots --> compute-api
   tests-unit-api-openstack-compute-test-assisted-snapshots --> compute-task-states
   tests-unit-api-openstack-compute-test-assisted-snapshots --> exception
+  tests-unit-api-openstack-compute-test-assisted-snapshots --> test
   tests-unit-api-openstack-compute-test-assisted-snapshots --> tests-unit-api-openstack-fakes
   tests-unit-api-openstack-compute-test-attach-interfaces --> api-openstack-common
   tests-unit-api-openstack-compute-test-attach-interfaces --> api-openstack-compute-attach-interfaces
   tests-unit-api-openstack-compute-test-attach-interfaces --> compute-api
   tests-unit-api-openstack-compute-test-attach-interfaces --> exception
   tests-unit-api-openstack-compute-test-attach-interfaces --> objects-init
+  tests-unit-api-openstack-compute-test-attach-interfaces --> test
   tests-unit-api-openstack-compute-test-attach-interfaces --> tests-unit-api-openstack-fakes
   tests-unit-api-openstack-compute-test-attach-interfaces --> tests-unit-fake-instance
   tests-unit-api-openstack-compute-test-attach-interfaces --> tests-unit-fake-network-cache-model
   tests-unit-api-openstack-compute-test-availability-zone --> api-openstack-compute-availability-zone
   tests-unit-api-openstack-compute-test-availability-zone --> api-openstack-compute-servers
+  tests-unit-api-openstack-compute-test-availability-zone --> availability-zones
   tests-unit-api-openstack-compute-test-availability-zone --> compute-api
+  tests-unit-api-openstack-compute-test-availability-zone --> context
   tests-unit-api-openstack-compute-test-availability-zone --> db-main-api
   tests-unit-api-openstack-compute-test-availability-zone --> exception
   tests-unit-api-openstack-compute-test-availability-zone --> objects-init
+  tests-unit-api-openstack-compute-test-availability-zone --> test
   tests-unit-api-openstack-compute-test-availability-zone --> tests-fixtures-init
   tests-unit-api-openstack-compute-test-availability-zone --> tests-unit-api-openstack-fakes
   tests-unit-api-openstack-compute-test-availability-zone --> tests-unit-matchers
   tests-unit-api-openstack-compute-test-availability-zone --> tests-unit-objects-test-service
   tests-unit-api-openstack-compute-test-baremetal-nodes --> api-openstack-compute-baremetal-nodes
+  tests-unit-api-openstack-compute-test-baremetal-nodes --> context
   tests-unit-api-openstack-compute-test-baremetal-nodes --> exception
+  tests-unit-api-openstack-compute-test-baremetal-nodes --> test
   tests-unit-api-openstack-compute-test-baremetal-nodes --> tests-unit-api-openstack-fakes
   tests-unit-api-openstack-compute-test-baremetal-nodes --> tests-unit-virt-ironic-utils
   tests-unit-api-openstack-compute-test-certificates --> api-openstack-compute-certificates
+  tests-unit-api-openstack-compute-test-certificates --> context
+  tests-unit-api-openstack-compute-test-certificates --> test
   tests-unit-api-openstack-compute-test-certificates --> tests-unit-api-openstack-fakes
   tests-unit-api-openstack-compute-test-cloudpipe --> api-openstack-compute-cloudpipe
+  tests-unit-api-openstack-compute-test-cloudpipe --> test
   tests-unit-api-openstack-compute-test-cloudpipe --> tests-unit-api-openstack-fakes
   tests-unit-api-openstack-compute-test-cloudpipe-update --> api-openstack-compute-cloudpipe
+  tests-unit-api-openstack-compute-test-cloudpipe-update --> test
   tests-unit-api-openstack-compute-test-cloudpipe-update --> tests-unit-api-openstack-fakes
   tests-unit-api-openstack-compute-test-console-auth-tokens --> api-openstack-api-version-request
   tests-unit-api-openstack-compute-test-console-auth-tokens --> api-openstack-compute-console-auth-tokens
   tests-unit-api-openstack-compute-test-console-auth-tokens --> exception
   tests-unit-api-openstack-compute-test-console-auth-tokens --> objects-init
+  tests-unit-api-openstack-compute-test-console-auth-tokens --> test
   tests-unit-api-openstack-compute-test-console-auth-tokens --> tests-unit-api-openstack-fakes
   tests-unit-api-openstack-compute-test-console-output --> api-openstack-compute-console-output
   tests-unit-api-openstack-compute-test-console-output --> compute-api
   tests-unit-api-openstack-compute-test-console-output --> exception
+  tests-unit-api-openstack-compute-test-console-output --> test
   tests-unit-api-openstack-compute-test-console-output --> tests-unit-api-openstack-fakes
   tests-unit-api-openstack-compute-test-console-output --> tests-unit-fake-instance
   tests-unit-api-openstack-compute-test-create-backup --> api-openstack-common
@@ -6137,18 +6674,22 @@ graph LR
   tests-unit-api-openstack-compute-test-create-backup --> compute-api
   tests-unit-api-openstack-compute-test-create-backup --> compute-utils
   tests-unit-api-openstack-compute-test-create-backup --> exception
+  tests-unit-api-openstack-compute-test-create-backup --> test
   tests-unit-api-openstack-compute-test-create-backup --> tests-unit-api-openstack-compute-admin-only-action-common
   tests-unit-api-openstack-compute-test-create-backup --> tests-unit-api-openstack-fakes
   tests-unit-api-openstack-compute-test-create-backup --> tests-unit-fake-instance
   tests-unit-api-openstack-compute-test-deferred-delete --> api-openstack-compute-deferred-delete
   tests-unit-api-openstack-compute-test-deferred-delete --> compute-api
   tests-unit-api-openstack-compute-test-deferred-delete --> exception
+  tests-unit-api-openstack-compute-test-deferred-delete --> test
   tests-unit-api-openstack-compute-test-deferred-delete --> tests-unit-api-openstack-fakes
   tests-unit-api-openstack-compute-test-deferred-delete --> tests-unit-fake-instance
   tests-unit-api-openstack-compute-test-disk-config --> api-openstack-compute-init
   tests-unit-api-openstack-compute-test-disk-config --> compute-api
+  tests-unit-api-openstack-compute-test-disk-config --> context
   tests-unit-api-openstack-compute-test-disk-config --> exception
   tests-unit-api-openstack-compute-test-disk-config --> objects-init
+  tests-unit-api-openstack-compute-test-disk-config --> test
   tests-unit-api-openstack-compute-test-disk-config --> tests-fixtures-init
   tests-unit-api-openstack-compute-test-disk-config --> tests-unit-api-openstack-fakes
   tests-unit-api-openstack-compute-test-disk-config --> tests-unit-fake-instance
@@ -6157,66 +6698,86 @@ graph LR
   tests-unit-api-openstack-compute-test-evacuate --> compute-vm-states
   tests-unit-api-openstack-compute-test-evacuate --> conf-init
   tests-unit-api-openstack-compute-test-evacuate --> exception
+  tests-unit-api-openstack-compute-test-evacuate --> test
   tests-unit-api-openstack-compute-test-evacuate --> tests-unit-api-openstack-fakes
   tests-unit-api-openstack-compute-test-evacuate --> tests-unit-fake-instance
   tests-unit-api-openstack-compute-test-extended-ips --> objects-init
+  tests-unit-api-openstack-compute-test-extended-ips --> test
   tests-unit-api-openstack-compute-test-extended-ips --> tests-unit-api-openstack-fakes
   tests-unit-api-openstack-compute-test-extended-ips-mac --> objects-init
+  tests-unit-api-openstack-compute-test-extended-ips-mac --> test
   tests-unit-api-openstack-compute-test-extended-ips-mac --> tests-unit-api-openstack-fakes
   tests-unit-api-openstack-compute-test-extension-info --> api-openstack-compute-extension-info
   tests-unit-api-openstack-compute-test-extension-info --> exception
+  tests-unit-api-openstack-compute-test-extension-info --> test
   tests-unit-api-openstack-compute-test-extension-info --> tests-unit-api-openstack-fakes
   tests-unit-api-openstack-compute-test-flavor-access --> api-openstack-api-version-request
   tests-unit-api-openstack-compute-test-flavor-access --> api-openstack-compute-flavor-access
   tests-unit-api-openstack-compute-test-flavor-access --> api-openstack-compute-flavors
+  tests-unit-api-openstack-compute-test-flavor-access --> context
   tests-unit-api-openstack-compute-test-flavor-access --> exception
+  tests-unit-api-openstack-compute-test-flavor-access --> test
   tests-unit-api-openstack-compute-test-flavor-access --> tests-unit-api-openstack-fakes
+  tests-unit-api-openstack-compute-test-flavor-disabled --> test
   tests-unit-api-openstack-compute-test-flavor-disabled --> tests-unit-api-openstack-fakes
   tests-unit-api-openstack-compute-test-flavor-manage --> api-openstack-compute-flavor-access
   tests-unit-api-openstack-compute-test-flavor-manage --> api-openstack-compute-flavors
   tests-unit-api-openstack-compute-test-flavor-manage --> db-constants
   tests-unit-api-openstack-compute-test-flavor-manage --> exception
   tests-unit-api-openstack-compute-test-flavor-manage --> objects-init
+  tests-unit-api-openstack-compute-test-flavor-manage --> test
   tests-unit-api-openstack-compute-test-flavor-manage --> tests-unit-api-openstack-fakes
+  tests-unit-api-openstack-compute-test-flavorextradata --> test
   tests-unit-api-openstack-compute-test-flavorextradata --> tests-unit-api-openstack-fakes
   tests-unit-api-openstack-compute-test-flavors --> api-openstack-common
   tests-unit-api-openstack-compute-test-flavors --> api-openstack-compute-flavors
+  tests-unit-api-openstack-compute-test-flavors --> context
   tests-unit-api-openstack-compute-test-flavors --> exception
   tests-unit-api-openstack-compute-test-flavors --> objects-init
+  tests-unit-api-openstack-compute-test-flavors --> test
   tests-unit-api-openstack-compute-test-flavors --> tests-unit-api-openstack-fakes
   tests-unit-api-openstack-compute-test-flavors --> tests-unit-matchers
   tests-unit-api-openstack-compute-test-flavors-extraspecs --> api-openstack-compute-flavors-extraspecs
   tests-unit-api-openstack-compute-test-flavors-extraspecs --> exception
   tests-unit-api-openstack-compute-test-flavors-extraspecs --> objects-init
+  tests-unit-api-openstack-compute-test-flavors-extraspecs --> test
   tests-unit-api-openstack-compute-test-flavors-extraspecs --> tests-unit-api-openstack-fakes
   tests-unit-api-openstack-compute-test-flavors-extraspecs --> tests-unit-objects-test-flavor
   tests-unit-api-openstack-compute-test-floating-ip-pools --> api-openstack-compute-floating-ip-pools
+  tests-unit-api-openstack-compute-test-floating-ip-pools --> context
   tests-unit-api-openstack-compute-test-floating-ip-pools --> exception
+  tests-unit-api-openstack-compute-test-floating-ip-pools --> test
   tests-unit-api-openstack-compute-test-floating-ip-pools --> tests-unit-api-openstack-fakes
   tests-unit-api-openstack-compute-test-floating-ips --> api-openstack-compute-floating-ips
   tests-unit-api-openstack-compute-test-floating-ips --> exception
+  tests-unit-api-openstack-compute-test-floating-ips --> test
   tests-unit-api-openstack-compute-test-floating-ips --> tests-unit-api-openstack-fakes
   tests-unit-api-openstack-compute-test-hosts --> api-openstack-compute-hosts
   tests-unit-api-openstack-compute-test-hosts --> compute-power-state
   tests-unit-api-openstack-compute-test-hosts --> compute-vm-states
+  tests-unit-api-openstack-compute-test-hosts --> context
   tests-unit-api-openstack-compute-test-hosts --> db-main-api
   tests-unit-api-openstack-compute-test-hosts --> exception
+  tests-unit-api-openstack-compute-test-hosts --> test
   tests-unit-api-openstack-compute-test-hosts --> tests-fixtures-init
   tests-unit-api-openstack-compute-test-hosts --> tests-unit-api-openstack-fakes
   tests-unit-api-openstack-compute-test-hosts --> tests-unit-fake-hosts
   tests-unit-api-openstack-compute-test-hypervisors --> api-openstack-compute-hypervisors
   tests-unit-api-openstack-compute-test-hypervisors --> exception
   tests-unit-api-openstack-compute-test-hypervisors --> objects-init
+  tests-unit-api-openstack-compute-test-hypervisors --> test
   tests-unit-api-openstack-compute-test-hypervisors --> tests-unit-api-openstack-fakes
   tests-unit-api-openstack-compute-test-hypervisors --> tests-unit-fake-instance
   tests-unit-api-openstack-compute-test-image-metadata --> api-openstack-compute-image-metadata
   tests-unit-api-openstack-compute-test-image-metadata --> exception
+  tests-unit-api-openstack-compute-test-image-metadata --> test
   tests-unit-api-openstack-compute-test-image-metadata --> tests-unit-api-openstack-fakes
   tests-unit-api-openstack-compute-test-image-metadata --> tests-unit-image-fixtures
   tests-unit-api-openstack-compute-test-images --> api-openstack-compute-images
   tests-unit-api-openstack-compute-test-images --> api-openstack-compute-views-images
   tests-unit-api-openstack-compute-test-images --> exception
   tests-unit-api-openstack-compute-test-images --> image-glance
+  tests-unit-api-openstack-compute-test-images --> test
   tests-unit-api-openstack-compute-test-images --> tests-unit-api-openstack-fakes
   tests-unit-api-openstack-compute-test-images --> tests-unit-image-fixtures
   tests-unit-api-openstack-compute-test-images --> tests-unit-matchers
@@ -6226,27 +6787,36 @@ graph LR
   tests-unit-api-openstack-compute-test-instance-actions --> db-main-models
   tests-unit-api-openstack-compute-test-instance-actions --> exception
   tests-unit-api-openstack-compute-test-instance-actions --> objects-init
+  tests-unit-api-openstack-compute-test-instance-actions --> policy
+  tests-unit-api-openstack-compute-test-instance-actions --> test
   tests-unit-api-openstack-compute-test-instance-actions --> tests-unit-api-openstack-fakes
   tests-unit-api-openstack-compute-test-instance-actions --> tests-unit-fake-instance
   tests-unit-api-openstack-compute-test-instance-actions --> tests-unit-fake-server-actions
   tests-unit-api-openstack-compute-test-instance-actions --> utils
   tests-unit-api-openstack-compute-test-instance-usage-audit-log --> api-openstack-compute-instance-usage-audit-log
+  tests-unit-api-openstack-compute-test-instance-usage-audit-log --> context
+  tests-unit-api-openstack-compute-test-instance-usage-audit-log --> test
   tests-unit-api-openstack-compute-test-instance-usage-audit-log --> tests-unit-api-openstack-fakes
   tests-unit-api-openstack-compute-test-instance-usage-audit-log --> tests-unit-objects-test-service
   tests-unit-api-openstack-compute-test-keypairs --> api-openstack-compute-keypairs
   tests-unit-api-openstack-compute-test-keypairs --> api-openstack-wsgi
+  tests-unit-api-openstack-compute-test-keypairs --> context
   tests-unit-api-openstack-compute-test-keypairs --> exception
   tests-unit-api-openstack-compute-test-keypairs --> objects-init
+  tests-unit-api-openstack-compute-test-keypairs --> quota
+  tests-unit-api-openstack-compute-test-keypairs --> test
   tests-unit-api-openstack-compute-test-keypairs --> tests-unit-api-openstack-fakes
   tests-unit-api-openstack-compute-test-keypairs --> tests-unit-objects-test-keypair
   tests-unit-api-openstack-compute-test-limits --> api-openstack-compute-limits
   tests-unit-api-openstack-compute-test-limits --> api-openstack-compute-views-init
   tests-unit-api-openstack-compute-test-limits --> api-openstack-wsgi
+  tests-unit-api-openstack-compute-test-limits --> context
   tests-unit-api-openstack-compute-test-limits --> exception
   tests-unit-api-openstack-compute-test-limits --> limit-local
   tests-unit-api-openstack-compute-test-limits --> limit-placement
   tests-unit-api-openstack-compute-test-limits --> objects-init
   tests-unit-api-openstack-compute-test-limits --> policies-limits
+  tests-unit-api-openstack-compute-test-limits --> test
   tests-unit-api-openstack-compute-test-limits --> tests-unit-api-openstack-fakes
   tests-unit-api-openstack-compute-test-limits --> tests-unit-matchers
   tests-unit-api-openstack-compute-test-lock-server --> api-openstack-api-version-request
@@ -6256,6 +6826,7 @@ graph LR
   tests-unit-api-openstack-compute-test-lock-server --> tests-unit-api-openstack-compute-admin-only-action-common
   tests-unit-api-openstack-compute-test-lock-server --> tests-unit-fake-instance
   tests-unit-api-openstack-compute-test-microversions --> api-openstack-api-version-request
+  tests-unit-api-openstack-compute-test-microversions --> test
   tests-unit-api-openstack-compute-test-microversions --> tests-unit-api-openstack-compute-microversions
   tests-unit-api-openstack-compute-test-microversions --> tests-unit-api-openstack-fakes
   tests-unit-api-openstack-compute-test-migrate-server --> api-openstack-api-version-request
@@ -6265,19 +6836,23 @@ graph LR
   tests-unit-api-openstack-compute-test-migrate-server --> tests-unit-api-openstack-compute-admin-only-action-common
   tests-unit-api-openstack-compute-test-migrate-server --> tests-unit-api-openstack-fakes
   tests-unit-api-openstack-compute-test-migrations --> api-openstack-compute-migrations
+  tests-unit-api-openstack-compute-test-migrations --> context
   tests-unit-api-openstack-compute-test-migrations --> exception
   tests-unit-api-openstack-compute-test-migrations --> objects-base
   tests-unit-api-openstack-compute-test-migrations --> objects-init
+  tests-unit-api-openstack-compute-test-migrations --> test
   tests-unit-api-openstack-compute-test-migrations --> tests-unit-api-openstack-fakes
   tests-unit-api-openstack-compute-test-multinic --> api-openstack-compute-multinic
   tests-unit-api-openstack-compute-test-multinic --> compute-init
   tests-unit-api-openstack-compute-test-multinic --> exception
   tests-unit-api-openstack-compute-test-multinic --> objects-init
+  tests-unit-api-openstack-compute-test-multinic --> test
   tests-unit-api-openstack-compute-test-multinic --> tests-unit-api-openstack-fakes
   tests-unit-api-openstack-compute-test-multinic --> tests-unit-fake-instance
   tests-unit-api-openstack-compute-test-networks --> api-openstack-compute-networks
   tests-unit-api-openstack-compute-test-networks --> exception
   tests-unit-api-openstack-compute-test-networks --> network-neutron
+  tests-unit-api-openstack-compute-test-networks --> test
   tests-unit-api-openstack-compute-test-networks --> tests-unit-api-openstack-fakes
   tests-unit-api-openstack-compute-test-pause-server --> api-openstack-compute-pause-server
   tests-unit-api-openstack-compute-test-pause-server --> tests-unit-api-openstack-compute-admin-only-action-common
@@ -6286,6 +6861,7 @@ graph LR
   tests-unit-api-openstack-compute-test-quota-classes --> limit-local
   tests-unit-api-openstack-compute-test-quota-classes --> limit-placement
   tests-unit-api-openstack-compute-test-quota-classes --> objects-init
+  tests-unit-api-openstack-compute-test-quota-classes --> test
   tests-unit-api-openstack-compute-test-quota-classes --> tests-unit-api-openstack-fakes
   tests-unit-api-openstack-compute-test-quota-sets --> api-openstack-compute-quota-sets
   tests-unit-api-openstack-compute-test-quota-sets --> db-constants
@@ -6293,12 +6869,15 @@ graph LR
   tests-unit-api-openstack-compute-test-quota-sets --> limit-local
   tests-unit-api-openstack-compute-test-quota-sets --> limit-placement
   tests-unit-api-openstack-compute-test-quota-sets --> objects-init
+  tests-unit-api-openstack-compute-test-quota-sets --> quota
+  tests-unit-api-openstack-compute-test-quota-sets --> test
   tests-unit-api-openstack-compute-test-quota-sets --> tests-unit-api-openstack-fakes
   tests-unit-api-openstack-compute-test-remote-consoles --> api-openstack-api-version-request
   tests-unit-api-openstack-compute-test-remote-consoles --> api-openstack-compute-remote-consoles
   tests-unit-api-openstack-compute-test-remote-consoles --> compute-api
   tests-unit-api-openstack-compute-test-remote-consoles --> exception
   tests-unit-api-openstack-compute-test-remote-consoles --> objects-init
+  tests-unit-api-openstack-compute-test-remote-consoles --> test
   tests-unit-api-openstack-compute-test-remote-consoles --> tests-unit-api-openstack-fakes
   tests-unit-api-openstack-compute-test-remote-consoles --> tests-unit-fake-instance
   tests-unit-api-openstack-compute-test-rescue --> api-openstack-api-version-request
@@ -6306,11 +6885,14 @@ graph LR
   tests-unit-api-openstack-compute-test-rescue --> compute-init
   tests-unit-api-openstack-compute-test-rescue --> conf-init
   tests-unit-api-openstack-compute-test-rescue --> exception
+  tests-unit-api-openstack-compute-test-rescue --> test
   tests-unit-api-openstack-compute-test-rescue --> tests-unit-api-openstack-fakes
   tests-unit-api-openstack-compute-test-rescue --> tests-unit-fake-instance
   tests-unit-api-openstack-compute-test-schemas --> api-openstack-compute-init
   tests-unit-api-openstack-compute-test-schemas --> api-validation-validators
+  tests-unit-api-openstack-compute-test-schemas --> test
   tests-unit-api-openstack-compute-test-security-groups --> api-openstack-compute-security-groups
+  tests-unit-api-openstack-compute-test-security-groups --> context
   tests-unit-api-openstack-compute-test-security-groups --> db-main-api
   tests-unit-api-openstack-compute-test-security-groups --> exception
   tests-unit-api-openstack-compute-test-security-groups --> network-model
@@ -6318,6 +6900,7 @@ graph LR
   tests-unit-api-openstack-compute-test-security-groups --> network-security-group-api
   tests-unit-api-openstack-compute-test-security-groups --> objects-init
   tests-unit-api-openstack-compute-test-security-groups --> objects-instance
+  tests-unit-api-openstack-compute-test-security-groups --> test
   tests-unit-api-openstack-compute-test-security-groups --> tests-unit-api-openstack-fakes
   tests-unit-api-openstack-compute-test-server-actions --> api-openstack-compute-servers
   tests-unit-api-openstack-compute-test-server-actions --> compute-api
@@ -6327,6 +6910,7 @@ graph LR
   tests-unit-api-openstack-compute-test-server-actions --> exception
   tests-unit-api-openstack-compute-test-server-actions --> image-glance
   tests-unit-api-openstack-compute-test-server-actions --> objects-init
+  tests-unit-api-openstack-compute-test-server-actions --> test
   tests-unit-api-openstack-compute-test-server-actions --> tests-fixtures-init
   tests-unit-api-openstack-compute-test-server-actions --> tests-unit-api-openstack-fakes
   tests-unit-api-openstack-compute-test-server-actions --> tests-unit-fake-block-device
@@ -6335,36 +6919,45 @@ graph LR
   tests-unit-api-openstack-compute-test-server-diagnostics --> compute-api
   tests-unit-api-openstack-compute-test-server-diagnostics --> exception
   tests-unit-api-openstack-compute-test-server-diagnostics --> objects-init
+  tests-unit-api-openstack-compute-test-server-diagnostics --> test
   tests-unit-api-openstack-compute-test-server-diagnostics --> tests-unit-api-openstack-fakes
   tests-unit-api-openstack-compute-test-server-external-events --> api-openstack-compute-server-external-events
   tests-unit-api-openstack-compute-test-server-external-events --> exception
   tests-unit-api-openstack-compute-test-server-external-events --> objects-init
   tests-unit-api-openstack-compute-test-server-external-events --> objects-instance
+  tests-unit-api-openstack-compute-test-server-external-events --> test
   tests-unit-api-openstack-compute-test-server-external-events --> tests-fixtures-init
   tests-unit-api-openstack-compute-test-server-external-events --> tests-unit-api-openstack-fakes
   tests-unit-api-openstack-compute-test-server-group-quotas --> api-openstack-compute-server-groups
+  tests-unit-api-openstack-compute-test-server-group-quotas --> context
   tests-unit-api-openstack-compute-test-server-group-quotas --> exception
   tests-unit-api-openstack-compute-test-server-group-quotas --> limit-local
   tests-unit-api-openstack-compute-test-server-group-quotas --> objects-init
+  tests-unit-api-openstack-compute-test-server-group-quotas --> test
   tests-unit-api-openstack-compute-test-server-group-quotas --> tests-fixtures-init
   tests-unit-api-openstack-compute-test-server-group-quotas --> tests-unit-api-openstack-fakes
   tests-unit-api-openstack-compute-test-server-groups --> api-openstack-api-version-request
   tests-unit-api-openstack-compute-test-server-groups --> api-openstack-compute-server-groups
+  tests-unit-api-openstack-compute-test-server-groups --> context
   tests-unit-api-openstack-compute-test-server-groups --> exception
   tests-unit-api-openstack-compute-test-server-groups --> objects-init
+  tests-unit-api-openstack-compute-test-server-groups --> test
   tests-unit-api-openstack-compute-test-server-groups --> tests-fixtures-init
   tests-unit-api-openstack-compute-test-server-groups --> tests-unit-api-openstack-fakes
   tests-unit-api-openstack-compute-test-server-metadata --> api-openstack-compute-server-metadata
   tests-unit-api-openstack-compute-test-server-metadata --> compute-vm-states
   tests-unit-api-openstack-compute-test-server-metadata --> db-main-api
   tests-unit-api-openstack-compute-test-server-metadata --> exception
+  tests-unit-api-openstack-compute-test-server-metadata --> test
   tests-unit-api-openstack-compute-test-server-metadata --> tests-unit-api-openstack-fakes
   tests-unit-api-openstack-compute-test-server-migrations --> api-openstack-compute-server-migrations
   tests-unit-api-openstack-compute-test-server-migrations --> exception
   tests-unit-api-openstack-compute-test-server-migrations --> objects-base
   tests-unit-api-openstack-compute-test-server-migrations --> objects-init
+  tests-unit-api-openstack-compute-test-server-migrations --> test
   tests-unit-api-openstack-compute-test-server-migrations --> tests-unit-api-openstack-fakes
   tests-unit-api-openstack-compute-test-server-password --> api-openstack-compute-server-password
+  tests-unit-api-openstack-compute-test-server-password --> test
   tests-unit-api-openstack-compute-test-server-password --> tests-unit-api-openstack-fakes
   tests-unit-api-openstack-compute-test-server-password --> tests-unit-fake-instance
   tests-unit-api-openstack-compute-test-server-reset-state --> api-openstack-compute-admin-actions
@@ -6372,9 +6965,11 @@ graph LR
   tests-unit-api-openstack-compute-test-server-reset-state --> compute-vm-states
   tests-unit-api-openstack-compute-test-server-reset-state --> exception
   tests-unit-api-openstack-compute-test-server-reset-state --> objects-init
+  tests-unit-api-openstack-compute-test-server-reset-state --> test
   tests-unit-api-openstack-compute-test-server-reset-state --> tests-unit-api-openstack-fakes
   tests-unit-api-openstack-compute-test-server-shares --> api-openstack-compute-server-shares
   tests-unit-api-openstack-compute-test-server-shares --> compute-vm-states
+  tests-unit-api-openstack-compute-test-server-shares --> context
   tests-unit-api-openstack-compute-test-server-shares --> db-main-models
   tests-unit-api-openstack-compute-test-server-shares --> objects-init
   tests-unit-api-openstack-compute-test-server-shares --> tests-fixtures-init
@@ -6385,16 +6980,19 @@ graph LR
   tests-unit-api-openstack-compute-test-server-start-stop --> compute-api
   tests-unit-api-openstack-compute-test-server-start-stop --> db-main-api
   tests-unit-api-openstack-compute-test-server-start-stop --> exception
+  tests-unit-api-openstack-compute-test-server-start-stop --> test
   tests-unit-api-openstack-compute-test-server-start-stop --> tests-fixtures-init
   tests-unit-api-openstack-compute-test-server-start-stop --> tests-unit-api-openstack-fakes
   tests-unit-api-openstack-compute-test-server-tags --> api-openstack-compute-server-tags
   tests-unit-api-openstack-compute-test-server-tags --> api-openstack-compute-servers
   tests-unit-api-openstack-compute-test-server-tags --> compute-vm-states
+  tests-unit-api-openstack-compute-test-server-tags --> context
   tests-unit-api-openstack-compute-test-server-tags --> db-main-models
   tests-unit-api-openstack-compute-test-server-tags --> exception
   tests-unit-api-openstack-compute-test-server-tags --> objects-init
   tests-unit-api-openstack-compute-test-server-tags --> objects-instance
   tests-unit-api-openstack-compute-test-server-tags --> objects-tag
+  tests-unit-api-openstack-compute-test-server-tags --> test
   tests-unit-api-openstack-compute-test-server-tags --> tests-unit-api-openstack-fakes
   tests-unit-api-openstack-compute-test-server-tags --> tests-unit-fake-instance
   tests-unit-api-openstack-compute-test-server-topology --> api-openstack-common
@@ -6402,6 +7000,7 @@ graph LR
   tests-unit-api-openstack-compute-test-server-topology --> exception
   tests-unit-api-openstack-compute-test-server-topology --> objects-init
   tests-unit-api-openstack-compute-test-server-topology --> objects-instance-numa
+  tests-unit-api-openstack-compute-test-server-topology --> test
   tests-unit-api-openstack-compute-test-server-topology --> tests-unit-api-openstack-fakes
   tests-unit-api-openstack-compute-test-servers --> api-openstack-api-version-request
   tests-unit-api-openstack-compute-test-servers --> api-openstack-common
@@ -6411,11 +7010,14 @@ graph LR
   tests-unit-api-openstack-compute-test-servers --> api-openstack-compute-servers
   tests-unit-api-openstack-compute-test-servers --> api-openstack-compute-views-init
   tests-unit-api-openstack-compute-test-servers --> api-openstack-wsgi
+  tests-unit-api-openstack-compute-test-servers --> availability-zones
+  tests-unit-api-openstack-compute-test-servers --> block-device
   tests-unit-api-openstack-compute-test-servers --> compute-api
   tests-unit-api-openstack-compute-test-servers --> compute-flavors
   tests-unit-api-openstack-compute-test-servers --> compute-task-states
   tests-unit-api-openstack-compute-test-servers --> compute-vm-states
   tests-unit-api-openstack-compute-test-servers --> conf-init
+  tests-unit-api-openstack-compute-test-servers --> context
   tests-unit-api-openstack-compute-test-servers --> db-constants
   tests-unit-api-openstack-compute-test-servers --> db-main-api
   tests-unit-api-openstack-compute-test-servers --> db-main-models
@@ -6426,6 +7028,8 @@ graph LR
   tests-unit-api-openstack-compute-test-servers --> objects-instance-group
   tests-unit-api-openstack-compute-test-servers --> objects-tag
   tests-unit-api-openstack-compute-test-servers --> policies-servers
+  tests-unit-api-openstack-compute-test-servers --> policy
+  tests-unit-api-openstack-compute-test-servers --> test
   tests-unit-api-openstack-compute-test-servers --> tests-fixtures-init
   tests-unit-api-openstack-compute-test-servers --> tests-unit-api-openstack-fakes
   tests-unit-api-openstack-compute-test-servers --> tests-unit-fake-block-device
@@ -6436,10 +7040,13 @@ graph LR
   tests-unit-api-openstack-compute-test-servers --> utils
   tests-unit-api-openstack-compute-test-services --> api-openstack-compute-services
   tests-unit-api-openstack-compute-test-services --> api-openstack-wsgi
+  tests-unit-api-openstack-compute-test-services --> availability-zones
   tests-unit-api-openstack-compute-test-services --> compute-api
+  tests-unit-api-openstack-compute-test-services --> context
   tests-unit-api-openstack-compute-test-services --> exception
   tests-unit-api-openstack-compute-test-services --> objects-init
   tests-unit-api-openstack-compute-test-services --> servicegroup-drivers-db
+  tests-unit-api-openstack-compute-test-services --> test
   tests-unit-api-openstack-compute-test-services --> tests-fixtures-init
   tests-unit-api-openstack-compute-test-services --> tests-unit-api-openstack-fakes
   tests-unit-api-openstack-compute-test-services --> tests-unit-objects-test-service
@@ -6448,16 +7055,20 @@ graph LR
   tests-unit-api-openstack-compute-test-shelve --> compute-task-states
   tests-unit-api-openstack-compute-test-shelve --> compute-vm-states
   tests-unit-api-openstack-compute-test-shelve --> exception
+  tests-unit-api-openstack-compute-test-shelve --> test
   tests-unit-api-openstack-compute-test-shelve --> tests-unit-api-openstack-fakes
   tests-unit-api-openstack-compute-test-shelve --> tests-unit-fake-instance
   tests-unit-api-openstack-compute-test-simple-tenant-usage --> api-openstack-compute-simple-tenant-usage
   tests-unit-api-openstack-compute-test-simple-tenant-usage --> compute-vm-states
   tests-unit-api-openstack-compute-test-simple-tenant-usage --> conf-init
+  tests-unit-api-openstack-compute-test-simple-tenant-usage --> context
   tests-unit-api-openstack-compute-test-simple-tenant-usage --> exception
   tests-unit-api-openstack-compute-test-simple-tenant-usage --> objects-init
+  tests-unit-api-openstack-compute-test-simple-tenant-usage --> test
   tests-unit-api-openstack-compute-test-simple-tenant-usage --> tests-unit-api-openstack-fakes
   tests-unit-api-openstack-compute-test-snapshots --> api-openstack-compute-snapshots
   tests-unit-api-openstack-compute-test-snapshots --> exception
+  tests-unit-api-openstack-compute-test-snapshots --> test
   tests-unit-api-openstack-compute-test-snapshots --> tests-unit-api-openstack-fakes
   tests-unit-api-openstack-compute-test-snapshots --> volume-cinder
   tests-unit-api-openstack-compute-test-suspend-server --> api-openstack-compute-suspend-server
@@ -6465,12 +7076,15 @@ graph LR
   tests-unit-api-openstack-compute-test-suspend-server --> tests-unit-api-openstack-compute-admin-only-action-common
   tests-unit-api-openstack-compute-test-tenant-networks --> api-openstack-compute-tenant-networks
   tests-unit-api-openstack-compute-test-tenant-networks --> exception
+  tests-unit-api-openstack-compute-test-tenant-networks --> test
   tests-unit-api-openstack-compute-test-tenant-networks --> tests-unit-api-openstack-fakes
+  tests-unit-api-openstack-compute-test-urlmap --> test
   tests-unit-api-openstack-compute-test-urlmap --> tests-fixtures-init
   tests-unit-api-openstack-compute-test-urlmap --> tests-unit-api-openstack-fakes
   tests-unit-api-openstack-compute-test-versions --> api-openstack-api-version-request
   tests-unit-api-openstack-compute-test-versions --> api-openstack-compute-views-init
   tests-unit-api-openstack-compute-test-versions --> api-wsgi
+  tests-unit-api-openstack-compute-test-versions --> test
   tests-unit-api-openstack-compute-test-versions --> tests-unit-api-openstack-fakes
   tests-unit-api-openstack-compute-test-versions --> tests-unit-matchers
   tests-unit-api-openstack-compute-test-volume-attachments --> api-openstack-api-version-request
@@ -6478,9 +7092,11 @@ graph LR
   tests-unit-api-openstack-compute-test-volume-attachments --> api-openstack-compute-volume-attachments
   tests-unit-api-openstack-compute-test-volume-attachments --> compute-api
   tests-unit-api-openstack-compute-test-volume-attachments --> compute-vm-states
+  tests-unit-api-openstack-compute-test-volume-attachments --> context
   tests-unit-api-openstack-compute-test-volume-attachments --> exception
   tests-unit-api-openstack-compute-test-volume-attachments --> objects-block-device
   tests-unit-api-openstack-compute-test-volume-attachments --> objects-init
+  tests-unit-api-openstack-compute-test-volume-attachments --> test
   tests-unit-api-openstack-compute-test-volume-attachments --> tests-unit-api-openstack-fakes
   tests-unit-api-openstack-compute-test-volume-attachments --> tests-unit-fake-block-device
   tests-unit-api-openstack-compute-test-volume-attachments --> tests-unit-fake-instance
@@ -6489,10 +7105,12 @@ graph LR
   tests-unit-api-openstack-compute-test-volumes --> compute-flavors
   tests-unit-api-openstack-compute-test-volumes --> conf-init
   tests-unit-api-openstack-compute-test-volumes --> exception
+  tests-unit-api-openstack-compute-test-volumes --> test
   tests-unit-api-openstack-compute-test-volumes --> tests-unit-api-openstack-fakes
   tests-unit-api-openstack-compute-test-volumes --> volume-cinder
   tests-unit-api-openstack-compute-test-volumes-boot --> api-openstack-compute-volumes-boot
   tests-unit-api-openstack-compute-test-volumes-boot --> exception
+  tests-unit-api-openstack-compute-test-volumes-boot --> test
   tests-unit-api-openstack-compute-test-volumes-boot --> tests-unit-api-openstack-fakes
   tests-unit-api-openstack-fakes --> api-auth
   tests-unit-api-openstack-fakes --> api-openstack-api-version-request
@@ -6505,84 +7123,116 @@ graph LR
   tests-unit-api-openstack-fakes --> compute-flavors
   tests-unit-api-openstack-fakes --> compute-vm-states
   tests-unit-api-openstack-fakes --> conf-init
+  tests-unit-api-openstack-fakes --> context
   tests-unit-api-openstack-fakes --> db-main-models
   tests-unit-api-openstack-fakes --> exception
   tests-unit-api-openstack-fakes --> objects-base
   tests-unit-api-openstack-fakes --> objects-init
+  tests-unit-api-openstack-fakes --> quota
   tests-unit-api-openstack-fakes --> tests-unit-fake-block-device
   tests-unit-api-openstack-fakes --> tests-unit-objects-test-keypair
   tests-unit-api-openstack-fakes --> utils
   tests-unit-api-openstack-test-api-version-request --> api-openstack-api-version-request
   tests-unit-api-openstack-test-api-version-request --> exception
+  tests-unit-api-openstack-test-api-version-request --> test
   tests-unit-api-openstack-test-api-version-request --> tests-unit-api-openstack-fakes
   tests-unit-api-openstack-test-common --> api-openstack-common
   tests-unit-api-openstack-test-common --> compute-task-states
   tests-unit-api-openstack-test-common --> compute-vm-states
   tests-unit-api-openstack-test-common --> exception
+  tests-unit-api-openstack-test-common --> test
   tests-unit-api-openstack-test-common --> tests-unit-api-openstack-fakes
   tests-unit-api-openstack-test-faults --> api-openstack-init
   tests-unit-api-openstack-test-faults --> api-openstack-wsgi
   tests-unit-api-openstack-test-faults --> exception
+  tests-unit-api-openstack-test-faults --> test
   tests-unit-api-openstack-test-legacy-v2-compatible-wrapper --> api-openstack-init
   tests-unit-api-openstack-test-legacy-v2-compatible-wrapper --> api-openstack-wsgi
   tests-unit-api-openstack-test-legacy-v2-compatible-wrapper --> api-validation-validators
+  tests-unit-api-openstack-test-legacy-v2-compatible-wrapper --> test
   tests-unit-api-openstack-test-mapper --> api-openstack-init
+  tests-unit-api-openstack-test-mapper --> test
   tests-unit-api-openstack-test-mapper --> tests-unit-api-openstack-fakes
   tests-unit-api-openstack-test-requestlog --> tests-fixtures-init
   tests-unit-api-openstack-test-wsgi --> api-openstack-api-version-request
   tests-unit-api-openstack-test-wsgi --> api-openstack-wsgi
   tests-unit-api-openstack-test-wsgi --> exception
+  tests-unit-api-openstack-test-wsgi --> test
   tests-unit-api-openstack-test-wsgi --> tests-unit-api-openstack-fakes
   tests-unit-api-openstack-test-wsgi --> tests-unit-matchers
   tests-unit-api-openstack-test-wsgi --> tests-unit-utils
   tests-unit-api-openstack-test-wsgi-app --> api-openstack-wsgi-app
   tests-unit-api-openstack-test-wsgi-app --> exception
+  tests-unit-api-openstack-test-wsgi-app --> test
   tests-unit-api-openstack-test-wsgi-app --> tests-fixtures-init
   tests-unit-api-test-auth --> api-auth
   tests-unit-api-test-auth --> conf-init
+  tests-unit-api-test-auth --> test
   tests-unit-api-test-compute-req-id --> api-compute-req-id
+  tests-unit-api-test-compute-req-id --> test
   tests-unit-api-test-wsgi --> api-wsgi
   tests-unit-api-test-wsgi --> exception
+  tests-unit-api-test-wsgi --> test
   tests-unit-api-test-wsgi-loader --> api-openstack-wsgi-app
+  tests-unit-api-test-wsgi-loader --> test
   tests-unit-api-test-wsgi-loader --> utils
   tests-unit-api-validation-extra-specs-test-validators --> api-validation-extra-specs-validators
   tests-unit-api-validation-extra-specs-test-validators --> exception
+  tests-unit-api-validation-extra-specs-test-validators --> test
   tests-unit-cmd-test-baseproxy --> cmd-baseproxy
+  tests-unit-cmd-test-baseproxy --> config
   tests-unit-cmd-test-baseproxy --> console-websocketproxy
+  tests-unit-cmd-test-baseproxy --> test
+  tests-unit-cmd-test-baseproxy --> version
   tests-unit-cmd-test-common --> cmd-common
   tests-unit-cmd-test-common --> exception
+  tests-unit-cmd-test-common --> test
   tests-unit-cmd-test-compute --> cmd-compute
+  tests-unit-cmd-test-compute --> config
+  tests-unit-cmd-test-compute --> context
   tests-unit-cmd-test-compute --> db-main-api
   tests-unit-cmd-test-compute --> exception
+  tests-unit-cmd-test-compute --> test
   tests-unit-cmd-test-manage --> cmd-manage
   tests-unit-cmd-test-manage --> conf-init
+  tests-unit-cmd-test-manage --> context
   tests-unit-cmd-test-manage --> db-main-api
   tests-unit-cmd-test-manage --> db-migration
   tests-unit-cmd-test-manage --> exception
   tests-unit-cmd-test-manage --> objects-fields
   tests-unit-cmd-test-manage --> objects-init
   tests-unit-cmd-test-manage --> scheduler-client-report
+  tests-unit-cmd-test-manage --> test
   tests-unit-cmd-test-manage --> tests-fixtures-init
   tests-unit-cmd-test-manage --> tests-unit-fake-requests
   tests-unit-cmd-test-policy --> cmd-policy
   tests-unit-cmd-test-policy --> conf-init
+  tests-unit-cmd-test-policy --> context
   tests-unit-cmd-test-policy --> db-main-api
   tests-unit-cmd-test-policy --> exception
   tests-unit-cmd-test-policy --> policies-base
   tests-unit-cmd-test-policy --> policies-instance-actions
+  tests-unit-cmd-test-policy --> test
   tests-unit-cmd-test-policy --> tests-fixtures-init
   tests-unit-cmd-test-policy --> tests-unit-fake-instance
   tests-unit-cmd-test-scheduler --> cmd-scheduler
+  tests-unit-cmd-test-scheduler --> config
+  tests-unit-cmd-test-scheduler --> test
+  tests-unit-cmd-test-scheduler --> thread-pool-factory
   tests-unit-cmd-test-status --> cmd-status
   tests-unit-cmd-test-status --> conf-init
+  tests-unit-cmd-test-status --> context
   tests-unit-cmd-test-status --> exception
   tests-unit-cmd-test-status --> objects-init
   tests-unit-cmd-test-status --> objects-service
+  tests-unit-cmd-test-status --> test
   tests-unit-cmd-test-status --> tests-fixtures-init
   tests-unit-compute-fake-resource-tracker --> compute-resource-tracker
   tests-unit-compute-monitors-cpu-test-virt-driver --> compute-monitors-cpu-virt-driver
   tests-unit-compute-monitors-cpu-test-virt-driver --> objects-init
+  tests-unit-compute-monitors-cpu-test-virt-driver --> test
   tests-unit-compute-monitors-test-monitors --> compute-monitors-init
+  tests-unit-compute-monitors-test-monitors --> test
   tests-unit-compute-test-api --> compute-api
   tests-unit-compute-test-api --> compute-flavors
   tests-unit-compute-test-api --> compute-instance-actions
@@ -6593,6 +7243,7 @@ graph LR
   tests-unit-compute-test-api --> compute-vm-states
   tests-unit-compute-test-api --> conductor-init
   tests-unit-compute-test-api --> conf-init
+  tests-unit-compute-test-api --> context
   tests-unit-compute-test-api --> db-main-api
   tests-unit-compute-test-api --> exception
   tests-unit-compute-test-api --> image-glance
@@ -6608,6 +7259,7 @@ graph LR
   tests-unit-compute-test-api --> objects-quotas
   tests-unit-compute-test-api --> objects-security-group
   tests-unit-compute-test-api --> servicegroup-api
+  tests-unit-compute-test-api --> test
   tests-unit-compute-test-api --> tests-fixtures-init
   tests-unit-compute-test-api --> tests-unit-fake-block-device
   tests-unit-compute-test-api --> tests-unit-fake-build-request
@@ -6620,11 +7272,15 @@ graph LR
   tests-unit-compute-test-api --> utils
   tests-unit-compute-test-api --> volume-cinder
   tests-unit-compute-test-claims --> compute-claims
+  tests-unit-compute-test-claims --> context
   tests-unit-compute-test-claims --> exception
   tests-unit-compute-test-claims --> objects-init
   tests-unit-compute-test-claims --> pci-manager
+  tests-unit-compute-test-claims --> test
   tests-unit-compute-test-claims --> tests-unit-fake-instance
   tests-unit-compute-test-claims --> tests-unit-pci-fakes
+  tests-unit-compute-test-compute --> availability-zones
+  tests-unit-compute-test-compute --> block-device
   tests-unit-compute-test-compute --> compute-api
   tests-unit-compute-test-compute --> compute-flavors
   tests-unit-compute-test-compute --> compute-instance-actions
@@ -6636,6 +7292,7 @@ graph LR
   tests-unit-compute-test-compute --> compute-vm-states
   tests-unit-compute-test-compute --> conf-init
   tests-unit-compute-test-compute --> console-type
+  tests-unit-compute-test-compute --> context
   tests-unit-compute-test-compute --> db-main-api
   tests-unit-compute-test-compute --> exception
   tests-unit-compute-test-compute --> image-glance
@@ -6648,6 +7305,7 @@ graph LR
   tests-unit-compute-test-compute --> policies-base
   tests-unit-compute-test-compute --> policies-servers
   tests-unit-compute-test-compute --> scheduler-utils
+  tests-unit-compute-test-compute --> test
   tests-unit-compute-test-compute --> tests-fixtures-cyborg
   tests-unit-compute-test-compute --> tests-fixtures-init
   tests-unit-compute-test-compute --> tests-unit-compute-fake-resource-tracker
@@ -6663,6 +7321,7 @@ graph LR
   tests-unit-compute-test-compute --> tests-unit-objects-test-instance-numa
   tests-unit-compute-test-compute --> tests-unit-objects-test-migration
   tests-unit-compute-test-compute --> tests-unit-utils
+  tests-unit-compute-test-compute --> thread-pool-factory
   tests-unit-compute-test-compute --> utils
   tests-unit-compute-test-compute --> virt-block-device
   tests-unit-compute-test-compute --> virt-event
@@ -6679,6 +7338,7 @@ graph LR
   tests-unit-compute-test-compute-mgr --> compute-vm-states
   tests-unit-compute-test-compute-mgr --> conductor-api
   tests-unit-compute-test-compute-mgr --> conf-init
+  tests-unit-compute-test-compute-mgr --> context
   tests-unit-compute-test-compute-mgr --> db-main-api
   tests-unit-compute-test-compute-mgr --> exception
   tests-unit-compute-test-compute-mgr --> network-model
@@ -6693,6 +7353,7 @@ graph LR
   tests-unit-compute-test-compute-mgr --> objects-service
   tests-unit-compute-test-compute-mgr --> pci-request
   tests-unit-compute-test-compute-mgr --> scheduler-client-report
+  tests-unit-compute-test-compute-mgr --> test
   tests-unit-compute-test-compute-mgr --> tests-fixtures-init
   tests-unit-compute-test-compute-mgr --> tests-fixtures-manila
   tests-unit-compute-test-compute-mgr --> tests-unit-api-openstack-fakes
@@ -6704,6 +7365,7 @@ graph LR
   tests-unit-compute-test-compute-mgr --> tests-unit-fake-network-cache-model
   tests-unit-compute-test-compute-mgr --> tests-unit-objects-test-instance-fault
   tests-unit-compute-test-compute-mgr --> tests-unit-objects-test-instance-info-cache
+  tests-unit-compute-test-compute-mgr --> thread-pool-factory
   tests-unit-compute-test-compute-mgr --> utils
   tests-unit-compute-test-compute-mgr --> virt-block-device
   tests-unit-compute-test-compute-mgr --> virt-driver
@@ -6713,46 +7375,58 @@ graph LR
   tests-unit-compute-test-compute-mgr --> virt-node
   tests-unit-compute-test-compute-mgr --> volume-cinder
   tests-unit-compute-test-flavors --> compute-flavors
+  tests-unit-compute-test-flavors --> context
   tests-unit-compute-test-flavors --> db-constants
   tests-unit-compute-test-flavors --> exception
   tests-unit-compute-test-flavors --> objects-base
   tests-unit-compute-test-flavors --> objects-init
+  tests-unit-compute-test-flavors --> test
   tests-unit-compute-test-flavors --> virt-hardware
   tests-unit-compute-test-host-api --> api-openstack-compute-services
   tests-unit-compute-test-host-api --> compute-api
+  tests-unit-compute-test-host-api --> context
   tests-unit-compute-test-host-api --> exception
   tests-unit-compute-test-host-api --> objects-init
+  tests-unit-compute-test-host-api --> test
   tests-unit-compute-test-host-api --> tests-fixtures-init
   tests-unit-compute-test-host-api --> tests-unit-api-openstack-fakes
   tests-unit-compute-test-host-api --> tests-unit-objects-test-objects
   tests-unit-compute-test-host-api --> tests-unit-objects-test-service
   tests-unit-compute-test-instance-list --> compute-instance-list
   tests-unit-compute-test-instance-list --> compute-multi-cell-list
+  tests-unit-compute-test-instance-list --> context
   tests-unit-compute-test-instance-list --> exception
   tests-unit-compute-test-instance-list --> objects-init
+  tests-unit-compute-test-instance-list --> test
   tests-unit-compute-test-instance-list --> tests-fixtures-init
   tests-unit-compute-test-keypairs --> compute-api
+  tests-unit-compute-test-keypairs --> context
   tests-unit-compute-test-keypairs --> exception
   tests-unit-compute-test-keypairs --> limit-local
   tests-unit-compute-test-keypairs --> objects-keypair
+  tests-unit-compute-test-keypairs --> quota
   tests-unit-compute-test-keypairs --> tests-fixtures-init
   tests-unit-compute-test-keypairs --> tests-unit-compute-test-compute
   tests-unit-compute-test-keypairs --> tests-unit-fake-crypto
   tests-unit-compute-test-keypairs --> tests-unit-objects-test-keypair
   tests-unit-compute-test-keypairs --> tests-unit-utils
   tests-unit-compute-test-multi-cell-list --> compute-multi-cell-list
+  tests-unit-compute-test-multi-cell-list --> context
   tests-unit-compute-test-multi-cell-list --> exception
   tests-unit-compute-test-multi-cell-list --> objects-init
+  tests-unit-compute-test-multi-cell-list --> test
   tests-unit-compute-test-pci-placement-translator --> compute-pci-placement-translator
   tests-unit-compute-test-pci-placement-translator --> compute-provider-tree
   tests-unit-compute-test-pci-placement-translator --> exception
   tests-unit-compute-test-pci-placement-translator --> objects-fields
   tests-unit-compute-test-pci-placement-translator --> objects-pci-device
   tests-unit-compute-test-pci-placement-translator --> pci-devspec
+  tests-unit-compute-test-pci-placement-translator --> test
   tests-unit-compute-test-provider-config --> compute-provider-config
   tests-unit-compute-test-provider-config --> exception
   tests-unit-compute-test-provider-tree --> compute-provider-tree
   tests-unit-compute-test-provider-tree --> objects-init
+  tests-unit-compute-test-provider-tree --> test
   tests-unit-compute-test-resource-tracker --> compute-claims
   tests-unit-compute-test-resource-tracker --> compute-monitors-base
   tests-unit-compute-test-resource-tracker --> compute-power-state
@@ -6761,6 +7435,7 @@ graph LR
   tests-unit-compute-test-resource-tracker --> compute-task-states
   tests-unit-compute-test-resource-tracker --> compute-utils
   tests-unit-compute-test-resource-tracker --> compute-vm-states
+  tests-unit-compute-test-resource-tracker --> context
   tests-unit-compute-test-resource-tracker --> exception
   tests-unit-compute-test-resource-tracker --> objects-base
   tests-unit-compute-test-resource-tracker --> objects-fields
@@ -6768,6 +7443,7 @@ graph LR
   tests-unit-compute-test-resource-tracker --> objects-pci-device
   tests-unit-compute-test-resource-tracker --> pci-manager
   tests-unit-compute-test-resource-tracker --> scheduler-client-report
+  tests-unit-compute-test-resource-tracker --> test
   tests-unit-compute-test-resource-tracker --> tests-fixtures-init
   tests-unit-compute-test-resource-tracker --> tests-unit-fake-instance
   tests-unit-compute-test-resource-tracker --> tests-unit-objects-test-pci-device
@@ -6775,11 +7451,13 @@ graph LR
   tests-unit-compute-test-resource-tracker --> utils
   tests-unit-compute-test-resource-tracker --> virt-driver
   tests-unit-compute-test-rpcapi --> compute-rpcapi
+  tests-unit-compute-test-rpcapi --> context
   tests-unit-compute-test-rpcapi --> exception
   tests-unit-compute-test-rpcapi --> objects-block-device
   tests-unit-compute-test-rpcapi --> objects-init
   tests-unit-compute-test-rpcapi --> objects-migration
   tests-unit-compute-test-rpcapi --> objects-service
+  tests-unit-compute-test-rpcapi --> test
   tests-unit-compute-test-rpcapi --> tests-unit-fake-block-device
   tests-unit-compute-test-rpcapi --> tests-unit-fake-flavor
   tests-unit-compute-test-rpcapi --> tests-unit-fake-instance
@@ -6792,15 +7470,18 @@ graph LR
   tests-unit-compute-test-shelve --> compute-utils
   tests-unit-compute-test-shelve --> compute-vm-states
   tests-unit-compute-test-shelve --> conf-init
+  tests-unit-compute-test-shelve --> context
   tests-unit-compute-test-shelve --> db-main-api
   tests-unit-compute-test-shelve --> exception
   tests-unit-compute-test-shelve --> network-neutron
   tests-unit-compute-test-shelve --> objects-init
+  tests-unit-compute-test-shelve --> test
   tests-unit-compute-test-shelve --> tests-fixtures-init
   tests-unit-compute-test-shelve --> tests-unit-compute-test-compute
   tests-unit-compute-test-stats --> compute-stats
   tests-unit-compute-test-stats --> compute-task-states
   tests-unit-compute-test-stats --> compute-vm-states
+  tests-unit-compute-test-stats --> test
   tests-unit-compute-test-stats --> tests-unit-fake-instance
   tests-unit-compute-test-utils --> accelerator-cyborg
   tests-unit-compute-test-utils --> compute-manager
@@ -6809,6 +7490,7 @@ graph LR
   tests-unit-compute-test-utils --> compute-utils
   tests-unit-compute-test-utils --> compute-vm-states
   tests-unit-compute-test-utils --> conf-init
+  tests-unit-compute-test-utils --> context
   tests-unit-compute-test-utils --> exception
   tests-unit-compute-test-utils --> image-glance
   tests-unit-compute-test-utils --> network-model
@@ -6817,7 +7499,9 @@ graph LR
   tests-unit-compute-test-utils --> objects-block-device
   tests-unit-compute-test-utils --> objects-fields
   tests-unit-compute-test-utils --> objects-init
+  tests-unit-compute-test-utils --> rpc
   tests-unit-compute-test-utils --> scheduler-client-report
+  tests-unit-compute-test-utils --> test
   tests-unit-compute-test-utils --> tests-fixtures-init
   tests-unit-compute-test-utils --> tests-unit-fake-block-device
   tests-unit-compute-test-utils --> tests-unit-fake-crypto
@@ -6827,24 +7511,29 @@ graph LR
   tests-unit-compute-test-utils --> tests-unit-objects-test-flavor
   tests-unit-compute-test-utils --> volume-cinder
   tests-unit-compute-test-virtapi --> compute-manager
+  tests-unit-compute-test-virtapi --> context
   tests-unit-compute-test-virtapi --> exception
   tests-unit-compute-test-virtapi --> objects-init
   tests-unit-compute-test-virtapi --> scheduler-client-report
+  tests-unit-compute-test-virtapi --> test
   tests-unit-compute-test-virtapi --> virt-fake
   tests-unit-compute-test-virtapi --> virt-virtapi
   tests-unit-conductor-tasks-test-base --> conductor-tasks-base
+  tests-unit-conductor-tasks-test-base --> test
   tests-unit-conductor-tasks-test-cross-cell-migrate --> compute-instance-actions
   tests-unit-conductor-tasks-test-cross-cell-migrate --> compute-power-state
   tests-unit-conductor-tasks-test-cross-cell-migrate --> compute-task-states
   tests-unit-conductor-tasks-test-cross-cell-migrate --> compute-utils
   tests-unit-conductor-tasks-test-cross-cell-migrate --> compute-vm-states
   tests-unit-conductor-tasks-test-cross-cell-migrate --> conductor-tasks-cross-cell-migrate
+  tests-unit-conductor-tasks-test-cross-cell-migrate --> context
   tests-unit-conductor-tasks-test-cross-cell-migrate --> exception
   tests-unit-conductor-tasks-test-cross-cell-migrate --> network-model
   tests-unit-conductor-tasks-test-cross-cell-migrate --> objects-base
   tests-unit-conductor-tasks-test-cross-cell-migrate --> objects-fields
   tests-unit-conductor-tasks-test-cross-cell-migrate --> objects-init
   tests-unit-conductor-tasks-test-cross-cell-migrate --> objects-instance
+  tests-unit-conductor-tasks-test-cross-cell-migrate --> test
   tests-unit-conductor-tasks-test-cross-cell-migrate --> tests-unit-db-main-test-api
   tests-unit-conductor-tasks-test-cross-cell-migrate --> tests-unit-fake-block-device
   tests-unit-conductor-tasks-test-cross-cell-migrate --> tests-unit-fake-instance
@@ -6861,24 +7550,29 @@ graph LR
   tests-unit-conductor-tasks-test-live-migrate --> compute-rpcapi
   tests-unit-conductor-tasks-test-live-migrate --> compute-vm-states
   tests-unit-conductor-tasks-test-live-migrate --> conductor-tasks-live-migrate
+  tests-unit-conductor-tasks-test-live-migrate --> context
   tests-unit-conductor-tasks-test-live-migrate --> exception
   tests-unit-conductor-tasks-test-live-migrate --> objects-init
   tests-unit-conductor-tasks-test-live-migrate --> scheduler-client-query
   tests-unit-conductor-tasks-test-live-migrate --> scheduler-client-report
   tests-unit-conductor-tasks-test-live-migrate --> scheduler-utils
   tests-unit-conductor-tasks-test-live-migrate --> servicegroup-init
+  tests-unit-conductor-tasks-test-live-migrate --> test
   tests-unit-conductor-tasks-test-live-migrate --> tests-unit-fake-instance
   tests-unit-conductor-tasks-test-migrate --> compute-rpcapi
   tests-unit-conductor-tasks-test-migrate --> conductor-tasks-migrate
+  tests-unit-conductor-tasks-test-migrate --> context
   tests-unit-conductor-tasks-test-migrate --> exception
   tests-unit-conductor-tasks-test-migrate --> objects-init
   tests-unit-conductor-tasks-test-migrate --> scheduler-client-query
   tests-unit-conductor-tasks-test-migrate --> scheduler-client-report
   tests-unit-conductor-tasks-test-migrate --> scheduler-utils
+  tests-unit-conductor-tasks-test-migrate --> test
   tests-unit-conductor-tasks-test-migrate --> tests-unit-conductor-test-conductor
   tests-unit-conductor-tasks-test-migrate --> tests-unit-fake-flavor
   tests-unit-conductor-tasks-test-migrate --> tests-unit-fake-instance
   tests-unit-conductor-test-conductor --> accelerator-cyborg
+  tests-unit-conductor-test-conductor --> block-device
   tests-unit-conductor-test-conductor --> compute-flavors
   tests-unit-conductor-test-conductor --> compute-rpcapi
   tests-unit-conductor-test-conductor --> compute-task-states
@@ -6890,6 +7584,7 @@ graph LR
   tests-unit-conductor-test-conductor --> conductor-tasks-live-migrate
   tests-unit-conductor-test-conductor --> conductor-tasks-migrate
   tests-unit-conductor-test-conductor --> conf-init
+  tests-unit-conductor-test-conductor --> context
   tests-unit-conductor-test-conductor --> db-api-api
   tests-unit-conductor-test-conductor --> db-api-models
   tests-unit-conductor-test-conductor --> db-main-api
@@ -6904,6 +7599,7 @@ graph LR
   tests-unit-conductor-test-conductor --> scheduler-client-query
   tests-unit-conductor-test-conductor --> scheduler-client-report
   tests-unit-conductor-test-conductor --> scheduler-utils
+  tests-unit-conductor-test-conductor --> test
   tests-unit-conductor-test-conductor --> tests-fixtures-cyborg
   tests-unit-conductor-test-conductor --> tests-fixtures-init
   tests-unit-conductor-test-conductor --> tests-unit-api-openstack-fakes
@@ -6919,59 +7615,81 @@ graph LR
   tests-unit-conductor-test-conductor --> volume-cinder
   tests-unit-conf-test-base --> conf-base
   tests-unit-conf-test-base --> conf-init
+  tests-unit-conf-test-base --> test
   tests-unit-conf-test-devices --> conf-init
+  tests-unit-conf-test-devices --> test
   tests-unit-conf-test-neutron --> conf-init
+  tests-unit-conf-test-neutron --> test
   tests-unit-console-rfb-test-auth --> console-rfb-auth
   tests-unit-console-rfb-test-auth --> console-rfb-authnone
   tests-unit-console-rfb-test-auth --> console-rfb-auths
   tests-unit-console-rfb-test-auth --> exception
+  tests-unit-console-rfb-test-auth --> test
   tests-unit-console-rfb-test-authnone --> console-rfb-auth
   tests-unit-console-rfb-test-authnone --> console-rfb-authnone
+  tests-unit-console-rfb-test-authnone --> test
   tests-unit-console-rfb-test-authvencrypt --> console-rfb-auth
   tests-unit-console-rfb-test-authvencrypt --> console-rfb-authvencrypt
   tests-unit-console-rfb-test-authvencrypt --> exception
+  tests-unit-console-rfb-test-authvencrypt --> test
   tests-unit-console-securityproxy-test-rfb --> console-rfb-auth
   tests-unit-console-securityproxy-test-rfb --> console-rfb-authnone
   tests-unit-console-securityproxy-test-rfb --> console-securityproxy-rfb
   tests-unit-console-securityproxy-test-rfb --> exception
+  tests-unit-console-securityproxy-test-rfb --> test
   tests-unit-console-test-serial --> console-serial
   tests-unit-console-test-serial --> exception
+  tests-unit-console-test-serial --> test
   tests-unit-console-test-type --> console-type
+  tests-unit-console-test-type --> test
   tests-unit-console-test-websocketproxy --> conf-init
   tests-unit-console-test-websocketproxy --> console-securityproxy-base
   tests-unit-console-test-websocketproxy --> console-websocketproxy
+  tests-unit-console-test-websocketproxy --> context
   tests-unit-console-test-websocketproxy --> exception
   tests-unit-console-test-websocketproxy --> objects-init
+  tests-unit-console-test-websocketproxy --> test
   tests-unit-console-test-websocketproxy --> tests-unit-fake-console-auth-token
   tests-unit-console-test-websocketproxy --> utils
   tests-unit-db-api-test-api --> db-api-api
+  tests-unit-db-api-test-api --> test
   tests-unit-db-api-test-migrations --> db-api-models
   tests-unit-db-api-test-migrations --> db-migration
+  tests-unit-db-api-test-migrations --> test
+  tests-unit-db-main-test-api --> block-device
   tests-unit-db-main-test-api --> compute-rpcapi
   tests-unit-db-main-test-api --> compute-task-states
   tests-unit-db-main-test-api --> compute-vm-states
   tests-unit-db-main-test-api --> conf-init
+  tests-unit-db-main-test-api --> context
   tests-unit-db-main-test-api --> db-main-api
   tests-unit-db-main-test-api --> db-main-models
   tests-unit-db-main-test-api --> db-types
   tests-unit-db-main-test-api --> db-utils
   tests-unit-db-main-test-api --> exception
   tests-unit-db-main-test-api --> objects-fields
+  tests-unit-db-main-test-api --> test
   tests-unit-db-main-test-api --> tests-fixtures-init
   tests-unit-db-main-test-api --> tests-unit-fake-console-auth-token
   tests-unit-db-main-test-api --> utils
   tests-unit-db-main-test-migrations --> db-main-models
   tests-unit-db-main-test-migrations --> db-migration
+  tests-unit-db-main-test-migrations --> test
   tests-unit-db-main-test-migrations --> tests-fixtures-init
   tests-unit-db-test-migration --> db-api-api
   tests-unit-db-test-migration --> db-main-api
   tests-unit-db-test-migration --> db-migration
   tests-unit-db-test-migration --> exception
+  tests-unit-db-test-migration --> test
   tests-unit-db-test-models --> db-api-models
   tests-unit-db-test-models --> db-main-models
+  tests-unit-db-test-models --> test
   tests-unit-db-test-utils --> db-utils
   tests-unit-db-test-utils --> exception
+  tests-unit-db-test-utils --> test
+  tests-unit-fake-block-device --> block-device
   tests-unit-fake-block-device --> objects-init
+  tests-unit-fake-build-request --> context
   tests-unit-fake-build-request --> objects-fields
   tests-unit-fake-build-request --> objects-init
   tests-unit-fake-build-request --> tests-unit-fake-block-device
@@ -6985,6 +7703,7 @@ graph LR
   tests-unit-fake-instance --> objects-init
   tests-unit-fake-loadables-fake-loadable1 --> tests-unit-fake-loadables-init
   tests-unit-fake-loadables-fake-loadable2 --> tests-unit-fake-loadables-init
+  tests-unit-fake-loadables-init --> loadables
   tests-unit-fake-network --> compute-manager
   tests-unit-fake-network --> db-main-api
   tests-unit-fake-network --> network-model
@@ -6995,40 +7714,57 @@ graph LR
   tests-unit-fake-network-cache-model --> network-model
   tests-unit-fake-pci-device-pools --> objects-pci-device-pool
   tests-unit-fake-processutils --> utils
+  tests-unit-fake-request-spec --> context
   tests-unit-fake-request-spec --> objects-init
   tests-unit-fake-request-spec --> tests-unit-fake-flavor
   tests-unit-fake-volume --> conf-init
   tests-unit-fake-volume --> exception
   tests-unit-fixtures-test-libvirt --> objects-fields
+  tests-unit-fixtures-test-libvirt --> test
   tests-unit-fixtures-test-libvirt --> tests-fixtures-libvirt
   tests-unit-fixtures-test-libvirt --> virt-libvirt-config
+  tests-unit-fixtures-test-notifications --> context
+  tests-unit-fixtures-test-notifications --> exception-wrapper
+  tests-unit-fixtures-test-notifications --> test
   tests-unit-fixtures-test-notifications --> tests-fixtures-init
   tests-unit-image-fake --> conf-init
   tests-unit-image-fake --> objects-init
   tests-unit-image-test-glance --> conf-init
+  tests-unit-image-test-glance --> context
   tests-unit-image-test-glance --> exception
   tests-unit-image-test-glance --> image-glance
   tests-unit-image-test-glance --> objects-init
   tests-unit-image-test-glance --> service-auth
   tests-unit-image-test-glance --> storage-rbd-utils
+  tests-unit-image-test-glance --> test
+  tests-unit-init --> monkey-patch
   tests-unit-init --> objects-init
   tests-unit-keymgr-test-conf-key-mgr --> conf-init
+  tests-unit-keymgr-test-conf-key-mgr --> context
   tests-unit-keymgr-test-conf-key-mgr --> exception
   tests-unit-keymgr-test-conf-key-mgr --> keymgr-conf-key-mgr
+  tests-unit-keymgr-test-conf-key-mgr --> test
+  tests-unit-limit-test-local --> context
   tests-unit-limit-test-local --> exception
   tests-unit-limit-test-local --> limit-local
   tests-unit-limit-test-local --> limit-utils
   tests-unit-limit-test-local --> objects-init
+  tests-unit-limit-test-local --> test
   tests-unit-limit-test-local --> tests-fixtures-init
+  tests-unit-limit-test-placement --> context
   tests-unit-limit-test-placement --> exception
   tests-unit-limit-test-placement --> limit-placement
   tests-unit-limit-test-placement --> limit-utils
   tests-unit-limit-test-placement --> objects-init
+  tests-unit-limit-test-placement --> quota
   tests-unit-limit-test-placement --> scheduler-client-report
+  tests-unit-limit-test-placement --> test
   tests-unit-network-test-network-info --> exception
   tests-unit-network-test-network-info --> network-model
+  tests-unit-network-test-network-info --> test
   tests-unit-network-test-network-info --> tests-unit-fake-network-cache-model
   tests-unit-network-test-network-info --> virt-netutils
+  tests-unit-network-test-neutron --> context
   tests-unit-network-test-neutron --> db-main-api
   tests-unit-network-test-neutron --> exception
   tests-unit-network-test-neutron --> network-constants
@@ -7041,46 +7777,64 @@ graph LR
   tests-unit-network-test-neutron --> pci-request
   tests-unit-network-test-neutron --> pci-utils
   tests-unit-network-test-neutron --> pci-whitelist
+  tests-unit-network-test-neutron --> policy
   tests-unit-network-test-neutron --> service-auth
+  tests-unit-network-test-neutron --> test
   tests-unit-network-test-neutron --> tests-unit-fake-instance
   tests-unit-network-test-os-vif-util --> exception
   tests-unit-network-test-os-vif-util --> network-model
   tests-unit-network-test-os-vif-util --> network-os-vif-util
   tests-unit-network-test-os-vif-util --> objects-init
+  tests-unit-network-test-os-vif-util --> test
+  tests-unit-network-test-security-group --> context
   tests-unit-network-test-security-group --> exception
   tests-unit-network-test-security-group --> network-security-group-api
   tests-unit-network-test-security-group --> objects-init
+  tests-unit-network-test-security-group --> test
   tests-unit-notifications-objects-test-exception --> notifications-objects-exception
+  tests-unit-notifications-objects-test-exception --> test
+  tests-unit-notifications-objects-test-flavor --> context
   tests-unit-notifications-objects-test-flavor --> notifications-objects-flavor
   tests-unit-notifications-objects-test-flavor --> objects-fields
   tests-unit-notifications-objects-test-flavor --> objects-init
+  tests-unit-notifications-objects-test-flavor --> test
   tests-unit-notifications-objects-test-flavor --> tests-unit-objects-test-flavor
+  tests-unit-notifications-objects-test-instance --> context
   tests-unit-notifications-objects-test-instance --> network-model
   tests-unit-notifications-objects-test-instance --> notifications-base
   tests-unit-notifications-objects-test-instance --> notifications-objects-instance
   tests-unit-notifications-objects-test-instance --> objects-init
+  tests-unit-notifications-objects-test-instance --> test
   tests-unit-notifications-objects-test-instance --> tests-unit-fake-instance
   tests-unit-notifications-objects-test-notification --> exception
   tests-unit-notifications-objects-test-notification --> notifications-objects-base
   tests-unit-notifications-objects-test-notification --> objects-base
   tests-unit-notifications-objects-test-notification --> objects-fields
   tests-unit-notifications-objects-test-notification --> objects-init
+  tests-unit-notifications-objects-test-notification --> test
   tests-unit-notifications-objects-test-notification --> tests-unit-objects-test-objects
+  tests-unit-notifications-objects-test-service --> context
   tests-unit-notifications-objects-test-service --> notifications-objects-service
   tests-unit-notifications-objects-test-service --> objects-fields
   tests-unit-notifications-objects-test-service --> objects-init
+  tests-unit-notifications-objects-test-service --> test
   tests-unit-notifications-objects-test-service --> tests-unit-objects-test-service
+  tests-unit-notifications-test-base --> context
   tests-unit-notifications-test-base --> notifications-base
+  tests-unit-notifications-test-base --> test
   tests-unit-notifications-test-base --> tests-unit-fake-instance
   tests-unit-notifications-test-base --> utils
   tests-unit-objects-test-aggregate --> exception
   tests-unit-objects-test-aggregate --> objects-aggregate
+  tests-unit-objects-test-aggregate --> test
   tests-unit-objects-test-aggregate --> tests-unit-objects-test-objects
+  tests-unit-objects-test-block-device --> context
   tests-unit-objects-test-block-device --> db-main-api
   tests-unit-objects-test-block-device --> db-main-models
   tests-unit-objects-test-block-device --> exception
   tests-unit-objects-test-block-device --> objects-block-device
   tests-unit-objects-test-block-device --> objects-init
+  tests-unit-objects-test-block-device --> test
   tests-unit-objects-test-block-device --> tests-unit-fake-block-device
   tests-unit-objects-test-block-device --> tests-unit-fake-instance
   tests-unit-objects-test-block-device --> tests-unit-objects-test-objects
@@ -7110,6 +7864,7 @@ graph LR
   tests-unit-objects-test-console-auth-token --> tests-unit-fake-console-auth-token
   tests-unit-objects-test-console-auth-token --> tests-unit-objects-test-objects
   tests-unit-objects-test-diagnostics --> objects-diagnostics
+  tests-unit-objects-test-diagnostics --> test
   tests-unit-objects-test-ec2 --> db-main-api
   tests-unit-objects-test-ec2 --> objects-ec2
   tests-unit-objects-test-ec2 --> objects-init
@@ -7119,18 +7874,23 @@ graph LR
   tests-unit-objects-test-fields --> exception
   tests-unit-objects-test-fields --> network-model
   tests-unit-objects-test-fields --> objects-fields
+  tests-unit-objects-test-fields --> test
   tests-unit-objects-test-fields --> tests-unit-fake-instance
   tests-unit-objects-test-fields --> utils
+  tests-unit-objects-test-flavor --> context
   tests-unit-objects-test-flavor --> db-api-api
   tests-unit-objects-test-flavor --> db-api-models
   tests-unit-objects-test-flavor --> exception
   tests-unit-objects-test-flavor --> objects-fields
   tests-unit-objects-test-flavor --> objects-flavor
   tests-unit-objects-test-flavor --> objects-init
+  tests-unit-objects-test-flavor --> test
   tests-unit-objects-test-flavor --> tests-unit-objects-test-objects
+  tests-unit-objects-test-host-mapping --> context
   tests-unit-objects-test-host-mapping --> exception
   tests-unit-objects-test-host-mapping --> objects-host-mapping
   tests-unit-objects-test-host-mapping --> objects-init
+  tests-unit-objects-test-host-mapping --> test
   tests-unit-objects-test-host-mapping --> tests-unit-objects-test-cell-mapping
   tests-unit-objects-test-host-mapping --> tests-unit-objects-test-objects
   tests-unit-objects-test-hv-spec --> objects-fields
@@ -7140,8 +7900,10 @@ graph LR
   tests-unit-objects-test-image-meta --> network-model
   tests-unit-objects-test-image-meta --> objects-fields
   tests-unit-objects-test-image-meta --> objects-init
+  tests-unit-objects-test-image-meta --> test
   tests-unit-objects-test-instance --> compute-task-states
   tests-unit-objects-test-instance --> compute-vm-states
+  tests-unit-objects-test-instance --> context
   tests-unit-objects-test-instance --> db-main-api
   tests-unit-objects-test-instance --> db-main-models
   tests-unit-objects-test-instance --> exception
@@ -7152,6 +7914,7 @@ graph LR
   tests-unit-objects-test-instance --> objects-instance
   tests-unit-objects-test-instance --> objects-instance-info-cache
   tests-unit-objects-test-instance --> objects-pci-device
+  tests-unit-objects-test-instance --> test
   tests-unit-objects-test-instance --> tests-unit-fake-instance
   tests-unit-objects-test-instance --> tests-unit-objects-test-instance-device-metadata
   tests-unit-objects-test-instance --> tests-unit-objects-test-instance-fault
@@ -7166,6 +7929,7 @@ graph LR
   tests-unit-objects-test-instance-action --> exception
   tests-unit-objects-test-instance-action --> objects-init
   tests-unit-objects-test-instance-action --> objects-instance-action
+  tests-unit-objects-test-instance-action --> test
   tests-unit-objects-test-instance-action --> tests-unit-objects-test-objects
   tests-unit-objects-test-instance-device-metadata --> objects-init
   tests-unit-objects-test-instance-device-metadata --> tests-unit-objects-test-objects
@@ -7201,13 +7965,16 @@ graph LR
   tests-unit-objects-test-migrate-data --> network-model
   tests-unit-objects-test-migrate-data --> objects-init
   tests-unit-objects-test-migrate-data --> objects-migrate-data
+  tests-unit-objects-test-migrate-data --> test
   tests-unit-objects-test-migrate-data --> tests-unit-objects-test-objects
+  tests-unit-objects-test-migration --> context
   tests-unit-objects-test-migration --> db-main-api
   tests-unit-objects-test-migration --> exception
   tests-unit-objects-test-migration --> objects-init
   tests-unit-objects-test-migration --> objects-migration
   tests-unit-objects-test-migration --> tests-unit-fake-instance
   tests-unit-objects-test-migration --> tests-unit-objects-test-objects
+  tests-unit-objects-test-migration-context --> context
   tests-unit-objects-test-migration-context --> exception
   tests-unit-objects-test-migration-context --> objects-init
   tests-unit-objects-test-migration-context --> tests-unit-objects-test-instance-numa
@@ -7222,13 +7989,16 @@ graph LR
   tests-unit-objects-test-numa --> exception
   tests-unit-objects-test-numa --> objects-init
   tests-unit-objects-test-numa --> tests-unit-objects-test-objects
+  tests-unit-objects-test-objects --> context
   tests-unit-objects-test-objects --> exception
   tests-unit-objects-test-objects --> objects-base
   tests-unit-objects-test-objects --> objects-fields
   tests-unit-objects-test-objects --> objects-init
   tests-unit-objects-test-objects --> objects-virt-device-metadata
+  tests-unit-objects-test-objects --> test
   tests-unit-objects-test-objects --> tests-fixtures-init
   tests-unit-objects-test-objects --> utils
+  tests-unit-objects-test-pci-device --> context
   tests-unit-objects-test-pci-device --> db-main-api
   tests-unit-objects-test-pci-device --> db-main-models
   tests-unit-objects-test-pci-device --> exception
@@ -7236,21 +8006,28 @@ graph LR
   tests-unit-objects-test-pci-device --> objects-init
   tests-unit-objects-test-pci-device --> objects-instance
   tests-unit-objects-test-pci-device --> objects-pci-device
+  tests-unit-objects-test-pci-device --> test
   tests-unit-objects-test-pci-device --> tests-unit-objects-test-objects
   tests-unit-objects-test-pci-device-pool --> objects-init
   tests-unit-objects-test-pci-device-pool --> objects-pci-device-pool
+  tests-unit-objects-test-pci-device-pool --> test
   tests-unit-objects-test-pci-device-pool --> tests-unit-fake-pci-device-pools
   tests-unit-objects-test-pci-device-pool --> tests-unit-objects-test-objects
+  tests-unit-objects-test-quotas --> context
   tests-unit-objects-test-quotas --> db-main-api
   tests-unit-objects-test-quotas --> exception
   tests-unit-objects-test-quotas --> objects-quotas
+  tests-unit-objects-test-quotas --> quota
+  tests-unit-objects-test-quotas --> test
   tests-unit-objects-test-quotas --> tests-unit-fake-instance
   tests-unit-objects-test-quotas --> tests-unit-objects-test-objects
+  tests-unit-objects-test-request-spec --> context
   tests-unit-objects-test-request-spec --> exception
   tests-unit-objects-test-request-spec --> network-model
   tests-unit-objects-test-request-spec --> objects-base
   tests-unit-objects-test-request-spec --> objects-init
   tests-unit-objects-test-request-spec --> objects-request-spec
+  tests-unit-objects-test-request-spec --> test
   tests-unit-objects-test-request-spec --> tests-unit-api-openstack-fakes
   tests-unit-objects-test-request-spec --> tests-unit-fake-flavor
   tests-unit-objects-test-request-spec --> tests-unit-fake-instance
@@ -7269,11 +8046,13 @@ graph LR
   tests-unit-objects-test-selection --> scheduler-host-manager
   tests-unit-objects-test-selection --> tests-unit-objects-test-objects
   tests-unit-objects-test-service --> compute-manager
+  tests-unit-objects-test-service --> context
   tests-unit-objects-test-service --> db-main-api
   tests-unit-objects-test-service --> exception
   tests-unit-objects-test-service --> objects-aggregate
   tests-unit-objects-test-service --> objects-init
   tests-unit-objects-test-service --> objects-service
+  tests-unit-objects-test-service --> test
   tests-unit-objects-test-service --> tests-fixtures-init
   tests-unit-objects-test-service --> tests-unit-objects-test-compute-node
   tests-unit-objects-test-service --> tests-unit-objects-test-objects
@@ -7306,17 +8085,22 @@ graph LR
   tests-unit-pci-test-devspec --> objects-init
   tests-unit-pci-test-devspec --> pci-devspec
   tests-unit-pci-test-devspec --> pci-request
+  tests-unit-pci-test-devspec --> test
   tests-unit-pci-test-manager --> compute-vm-states
+  tests-unit-pci-test-manager --> context
   tests-unit-pci-test-manager --> exception
   tests-unit-pci-test-manager --> objects-fields
   tests-unit-pci-test-manager --> objects-init
   tests-unit-pci-test-manager --> pci-manager
+  tests-unit-pci-test-manager --> test
   tests-unit-pci-test-manager --> tests-unit-pci-fakes
+  tests-unit-pci-test-request --> context
   tests-unit-pci-test-request --> exception
   tests-unit-pci-test-request --> network-model
   tests-unit-pci-test-request --> objects-fields
   tests-unit-pci-test-request --> objects-init
   tests-unit-pci-test-request --> pci-request
+  tests-unit-pci-test-request --> test
   tests-unit-pci-test-request --> tests-unit-api-openstack-fakes
   tests-unit-pci-test-stats --> exception
   tests-unit-pci-test-stats --> objects-fields
@@ -7324,12 +8108,17 @@ graph LR
   tests-unit-pci-test-stats --> pci-request
   tests-unit-pci-test-stats --> pci-stats
   tests-unit-pci-test-stats --> pci-whitelist
+  tests-unit-pci-test-stats --> test
   tests-unit-pci-test-stats --> tests-unit-pci-fakes
   tests-unit-pci-test-utils --> exception
   tests-unit-pci-test-utils --> pci-utils
+  tests-unit-pci-test-utils --> test
   tests-unit-pci-test-whitelist --> exception
   tests-unit-pci-test-whitelist --> pci-whitelist
+  tests-unit-pci-test-whitelist --> test
+  tests-unit-policies-base --> context
   tests-unit-policies-base --> exception
+  tests-unit-policies-base --> test
   tests-unit-policies-base --> tests-fixtures-init
   tests-unit-policies-test-admin-actions --> api-openstack-compute-admin-actions
   tests-unit-policies-test-admin-actions --> compute-vm-states
@@ -7444,6 +8233,7 @@ graph LR
   tests-unit-policies-test-instance-actions --> exception
   tests-unit-policies-test-instance-actions --> policies-base
   tests-unit-policies-test-instance-actions --> policies-instance-actions
+  tests-unit-policies-test-instance-actions --> policy
   tests-unit-policies-test-instance-actions --> tests-fixtures-init
   tests-unit-policies-test-instance-actions --> tests-unit-api-openstack-compute-test-instance-actions
   tests-unit-policies-test-instance-actions --> tests-unit-api-openstack-fakes
@@ -7465,6 +8255,7 @@ graph LR
   tests-unit-policies-test-limits --> conf-init
   tests-unit-policies-test-limits --> policies-base
   tests-unit-policies-test-limits --> policies-limits
+  tests-unit-policies-test-limits --> quota
   tests-unit-policies-test-limits --> tests-unit-api-openstack-fakes
   tests-unit-policies-test-limits --> tests-unit-policies-base
   tests-unit-policies-test-lock-server --> api-openstack-compute-lock-server
@@ -7587,6 +8378,7 @@ graph LR
   tests-unit-policies-test-server-password --> tests-unit-policies-base
   tests-unit-policies-test-server-tags --> api-openstack-compute-server-tags
   tests-unit-policies-test-server-tags --> compute-vm-states
+  tests-unit-policies-test-server-tags --> context
   tests-unit-policies-test-server-tags --> objects-init
   tests-unit-policies-test-server-tags --> policies-server-tags
   tests-unit-policies-test-server-tags --> tests-unit-api-openstack-fakes
@@ -7665,98 +8457,133 @@ graph LR
   tests-unit-policies-test-volumes --> tests-unit-api-openstack-fakes
   tests-unit-policies-test-volumes --> tests-unit-policies-base
   tests-unit-privsep-test-fs --> privsep-fs
+  tests-unit-privsep-test-fs --> test
   tests-unit-privsep-test-fs --> tests-fixtures-init
   tests-unit-privsep-test-idmapshift --> privsep-idmapshift
+  tests-unit-privsep-test-idmapshift --> test
   tests-unit-privsep-test-libvirt --> privsep-libvirt
+  tests-unit-privsep-test-libvirt --> test
   tests-unit-privsep-test-libvirt --> tests-fixtures-init
   tests-unit-privsep-test-linux-net --> privsep-linux-net
+  tests-unit-privsep-test-linux-net --> test
   tests-unit-privsep-test-linux-net --> tests-fixtures-init
   tests-unit-privsep-test-path --> exception
   tests-unit-privsep-test-path --> privsep-path
+  tests-unit-privsep-test-path --> test
   tests-unit-privsep-test-path --> tests-fixtures-init
   tests-unit-privsep-test-qemu --> privsep-qemu
+  tests-unit-privsep-test-qemu --> test
   tests-unit-privsep-test-qemu --> tests-fixtures-init
   tests-unit-privsep-test-utils --> privsep-utils
+  tests-unit-privsep-test-utils --> test
+  tests-unit-scheduler-client-test-query --> context
   tests-unit-scheduler-client-test-query --> objects-init
   tests-unit-scheduler-client-test-query --> scheduler-client-query
+  tests-unit-scheduler-client-test-query --> test
   tests-unit-scheduler-client-test-report --> conf-init
+  tests-unit-scheduler-client-test-report --> context
   tests-unit-scheduler-client-test-report --> exception
   tests-unit-scheduler-client-test-report --> objects-init
   tests-unit-scheduler-client-test-report --> scheduler-client-report
   tests-unit-scheduler-client-test-report --> scheduler-utils
+  tests-unit-scheduler-client-test-report --> test
   tests-unit-scheduler-client-test-report --> tests-fixtures-init
   tests-unit-scheduler-client-test-report --> tests-unit-fake-requests
   tests-unit-scheduler-fakes --> objects-init
   tests-unit-scheduler-fakes --> scheduler-host-manager
   tests-unit-scheduler-filters-test-affinity-filters --> objects-init
   tests-unit-scheduler-filters-test-affinity-filters --> scheduler-filters-affinity-filter
+  tests-unit-scheduler-filters-test-affinity-filters --> test
   tests-unit-scheduler-filters-test-affinity-filters --> tests-unit-scheduler-fakes
   tests-unit-scheduler-filters-test-aggregate-image-properties-isolation-filters --> objects-init
   tests-unit-scheduler-filters-test-aggregate-image-properties-isolation-filters --> scheduler-filters-aggregate-image-properties-isolation
+  tests-unit-scheduler-filters-test-aggregate-image-properties-isolation-filters --> test
   tests-unit-scheduler-filters-test-aggregate-image-properties-isolation-filters --> tests-unit-scheduler-fakes
   tests-unit-scheduler-filters-test-aggregate-instance-extra-specs-filters --> objects-init
   tests-unit-scheduler-filters-test-aggregate-instance-extra-specs-filters --> scheduler-filters-aggregate-instance-extra-specs
+  tests-unit-scheduler-filters-test-aggregate-instance-extra-specs-filters --> test
   tests-unit-scheduler-filters-test-aggregate-instance-extra-specs-filters --> tests-unit-scheduler-fakes
   tests-unit-scheduler-filters-test-aggregate-multitenancy-isolation-filters --> objects-init
   tests-unit-scheduler-filters-test-aggregate-multitenancy-isolation-filters --> scheduler-filters-aggregate-multitenancy-isolation
+  tests-unit-scheduler-filters-test-aggregate-multitenancy-isolation-filters --> test
   tests-unit-scheduler-filters-test-aggregate-multitenancy-isolation-filters --> tests-unit-scheduler-fakes
   tests-unit-scheduler-filters-test-compute-capabilities-filters --> objects-init
   tests-unit-scheduler-filters-test-compute-capabilities-filters --> scheduler-filters-compute-capabilities-filter
+  tests-unit-scheduler-filters-test-compute-capabilities-filters --> test
   tests-unit-scheduler-filters-test-compute-capabilities-filters --> tests-unit-scheduler-fakes
   tests-unit-scheduler-filters-test-compute-filters --> objects-init
   tests-unit-scheduler-filters-test-compute-filters --> scheduler-filters-compute-filter
+  tests-unit-scheduler-filters-test-compute-filters --> test
   tests-unit-scheduler-filters-test-compute-filters --> tests-unit-scheduler-fakes
   tests-unit-scheduler-filters-test-extra-specs-ops --> scheduler-filters-extra-specs-ops
+  tests-unit-scheduler-filters-test-extra-specs-ops --> test
   tests-unit-scheduler-filters-test-image-props-filters --> objects-fields
   tests-unit-scheduler-filters-test-image-props-filters --> objects-init
   tests-unit-scheduler-filters-test-image-props-filters --> scheduler-filters-image-props-filter
+  tests-unit-scheduler-filters-test-image-props-filters --> test
   tests-unit-scheduler-filters-test-image-props-filters --> tests-unit-scheduler-fakes
   tests-unit-scheduler-filters-test-io-ops-filters --> objects-init
   tests-unit-scheduler-filters-test-io-ops-filters --> scheduler-filters-io-ops-filter
+  tests-unit-scheduler-filters-test-io-ops-filters --> test
   tests-unit-scheduler-filters-test-io-ops-filters --> tests-unit-scheduler-fakes
   tests-unit-scheduler-filters-test-isolated-hosts-filter --> objects-init
   tests-unit-scheduler-filters-test-isolated-hosts-filter --> scheduler-filters-isolated-hosts-filter
+  tests-unit-scheduler-filters-test-isolated-hosts-filter --> test
   tests-unit-scheduler-filters-test-isolated-hosts-filter --> tests-unit-scheduler-fakes
   tests-unit-scheduler-filters-test-json-filters --> objects-init
   tests-unit-scheduler-filters-test-json-filters --> scheduler-filters-json-filter
+  tests-unit-scheduler-filters-test-json-filters --> test
   tests-unit-scheduler-filters-test-json-filters --> tests-unit-scheduler-fakes
   tests-unit-scheduler-filters-test-metrics-filters --> objects-init
   tests-unit-scheduler-filters-test-metrics-filters --> scheduler-filters-metrics-filter
+  tests-unit-scheduler-filters-test-metrics-filters --> test
   tests-unit-scheduler-filters-test-metrics-filters --> tests-unit-scheduler-fakes
   tests-unit-scheduler-filters-test-num-instances-filters --> objects-init
   tests-unit-scheduler-filters-test-num-instances-filters --> scheduler-filters-num-instances-filter
+  tests-unit-scheduler-filters-test-num-instances-filters --> test
   tests-unit-scheduler-filters-test-num-instances-filters --> tests-unit-scheduler-fakes
   tests-unit-scheduler-filters-test-numa-topology-filters --> objects-fields
   tests-unit-scheduler-filters-test-numa-topology-filters --> objects-init
   tests-unit-scheduler-filters-test-numa-topology-filters --> scheduler-filters-numa-topology-filter
+  tests-unit-scheduler-filters-test-numa-topology-filters --> test
   tests-unit-scheduler-filters-test-numa-topology-filters --> tests-unit-scheduler-fakes
   tests-unit-scheduler-filters-test-pci-passthrough-filters --> objects-init
   tests-unit-scheduler-filters-test-pci-passthrough-filters --> pci-stats
   tests-unit-scheduler-filters-test-pci-passthrough-filters --> scheduler-filters-pci-passthrough-filter
+  tests-unit-scheduler-filters-test-pci-passthrough-filters --> test
   tests-unit-scheduler-filters-test-pci-passthrough-filters --> tests-unit-scheduler-fakes
   tests-unit-scheduler-filters-test-type-filters --> objects-init
   tests-unit-scheduler-filters-test-type-filters --> scheduler-filters-type-filter
+  tests-unit-scheduler-filters-test-type-filters --> test
   tests-unit-scheduler-filters-test-type-filters --> tests-unit-scheduler-fakes
   tests-unit-scheduler-filters-test-utils --> objects-init
   tests-unit-scheduler-filters-test-utils --> scheduler-filters-utils
+  tests-unit-scheduler-filters-test-utils --> test
   tests-unit-scheduler-filters-test-utils --> tests-unit-scheduler-fakes
   tests-unit-scheduler-ironic-fakes --> objects-init
+  tests-unit-scheduler-test-filters --> filters
+  tests-unit-scheduler-test-filters --> loadables
   tests-unit-scheduler-test-filters --> objects-init
+  tests-unit-scheduler-test-filters --> test
   tests-unit-scheduler-test-host-filters --> scheduler-filters-all-hosts-filter
   tests-unit-scheduler-test-host-filters --> scheduler-filters-compute-filter
   tests-unit-scheduler-test-host-filters --> scheduler-filters-init
+  tests-unit-scheduler-test-host-filters --> test
   tests-unit-scheduler-test-host-filters --> tests-unit-scheduler-fakes
   tests-unit-scheduler-test-host-manager --> compute-task-states
   tests-unit-scheduler-test-host-manager --> compute-vm-states
+  tests-unit-scheduler-test-host-manager --> context
   tests-unit-scheduler-test-host-manager --> exception
   tests-unit-scheduler-test-host-manager --> objects-base
   tests-unit-scheduler-test-host-manager --> objects-init
   tests-unit-scheduler-test-host-manager --> pci-stats
   tests-unit-scheduler-test-host-manager --> scheduler-filters-init
   tests-unit-scheduler-test-host-manager --> scheduler-host-manager
+  tests-unit-scheduler-test-host-manager --> test
   tests-unit-scheduler-test-host-manager --> tests-fixtures-init
   tests-unit-scheduler-test-host-manager --> tests-unit-fake-instance
   tests-unit-scheduler-test-host-manager --> tests-unit-scheduler-fakes
+  tests-unit-scheduler-test-manager --> context
   tests-unit-scheduler-test-manager --> exception
   tests-unit-scheduler-test-manager --> objects-init
   tests-unit-scheduler-test-manager --> objects-service
@@ -7766,23 +8593,30 @@ graph LR
   tests-unit-scheduler-test-manager --> scheduler-utils
   tests-unit-scheduler-test-manager --> scheduler-weights-init
   tests-unit-scheduler-test-manager --> servicegroup-init
+  tests-unit-scheduler-test-manager --> test
   tests-unit-scheduler-test-manager --> tests-unit-fake-server-actions
   tests-unit-scheduler-test-manager --> tests-unit-scheduler-fakes
+  tests-unit-scheduler-test-request-filter --> context
   tests-unit-scheduler-test-request-filter --> exception
   tests-unit-scheduler-test-request-filter --> network-model
   tests-unit-scheduler-test-request-filter --> objects-init
   tests-unit-scheduler-test-request-filter --> scheduler-request-filter
+  tests-unit-scheduler-test-request-filter --> test
   tests-unit-scheduler-test-request-filter --> tests-unit-utils
   tests-unit-scheduler-test-rpcapi --> conf-init
+  tests-unit-scheduler-test-rpcapi --> context
   tests-unit-scheduler-test-rpcapi --> exception
   tests-unit-scheduler-test-rpcapi --> objects-init
   tests-unit-scheduler-test-rpcapi --> scheduler-rpcapi
+  tests-unit-scheduler-test-rpcapi --> test
   tests-unit-scheduler-test-utils --> compute-flavors
+  tests-unit-scheduler-test-utils --> context
   tests-unit-scheduler-test-utils --> exception
   tests-unit-scheduler-test-utils --> network-neutron
   tests-unit-scheduler-test-utils --> objects-init
   tests-unit-scheduler-test-utils --> scheduler-client-report
   tests-unit-scheduler-test-utils --> scheduler-utils
+  tests-unit-scheduler-test-utils --> test
   tests-unit-scheduler-test-utils --> tests-unit-fake-instance
   tests-unit-scheduler-test-utils --> tests-unit-objects-test-flavor
   tests-unit-scheduler-test-utils --> tests-unit-scheduler-fakes
@@ -7790,41 +8624,51 @@ graph LR
   tests-unit-scheduler-weights-test-cross-cell --> objects-init
   tests-unit-scheduler-weights-test-cross-cell --> scheduler-weights-cross-cell
   tests-unit-scheduler-weights-test-cross-cell --> scheduler-weights-init
+  tests-unit-scheduler-weights-test-cross-cell --> test
   tests-unit-scheduler-weights-test-cross-cell --> tests-unit-scheduler-fakes
   tests-unit-scheduler-weights-test-weights-affinity --> objects-init
   tests-unit-scheduler-weights-test-weights-affinity --> scheduler-weights-affinity
   tests-unit-scheduler-weights-test-weights-affinity --> scheduler-weights-init
+  tests-unit-scheduler-weights-test-weights-affinity --> test
   tests-unit-scheduler-weights-test-weights-affinity --> tests-unit-scheduler-fakes
   tests-unit-scheduler-weights-test-weights-compute --> objects-init
   tests-unit-scheduler-weights-test-weights-compute --> scheduler-weights-compute
   tests-unit-scheduler-weights-test-weights-compute --> scheduler-weights-init
+  tests-unit-scheduler-weights-test-weights-compute --> test
   tests-unit-scheduler-weights-test-weights-compute --> tests-unit-scheduler-fakes
   tests-unit-scheduler-weights-test-weights-cpu --> objects-init
   tests-unit-scheduler-weights-test-weights-cpu --> scheduler-weights-cpu
   tests-unit-scheduler-weights-test-weights-cpu --> scheduler-weights-init
+  tests-unit-scheduler-weights-test-weights-cpu --> test
   tests-unit-scheduler-weights-test-weights-cpu --> tests-unit-scheduler-fakes
   tests-unit-scheduler-weights-test-weights-disk --> objects-init
   tests-unit-scheduler-weights-test-weights-disk --> scheduler-weights-disk
   tests-unit-scheduler-weights-test-weights-disk --> scheduler-weights-init
+  tests-unit-scheduler-weights-test-weights-disk --> test
   tests-unit-scheduler-weights-test-weights-disk --> tests-unit-scheduler-fakes
   tests-unit-scheduler-weights-test-weights-hosts --> scheduler-weights-affinity
   tests-unit-scheduler-weights-test-weights-hosts --> scheduler-weights-init
   tests-unit-scheduler-weights-test-weights-hosts --> scheduler-weights-io-ops
   tests-unit-scheduler-weights-test-weights-hosts --> scheduler-weights-metrics
   tests-unit-scheduler-weights-test-weights-hosts --> scheduler-weights-ram
+  tests-unit-scheduler-weights-test-weights-hosts --> test
   tests-unit-scheduler-weights-test-weights-hosts --> tests-unit-matchers
   tests-unit-scheduler-weights-test-weights-hosts --> tests-unit-scheduler-fakes
   tests-unit-scheduler-weights-test-weights-hypervisor-version --> scheduler-weights-hypervisor-version
   tests-unit-scheduler-weights-test-weights-hypervisor-version --> scheduler-weights-init
+  tests-unit-scheduler-weights-test-weights-hypervisor-version --> test
   tests-unit-scheduler-weights-test-weights-hypervisor-version --> tests-unit-scheduler-fakes
+  tests-unit-scheduler-weights-test-weights-image-props --> context
   tests-unit-scheduler-weights-test-weights-image-props --> exception
   tests-unit-scheduler-weights-test-weights-image-props --> objects-init
   tests-unit-scheduler-weights-test-weights-image-props --> scheduler-weights-image-props
   tests-unit-scheduler-weights-test-weights-image-props --> scheduler-weights-init
+  tests-unit-scheduler-weights-test-weights-image-props --> test
   tests-unit-scheduler-weights-test-weights-image-props --> tests-unit-scheduler-fakes
   tests-unit-scheduler-weights-test-weights-ioopsweight --> objects-init
   tests-unit-scheduler-weights-test-weights-ioopsweight --> scheduler-weights-init
   tests-unit-scheduler-weights-test-weights-ioopsweight --> scheduler-weights-io-ops
+  tests-unit-scheduler-weights-test-weights-ioopsweight --> test
   tests-unit-scheduler-weights-test-weights-ioopsweight --> tests-unit-scheduler-fakes
   tests-unit-scheduler-weights-test-weights-metrics --> exception
   tests-unit-scheduler-weights-test-weights-metrics --> objects-fields
@@ -7832,67 +8676,106 @@ graph LR
   tests-unit-scheduler-weights-test-weights-metrics --> objects-monitor-metric
   tests-unit-scheduler-weights-test-weights-metrics --> scheduler-weights-init
   tests-unit-scheduler-weights-test-weights-metrics --> scheduler-weights-metrics
+  tests-unit-scheduler-weights-test-weights-metrics --> test
   tests-unit-scheduler-weights-test-weights-metrics --> tests-unit-scheduler-fakes
   tests-unit-scheduler-weights-test-weights-num-instances --> scheduler-weights-init
   tests-unit-scheduler-weights-test-weights-num-instances --> scheduler-weights-num-instances
+  tests-unit-scheduler-weights-test-weights-num-instances --> test
   tests-unit-scheduler-weights-test-weights-num-instances --> tests-unit-scheduler-fakes
   tests-unit-scheduler-weights-test-weights-pci --> objects-init
   tests-unit-scheduler-weights-test-weights-pci --> pci-stats
   tests-unit-scheduler-weights-test-weights-pci --> scheduler-weights-init
   tests-unit-scheduler-weights-test-weights-pci --> scheduler-weights-pci
+  tests-unit-scheduler-weights-test-weights-pci --> test
   tests-unit-scheduler-weights-test-weights-pci --> tests-unit-fake-pci-device-pools
   tests-unit-scheduler-weights-test-weights-pci --> tests-unit-scheduler-fakes
   tests-unit-scheduler-weights-test-weights-ram --> objects-init
   tests-unit-scheduler-weights-test-weights-ram --> scheduler-weights-init
   tests-unit-scheduler-weights-test-weights-ram --> scheduler-weights-ram
+  tests-unit-scheduler-weights-test-weights-ram --> test
   tests-unit-scheduler-weights-test-weights-ram --> tests-unit-scheduler-fakes
   tests-unit-servicegroup-test-api --> servicegroup-init
+  tests-unit-servicegroup-test-api --> test
   tests-unit-servicegroup-test-db-servicegroup --> exception
   tests-unit-servicegroup-test-db-servicegroup --> objects-init
   tests-unit-servicegroup-test-db-servicegroup --> servicegroup-init
+  tests-unit-servicegroup-test-db-servicegroup --> test
   tests-unit-servicegroup-test-mc-servicegroup --> servicegroup-init
+  tests-unit-servicegroup-test-mc-servicegroup --> test
   tests-unit-storage-test-rbd --> compute-task-states
   tests-unit-storage-test-rbd --> exception
   tests-unit-storage-test-rbd --> objects-init
   tests-unit-storage-test-rbd --> storage-rbd-utils
+  tests-unit-storage-test-rbd --> test
   tests-unit-storage-test-rbd --> utils
   tests-unit-test-api-validation --> api-openstack-api-version-request
   tests-unit-test-api-validation --> api-validation-init
   tests-unit-test-api-validation --> api-validation-parameter-types
   tests-unit-test-api-validation --> api-validation-validators
   tests-unit-test-api-validation --> exception
+  tests-unit-test-api-validation --> test
   tests-unit-test-api-validation --> tests-unit-api-openstack-fakes
+  tests-unit-test-availability-zones --> availability-zones
   tests-unit-test-availability-zones --> compute-api
   tests-unit-test-availability-zones --> conf-init
+  tests-unit-test-availability-zones --> context
   tests-unit-test-availability-zones --> db-main-api
   tests-unit-test-availability-zones --> objects-init
+  tests-unit-test-availability-zones --> test
+  tests-unit-test-baserpc --> baserpc
   tests-unit-test-baserpc --> compute-rpcapi
+  tests-unit-test-baserpc --> context
+  tests-unit-test-baserpc --> test
+  tests-unit-test-block-device --> block-device
   tests-unit-test-block-device --> compute-api
+  tests-unit-test-block-device --> context
   tests-unit-test-block-device --> exception
   tests-unit-test-block-device --> objects-init
+  tests-unit-test-block-device --> test
   tests-unit-test-block-device --> tests-unit-fake-block-device
   tests-unit-test-block-device --> tests-unit-matchers
   tests-unit-test-block-device --> volume-cinder
+  tests-unit-test-cache --> cache-utils
+  tests-unit-test-cache --> test
   tests-unit-test-cinder --> conf-init
+  tests-unit-test-cinder --> context
   tests-unit-test-cinder --> exception
   tests-unit-test-cinder --> service-auth
+  tests-unit-test-cinder --> test
   tests-unit-test-cinder --> volume-cinder
   tests-unit-test-conf --> conf-compute
+  tests-unit-test-conf --> config
+  tests-unit-test-conf --> test
+  tests-unit-test-configdrive2 --> context
+  tests-unit-test-configdrive2 --> test
   tests-unit-test-configdrive2 --> tests-unit-fake-instance
   tests-unit-test-configdrive2 --> utils
   tests-unit-test-configdrive2 --> virt-configdrive
+  tests-unit-test-context --> context
   tests-unit-test-context --> exception
   tests-unit-test-context --> objects-init
   tests-unit-test-context --> service-auth
+  tests-unit-test-context --> test
+  tests-unit-test-context --> thread-pool-factory
   tests-unit-test-context --> utils
+  tests-unit-test-crypto --> context
+  tests-unit-test-crypto --> crypto
   tests-unit-test-crypto --> exception
   tests-unit-test-crypto --> objects-init
+  tests-unit-test-crypto --> test
   tests-unit-test-crypto --> utils
   tests-unit-test-exception --> exception
+  tests-unit-test-exception --> test
+  tests-unit-test-exception-wrapper --> context
+  tests-unit-test-exception-wrapper --> exception-wrapper
+  tests-unit-test-exception-wrapper --> test
   tests-unit-test-exception-wrapper --> tests-fixtures-init
   tests-unit-test-filesystem --> exception
+  tests-unit-test-filesystem --> filesystem
+  tests-unit-test-filesystem --> test
   tests-unit-test-fixtures --> compute-rpcapi
   tests-unit-test-fixtures --> conductor-init
+  tests-unit-test-fixtures --> context
   tests-unit-test-fixtures --> db-api-api
   tests-unit-test-fixtures --> db-main-api
   tests-unit-test-fixtures --> exception
@@ -7900,18 +8783,28 @@ graph LR
   tests-unit-test-fixtures --> objects-base
   tests-unit-test-fixtures --> objects-init
   tests-unit-test-fixtures --> objects-service
+  tests-unit-test-fixtures --> test
   tests-unit-test-fixtures --> tests-fixtures-init
   tests-unit-test-fixtures --> tests-unit-fake-instance
+  tests-unit-test-fixtures --> thread-pool-factory
   tests-unit-test-fixtures --> utils
   tests-unit-test-hacking --> hacking-checks
+  tests-unit-test-hacking --> test
   tests-unit-test-identity --> api-openstack-identity
+  tests-unit-test-identity --> test
   tests-unit-test-identity --> tests-unit-fake-requests
+  tests-unit-test-json-ref --> test
   tests-unit-test-json-ref --> tests-json-ref
   tests-unit-test-loadables --> exception
+  tests-unit-test-loadables --> test
   tests-unit-test-loadables --> tests-unit-fake-loadables-init
+  tests-unit-test-manager --> manager
+  tests-unit-test-manager --> test
   tests-unit-test-manila --> conf-init
+  tests-unit-test-manila --> context
   tests-unit-test-manila --> exception
   tests-unit-test-manila --> share-manila
+  tests-unit-test-manila --> test
   tests-unit-test-manila --> tests-fixtures-manila
   tests-unit-test-manila --> tests-unit-api-openstack-fakes
   tests-unit-test-matchers --> tests-unit-matchers
@@ -7919,12 +8812,15 @@ graph LR
   tests-unit-test-metadata --> api-metadata-handler
   tests-unit-test-metadata --> api-metadata-password
   tests-unit-test-metadata --> api-metadata-vendordata-dynamic
+  tests-unit-test-metadata --> block-device
+  tests-unit-test-metadata --> context
   tests-unit-test-metadata --> exception
   tests-unit-test-metadata --> network-model
   tests-unit-test-metadata --> network-neutron
   tests-unit-test-metadata --> objects-init
   tests-unit-test-metadata --> objects-instance-numa
   tests-unit-test-metadata --> objects-virt-device-metadata
+  tests-unit-test-metadata --> test
   tests-unit-test-metadata --> tests-unit-api-openstack-fakes
   tests-unit-test-metadata --> tests-unit-fake-block-device
   tests-unit-test-metadata --> tests-unit-fake-network
@@ -7933,51 +8829,87 @@ graph LR
   tests-unit-test-metadata --> virt-netutils
   tests-unit-test-notifications --> compute-task-states
   tests-unit-test-notifications --> compute-vm-states
+  tests-unit-test-notifications --> context
   tests-unit-test-notifications --> exception
   tests-unit-test-notifications --> notifications-base
   tests-unit-test-notifications --> objects-base
   tests-unit-test-notifications --> objects-init
+  tests-unit-test-notifications --> test
   tests-unit-test-notifications --> tests-fixtures-init
   tests-unit-test-notifications --> tests-unit-fake-network
+  tests-unit-test-notifier --> rpc
+  tests-unit-test-notifier --> test
+  tests-unit-test-policy --> context
   tests-unit-test-policy --> exception
   tests-unit-test-policy --> policies-servers
+  tests-unit-test-policy --> policy
+  tests-unit-test-policy --> test
   tests-unit-test-policy --> tests-fixtures-init
   tests-unit-test-policy --> tests-unit-fake-policy
   tests-unit-test-policy --> utils
   tests-unit-test-profiler --> conf-init
+  tests-unit-test-profiler --> test
   tests-unit-test-quota --> compute-api
   tests-unit-test-quota --> conf-init
+  tests-unit-test-quota --> context
   tests-unit-test-quota --> db-main-models
   tests-unit-test-quota --> exception
   tests-unit-test-quota --> limit-local
   tests-unit-test-quota --> limit-placement
   tests-unit-test-quota --> objects-init
+  tests-unit-test-quota --> quota
+  tests-unit-test-quota --> test
   tests-unit-test-quota --> tests-fixtures-init
   tests-unit-test-rpc --> conf-init
+  tests-unit-test-rpc --> context
+  tests-unit-test-rpc --> rpc
+  tests-unit-test-rpc --> test
   tests-unit-test-rpc --> utils
+  tests-unit-test-safeutils --> safe-utils
+  tests-unit-test-safeutils --> test
+  tests-unit-test-service --> context
   tests-unit-test-service --> exception
+  tests-unit-test-service --> manager
   tests-unit-test-service --> objects-base
   tests-unit-test-service --> objects-init
+  tests-unit-test-service --> rpc
+  tests-unit-test-service --> service
+  tests-unit-test-service --> test
+  tests-unit-test-service-auth --> context
   tests-unit-test-service-auth --> service-auth
+  tests-unit-test-service-auth --> test
   tests-unit-test-test --> conf-init
   tests-unit-test-test --> exception
+  tests-unit-test-test --> rpc
+  tests-unit-test-test --> test
   tests-unit-test-test --> tests-fixtures-init
   tests-unit-test-test-utils --> db-main-api
+  tests-unit-test-test-utils --> test
   tests-unit-test-test-utils --> tests-unit-utils
+  tests-unit-test-thread-pool-factory --> context
+  tests-unit-test-thread-pool-factory --> test
+  tests-unit-test-thread-pool-factory --> thread-pool-factory
   tests-unit-test-thread-pool-factory --> utils
   tests-unit-test-utils --> exception
+  tests-unit-test-utils --> monkey-patch
   tests-unit-test-utils --> objects-base
   tests-unit-test-utils --> objects-instance
   tests-unit-test-utils --> objects-service
+  tests-unit-test-utils --> test
   tests-unit-test-utils --> tests-fixtures-init
   tests-unit-test-utils --> tests-unit-objects-test-objects
   tests-unit-test-utils --> tests-unit-utils
   tests-unit-test-utils --> utils
+  tests-unit-test-versions --> test
+  tests-unit-test-versions --> version
   tests-unit-test-weights --> scheduler-weights-init
   tests-unit-test-weights --> scheduler-weights-ram
+  tests-unit-test-weights --> test
   tests-unit-test-weights --> tests-unit-scheduler-fakes
+  tests-unit-test-weights --> weights
   tests-unit-utils --> compute-flavors
   tests-unit-utils --> conf-init
+  tests-unit-utils --> context
   tests-unit-utils --> db-main-api
   tests-unit-utils --> exception
   tests-unit-utils --> image-glance
@@ -7985,45 +8917,57 @@ graph LR
   tests-unit-utils --> objects-base
   tests-unit-utils --> objects-init
   tests-unit-utils --> utils
+  tests-unit-virt-disk-mount-test-api --> test
   tests-unit-virt-disk-mount-test-api --> tests-fixtures-init
   tests-unit-virt-disk-mount-test-api --> virt-disk-mount-api
   tests-unit-virt-disk-mount-test-api --> virt-disk-mount-block
   tests-unit-virt-disk-mount-test-api --> virt-disk-mount-loop
   tests-unit-virt-disk-mount-test-api --> virt-disk-mount-nbd
   tests-unit-virt-disk-mount-test-api --> virt-image-model
+  tests-unit-virt-disk-mount-test-block --> test
   tests-unit-virt-disk-mount-test-block --> virt-disk-mount-block
   tests-unit-virt-disk-mount-test-block --> virt-image-model
+  tests-unit-virt-disk-mount-test-loop --> test
   tests-unit-virt-disk-mount-test-loop --> virt-disk-mount-loop
   tests-unit-virt-disk-mount-test-loop --> virt-image-model
+  tests-unit-virt-disk-mount-test-nbd --> test
+  tests-unit-virt-disk-mount-test-nbd --> thread-pool-factory
   tests-unit-virt-disk-mount-test-nbd --> utils
   tests-unit-virt-disk-mount-test-nbd --> virt-disk-mount-nbd
   tests-unit-virt-disk-mount-test-nbd --> virt-image-model
   tests-unit-virt-disk-test-api --> exception
+  tests-unit-virt-disk-test-api --> test
   tests-unit-virt-disk-test-api --> virt-disk-api
   tests-unit-virt-disk-test-api --> virt-disk-mount-api
   tests-unit-virt-disk-test-api --> virt-image-model
+  tests-unit-virt-disk-test-inject --> test
   tests-unit-virt-disk-test-inject --> tests-unit-virt-disk-vfs-fakeguestfs
   tests-unit-virt-disk-test-inject --> virt-disk-api
   tests-unit-virt-disk-test-inject --> virt-disk-vfs-guestfs
   tests-unit-virt-disk-test-inject --> virt-image-model
   tests-unit-virt-disk-vfs-test-guestfs --> exception
+  tests-unit-virt-disk-vfs-test-guestfs --> test
   tests-unit-virt-disk-vfs-test-guestfs --> tests-unit-virt-disk-vfs-fakeguestfs
   tests-unit-virt-disk-vfs-test-guestfs --> utils
   tests-unit-virt-disk-vfs-test-guestfs --> virt-disk-vfs-guestfs
   tests-unit-virt-disk-vfs-test-guestfs --> virt-image-model
   tests-unit-virt-image-test-model --> exception
+  tests-unit-virt-image-test-model --> test
   tests-unit-virt-image-test-model --> virt-image-model
   tests-unit-virt-ironic-test-driver --> api-metadata-base
   tests-unit-virt-ironic-test-driver --> api-openstack-common
+  tests-unit-virt-ironic-test-driver --> block-device
   tests-unit-virt-ironic-test-driver --> compute-power-state
   tests-unit-virt-ironic-test-driver --> compute-provider-tree
   tests-unit-virt-ironic-test-driver --> compute-task-states
   tests-unit-virt-ironic-test-driver --> compute-vm-states
   tests-unit-virt-ironic-test-driver --> console-type
+  tests-unit-virt-ironic-test-driver --> context
   tests-unit-virt-ironic-test-driver --> exception
   tests-unit-virt-ironic-test-driver --> network-model
   tests-unit-virt-ironic-test-driver --> objects-init
   tests-unit-virt-ironic-test-driver --> servicegroup-init
+  tests-unit-virt-ironic-test-driver --> test
   tests-unit-virt-ironic-test-driver --> tests-fixtures-init
   tests-unit-virt-ironic-test-driver --> tests-unit-fake-block-device
   tests-unit-virt-ironic-test-driver --> tests-unit-fake-instance
@@ -8037,7 +8981,9 @@ graph LR
   tests-unit-virt-ironic-test-driver --> virt-hardware
   tests-unit-virt-ironic-test-driver --> virt-ironic-driver
   tests-unit-virt-ironic-test-driver --> virt-ironic-ironic-states
+  tests-unit-virt-ironic-test-patcher --> context
   tests-unit-virt-ironic-test-patcher --> objects-init
+  tests-unit-virt-ironic-test-patcher --> test
   tests-unit-virt-ironic-test-patcher --> tests-unit-fake-instance
   tests-unit-virt-ironic-test-patcher --> tests-unit-virt-ironic-utils
   tests-unit-virt-ironic-test-patcher --> virt-ironic-patcher
@@ -8047,17 +8993,24 @@ graph LR
   tests-unit-virt-ironic-utils --> virt-ironic-ironic-states
   tests-unit-virt-libvirt-cpu-test-api --> exception
   tests-unit-virt-libvirt-cpu-test-api --> objects-init
+  tests-unit-virt-libvirt-cpu-test-api --> test
   tests-unit-virt-libvirt-cpu-test-api --> virt-libvirt-cpu-api
   tests-unit-virt-libvirt-cpu-test-api --> virt-libvirt-cpu-core
   tests-unit-virt-libvirt-cpu-test-core --> exception
+  tests-unit-virt-libvirt-cpu-test-core --> test
   tests-unit-virt-libvirt-cpu-test-core --> tests-fixtures-init
   tests-unit-virt-libvirt-cpu-test-core --> virt-libvirt-cpu-core
+  tests-unit-virt-libvirt-storage-test-dmcrypt --> test
   tests-unit-virt-libvirt-storage-test-dmcrypt --> virt-libvirt-storage-dmcrypt
   tests-unit-virt-libvirt-storage-test-lvm --> exception
+  tests-unit-virt-libvirt-storage-test-lvm --> test
   tests-unit-virt-libvirt-storage-test-lvm --> virt-libvirt-storage-lvm
+  tests-unit-virt-libvirt-test-blockinfo --> block-device
+  tests-unit-virt-libvirt-test-blockinfo --> context
   tests-unit-virt-libvirt-test-blockinfo --> exception
   tests-unit-virt-libvirt-test-blockinfo --> objects-fields
   tests-unit-virt-libvirt-test-blockinfo --> objects-init
+  tests-unit-virt-libvirt-test-blockinfo --> test
   tests-unit-virt-libvirt-test-blockinfo --> tests-fixtures-init
   tests-unit-virt-libvirt-test-blockinfo --> tests-unit-fake-block-device
   tests-unit-virt-libvirt-test-blockinfo --> tests-unit-virt-fakelibosinfo
@@ -8066,11 +9019,13 @@ graph LR
   tests-unit-virt-libvirt-test-blockinfo --> virt-libvirt-blockinfo
   tests-unit-virt-libvirt-test-config --> exception
   tests-unit-virt-libvirt-test-config --> objects-fields
+  tests-unit-virt-libvirt-test-config --> test
   tests-unit-virt-libvirt-test-config --> tests-fixtures-libvirt-data
   tests-unit-virt-libvirt-test-config --> virt-driver
   tests-unit-virt-libvirt-test-config --> virt-hardware
   tests-unit-virt-libvirt-test-config --> virt-libvirt-config
   tests-unit-virt-libvirt-test-designer --> pci-utils
+  tests-unit-virt-libvirt-test-designer --> test
   tests-unit-virt-libvirt-test-designer --> tests-unit-matchers
   tests-unit-virt-libvirt-test-designer --> virt-libvirt-config
   tests-unit-virt-libvirt-test-designer --> virt-libvirt-designer
@@ -8082,6 +9037,7 @@ graph LR
   tests-unit-virt-libvirt-test-driver --> compute-utils
   tests-unit-virt-libvirt-test-driver --> compute-vm-states
   tests-unit-virt-libvirt-test-driver --> conf-init
+  tests-unit-virt-libvirt-test-driver --> context
   tests-unit-virt-libvirt-test-driver --> db-main-api
   tests-unit-virt-libvirt-test-driver --> exception
   tests-unit-virt-libvirt-test-driver --> network-model
@@ -8094,6 +9050,7 @@ graph LR
   tests-unit-virt-libvirt-test-driver --> privsep-fs
   tests-unit-virt-libvirt-test-driver --> privsep-libvirt
   tests-unit-virt-libvirt-test-driver --> storage-rbd-utils
+  tests-unit-virt-libvirt-test-driver --> test
   tests-unit-virt-libvirt-test-driver --> tests-fixtures-cyborg
   tests-unit-virt-libvirt-test-driver --> tests-fixtures-init
   tests-unit-virt-libvirt-test-driver --> tests-fixtures-libvirt
@@ -8110,7 +9067,9 @@ graph LR
   tests-unit-virt-libvirt-test-driver --> tests-unit-objects-test-pci-device
   tests-unit-virt-libvirt-test-driver --> tests-unit-objects-test-vcpu-model
   tests-unit-virt-libvirt-test-driver --> tests-unit-utils
+  tests-unit-virt-libvirt-test-driver --> thread-pool-factory
   tests-unit-virt-libvirt-test-driver --> utils
+  tests-unit-virt-libvirt-test-driver --> version
   tests-unit-virt-libvirt-test-driver --> virt-block-device
   tests-unit-virt-libvirt-test-driver --> virt-driver
   tests-unit-virt-libvirt-test-driver --> virt-fake
@@ -8130,6 +9089,8 @@ graph LR
   tests-unit-virt-libvirt-test-driver --> virt-libvirt-utils
   tests-unit-virt-libvirt-test-driver --> virt-libvirt-vif
   tests-unit-virt-libvirt-test-driver --> virt-libvirt-volume-volume
+  tests-unit-virt-libvirt-test-guest --> context
+  tests-unit-virt-libvirt-test-guest --> test
   tests-unit-virt-libvirt-test-guest --> tests-fixtures-init
   tests-unit-virt-libvirt-test-guest --> tests-fixtures-libvirt
   tests-unit-virt-libvirt-test-guest --> virt-libvirt-config
@@ -8142,9 +9103,11 @@ graph LR
   tests-unit-virt-libvirt-test-host --> objects-fields
   tests-unit-virt-libvirt-test-host --> objects-init
   tests-unit-virt-libvirt-test-host --> pci-utils
+  tests-unit-virt-libvirt-test-host --> test
   tests-unit-virt-libvirt-test-host --> tests-fixtures-init
   tests-unit-virt-libvirt-test-host --> tests-fixtures-libvirt
   tests-unit-virt-libvirt-test-host --> tests-fixtures-libvirt-data
+  tests-unit-virt-libvirt-test-host --> thread-pool-factory
   tests-unit-virt-libvirt-test-host --> utils
   tests-unit-virt-libvirt-test-host --> virt-event
   tests-unit-virt-libvirt-test-host --> virt-libvirt-config
@@ -8153,9 +9116,11 @@ graph LR
   tests-unit-virt-libvirt-test-host --> virt-libvirt-host
   tests-unit-virt-libvirt-test-imagebackend --> compute-utils
   tests-unit-virt-libvirt-test-imagebackend --> conf-init
+  tests-unit-virt-libvirt-test-imagebackend --> context
   tests-unit-virt-libvirt-test-imagebackend --> exception
   tests-unit-virt-libvirt-test-imagebackend --> objects-init
   tests-unit-virt-libvirt-test-imagebackend --> storage-rbd-utils
+  tests-unit-virt-libvirt-test-imagebackend --> test
   tests-unit-virt-libvirt-test-imagebackend --> tests-unit-fake-processutils
   tests-unit-virt-libvirt-test-imagebackend --> virt-image-model
   tests-unit-virt-libvirt-test-imagebackend --> virt-images
@@ -8164,13 +9129,17 @@ graph LR
   tests-unit-virt-libvirt-test-imagebackend --> virt-libvirt-utils
   tests-unit-virt-libvirt-test-imagecache --> compute-manager
   tests-unit-virt-libvirt-test-imagecache --> conf-init
+  tests-unit-virt-libvirt-test-imagecache --> context
   tests-unit-virt-libvirt-test-imagecache --> objects-init
+  tests-unit-virt-libvirt-test-imagecache --> test
   tests-unit-virt-libvirt-test-imagecache --> tests-unit-fake-instance
   tests-unit-virt-libvirt-test-imagecache --> utils
   tests-unit-virt-libvirt-test-imagecache --> virt-libvirt-imagecache
   tests-unit-virt-libvirt-test-machine-type-utils --> compute-vm-states
+  tests-unit-virt-libvirt-test-machine-type-utils --> context
   tests-unit-virt-libvirt-test-machine-type-utils --> exception
   tests-unit-virt-libvirt-test-machine-type-utils --> objects-init
+  tests-unit-virt-libvirt-test-machine-type-utils --> test
   tests-unit-virt-libvirt-test-machine-type-utils --> tests-fixtures-init
   tests-unit-virt-libvirt-test-machine-type-utils --> virt-libvirt-machine-type-utils
   tests-unit-virt-libvirt-test-migration --> compute-power-state
@@ -8178,6 +9147,7 @@ graph LR
   tests-unit-virt-libvirt-test-migration --> network-model
   tests-unit-virt-libvirt-test-migration --> objects-init
   tests-unit-virt-libvirt-test-migration --> storage-rbd-utils
+  tests-unit-virt-libvirt-test-migration --> test
   tests-unit-virt-libvirt-test-migration --> tests-fixtures-init
   tests-unit-virt-libvirt-test-migration --> tests-fixtures-libvirt
   tests-unit-virt-libvirt-test-migration --> tests-unit-virt-libvirt-test-driver
@@ -8186,11 +9156,13 @@ graph LR
   tests-unit-virt-libvirt-test-migration --> virt-libvirt-host
   tests-unit-virt-libvirt-test-migration --> virt-libvirt-migration
   tests-unit-virt-libvirt-test-utils --> compute-utils
+  tests-unit-virt-libvirt-test-utils --> context
   tests-unit-virt-libvirt-test-utils --> exception
   tests-unit-virt-libvirt-test-utils --> objects-fields
   tests-unit-virt-libvirt-test-utils --> objects-init
   tests-unit-virt-libvirt-test-utils --> privsep-fs
   tests-unit-virt-libvirt-test-utils --> privsep-qemu
+  tests-unit-virt-libvirt-test-utils --> test
   tests-unit-virt-libvirt-test-utils --> tests-fixtures-init
   tests-unit-virt-libvirt-test-utils --> tests-unit-fake-instance
   tests-unit-virt-libvirt-test-utils --> virt-images
@@ -8200,6 +9172,7 @@ graph LR
   tests-unit-virt-libvirt-test-vif --> network-model
   tests-unit-virt-libvirt-test-vif --> objects-init
   tests-unit-virt-libvirt-test-vif --> pci-utils
+  tests-unit-virt-libvirt-test-vif --> test
   tests-unit-virt-libvirt-test-vif --> tests-fixtures-init
   tests-unit-virt-libvirt-test-vif --> tests-fixtures-libvirt
   tests-unit-virt-libvirt-test-vif --> tests-unit-virt-fakelibosinfo
@@ -8213,6 +9186,7 @@ graph LR
   tests-unit-virt-libvirt-volume-test-fibrechannel --> objects-fields
   tests-unit-virt-libvirt-volume-test-fibrechannel --> tests-unit-virt-libvirt-volume-test-volume
   tests-unit-virt-libvirt-volume-test-fibrechannel --> virt-libvirt-volume-fibrechannel
+  tests-unit-virt-libvirt-volume-test-fs --> test
   tests-unit-virt-libvirt-volume-test-fs --> utils
   tests-unit-virt-libvirt-volume-test-fs --> virt-libvirt-volume-fs
   tests-unit-virt-libvirt-volume-test-gpfs --> tests-unit-virt-libvirt-volume-test-volume
@@ -8224,6 +9198,8 @@ graph LR
   tests-unit-virt-libvirt-volume-test-lightos --> tests-unit-virt-libvirt-volume-test-volume
   tests-unit-virt-libvirt-volume-test-lightos --> virt-libvirt-volume-lightos
   tests-unit-virt-libvirt-volume-test-mount --> exception
+  tests-unit-virt-libvirt-volume-test-mount --> test
+  tests-unit-virt-libvirt-volume-test-mount --> thread-pool-factory
   tests-unit-virt-libvirt-volume-test-mount --> virt-libvirt-config
   tests-unit-virt-libvirt-volume-test-mount --> virt-libvirt-guest
   tests-unit-virt-libvirt-volume-test-mount --> virt-libvirt-host
@@ -8239,10 +9215,12 @@ graph LR
   tests-unit-virt-libvirt-volume-test-nvme --> tests-unit-virt-libvirt-volume-test-volume
   tests-unit-virt-libvirt-volume-test-nvme --> virt-libvirt-volume-nvme
   tests-unit-virt-libvirt-volume-test-quobyte --> exception
+  tests-unit-virt-libvirt-volume-test-quobyte --> test
   tests-unit-virt-libvirt-volume-test-quobyte --> tests-unit-virt-libvirt-volume-test-volume
   tests-unit-virt-libvirt-volume-test-quobyte --> utils
   tests-unit-virt-libvirt-volume-test-quobyte --> virt-libvirt-utils
   tests-unit-virt-libvirt-volume-test-quobyte --> virt-libvirt-volume-quobyte
+  tests-unit-virt-libvirt-volume-test-remotefs --> test
   tests-unit-virt-libvirt-volume-test-remotefs --> virt-libvirt-volume-remotefs
   tests-unit-virt-libvirt-volume-test-scaleio --> tests-unit-virt-libvirt-volume-test-volume
   tests-unit-virt-libvirt-volume-test-scaleio --> virt-libvirt-volume-scaleio
@@ -8253,6 +9231,7 @@ graph LR
   tests-unit-virt-libvirt-volume-test-storpool --> tests-unit-virt-libvirt-volume-test-volume
   tests-unit-virt-libvirt-volume-test-storpool --> virt-libvirt-volume-storpool
   tests-unit-virt-libvirt-volume-test-volume --> exception
+  tests-unit-virt-libvirt-volume-test-volume --> test
   tests-unit-virt-libvirt-volume-test-volume --> tests-fixtures-init
   tests-unit-virt-libvirt-volume-test-volume --> virt-fake
   tests-unit-virt-libvirt-volume-test-volume --> virt-libvirt-driver
@@ -8262,9 +9241,12 @@ graph LR
   tests-unit-virt-libvirt-volume-test-vzstorage --> tests-unit-virt-libvirt-volume-test-volume
   tests-unit-virt-libvirt-volume-test-vzstorage --> utils
   tests-unit-virt-libvirt-volume-test-vzstorage --> virt-libvirt-volume-vzstorage
+  tests-unit-virt-test-block-device --> block-device
+  tests-unit-virt-test-block-device --> context
   tests-unit-virt-test-block-device --> exception
   tests-unit-virt-test-block-device --> objects-fields
   tests-unit-virt-test-block-device --> objects-init
+  tests-unit-virt-test-block-device --> test
   tests-unit-virt-test-block-device --> tests-unit-fake-block-device
   tests-unit-virt-test-block-device --> tests-unit-fake-instance
   tests-unit-virt-test-block-device --> tests-unit-matchers
@@ -8273,9 +9255,12 @@ graph LR
   tests-unit-virt-test-block-device --> virt-fake
   tests-unit-virt-test-block-device --> volume-cinder
   tests-unit-virt-test-configdrive --> objects-init
+  tests-unit-virt-test-configdrive --> test
   tests-unit-virt-test-configdrive --> virt-configdrive
+  tests-unit-virt-test-events --> test
   tests-unit-virt-test-events --> virt-event
   tests-unit-virt-test-fake --> objects-init
+  tests-unit-virt-test-fake --> test
   tests-unit-virt-test-fake --> virt-driver
   tests-unit-virt-test-fake --> virt-fake
   tests-unit-virt-test-hardware --> conf-init
@@ -8283,36 +9268,47 @@ graph LR
   tests-unit-virt-test-hardware --> objects-fields
   tests-unit-virt-test-hardware --> objects-init
   tests-unit-virt-test-hardware --> pci-stats
+  tests-unit-virt-test-hardware --> test
   tests-unit-virt-test-hardware --> tests-unit-fake-pci-device-pools
   tests-unit-virt-test-hardware --> tests-unit-image-fake
   tests-unit-virt-test-hardware --> virt-hardware
+  tests-unit-virt-test-imagecache --> block-device
   tests-unit-virt-test-imagecache --> compute-vm-states
   tests-unit-virt-test-imagecache --> conf-init
+  tests-unit-virt-test-imagecache --> context
   tests-unit-virt-test-imagecache --> objects-block-device
   tests-unit-virt-test-imagecache --> objects-init
+  tests-unit-virt-test-imagecache --> test
   tests-unit-virt-test-imagecache --> tests-unit-fake-instance
   tests-unit-virt-test-imagecache --> virt-imagecache
   tests-unit-virt-test-images --> compute-utils
   tests-unit-virt-test-images --> exception
+  tests-unit-virt-test-images --> test
   tests-unit-virt-test-images --> virt-images
   tests-unit-virt-test-netutils --> network-model
+  tests-unit-virt-test-netutils --> test
   tests-unit-virt-test-netutils --> tests-unit-fake-network
   tests-unit-virt-test-netutils --> virt-netutils
   tests-unit-virt-test-node --> exception
+  tests-unit-virt-test-node --> test
   tests-unit-virt-test-node --> tests-fixtures-init
   tests-unit-virt-test-node --> virt-node
   tests-unit-virt-test-osinfo --> exception
   tests-unit-virt-test-osinfo --> objects-init
+  tests-unit-virt-test-osinfo --> test
   tests-unit-virt-test-osinfo --> tests-unit-virt-fakelibosinfo
   tests-unit-virt-test-osinfo --> virt-osinfo
+  tests-unit-virt-test-virt --> test
   tests-unit-virt-test-virt --> virt-disk-api
   tests-unit-virt-test-virt --> virt-driver
   tests-unit-virt-test-virt --> virt-fake
   tests-unit-virt-test-virt-drivers --> compute-manager
   tests-unit-virt-test-virt-drivers --> conf-init
   tests-unit-virt-test-virt-drivers --> console-type
+  tests-unit-virt-test-virt-drivers --> context
   tests-unit-virt-test-virt-drivers --> exception
   tests-unit-virt-test-virt-drivers --> objects-init
+  tests-unit-virt-test-virt-drivers --> test
   tests-unit-virt-test-virt-drivers --> tests-fixtures-init
   tests-unit-virt-test-virt-drivers --> tests-fixtures-libvirt
   tests-unit-virt-test-virt-drivers --> tests-unit-fake-block-device
@@ -8327,8 +9323,10 @@ graph LR
   tests-unit-virt-vmwareapi-fake --> virt-vmwareapi-constants
   tests-unit-virt-vmwareapi-stubs --> conf-init
   tests-unit-virt-vmwareapi-stubs --> tests-unit-virt-vmwareapi-fake
+  tests-unit-virt-vmwareapi-test-configdrive --> context
   tests-unit-virt-vmwareapi-test-configdrive --> image-glance
   tests-unit-virt-vmwareapi-test-configdrive --> objects-init
+  tests-unit-virt-vmwareapi-test-configdrive --> test
   tests-unit-virt-vmwareapi-test-configdrive --> tests-fixtures-init
   tests-unit-virt-vmwareapi-test-configdrive --> tests-unit-fake-instance
   tests-unit-virt-vmwareapi-test-configdrive --> tests-unit-utils
@@ -8344,10 +9342,12 @@ graph LR
   tests-unit-virt-vmwareapi-test-driver-api --> compute-task-states
   tests-unit-virt-vmwareapi-test-driver-api --> compute-vm-states
   tests-unit-virt-vmwareapi-test-driver-api --> conf-init
+  tests-unit-virt-vmwareapi-test-driver-api --> context
   tests-unit-virt-vmwareapi-test-driver-api --> exception
   tests-unit-virt-vmwareapi-test-driver-api --> image-glance
   tests-unit-virt-vmwareapi-test-driver-api --> network-model
   tests-unit-virt-vmwareapi-test-driver-api --> objects-init
+  tests-unit-virt-vmwareapi-test-driver-api --> test
   tests-unit-virt-vmwareapi-test-driver-api --> tests-fixtures-init
   tests-unit-virt-vmwareapi-test-driver-api --> tests-unit-fake-diagnostics
   tests-unit-virt-vmwareapi-test-driver-api --> tests-unit-fake-instance
@@ -8370,36 +9370,45 @@ graph LR
   tests-unit-virt-vmwareapi-test-driver-api --> virt-vmwareapi-vmops
   tests-unit-virt-vmwareapi-test-driver-api --> virt-vmwareapi-volumeops
   tests-unit-virt-vmwareapi-test-ds-util --> exception
+  tests-unit-virt-vmwareapi-test-ds-util --> test
   tests-unit-virt-vmwareapi-test-ds-util --> tests-unit-virt-vmwareapi-fake
   tests-unit-virt-vmwareapi-test-ds-util --> virt-vmwareapi-ds-util
+  tests-unit-virt-vmwareapi-test-ds-util-datastore-selection --> test
   tests-unit-virt-vmwareapi-test-ds-util-datastore-selection --> virt-vmwareapi-ds-util
   tests-unit-virt-vmwareapi-test-imagecache --> objects-init
+  tests-unit-virt-vmwareapi-test-imagecache --> test
   tests-unit-virt-vmwareapi-test-imagecache --> tests-unit-fake-instance
   tests-unit-virt-vmwareapi-test-imagecache --> tests-unit-virt-vmwareapi-fake
   tests-unit-virt-vmwareapi-test-imagecache --> virt-vmwareapi-ds-util
   tests-unit-virt-vmwareapi-test-imagecache --> virt-vmwareapi-imagecache
   tests-unit-virt-vmwareapi-test-images --> exception
   tests-unit-virt-vmwareapi-test-images --> objects-init
+  tests-unit-virt-vmwareapi-test-images --> test
   tests-unit-virt-vmwareapi-test-images --> virt-vmwareapi-constants
   tests-unit-virt-vmwareapi-test-images --> virt-vmwareapi-images
   tests-unit-virt-vmwareapi-test-images --> virt-vmwareapi-vm-util
+  tests-unit-virt-vmwareapi-test-network-util --> test
   tests-unit-virt-vmwareapi-test-network-util --> tests-unit-virt-vmwareapi-fake
   tests-unit-virt-vmwareapi-test-network-util --> tests-unit-virt-vmwareapi-stubs
   tests-unit-virt-vmwareapi-test-network-util --> virt-vmwareapi-network-util
   tests-unit-virt-vmwareapi-test-network-util --> virt-vmwareapi-session
+  tests-unit-virt-vmwareapi-test-session --> test
   tests-unit-virt-vmwareapi-test-session --> tests-unit-virt-vmwareapi-fake
   tests-unit-virt-vmwareapi-test-session --> virt-vmwareapi-session
   tests-unit-virt-vmwareapi-test-vif --> exception
   tests-unit-virt-vmwareapi-test-vif --> network-model
+  tests-unit-virt-vmwareapi-test-vif --> test
   tests-unit-virt-vmwareapi-test-vif --> tests-unit-utils
   tests-unit-virt-vmwareapi-test-vif --> tests-unit-virt-vmwareapi-fake
   tests-unit-virt-vmwareapi-test-vif --> virt-vmwareapi-constants
   tests-unit-virt-vmwareapi-test-vif --> virt-vmwareapi-network-util
   tests-unit-virt-vmwareapi-test-vif --> virt-vmwareapi-vif
+  tests-unit-virt-vmwareapi-test-vim-util --> test
   tests-unit-virt-vmwareapi-test-vim-util --> tests-unit-virt-vmwareapi-fake
   tests-unit-virt-vmwareapi-test-vim-util --> virt-vmwareapi-vim-util
   tests-unit-virt-vmwareapi-test-vm-util --> exception
   tests-unit-virt-vmwareapi-test-vm-util --> network-model
+  tests-unit-virt-vmwareapi-test-vm-util --> test
   tests-unit-virt-vmwareapi-test-vm-util --> tests-fixtures-init
   tests-unit-virt-vmwareapi-test-vm-util --> tests-unit-fake-instance
   tests-unit-virt-vmwareapi-test-vm-util --> tests-unit-virt-vmwareapi-fake
@@ -8408,13 +9417,16 @@ graph LR
   tests-unit-virt-vmwareapi-test-vm-util --> virt-vmwareapi-session
   tests-unit-virt-vmwareapi-test-vm-util --> virt-vmwareapi-vm-util
   tests-unit-virt-vmwareapi-test-vmops --> compute-power-state
+  tests-unit-virt-vmwareapi-test-vmops --> context
   tests-unit-virt-vmwareapi-test-vmops --> exception
   tests-unit-virt-vmwareapi-test-vmops --> network-model
   tests-unit-virt-vmwareapi-test-vmops --> objects-init
+  tests-unit-virt-vmwareapi-test-vmops --> test
   tests-unit-virt-vmwareapi-test-vmops --> tests-unit-fake-flavor
   tests-unit-virt-vmwareapi-test-vmops --> tests-unit-fake-instance
   tests-unit-virt-vmwareapi-test-vmops --> tests-unit-virt-vmwareapi-fake
   tests-unit-virt-vmwareapi-test-vmops --> tests-unit-virt-vmwareapi-stubs
+  tests-unit-virt-vmwareapi-test-vmops --> version
   tests-unit-virt-vmwareapi-test-vmops --> virt-hardware
   tests-unit-virt-vmwareapi-test-vmops --> virt-vmwareapi-constants
   tests-unit-virt-vmwareapi-test-vmops --> virt-vmwareapi-ds-util
@@ -8426,7 +9438,9 @@ graph LR
   tests-unit-virt-vmwareapi-test-vmops --> virt-vmwareapi-vmops
   tests-unit-virt-vmwareapi-test-volumeops --> compute-power-state
   tests-unit-virt-vmwareapi-test-volumeops --> compute-vm-states
+  tests-unit-virt-vmwareapi-test-volumeops --> context
   tests-unit-virt-vmwareapi-test-volumeops --> exception
+  tests-unit-virt-vmwareapi-test-volumeops --> test
   tests-unit-virt-vmwareapi-test-volumeops --> tests-unit-fake-instance
   tests-unit-virt-vmwareapi-test-volumeops --> tests-unit-virt-vmwareapi-fake
   tests-unit-virt-vmwareapi-test-volumeops --> tests-unit-virt-vmwareapi-stubs
@@ -8436,33 +9450,49 @@ graph LR
   tests-unit-virt-vmwareapi-test-volumeops --> virt-vmwareapi-volumeops
   tests-unit-virt-zvm-test-driver --> compute-provider-tree
   tests-unit-virt-zvm-test-driver --> conf-init
+  tests-unit-virt-zvm-test-driver --> context
   tests-unit-virt-zvm-test-driver --> exception
   tests-unit-virt-zvm-test-driver --> network-model
   tests-unit-virt-zvm-test-driver --> objects-init
+  tests-unit-virt-zvm-test-driver --> test
   tests-unit-virt-zvm-test-driver --> tests-unit-fake-instance
   tests-unit-virt-zvm-test-driver --> virt-fake
   tests-unit-virt-zvm-test-driver --> virt-zvm-driver
   tests-unit-virt-zvm-test-guest --> compute-power-state
+  tests-unit-virt-zvm-test-guest --> context
   tests-unit-virt-zvm-test-guest --> exception
+  tests-unit-virt-zvm-test-guest --> test
   tests-unit-virt-zvm-test-guest --> tests-unit-fake-instance
   tests-unit-virt-zvm-test-guest --> virt-fake
   tests-unit-virt-zvm-test-guest --> virt-zvm-driver
   tests-unit-virt-zvm-test-guest --> virt-zvm-guest
+  tests-unit-virt-zvm-test-hypervisor --> context
   tests-unit-virt-zvm-test-hypervisor --> exception
+  tests-unit-virt-zvm-test-hypervisor --> test
   tests-unit-virt-zvm-test-hypervisor --> tests-unit-fake-instance
   tests-unit-virt-zvm-test-hypervisor --> virt-zvm-driver
+  tests-unit-virt-zvm-test-utils --> context
   tests-unit-virt-zvm-test-utils --> exception
+  tests-unit-virt-zvm-test-utils --> test
   tests-unit-virt-zvm-test-utils --> tests-unit-fake-instance
   tests-unit-virt-zvm-test-utils --> virt-zvm-utils
   tests-unit-volume-test-cinder --> conf-init
+  tests-unit-volume-test-cinder --> context
   tests-unit-volume-test-cinder --> exception
   tests-unit-volume-test-cinder --> service-auth
+  tests-unit-volume-test-cinder --> test
   tests-unit-volume-test-cinder --> tests-unit-fake-instance
   tests-unit-volume-test-cinder --> volume-cinder
+  thread-pool-factory --> conf-init
+  thread-pool-factory --> utils
   utils --> conf-init
+  utils --> context
   utils --> exception
   utils --> i18n
+  utils --> monkey-patch
   utils --> objects-service
+  utils --> safe-utils
+  virt-block-device --> block-device
   virt-block-device --> conf-init
   virt-block-device --> exception
   virt-configdrive --> conf-init
@@ -8470,6 +9500,7 @@ graph LR
   virt-configdrive --> objects-fields
   virt-configdrive --> privsep-fs
   virt-configdrive --> utils
+  virt-configdrive --> version
   virt-disk-api --> conf-init
   virt-disk-api --> exception
   virt-disk-api --> i18n
@@ -8500,9 +9531,11 @@ graph LR
   virt-disk-vfs-guestfs --> virt-image-model
   virt-driver --> compute-utils
   virt-driver --> conf-init
+  virt-driver --> context
   virt-driver --> i18n
   virt-driver --> network-model
   virt-driver --> objects-init
+  virt-driver --> version
   virt-driver --> virt-block-device
   virt-driver --> virt-event
   virt-driver --> virt-node
@@ -8512,6 +9545,7 @@ graph LR
   virt-fake --> compute-vm-states
   virt-fake --> conf-init
   virt-fake --> console-type
+  virt-fake --> context
   virt-fake --> exception
   virt-fake --> objects-diagnostics
   virt-fake --> objects-fields
@@ -8545,11 +9579,13 @@ graph LR
   virt-images --> image-glance
   virt-images --> privsep-qemu
   virt-ironic-driver --> api-metadata-base
+  virt-ironic-driver --> block-device
   virt-ironic-driver --> compute-power-state
   virt-ironic-driver --> compute-task-states
   virt-ironic-driver --> compute-vm-states
   virt-ironic-driver --> conf-init
   virt-ironic-driver --> console-type
+  virt-ironic-driver --> context
   virt-ironic-driver --> exception
   virt-ironic-driver --> i18n
   virt-ironic-driver --> objects-external-event
@@ -8565,6 +9601,7 @@ graph LR
   virt-ironic-driver --> virt-netutils
   virt-ironic-init --> virt-ironic-driver
   virt-ironic-patcher --> conf-init
+  virt-libvirt-blockinfo --> block-device
   virt-libvirt-blockinfo --> exception
   virt-libvirt-blockinfo --> i18n
   virt-libvirt-blockinfo --> objects-base
@@ -8585,11 +9622,13 @@ graph LR
   virt-libvirt-cpu-api --> virt-hardware
   virt-libvirt-cpu-api --> virt-libvirt-cpu-core
   virt-libvirt-cpu-core --> exception
+  virt-libvirt-cpu-core --> filesystem
   virt-libvirt-cpu-core --> privsep-init
   virt-libvirt-cpu-core --> virt-hardware
   virt-libvirt-designer --> pci-utils
   virt-libvirt-driver --> api-metadata-base
   virt-libvirt-driver --> api-metadata-password
+  virt-libvirt-driver --> block-device
   virt-libvirt-driver --> compute-power-state
   virt-libvirt-driver --> compute-provider-tree
   virt-libvirt-driver --> compute-task-states
@@ -8598,7 +9637,10 @@ graph LR
   virt-libvirt-driver --> conf-init
   virt-libvirt-driver --> console-serial
   virt-libvirt-driver --> console-type
+  virt-libvirt-driver --> context
+  virt-libvirt-driver --> crypto
   virt-libvirt-driver --> exception
+  virt-libvirt-driver --> filesystem
   virt-libvirt-driver --> i18n
   virt-libvirt-driver --> image-glance
   virt-libvirt-driver --> network-model
@@ -8613,7 +9655,9 @@ graph LR
   virt-libvirt-driver --> privsep-path
   virt-libvirt-driver --> privsep-utils
   virt-libvirt-driver --> storage-rbd-utils
+  virt-libvirt-driver --> thread-pool-factory
   virt-libvirt-driver --> utils
+  virt-libvirt-driver --> version
   virt-libvirt-driver --> virt-block-device
   virt-libvirt-driver --> virt-configdrive
   virt-libvirt-driver --> virt-disk-api
@@ -8646,6 +9690,7 @@ graph LR
   virt-libvirt-driver --> virt-libvirt-volume-volume
   virt-libvirt-driver --> virt-netutils
   virt-libvirt-driver --> volume-cinder
+  virt-libvirt-driver --> vtpm
   virt-libvirt-event --> virt-event
   virt-libvirt-guest --> compute-power-state
   virt-libvirt-guest --> exception
@@ -8654,10 +9699,13 @@ graph LR
   virt-libvirt-guest --> virt-libvirt-config
   virt-libvirt-host --> compute-utils
   virt-libvirt-host --> conf-init
+  virt-libvirt-host --> context
   virt-libvirt-host --> exception
   virt-libvirt-host --> i18n
   virt-libvirt-host --> objects-fields
   virt-libvirt-host --> pci-utils
+  virt-libvirt-host --> rpc
+  virt-libvirt-host --> thread-pool-factory
   virt-libvirt-host --> utils
   virt-libvirt-host --> virt-event
   virt-libvirt-host --> virt-libvirt-config
@@ -8688,6 +9736,7 @@ graph LR
   virt-libvirt-imagecache --> virt-libvirt-utils
   virt-libvirt-init --> virt-libvirt-driver
   virt-libvirt-machine-type-utils --> compute-vm-states
+  virt-libvirt-machine-type-utils --> context
   virt-libvirt-machine-type-utils --> exception
   virt-libvirt-machine-type-utils --> objects-init
   virt-libvirt-migration --> compute-power-state
@@ -8703,6 +9752,7 @@ graph LR
   virt-libvirt-storage-lvm --> i18n
   virt-libvirt-storage-lvm --> privsep-fs
   virt-libvirt-utils --> conf-init
+  virt-libvirt-utils --> context
   virt-libvirt-utils --> exception
   virt-libvirt-utils --> i18n
   virt-libvirt-utils --> objects-fields
@@ -8725,6 +9775,7 @@ graph LR
   virt-libvirt-vif --> objects-init
   virt-libvirt-vif --> pci-utils
   virt-libvirt-vif --> privsep-linux-net
+  virt-libvirt-vif --> profiler
   virt-libvirt-vif --> utils
   virt-libvirt-vif --> virt-hardware
   virt-libvirt-vif --> virt-libvirt-config
@@ -8780,6 +9831,7 @@ graph LR
   virt-libvirt-volume-storpool --> virt-libvirt-volume-volume
   virt-libvirt-volume-volume --> conf-init
   virt-libvirt-volume-volume --> exception
+  virt-libvirt-volume-volume --> profiler
   virt-libvirt-volume-volume --> virt-block-device
   virt-libvirt-volume-volume --> virt-libvirt-config
   virt-libvirt-volume-vzstorage --> exception
@@ -8799,6 +9851,7 @@ graph LR
   virt-vmwareapi-driver --> compute-task-states
   virt-vmwareapi-driver --> compute-utils
   virt-vmwareapi-driver --> conf-init
+  virt-vmwareapi-driver --> context
   virt-vmwareapi-driver --> exception
   virt-vmwareapi-driver --> i18n
   virt-vmwareapi-driver --> objects-init
@@ -8821,6 +9874,7 @@ graph LR
   virt-vmwareapi-error-util --> exception
   virt-vmwareapi-error-util --> i18n
   virt-vmwareapi-host --> conf-init
+  virt-vmwareapi-host --> context
   virt-vmwareapi-host --> exception
   virt-vmwareapi-host --> objects-fields
   virt-vmwareapi-host --> objects-init
@@ -8860,12 +9914,14 @@ graph LR
   virt-vmwareapi-vmops --> compute-task-states
   virt-vmwareapi-vmops --> conf-init
   virt-vmwareapi-vmops --> console-type
+  virt-vmwareapi-vmops --> context
   virt-vmwareapi-vmops --> exception
   virt-vmwareapi-vmops --> i18n
   virt-vmwareapi-vmops --> network-neutron
   virt-vmwareapi-vmops --> objects-fields
   virt-vmwareapi-vmops --> objects-init
   virt-vmwareapi-vmops --> utils
+  virt-vmwareapi-vmops --> version
   virt-vmwareapi-vmops --> virt-configdrive
   virt-vmwareapi-vmops --> virt-driver
   virt-vmwareapi-vmops --> virt-hardware
@@ -8907,12 +9963,20 @@ graph LR
   virt-zvm-utils --> conf-init
   virt-zvm-utils --> exception
   virt-zvm-utils --> virt-configdrive
+  volume-cinder --> availability-zones
   volume-cinder --> conf-init
   volume-cinder --> exception
   volume-cinder --> i18n
   volume-cinder --> service-auth
+  vtpm --> context
+  vtpm --> crypto
+  vtpm --> objects-init
+  vtpm --> virt-hardware
+  weights --> loadables
   wsgi-metadata --> api-openstack-wsgi-app
+  wsgi-metadata --> monkey-patch
   wsgi-osapi-compute --> api-openstack-wsgi-app
+  wsgi-osapi-compute --> monkey-patch
 ```
 
 ---
@@ -8921,84 +9985,90 @@ graph LR
 
 Source: `securitySurface` arrays in `.aee/kb/src/nova/**/*.json`.
 
-**Entry points (174 total -- unchanged from batch 8):**
+**Entry points (178 total -- 4 added in batch 10):**
 
-Production entry points (53):
+Production entry points (57):
 
 | File | Line | Category | Description |
 |---|---|---|---|
-| `accelerator/cyborg.py` | L56 | http-param | `context` carries caller auth/session state into `_CyborgClient.__init__` |
+| `accelerator/cyborg.py` | L56 | http-param | `context` carries caller auth/session state |
 | `accelerator/cyborg.py` | L88 | http-param | `dp_name` forwarded to Cyborg API |
-| `accelerator/cyborg.py` | L255 | http-param | `bindings` dict serialised as JSON patch body in `bind_arqs` |
+| `accelerator/cyborg.py` | L255 | http-param | `bindings` dict serialised as JSON patch body |
 | `accelerator/cyborg.py` | L291 | http-param | `instance_uuid` used as Cyborg API query parameter |
 | `accelerator/cyborg.py` | L337 | http-param | `arq_uuid` interpolated into Cyborg API URL path |
-| `api/auth.py` | L55 | http-param | `@webob.dec.wsgify` -- inbound WSGI request enters auth middleware |
-| `api/openstack/__init__.py` | L91 | http-param | `@webob.dec.wsgify` -- request enters API router |
-| `api/openstack/common.py` | L155 | http-param | `request.params` -- query parameters read for filtering |
-| `api/openstack/common.py` | L189 | http-param | `request.GET['limit']` -- limit parameter from query string |
+| `api/auth.py` | L55 | http-param | `@webob.dec.wsgify` -- auth middleware |
+| `api/openstack/__init__.py` | L91 | http-param | `@webob.dec.wsgify` -- API router |
+| `api/openstack/common.py` | L155 | http-param | `request.params` query parameters |
+| `api/openstack/common.py` | L189 | http-param | `request.GET['limit']` |
 | `cmd/compute.py` | L49 | cli-args | `config.parse_args(sys.argv)` |
 | `cmd/conductor.py` | L39 | cli-args | `config.parse_args(sys.argv)` |
 | `cmd/manage.py` | L3821 | cli-args | `config.parse_args(sys.argv)` |
 | `cmd/policy.py` | L48 | env | `os.environ.get('OS_ROLES')` |
 | `cmd/policy.py` | L53 | env | `os.environ.get('OS_USER_ID')` |
 | `cmd/policy.py` | L58 | env | `os.environ.get('OS_TENANT_ID')` |
-| `console/serial.py` | L83 | network-socket | raw socket opened for serial console connection |
-| `exception.py` | L27 | http-param | `import webob.exc` -- webob exception types enter nova hierarchy |
+| `console/serial.py` | L83 | network-socket | raw socket opened for serial console |
+| `exception.py` | L27 | http-param | `import webob.exc` |
 | `exception.py` | L35 | http-param | `ConvertedException(webob.exc.WSGIHTTPException)` |
+| `monkey_patch.py` | L68 | cli-args | `conf(_config_file_args(sys.argv[1:]))` -- eventlet patching config |
+| `monkey_patch.py` | L134 | env | `os.environ.get('OS_NOVA_DISABLE_EVENTLET_PATCHING')` |
+| `monkey_patch.py` | L191 | env | `os.environ.get('OS_NOVA_DISABLE_EVENTLET_PATCHING')` (second reference) |
+| `service.py` | L329 | cli-args | `binary = os.path.basename(sys.argv[0])` -- service binary name |
 
 (35 further production entry points in `api/` controller and `cmd/` launcher files. Source: `.aee/kb/src/nova/api/**/*.json`, `.aee/kb/src/nova/cmd/**/*.json:securitySurface`.)
 
-Test entry points (121): `tests/unit/` and `tests/functional/` -- `http-param`, `cli-args`, `network-socket` categories. Test framework inputs; not production attack surface.
+Test entry points (121): `tests/unit/` and `tests/functional/` -- `http-param`, `cli-args`, `network-socket` categories. Test framework inputs only.
 
-**Sinks (1,827 total -- 144 added in batch 9):**
+**Sinks (1,850 total -- 23 added in batch 10):**
 
-| Category | Count | Primary sources |
-|---|---|---|
-| db-write | 1,706 | Production (900) + tests (806) -- virt adds 138: block_device.py (7), driver.py (5), libvirt/driver.py (70), libvirt/migration.py (10), libvirt/host.py (6), ironic/driver.py (8), vmwareapi/* (9), hardware.py (3), etc. |
-| network-send | 7 | `accelerator/cyborg.py` (unchanged) |
-| file-write | 114 | Production (14) + tests (100) -- virt adds: configdrive.py (2), disk/vfs/guestfs.py (1), libvirt/imagebackend.py (1), libvirt/host.py (1), libvirt/utils.py (1), node.py (1), storage_users.py (2), vmwareapi/images.py (2) |
+| Category | Count |
+|---|---|
+| db-write | 1,729 |
+| network-send | 7 |
+| file-write | 114 |
 
-New production sinks from batch 9:
-- `virt/libvirt/driver.py` -- 70 security surface entries; privsep-entrypoint privileges dominate, with `db-write` sinks for driver capability updates. Source: `.aee/kb/src/nova/virt/libvirt/driver.py.json:securitySurface`.
-- `virt/libvirt/vif.py:L103-L137` -- privsep calls to `linux_net` for VIF MAC address configuration and VLAN tagging (22 privilege entries). Source: `.aee/kb/src/nova/virt/libvirt/vif.py.json:securitySurface`.
-- `virt/block_device.py:L94-L332` -- 7 db-write sinks from `DriverBlockDevice.save()` and `update()` calls. Source: `.aee/kb/src/nova/virt/block_device.py.json:securitySurface`.
-- `virt/configdrive.py:L63, L68, L103` -- file-write sinks for config-drive ISO/VFAT assembly. Source: `.aee/kb/src/nova/virt/configdrive.py.json:securitySurface`.
-- `virt/node.py:L39` -- file-write sink: node UUID written to disk. Source: `.aee/kb/src/nova/virt/node.py.json:securitySurface`.
-- `volume/cinder.py:L284, L660, L865, L892, L899, L936` -- 6 db-write sinks for volume attachment updates and Cinder API calls. Source: `.aee/kb/src/nova/volume/cinder.py.json:securitySurface`.
+New production sinks from batch 10:
+- `quota.py:L125, L131, L1356, L1358` -- 4 db-write: quota dict updates in `limit_check_project_and_user`/`limit_check`. Source: `.aee/kb/src/nova/quota.py.json:securitySurface`.
+- `block_device.py:L80, L89, L90, L264` -- 4 db-write: `BlockDeviceDict` field updates. Source: `.aee/kb/src/nova/block_device.py.json:securitySurface`.
+- `rpc.py:L182, L362, L366` -- 3 db-write: context trace-info, `compute.instance.update`, `compute.metrics.update` notification topics. Source: `.aee/kb/src/nova/rpc.py.json:securitySurface`.
+- `context.py:L200` -- 1 db-write: `RequestContext.values.update()`. Source: `.aee/kb/src/nova/context.py.json:securitySurface`.
+- `filesystem.py:L114` -- 1 file-write: `fd.write(data)` for sysfs write. Source: `.aee/kb/src/nova/filesystem.py.json:securitySurface`.
+- `availability_zones.py:L42` -- 1 db-write: AZ metadata cache reset. Source: `.aee/kb/src/nova/availability_zones.py.json:securitySurface`.
+- `policy.py:L140` -- 1 db-write: policy rule update. Source: `.aee/kb/src/nova/policy.py.json:securitySurface`.
+- `middleware.py:L19` -- 1 db-write: oslo.middleware config update. Source: `.aee/kb/src/nova/middleware.py.json:securitySurface`.
+- `config.py:L37` -- 1 db-write: config default update. Source: `.aee/kb/src/nova/config.py.json:securitySurface`.
+- `monkey_patch.py:L200` -- 1 db-write: `sys.meta_path.insert(0, PoisonEventletImport())`. Source: `.aee/kb/src/nova/monkey_patch.py.json:securitySurface`.
 
 **Data flow paths (production):**
 
-1. **CLI entry points -> service startup.** Each `cmd/*.py` calls `config.parse_args(sys.argv)`; no sink within `cmd/`.
-2. **API layer -> downstream.** HTTP requests enter at `@webob.dec.wsgify`; validated; dispatched -> `compute/api.py` -> `db/main/api.py`. Policy checks via `policies/*.py`.
-3. **Compute API -> instance lifecycle.** `compute/api.py` (`_validate_bdm` CCN 43, `_delete` CCN 29, `resize` CCN 28) and `compute/manager.py` (`_init_instance` CCN 40).
-4. **Conductor -> multi-node orchestration.** `conductor/manager.py:build_instances` (CCN 34).
-5. **Hypervisor driver -> VM operations.** `compute/manager.py` calls `virt/driver.py:ComputeDriver` methods; the libvirt driver (`virt/libvirt/driver.py`) executes disk, network, and CPU operations via privsep. Disk images prepared via `virt/images.py` (privsep.qemu calls), mounted via `virt/disk/mount/` (privsep.fs calls). Source: link-graph edges `compute-manager-py` -> `virt-libvirt-driver-py` etc.
-6. **Config-drive -> file-write (privileged).** `virt/configdrive.py:L63,L68,L103` writes ISO/VFAT drive data; privsep.fs.unprivileged_mkfs/mount at L106/L111. Source: `.aee/kb/src/nova/virt/configdrive.py.json:securitySurface`.
-7. **VIF plug/unplug -> privsep linux_net.** `virt/libvirt/vif.py:L103-L137` calls `privsep.linux_net` for MAC address, VLAN, trust configuration on SR-IOV VFs. Source: `.aee/kb/src/nova/virt/libvirt/vif.py.json:securitySurface`.
-8. **Volume attach -> Cinder API.** `volume/cinder.py` uses service-token auth (`L75`) to call Cinder v3 API; attachment records updated at `L892`. Source: `.aee/kb/src/nova/volume/cinder.py.json:securitySurface`.
-9. **Accelerator -> Cyborg HTTP.** Parameters at `cyborg.py:L56/L88/L255/L291/L337` reach network-send sinks.
-10. **Image service -> Glance HTTP + local file.** `image/glance.py` with signature verification (`_verify_and_write` CCN 17) -> file-write sinks at L413, L429.
-11. **Privsep -> privileged subprocess.** All `privsep/` and calling `virt/` functions (`virt/disk/`, `virt/libvirt/`, `virt/configdrive.py`, `virt/images.py`) route through oslo.privsep daemon.
-12. **PCI tracker -> DB.** `pci/manager.py` and `pci/stats.py` update PCI device records.
-13. **Notifications -> oslo.messaging bus.** `notifications/base.py` dispatches versioned notifications.
-14. **Limit enforcement -> oslo_limit + Placement.** `limit/local.py`, `limit/placement.py`, `limit/utils.py`.
-15. **Objects -> db/main/api.py.** OVO domain objects -> SQLAlchemy writes.
-16. **Network -> Neutron HTTP.** `network/neutron.py`.
+1. **Eventlet patching and config bootstrap.** `monkey_patch.py` reads `OS_NOVA_DISABLE_EVENTLET_PATCHING` (env entry-point at L134/L191) and `sys.argv[1:]` (cli-args at L68) before any nova module imports. `service.py:L329` reads `sys.argv[0]` to determine the service binary name. `config.py:parse_args` then initialises oslo.config from CLI flags.
+2. **Request context propagation.** `context.py:RequestContext` carries user ID, project ID, auth token, and keystoneauth plugin (`crypto-key` privileges at L24/L25/L63) through all nova call stacks. `scatter_gather_cells` (CCN 6) fans out cross-cell RPC calls. Context update at L200 (db-write sink).
+3. **Quota enforcement gate.** `quota.py:limit_check_project_and_user` (CCN 29) and `limit_check` (CCN 15) query and update per-project/user quota counters (4 db-write sinks) before instance operations proceed.
+4. **Policy authorisation gate.** `policy.py:authorize` (CCN 6) wraps oslo.policy rule evaluation for every API action defined in `policies/`.
+5. **RPC infrastructure.** `rpc.py` sets up oslo.messaging transport; `_notify` emits `compute.instance.update` and `compute.metrics.update` topics (3 db-write sinks at L182/L362/L366).
+6. **CLI entry points -> service startup.** Each `cmd/*.py` and `service.py` reads `sys.argv`; no db/network sink within that layer.
+7. **API layer -> downstream.** HTTP enters at `@webob.dec.wsgify`; validated; dispatched to controllers -> `compute/api.py` -> `db/main/api.py`. Policy via `policy.py`. Quotas via `quota.py`.
+8. **Compute API -> instance lifecycle.** `compute/api.py` (`_validate_bdm` CCN 43) and `compute/manager.py` (`_init_instance` CCN 40).
+9. **Conductor -> multi-node orchestration.** `conductor/manager.py:build_instances` (CCN 34).
+10. **Hypervisor driver -> VM operations.** `virt/libvirt/driver.py` executes disk/network/CPU ops via privsep.
+11. **Volume attach -> Cinder.** `volume/cinder.py` via cinderclient; service-token auth at L75.
+12. **Accelerator -> Cyborg HTTP.** `accelerator/cyborg.py` network-send sinks.
+13. **Image -> Glance HTTP + local file.** `image/glance.py` with `_verify_and_write` (CCN 17).
+14. **Privsep -> privileged subprocess.** All `privsep/` and calling `virt/` functions.
+15. **Crypto utilities.** `crypto.py` (17 crypto-key privilege entries from `cryptography`/castellan imports): X.509 cert generation and vTPM secret management via `crypto.ensure_vtpm_secret` -> `vtpm.py`.
+16. **Objects -> db/main/api.py.** OVO domain objects -> SQLAlchemy writes.
 17. **Scheduler -> Placement HTTP.** `scheduler/client/report.py`.
-18. **Console -> network socket.** `console/serial.py:L83`.
-19. **Servicegroup -> DB/Memcache heartbeat.** `servicegroup/drivers/db.py:L88` and `servicegroup/drivers/mc.py:L93`.
-20. **Share -> Manila HTTP.** `share/manila.py` via openstack SDK.
+18. **Network -> Neutron HTTP.** `network/neutron.py`.
+19. **Console -> network socket.** `console/serial.py:L83`.
+20. **Servicegroup -> DB/Memcache heartbeat.** `servicegroup/drivers/db.py:L88` and `servicegroup/drivers/mc.py:L93`.
 
-**Privileges (747 total -- 129 added in batch 9):**
+**Privileges (765 total -- 18 added in batch 10):**
 
-Batch 9 adds 127 `privsep-entrypoint` privileges from `virt/` (the caller side of privsep calls: `virt/libvirt/driver.py` 70, `virt/libvirt/vif.py` 22, `virt/disk/api.py` 13, `virt/libvirt/utils.py` 14, `virt/disk/mount/*` 13, `virt/configdrive.py` 3, `virt/images.py` 5, `virt/libvirt/storage/*` 12, `virt/libvirt/volume/mount.py` 5, others) and 2 `crypto-key` from `volume/cinder.py:L30,L75`. All `privsep-entrypoint` entries represent callers of oslo.privsep-decorated functions in `privsep/`. Source: `.aee/kb/src/nova/virt/**/*.json:securitySurface`, `.aee/kb/src/nova/volume/cinder.py.json:securitySurface`.
+New privileges from batch 10: `crypto.py` adds 17 `crypto-key` privilege entries (cryptography.hazmat, castellan imports at L31-L43); `context.py` adds 3 `crypto-key` entries (keystoneauth1 at L24/L25/L63). Total production privileges: 270 (58 privsep-entrypoint + 212 crypto-key). Test privileges: 495.
 
-Total production privileges: 252 (58 in privsep/ decorated functions + 127 new virt/ callers + 67 crypto-key). Test privileges: 495.
-
-No untrusted-input sanitisation steps are recorded in any production `securitySurface` entry across the 1,484 KB records.
+No untrusted-input sanitisation steps are recorded in any production `securitySurface` entry across the 1,509 KB records.
 
 ---
 
 ## Cross-Component Interfaces
 
-The link graph records **0 cross-component file edges** and **0 cross-component seams**. All 5,884 file edges are intra-component. The link summary notes 923 unresolved imports (down from 1,200 in batch 8): bare `nova` (913 refs, representing dynamic attribute-access patterns across all files rather than a missing module), `nova.context` (7), `nova.policy` (2), `nova.quota` (1). All named module-level gaps from previous runs are now resolved -- `nova.virt.*` cluster (283 refs) and `nova.volume` (23 refs) fully resolved in this batch. Source: `.aee/link-summary.md`.
+The link graph records **0 cross-component file edges** and **0 cross-component seams**. All 6,902 file edges are intra-component. The link summary notes **10 unresolved imports** (down from 923 in batch 9) -- all are bare `nova` references in 10 test files (functional libvirt, regressions, and unit compute/scheduler tests). All named-module gaps are fully resolved: `nova.context`, `nova.policy`, `nova.quota`, and the entire `nova.virt.*` cluster are now in the KB. Source: `.aee/link-summary.md`.
