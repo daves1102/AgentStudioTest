@@ -1,0 +1,409 @@
+{
+  "file": "src/nova/tests/unit/policies/test_limits.py",
+  "hash": "600624102aed483041319fafa6a4e55503766eec81747ba981bc08245acde660",
+  "language": "Python",
+  "component": "nova",
+  "package": null,
+  "lines": {
+    "blank": 19,
+    "code": 75,
+    "comment": 15,
+    "total": 109
+  },
+  "symbols": [
+    {
+      "name": "CONF",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 24,
+        "end": 24
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "LimitsPolicyTest",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 27,
+        "end": 89
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "setUp",
+      "kind": "method",
+      "scope": "LimitsPolicyTest",
+      "lineRange": {
+        "start": 36,
+        "end": 72
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 28,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "stub_get_project_quotas",
+      "kind": "function",
+      "scope": "LimitsPolicyTest.setUp",
+      "lineRange": {
+        "start": 56,
+        "end": 58
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "context"
+        },
+        {
+          "name": "project_id"
+        },
+        {
+          "default": "True",
+          "name": "usages"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "{k: dict(limit=v, in_use=v // 2) for k, v in self.absolute_limits.items()}",
+          "line": 57
+        }
+      ],
+      "visibility": "public"
+    },
+    {
+      "name": "test_get_limits_policy",
+      "kind": "method",
+      "scope": "LimitsPolicyTest",
+      "lineRange": {
+        "start": 74,
+        "end": 78
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 5,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_get_other_limits_policy",
+      "kind": "method",
+      "scope": "LimitsPolicyTest",
+      "lineRange": {
+        "start": 80,
+        "end": 89
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 10,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "LimitsNoLegacyTest",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 92,
+        "end": 109
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "without_deprecated_rules",
+      "kind": "field",
+      "scope": "LimitsNoLegacyTest",
+      "lineRange": {
+        "start": 97,
+        "end": 97
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "rules_without_deprecation",
+      "kind": "field",
+      "scope": "LimitsNoLegacyTest",
+      "lineRange": {
+        "start": 98,
+        "end": 100
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "setUp",
+      "kind": "method",
+      "scope": "LimitsNoLegacyTest",
+      "lineRange": {
+        "start": 102,
+        "end": 109
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 5,
+      "ccn": 1,
+      "visibility": "public"
+    }
+  ],
+  "referencedSymbols": [
+    {
+      "name": "base.BasePolicyTest",
+      "usage": "inherit",
+      "via": "nova.tests.unit.policies",
+      "count": 1,
+      "lineRange": {
+        "start": 27,
+        "end": 27
+      }
+    },
+    {
+      "name": "super",
+      "usage": "call",
+      "via": null,
+      "count": 2,
+      "lineRange": {
+        "start": 37,
+        "end": 37
+      }
+    },
+    {
+      "name": "limits.LimitsController",
+      "usage": "call",
+      "via": "nova.api.openstack.compute",
+      "count": 1,
+      "lineRange": {
+        "start": 38,
+        "end": 38
+      }
+    },
+    {
+      "name": "fakes.HTTPRequest.blank",
+      "usage": "call",
+      "via": "nova.tests.unit.api.openstack",
+      "count": 2,
+      "lineRange": {
+        "start": 39,
+        "end": 39
+      }
+    },
+    {
+      "name": "dict",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 57,
+        "end": 57
+      }
+    },
+    {
+      "name": "mock.patch.object",
+      "usage": "call",
+      "via": "unittest",
+      "count": 1,
+      "lineRange": {
+        "start": 60,
+        "end": 60
+      }
+    },
+    {
+      "name": "functools.partial",
+      "usage": "call",
+      "via": "functools",
+      "count": 1,
+      "lineRange": {
+        "start": 85,
+        "end": 85
+      }
+    }
+  ],
+  "dependencies": [
+    {
+      "style": "import",
+      "module": "functools",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 13,
+        "end": 13
+      }
+    },
+    {
+      "style": "from",
+      "module": "unittest",
+      "names": [
+        {
+          "alias": null,
+          "name": "mock"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 14,
+        "end": 14
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.api.openstack.compute",
+      "names": [
+        {
+          "alias": null,
+          "name": "limits"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 16,
+        "end": 16
+      }
+    },
+    {
+      "style": "import",
+      "module": "nova.conf",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 17,
+        "end": 17
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.policies",
+      "names": [
+        {
+          "alias": "base_policy",
+          "name": "base"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 18,
+        "end": 18
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.policies",
+      "names": [
+        {
+          "alias": "limits_policies",
+          "name": "limits"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 19,
+        "end": 19
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "quota"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 20,
+        "end": 20
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.tests.unit.api.openstack",
+      "names": [
+        {
+          "alias": null,
+          "name": "fakes"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 21,
+        "end": 21
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.tests.unit.policies",
+      "names": [
+        {
+          "alias": null,
+          "name": "base"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 22,
+        "end": 22
+      }
+    }
+  ],
+  "sideEffects": [
+    {
+      "kind": "network",
+      "target": "from nova.api.openstack.compute import limits",
+      "lineRange": {
+        "start": 16,
+        "end": 16
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "CONF = nova.conf.CONF",
+      "lineRange": {
+        "start": 24,
+        "end": 24
+      }
+    }
+  ],
+  "securitySurface": [],
+  "injection_flags": [],
+  "warnings": []
+}

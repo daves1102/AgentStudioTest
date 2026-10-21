@@ -1,0 +1,651 @@
+{
+  "file": "src/nova/tests/functional/regressions/test_bug_1741364.py",
+  "hash": "261ff5d36a6217743799606d539fc10b66780f40566a4f6ec68faeb06a60c57e",
+  "language": "Python",
+  "component": "nova",
+  "package": null,
+  "lines": {
+    "blank": 36,
+    "code": 171,
+    "comment": 34,
+    "total": 241
+  },
+  "symbols": [
+    {
+      "name": "TestLiveMigrationRbdMonAddrsNotRefreshed",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 52,
+        "end": 241
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "microversion",
+      "kind": "field",
+      "scope": "TestLiveMigrationRbdMonAddrsNotRefreshed",
+      "lineRange": {
+        "start": 63,
+        "end": 63
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "ADMIN_API",
+      "kind": "constant",
+      "scope": "TestLiveMigrationRbdMonAddrsNotRefreshed",
+      "lineRange": {
+        "start": 64,
+        "end": 64
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "OLD_MONS",
+      "kind": "constant",
+      "scope": "TestLiveMigrationRbdMonAddrsNotRefreshed",
+      "lineRange": {
+        "start": 68,
+        "end": 71
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "NEW_MONS",
+      "kind": "constant",
+      "scope": "TestLiveMigrationRbdMonAddrsNotRefreshed",
+      "lineRange": {
+        "start": 72,
+        "end": 75
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "_setup_compute_service",
+      "kind": "method",
+      "scope": "TestLiveMigrationRbdMonAddrsNotRefreshed",
+      "lineRange": {
+        "start": 77,
+        "end": 80
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "setUp",
+      "kind": "method",
+      "scope": "TestLiveMigrationRbdMonAddrsNotRefreshed",
+      "lineRange": {
+        "start": 82,
+        "end": 146
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 52,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "_get_connection",
+      "kind": "method",
+      "scope": "TestLiveMigrationRbdMonAddrsNotRefreshed",
+      "lineRange": {
+        "start": 148,
+        "end": 157
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "default": "None",
+          "name": "host_info"
+        },
+        {
+          "default": "None",
+          "name": "hostname"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "fakelibvirt.Connection( 'qemu:///system', version=fakelibvirt.FAKE_LIBVIRT_VERSION, hv_version=fakelibvirt.FAKE_QEMU_VERSION, host_info=host_info, hostname=hostname)",
+          "line": 152
+        }
+      ],
+      "nloc": 10,
+      "ccn": 2,
+      "visibility": "private"
+    },
+    {
+      "name": "start_compute",
+      "kind": "method",
+      "scope": "TestLiveMigrationRbdMonAddrsNotRefreshed",
+      "lineRange": {
+        "start": 159,
+        "end": 174
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "default": "'compute1'",
+          "name": "hostname"
+        },
+        {
+          "default": "None",
+          "name": "host_info"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "hostname",
+          "line": 174
+        }
+      ],
+      "nloc": 16,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "_rbd_disk_hosts",
+      "kind": "method",
+      "scope": "TestLiveMigrationRbdMonAddrsNotRefreshed",
+      "lineRange": {
+        "start": 177,
+        "end": 182
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "xml"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "[(h.get('name'), h.get('port')) for h in hosts]",
+          "line": 182
+        }
+      ],
+      "nloc": 5,
+      "ccn": 2,
+      "visibility": "private"
+    },
+    {
+      "name": "_get_host",
+      "kind": "method",
+      "scope": "TestLiveMigrationRbdMonAddrsNotRefreshed",
+      "lineRange": {
+        "start": 184,
+        "end": 185
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "server_id"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "self.api.get_server(server_id)['OS-EXT-SRV-ATTR:host']",
+          "line": 185
+        }
+      ],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "test_rbd_mon_addrs_are_refreshed_on_live_migration",
+      "kind": "method",
+      "scope": "TestLiveMigrationRbdMonAddrsNotRefreshed",
+      "lineRange": {
+        "start": 187,
+        "end": 241
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 28,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "_rbd_disk_hosts",
+      "kind": "staticmethod",
+      "scope": "TestLiveMigrationRbdMonAddrsNotRefreshed",
+      "lineRange": {
+        "start": 176,
+        "end": 182
+      },
+      "visibility": "private",
+      "source": "manual"
+    }
+  ],
+  "referencedSymbols": [
+    {
+      "name": "base.LibvirtMigrationMixin",
+      "usage": "inherit",
+      "via": "nova.tests.functional.libvirt",
+      "count": 1,
+      "lineRange": {
+        "start": 53,
+        "end": 53
+      }
+    },
+    {
+      "name": "integrated_helpers._IntegratedTestBase",
+      "usage": "inherit",
+      "via": "nova.tests.functional",
+      "count": 1,
+      "lineRange": {
+        "start": 54,
+        "end": 54
+      }
+    },
+    {
+      "name": "fixtures.TempDir",
+      "usage": "call",
+      "via": "fixtures",
+      "count": 1,
+      "lineRange": {
+        "start": 83,
+        "end": 83
+      }
+    },
+    {
+      "name": "super",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 87,
+        "end": 87
+      }
+    },
+    {
+      "name": "nova_fixtures.CGroupsFixture",
+      "usage": "call",
+      "via": "nova.tests",
+      "count": 1,
+      "lineRange": {
+        "start": 89,
+        "end": 89
+      }
+    },
+    {
+      "name": "nova_fixtures.LibvirtFixture",
+      "usage": "call",
+      "via": "nova.tests",
+      "count": 1,
+      "lineRange": {
+        "start": 90,
+        "end": 90
+      }
+    },
+    {
+      "name": "nova_fixtures.OSBrickFixture",
+      "usage": "call",
+      "via": "nova.tests",
+      "count": 1,
+      "lineRange": {
+        "start": 91,
+        "end": 91
+      }
+    },
+    {
+      "name": "fixtures.MockPatch",
+      "usage": "call",
+      "via": "fixtures",
+      "count": 9,
+      "lineRange": {
+        "start": 93,
+        "end": 93
+      }
+    },
+    {
+      "name": "io.BytesIO",
+      "usage": "call",
+      "via": "io",
+      "count": 1,
+      "lineRange": {
+        "start": 104,
+        "end": 104
+      }
+    },
+    {
+      "name": "range",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 110,
+        "end": 110
+      }
+    },
+    {
+      "name": "set",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 110,
+        "end": 110
+      }
+    },
+    {
+      "name": "mock.patch",
+      "usage": "call",
+      "via": "unittest",
+      "count": 2,
+      "lineRange": {
+        "start": 112,
+        "end": 112
+      }
+    },
+    {
+      "name": "fakelibvirt.HostInfo",
+      "usage": "call",
+      "via": "nova.tests.fixtures",
+      "count": 3,
+      "lineRange": {
+        "start": 139,
+        "end": 139
+      }
+    },
+    {
+      "name": "fakelibvirt.Connection",
+      "usage": "call",
+      "via": "nova.tests.fixtures",
+      "count": 1,
+      "lineRange": {
+        "start": 152,
+        "end": 152
+      }
+    },
+    {
+      "name": "getattr",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 165,
+        "end": 165
+      }
+    },
+    {
+      "name": "str",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 165,
+        "end": 165
+      }
+    },
+    {
+      "name": "etree.fromstring",
+      "usage": "call",
+      "via": "lxml",
+      "count": 1,
+      "lineRange": {
+        "start": 179,
+        "end": 179
+      }
+    },
+    {
+      "name": "list",
+      "usage": "call",
+      "via": null,
+      "count": 2,
+      "lineRange": {
+        "start": 203,
+        "end": 203
+      }
+    },
+    {
+      "name": "zip",
+      "usage": "call",
+      "via": null,
+      "count": 2,
+      "lineRange": {
+        "start": 203,
+        "end": 203
+      }
+    }
+  ],
+  "dependencies": [
+    {
+      "style": "import",
+      "module": "io",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 38,
+        "end": 38
+      }
+    },
+    {
+      "style": "from",
+      "module": "unittest",
+      "names": [
+        {
+          "alias": null,
+          "name": "mock"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 39,
+        "end": 39
+      }
+    },
+    {
+      "style": "import",
+      "module": "fixtures",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 41,
+        "end": 41
+      }
+    },
+    {
+      "style": "from",
+      "module": "lxml",
+      "names": [
+        {
+          "alias": null,
+          "name": "etree"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 42,
+        "end": 42
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_utils.fixture",
+      "names": [
+        {
+          "alias": "uuids",
+          "name": "uuidsentinel"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 43,
+        "end": 43
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_utils",
+      "names": [
+        {
+          "alias": null,
+          "name": "units"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 44,
+        "end": 44
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.tests",
+      "names": [
+        {
+          "alias": "nova_fixtures",
+          "name": "fixtures"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 46,
+        "end": 46
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.tests.fixtures",
+      "names": [
+        {
+          "alias": "fakelibvirt",
+          "name": "libvirt"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 47,
+        "end": 47
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.tests.functional",
+      "names": [
+        {
+          "alias": null,
+          "name": "integrated_helpers"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 48,
+        "end": 48
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.tests.functional.libvirt",
+      "names": [
+        {
+          "alias": null,
+          "name": "base"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 49,
+        "end": 49
+      }
+    }
+  ],
+  "sideEffects": [
+    {
+      "kind": "process-spawn",
+      "target": "'nova.privsep.utils.supports_direct_io',",
+      "lineRange": {
+        "start": 106,
+        "end": 106
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "ADMIN_API = True",
+      "lineRange": {
+        "start": 64,
+        "end": 64
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "OLD_MONS = (",
+      "lineRange": {
+        "start": 68,
+        "end": 68
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "NEW_MONS = (",
+      "lineRange": {
+        "start": 72,
+        "end": 72
+      }
+    }
+  ],
+  "securitySurface": [
+    {
+      "kind": "privilege",
+      "category": "privsep-entrypoint",
+      "description": "'nova.privsep.utils.supports_direct_io',",
+      "lineRange": {
+        "start": 106,
+        "end": 106
+      }
+    }
+  ],
+  "injection_flags": [],
+  "warnings": []
+}

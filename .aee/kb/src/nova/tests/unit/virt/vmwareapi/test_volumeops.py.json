@@ -1,0 +1,1561 @@
+{
+  "file": "src/nova/tests/unit/virt/vmwareapi/test_volumeops.py",
+  "hash": "fd13e8d25b74354c248a70460434676c6d67c7afa77fa9b4b77c5685b04c234c",
+  "language": "Python",
+  "component": "nova",
+  "package": null,
+  "lines": {
+    "blank": 116,
+    "code": 740,
+    "comment": 13,
+    "total": 869
+  },
+  "symbols": [
+    {
+      "name": "VMwareVolumeOpsTestCase",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 37,
+        "end": 869
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "setUp",
+      "kind": "method",
+      "scope": "VMwareVolumeOpsTestCase",
+      "lineRange": {
+        "start": 39,
+        "end": 60
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 20,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "_test_detach_disk_from_vm",
+      "kind": "method",
+      "scope": "VMwareVolumeOpsTestCase",
+      "lineRange": {
+        "start": 62,
+        "end": 88
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "default": "False",
+          "name": "destroy_disk"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 15,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "fake_call_method",
+      "kind": "function",
+      "scope": "VMwareVolumeOpsTestCase._test_detach_disk_from_vm",
+      "lineRange": {
+        "start": 63,
+        "end": 75
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "module"
+        },
+        {
+          "name": "method"
+        },
+        {
+          "name": "*args"
+        },
+        {
+          "name": "**kwargs"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "'fake_configure_task'",
+          "line": 75
+        }
+      ],
+      "visibility": "public"
+    },
+    {
+      "name": "test_detach_with_destroy_disk_from_vm",
+      "kind": "method",
+      "scope": "VMwareVolumeOpsTestCase",
+      "lineRange": {
+        "start": 90,
+        "end": 91
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_detach_without_destroy_disk_from_vm",
+      "kind": "method",
+      "scope": "VMwareVolumeOpsTestCase",
+      "lineRange": {
+        "start": 93,
+        "end": 94
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "_fake_call_get_object_property",
+      "kind": "method",
+      "scope": "VMwareVolumeOpsTestCase",
+      "lineRange": {
+        "start": 96,
+        "end": 102
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "uuid"
+        },
+        {
+          "name": "result"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "fake_call_method",
+          "line": 102
+        }
+      ],
+      "nloc": 3,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "fake_call_method",
+      "kind": "function",
+      "scope": "VMwareVolumeOpsTestCase._fake_call_get_object_property",
+      "lineRange": {
+        "start": 97,
+        "end": 101
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "vim"
+        },
+        {
+          "name": "method"
+        },
+        {
+          "name": "vm_ref"
+        },
+        {
+          "name": "prop"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "result",
+          "line": 101
+        }
+      ],
+      "visibility": "public"
+    },
+    {
+      "name": "test_get_volume_uuid",
+      "kind": "method",
+      "scope": "VMwareVolumeOpsTestCase",
+      "lineRange": {
+        "start": 104,
+        "end": 112
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 9,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_get_volume_uuid_not_found",
+      "kind": "method",
+      "scope": "VMwareVolumeOpsTestCase",
+      "lineRange": {
+        "start": 114,
+        "end": 121
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 8,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_attach_volume_vmdk_invalid",
+      "kind": "method",
+      "scope": "VMwareVolumeOpsTestCase",
+      "lineRange": {
+        "start": 123,
+        "end": 150
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 27,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_update_volume_details",
+      "kind": "method",
+      "scope": "VMwareVolumeOpsTestCase",
+      "lineRange": {
+        "start": 155,
+        "end": 167
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "reconfigure_vm"
+        },
+        {
+          "name": "get_vm_extra_config_spec"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 12,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "_fake_connection_info",
+      "kind": "method",
+      "scope": "VMwareVolumeOpsTestCase",
+      "lineRange": {
+        "start": 169,
+        "end": 173
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "{'driver_volume_type': 'vmdk', 'serial': 'volume-fake-id', 'data': {'volume': 'vm-10', 'volume_id': 'volume-fake-id'}}",
+          "line": 170
+        }
+      ],
+      "nloc": 5,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "test_get_vmdk_backed_disk_device",
+      "kind": "method",
+      "scope": "VMwareVolumeOpsTestCase",
+      "lineRange": {
+        "start": 177,
+        "end": 201
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "get_vmdk_backed_disk_device"
+        },
+        {
+          "name": "get_volume_uuid"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 21,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_get_vmdk_backed_disk_device_with_missing_disk_device",
+      "kind": "method",
+      "scope": "VMwareVolumeOpsTestCase",
+      "lineRange": {
+        "start": 205,
+        "end": 227
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "get_vmdk_backed_disk_device"
+        },
+        {
+          "name": "get_volume_uuid"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 20,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_detach_volume_vmdk",
+      "kind": "method",
+      "scope": "VMwareVolumeOpsTestCase",
+      "lineRange": {
+        "start": 229,
+        "end": 283
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 50,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_detach_volume_vmdk_invalid",
+      "kind": "method",
+      "scope": "VMwareVolumeOpsTestCase",
+      "lineRange": {
+        "start": 285,
+        "end": 323
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 35,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_detach_volume_iscsi",
+      "kind": "method",
+      "scope": "VMwareVolumeOpsTestCase",
+      "lineRange": {
+        "start": 329,
+        "end": 356
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "detach_disk_from_vm"
+        },
+        {
+          "name": "iscsi_get_target"
+        },
+        {
+          "name": "get_rdm_disk"
+        },
+        {
+          "name": "get_vm_ref"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 23,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_detach_volume_iscsi_with_missing_iscsi_target",
+      "kind": "method",
+      "scope": "VMwareVolumeOpsTestCase",
+      "lineRange": {
+        "start": 360,
+        "end": 374
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "iscsi_get_target"
+        },
+        {
+          "name": "get_vm_ref"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 12,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_detach_volume_iscsi_with_missing_disk_device",
+      "kind": "method",
+      "scope": "VMwareVolumeOpsTestCase",
+      "lineRange": {
+        "start": 380,
+        "end": 407
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "detach_disk_from_vm"
+        },
+        {
+          "name": "iscsi_get_target"
+        },
+        {
+          "name": "get_rdm_disk"
+        },
+        {
+          "name": "get_vm_ref"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 24,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "_test__detach_volume_fcd",
+      "kind": "method",
+      "scope": "VMwareVolumeOpsTestCase",
+      "lineRange": {
+        "start": 412,
+        "end": 438
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "detach_fcd"
+        },
+        {
+          "name": "get_vm_state"
+        },
+        {
+          "name": "get_vm_ref"
+        },
+        {
+          "default": "constants.ADAPTER_TYPE_IDE",
+          "name": "adapter_type"
+        },
+        {
+          "default": "True",
+          "name": "powered_off"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 24,
+      "ccn": 5,
+      "visibility": "private"
+    },
+    {
+      "name": "test_detach_volume_fcd_powered_off_instance",
+      "kind": "method",
+      "scope": "VMwareVolumeOpsTestCase",
+      "lineRange": {
+        "start": 443,
+        "end": 444
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "adapter_type"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_detach_volume_fcd_powered_on_instance",
+      "kind": "method",
+      "scope": "VMwareVolumeOpsTestCase",
+      "lineRange": {
+        "start": 449,
+        "end": 451
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "adapter_type"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 3,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_detach_volume_fcd",
+      "kind": "method",
+      "scope": "VMwareVolumeOpsTestCase",
+      "lineRange": {
+        "start": 454,
+        "end": 458
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "detach_volume_fcd"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 5,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "_test_attach_volume_vmdk",
+      "kind": "method",
+      "scope": "VMwareVolumeOpsTestCase",
+      "lineRange": {
+        "start": 460,
+        "end": 509
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "default": "None",
+          "name": "adapter_type"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 48,
+      "ccn": 4,
+      "visibility": "private"
+    },
+    {
+      "name": "_test_attach_volume_iscsi",
+      "kind": "method",
+      "scope": "VMwareVolumeOpsTestCase",
+      "lineRange": {
+        "start": 511,
+        "end": 541
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "default": "None",
+          "name": "adapter_type"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 29,
+      "ccn": 3,
+      "visibility": "private"
+    },
+    {
+      "name": "test_attach_volume_vmdk",
+      "kind": "method",
+      "scope": "VMwareVolumeOpsTestCase",
+      "lineRange": {
+        "start": 543,
+        "end": 549
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 7,
+      "ccn": 2,
+      "visibility": "public"
+    },
+    {
+      "name": "test_get_controller_key_and_unit",
+      "kind": "method",
+      "scope": "VMwareVolumeOpsTestCase",
+      "lineRange": {
+        "start": 552,
+        "end": 571
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "allocate_controller_key_and_unit_number"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 18,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "_test_attach_fcd",
+      "kind": "method",
+      "scope": "VMwareVolumeOpsTestCase",
+      "lineRange": {
+        "start": 577,
+        "end": 612
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "attach_fcd"
+        },
+        {
+          "name": "reconfigure_vm"
+        },
+        {
+          "name": "get_controller_key_and_unit"
+        },
+        {
+          "default": "True",
+          "name": "existing_controller"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 33,
+      "ccn": 3,
+      "visibility": "private"
+    },
+    {
+      "name": "test_attach_fcd_using_existing_controller",
+      "kind": "method",
+      "scope": "VMwareVolumeOpsTestCase",
+      "lineRange": {
+        "start": 614,
+        "end": 615
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_attach_fcd_using_new_controller",
+      "kind": "method",
+      "scope": "VMwareVolumeOpsTestCase",
+      "lineRange": {
+        "start": 617,
+        "end": 618
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "_test__attach_volume_fcd",
+      "kind": "method",
+      "scope": "VMwareVolumeOpsTestCase",
+      "lineRange": {
+        "start": 623,
+        "end": 649
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "attach_fcd"
+        },
+        {
+          "name": "get_vm_state"
+        },
+        {
+          "name": "get_vm_ref"
+        },
+        {
+          "default": "constants.ADAPTER_TYPE_IDE",
+          "name": "adapter_type"
+        },
+        {
+          "default": "True",
+          "name": "powered_off"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 24,
+      "ccn": 5,
+      "visibility": "private"
+    },
+    {
+      "name": "test_attach_volume_fcd_powered_off_instance",
+      "kind": "method",
+      "scope": "VMwareVolumeOpsTestCase",
+      "lineRange": {
+        "start": 654,
+        "end": 655
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "adapter_type"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_attach_volume_fcd_powered_on_instance",
+      "kind": "method",
+      "scope": "VMwareVolumeOpsTestCase",
+      "lineRange": {
+        "start": 660,
+        "end": 662
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "adapter_type"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 3,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_attach_volume_fcd",
+      "kind": "method",
+      "scope": "VMwareVolumeOpsTestCase",
+      "lineRange": {
+        "start": 665,
+        "end": 669
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "attach_volume_fcd"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 5,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_attach_volume_iscsi",
+      "kind": "method",
+      "scope": "VMwareVolumeOpsTestCase",
+      "lineRange": {
+        "start": 671,
+        "end": 676
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 6,
+      "ccn": 2,
+      "visibility": "public"
+    },
+    {
+      "name": "test_consolidate_vmdk_volume_with_no_relocate",
+      "kind": "method",
+      "scope": "VMwareVolumeOpsTestCase",
+      "lineRange": {
+        "start": 681,
+        "end": 697
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "relocate_vm"
+        },
+        {
+          "name": "get_vmdk_base_volume_device"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 13,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_consolidate_vmdk_volume_with_relocate",
+      "kind": "method",
+      "scope": "VMwareVolumeOpsTestCase",
+      "lineRange": {
+        "start": 706,
+        "end": 743
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "attach_disk_to_vm"
+        },
+        {
+          "name": "detach_disk_from_vm"
+        },
+        {
+          "name": "get_res_pool_of_host"
+        },
+        {
+          "name": "get_host_of_vm"
+        },
+        {
+          "name": "relocate_vm"
+        },
+        {
+          "name": "get_vmdk_base_volume_device"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 33,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_consolidate_vmdk_volume_with_missing_vmdk",
+      "kind": "method",
+      "scope": "VMwareVolumeOpsTestCase",
+      "lineRange": {
+        "start": 752,
+        "end": 794
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "attach_disk_to_vm"
+        },
+        {
+          "name": "detach_disk_from_vm"
+        },
+        {
+          "name": "get_res_pool_of_host"
+        },
+        {
+          "name": "get_host_of_vm"
+        },
+        {
+          "name": "relocate_vm"
+        },
+        {
+          "name": "get_vmdk_base_volume_device"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 36,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_iscsi_get_host_iqn",
+      "kind": "method",
+      "scope": "VMwareVolumeOpsTestCase",
+      "lineRange": {
+        "start": 796,
+        "end": 817
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 19,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_iscsi_get_host_iqn_instance_not_found",
+      "kind": "method",
+      "scope": "VMwareVolumeOpsTestCase",
+      "lineRange": {
+        "start": 819,
+        "end": 846
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 25,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_get_volume_connector",
+      "kind": "method",
+      "scope": "VMwareVolumeOpsTestCase",
+      "lineRange": {
+        "start": 848,
+        "end": 869
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 19,
+      "ccn": 1,
+      "visibility": "public"
+    }
+  ],
+  "referencedSymbols": [
+    {
+      "name": "test.NoDBTestCase",
+      "usage": "inherit",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 37,
+        "end": 37
+      }
+    },
+    {
+      "name": "super",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 41,
+        "end": 41
+      }
+    },
+    {
+      "name": "vmwareapi_fake.reset",
+      "usage": "call",
+      "via": "nova.tests.unit.virt.vmwareapi",
+      "count": 1,
+      "lineRange": {
+        "start": 42,
+        "end": 42
+      }
+    },
+    {
+      "name": "stubs.set_stubs",
+      "usage": "call",
+      "via": "nova.tests.unit.virt.vmwareapi",
+      "count": 1,
+      "lineRange": {
+        "start": 43,
+        "end": 43
+      }
+    },
+    {
+      "name": "session.VMwareAPISession",
+      "usage": "call",
+      "via": "nova.virt.vmwareapi",
+      "count": 1,
+      "lineRange": {
+        "start": 44,
+        "end": 44
+      }
+    },
+    {
+      "name": "context.RequestContext",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 45,
+        "end": 45
+      }
+    },
+    {
+      "name": "volumeops.VMwareVolumeOps",
+      "usage": "call",
+      "via": "nova.virt.vmwareapi",
+      "count": 1,
+      "lineRange": {
+        "start": 47,
+        "end": 47
+      }
+    },
+    {
+      "name": "fake_instance.fake_instance_obj",
+      "usage": "call",
+      "via": "nova.tests.unit",
+      "count": 1,
+      "lineRange": {
+        "start": 59,
+        "end": 59
+      }
+    },
+    {
+      "name": "hasattr",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 73,
+        "end": 73
+      }
+    },
+    {
+      "name": "test.nested",
+      "usage": "call",
+      "via": "nova",
+      "count": 9,
+      "lineRange": {
+        "start": 76,
+        "end": 76
+      }
+    },
+    {
+      "name": "mock.patch.object",
+      "usage": "call",
+      "via": "unittest",
+      "count": 82,
+      "lineRange": {
+        "start": 77,
+        "end": 77
+      }
+    },
+    {
+      "name": "vmwareapi_fake.DataObject",
+      "usage": "call",
+      "via": "nova.tests.unit.virt.vmwareapi",
+      "count": 2,
+      "lineRange": {
+        "start": 81,
+        "end": 81
+      }
+    },
+    {
+      "name": "mock.call",
+      "usage": "call",
+      "via": "unittest",
+      "count": 5,
+      "lineRange": {
+        "start": 88,
+        "end": 88
+      }
+    },
+    {
+      "name": "vmwareapi_fake.ManagedObjectReference",
+      "usage": "call",
+      "via": "nova.tests.unit.virt.vmwareapi",
+      "count": 2,
+      "lineRange": {
+        "start": 105,
+        "end": 105
+      }
+    },
+    {
+      "name": "vmwareapi_fake.OptionValue",
+      "usage": "call",
+      "via": "nova.tests.unit.virt.vmwareapi",
+      "count": 1,
+      "lineRange": {
+        "start": 108,
+        "end": 108
+      }
+    },
+    {
+      "name": "mock.MagicMock",
+      "usage": "call",
+      "via": "unittest",
+      "count": 7,
+      "lineRange": {
+        "start": 128,
+        "end": 128
+      }
+    },
+    {
+      "name": "vm_util.VmdkInfo",
+      "usage": "call",
+      "via": "nova.virt.vmwareapi",
+      "count": 2,
+      "lineRange": {
+        "start": 129,
+        "end": 129
+      }
+    },
+    {
+      "name": "mock.Mock",
+      "usage": "call",
+      "via": "unittest",
+      "count": 20,
+      "lineRange": {
+        "start": 179,
+        "end": 179
+      }
+    },
+    {
+      "name": "session._call_method.assert_called_once_with",
+      "usage": "call",
+      "via": "nova.virt.vmwareapi",
+      "count": 5,
+      "lineRange": {
+        "start": 196,
+        "end": 196
+      }
+    },
+    {
+      "name": "vm_util.CONTROLLER_TO_ADAPTER_TYPE.get",
+      "usage": "call",
+      "via": "nova.virt.vmwareapi",
+      "count": 1,
+      "lineRange": {
+        "start": 273,
+        "end": 273
+      }
+    },
+    {
+      "name": "ddt.data",
+      "usage": "call",
+      "via": "ddt",
+      "count": 4,
+      "lineRange": {
+        "start": 440,
+        "end": 440
+      }
+    },
+    {
+      "name": "vmwareapi_fake.HostInternetScsiHba",
+      "usage": "call",
+      "via": "nova.tests.unit.virt.vmwareapi",
+      "count": 2,
+      "lineRange": {
+        "start": 799,
+        "end": 799
+      }
+    },
+    {
+      "name": "exception.InstanceNotFound",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 827,
+        "end": 827
+      }
+    }
+  ],
+  "dependencies": [
+    {
+      "style": "from",
+      "module": "unittest",
+      "names": [
+        {
+          "alias": null,
+          "name": "mock"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 15,
+        "end": 15
+      }
+    },
+    {
+      "style": "import",
+      "module": "ddt",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 17,
+        "end": 17
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_utils.fixture",
+      "names": [
+        {
+          "alias": "uuids",
+          "name": "uuidsentinel"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 18,
+        "end": 18
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_vmware",
+      "names": [
+        {
+          "alias": "oslo_vmw_exceptions",
+          "name": "exceptions"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 19,
+        "end": 19
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_vmware",
+      "names": [
+        {
+          "alias": "vutil",
+          "name": "vim_util"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 20,
+        "end": 20
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.compute",
+      "names": [
+        {
+          "alias": null,
+          "name": "power_state"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 22,
+        "end": 22
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.compute",
+      "names": [
+        {
+          "alias": null,
+          "name": "vm_states"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 23,
+        "end": 23
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "context"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 24,
+        "end": 24
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "exception"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 25,
+        "end": 25
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "test"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 26,
+        "end": 26
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.tests.unit",
+      "names": [
+        {
+          "alias": null,
+          "name": "fake_instance"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 27,
+        "end": 27
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.tests.unit.virt.vmwareapi",
+      "names": [
+        {
+          "alias": "vmwareapi_fake",
+          "name": "fake"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 28,
+        "end": 28
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.tests.unit.virt.vmwareapi",
+      "names": [
+        {
+          "alias": null,
+          "name": "stubs"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 29,
+        "end": 29
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.virt.vmwareapi",
+      "names": [
+        {
+          "alias": null,
+          "name": "constants"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 30,
+        "end": 30
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.virt.vmwareapi",
+      "names": [
+        {
+          "alias": null,
+          "name": "session"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 31,
+        "end": 31
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.virt.vmwareapi",
+      "names": [
+        {
+          "alias": null,
+          "name": "vm_util"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 32,
+        "end": 32
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.virt.vmwareapi",
+      "names": [
+        {
+          "alias": null,
+          "name": "volumeops"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 33,
+        "end": 33
+      }
+    }
+  ],
+  "sideEffects": [],
+  "securitySurface": [],
+  "injection_flags": [],
+  "warnings": []
+}

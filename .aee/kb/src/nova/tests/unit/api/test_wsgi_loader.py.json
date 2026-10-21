@@ -1,0 +1,188 @@
+{
+  "file": "src/nova/tests/unit/api/test_wsgi_loader.py",
+  "hash": "910631f5642feee713df18b65ca05ef34152f2149db841b1292f6c06622663bf",
+  "language": "Python",
+  "component": "nova",
+  "package": null,
+  "lines": {
+    "blank": 6,
+    "code": 17,
+    "comment": 16,
+    "total": 39
+  },
+  "symbols": [
+    {
+      "name": "TestInitApplication",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 26,
+        "end": 39
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "test_init_application_passes_sys_argv_to_config",
+      "kind": "method",
+      "scope": "TestInitApplication",
+      "lineRange": {
+        "start": 30,
+        "end": 39
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 9,
+      "ccn": 1,
+      "visibility": "public"
+    }
+  ],
+  "referencedSymbols": [
+    {
+      "name": "test.NoDBTestCase",
+      "usage": "inherit",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 26,
+        "end": 26
+      }
+    },
+    {
+      "name": "mock.Mock",
+      "usage": "call",
+      "via": "unittest",
+      "count": 2,
+      "lineRange": {
+        "start": 28,
+        "end": 28
+      }
+    },
+    {
+      "name": "mock.patch",
+      "usage": "call",
+      "via": "unittest",
+      "count": 3,
+      "lineRange": {
+        "start": 28,
+        "end": 28
+      }
+    },
+    {
+      "name": "utils.temporary_mutation",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 32,
+        "end": 32
+      }
+    },
+    {
+      "name": "wsgi_app.init_application",
+      "usage": "call",
+      "via": "nova.api.openstack",
+      "count": 1,
+      "lineRange": {
+        "start": 34,
+        "end": 34
+      }
+    }
+  ],
+  "dependencies": [
+    {
+      "style": "import",
+      "module": "sys",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 18,
+        "end": 18
+      }
+    },
+    {
+      "style": "from",
+      "module": "unittest",
+      "names": [
+        {
+          "alias": null,
+          "name": "mock"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 19,
+        "end": 19
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.api.openstack",
+      "names": [
+        {
+          "alias": null,
+          "name": "wsgi_app"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 21,
+        "end": 21
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "test"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 22,
+        "end": 22
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "utils"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 23,
+        "end": 23
+      }
+    }
+  ],
+  "sideEffects": [
+    {
+      "kind": "network",
+      "target": "@mock.patch('nova.api.openstack.wsgi_app._setup_service', new=mock.Mock())",
+      "lineRange": {
+        "start": 28,
+        "end": 28
+      }
+    }
+  ],
+  "securitySurface": [],
+  "injection_flags": [],
+  "warnings": []
+}

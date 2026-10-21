@@ -1,0 +1,1842 @@
+{
+  "file": "src/nova/tests/unit/api/openstack/compute/test_instance_actions.py",
+  "hash": "48e693c462d805fe8c36be59e1b3e4d40b4ba853cf7c22052d89a0f421601c97",
+  "language": "Python",
+  "component": "nova",
+  "package": null,
+  "lines": {
+    "blank": 67,
+    "code": 373,
+    "comment": 22,
+    "total": 462
+  },
+  "symbols": [
+    {
+      "name": "FAKE_UUID",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 38,
+        "end": 38
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "FAKE_REQUEST_ID",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 39,
+        "end": 39
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "FAKE_EVENT_ID",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 40,
+        "end": 40
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "FAKE_REQUEST_NOTFOUND_ID",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 41,
+        "end": 41
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "format_action",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 44,
+        "end": 59
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "action"
+        },
+        {
+          "default": "True",
+          "name": "expect_traceback"
+        },
+        {
+          "default": "False",
+          "name": "expect_host"
+        },
+        {
+          "default": "False",
+          "name": "expect_hostId"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "action",
+          "line": 59
+        }
+      ],
+      "nloc": 14,
+      "ccn": 5,
+      "exported": true
+    },
+    {
+      "name": "format_event",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 62,
+        "end": 82
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "event"
+        },
+        {
+          "name": "project_id"
+        },
+        {
+          "default": "True",
+          "name": "expect_traceback"
+        },
+        {
+          "default": "False",
+          "name": "expect_host"
+        },
+        {
+          "default": "False",
+          "name": "expect_hostId"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "event",
+          "line": 82
+        }
+      ],
+      "nloc": 18,
+      "ccn": 8,
+      "exported": true
+    },
+    {
+      "name": "InstanceActionsTestV21",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 85,
+        "end": 230
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "instance_actions",
+      "kind": "field",
+      "scope": "InstanceActionsTestV21",
+      "lineRange": {
+        "start": 86,
+        "end": 86
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "wsgi_api_version",
+      "kind": "field",
+      "scope": "InstanceActionsTestV21",
+      "lineRange": {
+        "start": 87,
+        "end": 87
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "expect_events_non_admin",
+      "kind": "field",
+      "scope": "InstanceActionsTestV21",
+      "lineRange": {
+        "start": 88,
+        "end": 88
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "expect_event_hostId",
+      "kind": "field",
+      "scope": "InstanceActionsTestV21",
+      "lineRange": {
+        "start": 89,
+        "end": 89
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "expect_event_host",
+      "kind": "field",
+      "scope": "InstanceActionsTestV21",
+      "lineRange": {
+        "start": 90,
+        "end": 90
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "fake_get",
+      "kind": "method",
+      "scope": "InstanceActionsTestV21",
+      "lineRange": {
+        "start": 92,
+        "end": 95
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "context"
+        },
+        {
+          "name": "instance_uuid"
+        },
+        {
+          "default": "None",
+          "name": "expected_attrs"
+        },
+        {
+          "default": "False",
+          "name": "cell_down_support"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "objects.Instance( context, id=1, uuid=instance_uuid, project_id=context.project_id)",
+          "line": 94
+        }
+      ],
+      "nloc": 4,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "setUp",
+      "kind": "method",
+      "scope": "InstanceActionsTestV21",
+      "lineRange": {
+        "start": 97,
+        "end": 105
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 9,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "_get_http_req",
+      "kind": "method",
+      "scope": "InstanceActionsTestV21",
+      "lineRange": {
+        "start": 107,
+        "end": 111
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "action"
+        },
+        {
+          "default": "False",
+          "name": "use_admin_context"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "fakes.HTTPRequest.blank(fake_url, use_admin_context=use_admin_context, version=self.wsgi_api_version)",
+          "line": 109
+        }
+      ],
+      "nloc": 5,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "_get_http_req_with_version",
+      "kind": "method",
+      "scope": "InstanceActionsTestV21",
+      "lineRange": {
+        "start": 113,
+        "end": 118
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "action"
+        },
+        {
+          "default": "False",
+          "name": "use_admin_context"
+        },
+        {
+          "default": "\"2.21\"",
+          "name": "version"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "fakes.HTTPRequest.blank(fake_url, use_admin_context=use_admin_context, version=version)",
+          "line": 116
+        }
+      ],
+      "nloc": 6,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "_set_policy_rules",
+      "kind": "method",
+      "scope": "InstanceActionsTestV21",
+      "lineRange": {
+        "start": 120,
+        "end": 124
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 5,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "test_list_actions",
+      "kind": "method",
+      "scope": "InstanceActionsTestV21",
+      "lineRange": {
+        "start": 126,
+        "end": 141
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 8,
+      "ccn": 2,
+      "visibility": "public"
+    },
+    {
+      "name": "fake_get_actions",
+      "kind": "function",
+      "scope": "InstanceActionsTestV21.test_list_actions",
+      "lineRange": {
+        "start": 127,
+        "end": 134
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "context"
+        },
+        {
+          "name": "uuid"
+        },
+        {
+          "default": "None",
+          "name": "limit"
+        },
+        {
+          "default": "None",
+          "name": "marker"
+        },
+        {
+          "default": "None",
+          "name": "filters"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "actions",
+          "line": 134
+        }
+      ],
+      "visibility": "public"
+    },
+    {
+      "name": "test_get_action_with_events_allowed",
+      "kind": "method",
+      "scope": "InstanceActionsTestV21",
+      "lineRange": {
+        "start": 143,
+        "end": 171
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 18,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "fake_get_action",
+      "kind": "function",
+      "scope": "InstanceActionsTestV21.test_get_action_with_events_allowed",
+      "lineRange": {
+        "start": 144,
+        "end": 147
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "context"
+        },
+        {
+          "name": "uuid"
+        },
+        {
+          "name": "request_id"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "action",
+          "line": 147
+        }
+      ],
+      "visibility": "public"
+    },
+    {
+      "name": "fake_get_events",
+      "kind": "function",
+      "scope": "InstanceActionsTestV21.test_get_action_with_events_allowed",
+      "lineRange": {
+        "start": 149,
+        "end": 155
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "context"
+        },
+        {
+          "name": "action_id"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "events",
+          "line": 155
+        }
+      ],
+      "visibility": "public"
+    },
+    {
+      "name": "test_get_action_with_events_not_allowed",
+      "kind": "method",
+      "scope": "InstanceActionsTestV21",
+      "lineRange": {
+        "start": 173,
+        "end": 200
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 21,
+      "ccn": 2,
+      "visibility": "public"
+    },
+    {
+      "name": "fake_get_action",
+      "kind": "function",
+      "scope": "InstanceActionsTestV21.test_get_action_with_events_not_allowed",
+      "lineRange": {
+        "start": 174,
+        "end": 175
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "context"
+        },
+        {
+          "name": "uuid"
+        },
+        {
+          "name": "request_id"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "self.fake_actions[uuid][request_id]",
+          "line": 175
+        }
+      ],
+      "visibility": "public"
+    },
+    {
+      "name": "fake_get_events",
+      "kind": "function",
+      "scope": "InstanceActionsTestV21.test_get_action_with_events_not_allowed",
+      "lineRange": {
+        "start": 177,
+        "end": 178
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "context"
+        },
+        {
+          "name": "action_id"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "self.fake_events[action_id]",
+          "line": 178
+        }
+      ],
+      "visibility": "public"
+    },
+    {
+      "name": "test_action_not_found",
+      "kind": "method",
+      "scope": "InstanceActionsTestV21",
+      "lineRange": {
+        "start": 202,
+        "end": 210
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 7,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "fake_no_action",
+      "kind": "function",
+      "scope": "InstanceActionsTestV21.test_action_not_found",
+      "lineRange": {
+        "start": 203,
+        "end": 204
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "context"
+        },
+        {
+          "name": "uuid"
+        },
+        {
+          "name": "action_id"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "None",
+          "line": 204
+        }
+      ],
+      "visibility": "public"
+    },
+    {
+      "name": "test_index_instance_not_found",
+      "kind": "method",
+      "scope": "InstanceActionsTestV21",
+      "lineRange": {
+        "start": 212,
+        "end": 220
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 9,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_show_instance_not_found",
+      "kind": "method",
+      "scope": "InstanceActionsTestV21",
+      "lineRange": {
+        "start": 222,
+        "end": 230
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 9,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "InstanceActionsTestV221",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 233,
+        "end": 240
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "wsgi_api_version",
+      "kind": "field",
+      "scope": "InstanceActionsTestV221",
+      "lineRange": {
+        "start": 234,
+        "end": 234
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "fake_get",
+      "kind": "method",
+      "scope": "InstanceActionsTestV221",
+      "lineRange": {
+        "start": 236,
+        "end": 240
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "context"
+        },
+        {
+          "name": "instance_uuid"
+        },
+        {
+          "default": "None",
+          "name": "expected_attrs"
+        },
+        {
+          "default": "False",
+          "name": "cell_down_support"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "objects.Instance( context, id=1, uuid=instance_uuid, project_id=context.project_id)",
+          "line": 239
+        }
+      ],
+      "nloc": 5,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "InstanceActionsTestV251",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 243,
+        "end": 245
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "wsgi_api_version",
+      "kind": "field",
+      "scope": "InstanceActionsTestV251",
+      "lineRange": {
+        "start": 244,
+        "end": 244
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "expect_events_non_admin",
+      "kind": "field",
+      "scope": "InstanceActionsTestV251",
+      "lineRange": {
+        "start": 245,
+        "end": 245
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "InstanceActionsTestV258",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 248,
+        "end": 292
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "wsgi_api_version",
+      "kind": "field",
+      "scope": "InstanceActionsTestV258",
+      "lineRange": {
+        "start": 249,
+        "end": 249
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "test_get_action_with_invalid_marker",
+      "kind": "method",
+      "scope": "InstanceActionsTestV258",
+      "lineRange": {
+        "start": 252,
+        "end": 259
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_actions_get"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 7,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_get_action_with_invalid_limit",
+      "kind": "method",
+      "scope": "InstanceActionsTestV258",
+      "lineRange": {
+        "start": 261,
+        "end": 268
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 7,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_get_action_with_invalid_change_since",
+      "kind": "method",
+      "scope": "InstanceActionsTestV258",
+      "lineRange": {
+        "start": 270,
+        "end": 277
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 7,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_get_action_with_invalid_params",
+      "kind": "method",
+      "scope": "InstanceActionsTestV258",
+      "lineRange": {
+        "start": 279,
+        "end": 285
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 6,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_get_action_with_multi_params",
+      "kind": "method",
+      "scope": "InstanceActionsTestV258",
+      "lineRange": {
+        "start": 287,
+        "end": 292
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 5,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "InstanceActionsTestV262",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 295,
+        "end": 356
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "wsgi_api_version",
+      "kind": "field",
+      "scope": "InstanceActionsTestV262",
+      "lineRange": {
+        "start": 296,
+        "end": 296
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "expect_event_hostId",
+      "kind": "field",
+      "scope": "InstanceActionsTestV262",
+      "lineRange": {
+        "start": 297,
+        "end": 297
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "expect_event_host",
+      "kind": "field",
+      "scope": "InstanceActionsTestV262",
+      "lineRange": {
+        "start": 298,
+        "end": 298
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "instance_project_id",
+      "kind": "field",
+      "scope": "InstanceActionsTestV262",
+      "lineRange": {
+        "start": 299,
+        "end": 299
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "fake_get",
+      "kind": "method",
+      "scope": "InstanceActionsTestV262",
+      "lineRange": {
+        "start": 301,
+        "end": 304
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "context"
+        },
+        {
+          "name": "instance_uuid"
+        },
+        {
+          "default": "None",
+          "name": "expected_attrs"
+        },
+        {
+          "default": "False",
+          "name": "cell_down_support"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "objects.Instance(uuid=instance_uuid, project_id=self.instance_project_id)",
+          "line": 303
+        }
+      ],
+      "nloc": 4,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_get_action_with_events_project_id_none",
+      "kind": "method",
+      "scope": "InstanceActionsTestV262",
+      "lineRange": {
+        "start": 309,
+        "end": 356
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_action_get"
+        },
+        {
+          "name": "mock_action_events"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 41,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "InstanceActionsTestV266",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 359,
+        "end": 416
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "wsgi_api_version",
+      "kind": "field",
+      "scope": "InstanceActionsTestV266",
+      "lineRange": {
+        "start": 360,
+        "end": 360
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "test_get_action_with_invalid_changes_before",
+      "kind": "method",
+      "scope": "InstanceActionsTestV266",
+      "lineRange": {
+        "start": 362,
+        "end": 369
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 7,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_get_action_with_changes_since_and_changes_before",
+      "kind": "method",
+      "scope": "InstanceActionsTestV266",
+      "lineRange": {
+        "start": 373,
+        "end": 391
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_get_instance"
+        },
+        {
+          "name": "mock_action_get"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 18,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_instance_actions_filters_with_distinct_changes_time_bad_request",
+      "kind": "method",
+      "scope": "InstanceActionsTestV266",
+      "lineRange": {
+        "start": 393,
+        "end": 403
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 11,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_get_action_with_changes_before_old_microversion",
+      "kind": "method",
+      "scope": "InstanceActionsTestV266",
+      "lineRange": {
+        "start": 405,
+        "end": 416
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 9,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "InstanceActionsTestV284",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 419,
+        "end": 462
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "wsgi_api_version",
+      "kind": "field",
+      "scope": "InstanceActionsTestV284",
+      "lineRange": {
+        "start": 420,
+        "end": 420
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "_set_policy_rules",
+      "kind": "method",
+      "scope": "InstanceActionsTestV284",
+      "lineRange": {
+        "start": 422,
+        "end": 427
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "default": "True",
+          "name": "overwrite"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 6,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "test_show_action_with_details",
+      "kind": "method",
+      "scope": "InstanceActionsTestV284",
+      "lineRange": {
+        "start": 429,
+        "end": 444
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 11,
+      "ccn": 2,
+      "visibility": "public"
+    },
+    {
+      "name": "fake_get_action",
+      "kind": "function",
+      "scope": "InstanceActionsTestV284.test_show_action_with_details",
+      "lineRange": {
+        "start": 430,
+        "end": 431
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "context"
+        },
+        {
+          "name": "uuid"
+        },
+        {
+          "name": "request_id"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "self.fake_actions[uuid][request_id]",
+          "line": 431
+        }
+      ],
+      "visibility": "public"
+    },
+    {
+      "name": "fake_get_events",
+      "kind": "function",
+      "scope": "InstanceActionsTestV284.test_show_action_with_details",
+      "lineRange": {
+        "start": 433,
+        "end": 434
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "context"
+        },
+        {
+          "name": "action_id"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "self.fake_events[action_id]",
+          "line": 434
+        }
+      ],
+      "visibility": "public"
+    },
+    {
+      "name": "test_show_action_with_details_old_microversion",
+      "kind": "method",
+      "scope": "InstanceActionsTestV284",
+      "lineRange": {
+        "start": 446,
+        "end": 462
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 11,
+      "ccn": 2,
+      "visibility": "public"
+    },
+    {
+      "name": "fake_get_action",
+      "kind": "function",
+      "scope": "InstanceActionsTestV284.test_show_action_with_details_old_microversion",
+      "lineRange": {
+        "start": 448,
+        "end": 449
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "context"
+        },
+        {
+          "name": "uuid"
+        },
+        {
+          "name": "request_id"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "self.fake_actions[uuid][request_id]",
+          "line": 449
+        }
+      ],
+      "visibility": "public"
+    },
+    {
+      "name": "fake_get_events",
+      "kind": "function",
+      "scope": "InstanceActionsTestV284.test_show_action_with_details_old_microversion",
+      "lineRange": {
+        "start": 451,
+        "end": 452
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "context"
+        },
+        {
+          "name": "action_id"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "self.fake_events[action_id]",
+          "line": 452
+        }
+      ],
+      "visibility": "public"
+    }
+  ],
+  "referencedSymbols": [
+    {
+      "name": "str",
+      "usage": "call",
+      "via": null,
+      "count": 9,
+      "lineRange": {
+        "start": 54,
+        "end": 54
+      }
+    },
+    {
+      "name": "test.NoDBTestCase",
+      "usage": "inherit",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 85,
+        "end": 85
+      }
+    },
+    {
+      "name": "objects.Instance",
+      "usage": "call",
+      "via": "nova",
+      "count": 3,
+      "lineRange": {
+        "start": 94,
+        "end": 94
+      }
+    },
+    {
+      "name": "super",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 98,
+        "end": 98
+      }
+    },
+    {
+      "name": "copy.deepcopy",
+      "usage": "call",
+      "via": "copy",
+      "count": 3,
+      "lineRange": {
+        "start": 100,
+        "end": 100
+      }
+    },
+    {
+      "name": "mock.patch.object",
+      "usage": "call",
+      "via": "unittest",
+      "count": 3,
+      "lineRange": {
+        "start": 102,
+        "end": 102
+      }
+    },
+    {
+      "name": "fakes.HTTPRequest.blank",
+      "usage": "call",
+      "via": "nova.tests.unit.api.openstack",
+      "count": 2,
+      "lineRange": {
+        "start": 109,
+        "end": 109
+      }
+    },
+    {
+      "name": "oslo_policy.Rules.from_dict",
+      "usage": "call",
+      "via": "oslo_policy",
+      "count": 2,
+      "lineRange": {
+        "start": 124,
+        "end": 124
+      }
+    },
+    {
+      "name": "policy.set_rules",
+      "usage": "call",
+      "via": "nova",
+      "count": 2,
+      "lineRange": {
+        "start": 124,
+        "end": 124
+      }
+    },
+    {
+      "name": "models.InstanceAction",
+      "usage": "call",
+      "via": "nova.db.main",
+      "count": 2,
+      "lineRange": {
+        "start": 131,
+        "end": 131
+      }
+    },
+    {
+      "name": "models.InstanceActionEvent",
+      "usage": "call",
+      "via": "nova.db.main",
+      "count": 1,
+      "lineRange": {
+        "start": 152,
+        "end": 152
+      }
+    },
+    {
+      "name": "exception.InstanceNotFound",
+      "usage": "call",
+      "via": "nova",
+      "count": 2,
+      "lineRange": {
+        "start": 213,
+        "end": 213
+      }
+    },
+    {
+      "name": "mock.patch",
+      "usage": "call",
+      "via": "unittest",
+      "count": 3,
+      "lineRange": {
+        "start": 251,
+        "end": 251
+      }
+    },
+    {
+      "name": "exception.MarkerNotFound",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 254,
+        "end": 254
+      }
+    },
+    {
+      "name": "objects.InstanceAction",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 313,
+        "end": 313
+      }
+    },
+    {
+      "name": "datetime.datetime",
+      "usage": "call",
+      "via": "datetime",
+      "count": 5,
+      "lineRange": {
+        "start": 320,
+        "end": 320
+      }
+    },
+    {
+      "name": "objects.InstanceActionEvent",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 329,
+        "end": 329
+      }
+    },
+    {
+      "name": "utils.generate_hostid",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 353,
+        "end": 353
+      }
+    },
+    {
+      "name": "fake_instance.fake_instance_obj",
+      "usage": "call",
+      "via": "nova.tests.unit",
+      "count": 1,
+      "lineRange": {
+        "start": 380,
+        "end": 380
+      }
+    }
+  ],
+  "dependencies": [
+    {
+      "style": "import",
+      "module": "copy",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 16,
+        "end": 16
+      }
+    },
+    {
+      "style": "import",
+      "module": "datetime",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 17,
+        "end": 17
+      }
+    },
+    {
+      "style": "from",
+      "module": "unittest",
+      "names": [
+        {
+          "alias": null,
+          "name": "mock"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 18,
+        "end": 18
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_policy",
+      "names": [
+        {
+          "alias": "oslo_policy",
+          "name": "policy"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 20,
+        "end": 20
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_utils.fixture",
+      "names": [
+        {
+          "alias": "uuids",
+          "name": "uuidsentinel"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 21,
+        "end": 21
+      }
+    },
+    {
+      "style": "from",
+      "module": "webob",
+      "names": [
+        {
+          "alias": null,
+          "name": "exc"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 22,
+        "end": 22
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.api.openstack.compute",
+      "names": [
+        {
+          "alias": "instance_actions_v21",
+          "name": "instance_actions"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 24,
+        "end": 24
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.api.openstack",
+      "names": [
+        {
+          "alias": "os_wsgi",
+          "name": "wsgi"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 25,
+        "end": 25
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.compute",
+      "names": [
+        {
+          "alias": "compute_api",
+          "name": "api"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 26,
+        "end": 26
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.db.main",
+      "names": [
+        {
+          "alias": null,
+          "name": "models"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 27,
+        "end": 27
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "exception"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 28,
+        "end": 28
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "objects"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 29,
+        "end": 29
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "policy"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 30,
+        "end": 30
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "test"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 31,
+        "end": 31
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.tests.unit.api.openstack",
+      "names": [
+        {
+          "alias": null,
+          "name": "fakes"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 32,
+        "end": 32
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.tests.unit",
+      "names": [
+        {
+          "alias": null,
+          "name": "fake_instance"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 33,
+        "end": 33
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.tests.unit",
+      "names": [
+        {
+          "alias": null,
+          "name": "fake_server_actions"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 34,
+        "end": 34
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "utils"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 35,
+        "end": 35
+      }
+    }
+  ],
+  "sideEffects": [
+    {
+      "kind": "network",
+      "target": "from nova.api.openstack.compute import instance_actions as instance_actions_v21",
+      "lineRange": {
+        "start": 24,
+        "end": 24
+      }
+    },
+    {
+      "kind": "network",
+      "target": "@mock.patch('nova.api.openstack.common.get_instance')",
+      "lineRange": {
+        "start": 372,
+        "end": 372
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "FAKE_UUID = fake_server_actions.FAKE_UUID",
+      "lineRange": {
+        "start": 38,
+        "end": 38
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "FAKE_REQUEST_ID = fake_server_actions.FAKE_REQUEST_ID1",
+      "lineRange": {
+        "start": 39,
+        "end": 39
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "FAKE_EVENT_ID = fake_server_actions.FAKE_ACTION_ID1",
+      "lineRange": {
+        "start": 40,
+        "end": 40
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "FAKE_REQUEST_NOTFOUND_ID = 'req-' + uuids.req_not_found",
+      "lineRange": {
+        "start": 41,
+        "end": 41
+      }
+    }
+  ],
+  "securitySurface": [
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "action.update(act)",
+      "lineRange": {
+        "start": 132,
+        "end": 132
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "action.update(self.fake_actions[uuid][request_id])",
+      "lineRange": {
+        "start": 146,
+        "end": 146
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "event.update(evt)",
+      "lineRange": {
+        "start": 153,
+        "end": 153
+      }
+    }
+  ],
+  "injection_flags": [],
+  "warnings": []
+}

@@ -1,0 +1,520 @@
+{
+  "file": "src/nova/tests/functional/libvirt/test_reshape.py",
+  "hash": "41759e5fccc31c1ac0f8be7f75286415d6caa040849f08b3ce3bbe5ae63195eb",
+  "language": "Python",
+  "component": "nova",
+  "package": null,
+  "lines": {
+    "blank": 53,
+    "code": 317,
+    "comment": 78,
+    "total": 448
+  },
+  "symbols": [
+    {
+      "name": "CONF",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 30,
+        "end": 30
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "LOG",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 31,
+        "end": 31
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "VGPUReshapeTests",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 34,
+        "end": 241
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "test_create_servers_with_vgpu",
+      "kind": "method",
+      "scope": "VGPUReshapeTests",
+      "lineRange": {
+        "start": 36,
+        "end": 241
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 140,
+      "ccn": 8,
+      "visibility": "public"
+    },
+    {
+      "name": "SevResphapeTests",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 244,
+        "end": 448
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "setUp",
+      "kind": "method",
+      "scope": "SevResphapeTests",
+      "lineRange": {
+        "start": 246,
+        "end": 254
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 9,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "_delete_server",
+      "kind": "method",
+      "scope": "SevResphapeTests",
+      "lineRange": {
+        "start": 256,
+        "end": 259
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "server"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 4,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "test_create_servers_with_amd_sev",
+      "kind": "method",
+      "scope": "SevResphapeTests",
+      "lineRange": {
+        "start": 267,
+        "end": 345
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_configure_me"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 50,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_create_servers_with_amd_sev_mixed",
+      "kind": "method",
+      "scope": "SevResphapeTests",
+      "lineRange": {
+        "start": 353,
+        "end": 448
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_configure_me"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 66,
+      "ccn": 3,
+      "visibility": "public"
+    }
+  ],
+  "referencedSymbols": [
+    {
+      "name": "logging.getLogger",
+      "usage": "call",
+      "via": "oslo_log",
+      "count": 1,
+      "lineRange": {
+        "start": 31,
+        "end": 31
+      }
+    },
+    {
+      "name": "base.ServersTestBase",
+      "usage": "inherit",
+      "via": "nova.tests.functional.libvirt",
+      "count": 2,
+      "lineRange": {
+        "start": 34,
+        "end": 34
+      }
+    },
+    {
+      "name": "io.BytesIO",
+      "usage": "call",
+      "via": "io",
+      "count": 3,
+      "lineRange": {
+        "start": 46,
+        "end": 46
+      }
+    },
+    {
+      "name": "fakelibvirt.FakeMdevDevice",
+      "usage": "call",
+      "via": "nova.tests.fixtures",
+      "count": 3,
+      "lineRange": {
+        "start": 58,
+        "end": 58
+      }
+    },
+    {
+      "name": "fakelibvirt.HostMdevDevicesInfo",
+      "usage": "call",
+      "via": "nova.tests.fixtures",
+      "count": 1,
+      "lineRange": {
+        "start": 80,
+        "end": 80
+      }
+    },
+    {
+      "name": "mock.patch",
+      "usage": "call",
+      "via": "unittest",
+      "count": 6,
+      "lineRange": {
+        "start": 121,
+        "end": 121
+      }
+    },
+    {
+      "name": "context.get_admin_context",
+      "usage": "call",
+      "via": "nova",
+      "count": 2,
+      "lineRange": {
+        "start": 131,
+        "end": 131
+      }
+    },
+    {
+      "name": "objects.Instance.get_by_uuid",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 133,
+        "end": 133
+      }
+    },
+    {
+      "name": "list",
+      "usage": "call",
+      "via": null,
+      "count": 4,
+      "lineRange": {
+        "start": 134,
+        "end": 134
+      }
+    },
+    {
+      "name": "len",
+      "usage": "call",
+      "via": null,
+      "count": 2,
+      "lineRange": {
+        "start": 136,
+        "end": 136
+      }
+    },
+    {
+      "name": "utils.mdev_uuid2name",
+      "usage": "call",
+      "via": "nova.virt.libvirt",
+      "count": 1,
+      "lineRange": {
+        "start": 139,
+        "end": 139
+      }
+    },
+    {
+      "name": "set",
+      "usage": "call",
+      "via": null,
+      "count": 2,
+      "lineRange": {
+        "start": 196,
+        "end": 196
+      }
+    },
+    {
+      "name": "super",
+      "usage": "call",
+      "via": null,
+      "count": 2,
+      "lineRange": {
+        "start": 247,
+        "end": 247
+      }
+    },
+    {
+      "name": "copy.deepcopy",
+      "usage": "call",
+      "via": "copy",
+      "count": 1,
+      "lineRange": {
+        "start": 249,
+        "end": 249
+      }
+    },
+    {
+      "name": "mock.patch.object",
+      "usage": "call",
+      "via": "unittest",
+      "count": 2,
+      "lineRange": {
+        "start": 263,
+        "end": 263
+      }
+    }
+  ],
+  "dependencies": [
+    {
+      "style": "import",
+      "module": "copy",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 14,
+        "end": 14
+      }
+    },
+    {
+      "style": "import",
+      "module": "io",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 15,
+        "end": 15
+      }
+    },
+    {
+      "style": "from",
+      "module": "unittest",
+      "names": [
+        {
+          "alias": null,
+          "name": "mock"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 16,
+        "end": 16
+      }
+    },
+    {
+      "style": "import",
+      "module": "os_traits",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 18,
+        "end": 18
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_config",
+      "names": [
+        {
+          "alias": null,
+          "name": "cfg"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 19,
+        "end": 19
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_log",
+      "names": [
+        {
+          "alias": "logging",
+          "name": "log"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 20,
+        "end": 20
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_utils.fixture",
+      "names": [
+        {
+          "alias": null,
+          "name": "uuidsentinel"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 21,
+        "end": 21
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "context"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 23,
+        "end": 23
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "objects"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 24,
+        "end": 24
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.tests.fixtures",
+      "names": [
+        {
+          "alias": "fakelibvirt",
+          "name": "libvirt"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 25,
+        "end": 25
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.tests.functional.libvirt",
+      "names": [
+        {
+          "alias": null,
+          "name": "base"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 26,
+        "end": 26
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.virt.libvirt",
+      "names": [
+        {
+          "alias": null,
+          "name": "utils"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 27,
+        "end": 27
+      }
+    }
+  ],
+  "sideEffects": [
+    {
+      "kind": "global-mutation",
+      "target": "CONF = cfg.CONF",
+      "lineRange": {
+        "start": 30,
+        "end": 30
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "LOG = logging.getLogger(__name__)",
+      "lineRange": {
+        "start": 31,
+        "end": 31
+      }
+    }
+  ],
+  "securitySurface": [],
+  "injection_flags": [],
+  "warnings": []
+}

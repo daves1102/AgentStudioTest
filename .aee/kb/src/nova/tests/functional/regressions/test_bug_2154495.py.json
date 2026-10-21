@@ -1,0 +1,513 @@
+{
+  "file": "src/nova/tests/functional/regressions/test_bug_2154495.py",
+  "hash": "f68aeea9f2398c088a8a56706cec476750a28ff51a2716b810d184f3d1bcd224",
+  "language": "Python",
+  "component": "nova",
+  "package": null,
+  "lines": {
+    "blank": 25,
+    "code": 76,
+    "comment": 13,
+    "total": 114
+  },
+  "symbols": [
+    {
+      "name": "VTPMStartupValidationMixin",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 26,
+        "end": 63
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "microversion",
+      "kind": "field",
+      "scope": "VTPMStartupValidationMixin",
+      "lineRange": {
+        "start": 35,
+        "end": 35
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "ADMIN_API",
+      "kind": "constant",
+      "scope": "VTPMStartupValidationMixin",
+      "lineRange": {
+        "start": 36,
+        "end": 36
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "compute_host",
+      "kind": "field",
+      "scope": "VTPMStartupValidationMixin",
+      "lineRange": {
+        "start": 37,
+        "end": 37
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "_start_compute_for_vtpm_test",
+      "kind": "method",
+      "scope": "VTPMStartupValidationMixin",
+      "lineRange": {
+        "start": 39,
+        "end": 40
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "hostname"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "_restart_compute_for_vtpm_test",
+      "kind": "method",
+      "scope": "VTPMStartupValidationMixin",
+      "lineRange": {
+        "start": 42,
+        "end": 43
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "compute"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "_test_compute_restart_vtpm_validation",
+      "kind": "method",
+      "scope": "VTPMStartupValidationMixin",
+      "lineRange": {
+        "start": 45,
+        "end": 63
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "expected_supports_vtpm"
+        },
+        {
+          "name": "expected_call_count"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 16,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "FakeDriverVTPMStartupValidationTest",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 66,
+        "end": 80
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "compute_driver",
+      "kind": "field",
+      "scope": "FakeDriverVTPMStartupValidationTest",
+      "lineRange": {
+        "start": 70,
+        "end": 70
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "test_incapable_driver_skips_vtpm_config_inspection",
+      "kind": "method",
+      "scope": "FakeDriverVTPMStartupValidationTest",
+      "lineRange": {
+        "start": 72,
+        "end": 74
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 3,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "_start_compute_for_vtpm_test",
+      "kind": "method",
+      "scope": "FakeDriverVTPMStartupValidationTest",
+      "lineRange": {
+        "start": 76,
+        "end": 77
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "hostname"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "self._start_compute(hostname)",
+          "line": 77
+        }
+      ],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "_restart_compute_for_vtpm_test",
+      "kind": "method",
+      "scope": "FakeDriverVTPMStartupValidationTest",
+      "lineRange": {
+        "start": 79,
+        "end": 80
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "compute"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "self.restart_compute_service(compute)",
+          "line": 80
+        }
+      ],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "LibvirtVTPMStartupValidationTest",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 83,
+        "end": 114
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "setUp",
+      "kind": "method",
+      "scope": "LibvirtVTPMStartupValidationTest",
+      "lineRange": {
+        "start": 87,
+        "end": 94
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 6,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_vtpm_enabled_skips_vtpm_config_inspection",
+      "kind": "method",
+      "scope": "LibvirtVTPMStartupValidationTest",
+      "lineRange": {
+        "start": 96,
+        "end": 99
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 4,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_vtpm_disabled_inspects_vtpm_config",
+      "kind": "method",
+      "scope": "LibvirtVTPMStartupValidationTest",
+      "lineRange": {
+        "start": 101,
+        "end": 104
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 4,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "_start_compute_for_vtpm_test",
+      "kind": "method",
+      "scope": "LibvirtVTPMStartupValidationTest",
+      "lineRange": {
+        "start": 106,
+        "end": 111
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "hostname"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "self.computes[hostname]",
+          "line": 111
+        }
+      ],
+      "nloc": 6,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "_restart_compute_for_vtpm_test",
+      "kind": "method",
+      "scope": "LibvirtVTPMStartupValidationTest",
+      "lineRange": {
+        "start": 113,
+        "end": 114
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "compute"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "self.restart_compute_service(compute.host)",
+          "line": 114
+        }
+      ],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "private"
+    }
+  ],
+  "referencedSymbols": [
+    {
+      "name": "mock.patch.object",
+      "usage": "call",
+      "via": "unittest",
+      "count": 1,
+      "lineRange": {
+        "start": 56,
+        "end": 56
+      }
+    },
+    {
+      "name": "integrated_helpers.ProviderUsageBaseTestCase",
+      "usage": "inherit",
+      "via": "nova.tests.functional",
+      "count": 1,
+      "lineRange": {
+        "start": 68,
+        "end": 68
+      }
+    },
+    {
+      "name": "libvirt_base.ServersTestBase",
+      "usage": "inherit",
+      "via": "nova.tests.functional.libvirt",
+      "count": 1,
+      "lineRange": {
+        "start": 85,
+        "end": 85
+      }
+    },
+    {
+      "name": "mock.patch",
+      "usage": "call",
+      "via": "unittest",
+      "count": 1,
+      "lineRange": {
+        "start": 90,
+        "end": 90
+      }
+    },
+    {
+      "name": "super",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 94,
+        "end": 94
+      }
+    },
+    {
+      "name": "fakelibvirt.HostInfo",
+      "usage": "call",
+      "via": "nova.tests.fixtures",
+      "count": 1,
+      "lineRange": {
+        "start": 109,
+        "end": 109
+      }
+    }
+  ],
+  "dependencies": [
+    {
+      "style": "from",
+      "module": "unittest",
+      "names": [
+        {
+          "alias": null,
+          "name": "mock"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 18,
+        "end": 18
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.compute",
+      "names": [
+        {
+          "alias": null,
+          "name": "manager"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 20,
+        "end": 20
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.tests.fixtures",
+      "names": [
+        {
+          "alias": "fakelibvirt",
+          "name": "libvirt"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 21,
+        "end": 21
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.tests.functional",
+      "names": [
+        {
+          "alias": null,
+          "name": "integrated_helpers"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 22,
+        "end": 22
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.tests.functional.libvirt",
+      "names": [
+        {
+          "alias": "libvirt_base",
+          "name": "base"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 23,
+        "end": 23
+      }
+    }
+  ],
+  "sideEffects": [
+    {
+      "kind": "global-mutation",
+      "target": "ADMIN_API = True",
+      "lineRange": {
+        "start": 36,
+        "end": 36
+      }
+    }
+  ],
+  "securitySurface": [],
+  "injection_flags": [],
+  "warnings": []
+}

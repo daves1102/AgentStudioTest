@@ -1,0 +1,839 @@
+{
+  "file": "src/nova/tests/functional/regressions/test_bug_1879878.py",
+  "hash": "b2410b7b736c7d275c93d287129cff68dd9dd344f93f15ba7d8108b7174cf640",
+  "language": "Python",
+  "component": "nova",
+  "package": null,
+  "lines": {
+    "blank": 82,
+    "code": 218,
+    "comment": 62,
+    "total": 362
+  },
+  "symbols": [
+    {
+      "name": "TestSameCell",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 28,
+        "end": 172
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "ADMIN_API",
+      "kind": "constant",
+      "scope": "TestSameCell",
+      "lineRange": {
+        "start": 38,
+        "end": 38
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "compute_driver",
+      "kind": "field",
+      "scope": "TestSameCell",
+      "lineRange": {
+        "start": 39,
+        "end": 39
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "microversion",
+      "kind": "field",
+      "scope": "TestSameCell",
+      "lineRange": {
+        "start": 40,
+        "end": 40
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "setUp",
+      "kind": "method",
+      "scope": "TestSameCell",
+      "lineRange": {
+        "start": 42,
+        "end": 45
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 4,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "_setup_compute_service",
+      "kind": "method",
+      "scope": "TestSameCell",
+      "lineRange": {
+        "start": 47,
+        "end": 50
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 3,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "_create_server",
+      "kind": "method",
+      "scope": "TestSameCell",
+      "lineRange": {
+        "start": 52,
+        "end": 60
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "server, source_host, target_host",
+          "line": 60
+        }
+      ],
+      "nloc": 6,
+      "ccn": 2,
+      "visibility": "private"
+    },
+    {
+      "name": "assertUsage",
+      "kind": "method",
+      "scope": "TestSameCell",
+      "lineRange": {
+        "start": 62,
+        "end": 66
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "hostname"
+        },
+        {
+          "name": "usage"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 3,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_migrate_confirm",
+      "kind": "method",
+      "scope": "TestSameCell",
+      "lineRange": {
+        "start": 69,
+        "end": 119
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "drop_race"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 21,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "fake_drop_move_claim",
+      "kind": "function",
+      "scope": "TestSameCell.test_migrate_confirm",
+      "lineRange": {
+        "start": 78,
+        "end": 92
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "*args"
+        },
+        {
+          "name": "**kwargs"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "orig_drop_claim(*args, **kwargs)",
+          "line": 92
+        }
+      ],
+      "visibility": "public"
+    },
+    {
+      "name": "test_migrate_revert",
+      "kind": "method",
+      "scope": "TestSameCell",
+      "lineRange": {
+        "start": 122,
+        "end": 172
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "drop_race"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 21,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "fake_drop_move_claim",
+      "kind": "function",
+      "scope": "TestSameCell.test_migrate_revert",
+      "lineRange": {
+        "start": 131,
+        "end": 145
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "*args"
+        },
+        {
+          "name": "**kwargs"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "orig_drop_claim(*args, **kwargs)",
+          "line": 145
+        }
+      ],
+      "visibility": "public"
+    },
+    {
+      "name": "TestCrossCell",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 177,
+        "end": 362
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "ADMIN_API",
+      "kind": "constant",
+      "scope": "TestCrossCell",
+      "lineRange": {
+        "start": 187,
+        "end": 187
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "NUMBER_OF_CELLS",
+      "kind": "constant",
+      "scope": "TestCrossCell",
+      "lineRange": {
+        "start": 188,
+        "end": 188
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "compute_driver",
+      "kind": "field",
+      "scope": "TestCrossCell",
+      "lineRange": {
+        "start": 189,
+        "end": 189
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "setUp",
+      "kind": "method",
+      "scope": "TestCrossCell",
+      "lineRange": {
+        "start": 191,
+        "end": 221
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 18,
+      "ccn": 2,
+      "visibility": "public"
+    },
+    {
+      "name": "_create_server",
+      "kind": "method",
+      "scope": "TestCrossCell",
+      "lineRange": {
+        "start": 223,
+        "end": 231
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "server, source_host, target_host",
+          "line": 231
+        }
+      ],
+      "nloc": 6,
+      "ccn": 2,
+      "visibility": "private"
+    },
+    {
+      "name": "assertUsage",
+      "kind": "method",
+      "scope": "TestCrossCell",
+      "lineRange": {
+        "start": 233,
+        "end": 240
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "hostname"
+        },
+        {
+          "name": "usage"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 6,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_migrate_confirm",
+      "kind": "method",
+      "scope": "TestCrossCell",
+      "lineRange": {
+        "start": 243,
+        "end": 300
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "drop_race"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 25,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "fake_drop_move_claim",
+      "kind": "function",
+      "scope": "TestCrossCell.test_migrate_confirm",
+      "lineRange": {
+        "start": 253,
+        "end": 267
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "*args"
+        },
+        {
+          "name": "**kwargs"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "orig_drop_claim(*args, **kwargs)",
+          "line": 267
+        }
+      ],
+      "visibility": "public"
+    },
+    {
+      "name": "fake_cleanup",
+      "kind": "function",
+      "scope": "TestCrossCell.test_migrate_confirm",
+      "lineRange": {
+        "start": 269,
+        "end": 272
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "_self"
+        },
+        {
+          "name": "_context"
+        },
+        {
+          "name": "_instance"
+        },
+        {
+          "name": "*args"
+        },
+        {
+          "name": "**kwargs"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "orig_cleanup(_self, _context, _instance, *args, **kwargs)",
+          "line": 272
+        }
+      ],
+      "visibility": "public"
+    },
+    {
+      "name": "test_migrate_revert",
+      "kind": "method",
+      "scope": "TestCrossCell",
+      "lineRange": {
+        "start": 303,
+        "end": 362
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "drop_race"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 27,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "fake_drop_move_claim",
+      "kind": "function",
+      "scope": "TestCrossCell.test_migrate_revert",
+      "lineRange": {
+        "start": 313,
+        "end": 327
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "*args"
+        },
+        {
+          "name": "**kwargs"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "orig_drop_claim(*args, **kwargs)",
+          "line": 327
+        }
+      ],
+      "visibility": "public"
+    },
+    {
+      "name": "fake_finish_revert_migration",
+      "kind": "function",
+      "scope": "TestCrossCell.test_migrate_revert",
+      "lineRange": {
+        "start": 329,
+        "end": 332
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "_self"
+        },
+        {
+          "name": "_context"
+        },
+        {
+          "name": "_instance"
+        },
+        {
+          "name": "*a"
+        },
+        {
+          "name": "**kw"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "orig_finish_revert(_self, _context, _instance, *a, **kw)",
+          "line": 332
+        }
+      ],
+      "visibility": "public"
+    }
+  ],
+  "referencedSymbols": [
+    {
+      "name": "integrated_helpers._IntegratedTestBase",
+      "usage": "inherit",
+      "via": "nova.tests.functional",
+      "count": 1,
+      "lineRange": {
+        "start": 28,
+        "end": 28
+      }
+    },
+    {
+      "name": "super",
+      "usage": "call",
+      "via": null,
+      "count": 4,
+      "lineRange": {
+        "start": 44,
+        "end": 44
+      }
+    },
+    {
+      "name": "nova_context.get_admin_context",
+      "usage": "call",
+      "via": "nova",
+      "count": 2,
+      "lineRange": {
+        "start": 45,
+        "end": 45
+      }
+    },
+    {
+      "name": "objects.ComputeNode.get_by_nodename",
+      "usage": "call",
+      "via": "nova",
+      "count": 2,
+      "lineRange": {
+        "start": 64,
+        "end": 64
+      }
+    },
+    {
+      "name": "ddt.data",
+      "usage": "call",
+      "via": "ddt",
+      "count": 4,
+      "lineRange": {
+        "start": 68,
+        "end": 68
+      }
+    },
+    {
+      "name": "orig_drop_claim",
+      "usage": "call",
+      "via": null,
+      "count": 4,
+      "lineRange": {
+        "start": 92,
+        "end": 92
+      }
+    },
+    {
+      "name": "integrated_helpers.ProviderUsageBaseTestCase",
+      "usage": "inherit",
+      "via": "nova.tests.functional",
+      "count": 1,
+      "lineRange": {
+        "start": 177,
+        "end": 177
+      }
+    },
+    {
+      "name": "nova_context.target_cell",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 237,
+        "end": 237
+      }
+    },
+    {
+      "name": "orig_cleanup",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 272,
+        "end": 272
+      }
+    },
+    {
+      "name": "test.nested",
+      "usage": "call",
+      "via": "nova",
+      "count": 2,
+      "lineRange": {
+        "start": 282,
+        "end": 282
+      }
+    },
+    {
+      "name": "mock.patch",
+      "usage": "call",
+      "via": "unittest",
+      "count": 4,
+      "lineRange": {
+        "start": 283,
+        "end": 283
+      }
+    },
+    {
+      "name": "orig_finish_revert",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 332,
+        "end": 332
+      }
+    }
+  ],
+  "dependencies": [
+    {
+      "style": "from",
+      "module": "unittest",
+      "names": [
+        {
+          "alias": null,
+          "name": "mock"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 13,
+        "end": 13
+      }
+    },
+    {
+      "style": "import",
+      "module": "ddt",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 15,
+        "end": 15
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.compute",
+      "names": [
+        {
+          "alias": "rt",
+          "name": "resource_tracker"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 17,
+        "end": 17
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": "nova_context",
+          "name": "context"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 18,
+        "end": 18
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "objects"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 19,
+        "end": 19
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.policies",
+      "names": [
+        {
+          "alias": "base_policies",
+          "name": "base"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 20,
+        "end": 20
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.policies",
+      "names": [
+        {
+          "alias": "servers_policies",
+          "name": "servers"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 21,
+        "end": 21
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "test"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 22,
+        "end": 22
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.tests.functional",
+      "names": [
+        {
+          "alias": null,
+          "name": "integrated_helpers"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 23,
+        "end": 23
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.virt",
+      "names": [
+        {
+          "alias": "fake_driver",
+          "name": "fake"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 24,
+        "end": 24
+      }
+    }
+  ],
+  "sideEffects": [
+    {
+      "kind": "global-mutation",
+      "target": "ADMIN_API = True",
+      "lineRange": {
+        "start": 38,
+        "end": 38
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "ADMIN_API = True",
+      "lineRange": {
+        "start": 187,
+        "end": 187
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "NUMBER_OF_CELLS = 2",
+      "lineRange": {
+        "start": 188,
+        "end": 188
+      }
+    }
+  ],
+  "securitySurface": [],
+  "injection_flags": [],
+  "warnings": []
+}

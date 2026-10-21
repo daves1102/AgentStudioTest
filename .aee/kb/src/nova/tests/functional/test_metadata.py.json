@@ -1,0 +1,726 @@
+{
+  "file": "src/nova/tests/functional/test_metadata.py",
+  "hash": "75fadba96de7f9b4e5de7a5400cf532ef0e8712bdc06f90ed3661fbc4137374d",
+  "language": "Python",
+  "component": "nova",
+  "package": null,
+  "lines": {
+    "blank": 36,
+    "code": 132,
+    "comment": 22,
+    "total": 190
+  },
+  "symbols": [
+    {
+      "name": "fake_result",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 29,
+        "end": 32
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "__init__",
+      "kind": "method",
+      "scope": "fake_result",
+      "lineRange": {
+        "start": 30,
+        "end": 32
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "result"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 3,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "real_request",
+      "kind": "variable",
+      "scope": "",
+      "lineRange": {
+        "start": 35,
+        "end": 35
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "fake_request",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 38,
+        "end": 45
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "obj"
+        },
+        {
+          "name": "url"
+        },
+        {
+          "name": "method"
+        },
+        {
+          "name": "**kwargs"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "fake_result({'a': 1, 'b': 'foo'})",
+          "line": 40
+        },
+        {
+          "expr": "fake_result({'c': 3})",
+          "line": 42
+        },
+        {
+          "expr": "fake_result(jsonutils.loads(kwargs.get('data', '{}')))",
+          "line": 44
+        },
+        {
+          "expr": "real_request(method, url, **kwargs)",
+          "line": 45
+        }
+      ],
+      "nloc": 8,
+      "ccn": 4,
+      "exported": true
+    },
+    {
+      "name": "MetadataTest",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 48,
+        "end": 190
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "setUp",
+      "kind": "method",
+      "scope": "MetadataTest",
+      "lineRange": {
+        "start": 49,
+        "end": 77
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 20,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "fake_get_fixed_ip_by_address",
+      "kind": "function",
+      "scope": "MetadataTest.setUp",
+      "lineRange": {
+        "start": 71,
+        "end": 72
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "ctxt"
+        },
+        {
+          "name": "address"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "{'instance_uuid': server['id']}",
+          "line": 72
+        }
+      ],
+      "visibility": "public"
+    },
+    {
+      "name": "test_lookup_metadata_root_url",
+      "kind": "method",
+      "scope": "MetadataTest",
+      "lineRange": {
+        "start": 79,
+        "end": 81
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 3,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_lookup_metadata_openstack_url",
+      "kind": "method",
+      "scope": "MetadataTest",
+      "lineRange": {
+        "start": 83,
+        "end": 87
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 5,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_lookup_metadata_data_url",
+      "kind": "method",
+      "scope": "MetadataTest",
+      "lineRange": {
+        "start": 89,
+        "end": 95
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 7,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_lookup_external_service",
+      "kind": "method",
+      "scope": "MetadataTest",
+      "lineRange": {
+        "start": 97,
+        "end": 119
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 20,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_lookup_external_service_no_overwrite",
+      "kind": "method",
+      "scope": "MetadataTest",
+      "lineRange": {
+        "start": 121,
+        "end": 142
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 19,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_lookup_external_service_passes_data",
+      "kind": "method",
+      "scope": "MetadataTest",
+      "lineRange": {
+        "start": 144,
+        "end": 172
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 21,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_network_data_matches_schema",
+      "kind": "method",
+      "scope": "MetadataTest",
+      "lineRange": {
+        "start": 174,
+        "end": 190
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 12,
+      "ccn": 1,
+      "visibility": "public"
+    }
+  ],
+  "referencedSymbols": [
+    {
+      "name": "object",
+      "usage": "inherit",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 29,
+        "end": 29
+      }
+    },
+    {
+      "name": "jsonutils.dumps",
+      "usage": "call",
+      "via": "oslo_serialization",
+      "count": 1,
+      "lineRange": {
+        "start": 32,
+        "end": 32
+      }
+    },
+    {
+      "name": "jsonutils.loads",
+      "usage": "call",
+      "via": "oslo_serialization",
+      "count": 5,
+      "lineRange": {
+        "start": 44,
+        "end": 44
+      }
+    },
+    {
+      "name": "integrated_helpers.InstanceHelperMixin",
+      "usage": "inherit",
+      "via": "nova.tests.functional",
+      "count": 1,
+      "lineRange": {
+        "start": 48,
+        "end": 48
+      }
+    },
+    {
+      "name": "test.TestCase",
+      "usage": "inherit",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 48,
+        "end": 48
+      }
+    },
+    {
+      "name": "super",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 50,
+        "end": 50
+      }
+    },
+    {
+      "name": "nova_fixtures.GlanceFixture",
+      "usage": "call",
+      "via": "nova.tests",
+      "count": 1,
+      "lineRange": {
+        "start": 52,
+        "end": 52
+      }
+    },
+    {
+      "name": "nova_fixtures.NeutronFixture",
+      "usage": "call",
+      "via": "nova.tests",
+      "count": 1,
+      "lineRange": {
+        "start": 53,
+        "end": 53
+      }
+    },
+    {
+      "name": "func_fixtures.PlacementFixture",
+      "usage": "call",
+      "via": "nova.tests.functional",
+      "count": 1,
+      "lineRange": {
+        "start": 54,
+        "end": 54
+      }
+    },
+    {
+      "name": "nova_fixtures.OSAPIFixture",
+      "usage": "call",
+      "via": "nova.tests",
+      "count": 1,
+      "lineRange": {
+        "start": 58,
+        "end": 58
+      }
+    },
+    {
+      "name": "nova_fixtures.OSMetadataServer",
+      "usage": "call",
+      "via": "nova.tests",
+      "count": 1,
+      "lineRange": {
+        "start": 66,
+        "end": 66
+      }
+    },
+    {
+      "name": "fixtures.MonkeyPatch",
+      "usage": "call",
+      "via": "fixtures",
+      "count": 5,
+      "lineRange": {
+        "start": 75,
+        "end": 75
+      }
+    },
+    {
+      "name": "requests.request",
+      "usage": "call",
+      "via": "requests",
+      "count": 7,
+      "lineRange": {
+        "start": 80,
+        "end": 80
+      }
+    },
+    {
+      "name": "uuidutils.is_uuid_like",
+      "usage": "call",
+      "via": "oslo_utils",
+      "count": 1,
+      "lineRange": {
+        "start": 167,
+        "end": 167
+      }
+    },
+    {
+      "name": "os.path.join",
+      "usage": "call",
+      "via": "os",
+      "count": 1,
+      "lineRange": {
+        "start": 184,
+        "end": 184
+      }
+    },
+    {
+      "name": "os.path.normpath",
+      "usage": "call",
+      "via": "os",
+      "count": 1,
+      "lineRange": {
+        "start": 184,
+        "end": 184
+      }
+    },
+    {
+      "name": "os.path.abspath",
+      "usage": "call",
+      "via": "os",
+      "count": 1,
+      "lineRange": {
+        "start": 185,
+        "end": 185
+      }
+    },
+    {
+      "name": "os.path.dirname",
+      "usage": "call",
+      "via": "os",
+      "count": 1,
+      "lineRange": {
+        "start": 185,
+        "end": 185
+      }
+    },
+    {
+      "name": "open",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 187,
+        "end": 187
+      }
+    },
+    {
+      "name": "jsonutils.load",
+      "usage": "call",
+      "via": "oslo_serialization",
+      "count": 1,
+      "lineRange": {
+        "start": 188,
+        "end": 188
+      }
+    },
+    {
+      "name": "jsonschema.validate",
+      "usage": "call",
+      "via": "jsonschema",
+      "count": 1,
+      "lineRange": {
+        "start": 190,
+        "end": 190
+      }
+    }
+  ],
+  "dependencies": [
+    {
+      "style": "import",
+      "module": "fixtures",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 15,
+        "end": 15
+      }
+    },
+    {
+      "style": "import",
+      "module": "jsonschema",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 16,
+        "end": 16
+      }
+    },
+    {
+      "style": "import",
+      "module": "os",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 17,
+        "end": 17
+      }
+    },
+    {
+      "style": "import",
+      "module": "requests",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 18,
+        "end": 18
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_serialization",
+      "names": [
+        {
+          "alias": null,
+          "name": "jsonutils"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 20,
+        "end": 20
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_utils",
+      "names": [
+        {
+          "alias": null,
+          "name": "uuidutils"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 21,
+        "end": 21
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "test"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 23,
+        "end": 23
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.tests",
+      "names": [
+        {
+          "alias": "nova_fixtures",
+          "name": "fixtures"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 24,
+        "end": 24
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.tests.functional",
+      "names": [
+        {
+          "alias": "func_fixtures",
+          "name": "fixtures"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 25,
+        "end": 25
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.tests.functional",
+      "names": [
+        {
+          "alias": null,
+          "name": "integrated_helpers"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 26,
+        "end": 26
+      }
+    }
+  ],
+  "sideEffects": [
+    {
+      "kind": "file-io",
+      "target": "schema_file = os.path.normpath(os.path.join(",
+      "lineRange": {
+        "start": 184,
+        "end": 184
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "os.path.dirname(os.path.abspath(__file__)),",
+      "lineRange": {
+        "start": 185,
+        "end": 185
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "with open(schema_file, 'rb') as f:",
+      "lineRange": {
+        "start": 187,
+        "end": 187
+      }
+    }
+  ],
+  "securitySurface": [
+    {
+      "kind": "privilege",
+      "category": "crypto-key",
+      "description": "'keystoneauth1.session.Session.request', fake_request))",
+      "lineRange": {
+        "start": 108,
+        "end": 108
+      }
+    },
+    {
+      "kind": "privilege",
+      "category": "crypto-key",
+      "description": "'keystoneauth1.session.Session.request', fake_request))",
+      "lineRange": {
+        "start": 132,
+        "end": 132
+      }
+    },
+    {
+      "kind": "privilege",
+      "category": "crypto-key",
+      "description": "'keystoneauth1.session.Session.request', fake_request))",
+      "lineRange": {
+        "start": 159,
+        "end": 159
+      }
+    },
+    {
+      "kind": "privilege",
+      "category": "crypto-key",
+      "description": "'keystoneauth1.session.Session.request', fake_request))",
+      "lineRange": {
+        "start": 176,
+        "end": 176
+      }
+    }
+  ],
+  "injection_flags": [],
+  "warnings": []
+}

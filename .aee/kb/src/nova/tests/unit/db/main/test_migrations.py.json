@@ -1,0 +1,1652 @@
+{
+  "file": "src/nova/tests/unit/db/main/test_migrations.py",
+  "hash": "5d6034b612ad572a2e1918f45fa8abe1d7aa4c92a4c878d5e34733e5fdcd8758",
+  "language": "Python",
+  "component": "nova",
+  "package": null,
+  "lines": {
+    "blank": 83,
+    "code": 337,
+    "comment": 43,
+    "total": 463
+  },
+  "symbols": [
+    {
+      "name": "LOG",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 49,
+        "end": 49
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "NovaModelsMigrationsSync",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 52,
+        "end": 120
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "TIMEOUT_SCALING_FACTOR",
+      "kind": "constant",
+      "scope": "NovaModelsMigrationsSync",
+      "lineRange": {
+        "start": 57,
+        "end": 57
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "setUp",
+      "kind": "method",
+      "scope": "NovaModelsMigrationsSync",
+      "lineRange": {
+        "start": 59,
+        "end": 69
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 7,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "db_sync",
+      "kind": "method",
+      "scope": "NovaModelsMigrationsSync",
+      "lineRange": {
+        "start": 71,
+        "end": 73
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "engine"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 3,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "get_engine",
+      "kind": "method",
+      "scope": "NovaModelsMigrationsSync",
+      "lineRange": {
+        "start": 75,
+        "end": 76
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "self.engine",
+          "line": 76
+        }
+      ],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "get_metadata",
+      "kind": "method",
+      "scope": "NovaModelsMigrationsSync",
+      "lineRange": {
+        "start": 78,
+        "end": 79
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "models.BASE.metadata",
+          "line": 79
+        }
+      ],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "include_object",
+      "kind": "method",
+      "scope": "NovaModelsMigrationsSync",
+      "lineRange": {
+        "start": 81,
+        "end": 93
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "object_"
+        },
+        {
+          "name": "name"
+        },
+        {
+          "name": "type_"
+        },
+        {
+          "name": "reflected"
+        },
+        {
+          "name": "compare_to"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "False",
+          "line": 86
+        },
+        {
+          "expr": "name not in models.REMOVED_TABLES",
+          "line": 91
+        },
+        {
+          "expr": "True",
+          "line": 93
+        }
+      ],
+      "nloc": 6,
+      "ccn": 3,
+      "visibility": "public"
+    },
+    {
+      "name": "filter_metadata_diff",
+      "kind": "method",
+      "scope": "NovaModelsMigrationsSync",
+      "lineRange": {
+        "start": 95,
+        "end": 120
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "diff"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "new_diff",
+          "line": 120
+        }
+      ],
+      "nloc": 19,
+      "ccn": 7,
+      "visibility": "public"
+    },
+    {
+      "name": "TestModelsSyncSQLite",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 123,
+        "end": 128
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "TestModelsSyncMySQL",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 131,
+        "end": 163
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "FIXTURE",
+      "kind": "constant",
+      "scope": "TestModelsSyncMySQL",
+      "lineRange": {
+        "start": 136,
+        "end": 136
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "test_innodb_tables",
+      "kind": "method",
+      "scope": "TestModelsSyncMySQL",
+      "lineRange": {
+        "start": 138,
+        "end": 163
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 24,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "TestModelsSyncPostgreSQL",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 166,
+        "end": 171
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "FIXTURE",
+      "kind": "constant",
+      "scope": "TestModelsSyncPostgreSQL",
+      "lineRange": {
+        "start": 171,
+        "end": 171
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "NovaMigrationsWalk",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 174,
+        "end": 439
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "TIMEOUT_SCALING_FACTOR",
+      "kind": "constant",
+      "scope": "NovaMigrationsWalk",
+      "lineRange": {
+        "start": 180,
+        "end": 180
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "setUp",
+      "kind": "method",
+      "scope": "NovaMigrationsWalk",
+      "lineRange": {
+        "start": 182,
+        "end": 186
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 5,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "assertIndexExists",
+      "kind": "method",
+      "scope": "NovaMigrationsWalk",
+      "lineRange": {
+        "start": 188,
+        "end": 192
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "connection"
+        },
+        {
+          "name": "table_name"
+        },
+        {
+          "name": "index"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 5,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "assertIndexNotExists",
+      "kind": "method",
+      "scope": "NovaMigrationsWalk",
+      "lineRange": {
+        "start": 194,
+        "end": 198
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "connection"
+        },
+        {
+          "name": "table_name"
+        },
+        {
+          "name": "index"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 5,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "assertColumnExists",
+      "kind": "method",
+      "scope": "NovaMigrationsWalk",
+      "lineRange": {
+        "start": 200,
+        "end": 204
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "connection"
+        },
+        {
+          "name": "table_name"
+        },
+        {
+          "name": "column"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 5,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "assertColumnNotExists",
+      "kind": "method",
+      "scope": "NovaMigrationsWalk",
+      "lineRange": {
+        "start": 206,
+        "end": 210
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "connection"
+        },
+        {
+          "name": "table_name"
+        },
+        {
+          "name": "column"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 5,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "assertForeignKeyExists",
+      "kind": "method",
+      "scope": "NovaMigrationsWalk",
+      "lineRange": {
+        "start": 212,
+        "end": 217
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "connection"
+        },
+        {
+          "name": "table_name"
+        },
+        {
+          "name": "column"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 6,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "assertForeignKeyNotExists",
+      "kind": "method",
+      "scope": "NovaMigrationsWalk",
+      "lineRange": {
+        "start": 219,
+        "end": 225
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "connection"
+        },
+        {
+          "name": "table_name"
+        },
+        {
+          "name": "column"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 7,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "assertTableExists",
+      "kind": "method",
+      "scope": "NovaMigrationsWalk",
+      "lineRange": {
+        "start": 227,
+        "end": 233
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "connection"
+        },
+        {
+          "name": "table_name"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 5,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "assertTableNotExists",
+      "kind": "method",
+      "scope": "NovaMigrationsWalk",
+      "lineRange": {
+        "start": 235,
+        "end": 238
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "connection"
+        },
+        {
+          "name": "table_name"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 4,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "_migrate_up",
+      "kind": "method",
+      "scope": "NovaMigrationsWalk",
+      "lineRange": {
+        "start": 240,
+        "end": 260
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "connection"
+        },
+        {
+          "name": "revision"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "",
+          "line": 243
+        }
+      ],
+      "nloc": 17,
+      "ccn": 4,
+      "visibility": "private"
+    },
+    {
+      "name": "_pre_upgrade_16f1fbcab42b",
+      "kind": "method",
+      "scope": "NovaMigrationsWalk",
+      "lineRange": {
+        "start": 262,
+        "end": 268
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "connection"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 7,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "_check_16f1fbcab42b",
+      "kind": "method",
+      "scope": "NovaMigrationsWalk",
+      "lineRange": {
+        "start": 270,
+        "end": 278
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "connection"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 7,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "_check_ccb0fa1a2252",
+      "kind": "method",
+      "scope": "NovaMigrationsWalk",
+      "lineRange": {
+        "start": 280,
+        "end": 305
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "connection"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "",
+          "line": 297
+        }
+      ],
+      "nloc": 20,
+      "ccn": 3,
+      "visibility": "private"
+    },
+    {
+      "name": "_check_960aac0e09ea",
+      "kind": "method",
+      "scope": "NovaMigrationsWalk",
+      "lineRange": {
+        "start": 307,
+        "end": 314
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "connection"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 8,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "_check_1b91788ec3a6",
+      "kind": "method",
+      "scope": "NovaMigrationsWalk",
+      "lineRange": {
+        "start": 316,
+        "end": 319
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "connection"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "_check_1acf2c98e646",
+      "kind": "method",
+      "scope": "NovaMigrationsWalk",
+      "lineRange": {
+        "start": 321,
+        "end": 337
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "connection"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 17,
+      "ccn": 3,
+      "visibility": "private"
+    },
+    {
+      "name": "_pre_upgrade_13863f4e1612",
+      "kind": "method",
+      "scope": "NovaMigrationsWalk",
+      "lineRange": {
+        "start": 339,
+        "end": 340
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "connection"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "_check_13863f4e1612",
+      "kind": "method",
+      "scope": "NovaMigrationsWalk",
+      "lineRange": {
+        "start": 342,
+        "end": 365
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "connection"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 23,
+      "ccn": 2,
+      "visibility": "private"
+    },
+    {
+      "name": "_pre_upgrade_d60bddf7a903",
+      "kind": "method",
+      "scope": "NovaMigrationsWalk",
+      "lineRange": {
+        "start": 367,
+        "end": 372
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "connection"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "_check_d60bddf7a903",
+      "kind": "method",
+      "scope": "NovaMigrationsWalk",
+      "lineRange": {
+        "start": 374,
+        "end": 375
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "connection"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "_check_2903cd72dc14",
+      "kind": "method",
+      "scope": "NovaMigrationsWalk",
+      "lineRange": {
+        "start": 377,
+        "end": 380
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "connection"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 4,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "_check_ab450ba04102",
+      "kind": "method",
+      "scope": "NovaMigrationsWalk",
+      "lineRange": {
+        "start": 382,
+        "end": 392
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "connection"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 11,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "test_single_base_revision",
+      "kind": "method",
+      "scope": "NovaMigrationsWalk",
+      "lineRange": {
+        "start": 394,
+        "end": 403
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 3,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_single_head_revision",
+      "kind": "method",
+      "scope": "NovaMigrationsWalk",
+      "lineRange": {
+        "start": 405,
+        "end": 414
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 3,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_walk_versions",
+      "kind": "method",
+      "scope": "NovaMigrationsWalk",
+      "lineRange": {
+        "start": 416,
+        "end": 429
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 10,
+      "ccn": 3,
+      "visibility": "public"
+    },
+    {
+      "name": "test_db_version_alembic",
+      "kind": "method",
+      "scope": "NovaMigrationsWalk",
+      "lineRange": {
+        "start": 431,
+        "end": 439
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 7,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "TestMigrationsWalkSQLite",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 442,
+        "end": 447
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "TestMigrationsWalkMySQL",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 450,
+        "end": 455
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "FIXTURE",
+      "kind": "constant",
+      "scope": "TestMigrationsWalkMySQL",
+      "lineRange": {
+        "start": 455,
+        "end": 455
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "TestMigrationsWalkPostgreSQL",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 458,
+        "end": 463
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "FIXTURE",
+      "kind": "constant",
+      "scope": "TestMigrationsWalkPostgreSQL",
+      "lineRange": {
+        "start": 463,
+        "end": 463
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    }
+  ],
+  "referencedSymbols": [
+    {
+      "name": "logging.getLogger",
+      "usage": "call",
+      "via": "oslo_log",
+      "count": 1,
+      "lineRange": {
+        "start": 49,
+        "end": 49
+      }
+    },
+    {
+      "name": "test_migrations.ModelsMigrationsSync",
+      "usage": "inherit",
+      "via": "oslo_db.sqlalchemy",
+      "count": 1,
+      "lineRange": {
+        "start": 52,
+        "end": 52
+      }
+    },
+    {
+      "name": "fixtures.EnvironmentVariable",
+      "usage": "call",
+      "via": "fixtures",
+      "count": 1,
+      "lineRange": {
+        "start": 62,
+        "end": 62
+      }
+    },
+    {
+      "name": "super",
+      "usage": "call",
+      "via": null,
+      "count": 2,
+      "lineRange": {
+        "start": 63,
+        "end": 63
+      }
+    },
+    {
+      "name": "log_fixture.get_logging_handle_error_fixture",
+      "usage": "call",
+      "via": "oslo_log.fixture",
+      "count": 1,
+      "lineRange": {
+        "start": 65,
+        "end": 65
+      }
+    },
+    {
+      "name": "nova_fixtures.WarningsFixture",
+      "usage": "call",
+      "via": "nova.tests",
+      "count": 1,
+      "lineRange": {
+        "start": 66,
+        "end": 66
+      }
+    },
+    {
+      "name": "nova_fixtures.StandardLogging",
+      "usage": "call",
+      "via": "nova.tests",
+      "count": 1,
+      "lineRange": {
+        "start": 67,
+        "end": 67
+      }
+    },
+    {
+      "name": "enginefacade.writer.get_engine",
+      "usage": "call",
+      "via": "oslo_db.sqlalchemy",
+      "count": 3,
+      "lineRange": {
+        "start": 69,
+        "end": 69
+      }
+    },
+    {
+      "name": "mock.patch.object",
+      "usage": "call",
+      "via": "unittest",
+      "count": 2,
+      "lineRange": {
+        "start": 72,
+        "end": 72
+      }
+    },
+    {
+      "name": "migration.db_sync",
+      "usage": "call",
+      "via": "nova.db",
+      "count": 2,
+      "lineRange": {
+        "start": 73,
+        "end": 73
+      }
+    },
+    {
+      "name": "isinstance",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 100,
+        "end": 100
+      }
+    },
+    {
+      "name": "test_fixtures.OpportunisticDBTestMixin",
+      "usage": "inherit",
+      "via": "oslo_db.sqlalchemy",
+      "count": 7,
+      "lineRange": {
+        "start": 125,
+        "end": 125
+      }
+    },
+    {
+      "name": "base.BaseTestCase",
+      "usage": "inherit",
+      "via": "oslotest",
+      "count": 3,
+      "lineRange": {
+        "start": 126,
+        "end": 126
+      }
+    },
+    {
+      "name": "sa.text",
+      "usage": "call",
+      "via": "sqlalchemy",
+      "count": 2,
+      "lineRange": {
+        "start": 143,
+        "end": 143
+      }
+    },
+    {
+      "name": "test.NoDBTestCase",
+      "usage": "inherit",
+      "via": "nova",
+      "count": 4,
+      "lineRange": {
+        "start": 175,
+        "end": 175
+      }
+    },
+    {
+      "name": "migration._find_alembic_conf",
+      "usage": "call",
+      "via": "nova.db",
+      "count": 1,
+      "lineRange": {
+        "start": 185,
+        "end": 185
+      }
+    },
+    {
+      "name": "oslodbutils.index_exists",
+      "usage": "call",
+      "via": "oslo_db.sqlalchemy",
+      "count": 2,
+      "lineRange": {
+        "start": 190,
+        "end": 190
+      }
+    },
+    {
+      "name": "oslodbutils.column_exists",
+      "usage": "call",
+      "via": "oslo_db.sqlalchemy",
+      "count": 2,
+      "lineRange": {
+        "start": 202,
+        "end": 202
+      }
+    },
+    {
+      "name": "oslodbutils.get_foreign_key_constraint_name",
+      "usage": "call",
+      "via": "oslo_db.sqlalchemy",
+      "count": 2,
+      "lineRange": {
+        "start": 214,
+        "end": 214
+      }
+    },
+    {
+      "name": "oslodbutils.get_table",
+      "usage": "call",
+      "via": "oslo_db.sqlalchemy",
+      "count": 2,
+      "lineRange": {
+        "start": 231,
+        "end": 231
+      }
+    },
+    {
+      "name": "alembic_api.upgrade",
+      "usage": "call",
+      "via": "alembic",
+      "count": 2,
+      "lineRange": {
+        "start": 242,
+        "end": 242
+      }
+    },
+    {
+      "name": "getattr",
+      "usage": "call",
+      "via": null,
+      "count": 3,
+      "lineRange": {
+        "start": 246,
+        "end": 246
+      }
+    },
+    {
+      "name": "pre_upgrade",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 254,
+        "end": 254
+      }
+    },
+    {
+      "name": "post_upgrade",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 260,
+        "end": 260
+      }
+    },
+    {
+      "name": "alembic_script.ScriptDirectory.from_config",
+      "usage": "call",
+      "via": "alembic",
+      "count": 4,
+      "lineRange": {
+        "start": 402,
+        "end": 402
+      }
+    },
+    {
+      "name": "len",
+      "usage": "call",
+      "via": null,
+      "count": 2,
+      "lineRange": {
+        "start": 403,
+        "end": 403
+      }
+    },
+    {
+      "name": "migration.db_version",
+      "usage": "call",
+      "via": "nova.db",
+      "count": 1,
+      "lineRange": {
+        "start": 439,
+        "end": 439
+      }
+    }
+  ],
+  "dependencies": [
+    {
+      "style": "from",
+      "module": "unittest",
+      "names": [
+        {
+          "alias": null,
+          "name": "mock"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 28,
+        "end": 28
+      }
+    },
+    {
+      "style": "from",
+      "module": "alembic",
+      "names": [
+        {
+          "alias": "alembic_api",
+          "name": "command"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 30,
+        "end": 30
+      }
+    },
+    {
+      "style": "from",
+      "module": "alembic",
+      "names": [
+        {
+          "alias": "alembic_script",
+          "name": "script"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 31,
+        "end": 31
+      }
+    },
+    {
+      "style": "import",
+      "module": "fixtures",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 32,
+        "end": 32
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_db.sqlalchemy",
+      "names": [
+        {
+          "alias": null,
+          "name": "enginefacade"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 33,
+        "end": 33
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_db.sqlalchemy",
+      "names": [
+        {
+          "alias": null,
+          "name": "test_fixtures"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 34,
+        "end": 34
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_db.sqlalchemy",
+      "names": [
+        {
+          "alias": null,
+          "name": "test_migrations"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 35,
+        "end": 35
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_db.sqlalchemy",
+      "names": [
+        {
+          "alias": "oslodbutils",
+          "name": "utils"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 36,
+        "end": 36
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_log.fixture",
+      "names": [
+        {
+          "alias": "log_fixture",
+          "name": "logging_error"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 37,
+        "end": 37
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_log",
+      "names": [
+        {
+          "alias": "logging",
+          "name": "log"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 38,
+        "end": 38
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslotest",
+      "names": [
+        {
+          "alias": null,
+          "name": "base"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 39,
+        "end": 39
+      }
+    },
+    {
+      "style": "import",
+      "module": "sqlalchemy",
+      "names": [],
+      "alias": "sa",
+      "relative": false,
+      "lineRange": {
+        "start": 40,
+        "end": 40
+      }
+    },
+    {
+      "style": "import",
+      "module": "sqlalchemy.exc",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 41,
+        "end": 41
+      }
+    },
+    {
+      "style": "from",
+      "module": "sqlalchemy",
+      "names": [
+        {
+          "alias": null,
+          "name": "Table"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 42,
+        "end": 42
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.db.main",
+      "names": [
+        {
+          "alias": null,
+          "name": "models"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 44,
+        "end": 44
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.db",
+      "names": [
+        {
+          "alias": null,
+          "name": "migration"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 45,
+        "end": 45
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "test"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 46,
+        "end": 46
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.tests",
+      "names": [
+        {
+          "alias": "nova_fixtures",
+          "name": "fixtures"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 47,
+        "end": 47
+      }
+    }
+  ],
+  "sideEffects": [
+    {
+      "kind": "global-mutation",
+      "target": "LOG = logging.getLogger(__name__)",
+      "lineRange": {
+        "start": 49,
+        "end": 49
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "TIMEOUT_SCALING_FACTOR = 4",
+      "lineRange": {
+        "start": 57,
+        "end": 57
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "FIXTURE = test_fixtures.MySQLOpportunisticFixture",
+      "lineRange": {
+        "start": 136,
+        "end": 136
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "FIXTURE = test_fixtures.PostgresqlOpportunisticFixture",
+      "lineRange": {
+        "start": 171,
+        "end": 171
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "TIMEOUT_SCALING_FACTOR = 4",
+      "lineRange": {
+        "start": 180,
+        "end": 180
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "FIXTURE = test_fixtures.MySQLOpportunisticFixture",
+      "lineRange": {
+        "start": 455,
+        "end": 455
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "FIXTURE = test_fixtures.PostgresqlOpportunisticFixture",
+      "lineRange": {
+        "start": 463,
+        "end": 463
+      }
+    }
+  ],
+  "securitySurface": [
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "sa.text(",
+      "lineRange": {
+        "start": 143,
+        "end": 143
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "\"SELECT count(*) \"",
+      "lineRange": {
+        "start": 144,
+        "end": 144
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "sa.text(",
+      "lineRange": {
+        "start": 154,
+        "end": 154
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "\"SELECT count(*) \"",
+      "lineRange": {
+        "start": 155,
+        "end": 155
+      }
+    }
+  ],
+  "injection_flags": [],
+  "warnings": []
+}

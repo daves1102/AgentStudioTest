@@ -1,0 +1,159 @@
+{
+  "file": "src/nova/tests/unit/scheduler/ironic_fakes.py",
+  "hash": "09acf4f59f456348d56dfb2e8dfe53b985daf89a5ce8ef759f70a0d629ce33d4",
+  "language": "Python",
+  "component": "nova",
+  "package": null,
+  "lines": {
+    "blank": 6,
+    "code": 86,
+    "comment": 15,
+    "total": 107
+  },
+  "symbols": [
+    {
+      "name": "COMPUTE_NODES",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 23,
+        "end": 95
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "SERVICES",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 97,
+        "end": 102
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "get_service_by_host",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 105,
+        "end": 107
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "host"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "services[0]",
+          "line": 107
+        }
+      ],
+      "nloc": 3,
+      "ccn": 3,
+      "exported": true
+    }
+  ],
+  "referencedSymbols": [
+    {
+      "name": "objects.ComputeNode",
+      "usage": "call",
+      "via": "nova",
+      "count": 5,
+      "lineRange": {
+        "start": 24,
+        "end": 24
+      }
+    },
+    {
+      "name": "dict",
+      "usage": "call",
+      "via": null,
+      "count": 5,
+      "lineRange": {
+        "start": 31,
+        "end": 31
+      }
+    },
+    {
+      "name": "objects.HVSpec.from_list",
+      "usage": "call",
+      "via": "nova",
+      "count": 5,
+      "lineRange": {
+        "start": 34,
+        "end": 34
+      }
+    },
+    {
+      "name": "objects.Service",
+      "usage": "call",
+      "via": "nova",
+      "count": 4,
+      "lineRange": {
+        "start": 98,
+        "end": 98
+      }
+    }
+  ],
+  "dependencies": [
+    {
+      "style": "from",
+      "module": "oslo_utils.fixture",
+      "names": [
+        {
+          "alias": "uuids",
+          "name": "uuidsentinel"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 18,
+        "end": 18
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "objects"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 20,
+        "end": 20
+      }
+    }
+  ],
+  "sideEffects": [
+    {
+      "kind": "global-mutation",
+      "target": "COMPUTE_NODES = [",
+      "lineRange": {
+        "start": 23,
+        "end": 23
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "SERVICES = [",
+      "lineRange": {
+        "start": 97,
+        "end": 97
+      }
+    }
+  ],
+  "securitySurface": [],
+  "injection_flags": [],
+  "warnings": []
+}

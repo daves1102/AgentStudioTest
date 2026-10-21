@@ -1,0 +1,473 @@
+{
+  "file": "src/nova/tests/unit/api/openstack/compute/test_server_topology.py",
+  "hash": "d091669e895221ed27e39aa37879ae9bb3d0c224745f56e6905b4479d23e3683",
+  "language": "Python",
+  "component": "nova",
+  "package": null,
+  "lines": {
+    "blank": 16,
+    "code": 72,
+    "comment": 12,
+    "total": 100
+  },
+  "symbols": [
+    {
+      "name": "ServerTopologyTestV278",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 28,
+        "end": 100
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "mock_method",
+      "kind": "field",
+      "scope": "ServerTopologyTestV278",
+      "lineRange": {
+        "start": 29,
+        "end": 29
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "api_version",
+      "kind": "field",
+      "scope": "ServerTopologyTestV278",
+      "lineRange": {
+        "start": 30,
+        "end": 30
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "setUp",
+      "kind": "method",
+      "scope": "ServerTopologyTestV278",
+      "lineRange": {
+        "start": 32,
+        "end": 40
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 9,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "_fake_numa",
+      "kind": "method",
+      "scope": "ServerTopologyTestV278",
+      "lineRange": {
+        "start": 42,
+        "end": 47
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "default": "None",
+          "name": "cpu_pinning"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "numa.InstanceNUMATopology(cells=[ce0])",
+          "line": 47
+        }
+      ],
+      "nloc": 5,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "test_get_topology_with_invalid_instance",
+      "kind": "method",
+      "scope": "ServerTopologyTestV278",
+      "lineRange": {
+        "start": 51,
+        "end": 56
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_get"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 6,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_get_topology_with_no_topology",
+      "kind": "method",
+      "scope": "ServerTopologyTestV278",
+      "lineRange": {
+        "start": 59,
+        "end": 67
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "fake_get"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 8,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_get_topology_cpu_pinning_with_none",
+      "kind": "method",
+      "scope": "ServerTopologyTestV278",
+      "lineRange": {
+        "start": 70,
+        "end": 90
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "fake_get"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 18,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_hit_topology_before278",
+      "kind": "method",
+      "scope": "ServerTopologyTestV278",
+      "lineRange": {
+        "start": 92,
+        "end": 100
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 9,
+      "ccn": 1,
+      "visibility": "public"
+    }
+  ],
+  "referencedSymbols": [
+    {
+      "name": "test.NoDBTestCase",
+      "usage": "inherit",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 28,
+        "end": 28
+      }
+    },
+    {
+      "name": "super",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 33,
+        "end": 33
+      }
+    },
+    {
+      "name": "fakes.HTTPRequest.blank",
+      "usage": "call",
+      "via": "nova.tests.unit.api.openstack",
+      "count": 2,
+      "lineRange": {
+        "start": 35,
+        "end": 35
+      }
+    },
+    {
+      "name": "server_topology.ServerTopologyController",
+      "usage": "call",
+      "via": "nova.api.openstack.compute",
+      "count": 1,
+      "lineRange": {
+        "start": 39,
+        "end": 39
+      }
+    },
+    {
+      "name": "numa.InstanceNUMACell",
+      "usage": "call",
+      "via": "nova.objects",
+      "count": 1,
+      "lineRange": {
+        "start": 43,
+        "end": 43
+      }
+    },
+    {
+      "name": "set",
+      "usage": "call",
+      "via": null,
+      "count": 3,
+      "lineRange": {
+        "start": 45,
+        "end": 45
+      }
+    },
+    {
+      "name": "numa.InstanceNUMATopology",
+      "usage": "call",
+      "via": "nova.objects",
+      "count": 1,
+      "lineRange": {
+        "start": 47,
+        "end": 47
+      }
+    },
+    {
+      "name": "mock.patch.object",
+      "usage": "call",
+      "via": "unittest",
+      "count": 3,
+      "lineRange": {
+        "start": 49,
+        "end": 49
+      }
+    },
+    {
+      "name": "exc.HTTPNotFound",
+      "usage": "call",
+      "via": "webob",
+      "count": 1,
+      "lineRange": {
+        "start": 50,
+        "end": 50
+      }
+    },
+    {
+      "name": "str",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 56,
+        "end": 56
+      }
+    },
+    {
+      "name": "objects.instance.Instance",
+      "usage": "call",
+      "via": "nova",
+      "count": 2,
+      "lineRange": {
+        "start": 61,
+        "end": 61
+      }
+    }
+  ],
+  "dependencies": [
+    {
+      "style": "from",
+      "module": "unittest",
+      "names": [
+        {
+          "alias": null,
+          "name": "mock"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 14,
+        "end": 14
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_utils.fixture",
+      "names": [
+        {
+          "alias": "uuids",
+          "name": "uuidsentinel"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 16,
+        "end": 16
+      }
+    },
+    {
+      "style": "from",
+      "module": "webob",
+      "names": [
+        {
+          "alias": null,
+          "name": "exc"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 17,
+        "end": 17
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.api.openstack",
+      "names": [
+        {
+          "alias": null,
+          "name": "common"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 19,
+        "end": 19
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.api.openstack.compute",
+      "names": [
+        {
+          "alias": null,
+          "name": "server_topology"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 20,
+        "end": 20
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "exception"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 21,
+        "end": 21
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "objects"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 22,
+        "end": 22
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.objects",
+      "names": [
+        {
+          "alias": "numa",
+          "name": "instance_numa"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 23,
+        "end": 23
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "test"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 24,
+        "end": 24
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.tests.unit.api.openstack",
+      "names": [
+        {
+          "alias": null,
+          "name": "fakes"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 25,
+        "end": 25
+      }
+    }
+  ],
+  "sideEffects": [
+    {
+      "kind": "network",
+      "target": "from nova.api.openstack.compute import server_topology",
+      "lineRange": {
+        "start": 20,
+        "end": 20
+      }
+    }
+  ],
+  "securitySurface": [],
+  "injection_flags": [],
+  "warnings": []
+}

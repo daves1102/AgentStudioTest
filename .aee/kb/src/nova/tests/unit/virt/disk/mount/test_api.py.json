@@ -1,0 +1,929 @@
+{
+  "file": "src/nova/tests/unit/virt/disk/mount/test_api.py",
+  "hash": "a174afe29eee0897320112396277a62363f9c38eee30ec17ffcd32249b3d40ba",
+  "language": "Python",
+  "component": "nova",
+  "package": null,
+  "lines": {
+    "blank": 24,
+    "code": 174,
+    "comment": 14,
+    "total": 212
+  },
+  "symbols": [
+    {
+      "name": "PARTITION",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 26,
+        "end": 26
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "ORIG_DEVICE",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 27,
+        "end": 27
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "AUTOMAP_PARTITION",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 28,
+        "end": 28
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "MAP_PARTITION",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 29,
+        "end": 29
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "MountTestCase",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 32,
+        "end": 212
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "setUp",
+      "kind": "method",
+      "scope": "MountTestCase",
+      "lineRange": {
+        "start": 33,
+        "end": 36
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 3,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "_test_map_dev",
+      "kind": "method",
+      "scope": "MountTestCase",
+      "lineRange": {
+        "start": 38,
+        "end": 43
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "partition"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "mount",
+          "line": 43
+        }
+      ],
+      "nloc": 6,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "_exists_effect",
+      "kind": "method",
+      "scope": "MountTestCase",
+      "lineRange": {
+        "start": 45,
+        "end": 56
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "data"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "exists_effect",
+          "line": 56
+        }
+      ],
+      "nloc": 3,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "exists_effect",
+      "kind": "function",
+      "scope": "MountTestCase._exists_effect",
+      "lineRange": {
+        "start": 46,
+        "end": 55
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "filename"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "v.pop(0)",
+          "line": 51
+        },
+        {
+          "expr": "v",
+          "line": 53
+        }
+      ],
+      "visibility": "public"
+    },
+    {
+      "name": "_check_calls",
+      "kind": "method",
+      "scope": "MountTestCase",
+      "lineRange": {
+        "start": 58,
+        "end": 62
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "exists"
+        },
+        {
+          "name": "filenames"
+        },
+        {
+          "default": "0",
+          "name": "trailing"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 5,
+      "ccn": 2,
+      "visibility": "private"
+    },
+    {
+      "name": "test_map_dev_partition_search",
+      "kind": "method",
+      "scope": "MountTestCase",
+      "lineRange": {
+        "start": 65,
+        "end": 71
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "exists"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 7,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_map_dev_good",
+      "kind": "method",
+      "scope": "MountTestCase",
+      "lineRange": {
+        "start": 76,
+        "end": 84
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_create_maps"
+        },
+        {
+          "name": "mock_exists"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 9,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_map_dev_error",
+      "kind": "method",
+      "scope": "MountTestCase",
+      "lineRange": {
+        "start": 89,
+        "end": 98
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_create_maps"
+        },
+        {
+          "name": "mock_exists"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 10,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_map_dev_error_then_pass",
+      "kind": "method",
+      "scope": "MountTestCase",
+      "lineRange": {
+        "start": 103,
+        "end": 111
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_create_maps"
+        },
+        {
+          "name": "mock_exists"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 9,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_map_dev_automap",
+      "kind": "method",
+      "scope": "MountTestCase",
+      "lineRange": {
+        "start": 114,
+        "end": 123
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "exists"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 10,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_map_dev_else",
+      "kind": "method",
+      "scope": "MountTestCase",
+      "lineRange": {
+        "start": 126,
+        "end": 134
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "exists"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 9,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_instance_for_format_raw",
+      "kind": "method",
+      "scope": "MountTestCase",
+      "lineRange": {
+        "start": 136,
+        "end": 142
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 7,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_instance_for_format_qcow2",
+      "kind": "method",
+      "scope": "MountTestCase",
+      "lineRange": {
+        "start": 144,
+        "end": 150
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 7,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_instance_for_format_block",
+      "kind": "method",
+      "scope": "MountTestCase",
+      "lineRange": {
+        "start": 152,
+        "end": 158
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 7,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_instance_for_device_loop",
+      "kind": "method",
+      "scope": "MountTestCase",
+      "lineRange": {
+        "start": 160,
+        "end": 167
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 8,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_instance_for_device_loop_partition",
+      "kind": "method",
+      "scope": "MountTestCase",
+      "lineRange": {
+        "start": 169,
+        "end": 176
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 8,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_instance_for_device_nbd",
+      "kind": "method",
+      "scope": "MountTestCase",
+      "lineRange": {
+        "start": 178,
+        "end": 185
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 8,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_instance_for_device_nbd_partition",
+      "kind": "method",
+      "scope": "MountTestCase",
+      "lineRange": {
+        "start": 187,
+        "end": 194
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 8,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_instance_for_device_block",
+      "kind": "method",
+      "scope": "MountTestCase",
+      "lineRange": {
+        "start": 196,
+        "end": 203
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 8,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_instance_for_device_block_partiton",
+      "kind": "method",
+      "scope": "MountTestCase",
+      "lineRange": {
+        "start": 205,
+        "end": 212
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 8,
+      "ccn": 1,
+      "visibility": "public"
+    }
+  ],
+  "referencedSymbols": [
+    {
+      "name": "test.NoDBTestCase",
+      "usage": "inherit",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 32,
+        "end": 32
+      }
+    },
+    {
+      "name": "super",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 34,
+        "end": 34
+      }
+    },
+    {
+      "name": "fixtures.NoSleepRetryDecoratorFixture",
+      "usage": "call",
+      "via": "nova.tests",
+      "count": 1,
+      "lineRange": {
+        "start": 36,
+        "end": 36
+      }
+    },
+    {
+      "name": "api.Mount",
+      "usage": "call",
+      "via": "nova.virt.disk.mount",
+      "count": 1,
+      "lineRange": {
+        "start": 39,
+        "end": 39
+      }
+    },
+    {
+      "name": "isinstance",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 49,
+        "end": 49
+      }
+    },
+    {
+      "name": "len",
+      "usage": "call",
+      "via": null,
+      "count": 3,
+      "lineRange": {
+        "start": 50,
+        "end": 50
+      }
+    },
+    {
+      "name": "mock.call",
+      "usage": "call",
+      "via": "unittest",
+      "count": 2,
+      "lineRange": {
+        "start": 59,
+        "end": 59
+      }
+    },
+    {
+      "name": "mock.patch",
+      "usage": "call",
+      "via": "unittest",
+      "count": 9,
+      "lineRange": {
+        "start": 64,
+        "end": 64
+      }
+    },
+    {
+      "name": "imgmodel.LocalFileImage",
+      "usage": "call",
+      "via": "nova.virt.image",
+      "count": 2,
+      "lineRange": {
+        "start": 137,
+        "end": 137
+      }
+    },
+    {
+      "name": "api.Mount.instance_for_format",
+      "usage": "call",
+      "via": "nova.virt.disk.mount",
+      "count": 3,
+      "lineRange": {
+        "start": 141,
+        "end": 141
+      }
+    },
+    {
+      "name": "imgmodel.LocalBlockImage",
+      "usage": "call",
+      "via": "nova.virt.image",
+      "count": 1,
+      "lineRange": {
+        "start": 153,
+        "end": 153
+      }
+    },
+    {
+      "name": "mock.MagicMock",
+      "usage": "call",
+      "via": "unittest",
+      "count": 6,
+      "lineRange": {
+        "start": 161,
+        "end": 161
+      }
+    },
+    {
+      "name": "api.Mount.instance_for_device",
+      "usage": "call",
+      "via": "nova.virt.disk.mount",
+      "count": 6,
+      "lineRange": {
+        "start": 165,
+        "end": 165
+      }
+    }
+  ],
+  "dependencies": [
+    {
+      "style": "from",
+      "module": "unittest",
+      "names": [
+        {
+          "alias": null,
+          "name": "mock"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 15,
+        "end": 15
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "test"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 17,
+        "end": 17
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.tests",
+      "names": [
+        {
+          "alias": null,
+          "name": "fixtures"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 18,
+        "end": 18
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.virt.disk.mount",
+      "names": [
+        {
+          "alias": null,
+          "name": "api"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 19,
+        "end": 19
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.virt.disk.mount",
+      "names": [
+        {
+          "alias": null,
+          "name": "block"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 20,
+        "end": 20
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.virt.disk.mount",
+      "names": [
+        {
+          "alias": null,
+          "name": "loop"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 21,
+        "end": 21
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.virt.disk.mount",
+      "names": [
+        {
+          "alias": null,
+          "name": "nbd"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 22,
+        "end": 22
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.virt.image",
+      "names": [
+        {
+          "alias": "imgmodel",
+          "name": "model"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 23,
+        "end": 23
+      }
+    }
+  ],
+  "sideEffects": [
+    {
+      "kind": "file-io",
+      "target": "@mock.patch('os.path.exists')",
+      "lineRange": {
+        "start": 64,
+        "end": 64
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "@mock.patch('os.path.exists')",
+      "lineRange": {
+        "start": 73,
+        "end": 73
+      }
+    },
+    {
+      "kind": "process-spawn",
+      "target": "@mock.patch('nova.privsep.fs.create_device_maps',",
+      "lineRange": {
+        "start": 74,
+        "end": 74
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "@mock.patch('os.path.exists')",
+      "lineRange": {
+        "start": 86,
+        "end": 86
+      }
+    },
+    {
+      "kind": "process-spawn",
+      "target": "@mock.patch('nova.privsep.fs.create_device_maps',",
+      "lineRange": {
+        "start": 87,
+        "end": 87
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "@mock.patch('os.path.exists')",
+      "lineRange": {
+        "start": 100,
+        "end": 100
+      }
+    },
+    {
+      "kind": "process-spawn",
+      "target": "@mock.patch('nova.privsep.fs.create_device_maps',",
+      "lineRange": {
+        "start": 101,
+        "end": 101
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "@mock.patch('os.path.exists')",
+      "lineRange": {
+        "start": 113,
+        "end": 113
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "@mock.patch('os.path.exists')",
+      "lineRange": {
+        "start": 125,
+        "end": 125
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "PARTITION = 77",
+      "lineRange": {
+        "start": 26,
+        "end": 26
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "ORIG_DEVICE = \"/dev/null\"",
+      "lineRange": {
+        "start": 27,
+        "end": 27
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "AUTOMAP_PARTITION = \"/dev/nullp77\"",
+      "lineRange": {
+        "start": 28,
+        "end": 28
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "MAP_PARTITION = \"/dev/mapper/nullp77\"",
+      "lineRange": {
+        "start": 29,
+        "end": 29
+      }
+    }
+  ],
+  "securitySurface": [
+    {
+      "kind": "privilege",
+      "category": "privsep-entrypoint",
+      "description": "@mock.patch('nova.privsep.fs.create_device_maps',",
+      "lineRange": {
+        "start": 74,
+        "end": 74
+      }
+    },
+    {
+      "kind": "privilege",
+      "category": "privsep-entrypoint",
+      "description": "@mock.patch('nova.privsep.fs.create_device_maps',",
+      "lineRange": {
+        "start": 87,
+        "end": 87
+      }
+    },
+    {
+      "kind": "privilege",
+      "category": "privsep-entrypoint",
+      "description": "@mock.patch('nova.privsep.fs.create_device_maps',",
+      "lineRange": {
+        "start": 101,
+        "end": 101
+      }
+    }
+  ],
+  "injection_flags": [],
+  "warnings": []
+}

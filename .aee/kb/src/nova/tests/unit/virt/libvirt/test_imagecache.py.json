@@ -1,0 +1,2514 @@
+{
+  "file": "src/nova/tests/unit/virt/libvirt/test_imagecache.py",
+  "hash": "580aa9307b4936ea1be0044a1a8b6510e4444c74faf82df6e6a590a291cbcdd1",
+  "language": "Python",
+  "component": "nova",
+  "package": null,
+  "lines": {
+    "blank": 164,
+    "code": 591,
+    "comment": 47,
+    "total": 802
+  },
+  "symbols": [
+    {
+      "name": "CONF",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 38,
+        "end": 38
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "intercept_log_messages",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 42,
+        "end": 51
+      },
+      "source": "aee-inventory",
+      "parameters": [],
+      "returnType": null,
+      "returns": [],
+      "nloc": 10,
+      "ccn": 2,
+      "exported": true
+    },
+    {
+      "name": "GetCacheFnameTestCase",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 54,
+        "end": 68
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "test_get_cache_fname",
+      "kind": "method",
+      "scope": "GetCacheFnameTestCase",
+      "lineRange": {
+        "start": 55,
+        "end": 68
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 5,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "ImageCacheManagerTestCase",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 71,
+        "end": 802
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "setUp",
+      "kind": "method",
+      "scope": "ImageCacheManagerTestCase",
+      "lineRange": {
+        "start": 73,
+        "end": 78
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 6,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_get_age_of_file",
+      "kind": "method",
+      "scope": "ImageCacheManagerTestCase",
+      "lineRange": {
+        "start": 83,
+        "end": 87
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_getmtime"
+        },
+        {
+          "name": "mock_time"
+        },
+        {
+          "name": "mock_exists"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 5,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_get_age_of_file_not_exists",
+      "kind": "method",
+      "scope": "ImageCacheManagerTestCase",
+      "lineRange": {
+        "start": 90,
+        "end": 94
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_exists"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 5,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_list_base_images",
+      "kind": "method",
+      "scope": "ImageCacheManagerTestCase",
+      "lineRange": {
+        "start": 96,
+        "end": 154
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 46,
+      "ccn": 3,
+      "visibility": "public"
+    },
+    {
+      "name": "test_list_backing_images_small",
+      "kind": "method",
+      "scope": "ImageCacheManagerTestCase",
+      "lineRange": {
+        "start": 156,
+        "end": 176
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 17,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_list_backing_images_resized",
+      "kind": "method",
+      "scope": "ImageCacheManagerTestCase",
+      "lineRange": {
+        "start": 178,
+        "end": 200
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 19,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_list_backing_images_instancename",
+      "kind": "method",
+      "scope": "ImageCacheManagerTestCase",
+      "lineRange": {
+        "start": 202,
+        "end": 221
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 16,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_list_backing_images_disk_notexist",
+      "kind": "method",
+      "scope": "ImageCacheManagerTestCase",
+      "lineRange": {
+        "start": 223,
+        "end": 240
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 13,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "fake_get_disk",
+      "kind": "function",
+      "scope": "ImageCacheManagerTestCase.test_list_backing_images_disk_notexist",
+      "lineRange": {
+        "start": 229,
+        "end": 230
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "disk_path"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "visibility": "public"
+    },
+    {
+      "name": "test_find_base_file_nothing",
+      "kind": "method",
+      "scope": "ImageCacheManagerTestCase",
+      "lineRange": {
+        "start": 242,
+        "end": 250
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 7,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_find_base_file_small",
+      "kind": "method",
+      "scope": "ImageCacheManagerTestCase",
+      "lineRange": {
+        "start": 252,
+        "end": 262
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 9,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_find_base_file_resized",
+      "kind": "method",
+      "scope": "ImageCacheManagerTestCase",
+      "lineRange": {
+        "start": 264,
+        "end": 282
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 16,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_find_base_file_all",
+      "kind": "method",
+      "scope": "ImageCacheManagerTestCase",
+      "lineRange": {
+        "start": 284,
+        "end": 304
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 18,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "_make_base_file",
+      "kind": "method",
+      "scope": "ImageCacheManagerTestCase",
+      "lineRange": {
+        "start": 307,
+        "end": 328
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "default": "True",
+          "name": "lock"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 17,
+      "ccn": 2,
+      "visibility": "private"
+    },
+    {
+      "name": "test_remove_base_file",
+      "kind": "method",
+      "scope": "ImageCacheManagerTestCase",
+      "lineRange": {
+        "start": 330,
+        "end": 348
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 13,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_remove_base_file_original",
+      "kind": "method",
+      "scope": "ImageCacheManagerTestCase",
+      "lineRange": {
+        "start": 350,
+        "end": 369
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 12,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_remove_base_file_dne",
+      "kind": "method",
+      "scope": "ImageCacheManagerTestCase",
+      "lineRange": {
+        "start": 371,
+        "end": 379
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 6,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_remove_base_file_oserror",
+      "kind": "method",
+      "scope": "ImageCacheManagerTestCase",
+      "lineRange": {
+        "start": 381,
+        "end": 397
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 12,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_mark_in_use",
+      "kind": "method",
+      "scope": "ImageCacheManagerTestCase",
+      "lineRange": {
+        "start": 400,
+        "end": 411
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_utime"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 10,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_verify_base_images",
+      "kind": "method",
+      "scope": "ImageCacheManagerTestCase",
+      "lineRange": {
+        "start": 415,
+        "end": 577
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_lock"
+        },
+        {
+          "name": "mock_utime"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 72,
+      "ccn": 4,
+      "visibility": "public"
+    },
+    {
+      "name": "fq_path",
+      "kind": "function",
+      "scope": "ImageCacheManagerTestCase.test_verify_base_images",
+      "lineRange": {
+        "start": 436,
+        "end": 437
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "path"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "os.path.join('/instance_path/_base/', path)",
+          "line": 437
+        }
+      ],
+      "visibility": "public"
+    },
+    {
+      "name": "exists",
+      "kind": "function",
+      "scope": "ImageCacheManagerTestCase.test_verify_base_images",
+      "lineRange": {
+        "start": 442,
+        "end": 464
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "path"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "orig_exists(path)",
+          "line": 445
+        },
+        {
+          "expr": "True",
+          "line": 452
+        },
+        {
+          "expr": "True",
+          "line": 456
+        },
+        {
+          "expr": "False",
+          "line": 462
+        }
+      ],
+      "visibility": "public"
+    },
+    {
+      "name": "listdir",
+      "kind": "function",
+      "scope": "ImageCacheManagerTestCase.test_verify_base_images",
+      "lineRange": {
+        "start": 471,
+        "end": 482
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "path"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "orig_listdir(path)",
+          "line": 474
+        },
+        {
+          "expr": "['instance-1', 'instance-2', 'instance-3', '_base']",
+          "line": 477
+        },
+        {
+          "expr": "base_file_list",
+          "line": 480
+        }
+      ],
+      "visibility": "public"
+    },
+    {
+      "name": "isfile",
+      "kind": "function",
+      "scope": "ImageCacheManagerTestCase.test_verify_base_images",
+      "lineRange": {
+        "start": 489,
+        "end": 498
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "path"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "orig_isfile(path)",
+          "line": 492
+        },
+        {
+          "expr": "True",
+          "line": 496
+        }
+      ],
+      "visibility": "public"
+    },
+    {
+      "name": "get_disk_backing_file",
+      "kind": "function",
+      "scope": "ImageCacheManagerTestCase.test_verify_base_images",
+      "lineRange": {
+        "start": 522,
+        "end": 526
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "path"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "fq_path('%s_5368709120' % hashed_1)",
+          "line": 525
+        }
+      ],
+      "visibility": "public"
+    },
+    {
+      "name": "getmtime",
+      "kind": "function",
+      "scope": "ImageCacheManagerTestCase.test_verify_base_images",
+      "lineRange": {
+        "start": 534,
+        "end": 538
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "path"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "orig_getmtime(path)",
+          "line": 536
+        },
+        {
+          "expr": "1000000",
+          "line": 538
+        }
+      ],
+      "visibility": "public"
+    },
+    {
+      "name": "remove",
+      "kind": "function",
+      "scope": "ImageCacheManagerTestCase.test_verify_base_images",
+      "lineRange": {
+        "start": 545,
+        "end": 550
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "path"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "orig_remove(path)",
+          "line": 547
+        },
+        {
+          "expr": "",
+          "line": 550
+        }
+      ],
+      "visibility": "public"
+    },
+    {
+      "name": "test_verify_base_images_no_base",
+      "kind": "method",
+      "scope": "ImageCacheManagerTestCase",
+      "lineRange": {
+        "start": 579,
+        "end": 582
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 4,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_run_image_cache_manager_pass",
+      "kind": "method",
+      "scope": "ImageCacheManagerTestCase",
+      "lineRange": {
+        "start": 585,
+        "end": 612
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_instance_list"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 15,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "fake_instances",
+      "kind": "function",
+      "scope": "ImageCacheManagerTestCase.test_run_image_cache_manager_pass",
+      "lineRange": {
+        "start": 587,
+        "end": 598
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "ctxt"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "objects.instance._make_instance_list( ctxt, objects.InstanceList(), instances, None)",
+          "line": 597
+        }
+      ],
+      "visibility": "public"
+    },
+    {
+      "name": "test_store_swap_image",
+      "kind": "method",
+      "scope": "ImageCacheManagerTestCase",
+      "lineRange": {
+        "start": 614,
+        "end": 625
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 11,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_store_ephemeral_image",
+      "kind": "method",
+      "scope": "ImageCacheManagerTestCase",
+      "lineRange": {
+        "start": 627,
+        "end": 638
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 11,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_age_and_verify_swap_images",
+      "kind": "method",
+      "scope": "ImageCacheManagerTestCase",
+      "lineRange": {
+        "start": 645,
+        "end": 676
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_utime"
+        },
+        {
+          "name": "mock_remove"
+        },
+        {
+          "name": "mock_getmtime"
+        },
+        {
+          "name": "mock_exist"
+        },
+        {
+          "name": "mock_lock"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 18,
+      "ccn": 2,
+      "visibility": "public"
+    },
+    {
+      "name": "removefile",
+      "kind": "function",
+      "scope": "ImageCacheManagerTestCase.test_age_and_verify_swap_images",
+      "lineRange": {
+        "start": 664,
+        "end": 670
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "path"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "visibility": "public"
+    },
+    {
+      "name": "test_age_and_verify_ephemeral_images",
+      "kind": "method",
+      "scope": "ImageCacheManagerTestCase",
+      "lineRange": {
+        "start": 683,
+        "end": 706
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_utime"
+        },
+        {
+          "name": "mock_remove"
+        },
+        {
+          "name": "mock_getmtime"
+        },
+        {
+          "name": "mock_exist"
+        },
+        {
+          "name": "mock_lock"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 18,
+      "ccn": 2,
+      "visibility": "public"
+    },
+    {
+      "name": "removefile",
+      "kind": "function",
+      "scope": "ImageCacheManagerTestCase.test_age_and_verify_ephemeral_images",
+      "lineRange": {
+        "start": 697,
+        "end": 702
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "path"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "visibility": "public"
+    },
+    {
+      "name": "test_lock_acquired_on_removing_old_enough_files",
+      "kind": "method",
+      "scope": "ImageCacheManagerTestCase",
+      "lineRange": {
+        "start": 711,
+        "end": 720
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_get_age"
+        },
+        {
+          "name": "mock_synchronized"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 10,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_get_disk_usage_cache_is_on_different_disk",
+      "kind": "method",
+      "scope": "ImageCacheManagerTestCase",
+      "lineRange": {
+        "start": 723,
+        "end": 734
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_stat"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 10,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_get_disk_usage_empty",
+      "kind": "method",
+      "scope": "ImageCacheManagerTestCase",
+      "lineRange": {
+        "start": 738,
+        "end": 744
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_stat"
+        },
+        {
+          "name": "mock_listdir"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 5,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_get_disk_usage_cache_dir_missing",
+      "kind": "method",
+      "scope": "ImageCacheManagerTestCase",
+      "lineRange": {
+        "start": 748,
+        "end": 754
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_listdir"
+        },
+        {
+          "name": "mock_stat"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 5,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_get_disk_usage",
+      "kind": "method",
+      "scope": "ImageCacheManagerTestCase",
+      "lineRange": {
+        "start": 759,
+        "end": 778
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_stat"
+        },
+        {
+          "name": "mock_listdir"
+        },
+        {
+          "name": "mock_isfile"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 15,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_get_disk_usage_io_error_while_reading",
+      "kind": "method",
+      "scope": "ImageCacheManagerTestCase",
+      "lineRange": {
+        "start": 783,
+        "end": 802
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_stat"
+        },
+        {
+          "name": "mock_listdir"
+        },
+        {
+          "name": "mock_isfile"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 16,
+      "ccn": 1,
+      "visibility": "public"
+    }
+  ],
+  "referencedSymbols": [
+    {
+      "name": "logging.getLogger",
+      "usage": "call",
+      "via": "oslo_log",
+      "count": 1,
+      "lineRange": {
+        "start": 44,
+        "end": 44
+      }
+    },
+    {
+      "name": "io.StringIO",
+      "usage": "call",
+      "via": "io",
+      "count": 1,
+      "lineRange": {
+        "start": 45,
+        "end": 45
+      }
+    },
+    {
+      "name": "logging.logging.StreamHandler",
+      "usage": "call",
+      "via": "oslo_log",
+      "count": 1,
+      "lineRange": {
+        "start": 46,
+        "end": 46
+      }
+    },
+    {
+      "name": "formatters.ContextFormatter",
+      "usage": "call",
+      "via": "oslo_log",
+      "count": 1,
+      "lineRange": {
+        "start": 47,
+        "end": 47
+      }
+    },
+    {
+      "name": "test.NoDBTestCase",
+      "usage": "inherit",
+      "via": "nova",
+      "count": 2,
+      "lineRange": {
+        "start": 54,
+        "end": 54
+      }
+    },
+    {
+      "name": "imagecache.get_cache_fname",
+      "usage": "call",
+      "via": "nova.virt.libvirt",
+      "count": 1,
+      "lineRange": {
+        "start": 67,
+        "end": 67
+      }
+    },
+    {
+      "name": "super",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 74,
+        "end": 74
+      }
+    },
+    {
+      "name": "set",
+      "usage": "call",
+      "via": null,
+      "count": 11,
+      "lineRange": {
+        "start": 75,
+        "end": 75
+      }
+    },
+    {
+      "name": "mock.patch.object",
+      "usage": "call",
+      "via": "unittest",
+      "count": 10,
+      "lineRange": {
+        "start": 80,
+        "end": 80
+      }
+    },
+    {
+      "name": "imagecache.ImageCacheManager",
+      "usage": "call",
+      "via": "nova.virt.libvirt",
+      "count": 28,
+      "lineRange": {
+        "start": 84,
+        "end": 84
+      }
+    },
+    {
+      "name": "sorted",
+      "usage": "call",
+      "via": null,
+      "count": 2,
+      "lineRange": {
+        "start": 122,
+        "end": 122
+      }
+    },
+    {
+      "name": "os.path.join",
+      "usage": "call",
+      "via": "os",
+      "count": 23,
+      "lineRange": {
+        "start": 124,
+        "end": 124
+      }
+    },
+    {
+      "name": "len",
+      "usage": "call",
+      "via": null,
+      "count": 11,
+      "lineRange": {
+        "start": 139,
+        "end": 139
+      }
+    },
+    {
+      "name": "processutils.ProcessExecutionError",
+      "usage": "call",
+      "via": "oslo_concurrency",
+      "count": 1,
+      "lineRange": {
+        "start": 230,
+        "end": 230
+      }
+    },
+    {
+      "name": "list",
+      "usage": "call",
+      "via": null,
+      "count": 4,
+      "lineRange": {
+        "start": 248,
+        "end": 248
+      }
+    },
+    {
+      "name": "utils.tempdir",
+      "usage": "call",
+      "via": "nova",
+      "count": 4,
+      "lineRange": {
+        "start": 310,
+        "end": 310
+      }
+    },
+    {
+      "name": "open",
+      "usage": "call",
+      "via": null,
+      "count": 3,
+      "lineRange": {
+        "start": 314,
+        "end": 314
+      }
+    },
+    {
+      "name": "os.mkdir",
+      "usage": "call",
+      "via": "os",
+      "count": 2,
+      "lineRange": {
+        "start": 321,
+        "end": 321
+      }
+    },
+    {
+      "name": "os.path.split",
+      "usage": "call",
+      "via": "os",
+      "count": 2,
+      "lineRange": {
+        "start": 335,
+        "end": 335
+      }
+    },
+    {
+      "name": "os.path.exists",
+      "usage": "call",
+      "via": "os",
+      "count": 8,
+      "lineRange": {
+        "start": 340,
+        "end": 340
+      }
+    },
+    {
+      "name": "os.utime",
+      "usage": "call",
+      "via": "os",
+      "count": 4,
+      "lineRange": {
+        "start": 344,
+        "end": 344
+      }
+    },
+    {
+      "name": "time.time",
+      "usage": "call",
+      "via": "time",
+      "count": 6,
+      "lineRange": {
+        "start": 344,
+        "end": 344
+      }
+    },
+    {
+      "name": "mock.patch",
+      "usage": "call",
+      "via": "unittest",
+      "count": 22,
+      "lineRange": {
+        "start": 399,
+        "end": 399
+      }
+    },
+    {
+      "name": "orig_exists",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 445,
+        "end": 445
+      }
+    },
+    {
+      "name": "orig_listdir",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 474,
+        "end": 474
+      }
+    },
+    {
+      "name": "orig_isfile",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 492,
+        "end": 492
+      }
+    },
+    {
+      "name": "fake_instance.fake_instance_obj",
+      "usage": "call",
+      "via": "nova.tests.unit",
+      "count": 1,
+      "lineRange": {
+        "start": 517,
+        "end": 517
+      }
+    },
+    {
+      "name": "orig_getmtime",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 536,
+        "end": 536
+      }
+    },
+    {
+      "name": "orig_remove",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 547,
+        "end": 547
+      }
+    },
+    {
+      "name": "context.get_admin_context",
+      "usage": "call",
+      "via": "nova",
+      "count": 2,
+      "lineRange": {
+        "start": 557,
+        "end": 557
+      }
+    },
+    {
+      "name": "range",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 589,
+        "end": 589
+      }
+    },
+    {
+      "name": "fake_instance.fake_db_instance",
+      "usage": "call",
+      "via": "nova.tests.unit",
+      "count": 1,
+      "lineRange": {
+        "start": 591,
+        "end": 591
+      }
+    },
+    {
+      "name": "getattr",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 593,
+        "end": 593
+      }
+    },
+    {
+      "name": "objects.instance._make_instance_list",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 597,
+        "end": 597
+      }
+    },
+    {
+      "name": "objects.InstanceList",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 598,
+        "end": 598
+      }
+    },
+    {
+      "name": "compute_manager.ComputeManager",
+      "usage": "call",
+      "via": "nova.compute",
+      "count": 1,
+      "lineRange": {
+        "start": 604,
+        "end": 604
+      }
+    },
+    {
+      "name": "os.path.dirname",
+      "usage": "call",
+      "via": "os",
+      "count": 4,
+      "lineRange": {
+        "start": 661,
+        "end": 661
+      }
+    },
+    {
+      "name": "os.path.basename",
+      "usage": "call",
+      "via": "os",
+      "count": 4,
+      "lineRange": {
+        "start": 662,
+        "end": 662
+      }
+    },
+    {
+      "name": "mock.Mock",
+      "usage": "call",
+      "via": "unittest",
+      "count": 12,
+      "lineRange": {
+        "start": 724,
+        "end": 724
+      }
+    },
+    {
+      "name": "mock.call",
+      "usage": "call",
+      "via": "unittest",
+      "count": 2,
+      "lineRange": {
+        "start": 730,
+        "end": 730
+      }
+    }
+  ],
+  "dependencies": [
+    {
+      "style": "import",
+      "module": "contextlib",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 17,
+        "end": 17
+      }
+    },
+    {
+      "style": "import",
+      "module": "io",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 18,
+        "end": 18
+      }
+    },
+    {
+      "style": "import",
+      "module": "os",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 19,
+        "end": 19
+      }
+    },
+    {
+      "style": "import",
+      "module": "time",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 20,
+        "end": 20
+      }
+    },
+    {
+      "style": "from",
+      "module": "unittest",
+      "names": [
+        {
+          "alias": null,
+          "name": "mock"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 21,
+        "end": 21
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_concurrency",
+      "names": [
+        {
+          "alias": null,
+          "name": "lockutils"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 23,
+        "end": 23
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_concurrency",
+      "names": [
+        {
+          "alias": null,
+          "name": "processutils"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 24,
+        "end": 24
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_log",
+      "names": [
+        {
+          "alias": null,
+          "name": "formatters"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 25,
+        "end": 25
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_log",
+      "names": [
+        {
+          "alias": "logging",
+          "name": "log"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 26,
+        "end": 26
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_utils.fixture",
+      "names": [
+        {
+          "alias": "uuids",
+          "name": "uuidsentinel"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 27,
+        "end": 27
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.compute",
+      "names": [
+        {
+          "alias": "compute_manager",
+          "name": "manager"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 29,
+        "end": 29
+      }
+    },
+    {
+      "style": "import",
+      "module": "nova.conf",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 30,
+        "end": 30
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "context"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 31,
+        "end": 31
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "objects"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 32,
+        "end": 32
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "test"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 33,
+        "end": 33
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.tests.unit",
+      "names": [
+        {
+          "alias": null,
+          "name": "fake_instance"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 34,
+        "end": 34
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "utils"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 35,
+        "end": 35
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.virt.libvirt",
+      "names": [
+        {
+          "alias": null,
+          "name": "imagecache"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 36,
+        "end": 36
+      }
+    }
+  ],
+  "sideEffects": [
+    {
+      "kind": "file-io",
+      "target": "self.stub_out('os.listdir', lambda x: listing)",
+      "lineRange": {
+        "start": 109,
+        "end": 109
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "self.stub_out('os.path.isfile', lambda x: True)",
+      "lineRange": {
+        "start": 110,
+        "end": 110
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "expected = os.path.join(base_dir,",
+      "lineRange": {
+        "start": 124,
+        "end": 124
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "expected = os.path.join(base_dir,",
+      "lineRange": {
+        "start": 128,
+        "end": 128
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "unexpected = os.path.join(base_dir, '00000004')",
+      "lineRange": {
+        "start": 133,
+        "end": 133
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "expected = os.path.join(base_dir,",
+      "lineRange": {
+        "start": 141,
+        "end": 141
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "unexpected = os.path.join(base_dir,",
+      "lineRange": {
+        "start": 145,
+        "end": 145
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "self.stub_out('os.listdir',",
+      "lineRange": {
+        "start": 157,
+        "end": 157
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "self.stub_out('os.path.exists',",
+      "lineRange": {
+        "start": 160,
+        "end": 160
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "found = os.path.join(CONF.instances_path,",
+      "lineRange": {
+        "start": 165,
+        "end": 165
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "self.stub_out('os.listdir',",
+      "lineRange": {
+        "start": 179,
+        "end": 179
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "self.stub_out('os.path.exists',",
+      "lineRange": {
+        "start": 182,
+        "end": 182
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "found = os.path.join(CONF.instances_path,",
+      "lineRange": {
+        "start": 188,
+        "end": 188
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "self.stub_out('os.listdir',",
+      "lineRange": {
+        "start": 203,
+        "end": 203
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "self.stub_out('os.path.exists',",
+      "lineRange": {
+        "start": 205,
+        "end": 205
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "found = os.path.join(CONF.instances_path,",
+      "lineRange": {
+        "start": 210,
+        "end": 210
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "self.stub_out('os.listdir',",
+      "lineRange": {
+        "start": 224,
+        "end": 224
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "self.stub_out('os.path.exists',",
+      "lineRange": {
+        "start": 226,
+        "end": 226
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "self.stub_out('os.path.exists', lambda x: False)",
+      "lineRange": {
+        "start": 243,
+        "end": 243
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "self.stub_out('os.path.exists',",
+      "lineRange": {
+        "start": 254,
+        "end": 254
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "base_file = os.path.join(base_dir, fingerprint + '_sm')",
+      "lineRange": {
+        "start": 261,
+        "end": 261
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "self.stub_out('os.listdir', lambda x: listing)",
+      "lineRange": {
+        "start": 271,
+        "end": 271
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "self.stub_out('os.path.exists',",
+      "lineRange": {
+        "start": 272,
+        "end": 272
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "self.stub_out('os.path.isfile', lambda x: True)",
+      "lineRange": {
+        "start": 274,
+        "end": 274
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "base_file = os.path.join(base_dir, fingerprint + '_10737418240')",
+      "lineRange": {
+        "start": 281,
+        "end": 281
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "self.stub_out('os.listdir', lambda x: listing)",
+      "lineRange": {
+        "start": 292,
+        "end": 292
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "self.stub_out('os.path.exists', lambda x: True)",
+      "lineRange": {
+        "start": 293,
+        "end": 293
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "self.stub_out('os.path.isfile', lambda x: True)",
+      "lineRange": {
+        "start": 294,
+        "end": 294
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "base_file1 = os.path.join(base_dir, fingerprint)",
+      "lineRange": {
+        "start": 301,
+        "end": 301
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "base_file2 = os.path.join(base_dir, fingerprint + '_sm')",
+      "lineRange": {
+        "start": 302,
+        "end": 302
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "base_file3 = os.path.join(base_dir, fingerprint + '_10737418240')",
+      "lineRange": {
+        "start": 303,
+        "end": 303
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "fname = os.path.join(tmpdir, 'aaa')",
+      "lineRange": {
+        "start": 312,
+        "end": 312
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "base_file = open(fname, 'w')",
+      "lineRange": {
+        "start": 314,
+        "end": 314
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "lockdir = os.path.join(tmpdir, 'locks')",
+      "lineRange": {
+        "start": 319,
+        "end": 319
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "lockname = os.path.join(lockdir, 'nova-aaa')",
+      "lineRange": {
+        "start": 320,
+        "end": 320
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "lock_file = open(lockname, 'w')",
+      "lineRange": {
+        "start": 322,
+        "end": 322
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "base_file = open(fname, 'r')",
+      "lineRange": {
+        "start": 326,
+        "end": 326
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "lock_name = 'nova-' + os.path.split(fname)[-1]",
+      "lineRange": {
+        "start": 335,
+        "end": 335
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "lock_dir = os.path.join(CONF.instances_path, 'locks')",
+      "lineRange": {
+        "start": 336,
+        "end": 336
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "lock_file = os.path.join(lock_dir, lock_name)",
+      "lineRange": {
+        "start": 337,
+        "end": 337
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "self.assertTrue(os.path.exists(fname))",
+      "lineRange": {
+        "start": 340,
+        "end": 340
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "self.assertTrue(os.path.exists(lock_file))",
+      "lineRange": {
+        "start": 341,
+        "end": 341
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "self.assertFalse(os.path.exists(fname))",
+      "lineRange": {
+        "start": 347,
+        "end": 347
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "self.assertFalse(os.path.exists(lock_file))",
+      "lineRange": {
+        "start": 348,
+        "end": 348
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "self.assertTrue(os.path.exists(fname))",
+      "lineRange": {
+        "start": 357,
+        "end": 357
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "self.assertTrue(os.path.exists(fname))",
+      "lineRange": {
+        "start": 363,
+        "end": 363
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "self.assertFalse(os.path.exists(fname))",
+      "lineRange": {
+        "start": 369,
+        "end": 369
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "fname = os.path.join(tmpdir, 'aaa')",
+      "lineRange": {
+        "start": 377,
+        "end": 377
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "fname = os.path.join(tmpdir, 'aaa')",
+      "lineRange": {
+        "start": 386,
+        "end": 386
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "self.assertTrue(os.path.exists(fname))",
+      "lineRange": {
+        "start": 395,
+        "end": 395
+      }
+    },
+    {
+      "kind": "process-spawn",
+      "target": "@mock.patch('nova.privsep.path.utime')",
+      "lineRange": {
+        "start": 399,
+        "end": 399
+      }
+    },
+    {
+      "kind": "process-spawn",
+      "target": "@mock.patch('nova.privsep.path.utime')",
+      "lineRange": {
+        "start": 413,
+        "end": 413
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "return os.path.join('/instance_path/_base/', path)",
+      "lineRange": {
+        "start": 437,
+        "end": 437
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "orig_exists = os.path.exists",
+      "lineRange": {
+        "start": 440,
+        "end": 440
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "self.stub_out('os.path.exists', lambda x: exists(x))",
+      "lineRange": {
+        "start": 466,
+        "end": 466
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "orig_listdir = os.listdir",
+      "lineRange": {
+        "start": 469,
+        "end": 469
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "self.stub_out('os.listdir', lambda x: listdir(x))",
+      "lineRange": {
+        "start": 484,
+        "end": 484
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "orig_isfile = os.path.isfile",
+      "lineRange": {
+        "start": 487,
+        "end": 487
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "self.stub_out('os.path.isfile', lambda x: isfile(x))",
+      "lineRange": {
+        "start": 500,
+        "end": 500
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "orig_getmtime = os.path.getmtime",
+      "lineRange": {
+        "start": 532,
+        "end": 532
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "self.stub_out('os.path.getmtime', lambda x: getmtime(x))",
+      "lineRange": {
+        "start": 540,
+        "end": 540
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "@mock.patch('os.path.exists')",
+      "lineRange": {
+        "start": 641,
+        "end": 641
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "@mock.patch('os.path.getmtime')",
+      "lineRange": {
+        "start": 642,
+        "end": 642
+      }
+    },
+    {
+      "kind": "process-spawn",
+      "target": "@mock.patch('nova.privsep.path.utime')",
+      "lineRange": {
+        "start": 644,
+        "end": 644
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "lambda path: os.path.dirname(path) == base_dir and \\",
+      "lineRange": {
+        "start": 661,
+        "end": 661
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "os.path.basename(path) in expected_exist",
+      "lineRange": {
+        "start": 662,
+        "end": 662
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "self.assertEqual(base_dir, os.path.dirname(path),",
+      "lineRange": {
+        "start": 665,
+        "end": 665
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "fn = os.path.basename(path)",
+      "lineRange": {
+        "start": 668,
+        "end": 668
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "@mock.patch('os.path.exists')",
+      "lineRange": {
+        "start": 679,
+        "end": 679
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "@mock.patch('os.path.getmtime')",
+      "lineRange": {
+        "start": 680,
+        "end": 680
+      }
+    },
+    {
+      "kind": "process-spawn",
+      "target": "@mock.patch('nova.privsep.path.utime')",
+      "lineRange": {
+        "start": 682,
+        "end": 682
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "lambda path: os.path.dirname(path) == base_dir and \\",
+      "lineRange": {
+        "start": 694,
+        "end": 694
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "os.path.basename(path) in expected_exist",
+      "lineRange": {
+        "start": 695,
+        "end": 695
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "self.assertEqual(base_dir, os.path.dirname(path),",
+      "lineRange": {
+        "start": 698,
+        "end": 698
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "fn = os.path.basename(path)",
+      "lineRange": {
+        "start": 700,
+        "end": 700
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "lock_path = os.path.join(CONF.instances_path, 'locks')",
+      "lineRange": {
+        "start": 714,
+        "end": 714
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "lock_file = os.path.split(base_file)[-1]",
+      "lineRange": {
+        "start": 715,
+        "end": 715
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "os.path.join(",
+      "lineRange": {
+        "start": 732,
+        "end": 732
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "@mock.patch('os.listdir')",
+      "lineRange": {
+        "start": 736,
+        "end": 736
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "@mock.patch('os.listdir')",
+      "lineRange": {
+        "start": 747,
+        "end": 747
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "@mock.patch('os.path.isfile')",
+      "lineRange": {
+        "start": 756,
+        "end": 756
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "@mock.patch('os.listdir')",
+      "lineRange": {
+        "start": 757,
+        "end": 757
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "@mock.patch('os.path.isfile')",
+      "lineRange": {
+        "start": 780,
+        "end": 780
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "@mock.patch('os.listdir')",
+      "lineRange": {
+        "start": 781,
+        "end": 781
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "CONF = nova.conf.CONF",
+      "lineRange": {
+        "start": 38,
+        "end": 38
+      }
+    }
+  ],
+  "securitySurface": [
+    {
+      "kind": "sink",
+      "category": "file-write",
+      "description": "base_file = open(fname, 'w')",
+      "lineRange": {
+        "start": 314,
+        "end": 314
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "file-write",
+      "description": "base_file.write('data')",
+      "lineRange": {
+        "start": 315,
+        "end": 315
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "file-write",
+      "description": "lock_file = open(lockname, 'w')",
+      "lineRange": {
+        "start": 322,
+        "end": 322
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "file-write",
+      "description": "lock_file.write('data')",
+      "lineRange": {
+        "start": 323,
+        "end": 323
+      }
+    },
+    {
+      "kind": "privilege",
+      "category": "privsep-entrypoint",
+      "description": "@mock.patch('nova.privsep.path.utime')",
+      "lineRange": {
+        "start": 399,
+        "end": 399
+      }
+    },
+    {
+      "kind": "privilege",
+      "category": "privsep-entrypoint",
+      "description": "@mock.patch('nova.privsep.path.utime')",
+      "lineRange": {
+        "start": 413,
+        "end": 413
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "image_cache_manager.update(ctxt, all_instances)",
+      "lineRange": {
+        "start": 560,
+        "end": 560
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "image_cache_manager.update(None, [])",
+      "lineRange": {
+        "start": 582,
+        "end": 582
+      }
+    },
+    {
+      "kind": "privilege",
+      "category": "privsep-entrypoint",
+      "description": "@mock.patch('nova.privsep.path.utime')",
+      "lineRange": {
+        "start": 644,
+        "end": 644
+      }
+    },
+    {
+      "kind": "privilege",
+      "category": "privsep-entrypoint",
+      "description": "@mock.patch('nova.privsep.path.utime')",
+      "lineRange": {
+        "start": 682,
+        "end": 682
+      }
+    }
+  ],
+  "injection_flags": [],
+  "warnings": []
+}

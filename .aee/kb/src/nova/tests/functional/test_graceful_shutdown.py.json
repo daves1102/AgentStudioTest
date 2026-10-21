@@ -1,0 +1,1263 @@
+{
+  "file": "src/nova/tests/functional/test_graceful_shutdown.py",
+  "hash": "2d48471a24880af129e0f40a0e027cd9b057d5497aed2e3c6d52b93a6a95a7fe",
+  "language": "Python",
+  "component": "nova",
+  "package": null,
+  "lines": {
+    "blank": 198,
+    "code": 658,
+    "comment": 149,
+    "total": 1005
+  },
+  "symbols": [
+    {
+      "name": "CONF",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 43,
+        "end": 43
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "GracefulShutdownTestBase",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 46,
+        "end": 166
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "compute_driver",
+      "kind": "field",
+      "scope": "GracefulShutdownTestBase",
+      "lineRange": {
+        "start": 48,
+        "end": 48
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "microversion",
+      "kind": "field",
+      "scope": "GracefulShutdownTestBase",
+      "lineRange": {
+        "start": 49,
+        "end": 49
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "CAST_AS_CALL",
+      "kind": "constant",
+      "scope": "GracefulShutdownTestBase",
+      "lineRange": {
+        "start": 50,
+        "end": 50
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "OPERATION_TIMEOUT",
+      "kind": "constant",
+      "scope": "GracefulShutdownTestBase",
+      "lineRange": {
+        "start": 55,
+        "end": 55
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "MANAGER_GRACEFUL_SHUTDOWN_TIMEOUT",
+      "kind": "constant",
+      "scope": "GracefulShutdownTestBase",
+      "lineRange": {
+        "start": 56,
+        "end": 56
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "setUp",
+      "kind": "method",
+      "scope": "GracefulShutdownTestBase",
+      "lineRange": {
+        "start": 58,
+        "end": 85
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 8,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "_setup_graceful_shutdown_mock",
+      "kind": "method",
+      "scope": "GracefulShutdownTestBase",
+      "lineRange": {
+        "start": 87,
+        "end": 109
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "compute"
+        },
+        {
+          "name": "operation_complete_event"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "shutdown_waiting",
+          "line": 109
+        }
+      ],
+      "nloc": 8,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "coordinated_graceful_shutdown",
+      "kind": "function",
+      "scope": "GracefulShutdownTestBase._setup_graceful_shutdown_mock",
+      "lineRange": {
+        "start": 93,
+        "end": 104
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "timeout"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "visibility": "public"
+    },
+    {
+      "name": "_stop_compute_gracefully",
+      "kind": "method",
+      "scope": "GracefulShutdownTestBase",
+      "lineRange": {
+        "start": 111,
+        "end": 117
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "compute"
+        },
+        {
+          "default": "30",
+          "name": "timeout"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "t",
+          "line": 117
+        }
+      ],
+      "nloc": 7,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "_join_stop_thread",
+      "kind": "method",
+      "scope": "GracefulShutdownTestBase",
+      "lineRange": {
+        "start": 119,
+        "end": 123
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "stop_thread"
+        },
+        {
+          "default": "60",
+          "name": "timeout"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 5,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "wait_for_service_stop",
+      "kind": "method",
+      "scope": "GracefulShutdownTestBase",
+      "lineRange": {
+        "start": 125,
+        "end": 135
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "stop_thread"
+        },
+        {
+          "name": "host"
+        },
+        {
+          "default": "'nova-compute'",
+          "name": "binary"
+        },
+        {
+          "default": "60",
+          "name": "timeout"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 6,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "_assert_in_progress_task_count",
+      "kind": "method",
+      "scope": "GracefulShutdownTestBase",
+      "lineRange": {
+        "start": 137,
+        "end": 142
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "compute"
+        },
+        {
+          "name": "task_count"
+        },
+        {
+          "default": "None",
+          "name": "task_name"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 6,
+      "ccn": 2,
+      "visibility": "private"
+    },
+    {
+      "name": "_wait_for_no_task_tracked",
+      "kind": "method",
+      "scope": "GracefulShutdownTestBase",
+      "lineRange": {
+        "start": 144,
+        "end": 148
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "compute"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 3,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "no_task_tracked",
+      "kind": "function",
+      "scope": "GracefulShutdownTestBase._wait_for_no_task_tracked",
+      "lineRange": {
+        "start": 145,
+        "end": 146
+      },
+      "source": "aee-inventory",
+      "parameters": [],
+      "returnType": null,
+      "returns": [],
+      "visibility": "public"
+    },
+    {
+      "name": "_restart_compute",
+      "kind": "method",
+      "scope": "GracefulShutdownTestBase",
+      "lineRange": {
+        "start": 150,
+        "end": 161
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "hostname"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 5,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "_complete_live_migration",
+      "kind": "method",
+      "scope": "GracefulShutdownTestBase",
+      "lineRange": {
+        "start": 163,
+        "end": 166
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "context"
+        },
+        {
+          "name": "instance"
+        },
+        {
+          "name": "dest"
+        },
+        {
+          "name": "post_method"
+        },
+        {
+          "name": "recover_method"
+        },
+        {
+          "default": "False",
+          "name": "block_migration"
+        },
+        {
+          "default": "None",
+          "name": "migrate_data"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 4,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "TestComputeGracefulShutdown",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 169,
+        "end": 952
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "test_live_migration_source_compute_graceful_shutdown",
+      "kind": "method",
+      "scope": "TestComputeGracefulShutdown",
+      "lineRange": {
+        "start": 172,
+        "end": 231
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 36,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_live_migration_dest_compute_graceful_shutdown",
+      "kind": "method",
+      "scope": "TestComputeGracefulShutdown",
+      "lineRange": {
+        "start": 233,
+        "end": 292
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 36,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_live_migration_dest_shutdown_before_post_live_migration",
+      "kind": "method",
+      "scope": "TestComputeGracefulShutdown",
+      "lineRange": {
+        "start": 294,
+        "end": 339
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 32,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_cold_migration_source_compute_graceful_shutdown",
+      "kind": "method",
+      "scope": "TestComputeGracefulShutdown",
+      "lineRange": {
+        "start": 341,
+        "end": 397
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 37,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_cold_migration_dest_compute_graceful_shutdown",
+      "kind": "method",
+      "scope": "TestComputeGracefulShutdown",
+      "lineRange": {
+        "start": 399,
+        "end": 453
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 35,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_cold_migration_dest_shutdown_before_resize_instance_completes",
+      "kind": "method",
+      "scope": "TestComputeGracefulShutdown",
+      "lineRange": {
+        "start": 455,
+        "end": 499
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 33,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_instance_build_graceful_shutdown",
+      "kind": "method",
+      "scope": "TestComputeGracefulShutdown",
+      "lineRange": {
+        "start": 501,
+        "end": 553
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 33,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_revert_resize_dest_compute_graceful_shutdown",
+      "kind": "method",
+      "scope": "TestComputeGracefulShutdown",
+      "lineRange": {
+        "start": 555,
+        "end": 618
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 36,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_build_instance_track_wait_during_shutdown",
+      "kind": "method",
+      "scope": "TestComputeGracefulShutdown",
+      "lineRange": {
+        "start": 620,
+        "end": 671
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 35,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "build_instance_tracked",
+      "kind": "function",
+      "scope": "TestComputeGracefulShutdown.test_build_instance_track_wait_during_shutdown",
+      "lineRange": {
+        "start": 644,
+        "end": 645
+      },
+      "source": "aee-inventory",
+      "parameters": [],
+      "returnType": null,
+      "returns": [],
+      "visibility": "public"
+    },
+    {
+      "name": "test_snapshot_instance_track_and_wait_during_shutdown",
+      "kind": "method",
+      "scope": "TestComputeGracefulShutdown",
+      "lineRange": {
+        "start": 673,
+        "end": 724
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 36,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "snapshot_instance_tracked",
+      "kind": "function",
+      "scope": "TestComputeGracefulShutdown.test_snapshot_instance_track_and_wait_during_shutdown",
+      "lineRange": {
+        "start": 699,
+        "end": 701
+      },
+      "source": "aee-inventory",
+      "parameters": [],
+      "returnType": null,
+      "returns": [],
+      "visibility": "public"
+    },
+    {
+      "name": "test_multiple_build_instance_tracked_and_shutdown_wait_for_all",
+      "kind": "method",
+      "scope": "TestComputeGracefulShutdown",
+      "lineRange": {
+        "start": 726,
+        "end": 814
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 57,
+      "ccn": 4,
+      "visibility": "public"
+    },
+    {
+      "name": "_blocking_spawn",
+      "kind": "function",
+      "scope": "TestComputeGracefulShutdown.test_multiple_build_instance_tracked_and_shutdown_wait_for_all",
+      "lineRange": {
+        "start": 742,
+        "end": 748
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "context"
+        },
+        {
+          "name": "instance"
+        },
+        {
+          "name": "*args"
+        },
+        {
+          "name": "**kwargs"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "original_spawn(context, instance, *args, **kwargs)",
+          "line": 748
+        }
+      ],
+      "visibility": "private"
+    },
+    {
+      "name": "both_build_instances_tracked",
+      "kind": "function",
+      "scope": "TestComputeGracefulShutdown.test_multiple_build_instance_tracked_and_shutdown_wait_for_all",
+      "lineRange": {
+        "start": 770,
+        "end": 776
+      },
+      "source": "aee-inventory",
+      "parameters": [],
+      "returnType": null,
+      "returns": [],
+      "visibility": "public"
+    },
+    {
+      "name": "one_task_tracked",
+      "kind": "function",
+      "scope": "TestComputeGracefulShutdown.test_multiple_build_instance_tracked_and_shutdown_wait_for_all",
+      "lineRange": {
+        "start": 794,
+        "end": 795
+      },
+      "source": "aee-inventory",
+      "parameters": [],
+      "returnType": null,
+      "returns": [],
+      "visibility": "public"
+    },
+    {
+      "name": "test_different_concurrent_operations_and_shutdown_wait_for_all",
+      "kind": "method",
+      "scope": "TestComputeGracefulShutdown",
+      "lineRange": {
+        "start": 816,
+        "end": 913
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 71,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "all_three_tasks_tracked",
+      "kind": "function",
+      "scope": "TestComputeGracefulShutdown.test_different_concurrent_operations_and_shutdown_wait_for_all",
+      "lineRange": {
+        "start": 864,
+        "end": 869
+      },
+      "source": "aee-inventory",
+      "parameters": [],
+      "returnType": null,
+      "returns": [],
+      "visibility": "public"
+    },
+    {
+      "name": "two_tasks_tracked",
+      "kind": "function",
+      "scope": "TestComputeGracefulShutdown.test_different_concurrent_operations_and_shutdown_wait_for_all",
+      "lineRange": {
+        "start": 884,
+        "end": 885
+      },
+      "source": "aee-inventory",
+      "parameters": [],
+      "returnType": null,
+      "returns": [],
+      "visibility": "public"
+    },
+    {
+      "name": "only_live_migration_tracked",
+      "kind": "function",
+      "scope": "TestComputeGracefulShutdown.test_different_concurrent_operations_and_shutdown_wait_for_all",
+      "lineRange": {
+        "start": 894,
+        "end": 895
+      },
+      "source": "aee-inventory",
+      "parameters": [],
+      "returnType": null,
+      "returns": [],
+      "visibility": "public"
+    },
+    {
+      "name": "test_rpc_call_are_tracked",
+      "kind": "method",
+      "scope": "TestComputeGracefulShutdown",
+      "lineRange": {
+        "start": 915,
+        "end": 941
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 17,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "pause_instance_tracked",
+      "kind": "function",
+      "scope": "TestComputeGracefulShutdown.test_rpc_call_are_tracked",
+      "lineRange": {
+        "start": 930,
+        "end": 933
+      },
+      "source": "aee-inventory",
+      "parameters": [],
+      "returnType": null,
+      "returns": [],
+      "visibility": "public"
+    },
+    {
+      "name": "test_periodic_tasks_skipped_once_shutdown_starts",
+      "kind": "method",
+      "scope": "TestComputeGracefulShutdown",
+      "lineRange": {
+        "start": 943,
+        "end": 952
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 8,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "TestConductorGracefulShutdown",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 955,
+        "end": 973
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "setUp",
+      "kind": "method",
+      "scope": "TestConductorGracefulShutdown",
+      "lineRange": {
+        "start": 956,
+        "end": 959
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 4,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_graceful_shutdown_completes_instantly_when_no_tasks",
+      "kind": "method",
+      "scope": "TestConductorGracefulShutdown",
+      "lineRange": {
+        "start": 961,
+        "end": 973
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 8,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "TestSchedulerGracefulShutdown",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 976,
+        "end": 1005
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "setUp",
+      "kind": "method",
+      "scope": "TestSchedulerGracefulShutdown",
+      "lineRange": {
+        "start": 978,
+        "end": 981
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 4,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_graceful_shutdown_completes_instantly_when_no_tasks",
+      "kind": "method",
+      "scope": "TestSchedulerGracefulShutdown",
+      "lineRange": {
+        "start": 983,
+        "end": 995
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 8,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_periodic_tasks_skipped_once_shutdown_starts",
+      "kind": "method",
+      "scope": "TestSchedulerGracefulShutdown",
+      "lineRange": {
+        "start": 997,
+        "end": 1005
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 7,
+      "ccn": 1,
+      "visibility": "public"
+    }
+  ],
+  "referencedSymbols": [
+    {
+      "name": "integrated_helpers.ProviderUsageBaseTestCase",
+      "usage": "inherit",
+      "via": "nova.tests.functional",
+      "count": 1,
+      "lineRange": {
+        "start": 46,
+        "end": 46
+      }
+    },
+    {
+      "name": "super",
+      "usage": "call",
+      "via": null,
+      "count": 3,
+      "lineRange": {
+        "start": 78,
+        "end": 78
+      }
+    },
+    {
+      "name": "threading.Event",
+      "usage": "call",
+      "via": "threading",
+      "count": 8,
+      "lineRange": {
+        "start": 90,
+        "end": 90
+      }
+    },
+    {
+      "name": "mock.patch",
+      "usage": "call",
+      "via": "unittest",
+      "count": 1,
+      "lineRange": {
+        "start": 103,
+        "end": 103
+      }
+    },
+    {
+      "name": "fixtures.MockPatchObject",
+      "usage": "call",
+      "via": "fixtures",
+      "count": 4,
+      "lineRange": {
+        "start": 106,
+        "end": 106
+      }
+    },
+    {
+      "name": "threading.Thread",
+      "usage": "call",
+      "via": "threading",
+      "count": 1,
+      "lineRange": {
+        "start": 112,
+        "end": 112
+      }
+    },
+    {
+      "name": "int",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 133,
+        "end": 133
+      }
+    },
+    {
+      "name": "list",
+      "usage": "call",
+      "via": null,
+      "count": 5,
+      "lineRange": {
+        "start": 139,
+        "end": 139
+      }
+    },
+    {
+      "name": "len",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 140,
+        "end": 140
+      }
+    },
+    {
+      "name": "post_method",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 166,
+        "end": 166
+      }
+    },
+    {
+      "name": "nova_fixtures.InterceptMethodFixture",
+      "usage": "call",
+      "via": "nova.tests",
+      "count": 18,
+      "lineRange": {
+        "start": 180,
+        "end": 180
+      }
+    },
+    {
+      "name": "threading.Lock",
+      "usage": "call",
+      "via": "threading",
+      "count": 1,
+      "lineRange": {
+        "start": 737,
+        "end": 737
+      }
+    },
+    {
+      "name": "original_spawn",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 748,
+        "end": 748
+      }
+    },
+    {
+      "name": "range",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 755,
+        "end": 755
+      }
+    },
+    {
+      "name": "nova_fixtures.WaitableEvent",
+      "usage": "call",
+      "via": "nova.tests",
+      "count": 1,
+      "lineRange": {
+        "start": 760,
+        "end": 760
+      }
+    },
+    {
+      "name": "test.TestCase",
+      "usage": "inherit",
+      "via": "nova",
+      "count": 2,
+      "lineRange": {
+        "start": 955,
+        "end": 955
+      }
+    },
+    {
+      "name": "time.monotonic",
+      "usage": "call",
+      "via": "time",
+      "count": 4,
+      "lineRange": {
+        "start": 965,
+        "end": 965
+      }
+    }
+  ],
+  "dependencies": [
+    {
+      "style": "import",
+      "module": "threading",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 32,
+        "end": 32
+      }
+    },
+    {
+      "style": "import",
+      "module": "time",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 33,
+        "end": 33
+      }
+    },
+    {
+      "style": "from",
+      "module": "unittest",
+      "names": [
+        {
+          "alias": null,
+          "name": "mock"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 34,
+        "end": 34
+      }
+    },
+    {
+      "style": "import",
+      "module": "fixtures",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 36,
+        "end": 36
+      }
+    },
+    {
+      "style": "import",
+      "module": "nova.conf",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 38,
+        "end": 38
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "test"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 39,
+        "end": 39
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.tests",
+      "names": [
+        {
+          "alias": "nova_fixtures",
+          "name": "fixtures"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 40,
+        "end": 40
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.tests.functional",
+      "names": [
+        {
+          "alias": null,
+          "name": "integrated_helpers"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 41,
+        "end": 41
+      }
+    }
+  ],
+  "sideEffects": [
+    {
+      "kind": "global-mutation",
+      "target": "CONF = nova.conf.CONF",
+      "lineRange": {
+        "start": 43,
+        "end": 43
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "CAST_AS_CALL = False",
+      "lineRange": {
+        "start": 50,
+        "end": 50
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "OPERATION_TIMEOUT = 60",
+      "lineRange": {
+        "start": 55,
+        "end": 55
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "MANAGER_GRACEFUL_SHUTDOWN_TIMEOUT = OPERATION_TIMEOUT + 2",
+      "lineRange": {
+        "start": 56,
+        "end": 56
+      }
+    }
+  ],
+  "securitySurface": [],
+  "injection_flags": [],
+  "warnings": []
+}

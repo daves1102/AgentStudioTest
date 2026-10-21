@@ -1,0 +1,229 @@
+{
+  "file": "src/nova/tests/unit/policies/test_extensions.py",
+  "hash": "004eeedc8894c8f5e4e369bd965b08ce490b281703897b25b7d8b06d2b789648",
+  "language": "Python",
+  "component": "nova",
+  "package": null,
+  "lines": {
+    "blank": 9,
+    "code": 35,
+    "comment": 12,
+    "total": 56
+  },
+  "symbols": [
+    {
+      "name": "ExtensionsPolicyTest",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 19,
+        "end": 50
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "setUp",
+      "kind": "method",
+      "scope": "ExtensionsPolicyTest",
+      "lineRange": {
+        "start": 27,
+        "end": 34
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 6,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_list_extensions_policy",
+      "kind": "method",
+      "scope": "ExtensionsPolicyTest",
+      "lineRange": {
+        "start": 36,
+        "end": 42
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 7,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_show_extensions_policy",
+      "kind": "method",
+      "scope": "ExtensionsPolicyTest",
+      "lineRange": {
+        "start": 44,
+        "end": 50
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 7,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "ExtensionsNoLegacyPolicyTest",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 53,
+        "end": 56
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "without_deprecated_rules",
+      "kind": "field",
+      "scope": "ExtensionsNoLegacyPolicyTest",
+      "lineRange": {
+        "start": 56,
+        "end": 56
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    }
+  ],
+  "referencedSymbols": [
+    {
+      "name": "base.BasePolicyTest",
+      "usage": "inherit",
+      "via": "nova.tests.unit.policies",
+      "count": 1,
+      "lineRange": {
+        "start": 19,
+        "end": 19
+      }
+    },
+    {
+      "name": "super",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 28,
+        "end": 28
+      }
+    },
+    {
+      "name": "extension_info.ExtensionInfoController",
+      "usage": "call",
+      "via": "nova.api.openstack.compute",
+      "count": 1,
+      "lineRange": {
+        "start": 29,
+        "end": 29
+      }
+    },
+    {
+      "name": "fakes.HTTPRequest.blank",
+      "usage": "call",
+      "via": "nova.tests.unit.api.openstack",
+      "count": 1,
+      "lineRange": {
+        "start": 30,
+        "end": 30
+      }
+    }
+  ],
+  "dependencies": [
+    {
+      "style": "from",
+      "module": "nova.api.openstack.compute",
+      "names": [
+        {
+          "alias": null,
+          "name": "extension_info"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 13,
+        "end": 13
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.policies",
+      "names": [
+        {
+          "alias": "policies",
+          "name": "extensions"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 14,
+        "end": 14
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.tests.unit.api.openstack",
+      "names": [
+        {
+          "alias": null,
+          "name": "fakes"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 15,
+        "end": 15
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.tests.unit.policies",
+      "names": [
+        {
+          "alias": null,
+          "name": "base"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 16,
+        "end": 16
+      }
+    }
+  ],
+  "sideEffects": [
+    {
+      "kind": "network",
+      "target": "from nova.api.openstack.compute import extension_info",
+      "lineRange": {
+        "start": 13,
+        "end": 13
+      }
+    }
+  ],
+  "securitySurface": [],
+  "injection_flags": [],
+  "warnings": []
+}

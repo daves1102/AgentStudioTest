@@ -1,0 +1,823 @@
+{
+  "file": "src/nova/tests/unit/privsep/test_qemu.py",
+  "hash": "153b2b996ebf34e8dc4d470cc71df25f68ccbbe79ef198ac57070d774ee54d69",
+  "language": "Python",
+  "component": "nova",
+  "package": null,
+  "lines": {
+    "blank": 28,
+    "code": 174,
+    "comment": 26,
+    "total": 228
+  },
+  "symbols": [
+    {
+      "name": "QemuTestCase",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 28,
+        "end": 228
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "setUp",
+      "kind": "method",
+      "scope": "QemuTestCase",
+      "lineRange": {
+        "start": 31,
+        "end": 33
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 3,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "_test_convert_image",
+      "kind": "method",
+      "scope": "QemuTestCase",
+      "lineRange": {
+        "start": 37,
+        "end": 53
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "meth"
+        },
+        {
+          "name": "mock_supports_direct_io"
+        },
+        {
+          "name": "mock_execute"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 15,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "test_convert_image",
+      "kind": "method",
+      "scope": "QemuTestCase",
+      "lineRange": {
+        "start": 55,
+        "end": 56
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_convert_image_unprivileged",
+      "kind": "method",
+      "scope": "QemuTestCase",
+      "lineRange": {
+        "start": 58,
+        "end": 59
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_convert_image_encrypted_source_to_unencrypted_dest",
+      "kind": "method",
+      "scope": "QemuTestCase",
+      "lineRange": {
+        "start": 69,
+        "end": 90
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "in_format"
+        },
+        {
+          "name": "out_format"
+        },
+        {
+          "name": "mock_tempfile"
+        },
+        {
+          "name": "mock_execute"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 18,
+      "ccn": 2,
+      "visibility": "public"
+    },
+    {
+      "name": "test_convert_image_unencrypted_source_to_encrypted_dest",
+      "kind": "method",
+      "scope": "QemuTestCase",
+      "lineRange": {
+        "start": 100,
+        "end": 135
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "in_format"
+        },
+        {
+          "name": "out_format"
+        },
+        {
+          "name": "mock_tempfile"
+        },
+        {
+          "name": "mock_execute"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 30,
+      "ccn": 3,
+      "visibility": "public"
+    },
+    {
+      "name": "test_convert_image_encrypted_source_and_dest",
+      "kind": "method",
+      "scope": "QemuTestCase",
+      "lineRange": {
+        "start": 145,
+        "end": 189
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "in_format"
+        },
+        {
+          "name": "out_format"
+        },
+        {
+          "name": "mock_tempfile"
+        },
+        {
+          "name": "mock_execute"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 40,
+      "ccn": 4,
+      "visibility": "public"
+    },
+    {
+      "name": "_test_qemu_img_info",
+      "kind": "method",
+      "scope": "QemuTestCase",
+      "lineRange": {
+        "start": 193,
+        "end": 208
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "method"
+        },
+        {
+          "name": "mock_isdir"
+        },
+        {
+          "name": "mock_execute"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "mock_execute.call_args",
+          "line": 208
+        }
+      ],
+      "nloc": 13,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "test_privileged_qemu_img_info",
+      "kind": "method",
+      "scope": "QemuTestCase",
+      "lineRange": {
+        "start": 210,
+        "end": 211
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_unprivileged_qemu_img_info",
+      "kind": "method",
+      "scope": "QemuTestCase",
+      "lineRange": {
+        "start": 213,
+        "end": 214
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_qemu_img_info_limits_config",
+      "kind": "method",
+      "scope": "QemuTestCase",
+      "lineRange": {
+        "start": 216,
+        "end": 228
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 9,
+      "ccn": 1,
+      "visibility": "public"
+    }
+  ],
+  "referencedSymbols": [
+    {
+      "name": "test.NoDBTestCase",
+      "usage": "inherit",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 28,
+        "end": 28
+      }
+    },
+    {
+      "name": "super",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 32,
+        "end": 32
+      }
+    },
+    {
+      "name": "fixtures.PrivsepFixture",
+      "usage": "call",
+      "via": "nova.tests",
+      "count": 1,
+      "lineRange": {
+        "start": 33,
+        "end": 33
+      }
+    },
+    {
+      "name": "mock.patch",
+      "usage": "call",
+      "via": "unittest",
+      "count": 13,
+      "lineRange": {
+        "start": 35,
+        "end": 35
+      }
+    },
+    {
+      "name": "meth",
+      "usage": "call",
+      "via": null,
+      "count": 2,
+      "lineRange": {
+        "start": 39,
+        "end": 39
+      }
+    },
+    {
+      "name": "mock.Mock",
+      "usage": "call",
+      "via": "unittest",
+      "count": 7,
+      "lineRange": {
+        "start": 64,
+        "end": 64
+      }
+    },
+    {
+      "name": "ddt.data",
+      "usage": "call",
+      "via": "ddt",
+      "count": 3,
+      "lineRange": {
+        "start": 65,
+        "end": 65
+      }
+    },
+    {
+      "name": "nova.privsep.qemu.convert_image",
+      "usage": "call",
+      "via": "nova.privsep.qemu",
+      "count": 3,
+      "lineRange": {
+        "start": 78,
+        "end": 78
+      }
+    },
+    {
+      "name": "method",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 204,
+        "end": 204
+      }
+    },
+    {
+      "name": "importlib.reload",
+      "usage": "call",
+      "via": "importlib",
+      "count": 1,
+      "lineRange": {
+        "start": 221,
+        "end": 221
+      }
+    }
+  ],
+  "dependencies": [
+    {
+      "style": "import",
+      "module": "importlib",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 16,
+        "end": 16
+      }
+    },
+    {
+      "style": "from",
+      "module": "unittest",
+      "names": [
+        {
+          "alias": null,
+          "name": "mock"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 17,
+        "end": 17
+      }
+    },
+    {
+      "style": "import",
+      "module": "ddt",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 19,
+        "end": 19
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_utils",
+      "names": [
+        {
+          "alias": null,
+          "name": "units"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 20,
+        "end": 20
+      }
+    },
+    {
+      "style": "import",
+      "module": "nova.privsep.qemu",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 22,
+        "end": 22
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "test"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 23,
+        "end": 23
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.tests",
+      "names": [
+        {
+          "alias": null,
+          "name": "fixtures"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 24,
+        "end": 24
+      }
+    }
+  ],
+  "sideEffects": [
+    {
+      "kind": "process-spawn",
+      "target": "import nova.privsep.qemu",
+      "lineRange": {
+        "start": 22,
+        "end": 22
+      }
+    },
+    {
+      "kind": "process-spawn",
+      "target": "@mock.patch('nova.privsep.utils.supports_direct_io')",
+      "lineRange": {
+        "start": 36,
+        "end": 36
+      }
+    },
+    {
+      "kind": "process-spawn",
+      "target": "self._test_convert_image(nova.privsep.qemu.convert_image)",
+      "lineRange": {
+        "start": 56,
+        "end": 56
+      }
+    },
+    {
+      "kind": "process-spawn",
+      "target": "self._test_convert_image(nova.privsep.qemu.unprivileged_convert_image)",
+      "lineRange": {
+        "start": 59,
+        "end": 59
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "@mock.patch('tempfile.NamedTemporaryFile')",
+      "lineRange": {
+        "start": 62,
+        "end": 62
+      }
+    },
+    {
+      "kind": "process-spawn",
+      "target": "@mock.patch('nova.privsep.utils.supports_direct_io',",
+      "lineRange": {
+        "start": 63,
+        "end": 63
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "mock_tempfile.return_value.__enter__.return_value = mock_file",
+      "lineRange": {
+        "start": 75,
+        "end": 75
+      }
+    },
+    {
+      "kind": "process-spawn",
+      "target": "nova.privsep.qemu.convert_image(",
+      "lineRange": {
+        "start": 78,
+        "end": 78
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "@mock.patch('tempfile.NamedTemporaryFile')",
+      "lineRange": {
+        "start": 93,
+        "end": 93
+      }
+    },
+    {
+      "kind": "process-spawn",
+      "target": "@mock.patch('nova.privsep.utils.supports_direct_io',",
+      "lineRange": {
+        "start": 94,
+        "end": 94
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "mock_tempfile.return_value.__enter__.return_value = mock_file",
+      "lineRange": {
+        "start": 106,
+        "end": 106
+      }
+    },
+    {
+      "kind": "process-spawn",
+      "target": "nova.privsep.qemu.convert_image(",
+      "lineRange": {
+        "start": 109,
+        "end": 109
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "@mock.patch('tempfile.NamedTemporaryFile')",
+      "lineRange": {
+        "start": 138,
+        "end": 138
+      }
+    },
+    {
+      "kind": "process-spawn",
+      "target": "@mock.patch('nova.privsep.utils.supports_direct_io',",
+      "lineRange": {
+        "start": 139,
+        "end": 139
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "mock_tempfile.return_value.__enter__.side_effect = [",
+      "lineRange": {
+        "start": 154,
+        "end": 154
+      }
+    },
+    {
+      "kind": "process-spawn",
+      "target": "nova.privsep.qemu.convert_image(",
+      "lineRange": {
+        "start": 158,
+        "end": 158
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "@mock.patch('os.path.isdir')",
+      "lineRange": {
+        "start": 192,
+        "end": 192
+      }
+    },
+    {
+      "kind": "process-spawn",
+      "target": "*expected_cmd, prlimit=nova.privsep.qemu.QEMU_IMG_LIMITS)",
+      "lineRange": {
+        "start": 207,
+        "end": 207
+      }
+    },
+    {
+      "kind": "process-spawn",
+      "target": "self._test_qemu_img_info(nova.privsep.qemu.privileged_qemu_img_info)",
+      "lineRange": {
+        "start": 211,
+        "end": 211
+      }
+    },
+    {
+      "kind": "process-spawn",
+      "target": "self._test_qemu_img_info(nova.privsep.qemu.unprivileged_qemu_img_info)",
+      "lineRange": {
+        "start": 214,
+        "end": 214
+      }
+    },
+    {
+      "kind": "process-spawn",
+      "target": "importlib.reload(nova.privsep.qemu)",
+      "lineRange": {
+        "start": 221,
+        "end": 221
+      }
+    },
+    {
+      "kind": "process-spawn",
+      "target": "nova.privsep.qemu.unprivileged_qemu_img_info)",
+      "lineRange": {
+        "start": 224,
+        "end": 224
+      }
+    }
+  ],
+  "securitySurface": [
+    {
+      "kind": "privilege",
+      "category": "privsep-entrypoint",
+      "description": "import nova.privsep.qemu",
+      "lineRange": {
+        "start": 22,
+        "end": 22
+      }
+    },
+    {
+      "kind": "privilege",
+      "category": "privsep-entrypoint",
+      "description": "@mock.patch('nova.privsep.utils.supports_direct_io')",
+      "lineRange": {
+        "start": 36,
+        "end": 36
+      }
+    },
+    {
+      "kind": "privilege",
+      "category": "privsep-entrypoint",
+      "description": "self._test_convert_image(nova.privsep.qemu.convert_image)",
+      "lineRange": {
+        "start": 56,
+        "end": 56
+      }
+    },
+    {
+      "kind": "privilege",
+      "category": "privsep-entrypoint",
+      "description": "self._test_convert_image(nova.privsep.qemu.unprivileged_convert_image)",
+      "lineRange": {
+        "start": 59,
+        "end": 59
+      }
+    },
+    {
+      "kind": "privilege",
+      "category": "privsep-entrypoint",
+      "description": "@mock.patch('nova.privsep.utils.supports_direct_io',",
+      "lineRange": {
+        "start": 63,
+        "end": 63
+      }
+    },
+    {
+      "kind": "privilege",
+      "category": "privsep-entrypoint",
+      "description": "nova.privsep.qemu.convert_image(",
+      "lineRange": {
+        "start": 78,
+        "end": 78
+      }
+    },
+    {
+      "kind": "privilege",
+      "category": "privsep-entrypoint",
+      "description": "@mock.patch('nova.privsep.utils.supports_direct_io',",
+      "lineRange": {
+        "start": 94,
+        "end": 94
+      }
+    },
+    {
+      "kind": "privilege",
+      "category": "privsep-entrypoint",
+      "description": "nova.privsep.qemu.convert_image(",
+      "lineRange": {
+        "start": 109,
+        "end": 109
+      }
+    },
+    {
+      "kind": "privilege",
+      "category": "privsep-entrypoint",
+      "description": "@mock.patch('nova.privsep.utils.supports_direct_io',",
+      "lineRange": {
+        "start": 139,
+        "end": 139
+      }
+    },
+    {
+      "kind": "privilege",
+      "category": "privsep-entrypoint",
+      "description": "nova.privsep.qemu.convert_image(",
+      "lineRange": {
+        "start": 158,
+        "end": 158
+      }
+    },
+    {
+      "kind": "privilege",
+      "category": "privsep-entrypoint",
+      "description": "*expected_cmd, prlimit=nova.privsep.qemu.QEMU_IMG_LIMITS)",
+      "lineRange": {
+        "start": 207,
+        "end": 207
+      }
+    },
+    {
+      "kind": "privilege",
+      "category": "privsep-entrypoint",
+      "description": "self._test_qemu_img_info(nova.privsep.qemu.privileged_qemu_img_info)",
+      "lineRange": {
+        "start": 211,
+        "end": 211
+      }
+    },
+    {
+      "kind": "privilege",
+      "category": "privsep-entrypoint",
+      "description": "self._test_qemu_img_info(nova.privsep.qemu.unprivileged_qemu_img_info)",
+      "lineRange": {
+        "start": 214,
+        "end": 214
+      }
+    },
+    {
+      "kind": "privilege",
+      "category": "privsep-entrypoint",
+      "description": "importlib.reload(nova.privsep.qemu)",
+      "lineRange": {
+        "start": 221,
+        "end": 221
+      }
+    },
+    {
+      "kind": "privilege",
+      "category": "privsep-entrypoint",
+      "description": "nova.privsep.qemu.unprivileged_qemu_img_info)",
+      "lineRange": {
+        "start": 224,
+        "end": 224
+      }
+    }
+  ],
+  "injection_flags": [],
+  "warnings": []
+}

@@ -1,0 +1,977 @@
+{
+  "file": "src/nova/tests/unit/virt/vmwareapi/test_imagecache.py",
+  "hash": "7bfabea7b4480ac2457449571ef6131d391140a08790cef2f038f01d1a858405",
+  "language": "Python",
+  "component": "nova",
+  "package": null,
+  "lines": {
+    "blank": 33,
+    "code": 227,
+    "comment": 16,
+    "total": 276
+  },
+  "symbols": [
+    {
+      "name": "CONF",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 32,
+        "end": 32
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "ImageCacheManagerTestCase",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 35,
+        "end": 276
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "REQUIRES_LOCKING",
+      "kind": "constant",
+      "scope": "ImageCacheManagerTestCase",
+      "lineRange": {
+        "start": 37,
+        "end": 37
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "setUp",
+      "kind": "method",
+      "scope": "ImageCacheManagerTestCase",
+      "lineRange": {
+        "start": 39,
+        "end": 46
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 8,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "tearDown",
+      "kind": "method",
+      "scope": "ImageCacheManagerTestCase",
+      "lineRange": {
+        "start": 48,
+        "end": 50
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 3,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_timestamp_cleanup",
+      "kind": "method",
+      "scope": "ImageCacheManagerTestCase",
+      "lineRange": {
+        "start": 52,
+        "end": 79
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 20,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "fake_get_timestamp",
+      "kind": "function",
+      "scope": "ImageCacheManagerTestCase.test_timestamp_cleanup",
+      "lineRange": {
+        "start": 53,
+        "end": 60
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "ds_browser"
+        },
+        {
+          "name": "ds_path"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "",
+          "line": 57
+        },
+        {
+          "expr": "ts",
+          "line": 60
+        }
+      ],
+      "visibility": "public"
+    },
+    {
+      "name": "test_get_timestamp",
+      "kind": "method",
+      "scope": "ImageCacheManagerTestCase",
+      "lineRange": {
+        "start": 81,
+        "end": 101
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 14,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "fake_get_sub_folders",
+      "kind": "function",
+      "scope": "ImageCacheManagerTestCase.test_get_timestamp",
+      "lineRange": {
+        "start": 82,
+        "end": 88
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "session"
+        },
+        {
+          "name": "ds_browser"
+        },
+        {
+          "name": "ds_path"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "files",
+          "line": 88
+        }
+      ],
+      "visibility": "public"
+    },
+    {
+      "name": "test_get_timestamp_filename",
+      "kind": "method",
+      "scope": "ImageCacheManagerTestCase",
+      "lineRange": {
+        "start": 103,
+        "end": 106
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 4,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_get_datetime_from_filename",
+      "kind": "method",
+      "scope": "ImageCacheManagerTestCase",
+      "lineRange": {
+        "start": 108,
+        "end": 110
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 3,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_get_ds_browser",
+      "kind": "method",
+      "scope": "ImageCacheManagerTestCase",
+      "lineRange": {
+        "start": 112,
+        "end": 122
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 11,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_list_datastore_images",
+      "kind": "method",
+      "scope": "ImageCacheManagerTestCase",
+      "lineRange": {
+        "start": 124,
+        "end": 148
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 19,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "fake_get_object_property",
+      "kind": "function",
+      "scope": "ImageCacheManagerTestCase.test_list_datastore_images",
+      "lineRange": {
+        "start": 125,
+        "end": 126
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "vim"
+        },
+        {
+          "name": "mobj"
+        },
+        {
+          "name": "property_name"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "'fake-ds-browser'",
+          "line": 126
+        }
+      ],
+      "visibility": "public"
+    },
+    {
+      "name": "fake_get_sub_folders",
+      "kind": "function",
+      "scope": "ImageCacheManagerTestCase.test_list_datastore_images",
+      "lineRange": {
+        "start": 128,
+        "end": 131
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "session"
+        },
+        {
+          "name": "ds_browser"
+        },
+        {
+          "name": "ds_path"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "files",
+          "line": 131
+        }
+      ],
+      "visibility": "public"
+    },
+    {
+      "name": "test_enlist_image",
+      "kind": "method",
+      "scope": "ImageCacheManagerTestCase",
+      "lineRange": {
+        "start": 153,
+        "end": 178
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_get_ds_browser"
+        },
+        {
+          "name": "mock_timestamp_cleanup"
+        },
+        {
+          "name": "mock_timestamp_folder_get"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 23,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_age_cached_images",
+      "kind": "method",
+      "scope": "ImageCacheManagerTestCase",
+      "lineRange": {
+        "start": 180,
+        "end": 233
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 31,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "fake_get_ds_browser",
+      "kind": "function",
+      "scope": "ImageCacheManagerTestCase.test_age_cached_images",
+      "lineRange": {
+        "start": 181,
+        "end": 182
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "ds_ref"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "'fake-ds-browser'",
+          "line": 182
+        }
+      ],
+      "visibility": "public"
+    },
+    {
+      "name": "fake_get_timestamp",
+      "kind": "function",
+      "scope": "ImageCacheManagerTestCase.test_age_cached_images",
+      "lineRange": {
+        "start": 184,
+        "end": 196
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "ds_browser"
+        },
+        {
+          "name": "ds_path"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "",
+          "line": 189
+        },
+        {
+          "expr": "'ts-2012-11-22-10-00-00'",
+          "line": 192
+        },
+        {
+          "expr": "'ts-2012-11-20-12-00-00'",
+          "line": 195
+        }
+      ],
+      "visibility": "public"
+    },
+    {
+      "name": "fake_mkdir",
+      "kind": "function",
+      "scope": "ImageCacheManagerTestCase.test_age_cached_images",
+      "lineRange": {
+        "start": 198,
+        "end": 201
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "session"
+        },
+        {
+          "name": "ts_path"
+        },
+        {
+          "name": "dc_ref"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "visibility": "public"
+    },
+    {
+      "name": "fake_file_delete",
+      "kind": "function",
+      "scope": "ImageCacheManagerTestCase.test_age_cached_images",
+      "lineRange": {
+        "start": 203,
+        "end": 204
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "session"
+        },
+        {
+          "name": "ds_path"
+        },
+        {
+          "name": "dc_ref"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "visibility": "public"
+    },
+    {
+      "name": "fake_timestamp_cleanup",
+      "kind": "function",
+      "scope": "ImageCacheManagerTestCase.test_age_cached_images",
+      "lineRange": {
+        "start": 206,
+        "end": 207
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "dc_ref"
+        },
+        {
+          "name": "ds_browser"
+        },
+        {
+          "name": "ds_path"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "visibility": "public"
+    },
+    {
+      "name": "test_update",
+      "kind": "method",
+      "scope": "ImageCacheManagerTestCase",
+      "lineRange": {
+        "start": 237,
+        "end": 276
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_bdms_by_inst"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 30,
+      "ccn": 2,
+      "visibility": "public"
+    },
+    {
+      "name": "fake_list_datastore_images",
+      "kind": "function",
+      "scope": "ImageCacheManagerTestCase.test_update",
+      "lineRange": {
+        "start": 238,
+        "end": 240
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "ds_path"
+        },
+        {
+          "name": "datastore"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "{'unexplained_images': [], 'originals': self.images}",
+          "line": 239
+        }
+      ],
+      "visibility": "public"
+    },
+    {
+      "name": "fake_age_cached_images",
+      "kind": "function",
+      "scope": "ImageCacheManagerTestCase.test_update",
+      "lineRange": {
+        "start": 242,
+        "end": 248
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "context"
+        },
+        {
+          "name": "datastore"
+        },
+        {
+          "name": "dc_info"
+        },
+        {
+          "name": "ds_path"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "visibility": "public"
+    }
+  ],
+  "referencedSymbols": [
+    {
+      "name": "test.NoDBTestCase",
+      "usage": "inherit",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 35,
+        "end": 35
+      }
+    },
+    {
+      "name": "super",
+      "usage": "call",
+      "via": null,
+      "count": 2,
+      "lineRange": {
+        "start": 40,
+        "end": 40
+      }
+    },
+    {
+      "name": "mock.Mock",
+      "usage": "call",
+      "via": "unittest",
+      "count": 6,
+      "lineRange": {
+        "start": 41,
+        "end": 41
+      }
+    },
+    {
+      "name": "imagecache.ImageCacheManager",
+      "usage": "call",
+      "via": "nova.virt.vmwareapi",
+      "count": 1,
+      "lineRange": {
+        "start": 42,
+        "end": 42
+      }
+    },
+    {
+      "name": "datetime.datetime",
+      "usage": "call",
+      "via": "datetime",
+      "count": 1,
+      "lineRange": {
+        "start": 44,
+        "end": 44
+      }
+    },
+    {
+      "name": "fake.reset",
+      "usage": "call",
+      "via": "nova.tests.unit.virt.vmwareapi",
+      "count": 2,
+      "lineRange": {
+        "start": 46,
+        "end": 46
+      }
+    },
+    {
+      "name": "str",
+      "usage": "call",
+      "via": null,
+      "count": 7,
+      "lineRange": {
+        "start": 55,
+        "end": 55
+      }
+    },
+    {
+      "name": "test.nested",
+      "usage": "call",
+      "via": "nova",
+      "count": 4,
+      "lineRange": {
+        "start": 62,
+        "end": 62
+      }
+    },
+    {
+      "name": "mock.patch.object",
+      "usage": "call",
+      "via": "unittest",
+      "count": 17,
+      "lineRange": {
+        "start": 63,
+        "end": 63
+      }
+    },
+    {
+      "name": "ds_obj.DatastorePath",
+      "usage": "call",
+      "via": "oslo_vmware.objects",
+      "count": 6,
+      "lineRange": {
+        "start": 70,
+        "end": 70
+      }
+    },
+    {
+      "name": "set",
+      "usage": "call",
+      "via": null,
+      "count": 6,
+      "lineRange": {
+        "start": 86,
+        "end": 86
+      }
+    },
+    {
+      "name": "utils_fixture.TimeFixture",
+      "usage": "call",
+      "via": "oslo_utils",
+      "count": 2,
+      "lineRange": {
+        "start": 104,
+        "end": 104
+      }
+    },
+    {
+      "name": "fake.ManagedObjectReference",
+      "usage": "call",
+      "via": "nova.tests.unit.virt.vmwareapi",
+      "count": 2,
+      "lineRange": {
+        "start": 115,
+        "end": 115
+      }
+    },
+    {
+      "name": "ds_obj.Datastore",
+      "usage": "call",
+      "via": "oslo_vmware.objects",
+      "count": 4,
+      "lineRange": {
+        "start": 140,
+        "end": 140
+      }
+    },
+    {
+      "name": "ds_util.DcInfo",
+      "usage": "call",
+      "via": "nova.virt.vmwareapi",
+      "count": 2,
+      "lineRange": {
+        "start": 224,
+        "end": 224
+      }
+    },
+    {
+      "name": "fake_instance.fake_instance_obj",
+      "usage": "call",
+      "via": "nova.tests.unit",
+      "count": 1,
+      "lineRange": {
+        "start": 269,
+        "end": 269
+      }
+    }
+  ],
+  "dependencies": [
+    {
+      "style": "import",
+      "module": "datetime",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 15,
+        "end": 15
+      }
+    },
+    {
+      "style": "from",
+      "module": "unittest",
+      "names": [
+        {
+          "alias": null,
+          "name": "mock"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 16,
+        "end": 16
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_config",
+      "names": [
+        {
+          "alias": null,
+          "name": "cfg"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 18,
+        "end": 18
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_utils",
+      "names": [
+        {
+          "alias": "utils_fixture",
+          "name": "fixture"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 19,
+        "end": 19
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_utils.fixture",
+      "names": [
+        {
+          "alias": null,
+          "name": "uuidsentinel"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 20,
+        "end": 20
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_vmware.objects",
+      "names": [
+        {
+          "alias": "ds_obj",
+          "name": "datastore"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 21,
+        "end": 21
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_vmware",
+      "names": [
+        {
+          "alias": "vutil",
+          "name": "vim_util"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 22,
+        "end": 22
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "objects"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 24,
+        "end": 24
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "test"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 25,
+        "end": 25
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.tests.unit",
+      "names": [
+        {
+          "alias": null,
+          "name": "fake_instance"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 26,
+        "end": 26
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.tests.unit.virt.vmwareapi",
+      "names": [
+        {
+          "alias": null,
+          "name": "fake"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 27,
+        "end": 27
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.virt.vmwareapi",
+      "names": [
+        {
+          "alias": null,
+          "name": "ds_util"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 28,
+        "end": 28
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.virt.vmwareapi",
+      "names": [
+        {
+          "alias": null,
+          "name": "imagecache"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 29,
+        "end": 29
+      }
+    }
+  ],
+  "sideEffects": [
+    {
+      "kind": "global-mutation",
+      "target": "CONF = cfg.CONF",
+      "lineRange": {
+        "start": 32,
+        "end": 32
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "REQUIRES_LOCKING = True",
+      "lineRange": {
+        "start": 37,
+        "end": 37
+      }
+    }
+  ],
+  "securitySurface": [
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "self._imagecache.update('context', all_instances, datastores_info)",
+      "lineRange": {
+        "start": 276,
+        "end": 276
+      }
+    }
+  ],
+  "injection_flags": [],
+  "warnings": []
+}

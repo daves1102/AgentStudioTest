@@ -1,0 +1,251 @@
+{
+  "file": "src/nova/tests/unit/api/test_compute_req_id.py",
+  "hash": "9bfd9256da527bbfdfea95be86ecdab06fc25c118d769c9ca90b231fc566d519",
+  "language": "Python",
+  "component": "nova",
+  "package": null,
+  "lines": {
+    "blank": 9,
+    "code": 20,
+    "comment": 14,
+    "total": 43
+  },
+  "symbols": [
+    {
+      "name": "ENV_REQUEST_ID",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 26,
+        "end": 26
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "RequestIdTest",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 29,
+        "end": 43
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "test_generate_request_id",
+      "kind": "method",
+      "scope": "RequestIdTest",
+      "lineRange": {
+        "start": 30,
+        "end": 43
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 11,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "application",
+      "kind": "function",
+      "scope": "RequestIdTest.test_generate_request_id",
+      "lineRange": {
+        "start": 32,
+        "end": 33
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "req"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "req.environ[ENV_REQUEST_ID]",
+          "line": 33
+        }
+      ],
+      "visibility": "public"
+    }
+  ],
+  "referencedSymbols": [
+    {
+      "name": "test.NoDBTestCase",
+      "usage": "inherit",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 29,
+        "end": 29
+      }
+    },
+    {
+      "name": "compute_req_id.ComputeReqIdMiddleware",
+      "usage": "call",
+      "via": "nova.api",
+      "count": 1,
+      "lineRange": {
+        "start": 35,
+        "end": 35
+      }
+    },
+    {
+      "name": "webob.Request.blank",
+      "usage": "call",
+      "via": "webob",
+      "count": 1,
+      "lineRange": {
+        "start": 36,
+        "end": 36
+      }
+    },
+    {
+      "name": "context.generate_request_id",
+      "usage": "call",
+      "via": "oslo_context",
+      "count": 1,
+      "lineRange": {
+        "start": 37,
+        "end": 37
+      }
+    },
+    {
+      "name": "matchers.StartsWith",
+      "usage": "call",
+      "via": "testtools",
+      "count": 1,
+      "lineRange": {
+        "start": 42,
+        "end": 42
+      }
+    }
+  ],
+  "dependencies": [
+    {
+      "style": "from",
+      "module": "oslo_context",
+      "names": [
+        {
+          "alias": null,
+          "name": "context"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 17,
+        "end": 17
+      }
+    },
+    {
+      "style": "from",
+      "module": "testtools",
+      "names": [
+        {
+          "alias": null,
+          "name": "matchers"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 18,
+        "end": 18
+      }
+    },
+    {
+      "style": "import",
+      "module": "webob",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 19,
+        "end": 19
+      }
+    },
+    {
+      "style": "import",
+      "module": "webob.dec",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 20,
+        "end": 20
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.api",
+      "names": [
+        {
+          "alias": null,
+          "name": "compute_req_id"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 22,
+        "end": 22
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "test"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 23,
+        "end": 23
+      }
+    }
+  ],
+  "sideEffects": [
+    {
+      "kind": "network",
+      "target": "ENV_REQUEST_ID = 'openstack.request_id'",
+      "lineRange": {
+        "start": 26,
+        "end": 26
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "ENV_REQUEST_ID = 'openstack.request_id'",
+      "lineRange": {
+        "start": 26,
+        "end": 26
+      }
+    }
+  ],
+  "securitySurface": [
+    {
+      "kind": "entry-point",
+      "category": "http-param",
+      "description": "req = webob.Request.blank('/test')",
+      "lineRange": {
+        "start": 36,
+        "end": 36
+      }
+    }
+  ],
+  "injection_flags": [],
+  "warnings": []
+}

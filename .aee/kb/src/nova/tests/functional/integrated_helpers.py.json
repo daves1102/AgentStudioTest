@@ -1,0 +1,4369 @@
+{
+  "file": "src/nova/tests/functional/integrated_helpers.py",
+  "hash": "feee96b3b2c76d049fb41869d2b0c182b80087b23c3f1c5c9e57ca1630b2acd7",
+  "language": "Python",
+  "component": "nova",
+  "package": null,
+  "lines": {
+    "blank": 251,
+    "code": 1128,
+    "comment": 165,
+    "total": 1544
+  },
+  "symbols": [
+    {
+      "name": "CONF",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 49,
+        "end": 49
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "LOG",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 50,
+        "end": 50
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "generate_random_alphanumeric",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 53,
+        "end": 56
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "length"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "''.join(random.choice(string.ascii_uppercase + string.digits) for _x in range(length))",
+          "line": 55
+        }
+      ],
+      "nloc": 3,
+      "ccn": 2,
+      "exported": true
+    },
+    {
+      "name": "generate_random_numeric",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 59,
+        "end": 62
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "length"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "''.join(random.choice(string.digits) for _x in range(length))",
+          "line": 61
+        }
+      ],
+      "nloc": 3,
+      "ccn": 2,
+      "exported": true
+    },
+    {
+      "name": "generate_new_element",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 65,
+        "end": 74
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "items"
+        },
+        {
+          "name": "prefix"
+        },
+        {
+          "default": "False",
+          "name": "numeric"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "candidate",
+          "line": 73
+        }
+      ],
+      "nloc": 9,
+      "ccn": 4,
+      "exported": true
+    },
+    {
+      "name": "StubComputeRPCAPI",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 77,
+        "end": 94
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "__init__",
+      "kind": "method",
+      "scope": "StubComputeRPCAPI",
+      "lineRange": {
+        "start": 83,
+        "end": 84
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "version"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "router",
+      "kind": "method",
+      "scope": "StubComputeRPCAPI",
+      "lineRange": {
+        "start": 87,
+        "end": 94
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "rpc.ClientRouter(default_client)",
+          "line": 94
+        }
+      ],
+      "nloc": 8,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "NOT_SPECIFIED",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 100,
+        "end": 100
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "InstanceHelperMixin",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 103,
+        "end": 834
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "_wait_for_service_parameter",
+      "kind": "method",
+      "scope": "InstanceHelperMixin",
+      "lineRange": {
+        "start": 105,
+        "end": 124
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "service_hostname"
+        },
+        {
+          "name": "service_binary"
+        },
+        {
+          "name": "expected_params"
+        },
+        {
+          "default": "10",
+          "name": "max_retries"
+        },
+        {
+          "default": "None",
+          "name": "api"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 19,
+      "ccn": 6,
+      "visibility": "private"
+    },
+    {
+      "name": "_wait_for_server_parameter",
+      "kind": "method",
+      "scope": "InstanceHelperMixin",
+      "lineRange": {
+        "start": 126,
+        "end": 160
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "server"
+        },
+        {
+          "name": "expected_params"
+        },
+        {
+          "default": "10",
+          "name": "max_retries"
+        },
+        {
+          "default": "None",
+          "name": "api"
+        },
+        {
+          "default": "True",
+          "name": "wait_for_fault_key"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "server",
+          "line": 160
+        }
+      ],
+      "nloc": 23,
+      "ccn": 10,
+      "visibility": "private"
+    },
+    {
+      "name": "_wait_for_state_change",
+      "kind": "method",
+      "scope": "InstanceHelperMixin",
+      "lineRange": {
+        "start": 162,
+        "end": 168
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "server"
+        },
+        {
+          "name": "expected_status"
+        },
+        {
+          "default": "10",
+          "name": "max_retries"
+        },
+        {
+          "default": "True",
+          "name": "wait_for_fault_key"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "self._wait_for_server_parameter( server, {'status': expected_status}, max_retries, wait_for_fault_key=wait_for_fault_key)",
+          "line": 166
+        }
+      ],
+      "nloc": 7,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "_wait_until_deleted",
+      "kind": "method",
+      "scope": "InstanceHelperMixin",
+      "lineRange": {
+        "start": 170,
+        "end": 182
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "server"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "",
+          "line": 182
+        }
+      ],
+      "nloc": 12,
+      "ccn": 5,
+      "visibility": "private"
+    },
+    {
+      "name": "_wait_for_action_fail_completion",
+      "kind": "method",
+      "scope": "InstanceHelperMixin",
+      "lineRange": {
+        "start": 184,
+        "end": 191
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "server"
+        },
+        {
+          "name": "expected_action"
+        },
+        {
+          "name": "event_name"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "self._wait_for_instance_action_event( server, expected_action, event_name, event_result='error')",
+          "line": 190
+        }
+      ],
+      "nloc": 4,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "_wait_for_instance_action_event",
+      "kind": "method",
+      "scope": "InstanceHelperMixin",
+      "lineRange": {
+        "start": 193,
+        "end": 226
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "server"
+        },
+        {
+          "name": "action_name"
+        },
+        {
+          "name": "event_name"
+        },
+        {
+          "name": "event_result"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "event",
+          "line": 218
+        }
+      ],
+      "nloc": 23,
+      "ccn": 8,
+      "visibility": "private"
+    },
+    {
+      "name": "_wait_for_volume_attach",
+      "kind": "method",
+      "scope": "InstanceHelperMixin",
+      "lineRange": {
+        "start": 228,
+        "end": 241
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "server_id"
+        },
+        {
+          "name": "volume_id"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "",
+          "line": 233
+        }
+      ],
+      "nloc": 13,
+      "ccn": 3,
+      "visibility": "private"
+    },
+    {
+      "name": "_wait_for_volume_detach",
+      "kind": "method",
+      "scope": "InstanceHelperMixin",
+      "lineRange": {
+        "start": 243,
+        "end": 257
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "server_id"
+        },
+        {
+          "name": "volume_id"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "",
+          "line": 252
+        }
+      ],
+      "nloc": 13,
+      "ccn": 3,
+      "visibility": "private"
+    },
+    {
+      "name": "_assert_resize_migrate_action_fail",
+      "kind": "method",
+      "scope": "InstanceHelperMixin",
+      "lineRange": {
+        "start": 259,
+        "end": 271
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "server"
+        },
+        {
+          "name": "action"
+        },
+        {
+          "name": "error_in_tb"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "event",
+          "line": 271
+        }
+      ],
+      "nloc": 5,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "_assert_build_request_success",
+      "kind": "method",
+      "scope": "InstanceHelperMixin",
+      "lineRange": {
+        "start": 273,
+        "end": 276
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "server_request"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "server['id']",
+          "line": 276
+        }
+      ],
+      "nloc": 4,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "_assert_build_request_schedule_failure",
+      "kind": "method",
+      "scope": "InstanceHelperMixin",
+      "lineRange": {
+        "start": 278,
+        "end": 280
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "server_request"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 3,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "_assert_bad_build_request_error",
+      "kind": "method",
+      "scope": "InstanceHelperMixin",
+      "lineRange": {
+        "start": 282,
+        "end": 286
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "server_request"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 5,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "_assert_build_request_error",
+      "kind": "method",
+      "scope": "InstanceHelperMixin",
+      "lineRange": {
+        "start": 288,
+        "end": 292
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "server_request"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 5,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "_wait_for_migration_status",
+      "kind": "method",
+      "scope": "InstanceHelperMixin",
+      "lineRange": {
+        "start": 294,
+        "end": 317
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "server"
+        },
+        {
+          "name": "expected_statuses"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "migration",
+          "line": 310
+        }
+      ],
+      "nloc": 17,
+      "ccn": 6,
+      "visibility": "private"
+    },
+    {
+      "name": "_wait_for_log",
+      "kind": "method",
+      "scope": "InstanceHelperMixin",
+      "lineRange": {
+        "start": 319,
+        "end": 325
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "log_line_regex"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "",
+          "line": 322
+        }
+      ],
+      "nloc": 6,
+      "ccn": 3,
+      "visibility": "private"
+    },
+    {
+      "name": "_wait_for_assert",
+      "kind": "method",
+      "scope": "InstanceHelperMixin",
+      "lineRange": {
+        "start": 327,
+        "end": 340
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "assert_func"
+        },
+        {
+          "default": "10",
+          "name": "max_retries"
+        },
+        {
+          "default": "0.5",
+          "name": "sleep"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "assert_func()",
+          "line": 334
+        }
+      ],
+      "nloc": 9,
+      "ccn": 3,
+      "visibility": "private"
+    },
+    {
+      "name": "_create_aggregate",
+      "kind": "method",
+      "scope": "InstanceHelperMixin",
+      "lineRange": {
+        "start": 342,
+        "end": 356
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "name"
+        },
+        {
+          "default": "None",
+          "name": "availability_zone"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "api.post_aggregate(body)['id']",
+          "line": 356
+        }
+      ],
+      "nloc": 8,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "_build_flavor",
+      "kind": "method",
+      "scope": "InstanceHelperMixin",
+      "lineRange": {
+        "start": 358,
+        "end": 394
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "default": "None",
+          "name": "id"
+        },
+        {
+          "default": "None",
+          "name": "name"
+        },
+        {
+          "default": "2048",
+          "name": "memory_mb"
+        },
+        {
+          "default": "2",
+          "name": "vcpu"
+        },
+        {
+          "default": "10",
+          "name": "disk"
+        },
+        {
+          "default": "10",
+          "name": "ephemeral"
+        },
+        {
+          "default": "0",
+          "name": "swap"
+        },
+        {
+          "default": "None",
+          "name": "rxtx_factor"
+        },
+        {
+          "default": "True",
+          "name": "is_public"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "body",
+          "line": 394
+        }
+      ],
+      "nloc": 21,
+      "ccn": 4,
+      "visibility": "private"
+    },
+    {
+      "name": "_create_flavor",
+      "kind": "method",
+      "scope": "InstanceHelperMixin",
+      "lineRange": {
+        "start": 396,
+        "end": 421
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "default": "None",
+          "name": "id"
+        },
+        {
+          "default": "None",
+          "name": "name"
+        },
+        {
+          "default": "2048",
+          "name": "memory_mb"
+        },
+        {
+          "default": "2",
+          "name": "vcpu"
+        },
+        {
+          "default": "10",
+          "name": "disk"
+        },
+        {
+          "default": "10",
+          "name": "ephemeral"
+        },
+        {
+          "default": "0",
+          "name": "swap"
+        },
+        {
+          "default": "None",
+          "name": "rxtx_factor"
+        },
+        {
+          "default": "True",
+          "name": "is_public"
+        },
+        {
+          "default": "None",
+          "name": "extra_spec"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "flavor['id']",
+          "line": 421
+        }
+      ],
+      "nloc": 11,
+      "ccn": 2,
+      "visibility": "private"
+    },
+    {
+      "name": "_delete_flavor",
+      "kind": "method",
+      "scope": "InstanceHelperMixin",
+      "lineRange": {
+        "start": 423,
+        "end": 424
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "flavor_id"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "_create_image",
+      "kind": "method",
+      "scope": "InstanceHelperMixin",
+      "lineRange": {
+        "start": 426,
+        "end": 450
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "metadata"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "self.glance.create(None, image)",
+          "line": 450
+        }
+      ],
+      "nloc": 25,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "_build_server",
+      "kind": "method",
+      "scope": "InstanceHelperMixin",
+      "lineRange": {
+        "start": 452,
+        "end": 498
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "default": "None",
+          "name": "name"
+        },
+        {
+          "default": "None",
+          "name": "image_uuid"
+        },
+        {
+          "default": "None",
+          "name": "flavor_id"
+        },
+        {
+          "default": "None",
+          "name": "networks"
+        },
+        {
+          "default": "None",
+          "name": "az"
+        },
+        {
+          "default": "None",
+          "name": "host"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "server",
+          "line": 498
+        }
+      ],
+      "nloc": 22,
+      "ccn": 8,
+      "visibility": "private"
+    },
+    {
+      "name": "_create_server",
+      "kind": "method",
+      "scope": "InstanceHelperMixin",
+      "lineRange": {
+        "start": 500,
+        "end": 536
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "default": "None",
+          "name": "name"
+        },
+        {
+          "default": "None",
+          "name": "image_uuid"
+        },
+        {
+          "default": "None",
+          "name": "flavor_id"
+        },
+        {
+          "default": "None",
+          "name": "networks"
+        },
+        {
+          "default": "None",
+          "name": "az"
+        },
+        {
+          "default": "None",
+          "name": "host"
+        },
+        {
+          "default": "'ACTIVE'",
+          "name": "expected_state"
+        },
+        {
+          "default": "None",
+          "name": "api"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "self._wait_for_state_change(server, expected_state)",
+          "line": 536
+        }
+      ],
+      "nloc": 14,
+      "ccn": 7,
+      "visibility": "private"
+    },
+    {
+      "name": "_delete_server",
+      "kind": "method",
+      "scope": "InstanceHelperMixin",
+      "lineRange": {
+        "start": 538,
+        "end": 541
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "server"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 3,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "_reboot_server",
+      "kind": "method",
+      "scope": "InstanceHelperMixin",
+      "lineRange": {
+        "start": 543,
+        "end": 553
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "server"
+        },
+        {
+          "default": "False",
+          "name": "hard"
+        },
+        {
+          "default": "'ACTIVE'",
+          "name": "expected_state"
+        },
+        {
+          "default": "None",
+          "name": "api"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "self._wait_for_state_change(server, expected_state)",
+          "line": 553
+        }
+      ],
+      "nloc": 10,
+      "ccn": 4,
+      "visibility": "private"
+    },
+    {
+      "name": "_show_server",
+      "kind": "method",
+      "scope": "InstanceHelperMixin",
+      "lineRange": {
+        "start": 555,
+        "end": 561
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "server"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "self.api.get_server(server['id'])",
+          "line": 559
+        },
+        {
+          "expr": "server",
+          "line": 561
+        }
+      ],
+      "nloc": 5,
+      "ccn": 2,
+      "visibility": "private"
+    },
+    {
+      "name": "_attach_interface",
+      "kind": "method",
+      "scope": "InstanceHelperMixin",
+      "lineRange": {
+        "start": 563,
+        "end": 573
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "server"
+        },
+        {
+          "name": "port_uuid"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "attachment",
+          "line": 573
+        }
+      ],
+      "nloc": 10,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "_detach_interface",
+      "kind": "method",
+      "scope": "InstanceHelperMixin",
+      "lineRange": {
+        "start": 575,
+        "end": 579
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "server"
+        },
+        {
+          "name": "port_uuid"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 4,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "_get_share",
+      "kind": "method",
+      "scope": "InstanceHelperMixin",
+      "lineRange": {
+        "start": 581,
+        "end": 584
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "server"
+        },
+        {
+          "name": "share_id"
+        },
+        {
+          "default": "False",
+          "name": "admin"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "(self.admin_api.get_server_share(server['id'], share_id))",
+          "line": 583
+        },
+        {
+          "expr": "(self.api.get_server_share(server['id'], share_id))",
+          "line": 584
+        }
+      ],
+      "nloc": 4,
+      "ccn": 2,
+      "visibility": "private"
+    },
+    {
+      "name": "_attach_share",
+      "kind": "method",
+      "scope": "InstanceHelperMixin",
+      "lineRange": {
+        "start": 586,
+        "end": 594
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "server"
+        },
+        {
+          "name": "share_id"
+        },
+        {
+          "default": "None",
+          "name": "tag"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 9,
+      "ccn": 2,
+      "visibility": "private"
+    },
+    {
+      "name": "_attach_share_with_error",
+      "kind": "method",
+      "scope": "InstanceHelperMixin",
+      "lineRange": {
+        "start": 596,
+        "end": 601
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "server"
+        },
+        {
+          "name": "share_id"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 6,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "_detach_share",
+      "kind": "method",
+      "scope": "InstanceHelperMixin",
+      "lineRange": {
+        "start": 603,
+        "end": 606
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "server"
+        },
+        {
+          "name": "share_id"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 4,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "_detach_share_with_error",
+      "kind": "method",
+      "scope": "InstanceHelperMixin",
+      "lineRange": {
+        "start": 608,
+        "end": 612
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "server"
+        },
+        {
+          "name": "share_id"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 5,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "_attach_volume",
+      "kind": "method",
+      "scope": "InstanceHelperMixin",
+      "lineRange": {
+        "start": 614,
+        "end": 622
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "server"
+        },
+        {
+          "name": "volume_id"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 8,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "_rebuild_server",
+      "kind": "method",
+      "scope": "InstanceHelperMixin",
+      "lineRange": {
+        "start": 624,
+        "end": 630
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "server"
+        },
+        {
+          "name": "image_uuid"
+        },
+        {
+          "default": "'ACTIVE'",
+          "name": "expected_state"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "self._wait_for_state_change(server, expected_state)",
+          "line": 630
+        }
+      ],
+      "nloc": 6,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "_migrate_server",
+      "kind": "method",
+      "scope": "InstanceHelperMixin",
+      "lineRange": {
+        "start": 632,
+        "end": 638
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "server"
+        },
+        {
+          "default": "None",
+          "name": "host"
+        },
+        {
+          "default": "'VERIFY_RESIZE'",
+          "name": "expected_state"
+        },
+        {
+          "default": "None",
+          "name": "api"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "self._wait_for_state_change(server, expected_state)",
+          "line": 638
+        }
+      ],
+      "nloc": 6,
+      "ccn": 3,
+      "visibility": "private"
+    },
+    {
+      "name": "_resize_server",
+      "kind": "method",
+      "scope": "InstanceHelperMixin",
+      "lineRange": {
+        "start": 640,
+        "end": 644
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "server"
+        },
+        {
+          "name": "flavor_id"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "self._wait_for_state_change(server, 'VERIFY_RESIZE')",
+          "line": 644
+        }
+      ],
+      "nloc": 5,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "_confirm_resize",
+      "kind": "method",
+      "scope": "InstanceHelperMixin",
+      "lineRange": {
+        "start": 646,
+        "end": 654
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "server"
+        },
+        {
+          "name": "*"
+        },
+        {
+          "default": "False",
+          "name": "cross_cell"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "server",
+          "line": 654
+        }
+      ],
+      "nloc": 9,
+      "ccn": 2,
+      "visibility": "private"
+    },
+    {
+      "name": "_revert_resize",
+      "kind": "method",
+      "scope": "InstanceHelperMixin",
+      "lineRange": {
+        "start": 656,
+        "end": 668
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "server"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "server",
+          "line": 668
+        }
+      ],
+      "nloc": 7,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "_live_migrate",
+      "kind": "method",
+      "scope": "InstanceHelperMixin",
+      "lineRange": {
+        "start": 670,
+        "end": 682
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "server"
+        },
+        {
+          "default": "'completed'",
+          "name": "migration_expected_state"
+        },
+        {
+          "default": "'ACTIVE'",
+          "name": "server_expected_state"
+        },
+        {
+          "default": "None",
+          "name": "api"
+        },
+        {
+          "default": "None",
+          "name": "host"
+        },
+        {
+          "default": "True",
+          "name": "wait_for_fault_key"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "self._wait_for_state_change( server, server_expected_state, wait_for_fault_key=wait_for_fault_key)",
+          "line": 680
+        }
+      ],
+      "nloc": 13,
+      "ccn": 2,
+      "visibility": "private"
+    },
+    {
+      "name": "_live_migrate_server",
+      "kind": "field",
+      "scope": "InstanceHelperMixin",
+      "lineRange": {
+        "start": 684,
+        "end": 684
+      },
+      "source": "aee-inventory",
+      "visibility": "private"
+    },
+    {
+      "name": "_suspend_server",
+      "kind": "method",
+      "scope": "InstanceHelperMixin",
+      "lineRange": {
+        "start": 686,
+        "end": 690
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "server"
+        },
+        {
+          "default": "'SUSPENDED'",
+          "name": "expected_state"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "self._wait_for_state_change(server, expected_state)",
+          "line": 690
+        }
+      ],
+      "nloc": 4,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "_resume_server",
+      "kind": "method",
+      "scope": "InstanceHelperMixin",
+      "lineRange": {
+        "start": 692,
+        "end": 696
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "server"
+        },
+        {
+          "default": "'ACTIVE'",
+          "name": "expected_state"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "self._wait_for_state_change(server, expected_state)",
+          "line": 696
+        }
+      ],
+      "nloc": 4,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "_shelve_server",
+      "kind": "method",
+      "scope": "InstanceHelperMixin",
+      "lineRange": {
+        "start": 698,
+        "end": 701
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "server"
+        },
+        {
+          "default": "'SHELVED_OFFLOADED'",
+          "name": "expected_state"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "self._wait_for_state_change(server, expected_state)",
+          "line": 701
+        }
+      ],
+      "nloc": 3,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "_shelve_offload_server",
+      "kind": "method",
+      "scope": "InstanceHelperMixin",
+      "lineRange": {
+        "start": 703,
+        "end": 709
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "server"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 6,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "_unshelve_server",
+      "kind": "method",
+      "scope": "InstanceHelperMixin",
+      "lineRange": {
+        "start": 711,
+        "end": 714
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "server"
+        },
+        {
+          "default": "'ACTIVE'",
+          "name": "expected_state"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "self._wait_for_state_change(server, expected_state)",
+          "line": 714
+        }
+      ],
+      "nloc": 3,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "_evacuate_server",
+      "kind": "method",
+      "scope": "InstanceHelperMixin",
+      "lineRange": {
+        "start": 716,
+        "end": 741
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "server"
+        },
+        {
+          "default": "None",
+          "name": "extra_post_args"
+        },
+        {
+          "default": "None",
+          "name": "expected_host"
+        },
+        {
+          "default": "'SHUTOFF'",
+          "name": "expected_state"
+        },
+        {
+          "default": "NOT_SPECIFIED",
+          "name": "expected_task_state"
+        },
+        {
+          "default": "'done'",
+          "name": "expected_migration_status"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "self._wait_for_server_parameter(server, expected_result)",
+          "line": 741
+        }
+      ],
+      "nloc": 16,
+      "ccn": 4,
+      "visibility": "private"
+    },
+    {
+      "name": "_start_server",
+      "kind": "method",
+      "scope": "InstanceHelperMixin",
+      "lineRange": {
+        "start": 743,
+        "end": 745
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "server"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "self._wait_for_state_change(server, 'ACTIVE')",
+          "line": 745
+        }
+      ],
+      "nloc": 3,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "_stop_server",
+      "kind": "method",
+      "scope": "InstanceHelperMixin",
+      "lineRange": {
+        "start": 747,
+        "end": 751
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "server"
+        },
+        {
+          "default": "True",
+          "name": "wait_for_stop"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "self._wait_for_state_change(server, 'SHUTOFF')",
+          "line": 750
+        },
+        {
+          "expr": "server",
+          "line": 751
+        }
+      ],
+      "nloc": 5,
+      "ccn": 2,
+      "visibility": "private"
+    },
+    {
+      "name": "_snapshot_server",
+      "kind": "method",
+      "scope": "InstanceHelperMixin",
+      "lineRange": {
+        "start": 753,
+        "end": 758
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "server"
+        },
+        {
+          "name": "snapshot_name"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 5,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "_attach_volumes",
+      "kind": "method",
+      "scope": "InstanceHelperMixin",
+      "lineRange": {
+        "start": 760,
+        "end": 775
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "server"
+        },
+        {
+          "name": "vol_ids",
+          "type": "list[str]"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "self._show_server(server)",
+          "line": 775
+        }
+      ],
+      "nloc": 7,
+      "ccn": 3,
+      "visibility": "private"
+    },
+    {
+      "name": "_create_vol_attachments_by_cinder",
+      "kind": "method",
+      "scope": "InstanceHelperMixin",
+      "lineRange": {
+        "start": 777,
+        "end": 784
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "volume_id"
+        },
+        {
+          "name": "server"
+        },
+        {
+          "default": "1",
+          "name": "new_attachments"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 5,
+      "ccn": 2,
+      "visibility": "private"
+    },
+    {
+      "name": "_create_server_boot_from_volume",
+      "kind": "method",
+      "scope": "InstanceHelperMixin",
+      "lineRange": {
+        "start": 786,
+        "end": 825
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "default": "None",
+          "name": "image_args"
+        },
+        {
+          "default": "None",
+          "name": "flavor_id"
+        },
+        {
+          "default": "None",
+          "name": "networks"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "self._wait_for_state_change(server, 'ACTIVE')",
+          "line": 825
+        }
+      ],
+      "nloc": 33,
+      "ccn": 2,
+      "visibility": "private"
+    },
+    {
+      "name": "_rescue_server",
+      "kind": "method",
+      "scope": "InstanceHelperMixin",
+      "lineRange": {
+        "start": 827,
+        "end": 830
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "server"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "self._wait_for_state_change(server, 'RESCUE')",
+          "line": 830
+        }
+      ],
+      "nloc": 4,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "_unrescue_server",
+      "kind": "method",
+      "scope": "InstanceHelperMixin",
+      "lineRange": {
+        "start": 832,
+        "end": 834
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "server"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "self._wait_for_state_change(server, 'ACTIVE')",
+          "line": 834
+        }
+      ],
+      "nloc": 3,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "PlacementHelperMixin",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 837,
+        "end": 1105
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "_get_all_resource_classes",
+      "kind": "method",
+      "scope": "PlacementHelperMixin",
+      "lineRange": {
+        "start": 840,
+        "end": 844
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "[d['name'] for d in resp]",
+          "line": 844
+        }
+      ],
+      "nloc": 5,
+      "ccn": 2,
+      "visibility": "private"
+    },
+    {
+      "name": "_create_resource_class",
+      "kind": "method",
+      "scope": "PlacementHelperMixin",
+      "lineRange": {
+        "start": 846,
+        "end": 848
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "resource_class"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "self.placement.post( '/resource_classes', {\"name\": resource_class}, version='1.6')",
+          "line": 847
+        }
+      ],
+      "nloc": 3,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "_get_all_providers",
+      "kind": "method",
+      "scope": "PlacementHelperMixin",
+      "lineRange": {
+        "start": 850,
+        "end": 853
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "self.placement.get( '/resource_providers', version='1.14' ).body['resource_providers']",
+          "line": 851
+        }
+      ],
+      "nloc": 4,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "_get_all_rps_in_a_tree",
+      "kind": "method",
+      "scope": "PlacementHelperMixin",
+      "lineRange": {
+        "start": 855,
+        "end": 860
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "in_tree_rp_uuid"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "rps",
+          "line": 860
+        }
+      ],
+      "nloc": 6,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "_get_all_rp_uuids_in_a_tree",
+      "kind": "method",
+      "scope": "PlacementHelperMixin",
+      "lineRange": {
+        "start": 862,
+        "end": 864
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "in_tree_rp_uuid"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "[ rp['uuid'] for rp in self._get_all_rps_in_a_tree(in_tree_rp_uuid)]",
+          "line": 863
+        }
+      ],
+      "nloc": 3,
+      "ccn": 2,
+      "visibility": "private"
+    },
+    {
+      "name": "_post_resource_provider",
+      "kind": "method",
+      "scope": "PlacementHelperMixin",
+      "lineRange": {
+        "start": 866,
+        "end": 869
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "rp_name"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "self.placement.post( '/resource_providers', version='1.20', body={'name': rp_name} ).body",
+          "line": 867
+        }
+      ],
+      "nloc": 4,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "_get_resource_provider_by_uuid",
+      "kind": "method",
+      "scope": "PlacementHelperMixin",
+      "lineRange": {
+        "start": 871,
+        "end": 874
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "rp_uuid"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "self.placement.get( '/resource_providers/%s' % rp_uuid, version='1.15', ).body",
+          "line": 872
+        }
+      ],
+      "nloc": 4,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "_get_provider_uuid_by_name",
+      "kind": "method",
+      "scope": "PlacementHelperMixin",
+      "lineRange": {
+        "start": 876,
+        "end": 879
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "name"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "self.placement.get( '/resource_providers?name=%s' % name, ).body['resource_providers'][0]['uuid']",
+          "line": 877
+        }
+      ],
+      "nloc": 4,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "_get_provider_usages",
+      "kind": "method",
+      "scope": "PlacementHelperMixin",
+      "lineRange": {
+        "start": 881,
+        "end": 884
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "provider_uuid"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "self.placement.get( '/resource_providers/%s/usages' % provider_uuid ).body['usages']",
+          "line": 882
+        }
+      ],
+      "nloc": 4,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "_get_allocations_by_provider_uuid",
+      "kind": "method",
+      "scope": "PlacementHelperMixin",
+      "lineRange": {
+        "start": 887,
+        "end": 890
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "rp_uuid"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "self.placement.get( '/resource_providers/%s/allocations' % rp_uuid ).body['allocations']",
+          "line": 888
+        }
+      ],
+      "nloc": 4,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "_get_provider_traits",
+      "kind": "method",
+      "scope": "PlacementHelperMixin",
+      "lineRange": {
+        "start": 892,
+        "end": 900
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "rp_uuid"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "self.placement.get( '/resource_providers/%s/traits' % rp_uuid, version='1.6' ).body['traits']",
+          "line": 898
+        }
+      ],
+      "nloc": 4,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "_INFRA_TRAITS",
+      "kind": "field",
+      "scope": "PlacementHelperMixin",
+      "lineRange": {
+        "start": 904,
+        "end": 907
+      },
+      "source": "aee-inventory",
+      "visibility": "private"
+    },
+    {
+      "name": "_set_provider_traits",
+      "kind": "method",
+      "scope": "PlacementHelperMixin",
+      "lineRange": {
+        "start": 909,
+        "end": 940
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "rp_uuid"
+        },
+        {
+          "name": "traits"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "self.placement.put( '/resource_providers/%s/traits' % rp_uuid, { 'resource_provider_generation': provider['generation'], 'traits': all_traits }, version='1.6', )",
+          "line": 933
+        }
+      ],
+      "nloc": 15,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "_get_provider_inventory",
+      "kind": "method",
+      "scope": "PlacementHelperMixin",
+      "lineRange": {
+        "start": 942,
+        "end": 945
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "rp_uuid"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "self.placement.get( '/resource_providers/%s/inventories' % rp_uuid ).body['inventories']",
+          "line": 943
+        }
+      ],
+      "nloc": 4,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "_set_inventory",
+      "kind": "method",
+      "scope": "PlacementHelperMixin",
+      "lineRange": {
+        "start": 948,
+        "end": 958
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "rp_uuid"
+        },
+        {
+          "name": "inv_body"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "self.placement.post( '/resource_providers/%s/inventories' % rp_uuid, version='1.15', body=inv_body ).body",
+          "line": 955
+        }
+      ],
+      "nloc": 5,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "_update_inventory",
+      "kind": "method",
+      "scope": "PlacementHelperMixin",
+      "lineRange": {
+        "start": 961,
+        "end": 970
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "rp_uuid"
+        },
+        {
+          "name": "inv_body"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "self.placement.put( '/resource_providers/%s/inventories' % rp_uuid, body=inv_body, ).body",
+          "line": 968
+        }
+      ],
+      "nloc": 4,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "_get_provider_aggregates",
+      "kind": "method",
+      "scope": "PlacementHelperMixin",
+      "lineRange": {
+        "start": 972,
+        "end": 975
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "rp_uuid"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "self.placement.get( '/resource_providers/%s/aggregates' % rp_uuid, version='1.1' ).body['aggregates']",
+          "line": 973
+        }
+      ],
+      "nloc": 4,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "_set_aggregate",
+      "kind": "method",
+      "scope": "PlacementHelperMixin",
+      "lineRange": {
+        "start": 978,
+        "end": 989
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "rp_uuid"
+        },
+        {
+          "name": "agg_id"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "self.placement.put( '/resource_providers/%s/aggregates' % rp_uuid, body={ 'aggregates': [agg_id], 'resource_provider_generation': provider['generation'], }, version='1.19', ).body",
+          "line": 982
+        }
+      ],
+      "nloc": 12,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "_get_all_traits",
+      "kind": "method",
+      "scope": "PlacementHelperMixin",
+      "lineRange": {
+        "start": 991,
+        "end": 992
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "self.placement.get('/traits', version='1.6').body['traits']",
+          "line": 992
+        }
+      ],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "_create_trait",
+      "kind": "method",
+      "scope": "PlacementHelperMixin",
+      "lineRange": {
+        "start": 994,
+        "end": 995
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "trait"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "self.placement.put('/traits/%s' % trait, {}, version='1.6')",
+          "line": 995
+        }
+      ],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "_delete_trait",
+      "kind": "method",
+      "scope": "PlacementHelperMixin",
+      "lineRange": {
+        "start": 997,
+        "end": 998
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "trait"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "self.placement.delete('/traits/%s' % trait, version='1.6')",
+          "line": 998
+        }
+      ],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "assertRequestMatchesUsage",
+      "kind": "method",
+      "scope": "PlacementHelperMixin",
+      "lineRange": {
+        "start": 1000,
+        "end": 1035
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "requested_resources"
+        },
+        {
+          "name": "root_rp_uuid"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 24,
+      "ccn": 6,
+      "visibility": "public"
+    },
+    {
+      "name": "assertFlavorMatchesUsage",
+      "kind": "method",
+      "scope": "PlacementHelperMixin",
+      "lineRange": {
+        "start": 1037,
+        "end": 1043
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "root_rp_uuid"
+        },
+        {
+          "name": "*flavors"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 7,
+      "ccn": 3,
+      "visibility": "public"
+    },
+    {
+      "name": "_resources_from_flavor",
+      "kind": "method",
+      "scope": "PlacementHelperMixin",
+      "lineRange": {
+        "start": 1045,
+        "end": 1053
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "flavor"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "resources",
+          "line": 1053
+        }
+      ],
+      "nloc": 9,
+      "ccn": 3,
+      "visibility": "private"
+    },
+    {
+      "name": "assertFlavorMatchesAllocation",
+      "kind": "method",
+      "scope": "PlacementHelperMixin",
+      "lineRange": {
+        "start": 1055,
+        "end": 1076
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "flavor"
+        },
+        {
+          "name": "consumer_uuid"
+        },
+        {
+          "name": "root_rp_uuid"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 17,
+      "ccn": 3,
+      "visibility": "public"
+    },
+    {
+      "name": "get_migration_uuid_for_instance",
+      "kind": "method",
+      "scope": "PlacementHelperMixin",
+      "lineRange": {
+        "start": 1078,
+        "end": 1091
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "instance_uuid"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "migrations[0].uuid",
+          "line": 1091
+        }
+      ],
+      "nloc": 10,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "_reserve_placement_resource",
+      "kind": "method",
+      "scope": "PlacementHelperMixin",
+      "lineRange": {
+        "start": 1093,
+        "end": 1105
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "rp_name"
+        },
+        {
+          "name": "rc_name"
+        },
+        {
+          "name": "reserved"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "result",
+          "line": 1105
+        }
+      ],
+      "nloc": 13,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "PlacementInstanceHelperMixin",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 1108,
+        "end": 1407
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "_get_allocations_by_server_uuid",
+      "kind": "method",
+      "scope": "PlacementInstanceHelperMixin",
+      "lineRange": {
+        "start": 1112,
+        "end": 1115
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "server_uuid"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "self.placement.get( '/allocations/%s' % server_uuid ).body['allocations']",
+          "line": 1113
+        }
+      ],
+      "nloc": 4,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "_delete_server_allocations",
+      "kind": "method",
+      "scope": "PlacementInstanceHelperMixin",
+      "lineRange": {
+        "start": 1117,
+        "end": 1118
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "server_uuid"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "_wait_for_server_allocations",
+      "kind": "method",
+      "scope": "PlacementInstanceHelperMixin",
+      "lineRange": {
+        "start": 1120,
+        "end": 1131
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "consumer_id"
+        },
+        {
+          "default": "20",
+          "name": "max_retries"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "alloc",
+          "line": 1131
+        }
+      ],
+      "nloc": 12,
+      "ccn": 4,
+      "visibility": "private"
+    },
+    {
+      "name": "_get_provider_uuid_by_host",
+      "kind": "method",
+      "scope": "PlacementInstanceHelperMixin",
+      "lineRange": {
+        "start": 1133,
+        "end": 1138
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "host"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "self.admin_api.api_get( 'os-hypervisors?hypervisor_hostname_pattern=%s' % host ).body['hypervisors'][0]['id']",
+          "line": 1136
+        }
+      ],
+      "nloc": 4,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "_boot_and_check_allocations",
+      "kind": "method",
+      "scope": "PlacementInstanceHelperMixin",
+      "lineRange": {
+        "start": 1141,
+        "end": 1210
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "flavor"
+        },
+        {
+          "name": "source_hostname"
+        },
+        {
+          "default": "'none'",
+          "name": "networks"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "server",
+          "line": 1210
+        }
+      ],
+      "nloc": 32,
+      "ccn": 7,
+      "visibility": "private"
+    },
+    {
+      "name": "_delete_and_check_allocations",
+      "kind": "method",
+      "scope": "PlacementInstanceHelperMixin",
+      "lineRange": {
+        "start": 1213,
+        "end": 1264
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "server"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "migration_uuid",
+          "line": 1264
+        }
+      ],
+      "nloc": 23,
+      "ccn": 5,
+      "visibility": "private"
+    },
+    {
+      "name": "_move_and_check_allocations",
+      "kind": "method",
+      "scope": "PlacementInstanceHelperMixin",
+      "lineRange": {
+        "start": 1266,
+        "end": 1304
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "server"
+        },
+        {
+          "name": "request"
+        },
+        {
+          "name": "old_flavor"
+        },
+        {
+          "name": "new_flavor"
+        },
+        {
+          "name": "source_rp_uuid"
+        },
+        {
+          "name": "dest_rp_uuid"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 17,
+      "ccn": 3,
+      "visibility": "private"
+    },
+    {
+      "name": "_check_allocation",
+      "kind": "function",
+      "scope": "PlacementInstanceHelperMixin._move_and_check_allocations",
+      "lineRange": {
+        "start": 1278,
+        "end": 1291
+      },
+      "source": "aee-inventory",
+      "parameters": [],
+      "returnType": null,
+      "returns": [],
+      "visibility": "private"
+    },
+    {
+      "name": "_migrate_and_check_allocations",
+      "kind": "method",
+      "scope": "PlacementInstanceHelperMixin",
+      "lineRange": {
+        "start": 1307,
+        "end": 1313
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "server"
+        },
+        {
+          "name": "flavor"
+        },
+        {
+          "name": "source_rp_uuid"
+        },
+        {
+          "name": "dest_rp_uuid"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 7,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "_resize_and_check_allocations",
+      "kind": "method",
+      "scope": "PlacementInstanceHelperMixin",
+      "lineRange": {
+        "start": 1316,
+        "end": 1327
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "server"
+        },
+        {
+          "name": "old_flavor"
+        },
+        {
+          "name": "new_flavor"
+        },
+        {
+          "name": "source_rp_uuid"
+        },
+        {
+          "name": "dest_rp_uuid"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 12,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "_resize_to_same_host_and_check_allocations",
+      "kind": "method",
+      "scope": "PlacementInstanceHelperMixin",
+      "lineRange": {
+        "start": 1331,
+        "end": 1366
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "server"
+        },
+        {
+          "name": "old_flavor"
+        },
+        {
+          "name": "new_flavor"
+        },
+        {
+          "name": "rp_uuid"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 17,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "_check_allocation_during_evacuate",
+      "kind": "method",
+      "scope": "PlacementInstanceHelperMixin",
+      "lineRange": {
+        "start": 1368,
+        "end": 1374
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "flavor"
+        },
+        {
+          "name": "server_uuid"
+        },
+        {
+          "name": "source_root_rp_uuid"
+        },
+        {
+          "name": "dest_root_rp_uuid"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 7,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "assert_hypervisor_usage",
+      "kind": "method",
+      "scope": "PlacementInstanceHelperMixin",
+      "lineRange": {
+        "start": 1376,
+        "end": 1407
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "compute_node_uuid"
+        },
+        {
+          "name": "flavor"
+        },
+        {
+          "name": "volume_backed"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 18,
+      "ccn": 2,
+      "visibility": "public"
+    },
+    {
+      "name": "_IntegratedTestBase",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 1410,
+        "end": 1504
+      },
+      "source": "aee-inventory",
+      "exported": false
+    },
+    {
+      "name": "REQUIRES_LOCKING",
+      "kind": "constant",
+      "scope": "_IntegratedTestBase",
+      "lineRange": {
+        "start": 1413,
+        "end": 1413
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "ADMIN_API",
+      "kind": "constant",
+      "scope": "_IntegratedTestBase",
+      "lineRange": {
+        "start": 1416,
+        "end": 1416
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "api_major_version",
+      "kind": "field",
+      "scope": "_IntegratedTestBase",
+      "lineRange": {
+        "start": 1420,
+        "end": 1420
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "microversion",
+      "kind": "field",
+      "scope": "_IntegratedTestBase",
+      "lineRange": {
+        "start": 1425,
+        "end": 1425
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "USE_PROJECT_ID",
+      "kind": "constant",
+      "scope": "_IntegratedTestBase",
+      "lineRange": {
+        "start": 1429,
+        "end": 1429
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "STUB_KEYSTONE",
+      "kind": "constant",
+      "scope": "_IntegratedTestBase",
+      "lineRange": {
+        "start": 1434,
+        "end": 1434
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "CAST_AS_CALL",
+      "kind": "constant",
+      "scope": "_IntegratedTestBase",
+      "lineRange": {
+        "start": 1438,
+        "end": 1438
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "setUp",
+      "kind": "method",
+      "scope": "_IntegratedTestBase",
+      "lineRange": {
+        "start": 1440,
+        "end": 1457
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 14,
+      "ccn": 2,
+      "visibility": "public"
+    },
+    {
+      "name": "_setup_compute_service",
+      "kind": "method",
+      "scope": "_IntegratedTestBase",
+      "lineRange": {
+        "start": 1459,
+        "end": 1460
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "self._start_compute('compute')",
+          "line": 1460
+        }
+      ],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "_setup_scheduler_service",
+      "kind": "method",
+      "scope": "_IntegratedTestBase",
+      "lineRange": {
+        "start": 1462,
+        "end": 1463
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "self.start_service('scheduler')",
+          "line": 1463
+        }
+      ],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "_setup_conductor_service",
+      "kind": "method",
+      "scope": "_IntegratedTestBase",
+      "lineRange": {
+        "start": 1465,
+        "end": 1466
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "self.start_service('conductor')",
+          "line": 1466
+        }
+      ],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "_stop_computes",
+      "kind": "method",
+      "scope": "_IntegratedTestBase",
+      "lineRange": {
+        "start": 1468,
+        "end": 1470
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 3,
+      "ccn": 2,
+      "visibility": "private"
+    },
+    {
+      "name": "_setup_services",
+      "kind": "method",
+      "scope": "_IntegratedTestBase",
+      "lineRange": {
+        "start": 1472,
+        "end": 1504
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 23,
+      "ccn": 5,
+      "visibility": "private"
+    },
+    {
+      "name": "ProviderUsageBaseTestCase",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 1509,
+        "end": 1544
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "microversion",
+      "kind": "field",
+      "scope": "ProviderUsageBaseTestCase",
+      "lineRange": {
+        "start": 1520,
+        "end": 1520
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "setUp",
+      "kind": "method",
+      "scope": "ProviderUsageBaseTestCase",
+      "lineRange": {
+        "start": 1522,
+        "end": 1544
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 18,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "router",
+      "kind": "property",
+      "scope": "StubComputeRPCAPI",
+      "lineRange": {
+        "start": 86,
+        "end": 94
+      },
+      "visibility": "public",
+      "source": "manual"
+    }
+  ],
+  "referencedSymbols": [
+    {
+      "name": "logging.getLogger",
+      "usage": "call",
+      "via": "oslo_log",
+      "count": 1,
+      "lineRange": {
+        "start": 50,
+        "end": 50
+      }
+    },
+    {
+      "name": "random.choice",
+      "usage": "call",
+      "via": "random",
+      "count": 4,
+      "lineRange": {
+        "start": 55,
+        "end": 55
+      }
+    },
+    {
+      "name": "range",
+      "usage": "call",
+      "via": null,
+      "count": 10,
+      "lineRange": {
+        "start": 56,
+        "end": 56
+      }
+    },
+    {
+      "name": "compute_rpcapi.ComputeAPI",
+      "usage": "inherit",
+      "via": "nova.compute",
+      "count": 1,
+      "lineRange": {
+        "start": 77,
+        "end": 77
+      }
+    },
+    {
+      "name": "lockutils.lock",
+      "usage": "call",
+      "via": "oslo_concurrency",
+      "count": 1,
+      "lineRange": {
+        "start": 88,
+        "end": 88
+      }
+    },
+    {
+      "name": "messaging.Target",
+      "usage": "call",
+      "via": "oslo_messaging",
+      "count": 1,
+      "lineRange": {
+        "start": 89,
+        "end": 89
+      }
+    },
+    {
+      "name": "objects_base.NovaObjectSerializer",
+      "usage": "call",
+      "via": "nova.objects",
+      "count": 1,
+      "lineRange": {
+        "start": 91,
+        "end": 91
+      }
+    },
+    {
+      "name": "rpc.get_client",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 92,
+        "end": 92
+      }
+    },
+    {
+      "name": "rpc.ClientRouter",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 94,
+        "end": 94
+      }
+    },
+    {
+      "name": "object",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 100,
+        "end": 100
+      }
+    },
+    {
+      "name": "getattr",
+      "usage": "call",
+      "via": null,
+      "count": 7,
+      "lineRange": {
+        "start": 109,
+        "end": 109
+      }
+    },
+    {
+      "name": "all",
+      "usage": "call",
+      "via": null,
+      "count": 2,
+      "lineRange": {
+        "start": 116,
+        "end": 116
+      }
+    },
+    {
+      "name": "time.sleep",
+      "usage": "call",
+      "via": "time",
+      "count": 10,
+      "lineRange": {
+        "start": 124,
+        "end": 124
+      }
+    },
+    {
+      "name": "re.search",
+      "usage": "call",
+      "via": "re",
+      "count": 1,
+      "lineRange": {
+        "start": 321,
+        "end": 321
+      }
+    },
+    {
+      "name": "assert_func",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 334,
+        "end": 334
+      }
+    },
+    {
+      "name": "datetime.datetime",
+      "usage": "call",
+      "via": "datetime",
+      "count": 3,
+      "lineRange": {
+        "start": 430,
+        "end": 430
+      }
+    },
+    {
+      "name": "utils.temporary_mutation",
+      "usage": "call",
+      "via": "nova",
+      "count": 3,
+      "lineRange": {
+        "start": 475,
+        "end": 475
+      }
+    },
+    {
+      "name": "list",
+      "usage": "type",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 760,
+        "end": 760
+      }
+    },
+    {
+      "name": "frozenset",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 904,
+        "end": 904
+      }
+    },
+    {
+      "name": "set",
+      "usage": "call",
+      "via": null,
+      "count": 2,
+      "lineRange": {
+        "start": 926,
+        "end": 926
+      }
+    },
+    {
+      "name": "list",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 928,
+        "end": 928
+      }
+    },
+    {
+      "name": "collections.defaultdict",
+      "usage": "call",
+      "via": "collections",
+      "count": 4,
+      "lineRange": {
+        "start": 1006,
+        "end": 1006
+      }
+    },
+    {
+      "name": "context.get_admin_context",
+      "usage": "call",
+      "via": "nova",
+      "count": 2,
+      "lineRange": {
+        "start": 1083,
+        "end": 1083
+      }
+    },
+    {
+      "name": "objects.InstanceMapping.get_by_instance_uuid",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 1084,
+        "end": 1084
+      }
+    },
+    {
+      "name": "context.target_cell",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 1085,
+        "end": 1085
+      }
+    },
+    {
+      "name": "db.migration_get_all_by_filters",
+      "usage": "call",
+      "via": "nova.db.main",
+      "count": 1,
+      "lineRange": {
+        "start": 1086,
+        "end": 1086
+      }
+    },
+    {
+      "name": "len",
+      "usage": "call",
+      "via": null,
+      "count": 5,
+      "lineRange": {
+        "start": 1089,
+        "end": 1089
+      }
+    },
+    {
+      "name": "Exception",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 1271,
+        "end": 1271
+      }
+    },
+    {
+      "name": "objects.RequestSpec.get_by_instance_uuid",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 1303,
+        "end": 1303
+      }
+    },
+    {
+      "name": "compute_utils.convert_mb_to_ceil_gb",
+      "usage": "call",
+      "via": "nova.compute",
+      "count": 1,
+      "lineRange": {
+        "start": 1399,
+        "end": 1399
+      }
+    },
+    {
+      "name": "test.TestCase",
+      "usage": "inherit",
+      "via": "nova",
+      "count": 2,
+      "lineRange": {
+        "start": 1410,
+        "end": 1410
+      }
+    },
+    {
+      "name": "super",
+      "usage": "call",
+      "via": null,
+      "count": 2,
+      "lineRange": {
+        "start": 1441,
+        "end": 1441
+      }
+    },
+    {
+      "name": "nova_fixtures.CastAsCallFixture",
+      "usage": "call",
+      "via": "nova.tests",
+      "count": 1,
+      "lineRange": {
+        "start": 1444,
+        "end": 1444
+      }
+    },
+    {
+      "name": "func_fixtures.PlacementFixture",
+      "usage": "call",
+      "via": "nova.tests.functional",
+      "count": 2,
+      "lineRange": {
+        "start": 1447,
+        "end": 1447
+      }
+    },
+    {
+      "name": "nova_fixtures.NeutronFixture",
+      "usage": "call",
+      "via": "nova.tests",
+      "count": 2,
+      "lineRange": {
+        "start": 1449,
+        "end": 1449
+      }
+    },
+    {
+      "name": "nova_fixtures.CinderFixture",
+      "usage": "call",
+      "via": "nova.tests",
+      "count": 2,
+      "lineRange": {
+        "start": 1450,
+        "end": 1450
+      }
+    },
+    {
+      "name": "nova_fixtures.GlanceFixture",
+      "usage": "call",
+      "via": "nova.tests",
+      "count": 2,
+      "lineRange": {
+        "start": 1451,
+        "end": 1451
+      }
+    },
+    {
+      "name": "nova_fixtures.RealPolicyFixture",
+      "usage": "call",
+      "via": "nova.tests",
+      "count": 2,
+      "lineRange": {
+        "start": 1452,
+        "end": 1452
+      }
+    },
+    {
+      "name": "nova_fixtures.NotificationFixture",
+      "usage": "call",
+      "via": "nova.tests",
+      "count": 2,
+      "lineRange": {
+        "start": 1455,
+        "end": 1455
+      }
+    },
+    {
+      "name": "nova_fixtures.OSAPIFixture",
+      "usage": "call",
+      "via": "nova.tests",
+      "count": 2,
+      "lineRange": {
+        "start": 1487,
+        "end": 1487
+      }
+    },
+    {
+      "name": "nova_fixtures.AllServicesCurrent",
+      "usage": "call",
+      "via": "nova.tests",
+      "count": 1,
+      "lineRange": {
+        "start": 1531,
+        "end": 1531
+      }
+    }
+  ],
+  "dependencies": [
+    {
+      "style": "import",
+      "module": "collections",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 20,
+        "end": 20
+      }
+    },
+    {
+      "style": "import",
+      "module": "datetime",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 21,
+        "end": 21
+      }
+    },
+    {
+      "style": "import",
+      "module": "random",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 22,
+        "end": 22
+      }
+    },
+    {
+      "style": "import",
+      "module": "re",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 23,
+        "end": 23
+      }
+    },
+    {
+      "style": "import",
+      "module": "string",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 24,
+        "end": 24
+      }
+    },
+    {
+      "style": "import",
+      "module": "time",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 25,
+        "end": 25
+      }
+    },
+    {
+      "style": "import",
+      "module": "os_traits",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 27,
+        "end": 27
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_concurrency",
+      "names": [
+        {
+          "alias": null,
+          "name": "lockutils"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 28,
+        "end": 28
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_log",
+      "names": [
+        {
+          "alias": "logging",
+          "name": "log"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 29,
+        "end": 29
+      }
+    },
+    {
+      "style": "import",
+      "module": "oslo_messaging",
+      "names": [],
+      "alias": "messaging",
+      "relative": false,
+      "lineRange": {
+        "start": 30,
+        "end": 30
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_utils.fixture",
+      "names": [
+        {
+          "alias": "uuids",
+          "name": "uuidsentinel"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 31,
+        "end": 31
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.compute",
+      "names": [
+        {
+          "alias": null,
+          "name": "instance_actions"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 33,
+        "end": 33
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.compute",
+      "names": [
+        {
+          "alias": "compute_rpcapi",
+          "name": "rpcapi"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 34,
+        "end": 34
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.compute",
+      "names": [
+        {
+          "alias": "compute_utils",
+          "name": "utils"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 35,
+        "end": 35
+      }
+    },
+    {
+      "style": "import",
+      "module": "nova.conf",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 36,
+        "end": 36
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "context"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 37,
+        "end": 37
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.db.main",
+      "names": [
+        {
+          "alias": "db",
+          "name": "api"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 38,
+        "end": 38
+      }
+    },
+    {
+      "style": "import",
+      "module": "nova.image.glance",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 39,
+        "end": 39
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "objects"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 40,
+        "end": 40
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.objects",
+      "names": [
+        {
+          "alias": "objects_base",
+          "name": "base"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 41,
+        "end": 41
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "rpc"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 42,
+        "end": 42
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "test"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 43,
+        "end": 43
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.tests",
+      "names": [
+        {
+          "alias": "nova_fixtures",
+          "name": "fixtures"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 44,
+        "end": 44
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.tests.functional.api",
+      "names": [
+        {
+          "alias": "api_client",
+          "name": "client"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 45,
+        "end": 45
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.tests.functional",
+      "names": [
+        {
+          "alias": "func_fixtures",
+          "name": "fixtures"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 46,
+        "end": 46
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "utils"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 47,
+        "end": 47
+      }
+    }
+  ],
+  "sideEffects": [
+    {
+      "kind": "global-mutation",
+      "target": "CONF = nova.conf.CONF",
+      "lineRange": {
+        "start": 49,
+        "end": 49
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "LOG = logging.getLogger(__name__)",
+      "lineRange": {
+        "start": 50,
+        "end": 50
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "NOT_SPECIFIED = object()",
+      "lineRange": {
+        "start": 100,
+        "end": 100
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "REQUIRES_LOCKING = True",
+      "lineRange": {
+        "start": 1413,
+        "end": 1413
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "ADMIN_API = False",
+      "lineRange": {
+        "start": 1416,
+        "end": 1416
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "USE_PROJECT_ID = False",
+      "lineRange": {
+        "start": 1429,
+        "end": 1429
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "STUB_KEYSTONE = True",
+      "lineRange": {
+        "start": 1434,
+        "end": 1434
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "CAST_AS_CALL = True",
+      "lineRange": {
+        "start": 1438,
+        "end": 1438
+      }
+    }
+  ],
+  "securitySurface": [
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "image['properties'].update(metadata)",
+      "lineRange": {
+        "start": 449,
+        "end": 449
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "post['evacuate'].update(extra_post_args)",
+      "lineRange": {
+        "start": 725,
+        "end": 725
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "image.update(image_args)",
+      "lineRange": {
+        "start": 806,
+        "end": 806
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": ":param rp_uuid: UUID of the resource provider to update",
+      "lineRange": {
+        "start": 895,
+        "end": 895
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": ":param rp_uuid: UUID of the resource provider to update.",
+      "lineRange": {
+        "start": 922,
+        "end": 922
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": ":param rp_uuid: UUID of the resource provider to update",
+      "lineRange": {
+        "start": 951,
+        "end": 951
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "\"\"\"This will update the inventory for a given resource provider.",
+      "lineRange": {
+        "start": 962,
+        "end": 962
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": ":param rp_uuid: UUID of the resource provider to update",
+      "lineRange": {
+        "start": 964,
+        "end": 964
+      }
+    }
+  ],
+  "injection_flags": [],
+  "warnings": []
+}

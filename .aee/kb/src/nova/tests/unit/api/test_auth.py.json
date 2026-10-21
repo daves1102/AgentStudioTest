@@ -1,0 +1,736 @@
+{
+  "file": "src/nova/tests/unit/api/test_auth.py",
+  "hash": "7ea879bfe7c1e01992b0ae11aed6f595d67d8e0ac6ab20bd54960e81e9a97c87",
+  "language": "Python",
+  "component": "nova",
+  "package": null,
+  "lines": {
+    "blank": 33,
+    "code": 100,
+    "comment": 14,
+    "total": 147
+  },
+  "symbols": [
+    {
+      "name": "CONF",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 26,
+        "end": 26
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "TestNovaKeystoneContextMiddleware",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 29,
+        "end": 68
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "setUp",
+      "kind": "method",
+      "scope": "TestNovaKeystoneContextMiddleware",
+      "lineRange": {
+        "start": 31,
+        "end": 44
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 10,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "fake_app",
+      "kind": "function",
+      "scope": "TestNovaKeystoneContextMiddleware.setUp",
+      "lineRange": {
+        "start": 35,
+        "end": 37
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "req"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "webob.Response()",
+          "line": 37
+        }
+      ],
+      "visibility": "public"
+    },
+    {
+      "name": "test_no_user_or_user_id",
+      "kind": "method",
+      "scope": "TestNovaKeystoneContextMiddleware",
+      "lineRange": {
+        "start": 46,
+        "end": 48
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 3,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_user_id_only",
+      "kind": "method",
+      "scope": "TestNovaKeystoneContextMiddleware",
+      "lineRange": {
+        "start": 50,
+        "end": 54
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 5,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_invalid_service_catalog",
+      "kind": "method",
+      "scope": "TestNovaKeystoneContextMiddleware",
+      "lineRange": {
+        "start": 56,
+        "end": 60
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 5,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_request_id_extracted_from_env",
+      "kind": "method",
+      "scope": "TestNovaKeystoneContextMiddleware",
+      "lineRange": {
+        "start": 62,
+        "end": 68
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 7,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "TestKeystoneMiddlewareRoles",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 71,
+        "end": 111
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "setUp",
+      "kind": "method",
+      "scope": "TestKeystoneMiddlewareRoles",
+      "lineRange": {
+        "start": 73,
+        "end": 94
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 11,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "role_check_app",
+      "kind": "function",
+      "scope": "TestKeystoneMiddlewareRoles.setUp",
+      "lineRange": {
+        "start": 77,
+        "end": 85
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "req"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "webob.Response(status=\"200 Role Match\")",
+          "line": 81
+        },
+        {
+          "expr": "webob.Response(status=\"200 No Roles\")",
+          "line": 83
+        }
+      ],
+      "visibility": "public"
+    },
+    {
+      "name": "test_roles",
+      "kind": "method",
+      "scope": "TestKeystoneMiddlewareRoles",
+      "lineRange": {
+        "start": 96,
+        "end": 100
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 4,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_roles_empty",
+      "kind": "method",
+      "scope": "TestKeystoneMiddlewareRoles",
+      "lineRange": {
+        "start": 102,
+        "end": 105
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 4,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_no_role_headers",
+      "kind": "method",
+      "scope": "TestKeystoneMiddlewareRoles",
+      "lineRange": {
+        "start": 107,
+        "end": 111
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 3,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "TestPipeLineFactory",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 114,
+        "end": 147
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "FakeFilter",
+      "kind": "class",
+      "scope": "TestPipeLineFactory",
+      "lineRange": {
+        "start": 116,
+        "end": 123
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "__init__",
+      "kind": "method",
+      "scope": "TestPipeLineFactory.FakeFilter",
+      "lineRange": {
+        "start": 117,
+        "end": 119
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "name"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 3,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "__call__",
+      "kind": "method",
+      "scope": "TestPipeLineFactory.FakeFilter",
+      "lineRange": {
+        "start": 121,
+        "end": 123
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "obj"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "self",
+          "line": 123
+        }
+      ],
+      "nloc": 3,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "FakeApp",
+      "kind": "class",
+      "scope": "TestPipeLineFactory",
+      "lineRange": {
+        "start": 125,
+        "end": 127
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "__init__",
+      "kind": "method",
+      "scope": "TestPipeLineFactory.FakeApp",
+      "lineRange": {
+        "start": 126,
+        "end": 127
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "name"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "FakeLoader",
+      "kind": "class",
+      "scope": "TestPipeLineFactory",
+      "lineRange": {
+        "start": 129,
+        "end": 134
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "get_filter",
+      "kind": "method",
+      "scope": "TestPipeLineFactory.FakeLoader",
+      "lineRange": {
+        "start": 130,
+        "end": 131
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "name"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "TestPipeLineFactory.FakeFilter(name)",
+          "line": 131
+        }
+      ],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "get_app",
+      "kind": "method",
+      "scope": "TestPipeLineFactory.FakeLoader",
+      "lineRange": {
+        "start": 133,
+        "end": 134
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "name"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "TestPipeLineFactory.FakeApp(name)",
+          "line": 134
+        }
+      ],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_pipeline_factory_v21",
+      "kind": "method",
+      "scope": "TestPipeLineFactory",
+      "lineRange": {
+        "start": 138,
+        "end": 147
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 10,
+      "ccn": 2,
+      "visibility": "public"
+    }
+  ],
+  "referencedSymbols": [
+    {
+      "name": "test.NoDBTestCase",
+      "usage": "inherit",
+      "via": "nova",
+      "count": 3,
+      "lineRange": {
+        "start": 29,
+        "end": 29
+      }
+    },
+    {
+      "name": "super",
+      "usage": "call",
+      "via": null,
+      "count": 2,
+      "lineRange": {
+        "start": 32,
+        "end": 32
+      }
+    },
+    {
+      "name": "webob.dec.wsgify",
+      "usage": "call",
+      "via": "webob",
+      "count": 2,
+      "lineRange": {
+        "start": 34,
+        "end": 34
+      }
+    },
+    {
+      "name": "webob.Response",
+      "usage": "call",
+      "via": "webob",
+      "count": 3,
+      "lineRange": {
+        "start": 37,
+        "end": 37
+      }
+    },
+    {
+      "name": "nova.api.auth.NovaKeystoneContext",
+      "usage": "call",
+      "via": "nova.api.auth",
+      "count": 2,
+      "lineRange": {
+        "start": 40,
+        "end": 40
+      }
+    },
+    {
+      "name": "webob.Request.blank",
+      "usage": "call",
+      "via": "webob",
+      "count": 2,
+      "lineRange": {
+        "start": 41,
+        "end": 41
+      }
+    },
+    {
+      "name": "jsonutils.dumps",
+      "usage": "call",
+      "via": "oslo_serialization",
+      "count": 2,
+      "lineRange": {
+        "start": 44,
+        "end": 44
+      }
+    },
+    {
+      "name": "webob.exc.HTTPBadRequest",
+      "usage": "call",
+      "via": "webob",
+      "count": 1,
+      "lineRange": {
+        "start": 85,
+        "end": 85
+      }
+    },
+    {
+      "name": "object",
+      "usage": "inherit",
+      "via": null,
+      "count": 3,
+      "lineRange": {
+        "start": 116,
+        "end": 116
+      }
+    },
+    {
+      "name": "mock.patch",
+      "usage": "call",
+      "via": "unittest",
+      "count": 1,
+      "lineRange": {
+        "start": 136,
+        "end": 136
+      }
+    },
+    {
+      "name": "mock.NonCallableMock",
+      "usage": "call",
+      "via": "unittest",
+      "count": 1,
+      "lineRange": {
+        "start": 137,
+        "end": 137
+      }
+    },
+    {
+      "name": "nova.api.auth.pipeline_factory_v21",
+      "usage": "call",
+      "via": "nova.api.auth",
+      "count": 1,
+      "lineRange": {
+        "start": 140,
+        "end": 140
+      }
+    }
+  ],
+  "dependencies": [
+    {
+      "style": "from",
+      "module": "unittest",
+      "names": [
+        {
+          "alias": null,
+          "name": "mock"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 15,
+        "end": 15
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_middleware",
+      "names": [
+        {
+          "alias": null,
+          "name": "request_id"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 17,
+        "end": 17
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_serialization",
+      "names": [
+        {
+          "alias": null,
+          "name": "jsonutils"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 18,
+        "end": 18
+      }
+    },
+    {
+      "style": "import",
+      "module": "webob",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 19,
+        "end": 19
+      }
+    },
+    {
+      "style": "import",
+      "module": "webob.exc",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 20,
+        "end": 20
+      }
+    },
+    {
+      "style": "import",
+      "module": "nova.api.auth",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 22,
+        "end": 22
+      }
+    },
+    {
+      "style": "import",
+      "module": "nova.conf",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 23,
+        "end": 23
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "test"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 24,
+        "end": 24
+      }
+    }
+  ],
+  "sideEffects": [
+    {
+      "kind": "global-mutation",
+      "target": "CONF = nova.conf.CONF",
+      "lineRange": {
+        "start": 26,
+        "end": 26
+      }
+    }
+  ],
+  "securitySurface": [
+    {
+      "kind": "entry-point",
+      "category": "http-param",
+      "description": "self.request = webob.Request.blank('/')",
+      "lineRange": {
+        "start": 41,
+        "end": 41
+      }
+    },
+    {
+      "kind": "entry-point",
+      "category": "http-param",
+      "description": "self.request = webob.Request.blank('/')",
+      "lineRange": {
+        "start": 88,
+        "end": 88
+      }
+    }
+  ],
+  "injection_flags": [],
+  "warnings": []
+}

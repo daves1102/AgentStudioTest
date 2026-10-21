@@ -1,0 +1,967 @@
+{
+  "file": "src/nova/tests/unit/compute/test_pci_placement_translator.py",
+  "hash": "3eaff4189c71a1963e2e370249dd26101e7ac40a534a8587fbebee34e2b2a3d1",
+  "language": "Python",
+  "component": "nova",
+  "package": null,
+  "lines": {
+    "blank": 75,
+    "code": 548,
+    "comment": 39,
+    "total": 662
+  },
+  "symbols": [
+    {
+      "name": "dev",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 30,
+        "end": 31
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "v"
+        },
+        {
+          "name": "p"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "pci_device.PciDevice(vendor_id=v, product_id=p)",
+          "line": 31
+        }
+      ],
+      "nloc": 2,
+      "ccn": 1,
+      "exported": true
+    },
+    {
+      "name": "TestTranslator",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 38,
+        "end": 662
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "setUp",
+      "kind": "method",
+      "scope": "TestTranslator",
+      "lineRange": {
+        "start": 39,
+        "end": 45
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 7,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_translator_skips_devices_without_matching_spec",
+      "kind": "method",
+      "scope": "TestTranslator",
+      "lineRange": {
+        "start": 47,
+        "end": 79
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 25,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_trait_normalization",
+      "kind": "method",
+      "scope": "TestTranslator",
+      "lineRange": {
+        "start": 96,
+        "end": 100
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "trait_names"
+        },
+        {
+          "name": "expected_traits"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 5,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_resource_class_normalization",
+      "kind": "method",
+      "scope": "TestTranslator",
+      "lineRange": {
+        "start": 117,
+        "end": 123
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "pci_dev"
+        },
+        {
+          "name": "rc_name"
+        },
+        {
+          "name": "expected_rc"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 7,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_dependent_device_pf_then_vf",
+      "kind": "method",
+      "scope": "TestTranslator",
+      "lineRange": {
+        "start": 125,
+        "end": 155
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 29,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_dependent_device_vf_then_pf",
+      "kind": "method",
+      "scope": "TestTranslator",
+      "lineRange": {
+        "start": 157,
+        "end": 195
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 37,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_mixed_rc_for_sibling_vfs",
+      "kind": "method",
+      "scope": "TestTranslator",
+      "lineRange": {
+        "start": 197,
+        "end": 244
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 44,
+      "ccn": 2,
+      "visibility": "public"
+    },
+    {
+      "name": "test_translator_maps_pci_device_to_rp",
+      "kind": "method",
+      "scope": "TestTranslator",
+      "lineRange": {
+        "start": 246,
+        "end": 275
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 28,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_otu_decorates_with_trait",
+      "kind": "method",
+      "scope": "TestTranslator",
+      "lineRange": {
+        "start": 277,
+        "end": 359
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 75,
+      "ccn": 2,
+      "visibility": "public"
+    },
+    {
+      "name": "test_otu_reservation_workflow",
+      "kind": "method",
+      "scope": "TestTranslator",
+      "lineRange": {
+        "start": 361,
+        "end": 408
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 33,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "assert_inventory",
+      "kind": "function",
+      "scope": "TestTranslator.test_otu_reservation_workflow",
+      "lineRange": {
+        "start": 385,
+        "end": 389
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "addr"
+        },
+        {
+          "name": "reserved"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "visibility": "public"
+    },
+    {
+      "name": "test_update_provider_tree_for_pci_update_pools",
+      "kind": "method",
+      "scope": "TestTranslator",
+      "lineRange": {
+        "start": 410,
+        "end": 428
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 17,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "_convert_defaultdict_to_dict",
+      "kind": "method",
+      "scope": "TestTranslator",
+      "lineRange": {
+        "start": 430,
+        "end": 433
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "d"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "d",
+          "line": 432
+        },
+        {
+          "expr": "{k: self._convert_defaultdict_to_dict(v) for k, v in d.items()}",
+          "line": 433
+        }
+      ],
+      "nloc": 4,
+      "ccn": 3,
+      "visibility": "private"
+    },
+    {
+      "name": "test_get_usage_per_rc_and_rp_no_allocations",
+      "kind": "method",
+      "scope": "TestTranslator",
+      "lineRange": {
+        "start": 435,
+        "end": 438
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 3,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_get_usage_per_rc_and_rp_empty_consumer",
+      "kind": "method",
+      "scope": "TestTranslator",
+      "lineRange": {
+        "start": 440,
+        "end": 445
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 5,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_get_usage_per_rc_and_rp",
+      "kind": "method",
+      "scope": "TestTranslator",
+      "lineRange": {
+        "start": 447,
+        "end": 505
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 58,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_remove_managed_rps_empty_view",
+      "kind": "method",
+      "scope": "TestTranslator",
+      "lineRange": {
+        "start": 507,
+        "end": 517
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 8,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_remove_managed_rps_new_rp_in_view",
+      "kind": "method",
+      "scope": "TestTranslator",
+      "lineRange": {
+        "start": 519,
+        "end": 539
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 17,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_remove_managed_rps_no_rp_change",
+      "kind": "method",
+      "scope": "TestTranslator",
+      "lineRange": {
+        "start": 541,
+        "end": 565
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 21,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_remove_managed_rps_rp_removed_from_view",
+      "kind": "method",
+      "scope": "TestTranslator",
+      "lineRange": {
+        "start": 567,
+        "end": 581
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 12,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_adjust_for_removals_no_allocation_no_adjustment",
+      "kind": "method",
+      "scope": "TestTranslator",
+      "lineRange": {
+        "start": 583,
+        "end": 592
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 8,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_adjust_for_removals_allocated_configured_no_adjustment",
+      "kind": "method",
+      "scope": "TestTranslator",
+      "lineRange": {
+        "start": 594,
+        "end": 615
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 18,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_adjust_for_removals_allocated_removed",
+      "kind": "method",
+      "scope": "TestTranslator",
+      "lineRange": {
+        "start": 617,
+        "end": 643
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 21,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_adjust_for_removals_allocated_removed_no_inventory",
+      "kind": "method",
+      "scope": "TestTranslator",
+      "lineRange": {
+        "start": 645,
+        "end": 662
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 12,
+      "ccn": 1,
+      "visibility": "public"
+    }
+  ],
+  "referencedSymbols": [
+    {
+      "name": "pci_device.PciDevice",
+      "usage": "call",
+      "via": "nova.objects",
+      "count": 23,
+      "lineRange": {
+        "start": 31,
+        "end": 31
+      }
+    },
+    {
+      "name": "test.NoDBTestCase",
+      "usage": "inherit",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 38,
+        "end": 38
+      }
+    },
+    {
+      "name": "super",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 40,
+        "end": 40
+      }
+    },
+    {
+      "name": "mock.patch",
+      "usage": "call",
+      "via": "unittest",
+      "count": 1,
+      "lineRange": {
+        "start": 41,
+        "end": 41
+      }
+    },
+    {
+      "name": "mock.Mock",
+      "usage": "call",
+      "via": "unittest",
+      "count": 3,
+      "lineRange": {
+        "start": 53,
+        "end": 53
+      }
+    },
+    {
+      "name": "pci_device.PciDeviceList",
+      "usage": "call",
+      "via": "nova.objects",
+      "count": 1,
+      "lineRange": {
+        "start": 54,
+        "end": 54
+      }
+    },
+    {
+      "name": "provider_tree.ProviderTree",
+      "usage": "call",
+      "via": "nova.compute",
+      "count": 13,
+      "lineRange": {
+        "start": 66,
+        "end": 66
+      }
+    },
+    {
+      "name": "mock.NonCallableMock",
+      "usage": "call",
+      "via": "unittest",
+      "count": 1,
+      "lineRange": {
+        "start": 69,
+        "end": 69
+      }
+    },
+    {
+      "name": "mock.patch.object",
+      "usage": "call",
+      "via": "unittest",
+      "count": 1,
+      "lineRange": {
+        "start": 69,
+        "end": 69
+      }
+    },
+    {
+      "name": "ppt.update_provider_tree_for_pci",
+      "usage": "call",
+      "via": "nova.compute",
+      "count": 2,
+      "lineRange": {
+        "start": 70,
+        "end": 70
+      }
+    },
+    {
+      "name": "ddt.data",
+      "usage": "call",
+      "via": "ddt",
+      "count": 2,
+      "lineRange": {
+        "start": 82,
+        "end": 82
+      }
+    },
+    {
+      "name": "set",
+      "usage": "call",
+      "via": null,
+      "count": 2,
+      "lineRange": {
+        "start": 83,
+        "end": 83
+      }
+    },
+    {
+      "name": "ppt.get_traits",
+      "usage": "call",
+      "via": "nova.compute",
+      "count": 1,
+      "lineRange": {
+        "start": 99,
+        "end": 99
+      }
+    },
+    {
+      "name": "ppt.get_resource_class",
+      "usage": "call",
+      "via": "nova.compute",
+      "count": 1,
+      "lineRange": {
+        "start": 120,
+        "end": 120
+      }
+    },
+    {
+      "name": "ppt.PlacementView",
+      "usage": "call",
+      "via": "nova.compute",
+      "count": 10,
+      "lineRange": {
+        "start": 126,
+        "end": 126
+      }
+    },
+    {
+      "name": "str",
+      "usage": "call",
+      "via": null,
+      "count": 4,
+      "lineRange": {
+        "start": 154,
+        "end": 154
+      }
+    },
+    {
+      "name": "range",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 208,
+        "end": 208
+      }
+    },
+    {
+      "name": "devspec.PciDeviceSpec",
+      "usage": "call",
+      "via": "nova.pci",
+      "count": 3,
+      "lineRange": {
+        "start": 423,
+        "end": 423
+      }
+    },
+    {
+      "name": "isinstance",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 431,
+        "end": 431
+      }
+    },
+    {
+      "name": "ppt.PlacementView.get_usage_per_rc_and_rp",
+      "usage": "call",
+      "via": "nova.compute",
+      "count": 3,
+      "lineRange": {
+        "start": 436,
+        "end": 436
+      }
+    },
+    {
+      "name": "ppt.PciResourceProvider",
+      "usage": "call",
+      "via": "nova.compute",
+      "count": 4,
+      "lineRange": {
+        "start": 584,
+        "end": 584
+      }
+    },
+    {
+      "name": "len",
+      "usage": "call",
+      "via": null,
+      "count": 2,
+      "lineRange": {
+        "start": 639,
+        "end": 639
+      }
+    }
+  ],
+  "dependencies": [
+    {
+      "style": "import",
+      "module": "collections",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 15,
+        "end": 15
+      }
+    },
+    {
+      "style": "import",
+      "module": "ddt",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 16,
+        "end": 16
+      }
+    },
+    {
+      "style": "import",
+      "module": "os_traits",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 17,
+        "end": 17
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_utils.fixture",
+      "names": [
+        {
+          "alias": "uuids",
+          "name": "uuidsentinel"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 18,
+        "end": 18
+      }
+    },
+    {
+      "style": "from",
+      "module": "unittest",
+      "names": [
+        {
+          "alias": null,
+          "name": "mock"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 19,
+        "end": 19
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.compute",
+      "names": [
+        {
+          "alias": "ppt",
+          "name": "pci_placement_translator"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 21,
+        "end": 21
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.compute",
+      "names": [
+        {
+          "alias": null,
+          "name": "provider_tree"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 22,
+        "end": 22
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "exception"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 23,
+        "end": 23
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.objects",
+      "names": [
+        {
+          "alias": null,
+          "name": "fields"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 24,
+        "end": 24
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.objects",
+      "names": [
+        {
+          "alias": null,
+          "name": "pci_device"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 25,
+        "end": 25
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.pci",
+      "names": [
+        {
+          "alias": null,
+          "name": "devspec"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 26,
+        "end": 26
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "test"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 27,
+        "end": 27
+      }
+    }
+  ],
+  "sideEffects": [],
+  "securitySurface": [],
+  "injection_flags": [],
+  "warnings": []
+}

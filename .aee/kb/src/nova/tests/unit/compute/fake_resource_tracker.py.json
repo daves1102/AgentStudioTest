@@ -1,0 +1,170 @@
+{
+  "file": "src/nova/tests/unit/compute/fake_resource_tracker.py",
+  "hash": "1cc87dabcf4543888c66488ce22e6f647d967c29d287009404e1a61660c470df",
+  "language": "Python",
+  "component": "nova",
+  "package": null,
+  "lines": {
+    "blank": 8,
+    "code": 12,
+    "comment": 14,
+    "total": 34
+  },
+  "symbols": [
+    {
+      "name": "FakeResourceTracker",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 22,
+        "end": 26
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "_update",
+      "kind": "method",
+      "scope": "FakeResourceTracker",
+      "lineRange": {
+        "start": 25,
+        "end": 26
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "context"
+        },
+        {
+          "name": "compute_node"
+        },
+        {
+          "default": "False",
+          "name": "startup"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "RTMockMixin",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 29,
+        "end": 34
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "_mock_rt",
+      "kind": "method",
+      "scope": "RTMockMixin",
+      "lineRange": {
+        "start": 30,
+        "end": 34
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "**kwargs"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "self.useFixture(fixtures.MockPatchObject( self.compute, 'rt', **kwargs)).mock",
+          "line": 33
+        }
+      ],
+      "nloc": 5,
+      "ccn": 2,
+      "visibility": "private"
+    }
+  ],
+  "referencedSymbols": [
+    {
+      "name": "resource_tracker.ResourceTracker",
+      "usage": "inherit",
+      "via": "nova.compute",
+      "count": 1,
+      "lineRange": {
+        "start": 22,
+        "end": 22
+      }
+    },
+    {
+      "name": "object",
+      "usage": "inherit",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 29,
+        "end": 29
+      }
+    },
+    {
+      "name": "fixtures.MockPatchObject",
+      "usage": "call",
+      "via": "fixtures",
+      "count": 1,
+      "lineRange": {
+        "start": 33,
+        "end": 33
+      }
+    }
+  ],
+  "dependencies": [
+    {
+      "style": "import",
+      "module": "fixtures",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 16,
+        "end": 16
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.compute",
+      "names": [
+        {
+          "alias": null,
+          "name": "resource_tracker"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 19,
+        "end": 19
+      }
+    }
+  ],
+  "sideEffects": [],
+  "securitySurface": [
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "kwargs.update({'autospec': False})",
+      "lineRange": {
+        "start": 32,
+        "end": 32
+      }
+    }
+  ],
+  "injection_flags": [],
+  "warnings": []
+}

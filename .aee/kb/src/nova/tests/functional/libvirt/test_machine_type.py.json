@@ -1,0 +1,709 @@
+{
+  "file": "src/nova/tests/functional/libvirt/test_machine_type.py",
+  "hash": "f1e3ed3589a0805834dabd7135f459c1d9ad1ce448ee139911d4e9e782605cd9",
+  "language": "Python",
+  "component": "nova",
+  "package": null,
+  "lines": {
+    "blank": 76,
+    "code": 268,
+    "comment": 49,
+    "total": 393
+  },
+  "symbols": [
+    {
+      "name": "LibvirtMachineTypeTest",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 25,
+        "end": 393
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "microversion",
+      "kind": "field",
+      "scope": "LibvirtMachineTypeTest",
+      "lineRange": {
+        "start": 27,
+        "end": 27
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "setUp",
+      "kind": "method",
+      "scope": "LibvirtMachineTypeTest",
+      "lineRange": {
+        "start": 29,
+        "end": 55
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 14,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "_get_guest_config",
+      "kind": "function",
+      "scope": "LibvirtMachineTypeTest.setUp",
+      "lineRange": {
+        "start": 47,
+        "end": 51
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "_self"
+        },
+        {
+          "name": "*args"
+        },
+        {
+          "name": "**kwargs"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "self.guest_configs[instance.uuid]",
+          "line": 51
+        }
+      ],
+      "visibility": "private"
+    },
+    {
+      "name": "_create_servers",
+      "kind": "method",
+      "scope": "LibvirtMachineTypeTest",
+      "lineRange": {
+        "start": 57,
+        "end": 66
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "(server_with, server_without)",
+          "line": 66
+        }
+      ],
+      "nloc": 10,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "_assert_machine_type",
+      "kind": "method",
+      "scope": "LibvirtMachineTypeTest",
+      "lineRange": {
+        "start": 68,
+        "end": 81
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "server_id"
+        },
+        {
+          "name": "expected_machine_type"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 14,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "_unset_machine_type",
+      "kind": "method",
+      "scope": "LibvirtMachineTypeTest",
+      "lineRange": {
+        "start": 83,
+        "end": 89
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "server_id"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 7,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "test_init_host_register_machine_type",
+      "kind": "method",
+      "scope": "LibvirtMachineTypeTest",
+      "lineRange": {
+        "start": 91,
+        "end": 120
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 12,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_machine_type_after_config_change",
+      "kind": "method",
+      "scope": "LibvirtMachineTypeTest",
+      "lineRange": {
+        "start": 122,
+        "end": 136
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 9,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_machine_type_after_server_rebuild",
+      "kind": "method",
+      "scope": "LibvirtMachineTypeTest",
+      "lineRange": {
+        "start": 138,
+        "end": 160
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 15,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "_test_machine_type_after_server_reboot",
+      "kind": "method",
+      "scope": "LibvirtMachineTypeTest",
+      "lineRange": {
+        "start": 162,
+        "end": 179
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "default": "False",
+          "name": "hard"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 10,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "test_machine_type_after_server_soft_reboot",
+      "kind": "method",
+      "scope": "LibvirtMachineTypeTest",
+      "lineRange": {
+        "start": 181,
+        "end": 182
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_machine_type_after_server_hard_reboot",
+      "kind": "method",
+      "scope": "LibvirtMachineTypeTest",
+      "lineRange": {
+        "start": 184,
+        "end": 185
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_machine_type_get",
+      "kind": "method",
+      "scope": "LibvirtMachineTypeTest",
+      "lineRange": {
+        "start": 187,
+        "end": 202
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 15,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_machine_type_update_stopped",
+      "kind": "method",
+      "scope": "LibvirtMachineTypeTest",
+      "lineRange": {
+        "start": 204,
+        "end": 218
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 12,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_machine_type_update_blocked_active",
+      "kind": "method",
+      "scope": "LibvirtMachineTypeTest",
+      "lineRange": {
+        "start": 220,
+        "end": 232
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 11,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_machine_type_update_blocked_between_alias_and_versioned",
+      "kind": "method",
+      "scope": "LibvirtMachineTypeTest",
+      "lineRange": {
+        "start": 234,
+        "end": 247
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 12,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_machine_type_update_blocked_between_versioned_and_alias",
+      "kind": "method",
+      "scope": "LibvirtMachineTypeTest",
+      "lineRange": {
+        "start": 249,
+        "end": 262
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 12,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_machine_type_update_blocked_between_types",
+      "kind": "method",
+      "scope": "LibvirtMachineTypeTest",
+      "lineRange": {
+        "start": 264,
+        "end": 277
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 12,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_machine_type_update_force",
+      "kind": "method",
+      "scope": "LibvirtMachineTypeTest",
+      "lineRange": {
+        "start": 279,
+        "end": 295
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 12,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_machine_type_list_unset_machine_type",
+      "kind": "method",
+      "scope": "LibvirtMachineTypeTest",
+      "lineRange": {
+        "start": 297,
+        "end": 307
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 9,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_hw_machine_type_config_update_workflow",
+      "kind": "method",
+      "scope": "LibvirtMachineTypeTest",
+      "lineRange": {
+        "start": 309,
+        "end": 393
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 47,
+      "ccn": 2,
+      "visibility": "public"
+    }
+  ],
+  "referencedSymbols": [
+    {
+      "name": "base.ServersTestBase",
+      "usage": "inherit",
+      "via": "nova.tests.functional.libvirt",
+      "count": 1,
+      "lineRange": {
+        "start": 25,
+        "end": 25
+      }
+    },
+    {
+      "name": "super",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 30,
+        "end": 30
+      }
+    },
+    {
+      "name": "nova_context.get_admin_context",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 31,
+        "end": 31
+      }
+    },
+    {
+      "name": "copy.deepcopy",
+      "usage": "call",
+      "via": "copy",
+      "count": 1,
+      "lineRange": {
+        "start": 34,
+        "end": 34
+      }
+    },
+    {
+      "name": "orig_get_config",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 48,
+        "end": 48
+      }
+    },
+    {
+      "name": "fixtures.MonkeyPatch",
+      "usage": "call",
+      "via": "fixtures",
+      "count": 1,
+      "lineRange": {
+        "start": 53,
+        "end": 53
+      }
+    },
+    {
+      "name": "objects.Instance.get_by_uuid",
+      "usage": "call",
+      "via": "nova",
+      "count": 2,
+      "lineRange": {
+        "start": 69,
+        "end": 69
+      }
+    },
+    {
+      "name": "machine_type_utils.get_machine_type",
+      "usage": "call",
+      "via": "nova.virt.libvirt",
+      "count": 2,
+      "lineRange": {
+        "start": 193,
+        "end": 193
+      }
+    },
+    {
+      "name": "machine_type_utils.update_machine_type",
+      "usage": "call",
+      "via": "nova.virt.libvirt",
+      "count": 3,
+      "lineRange": {
+        "start": 211,
+        "end": 211
+      }
+    },
+    {
+      "name": "machine_type_utils.get_instances_without_type",
+      "usage": "call",
+      "via": "nova.virt.libvirt",
+      "count": 4,
+      "lineRange": {
+        "start": 303,
+        "end": 303
+      }
+    }
+  ],
+  "dependencies": [
+    {
+      "style": "import",
+      "module": "copy",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 13,
+        "end": 13
+      }
+    },
+    {
+      "style": "import",
+      "module": "fixtures",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 14,
+        "end": 14
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_utils.fixture",
+      "names": [
+        {
+          "alias": null,
+          "name": "uuidsentinel"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 16,
+        "end": 16
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": "nova_context",
+          "name": "context"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 18,
+        "end": 18
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "exception"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 19,
+        "end": 19
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "objects"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 20,
+        "end": 20
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.tests.functional.libvirt",
+      "names": [
+        {
+          "alias": null,
+          "name": "base"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 21,
+        "end": 21
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.virt.libvirt",
+      "names": [
+        {
+          "alias": null,
+          "name": "machine_type_utils"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 22,
+        "end": 22
+      }
+    }
+  ],
+  "sideEffects": [],
+  "securitySurface": [
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "\"\"\"Mimic a real world [libvirt]hw_machine_type config update workflow",
+      "lineRange": {
+        "start": 310,
+        "end": 310
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "workflow that should be typical of an operator attempting to update",
+      "lineRange": {
+        "start": 313,
+        "end": 313
+      }
+    }
+  ],
+  "injection_flags": [],
+  "warnings": []
+}

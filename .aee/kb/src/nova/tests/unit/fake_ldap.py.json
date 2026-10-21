@@ -1,0 +1,1070 @@
+{
+  "file": "src/nova/tests/unit/fake_ldap.py",
+  "hash": "067f57f0ccc7a246160d6133ac813a87a38915cf72c801dbdcb0ed05f28e1807",
+  "language": "Python",
+  "component": "nova",
+  "package": null,
+  "lines": {
+    "blank": 74,
+    "code": 227,
+    "comment": 25,
+    "total": 326
+  },
+  "symbols": [
+    {
+      "name": "Store",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 29,
+        "end": 38
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "__init__",
+      "kind": "method",
+      "scope": "Store",
+      "lineRange": {
+        "start": 30,
+        "end": 32
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 3,
+      "ccn": 2,
+      "visibility": "public"
+    },
+    {
+      "name": "instance",
+      "kind": "method",
+      "scope": "Store",
+      "lineRange": {
+        "start": 35,
+        "end": 38
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "cls"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "cls._instance",
+          "line": 38
+        }
+      ],
+      "nloc": 4,
+      "ccn": 2,
+      "visibility": "public"
+    },
+    {
+      "name": "_StorageDict",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 41,
+        "end": 83
+      },
+      "source": "aee-inventory",
+      "exported": false
+    },
+    {
+      "name": "keys",
+      "kind": "method",
+      "scope": "_StorageDict",
+      "lineRange": {
+        "start": 42,
+        "end": 46
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "default": "None",
+          "name": "pat"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "ret",
+          "line": 46
+        }
+      ],
+      "nloc": 5,
+      "ccn": 2,
+      "visibility": "public"
+    },
+    {
+      "name": "delete",
+      "kind": "method",
+      "scope": "_StorageDict",
+      "lineRange": {
+        "start": 48,
+        "end": 52
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "key"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 5,
+      "ccn": 2,
+      "visibility": "public"
+    },
+    {
+      "name": "flushdb",
+      "kind": "method",
+      "scope": "_StorageDict",
+      "lineRange": {
+        "start": 54,
+        "end": 55
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "hgetall",
+      "kind": "method",
+      "scope": "_StorageDict",
+      "lineRange": {
+        "start": 57,
+        "end": 66
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "key"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "self[key]",
+          "line": 63
+        },
+        {
+          "expr": "self[key]",
+          "line": 66
+        }
+      ],
+      "nloc": 6,
+      "ccn": 2,
+      "visibility": "public"
+    },
+    {
+      "name": "hget",
+      "kind": "method",
+      "scope": "_StorageDict",
+      "lineRange": {
+        "start": 68,
+        "end": 74
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "key"
+        },
+        {
+          "name": "field"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "hashdict[field]",
+          "line": 71
+        },
+        {
+          "expr": "hashdict[field]",
+          "line": 74
+        }
+      ],
+      "nloc": 7,
+      "ccn": 2,
+      "visibility": "public"
+    },
+    {
+      "name": "hset",
+      "kind": "method",
+      "scope": "_StorageDict",
+      "lineRange": {
+        "start": 76,
+        "end": 78
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "key"
+        },
+        {
+          "name": "field"
+        },
+        {
+          "name": "val"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 3,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "hmset",
+      "kind": "method",
+      "scope": "_StorageDict",
+      "lineRange": {
+        "start": 80,
+        "end": 83
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "key"
+        },
+        {
+          "name": "value_dict"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 4,
+      "ccn": 2,
+      "visibility": "public"
+    },
+    {
+      "name": "SCOPE_BASE",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 86,
+        "end": 86
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "SCOPE_ONELEVEL",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 87,
+        "end": 87
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "SCOPE_SUBTREE",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 88,
+        "end": 88
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "MOD_ADD",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 89,
+        "end": 89
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "MOD_DELETE",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 90,
+        "end": 90
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "MOD_REPLACE",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 91,
+        "end": 91
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "NO_SUCH_OBJECT",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 94,
+        "end": 96
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "OBJECT_CLASS_VIOLATION",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 99,
+        "end": 101
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "SERVER_DOWN",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 104,
+        "end": 106
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "initialize",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 109,
+        "end": 111
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "_uri"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "FakeLDAP()",
+          "line": 111
+        }
+      ],
+      "nloc": 2,
+      "ccn": 1,
+      "exported": true
+    },
+    {
+      "name": "_match_query",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 114,
+        "end": 135
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "query"
+        },
+        {
+          "name": "attrs"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "_match_query(l, attrs) and _match_query(r, attrs)",
+          "line": 125
+        },
+        {
+          "expr": "_match_query(l, attrs) or _match_query(r, attrs)",
+          "line": 129
+        },
+        {
+          "expr": "not _match_query(query[2:-1], attrs)",
+          "line": 132
+        },
+        {
+          "expr": "_match(k, v, attrs)",
+          "line": 135
+        }
+      ],
+      "nloc": 12,
+      "ccn": 6,
+      "exported": false
+    },
+    {
+      "name": "_paren_groups",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 138,
+        "end": 152
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "source"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "result",
+          "line": 152
+        }
+      ],
+      "nloc": 14,
+      "ccn": 6,
+      "exported": false
+    },
+    {
+      "name": "_match",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 155,
+        "end": 169
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "key"
+        },
+        {
+          "name": "value"
+        },
+        {
+          "name": "attrs"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "False",
+          "line": 158
+        },
+        {
+          "expr": "True",
+          "line": 161
+        },
+        {
+          "expr": "value in attrs[key]",
+          "line": 163
+        },
+        {
+          "expr": "True",
+          "line": 168
+        },
+        {
+          "expr": "False",
+          "line": 169
+        }
+      ],
+      "nloc": 12,
+      "ccn": 6,
+      "exported": false
+    },
+    {
+      "name": "_subs",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 172,
+        "end": 183
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "value"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "[value] + subs[value]",
+          "line": 182
+        },
+        {
+          "expr": "[value]",
+          "line": 183
+        }
+      ],
+      "nloc": 5,
+      "ccn": 2,
+      "exported": false
+    },
+    {
+      "name": "_from_json",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 186,
+        "end": 195
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "encoded"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "[str(x) for x in jsonutils.loads(encoded)]",
+          "line": 195
+        }
+      ],
+      "nloc": 2,
+      "ccn": 2,
+      "exported": false
+    },
+    {
+      "name": "_to_json",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 198,
+        "end": 208
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "unencoded"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "jsonutils.dumps(list(unencoded))",
+          "line": 208
+        }
+      ],
+      "nloc": 2,
+      "ccn": 1,
+      "exported": false
+    },
+    {
+      "name": "server_fail",
+      "kind": "variable",
+      "scope": "",
+      "lineRange": {
+        "start": 211,
+        "end": 211
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "FakeLDAP",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 214,
+        "end": 326
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "simple_bind_s",
+      "kind": "method",
+      "scope": "FakeLDAP",
+      "lineRange": {
+        "start": 217,
+        "end": 221
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "dn"
+        },
+        {
+          "name": "password"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 4,
+      "ccn": 2,
+      "visibility": "public"
+    },
+    {
+      "name": "unbind_s",
+      "kind": "method",
+      "scope": "FakeLDAP",
+      "lineRange": {
+        "start": 223,
+        "end": 227
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 4,
+      "ccn": 2,
+      "visibility": "public"
+    },
+    {
+      "name": "add_s",
+      "kind": "method",
+      "scope": "FakeLDAP",
+      "lineRange": {
+        "start": 229,
+        "end": 236
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "dn"
+        },
+        {
+          "name": "attr"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 6,
+      "ccn": 3,
+      "visibility": "public"
+    },
+    {
+      "name": "delete_s",
+      "kind": "method",
+      "scope": "FakeLDAP",
+      "lineRange": {
+        "start": 238,
+        "end": 243
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "dn"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 4,
+      "ccn": 2,
+      "visibility": "public"
+    },
+    {
+      "name": "modify_s",
+      "kind": "method",
+      "scope": "FakeLDAP",
+      "lineRange": {
+        "start": 245,
+        "end": 268
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "dn"
+        },
+        {
+          "name": "attrs"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 14,
+      "ccn": 5,
+      "visibility": "public"
+    },
+    {
+      "name": "modrdn_s",
+      "kind": "method",
+      "scope": "FakeLDAP",
+      "lineRange": {
+        "start": 270,
+        "end": 282
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "dn"
+        },
+        {
+          "name": "newrdn"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 11,
+      "ccn": 3,
+      "visibility": "public"
+    },
+    {
+      "name": "search_s",
+      "kind": "method",
+      "scope": "FakeLDAP",
+      "lineRange": {
+        "start": 284,
+        "end": 321
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "dn"
+        },
+        {
+          "name": "scope"
+        },
+        {
+          "default": "None",
+          "name": "query"
+        },
+        {
+          "default": "None",
+          "name": "fields"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "objects",
+          "line": 321
+        }
+      ],
+      "nloc": 22,
+      "ccn": 13,
+      "visibility": "public"
+    },
+    {
+      "name": "__prefix",
+      "kind": "method",
+      "scope": "FakeLDAP",
+      "lineRange": {
+        "start": 324,
+        "end": 326
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "'ldap:'",
+          "line": 326
+        }
+      ],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "instance",
+      "kind": "classmethod",
+      "scope": "Store",
+      "lineRange": {
+        "start": 34,
+        "end": 38
+      },
+      "visibility": "public",
+      "source": "manual"
+    },
+    {
+      "name": "__prefix",
+      "kind": "property",
+      "scope": "FakeLDAP",
+      "lineRange": {
+        "start": 323,
+        "end": 326
+      },
+      "visibility": "private",
+      "source": "manual"
+    }
+  ],
+  "referencedSymbols": [
+    {
+      "name": "object",
+      "usage": "inherit",
+      "via": null,
+      "count": 2,
+      "lineRange": {
+        "start": 29,
+        "end": 29
+      }
+    },
+    {
+      "name": "hasattr",
+      "usage": "call",
+      "via": null,
+      "count": 2,
+      "lineRange": {
+        "start": 31,
+        "end": 31
+      }
+    },
+    {
+      "name": "Exception",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 32,
+        "end": 32
+      }
+    },
+    {
+      "name": "dict",
+      "usage": "inherit",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 41,
+        "end": 41
+      }
+    },
+    {
+      "name": "super",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 43,
+        "end": 43
+      }
+    },
+    {
+      "name": "fnmatch.filter",
+      "usage": "call",
+      "via": "fnmatch",
+      "count": 1,
+      "lineRange": {
+        "start": 45,
+        "end": 45
+      }
+    },
+    {
+      "name": "Exception",
+      "usage": "inherit",
+      "via": null,
+      "count": 3,
+      "lineRange": {
+        "start": 94,
+        "end": 94
+      }
+    },
+    {
+      "name": "len",
+      "usage": "call",
+      "via": null,
+      "count": 2,
+      "lineRange": {
+        "start": 143,
+        "end": 143
+      }
+    },
+    {
+      "name": "range",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 143,
+        "end": 143
+      }
+    },
+    {
+      "name": "jsonutils.loads",
+      "usage": "call",
+      "via": "oslo_serialization",
+      "count": 1,
+      "lineRange": {
+        "start": 195,
+        "end": 195
+      }
+    },
+    {
+      "name": "str",
+      "usage": "call",
+      "via": null,
+      "count": 2,
+      "lineRange": {
+        "start": 195,
+        "end": 195
+      }
+    },
+    {
+      "name": "jsonutils.dumps",
+      "usage": "call",
+      "via": "oslo_serialization",
+      "count": 1,
+      "lineRange": {
+        "start": 208,
+        "end": 208
+      }
+    },
+    {
+      "name": "list",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 208,
+        "end": 208
+      }
+    },
+    {
+      "name": "NotImplementedError",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 298,
+        "end": 298
+      }
+    }
+  ],
+  "dependencies": [
+    {
+      "style": "import",
+      "module": "fnmatch",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 24,
+        "end": 24
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_serialization",
+      "names": [
+        {
+          "alias": null,
+          "name": "jsonutils"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 26,
+        "end": 26
+      }
+    }
+  ],
+  "sideEffects": [
+    {
+      "kind": "global-mutation",
+      "target": "SCOPE_BASE = 0",
+      "lineRange": {
+        "start": 86,
+        "end": 86
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "SCOPE_ONELEVEL = 1  # Not implemented",
+      "lineRange": {
+        "start": 87,
+        "end": 87
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "SCOPE_SUBTREE = 2",
+      "lineRange": {
+        "start": 88,
+        "end": 88
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "MOD_ADD = 0",
+      "lineRange": {
+        "start": 89,
+        "end": 89
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "MOD_DELETE = 1",
+      "lineRange": {
+        "start": 90,
+        "end": 90
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "MOD_REPLACE = 2",
+      "lineRange": {
+        "start": 91,
+        "end": 91
+      }
+    }
+  ],
+  "securitySurface": [],
+  "injection_flags": [],
+  "warnings": []
+}

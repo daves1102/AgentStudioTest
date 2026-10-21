@@ -1,0 +1,754 @@
+{
+  "file": "src/nova/tests/unit/virt/vmwareapi/test_configdrive.py",
+  "hash": "d77b603a820079476f342c3670601ea8afc8357c0e846bb66d9b305342a6a873",
+  "language": "Python",
+  "component": "nova",
+  "package": null,
+  "lines": {
+    "blank": 19,
+    "code": 136,
+    "comment": 16,
+    "total": 171
+  },
+  "symbols": [
+    {
+      "name": "ConfigDriveTestCase",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 36,
+        "end": 171
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "REQUIRES_LOCKING",
+      "kind": "constant",
+      "scope": "ConfigDriveTestCase",
+      "lineRange": {
+        "start": 38,
+        "end": 38
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "setUp",
+      "kind": "method",
+      "scope": "ConfigDriveTestCase",
+      "lineRange": {
+        "start": 42,
+        "end": 120
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_register"
+        },
+        {
+          "name": "mock_service"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 66,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "FakeInstanceMetadata",
+      "kind": "class",
+      "scope": "ConfigDriveTestCase.setUp",
+      "lineRange": {
+        "start": 98,
+        "end": 104
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "__init__",
+      "kind": "method",
+      "scope": "ConfigDriveTestCase.setUp.FakeInstanceMetadata",
+      "lineRange": {
+        "start": 99,
+        "end": 101
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "instance"
+        },
+        {
+          "default": "None",
+          "name": "content"
+        },
+        {
+          "default": "None",
+          "name": "extra_md"
+        },
+        {
+          "default": "None",
+          "name": "network_info"
+        },
+        {
+          "default": "None",
+          "name": "request_context"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "visibility": "public"
+    },
+    {
+      "name": "metadata_for_config_drive",
+      "kind": "method",
+      "scope": "ConfigDriveTestCase.setUp.FakeInstanceMetadata",
+      "lineRange": {
+        "start": 103,
+        "end": 104
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "[]",
+          "line": 104
+        }
+      ],
+      "visibility": "public"
+    },
+    {
+      "name": "fake_make_drive",
+      "kind": "function",
+      "scope": "ConfigDriveTestCase.setUp",
+      "lineRange": {
+        "start": 110,
+        "end": 111
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "_self"
+        },
+        {
+          "name": "_path"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "visibility": "public"
+    },
+    {
+      "name": "fake_upload_iso_to_datastore",
+      "kind": "function",
+      "scope": "ConfigDriveTestCase.setUp",
+      "lineRange": {
+        "start": 117,
+        "end": 118
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "iso_path"
+        },
+        {
+          "name": "instance"
+        },
+        {
+          "name": "**kwargs"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "visibility": "public"
+    },
+    {
+      "name": "tearDown",
+      "kind": "method",
+      "scope": "ConfigDriveTestCase",
+      "lineRange": {
+        "start": 122,
+        "end": 124
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 3,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "_spawn_vm",
+      "kind": "method",
+      "scope": "ConfigDriveTestCase",
+      "lineRange": {
+        "start": 128,
+        "end": 138
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "fake_get_instance_meta"
+        },
+        {
+          "default": "None",
+          "name": "injected_files"
+        },
+        {
+          "default": "None",
+          "name": "admin_password"
+        },
+        {
+          "default": "None",
+          "name": "block_device_info"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 10,
+      "ccn": 2,
+      "visibility": "private"
+    },
+    {
+      "name": "test_create_vm_with_config_drive_verify_method_invocation",
+      "kind": "method",
+      "scope": "ConfigDriveTestCase",
+      "lineRange": {
+        "start": 143,
+        "end": 157
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_attach_cdrom"
+        },
+        {
+          "name": "mock_create_config_drive"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 15,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_create_vm_without_config_drive",
+      "kind": "method",
+      "scope": "ConfigDriveTestCase",
+      "lineRange": {
+        "start": 162,
+        "end": 167
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_attach_cdrom"
+        },
+        {
+          "name": "mock_create_config_drive"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 6,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_create_vm_with_config_drive",
+      "kind": "method",
+      "scope": "ConfigDriveTestCase",
+      "lineRange": {
+        "start": 169,
+        "end": 171
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 3,
+      "ccn": 1,
+      "visibility": "public"
+    }
+  ],
+  "referencedSymbols": [
+    {
+      "name": "test.NoDBTestCase",
+      "usage": "inherit",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 36,
+        "end": 36
+      }
+    },
+    {
+      "name": "mock.patch.object",
+      "usage": "call",
+      "via": "unittest",
+      "count": 7,
+      "lineRange": {
+        "start": 40,
+        "end": 40
+      }
+    },
+    {
+      "name": "super",
+      "usage": "call",
+      "via": null,
+      "count": 2,
+      "lineRange": {
+        "start": 43,
+        "end": 43
+      }
+    },
+    {
+      "name": "vm_util.vm_refs_cache_reset",
+      "usage": "call",
+      "via": "nova.virt.vmwareapi",
+      "count": 1,
+      "lineRange": {
+        "start": 44,
+        "end": 44
+      }
+    },
+    {
+      "name": "context.RequestContext",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 45,
+        "end": 45
+      }
+    },
+    {
+      "name": "vmwareapi_fake.reset",
+      "usage": "call",
+      "via": "nova.tests.unit.virt.vmwareapi",
+      "count": 1,
+      "lineRange": {
+        "start": 52,
+        "end": 52
+      }
+    },
+    {
+      "name": "stubs.set_stubs",
+      "usage": "call",
+      "via": "nova.tests.unit.virt.vmwareapi",
+      "count": 1,
+      "lineRange": {
+        "start": 53,
+        "end": 53
+      }
+    },
+    {
+      "name": "nova_fixtures.GlanceFixture",
+      "usage": "call",
+      "via": "nova.tests",
+      "count": 1,
+      "lineRange": {
+        "start": 54,
+        "end": 54
+      }
+    },
+    {
+      "name": "driver.VMwareVCDriver",
+      "usage": "call",
+      "via": "nova.virt.vmwareapi",
+      "count": 1,
+      "lineRange": {
+        "start": 55,
+        "end": 55
+      }
+    },
+    {
+      "name": "utils.get_test_network_info",
+      "usage": "call",
+      "via": "nova.tests.unit",
+      "count": 1,
+      "lineRange": {
+        "start": 56,
+        "end": 56
+      }
+    },
+    {
+      "name": "objects.Flavor",
+      "usage": "call",
+      "via": "nova",
+      "count": 2,
+      "lineRange": {
+        "start": 68,
+        "end": 68
+      }
+    },
+    {
+      "name": "fake_instance.fake_instance_obj",
+      "usage": "call",
+      "via": "nova.tests.unit",
+      "count": 1,
+      "lineRange": {
+        "start": 82,
+        "end": 82
+      }
+    },
+    {
+      "name": "glance.get_remote_image_service",
+      "usage": "call",
+      "via": "nova.image",
+      "count": 1,
+      "lineRange": {
+        "start": 89,
+        "end": 89
+      }
+    },
+    {
+      "name": "objects.ImageMeta.from_dict",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 92,
+        "end": 92
+      }
+    },
+    {
+      "name": "int",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 95,
+        "end": 95
+      }
+    },
+    {
+      "name": "object",
+      "usage": "inherit",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 98,
+        "end": 98
+      }
+    },
+    {
+      "name": "fixtures.MonkeyPatch",
+      "usage": "call",
+      "via": "fixtures",
+      "count": 1,
+      "lineRange": {
+        "start": 106,
+        "end": 106
+      }
+    },
+    {
+      "name": "vmwareapi_fake.cleanup",
+      "usage": "call",
+      "via": "nova.tests.unit.virt.vmwareapi",
+      "count": 1,
+      "lineRange": {
+        "start": 124,
+        "end": 124
+      }
+    }
+  ],
+  "dependencies": [
+    {
+      "style": "from",
+      "module": "unittest",
+      "names": [
+        {
+          "alias": null,
+          "name": "mock"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 16,
+        "end": 16
+      }
+    },
+    {
+      "style": "import",
+      "module": "fixtures",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 18,
+        "end": 18
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_utils.fixture",
+      "names": [
+        {
+          "alias": null,
+          "name": "uuidsentinel"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 19,
+        "end": 19
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "context"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 21,
+        "end": 21
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.image",
+      "names": [
+        {
+          "alias": null,
+          "name": "glance"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 22,
+        "end": 22
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "objects"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 23,
+        "end": 23
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "test"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 24,
+        "end": 24
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.tests",
+      "names": [
+        {
+          "alias": "nova_fixtures",
+          "name": "fixtures"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 25,
+        "end": 25
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.tests.unit",
+      "names": [
+        {
+          "alias": null,
+          "name": "fake_instance"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 26,
+        "end": 26
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.tests.unit",
+      "names": [
+        {
+          "alias": null,
+          "name": "utils"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 27,
+        "end": 27
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.tests.unit.virt.vmwareapi",
+      "names": [
+        {
+          "alias": "vmwareapi_fake",
+          "name": "fake"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 28,
+        "end": 28
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.tests.unit.virt.vmwareapi",
+      "names": [
+        {
+          "alias": null,
+          "name": "stubs"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 29,
+        "end": 29
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.virt",
+      "names": [
+        {
+          "alias": null,
+          "name": "fake"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 30,
+        "end": 30
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.virt.vmwareapi",
+      "names": [
+        {
+          "alias": null,
+          "name": "driver"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 31,
+        "end": 31
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.virt.vmwareapi",
+      "names": [
+        {
+          "alias": null,
+          "name": "vm_util"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 32,
+        "end": 32
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.virt.vmwareapi",
+      "names": [
+        {
+          "alias": null,
+          "name": "vmops"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 33,
+        "end": 33
+      }
+    }
+  ],
+  "sideEffects": [
+    {
+      "kind": "global-mutation",
+      "target": "REQUIRES_LOCKING = True",
+      "lineRange": {
+        "start": 38,
+        "end": 38
+      }
+    }
+  ],
+  "securitySurface": [],
+  "injection_flags": [],
+  "warnings": []
+}

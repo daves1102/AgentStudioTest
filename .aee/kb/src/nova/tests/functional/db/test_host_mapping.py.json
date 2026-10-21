@@ -1,0 +1,820 @@
+{
+  "file": "src/nova/tests/functional/db/test_host_mapping.py",
+  "hash": "be2d625d933e92afac45c56bec3e84d6c1714bc8d961d1711af6ca45aa6d69d7",
+  "language": "Python",
+  "component": "nova",
+  "package": null,
+  "lines": {
+    "blank": 37,
+    "code": 159,
+    "comment": 22,
+    "total": 218
+  },
+  "symbols": [
+    {
+      "name": "sample_mapping",
+      "kind": "variable",
+      "scope": "",
+      "lineRange": {
+        "start": 27,
+        "end": 28
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "sample_cell_mapping",
+      "kind": "variable",
+      "scope": "",
+      "lineRange": {
+        "start": 31,
+        "end": 35
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "create_cell_mapping",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 38,
+        "end": 44
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "**kwargs"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "cell_mapping.CellMapping._create_in_db(ctxt, args)",
+          "line": 44
+        }
+      ],
+      "nloc": 7,
+      "ccn": 2,
+      "exported": true
+    },
+    {
+      "name": "create_mapping",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 47,
+        "end": 54
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "**kwargs"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "host_mapping.HostMapping._create_in_db(ctxt, args)",
+          "line": 54
+        }
+      ],
+      "nloc": 8,
+      "ccn": 2,
+      "exported": true
+    },
+    {
+      "name": "create_mapping_obj",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 57,
+        "end": 60
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "context"
+        },
+        {
+          "name": "**kwargs"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "host_mapping.HostMapping._from_db_object( context, host_mapping.HostMapping(), mapping)",
+          "line": 59
+        }
+      ],
+      "nloc": 4,
+      "ccn": 1,
+      "exported": true
+    },
+    {
+      "name": "HostMappingTestCase",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 63,
+        "end": 140
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "USES_DB_SELF",
+      "kind": "constant",
+      "scope": "HostMappingTestCase",
+      "lineRange": {
+        "start": 64,
+        "end": 64
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "setUp",
+      "kind": "method",
+      "scope": "HostMappingTestCase",
+      "lineRange": {
+        "start": 66,
+        "end": 71
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 6,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "_compare_cell_obj_to_mapping",
+      "kind": "method",
+      "scope": "HostMappingTestCase",
+      "lineRange": {
+        "start": 73,
+        "end": 76
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "obj"
+        },
+        {
+          "name": "mapping"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 4,
+      "ccn": 4,
+      "visibility": "private"
+    },
+    {
+      "name": "test_get_by_host",
+      "kind": "method",
+      "scope": "HostMappingTestCase",
+      "lineRange": {
+        "start": 78,
+        "end": 85
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 8,
+      "ccn": 3,
+      "visibility": "public"
+    },
+    {
+      "name": "test_get_by_host_not_found",
+      "kind": "method",
+      "scope": "HostMappingTestCase",
+      "lineRange": {
+        "start": 87,
+        "end": 90
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 4,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_update_cell_mapping",
+      "kind": "method",
+      "scope": "HostMappingTestCase",
+      "lineRange": {
+        "start": 92,
+        "end": 111
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 20,
+      "ccn": 4,
+      "visibility": "public"
+    },
+    {
+      "name": "test_destroy_in_db",
+      "kind": "method",
+      "scope": "HostMappingTestCase",
+      "lineRange": {
+        "start": 113,
+        "end": 120
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 8,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_load_cell_mapping",
+      "kind": "method",
+      "scope": "HostMappingTestCase",
+      "lineRange": {
+        "start": 122,
+        "end": 126
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 5,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_host_mapping_list_get_by_cell_id",
+      "kind": "method",
+      "scope": "HostMappingTestCase",
+      "lineRange": {
+        "start": 128,
+        "end": 140
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 8,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "HostMappingDiscoveryTest",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 143,
+        "end": 218
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "_setup_cells",
+      "kind": "method",
+      "scope": "HostMappingDiscoveryTest",
+      "lineRange": {
+        "start": 144,
+        "end": 180
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 33,
+      "ccn": 6,
+      "visibility": "private"
+    },
+    {
+      "name": "test_discover_hosts",
+      "kind": "method",
+      "scope": "HostMappingDiscoveryTest",
+      "lineRange": {
+        "start": 182,
+        "end": 196
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 9,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_discover_hosts_one_cell",
+      "kind": "method",
+      "scope": "HostMappingDiscoveryTest",
+      "lineRange": {
+        "start": 198,
+        "end": 218
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 13,
+      "ccn": 1,
+      "visibility": "public"
+    }
+  ],
+  "referencedSymbols": [
+    {
+      "name": "uuidutils.generate_uuid",
+      "usage": "call",
+      "via": "oslo_utils",
+      "count": 1,
+      "lineRange": {
+        "start": 41,
+        "end": 41
+      }
+    },
+    {
+      "name": "context.RequestContext",
+      "usage": "call",
+      "via": "nova",
+      "count": 3,
+      "lineRange": {
+        "start": 43,
+        "end": 43
+      }
+    },
+    {
+      "name": "cell_mapping.CellMapping._create_in_db",
+      "usage": "call",
+      "via": "nova.objects",
+      "count": 1,
+      "lineRange": {
+        "start": 44,
+        "end": 44
+      }
+    },
+    {
+      "name": "host_mapping.HostMapping._create_in_db",
+      "usage": "call",
+      "via": "nova.objects",
+      "count": 1,
+      "lineRange": {
+        "start": 54,
+        "end": 54
+      }
+    },
+    {
+      "name": "host_mapping.HostMapping._from_db_object",
+      "usage": "call",
+      "via": "nova.objects",
+      "count": 1,
+      "lineRange": {
+        "start": 59,
+        "end": 59
+      }
+    },
+    {
+      "name": "host_mapping.HostMapping",
+      "usage": "call",
+      "via": "nova.objects",
+      "count": 3,
+      "lineRange": {
+        "start": 60,
+        "end": 60
+      }
+    },
+    {
+      "name": "test.NoDBTestCase",
+      "usage": "inherit",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 63,
+        "end": 63
+      }
+    },
+    {
+      "name": "super",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 67,
+        "end": 67
+      }
+    },
+    {
+      "name": "fixtures.Database",
+      "usage": "call",
+      "via": "nova.tests",
+      "count": 1,
+      "lineRange": {
+        "start": 68,
+        "end": 68
+      }
+    },
+    {
+      "name": "cell_mapping.CellMapping",
+      "usage": "call",
+      "via": "nova.objects",
+      "count": 1,
+      "lineRange": {
+        "start": 71,
+        "end": 71
+      }
+    },
+    {
+      "name": "getattr",
+      "usage": "call",
+      "via": null,
+      "count": 2,
+      "lineRange": {
+        "start": 76,
+        "end": 76
+      }
+    },
+    {
+      "name": "cell_mapping.CellMapping.get_by_uuid",
+      "usage": "call",
+      "via": "nova.objects",
+      "count": 1,
+      "lineRange": {
+        "start": 95,
+        "end": 95
+      }
+    },
+    {
+      "name": "host_mapping.HostMapping._get_by_host_from_db",
+      "usage": "call",
+      "via": "nova.objects",
+      "count": 1,
+      "lineRange": {
+        "start": 109,
+        "end": 109
+      }
+    },
+    {
+      "name": "host_mapping.HostMappingList.get_by_cell_id",
+      "usage": "call",
+      "via": "nova.objects",
+      "count": 2,
+      "lineRange": {
+        "start": 132,
+        "end": 132
+      }
+    },
+    {
+      "name": "len",
+      "usage": "call",
+      "via": null,
+      "count": 7,
+      "lineRange": {
+        "start": 132,
+        "end": 132
+      }
+    },
+    {
+      "name": "test.TestCase",
+      "usage": "inherit",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 143,
+        "end": 143
+      }
+    },
+    {
+      "name": "context.get_admin_context",
+      "usage": "call",
+      "via": "nova",
+      "count": 3,
+      "lineRange": {
+        "start": 145,
+        "end": 145
+      }
+    },
+    {
+      "name": "fixtures.CellDatabases",
+      "usage": "call",
+      "via": "nova.tests",
+      "count": 1,
+      "lineRange": {
+        "start": 146,
+        "end": 146
+      }
+    },
+    {
+      "name": "objects.CellMapping",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 149,
+        "end": 149
+      }
+    },
+    {
+      "name": "objects.HostMapping",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 165,
+        "end": 165
+      }
+    },
+    {
+      "name": "context.target_cell",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 170,
+        "end": 170
+      }
+    },
+    {
+      "name": "objects.ComputeNode",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 171,
+        "end": 171
+      }
+    },
+    {
+      "name": "host_mapping.discover_hosts",
+      "usage": "call",
+      "via": "nova.objects",
+      "count": 5,
+      "lineRange": {
+        "start": 188,
+        "end": 188
+      }
+    },
+    {
+      "name": "mock.patch",
+      "usage": "call",
+      "via": "unittest",
+      "count": 2,
+      "lineRange": {
+        "start": 193,
+        "end": 193
+      }
+    },
+    {
+      "name": "objects.CellMappingList.get_all",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 202,
+        "end": 202
+      }
+    }
+  ],
+  "dependencies": [
+    {
+      "style": "from",
+      "module": "unittest",
+      "names": [
+        {
+          "alias": null,
+          "name": "mock"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 13,
+        "end": 13
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_utils.fixture",
+      "names": [
+        {
+          "alias": "uuids",
+          "name": "uuidsentinel"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 15,
+        "end": 15
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_utils",
+      "names": [
+        {
+          "alias": null,
+          "name": "uuidutils"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 16,
+        "end": 16
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "context"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 18,
+        "end": 18
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "exception"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 19,
+        "end": 19
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "objects"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 20,
+        "end": 20
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.objects",
+      "names": [
+        {
+          "alias": null,
+          "name": "cell_mapping"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 21,
+        "end": 21
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.objects",
+      "names": [
+        {
+          "alias": null,
+          "name": "host_mapping"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 22,
+        "end": 22
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "test"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 23,
+        "end": 23
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.tests",
+      "names": [
+        {
+          "alias": null,
+          "name": "fixtures"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 24,
+        "end": 24
+      }
+    }
+  ],
+  "sideEffects": [
+    {
+      "kind": "global-mutation",
+      "target": "USES_DB_SELF = True",
+      "lineRange": {
+        "start": 64,
+        "end": 64
+      }
+    }
+  ],
+  "securitySurface": [
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "args.update(kwargs)",
+      "lineRange": {
+        "start": 42,
+        "end": 42
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "args.update(kwargs)",
+      "lineRange": {
+        "start": 49,
+        "end": 49
+      }
+    }
+  ],
+  "injection_flags": [],
+  "warnings": []
+}

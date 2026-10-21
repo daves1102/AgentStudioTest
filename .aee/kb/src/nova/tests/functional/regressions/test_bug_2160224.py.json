@@ -1,0 +1,286 @@
+{
+  "file": "src/nova/tests/functional/regressions/test_bug_2160224.py",
+  "hash": "9c187cd4f39af18b39087c1c541f1036bedf83e6738dacad984b183fe5ea84ac",
+  "language": "Python",
+  "component": "nova",
+  "package": null,
+  "lines": {
+    "blank": 15,
+    "code": 39,
+    "comment": 23,
+    "total": 77
+  },
+  "symbols": [
+    {
+      "name": "TestAttachVolumeListAttachmentRace",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 20,
+        "end": 77
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "microversion",
+      "kind": "field",
+      "scope": "TestAttachVolumeListAttachmentRace",
+      "lineRange": {
+        "start": 26,
+        "end": 26
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "CAST_AS_CALL",
+      "kind": "constant",
+      "scope": "TestAttachVolumeListAttachmentRace",
+      "lineRange": {
+        "start": 27,
+        "end": 27
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "setUp",
+      "kind": "method",
+      "scope": "TestAttachVolumeListAttachmentRace",
+      "lineRange": {
+        "start": 29,
+        "end": 45
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 9,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "fake_attachment_create",
+      "kind": "function",
+      "scope": "TestAttachVolumeListAttachmentRace.setUp",
+      "lineRange": {
+        "start": 38,
+        "end": 41
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "*args"
+        },
+        {
+          "name": "**kwargs"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "nova_fixtures.CinderFixture.fake_attachment_create( self.cinder, *args, **kwargs)",
+          "line": 40
+        }
+      ],
+      "visibility": "public"
+    },
+    {
+      "name": "test_attach_and_show_race",
+      "kind": "method",
+      "scope": "TestAttachVolumeListAttachmentRace",
+      "lineRange": {
+        "start": 47,
+        "end": 57
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 5,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_attach_and_list_race",
+      "kind": "method",
+      "scope": "TestAttachVolumeListAttachmentRace",
+      "lineRange": {
+        "start": 59,
+        "end": 77
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 11,
+      "ccn": 2,
+      "visibility": "public"
+    }
+  ],
+  "referencedSymbols": [
+    {
+      "name": "base.ServersTestBase",
+      "usage": "inherit",
+      "via": "nova.tests.functional.libvirt",
+      "count": 1,
+      "lineRange": {
+        "start": 20,
+        "end": 20
+      }
+    },
+    {
+      "name": "super",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 30,
+        "end": 30
+      }
+    },
+    {
+      "name": "threading.Event",
+      "usage": "call",
+      "via": "threading",
+      "count": 1,
+      "lineRange": {
+        "start": 35,
+        "end": 35
+      }
+    },
+    {
+      "name": "nova_fixtures.CinderFixture.fake_attachment_create",
+      "usage": "call",
+      "via": "nova.tests",
+      "count": 1,
+      "lineRange": {
+        "start": 40,
+        "end": 40
+      }
+    },
+    {
+      "name": "fixtures.MockPatch",
+      "usage": "call",
+      "via": "fixtures",
+      "count": 1,
+      "lineRange": {
+        "start": 43,
+        "end": 43
+      }
+    },
+    {
+      "name": "time.sleep",
+      "usage": "call",
+      "via": "time",
+      "count": 1,
+      "lineRange": {
+        "start": 75,
+        "end": 75
+      }
+    },
+    {
+      "name": "len",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 77,
+        "end": 77
+      }
+    }
+  ],
+  "dependencies": [
+    {
+      "style": "import",
+      "module": "fixtures",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 12,
+        "end": 12
+      }
+    },
+    {
+      "style": "import",
+      "module": "threading",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 13,
+        "end": 13
+      }
+    },
+    {
+      "style": "import",
+      "module": "time",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 14,
+        "end": 14
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.tests",
+      "names": [
+        {
+          "alias": "nova_fixtures",
+          "name": "fixtures"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 16,
+        "end": 16
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.tests.functional.libvirt",
+      "names": [
+        {
+          "alias": null,
+          "name": "base"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 17,
+        "end": 17
+      }
+    }
+  ],
+  "sideEffects": [
+    {
+      "kind": "global-mutation",
+      "target": "CAST_AS_CALL = False",
+      "lineRange": {
+        "start": 27,
+        "end": 27
+      }
+    }
+  ],
+  "securitySurface": [],
+  "injection_flags": [],
+  "warnings": []
+}

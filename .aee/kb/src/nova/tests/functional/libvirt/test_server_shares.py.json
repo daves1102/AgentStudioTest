@@ -1,0 +1,1334 @@
+{
+  "file": "src/nova/tests/functional/libvirt/test_server_shares.py",
+  "hash": "91c77774abc0cbb9223bf89befd69afbbdd55ba46edd33be847f9d31356032e2",
+  "language": "Python",
+  "component": "nova",
+  "package": null,
+  "lines": {
+    "blank": 121,
+    "code": 471,
+    "comment": 53,
+    "total": 645
+  },
+  "symbols": [
+    {
+      "name": "CONF",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 32,
+        "end": 32
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "LOG",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 33,
+        "end": 33
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "ServerSharesTestBase",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 36,
+        "end": 133
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "microversion",
+      "kind": "field",
+      "scope": "ServerSharesTestBase",
+      "lineRange": {
+        "start": 37,
+        "end": 37
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "ADMIN_API",
+      "kind": "constant",
+      "scope": "ServerSharesTestBase",
+      "lineRange": {
+        "start": 38,
+        "end": 38
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "FAKE_LIBVIRT_VERSION",
+      "kind": "constant",
+      "scope": "ServerSharesTestBase",
+      "lineRange": {
+        "start": 39,
+        "end": 39
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "FAKE_QEMU_VERSION",
+      "kind": "constant",
+      "scope": "ServerSharesTestBase",
+      "lineRange": {
+        "start": 40,
+        "end": 40
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "setUp",
+      "kind": "method",
+      "scope": "ServerSharesTestBase",
+      "lineRange": {
+        "start": 42,
+        "end": 76
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 28,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "_get_xml",
+      "kind": "method",
+      "scope": "ServerSharesTestBase",
+      "lineRange": {
+        "start": 78,
+        "end": 83
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "server"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "xml",
+          "line": 83
+        }
+      ],
+      "nloc": 6,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "_get_filesystem_tag",
+      "kind": "method",
+      "scope": "ServerSharesTestBase",
+      "lineRange": {
+        "start": 85,
+        "end": 93
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "xml"
+        },
+        {
+          "name": "tag"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "tags",
+          "line": 93
+        }
+      ],
+      "nloc": 9,
+      "ccn": 2,
+      "visibility": "private"
+    },
+    {
+      "name": "_assert_filesystem_tag",
+      "kind": "method",
+      "scope": "ServerSharesTestBase",
+      "lineRange": {
+        "start": 95,
+        "end": 97
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "xml"
+        },
+        {
+          "name": "tag"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 3,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "_assert_filesystem_tag_not_present",
+      "kind": "method",
+      "scope": "ServerSharesTestBase",
+      "lineRange": {
+        "start": 99,
+        "end": 101
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "xml"
+        },
+        {
+          "name": "tag"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 3,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "_get_metadata_url",
+      "kind": "method",
+      "scope": "ServerSharesTestBase",
+      "lineRange": {
+        "start": 103,
+        "end": 115
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "server"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "url",
+          "line": 115
+        }
+      ],
+      "nloc": 8,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "fake_get_fixed_ip_by_address",
+      "kind": "function",
+      "scope": "ServerSharesTestBase._get_metadata_url",
+      "lineRange": {
+        "start": 107,
+        "end": 108
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "ctxt"
+        },
+        {
+          "name": "address"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "{'instance_uuid': server['id']}",
+          "line": 108
+        }
+      ],
+      "visibility": "public"
+    },
+    {
+      "name": "_assert_share_in_metadata",
+      "kind": "method",
+      "scope": "ServerSharesTestBase",
+      "lineRange": {
+        "start": 117,
+        "end": 124
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "metatdata_url"
+        },
+        {
+          "name": "share_id"
+        },
+        {
+          "name": "tag"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 8,
+      "ccn": 2,
+      "visibility": "private"
+    },
+    {
+      "name": "_check_traits",
+      "kind": "method",
+      "scope": "ServerSharesTestBase",
+      "lineRange": {
+        "start": 126,
+        "end": 133
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 6,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "ServerSharesTest",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 136,
+        "end": 514
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "test_server_share_metadata",
+      "kind": "method",
+      "scope": "ServerSharesTest",
+      "lineRange": {
+        "start": 138,
+        "end": 155
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "(server, share_id)",
+          "line": 155
+        }
+      ],
+      "nloc": 11,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_server_share_metadata_with_tag",
+      "kind": "method",
+      "scope": "ServerSharesTest",
+      "lineRange": {
+        "start": 157,
+        "end": 175
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "(server, share_id)",
+          "line": 175
+        }
+      ],
+      "nloc": 12,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_server_share_fails_with_tag_already_used",
+      "kind": "method",
+      "scope": "ServerSharesTest",
+      "lineRange": {
+        "start": 177,
+        "end": 203
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 22,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_server_cephfs_share_metadata",
+      "kind": "method",
+      "scope": "ServerSharesTest",
+      "lineRange": {
+        "start": 205,
+        "end": 238
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "(server, share_id)",
+          "line": 238
+        }
+      ],
+      "nloc": 22,
+      "ccn": 4,
+      "visibility": "public"
+    },
+    {
+      "name": "_cephfs_grants",
+      "kind": "method",
+      "scope": "ServerSharesTest",
+      "lineRange": {
+        "start": 240,
+        "end": 244
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "share_id"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "{ grant[2] for grant in self.manila_fixture.share_access if grant[0] == share_id and grant[1] == 'cephx' }",
+          "line": 241
+        }
+      ],
+      "nloc": 5,
+      "ccn": 4,
+      "visibility": "private"
+    },
+    {
+      "name": "test_cephfs_share_per_instance_identity",
+      "kind": "method",
+      "scope": "ServerSharesTest",
+      "lineRange": {
+        "start": 246,
+        "end": 276
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 25,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_reconcile_removes_stale_cephfs_grant",
+      "kind": "method",
+      "scope": "ServerSharesTest",
+      "lineRange": {
+        "start": 278,
+        "end": 297
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 14,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_server_share_after_hard_reboot",
+      "kind": "method",
+      "scope": "ServerSharesTest",
+      "lineRange": {
+        "start": 299,
+        "end": 307
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 6,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_server_share_mount_failure",
+      "kind": "method",
+      "scope": "ServerSharesTest",
+      "lineRange": {
+        "start": 309,
+        "end": 351
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "(server, share_id)",
+          "line": 351
+        }
+      ],
+      "nloc": 31,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_server_start_fails_share_in_error",
+      "kind": "method",
+      "scope": "ServerSharesTest",
+      "lineRange": {
+        "start": 353,
+        "end": 359
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 3,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "_verify_start_fails_share_in_error",
+      "kind": "method",
+      "scope": "ServerSharesTest",
+      "lineRange": {
+        "start": 361,
+        "end": 409
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "server"
+        },
+        {
+          "name": "share_id"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 35,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "test_detach_server_share_in_error",
+      "kind": "method",
+      "scope": "ServerSharesTest",
+      "lineRange": {
+        "start": 411,
+        "end": 450
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 24,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_server_share_umount_failure",
+      "kind": "method",
+      "scope": "ServerSharesTest",
+      "lineRange": {
+        "start": 452,
+        "end": 479
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "(server, share_id)",
+          "line": 479
+        }
+      ],
+      "nloc": 22,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_server_resume_with_shares",
+      "kind": "method",
+      "scope": "ServerSharesTest",
+      "lineRange": {
+        "start": 481,
+        "end": 492
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 11,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_server_rescue_with_shares",
+      "kind": "method",
+      "scope": "ServerSharesTest",
+      "lineRange": {
+        "start": 494,
+        "end": 514
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "(server, share_id)",
+          "line": 514
+        }
+      ],
+      "nloc": 15,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "ServerSharesColdMigrateTest",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 517,
+        "end": 645
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "setUp",
+      "kind": "method",
+      "scope": "ServerSharesColdMigrateTest",
+      "lineRange": {
+        "start": 519,
+        "end": 526
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 8,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "_get_xml_on_host",
+      "kind": "method",
+      "scope": "ServerSharesColdMigrateTest",
+      "lineRange": {
+        "start": 528,
+        "end": 532
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "server"
+        },
+        {
+          "name": "hostname"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "guest.get_xml_desc()",
+          "line": 532
+        }
+      ],
+      "nloc": 5,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "_setup_server_with_share",
+      "kind": "method",
+      "scope": "ServerSharesColdMigrateTest",
+      "lineRange": {
+        "start": 534,
+        "end": 540
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "server, share_id",
+          "line": 540
+        }
+      ],
+      "nloc": 7,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "test_cold_migrate_with_share",
+      "kind": "method",
+      "scope": "ServerSharesColdMigrateTest",
+      "lineRange": {
+        "start": 542,
+        "end": 561
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 17,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_cold_migrate_revert_with_share",
+      "kind": "method",
+      "scope": "ServerSharesColdMigrateTest",
+      "lineRange": {
+        "start": 563,
+        "end": 580
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 16,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_cold_migrate_with_share_mount_failure",
+      "kind": "method",
+      "scope": "ServerSharesColdMigrateTest",
+      "lineRange": {
+        "start": 582,
+        "end": 600
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 17,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_cold_migrate_same_host_with_share",
+      "kind": "method",
+      "scope": "ServerSharesColdMigrateTest",
+      "lineRange": {
+        "start": 602,
+        "end": 645
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 33,
+      "ccn": 3,
+      "visibility": "public"
+    }
+  ],
+  "referencedSymbols": [
+    {
+      "name": "logging.getLogger",
+      "usage": "call",
+      "via": "oslo_log",
+      "count": 1,
+      "lineRange": {
+        "start": 33,
+        "end": 33
+      }
+    },
+    {
+      "name": "base.ServersTestBase",
+      "usage": "inherit",
+      "via": "nova.tests.functional.libvirt",
+      "count": 1,
+      "lineRange": {
+        "start": 36,
+        "end": 36
+      }
+    },
+    {
+      "name": "super",
+      "usage": "call",
+      "via": null,
+      "count": 2,
+      "lineRange": {
+        "start": 43,
+        "end": 43
+      }
+    },
+    {
+      "name": "nova_context.get_admin_context",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 45,
+        "end": 45
+      }
+    },
+    {
+      "name": "nova_fixtures.ManilaFixture",
+      "usage": "call",
+      "via": "nova.tests",
+      "count": 1,
+      "lineRange": {
+        "start": 46,
+        "end": 46
+      }
+    },
+    {
+      "name": "nova_fixtures.OSMetadataServer",
+      "usage": "call",
+      "via": "nova.tests",
+      "count": 1,
+      "lineRange": {
+        "start": 57,
+        "end": 57
+      }
+    },
+    {
+      "name": "fixtures.MockPatch",
+      "usage": "call",
+      "via": "fixtures",
+      "count": 4,
+      "lineRange": {
+        "start": 62,
+        "end": 62
+      }
+    },
+    {
+      "name": "instance.Instance.get_by_uuid",
+      "usage": "call",
+      "via": "nova.objects",
+      "count": 8,
+      "lineRange": {
+        "start": 79,
+        "end": 79
+      }
+    },
+    {
+      "name": "etree.fromstring",
+      "usage": "call",
+      "via": "lxml",
+      "count": 1,
+      "lineRange": {
+        "start": 87,
+        "end": 87
+      }
+    },
+    {
+      "name": "fixtures.MonkeyPatch",
+      "usage": "call",
+      "via": "fixtures",
+      "count": 1,
+      "lineRange": {
+        "start": 111,
+        "end": 111
+      }
+    },
+    {
+      "name": "request",
+      "usage": "call",
+      "via": "requests",
+      "count": 1,
+      "lineRange": {
+        "start": 119,
+        "end": 119
+      }
+    },
+    {
+      "name": "jsonutils.loads",
+      "usage": "call",
+      "via": "oslo_serialization",
+      "count": 1,
+      "lineRange": {
+        "start": 121,
+        "end": 121
+      }
+    },
+    {
+      "name": "str",
+      "usage": "call",
+      "via": null,
+      "count": 3,
+      "lineRange": {
+        "start": 202,
+        "end": 202
+      }
+    },
+    {
+      "name": "len",
+      "usage": "call",
+      "via": null,
+      "count": 4,
+      "lineRange": {
+        "start": 234,
+        "end": 234
+      }
+    },
+    {
+      "name": "share_mapping.ShareMapping.get_by_instance_uuid_and_share_id",
+      "usage": "call",
+      "via": "nova.objects",
+      "count": 6,
+      "lineRange": {
+        "start": 345,
+        "end": 345
+      }
+    },
+    {
+      "name": "mock.patch",
+      "usage": "call",
+      "via": "unittest",
+      "count": 4,
+      "lineRange": {
+        "start": 548,
+        "end": 548
+      }
+    }
+  ],
+  "dependencies": [
+    {
+      "style": "import",
+      "module": "fixtures",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 13,
+        "end": 13
+      }
+    },
+    {
+      "style": "from",
+      "module": "lxml",
+      "names": [
+        {
+          "alias": null,
+          "name": "etree"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 14,
+        "end": 14
+      }
+    },
+    {
+      "style": "import",
+      "module": "os",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 15,
+        "end": 15
+      }
+    },
+    {
+      "style": "from",
+      "module": "requests",
+      "names": [
+        {
+          "alias": null,
+          "name": "request"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 16,
+        "end": 16
+      }
+    },
+    {
+      "style": "from",
+      "module": "unittest",
+      "names": [
+        {
+          "alias": null,
+          "name": "mock"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 17,
+        "end": 17
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": "nova_context",
+          "name": "context"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 19,
+        "end": 19
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "exception"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 20,
+        "end": 20
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.objects",
+      "names": [
+        {
+          "alias": null,
+          "name": "instance"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 21,
+        "end": 21
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.objects",
+      "names": [
+        {
+          "alias": null,
+          "name": "share_mapping"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 22,
+        "end": 22
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.tests",
+      "names": [
+        {
+          "alias": "nova_fixtures",
+          "name": "fixtures"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 23,
+        "end": 23
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.tests.functional.api",
+      "names": [
+        {
+          "alias": null,
+          "name": "client"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 24,
+        "end": 24
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.tests.functional.libvirt",
+      "names": [
+        {
+          "alias": null,
+          "name": "base"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 25,
+        "end": 25
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_concurrency",
+      "names": [
+        {
+          "alias": null,
+          "name": "processutils"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 27,
+        "end": 27
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_config",
+      "names": [
+        {
+          "alias": null,
+          "name": "cfg"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 28,
+        "end": 28
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_log",
+      "names": [
+        {
+          "alias": "logging",
+          "name": "log"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 29,
+        "end": 29
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_serialization",
+      "names": [
+        {
+          "alias": null,
+          "name": "jsonutils"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 30,
+        "end": 30
+      }
+    }
+  ],
+  "sideEffects": [
+    {
+      "kind": "global-mutation",
+      "target": "CONF = cfg.CONF",
+      "lineRange": {
+        "start": 32,
+        "end": 32
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "LOG = logging.getLogger(__name__)",
+      "lineRange": {
+        "start": 33,
+        "end": 33
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "ADMIN_API = True",
+      "lineRange": {
+        "start": 38,
+        "end": 38
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "FAKE_LIBVIRT_VERSION = 8000000",
+      "lineRange": {
+        "start": 39,
+        "end": 39
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "FAKE_QEMU_VERSION = 6002000",
+      "lineRange": {
+        "start": 40,
+        "end": 40
+      }
+    }
+  ],
+  "securitySurface": [
+    {
+      "kind": "entry-point",
+      "category": "env",
+      "description": "os.environ['OS_DEBUG'] = \"true\"",
+      "lineRange": {
+        "start": 310,
+        "end": 310
+      }
+    },
+    {
+      "kind": "entry-point",
+      "category": "env",
+      "description": "os.environ['OS_DEBUG'] = \"true\"",
+      "lineRange": {
+        "start": 415,
+        "end": 415
+      }
+    },
+    {
+      "kind": "entry-point",
+      "category": "env",
+      "description": "os.environ['OS_DEBUG'] = \"true\"",
+      "lineRange": {
+        "start": 454,
+        "end": 454
+      }
+    }
+  ],
+  "injection_flags": [],
+  "warnings": []
+}

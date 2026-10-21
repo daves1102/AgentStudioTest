@@ -1,0 +1,478 @@
+{
+  "file": "src/nova/tests/functional/regressions/test_bug_2080531.py",
+  "hash": "3701fa0d6ccdf63800fb589ed77565de4aca07195658b26bfab78d8d344557b0",
+  "language": "Python",
+  "component": "nova",
+  "package": null,
+  "lines": {
+    "blank": 22,
+    "code": 95,
+    "comment": 11,
+    "total": 128
+  },
+  "symbols": [
+    {
+      "name": "InterfaceAttachMtuRegressionTest",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 24,
+        "end": 128
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "setUp",
+      "kind": "method",
+      "scope": "InterfaceAttachMtuRegressionTest",
+      "lineRange": {
+        "start": 35,
+        "end": 73
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 33,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "_create_server_and_attach_interface_from_new_network",
+      "kind": "method",
+      "scope": "InterfaceAttachMtuRegressionTest",
+      "lineRange": {
+        "start": 75,
+        "end": 87
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "server",
+          "line": 87
+        }
+      ],
+      "nloc": 11,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "_get_network_info_by_port",
+      "kind": "method",
+      "scope": "InterfaceAttachMtuRegressionTest",
+      "lineRange": {
+        "start": 89,
+        "end": 92
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "instance_uuid"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "{vif['id']: vif for vif in nw_info}",
+          "line": 92
+        }
+      ],
+      "nloc": 4,
+      "ccn": 2,
+      "visibility": "private"
+    },
+    {
+      "name": "test_attach_interface_from_new_network_preserves_existing_mtu",
+      "kind": "method",
+      "scope": "InterfaceAttachMtuRegressionTest",
+      "lineRange": {
+        "start": 94,
+        "end": 106
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 12,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_live_migration_succeeds_after_interface_attach",
+      "kind": "method",
+      "scope": "InterfaceAttachMtuRegressionTest",
+      "lineRange": {
+        "start": 108,
+        "end": 128
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 8,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "fake_live_migration",
+      "kind": "function",
+      "scope": "InterfaceAttachMtuRegressionTest.test_live_migration_succeeds_after_interface_attach",
+      "lineRange": {
+        "start": 111,
+        "end": 121
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "ctxt"
+        },
+        {
+          "name": "instance"
+        },
+        {
+          "name": "dest"
+        },
+        {
+          "name": "post_method"
+        },
+        {
+          "name": "recover_method"
+        },
+        {
+          "default": "False",
+          "name": "block_migration"
+        },
+        {
+          "default": "None",
+          "name": "migrate_data"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "visibility": "public"
+    }
+  ],
+  "referencedSymbols": [
+    {
+      "name": "integrated_helpers.InstanceHelperMixin",
+      "usage": "inherit",
+      "via": "nova.tests.functional",
+      "count": 1,
+      "lineRange": {
+        "start": 25,
+        "end": 25
+      }
+    },
+    {
+      "name": "test.TestCase",
+      "usage": "inherit",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 25,
+        "end": 25
+      }
+    },
+    {
+      "name": "super",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 36,
+        "end": 36
+      }
+    },
+    {
+      "name": "func_fixtures.PlacementFixture",
+      "usage": "call",
+      "via": "nova.tests.functional",
+      "count": 1,
+      "lineRange": {
+        "start": 38,
+        "end": 38
+      }
+    },
+    {
+      "name": "nova_fixtures.NeutronFixture",
+      "usage": "call",
+      "via": "nova.tests",
+      "count": 1,
+      "lineRange": {
+        "start": 39,
+        "end": 39
+      }
+    },
+    {
+      "name": "nova_fixtures.GlanceFixture",
+      "usage": "call",
+      "via": "nova.tests",
+      "count": 1,
+      "lineRange": {
+        "start": 40,
+        "end": 40
+      }
+    },
+    {
+      "name": "nova_fixtures.NotificationFixture",
+      "usage": "call",
+      "via": "nova.tests",
+      "count": 1,
+      "lineRange": {
+        "start": 42,
+        "end": 42
+      }
+    },
+    {
+      "name": "nova_fixtures.OSAPIFixture",
+      "usage": "call",
+      "via": "nova.tests",
+      "count": 1,
+      "lineRange": {
+        "start": 44,
+        "end": 44
+      }
+    },
+    {
+      "name": "copy.deepcopy",
+      "usage": "call",
+      "via": "copy",
+      "count": 1,
+      "lineRange": {
+        "start": 59,
+        "end": 59
+      }
+    },
+    {
+      "name": "context.get_admin_context",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 73,
+        "end": 73
+      }
+    },
+    {
+      "name": "objects.Instance.get_by_uuid",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 90,
+        "end": 90
+      }
+    },
+    {
+      "name": "set",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 100,
+        "end": 100
+      }
+    },
+    {
+      "name": "recover_method",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 118,
+        "end": 118
+      }
+    },
+    {
+      "name": "test.TestingException",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 119,
+        "end": 119
+      }
+    },
+    {
+      "name": "post_method",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 121,
+        "end": 121
+      }
+    },
+    {
+      "name": "mock.patch.object",
+      "usage": "call",
+      "via": "unittest",
+      "count": 1,
+      "lineRange": {
+        "start": 123,
+        "end": 123
+      }
+    }
+  ],
+  "dependencies": [
+    {
+      "style": "import",
+      "module": "copy",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 13,
+        "end": 13
+      }
+    },
+    {
+      "style": "from",
+      "module": "unittest",
+      "names": [
+        {
+          "alias": null,
+          "name": "mock"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 14,
+        "end": 14
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "context"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 16,
+        "end": 16
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "objects"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 17,
+        "end": 17
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "test"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 18,
+        "end": 18
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.tests",
+      "names": [
+        {
+          "alias": "nova_fixtures",
+          "name": "fixtures"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 19,
+        "end": 19
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.tests.functional",
+      "names": [
+        {
+          "alias": "func_fixtures",
+          "name": "fixtures"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 20,
+        "end": 20
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.tests.functional",
+      "names": [
+        {
+          "alias": null,
+          "name": "integrated_helpers"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 21,
+        "end": 21
+      }
+    }
+  ],
+  "sideEffects": [],
+  "securitySurface": [
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "self.attached_port.update({",
+      "lineRange": {
+        "start": 60,
+        "end": 60
+      }
+    }
+  ],
+  "injection_flags": [],
+  "warnings": []
+}

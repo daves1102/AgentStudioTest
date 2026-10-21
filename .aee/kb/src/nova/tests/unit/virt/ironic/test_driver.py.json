@@ -1,0 +1,7168 @@
+{
+  "file": "src/nova/tests/unit/virt/ironic/test_driver.py",
+  "hash": "4776c2629f0b0ffb2a82bd7aa78a50337ed02b194f6519c96bd13751da2c17f0",
+  "language": "Python",
+  "component": "nova",
+  "package": null,
+  "lines": {
+    "blank": 576,
+    "code": 3259,
+    "comment": 106,
+    "total": 3941
+  },
+  "symbols": [
+    {
+      "name": "CONF",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 61,
+        "end": 61
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "SENTINEL",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 63,
+        "end": 63
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "FakeLoopingCall",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 66,
+        "end": 70
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "__init__",
+      "kind": "method",
+      "scope": "FakeLoopingCall",
+      "lineRange": {
+        "start": 67,
+        "end": 70
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 4,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "_get_properties",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 73,
+        "end": 78
+      },
+      "source": "aee-inventory",
+      "parameters": [],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "{'cpus': 2, 'memory_mb': 512, 'local_gb': 10, 'cpu_arch': 'x86_64', 'capabilities': None}",
+          "line": 74
+        }
+      ],
+      "nloc": 6,
+      "ccn": 1,
+      "exported": false
+    },
+    {
+      "name": "_get_instance_info",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 81,
+        "end": 84
+      },
+      "source": "aee-inventory",
+      "parameters": [],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "{'vcpus': 1, 'memory_mb': 1024, 'local_gb': 10}",
+          "line": 82
+        }
+      ],
+      "nloc": 4,
+      "ccn": 1,
+      "exported": false
+    },
+    {
+      "name": "_get_stats",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 87,
+        "end": 88
+      },
+      "source": "aee-inventory",
+      "parameters": [],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "{'cpu_arch': 'x86_64'}",
+          "line": 88
+        }
+      ],
+      "nloc": 2,
+      "ccn": 1,
+      "exported": false
+    },
+    {
+      "name": "_get_cached_node",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 91,
+        "end": 93
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "**kw"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "ironic_utils.get_test_node(**kw)",
+          "line": 93
+        }
+      ],
+      "nloc": 2,
+      "ccn": 1,
+      "exported": false
+    },
+    {
+      "name": "_make_compute_service",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 96,
+        "end": 97
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "hostname"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "objects.Service(host=hostname)",
+          "line": 97
+        }
+      ],
+      "nloc": 2,
+      "ccn": 1,
+      "exported": false
+    },
+    {
+      "name": "IronicDriverTestCase",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 101,
+        "end": 2778
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "setUp",
+      "kind": "method",
+      "scope": "IronicDriverTestCase",
+      "lineRange": {
+        "start": 105,
+        "end": 125
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_sg"
+        },
+        {
+          "name": "mock_hash"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 13,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_public_api_signatures",
+      "kind": "method",
+      "scope": "IronicDriverTestCase",
+      "lineRange": {
+        "start": 127,
+        "end": 128
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_validate_driver_loading",
+      "kind": "method",
+      "scope": "IronicDriverTestCase",
+      "lineRange": {
+        "start": 130,
+        "end": 131
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_driver_capabilities",
+      "kind": "method",
+      "scope": "IronicDriverTestCase",
+      "lineRange": {
+        "start": 133,
+        "end": 143
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 11,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test__get_hypervisor_type",
+      "kind": "method",
+      "scope": "IronicDriverTestCase",
+      "lineRange": {
+        "start": 145,
+        "end": 146
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test__get_hypervisor_version",
+      "kind": "method",
+      "scope": "IronicDriverTestCase",
+      "lineRange": {
+        "start": 148,
+        "end": 149
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test__get_node",
+      "kind": "method",
+      "scope": "IronicDriverTestCase",
+      "lineRange": {
+        "start": 151,
+        "end": 160
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 8,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test__get_node_not_found",
+      "kind": "method",
+      "scope": "IronicDriverTestCase",
+      "lineRange": {
+        "start": 162,
+        "end": 169
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 7,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test__validate_instance_and_node",
+      "kind": "method",
+      "scope": "IronicDriverTestCase",
+      "lineRange": {
+        "start": 171,
+        "end": 181
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 11,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test__validate_instance_and_node_failed",
+      "kind": "method",
+      "scope": "IronicDriverTestCase",
+      "lineRange": {
+        "start": 183,
+        "end": 191
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 9,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test__validate_instance_and_node_unexpected_many_nodes",
+      "kind": "method",
+      "scope": "IronicDriverTestCase",
+      "lineRange": {
+        "start": 193,
+        "end": 201
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 9,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test__wait_for_active_pass",
+      "kind": "method",
+      "scope": "IronicDriverTestCase",
+      "lineRange": {
+        "start": 206,
+        "end": 214
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "fake_validate"
+        },
+        {
+          "name": "fake_refresh"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 8,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test__wait_for_active_done",
+      "kind": "method",
+      "scope": "IronicDriverTestCase",
+      "lineRange": {
+        "start": 219,
+        "end": 228
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "fake_validate"
+        },
+        {
+          "name": "fake_refresh"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 9,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test__wait_for_active_from_error",
+      "kind": "method",
+      "scope": "IronicDriverTestCase",
+      "lineRange": {
+        "start": 233,
+        "end": 245
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "fake_validate"
+        },
+        {
+          "name": "fake_refresh"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 12,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test__wait_for_active_fail",
+      "kind": "method",
+      "scope": "IronicDriverTestCase",
+      "lineRange": {
+        "start": 250,
+        "end": 259
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "fake_validate"
+        },
+        {
+          "name": "fake_refresh"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 9,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "_wait_for_active_abort",
+      "kind": "method",
+      "scope": "IronicDriverTestCase",
+      "lineRange": {
+        "start": 264,
+        "end": 273
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "instance_params"
+        },
+        {
+          "name": "fake_validate"
+        },
+        {
+          "name": "fake_refresh"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 9,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "test__wait_for_active_abort_deleting",
+      "kind": "method",
+      "scope": "IronicDriverTestCase",
+      "lineRange": {
+        "start": 275,
+        "end": 276
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test__wait_for_active_abort_deleted",
+      "kind": "method",
+      "scope": "IronicDriverTestCase",
+      "lineRange": {
+        "start": 278,
+        "end": 279
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test__wait_for_active_abort_error",
+      "kind": "method",
+      "scope": "IronicDriverTestCase",
+      "lineRange": {
+        "start": 281,
+        "end": 283
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 3,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test__wait_for_power_state_pass",
+      "kind": "method",
+      "scope": "IronicDriverTestCase",
+      "lineRange": {
+        "start": 287,
+        "end": 294
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "fake_validate"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 7,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test__wait_for_power_state_ok",
+      "kind": "method",
+      "scope": "IronicDriverTestCase",
+      "lineRange": {
+        "start": 298,
+        "end": 306
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "fake_validate"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 8,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test__node_resource_with_instance_uuid",
+      "kind": "method",
+      "scope": "IronicDriverTestCase",
+      "lineRange": {
+        "start": 308,
+        "end": 341
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 31,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test__node_resource_canonicalizes_arch",
+      "kind": "method",
+      "scope": "IronicDriverTestCase",
+      "lineRange": {
+        "start": 343,
+        "end": 351
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 8,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test__node_resource_unknown_arch",
+      "kind": "method",
+      "scope": "IronicDriverTestCase",
+      "lineRange": {
+        "start": 353,
+        "end": 360
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 7,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test__node_resource_exposes_capabilities",
+      "kind": "method",
+      "scope": "IronicDriverTestCase",
+      "lineRange": {
+        "start": 362,
+        "end": 370
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 9,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test__node_resource_no_capabilities",
+      "kind": "method",
+      "scope": "IronicDriverTestCase",
+      "lineRange": {
+        "start": 372,
+        "end": 377
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 6,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test__node_resource_malformed_capabilities",
+      "kind": "method",
+      "scope": "IronicDriverTestCase",
+      "lineRange": {
+        "start": 379,
+        "end": 385
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 7,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test__node_resource_available",
+      "kind": "method",
+      "scope": "IronicDriverTestCase",
+      "lineRange": {
+        "start": 387,
+        "end": 406
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 19,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test__node_resource_unavailable_node_res",
+      "kind": "method",
+      "scope": "IronicDriverTestCase",
+      "lineRange": {
+        "start": 410,
+        "end": 429
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_res_unavail"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 19,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test__node_resource_used_node_res",
+      "kind": "method",
+      "scope": "IronicDriverTestCase",
+      "lineRange": {
+        "start": 433,
+        "end": 454
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_res_used"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 21,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test__parse_node_properties",
+      "kind": "method",
+      "scope": "IronicDriverTestCase",
+      "lineRange": {
+        "start": 457,
+        "end": 470
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_warning"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 9,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test__parse_node_properties_bad_values",
+      "kind": "method",
+      "scope": "IronicDriverTestCase",
+      "lineRange": {
+        "start": 473,
+        "end": 493
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_warning"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 18,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test__parse_node_properties_canonicalize_cpu_arch",
+      "kind": "method",
+      "scope": "IronicDriverTestCase",
+      "lineRange": {
+        "start": 496,
+        "end": 513
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_warning"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 12,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_instance_exists",
+      "kind": "method",
+      "scope": "IronicDriverTestCase",
+      "lineRange": {
+        "start": 515,
+        "end": 527
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 11,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_instance_exists_fail",
+      "kind": "method",
+      "scope": "IronicDriverTestCase",
+      "lineRange": {
+        "start": 529,
+        "end": 537
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 8,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test__get_node_list",
+      "kind": "method",
+      "scope": "IronicDriverTestCase",
+      "lineRange": {
+        "start": 539,
+        "end": 549
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 9,
+      "ccn": 2,
+      "visibility": "public"
+    },
+    {
+      "name": "test__get_node_list_generator",
+      "kind": "method",
+      "scope": "IronicDriverTestCase",
+      "lineRange": {
+        "start": 551,
+        "end": 564
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 10,
+      "ccn": 2,
+      "visibility": "public"
+    },
+    {
+      "name": "test__get_node_list_fail",
+      "kind": "method",
+      "scope": "IronicDriverTestCase",
+      "lineRange": {
+        "start": 566,
+        "end": 573
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 7,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_list_instances",
+      "kind": "method",
+      "scope": "IronicDriverTestCase",
+      "lineRange": {
+        "start": 576,
+        "end": 596
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_inst_by_uuid"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 19,
+      "ccn": 2,
+      "visibility": "public"
+    },
+    {
+      "name": "test_list_instances_fail",
+      "kind": "method",
+      "scope": "IronicDriverTestCase",
+      "lineRange": {
+        "start": 600,
+        "end": 605
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_inst_by_uuid"
+        },
+        {
+          "name": "mock_cache"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 5,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_get_num_instances",
+      "kind": "method",
+      "scope": "IronicDriverTestCase",
+      "lineRange": {
+        "start": 608,
+        "end": 614
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_list_instance_uuids"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 5,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_get_num_instances_fail",
+      "kind": "method",
+      "scope": "IronicDriverTestCase",
+      "lineRange": {
+        "start": 617,
+        "end": 620
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_cache"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 4,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_get_num_instances_no_db_call",
+      "kind": "method",
+      "scope": "IronicDriverTestCase",
+      "lineRange": {
+        "start": 623,
+        "end": 633
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_inst_by_uuid"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 11,
+      "ccn": 2,
+      "visibility": "public"
+    },
+    {
+      "name": "test_list_instance_uuids",
+      "kind": "method",
+      "scope": "IronicDriverTestCase",
+      "lineRange": {
+        "start": 635,
+        "end": 649
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 14,
+      "ccn": 2,
+      "visibility": "public"
+    },
+    {
+      "name": "test_list_instance_uuids_fail",
+      "kind": "method",
+      "scope": "IronicDriverTestCase",
+      "lineRange": {
+        "start": 652,
+        "end": 656
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_cache"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 4,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_node_is_available_empty_cache_empty_list",
+      "kind": "method",
+      "scope": "IronicDriverTestCase",
+      "lineRange": {
+        "start": 660,
+        "end": 673
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_services"
+        },
+        {
+          "name": "mock_instances"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 12,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_node_is_available_empty_cache",
+      "kind": "method",
+      "scope": "IronicDriverTestCase",
+      "lineRange": {
+        "start": 677,
+        "end": 688
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_services"
+        },
+        {
+          "name": "mock_instances"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 10,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_node_is_available_with_cache",
+      "kind": "method",
+      "scope": "IronicDriverTestCase",
+      "lineRange": {
+        "start": 692,
+        "end": 707
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_services"
+        },
+        {
+          "name": "mock_instances"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 11,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test__node_resources_unavailable",
+      "kind": "method",
+      "scope": "IronicDriverTestCase",
+      "lineRange": {
+        "start": 709,
+        "end": 757
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 38,
+      "ccn": 3,
+      "visibility": "public"
+    },
+    {
+      "name": "test__node_resources_used",
+      "kind": "method",
+      "scope": "IronicDriverTestCase",
+      "lineRange": {
+        "start": 759,
+        "end": 773
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 13,
+      "ccn": 2,
+      "visibility": "public"
+    },
+    {
+      "name": "test_get_available_nodes",
+      "kind": "method",
+      "scope": "IronicDriverTestCase",
+      "lineRange": {
+        "start": 777,
+        "end": 807
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_gi"
+        },
+        {
+          "name": "mock_services"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 27,
+      "ccn": 4,
+      "visibility": "public"
+    },
+    {
+      "name": "test_update_provider_tree_no_rc",
+      "kind": "method",
+      "scope": "IronicDriverTestCase",
+      "lineRange": {
+        "start": 815,
+        "end": 837
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_nfc"
+        },
+        {
+          "name": "mock_nr"
+        },
+        {
+          "name": "mock_res_unavail"
+        },
+        {
+          "name": "mock_res_used"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 18,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_update_provider_tree_with_rc",
+      "kind": "method",
+      "scope": "IronicDriverTestCase",
+      "lineRange": {
+        "start": 845,
+        "end": 878
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_nfc"
+        },
+        {
+          "name": "mock_nr"
+        },
+        {
+          "name": "mock_res_unavail"
+        },
+        {
+          "name": "mock_res_used"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 28,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_update_provider_tree_only_rc",
+      "kind": "method",
+      "scope": "IronicDriverTestCase",
+      "lineRange": {
+        "start": 886,
+        "end": 919
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_nfc"
+        },
+        {
+          "name": "mock_nr"
+        },
+        {
+          "name": "mock_res_unavail"
+        },
+        {
+          "name": "mock_res_used"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 28,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_update_provider_tree_with_rc_occupied",
+      "kind": "method",
+      "scope": "IronicDriverTestCase",
+      "lineRange": {
+        "start": 927,
+        "end": 960
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_nfc"
+        },
+        {
+          "name": "mock_nr"
+        },
+        {
+          "name": "mock_res_unavail"
+        },
+        {
+          "name": "mock_res_used"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 29,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_update_provider_tree_with_rc_occupied_workaround",
+      "kind": "method",
+      "scope": "IronicDriverTestCase",
+      "lineRange": {
+        "start": 968,
+        "end": 1002
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_nfc"
+        },
+        {
+          "name": "mock_nr"
+        },
+        {
+          "name": "mock_res_unavail"
+        },
+        {
+          "name": "mock_res_used"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 30,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_update_provider_tree_disabled_node",
+      "kind": "method",
+      "scope": "IronicDriverTestCase",
+      "lineRange": {
+        "start": 1010,
+        "end": 1043
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_nfc"
+        },
+        {
+          "name": "mock_nr"
+        },
+        {
+          "name": "mock_res_unavail"
+        },
+        {
+          "name": "mock_res_used"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 29,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_update_provider_tree_no_traits",
+      "kind": "method",
+      "scope": "IronicDriverTestCase",
+      "lineRange": {
+        "start": 1051,
+        "end": 1073
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_nfc"
+        },
+        {
+          "name": "mock_nr"
+        },
+        {
+          "name": "mock_res_unavail"
+        },
+        {
+          "name": "mock_res_used"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 19,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_update_provider_tree_with_traits",
+      "kind": "method",
+      "scope": "IronicDriverTestCase",
+      "lineRange": {
+        "start": 1081,
+        "end": 1113
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_nfc"
+        },
+        {
+          "name": "mock_nr"
+        },
+        {
+          "name": "mock_res_unavail"
+        },
+        {
+          "name": "mock_res_used"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 27,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_get_available_resource",
+      "kind": "method",
+      "scope": "IronicDriverTestCase",
+      "lineRange": {
+        "start": 1118,
+        "end": 1133
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_nr"
+        },
+        {
+          "name": "mock_services"
+        },
+        {
+          "name": "mock_instances"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 14,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_get_available_resource_with_cache",
+      "kind": "method",
+      "scope": "IronicDriverTestCase",
+      "lineRange": {
+        "start": 1138,
+        "end": 1153
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_nr"
+        },
+        {
+          "name": "mock_services"
+        },
+        {
+          "name": "mock_instances"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 13,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_get_info",
+      "kind": "method",
+      "scope": "IronicDriverTestCase",
+      "lineRange": {
+        "start": 1158,
+        "end": 1180
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_svc_by_hv"
+        },
+        {
+          "name": "mock_uuids_by_host"
+        },
+        {
+          "name": "mock_get_node_list"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 19,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_get_info_cached",
+      "kind": "method",
+      "scope": "IronicDriverTestCase",
+      "lineRange": {
+        "start": 1185,
+        "end": 1203
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_svc_by_hv"
+        },
+        {
+          "name": "mock_uuids_by_host"
+        },
+        {
+          "name": "mock_get_node_list"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 15,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_get_info_not_found_in_cache",
+      "kind": "method",
+      "scope": "IronicDriverTestCase",
+      "lineRange": {
+        "start": 1208,
+        "end": 1232
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_svc_by_hv"
+        },
+        {
+          "name": "mock_uuids_by_host"
+        },
+        {
+          "name": "mock_get_node_list"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 21,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_get_info_skip_cache",
+      "kind": "method",
+      "scope": "IronicDriverTestCase",
+      "lineRange": {
+        "start": 1237,
+        "end": 1260
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_svc_by_hv"
+        },
+        {
+          "name": "mock_uuids_by_host"
+        },
+        {
+          "name": "mock_get_node_list"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 19,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test__get_node_list_bad_response",
+      "kind": "method",
+      "scope": "IronicDriverTestCase",
+      "lineRange": {
+        "start": 1263,
+        "end": 1275
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_error"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 11,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_get_info_http_not_found",
+      "kind": "method",
+      "scope": "IronicDriverTestCase",
+      "lineRange": {
+        "start": 1279,
+        "end": 1294
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_svc_by_hv"
+        },
+        {
+          "name": "mock_uuids_by_host"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 15,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "_test_spawn",
+      "kind": "method",
+      "scope": "IronicDriverTestCase",
+      "lineRange": {
+        "start": 1304,
+        "end": 1350
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_aiitn"
+        },
+        {
+          "name": "mock_wait_active"
+        },
+        {
+          "name": "mock_avti"
+        },
+        {
+          "name": "mock_looping"
+        },
+        {
+          "name": "mock_save"
+        },
+        {
+          "name": "mock_metadata"
+        },
+        {
+          "default": "None",
+          "name": "config_drive_value"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 40,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "test_spawn",
+      "kind": "method",
+      "scope": "IronicDriverTestCase",
+      "lineRange": {
+        "start": 1354,
+        "end": 1358
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_required_by"
+        },
+        {
+          "name": "mock_configdrive"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 4,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_spawn_with_configdrive",
+      "kind": "method",
+      "scope": "IronicDriverTestCase",
+      "lineRange": {
+        "start": 1362,
+        "end": 1369
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_required_by"
+        },
+        {
+          "name": "mock_configdrive"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 7,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_spawn_destroyed_after_failure",
+      "kind": "method",
+      "scope": "IronicDriverTestCase",
+      "lineRange": {
+        "start": 1380,
+        "end": 1408
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_aiitn"
+        },
+        {
+          "name": "mock_wait_active"
+        },
+        {
+          "name": "mock_avti"
+        },
+        {
+          "name": "mock_destroy"
+        },
+        {
+          "name": "mock_looping"
+        },
+        {
+          "name": "mock_required_by"
+        },
+        {
+          "name": "mock_metadata"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 26,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test__add_instance_info_to_node",
+      "kind": "method",
+      "scope": "IronicDriverTestCase",
+      "lineRange": {
+        "start": 1410,
+        "end": 1453
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 41,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test__remove_instance_info_from_node",
+      "kind": "method",
+      "scope": "IronicDriverTestCase",
+      "lineRange": {
+        "start": 1455,
+        "end": 1462
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 6,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "_create_fake_block_device_info",
+      "kind": "method",
+      "scope": "IronicDriverTestCase",
+      "lineRange": {
+        "start": 1464,
+        "end": 1480
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "{ 'block_device_mapping': [driver_bdm] }",
+          "line": 1478
+        }
+      ],
+      "nloc": 17,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "test__add_volume_target_info",
+      "kind": "method",
+      "scope": "IronicDriverTestCase",
+      "lineRange": {
+        "start": 1482,
+        "end": 1500
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 16,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test__add_volume_target_info_empty_bdms",
+      "kind": "method",
+      "scope": "IronicDriverTestCase",
+      "lineRange": {
+        "start": 1502,
+        "end": 1508
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 5,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test__add_volume_target_info_failures",
+      "kind": "method",
+      "scope": "IronicDriverTestCase",
+      "lineRange": {
+        "start": 1510,
+        "end": 1528
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 17,
+      "ccn": 2,
+      "visibility": "public"
+    },
+    {
+      "name": "test__cleanup_volume_target_info",
+      "kind": "method",
+      "scope": "IronicDriverTestCase",
+      "lineRange": {
+        "start": 1530,
+        "end": 1543
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 12,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test__cleanup_volume_target_info_empty_targets",
+      "kind": "method",
+      "scope": "IronicDriverTestCase",
+      "lineRange": {
+        "start": 1545,
+        "end": 1552
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 6,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test__cleanup_volume_target_info_not_found",
+      "kind": "method",
+      "scope": "IronicDriverTestCase",
+      "lineRange": {
+        "start": 1554,
+        "end": 1573
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 18,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test__cleanup_volume_target_info_bad_request",
+      "kind": "method",
+      "scope": "IronicDriverTestCase",
+      "lineRange": {
+        "start": 1575,
+        "end": 1594
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 18,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_spawn_node_driver_validation_fail",
+      "kind": "method",
+      "scope": "IronicDriverTestCase",
+      "lineRange": {
+        "start": 1600,
+        "end": 1632
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_avti"
+        },
+        {
+          "name": "mock_required_by"
+        },
+        {
+          "name": "mock_metadata"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 30,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_spawn_node_configdrive_fail",
+      "kind": "method",
+      "scope": "IronicDriverTestCase",
+      "lineRange": {
+        "start": 1640,
+        "end": 1667
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_configdrive"
+        },
+        {
+          "name": "mock_avti"
+        },
+        {
+          "name": "mock_save"
+        },
+        {
+          "name": "mock_required_by"
+        },
+        {
+          "name": "mock_metadata"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 26,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_spawn_node_trigger_deploy_fail",
+      "kind": "method",
+      "scope": "IronicDriverTestCase",
+      "lineRange": {
+        "start": 1674,
+        "end": 1705
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_cleanup_deploy"
+        },
+        {
+          "name": "mock_avti"
+        },
+        {
+          "name": "mock_required_by"
+        },
+        {
+          "name": "mock_metadata"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 29,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_spawn_node_trigger_deploy_fail_invalid_image",
+      "kind": "method",
+      "scope": "IronicDriverTestCase",
+      "lineRange": {
+        "start": 1712,
+        "end": 1750
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_cleanup_deploy"
+        },
+        {
+          "name": "mock_avti"
+        },
+        {
+          "name": "mock_required_by"
+        },
+        {
+          "name": "mock_metadata"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 34,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_spawn_sets_default_ephemeral_device",
+      "kind": "method",
+      "scope": "IronicDriverTestCase",
+      "lineRange": {
+        "start": 1759,
+        "end": 1779
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_wait"
+        },
+        {
+          "name": "mock_avti"
+        },
+        {
+          "name": "mock_save"
+        },
+        {
+          "name": "mock_looping"
+        },
+        {
+          "name": "mock_required_by"
+        },
+        {
+          "name": "mock_metadata"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 19,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "_test_destroy",
+      "kind": "method",
+      "scope": "IronicDriverTestCase",
+      "lineRange": {
+        "start": 1784,
+        "end": 1818
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "state"
+        },
+        {
+          "name": "mock_cleanup_deploy"
+        },
+        {
+          "name": "mock_remove_instance_info"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 25,
+      "ccn": 2,
+      "visibility": "private"
+    },
+    {
+      "name": "fake_set_node_provision_state",
+      "kind": "function",
+      "scope": "IronicDriverTestCase._test_destroy",
+      "lineRange": {
+        "start": 1793,
+        "end": 1794
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "*_"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "visibility": "public"
+    },
+    {
+      "name": "test_destroy",
+      "kind": "method",
+      "scope": "IronicDriverTestCase",
+      "lineRange": {
+        "start": 1821,
+        "end": 1822
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "state"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_destroy_servicing_states_unprovision",
+      "kind": "method",
+      "scope": "IronicDriverTestCase",
+      "lineRange": {
+        "start": 1827,
+        "end": 1869
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_cleanup_deploy"
+        },
+        {
+          "name": "mock_remove_instance_info"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 28,
+      "ccn": 2,
+      "visibility": "public"
+    },
+    {
+      "name": "fake_set_node_provision_state",
+      "kind": "function",
+      "scope": "IronicDriverTestCase.test_destroy_servicing_states_unprovision",
+      "lineRange": {
+        "start": 1856,
+        "end": 1857
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "*_"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "visibility": "public"
+    },
+    {
+      "name": "test_destroy_unknown_state_unprovision",
+      "kind": "method",
+      "scope": "IronicDriverTestCase",
+      "lineRange": {
+        "start": 1874,
+        "end": 1907
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_cleanup_deploy"
+        },
+        {
+          "name": "mock_remove_instance_info"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 18,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "fake_set_node_provision_state",
+      "kind": "function",
+      "scope": "IronicDriverTestCase.test_destroy_unknown_state_unprovision",
+      "lineRange": {
+        "start": 1894,
+        "end": 1895
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "*_"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "visibility": "public"
+    },
+    {
+      "name": "test_destroy_trigger_undeploy_fail",
+      "kind": "method",
+      "scope": "IronicDriverTestCase",
+      "lineRange": {
+        "start": 1913,
+        "end": 1930
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_clean"
+        },
+        {
+          "name": "fake_validate"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 17,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "_test__unprovision_instance",
+      "kind": "method",
+      "scope": "IronicDriverTestCase",
+      "lineRange": {
+        "start": 1934,
+        "end": 1944
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_validate_inst"
+        },
+        {
+          "default": "None",
+          "name": "state"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 11,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "test__unprovision_cleaning",
+      "kind": "method",
+      "scope": "IronicDriverTestCase",
+      "lineRange": {
+        "start": 1946,
+        "end": 1947
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test__unprovision_cleanwait",
+      "kind": "method",
+      "scope": "IronicDriverTestCase",
+      "lineRange": {
+        "start": 1949,
+        "end": 1950
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test__unprovision_fail_max_retries",
+      "kind": "method",
+      "scope": "IronicDriverTestCase",
+      "lineRange": {
+        "start": 1954,
+        "end": 1968
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_validate_inst"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 14,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test__unprovision_instance_not_found",
+      "kind": "method",
+      "scope": "IronicDriverTestCase",
+      "lineRange": {
+        "start": 1972,
+        "end": 1983
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_validate_inst"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 11,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_destroy_unassociate_fail",
+      "kind": "method",
+      "scope": "IronicDriverTestCase",
+      "lineRange": {
+        "start": 1985,
+        "end": 2006
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 20,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_reboot",
+      "kind": "method",
+      "scope": "IronicDriverTestCase",
+      "lineRange": {
+        "start": 2011,
+        "end": 2021
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "fake_validate"
+        },
+        {
+          "name": "mock_looping"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 10,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_trigger_crash_dump",
+      "kind": "method",
+      "scope": "IronicDriverTestCase",
+      "lineRange": {
+        "start": 2025,
+        "end": 2030
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "fake_validate"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 6,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_trigger_crash_dump_error",
+      "kind": "method",
+      "scope": "IronicDriverTestCase",
+      "lineRange": {
+        "start": 2034,
+        "end": 2041
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "fake_validate"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 8,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_reboot_soft",
+      "kind": "method",
+      "scope": "IronicDriverTestCase",
+      "lineRange": {
+        "start": 2046,
+        "end": 2056
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "fake_validate"
+        },
+        {
+          "name": "mock_looping"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 10,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_reboot_soft_not_supported",
+      "kind": "method",
+      "scope": "IronicDriverTestCase",
+      "lineRange": {
+        "start": 2061,
+        "end": 2078
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "fake_validate"
+        },
+        {
+          "name": "mock_looping"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 17,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_power_update_event",
+      "kind": "method",
+      "scope": "IronicDriverTestCase",
+      "lineRange": {
+        "start": 2081,
+        "end": 2092
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_save"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 12,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_power_on",
+      "kind": "method",
+      "scope": "IronicDriverTestCase",
+      "lineRange": {
+        "start": 2097,
+        "end": 2114
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "fake_validate"
+        },
+        {
+          "name": "mock_looping"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 16,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "_test_power_off",
+      "kind": "method",
+      "scope": "IronicDriverTestCase",
+      "lineRange": {
+        "start": 2117,
+        "end": 2123
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_looping"
+        },
+        {
+          "default": "0",
+          "name": "timeout"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 6,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "test_power_off",
+      "kind": "method",
+      "scope": "IronicDriverTestCase",
+      "lineRange": {
+        "start": 2127,
+        "end": 2135
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "fake_validate"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 7,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_power_off_soft",
+      "kind": "method",
+      "scope": "IronicDriverTestCase",
+      "lineRange": {
+        "start": 2139,
+        "end": 2148
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "fake_validate"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 8,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_power_off_soft_exception",
+      "kind": "method",
+      "scope": "IronicDriverTestCase",
+      "lineRange": {
+        "start": 2152,
+        "end": 2169
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "fake_validate"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 16,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_power_off_soft_not_stopped",
+      "kind": "method",
+      "scope": "IronicDriverTestCase",
+      "lineRange": {
+        "start": 2173,
+        "end": 2187
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "fake_validate"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 13,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_plug_vifs_with_port",
+      "kind": "method",
+      "scope": "IronicDriverTestCase",
+      "lineRange": {
+        "start": 2189,
+        "end": 2203
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 11,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_plug_vifs",
+      "kind": "method",
+      "scope": "IronicDriverTestCase",
+      "lineRange": {
+        "start": 2206,
+        "end": 2213
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock__plug_vifs"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 7,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_plug_vifs_multiple_ports",
+      "kind": "method",
+      "scope": "IronicDriverTestCase",
+      "lineRange": {
+        "start": 2215,
+        "end": 2235
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 19,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_plug_vifs_failure",
+      "kind": "method",
+      "scope": "IronicDriverTestCase",
+      "lineRange": {
+        "start": 2237,
+        "end": 2257
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 21,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_plug_vifs_already_attached",
+      "kind": "method",
+      "scope": "IronicDriverTestCase",
+      "lineRange": {
+        "start": 2259,
+        "end": 2275
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 17,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_plug_vifs_no_network_info",
+      "kind": "method",
+      "scope": "IronicDriverTestCase",
+      "lineRange": {
+        "start": 2277,
+        "end": 2287
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 8,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_unplug_vifs",
+      "kind": "method",
+      "scope": "IronicDriverTestCase",
+      "lineRange": {
+        "start": 2289,
+        "end": 2303
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 12,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_unplug_vifs_port_not_associated",
+      "kind": "method",
+      "scope": "IronicDriverTestCase",
+      "lineRange": {
+        "start": 2305,
+        "end": 2319
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 13,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_unplug_vifs_no_network_info",
+      "kind": "method",
+      "scope": "IronicDriverTestCase",
+      "lineRange": {
+        "start": 2321,
+        "end": 2325
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 5,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_attach_interface",
+      "kind": "method",
+      "scope": "IronicDriverTestCase",
+      "lineRange": {
+        "start": 2328,
+        "end": 2337
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_pv"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 9,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_detach_interface",
+      "kind": "method",
+      "scope": "IronicDriverTestCase",
+      "lineRange": {
+        "start": 2340,
+        "end": 2343
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_uv"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 4,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "_test_rebuild",
+      "kind": "method",
+      "scope": "IronicDriverTestCase",
+      "lineRange": {
+        "start": 2352,
+        "end": 2397
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_save"
+        },
+        {
+          "name": "mock_add_instance_info"
+        },
+        {
+          "name": "mock_looping"
+        },
+        {
+          "name": "mock_wait_active"
+        },
+        {
+          "name": "mock_metadata"
+        },
+        {
+          "default": "False",
+          "name": "preserve"
+        },
+        {
+          "default": "False",
+          "name": "reimage_boot_volume"
+        },
+        {
+          "default": "None",
+          "name": "block_device_info"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 40,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "test_rebuild_preserve_ephemeral",
+      "kind": "method",
+      "scope": "IronicDriverTestCase",
+      "lineRange": {
+        "start": 2401,
+        "end": 2406
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_required_by"
+        },
+        {
+          "name": "mock_configdrive"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 5,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_rebuild_no_preserve_ephemeral",
+      "kind": "method",
+      "scope": "IronicDriverTestCase",
+      "lineRange": {
+        "start": 2410,
+        "end": 2413
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_required_by"
+        },
+        {
+          "name": "mock_configdrive"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 4,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_rebuild_with_configdrive",
+      "kind": "method",
+      "scope": "IronicDriverTestCase",
+      "lineRange": {
+        "start": 2417,
+        "end": 2423
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_required_by"
+        },
+        {
+          "name": "mock_configdrive"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 6,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_rebuild_bfv_fails",
+      "kind": "method",
+      "scope": "IronicDriverTestCase",
+      "lineRange": {
+        "start": 2427,
+        "end": 2437
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_required_by"
+        },
+        {
+          "name": "mock_configdrive"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 11,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_rebuild_with_configdrive_failure",
+      "kind": "method",
+      "scope": "IronicDriverTestCase",
+      "lineRange": {
+        "start": 2446,
+        "end": 2473
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_save"
+        },
+        {
+          "name": "mock_add_instance_info"
+        },
+        {
+          "name": "mock_required_by"
+        },
+        {
+          "name": "mock_configdrive"
+        },
+        {
+          "name": "mock_metadata"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 25,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_rebuild_failures",
+      "kind": "method",
+      "scope": "IronicDriverTestCase",
+      "lineRange": {
+        "start": 2482,
+        "end": 2511
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_save"
+        },
+        {
+          "name": "mock_add_instance_info"
+        },
+        {
+          "name": "mock_required_by"
+        },
+        {
+          "name": "mock_configdrive"
+        },
+        {
+          "name": "mock_metadata"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 27,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_network_binding_host_id",
+      "kind": "method",
+      "scope": "IronicDriverTestCase",
+      "lineRange": {
+        "start": 2513,
+        "end": 2524
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 12,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_get_volume_connector",
+      "kind": "method",
+      "scope": "IronicDriverTestCase",
+      "lineRange": {
+        "start": 2526,
+        "end": 2566
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 38,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "_test_get_volume_connector_no_ip",
+      "kind": "method",
+      "scope": "IronicDriverTestCase",
+      "lineRange": {
+        "start": 2569,
+        "end": 2639
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mac_specified"
+        },
+        {
+          "name": "mock_nw_info"
+        },
+        {
+          "default": "False",
+          "name": "portgroup_exist"
+        },
+        {
+          "default": "False",
+          "name": "no_fixed_ip"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 68,
+      "ccn": 6,
+      "visibility": "private"
+    },
+    {
+      "name": "test_get_volume_connector_no_ip_with_mac",
+      "kind": "method",
+      "scope": "IronicDriverTestCase",
+      "lineRange": {
+        "start": 2641,
+        "end": 2642
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_get_volume_connector_no_ip_with_mac_with_portgroup",
+      "kind": "method",
+      "scope": "IronicDriverTestCase",
+      "lineRange": {
+        "start": 2644,
+        "end": 2645
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_get_volume_connector_no_ip_without_mac",
+      "kind": "method",
+      "scope": "IronicDriverTestCase",
+      "lineRange": {
+        "start": 2647,
+        "end": 2648
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_get_volume_connector_no_ip_no_fixed_ip",
+      "kind": "method",
+      "scope": "IronicDriverTestCase",
+      "lineRange": {
+        "start": 2650,
+        "end": 2651
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_prepare_networks_before_block_device_mapping",
+      "kind": "method",
+      "scope": "IronicDriverTestCase",
+      "lineRange": {
+        "start": 2654,
+        "end": 2662
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_pvifs"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 9,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_prepare_networks_before_block_device_mapping_error",
+      "kind": "method",
+      "scope": "IronicDriverTestCase",
+      "lineRange": {
+        "start": 2665,
+        "end": 2677
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_pvifs"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 13,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_clean_networks_preparation",
+      "kind": "method",
+      "scope": "IronicDriverTestCase",
+      "lineRange": {
+        "start": 2680,
+        "end": 2684
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_upvifs"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 5,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_clean_networks_preparation_error",
+      "kind": "method",
+      "scope": "IronicDriverTestCase",
+      "lineRange": {
+        "start": 2687,
+        "end": 2692
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_upvifs"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 6,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_prepare_for_spawn",
+      "kind": "method",
+      "scope": "IronicDriverTestCase",
+      "lineRange": {
+        "start": 2694,
+        "end": 2709
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 16,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test__set_instance_id",
+      "kind": "method",
+      "scope": "IronicDriverTestCase",
+      "lineRange": {
+        "start": 2711,
+        "end": 2719
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 7,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_prepare_for_spawn_invalid_instance",
+      "kind": "method",
+      "scope": "IronicDriverTestCase",
+      "lineRange": {
+        "start": 2721,
+        "end": 2726
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 6,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_prepare_for_spawn_conflict",
+      "kind": "method",
+      "scope": "IronicDriverTestCase",
+      "lineRange": {
+        "start": 2728,
+        "end": 2738
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 11,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_prepare_for_spawn_not_available",
+      "kind": "method",
+      "scope": "IronicDriverTestCase",
+      "lineRange": {
+        "start": 2740,
+        "end": 2750
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 11,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_failed_spawn_cleanup",
+      "kind": "method",
+      "scope": "IronicDriverTestCase",
+      "lineRange": {
+        "start": 2753,
+        "end": 2763
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_cleanup"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 9,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test__cleanup_deploy",
+      "kind": "method",
+      "scope": "IronicDriverTestCase",
+      "lineRange": {
+        "start": 2770,
+        "end": 2778
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_remove_info"
+        },
+        {
+          "name": "mock_vol"
+        },
+        {
+          "name": "mock_unvif"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 7,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "IronicDriverSyncTestCase",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 2781,
+        "end": 2943
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "setUp",
+      "kind": "method",
+      "scope": "IronicDriverSyncTestCase",
+      "lineRange": {
+        "start": 2783,
+        "end": 2788
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 4,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_rescue",
+      "kind": "method",
+      "scope": "IronicDriverSyncTestCase",
+      "lineRange": {
+        "start": 2791,
+        "end": 2803
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_looping"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 11,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_rescue_provision_state_fail",
+      "kind": "method",
+      "scope": "IronicDriverSyncTestCase",
+      "lineRange": {
+        "start": 2806,
+        "end": 2823
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_looping"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 16,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_rescue_instance_not_found",
+      "kind": "method",
+      "scope": "IronicDriverSyncTestCase",
+      "lineRange": {
+        "start": 2827,
+        "end": 2840
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "fake_validate"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 12,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_rescue_rescue_fail",
+      "kind": "method",
+      "scope": "IronicDriverSyncTestCase",
+      "lineRange": {
+        "start": 2844,
+        "end": 2857
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "fake_validate"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 12,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_unrescue",
+      "kind": "method",
+      "scope": "IronicDriverSyncTestCase",
+      "lineRange": {
+        "start": 2860,
+        "end": 2870
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_looping"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 9,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_unrescue_provision_state_fail",
+      "kind": "method",
+      "scope": "IronicDriverSyncTestCase",
+      "lineRange": {
+        "start": 2873,
+        "end": 2885
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_looping"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 11,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_unrescue_instance_not_found",
+      "kind": "method",
+      "scope": "IronicDriverSyncTestCase",
+      "lineRange": {
+        "start": 2889,
+        "end": 2898
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "fake_validate"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 8,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_unrescue_unrescue_fail",
+      "kind": "method",
+      "scope": "IronicDriverSyncTestCase",
+      "lineRange": {
+        "start": 2902,
+        "end": 2913
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "fake_validate"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 10,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test__can_send_version",
+      "kind": "method",
+      "scope": "IronicDriverSyncTestCase",
+      "lineRange": {
+        "start": 2916,
+        "end": 2922
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_supports_microversion"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 6,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test__can_send_version_too_new",
+      "kind": "method",
+      "scope": "IronicDriverSyncTestCase",
+      "lineRange": {
+        "start": 2925,
+        "end": 2936
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_supports_microversion"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 11,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test__can_send_version_too_old",
+      "kind": "method",
+      "scope": "IronicDriverSyncTestCase",
+      "lineRange": {
+        "start": 2939,
+        "end": 2940
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test__can_send_version_not_negotiated",
+      "kind": "method",
+      "scope": "IronicDriverSyncTestCase",
+      "lineRange": {
+        "start": 2942,
+        "end": 2943
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "IronicDriverGenerateConfigDriveTestCase",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 2948,
+        "end": 3071
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "setUp",
+      "kind": "method",
+      "scope": "IronicDriverGenerateConfigDriveTestCase",
+      "lineRange": {
+        "start": 2951,
+        "end": 2963
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_services"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 12,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_generate_configdrive",
+      "kind": "method",
+      "scope": "IronicDriverGenerateConfigDriveTestCase",
+      "lineRange": {
+        "start": 2965,
+        "end": 2977
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_cd_builder"
+        },
+        {
+          "name": "mock_instance_meta"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 13,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_generate_configdrive_fail",
+      "kind": "method",
+      "scope": "IronicDriverGenerateConfigDriveTestCase",
+      "lineRange": {
+        "start": 2979,
+        "end": 2997
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_cd_builder"
+        },
+        {
+          "name": "mock_instance_meta"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 17,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "_test_generate_network_metadata",
+      "kind": "method",
+      "scope": "IronicDriverGenerateConfigDriveTestCase",
+      "lineRange": {
+        "start": 2999,
+        "end": 3042
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "default": "None",
+          "name": "address"
+        },
+        {
+          "default": "True",
+          "name": "vif_internal_info"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 41,
+      "ccn": 5,
+      "visibility": "private"
+    },
+    {
+      "name": "test_generate_network_metadata_with_pg_address",
+      "kind": "method",
+      "scope": "IronicDriverGenerateConfigDriveTestCase",
+      "lineRange": {
+        "start": 3044,
+        "end": 3046
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_cd_builder"
+        },
+        {
+          "name": "mock_instance_meta"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 3,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_generate_network_metadata_no_pg_address",
+      "kind": "method",
+      "scope": "IronicDriverGenerateConfigDriveTestCase",
+      "lineRange": {
+        "start": 3048,
+        "end": 3050
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_cd_builder"
+        },
+        {
+          "name": "mock_instance_meta"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 3,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_generate_network_metadata_vif_in_extra",
+      "kind": "method",
+      "scope": "IronicDriverGenerateConfigDriveTestCase",
+      "lineRange": {
+        "start": 3052,
+        "end": 3054
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_cd_builder"
+        },
+        {
+          "name": "mock_instance_meta"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 3,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_generate_network_metadata_ports_only",
+      "kind": "method",
+      "scope": "IronicDriverGenerateConfigDriveTestCase",
+      "lineRange": {
+        "start": 3056,
+        "end": 3071
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_cd_builder"
+        },
+        {
+          "name": "mock_instance_meta"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 13,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "HashRingTestCase",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 3074,
+        "end": 3240
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "setUp",
+      "kind": "method",
+      "scope": "HashRingTestCase",
+      "lineRange": {
+        "start": 3078,
+        "end": 3085
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_sg"
+        },
+        {
+          "name": "mock_services"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 7,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_hash_ring_refreshed_on_init",
+      "kind": "method",
+      "scope": "HashRingTestCase",
+      "lineRange": {
+        "start": 3088,
+        "end": 3092
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_hr"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 5,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "_test__refresh_hash_ring",
+      "kind": "method",
+      "scope": "HashRingTestCase",
+      "lineRange": {
+        "start": 3096,
+        "end": 3112
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "services"
+        },
+        {
+          "name": "expected_hosts"
+        },
+        {
+          "name": "mock_services"
+        },
+        {
+          "name": "mock_hash_ring"
+        },
+        {
+          "default": "None",
+          "name": "uncalled"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 15,
+      "ccn": 5,
+      "visibility": "private"
+    },
+    {
+      "name": "test__refresh_hash_ring_same_host_different_case",
+      "kind": "method",
+      "scope": "HashRingTestCase",
+      "lineRange": {
+        "start": 3114,
+        "end": 3120
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 5,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test__refresh_hash_ring_one_compute",
+      "kind": "method",
+      "scope": "HashRingTestCase",
+      "lineRange": {
+        "start": 3122,
+        "end": 3126
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 5,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test__refresh_hash_ring_many_computes",
+      "kind": "method",
+      "scope": "HashRingTestCase",
+      "lineRange": {
+        "start": 3129,
+        "end": 3135
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_log_debug"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 7,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test__refresh_hash_ring_one_compute_new_compute",
+      "kind": "method",
+      "scope": "HashRingTestCase",
+      "lineRange": {
+        "start": 3137,
+        "end": 3141
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 5,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test__refresh_hash_ring_many_computes_new_compute",
+      "kind": "method",
+      "scope": "HashRingTestCase",
+      "lineRange": {
+        "start": 3143,
+        "end": 3147
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 5,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test__refresh_hash_ring_some_computes_down",
+      "kind": "method",
+      "scope": "HashRingTestCase",
+      "lineRange": {
+        "start": 3149,
+        "end": 3153
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 5,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test__refresh_hash_ring_peer_list",
+      "kind": "method",
+      "scope": "HashRingTestCase",
+      "lineRange": {
+        "start": 3156,
+        "end": 3164
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_can_send"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 9,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test__refresh_hash_ring_peer_list_shard",
+      "kind": "method",
+      "scope": "HashRingTestCase",
+      "lineRange": {
+        "start": 3167,
+        "end": 3175
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_can_send"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 9,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test__refresh_hash_ring_peer_list_shard_and_cg",
+      "kind": "method",
+      "scope": "HashRingTestCase",
+      "lineRange": {
+        "start": 3178,
+        "end": 3189
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_can_send"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 11,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test__refresh_hash_ring_peer_list_old_api",
+      "kind": "method",
+      "scope": "HashRingTestCase",
+      "lineRange": {
+        "start": 3192,
+        "end": 3202
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_can_send"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 11,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test__check_peer_list",
+      "kind": "method",
+      "scope": "HashRingTestCase",
+      "lineRange": {
+        "start": 3205,
+        "end": 3212
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_log"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 7,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test__check_peer_list_empty",
+      "kind": "method",
+      "scope": "HashRingTestCase",
+      "lineRange": {
+        "start": 3215,
+        "end": 3221
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_log"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 7,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test__check_peer_list_missing_self",
+      "kind": "method",
+      "scope": "HashRingTestCase",
+      "lineRange": {
+        "start": 3224,
+        "end": 3230
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_log"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 7,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test__check_peer_list_only_self",
+      "kind": "method",
+      "scope": "HashRingTestCase",
+      "lineRange": {
+        "start": 3233,
+        "end": 3240
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_log"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 7,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "NodeCacheTestCase",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 3243,
+        "end": 3512
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "setUp",
+      "kind": "method",
+      "scope": "NodeCacheTestCase",
+      "lineRange": {
+        "start": 3246,
+        "end": 3255
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_services"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 8,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "_test__refresh_cache",
+      "kind": "method",
+      "scope": "NodeCacheTestCase",
+      "lineRange": {
+        "start": 3262,
+        "end": 3304
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "instances"
+        },
+        {
+          "name": "nodes"
+        },
+        {
+          "name": "hosts"
+        },
+        {
+          "name": "mock_instances"
+        },
+        {
+          "name": "mock_nodes"
+        },
+        {
+          "name": "mock_hosts"
+        },
+        {
+          "name": "mock_hash_ring"
+        },
+        {
+          "name": "mock_can_send"
+        },
+        {
+          "default": "None",
+          "name": "partition_key"
+        },
+        {
+          "default": "True",
+          "name": "can_send_146"
+        },
+        {
+          "default": "None",
+          "name": "shard"
+        },
+        {
+          "default": "True",
+          "name": "can_send_182"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 37,
+      "ccn": 7,
+      "visibility": "private"
+    },
+    {
+      "name": "test__refresh_cache_same_host_different_case",
+      "kind": "method",
+      "scope": "NodeCacheTestCase",
+      "lineRange": {
+        "start": 3306,
+        "end": 3324
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 16,
+      "ccn": 2,
+      "visibility": "public"
+    },
+    {
+      "name": "test__refresh_cache",
+      "kind": "method",
+      "scope": "NodeCacheTestCase",
+      "lineRange": {
+        "start": 3326,
+        "end": 3342
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 14,
+      "ccn": 2,
+      "visibility": "public"
+    },
+    {
+      "name": "test__refresh_cache_partition_key",
+      "kind": "method",
+      "scope": "NodeCacheTestCase",
+      "lineRange": {
+        "start": 3344,
+        "end": 3363
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 17,
+      "ccn": 2,
+      "visibility": "public"
+    },
+    {
+      "name": "test__refresh_cache_shard",
+      "kind": "method",
+      "scope": "NodeCacheTestCase",
+      "lineRange": {
+        "start": 3365,
+        "end": 3384
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 17,
+      "ccn": 2,
+      "visibility": "public"
+    },
+    {
+      "name": "test__refresh_cache_shard_and_conductor_group",
+      "kind": "method",
+      "scope": "NodeCacheTestCase",
+      "lineRange": {
+        "start": 3386,
+        "end": 3407
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 19,
+      "ccn": 2,
+      "visibility": "public"
+    },
+    {
+      "name": "test__refresh_cache_shard_and_conductor_group_skip_shard",
+      "kind": "method",
+      "scope": "NodeCacheTestCase",
+      "lineRange": {
+        "start": 3409,
+        "end": 3431
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 20,
+      "ccn": 2,
+      "visibility": "public"
+    },
+    {
+      "name": "test__refresh_cache_partition_key_old_api",
+      "kind": "method",
+      "scope": "NodeCacheTestCase",
+      "lineRange": {
+        "start": 3433,
+        "end": 3453
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 18,
+      "ccn": 2,
+      "visibility": "public"
+    },
+    {
+      "name": "test__refresh_cache_multiple_services",
+      "kind": "method",
+      "scope": "NodeCacheTestCase",
+      "lineRange": {
+        "start": 3455,
+        "end": 3471
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 14,
+      "ccn": 2,
+      "visibility": "public"
+    },
+    {
+      "name": "test__refresh_cache_our_instances",
+      "kind": "method",
+      "scope": "NodeCacheTestCase",
+      "lineRange": {
+        "start": 3473,
+        "end": 3491
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 14,
+      "ccn": 2,
+      "visibility": "public"
+    },
+    {
+      "name": "test__refresh_cache_their_instances",
+      "kind": "method",
+      "scope": "NodeCacheTestCase",
+      "lineRange": {
+        "start": 3493,
+        "end": 3512
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 15,
+      "ccn": 2,
+      "visibility": "public"
+    },
+    {
+      "name": "IronicDriverConsoleTestCase",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 3515,
+        "end": 3941
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "setUp",
+      "kind": "method",
+      "scope": "IronicDriverConsoleTestCase",
+      "lineRange": {
+        "start": 3517,
+        "end": 3542
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_services"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 19,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "_create_console_data",
+      "kind": "method",
+      "scope": "IronicDriverConsoleTestCase",
+      "lineRange": {
+        "start": 3544,
+        "end": 3552
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "default": "True",
+          "name": "enabled"
+        },
+        {
+          "default": "'socat'",
+          "name": "console_type"
+        },
+        {
+          "default": "'tcp://127.0.0.1:10000'",
+          "name": "url"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "{ 'console_enabled': enabled, 'console_info': { 'type': console_type, 'url': url } }",
+          "line": 3546
+        }
+      ],
+      "nloc": 9,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "test__get_node_console_with_reset_success",
+      "kind": "method",
+      "scope": "IronicDriverConsoleTestCase",
+      "lineRange": {
+        "start": 3554,
+        "end": 3577
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 15,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "_fake_get_console",
+      "kind": "function",
+      "scope": "IronicDriverConsoleTestCase.test__get_node_console_with_reset_success",
+      "lineRange": {
+        "start": 3557,
+        "end": 3558
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "node_uuid"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "self._create_console_data(enabled=temp_data['target_mode'])",
+          "line": 3558
+        }
+      ],
+      "visibility": "private"
+    },
+    {
+      "name": "_fake_enable_console",
+      "kind": "function",
+      "scope": "IronicDriverConsoleTestCase.test__get_node_console_with_reset_success",
+      "lineRange": {
+        "start": 3560,
+        "end": 3562
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "node_uuid"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "visibility": "private"
+    },
+    {
+      "name": "test__get_node_console_with_reset_console_disabled",
+      "kind": "method",
+      "scope": "IronicDriverConsoleTestCase",
+      "lineRange": {
+        "start": 3580,
+        "end": 3595
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_log"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 11,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "_fake_log_debug",
+      "kind": "function",
+      "scope": "IronicDriverConsoleTestCase.test__get_node_console_with_reset_console_disabled",
+      "lineRange": {
+        "start": 3581,
+        "end": 3583
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "msg"
+        },
+        {
+          "name": "*args"
+        },
+        {
+          "name": "**kwargs"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "visibility": "private"
+    },
+    {
+      "name": "test__get_node_console_with_reset_set_mode_failed",
+      "kind": "method",
+      "scope": "IronicDriverConsoleTestCase",
+      "lineRange": {
+        "start": 3598,
+        "end": 3618
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_log"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 16,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "_fake_log_error",
+      "kind": "function",
+      "scope": "IronicDriverConsoleTestCase.test__get_node_console_with_reset_set_mode_failed",
+      "lineRange": {
+        "start": 3599,
+        "end": 3601
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "msg"
+        },
+        {
+          "name": "*args"
+        },
+        {
+          "name": "**kwargs"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "visibility": "private"
+    },
+    {
+      "name": "test__get_node_console_with_reset_wait_failed",
+      "kind": "method",
+      "scope": "IronicDriverConsoleTestCase",
+      "lineRange": {
+        "start": 3621,
+        "end": 3644
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_log"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 12,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "_fake_get_console",
+      "kind": "function",
+      "scope": "IronicDriverConsoleTestCase.test__get_node_console_with_reset_wait_failed",
+      "lineRange": {
+        "start": 3622,
+        "end": 3628
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "node_uuid"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "self._create_console_data()",
+          "line": 3628
+        }
+      ],
+      "visibility": "private"
+    },
+    {
+      "name": "_fake_log_error",
+      "kind": "function",
+      "scope": "IronicDriverConsoleTestCase.test__get_node_console_with_reset_wait_failed",
+      "lineRange": {
+        "start": 3630,
+        "end": 3632
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "msg"
+        },
+        {
+          "name": "*args"
+        },
+        {
+          "name": "**kwargs"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "visibility": "private"
+    },
+    {
+      "name": "test__get_node_console_with_reset_wait_timeout",
+      "kind": "method",
+      "scope": "IronicDriverConsoleTestCase",
+      "lineRange": {
+        "start": 3649,
+        "end": 3684
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_log"
+        },
+        {
+          "name": "mock_looping"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 24,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "_fake_log_error",
+      "kind": "function",
+      "scope": "IronicDriverConsoleTestCase.test__get_node_console_with_reset_wait_timeout",
+      "lineRange": {
+        "start": 3654,
+        "end": 3656
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "msg"
+        },
+        {
+          "name": "*args"
+        },
+        {
+          "name": "**kwargs"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "visibility": "private"
+    },
+    {
+      "name": "_fake_get_console",
+      "kind": "function",
+      "scope": "IronicDriverConsoleTestCase.test__get_node_console_with_reset_wait_timeout",
+      "lineRange": {
+        "start": 3658,
+        "end": 3659
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "node_uuid"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "self._create_console_data(enabled=True)",
+          "line": 3659
+        }
+      ],
+      "visibility": "private"
+    },
+    {
+      "name": "_fake_disable_console_mode",
+      "kind": "function",
+      "scope": "IronicDriverConsoleTestCase.test__get_node_console_with_reset_wait_timeout",
+      "lineRange": {
+        "start": 3661,
+        "end": 3662
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "node_uuid"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "visibility": "private"
+    },
+    {
+      "name": "test_get_vnc_console_disabled",
+      "kind": "method",
+      "scope": "IronicDriverConsoleTestCase",
+      "lineRange": {
+        "start": 3687,
+        "end": 3715
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 25,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_get_vnc_console_enable_timeout",
+      "kind": "method",
+      "scope": "IronicDriverConsoleTestCase",
+      "lineRange": {
+        "start": 3718,
+        "end": 3736
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 15,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_get_vnc_console_enabled",
+      "kind": "method",
+      "scope": "IronicDriverConsoleTestCase",
+      "lineRange": {
+        "start": 3738,
+        "end": 3757
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 16,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_get_vnc_console_missing_internal_info",
+      "kind": "method",
+      "scope": "IronicDriverConsoleTestCase",
+      "lineRange": {
+        "start": 3759,
+        "end": 3775
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 13,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_get_vnc_console_wrong_type",
+      "kind": "method",
+      "scope": "IronicDriverConsoleTestCase",
+      "lineRange": {
+        "start": 3777,
+        "end": 3790
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 11,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_get_vnc_console_api_error",
+      "kind": "method",
+      "scope": "IronicDriverConsoleTestCase",
+      "lineRange": {
+        "start": 3792,
+        "end": 3801
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 7,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_get_vnc_console_enable_api_error",
+      "kind": "method",
+      "scope": "IronicDriverConsoleTestCase",
+      "lineRange": {
+        "start": 3803,
+        "end": 3817
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 12,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_get_serial_console_socat",
+      "kind": "method",
+      "scope": "IronicDriverConsoleTestCase",
+      "lineRange": {
+        "start": 3819,
+        "end": 3839
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 14,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "_fake_get_console",
+      "kind": "function",
+      "scope": "IronicDriverConsoleTestCase.test_get_serial_console_socat",
+      "lineRange": {
+        "start": 3822,
+        "end": 3823
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "node_uuid"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "self._create_console_data(enabled=temp_data['target_mode'])",
+          "line": 3823
+        }
+      ],
+      "visibility": "private"
+    },
+    {
+      "name": "_fake_enable_console",
+      "kind": "function",
+      "scope": "IronicDriverConsoleTestCase.test_get_serial_console_socat",
+      "lineRange": {
+        "start": 3825,
+        "end": 3826
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "node_uuid"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "visibility": "private"
+    },
+    {
+      "name": "test_get_serial_console_socat_disabled",
+      "kind": "method",
+      "scope": "IronicDriverConsoleTestCase",
+      "lineRange": {
+        "start": 3841,
+        "end": 3849
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 8,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_get_serial_console_socat_invalid_url",
+      "kind": "method",
+      "scope": "IronicDriverConsoleTestCase",
+      "lineRange": {
+        "start": 3852,
+        "end": 3869
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_log"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 14,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "_fake_log_error",
+      "kind": "function",
+      "scope": "IronicDriverConsoleTestCase.test_get_serial_console_socat_invalid_url",
+      "lineRange": {
+        "start": 3853,
+        "end": 3855
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "msg"
+        },
+        {
+          "name": "*args"
+        },
+        {
+          "name": "**kwargs"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "visibility": "private"
+    },
+    {
+      "name": "test_get_serial_console_socat_invalid_url_2",
+      "kind": "method",
+      "scope": "IronicDriverConsoleTestCase",
+      "lineRange": {
+        "start": 3872,
+        "end": 3890
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_log"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 13,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "_fake_log_error",
+      "kind": "function",
+      "scope": "IronicDriverConsoleTestCase.test_get_serial_console_socat_invalid_url_2",
+      "lineRange": {
+        "start": 3874,
+        "end": 3876
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "msg"
+        },
+        {
+          "name": "*args"
+        },
+        {
+          "name": "**kwargs"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "visibility": "private"
+    },
+    {
+      "name": "test_get_serial_console_socat_unsupported_scheme",
+      "kind": "method",
+      "scope": "IronicDriverConsoleTestCase",
+      "lineRange": {
+        "start": 3893,
+        "end": 3909
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_log"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 13,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "_fake_log_warning",
+      "kind": "function",
+      "scope": "IronicDriverConsoleTestCase.test_get_serial_console_socat_unsupported_scheme",
+      "lineRange": {
+        "start": 3894,
+        "end": 3896
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "msg"
+        },
+        {
+          "name": "*args"
+        },
+        {
+          "name": "**kwargs"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "visibility": "private"
+    },
+    {
+      "name": "test_get_serial_console_socat_tcp6",
+      "kind": "method",
+      "scope": "IronicDriverConsoleTestCase",
+      "lineRange": {
+        "start": 3911,
+        "end": 3925
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 10,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "_fake_get_console",
+      "kind": "function",
+      "scope": "IronicDriverConsoleTestCase.test_get_serial_console_socat_tcp6",
+      "lineRange": {
+        "start": 3912,
+        "end": 3914
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "node_uuid"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "self._create_console_data(enabled=True, url='tcp://[::1]:10000')",
+          "line": 3913
+        }
+      ],
+      "visibility": "private"
+    },
+    {
+      "name": "test_get_serial_console_shellinabox",
+      "kind": "method",
+      "scope": "IronicDriverConsoleTestCase",
+      "lineRange": {
+        "start": 3927,
+        "end": 3941
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 9,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "_fake_get_console",
+      "kind": "function",
+      "scope": "IronicDriverConsoleTestCase.test_get_serial_console_shellinabox",
+      "lineRange": {
+        "start": 3929,
+        "end": 3931
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "node_uuid"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "self._create_console_data(enabled=True, console_type='shellinabox')",
+          "line": 3930
+        }
+      ],
+      "visibility": "private"
+    }
+  ],
+  "referencedSymbols": [
+    {
+      "name": "object",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 63,
+        "end": 63
+      }
+    },
+    {
+      "name": "object",
+      "usage": "inherit",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 66,
+        "end": 66
+      }
+    },
+    {
+      "name": "mock.MagicMock",
+      "usage": "call",
+      "via": "unittest",
+      "count": 5,
+      "lineRange": {
+        "start": 68,
+        "end": 68
+      }
+    },
+    {
+      "name": "ironic_utils.get_test_node",
+      "usage": "call",
+      "via": "nova.tests.unit.virt.ironic",
+      "count": 36,
+      "lineRange": {
+        "start": 93,
+        "end": 93
+      }
+    },
+    {
+      "name": "objects.Service",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 97,
+        "end": 97
+      }
+    },
+    {
+      "name": "test.NoDBTestCase",
+      "usage": "inherit",
+      "via": "nova",
+      "count": 5,
+      "lineRange": {
+        "start": 101,
+        "end": 101
+      }
+    },
+    {
+      "name": "mock.patch.object",
+      "usage": "call",
+      "via": "unittest",
+      "count": 232,
+      "lineRange": {
+        "start": 103,
+        "end": 103
+      }
+    },
+    {
+      "name": "super",
+      "usage": "call",
+      "via": null,
+      "count": 6,
+      "lineRange": {
+        "start": 106,
+        "end": 106
+      }
+    },
+    {
+      "name": "ironic_driver.IronicDriver",
+      "usage": "call",
+      "via": "nova.virt.ironic",
+      "count": 6,
+      "lineRange": {
+        "start": 108,
+        "end": 108
+      }
+    },
+    {
+      "name": "fake.FakeVirtAPI",
+      "usage": "call",
+      "via": "nova.virt",
+      "count": 5,
+      "lineRange": {
+        "start": 109,
+        "end": 109
+      }
+    },
+    {
+      "name": "fixtures.MockPatchObject",
+      "usage": "call",
+      "via": "fixtures",
+      "count": 3,
+      "lineRange": {
+        "start": 112,
+        "end": 112
+      }
+    },
+    {
+      "name": "nova_context.get_admin_context",
+      "usage": "call",
+      "via": "nova",
+      "count": 5,
+      "lineRange": {
+        "start": 114,
+        "end": 114
+      }
+    },
+    {
+      "name": "uuidutils.generate_uuid",
+      "usage": "call",
+      "via": "oslo_utils",
+      "count": 87,
+      "lineRange": {
+        "start": 117,
+        "end": 117
+      }
+    },
+    {
+      "name": "provider_tree.ProviderTree",
+      "usage": "call",
+      "via": "nova.compute",
+      "count": 1,
+      "lineRange": {
+        "start": 120,
+        "end": 120
+      }
+    },
+    {
+      "name": "driver.ComputeDriver",
+      "usage": "call",
+      "via": "nova.virt",
+      "count": 1,
+      "lineRange": {
+        "start": 128,
+        "end": 128
+      }
+    },
+    {
+      "name": "fake_instance.fake_instance_obj",
+      "usage": "call",
+      "via": "nova.tests.unit",
+      "count": 87,
+      "lineRange": {
+        "start": 174,
+        "end": 174
+      }
+    },
+    {
+      "name": "iter",
+      "usage": "call",
+      "via": null,
+      "count": 26,
+      "lineRange": {
+        "start": 176,
+        "end": 176
+      }
+    },
+    {
+      "name": "sorted",
+      "usage": "call",
+      "via": null,
+      "count": 6,
+      "lineRange": {
+        "start": 328,
+        "end": 328
+      }
+    },
+    {
+      "name": "range",
+      "usage": "call",
+      "via": null,
+      "count": 5,
+      "lineRange": {
+        "start": 542,
+        "end": 542
+      }
+    },
+    {
+      "name": "type",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 562,
+        "end": 562
+      }
+    },
+    {
+      "name": "list",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 563,
+        "end": 563
+      }
+    },
+    {
+      "name": "sdk_exc.InvalidResourceQuery",
+      "usage": "call",
+      "via": "openstack",
+      "count": 1,
+      "lineRange": {
+        "start": 567,
+        "end": 567
+      }
+    },
+    {
+      "name": "Exception",
+      "usage": "call",
+      "via": null,
+      "count": 2,
+      "lineRange": {
+        "start": 571,
+        "end": 571
+      }
+    },
+    {
+      "name": "mock.call",
+      "usage": "call",
+      "via": "unittest",
+      "count": 18,
+      "lineRange": {
+        "start": 592,
+        "end": 592
+      }
+    },
+    {
+      "name": "set",
+      "usage": "call",
+      "via": null,
+      "count": 5,
+      "lineRange": {
+        "start": 1073,
+        "end": 1073
+      }
+    },
+    {
+      "name": "hardware.InstanceInfo",
+      "usage": "call",
+      "via": "nova.virt",
+      "count": 5,
+      "lineRange": {
+        "start": 1176,
+        "end": 1176
+      }
+    },
+    {
+      "name": "objects.Flavor",
+      "usage": "call",
+      "via": "nova",
+      "count": 5,
+      "lineRange": {
+        "start": 1310,
+        "end": 1310
+      }
+    },
+    {
+      "name": "ironic_utils.get_test_instance_driver_metadata",
+      "usage": "call",
+      "via": "nova.tests.unit.virt.ironic",
+      "count": 11,
+      "lineRange": {
+        "start": 1312,
+        "end": 1312
+      }
+    },
+    {
+      "name": "ironic_utils.get_test_validation",
+      "usage": "call",
+      "via": "nova.tests.unit.virt.ironic",
+      "count": 6,
+      "lineRange": {
+        "start": 1319,
+        "end": 1319
+      }
+    },
+    {
+      "name": "ironic_utils.get_test_image_meta",
+      "usage": "call",
+      "via": "nova.tests.unit.virt.ironic",
+      "count": 10,
+      "lineRange": {
+        "start": 1324,
+        "end": 1324
+      }
+    },
+    {
+      "name": "test.MatchType",
+      "usage": "call",
+      "via": "nova",
+      "count": 4,
+      "lineRange": {
+        "start": 1335,
+        "end": 1335
+      }
+    },
+    {
+      "name": "base64.b64encode",
+      "usage": "call",
+      "via": "base64",
+      "count": 1,
+      "lineRange": {
+        "start": 1364,
+        "end": 1364
+      }
+    },
+    {
+      "name": "exception.InstanceDeployFailure",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 1403,
+        "end": 1403
+      }
+    },
+    {
+      "name": "ironic_utils.get_test_flavor",
+      "usage": "call",
+      "via": "nova.tests.unit.virt.ironic",
+      "count": 6,
+      "lineRange": {
+        "start": 1414,
+        "end": 1414
+      }
+    },
+    {
+      "name": "str",
+      "usage": "call",
+      "via": null,
+      "count": 8,
+      "lineRange": {
+        "start": 1420,
+        "end": 1420
+      }
+    },
+    {
+      "name": "block_device.BlockDeviceDict",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 1465,
+        "end": 1465
+      }
+    },
+    {
+      "name": "driver_block_device.DriverVolumeBlockDevice",
+      "usage": "call",
+      "via": "nova.virt",
+      "count": 1,
+      "lineRange": {
+        "start": 1476,
+        "end": 1476
+      }
+    },
+    {
+      "name": "fake_block_device.fake_bdm_object",
+      "usage": "call",
+      "via": "nova.tests.unit",
+      "count": 1,
+      "lineRange": {
+        "start": 1477,
+        "end": 1477
+      }
+    },
+    {
+      "name": "sdk_exc.BadRequestException",
+      "usage": "call",
+      "via": "openstack",
+      "count": 10,
+      "lineRange": {
+        "start": 1517,
+        "end": 1517
+      }
+    },
+    {
+      "name": "sdk_exc.ConflictException",
+      "usage": "call",
+      "via": "openstack",
+      "count": 2,
+      "lineRange": {
+        "start": 1518,
+        "end": 1518
+      }
+    },
+    {
+      "name": "ironic_utils.get_test_volume_target",
+      "usage": "call",
+      "via": "nova.tests.unit.virt.ironic",
+      "count": 5,
+      "lineRange": {
+        "start": 1534,
+        "end": 1534
+      }
+    },
+    {
+      "name": "sdk_exc.NotFoundException",
+      "usage": "call",
+      "via": "openstack",
+      "count": 1,
+      "lineRange": {
+        "start": 1562,
+        "end": 1562
+      }
+    },
+    {
+      "name": "_node.ValidationResult",
+      "usage": "call",
+      "via": "openstack.baremetal.v1",
+      "count": 3,
+      "lineRange": {
+        "start": 1615,
+        "end": 1615
+      }
+    },
+    {
+      "name": "test.TestingException",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 1656,
+        "end": 1656
+      }
+    },
+    {
+      "name": "sdk_exc.SDKException",
+      "usage": "call",
+      "via": "openstack",
+      "count": 8,
+      "lineRange": {
+        "start": 1693,
+        "end": 1693
+      }
+    },
+    {
+      "name": "ddt.data",
+      "usage": "call",
+      "via": "ddt",
+      "count": 1,
+      "lineRange": {
+        "start": 1820,
+        "end": 1820
+      }
+    },
+    {
+      "name": "exception.InstanceNotFound",
+      "usage": "call",
+      "via": "nova",
+      "count": 3,
+      "lineRange": {
+        "start": 1977,
+        "end": 1977
+      }
+    },
+    {
+      "name": "utils.get_test_network_info",
+      "usage": "call",
+      "via": "nova.tests.unit",
+      "count": 10,
+      "lineRange": {
+        "start": 2109,
+        "end": 2109
+      }
+    },
+    {
+      "name": "len",
+      "usage": "call",
+      "via": null,
+      "count": 5,
+      "lineRange": {
+        "start": 2166,
+        "end": 2166
+      }
+    },
+    {
+      "name": "ironic_utils.get_test_vif",
+      "usage": "call",
+      "via": "nova.tests.unit.virt.ironic",
+      "count": 6,
+      "lineRange": {
+        "start": 2221,
+        "end": 2221
+      }
+    },
+    {
+      "name": "exception.NovaException",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 2456,
+        "end": 2456
+      }
+    },
+    {
+      "name": "ironic_utils.get_test_volume_connector",
+      "usage": "call",
+      "via": "nova.tests.unit.virt.ironic",
+      "count": 7,
+      "lineRange": {
+        "start": 2531,
+        "end": 2531
+      }
+    },
+    {
+      "name": "network_model.FixedIP",
+      "usage": "call",
+      "via": "nova.network",
+      "count": 1,
+      "lineRange": {
+        "start": 2587,
+        "end": 2587
+      }
+    },
+    {
+      "name": "network_model.Subnet",
+      "usage": "call",
+      "via": "nova.network",
+      "count": 1,
+      "lineRange": {
+        "start": 2588,
+        "end": 2588
+      }
+    },
+    {
+      "name": "network_model.Network",
+      "usage": "call",
+      "via": "nova.network",
+      "count": 1,
+      "lineRange": {
+        "start": 2589,
+        "end": 2589
+      }
+    },
+    {
+      "name": "network_model.VIF",
+      "usage": "call",
+      "via": "nova.network",
+      "count": 1,
+      "lineRange": {
+        "start": 2590,
+        "end": 2590
+      }
+    },
+    {
+      "name": "ironic_utils.get_test_port",
+      "usage": "call",
+      "via": "nova.tests.unit.virt.ironic",
+      "count": 4,
+      "lineRange": {
+        "start": 2603,
+        "end": 2603
+      }
+    },
+    {
+      "name": "ironic_utils.get_test_portgroup",
+      "usage": "call",
+      "via": "nova.tests.unit.virt.ironic",
+      "count": 2,
+      "lineRange": {
+        "start": 2614,
+        "end": 2614
+      }
+    },
+    {
+      "name": "nova_fixtures.SpawnIsSynchronousFixture",
+      "usage": "call",
+      "via": "nova.tests",
+      "count": 1,
+      "lineRange": {
+        "start": 2788,
+        "end": 2788
+      }
+    },
+    {
+      "name": "objects.ShareMappingList",
+      "usage": "call",
+      "via": "nova",
+      "count": 4,
+      "lineRange": {
+        "start": 2796,
+        "end": 2796
+      }
+    },
+    {
+      "name": "mock.patch",
+      "usage": "call",
+      "via": "unittest",
+      "count": 3,
+      "lineRange": {
+        "start": 2915,
+        "end": 2915
+      }
+    },
+    {
+      "name": "mock.Mock",
+      "usage": "call",
+      "via": "unittest",
+      "count": 5,
+      "lineRange": {
+        "start": 2969,
+        "end": 2969
+      }
+    },
+    {
+      "name": "exception.ConfigDriveMountFailed",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 2981,
+        "end": 2981
+      }
+    },
+    {
+      "name": "exception.IronicAPIVersionNotAvailable",
+      "usage": "call",
+      "via": "nova",
+      "count": 3,
+      "lineRange": {
+        "start": 3194,
+        "end": 3194
+      }
+    },
+    {
+      "name": "ironic_driver._check_peer_list",
+      "usage": "call",
+      "via": "nova.virt.ironic",
+      "count": 2,
+      "lineRange": {
+        "start": 3209,
+        "end": 3209
+      }
+    },
+    {
+      "name": "mock.call.get_node_list",
+      "usage": "call",
+      "via": "unittest",
+      "count": 1,
+      "lineRange": {
+        "start": 3294,
+        "end": 3294
+      }
+    },
+    {
+      "name": "mock.call.get_uuids_by_host",
+      "usage": "call",
+      "via": "unittest",
+      "count": 1,
+      "lineRange": {
+        "start": 3296,
+        "end": 3296
+      }
+    },
+    {
+      "name": "nova_matchers.DictMatches",
+      "usage": "call",
+      "via": "nova.tests.unit",
+      "count": 1,
+      "lineRange": {
+        "start": 3577,
+        "end": 3577
+      }
+    },
+    {
+      "name": "matchers.MatchesRegex",
+      "usage": "call",
+      "via": "testtools",
+      "count": 7,
+      "lineRange": {
+        "start": 3583,
+        "end": 3583
+      }
+    },
+    {
+      "name": "sdk_exc.ForbiddenException",
+      "usage": "call",
+      "via": "openstack",
+      "count": 2,
+      "lineRange": {
+        "start": 3795,
+        "end": 3795
+      }
+    }
+  ],
+  "dependencies": [
+    {
+      "style": "import",
+      "module": "base64",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 18,
+        "end": 18
+      }
+    },
+    {
+      "style": "from",
+      "module": "unittest",
+      "names": [
+        {
+          "alias": null,
+          "name": "mock"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 19,
+        "end": 19
+      }
+    },
+    {
+      "style": "import",
+      "module": "ddt",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 21,
+        "end": 21
+      }
+    },
+    {
+      "style": "import",
+      "module": "fixtures",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 22,
+        "end": 22
+      }
+    },
+    {
+      "style": "from",
+      "module": "openstack.baremetal.v1",
+      "names": [
+        {
+          "alias": "_node",
+          "name": "node"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 23,
+        "end": 23
+      }
+    },
+    {
+      "style": "from",
+      "module": "openstack",
+      "names": [
+        {
+          "alias": "sdk_exc",
+          "name": "exceptions"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 24,
+        "end": 24
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_config",
+      "names": [
+        {
+          "alias": null,
+          "name": "cfg"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 25,
+        "end": 25
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_service",
+      "names": [
+        {
+          "alias": null,
+          "name": "loopingcall"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 26,
+        "end": 26
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_utils.fixture",
+      "names": [
+        {
+          "alias": "uuids",
+          "name": "uuidsentinel"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 27,
+        "end": 27
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_utils",
+      "names": [
+        {
+          "alias": null,
+          "name": "uuidutils"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 28,
+        "end": 28
+      }
+    },
+    {
+      "style": "from",
+      "module": "testtools",
+      "names": [
+        {
+          "alias": null,
+          "name": "matchers"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 29,
+        "end": 29
+      }
+    },
+    {
+      "style": "from",
+      "module": "tooz",
+      "names": [
+        {
+          "alias": "hash_ring",
+          "name": "hashring"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 30,
+        "end": 30
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.api.metadata",
+      "names": [
+        {
+          "alias": "instance_metadata",
+          "name": "base"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 32,
+        "end": 32
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.api.openstack",
+      "names": [
+        {
+          "alias": null,
+          "name": "common"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 33,
+        "end": 33
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "block_device"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 34,
+        "end": 34
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.compute",
+      "names": [
+        {
+          "alias": "nova_states",
+          "name": "power_state"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 35,
+        "end": 35
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.compute",
+      "names": [
+        {
+          "alias": null,
+          "name": "provider_tree"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 36,
+        "end": 36
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.compute",
+      "names": [
+        {
+          "alias": null,
+          "name": "task_states"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 37,
+        "end": 37
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.compute",
+      "names": [
+        {
+          "alias": null,
+          "name": "vm_states"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 38,
+        "end": 38
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.console",
+      "names": [
+        {
+          "alias": "console_type",
+          "name": "type"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 39,
+        "end": 39
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": "nova_context",
+          "name": "context"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 40,
+        "end": 40
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "exception"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 41,
+        "end": 41
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.network",
+      "names": [
+        {
+          "alias": "network_model",
+          "name": "model"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 42,
+        "end": 42
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "objects"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 43,
+        "end": 43
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "servicegroup"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 44,
+        "end": 44
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "test"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 45,
+        "end": 45
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.tests",
+      "names": [
+        {
+          "alias": "nova_fixtures",
+          "name": "fixtures"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 46,
+        "end": 46
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.tests.unit",
+      "names": [
+        {
+          "alias": null,
+          "name": "fake_block_device"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 47,
+        "end": 47
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.tests.unit",
+      "names": [
+        {
+          "alias": null,
+          "name": "fake_instance"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 48,
+        "end": 48
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.tests.unit",
+      "names": [
+        {
+          "alias": "nova_matchers",
+          "name": "matchers"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 49,
+        "end": 49
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.tests.unit",
+      "names": [
+        {
+          "alias": null,
+          "name": "utils"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 50,
+        "end": 50
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.tests.unit.virt.ironic",
+      "names": [
+        {
+          "alias": "ironic_utils",
+          "name": "utils"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 51,
+        "end": 51
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.virt",
+      "names": [
+        {
+          "alias": "driver_block_device",
+          "name": "block_device"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 52,
+        "end": 52
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.virt",
+      "names": [
+        {
+          "alias": null,
+          "name": "configdrive"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 53,
+        "end": 53
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.virt",
+      "names": [
+        {
+          "alias": null,
+          "name": "driver"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 54,
+        "end": 54
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.virt",
+      "names": [
+        {
+          "alias": null,
+          "name": "fake"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 55,
+        "end": 55
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.virt",
+      "names": [
+        {
+          "alias": null,
+          "name": "hardware"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 56,
+        "end": 56
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.virt.ironic",
+      "names": [
+        {
+          "alias": "ironic_driver",
+          "name": "driver"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 57,
+        "end": 57
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.virt.ironic",
+      "names": [
+        {
+          "alias": null,
+          "name": "ironic_states"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 58,
+        "end": 58
+      }
+    }
+  ],
+  "sideEffects": [
+    {
+      "kind": "network",
+      "target": "from openstack.baremetal.v1 import node as _node",
+      "lineRange": {
+        "start": 23,
+        "end": 23
+      }
+    },
+    {
+      "kind": "network",
+      "target": "@mock.patch('openstack.utils.supports_microversion')",
+      "lineRange": {
+        "start": 2915,
+        "end": 2915
+      }
+    },
+    {
+      "kind": "network",
+      "target": "@mock.patch('openstack.utils.supports_microversion')",
+      "lineRange": {
+        "start": 2924,
+        "end": 2924
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "CONF = cfg.CONF",
+      "lineRange": {
+        "start": 61,
+        "end": 61
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "SENTINEL = object()",
+      "lineRange": {
+        "start": 63,
+        "end": 63
+      }
+    }
+  ],
+  "securitySurface": [],
+  "injection_flags": [],
+  "warnings": []
+}

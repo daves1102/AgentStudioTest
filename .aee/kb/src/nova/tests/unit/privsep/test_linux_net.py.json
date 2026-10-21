@@ -1,0 +1,770 @@
+{
+  "file": "src/nova/tests/unit/privsep/test_linux_net.py",
+  "hash": "fef6b98d9b58e041b65a03aaf30ea86286bdd7ba0fc6b5b3699b20b0ca8509e9",
+  "language": "Python",
+  "component": "nova",
+  "package": null,
+  "lines": {
+    "blank": 24,
+    "code": 81,
+    "comment": 18,
+    "total": 123
+  },
+  "symbols": [
+    {
+      "name": "LinuxNetTestCase",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 26,
+        "end": 123
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "setUp",
+      "kind": "method",
+      "scope": "LinuxNetTestCase",
+      "lineRange": {
+        "start": 29,
+        "end": 31
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 3,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_device_exists",
+      "kind": "method",
+      "scope": "LinuxNetTestCase",
+      "lineRange": {
+        "start": 34,
+        "end": 36
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_exists"
+        },
+        {
+          "name": "mock_execute"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 3,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_set_device_mtu_default",
+      "kind": "method",
+      "scope": "LinuxNetTestCase",
+      "lineRange": {
+        "start": 38,
+        "end": 42
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_execute"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 4,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_set_device_mtu_actual",
+      "kind": "method",
+      "scope": "LinuxNetTestCase",
+      "lineRange": {
+        "start": 44,
+        "end": 50
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_execute"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 6,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_create_tap_dev",
+      "kind": "method",
+      "scope": "LinuxNetTestCase",
+      "lineRange": {
+        "start": 53,
+        "end": 60
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_enabled"
+        },
+        {
+          "name": "mock_execute"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 7,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_create_tap_skipped_when_exists",
+      "kind": "method",
+      "scope": "LinuxNetTestCase",
+      "lineRange": {
+        "start": 63,
+        "end": 67
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_exists"
+        },
+        {
+          "name": "mock_execute"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 4,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_create_tap_dev_mac",
+      "kind": "method",
+      "scope": "LinuxNetTestCase",
+      "lineRange": {
+        "start": 71,
+        "end": 82
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_set_macaddr"
+        },
+        {
+          "name": "mock_enabled"
+        },
+        {
+          "name": "mock_execute"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 11,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_create_tap_dev_fallback_to_tunctl",
+      "kind": "method",
+      "scope": "LinuxNetTestCase",
+      "lineRange": {
+        "start": 85,
+        "end": 97
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_enabled"
+        },
+        {
+          "name": "mock_execute"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 10,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_create_tap_dev_multiqueue",
+      "kind": "method",
+      "scope": "LinuxNetTestCase",
+      "lineRange": {
+        "start": 100,
+        "end": 108
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_enabled"
+        },
+        {
+          "name": "mock_execute"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 8,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_create_tap_dev_multiqueue_tunctl_raises",
+      "kind": "method",
+      "scope": "LinuxNetTestCase",
+      "lineRange": {
+        "start": 110,
+        "end": 117
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_execute"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 5,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_add_vlan",
+      "kind": "method",
+      "scope": "LinuxNetTestCase",
+      "lineRange": {
+        "start": 119,
+        "end": 123
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_execute"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 5,
+      "ccn": 1,
+      "visibility": "public"
+    }
+  ],
+  "referencedSymbols": [
+    {
+      "name": "mock.patch",
+      "usage": "call",
+      "via": "unittest",
+      "count": 8,
+      "lineRange": {
+        "start": 25,
+        "end": 25
+      }
+    },
+    {
+      "name": "test.NoDBTestCase",
+      "usage": "inherit",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 26,
+        "end": 26
+      }
+    },
+    {
+      "name": "super",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 30,
+        "end": 30
+      }
+    },
+    {
+      "name": "fixtures.PrivsepFixture",
+      "usage": "call",
+      "via": "nova.tests",
+      "count": 1,
+      "lineRange": {
+        "start": 31,
+        "end": 31
+      }
+    },
+    {
+      "name": "nova.privsep.linux_net.device_exists",
+      "usage": "call",
+      "via": "nova.privsep.linux_net",
+      "count": 1,
+      "lineRange": {
+        "start": 35,
+        "end": 35
+      }
+    },
+    {
+      "name": "mock_exists",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 36,
+        "end": 36
+      }
+    },
+    {
+      "name": "nova.privsep.linux_net.set_device_mtu",
+      "usage": "call",
+      "via": "nova.privsep.linux_net",
+      "count": 2,
+      "lineRange": {
+        "start": 41,
+        "end": 41
+      }
+    },
+    {
+      "name": "mock.call",
+      "usage": "call",
+      "via": "unittest",
+      "count": 7,
+      "lineRange": {
+        "start": 49,
+        "end": 49
+      }
+    },
+    {
+      "name": "nova.privsep.linux_net.create_tap_dev",
+      "usage": "call",
+      "via": "nova.privsep.linux_net",
+      "count": 5,
+      "lineRange": {
+        "start": 54,
+        "end": 54
+      }
+    },
+    {
+      "name": "nova.privsep.linux_net.add_vlan",
+      "usage": "call",
+      "via": "nova.privsep.linux_net",
+      "count": 1,
+      "lineRange": {
+        "start": 120,
+        "end": 120
+      }
+    }
+  ],
+  "dependencies": [
+    {
+      "style": "from",
+      "module": "unittest",
+      "names": [
+        {
+          "alias": null,
+          "name": "mock"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 16,
+        "end": 16
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_concurrency",
+      "names": [
+        {
+          "alias": null,
+          "name": "processutils"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 18,
+        "end": 18
+      }
+    },
+    {
+      "style": "import",
+      "module": "nova.privsep.linux_net",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 20,
+        "end": 20
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "test"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 21,
+        "end": 21
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.tests",
+      "names": [
+        {
+          "alias": null,
+          "name": "fixtures"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 22,
+        "end": 22
+      }
+    }
+  ],
+  "sideEffects": [
+    {
+      "kind": "process-spawn",
+      "target": "import nova.privsep.linux_net",
+      "lineRange": {
+        "start": 20,
+        "end": 20
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "@mock.patch('os.path.exists')",
+      "lineRange": {
+        "start": 33,
+        "end": 33
+      }
+    },
+    {
+      "kind": "process-spawn",
+      "target": "nova.privsep.linux_net.device_exists('eth0')",
+      "lineRange": {
+        "start": 35,
+        "end": 35
+      }
+    },
+    {
+      "kind": "process-spawn",
+      "target": "nova.privsep.linux_net.set_device_mtu('fake-dev', None)",
+      "lineRange": {
+        "start": 41,
+        "end": 41
+      }
+    },
+    {
+      "kind": "process-spawn",
+      "target": "nova.privsep.linux_net.set_device_mtu('fake-dev', 1500)",
+      "lineRange": {
+        "start": 47,
+        "end": 47
+      }
+    },
+    {
+      "kind": "process-spawn",
+      "target": "@mock.patch('nova.privsep.linux_net._set_device_enabled_inner')",
+      "lineRange": {
+        "start": 52,
+        "end": 52
+      }
+    },
+    {
+      "kind": "process-spawn",
+      "target": "nova.privsep.linux_net.create_tap_dev('tap42')",
+      "lineRange": {
+        "start": 54,
+        "end": 54
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "@mock.patch('os.path.exists', return_value=True)",
+      "lineRange": {
+        "start": 62,
+        "end": 62
+      }
+    },
+    {
+      "kind": "process-spawn",
+      "target": "nova.privsep.linux_net.create_tap_dev('tap42')",
+      "lineRange": {
+        "start": 64,
+        "end": 64
+      }
+    },
+    {
+      "kind": "process-spawn",
+      "target": "@mock.patch('nova.privsep.linux_net._set_device_enabled_inner')",
+      "lineRange": {
+        "start": 69,
+        "end": 69
+      }
+    },
+    {
+      "kind": "process-spawn",
+      "target": "@mock.patch('nova.privsep.linux_net._set_device_macaddr_inner')",
+      "lineRange": {
+        "start": 70,
+        "end": 70
+      }
+    },
+    {
+      "kind": "process-spawn",
+      "target": "nova.privsep.linux_net.create_tap_dev(",
+      "lineRange": {
+        "start": 73,
+        "end": 73
+      }
+    },
+    {
+      "kind": "process-spawn",
+      "target": "@mock.patch('nova.privsep.linux_net._set_device_enabled_inner')",
+      "lineRange": {
+        "start": 84,
+        "end": 84
+      }
+    },
+    {
+      "kind": "process-spawn",
+      "target": "nova.privsep.linux_net.create_tap_dev('tap42')",
+      "lineRange": {
+        "start": 90,
+        "end": 90
+      }
+    },
+    {
+      "kind": "process-spawn",
+      "target": "@mock.patch('nova.privsep.linux_net._set_device_enabled_inner')",
+      "lineRange": {
+        "start": 99,
+        "end": 99
+      }
+    },
+    {
+      "kind": "process-spawn",
+      "target": "nova.privsep.linux_net.create_tap_dev(",
+      "lineRange": {
+        "start": 101,
+        "end": 101
+      }
+    },
+    {
+      "kind": "process-spawn",
+      "target": "nova.privsep.linux_net.create_tap_dev,",
+      "lineRange": {
+        "start": 116,
+        "end": 116
+      }
+    },
+    {
+      "kind": "process-spawn",
+      "target": "nova.privsep.linux_net.add_vlan('eth0', 'vlan_name', 1)",
+      "lineRange": {
+        "start": 120,
+        "end": 120
+      }
+    }
+  ],
+  "securitySurface": [
+    {
+      "kind": "privilege",
+      "category": "privsep-entrypoint",
+      "description": "import nova.privsep.linux_net",
+      "lineRange": {
+        "start": 20,
+        "end": 20
+      }
+    },
+    {
+      "kind": "privilege",
+      "category": "privsep-entrypoint",
+      "description": "nova.privsep.linux_net.device_exists('eth0')",
+      "lineRange": {
+        "start": 35,
+        "end": 35
+      }
+    },
+    {
+      "kind": "privilege",
+      "category": "privsep-entrypoint",
+      "description": "nova.privsep.linux_net.set_device_mtu('fake-dev', None)",
+      "lineRange": {
+        "start": 41,
+        "end": 41
+      }
+    },
+    {
+      "kind": "privilege",
+      "category": "privsep-entrypoint",
+      "description": "nova.privsep.linux_net.set_device_mtu('fake-dev', 1500)",
+      "lineRange": {
+        "start": 47,
+        "end": 47
+      }
+    },
+    {
+      "kind": "privilege",
+      "category": "privsep-entrypoint",
+      "description": "@mock.patch('nova.privsep.linux_net._set_device_enabled_inner')",
+      "lineRange": {
+        "start": 52,
+        "end": 52
+      }
+    },
+    {
+      "kind": "privilege",
+      "category": "privsep-entrypoint",
+      "description": "nova.privsep.linux_net.create_tap_dev('tap42')",
+      "lineRange": {
+        "start": 54,
+        "end": 54
+      }
+    },
+    {
+      "kind": "privilege",
+      "category": "privsep-entrypoint",
+      "description": "nova.privsep.linux_net.create_tap_dev('tap42')",
+      "lineRange": {
+        "start": 64,
+        "end": 64
+      }
+    },
+    {
+      "kind": "privilege",
+      "category": "privsep-entrypoint",
+      "description": "@mock.patch('nova.privsep.linux_net._set_device_enabled_inner')",
+      "lineRange": {
+        "start": 69,
+        "end": 69
+      }
+    },
+    {
+      "kind": "privilege",
+      "category": "privsep-entrypoint",
+      "description": "@mock.patch('nova.privsep.linux_net._set_device_macaddr_inner')",
+      "lineRange": {
+        "start": 70,
+        "end": 70
+      }
+    },
+    {
+      "kind": "privilege",
+      "category": "privsep-entrypoint",
+      "description": "nova.privsep.linux_net.create_tap_dev(",
+      "lineRange": {
+        "start": 73,
+        "end": 73
+      }
+    },
+    {
+      "kind": "privilege",
+      "category": "privsep-entrypoint",
+      "description": "@mock.patch('nova.privsep.linux_net._set_device_enabled_inner')",
+      "lineRange": {
+        "start": 84,
+        "end": 84
+      }
+    },
+    {
+      "kind": "privilege",
+      "category": "privsep-entrypoint",
+      "description": "nova.privsep.linux_net.create_tap_dev('tap42')",
+      "lineRange": {
+        "start": 90,
+        "end": 90
+      }
+    },
+    {
+      "kind": "privilege",
+      "category": "privsep-entrypoint",
+      "description": "@mock.patch('nova.privsep.linux_net._set_device_enabled_inner')",
+      "lineRange": {
+        "start": 99,
+        "end": 99
+      }
+    },
+    {
+      "kind": "privilege",
+      "category": "privsep-entrypoint",
+      "description": "nova.privsep.linux_net.create_tap_dev(",
+      "lineRange": {
+        "start": 101,
+        "end": 101
+      }
+    },
+    {
+      "kind": "privilege",
+      "category": "privsep-entrypoint",
+      "description": "nova.privsep.linux_net.create_tap_dev,",
+      "lineRange": {
+        "start": 116,
+        "end": 116
+      }
+    },
+    {
+      "kind": "privilege",
+      "category": "privsep-entrypoint",
+      "description": "nova.privsep.linux_net.add_vlan('eth0', 'vlan_name', 1)",
+      "lineRange": {
+        "start": 120,
+        "end": 120
+      }
+    }
+  ],
+  "injection_flags": [],
+  "warnings": []
+}

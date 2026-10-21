@@ -1,0 +1,1187 @@
+{
+  "file": "src/nova/tests/unit/api/openstack/compute/test_image_metadata.py",
+  "hash": "484cd2b3f8d5bba7daf22283c1ab1100a7b90e6f44b3fe8d636b093f782260f8",
+  "language": "Python",
+  "component": "nova",
+  "package": null,
+  "lines": {
+    "blank": 53,
+    "code": 307,
+    "comment": 16,
+    "total": 376
+  },
+  "symbols": [
+    {
+      "name": "IMAGE_FIXTURES",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 28,
+        "end": 28
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "CHK_QUOTA_STR",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 29,
+        "end": 29
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "get_image_123",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 32,
+        "end": 33
+      },
+      "source": "aee-inventory",
+      "parameters": [],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "copy.deepcopy(IMAGE_FIXTURES)[0]",
+          "line": 33
+        }
+      ],
+      "nloc": 2,
+      "ccn": 1,
+      "exported": true
+    },
+    {
+      "name": "ImageMetaDataTestV21",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 36,
+        "end": 351
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "controller_class",
+      "kind": "field",
+      "scope": "ImageMetaDataTestV21",
+      "lineRange": {
+        "start": 37,
+        "end": 37
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "invalid_request",
+      "kind": "field",
+      "scope": "ImageMetaDataTestV21",
+      "lineRange": {
+        "start": 38,
+        "end": 38
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "base_path",
+      "kind": "field",
+      "scope": "ImageMetaDataTestV21",
+      "lineRange": {
+        "start": 39,
+        "end": 39
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "setUp",
+      "kind": "method",
+      "scope": "ImageMetaDataTestV21",
+      "lineRange": {
+        "start": 41,
+        "end": 43
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 3,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_index",
+      "kind": "method",
+      "scope": "ImageMetaDataTestV21",
+      "lineRange": {
+        "start": 46,
+        "end": 51
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "get_all_mocked"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 6,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_show",
+      "kind": "method",
+      "scope": "ImageMetaDataTestV21",
+      "lineRange": {
+        "start": 54,
+        "end": 60
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "get_mocked"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 7,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_show_not_found",
+      "kind": "method",
+      "scope": "ImageMetaDataTestV21",
+      "lineRange": {
+        "start": 63,
+        "end": 66
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "_get_mocked"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 4,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_show_image_not_found",
+      "kind": "method",
+      "scope": "ImageMetaDataTestV21",
+      "lineRange": {
+        "start": 70,
+        "end": 73
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "_get_mocked"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 4,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_create",
+      "kind": "method",
+      "scope": "ImageMetaDataTestV21",
+      "lineRange": {
+        "start": 78,
+        "end": 99
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "get_mocked"
+        },
+        {
+          "name": "update_mocked"
+        },
+        {
+          "name": "quota_mocked"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 21,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_create_image_not_found",
+      "kind": "method",
+      "scope": "ImageMetaDataTestV21",
+      "lineRange": {
+        "start": 105,
+        "end": 116
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "_get_mocked"
+        },
+        {
+          "name": "update_mocked"
+        },
+        {
+          "name": "quota_mocked"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 11,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_update_all",
+      "kind": "method",
+      "scope": "ImageMetaDataTestV21",
+      "lineRange": {
+        "start": 121,
+        "end": 138
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "get_mocked"
+        },
+        {
+          "name": "update_mocked"
+        },
+        {
+          "name": "quota_mocked"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 17,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_update_all_image_not_found",
+      "kind": "method",
+      "scope": "ImageMetaDataTestV21",
+      "lineRange": {
+        "start": 143,
+        "end": 152
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "_get_mocked"
+        },
+        {
+          "name": "quota_mocked"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 9,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_update_item",
+      "kind": "method",
+      "scope": "ImageMetaDataTestV21",
+      "lineRange": {
+        "start": 157,
+        "end": 173
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "_get_mocked"
+        },
+        {
+          "name": "update_mocked"
+        },
+        {
+          "name": "quota_mocked"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 16,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_update_item_image_not_found",
+      "kind": "method",
+      "scope": "ImageMetaDataTestV21",
+      "lineRange": {
+        "start": 178,
+        "end": 188
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "_get_mocked"
+        },
+        {
+          "name": "quota_mocked"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 10,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_update_item_bad_body",
+      "kind": "method",
+      "scope": "ImageMetaDataTestV21",
+      "lineRange": {
+        "start": 193,
+        "end": 206
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "get_mocked"
+        },
+        {
+          "name": "update_mocked"
+        },
+        {
+          "name": "quota_mocked"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 13,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_update_item_too_many_keys",
+      "kind": "method",
+      "scope": "ImageMetaDataTestV21",
+      "lineRange": {
+        "start": 212,
+        "end": 224
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "get_mocked"
+        },
+        {
+          "name": "update_mocked"
+        },
+        {
+          "name": "_quota_mocked"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 12,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_update_item_body_uri_mismatch",
+      "kind": "method",
+      "scope": "ImageMetaDataTestV21",
+      "lineRange": {
+        "start": 229,
+        "end": 241
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "_get_mocked"
+        },
+        {
+          "name": "update_mocked"
+        },
+        {
+          "name": "quota_mocked"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 12,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_delete",
+      "kind": "method",
+      "scope": "ImageMetaDataTestV21",
+      "lineRange": {
+        "start": 245,
+        "end": 254
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "_get_mocked"
+        },
+        {
+          "name": "update_mocked"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 9,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_delete_not_found",
+      "kind": "method",
+      "scope": "ImageMetaDataTestV21",
+      "lineRange": {
+        "start": 257,
+        "end": 262
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "_get_mocked"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 5,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_delete_image_not_found",
+      "kind": "method",
+      "scope": "ImageMetaDataTestV21",
+      "lineRange": {
+        "start": 266,
+        "end": 271
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "_get_mocked"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 5,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_too_many_metadata_items_on_create",
+      "kind": "method",
+      "scope": "ImageMetaDataTestV21",
+      "lineRange": {
+        "start": 277,
+        "end": 287
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "_get_mocked"
+        },
+        {
+          "name": "update_mocked"
+        },
+        {
+          "name": "_quota_mocked"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 10,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_too_many_metadata_items_on_put",
+      "kind": "method",
+      "scope": "ImageMetaDataTestV21",
+      "lineRange": {
+        "start": 293,
+        "end": 304
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "_get_mocked"
+        },
+        {
+          "name": "update_mocked"
+        },
+        {
+          "name": "_quota_mocked"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 11,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_image_not_authorized_update",
+      "kind": "method",
+      "scope": "ImageMetaDataTestV21",
+      "lineRange": {
+        "start": 308,
+        "end": 317
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "_get_mocked"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 9,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_image_not_authorized_update_all",
+      "kind": "method",
+      "scope": "ImageMetaDataTestV21",
+      "lineRange": {
+        "start": 321,
+        "end": 334
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "_get_mocked"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 11,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_image_not_authorized_create",
+      "kind": "method",
+      "scope": "ImageMetaDataTestV21",
+      "lineRange": {
+        "start": 338,
+        "end": 351
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "_get_mocked"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 11,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "ImageMetadataControllerV239",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 354,
+        "end": 376
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "setUp",
+      "kind": "method",
+      "scope": "ImageMetadataControllerV239",
+      "lineRange": {
+        "start": 356,
+        "end": 359
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 4,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_not_found_for_all_image_metadata_api",
+      "kind": "method",
+      "scope": "ImageMetadataControllerV239",
+      "lineRange": {
+        "start": 361,
+        "end": 376
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 16,
+      "ccn": 1,
+      "visibility": "public"
+    }
+  ],
+  "referencedSymbols": [
+    {
+      "name": "image_fixtures.get_image_fixtures",
+      "usage": "call",
+      "via": "nova.tests.unit",
+      "count": 1,
+      "lineRange": {
+        "start": 28,
+        "end": 28
+      }
+    },
+    {
+      "name": "copy.deepcopy",
+      "usage": "call",
+      "via": "copy",
+      "count": 6,
+      "lineRange": {
+        "start": 33,
+        "end": 33
+      }
+    },
+    {
+      "name": "test.NoDBTestCase",
+      "usage": "inherit",
+      "via": "nova",
+      "count": 2,
+      "lineRange": {
+        "start": 36,
+        "end": 36
+      }
+    },
+    {
+      "name": "super",
+      "usage": "call",
+      "via": null,
+      "count": 2,
+      "lineRange": {
+        "start": 42,
+        "end": 42
+      }
+    },
+    {
+      "name": "mock.patch",
+      "usage": "call",
+      "via": "unittest",
+      "count": 42,
+      "lineRange": {
+        "start": 45,
+        "end": 45
+      }
+    },
+    {
+      "name": "fakes.HTTPRequest.blank",
+      "usage": "call",
+      "via": "nova.tests.unit.api.openstack",
+      "count": 22,
+      "lineRange": {
+        "start": 47,
+        "end": 47
+      }
+    },
+    {
+      "name": "len",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 58,
+        "end": 58
+      }
+    },
+    {
+      "name": "exception.ImageNotFound",
+      "usage": "call",
+      "via": "nova",
+      "count": 5,
+      "lineRange": {
+        "start": 69,
+        "end": 69
+      }
+    },
+    {
+      "name": "jsonutils.dump_as_bytes",
+      "usage": "call",
+      "via": "oslo_serialization",
+      "count": 13,
+      "lineRange": {
+        "start": 85,
+        "end": 85
+      }
+    },
+    {
+      "name": "webob.exc.HTTPBadRequest",
+      "usage": "call",
+      "via": "webob",
+      "count": 1,
+      "lineRange": {
+        "start": 209,
+        "end": 209
+      }
+    },
+    {
+      "name": "webob.exc.HTTPForbidden",
+      "usage": "call",
+      "via": "webob",
+      "count": 2,
+      "lineRange": {
+        "start": 274,
+        "end": 274
+      }
+    },
+    {
+      "name": "exception.ImageNotAuthorized",
+      "usage": "call",
+      "via": "nova",
+      "count": 3,
+      "lineRange": {
+        "start": 307,
+        "end": 307
+      }
+    },
+    {
+      "name": "image_metadata_v21.ImageMetadataController",
+      "usage": "call",
+      "via": "nova.api.openstack.compute",
+      "count": 1,
+      "lineRange": {
+        "start": 358,
+        "end": 358
+      }
+    }
+  ],
+  "dependencies": [
+    {
+      "style": "import",
+      "module": "copy",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 16,
+        "end": 16
+      }
+    },
+    {
+      "style": "from",
+      "module": "unittest",
+      "names": [
+        {
+          "alias": null,
+          "name": "mock"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 17,
+        "end": 17
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_serialization",
+      "names": [
+        {
+          "alias": null,
+          "name": "jsonutils"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 19,
+        "end": 19
+      }
+    },
+    {
+      "style": "import",
+      "module": "webob",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 20,
+        "end": 20
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.api.openstack.compute",
+      "names": [
+        {
+          "alias": "image_metadata_v21",
+          "name": "image_metadata"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 22,
+        "end": 22
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "exception"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 23,
+        "end": 23
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "test"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 24,
+        "end": 24
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.tests.unit.api.openstack",
+      "names": [
+        {
+          "alias": null,
+          "name": "fakes"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 25,
+        "end": 25
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.tests.unit",
+      "names": [
+        {
+          "alias": null,
+          "name": "image_fixtures"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 26,
+        "end": 26
+      }
+    }
+  ],
+  "sideEffects": [
+    {
+      "kind": "network",
+      "target": "from nova.api.openstack.compute import image_metadata as image_metadata_v21",
+      "lineRange": {
+        "start": 22,
+        "end": 22
+      }
+    },
+    {
+      "kind": "network",
+      "target": "CHK_QUOTA_STR = 'nova.api.openstack.common.check_img_metadata_properties_quota'",
+      "lineRange": {
+        "start": 29,
+        "end": 29
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "IMAGE_FIXTURES = image_fixtures.get_image_fixtures()",
+      "lineRange": {
+        "start": 28,
+        "end": 28
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "CHK_QUOTA_STR = 'nova.api.openstack.common.check_img_metadata_properties_quota'",
+      "lineRange": {
+        "start": 29,
+        "end": 29
+      }
+    }
+  ],
+  "securitySurface": [
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "@mock.patch('nova.image.glance.API.update')",
+      "lineRange": {
+        "start": 76,
+        "end": 76
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "@mock.patch('nova.image.glance.API.update')",
+      "lineRange": {
+        "start": 102,
+        "end": 102
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "@mock.patch('nova.image.glance.API.update')",
+      "lineRange": {
+        "start": 119,
+        "end": 119
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "@mock.patch('nova.image.glance.API.update')",
+      "lineRange": {
+        "start": 155,
+        "end": 155
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "res = self.controller.update(req, '123', 'key1', body=body)",
+      "lineRange": {
+        "start": 163,
+        "end": 163
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "self.controller.update, req, '100', 'key1',",
+      "lineRange": {
+        "start": 186,
+        "end": 186
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "@mock.patch('nova.image.glance.API.update')",
+      "lineRange": {
+        "start": 191,
+        "end": 191
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "self.controller.update, req, '123', 'key1',",
+      "lineRange": {
+        "start": 202,
+        "end": 202
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "@mock.patch('nova.image.glance.API.update')",
+      "lineRange": {
+        "start": 210,
+        "end": 210
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "self.controller.update, req, '123', 'key1',",
+      "lineRange": {
+        "start": 221,
+        "end": 221
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "@mock.patch('nova.image.glance.API.update')",
+      "lineRange": {
+        "start": 227,
+        "end": 227
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "self.controller.update, req, '123', 'bad',",
+      "lineRange": {
+        "start": 238,
+        "end": 238
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "@mock.patch('nova.image.glance.API.update')",
+      "lineRange": {
+        "start": 243,
+        "end": 243
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "@mock.patch('nova.image.glance.API.update')",
+      "lineRange": {
+        "start": 275,
+        "end": 275
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "@mock.patch('nova.image.glance.API.update')",
+      "lineRange": {
+        "start": 291,
+        "end": 291
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "self.controller.update, req, '123', 'blah',",
+      "lineRange": {
+        "start": 302,
+        "end": 302
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "self.controller.update, req, '123', 'key1',",
+      "lineRange": {
+        "start": 316,
+        "end": 316
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "self.controller.update, self.req,",
+      "lineRange": {
+        "start": 370,
+        "end": 370
+      }
+    }
+  ],
+  "injection_flags": [],
+  "warnings": []
+}

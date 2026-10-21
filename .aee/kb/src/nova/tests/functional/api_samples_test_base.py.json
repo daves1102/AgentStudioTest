@@ -1,0 +1,1538 @@
+{
+  "file": "src/nova/tests/functional/api_samples_test_base.py",
+  "hash": "1efe1868d335bde02c779c6303e3ab42bdd2afe3f549da03672bebb46f86a24a",
+  "language": "Python",
+  "component": "nova",
+  "package": null,
+  "lines": {
+    "blank": 62,
+    "code": 391,
+    "comment": 94,
+    "total": 547
+  },
+  "symbols": [
+    {
+      "name": "PROJECT_ID",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 25,
+        "end": 25
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "pp",
+      "kind": "variable",
+      "scope": "",
+      "lineRange": {
+        "start": 28,
+        "end": 28
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "NoMatch",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 31,
+        "end": 32
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "pretty_data",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 35,
+        "end": 38
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "data"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "'\\n'.join(line.rstrip() for line in data.split('\\n')).strip()",
+          "line": 38
+        }
+      ],
+      "nloc": 4,
+      "ccn": 2,
+      "exported": true
+    },
+    {
+      "name": "objectify",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 41,
+        "end": 65
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "data"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "{}",
+          "line": 43
+        },
+        {
+          "expr": "jsonutils.loads(data)",
+          "line": 65
+        }
+      ],
+      "nloc": 5,
+      "ccn": 2,
+      "exported": true
+    },
+    {
+      "name": "ApiSampleTestBase",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 68,
+        "end": 547
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "sample_dir",
+      "kind": "field",
+      "scope": "ApiSampleTestBase",
+      "lineRange": {
+        "start": 69,
+        "end": 69
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "microversion",
+      "kind": "field",
+      "scope": "ApiSampleTestBase",
+      "lineRange": {
+        "start": 70,
+        "end": 70
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "_use_common_server_api_samples",
+      "kind": "field",
+      "scope": "ApiSampleTestBase",
+      "lineRange": {
+        "start": 71,
+        "end": 71
+      },
+      "source": "aee-inventory",
+      "visibility": "private"
+    },
+    {
+      "name": "__init__",
+      "kind": "method",
+      "scope": "ApiSampleTestBase",
+      "lineRange": {
+        "start": 73,
+        "end": 75
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "*args"
+        },
+        {
+          "name": "**kwargs"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 3,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "subs",
+      "kind": "method",
+      "scope": "ApiSampleTestBase",
+      "lineRange": {
+        "start": 78,
+        "end": 79
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "self._subs",
+          "line": 79
+        }
+      ],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "subs",
+      "kind": "method",
+      "scope": "ApiSampleTestBase",
+      "lineRange": {
+        "start": 82,
+        "end": 92
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "value"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 11,
+      "ccn": 5,
+      "visibility": "public"
+    },
+    {
+      "name": "_get_sample_path",
+      "kind": "method",
+      "scope": "ApiSampleTestBase",
+      "lineRange": {
+        "start": 95,
+        "end": 110
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "cls"
+        },
+        {
+          "name": "name"
+        },
+        {
+          "name": "dirname"
+        },
+        {
+          "default": "''",
+          "name": "suffix"
+        },
+        {
+          "default": "None",
+          "name": "api_version"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "os.path.join(*parts)",
+          "line": 110
+        }
+      ],
+      "nloc": 11,
+      "ccn": 3,
+      "visibility": "private"
+    },
+    {
+      "name": "_get_sample",
+      "kind": "method",
+      "scope": "ApiSampleTestBase",
+      "lineRange": {
+        "start": 113,
+        "end": 117
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "cls"
+        },
+        {
+          "name": "name"
+        },
+        {
+          "default": "None",
+          "name": "api_version"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "cls._get_sample_path(name, dirname, api_version=api_version)",
+          "line": 117
+        }
+      ],
+      "nloc": 5,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "_get_template",
+      "kind": "method",
+      "scope": "ApiSampleTestBase",
+      "lineRange": {
+        "start": 120,
+        "end": 125
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "cls"
+        },
+        {
+          "name": "name"
+        },
+        {
+          "default": "None",
+          "name": "api_version"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "cls._get_sample_path(name, dirname, suffix='.tpl', api_version=api_version)",
+          "line": 124
+        }
+      ],
+      "nloc": 6,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "_read_template",
+      "kind": "method",
+      "scope": "ApiSampleTestBase",
+      "lineRange": {
+        "start": 127,
+        "end": 130
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "name"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "inf.read().strip()",
+          "line": 130
+        }
+      ],
+      "nloc": 4,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "_write_template",
+      "kind": "method",
+      "scope": "ApiSampleTestBase",
+      "lineRange": {
+        "start": 132,
+        "end": 135
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "name"
+        },
+        {
+          "name": "data"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 4,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "_write_sample",
+      "kind": "method",
+      "scope": "ApiSampleTestBase",
+      "lineRange": {
+        "start": 137,
+        "end": 143
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "name"
+        },
+        {
+          "name": "data"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 5,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "_compare_result",
+      "kind": "method",
+      "scope": "ApiSampleTestBase",
+      "lineRange": {
+        "start": 145,
+        "end": 313
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "expected"
+        },
+        {
+          "name": "result"
+        },
+        {
+          "name": "result_str"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "self._compare_result(expected[0], result[0], result_str)",
+          "line": 197
+        },
+        {
+          "expr": "self._compare_result(expected, result, result_str)",
+          "line": 288
+        },
+        {
+          "expr": "matched_value",
+          "line": 313
+        }
+      ],
+      "nloc": 125,
+      "ccn": 38,
+      "visibility": "private"
+    },
+    {
+      "name": "project_id",
+      "kind": "method",
+      "scope": "ApiSampleTestBase",
+      "lineRange": {
+        "start": 316,
+        "end": 325
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "project_id or PROJECT_ID",
+          "line": 325
+        }
+      ],
+      "nloc": 7,
+      "ccn": 3,
+      "visibility": "public"
+    },
+    {
+      "name": "project_id",
+      "kind": "method",
+      "scope": "ApiSampleTestBase",
+      "lineRange": {
+        "start": 328,
+        "end": 331
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "project_id"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 3,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "generalize_subs",
+      "kind": "method",
+      "scope": "ApiSampleTestBase",
+      "lineRange": {
+        "start": 333,
+        "end": 342
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "subs"
+        },
+        {
+          "name": "vanilla_regexes"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "subs",
+          "line": 342
+        }
+      ],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "_update_links",
+      "kind": "method",
+      "scope": "ApiSampleTestBase",
+      "lineRange": {
+        "start": 344,
+        "end": 362
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "sample_data"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "updated_data",
+          "line": 362
+        }
+      ],
+      "nloc": 13,
+      "ccn": 3,
+      "visibility": "private"
+    },
+    {
+      "name": "_verify_response",
+      "kind": "method",
+      "scope": "ApiSampleTestBase",
+      "lineRange": {
+        "start": 364,
+        "end": 432
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "name"
+        },
+        {
+          "name": "subs"
+        },
+        {
+          "name": "response"
+        },
+        {
+          "name": "exp_code"
+        },
+        {
+          "default": "True",
+          "name": "update_links"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "response_result",
+          "line": 422
+        }
+      ],
+      "nloc": 58,
+      "ccn": 8,
+      "visibility": "private"
+    },
+    {
+      "name": "_get_host",
+      "kind": "method",
+      "scope": "ApiSampleTestBase",
+      "lineRange": {
+        "start": 434,
+        "end": 435
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "'http://openstack.example.com'",
+          "line": 435
+        }
+      ],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "_get_glance_host",
+      "kind": "method",
+      "scope": "ApiSampleTestBase",
+      "lineRange": {
+        "start": 437,
+        "end": 438
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "'http://glance.openstack.example.com'",
+          "line": 438
+        }
+      ],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "_get_regexes",
+      "kind": "method",
+      "scope": "ApiSampleTestBase",
+      "lineRange": {
+        "start": 440,
+        "end": 487
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "{ 'isotime': isotime_re, 'strtime': strtime_re, 'strtime_url': strtime_url_re, 'strtime_or_none': r'None|%s' % strtime_re, 'xmltime': xmltime_re, 'password': '[0-9a-zA-Z]{1,12}', 'ip': '[0-9]{1,3}.[0-",
+          "line": 452
+        }
+      ],
+      "nloc": 45,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "_get_compute_endpoint",
+      "kind": "method",
+      "scope": "ApiSampleTestBase",
+      "lineRange": {
+        "start": 489,
+        "end": 495
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "'%s/%s' % (self._get_host(), self.project_id)",
+          "line": 493
+        },
+        {
+          "expr": "self._get_host()",
+          "line": 495
+        }
+      ],
+      "nloc": 5,
+      "ccn": 2,
+      "visibility": "private"
+    },
+    {
+      "name": "_get_vers_compute_endpoint",
+      "kind": "method",
+      "scope": "ApiSampleTestBase",
+      "lineRange": {
+        "start": 497,
+        "end": 504
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "'%s/%s/%s' % (self._get_host(), self.api_major_version, self.project_id)",
+          "line": 501
+        },
+        {
+          "expr": "'%s/%s' % (self._get_host(), self.api_major_version)",
+          "line": 504
+        }
+      ],
+      "nloc": 6,
+      "ccn": 2,
+      "visibility": "private"
+    },
+    {
+      "name": "_get_response",
+      "kind": "method",
+      "scope": "ApiSampleTestBase",
+      "lineRange": {
+        "start": 506,
+        "end": 512
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "url"
+        },
+        {
+          "name": "method"
+        },
+        {
+          "default": "None",
+          "name": "body"
+        },
+        {
+          "default": "False",
+          "name": "strip_version"
+        },
+        {
+          "default": "None",
+          "name": "headers"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "self.api.api_request(url, body=body, method=method, headers=headers, strip_version=strip_version)",
+          "line": 511
+        }
+      ],
+      "nloc": 7,
+      "ccn": 2,
+      "visibility": "private"
+    },
+    {
+      "name": "_do_options",
+      "kind": "method",
+      "scope": "ApiSampleTestBase",
+      "lineRange": {
+        "start": 514,
+        "end": 516
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "url"
+        },
+        {
+          "default": "False",
+          "name": "strip_version"
+        },
+        {
+          "default": "None",
+          "name": "headers"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "self._get_response(url, 'OPTIONS', strip_version=strip_version, headers=headers)",
+          "line": 515
+        }
+      ],
+      "nloc": 3,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "_do_get",
+      "kind": "method",
+      "scope": "ApiSampleTestBase",
+      "lineRange": {
+        "start": 518,
+        "end": 524
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "url"
+        },
+        {
+          "default": "False",
+          "name": "strip_version"
+        },
+        {
+          "default": "None",
+          "name": "headers"
+        },
+        {
+          "default": "False",
+          "name": "return_json_body"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "jsonutils.loads(response.content)",
+          "line": 523
+        },
+        {
+          "expr": "response",
+          "line": 524
+        }
+      ],
+      "nloc": 7,
+      "ccn": 3,
+      "visibility": "private"
+    },
+    {
+      "name": "_do_post",
+      "kind": "method",
+      "scope": "ApiSampleTestBase",
+      "lineRange": {
+        "start": 526,
+        "end": 534
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "url"
+        },
+        {
+          "default": "None",
+          "name": "name"
+        },
+        {
+          "default": "None",
+          "name": "subs"
+        },
+        {
+          "default": "'POST'",
+          "name": "method"
+        },
+        {
+          "default": "None",
+          "name": "headers"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "self._get_response(url, method, body, headers=headers)",
+          "line": 534
+        }
+      ],
+      "nloc": 9,
+      "ccn": 5,
+      "visibility": "private"
+    },
+    {
+      "name": "_do_put",
+      "kind": "method",
+      "scope": "ApiSampleTestBase",
+      "lineRange": {
+        "start": 536,
+        "end": 544
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "url"
+        },
+        {
+          "default": "None",
+          "name": "name"
+        },
+        {
+          "default": "None",
+          "name": "subs"
+        },
+        {
+          "default": "None",
+          "name": "headers"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "self._do_post( url, name, subs, method='PUT', headers=headers)",
+          "line": 541
+        },
+        {
+          "expr": "self._get_response(url, 'PUT', headers=headers)",
+          "line": 544
+        }
+      ],
+      "nloc": 6,
+      "ccn": 2,
+      "visibility": "private"
+    },
+    {
+      "name": "_do_delete",
+      "kind": "method",
+      "scope": "ApiSampleTestBase",
+      "lineRange": {
+        "start": 546,
+        "end": 547
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "url"
+        },
+        {
+          "default": "None",
+          "name": "headers"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "self._get_response(url, 'DELETE', headers=headers)",
+          "line": 547
+        }
+      ],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "subs",
+      "kind": "property",
+      "scope": "ApiSampleTestBase",
+      "lineRange": {
+        "start": 77,
+        "end": 79
+      },
+      "visibility": "public",
+      "source": "manual"
+    },
+    {
+      "name": "_get_sample_path",
+      "kind": "classmethod",
+      "scope": "ApiSampleTestBase",
+      "lineRange": {
+        "start": 94,
+        "end": 110
+      },
+      "visibility": "private",
+      "source": "manual"
+    },
+    {
+      "name": "_get_sample",
+      "kind": "classmethod",
+      "scope": "ApiSampleTestBase",
+      "lineRange": {
+        "start": 112,
+        "end": 117
+      },
+      "visibility": "private",
+      "source": "manual"
+    },
+    {
+      "name": "_get_template",
+      "kind": "classmethod",
+      "scope": "ApiSampleTestBase",
+      "lineRange": {
+        "start": 119,
+        "end": 125
+      },
+      "visibility": "private",
+      "source": "manual"
+    },
+    {
+      "name": "project_id",
+      "kind": "property",
+      "scope": "ApiSampleTestBase",
+      "lineRange": {
+        "start": 315,
+        "end": 325
+      },
+      "visibility": "public",
+      "source": "manual"
+    }
+  ],
+  "referencedSymbols": [
+    {
+      "name": "pprint.PrettyPrinter",
+      "usage": "call",
+      "via": "pprint",
+      "count": 1,
+      "lineRange": {
+        "start": 28,
+        "end": 28
+      }
+    },
+    {
+      "name": "test.TestingException",
+      "usage": "inherit",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 31,
+        "end": 31
+      }
+    },
+    {
+      "name": "jsonutils.dumps",
+      "usage": "call",
+      "via": "oslo_serialization",
+      "count": 1,
+      "lineRange": {
+        "start": 36,
+        "end": 36
+      }
+    },
+    {
+      "name": "jsonutils.loads",
+      "usage": "call",
+      "via": "oslo_serialization",
+      "count": 3,
+      "lineRange": {
+        "start": 36,
+        "end": 36
+      }
+    },
+    {
+      "name": "re.sub",
+      "usage": "call",
+      "via": "re",
+      "count": 3,
+      "lineRange": {
+        "start": 64,
+        "end": 64
+      }
+    },
+    {
+      "name": "integrated_helpers._IntegratedTestBase",
+      "usage": "inherit",
+      "via": "nova.tests.functional",
+      "count": 1,
+      "lineRange": {
+        "start": 68,
+        "end": 68
+      }
+    },
+    {
+      "name": "super",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 74,
+        "end": 74
+      }
+    },
+    {
+      "name": "isinstance",
+      "usage": "call",
+      "via": null,
+      "count": 9,
+      "lineRange": {
+        "start": 86,
+        "end": 86
+      }
+    },
+    {
+      "name": "len",
+      "usage": "call",
+      "via": null,
+      "count": 3,
+      "lineRange": {
+        "start": 87,
+        "end": 87
+      }
+    },
+    {
+      "name": "TypeError",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 88,
+        "end": 88
+      }
+    },
+    {
+      "name": "os.path.join",
+      "usage": "call",
+      "via": "os",
+      "count": 3,
+      "lineRange": {
+        "start": 110,
+        "end": 110
+      }
+    },
+    {
+      "name": "os.path.abspath",
+      "usage": "call",
+      "via": "os",
+      "count": 2,
+      "lineRange": {
+        "start": 114,
+        "end": 114
+      }
+    },
+    {
+      "name": "os.path.dirname",
+      "usage": "call",
+      "via": "os",
+      "count": 3,
+      "lineRange": {
+        "start": 114,
+        "end": 114
+      }
+    },
+    {
+      "name": "os.path.normpath",
+      "usage": "call",
+      "via": "os",
+      "count": 2,
+      "lineRange": {
+        "start": 115,
+        "end": 115
+      }
+    },
+    {
+      "name": "open",
+      "usage": "call",
+      "via": null,
+      "count": 4,
+      "lineRange": {
+        "start": 129,
+        "end": 129
+      }
+    },
+    {
+      "name": "os.makedirs",
+      "usage": "call",
+      "via": "os",
+      "count": 1,
+      "lineRange": {
+        "start": 140,
+        "end": 140
+      }
+    },
+    {
+      "name": "sorted",
+      "usage": "call",
+      "via": null,
+      "count": 2,
+      "lineRange": {
+        "start": 162,
+        "end": 162
+      }
+    },
+    {
+      "name": "enumerate",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 212,
+        "end": 212
+      }
+    },
+    {
+      "name": "repr",
+      "usage": "call",
+      "via": null,
+      "count": 2,
+      "lineRange": {
+        "start": 227,
+        "end": 227
+      }
+    },
+    {
+      "name": "str",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 245,
+        "end": 245
+      }
+    },
+    {
+      "name": "re.match",
+      "usage": "call",
+      "via": "re",
+      "count": 1,
+      "lineRange": {
+        "start": 251,
+        "end": 251
+      }
+    },
+    {
+      "name": "ValueError",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 309,
+        "end": 309
+      }
+    },
+    {
+      "name": "type",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 311,
+        "end": 311
+      }
+    },
+    {
+      "name": "os.path.exists",
+      "usage": "call",
+      "via": "os",
+      "count": 3,
+      "lineRange": {
+        "start": 380,
+        "end": 380
+      }
+    },
+    {
+      "name": "hasattr",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 522,
+        "end": 522
+      }
+    }
+  ],
+  "dependencies": [
+    {
+      "style": "import",
+      "module": "os",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 16,
+        "end": 16
+      }
+    },
+    {
+      "style": "import",
+      "module": "pprint",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 17,
+        "end": 17
+      }
+    },
+    {
+      "style": "import",
+      "module": "re",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 18,
+        "end": 18
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_serialization",
+      "names": [
+        {
+          "alias": null,
+          "name": "jsonutils"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 20,
+        "end": 20
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "test"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 22,
+        "end": 22
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.tests.functional",
+      "names": [
+        {
+          "alias": null,
+          "name": "integrated_helpers"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 23,
+        "end": 23
+      }
+    }
+  ],
+  "sideEffects": [
+    {
+      "kind": "file-io",
+      "target": "return os.path.join(*parts)",
+      "lineRange": {
+        "start": 110,
+        "end": 110
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "dirname = os.path.dirname(os.path.abspath(__file__))",
+      "lineRange": {
+        "start": 114,
+        "end": 114
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "dirname = os.path.normpath(os.path.join(dirname,",
+      "lineRange": {
+        "start": 115,
+        "end": 115
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "dirname = os.path.dirname(os.path.abspath(__file__))",
+      "lineRange": {
+        "start": 121,
+        "end": 121
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "dirname = os.path.normpath(os.path.join(dirname,",
+      "lineRange": {
+        "start": 122,
+        "end": 122
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "with open(template) as inf:",
+      "lineRange": {
+        "start": 129,
+        "end": 129
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "with open(self._get_template(name,",
+      "lineRange": {
+        "start": 133,
+        "end": 133
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "os.makedirs(os.path.dirname(sample_file), exist_ok = True)",
+      "lineRange": {
+        "start": 140,
+        "end": 140
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "with open(sample_file, 'w') as outf:",
+      "lineRange": {
+        "start": 142,
+        "end": 142
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "if not os.path.exists(template_path):",
+      "lineRange": {
+        "start": 380,
+        "end": 380
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "if (self.generate_samples and not os.path.exists(sample_path)):",
+      "lineRange": {
+        "start": 400,
+        "end": 400
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "with open(sample_path) as sample:",
+      "lineRange": {
+        "start": 404,
+        "end": 404
+      }
+    },
+    {
+      "kind": "network",
+      "target": "return 'http://openstack.example.com'",
+      "lineRange": {
+        "start": 435,
+        "end": 435
+      }
+    },
+    {
+      "kind": "network",
+      "target": "return 'http://glance.openstack.example.com'",
+      "lineRange": {
+        "start": 438,
+        "end": 438
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "if self.generate_samples and not os.path.exists(sample):",
+      "lineRange": {
+        "start": 532,
+        "end": 532
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "PROJECT_ID = \"6f70656e737461636b20342065766572\"",
+      "lineRange": {
+        "start": 25,
+        "end": 25
+      }
+    }
+  ],
+  "securitySurface": [
+    {
+      "kind": "sink",
+      "category": "file-write",
+      "description": "outf.write(data)",
+      "lineRange": {
+        "start": 135,
+        "end": 135
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "file-write",
+      "description": "with open(sample_file, 'w') as outf:",
+      "lineRange": {
+        "start": 142,
+        "end": 142
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "file-write",
+      "description": "outf.write(data)",
+      "lineRange": {
+        "start": 143,
+        "end": 143
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "\"\"\"Process sample data and update version specific links.\"\"\"",
+      "lineRange": {
+        "start": 345,
+        "end": 345
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "regexes.update(subs)",
+      "lineRange": {
+        "start": 372,
+        "end": 372
+      }
+    }
+  ],
+  "injection_flags": [],
+  "warnings": []
+}

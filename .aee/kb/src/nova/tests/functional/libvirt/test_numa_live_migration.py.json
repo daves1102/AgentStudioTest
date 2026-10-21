@@ -1,0 +1,1378 @@
+{
+  "file": "src/nova/tests/functional/libvirt/test_numa_live_migration.py",
+  "hash": "daa6de5bed065c3d6fcf955d9d9263cddb3bf3f41eef048fd26c740eeb1c2e70",
+  "language": "Python",
+  "component": "nova",
+  "package": null,
+  "lines": {
+    "blank": 99,
+    "code": 457,
+    "comment": 116,
+    "total": 672
+  },
+  "symbols": [
+    {
+      "name": "CONF",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 30,
+        "end": 30
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "LOG",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 31,
+        "end": 31
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "NUMALiveMigrationBase",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 34,
+        "end": 92
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "microversion",
+      "kind": "field",
+      "scope": "NUMALiveMigrationBase",
+      "lineRange": {
+        "start": 42,
+        "end": 42
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "ADDITIONAL_FILTERS",
+      "kind": "constant",
+      "scope": "NUMALiveMigrationBase",
+      "lineRange": {
+        "start": 43,
+        "end": 43
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "ADMIN_API",
+      "kind": "constant",
+      "scope": "NUMALiveMigrationBase",
+      "lineRange": {
+        "start": 44,
+        "end": 44
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "setUp",
+      "kind": "method",
+      "scope": "NUMALiveMigrationBase",
+      "lineRange": {
+        "start": 46,
+        "end": 66
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 6,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "get_host",
+      "kind": "method",
+      "scope": "NUMALiveMigrationBase",
+      "lineRange": {
+        "start": 68,
+        "end": 70
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "server_id"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "server['OS-EXT-SRV-ATTR:host']",
+          "line": 70
+        }
+      ],
+      "nloc": 3,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "_get_migration_context",
+      "kind": "method",
+      "scope": "NUMALiveMigrationBase",
+      "lineRange": {
+        "start": 72,
+        "end": 75
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "instance_uuid"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "objects.MigrationContext.get_by_instance_uuid(ctxt, instance_uuid)",
+          "line": 74
+        }
+      ],
+      "nloc": 4,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "_assert_instance_pinned_cpus",
+      "kind": "method",
+      "scope": "NUMALiveMigrationBase",
+      "lineRange": {
+        "start": 77,
+        "end": 86
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "uuid"
+        },
+        {
+          "name": "instance_cpus"
+        },
+        {
+          "name": "host_cpus"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 9,
+      "ccn": 2,
+      "visibility": "private"
+    },
+    {
+      "name": "_assert_host_consumed_cpus",
+      "kind": "method",
+      "scope": "NUMALiveMigrationBase",
+      "lineRange": {
+        "start": 88,
+        "end": 92
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "host"
+        },
+        {
+          "name": "cpus"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 5,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "NUMALiveMigrationPositiveBase",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 95,
+        "end": 138
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "setUp",
+      "kind": "method",
+      "scope": "NUMALiveMigrationPositiveBase",
+      "lineRange": {
+        "start": 101,
+        "end": 102
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "start_computes_and_servers",
+      "kind": "method",
+      "scope": "NUMALiveMigrationPositiveBase",
+      "lineRange": {
+        "start": 104,
+        "end": 129
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 19,
+      "ccn": 2,
+      "visibility": "public"
+    },
+    {
+      "name": "_rpc_pin_host",
+      "kind": "method",
+      "scope": "NUMALiveMigrationPositiveBase",
+      "lineRange": {
+        "start": 131,
+        "end": 138
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "hostname"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 8,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "NUMALiveMigrationPositiveTests",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 141,
+        "end": 287
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "_migrate_stub",
+      "kind": "method",
+      "scope": "NUMALiveMigrationPositiveTests",
+      "lineRange": {
+        "start": 146,
+        "end": 195
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "domain"
+        },
+        {
+          "name": "destination"
+        },
+        {
+          "name": "params"
+        },
+        {
+          "name": "flags"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 24,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "_test",
+      "kind": "method",
+      "scope": "NUMALiveMigrationPositiveTests",
+      "lineRange": {
+        "start": 197,
+        "end": 239
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "pin_dest"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 21,
+      "ccn": 2,
+      "visibility": "private"
+    },
+    {
+      "name": "test_numa_live_migration",
+      "kind": "method",
+      "scope": "NUMALiveMigrationPositiveTests",
+      "lineRange": {
+        "start": 241,
+        "end": 242
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_numa_live_migration_dest_pinned",
+      "kind": "method",
+      "scope": "NUMALiveMigrationPositiveTests",
+      "lineRange": {
+        "start": 244,
+        "end": 245
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_bug_1843639",
+      "kind": "method",
+      "scope": "NUMALiveMigrationPositiveTests",
+      "lineRange": {
+        "start": 247,
+        "end": 287
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 9,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "live_migration",
+      "kind": "function",
+      "scope": "NUMALiveMigrationPositiveTests.test_bug_1843639",
+      "lineRange": {
+        "start": 265,
+        "end": 281
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "*args"
+        },
+        {
+          "name": "**kwargs"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "orig_live_migration(*args, **kwargs)",
+          "line": 281
+        }
+      ],
+      "visibility": "public"
+    },
+    {
+      "name": "NUMALiveMigrationRollbackTests",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 290,
+        "end": 426
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "_migrate_stub",
+      "kind": "method",
+      "scope": "NUMALiveMigrationRollbackTests",
+      "lineRange": {
+        "start": 296,
+        "end": 322
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "domain"
+        },
+        {
+          "name": "destination"
+        },
+        {
+          "name": "params"
+        },
+        {
+          "name": "flags"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 14,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "_test",
+      "kind": "method",
+      "scope": "NUMALiveMigrationRollbackTests",
+      "lineRange": {
+        "start": 324,
+        "end": 342
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "default": "False",
+          "name": "pin_dest"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 11,
+      "ccn": 2,
+      "visibility": "private"
+    },
+    {
+      "name": "_test_rollback",
+      "kind": "method",
+      "scope": "NUMALiveMigrationRollbackTests",
+      "lineRange": {
+        "start": 344,
+        "end": 353
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "default": "False",
+          "name": "pin_dest"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 6,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "test_rollback",
+      "kind": "method",
+      "scope": "NUMALiveMigrationRollbackTests",
+      "lineRange": {
+        "start": 355,
+        "end": 356
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_rollback_pinned_dest",
+      "kind": "method",
+      "scope": "NUMALiveMigrationRollbackTests",
+      "lineRange": {
+        "start": 358,
+        "end": 359
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "_test_bug_1894095",
+      "kind": "method",
+      "scope": "NUMALiveMigrationRollbackTests",
+      "lineRange": {
+        "start": 361,
+        "end": 420
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "default": "False",
+          "name": "pre_drop_race"
+        },
+        {
+          "default": "False",
+          "name": "post_drop_race"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 10,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "drop_move_claim",
+      "kind": "function",
+      "scope": "NUMALiveMigrationRollbackTests._test_bug_1894095",
+      "lineRange": {
+        "start": 371,
+        "end": 410
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "*args"
+        },
+        {
+          "name": "**kwargs"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "result",
+          "line": 410
+        }
+      ],
+      "visibility": "public"
+    },
+    {
+      "name": "test_bug_1894095_pre_drop",
+      "kind": "method",
+      "scope": "NUMALiveMigrationRollbackTests",
+      "lineRange": {
+        "start": 422,
+        "end": 423
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_bug_1894095_post_drop",
+      "kind": "method",
+      "scope": "NUMALiveMigrationRollbackTests",
+      "lineRange": {
+        "start": 425,
+        "end": 426
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "NUMALiveMigrationLegacyBase",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 429,
+        "end": 520
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "microversion",
+      "kind": "field",
+      "scope": "NUMALiveMigrationLegacyBase",
+      "lineRange": {
+        "start": 441,
+        "end": 441
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "setUp",
+      "kind": "method",
+      "scope": "NUMALiveMigrationLegacyBase",
+      "lineRange": {
+        "start": 443,
+        "end": 448
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 6,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "_test",
+      "kind": "method",
+      "scope": "NUMALiveMigrationLegacyBase",
+      "lineRange": {
+        "start": 450,
+        "end": 520
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "pin_source"
+        },
+        {
+          "name": "pin_cond"
+        },
+        {
+          "default": "True",
+          "name": "expect_success"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 59,
+      "ccn": 5,
+      "visibility": "private"
+    },
+    {
+      "name": "NUMALiveMigrationLegacyTests",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 523,
+        "end": 552
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "_migrate_stub",
+      "kind": "method",
+      "scope": "NUMALiveMigrationLegacyTests",
+      "lineRange": {
+        "start": 530,
+        "end": 546
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "domain"
+        },
+        {
+          "name": "destination"
+        },
+        {
+          "name": "params"
+        },
+        {
+          "name": "flags"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 12,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "test_source_pinned_dest_unpinned",
+      "kind": "method",
+      "scope": "NUMALiveMigrationLegacyTests",
+      "lineRange": {
+        "start": 548,
+        "end": 549
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_conductor_pinned",
+      "kind": "method",
+      "scope": "NUMALiveMigrationLegacyTests",
+      "lineRange": {
+        "start": 551,
+        "end": 552
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "NUMALiveMigrationLegacyRollbackTests",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 555,
+        "end": 577
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "_migrate_stub",
+      "kind": "method",
+      "scope": "NUMALiveMigrationLegacyRollbackTests",
+      "lineRange": {
+        "start": 561,
+        "end": 571
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "domain"
+        },
+        {
+          "name": "destination"
+        },
+        {
+          "name": "params"
+        },
+        {
+          "name": "flags"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 8,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "test_source_pinned_dest_unpinned",
+      "kind": "method",
+      "scope": "NUMALiveMigrationLegacyRollbackTests",
+      "lineRange": {
+        "start": 573,
+        "end": 574
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_conductor_pinned",
+      "kind": "method",
+      "scope": "NUMALiveMigrationLegacyRollbackTests",
+      "lineRange": {
+        "start": 576,
+        "end": 577
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "NUMALiveMigrationNegativeTests",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 580,
+        "end": 672
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "microversion",
+      "kind": "field",
+      "scope": "NUMALiveMigrationNegativeTests",
+      "lineRange": {
+        "start": 588,
+        "end": 588
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "test_insufficient_resources",
+      "kind": "method",
+      "scope": "NUMALiveMigrationNegativeTests",
+      "lineRange": {
+        "start": 590,
+        "end": 626
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 34,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_different_page_sizes",
+      "kind": "method",
+      "scope": "NUMALiveMigrationNegativeTests",
+      "lineRange": {
+        "start": 628,
+        "end": 672
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 42,
+      "ccn": 2,
+      "visibility": "public"
+    }
+  ],
+  "referencedSymbols": [
+    {
+      "name": "logging.getLogger",
+      "usage": "call",
+      "via": "oslo_log",
+      "count": 1,
+      "lineRange": {
+        "start": 31,
+        "end": 31
+      }
+    },
+    {
+      "name": "base.LibvirtMigrationMixin",
+      "usage": "inherit",
+      "via": "nova.tests.functional.libvirt",
+      "count": 1,
+      "lineRange": {
+        "start": 35,
+        "end": 35
+      }
+    },
+    {
+      "name": "base.ServersTestBase",
+      "usage": "inherit",
+      "via": "nova.tests.functional.libvirt",
+      "count": 1,
+      "lineRange": {
+        "start": 36,
+        "end": 36
+      }
+    },
+    {
+      "name": "integrated_helpers.InstanceHelperMixin",
+      "usage": "inherit",
+      "via": "nova.tests.functional",
+      "count": 1,
+      "lineRange": {
+        "start": 37,
+        "end": 37
+      }
+    },
+    {
+      "name": "super",
+      "usage": "call",
+      "via": null,
+      "count": 3,
+      "lineRange": {
+        "start": 47,
+        "end": 47
+      }
+    },
+    {
+      "name": "fixtures.MonkeyPatch",
+      "usage": "call",
+      "via": "fixtures",
+      "count": 4,
+      "lineRange": {
+        "start": 63,
+        "end": 63
+      }
+    },
+    {
+      "name": "context.get_admin_context",
+      "usage": "call",
+      "via": "nova",
+      "count": 6,
+      "lineRange": {
+        "start": 73,
+        "end": 73
+      }
+    },
+    {
+      "name": "objects.MigrationContext.get_by_instance_uuid",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 74,
+        "end": 74
+      }
+    },
+    {
+      "name": "objects.InstanceNUMATopology.get_by_instance_uuid",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 79,
+        "end": 79
+      }
+    },
+    {
+      "name": "len",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 81,
+        "end": 81
+      }
+    },
+    {
+      "name": "str",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 83,
+        "end": 83
+      }
+    },
+    {
+      "name": "objects.NUMATopology.obj_from_db_obj",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 90,
+        "end": 90
+      }
+    },
+    {
+      "name": "objects.ComputeNode.get_by_nodename",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 91,
+        "end": 91
+      }
+    },
+    {
+      "name": "fakelibvirt.HostInfo",
+      "usage": "call",
+      "via": "nova.tests.fixtures",
+      "count": 8,
+      "lineRange": {
+        "start": 108,
+        "end": 108
+      }
+    },
+    {
+      "name": "setattr",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 126,
+        "end": 126
+      }
+    },
+    {
+      "name": "integrated_helpers.StubComputeRPCAPI",
+      "usage": "call",
+      "via": "nova.tests.functional",
+      "count": 5,
+      "lineRange": {
+        "start": 134,
+        "end": 134
+      }
+    },
+    {
+      "name": "objects.Migration.get_by_instance_and_status",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 276,
+        "end": 276
+      }
+    },
+    {
+      "name": "orig_live_migration",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 281,
+        "end": 281
+      }
+    },
+    {
+      "name": "orig_drop_move_claim",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 390,
+        "end": 390
+      }
+    },
+    {
+      "name": "fakelibvirt.create_mempages",
+      "usage": "call",
+      "via": "nova.tests.fixtures",
+      "count": 2,
+      "lineRange": {
+        "start": 633,
+        "end": 633
+      }
+    }
+  ],
+  "dependencies": [
+    {
+      "style": "import",
+      "module": "fixtures",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 16,
+        "end": 16
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_config",
+      "names": [
+        {
+          "alias": null,
+          "name": "cfg"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 18,
+        "end": 18
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_log",
+      "names": [
+        {
+          "alias": "logging",
+          "name": "log"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 19,
+        "end": 19
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.compute",
+      "names": [
+        {
+          "alias": "compute_manager",
+          "name": "manager"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 21,
+        "end": 21
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.compute",
+      "names": [
+        {
+          "alias": "rt",
+          "name": "resource_tracker"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 22,
+        "end": 22
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "context"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 23,
+        "end": 23
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "objects"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 24,
+        "end": 24
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.tests.fixtures",
+      "names": [
+        {
+          "alias": "fakelibvirt",
+          "name": "libvirt"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 25,
+        "end": 25
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.tests.functional",
+      "names": [
+        {
+          "alias": null,
+          "name": "integrated_helpers"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 26,
+        "end": 26
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.tests.functional.libvirt",
+      "names": [
+        {
+          "alias": null,
+          "name": "base"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 27,
+        "end": 27
+      }
+    }
+  ],
+  "sideEffects": [
+    {
+      "kind": "global-mutation",
+      "target": "CONF = cfg.CONF",
+      "lineRange": {
+        "start": 30,
+        "end": 30
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "LOG = logging.getLogger(__name__)",
+      "lineRange": {
+        "start": 31,
+        "end": 31
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "ADDITIONAL_FILTERS = ['NUMATopologyFilter']",
+      "lineRange": {
+        "start": 43,
+        "end": 43
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "ADMIN_API = True",
+      "lineRange": {
+        "start": 44,
+        "end": 44
+      }
+    }
+  ],
+  "securitySurface": [
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "before the fix for 1845146 merged, and were ignored by the update",
+      "lineRange": {
+        "start": 249,
+        "end": 249
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "running the update available resources periodic task while the",
+      "lineRange": {
+        "start": 258,
+        "end": 258
+      }
+    }
+  ],
+  "injection_flags": [],
+  "warnings": []
+}

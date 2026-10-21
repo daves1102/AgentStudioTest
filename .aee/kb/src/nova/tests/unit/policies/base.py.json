@@ -1,0 +1,566 @@
+{
+  "file": "src/nova/tests/unit/policies/base.py",
+  "hash": "c3dcf678897d7d620bb8b586db66e8b3d633f09d73bc82623318dace8c226e30",
+  "language": "Python",
+  "component": "nova",
+  "package": null,
+  "lines": {
+    "blank": 45,
+    "code": 230,
+    "comment": 88,
+    "total": 363
+  },
+  "symbols": [
+    {
+      "name": "LOG",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 24,
+        "end": 24
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "rule_if_system",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 27,
+        "end": 41
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "system_rule"
+        },
+        {
+          "name": "non_system_rule"
+        },
+        {
+          "name": "context"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "system_rule",
+          "line": 39
+        },
+        {
+          "expr": "non_system_rule",
+          "line": 41
+        }
+      ],
+      "nloc": 5,
+      "ccn": 2,
+      "exported": true
+    },
+    {
+      "name": "BasePolicyTest",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 44,
+        "end": 363
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "without_deprecated_rules",
+      "kind": "field",
+      "scope": "BasePolicyTest",
+      "lineRange": {
+        "start": 49,
+        "end": 49
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "rules_without_deprecation",
+      "kind": "field",
+      "scope": "BasePolicyTest",
+      "lineRange": {
+        "start": 57,
+        "end": 57
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "setUp",
+      "kind": "method",
+      "scope": "BasePolicyTest",
+      "lineRange": {
+        "start": 59,
+        "end": 227
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 122,
+      "ccn": 3,
+      "visibility": "public"
+    },
+    {
+      "name": "reduce_set",
+      "kind": "method",
+      "scope": "BasePolicyTest",
+      "lineRange": {
+        "start": 229,
+        "end": 252
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "name"
+        },
+        {
+          "name": "new_set"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 10,
+      "ccn": 3,
+      "visibility": "public"
+    },
+    {
+      "name": "common_policy_auth",
+      "kind": "method",
+      "scope": "BasePolicyTest",
+      "lineRange": {
+        "start": 254,
+        "end": 273
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "authorized_contexts"
+        },
+        {
+          "name": "rule_name"
+        },
+        {
+          "name": "func"
+        },
+        {
+          "name": "req"
+        },
+        {
+          "name": "*arg"
+        },
+        {
+          "name": "**kwarg"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "self.common_policy_check(authorized_contexts, unauth, rule_name, func, req, *arg, **kwarg)",
+          "line": 272
+        }
+      ],
+      "nloc": 10,
+      "ccn": 3,
+      "visibility": "public"
+    },
+    {
+      "name": "common_policy_check",
+      "kind": "method",
+      "scope": "BasePolicyTest",
+      "lineRange": {
+        "start": 275,
+        "end": 363
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "authorized_contexts"
+        },
+        {
+          "name": "unauthorized_contexts"
+        },
+        {
+          "name": "rule_name"
+        },
+        {
+          "name": "func"
+        },
+        {
+          "name": "req"
+        },
+        {
+          "name": "*arg"
+        },
+        {
+          "name": "**kwarg"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "authorized_response, unauthorize_response",
+          "line": 363
+        }
+      ],
+      "nloc": 38,
+      "ccn": 7,
+      "visibility": "public"
+    },
+    {
+      "name": "ensure_return",
+      "kind": "function",
+      "scope": "BasePolicyTest.common_policy_check",
+      "lineRange": {
+        "start": 294,
+        "end": 295
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "req"
+        },
+        {
+          "name": "*args"
+        },
+        {
+          "name": "**kwargs"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "func(req, *arg, **kwargs)",
+          "line": 295
+        }
+      ],
+      "visibility": "public"
+    },
+    {
+      "name": "ensure_raises",
+      "kind": "function",
+      "scope": "BasePolicyTest.common_policy_check",
+      "lineRange": {
+        "start": 297,
+        "end": 318
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "req"
+        },
+        {
+          "name": "*args"
+        },
+        {
+          "name": "**kwargs"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "visibility": "public"
+    }
+  ],
+  "referencedSymbols": [
+    {
+      "name": "logging.getLogger",
+      "usage": "call",
+      "via": "oslo_log",
+      "count": 1,
+      "lineRange": {
+        "start": 24,
+        "end": 24
+      }
+    },
+    {
+      "name": "test.TestCase",
+      "usage": "inherit",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 44,
+        "end": 44
+      }
+    },
+    {
+      "name": "super",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 60,
+        "end": 60
+      }
+    },
+    {
+      "name": "fixtures.NeutronFixture",
+      "usage": "call",
+      "via": "nova.tests",
+      "count": 1,
+      "lineRange": {
+        "start": 67,
+        "end": 67
+      }
+    },
+    {
+      "name": "fixtures.RealPolicyFixture",
+      "usage": "call",
+      "via": "nova.tests",
+      "count": 1,
+      "lineRange": {
+        "start": 68,
+        "end": 68
+      }
+    },
+    {
+      "name": "nova_context.RequestContext",
+      "usage": "call",
+      "via": "nova",
+      "count": 14,
+      "lineRange": {
+        "start": 76,
+        "end": 76
+      }
+    },
+    {
+      "name": "set",
+      "usage": "call",
+      "via": null,
+      "count": 9,
+      "lineRange": {
+        "start": 138,
+        "end": 138
+      }
+    },
+    {
+      "name": "getattr",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 242,
+        "end": 242
+      }
+    },
+    {
+      "name": "setattr",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 252,
+        "end": 252
+      }
+    },
+    {
+      "name": "list",
+      "usage": "call",
+      "via": null,
+      "count": 4,
+      "lineRange": {
+        "start": 264,
+        "end": 264
+      }
+    },
+    {
+      "name": "len",
+      "usage": "call",
+      "via": null,
+      "count": 3,
+      "lineRange": {
+        "start": 288,
+        "end": 288
+      }
+    },
+    {
+      "name": "func",
+      "usage": "call",
+      "via": null,
+      "count": 2,
+      "lineRange": {
+        "start": 295,
+        "end": 295
+      }
+    },
+    {
+      "name": "callable",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 306,
+        "end": 306
+      }
+    },
+    {
+      "name": "rule_name",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 307,
+        "end": 307
+      }
+    },
+    {
+      "name": "copy.deepcopy",
+      "usage": "call",
+      "via": "copy",
+      "count": 4,
+      "lineRange": {
+        "start": 324,
+        "end": 324
+      }
+    }
+  ],
+  "dependencies": [
+    {
+      "style": "import",
+      "module": "copy",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 13,
+        "end": 13
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_log",
+      "names": [
+        {
+          "alias": "logging",
+          "name": "log"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 15,
+        "end": 15
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_utils.fixture",
+      "names": [
+        {
+          "alias": "uuids",
+          "name": "uuidsentinel"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 16,
+        "end": 16
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": "nova_context",
+          "name": "context"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 18,
+        "end": 18
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "exception"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 19,
+        "end": 19
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "test"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 20,
+        "end": 20
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.tests",
+      "names": [
+        {
+          "alias": null,
+          "name": "fixtures"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 21,
+        "end": 21
+      }
+    }
+  ],
+  "sideEffects": [
+    {
+      "kind": "global-mutation",
+      "target": "LOG = logging.getLogger(__name__)",
+      "lineRange": {
+        "start": 24,
+        "end": 24
+      }
+    }
+  ],
+  "securitySurface": [
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "self.rules_without_deprecation.update({",
+      "lineRange": {
+        "start": 205,
+        "end": 205
+      }
+    }
+  ],
+  "injection_flags": [],
+  "warnings": []
+}

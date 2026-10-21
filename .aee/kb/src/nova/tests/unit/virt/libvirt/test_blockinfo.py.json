@@ -1,0 +1,2269 @@
+{
+  "file": "src/nova/tests/unit/virt/libvirt/test_blockinfo.py",
+  "hash": "5516739937ac126d3e54bd5990e64cd52e3742d7edf25299467e4427b6b15d8a",
+  "language": "Python",
+  "component": "nova",
+  "package": null,
+  "lines": {
+    "blank": 176,
+    "code": 1415,
+    "comment": 80,
+    "total": 1671
+  },
+  "symbols": [
+    {
+      "name": "LibvirtBlockInfoTest",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 36,
+        "end": 1473
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "setUp",
+      "kind": "method",
+      "scope": "LibvirtBlockInfoTest",
+      "lineRange": {
+        "start": 38,
+        "end": 72
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 32,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "_test_block_device_info",
+      "kind": "method",
+      "scope": "LibvirtBlockInfoTest",
+      "lineRange": {
+        "start": 74,
+        "end": 91
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "default": "True",
+          "name": "with_eph"
+        },
+        {
+          "default": "True",
+          "name": "with_swap"
+        },
+        {
+          "default": "True",
+          "name": "with_bdms"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "{'root_device_name': '/dev/vda', 'swap': swap if with_swap else {}, 'image': image, 'ephemerals': ephemerals if with_eph else [], 'block_device_mapping': block_device_mapping if with_bdms else []}",
+          "line": 86
+        }
+      ],
+      "nloc": 18,
+      "ccn": 4,
+      "visibility": "private"
+    },
+    {
+      "name": "test_volume_in_mapping",
+      "kind": "method",
+      "scope": "LibvirtBlockInfoTest",
+      "lineRange": {
+        "start": 93,
+        "end": 109
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 11,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "_assert_volume_in_mapping",
+      "kind": "function",
+      "scope": "LibvirtBlockInfoTest.test_volume_in_mapping",
+      "lineRange": {
+        "start": 96,
+        "end": 100
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "device_name"
+        },
+        {
+          "name": "true_or_false"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "visibility": "private"
+    },
+    {
+      "name": "test_find_disk_dev",
+      "kind": "method",
+      "scope": "LibvirtBlockInfoTest",
+      "lineRange": {
+        "start": 111,
+        "end": 132
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 19,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_find_disk_dev_for_disk_bus_no_free_error",
+      "kind": "method",
+      "scope": "LibvirtBlockInfoTest",
+      "lineRange": {
+        "start": 135,
+        "end": 148
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "has_disk_dev_mock"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 12,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_get_next_disk_dev",
+      "kind": "method",
+      "scope": "LibvirtBlockInfoTest",
+      "lineRange": {
+        "start": 150,
+        "end": 166
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 15,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_get_next_disk_dev_boot_index",
+      "kind": "method",
+      "scope": "LibvirtBlockInfoTest",
+      "lineRange": {
+        "start": 168,
+        "end": 175
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 7,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_get_disk_mapping_simple",
+      "kind": "method",
+      "scope": "LibvirtBlockInfoTest",
+      "lineRange": {
+        "start": 177,
+        "end": 204
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 22,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_get_disk_mapping_simple_rootdev",
+      "kind": "method",
+      "scope": "LibvirtBlockInfoTest",
+      "lineRange": {
+        "start": 206,
+        "end": 227
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 19,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_get_disk_mapping_rescue",
+      "kind": "method",
+      "scope": "LibvirtBlockInfoTest",
+      "lineRange": {
+        "start": 229,
+        "end": 247
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 15,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "_test_get_disk_mapping_rescue_with_config",
+      "kind": "method",
+      "scope": "LibvirtBlockInfoTest",
+      "lineRange": {
+        "start": 249,
+        "end": 276
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "expect_disk_config_rescue"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 24,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "test_get_disk_mapping_rescue_with_config__x86_64",
+      "kind": "method",
+      "scope": "LibvirtBlockInfoTest",
+      "lineRange": {
+        "start": 280,
+        "end": 283
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 4,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_get_disk_mapping_rescue_with_config__aarch64",
+      "kind": "method",
+      "scope": "LibvirtBlockInfoTest",
+      "lineRange": {
+        "start": 287,
+        "end": 290
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 4,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "_test_get_disk_mapping_stable_rescue",
+      "kind": "method",
+      "scope": "LibvirtBlockInfoTest",
+      "lineRange": {
+        "start": 292,
+        "end": 311
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "rescue_props"
+        },
+        {
+          "name": "expected"
+        },
+        {
+          "name": "block_device_info"
+        },
+        {
+          "default": "False",
+          "name": "with_local"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 12,
+      "ccn": 2,
+      "visibility": "private"
+    },
+    {
+      "name": "test_get_disk_mapping_stable_rescue_virtio_disk",
+      "kind": "method",
+      "scope": "LibvirtBlockInfoTest",
+      "lineRange": {
+        "start": 313,
+        "end": 326
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 13,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_get_disk_mapping_stable_rescue_ide_disk",
+      "kind": "method",
+      "scope": "LibvirtBlockInfoTest",
+      "lineRange": {
+        "start": 328,
+        "end": 341
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 13,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_get_disk_mapping_stable_rescue_usb_disk",
+      "kind": "method",
+      "scope": "LibvirtBlockInfoTest",
+      "lineRange": {
+        "start": 343,
+        "end": 356
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 13,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_get_disk_mapping_stable_rescue_ide_cdrom",
+      "kind": "method",
+      "scope": "LibvirtBlockInfoTest",
+      "lineRange": {
+        "start": 360,
+        "end": 373
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 13,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_get_disk_mapping_stable_rescue_virtio_disk_with_local",
+      "kind": "method",
+      "scope": "LibvirtBlockInfoTest",
+      "lineRange": {
+        "start": 375,
+        "end": 391
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 14,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_get_disk_mapping_stable_rescue_virtio_disk_with_eph",
+      "kind": "method",
+      "scope": "LibvirtBlockInfoTest",
+      "lineRange": {
+        "start": 393,
+        "end": 416
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 21,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_get_disk_mapping_stable_rescue_virtio_disk_with_swap",
+      "kind": "method",
+      "scope": "LibvirtBlockInfoTest",
+      "lineRange": {
+        "start": 418,
+        "end": 438
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 18,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_get_disk_mapping_stable_rescue_virtio_disk_with_bdm",
+      "kind": "method",
+      "scope": "LibvirtBlockInfoTest",
+      "lineRange": {
+        "start": 440,
+        "end": 462
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 20,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_get_disk_mapping_stable_rescue_virtio_disk_with_everything",
+      "kind": "method",
+      "scope": "LibvirtBlockInfoTest",
+      "lineRange": {
+        "start": 464,
+        "end": 492
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 26,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_get_disk_mapping_lxc",
+      "kind": "method",
+      "scope": "LibvirtBlockInfoTest",
+      "lineRange": {
+        "start": 494,
+        "end": 513
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 17,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_get_disk_mapping_simple_iso",
+      "kind": "method",
+      "scope": "LibvirtBlockInfoTest",
+      "lineRange": {
+        "start": 515,
+        "end": 532
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 14,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_get_disk_mapping_simple_swap",
+      "kind": "method",
+      "scope": "LibvirtBlockInfoTest",
+      "lineRange": {
+        "start": 534,
+        "end": 558
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 21,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_get_disk_mapping_volumes_swap",
+      "kind": "method",
+      "scope": "LibvirtBlockInfoTest",
+      "lineRange": {
+        "start": 560,
+        "end": 596
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 32,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "_test_get_disk_mapping_simple_configdrive",
+      "kind": "method",
+      "scope": "LibvirtBlockInfoTest",
+      "lineRange": {
+        "start": 598,
+        "end": 638
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "expect_bus"
+        },
+        {
+          "name": "expect_dev"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 29,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "test_get_disk_mapping_simple_configdrive__x86_64",
+      "kind": "method",
+      "scope": "LibvirtBlockInfoTest",
+      "lineRange": {
+        "start": 643,
+        "end": 645
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_get_arch"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 3,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_get_disk_mapping_simple_configdrive__ppc64",
+      "kind": "method",
+      "scope": "LibvirtBlockInfoTest",
+      "lineRange": {
+        "start": 650,
+        "end": 652
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_get_arch"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 3,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_get_disk_mapping_simple_configdrive__aarch64",
+      "kind": "method",
+      "scope": "LibvirtBlockInfoTest",
+      "lineRange": {
+        "start": 657,
+        "end": 659
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_get_arch"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 3,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "_test_get_disk_mapping_cdrom_configdrive",
+      "kind": "method",
+      "scope": "LibvirtBlockInfoTest",
+      "lineRange": {
+        "start": 661,
+        "end": 697
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "expect_bus"
+        },
+        {
+          "name": "expect_dev"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 28,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "test_get_disk_mapping_cdrom_configdrive__x86_64",
+      "kind": "method",
+      "scope": "LibvirtBlockInfoTest",
+      "lineRange": {
+        "start": 702,
+        "end": 704
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_get_arch"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 3,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_get_disk_mapping_cdrom_configdrive__ppc64",
+      "kind": "method",
+      "scope": "LibvirtBlockInfoTest",
+      "lineRange": {
+        "start": 709,
+        "end": 711
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_get_arch"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 3,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_get_disk_mapping_cdrom_configdrive__aarch64",
+      "kind": "method",
+      "scope": "LibvirtBlockInfoTest",
+      "lineRange": {
+        "start": 716,
+        "end": 718
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_get_arch"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 3,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_get_disk_mapping_disk_configdrive",
+      "kind": "method",
+      "scope": "LibvirtBlockInfoTest",
+      "lineRange": {
+        "start": 720,
+        "end": 746
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 22,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_get_disk_mapping_ephemeral",
+      "kind": "method",
+      "scope": "LibvirtBlockInfoTest",
+      "lineRange": {
+        "start": 748,
+        "end": 783
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 33,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_get_disk_mapping_custom_swap",
+      "kind": "method",
+      "scope": "LibvirtBlockInfoTest",
+      "lineRange": {
+        "start": 785,
+        "end": 809
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 21,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_get_disk_mapping_blockdev_root",
+      "kind": "method",
+      "scope": "LibvirtBlockInfoTest",
+      "lineRange": {
+        "start": 811,
+        "end": 838
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 25,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_get_disk_mapping_blockdev_root_on_spawn",
+      "kind": "method",
+      "scope": "LibvirtBlockInfoTest",
+      "lineRange": {
+        "start": 840,
+        "end": 867
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 25,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_get_disk_mapping_blockdev_eph",
+      "kind": "method",
+      "scope": "LibvirtBlockInfoTest",
+      "lineRange": {
+        "start": 869,
+        "end": 894
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 23,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_get_disk_mapping_blockdev_many",
+      "kind": "method",
+      "scope": "LibvirtBlockInfoTest",
+      "lineRange": {
+        "start": 896,
+        "end": 933
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 35,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_get_disk_mapping_complex",
+      "kind": "method",
+      "scope": "LibvirtBlockInfoTest",
+      "lineRange": {
+        "start": 935,
+        "end": 975
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 38,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_get_disk_mapping_updates_original",
+      "kind": "method",
+      "scope": "LibvirtBlockInfoTest",
+      "lineRange": {
+        "start": 977,
+        "end": 1024
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 43,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_get_disk_bus",
+      "kind": "method",
+      "scope": "LibvirtBlockInfoTest",
+      "lineRange": {
+        "start": 1026,
+        "end": 1081
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 54,
+      "ccn": 5,
+      "visibility": "public"
+    },
+    {
+      "name": "test_get_disk_bus_with_osinfo",
+      "kind": "method",
+      "scope": "LibvirtBlockInfoTest",
+      "lineRange": {
+        "start": 1083,
+        "end": 1092
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 10,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_success_get_disk_bus_for_disk_dev",
+      "kind": "method",
+      "scope": "LibvirtBlockInfoTest",
+      "lineRange": {
+        "start": 1094,
+        "end": 1102
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 9,
+      "ccn": 2,
+      "visibility": "public"
+    },
+    {
+      "name": "test_fail_get_disk_bus_for_disk_dev_unsupported_virt_type",
+      "kind": "method",
+      "scope": "LibvirtBlockInfoTest",
+      "lineRange": {
+        "start": 1104,
+        "end": 1109
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 6,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_fail_get_disk_bus_for_disk_dev",
+      "kind": "method",
+      "scope": "LibvirtBlockInfoTest",
+      "lineRange": {
+        "start": 1111,
+        "end": 1113
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 3,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_get_disk_bus_for_device_type_cdrom_with_q35_get_arch",
+      "kind": "method",
+      "scope": "LibvirtBlockInfoTest",
+      "lineRange": {
+        "start": 1117,
+        "end": 1127
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_get_arch"
+        },
+        {
+          "name": "mock_get_machine_type"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 11,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_get_disk_bus_for_device_type_cdrom_with_q35_image_meta",
+      "kind": "method",
+      "scope": "LibvirtBlockInfoTest",
+      "lineRange": {
+        "start": 1129,
+        "end": 1138
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 10,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_get_config_drive_type_default",
+      "kind": "method",
+      "scope": "LibvirtBlockInfoTest",
+      "lineRange": {
+        "start": 1140,
+        "end": 1142
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 3,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_get_config_drive_type_cdrom",
+      "kind": "method",
+      "scope": "LibvirtBlockInfoTest",
+      "lineRange": {
+        "start": 1144,
+        "end": 1147
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 4,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_get_config_drive_type_disk",
+      "kind": "method",
+      "scope": "LibvirtBlockInfoTest",
+      "lineRange": {
+        "start": 1149,
+        "end": 1152
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 4,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_get_info_from_bdm",
+      "kind": "method",
+      "scope": "LibvirtBlockInfoTest",
+      "lineRange": {
+        "start": 1154,
+        "end": 1242
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 82,
+      "ccn": 2,
+      "visibility": "public"
+    },
+    {
+      "name": "test_get_device_name",
+      "kind": "method",
+      "scope": "LibvirtBlockInfoTest",
+      "lineRange": {
+        "start": 1244,
+        "end": 1262
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 16,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_get_root_info_no_bdm",
+      "kind": "method",
+      "scope": "LibvirtBlockInfoTest",
+      "lineRange": {
+        "start": 1266,
+        "end": 1273
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_find_dev"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 7,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_get_root_info_no_bdm_empty_image_meta",
+      "kind": "method",
+      "scope": "LibvirtBlockInfoTest",
+      "lineRange": {
+        "start": 1277,
+        "end": 1288
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_find_dev"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 7,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_get_root_info_bdm_with_iso_image",
+      "kind": "method",
+      "scope": "LibvirtBlockInfoTest",
+      "lineRange": {
+        "start": 1291,
+        "end": 1300
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_get_info"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 10,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_get_root_info_bdm",
+      "kind": "method",
+      "scope": "LibvirtBlockInfoTest",
+      "lineRange": {
+        "start": 1303,
+        "end": 1332
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_get_info"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 26,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_get_root_info_bdm_with_deepcopy",
+      "kind": "method",
+      "scope": "LibvirtBlockInfoTest",
+      "lineRange": {
+        "start": 1335,
+        "end": 1371
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_get_info"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 33,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_get_boot_order_simple",
+      "kind": "method",
+      "scope": "LibvirtBlockInfoTest",
+      "lineRange": {
+        "start": 1373,
+        "end": 1385
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 13,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_get_boot_order_complex",
+      "kind": "method",
+      "scope": "LibvirtBlockInfoTest",
+      "lineRange": {
+        "start": 1387,
+        "end": 1407
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 21,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_get_boot_order_overlapping",
+      "kind": "method",
+      "scope": "LibvirtBlockInfoTest",
+      "lineRange": {
+        "start": 1409,
+        "end": 1425
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 17,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_get_boot_order_lun",
+      "kind": "method",
+      "scope": "LibvirtBlockInfoTest",
+      "lineRange": {
+        "start": 1427,
+        "end": 1439
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 13,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "_get_rescue_image_meta",
+      "kind": "method",
+      "scope": "LibvirtBlockInfoTest",
+      "lineRange": {
+        "start": 1441,
+        "end": 1444
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "props_dict"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "objects.ImageMeta.from_dict(meta_dict)",
+          "line": 1444
+        }
+      ],
+      "nloc": 4,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "test_get_rescue_device",
+      "kind": "method",
+      "scope": "LibvirtBlockInfoTest",
+      "lineRange": {
+        "start": 1446,
+        "end": 1459
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 9,
+      "ccn": 2,
+      "visibility": "public"
+    },
+    {
+      "name": "test_get_rescue_bus",
+      "kind": "method",
+      "scope": "LibvirtBlockInfoTest",
+      "lineRange": {
+        "start": 1461,
+        "end": 1473
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 9,
+      "ccn": 3,
+      "visibility": "public"
+    },
+    {
+      "name": "DefaultDeviceNamesTestCase",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 1476,
+        "end": 1671
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "setUp",
+      "kind": "method",
+      "scope": "DefaultDeviceNamesTestCase",
+      "lineRange": {
+        "start": 1477,
+        "end": 1572
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 91,
+      "ccn": 2,
+      "visibility": "public"
+    },
+    {
+      "name": "tearDown",
+      "kind": "method",
+      "scope": "DefaultDeviceNamesTestCase",
+      "lineRange": {
+        "start": 1574,
+        "end": 1577
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 4,
+      "ccn": 2,
+      "visibility": "public"
+    },
+    {
+      "name": "_test_default_device_names",
+      "kind": "method",
+      "scope": "DefaultDeviceNamesTestCase",
+      "lineRange": {
+        "start": 1582,
+        "end": 1591
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "eph"
+        },
+        {
+          "name": "swap"
+        },
+        {
+          "name": "bdm"
+        },
+        {
+          "name": "mock_get_arch"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 9,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "test_only_block_device_mapping",
+      "kind": "method",
+      "scope": "DefaultDeviceNamesTestCase",
+      "lineRange": {
+        "start": 1593,
+        "end": 1608
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 13,
+      "ccn": 2,
+      "visibility": "public"
+    },
+    {
+      "name": "test_with_ephemerals",
+      "kind": "method",
+      "scope": "DefaultDeviceNamesTestCase",
+      "lineRange": {
+        "start": 1610,
+        "end": 1624
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 13,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_with_swap",
+      "kind": "method",
+      "scope": "DefaultDeviceNamesTestCase",
+      "lineRange": {
+        "start": 1626,
+        "end": 1642
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 14,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_all_together",
+      "kind": "method",
+      "scope": "DefaultDeviceNamesTestCase",
+      "lineRange": {
+        "start": 1644,
+        "end": 1671
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 23,
+      "ccn": 1,
+      "visibility": "public"
+    }
+  ],
+  "referencedSymbols": [
+    {
+      "name": "test.NoDBTestCase",
+      "usage": "inherit",
+      "via": "nova",
+      "count": 2,
+      "lineRange": {
+        "start": 36,
+        "end": 36
+      }
+    },
+    {
+      "name": "super",
+      "usage": "call",
+      "via": null,
+      "count": 3,
+      "lineRange": {
+        "start": 39,
+        "end": 39
+      }
+    },
+    {
+      "name": "context.get_admin_context",
+      "usage": "call",
+      "via": "nova",
+      "count": 2,
+      "lineRange": {
+        "start": 43,
+        "end": 43
+      }
+    },
+    {
+      "name": "nova_fixtures.GlanceFixture",
+      "usage": "call",
+      "via": "nova.tests",
+      "count": 1,
+      "lineRange": {
+        "start": 44,
+        "end": 44
+      }
+    },
+    {
+      "name": "objects.Flavor",
+      "usage": "call",
+      "via": "nova",
+      "count": 2,
+      "lineRange": {
+        "start": 46,
+        "end": 46
+      }
+    },
+    {
+      "name": "block_device.volume_in_mapping",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 99,
+        "end": 99
+      }
+    },
+    {
+      "name": "blockinfo.find_disk_dev_for_disk_bus",
+      "usage": "call",
+      "via": "nova.virt.libvirt",
+      "count": 3,
+      "lineRange": {
+        "start": 125,
+        "end": 125
+      }
+    },
+    {
+      "name": "mock.patch",
+      "usage": "call",
+      "via": "unittest",
+      "count": 19,
+      "lineRange": {
+        "start": 134,
+        "end": 134
+      }
+    },
+    {
+      "name": "blockinfo.get_next_disk_info",
+      "usage": "call",
+      "via": "nova.virt.libvirt",
+      "count": 5,
+      "lineRange": {
+        "start": 152,
+        "end": 152
+      }
+    },
+    {
+      "name": "objects.Instance",
+      "usage": "call",
+      "via": "nova",
+      "count": 32,
+      "lineRange": {
+        "start": 180,
+        "end": 180
+      }
+    },
+    {
+      "name": "objects.ImageMeta.from_dict",
+      "usage": "call",
+      "via": "nova",
+      "count": 35,
+      "lineRange": {
+        "start": 181,
+        "end": 181
+      }
+    },
+    {
+      "name": "mock.patch.object",
+      "usage": "call",
+      "via": "unittest",
+      "count": 5,
+      "lineRange": {
+        "start": 188,
+        "end": 188
+      }
+    },
+    {
+      "name": "blockinfo.get_disk_mapping",
+      "usage": "call",
+      "via": "nova.virt.libvirt",
+      "count": 20,
+      "lineRange": {
+        "start": 190,
+        "end": 190
+      }
+    },
+    {
+      "name": "mock.Mock",
+      "usage": "call",
+      "via": "unittest",
+      "count": 3,
+      "lineRange": {
+        "start": 279,
+        "end": 279
+      }
+    },
+    {
+      "name": "objects.ImageMetaProps.from_dict",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 303,
+        "end": 303
+      }
+    },
+    {
+      "name": "blockinfo.get_disk_bus_for_device_type",
+      "usage": "call",
+      "via": "nova.virt.libvirt",
+      "count": 5,
+      "lineRange": {
+        "start": 1052,
+        "end": 1052
+      }
+    },
+    {
+      "name": "fixtures.MonkeyPatch",
+      "usage": "call",
+      "via": "fixtures",
+      "count": 1,
+      "lineRange": {
+        "start": 1084,
+        "end": 1084
+      }
+    },
+    {
+      "name": "blockinfo.get_disk_bus_for_disk_dev",
+      "usage": "call",
+      "via": "nova.virt.libvirt",
+      "count": 1,
+      "lineRange": {
+        "start": 1102,
+        "end": 1102
+      }
+    },
+    {
+      "name": "blockinfo.get_config_drive_type",
+      "usage": "call",
+      "via": "nova.virt.libvirt",
+      "count": 3,
+      "lineRange": {
+        "start": 1141,
+        "end": 1141
+      }
+    },
+    {
+      "name": "zip",
+      "usage": "call",
+      "via": null,
+      "count": 2,
+      "lineRange": {
+        "start": 1194,
+        "end": 1194
+      }
+    },
+    {
+      "name": "blockinfo.get_info_from_bdm",
+      "usage": "call",
+      "via": "nova.virt.libvirt",
+      "count": 4,
+      "lineRange": {
+        "start": 1196,
+        "end": 1196
+      }
+    },
+    {
+      "name": "objects.BlockDeviceMapping",
+      "usage": "call",
+      "via": "nova",
+      "count": 8,
+      "lineRange": {
+        "start": 1245,
+        "end": 1245
+      }
+    },
+    {
+      "name": "fake_block_device.FakeDbBlockDeviceDict",
+      "usage": "call",
+      "via": "nova.tests.unit",
+      "count": 8,
+      "lineRange": {
+        "start": 1246,
+        "end": 1246
+      }
+    },
+    {
+      "name": "blockinfo.get_device_name",
+      "usage": "call",
+      "via": "nova.virt.libvirt",
+      "count": 4,
+      "lineRange": {
+        "start": 1253,
+        "end": 1253
+      }
+    },
+    {
+      "name": "driver_block_device.DriverVolumeBlockDevice",
+      "usage": "call",
+      "via": "nova.virt",
+      "count": 2,
+      "lineRange": {
+        "start": 1255,
+        "end": 1255
+      }
+    },
+    {
+      "name": "blockinfo.get_root_info",
+      "usage": "call",
+      "via": "nova.virt.libvirt",
+      "count": 9,
+      "lineRange": {
+        "start": 1269,
+        "end": 1269
+      }
+    },
+    {
+      "name": "copy.deepcopy",
+      "usage": "call",
+      "via": "copy",
+      "count": 2,
+      "lineRange": {
+        "start": 1359,
+        "end": 1359
+      }
+    },
+    {
+      "name": "blockinfo.get_boot_order",
+      "usage": "call",
+      "via": "nova.virt.libvirt",
+      "count": 4,
+      "lineRange": {
+        "start": 1385,
+        "end": 1385
+      }
+    },
+    {
+      "name": "dict",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 1442,
+        "end": 1442
+      }
+    },
+    {
+      "name": "blockinfo.get_rescue_device",
+      "usage": "call",
+      "via": "nova.virt.libvirt",
+      "count": 2,
+      "lineRange": {
+        "start": 1450,
+        "end": 1450
+      }
+    },
+    {
+      "name": "blockinfo.get_rescue_bus",
+      "usage": "call",
+      "via": "nova.virt.libvirt",
+      "count": 1,
+      "lineRange": {
+        "start": 1467,
+        "end": 1467
+      }
+    },
+    {
+      "name": "objects.ImageMeta",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 1497,
+        "end": 1497
+      }
+    },
+    {
+      "name": "objects.ImageMetaProps",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 1499,
+        "end": 1499
+      }
+    },
+    {
+      "name": "driver.get_block_device_info",
+      "usage": "call",
+      "via": "nova.virt",
+      "count": 1,
+      "lineRange": {
+        "start": 1584,
+        "end": 1584
+      }
+    },
+    {
+      "name": "blockinfo.default_device_names",
+      "usage": "call",
+      "via": "nova.virt.libvirt",
+      "count": 1,
+      "lineRange": {
+        "start": 1585,
+        "end": 1585
+      }
+    }
+  ],
+  "dependencies": [
+    {
+      "style": "import",
+      "module": "copy",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 16,
+        "end": 16
+      }
+    },
+    {
+      "style": "from",
+      "module": "unittest",
+      "names": [
+        {
+          "alias": null,
+          "name": "mock"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 17,
+        "end": 17
+      }
+    },
+    {
+      "style": "import",
+      "module": "fixtures",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 19,
+        "end": 19
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_utils.fixture",
+      "names": [
+        {
+          "alias": "uuids",
+          "name": "uuidsentinel"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 20,
+        "end": 20
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "block_device"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 22,
+        "end": 22
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "context"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 23,
+        "end": 23
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "exception"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 24,
+        "end": 24
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "objects"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 25,
+        "end": 25
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.objects",
+      "names": [
+        {
+          "alias": "obj_fields",
+          "name": "fields"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 26,
+        "end": 26
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "test"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 27,
+        "end": 27
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.tests",
+      "names": [
+        {
+          "alias": "nova_fixtures",
+          "name": "fixtures"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 28,
+        "end": 28
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.tests.unit",
+      "names": [
+        {
+          "alias": null,
+          "name": "fake_block_device"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 29,
+        "end": 29
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.tests.unit.virt",
+      "names": [
+        {
+          "alias": null,
+          "name": "fakelibosinfo"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 30,
+        "end": 30
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.virt",
+      "names": [
+        {
+          "alias": "driver_block_device",
+          "name": "block_device"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 31,
+        "end": 31
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.virt",
+      "names": [
+        {
+          "alias": null,
+          "name": "driver"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 32,
+        "end": 32
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.virt.libvirt",
+      "names": [
+        {
+          "alias": null,
+          "name": "blockinfo"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 33,
+        "end": 33
+      }
+    }
+  ],
+  "sideEffects": [],
+  "securitySurface": [],
+  "injection_flags": [],
+  "warnings": []
+}

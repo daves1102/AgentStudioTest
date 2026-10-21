@@ -1,0 +1,1035 @@
+{
+  "file": "src/nova/tests/functional/libvirt/test_report_cpu_traits.py",
+  "hash": "0fe7e0b08a0b4a8012a656f9454fdbe5133a93184b8c66081b5f8a6e21983752",
+  "language": "Python",
+  "component": "nova",
+  "package": null,
+  "lines": {
+    "blank": 63,
+    "code": 348,
+    "comment": 36,
+    "total": 447
+  },
+  "symbols": [
+    {
+      "name": "CONF",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 31,
+        "end": 31
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "LibvirtReportTraitsTests",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 34,
+        "end": 93
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "expected_libvirt_driver_capability_traits",
+      "kind": "field",
+      "scope": "LibvirtReportTraitsTests",
+      "lineRange": {
+        "start": 38,
+        "end": 56
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "test_report_cpu_traits",
+      "kind": "method",
+      "scope": "LibvirtReportTraitsTests",
+      "lineRange": {
+        "start": 58,
+        "end": 93
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 25,
+      "ccn": 3,
+      "visibility": "public"
+    },
+    {
+      "name": "LibvirtReportSevTraitsTests",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 97,
+        "end": 299
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "STUB_INIT_HOST",
+      "kind": "constant",
+      "scope": "LibvirtReportSevTraitsTests",
+      "lineRange": {
+        "start": 100,
+        "end": 100
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "setUp",
+      "kind": "method",
+      "scope": "LibvirtReportSevTraitsTests",
+      "lineRange": {
+        "start": 102,
+        "end": 112
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 11,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "start_compute_with_sev",
+      "kind": "method",
+      "scope": "LibvirtReportSevTraitsTests",
+      "lineRange": {
+        "start": 114,
+        "end": 118
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "sev"
+        },
+        {
+          "name": "sev_es"
+        },
+        {
+          "name": "sev_snp"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 5,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "restart_compute_service_with_sev",
+      "kind": "method",
+      "scope": "LibvirtReportSevTraitsTests",
+      "lineRange": {
+        "start": 120,
+        "end": 130
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "sev"
+        },
+        {
+          "name": "sev_es"
+        },
+        {
+          "name": "sev_snp"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 9,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "assertMemEncryptionSlotsEqual",
+      "kind": "method",
+      "scope": "LibvirtReportSevTraitsTests",
+      "lineRange": {
+        "start": 132,
+        "end": 147
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "rp_uuid"
+        },
+        {
+          "name": "slots"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 16,
+      "ccn": 2,
+      "visibility": "public"
+    },
+    {
+      "name": "_get_amd_sev_rps",
+      "kind": "method",
+      "scope": "LibvirtReportSevTraitsTests",
+      "lineRange": {
+        "start": 149,
+        "end": 159
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "{ 'sev': [rp for rp in rps if rp['name'] == '%s_amd_sev' % root_rp['name']], 'sev-es': [rp for rp in rps if rp['name'] == '%s_amd_sev_es' % root_rp['name']], 'sev-snp': [rp for rp in rps if rp['name']",
+          "line": 152
+        }
+      ],
+      "nloc": 11,
+      "ccn": 7,
+      "visibility": "private"
+    },
+    {
+      "name": "_assert_global_sev_traits",
+      "kind": "method",
+      "scope": "LibvirtReportSevTraitsTests",
+      "lineRange": {
+        "start": 161,
+        "end": 166
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 5,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "_assert_root_provider_sev_traits",
+      "kind": "method",
+      "scope": "LibvirtReportSevTraitsTests",
+      "lineRange": {
+        "start": 168,
+        "end": 174
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 6,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "_assert_sev_rps",
+      "kind": "method",
+      "scope": "LibvirtReportSevTraitsTests",
+      "lineRange": {
+        "start": 176,
+        "end": 209
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "sev"
+        },
+        {
+          "name": "sev_es"
+        },
+        {
+          "name": "sev_snp"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 28,
+      "ccn": 5,
+      "visibility": "private"
+    },
+    {
+      "name": "_assert_host_sev_support",
+      "kind": "method",
+      "scope": "LibvirtReportSevTraitsTests",
+      "lineRange": {
+        "start": 211,
+        "end": 220
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "sev"
+        },
+        {
+          "name": "sev_es"
+        },
+        {
+          "name": "sev_snp"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 5,
+      "ccn": 2,
+      "visibility": "private"
+    },
+    {
+      "name": "test_sev_trait_off_on",
+      "kind": "method",
+      "scope": "LibvirtReportSevTraitsTests",
+      "lineRange": {
+        "start": 240,
+        "end": 258
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "before"
+        },
+        {
+          "name": "after"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 9,
+      "ccn": 3,
+      "visibility": "public"
+    },
+    {
+      "name": "test_sev_trait_change",
+      "kind": "method",
+      "scope": "LibvirtReportSevTraitsTests",
+      "lineRange": {
+        "start": 283,
+        "end": 299
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "before"
+        },
+        {
+          "name": "after"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 7,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "LibvirtReportTdxTraitsTests",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 303,
+        "end": 447
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "STUB_INIT_HOST",
+      "kind": "constant",
+      "scope": "LibvirtReportTdxTraitsTests",
+      "lineRange": {
+        "start": 306,
+        "end": 306
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "start_compute_with_tdx",
+      "kind": "method",
+      "scope": "LibvirtReportTdxTraitsTests",
+      "lineRange": {
+        "start": 308,
+        "end": 310
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "enabled"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 3,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "restart_compute_service_with_tdx",
+      "kind": "method",
+      "scope": "LibvirtReportTdxTraitsTests",
+      "lineRange": {
+        "start": 312,
+        "end": 318
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "enabled"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 5,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "assertMemEncryptionSlotsEqual",
+      "kind": "method",
+      "scope": "LibvirtReportTdxTraitsTests",
+      "lineRange": {
+        "start": 320,
+        "end": 335
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "rp_uuid"
+        },
+        {
+          "name": "slots"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 16,
+      "ccn": 2,
+      "visibility": "public"
+    },
+    {
+      "name": "_get_intel_tdx_rps",
+      "kind": "method",
+      "scope": "LibvirtReportTdxTraitsTests",
+      "lineRange": {
+        "start": 337,
+        "end": 341
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "[rp for rp in rps if rp['name'] == '%s_intel_tdx' % root_rp['name']]",
+          "line": 340
+        }
+      ],
+      "nloc": 5,
+      "ccn": 3,
+      "visibility": "private"
+    },
+    {
+      "name": "_patch_tdx_capability",
+      "kind": "method",
+      "scope": "LibvirtReportTdxTraitsTests",
+      "lineRange": {
+        "start": 344,
+        "end": 386
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "enabled"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 26,
+      "ccn": 3,
+      "visibility": "private"
+    },
+    {
+      "name": "fake_exists",
+      "kind": "function",
+      "scope": "LibvirtReportTdxTraitsTests._patch_tdx_capability",
+      "lineRange": {
+        "start": 353,
+        "end": 356
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "path"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "True",
+          "line": 355
+        },
+        {
+          "expr": "real_exists(path)",
+          "line": 356
+        }
+      ],
+      "visibility": "public"
+    },
+    {
+      "name": "fake_open",
+      "kind": "function",
+      "scope": "LibvirtReportTdxTraitsTests._patch_tdx_capability",
+      "lineRange": {
+        "start": 358,
+        "end": 361
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "path"
+        },
+        {
+          "name": "*args"
+        },
+        {
+          "name": "**kwargs"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "mock.mock_open(read_data='tdx 63\\n')(path)",
+          "line": 360
+        },
+        {
+          "expr": "real_open(path, *args, **kwargs)",
+          "line": 361
+        }
+      ],
+      "visibility": "public"
+    },
+    {
+      "name": "_assert_global_tdx_traits",
+      "kind": "method",
+      "scope": "LibvirtReportTdxTraitsTests",
+      "lineRange": {
+        "start": 388,
+        "end": 391
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 3,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "_assert_root_provider_tdx_traits",
+      "kind": "method",
+      "scope": "LibvirtReportTdxTraitsTests",
+      "lineRange": {
+        "start": 393,
+        "end": 397
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 4,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "_assert_tdx_rps",
+      "kind": "method",
+      "scope": "LibvirtReportTdxTraitsTests",
+      "lineRange": {
+        "start": 399,
+        "end": 414
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "enabled"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 12,
+      "ccn": 2,
+      "visibility": "private"
+    },
+    {
+      "name": "_assert_host_tdx_support",
+      "kind": "method",
+      "scope": "LibvirtReportTdxTraitsTests",
+      "lineRange": {
+        "start": 416,
+        "end": 423
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "enabled"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 3,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "test_tdx_trait_changed",
+      "kind": "method",
+      "scope": "LibvirtReportTdxTraitsTests",
+      "lineRange": {
+        "start": 430,
+        "end": 447
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "before"
+        },
+        {
+          "name": "after"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 8,
+      "ccn": 1,
+      "visibility": "public"
+    }
+  ],
+  "referencedSymbols": [
+    {
+      "name": "integrated_helpers.LibvirtProviderUsageBaseTestCase",
+      "usage": "inherit",
+      "via": "nova.tests.functional.libvirt",
+      "count": 3,
+      "lineRange": {
+        "start": 35,
+        "end": 35
+      }
+    },
+    {
+      "name": "set",
+      "usage": "call",
+      "via": null,
+      "count": 2,
+      "lineRange": {
+        "start": 38,
+        "end": 38
+      }
+    },
+    {
+      "name": "super",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 103,
+        "end": 103
+      }
+    },
+    {
+      "name": "versionutils.convert_version_to_int",
+      "usage": "call",
+      "via": "oslo_utils",
+      "count": 1,
+      "lineRange": {
+        "start": 104,
+        "end": 104
+      }
+    },
+    {
+      "name": "fixtures.MockPatchObject",
+      "usage": "call",
+      "via": "fixtures",
+      "count": 2,
+      "lineRange": {
+        "start": 106,
+        "end": 106
+      }
+    },
+    {
+      "name": "len",
+      "usage": "call",
+      "via": null,
+      "count": 8,
+      "lineRange": {
+        "start": 185,
+        "end": 185
+      }
+    },
+    {
+      "name": "ddt.data",
+      "usage": "call",
+      "via": "ddt",
+      "count": 3,
+      "lineRange": {
+        "start": 223,
+        "end": 223
+      }
+    },
+    {
+      "name": "real_exists",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 356,
+        "end": 356
+      }
+    },
+    {
+      "name": "mock.mock_open",
+      "usage": "call",
+      "via": "unittest",
+      "count": 1,
+      "lineRange": {
+        "start": 360,
+        "end": 360
+      }
+    },
+    {
+      "name": "real_open",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 361,
+        "end": 361
+      }
+    },
+    {
+      "name": "mock.patch",
+      "usage": "call",
+      "via": "unittest",
+      "count": 2,
+      "lineRange": {
+        "start": 370,
+        "end": 370
+      }
+    },
+    {
+      "name": "mock.patch.object",
+      "usage": "call",
+      "via": "unittest",
+      "count": 1,
+      "lineRange": {
+        "start": 372,
+        "end": 372
+      }
+    },
+    {
+      "name": "mock.call",
+      "usage": "call",
+      "via": "unittest",
+      "count": 2,
+      "lineRange": {
+        "start": 382,
+        "end": 382
+      }
+    }
+  ],
+  "dependencies": [
+    {
+      "style": "import",
+      "module": "builtins",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 16,
+        "end": 16
+      }
+    },
+    {
+      "style": "import",
+      "module": "contextlib",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 17,
+        "end": 17
+      }
+    },
+    {
+      "style": "import",
+      "module": "ddt",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 18,
+        "end": 18
+      }
+    },
+    {
+      "style": "import",
+      "module": "fixtures",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 19,
+        "end": 19
+      }
+    },
+    {
+      "style": "import",
+      "module": "os",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 20,
+        "end": 20
+      }
+    },
+    {
+      "style": "import",
+      "module": "os_resource_classes",
+      "names": [],
+      "alias": "orc",
+      "relative": false,
+      "lineRange": {
+        "start": 21,
+        "end": 21
+      }
+    },
+    {
+      "style": "import",
+      "module": "os_traits",
+      "names": [],
+      "alias": "ost",
+      "relative": false,
+      "lineRange": {
+        "start": 22,
+        "end": 22
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_utils",
+      "names": [
+        {
+          "alias": null,
+          "name": "versionutils"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 23,
+        "end": 23
+      }
+    },
+    {
+      "style": "from",
+      "module": "unittest",
+      "names": [
+        {
+          "alias": null,
+          "name": "mock"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 24,
+        "end": 24
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "conf"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 26,
+        "end": 26
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.tests.fixtures",
+      "names": [
+        {
+          "alias": "fakelibvirt",
+          "name": "libvirt"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 27,
+        "end": 27
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.tests.functional.libvirt",
+      "names": [
+        {
+          "alias": null,
+          "name": "integrated_helpers"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 28,
+        "end": 28
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.virt.libvirt",
+      "names": [
+        {
+          "alias": "libvirt_host",
+          "name": "host"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 29,
+        "end": 29
+      }
+    }
+  ],
+  "sideEffects": [
+    {
+      "kind": "file-io",
+      "target": "real_exists = os.path.exists",
+      "lineRange": {
+        "start": 350,
+        "end": 350
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "with mock.patch('os.path.exists') as mock_exists, \\",
+      "lineRange": {
+        "start": 370,
+        "end": 370
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "CONF = conf.CONF",
+      "lineRange": {
+        "start": 31,
+        "end": 31
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "STUB_INIT_HOST = False",
+      "lineRange": {
+        "start": 100,
+        "end": 100
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "STUB_INIT_HOST = False",
+      "lineRange": {
+        "start": 306,
+        "end": 306
+      }
+    }
+  ],
+  "securitySurface": [],
+  "injection_flags": [],
+  "warnings": []
+}

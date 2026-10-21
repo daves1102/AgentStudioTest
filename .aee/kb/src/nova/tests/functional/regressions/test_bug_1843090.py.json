@@ -1,0 +1,304 @@
+{
+  "file": "src/nova/tests/functional/regressions/test_bug_1843090.py",
+  "hash": "8ee40549713ed646cb867ec85caf88e209f27caa5e96d87e2aa7518471568187",
+  "language": "Python",
+  "component": "nova",
+  "package": null,
+  "lines": {
+    "blank": 16,
+    "code": 46,
+    "comment": 19,
+    "total": 81
+  },
+  "symbols": [
+    {
+      "name": "PinnedComputeRpcTests",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 20,
+        "end": 81
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "compute_driver",
+      "kind": "field",
+      "scope": "PinnedComputeRpcTests",
+      "lineRange": {
+        "start": 22,
+        "end": 22
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "setUp",
+      "kind": "method",
+      "scope": "PinnedComputeRpcTests",
+      "lineRange": {
+        "start": 24,
+        "end": 33
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 6,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "_test_reschedule_migration_with_compute_rpc_pin",
+      "kind": "method",
+      "scope": "PinnedComputeRpcTests",
+      "lineRange": {
+        "start": 35,
+        "end": 75
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "version_cap"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 17,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "fake_orig_claim",
+      "kind": "function",
+      "scope": "PinnedComputeRpcTests._test_reschedule_migration_with_compute_rpc_pin",
+      "lineRange": {
+        "start": 45,
+        "end": 57
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "_self"
+        },
+        {
+          "name": "context"
+        },
+        {
+          "name": "instance"
+        },
+        {
+          "name": "flavor"
+        },
+        {
+          "name": "nodename"
+        },
+        {
+          "name": "*args"
+        },
+        {
+          "name": "**kwargs"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "orig_claim( _self, context, instance, flavor, nodename, *args, **kwargs)",
+          "line": 55
+        }
+      ],
+      "visibility": "public"
+    },
+    {
+      "name": "test_reschedule_migration_5_1",
+      "kind": "method",
+      "scope": "PinnedComputeRpcTests",
+      "lineRange": {
+        "start": 77,
+        "end": 78
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_reschedule_migration_5_0",
+      "kind": "method",
+      "scope": "PinnedComputeRpcTests",
+      "lineRange": {
+        "start": 80,
+        "end": 81
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "public"
+    }
+  ],
+  "referencedSymbols": [
+    {
+      "name": "integrated_helpers.ProviderUsageBaseTestCase",
+      "usage": "inherit",
+      "via": "nova.tests.functional",
+      "count": 1,
+      "lineRange": {
+        "start": 20,
+        "end": 20
+      }
+    },
+    {
+      "name": "nova_fixtures.HostNameWeigherFixture",
+      "usage": "call",
+      "via": "nova.tests",
+      "count": 1,
+      "lineRange": {
+        "start": 27,
+        "end": 27
+      }
+    },
+    {
+      "name": "super",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 29,
+        "end": 29
+      }
+    },
+    {
+      "name": "exception.ComputeResourcesUnavailable",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 51,
+        "end": 51
+      }
+    },
+    {
+      "name": "orig_claim",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 55,
+        "end": 55
+      }
+    },
+    {
+      "name": "mock.patch",
+      "usage": "call",
+      "via": "unittest",
+      "count": 1,
+      "lineRange": {
+        "start": 59,
+        "end": 59
+      }
+    }
+  ],
+  "dependencies": [
+    {
+      "style": "from",
+      "module": "unittest",
+      "names": [
+        {
+          "alias": null,
+          "name": "mock"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 12,
+        "end": 12
+      }
+    },
+    {
+      "style": "import",
+      "module": "nova.compute",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 14,
+        "end": 14
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "exception"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 15,
+        "end": 15
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.tests",
+      "names": [
+        {
+          "alias": "nova_fixtures",
+          "name": "fixtures"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 16,
+        "end": 16
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.tests.functional",
+      "names": [
+        {
+          "alias": null,
+          "name": "integrated_helpers"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 17,
+        "end": 17
+      }
+    }
+  ],
+  "sideEffects": [],
+  "securitySurface": [],
+  "injection_flags": [],
+  "warnings": []
+}

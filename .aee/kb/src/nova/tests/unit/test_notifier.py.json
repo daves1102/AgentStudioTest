@@ -1,0 +1,186 @@
+{
+  "file": "src/nova/tests/unit/test_notifier.py",
+  "hash": "d36469147ac0a79b4a47d139fcdd859e54fa081b7435a1f805808a6983357479",
+  "language": "Python",
+  "component": "nova",
+  "package": null,
+  "lines": {
+    "blank": 7,
+    "code": 34,
+    "comment": 14,
+    "total": 55
+  },
+  "symbols": [
+    {
+      "name": "TestNotifier",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 22,
+        "end": 55
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "test_notification_format_affects_notification_driver",
+      "kind": "method",
+      "scope": "TestNotifier",
+      "lineRange": {
+        "start": 27,
+        "end": 55
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_notifier"
+        },
+        {
+          "name": "mock_noti_trans"
+        },
+        {
+          "name": "mock_transport"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 27,
+      "ccn": 2,
+      "visibility": "public"
+    }
+  ],
+  "referencedSymbols": [
+    {
+      "name": "test.NoDBTestCase",
+      "usage": "inherit",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 22,
+        "end": 22
+      }
+    },
+    {
+      "name": "mock.patch",
+      "usage": "call",
+      "via": "unittest",
+      "count": 3,
+      "lineRange": {
+        "start": 24,
+        "end": 24
+      }
+    },
+    {
+      "name": "mock.Mock",
+      "usage": "call",
+      "via": "unittest",
+      "count": 1,
+      "lineRange": {
+        "start": 31,
+        "end": 31
+      }
+    },
+    {
+      "name": "mock.call",
+      "usage": "call",
+      "via": "unittest",
+      "count": 6,
+      "lineRange": {
+        "start": 37,
+        "end": 37
+      }
+    },
+    {
+      "name": "rpc.init",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 52,
+        "end": 52
+      }
+    }
+  ],
+  "dependencies": [
+    {
+      "style": "from",
+      "module": "unittest",
+      "names": [
+        {
+          "alias": null,
+          "name": "mock"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 16,
+        "end": 16
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "rpc"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 18,
+        "end": 18
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "test"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 19,
+        "end": 19
+      }
+    }
+  ],
+  "sideEffects": [
+    {
+      "kind": "network",
+      "target": "@mock.patch('oslo_messaging.get_rpc_transport')",
+      "lineRange": {
+        "start": 24,
+        "end": 24
+      }
+    },
+    {
+      "kind": "network",
+      "target": "@mock.patch('oslo_messaging.get_notification_transport')",
+      "lineRange": {
+        "start": 25,
+        "end": 25
+      }
+    },
+    {
+      "kind": "network",
+      "target": "@mock.patch('oslo_messaging.Notifier')",
+      "lineRange": {
+        "start": 26,
+        "end": 26
+      }
+    }
+  ],
+  "securitySurface": [],
+  "injection_flags": [],
+  "warnings": []
+}

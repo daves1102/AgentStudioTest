@@ -1,0 +1,1305 @@
+{
+  "file": "src/nova/tests/unit/compute/test_claims.py",
+  "hash": "78374848c8139efd36f567fc2cd722b0e53d694c44d98f805d93cabd6d232cb8",
+  "language": "Python",
+  "component": "nova",
+  "package": null,
+  "lines": {
+    "blank": 56,
+    "code": 354,
+    "comment": 16,
+    "total": 426
+  },
+  "symbols": [
+    {
+      "name": "_NODENAME",
+      "kind": "variable",
+      "scope": "",
+      "lineRange": {
+        "start": 31,
+        "end": 31
+      },
+      "source": "aee-inventory",
+      "exported": false
+    },
+    {
+      "name": "FakeResourceHandler",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 34,
+        "end": 41
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "test_called",
+      "kind": "field",
+      "scope": "FakeResourceHandler",
+      "lineRange": {
+        "start": 35,
+        "end": 35
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "usage_is_instance",
+      "kind": "field",
+      "scope": "FakeResourceHandler",
+      "lineRange": {
+        "start": 36,
+        "end": 36
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "test_resources",
+      "kind": "method",
+      "scope": "FakeResourceHandler",
+      "lineRange": {
+        "start": 38,
+        "end": 41
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "usage"
+        },
+        {
+          "name": "limits"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "[]",
+          "line": 41
+        }
+      ],
+      "nloc": 4,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "DummyTracker",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 44,
+        "end": 64
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "icalled",
+      "kind": "field",
+      "scope": "DummyTracker",
+      "lineRange": {
+        "start": 45,
+        "end": 45
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "rcalled",
+      "kind": "field",
+      "scope": "DummyTracker",
+      "lineRange": {
+        "start": 46,
+        "end": 46
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "__init__",
+      "kind": "method",
+      "scope": "DummyTracker",
+      "lineRange": {
+        "start": 48,
+        "end": 49
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "abort_instance_claim",
+      "kind": "method",
+      "scope": "DummyTracker",
+      "lineRange": {
+        "start": 51,
+        "end": 52
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "*args"
+        },
+        {
+          "name": "**kwargs"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "drop_move_claim",
+      "kind": "method",
+      "scope": "DummyTracker",
+      "lineRange": {
+        "start": 54,
+        "end": 55
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "*args"
+        },
+        {
+          "name": "**kwargs"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "new_pci_tracker",
+      "kind": "method",
+      "scope": "DummyTracker",
+      "lineRange": {
+        "start": 57,
+        "end": 64
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 8,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "ClaimTestCase",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 67,
+        "end": 321
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "setUp",
+      "kind": "method",
+      "scope": "ClaimTestCase",
+      "lineRange": {
+        "start": 69,
+        "end": 77
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 9,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "_claim",
+      "kind": "method",
+      "scope": "ClaimTestCase",
+      "lineRange": {
+        "start": 79,
+        "end": 102
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "default": "None",
+          "name": "limits"
+        },
+        {
+          "default": "None",
+          "name": "requests"
+        },
+        {
+          "name": "**kwargs"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "get_claim()",
+          "line": 102
+        }
+      ],
+      "nloc": 19,
+      "ccn": 4,
+      "visibility": "private"
+    },
+    {
+      "name": "get_claim",
+      "kind": "function",
+      "scope": "ClaimTestCase._claim",
+      "lineRange": {
+        "start": 98,
+        "end": 101
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "mock_extra_get"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "claims.Claim(self.context, instance, _NODENAME, self.tracker, self.compute_node, requests, limits=limits)",
+          "line": 99
+        }
+      ],
+      "visibility": "public"
+    },
+    {
+      "name": "_fake_instance",
+      "kind": "method",
+      "scope": "ClaimTestCase",
+      "lineRange": {
+        "start": 104,
+        "end": 115
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "**kwargs"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "fake_instance.fake_instance_obj(self.context, **instance)",
+          "line": 115
+        }
+      ],
+      "nloc": 12,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "_fake_flavor",
+      "kind": "method",
+      "scope": "ClaimTestCase",
+      "lineRange": {
+        "start": 117,
+        "end": 127
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "**kwargs"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "objects.Flavor(**flavor)",
+          "line": 127
+        }
+      ],
+      "nloc": 11,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "_fake_compute_node",
+      "kind": "method",
+      "scope": "ClaimTestCase",
+      "lineRange": {
+        "start": 129,
+        "end": 163
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "default": "None",
+          "name": "values"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "objects.ComputeNode(**compute_node)",
+          "line": 163
+        }
+      ],
+      "nloc": 35,
+      "ccn": 2,
+      "visibility": "private"
+    },
+    {
+      "name": "test_pci_pass",
+      "kind": "method",
+      "scope": "ClaimTestCase",
+      "lineRange": {
+        "start": 167,
+        "end": 173
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_pci_supports_requests"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 7,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_pci_fail",
+      "kind": "method",
+      "scope": "ClaimTestCase",
+      "lineRange": {
+        "start": 177,
+        "end": 186
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_pci_supports_requests"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 10,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_pci_pass_no_requests",
+      "kind": "method",
+      "scope": "ClaimTestCase",
+      "lineRange": {
+        "start": 189,
+        "end": 191
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_pci_supports_requests"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 3,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_numa_topology_no_limit",
+      "kind": "method",
+      "scope": "ClaimTestCase",
+      "lineRange": {
+        "start": 193,
+        "end": 197
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 5,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_numa_topology_fails",
+      "kind": "method",
+      "scope": "ClaimTestCase",
+      "lineRange": {
+        "start": 199,
+        "end": 209
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 11,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_numa_topology_passes",
+      "kind": "method",
+      "scope": "ClaimTestCase",
+      "lineRange": {
+        "start": 211,
+        "end": 218
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 8,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_numa_topology_with_pci",
+      "kind": "method",
+      "scope": "ClaimTestCase",
+      "lineRange": {
+        "start": 222,
+        "end": 243
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_get_by_instance"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 20,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_numa_topology_with_pci_fail",
+      "kind": "method",
+      "scope": "ClaimTestCase",
+      "lineRange": {
+        "start": 247,
+        "end": 281
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_get_by_instance"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 32,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_numa_topology_with_pci_no_numa_info",
+      "kind": "method",
+      "scope": "ClaimTestCase",
+      "lineRange": {
+        "start": 285,
+        "end": 307
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_get_by_instance"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 20,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_abort",
+      "kind": "method",
+      "scope": "ClaimTestCase",
+      "lineRange": {
+        "start": 309,
+        "end": 311
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 3,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "_abort",
+      "kind": "method",
+      "scope": "ClaimTestCase",
+      "lineRange": {
+        "start": 313,
+        "end": 321
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "claim",
+          "line": 321
+        }
+      ],
+      "nloc": 8,
+      "ccn": 2,
+      "visibility": "private"
+    },
+    {
+      "name": "MoveClaimTestCase",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 324,
+        "end": 370
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "_claim",
+      "kind": "method",
+      "scope": "MoveClaimTestCase",
+      "lineRange": {
+        "start": 326,
+        "end": 355
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "default": "None",
+          "name": "limits"
+        },
+        {
+          "default": "None",
+          "name": "requests"
+        },
+        {
+          "default": "None",
+          "name": "image_meta"
+        },
+        {
+          "name": "**kwargs"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "get_claim()",
+          "line": 355
+        }
+      ],
+      "nloc": 24,
+      "ccn": 5,
+      "visibility": "private"
+    },
+    {
+      "name": "get_claim",
+      "kind": "function",
+      "scope": "MoveClaimTestCase._claim",
+      "lineRange": {
+        "start": 350,
+        "end": 354
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "mock_extra_get"
+        },
+        {
+          "name": "mock_numa_get"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "claims.MoveClaim( self.context, self.instance, _NODENAME, flavor, image_meta, self.tracker, self.compute_node, requests, objects.Migration(migration_type='migration'), limits=limits)",
+          "line": 351
+        }
+      ],
+      "visibility": "public"
+    },
+    {
+      "name": "test_abort",
+      "kind": "method",
+      "scope": "MoveClaimTestCase",
+      "lineRange": {
+        "start": 358,
+        "end": 361
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_drop"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 4,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_image_meta",
+      "kind": "method",
+      "scope": "MoveClaimTestCase",
+      "lineRange": {
+        "start": 363,
+        "end": 365
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 3,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_image_meta_object_passed",
+      "kind": "method",
+      "scope": "MoveClaimTestCase",
+      "lineRange": {
+        "start": 367,
+        "end": 370
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 4,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "LiveMigrationClaimTestCase",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 373,
+        "end": 426
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "test_live_migration_page_size",
+      "kind": "method",
+      "scope": "LiveMigrationClaimTestCase",
+      "lineRange": {
+        "start": 375,
+        "end": 393
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 19,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_claim_fails_page_size_not_called",
+      "kind": "method",
+      "scope": "LiveMigrationClaimTestCase",
+      "lineRange": {
+        "start": 395,
+        "end": 417
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 21,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_live_migration_no_instance_numa_topology",
+      "kind": "method",
+      "scope": "LiveMigrationClaimTestCase",
+      "lineRange": {
+        "start": 419,
+        "end": 426
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 8,
+      "ccn": 1,
+      "visibility": "public"
+    }
+  ],
+  "referencedSymbols": [
+    {
+      "name": "object",
+      "usage": "inherit",
+      "via": null,
+      "count": 2,
+      "lineRange": {
+        "start": 34,
+        "end": 34
+      }
+    },
+    {
+      "name": "context.RequestContext",
+      "usage": "call",
+      "via": "nova",
+      "count": 2,
+      "lineRange": {
+        "start": 58,
+        "end": 58
+      }
+    },
+    {
+      "name": "mock.patch.object",
+      "usage": "call",
+      "via": "unittest",
+      "count": 1,
+      "lineRange": {
+        "start": 59,
+        "end": 59
+      }
+    },
+    {
+      "name": "objects.PciDeviceList",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 61,
+        "end": 61
+      }
+    },
+    {
+      "name": "pci_manager.PciDevTracker",
+      "usage": "call",
+      "via": "nova.pci",
+      "count": 1,
+      "lineRange": {
+        "start": 63,
+        "end": 63
+      }
+    },
+    {
+      "name": "objects.ComputeNode",
+      "usage": "call",
+      "via": "nova",
+      "count": 2,
+      "lineRange": {
+        "start": 64,
+        "end": 64
+      }
+    },
+    {
+      "name": "test.NoDBTestCase",
+      "usage": "inherit",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 67,
+        "end": 67
+      }
+    },
+    {
+      "name": "super",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 70,
+        "end": 70
+      }
+    },
+    {
+      "name": "objects.InstancePCIRequests",
+      "usage": "call",
+      "via": "nova",
+      "count": 6,
+      "lineRange": {
+        "start": 75,
+        "end": 75
+      }
+    },
+    {
+      "name": "mock.patch",
+      "usage": "call",
+      "via": "unittest",
+      "count": 13,
+      "lineRange": {
+        "start": 96,
+        "end": 96
+      }
+    },
+    {
+      "name": "claims.Claim",
+      "usage": "call",
+      "via": "nova.compute",
+      "count": 1,
+      "lineRange": {
+        "start": 99,
+        "end": 99
+      }
+    },
+    {
+      "name": "str",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 106,
+        "end": 106
+      }
+    },
+    {
+      "name": "uuid.uuid1",
+      "usage": "call",
+      "via": "uuid",
+      "count": 1,
+      "lineRange": {
+        "start": 106,
+        "end": 106
+      }
+    },
+    {
+      "name": "fake_instance.fake_instance_obj",
+      "usage": "call",
+      "via": "nova.tests.unit",
+      "count": 1,
+      "lineRange": {
+        "start": 115,
+        "end": 115
+      }
+    },
+    {
+      "name": "objects.Flavor",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 127,
+        "end": 127
+      }
+    },
+    {
+      "name": "objects.NUMATopology",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 139,
+        "end": 139
+      }
+    },
+    {
+      "name": "objects.NUMACell",
+      "usage": "call",
+      "via": "nova",
+      "count": 2,
+      "lineRange": {
+        "start": 140,
+        "end": 140
+      }
+    },
+    {
+      "name": "set",
+      "usage": "call",
+      "via": null,
+      "count": 28,
+      "lineRange": {
+        "start": 142,
+        "end": 142
+      }
+    },
+    {
+      "name": "objects.InstancePCIRequest",
+      "usage": "call",
+      "via": "nova",
+      "count": 5,
+      "lineRange": {
+        "start": 168,
+        "end": 168
+      }
+    },
+    {
+      "name": "objects.InstanceNUMATopology",
+      "usage": "call",
+      "via": "nova",
+      "count": 9,
+      "lineRange": {
+        "start": 194,
+        "end": 194
+      }
+    },
+    {
+      "name": "objects.InstanceNUMACell",
+      "usage": "call",
+      "via": "nova",
+      "count": 9,
+      "lineRange": {
+        "start": 195,
+        "end": 195
+      }
+    },
+    {
+      "name": "objects.NUMATopologyLimits",
+      "usage": "call",
+      "via": "nova",
+      "count": 2,
+      "lineRange": {
+        "start": 204,
+        "end": 204
+      }
+    },
+    {
+      "name": "test.TestingException",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 317,
+        "end": 317
+      }
+    },
+    {
+      "name": "claims.MoveClaim",
+      "usage": "call",
+      "via": "nova.compute",
+      "count": 2,
+      "lineRange": {
+        "start": 351,
+        "end": 351
+      }
+    },
+    {
+      "name": "objects.Migration",
+      "usage": "call",
+      "via": "nova",
+      "count": 4,
+      "lineRange": {
+        "start": 354,
+        "end": 354
+      }
+    },
+    {
+      "name": "objects.ImageMeta",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 368,
+        "end": 368
+      }
+    },
+    {
+      "name": "test.nested",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 404,
+        "end": 404
+      }
+    }
+  ],
+  "dependencies": [
+    {
+      "style": "from",
+      "module": "unittest",
+      "names": [
+        {
+          "alias": null,
+          "name": "mock"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 18,
+        "end": 18
+      }
+    },
+    {
+      "style": "import",
+      "module": "uuid",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 19,
+        "end": 19
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.compute",
+      "names": [
+        {
+          "alias": null,
+          "name": "claims"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 22,
+        "end": 22
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "context"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 23,
+        "end": 23
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "exception"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 24,
+        "end": 24
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "objects"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 25,
+        "end": 25
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.pci",
+      "names": [
+        {
+          "alias": "pci_manager",
+          "name": "manager"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 26,
+        "end": 26
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "test"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 27,
+        "end": 27
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.tests.unit",
+      "names": [
+        {
+          "alias": null,
+          "name": "fake_instance"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 28,
+        "end": 28
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.tests.unit.pci",
+      "names": [
+        {
+          "alias": "pci_fakes",
+          "name": "fakes"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 29,
+        "end": 29
+      }
+    }
+  ],
+  "sideEffects": [],
+  "securitySurface": [
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "instance.update(**kwargs)",
+      "lineRange": {
+        "start": 114,
+        "end": 114
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "flavor.update(**kwargs)",
+      "lineRange": {
+        "start": 126,
+        "end": 126
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "compute_node.update(values)",
+      "lineRange": {
+        "start": 162,
+        "end": 162
+      }
+    }
+  ],
+  "injection_flags": [],
+  "warnings": []
+}

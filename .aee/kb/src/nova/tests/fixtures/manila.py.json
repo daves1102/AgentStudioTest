@@ -1,0 +1,597 @@
+{
+  "file": "src/nova/tests/fixtures/manila.py",
+  "hash": "d22cc9a20f76c23965d7d18257093ad5f578c3adeda78de68df2f49f1af670d4",
+  "language": "Python",
+  "component": "nova",
+  "package": null,
+  "lines": {
+    "blank": 19,
+    "code": 110,
+    "comment": 15,
+    "total": 144
+  },
+  "symbols": [
+    {
+      "name": "CONF",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 19,
+        "end": 19
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "LOG",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 20,
+        "end": 20
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "ManilaShare",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 23,
+        "end": 39
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "__init__",
+      "kind": "method",
+      "scope": "ManilaShare",
+      "lineRange": {
+        "start": 24,
+        "end": 39
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "share_id"
+        },
+        {
+          "default": "\"NFS\"",
+          "name": "proto"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 16,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "ManilaAccess",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 42,
+        "end": 53
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "__init__",
+      "kind": "method",
+      "scope": "ManilaAccess",
+      "lineRange": {
+        "start": 43,
+        "end": 53
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "default": "\"ip\"",
+          "name": "access_type"
+        },
+        {
+          "default": "None",
+          "name": "access_to"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 11,
+      "ccn": 5,
+      "visibility": "public"
+    },
+    {
+      "name": "ManilaFixture",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 56,
+        "end": 144
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "setUp",
+      "kind": "method",
+      "scope": "ManilaFixture",
+      "lineRange": {
+        "start": 59,
+        "end": 77
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 19,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "fake_get",
+      "kind": "method",
+      "scope": "ManilaFixture",
+      "lineRange": {
+        "start": 79,
+        "end": 84
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "context"
+        },
+        {
+          "name": "share_id"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "nova.share.manila.Share.from_manila_share( manila_share, export_location )",
+          "line": 82
+        }
+      ],
+      "nloc": 6,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "fake_get_share_status_error",
+      "kind": "method",
+      "scope": "ManilaFixture",
+      "lineRange": {
+        "start": 86,
+        "end": 92
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "context"
+        },
+        {
+          "name": "share_id"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "nova.share.manila.Share.from_manila_share( manila_share, export_location )",
+          "line": 90
+        }
+      ],
+      "nloc": 7,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "fake_get_share_export_location_missing",
+      "kind": "method",
+      "scope": "ManilaFixture",
+      "lineRange": {
+        "start": 94,
+        "end": 99
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "context"
+        },
+        {
+          "name": "share_id"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "nova.share.manila.Share.from_manila_share( manila_share, export_location )",
+          "line": 97
+        }
+      ],
+      "nloc": 6,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "fake_get_share_unknown_protocol",
+      "kind": "method",
+      "scope": "ManilaFixture",
+      "lineRange": {
+        "start": 101,
+        "end": 107
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "context"
+        },
+        {
+          "name": "share_id"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "nova.share.manila.Share.from_manila_share( manila_share, export_location )",
+          "line": 105
+        }
+      ],
+      "nloc": 7,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "fake_get_cephfs",
+      "kind": "method",
+      "scope": "ManilaFixture",
+      "lineRange": {
+        "start": 109,
+        "end": 114
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "context"
+        },
+        {
+          "name": "share_id"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "nova.share.manila.Share.from_manila_share( manila_share, export_location )",
+          "line": 112
+        }
+      ],
+      "nloc": 6,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "fake_get_access",
+      "kind": "method",
+      "scope": "ManilaFixture",
+      "lineRange": {
+        "start": 116,
+        "end": 124
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "context"
+        },
+        {
+          "name": "share_id"
+        },
+        {
+          "name": "access_type"
+        },
+        {
+          "name": "access_to"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "None",
+          "line": 122
+        },
+        {
+          "expr": "nova.share.manila.Access.from_manila_access(access)",
+          "line": 124
+        }
+      ],
+      "nloc": 5,
+      "ccn": 2,
+      "visibility": "public"
+    },
+    {
+      "name": "fake_allow",
+      "kind": "method",
+      "scope": "ManilaFixture",
+      "lineRange": {
+        "start": 126,
+        "end": 131
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "context"
+        },
+        {
+          "name": "share_id"
+        },
+        {
+          "name": "access_type"
+        },
+        {
+          "name": "access_to"
+        },
+        {
+          "name": "access_level"
+        },
+        {
+          "default": "None",
+          "name": "lock_reason"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 6,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "fake_deny",
+      "kind": "method",
+      "scope": "ManilaFixture",
+      "lineRange": {
+        "start": 133,
+        "end": 135
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "context"
+        },
+        {
+          "name": "share_id"
+        },
+        {
+          "name": "access_type"
+        },
+        {
+          "name": "access_to"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "202",
+          "line": 135
+        }
+      ],
+      "nloc": 3,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "fake_get_access_rules",
+      "kind": "method",
+      "scope": "ManilaFixture",
+      "lineRange": {
+        "start": 137,
+        "end": 144
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "context"
+        },
+        {
+          "name": "share_id"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "rules",
+          "line": 144
+        }
+      ],
+      "nloc": 8,
+      "ccn": 3,
+      "visibility": "public"
+    }
+  ],
+  "referencedSymbols": [
+    {
+      "name": "logging.getLogger",
+      "usage": "call",
+      "via": "oslo_log",
+      "count": 1,
+      "lineRange": {
+        "start": 20,
+        "end": 20
+      }
+    },
+    {
+      "name": "fixtures.Fixture",
+      "usage": "inherit",
+      "via": "fixtures",
+      "count": 1,
+      "lineRange": {
+        "start": 56,
+        "end": 56
+      }
+    },
+    {
+      "name": "super",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 60,
+        "end": 60
+      }
+    },
+    {
+      "name": "set",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 61,
+        "end": 61
+      }
+    },
+    {
+      "name": "fixtures.MockPatch",
+      "usage": "call",
+      "via": "fixtures",
+      "count": 5,
+      "lineRange": {
+        "start": 63,
+        "end": 63
+      }
+    },
+    {
+      "name": "nova.share.manila.Share.from_manila_share",
+      "usage": "call",
+      "via": "nova",
+      "count": 5,
+      "lineRange": {
+        "start": 82,
+        "end": 82
+      }
+    },
+    {
+      "name": "nova.share.manila.Access.from_manila_access",
+      "usage": "call",
+      "via": "nova",
+      "count": 2,
+      "lineRange": {
+        "start": 124,
+        "end": 124
+      }
+    }
+  ],
+  "dependencies": [
+    {
+      "style": "import",
+      "module": "fixtures",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 13,
+        "end": 13
+      }
+    },
+    {
+      "style": "import",
+      "module": "nova",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 14,
+        "end": 14
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_config",
+      "names": [
+        {
+          "alias": null,
+          "name": "cfg"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 15,
+        "end": 15
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_log",
+      "names": [
+        {
+          "alias": "logging",
+          "name": "log"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 16,
+        "end": 16
+      }
+    }
+  ],
+  "sideEffects": [
+    {
+      "kind": "global-mutation",
+      "target": "CONF = cfg.CONF",
+      "lineRange": {
+        "start": 19,
+        "end": 19
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "LOG = logging.getLogger(__name__)",
+      "lineRange": {
+        "start": 20,
+        "end": 20
+      }
+    }
+  ],
+  "securitySurface": [],
+  "injection_flags": [],
+  "warnings": []
+}

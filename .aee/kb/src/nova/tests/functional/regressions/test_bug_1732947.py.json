@@ -1,0 +1,163 @@
+{
+  "file": "src/nova/tests/functional/regressions/test_bug_1732947.py",
+  "hash": "9d6b1179988f95b9333a24d0ff3aa729ff5648c61492a90ea8dba315d9e0f75c",
+  "language": "Python",
+  "component": "nova",
+  "package": null,
+  "lines": {
+    "blank": 8,
+    "code": 46,
+    "comment": 30,
+    "total": 84
+  },
+  "symbols": [
+    {
+      "name": "CONF",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 19,
+        "end": 19
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "RebuildVolumeBackedSameImage",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 22,
+        "end": 84
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "microversion",
+      "kind": "field",
+      "scope": "RebuildVolumeBackedSameImage",
+      "lineRange": {
+        "start": 32,
+        "end": 32
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "_setup_scheduler_service",
+      "kind": "method",
+      "scope": "RebuildVolumeBackedSameImage",
+      "lineRange": {
+        "start": 34,
+        "end": 40
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "self.start_service('scheduler')",
+          "line": 40
+        }
+      ],
+      "nloc": 5,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "test_volume_backed_rebuild_same_image",
+      "kind": "method",
+      "scope": "RebuildVolumeBackedSameImage",
+      "lineRange": {
+        "start": 42,
+        "end": 84
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 28,
+      "ccn": 1,
+      "visibility": "public"
+    }
+  ],
+  "referencedSymbols": [
+    {
+      "name": "integrated_helpers._IntegratedTestBase",
+      "usage": "inherit",
+      "via": "nova.tests.functional",
+      "count": 1,
+      "lineRange": {
+        "start": 22,
+        "end": 22
+      }
+    }
+  ],
+  "dependencies": [
+    {
+      "style": "import",
+      "module": "nova.conf",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 15,
+        "end": 15
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.tests",
+      "names": [
+        {
+          "alias": "nova_fixtures",
+          "name": "fixtures"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 16,
+        "end": 16
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.tests.functional",
+      "names": [
+        {
+          "alias": null,
+          "name": "integrated_helpers"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 17,
+        "end": 17
+      }
+    }
+  ],
+  "sideEffects": [
+    {
+      "kind": "global-mutation",
+      "target": "CONF = nova.conf.CONF",
+      "lineRange": {
+        "start": 19,
+        "end": 19
+      }
+    }
+  ],
+  "securitySurface": [],
+  "injection_flags": [],
+  "warnings": []
+}

@@ -1,0 +1,370 @@
+{
+  "file": "src/nova/tests/functional/regressions/test_bug_2127196.py",
+  "hash": "d697615f4315e670fcbc6b7d8726ed8dcc8625c517020115f5e7bbee5922fecd",
+  "language": "Python",
+  "component": "nova",
+  "package": null,
+  "lines": {
+    "blank": 24,
+    "code": 83,
+    "comment": 18,
+    "total": 125
+  },
+  "symbols": [
+    {
+      "name": "CinderFixtureWithLunBlockSize",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 38,
+        "end": 54
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "LUN_VOLUME_WITH_BLOCKSIZE",
+      "kind": "constant",
+      "scope": "CinderFixtureWithLunBlockSize",
+      "lineRange": {
+        "start": 42,
+        "end": 42
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "__init__",
+      "kind": "method",
+      "scope": "CinderFixtureWithLunBlockSize",
+      "lineRange": {
+        "start": 44,
+        "end": 54
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "test"
+        },
+        {
+          "default": "'nova'",
+          "name": "az"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 10,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "TestLunVolumeBlockio",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 57,
+        "end": 125
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "microversion",
+      "kind": "field",
+      "scope": "TestLunVolumeBlockio",
+      "lineRange": {
+        "start": 67,
+        "end": 67
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "ADMIN_API",
+      "kind": "constant",
+      "scope": "TestLunVolumeBlockio",
+      "lineRange": {
+        "start": 68,
+        "end": 68
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "setUp",
+      "kind": "method",
+      "scope": "TestLunVolumeBlockio",
+      "lineRange": {
+        "start": 70,
+        "end": 78
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 9,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "_get_xml_element",
+      "kind": "method",
+      "scope": "TestLunVolumeBlockio",
+      "lineRange": {
+        "start": 80,
+        "end": 84
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "xml"
+        },
+        {
+          "name": "xpath"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "element",
+          "line": 84
+        }
+      ],
+      "nloc": 4,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "test_lun_volume_no_blockio",
+      "kind": "method",
+      "scope": "TestLunVolumeBlockio",
+      "lineRange": {
+        "start": 86,
+        "end": 125
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 25,
+      "ccn": 1,
+      "visibility": "public"
+    }
+  ],
+  "referencedSymbols": [
+    {
+      "name": "cinder_fixture.CinderFixture",
+      "usage": "inherit",
+      "via": "nova.tests.fixtures",
+      "count": 1,
+      "lineRange": {
+        "start": 38,
+        "end": 38
+      }
+    },
+    {
+      "name": "super",
+      "usage": "call",
+      "via": null,
+      "count": 2,
+      "lineRange": {
+        "start": 45,
+        "end": 45
+      }
+    },
+    {
+      "name": "base.ServersTestBase",
+      "usage": "inherit",
+      "via": "nova.tests.functional.libvirt",
+      "count": 1,
+      "lineRange": {
+        "start": 58,
+        "end": 58
+      }
+    },
+    {
+      "name": "integrated_helpers.InstanceHelperMixin",
+      "usage": "inherit",
+      "via": "nova.tests.functional",
+      "count": 1,
+      "lineRange": {
+        "start": 59,
+        "end": 59
+      }
+    },
+    {
+      "name": "fixtures.MockPatch",
+      "usage": "call",
+      "via": "fixtures",
+      "count": 1,
+      "lineRange": {
+        "start": 73,
+        "end": 73
+      }
+    },
+    {
+      "name": "fakelibvirt.HostInfo",
+      "usage": "call",
+      "via": "nova.tests.fixtures",
+      "count": 1,
+      "lineRange": {
+        "start": 77,
+        "end": 77
+      }
+    },
+    {
+      "name": "etree.fromstring",
+      "usage": "call",
+      "via": "lxml",
+      "count": 2,
+      "lineRange": {
+        "start": 82,
+        "end": 82
+      }
+    }
+  ],
+  "dependencies": [
+    {
+      "style": "from",
+      "module": "lxml",
+      "names": [
+        {
+          "alias": null,
+          "name": "etree"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 27,
+        "end": 27
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_utils.fixture",
+      "names": [
+        {
+          "alias": "uuids",
+          "name": "uuidsentinel"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 28,
+        "end": 28
+      }
+    },
+    {
+      "style": "import",
+      "module": "fixtures",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 30,
+        "end": 30
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.tests.fixtures",
+      "names": [
+        {
+          "alias": "cinder_fixture",
+          "name": "cinder"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 32,
+        "end": 32
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.tests.fixtures",
+      "names": [
+        {
+          "alias": "fakelibvirt",
+          "name": "libvirt"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 33,
+        "end": 33
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.tests.functional",
+      "names": [
+        {
+          "alias": null,
+          "name": "integrated_helpers"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 34,
+        "end": 34
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.tests.functional.libvirt",
+      "names": [
+        {
+          "alias": null,
+          "name": "base"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 35,
+        "end": 35
+      }
+    }
+  ],
+  "sideEffects": [
+    {
+      "kind": "global-mutation",
+      "target": "LUN_VOLUME_WITH_BLOCKSIZE = uuids.lun_volume_with_blocksize",
+      "lineRange": {
+        "start": 42,
+        "end": 42
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "ADMIN_API = True",
+      "lineRange": {
+        "start": 68,
+        "end": 68
+      }
+    }
+  ],
+  "securitySurface": [],
+  "injection_flags": [],
+  "warnings": []
+}

@@ -1,0 +1,163 @@
+{
+  "file": "src/nova/tests/functional/regressions/test_bug_1790204.py",
+  "hash": "0418f3fcdef394774da96d9bb1da19bcc1b6085d936b49d593bf866ad7c3a901",
+  "language": "Python",
+  "component": "nova",
+  "package": null,
+  "lines": {
+    "blank": 11,
+    "code": 42,
+    "comment": 24,
+    "total": 77
+  },
+  "symbols": [
+    {
+      "name": "ResizeSameHostDoubledAllocations",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 19,
+        "end": 77
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "compute_driver",
+      "kind": "field",
+      "scope": "ResizeSameHostDoubledAllocations",
+      "lineRange": {
+        "start": 39,
+        "end": 39
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "setUp",
+      "kind": "method",
+      "scope": "ResizeSameHostDoubledAllocations",
+      "lineRange": {
+        "start": 41,
+        "end": 43
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 3,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_resize_same_host_full_allocations",
+      "kind": "method",
+      "scope": "ResizeSameHostDoubledAllocations",
+      "lineRange": {
+        "start": 45,
+        "end": 77
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 20,
+      "ccn": 1,
+      "visibility": "public"
+    }
+  ],
+  "referencedSymbols": [
+    {
+      "name": "integrated_helpers.ProviderUsageBaseTestCase",
+      "usage": "inherit",
+      "via": "nova.tests.functional",
+      "count": 1,
+      "lineRange": {
+        "start": 20,
+        "end": 20
+      }
+    },
+    {
+      "name": "super",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 42,
+        "end": 42
+      }
+    }
+  ],
+  "dependencies": [
+    {
+      "style": "from",
+      "module": "oslo_utils.fixture",
+      "names": [
+        {
+          "alias": "uuids",
+          "name": "uuidsentinel"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 13,
+        "end": 13
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.compute",
+      "names": [
+        {
+          "alias": null,
+          "name": "instance_actions"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 15,
+        "end": 15
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.tests.functional",
+      "names": [
+        {
+          "alias": null,
+          "name": "integrated_helpers"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 16,
+        "end": 16
+      }
+    }
+  ],
+  "sideEffects": [],
+  "securitySurface": [
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "flavor['flavor'].update({'name': 'v2r2d1', 'vcpus': 2})",
+      "lineRange": {
+        "start": 55,
+        "end": 55
+      }
+    }
+  ],
+  "injection_flags": [],
+  "warnings": []
+}

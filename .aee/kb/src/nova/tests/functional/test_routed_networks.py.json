@@ -1,0 +1,761 @@
+{
+  "file": "src/nova/tests/functional/test_routed_networks.py",
+  "hash": "2e012404a9d72a763633c221a0a9be56c7d472b3674eb9224a8aa3d49154c61b",
+  "language": "Python",
+  "component": "nova",
+  "package": null,
+  "lines": {
+    "blank": 52,
+    "code": 387,
+    "comment": 90,
+    "total": 529
+  },
+  "symbols": [
+    {
+      "name": "NeutronRoutedNetworksFixture",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 23,
+        "end": 279
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "tenant_id",
+      "kind": "field",
+      "scope": "NeutronRoutedNetworksFixture",
+      "lineRange": {
+        "start": 24,
+        "end": 24
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "network_multisegment",
+      "kind": "field",
+      "scope": "NeutronRoutedNetworksFixture",
+      "lineRange": {
+        "start": 26,
+        "end": 56
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "segment_id_0",
+      "kind": "field",
+      "scope": "NeutronRoutedNetworksFixture",
+      "lineRange": {
+        "start": 58,
+        "end": 69
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "segment_id_2",
+      "kind": "field",
+      "scope": "NeutronRoutedNetworksFixture",
+      "lineRange": {
+        "start": 70,
+        "end": 81
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "segments",
+      "kind": "field",
+      "scope": "NeutronRoutedNetworksFixture",
+      "lineRange": {
+        "start": 82,
+        "end": 82
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "subnet_for_segment_id_0",
+      "kind": "field",
+      "scope": "NeutronRoutedNetworksFixture",
+      "lineRange": {
+        "start": 84,
+        "end": 106
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "subnet_for_segment_id_2",
+      "kind": "field",
+      "scope": "NeutronRoutedNetworksFixture",
+      "lineRange": {
+        "start": 108,
+        "end": 130
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "port_with_deferred_ip_allocation",
+      "kind": "field",
+      "scope": "NeutronRoutedNetworksFixture",
+      "lineRange": {
+        "start": 136,
+        "end": 156
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "port_with_deferred_ip_allocation_bound_to_segment_0",
+      "kind": "field",
+      "scope": "NeutronRoutedNetworksFixture",
+      "lineRange": {
+        "start": 159,
+        "end": 160
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "port_on_segment_id_0",
+      "kind": "field",
+      "scope": "NeutronRoutedNetworksFixture",
+      "lineRange": {
+        "start": 168,
+        "end": 189
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "port_on_segment_id_2",
+      "kind": "field",
+      "scope": "NeutronRoutedNetworksFixture",
+      "lineRange": {
+        "start": 191,
+        "end": 212
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "__init__",
+      "kind": "method",
+      "scope": "NeutronRoutedNetworksFixture",
+      "lineRange": {
+        "start": 214,
+        "end": 235
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "test"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 20,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "list_extensions",
+      "kind": "method",
+      "scope": "NeutronRoutedNetworksFixture",
+      "lineRange": {
+        "start": 237,
+        "end": 249
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "*args"
+        },
+        {
+          "name": "**kwargs"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "{ 'extensions': [ { # Copied from neutron-lib segment.py \"updated\": \"2016-02-24T17:00:00-00:00\", \"name\": constants.SEGMENT, \"links\": [], \"alias\": \"segment\", \"description\": \"Segments extension.\" } ] }",
+          "line": 238
+        }
+      ],
+      "nloc": 12,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "list_subnets",
+      "kind": "method",
+      "scope": "NeutronRoutedNetworksFixture",
+      "lineRange": {
+        "start": 251,
+        "end": 262
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "default": "True",
+          "name": "retrieve_all"
+        },
+        {
+          "name": "**_params"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "{'subnets': filtered_subnets}",
+          "line": 260
+        },
+        {
+          "expr": "super().list_subnets(retrieve_all, **_params)",
+          "line": 262
+        }
+      ],
+      "nloc": 12,
+      "ccn": 4,
+      "visibility": "public"
+    },
+    {
+      "name": "create_port",
+      "kind": "method",
+      "scope": "NeutronRoutedNetworksFixture",
+      "lineRange": {
+        "start": 264,
+        "end": 279
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "default": "None",
+          "name": "body"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "super().create_port(body)",
+          "line": 279
+        }
+      ],
+      "nloc": 9,
+      "ccn": 2,
+      "visibility": "public"
+    },
+    {
+      "name": "RoutedNetworkTests",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 282,
+        "end": 529
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "compute_driver",
+      "kind": "field",
+      "scope": "RoutedNetworkTests",
+      "lineRange": {
+        "start": 283,
+        "end": 283
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "microversion",
+      "kind": "field",
+      "scope": "RoutedNetworkTests",
+      "lineRange": {
+        "start": 284,
+        "end": 284
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "ADMIN_API",
+      "kind": "constant",
+      "scope": "RoutedNetworkTests",
+      "lineRange": {
+        "start": 285,
+        "end": 285
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "setUp",
+      "kind": "method",
+      "scope": "RoutedNetworkTests",
+      "lineRange": {
+        "start": 287,
+        "end": 330
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 26,
+      "ccn": 3,
+      "visibility": "public"
+    },
+    {
+      "name": "_create_multisegment_placement_setup",
+      "kind": "method",
+      "scope": "RoutedNetworkTests",
+      "lineRange": {
+        "start": 332,
+        "end": 378
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "segment_to_compute_rp"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 38,
+      "ccn": 3,
+      "visibility": "private"
+    },
+    {
+      "name": "test_boot_with_deferred_port",
+      "kind": "method",
+      "scope": "RoutedNetworkTests",
+      "lineRange": {
+        "start": 380,
+        "end": 391
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 6,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_boot_with_immediate_port",
+      "kind": "method",
+      "scope": "RoutedNetworkTests",
+      "lineRange": {
+        "start": 393,
+        "end": 404
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 6,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_boot_with_network",
+      "kind": "method",
+      "scope": "RoutedNetworkTests",
+      "lineRange": {
+        "start": 406,
+        "end": 425
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 12,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_boot_with_two_nics",
+      "kind": "method",
+      "scope": "RoutedNetworkTests",
+      "lineRange": {
+        "start": 427,
+        "end": 439
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 7,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_migrate",
+      "kind": "method",
+      "scope": "RoutedNetworkTests",
+      "lineRange": {
+        "start": 441,
+        "end": 454
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 8,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_live_migrate",
+      "kind": "method",
+      "scope": "RoutedNetworkTests",
+      "lineRange": {
+        "start": 456,
+        "end": 469
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 9,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_evacuate",
+      "kind": "method",
+      "scope": "RoutedNetworkTests",
+      "lineRange": {
+        "start": 471,
+        "end": 486
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 9,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_unshelve_after_shelve",
+      "kind": "method",
+      "scope": "RoutedNetworkTests",
+      "lineRange": {
+        "start": 488,
+        "end": 502
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 9,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_boot_with_immediate_port_fails_due_to_config",
+      "kind": "method",
+      "scope": "RoutedNetworkTests",
+      "lineRange": {
+        "start": 504,
+        "end": 529
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 19,
+      "ccn": 1,
+      "visibility": "public"
+    }
+  ],
+  "referencedSymbols": [
+    {
+      "name": "nova_fixtures.NeutronFixture",
+      "usage": "inherit",
+      "via": "nova.tests",
+      "count": 1,
+      "lineRange": {
+        "start": 23,
+        "end": 23
+      }
+    },
+    {
+      "name": "copy.deepcopy",
+      "usage": "call",
+      "via": "copy",
+      "count": 7,
+      "lineRange": {
+        "start": 160,
+        "end": 160
+      }
+    },
+    {
+      "name": "super",
+      "usage": "call",
+      "via": null,
+      "count": 4,
+      "lineRange": {
+        "start": 215,
+        "end": 215
+      }
+    },
+    {
+      "name": "list",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 257,
+        "end": 257
+      }
+    },
+    {
+      "name": "integrated_helpers._IntegratedTestBase",
+      "usage": "inherit",
+      "via": "nova.tests.functional",
+      "count": 1,
+      "lineRange": {
+        "start": 282,
+        "end": 282
+      }
+    },
+    {
+      "name": "nova_fixtures.HostNameWeigherFixture",
+      "usage": "call",
+      "via": "nova.tests",
+      "count": 1,
+      "lineRange": {
+        "start": 295,
+        "end": 295
+      }
+    },
+    {
+      "name": "range",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 302,
+        "end": 302
+      }
+    },
+    {
+      "name": "setattr",
+      "usage": "call",
+      "via": null,
+      "count": 3,
+      "lineRange": {
+        "start": 303,
+        "end": 303
+      }
+    },
+    {
+      "name": "len",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 313,
+        "end": 313
+      }
+    },
+    {
+      "name": "getattr",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 347,
+        "end": 347
+      }
+    },
+    {
+      "name": "mock.patch",
+      "usage": "call",
+      "via": "unittest",
+      "count": 1,
+      "lineRange": {
+        "start": 509,
+        "end": 509
+      }
+    }
+  ],
+  "dependencies": [
+    {
+      "style": "import",
+      "module": "copy",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 13,
+        "end": 13
+      }
+    },
+    {
+      "style": "from",
+      "module": "unittest",
+      "names": [
+        {
+          "alias": null,
+          "name": "mock"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 14,
+        "end": 14
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_utils.fixture",
+      "names": [
+        {
+          "alias": "uuids",
+          "name": "uuidsentinel"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 16,
+        "end": 16
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.network",
+      "names": [
+        {
+          "alias": null,
+          "name": "constants"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 18,
+        "end": 18
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.tests",
+      "names": [
+        {
+          "alias": "nova_fixtures",
+          "name": "fixtures"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 19,
+        "end": 19
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.tests.functional",
+      "names": [
+        {
+          "alias": null,
+          "name": "integrated_helpers"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 20,
+        "end": 20
+      }
+    }
+  ],
+  "sideEffects": [
+    {
+      "kind": "global-mutation",
+      "target": "ADMIN_API = True",
+      "lineRange": {
+        "start": 285,
+        "end": 285
+      }
+    }
+  ],
+  "securitySurface": [
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "port_with_deferred_ip_allocation_bound_to_segment_0.update({",
+      "lineRange": {
+        "start": 161,
+        "end": 161
+      }
+    }
+  ],
+  "injection_flags": [],
+  "warnings": []
+}

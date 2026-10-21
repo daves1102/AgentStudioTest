@@ -1,0 +1,894 @@
+{
+  "file": "src/nova/tests/functional/notification_sample_tests/notification_sample_base.py",
+  "hash": "1038ee5fca081e76df5f1fb9c30d2487407137f57b998e06622741819692d1d3",
+  "language": "Python",
+  "component": "nova",
+  "package": null,
+  "lines": {
+    "blank": 51,
+    "code": 218,
+    "comment": 32,
+    "total": 301
+  },
+  "symbols": [
+    {
+      "name": "CONF",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 30,
+        "end": 30
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "NotificationSampleTestBase",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 33,
+        "end": 301
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "ANY",
+      "kind": "constant",
+      "scope": "NotificationSampleTestBase",
+      "lineRange": {
+        "start": 52,
+        "end": 52
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "REQUIRES_LOCKING",
+      "kind": "constant",
+      "scope": "NotificationSampleTestBase",
+      "lineRange": {
+        "start": 54,
+        "end": 54
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "MAX_MICROVERSION",
+      "kind": "constant",
+      "scope": "NotificationSampleTestBase",
+      "lineRange": {
+        "start": 61,
+        "end": 61
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "setUp",
+      "kind": "method",
+      "scope": "NotificationSampleTestBase",
+      "lineRange": {
+        "start": 63,
+        "end": 87
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 18,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "_get_notification_sample",
+      "kind": "method",
+      "scope": "NotificationSampleTestBase",
+      "lineRange": {
+        "start": 89,
+        "end": 94
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "sample"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "sample_dir + '/' + sample + '.json'",
+          "line": 94
+        }
+      ],
+      "nloc": 6,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "_apply_replacements",
+      "kind": "method",
+      "scope": "NotificationSampleTestBase",
+      "lineRange": {
+        "start": 96,
+        "end": 108
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "replacements"
+        },
+        {
+          "name": "sample_obj"
+        },
+        {
+          "name": "notification"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 13,
+      "ccn": 5,
+      "visibility": "private"
+    },
+    {
+      "name": "_verify_notification",
+      "kind": "method",
+      "scope": "NotificationSampleTestBase",
+      "lineRange": {
+        "start": 110,
+        "end": 153
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "sample_file_name"
+        },
+        {
+          "default": "None",
+          "name": "replacements"
+        },
+        {
+          "default": "None",
+          "name": "actual"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 20,
+      "ccn": 3,
+      "visibility": "private"
+    },
+    {
+      "name": "_pop_and_verify_dest_select_notification",
+      "kind": "method",
+      "scope": "NotificationSampleTestBase",
+      "lineRange": {
+        "start": 155,
+        "end": 170
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "server_id"
+        },
+        {
+          "default": "None",
+          "name": "replacements"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 16,
+      "ccn": 3,
+      "visibility": "private"
+    },
+    {
+      "name": "_boot_a_server",
+      "kind": "method",
+      "scope": "NotificationSampleTestBase",
+      "lineRange": {
+        "start": 172,
+        "end": 250
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "default": "'ACTIVE'",
+          "name": "expected_status"
+        },
+        {
+          "default": "None",
+          "name": "extra_params"
+        },
+        {
+          "default": "None",
+          "name": "scheduler_hints"
+        },
+        {
+          "default": "None",
+          "name": "additional_extra_specs"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "found_server",
+          "line": 250
+        }
+      ],
+      "nloc": 57,
+      "ccn": 8,
+      "visibility": "private"
+    },
+    {
+      "name": "_get_notifications",
+      "kind": "method",
+      "scope": "NotificationSampleTestBase",
+      "lineRange": {
+        "start": 252,
+        "end": 255
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "event_type"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "[notification for notification in self.notifier.versioned_notifications if notification['event_type'] == event_type]",
+          "line": 253
+        }
+      ],
+      "nloc": 4,
+      "ccn": 3,
+      "visibility": "private"
+    },
+    {
+      "name": "_wait_for_notification",
+      "kind": "method",
+      "scope": "NotificationSampleTestBase",
+      "lineRange": {
+        "start": 257,
+        "end": 262
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "event_type"
+        },
+        {
+          "default": "10.0",
+          "name": "timeout"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 3,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "_wait_for_notifications",
+      "kind": "method",
+      "scope": "NotificationSampleTestBase",
+      "lineRange": {
+        "start": 264,
+        "end": 275
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "event_type"
+        },
+        {
+          "name": "expected_count"
+        },
+        {
+          "default": "10.0",
+          "name": "timeout"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "notifications",
+          "line": 275
+        }
+      ],
+      "nloc": 11,
+      "ccn": 2,
+      "visibility": "private"
+    },
+    {
+      "name": "_attach_volume_to_server",
+      "kind": "method",
+      "scope": "NotificationSampleTestBase",
+      "lineRange": {
+        "start": 277,
+        "end": 280
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "server"
+        },
+        {
+          "name": "volume_id"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 4,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "_wait_and_get_migrations",
+      "kind": "method",
+      "scope": "NotificationSampleTestBase",
+      "lineRange": {
+        "start": 282,
+        "end": 301
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "server"
+        },
+        {
+          "default": "20",
+          "name": "max_retries"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "migrations",
+          "line": 298
+        }
+      ],
+      "nloc": 11,
+      "ccn": 5,
+      "visibility": "private"
+    }
+  ],
+  "referencedSymbols": [
+    {
+      "name": "test.TestCase",
+      "usage": "inherit",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 33,
+        "end": 33
+      }
+    },
+    {
+      "name": "integrated_helpers.InstanceHelperMixin",
+      "usage": "inherit",
+      "via": "nova.tests.functional",
+      "count": 1,
+      "lineRange": {
+        "start": 34,
+        "end": 34
+      }
+    },
+    {
+      "name": "object",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 52,
+        "end": 52
+      }
+    },
+    {
+      "name": "super",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 64,
+        "end": 64
+      }
+    },
+    {
+      "name": "nova_fixtures.OSAPIFixture",
+      "usage": "call",
+      "via": "nova.tests",
+      "count": 1,
+      "lineRange": {
+        "start": 66,
+        "end": 66
+      }
+    },
+    {
+      "name": "nova_fixtures.NotificationFixture",
+      "usage": "call",
+      "via": "nova.tests",
+      "count": 1,
+      "lineRange": {
+        "start": 77,
+        "end": 77
+      }
+    },
+    {
+      "name": "test_services.fake_utcnow",
+      "usage": "call",
+      "via": "nova.tests.unit.api.openstack.compute",
+      "count": 1,
+      "lineRange": {
+        "start": 79,
+        "end": 79
+      }
+    },
+    {
+      "name": "utils_fixture.TimeFixture",
+      "usage": "call",
+      "via": "oslo_utils",
+      "count": 1,
+      "lineRange": {
+        "start": 79,
+        "end": 79
+      }
+    },
+    {
+      "name": "nova_fixtures.GlanceFixture",
+      "usage": "call",
+      "via": "nova.tests",
+      "count": 1,
+      "lineRange": {
+        "start": 80,
+        "end": 80
+      }
+    },
+    {
+      "name": "func_fixtures.PlacementFixture",
+      "usage": "call",
+      "via": "nova.tests.functional",
+      "count": 1,
+      "lineRange": {
+        "start": 81,
+        "end": 81
+      }
+    },
+    {
+      "name": "os.path.abspath",
+      "usage": "call",
+      "via": "os",
+      "count": 1,
+      "lineRange": {
+        "start": 90,
+        "end": 90
+      }
+    },
+    {
+      "name": "os.path.dirname",
+      "usage": "call",
+      "via": "os",
+      "count": 2,
+      "lineRange": {
+        "start": 90,
+        "end": 90
+      }
+    },
+    {
+      "name": "os.path.join",
+      "usage": "call",
+      "via": "os",
+      "count": 1,
+      "lineRange": {
+        "start": 91,
+        "end": 91
+      }
+    },
+    {
+      "name": "os.path.normpath",
+      "usage": "call",
+      "via": "os",
+      "count": 1,
+      "lineRange": {
+        "start": 91,
+        "end": 91
+      }
+    },
+    {
+      "name": "len",
+      "usage": "call",
+      "via": null,
+      "count": 6,
+      "lineRange": {
+        "start": 131,
+        "end": 131
+      }
+    },
+    {
+      "name": "open",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 137,
+        "end": 137
+      }
+    },
+    {
+      "name": "jsonutils.loads",
+      "usage": "call",
+      "via": "oslo_serialization",
+      "count": 1,
+      "lineRange": {
+        "start": 140,
+        "end": 140
+      }
+    },
+    {
+      "name": "json_ref.resolve_refs",
+      "usage": "call",
+      "via": "nova.tests",
+      "count": 1,
+      "lineRange": {
+        "start": 142,
+        "end": 142
+      }
+    },
+    {
+      "name": "fake_crypto.get_ssh_public_key",
+      "usage": "call",
+      "via": "nova.tests.unit",
+      "count": 1,
+      "lineRange": {
+        "start": 198,
+        "end": 198
+      }
+    },
+    {
+      "name": "time.sleep",
+      "usage": "call",
+      "via": "time",
+      "count": 1,
+      "lineRange": {
+        "start": 301,
+        "end": 301
+      }
+    }
+  ],
+  "dependencies": [
+    {
+      "style": "import",
+      "module": "os",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 15,
+        "end": 15
+      }
+    },
+    {
+      "style": "import",
+      "module": "time",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 16,
+        "end": 16
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_config",
+      "names": [
+        {
+          "alias": null,
+          "name": "cfg"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 18,
+        "end": 18
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_serialization",
+      "names": [
+        {
+          "alias": null,
+          "name": "jsonutils"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 19,
+        "end": 19
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_utils",
+      "names": [
+        {
+          "alias": "utils_fixture",
+          "name": "fixture"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 20,
+        "end": 20
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "test"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 22,
+        "end": 22
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.tests",
+      "names": [
+        {
+          "alias": "nova_fixtures",
+          "name": "fixtures"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 23,
+        "end": 23
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.tests.functional",
+      "names": [
+        {
+          "alias": "func_fixtures",
+          "name": "fixtures"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 24,
+        "end": 24
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.tests.functional",
+      "names": [
+        {
+          "alias": null,
+          "name": "integrated_helpers"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 25,
+        "end": 25
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.tests",
+      "names": [
+        {
+          "alias": null,
+          "name": "json_ref"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 26,
+        "end": 26
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.tests.unit.api.openstack.compute",
+      "names": [
+        {
+          "alias": null,
+          "name": "test_services"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 27,
+        "end": 27
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.tests.unit",
+      "names": [
+        {
+          "alias": null,
+          "name": "fake_crypto"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 28,
+        "end": 28
+      }
+    }
+  ],
+  "sideEffects": [
+    {
+      "kind": "network",
+      "target": "from nova.tests.unit.api.openstack.compute import test_services",
+      "lineRange": {
+        "start": 27,
+        "end": 27
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "sample_dir = os.path.dirname(os.path.abspath(__file__))",
+      "lineRange": {
+        "start": 90,
+        "end": 90
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "sample_dir = os.path.normpath(os.path.join(",
+      "lineRange": {
+        "start": 91,
+        "end": 91
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "with open(sample_file) as sample:",
+      "lineRange": {
+        "start": 137,
+        "end": 137
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "sample_base_dir = os.path.dirname(sample_file)",
+      "lineRange": {
+        "start": 141,
+        "end": 141
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "CONF = cfg.CONF",
+      "lineRange": {
+        "start": 30,
+        "end": 30
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "ANY = object()",
+      "lineRange": {
+        "start": 52,
+        "end": 52
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "REQUIRES_LOCKING = True",
+      "lineRange": {
+        "start": 54,
+        "end": 54
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "MAX_MICROVERSION = 'latest'",
+      "lineRange": {
+        "start": 61,
+        "end": 61
+      }
+    }
+  ],
+  "securitySurface": [
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": ":param replacements: A dict of key value pairs that is used to update",
+      "lineRange": {
+        "start": 116,
+        "end": 116
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "extra_specs['extra_specs'].update(additional_extra_specs)",
+      "lineRange": {
+        "start": 189,
+        "end": 189
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "server.update(extra_params)",
+      "lineRange": {
+        "start": 224,
+        "end": 224
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "post.update({\"os:scheduler_hints\": scheduler_hints})",
+      "lineRange": {
+        "start": 228,
+        "end": 228
+      }
+    }
+  ],
+  "injection_flags": [],
+  "warnings": []
+}

@@ -1,0 +1,1440 @@
+{
+  "file": "src/nova/tests/fixtures/cinder.py",
+  "hash": "4563ca57f220716ec008e64b5a790ff821b0ad0f2f21b70a3b6feaa5dd01fc66",
+  "language": "Python",
+  "component": "nova",
+  "package": null,
+  "lines": {
+    "blank": 69,
+    "code": 413,
+    "comment": 65,
+    "total": 547
+  },
+  "symbols": [
+    {
+      "name": "LOG",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 26,
+        "end": 26
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "CinderFixture",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 29,
+        "end": 547
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "tenant_id",
+      "kind": "field",
+      "scope": "CinderFixture",
+      "lineRange": {
+        "start": 33,
+        "end": 33
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "SWAP_OLD_VOL",
+      "kind": "constant",
+      "scope": "CinderFixture",
+      "lineRange": {
+        "start": 35,
+        "end": 35
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "SWAP_NEW_VOL",
+      "kind": "constant",
+      "scope": "CinderFixture",
+      "lineRange": {
+        "start": 36,
+        "end": 36
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "SWAP_ERR_OLD_VOL",
+      "kind": "constant",
+      "scope": "CinderFixture",
+      "lineRange": {
+        "start": 37,
+        "end": 37
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "SWAP_ERR_NEW_VOL",
+      "kind": "constant",
+      "scope": "CinderFixture",
+      "lineRange": {
+        "start": 38,
+        "end": 38
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "SWAP_ERR_ATTACH_ID",
+      "kind": "constant",
+      "scope": "CinderFixture",
+      "lineRange": {
+        "start": 39,
+        "end": 39
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "MULTIATTACH_VOL",
+      "kind": "constant",
+      "scope": "CinderFixture",
+      "lineRange": {
+        "start": 41,
+        "end": 41
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "MULTIATTACH_RO_SWAP_OLD_VOL",
+      "kind": "constant",
+      "scope": "CinderFixture",
+      "lineRange": {
+        "start": 42,
+        "end": 42
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "MULTIATTACH_RO_SWAP_NEW_VOL",
+      "kind": "constant",
+      "scope": "CinderFixture",
+      "lineRange": {
+        "start": 43,
+        "end": 43
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "MULTIATTACH_RO_MIGRATE_OLD_VOL",
+      "kind": "constant",
+      "scope": "CinderFixture",
+      "lineRange": {
+        "start": 44,
+        "end": 44
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "MULTIATTACH_RO_MIGRATE_NEW_VOL",
+      "kind": "constant",
+      "scope": "CinderFixture",
+      "lineRange": {
+        "start": 45,
+        "end": 45
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "IMAGE_BACKED_VOL",
+      "kind": "constant",
+      "scope": "CinderFixture",
+      "lineRange": {
+        "start": 49,
+        "end": 49
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "IMAGE_BACKED_VOL_QUIESCE",
+      "kind": "constant",
+      "scope": "CinderFixture",
+      "lineRange": {
+        "start": 55,
+        "end": 55
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "IMAGE_WITH_TRAITS_BACKED_VOL",
+      "kind": "constant",
+      "scope": "CinderFixture",
+      "lineRange": {
+        "start": 59,
+        "end": 59
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "ISCSI_BACKED_VOL",
+      "kind": "constant",
+      "scope": "CinderFixture",
+      "lineRange": {
+        "start": 62,
+        "end": 62
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "VOLUME_CONNECTION_INFO",
+      "kind": "constant",
+      "scope": "CinderFixture",
+      "lineRange": {
+        "start": 65,
+        "end": 78
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "__init__",
+      "kind": "method",
+      "scope": "CinderFixture",
+      "lineRange": {
+        "start": 80,
+        "end": 106
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "test"
+        },
+        {
+          "default": "'nova'",
+          "name": "az"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 11,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "setUp",
+      "kind": "method",
+      "scope": "CinderFixture",
+      "lineRange": {
+        "start": 108,
+        "end": 110
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 3,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "_create_fakes",
+      "kind": "method",
+      "scope": "CinderFixture",
+      "lineRange": {
+        "start": 112,
+        "end": 178
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 61,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "_is_multiattach",
+      "kind": "method",
+      "scope": "CinderFixture",
+      "lineRange": {
+        "start": 180,
+        "end": 186
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "volume_id"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "volume_id in [ self.MULTIATTACH_VOL, self.MULTIATTACH_RO_SWAP_OLD_VOL, self.MULTIATTACH_RO_SWAP_NEW_VOL, self.MULTIATTACH_RO_MIGRATE_OLD_VOL, self.MULTIATTACH_RO_MIGRATE_NEW_VOL]",
+          "line": 181
+        }
+      ],
+      "nloc": 7,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "_find_attachment",
+      "kind": "method",
+      "scope": "CinderFixture",
+      "lineRange": {
+        "start": 188,
+        "end": 201
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "attachment_id"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "volume_id, attachment, attachments",
+          "line": 198
+        }
+      ],
+      "nloc": 7,
+      "ccn": 4,
+      "visibility": "private"
+    },
+    {
+      "name": "_find_connection_info",
+      "kind": "method",
+      "scope": "CinderFixture",
+      "lineRange": {
+        "start": 203,
+        "end": 217
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "volume_id"
+        },
+        {
+          "name": "attachment_id"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "connection_info",
+          "line": 217
+        }
+      ],
+      "nloc": 9,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "fake_migrate_volume_completion",
+      "kind": "method",
+      "scope": "CinderFixture",
+      "lineRange": {
+        "start": 219,
+        "end": 229
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "context"
+        },
+        {
+          "name": "old_volume_id"
+        },
+        {
+          "name": "new_volume_id"
+        },
+        {
+          "name": "error"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "{'save_volume_id': old_volume_id}",
+          "line": 228
+        },
+        {
+          "expr": "{'save_volume_id': new_volume_id}",
+          "line": 229
+        }
+      ],
+      "nloc": 7,
+      "ccn": 2,
+      "visibility": "public"
+    },
+    {
+      "name": "fake_get",
+      "kind": "method",
+      "scope": "CinderFixture",
+      "lineRange": {
+        "start": 231,
+        "end": 329
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "context"
+        },
+        {
+          "name": "volume_id"
+        },
+        {
+          "default": "None",
+          "name": "microversion"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "volume",
+          "line": 329
+        }
+      ],
+      "nloc": 75,
+      "ccn": 17,
+      "visibility": "public"
+    },
+    {
+      "name": "fake_get_all_volume_types",
+      "kind": "method",
+      "scope": "CinderFixture",
+      "lineRange": {
+        "start": 331,
+        "end": 336
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "*args"
+        },
+        {
+          "name": "**kwargs"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "[{ # This is used in the 2.67 API sample test. 'id': '5f9204ec-3e94-4f27-9beb-fe7bb73b6eb9', 'name': 'lvm-1' }]",
+          "line": 332
+        }
+      ],
+      "nloc": 5,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "fake_attachment_get",
+      "kind": "method",
+      "scope": "CinderFixture",
+      "lineRange": {
+        "start": 338,
+        "end": 346
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "context"
+        },
+        {
+          "name": "attachment_id"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "attachment_ref",
+          "line": 346
+        }
+      ],
+      "nloc": 8,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "fake_attachment_create",
+      "kind": "method",
+      "scope": "CinderFixture",
+      "lineRange": {
+        "start": 348,
+        "end": 380
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "context"
+        },
+        {
+          "name": "volume_id"
+        },
+        {
+          "name": "instance_uuid"
+        },
+        {
+          "default": "None",
+          "name": "connector"
+        },
+        {
+          "default": "None",
+          "name": "mountpoint"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "attachment",
+          "line": 380
+        }
+      ],
+      "nloc": 27,
+      "ccn": 4,
+      "visibility": "public"
+    },
+    {
+      "name": "fake_attachment_update",
+      "kind": "method",
+      "scope": "CinderFixture",
+      "lineRange": {
+        "start": 382,
+        "end": 416
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "context"
+        },
+        {
+          "name": "attachment_id"
+        },
+        {
+          "name": "connector"
+        },
+        {
+          "default": "None",
+          "name": "mountpoint"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "attachment_ref",
+          "line": 416
+        }
+      ],
+      "nloc": 25,
+      "ccn": 6,
+      "visibility": "public"
+    },
+    {
+      "name": "fake_attachment_complete",
+      "kind": "method",
+      "scope": "CinderFixture",
+      "lineRange": {
+        "start": 418,
+        "end": 424
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "_context"
+        },
+        {
+          "name": "attachment_id"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 6,
+      "ccn": 2,
+      "visibility": "public"
+    },
+    {
+      "name": "fake_attachment_delete",
+      "kind": "method",
+      "scope": "CinderFixture",
+      "lineRange": {
+        "start": 426,
+        "end": 434
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "context"
+        },
+        {
+          "name": "attachment_id"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 8,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "fake_begin_detaching",
+      "kind": "method",
+      "scope": "CinderFixture",
+      "lineRange": {
+        "start": 436,
+        "end": 439
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "context"
+        },
+        {
+          "name": "volume_id"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 4,
+      "ccn": 2,
+      "visibility": "public"
+    },
+    {
+      "name": "fake_roll_detaching",
+      "kind": "method",
+      "scope": "CinderFixture",
+      "lineRange": {
+        "start": 441,
+        "end": 444
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "context"
+        },
+        {
+          "name": "volume_id"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 4,
+      "ccn": 2,
+      "visibility": "public"
+    },
+    {
+      "name": "fake_reimage_volume",
+      "kind": "method",
+      "scope": "CinderFixture",
+      "lineRange": {
+        "start": 446,
+        "end": 450
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "*args"
+        },
+        {
+          "name": "**kwargs"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 5,
+      "ccn": 3,
+      "visibility": "public"
+    },
+    {
+      "name": "fake_get_absolute_limits",
+      "kind": "method",
+      "scope": "CinderFixture",
+      "lineRange": {
+        "start": 452,
+        "end": 454
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "context"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "limits",
+          "line": 454
+        }
+      ],
+      "nloc": 3,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "fake_attachment_get_all",
+      "kind": "method",
+      "scope": "CinderFixture",
+      "lineRange": {
+        "start": 456,
+        "end": 471
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "context"
+        },
+        {
+          "default": "None",
+          "name": "instance_id"
+        },
+        {
+          "default": "None",
+          "name": "volume_id"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "self.volume_to_attachment[volume_id]",
+          "line": 463
+        },
+        {
+          "expr": "all_attachments",
+          "line": 471
+        }
+      ],
+      "nloc": 13,
+      "ccn": 7,
+      "visibility": "public"
+    },
+    {
+      "name": "volume_ids_for_instance",
+      "kind": "method",
+      "scope": "CinderFixture",
+      "lineRange": {
+        "start": 473,
+        "end": 480
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "instance_uuid"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 6,
+      "ccn": 4,
+      "visibility": "public"
+    },
+    {
+      "name": "attachment_ids_for_instance",
+      "kind": "method",
+      "scope": "CinderFixture",
+      "lineRange": {
+        "start": 482,
+        "end": 488
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "instance_uuid"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "attachment_ids",
+          "line": 488
+        }
+      ],
+      "nloc": 7,
+      "ccn": 4,
+      "visibility": "public"
+    },
+    {
+      "name": "create_vol_attachment",
+      "kind": "method",
+      "scope": "CinderFixture",
+      "lineRange": {
+        "start": 490,
+        "end": 500
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "volume_id"
+        },
+        {
+          "name": "instance_id"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "attachment",
+          "line": 500
+        }
+      ],
+      "nloc": 10,
+      "ccn": 2,
+      "visibility": "public"
+    },
+    {
+      "name": "get_vol_attachment",
+      "kind": "method",
+      "scope": "CinderFixture",
+      "lineRange": {
+        "start": 502,
+        "end": 508
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "_id"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "attachments[attachment_id]",
+          "line": 508
+        }
+      ],
+      "nloc": 5,
+      "ccn": 4,
+      "visibility": "public"
+    },
+    {
+      "name": "delete_vol_attachment",
+      "kind": "method",
+      "scope": "CinderFixture",
+      "lineRange": {
+        "start": 510,
+        "end": 512
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "vol_id"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "fake_create_snapshot_force",
+      "kind": "method",
+      "scope": "CinderFixture",
+      "lineRange": {
+        "start": 514,
+        "end": 524
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "_ctxt"
+        },
+        {
+          "name": "volume_id"
+        },
+        {
+          "name": "name"
+        },
+        {
+          "name": "description"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "snapshot",
+          "line": 524
+        }
+      ],
+      "nloc": 11,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "fake_get_snapshot",
+      "kind": "method",
+      "scope": "CinderFixture",
+      "lineRange": {
+        "start": 526,
+        "end": 530
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "_ctxt"
+        },
+        {
+          "name": "snap_id"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "self.volume_snapshots[snap_id]",
+          "line": 530
+        }
+      ],
+      "nloc": 4,
+      "ccn": 2,
+      "visibility": "public"
+    },
+    {
+      "name": "fake_vol_create",
+      "kind": "method",
+      "scope": "CinderFixture",
+      "lineRange": {
+        "start": 532,
+        "end": 547
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "_ctxt"
+        },
+        {
+          "name": "size"
+        },
+        {
+          "name": "name"
+        },
+        {
+          "name": "description"
+        },
+        {
+          "default": "None",
+          "name": "snapshot"
+        },
+        {
+          "default": "None",
+          "name": "image_id"
+        },
+        {
+          "default": "None",
+          "name": "volume_type"
+        },
+        {
+          "default": "None",
+          "name": "metadata"
+        },
+        {
+          "default": "None",
+          "name": "availability_zone"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "volume",
+          "line": 547
+        }
+      ],
+      "nloc": 16,
+      "ccn": 3,
+      "visibility": "public"
+    }
+  ],
+  "referencedSymbols": [
+    {
+      "name": "logging.getLogger",
+      "usage": "call",
+      "via": "oslo_log",
+      "count": 1,
+      "lineRange": {
+        "start": 26,
+        "end": 26
+      }
+    },
+    {
+      "name": "fixtures.Fixture",
+      "usage": "inherit",
+      "via": "fixtures",
+      "count": 1,
+      "lineRange": {
+        "start": 29,
+        "end": 29
+      }
+    },
+    {
+      "name": "super",
+      "usage": "call",
+      "via": null,
+      "count": 2,
+      "lineRange": {
+        "start": 88,
+        "end": 88
+      }
+    },
+    {
+      "name": "collections.defaultdict",
+      "usage": "call",
+      "via": "collections",
+      "count": 3,
+      "lineRange": {
+        "start": 104,
+        "end": 104
+      }
+    },
+    {
+      "name": "fixtures.MockPatch",
+      "usage": "call",
+      "via": "fixtures",
+      "count": 20,
+      "lineRange": {
+        "start": 114,
+        "end": 114
+      }
+    },
+    {
+      "name": "exception.VolumeAttachmentNotFound",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 200,
+        "end": 200
+      }
+    },
+    {
+      "name": "copy.deepcopy",
+      "usage": "call",
+      "via": "copy",
+      "count": 1,
+      "lineRange": {
+        "start": 210,
+        "end": 210
+      }
+    },
+    {
+      "name": "list",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 252,
+        "end": 252
+      }
+    },
+    {
+      "name": "exception.VolumeNotFound",
+      "usage": "call",
+      "via": "nova",
+      "count": 2,
+      "lineRange": {
+        "start": 326,
+        "end": 326
+      }
+    },
+    {
+      "name": "uuidutils.generate_uuid",
+      "usage": "call",
+      "via": "oslo_utils",
+      "count": 4,
+      "lineRange": {
+        "start": 352,
+        "end": 352
+      }
+    },
+    {
+      "name": "len",
+      "usage": "call",
+      "via": null,
+      "count": 2,
+      "lineRange": {
+        "start": 378,
+        "end": 378
+      }
+    },
+    {
+      "name": "exception.InvalidInput",
+      "usage": "call",
+      "via": "nova",
+      "count": 2,
+      "lineRange": {
+        "start": 393,
+        "end": 393
+      }
+    },
+    {
+      "name": "exception.InvalidRequest",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 459,
+        "end": 459
+      }
+    }
+  ],
+  "dependencies": [
+    {
+      "style": "import",
+      "module": "collections",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 15,
+        "end": 15
+      }
+    },
+    {
+      "style": "import",
+      "module": "copy",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 16,
+        "end": 16
+      }
+    },
+    {
+      "style": "import",
+      "module": "fixtures",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 17,
+        "end": 17
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_log",
+      "names": [
+        {
+          "alias": "logging",
+          "name": "log"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 19,
+        "end": 19
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_utils.fixture",
+      "names": [
+        {
+          "alias": "uuids",
+          "name": "uuidsentinel"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 20,
+        "end": 20
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_utils",
+      "names": [
+        {
+          "alias": null,
+          "name": "uuidutils"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 21,
+        "end": 21
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "exception"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 23,
+        "end": 23
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.tests.fixtures",
+      "names": [
+        {
+          "alias": "nova_fixtures",
+          "name": "nova"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 24,
+        "end": 24
+      }
+    }
+  ],
+  "sideEffects": [
+    {
+      "kind": "global-mutation",
+      "target": "LOG = logging.getLogger(__name__)",
+      "lineRange": {
+        "start": 26,
+        "end": 26
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "SWAP_OLD_VOL = 'a07f71dc-8151-4e7d-a0cc-cd24a3f11113'",
+      "lineRange": {
+        "start": 35,
+        "end": 35
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "SWAP_NEW_VOL = '227cc671-f30b-4488-96fd-7d0bf13648d8'",
+      "lineRange": {
+        "start": 36,
+        "end": 36
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "SWAP_ERR_OLD_VOL = '828419fa-3efb-4533-b458-4267ca5fe9b1'",
+      "lineRange": {
+        "start": 37,
+        "end": 37
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "SWAP_ERR_NEW_VOL = '9c6d9c2d-7a8f-4c80-938d-3bf062b8d489'",
+      "lineRange": {
+        "start": 38,
+        "end": 38
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "SWAP_ERR_ATTACH_ID = '4a3cd440-b9c2-11e1-afa6-0800200c9a66'",
+      "lineRange": {
+        "start": 39,
+        "end": 39
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "MULTIATTACH_VOL = '4757d51f-54eb-4442-8684-3399a6431f67'",
+      "lineRange": {
+        "start": 41,
+        "end": 41
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "MULTIATTACH_RO_SWAP_OLD_VOL = uuids.multiattach_ro_swap_old_vol",
+      "lineRange": {
+        "start": 42,
+        "end": 42
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "MULTIATTACH_RO_SWAP_NEW_VOL = uuids.multiattach_ro_swap_new_vol",
+      "lineRange": {
+        "start": 43,
+        "end": 43
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "MULTIATTACH_RO_MIGRATE_OLD_VOL = uuids.multiattach_ro_migrate_old_vol",
+      "lineRange": {
+        "start": 44,
+        "end": 44
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "MULTIATTACH_RO_MIGRATE_NEW_VOL = uuids.multiattach_ro_migrate_new_vol",
+      "lineRange": {
+        "start": 45,
+        "end": 45
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "IMAGE_BACKED_VOL = '6ca404f3-d844-4169-bb96-bc792f37de98'",
+      "lineRange": {
+        "start": 49,
+        "end": 49
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "IMAGE_BACKED_VOL_QUIESCE = '6ca404f3-d844-4169-bb96-bc792f37de26'",
+      "lineRange": {
+        "start": 55,
+        "end": 55
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "IMAGE_WITH_TRAITS_BACKED_VOL = '6194fc02-c60e-4a01-a8e5-600798208b5f'",
+      "lineRange": {
+        "start": 59,
+        "end": 59
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "ISCSI_BACKED_VOL = uuids.iscsi_backed_volume",
+      "lineRange": {
+        "start": 62,
+        "end": 62
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "VOLUME_CONNECTION_INFO = {",
+      "lineRange": {
+        "start": 65,
+        "end": 65
+      }
+    }
+  ],
+  "securitySurface": [
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "volume.update({",
+      "lineRange": {
+        "start": 279,
+        "end": 279
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "volume.update({",
+      "lineRange": {
+        "start": 287,
+        "end": 287
+      }
+    }
+  ],
+  "injection_flags": [],
+  "warnings": []
+}

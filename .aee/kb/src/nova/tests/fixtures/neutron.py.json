@@ -1,0 +1,1623 @@
+{
+  "file": "src/nova/tests/fixtures/neutron.py",
+  "hash": "739ce9ab8d58f389313a1ba895adc1f4dbb1074576736bc645343b301a6c6781",
+  "language": "Python",
+  "component": "nova",
+  "package": null,
+  "lines": {
+    "blank": 84,
+    "code": 793,
+    "comment": 91,
+    "total": 968
+  },
+  "symbols": [
+    {
+      "name": "_FakeNeutronClient",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 28,
+        "end": 58
+      },
+      "source": "aee-inventory",
+      "exported": false
+    },
+    {
+      "name": "__init__",
+      "kind": "method",
+      "scope": "_FakeNeutronClient",
+      "lineRange": {
+        "start": 43,
+        "end": 45
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "fixture"
+        },
+        {
+          "name": "is_admin"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 3,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "__getattr__",
+      "kind": "method",
+      "scope": "_FakeNeutronClient",
+      "lineRange": {
+        "start": 47,
+        "end": 48
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "name"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "getattr(self.fixture, name)",
+          "line": 48
+        }
+      ],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "list_ports",
+      "kind": "method",
+      "scope": "_FakeNeutronClient",
+      "lineRange": {
+        "start": 50,
+        "end": 53
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "default": "True",
+          "name": "retrieve_all"
+        },
+        {
+          "name": "**_params"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "self.fixture.list_ports( self.is_admin, retrieve_all=retrieve_all, **_params, )",
+          "line": 51
+        }
+      ],
+      "nloc": 4,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "show_port",
+      "kind": "method",
+      "scope": "_FakeNeutronClient",
+      "lineRange": {
+        "start": 55,
+        "end": 58
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "port_id"
+        },
+        {
+          "name": "**_params"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "self.fixture.show_port( port_id, is_admin=self.is_admin, **_params, )",
+          "line": 56
+        }
+      ],
+      "nloc": 4,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "NeutronFixture",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 63,
+        "end": 968
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "tenant_id",
+      "kind": "field",
+      "scope": "NeutronFixture",
+      "lineRange": {
+        "start": 67,
+        "end": 67
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "network_1",
+      "kind": "field",
+      "scope": "NeutronFixture",
+      "lineRange": {
+        "start": 69,
+        "end": 91
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "security_group",
+      "kind": "field",
+      "scope": "NeutronFixture",
+      "lineRange": {
+        "start": 93,
+        "end": 100
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "security_group_rule_ip4_ingress",
+      "kind": "field",
+      "scope": "NeutronFixture",
+      "lineRange": {
+        "start": 101,
+        "end": 114
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "security_group_rule_ip4_egress",
+      "kind": "field",
+      "scope": "NeutronFixture",
+      "lineRange": {
+        "start": 115,
+        "end": 128
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "security_group_rule_ip6_ingress",
+      "kind": "field",
+      "scope": "NeutronFixture",
+      "lineRange": {
+        "start": 129,
+        "end": 142
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "security_group_rule_ip6_egress",
+      "kind": "field",
+      "scope": "NeutronFixture",
+      "lineRange": {
+        "start": 143,
+        "end": 156
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "subnet_1",
+      "kind": "field",
+      "scope": "NeutronFixture",
+      "lineRange": {
+        "start": 164,
+        "end": 185
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "subnet_ipv6_1",
+      "kind": "field",
+      "scope": "NeutronFixture",
+      "lineRange": {
+        "start": 186,
+        "end": 207
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "port_1",
+      "kind": "field",
+      "scope": "NeutronFixture",
+      "lineRange": {
+        "start": 210,
+        "end": 237
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "port_2",
+      "kind": "field",
+      "scope": "NeutronFixture",
+      "lineRange": {
+        "start": 239,
+        "end": 264
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "port_with_resource_request",
+      "kind": "field",
+      "scope": "NeutronFixture",
+      "lineRange": {
+        "start": 266,
+        "end": 298
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "default_port",
+      "kind": "field",
+      "scope": "NeutronFixture",
+      "lineRange": {
+        "start": 303,
+        "end": 303
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "network_2",
+      "kind": "field",
+      "scope": "NeutronFixture",
+      "lineRange": {
+        "start": 307,
+        "end": 331
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "subnet_2",
+      "kind": "field",
+      "scope": "NeutronFixture",
+      "lineRange": {
+        "start": 333,
+        "end": 354
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "sriov_port",
+      "kind": "field",
+      "scope": "NeutronFixture",
+      "lineRange": {
+        "start": 357,
+        "end": 380
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "sriov_port2",
+      "kind": "field",
+      "scope": "NeutronFixture",
+      "lineRange": {
+        "start": 382,
+        "end": 405
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "sriov_pf_port",
+      "kind": "field",
+      "scope": "NeutronFixture",
+      "lineRange": {
+        "start": 407,
+        "end": 430
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "sriov_pf_port2",
+      "kind": "field",
+      "scope": "NeutronFixture",
+      "lineRange": {
+        "start": 432,
+        "end": 455
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "macvtap_port",
+      "kind": "field",
+      "scope": "NeutronFixture",
+      "lineRange": {
+        "start": 457,
+        "end": 479
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "macvtap_port2",
+      "kind": "field",
+      "scope": "NeutronFixture",
+      "lineRange": {
+        "start": 481,
+        "end": 503
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "ports_with_accelerator",
+      "kind": "field",
+      "scope": "NeutronFixture",
+      "lineRange": {
+        "start": 505,
+        "end": 558
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "ports_with_multi_accelerators",
+      "kind": "field",
+      "scope": "NeutronFixture",
+      "lineRange": {
+        "start": 560,
+        "end": 587
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "nw_info",
+      "kind": "field",
+      "scope": "NeutronFixture",
+      "lineRange": {
+        "start": 589,
+        "end": 636
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "__init__",
+      "kind": "method",
+      "scope": "NeutronFixture",
+      "lineRange": {
+        "start": 638,
+        "end": 670
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "test"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 19,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "setUp",
+      "kind": "method",
+      "scope": "NeutronFixture",
+      "lineRange": {
+        "start": 672,
+        "end": 693
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 13,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "_get_client",
+      "kind": "method",
+      "scope": "NeutronFixture",
+      "lineRange": {
+        "start": 695,
+        "end": 698
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "context"
+        },
+        {
+          "default": "False",
+          "name": "admin"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "_FakeNeutronClient(self, admin)",
+          "line": 698
+        }
+      ],
+      "nloc": 3,
+      "ccn": 3,
+      "visibility": "private"
+    },
+    {
+      "name": "create_port_binding",
+      "kind": "method",
+      "scope": "NeutronFixture",
+      "lineRange": {
+        "start": 700,
+        "end": 720
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "port_id"
+        },
+        {
+          "name": "body"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "{'binding': binding}",
+          "line": 720
+        }
+      ],
+      "nloc": 14,
+      "ccn": 3,
+      "visibility": "public"
+    },
+    {
+      "name": "_validate_port_binding",
+      "kind": "method",
+      "scope": "NeutronFixture",
+      "lineRange": {
+        "start": 722,
+        "end": 727
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "port_id"
+        },
+        {
+          "name": "host_id"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 5,
+      "ccn": 3,
+      "visibility": "private"
+    },
+    {
+      "name": "delete_port_binding",
+      "kind": "method",
+      "scope": "NeutronFixture",
+      "lineRange": {
+        "start": 729,
+        "end": 731
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "port_id"
+        },
+        {
+          "name": "host_id"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 3,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "_activate_port_binding",
+      "kind": "method",
+      "scope": "NeutronFixture",
+      "lineRange": {
+        "start": 733,
+        "end": 744
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "port_id"
+        },
+        {
+          "name": "host_id"
+        },
+        {
+          "default": "False",
+          "name": "modify_port"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 8,
+      "ccn": 4,
+      "visibility": "private"
+    },
+    {
+      "name": "activate_port_binding",
+      "kind": "method",
+      "scope": "NeutronFixture",
+      "lineRange": {
+        "start": 746,
+        "end": 748
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "port_id"
+        },
+        {
+          "name": "host_id"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 3,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "show_port_binding",
+      "kind": "method",
+      "scope": "NeutronFixture",
+      "lineRange": {
+        "start": 750,
+        "end": 752
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "port_id"
+        },
+        {
+          "name": "host_id"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "{'binding': self._port_bindings[port_id][host_id]}",
+          "line": 752
+        }
+      ],
+      "nloc": 3,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "_list_resource",
+      "kind": "method",
+      "scope": "NeutronFixture",
+      "lineRange": {
+        "start": 754,
+        "end": 771
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "resources"
+        },
+        {
+          "name": "retrieve_all"
+        },
+        {
+          "name": "**_params"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "result",
+          "line": 771
+        }
+      ],
+      "nloc": 14,
+      "ccn": 8,
+      "visibility": "private"
+    },
+    {
+      "name": "list_extensions",
+      "kind": "method",
+      "scope": "NeutronFixture",
+      "lineRange": {
+        "start": 773,
+        "end": 786
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "*args"
+        },
+        {
+          "name": "**kwargs"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "{ 'extensions': [ { # Copied from neutron-lib portbindings_extended.py \"updated\": \"2017-07-17T10:00:00-00:00\", \"name\": neutron_constants.PORT_BINDING_EXTENDED, \"links\": [], \"alias\": \"binding-extended\"",
+          "line": 774
+        }
+      ],
+      "nloc": 13,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "_get_active_binding",
+      "kind": "method",
+      "scope": "NeutronFixture",
+      "lineRange": {
+        "start": 788,
+        "end": 793
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "port_id"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "host, copy.deepcopy(binding)",
+          "line": 791
+        },
+        {
+          "expr": "None, {}",
+          "line": 793
+        }
+      ],
+      "nloc": 5,
+      "ccn": 3,
+      "visibility": "private"
+    },
+    {
+      "name": "_merge_in_active_binding",
+      "kind": "method",
+      "scope": "NeutronFixture",
+      "lineRange": {
+        "start": 795,
+        "end": 809
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "port"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "",
+          "line": 798
+        }
+      ],
+      "nloc": 9,
+      "ccn": 4,
+      "visibility": "private"
+    },
+    {
+      "name": "show_port",
+      "kind": "method",
+      "scope": "NeutronFixture",
+      "lineRange": {
+        "start": 811,
+        "end": 825
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "port_id"
+        },
+        {
+          "name": "**_params"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "{'port': port}",
+          "line": 825
+        }
+      ],
+      "nloc": 9,
+      "ccn": 4,
+      "visibility": "public"
+    },
+    {
+      "name": "delete_port",
+      "kind": "method",
+      "scope": "NeutronFixture",
+      "lineRange": {
+        "start": 827,
+        "end": 835
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "port_id"
+        },
+        {
+          "name": "**_params"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 5,
+      "ccn": 3,
+      "visibility": "public"
+    },
+    {
+      "name": "list_ports",
+      "kind": "method",
+      "scope": "NeutronFixture",
+      "lineRange": {
+        "start": 837,
+        "end": 848
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "is_admin"
+        },
+        {
+          "default": "True",
+          "name": "retrieve_all"
+        },
+        {
+          "name": "**_params"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "{'ports': ports}",
+          "line": 848
+        }
+      ],
+      "nloc": 8,
+      "ccn": 4,
+      "visibility": "public"
+    },
+    {
+      "name": "show_network",
+      "kind": "method",
+      "scope": "NeutronFixture",
+      "lineRange": {
+        "start": 850,
+        "end": 853
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "network_id"
+        },
+        {
+          "name": "**_params"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "{'network': copy.deepcopy(self._networks[network_id])}",
+          "line": 853
+        }
+      ],
+      "nloc": 4,
+      "ccn": 2,
+      "visibility": "public"
+    },
+    {
+      "name": "list_networks",
+      "kind": "method",
+      "scope": "NeutronFixture",
+      "lineRange": {
+        "start": 855,
+        "end": 860
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "default": "True",
+          "name": "retrieve_all"
+        },
+        {
+          "name": "**_params"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "{ 'networks': self._list_resource( self._networks, retrieve_all, **_params, ), }",
+          "line": 856
+        }
+      ],
+      "nloc": 6,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "show_subnet",
+      "kind": "method",
+      "scope": "NeutronFixture",
+      "lineRange": {
+        "start": 862,
+        "end": 865
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "subnet_id"
+        },
+        {
+          "name": "**_params"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "{'subnet': copy.deepcopy(self._subnets[subnet_id])}",
+          "line": 865
+        }
+      ],
+      "nloc": 4,
+      "ccn": 2,
+      "visibility": "public"
+    },
+    {
+      "name": "list_subnets",
+      "kind": "method",
+      "scope": "NeutronFixture",
+      "lineRange": {
+        "start": 867,
+        "end": 869
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "default": "True",
+          "name": "retrieve_all"
+        },
+        {
+          "name": "**_params"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "{'subnets': copy.deepcopy(list(self._subnets.values()))}",
+          "line": 869
+        }
+      ],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "list_floatingips",
+      "kind": "method",
+      "scope": "NeutronFixture",
+      "lineRange": {
+        "start": 871,
+        "end": 872
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "default": "True",
+          "name": "retrieve_all"
+        },
+        {
+          "name": "**_params"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "{'floatingips': []}",
+          "line": 872
+        }
+      ],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "list_security_groups",
+      "kind": "method",
+      "scope": "NeutronFixture",
+      "lineRange": {
+        "start": 874,
+        "end": 879
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "default": "True",
+          "name": "retrieve_all"
+        },
+        {
+          "name": "**_params"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "{ 'security_groups': self._list_resource( self._security_groups, retrieve_all, **_params, ), }",
+          "line": 875
+        }
+      ],
+      "nloc": 6,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "create_port",
+      "kind": "method",
+      "scope": "NeutronFixture",
+      "lineRange": {
+        "start": 881,
+        "end": 903
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "default": "None",
+          "name": "body"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "{'port': copy.deepcopy(new_port)}",
+          "line": 903
+        }
+      ],
+      "nloc": 12,
+      "ccn": 4,
+      "visibility": "public"
+    },
+    {
+      "name": "update_port",
+      "kind": "method",
+      "scope": "NeutronFixture",
+      "lineRange": {
+        "start": 905,
+        "end": 946
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "port_id"
+        },
+        {
+          "default": "None",
+          "name": "body"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "{'port': copy.deepcopy(port)}",
+          "line": 946
+        }
+      ],
+      "nloc": 29,
+      "ccn": 6,
+      "visibility": "public"
+    },
+    {
+      "name": "show_quota",
+      "kind": "method",
+      "scope": "NeutronFixture",
+      "lineRange": {
+        "start": 948,
+        "end": 950
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "project_id"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "{'quota': {'port': -1}}",
+          "line": 950
+        }
+      ],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "validate_auto_allocated_topology_requirements",
+      "kind": "method",
+      "scope": "NeutronFixture",
+      "lineRange": {
+        "start": 952,
+        "end": 955
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "project_id"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "self.get_auto_allocated_topology(project_id, fields=['dry-run'])",
+          "line": 955
+        }
+      ],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "get_auto_allocated_topology",
+      "kind": "method",
+      "scope": "NeutronFixture",
+      "lineRange": {
+        "start": 957,
+        "end": 968
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "project_id"
+        },
+        {
+          "name": "**_params"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "{'id': 'dry-run=pass', 'tenant_id': project_id}",
+          "line": 961
+        },
+        {
+          "expr": "{ 'auto_allocated_topology': { 'id': self.network_1['id'], 'tenant_id': project_id, } }",
+          "line": 963
+        }
+      ],
+      "nloc": 9,
+      "ccn": 2,
+      "visibility": "public"
+    }
+  ],
+  "referencedSymbols": [
+    {
+      "name": "getattr",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 48,
+        "end": 48
+      }
+    },
+    {
+      "name": "fixtures.Fixture",
+      "usage": "inherit",
+      "via": "fixtures",
+      "count": 1,
+      "lineRange": {
+        "start": 63,
+        "end": 63
+      }
+    },
+    {
+      "name": "copy.deepcopy",
+      "usage": "call",
+      "via": "copy",
+      "count": 17,
+      "lineRange": {
+        "start": 303,
+        "end": 303
+      }
+    },
+    {
+      "name": "super",
+      "usage": "call",
+      "via": null,
+      "count": 2,
+      "lineRange": {
+        "start": 639,
+        "end": 639
+      }
+    },
+    {
+      "name": "collections.defaultdict",
+      "usage": "call",
+      "via": "collections",
+      "count": 1,
+      "lineRange": {
+        "start": 657,
+        "end": 657
+      }
+    },
+    {
+      "name": "network_model.NetworkInfo.hydrate",
+      "usage": "call",
+      "via": "nova.network",
+      "count": 2,
+      "lineRange": {
+        "start": 685,
+        "end": 685
+      }
+    },
+    {
+      "name": "neutron_client_exc.NeutronClientException",
+      "usage": "call",
+      "via": "neutronclient.common",
+      "count": 4,
+      "lineRange": {
+        "start": 702,
+        "end": 702
+      }
+    },
+    {
+      "name": "isinstance",
+      "usage": "call",
+      "via": null,
+      "count": 2,
+      "lineRange": {
+        "start": 763,
+        "end": 763
+      }
+    },
+    {
+      "name": "any",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 764,
+        "end": 764
+      }
+    },
+    {
+      "name": "exception.PortNotFound",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 813,
+        "end": 813
+      }
+    },
+    {
+      "name": "neutron_client_exc.NetworkNotFoundClient",
+      "usage": "call",
+      "via": "neutronclient.common",
+      "count": 1,
+      "lineRange": {
+        "start": 852,
+        "end": 852
+      }
+    },
+    {
+      "name": "list",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 869,
+        "end": 869
+      }
+    },
+    {
+      "name": "str",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 895,
+        "end": 895
+      }
+    },
+    {
+      "name": "uuidutils.generate_uuid",
+      "usage": "call",
+      "via": "oslo_utils",
+      "count": 1,
+      "lineRange": {
+        "start": 895,
+        "end": 895
+      }
+    },
+    {
+      "name": "random.randint",
+      "usage": "call",
+      "via": "random",
+      "count": 1,
+      "lineRange": {
+        "start": 897,
+        "end": 897
+      }
+    },
+    {
+      "name": "range",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 897,
+        "end": 897
+      }
+    }
+  ],
+  "dependencies": [
+    {
+      "style": "import",
+      "module": "collections",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 13,
+        "end": 13
+      }
+    },
+    {
+      "style": "import",
+      "module": "copy",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 14,
+        "end": 14
+      }
+    },
+    {
+      "style": "import",
+      "module": "random",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 15,
+        "end": 15
+      }
+    },
+    {
+      "style": "import",
+      "module": "fixtures",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 17,
+        "end": 17
+      }
+    },
+    {
+      "style": "from",
+      "module": "neutronclient.common",
+      "names": [
+        {
+          "alias": "neutron_client_exc",
+          "name": "exceptions"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 18,
+        "end": 18
+      }
+    },
+    {
+      "style": "import",
+      "module": "os_resource_classes",
+      "names": [],
+      "alias": "orc",
+      "relative": false,
+      "lineRange": {
+        "start": 19,
+        "end": 19
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_utils",
+      "names": [
+        {
+          "alias": null,
+          "name": "uuidutils"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 20,
+        "end": 20
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "exception"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 22,
+        "end": 22
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.network",
+      "names": [
+        {
+          "alias": "neutron_constants",
+          "name": "constants"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 23,
+        "end": 23
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.network",
+      "names": [
+        {
+          "alias": "network_model",
+          "name": "model"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 24,
+        "end": 24
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.tests.fixtures",
+      "names": [
+        {
+          "alias": "nova_fixtures",
+          "name": "nova"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 25,
+        "end": 25
+      }
+    }
+  ],
+  "sideEffects": [
+    {
+      "kind": "network",
+      "target": "'nova.network.neutron.get_client', self._get_client)",
+      "lineRange": {
+        "start": 693,
+        "end": 693
+      }
+    }
+  ],
+  "securitySurface": [
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "\"\"\"Update the port dict with the currently active port binding\"\"\"",
+      "lineRange": {
+        "start": 796,
+        "end": 796
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "new_port.update(copy.deepcopy(self.default_port))",
+      "lineRange": {
+        "start": 887,
+        "end": 887
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "new_port.update({",
+      "lineRange": {
+        "start": 894,
+        "end": 894
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "port.update(copy.deepcopy(body['port']))",
+      "lineRange": {
+        "start": 909,
+        "end": 909
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "update = {",
+      "lineRange": {
+        "start": 929,
+        "end": 929
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "update['profile'] = copy.deepcopy(",
+      "lineRange": {
+        "start": 936,
+        "end": 936
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "update['vif_details'] = copy.deepcopy(",
+      "lineRange": {
+        "start": 939,
+        "end": 939
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "self._port_bindings[port_id][host] = update",
+      "lineRange": {
+        "start": 941,
+        "end": 941
+      }
+    }
+  ],
+  "injection_flags": [],
+  "warnings": []
+}

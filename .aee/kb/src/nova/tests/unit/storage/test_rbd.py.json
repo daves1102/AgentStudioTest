@@ -1,0 +1,1734 @@
+{
+  "file": "src/nova/tests/unit/storage/test_rbd.py",
+  "hash": "7dea9c6ae0024b8f76464f82f6acab450e74cf4dbec9a612cc04fa85a6dec1e3",
+  "language": "Python",
+  "component": "nova",
+  "package": null,
+  "lines": {
+    "blank": 102,
+    "code": 578,
+    "comment": 24,
+    "total": 704
+  },
+  "symbols": [
+    {
+      "name": "CEPH_MON_DUMP",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 27,
+        "end": 52
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "CEPH_DF",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 56,
+        "end": 99
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "FakeException",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 102,
+        "end": 103
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "RbdTestCase",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 106,
+        "end": 704
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "setUp",
+      "kind": "method",
+      "scope": "RbdTestCase",
+      "lineRange": {
+        "start": 108,
+        "end": 146
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 34,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_rbdproxy_wraps_rbd",
+      "kind": "method",
+      "scope": "RbdTestCase",
+      "lineRange": {
+        "start": 148,
+        "end": 154
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 7,
+      "ccn": 2,
+      "visibility": "public"
+    },
+    {
+      "name": "test_rbdproxy_attribute_access_proxying",
+      "kind": "method",
+      "scope": "RbdTestCase",
+      "lineRange": {
+        "start": 156,
+        "end": 160
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 5,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_good_locations",
+      "kind": "method",
+      "scope": "RbdTestCase",
+      "lineRange": {
+        "start": 162,
+        "end": 165
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 4,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_bad_locations",
+      "kind": "method",
+      "scope": "RbdTestCase",
+      "lineRange": {
+        "start": 167,
+        "end": 181
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 14,
+      "ccn": 2,
+      "visibility": "public"
+    },
+    {
+      "name": "test_rbddriver",
+      "kind": "method",
+      "scope": "RbdTestCase",
+      "lineRange": {
+        "start": 184,
+        "end": 188
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_client"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 5,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_cloneable",
+      "kind": "method",
+      "scope": "RbdTestCase",
+      "lineRange": {
+        "start": 191,
+        "end": 196
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_get_fsid"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 6,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_uncloneable_different_fsid",
+      "kind": "method",
+      "scope": "RbdTestCase",
+      "lineRange": {
+        "start": 199,
+        "end": 205
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_get_fsid"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 7,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_uncloneable_unreadable",
+      "kind": "method",
+      "scope": "RbdTestCase",
+      "lineRange": {
+        "start": 209,
+        "end": 221
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_proxy"
+        },
+        {
+          "name": "mock_get_fsid"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 11,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_uncloneable_bad_format",
+      "kind": "method",
+      "scope": "RbdTestCase",
+      "lineRange": {
+        "start": 224,
+        "end": 232
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_get_fsid"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 9,
+      "ccn": 2,
+      "visibility": "public"
+    },
+    {
+      "name": "test_uncloneable_missing_format",
+      "kind": "method",
+      "scope": "RbdTestCase",
+      "lineRange": {
+        "start": 235,
+        "end": 241
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_get_fsid"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 7,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_get_mon_addrs",
+      "kind": "method",
+      "scope": "RbdTestCase",
+      "lineRange": {
+        "start": 244,
+        "end": 248
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_execute"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 5,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_get_mon_addrs_with_brackets",
+      "kind": "method",
+      "scope": "RbdTestCase",
+      "lineRange": {
+        "start": 251,
+        "end": 256
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_execute"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 6,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_rbd_conf_features",
+      "kind": "method",
+      "scope": "RbdTestCase",
+      "lineRange": {
+        "start": 259,
+        "end": 269
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_connect"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 10,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_clone",
+      "kind": "method",
+      "scope": "RbdTestCase",
+      "lineRange": {
+        "start": 272,
+        "end": 298
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_client"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 16,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "mock__enter__",
+      "kind": "function",
+      "scope": "RbdTestCase.test_clone",
+      "lineRange": {
+        "start": 280,
+        "end": 284
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "inst"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "_inner",
+          "line": 284
+        }
+      ],
+      "visibility": "public"
+    },
+    {
+      "name": "_inner",
+      "kind": "function",
+      "scope": "RbdTestCase.test_clone.mock__enter__",
+      "lineRange": {
+        "start": 281,
+        "end": 283
+      },
+      "source": "aee-inventory",
+      "parameters": [],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "inst",
+          "line": 283
+        }
+      ],
+      "visibility": "private"
+    },
+    {
+      "name": "test_clone_eperm",
+      "kind": "method",
+      "scope": "RbdTestCase",
+      "lineRange": {
+        "start": 301,
+        "end": 323
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_client"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 14,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "mock__enter__",
+      "kind": "function",
+      "scope": "RbdTestCase.test_clone_eperm",
+      "lineRange": {
+        "start": 309,
+        "end": 313
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "inst"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "_inner",
+          "line": 313
+        }
+      ],
+      "visibility": "public"
+    },
+    {
+      "name": "_inner",
+      "kind": "function",
+      "scope": "RbdTestCase.test_clone_eperm.mock__enter__",
+      "lineRange": {
+        "start": 310,
+        "end": 312
+      },
+      "source": "aee-inventory",
+      "parameters": [],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "inst",
+          "line": 312
+        }
+      ],
+      "visibility": "private"
+    },
+    {
+      "name": "test_resize",
+      "kind": "method",
+      "scope": "RbdTestCase",
+      "lineRange": {
+        "start": 326,
+        "end": 331
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_proxy"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 6,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_rbd_volume_proxy_init",
+      "kind": "method",
+      "scope": "RbdTestCase",
+      "lineRange": {
+        "start": 335,
+        "end": 344
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_connect_from_rados"
+        },
+        {
+          "name": "mock_disconnect_from_rados"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 8,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_connect_to_rados_default",
+      "kind": "method",
+      "scope": "RbdTestCase",
+      "lineRange": {
+        "start": 346,
+        "end": 352
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 7,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_connect_to_rados_different_pool",
+      "kind": "method",
+      "scope": "RbdTestCase",
+      "lineRange": {
+        "start": 354,
+        "end": 360
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 7,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_connect_to_rados_error",
+      "kind": "method",
+      "scope": "RbdTestCase",
+      "lineRange": {
+        "start": 362,
+        "end": 368
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 7,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_connect_to_rados_unicode_arg",
+      "kind": "method",
+      "scope": "RbdTestCase",
+      "lineRange": {
+        "start": 370,
+        "end": 373
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 4,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_ceph_args_none",
+      "kind": "method",
+      "scope": "RbdTestCase",
+      "lineRange": {
+        "start": 375,
+        "end": 378
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 4,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_ceph_args_rbd_user",
+      "kind": "method",
+      "scope": "RbdTestCase",
+      "lineRange": {
+        "start": 380,
+        "end": 383
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 4,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_ceph_args_ceph_conf",
+      "kind": "method",
+      "scope": "RbdTestCase",
+      "lineRange": {
+        "start": 385,
+        "end": 389
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 5,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_ceph_args_rbd_user_and_ceph_conf",
+      "kind": "method",
+      "scope": "RbdTestCase",
+      "lineRange": {
+        "start": 391,
+        "end": 395
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 5,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_exists",
+      "kind": "method",
+      "scope": "RbdTestCase",
+      "lineRange": {
+        "start": 398,
+        "end": 405
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_proxy"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 8,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_cleanup_volumes",
+      "kind": "method",
+      "scope": "RbdTestCase",
+      "lineRange": {
+        "start": 408,
+        "end": 424
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_client"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 13,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "_test_cleanup_exception",
+      "kind": "method",
+      "scope": "RbdTestCase",
+      "lineRange": {
+        "start": 429,
+        "end": 446
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "exception_name"
+        },
+        {
+          "name": "mock_client"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 14,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "test_cleanup_volumes_fail_not_found",
+      "kind": "method",
+      "scope": "RbdTestCase",
+      "lineRange": {
+        "start": 448,
+        "end": 449
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_cleanup_volumes_fail_snapshots",
+      "kind": "method",
+      "scope": "RbdTestCase",
+      "lineRange": {
+        "start": 451,
+        "end": 452
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_cleanup_volumes_fail_other",
+      "kind": "method",
+      "scope": "RbdTestCase",
+      "lineRange": {
+        "start": 454,
+        "end": 456
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 3,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_cleanup_volumes_pending_resize",
+      "kind": "method",
+      "scope": "RbdTestCase",
+      "lineRange": {
+        "start": 460,
+        "end": 486
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_proxy"
+        },
+        {
+          "name": "mock_client"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 24,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_cleanup_volumes_reverting_resize",
+      "kind": "method",
+      "scope": "RbdTestCase",
+      "lineRange": {
+        "start": 489,
+        "end": 506
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_client"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 15,
+      "ccn": 2,
+      "visibility": "public"
+    },
+    {
+      "name": "test_destroy_volume",
+      "kind": "method",
+      "scope": "RbdTestCase",
+      "lineRange": {
+        "start": 509,
+        "end": 517
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_client"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 9,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_destroy_volume_with_retries",
+      "kind": "method",
+      "scope": "RbdTestCase",
+      "lineRange": {
+        "start": 521,
+        "end": 538
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_loopingcall"
+        },
+        {
+          "name": "mock_client"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 12,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_remove_image",
+      "kind": "method",
+      "scope": "RbdTestCase",
+      "lineRange": {
+        "start": 541,
+        "end": 552
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_client"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 9,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_create_snap",
+      "kind": "method",
+      "scope": "RbdTestCase",
+      "lineRange": {
+        "start": 555,
+        "end": 559
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_proxy"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 5,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_create_protected_snap",
+      "kind": "method",
+      "scope": "RbdTestCase",
+      "lineRange": {
+        "start": 562,
+        "end": 569
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_proxy"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 8,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_remove_snap",
+      "kind": "method",
+      "scope": "RbdTestCase",
+      "lineRange": {
+        "start": 572,
+        "end": 578
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_proxy"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 7,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_remove_snap_force",
+      "kind": "method",
+      "scope": "RbdTestCase",
+      "lineRange": {
+        "start": 581,
+        "end": 589
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_proxy"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 9,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_remove_snap_does_nothing_when_no_snapshot",
+      "kind": "method",
+      "scope": "RbdTestCase",
+      "lineRange": {
+        "start": 592,
+        "end": 597
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_proxy"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 6,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_remove_snap_does_nothing_when_protected",
+      "kind": "method",
+      "scope": "RbdTestCase",
+      "lineRange": {
+        "start": 600,
+        "end": 606
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_proxy"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 7,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_remove_snap_protected_ignore_errors",
+      "kind": "method",
+      "scope": "RbdTestCase",
+      "lineRange": {
+        "start": 609,
+        "end": 616
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_proxy"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 8,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_parent_info",
+      "kind": "method",
+      "scope": "RbdTestCase",
+      "lineRange": {
+        "start": 619,
+        "end": 623
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_proxy"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 5,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_parent_info_throws_exception_on_error",
+      "kind": "method",
+      "scope": "RbdTestCase",
+      "lineRange": {
+        "start": 626,
+        "end": 632
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_proxy"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 7,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_flatten",
+      "kind": "method",
+      "scope": "RbdTestCase",
+      "lineRange": {
+        "start": 635,
+        "end": 639
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_proxy"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 5,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_rollback_to_snap",
+      "kind": "method",
+      "scope": "RbdTestCase",
+      "lineRange": {
+        "start": 642,
+        "end": 651
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_proxy"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 9,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_get_pool_info",
+      "kind": "method",
+      "scope": "RbdTestCase",
+      "lineRange": {
+        "start": 654,
+        "end": 660
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_execute"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 7,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_get_pool_info_execute_failed",
+      "kind": "method",
+      "scope": "RbdTestCase",
+      "lineRange": {
+        "start": 664,
+        "end": 665
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_execute"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_get_pool_info_not_found",
+      "kind": "method",
+      "scope": "RbdTestCase",
+      "lineRange": {
+        "start": 668,
+        "end": 672
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_execute"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 4,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_export_image",
+      "kind": "method",
+      "scope": "RbdTestCase",
+      "lineRange": {
+        "start": 675,
+        "end": 689
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_execute"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 14,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_export_image_default_pool",
+      "kind": "method",
+      "scope": "RbdTestCase",
+      "lineRange": {
+        "start": 692,
+        "end": 704
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_execute"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 12,
+      "ccn": 1,
+      "visibility": "public"
+    }
+  ],
+  "referencedSymbols": [
+    {
+      "name": "Exception",
+      "usage": "inherit",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 102,
+        "end": 102
+      }
+    },
+    {
+      "name": "test.NoDBTestCase",
+      "usage": "inherit",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 106,
+        "end": 106
+      }
+    },
+    {
+      "name": "super",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 109,
+        "end": 109
+      }
+    },
+    {
+      "name": "mock.patch.object",
+      "usage": "call",
+      "via": "unittest",
+      "count": 35,
+      "lineRange": {
+        "start": 119,
+        "end": 119
+      }
+    },
+    {
+      "name": "mock.Mock",
+      "usage": "call",
+      "via": "unittest",
+      "count": 12,
+      "lineRange": {
+        "start": 122,
+        "end": 122
+      }
+    },
+    {
+      "name": "rbd_utils.RBDDriver",
+      "usage": "call",
+      "via": "nova.storage",
+      "count": 1,
+      "lineRange": {
+        "start": 143,
+        "end": 143
+      }
+    },
+    {
+      "name": "rbd_utils.RbdProxy",
+      "usage": "call",
+      "via": "nova.storage",
+      "count": 2,
+      "lineRange": {
+        "start": 149,
+        "end": 149
+      }
+    },
+    {
+      "name": "utils.concurrency_mode_threading",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 150,
+        "end": 150
+      }
+    },
+    {
+      "name": "utils.get_eventlet",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 153,
+        "end": 153
+      }
+    },
+    {
+      "name": "mock.MagicMock",
+      "usage": "call",
+      "via": "unittest",
+      "count": 1,
+      "lineRange": {
+        "start": 157,
+        "end": 157
+      }
+    },
+    {
+      "name": "map",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 165,
+        "end": 165
+      }
+    },
+    {
+      "name": "mock.patch",
+      "usage": "call",
+      "via": "unittest",
+      "count": 9,
+      "lineRange": {
+        "start": 243,
+        "end": 243
+      }
+    },
+    {
+      "name": "rbd_utils.RADOSClient",
+      "usage": "call",
+      "via": "nova.storage",
+      "count": 1,
+      "lineRange": {
+        "start": 265,
+        "end": 265
+      }
+    },
+    {
+      "name": "str",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 295,
+        "end": 295
+      }
+    },
+    {
+      "name": "setattr",
+      "usage": "call",
+      "via": null,
+      "count": 4,
+      "lineRange": {
+        "start": 319,
+        "end": 319
+      }
+    },
+    {
+      "name": "rbd_utils.RBDVolumeProxy",
+      "usage": "call",
+      "via": "nova.storage",
+      "count": 1,
+      "lineRange": {
+        "start": 340,
+        "end": 340
+      }
+    },
+    {
+      "name": "test.MatchType",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 373,
+        "end": 373
+      }
+    },
+    {
+      "name": "objects.Instance",
+      "usage": "call",
+      "via": "nova",
+      "count": 4,
+      "lineRange": {
+        "start": 409,
+        "end": 409
+      }
+    },
+    {
+      "name": "len",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 446,
+        "end": 446
+      }
+    },
+    {
+      "name": "mock.call",
+      "usage": "call",
+      "via": "unittest",
+      "count": 1,
+      "lineRange": {
+        "start": 480,
+        "end": 480
+      }
+    },
+    {
+      "name": "jsonutils.loads",
+      "usage": "call",
+      "via": "oslo_serialization",
+      "count": 1,
+      "lineRange": {
+        "start": 656,
+        "end": 656
+      }
+    },
+    {
+      "name": "processutils.ProcessExecutionError",
+      "usage": "call",
+      "via": "oslo_concurrency",
+      "count": 1,
+      "lineRange": {
+        "start": 663,
+        "end": 663
+      }
+    }
+  ],
+  "dependencies": [
+    {
+      "style": "from",
+      "module": "unittest",
+      "names": [
+        {
+          "alias": null,
+          "name": "mock"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 13,
+        "end": 13
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_concurrency",
+      "names": [
+        {
+          "alias": null,
+          "name": "processutils"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 15,
+        "end": 15
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_serialization",
+      "names": [
+        {
+          "alias": null,
+          "name": "jsonutils"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 16,
+        "end": 16
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_utils.fixture",
+      "names": [
+        {
+          "alias": "uuids",
+          "name": "uuidsentinel"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 17,
+        "end": 17
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.compute",
+      "names": [
+        {
+          "alias": null,
+          "name": "task_states"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 19,
+        "end": 19
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "exception"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 20,
+        "end": 20
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "objects"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 21,
+        "end": 21
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.storage",
+      "names": [
+        {
+          "alias": null,
+          "name": "rbd_utils"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 22,
+        "end": 22
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "test"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 23,
+        "end": 23
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "utils"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 24,
+        "end": 24
+      }
+    }
+  ],
+  "sideEffects": [
+    {
+      "kind": "global-mutation",
+      "target": "CEPH_MON_DUMP = r\"\"\"dumped monmap epoch 1",
+      "lineRange": {
+        "start": 27,
+        "end": 27
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "CEPH_DF = \"\"\"",
+      "lineRange": {
+        "start": 56,
+        "end": 56
+      }
+    }
+  ],
+  "securitySurface": [],
+  "injection_flags": [],
+  "warnings": []
+}

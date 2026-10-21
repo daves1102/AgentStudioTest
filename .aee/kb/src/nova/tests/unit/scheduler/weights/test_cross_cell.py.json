@@ -1,0 +1,446 @@
+{
+  "file": "src/nova/tests/unit/scheduler/weights/test_cross_cell.py",
+  "hash": "acece727c2b6c6c2c0df15c54d05a79fdd32b61a8034ae083e2712687baab2df",
+  "language": "Python",
+  "component": "nova",
+  "package": null,
+  "lines": {
+    "blank": 13,
+    "code": 104,
+    "comment": 25,
+    "total": 142
+  },
+  "symbols": [
+    {
+      "name": "CONF",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 23,
+        "end": 23
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "CrossCellWeigherTestCase",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 26,
+        "end": 142
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "setUp",
+      "kind": "method",
+      "scope": "CrossCellWeigherTestCase",
+      "lineRange": {
+        "start": 29,
+        "end": 32
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 4,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "_get_weighed_hosts",
+      "kind": "method",
+      "scope": "CrossCellWeigherTestCase",
+      "lineRange": {
+        "start": 34,
+        "end": 37
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "request_spec"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "self.weight_handler.get_weighed_objects( self.weighers, hosts, request_spec)",
+          "line": 36
+        }
+      ],
+      "nloc": 4,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "_get_all_hosts",
+      "kind": "method",
+      "scope": "CrossCellWeigherTestCase",
+      "lineRange": {
+        "start": 40,
+        "end": 47
+      },
+      "source": "aee-inventory",
+      "parameters": [],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "[fakes.FakeHostState(host, node, values) for host, node, values in host_values]",
+          "line": 46
+        }
+      ],
+      "nloc": 7,
+      "ccn": 2,
+      "visibility": "private"
+    },
+    {
+      "name": "test_get_weighed_hosts_no_requested_destination_or_cell",
+      "kind": "method",
+      "scope": "CrossCellWeigherTestCase",
+      "lineRange": {
+        "start": 49,
+        "end": 74
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 17,
+      "ccn": 5,
+      "visibility": "public"
+    },
+    {
+      "name": "test_get_weighed_hosts_allow_cross_cell_move_false",
+      "kind": "method",
+      "scope": "CrossCellWeigherTestCase",
+      "lineRange": {
+        "start": 76,
+        "end": 86
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 7,
+      "ccn": 2,
+      "visibility": "public"
+    },
+    {
+      "name": "test_get_weighed_hosts_allow_cross_cell_move_true_positive",
+      "kind": "method",
+      "scope": "CrossCellWeigherTestCase",
+      "lineRange": {
+        "start": 88,
+        "end": 103
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 11,
+      "ccn": 2,
+      "visibility": "public"
+    },
+    {
+      "name": "test_get_weighed_hosts_allow_cross_cell_move_true_negative",
+      "kind": "method",
+      "scope": "CrossCellWeigherTestCase",
+      "lineRange": {
+        "start": 105,
+        "end": 123
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 13,
+      "ccn": 2,
+      "visibility": "public"
+    },
+    {
+      "name": "test_multiplier",
+      "kind": "method",
+      "scope": "CrossCellWeigherTestCase",
+      "lineRange": {
+        "start": 125,
+        "end": 142
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 14,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "_get_all_hosts",
+      "kind": "staticmethod",
+      "scope": "CrossCellWeigherTestCase",
+      "lineRange": {
+        "start": 39,
+        "end": 47
+      },
+      "visibility": "private",
+      "source": "manual"
+    }
+  ],
+  "referencedSymbols": [
+    {
+      "name": "test.NoDBTestCase",
+      "usage": "inherit",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 26,
+        "end": 26
+      }
+    },
+    {
+      "name": "super",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 30,
+        "end": 30
+      }
+    },
+    {
+      "name": "weights.HostWeightHandler",
+      "usage": "call",
+      "via": "nova.scheduler",
+      "count": 1,
+      "lineRange": {
+        "start": 31,
+        "end": 31
+      }
+    },
+    {
+      "name": "cross_cell.CrossCellWeigher",
+      "usage": "call",
+      "via": "nova.scheduler.weights",
+      "count": 1,
+      "lineRange": {
+        "start": 32,
+        "end": 32
+      }
+    },
+    {
+      "name": "fakes.FakeHostState",
+      "usage": "call",
+      "via": "nova.tests.unit.scheduler",
+      "count": 2,
+      "lineRange": {
+        "start": 46,
+        "end": 46
+      }
+    },
+    {
+      "name": "objects.RequestSpec",
+      "usage": "call",
+      "via": "nova",
+      "count": 4,
+      "lineRange": {
+        "start": 54,
+        "end": 54
+      }
+    },
+    {
+      "name": "all",
+      "usage": "call",
+      "via": null,
+      "count": 5,
+      "lineRange": {
+        "start": 56,
+        "end": 56
+      }
+    },
+    {
+      "name": "objects.Destination",
+      "usage": "call",
+      "via": "nova",
+      "count": 5,
+      "lineRange": {
+        "start": 65,
+        "end": 65
+      }
+    },
+    {
+      "name": "objects.CellMapping",
+      "usage": "call",
+      "via": "nova",
+      "count": 3,
+      "lineRange": {
+        "start": 83,
+        "end": 83
+      }
+    },
+    {
+      "name": "objects.Aggregate",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 134,
+        "end": 134
+      }
+    }
+  ],
+  "dependencies": [
+    {
+      "style": "from",
+      "module": "oslo_utils.fixture",
+      "names": [
+        {
+          "alias": "uuids",
+          "name": "uuidsentinel"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 14,
+        "end": 14
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "conf"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 16,
+        "end": 16
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "objects"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 17,
+        "end": 17
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.scheduler",
+      "names": [
+        {
+          "alias": null,
+          "name": "weights"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 18,
+        "end": 18
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.scheduler.weights",
+      "names": [
+        {
+          "alias": null,
+          "name": "cross_cell"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 19,
+        "end": 19
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "test"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 20,
+        "end": 20
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.tests.unit.scheduler",
+      "names": [
+        {
+          "alias": null,
+          "name": "fakes"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 21,
+        "end": 21
+      }
+    }
+  ],
+  "sideEffects": [
+    {
+      "kind": "global-mutation",
+      "target": "CONF = conf.CONF",
+      "lineRange": {
+        "start": 23,
+        "end": 23
+      }
+    }
+  ],
+  "securitySurface": [],
+  "injection_flags": [],
+  "warnings": []
+}

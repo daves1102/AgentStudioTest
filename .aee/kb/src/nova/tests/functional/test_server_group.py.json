@@ -1,0 +1,2481 @@
+{
+  "file": "src/nova/tests/functional/test_server_group.py",
+  "hash": "0b928c82797d0d79e54a5b9e6fa732489eb88df3cbc83056ffd288a6c822f84e",
+  "language": "Python",
+  "component": "nova",
+  "package": null,
+  "lines": {
+    "blank": 224,
+    "code": 790,
+    "comment": 145,
+    "total": 1159
+  },
+  "symbols": [
+    {
+      "name": "PROJECT_ID_ALT",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 34,
+        "end": 34
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "CONF",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 36,
+        "end": 36
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "ServerGroupTestBase",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 39,
+        "end": 97
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "REQUIRES_LOCKING",
+      "kind": "constant",
+      "scope": "ServerGroupTestBase",
+      "lineRange": {
+        "start": 41,
+        "end": 41
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "microversion",
+      "kind": "field",
+      "scope": "ServerGroupTestBase",
+      "lineRange": {
+        "start": 42,
+        "end": 42
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "_enabled_filters",
+      "kind": "field",
+      "scope": "ServerGroupTestBase",
+      "lineRange": {
+        "start": 44,
+        "end": 46
+      },
+      "source": "aee-inventory",
+      "visibility": "private"
+    },
+    {
+      "name": "anti_affinity",
+      "kind": "field",
+      "scope": "ServerGroupTestBase",
+      "lineRange": {
+        "start": 48,
+        "end": 48
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "affinity",
+      "kind": "field",
+      "scope": "ServerGroupTestBase",
+      "lineRange": {
+        "start": 49,
+        "end": 49
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "_get_weight_classes",
+      "kind": "method",
+      "scope": "ServerGroupTestBase",
+      "lineRange": {
+        "start": 51,
+        "end": 52
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "[]",
+          "line": 52
+        }
+      ],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "setUp",
+      "kind": "method",
+      "scope": "ServerGroupTestBase",
+      "lineRange": {
+        "start": 54,
+        "end": 78
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 20,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "_boot_a_server_to_group",
+      "kind": "method",
+      "scope": "ServerGroupTestBase",
+      "lineRange": {
+        "start": 80,
+        "end": 97
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "group"
+        },
+        {
+          "default": "'ACTIVE'",
+          "name": "expected_status"
+        },
+        {
+          "default": "None",
+          "name": "flavor"
+        },
+        {
+          "default": "None",
+          "name": "az"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "found_server",
+          "line": 97
+        }
+      ],
+      "nloc": 15,
+      "ccn": 2,
+      "visibility": "private"
+    },
+    {
+      "name": "ServerGroupFakeDriver",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 100,
+        "end": 111
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "vcpus",
+      "kind": "field",
+      "scope": "ServerGroupFakeDriver",
+      "lineRange": {
+        "start": 106,
+        "end": 106
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "memory_mb",
+      "kind": "field",
+      "scope": "ServerGroupFakeDriver",
+      "lineRange": {
+        "start": 110,
+        "end": 110
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "local_gb",
+      "kind": "field",
+      "scope": "ServerGroupFakeDriver",
+      "lineRange": {
+        "start": 111,
+        "end": 111
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "_fake_load_compute_driver",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 116,
+        "end": 117
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "virtapi"
+        },
+        {
+          "default": "None",
+          "name": "compute_driver"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "ServerGroupFakeDriver(virtapi)",
+          "line": 117
+        }
+      ],
+      "nloc": 2,
+      "ccn": 1,
+      "exported": false
+    },
+    {
+      "name": "ServerGroupTestV21",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 120,
+        "end": 586
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "setUp",
+      "kind": "method",
+      "scope": "ServerGroupTestV21",
+      "lineRange": {
+        "start": 122,
+        "end": 138
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 8,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_get_no_groups",
+      "kind": "method",
+      "scope": "ServerGroupTestV21",
+      "lineRange": {
+        "start": 140,
+        "end": 142
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 3,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_create_and_delete_groups",
+      "kind": "method",
+      "scope": "ServerGroupTestV21",
+      "lineRange": {
+        "start": 144,
+        "end": 169
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 22,
+      "ccn": 3,
+      "visibility": "public"
+    },
+    {
+      "name": "test_create_wrong_policy",
+      "kind": "method",
+      "scope": "ServerGroupTestV21",
+      "lineRange": {
+        "start": 171,
+        "end": 178
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 8,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_get_groups_all_projects",
+      "kind": "method",
+      "scope": "ServerGroupTestV21",
+      "lineRange": {
+        "start": 180,
+        "end": 210
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 16,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_create_duplicated_policy",
+      "kind": "method",
+      "scope": "ServerGroupTestV21",
+      "lineRange": {
+        "start": 212,
+        "end": 218
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 7,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_create_multiple_policies",
+      "kind": "method",
+      "scope": "ServerGroupTestV21",
+      "lineRange": {
+        "start": 220,
+        "end": 225
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 6,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "_boot_servers_to_group",
+      "kind": "method",
+      "scope": "ServerGroupTestV21",
+      "lineRange": {
+        "start": 227,
+        "end": 233
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "group"
+        },
+        {
+          "default": "None",
+          "name": "flavor"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "servers",
+          "line": 233
+        }
+      ],
+      "nloc": 7,
+      "ccn": 2,
+      "visibility": "private"
+    },
+    {
+      "name": "test_boot_servers_with_affinity",
+      "kind": "method",
+      "scope": "ServerGroupTestV21",
+      "lineRange": {
+        "start": 235,
+        "end": 243
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 8,
+      "ccn": 2,
+      "visibility": "public"
+    },
+    {
+      "name": "test_boot_servers_with_affinity_overquota",
+      "kind": "method",
+      "scope": "ServerGroupTestV21",
+      "lineRange": {
+        "start": 245,
+        "end": 270
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 19,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_boot_servers_with_affinity_no_valid_host",
+      "kind": "method",
+      "scope": "ServerGroupTestV21",
+      "lineRange": {
+        "start": 272,
+        "end": 285
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 10,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_boot_servers_with_anti_affinity",
+      "kind": "method",
+      "scope": "ServerGroupTestV21",
+      "lineRange": {
+        "start": 287,
+        "end": 295
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 8,
+      "ccn": 2,
+      "visibility": "public"
+    },
+    {
+      "name": "test_boot_server_with_anti_affinity_no_valid_host",
+      "kind": "method",
+      "scope": "ServerGroupTestV21",
+      "lineRange": {
+        "start": 297,
+        "end": 306
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 8,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "_rebuild_with_group",
+      "kind": "method",
+      "scope": "ServerGroupTestV21",
+      "lineRange": {
+        "start": 308,
+        "end": 320
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "group"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "[servers[0], rebuilt_server]",
+          "line": 320
+        }
+      ],
+      "nloc": 10,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "test_rebuild_with_affinity",
+      "kind": "method",
+      "scope": "ServerGroupTestV21",
+      "lineRange": {
+        "start": 322,
+        "end": 326
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 5,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_rebuild_with_anti_affinity",
+      "kind": "method",
+      "scope": "ServerGroupTestV21",
+      "lineRange": {
+        "start": 328,
+        "end": 332
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 5,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "_migrate_with_group_no_valid_host",
+      "kind": "method",
+      "scope": "ServerGroupTestV21",
+      "lineRange": {
+        "start": 334,
+        "end": 345
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "group"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 8,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "test_migrate_with_group_no_valid_host",
+      "kind": "method",
+      "scope": "ServerGroupTestV21",
+      "lineRange": {
+        "start": 347,
+        "end": 349
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 3,
+      "ccn": 2,
+      "visibility": "public"
+    },
+    {
+      "name": "test_migrate_with_anti_affinity",
+      "kind": "method",
+      "scope": "ServerGroupTestV21",
+      "lineRange": {
+        "start": 351,
+        "end": 364
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 10,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_migrate_with_anti_affinity_confirm_updates_scheduler",
+      "kind": "method",
+      "scope": "ServerGroupTestV21",
+      "lineRange": {
+        "start": 366,
+        "end": 400
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 20,
+      "ccn": 3,
+      "visibility": "public"
+    },
+    {
+      "name": "test_resize_to_same_host_with_anti_affinity",
+      "kind": "method",
+      "scope": "ServerGroupTestV21",
+      "lineRange": {
+        "start": 402,
+        "end": 415
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 12,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "_get_compute_service_by_host_name",
+      "kind": "method",
+      "scope": "ServerGroupTestV21",
+      "lineRange": {
+        "start": 417,
+        "end": 429
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "host_name"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "host",
+          "line": 429
+        }
+      ],
+      "nloc": 12,
+      "ccn": 3,
+      "visibility": "private"
+    },
+    {
+      "name": "_set_forced_down",
+      "kind": "method",
+      "scope": "ServerGroupTestV21",
+      "lineRange": {
+        "start": 431,
+        "end": 435
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "service"
+        },
+        {
+          "name": "forced_down"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 4,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "test_evacuate_with_anti_affinity",
+      "kind": "method",
+      "scope": "ServerGroupTestV21",
+      "lineRange": {
+        "start": 437,
+        "end": 459
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 15,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_evacuate_with_anti_affinity_no_valid_host",
+      "kind": "method",
+      "scope": "ServerGroupTestV21",
+      "lineRange": {
+        "start": 461,
+        "end": 477
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 11,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_evacuate_with_affinity_no_valid_host",
+      "kind": "method",
+      "scope": "ServerGroupTestV21",
+      "lineRange": {
+        "start": 479,
+        "end": 495
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 11,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_soft_affinity_not_supported",
+      "kind": "method",
+      "scope": "ServerGroupTestV21",
+      "lineRange": {
+        "start": 497,
+        "end": 504
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 8,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_failed_count_with_affinity_violation",
+      "kind": "method",
+      "scope": "ServerGroupTestV21",
+      "lineRange": {
+        "start": 508,
+        "end": 548
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_host_passes"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 27,
+      "ccn": 2,
+      "visibility": "public"
+    },
+    {
+      "name": "test_failed_count_with_anti_affinity_violation",
+      "kind": "method",
+      "scope": "ServerGroupTestV21",
+      "lineRange": {
+        "start": 552,
+        "end": 586
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_host_passes"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 23,
+      "ccn": 2,
+      "visibility": "public"
+    },
+    {
+      "name": "ServerGroupAffinityConfTest",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 589,
+        "end": 602
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "_enabled_filters",
+      "kind": "field",
+      "scope": "ServerGroupAffinityConfTest",
+      "lineRange": {
+        "start": 591,
+        "end": 591
+      },
+      "source": "aee-inventory",
+      "visibility": "private"
+    },
+    {
+      "name": "test_affinity_no_filter",
+      "kind": "method",
+      "scope": "ServerGroupAffinityConfTest",
+      "lineRange": {
+        "start": 594,
+        "end": 602
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 8,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "ServerGroupAntiAffinityConfTest",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 605,
+        "end": 618
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "_enabled_filters",
+      "kind": "field",
+      "scope": "ServerGroupAntiAffinityConfTest",
+      "lineRange": {
+        "start": 607,
+        "end": 607
+      },
+      "source": "aee-inventory",
+      "visibility": "private"
+    },
+    {
+      "name": "test_anti_affinity_no_filter",
+      "kind": "method",
+      "scope": "ServerGroupAntiAffinityConfTest",
+      "lineRange": {
+        "start": 610,
+        "end": 618
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 8,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "ServerGroupSoftAffinityConfTest",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 621,
+        "end": 640
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "microversion",
+      "kind": "field",
+      "scope": "ServerGroupSoftAffinityConfTest",
+      "lineRange": {
+        "start": 622,
+        "end": 622
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "soft_affinity",
+      "kind": "field",
+      "scope": "ServerGroupSoftAffinityConfTest",
+      "lineRange": {
+        "start": 623,
+        "end": 624
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "_get_weight_classes",
+      "kind": "method",
+      "scope": "ServerGroupSoftAffinityConfTest",
+      "lineRange": {
+        "start": 626,
+        "end": 629
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "['nova.scheduler.weights.affinity.' 'ServerGroupSoftAntiAffinityWeigher']",
+          "line": 628
+        }
+      ],
+      "nloc": 3,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "test_soft_affinity_no_filter",
+      "kind": "method",
+      "scope": "ServerGroupSoftAffinityConfTest",
+      "lineRange": {
+        "start": 632,
+        "end": 640
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 8,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "ServerGroupSoftAntiAffinityConfTest",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 643,
+        "end": 662
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "microversion",
+      "kind": "field",
+      "scope": "ServerGroupSoftAntiAffinityConfTest",
+      "lineRange": {
+        "start": 644,
+        "end": 644
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "soft_anti_affinity",
+      "kind": "field",
+      "scope": "ServerGroupSoftAntiAffinityConfTest",
+      "lineRange": {
+        "start": 645,
+        "end": 646
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "_get_weight_classes",
+      "kind": "method",
+      "scope": "ServerGroupSoftAntiAffinityConfTest",
+      "lineRange": {
+        "start": 648,
+        "end": 651
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "['nova.scheduler.weights.affinity.' 'ServerGroupSoftAffinityWeigher']",
+          "line": 650
+        }
+      ],
+      "nloc": 3,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "test_soft_anti_affinity_no_filter",
+      "kind": "method",
+      "scope": "ServerGroupSoftAntiAffinityConfTest",
+      "lineRange": {
+        "start": 654,
+        "end": 662
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 8,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "ServerGroupTestV215",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 665,
+        "end": 910
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "microversion",
+      "kind": "field",
+      "scope": "ServerGroupTestV215",
+      "lineRange": {
+        "start": 666,
+        "end": 666
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "soft_anti_affinity",
+      "kind": "field",
+      "scope": "ServerGroupTestV215",
+      "lineRange": {
+        "start": 668,
+        "end": 669
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "soft_affinity",
+      "kind": "field",
+      "scope": "ServerGroupTestV215",
+      "lineRange": {
+        "start": 670,
+        "end": 671
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "setUp",
+      "kind": "method",
+      "scope": "ServerGroupTestV215",
+      "lineRange": {
+        "start": 673,
+        "end": 685
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 12,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "_get_weight_classes",
+      "kind": "method",
+      "scope": "ServerGroupTestV215",
+      "lineRange": {
+        "start": 687,
+        "end": 691
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "['nova.scheduler.weights.affinity.' 'ServerGroupSoftAffinityWeigher', 'nova.scheduler.weights.affinity.' 'ServerGroupSoftAntiAffinityWeigher']",
+          "line": 688
+        }
+      ],
+      "nloc": 5,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "test_evacuate_with_anti_affinity",
+      "kind": "method",
+      "scope": "ServerGroupTestV215",
+      "lineRange": {
+        "start": 693,
+        "end": 716
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 15,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_evacuate_with_anti_affinity_no_valid_host",
+      "kind": "method",
+      "scope": "ServerGroupTestV215",
+      "lineRange": {
+        "start": 718,
+        "end": 734
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 11,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_evacuate_with_affinity_no_valid_host",
+      "kind": "method",
+      "scope": "ServerGroupTestV215",
+      "lineRange": {
+        "start": 736,
+        "end": 752
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 11,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "_check_group_format",
+      "kind": "method",
+      "scope": "ServerGroupTestV215",
+      "lineRange": {
+        "start": 754,
+        "end": 757
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "group"
+        },
+        {
+          "name": "created_group"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 4,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "test_create_and_delete_groups",
+      "kind": "method",
+      "scope": "ServerGroupTestV215",
+      "lineRange": {
+        "start": 759,
+        "end": 787
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 23,
+      "ccn": 3,
+      "visibility": "public"
+    },
+    {
+      "name": "test_boot_servers_with_soft_affinity",
+      "kind": "method",
+      "scope": "ServerGroupTestV215",
+      "lineRange": {
+        "start": 789,
+        "end": 798
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 9,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_boot_servers_with_soft_affinity_no_resource_on_first_host",
+      "kind": "method",
+      "scope": "ServerGroupTestV215",
+      "lineRange": {
+        "start": 800,
+        "end": 818
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 12,
+      "ccn": 2,
+      "visibility": "public"
+    },
+    {
+      "name": "test_boot_servers_with_soft_anti_affinity",
+      "kind": "method",
+      "scope": "ServerGroupTestV215",
+      "lineRange": {
+        "start": 820,
+        "end": 829
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 9,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_boot_servers_with_soft_anti_affinity_one_available_host",
+      "kind": "method",
+      "scope": "ServerGroupTestV215",
+      "lineRange": {
+        "start": 831,
+        "end": 840
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 9,
+      "ccn": 2,
+      "visibility": "public"
+    },
+    {
+      "name": "test_rebuild_with_soft_affinity",
+      "kind": "method",
+      "scope": "ServerGroupTestV215",
+      "lineRange": {
+        "start": 842,
+        "end": 846
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 5,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_rebuild_with_soft_anti_affinity",
+      "kind": "method",
+      "scope": "ServerGroupTestV215",
+      "lineRange": {
+        "start": 848,
+        "end": 852
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 5,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "_migrate_with_soft_affinity_policies",
+      "kind": "method",
+      "scope": "ServerGroupTestV215",
+      "lineRange": {
+        "start": 854,
+        "end": 864
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "group"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "[migrated_server['OS-EXT-SRV-ATTR:host'], servers[0]['OS-EXT-SRV-ATTR:host']]",
+          "line": 863
+        }
+      ],
+      "nloc": 9,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "test_migrate_with_soft_affinity",
+      "kind": "method",
+      "scope": "ServerGroupTestV215",
+      "lineRange": {
+        "start": 866,
+        "end": 869
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 4,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_migrate_with_soft_anti_affinity",
+      "kind": "method",
+      "scope": "ServerGroupTestV215",
+      "lineRange": {
+        "start": 871,
+        "end": 874
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 4,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "_evacuate_with_soft_anti_affinity_policies",
+      "kind": "method",
+      "scope": "ServerGroupTestV215",
+      "lineRange": {
+        "start": 876,
+        "end": 895
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "group"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "[evacuated_server['OS-EXT-SRV-ATTR:host'], servers[0]['OS-EXT-SRV-ATTR:host']]",
+          "line": 894
+        }
+      ],
+      "nloc": 12,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "test_evacuate_with_soft_affinity",
+      "kind": "method",
+      "scope": "ServerGroupTestV215",
+      "lineRange": {
+        "start": 897,
+        "end": 901
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 5,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_evacuate_with_soft_anti_affinity",
+      "kind": "method",
+      "scope": "ServerGroupTestV215",
+      "lineRange": {
+        "start": 903,
+        "end": 907
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 5,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_soft_affinity_not_supported",
+      "kind": "method",
+      "scope": "ServerGroupTestV215",
+      "lineRange": {
+        "start": 909,
+        "end": 910
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "ServerGroupTestV264",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 913,
+        "end": 953
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "microversion",
+      "kind": "field",
+      "scope": "ServerGroupTestV264",
+      "lineRange": {
+        "start": 914,
+        "end": 914
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "anti_affinity",
+      "kind": "field",
+      "scope": "ServerGroupTestV264",
+      "lineRange": {
+        "start": 915,
+        "end": 915
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "affinity",
+      "kind": "field",
+      "scope": "ServerGroupTestV264",
+      "lineRange": {
+        "start": 916,
+        "end": 916
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "soft_anti_affinity",
+      "kind": "field",
+      "scope": "ServerGroupTestV264",
+      "lineRange": {
+        "start": 917,
+        "end": 918
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "soft_affinity",
+      "kind": "field",
+      "scope": "ServerGroupTestV264",
+      "lineRange": {
+        "start": 919,
+        "end": 919
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "_check_group_format",
+      "kind": "method",
+      "scope": "ServerGroupTestV264",
+      "lineRange": {
+        "start": 921,
+        "end": 925
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "group"
+        },
+        {
+          "name": "created_group"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 5,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "test_boot_server_with_anti_affinity_rules",
+      "kind": "method",
+      "scope": "ServerGroupTestV264",
+      "lineRange": {
+        "start": 927,
+        "end": 953
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 21,
+      "ccn": 3,
+      "visibility": "public"
+    },
+    {
+      "name": "ServerGroupTestV295",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 956,
+        "end": 1001
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "microversion",
+      "kind": "field",
+      "scope": "ServerGroupTestV295",
+      "lineRange": {
+        "start": 957,
+        "end": 957
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "_evacuate_with_soft_anti_affinity_policies",
+      "kind": "method",
+      "scope": "ServerGroupTestV295",
+      "lineRange": {
+        "start": 959,
+        "end": 977
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "group"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "[evacuated_server['OS-EXT-SRV-ATTR:host'], servers[0]['OS-EXT-SRV-ATTR:host']]",
+          "line": 976
+        }
+      ],
+      "nloc": 11,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "test_evacuate_with_anti_affinity",
+      "kind": "method",
+      "scope": "ServerGroupTestV295",
+      "lineRange": {
+        "start": 979,
+        "end": 1001
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 14,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "ServerGroupTestMultiCell",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 1004,
+        "end": 1073
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "NUMBER_OF_CELLS",
+      "kind": "constant",
+      "scope": "ServerGroupTestMultiCell",
+      "lineRange": {
+        "start": 1006,
+        "end": 1006
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "setUp",
+      "kind": "method",
+      "scope": "ServerGroupTestMultiCell",
+      "lineRange": {
+        "start": 1008,
+        "end": 1020
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 8,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "_create_aggregate",
+      "kind": "method",
+      "scope": "ServerGroupTestMultiCell",
+      "lineRange": {
+        "start": 1022,
+        "end": 1024
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "name"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 3,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "_add_host_to_aggregate",
+      "kind": "method",
+      "scope": "ServerGroupTestMultiCell",
+      "lineRange": {
+        "start": 1026,
+        "end": 1033
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "agg"
+        },
+        {
+          "name": "host"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 3,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "_set_az_aggregate",
+      "kind": "method",
+      "scope": "ServerGroupTestMultiCell",
+      "lineRange": {
+        "start": 1035,
+        "end": 1049
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "agg"
+        },
+        {
+          "name": "az"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 10,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "test_boot_servers_with_affinity",
+      "kind": "method",
+      "scope": "ServerGroupTestMultiCell",
+      "lineRange": {
+        "start": 1051,
+        "end": 1073
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 11,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "TestAntiAffinityLiveMigration",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 1076,
+        "end": 1159
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "setUp",
+      "kind": "method",
+      "scope": "TestAntiAffinityLiveMigration",
+      "lineRange": {
+        "start": 1079,
+        "end": 1097
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 14,
+      "ccn": 2,
+      "visibility": "public"
+    },
+    {
+      "name": "test_serial_no_valid_host_then_pass_with_third_host",
+      "kind": "method",
+      "scope": "TestAntiAffinityLiveMigration",
+      "lineRange": {
+        "start": 1099,
+        "end": 1159
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 36,
+      "ccn": 3,
+      "visibility": "public"
+    }
+  ],
+  "referencedSymbols": [
+    {
+      "name": "test.TestCase",
+      "usage": "inherit",
+      "via": "nova",
+      "count": 2,
+      "lineRange": {
+        "start": 39,
+        "end": 39
+      }
+    },
+    {
+      "name": "integrated_helpers.InstanceHelperMixin",
+      "usage": "inherit",
+      "via": "nova.tests.functional",
+      "count": 2,
+      "lineRange": {
+        "start": 40,
+        "end": 40
+      }
+    },
+    {
+      "name": "super",
+      "usage": "call",
+      "via": null,
+      "count": 5,
+      "lineRange": {
+        "start": 55,
+        "end": 55
+      }
+    },
+    {
+      "name": "nova_fixtures.RealPolicyFixture",
+      "usage": "call",
+      "via": "nova.tests",
+      "count": 2,
+      "lineRange": {
+        "start": 64,
+        "end": 64
+      }
+    },
+    {
+      "name": "nova_fixtures.GlanceFixture",
+      "usage": "call",
+      "via": "nova.tests",
+      "count": 2,
+      "lineRange": {
+        "start": 65,
+        "end": 65
+      }
+    },
+    {
+      "name": "nova_fixtures.NeutronFixture",
+      "usage": "call",
+      "via": "nova.tests",
+      "count": 2,
+      "lineRange": {
+        "start": 66,
+        "end": 66
+      }
+    },
+    {
+      "name": "func_fixtures.PlacementFixture",
+      "usage": "call",
+      "via": "nova.tests.functional",
+      "count": 2,
+      "lineRange": {
+        "start": 68,
+        "end": 68
+      }
+    },
+    {
+      "name": "nova_fixtures.OSAPIFixture",
+      "usage": "call",
+      "via": "nova.tests",
+      "count": 2,
+      "lineRange": {
+        "start": 69,
+        "end": 69
+      }
+    },
+    {
+      "name": "fake.SmallFakeDriver",
+      "usage": "inherit",
+      "via": "nova.virt",
+      "count": 1,
+      "lineRange": {
+        "start": 100,
+        "end": 100
+      }
+    },
+    {
+      "name": "notifications_fixtures.NotificationFixture",
+      "usage": "call",
+      "via": "nova.tests.fixtures",
+      "count": 1,
+      "lineRange": {
+        "start": 126,
+        "end": 126
+      }
+    },
+    {
+      "name": "len",
+      "usage": "call",
+      "via": null,
+      "count": 15,
+      "lineRange": {
+        "start": 164,
+        "end": 164
+      }
+    },
+    {
+      "name": "range",
+      "usage": "call",
+      "via": null,
+      "count": 2,
+      "lineRange": {
+        "start": 229,
+        "end": 229
+      }
+    },
+    {
+      "name": "context.get_admin_context",
+      "usage": "call",
+      "via": "nova",
+      "count": 4,
+      "lineRange": {
+        "start": 263,
+        "end": 263
+      }
+    },
+    {
+      "name": "db.instance_get_all",
+      "usage": "call",
+      "via": "nova.db.main",
+      "count": 1,
+      "lineRange": {
+        "start": 264,
+        "end": 264
+      }
+    },
+    {
+      "name": "db.get_context_manager",
+      "usage": "call",
+      "via": "nova.db.main",
+      "count": 1,
+      "lineRange": {
+        "start": 266,
+        "end": 266
+      }
+    },
+    {
+      "name": "db._block_device_mapping_get_query",
+      "usage": "call",
+      "via": "nova.db.main",
+      "count": 1,
+      "lineRange": {
+        "start": 268,
+        "end": 268
+      }
+    },
+    {
+      "name": "AssertionError",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 424,
+        "end": 424
+      }
+    },
+    {
+      "name": "str",
+      "usage": "call",
+      "via": null,
+      "count": 2,
+      "lineRange": {
+        "start": 426,
+        "end": 426
+      }
+    },
+    {
+      "name": "utils.temporary_mutation",
+      "usage": "call",
+      "via": "nova",
+      "count": 5,
+      "lineRange": {
+        "start": 433,
+        "end": 433
+      }
+    },
+    {
+      "name": "mock.patch",
+      "usage": "call",
+      "via": "unittest",
+      "count": 8,
+      "lineRange": {
+        "start": 506,
+        "end": 506
+      }
+    },
+    {
+      "name": "objects.ComputeNodeList.get_all",
+      "usage": "call",
+      "via": "nova",
+      "count": 2,
+      "lineRange": {
+        "start": 545,
+        "end": 545
+      }
+    },
+    {
+      "name": "map",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 944,
+        "end": 944
+      }
+    },
+    {
+      "name": "set",
+      "usage": "call",
+      "via": null,
+      "count": 3,
+      "lineRange": {
+        "start": 950,
+        "end": 950
+      }
+    },
+    {
+      "name": "nova_fixtures.AllServicesCurrent",
+      "usage": "call",
+      "via": "nova.tests",
+      "count": 1,
+      "lineRange": {
+        "start": 1018,
+        "end": 1018
+      }
+    }
+  ],
+  "dependencies": [
+    {
+      "style": "from",
+      "module": "unittest",
+      "names": [
+        {
+          "alias": null,
+          "name": "mock"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 16,
+        "end": 16
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_config",
+      "names": [
+        {
+          "alias": null,
+          "name": "cfg"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 18,
+        "end": 18
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.compute",
+      "names": [
+        {
+          "alias": null,
+          "name": "instance_actions"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 20,
+        "end": 20
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "context"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 21,
+        "end": 21
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.db.main",
+      "names": [
+        {
+          "alias": "db",
+          "name": "api"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 22,
+        "end": 22
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "objects"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 23,
+        "end": 23
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "test"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 24,
+        "end": 24
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.tests",
+      "names": [
+        {
+          "alias": "nova_fixtures",
+          "name": "fixtures"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 25,
+        "end": 25
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.tests.fixtures",
+      "names": [
+        {
+          "alias": "notifications_fixtures",
+          "name": "notifications"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 26,
+        "end": 26
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.tests.functional.api",
+      "names": [
+        {
+          "alias": null,
+          "name": "client"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 27,
+        "end": 27
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.tests.functional",
+      "names": [
+        {
+          "alias": "func_fixtures",
+          "name": "fixtures"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 28,
+        "end": 28
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.tests.functional",
+      "names": [
+        {
+          "alias": null,
+          "name": "integrated_helpers"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 29,
+        "end": 29
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "utils"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 30,
+        "end": 30
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.virt",
+      "names": [
+        {
+          "alias": null,
+          "name": "fake"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 31,
+        "end": 31
+      }
+    }
+  ],
+  "sideEffects": [
+    {
+      "kind": "global-mutation",
+      "target": "PROJECT_ID_ALT = \"616c6c796f7572626173656172656f73\"",
+      "lineRange": {
+        "start": 34,
+        "end": 34
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "CONF = cfg.CONF",
+      "lineRange": {
+        "start": 36,
+        "end": 36
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "REQUIRES_LOCKING = True",
+      "lineRange": {
+        "start": 41,
+        "end": 41
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "NUMBER_OF_CELLS = 2",
+      "lineRange": {
+        "start": 1006,
+        "end": 1006
+      }
+    }
+  ],
+  "securitySurface": [],
+  "injection_flags": [],
+  "warnings": []
+}

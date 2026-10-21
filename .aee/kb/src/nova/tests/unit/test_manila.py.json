@@ -1,0 +1,1450 @@
+{
+  "file": "src/nova/tests/unit/test_manila.py",
+  "hash": "5257a8fd716b31adfdeffee9b2e46861047a0fbbe08d7371e64aeee92398376a",
+  "language": "Python",
+  "component": "nova",
+  "package": null,
+  "lines": {
+    "blank": 69,
+    "code": 541,
+    "comment": 11,
+    "total": 621
+  },
+  "symbols": [
+    {
+      "name": "CONF",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 40,
+        "end": 40
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "stub_share",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 43,
+        "end": 80
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "share_id"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "share",
+          "line": 80
+        }
+      ],
+      "nloc": 37,
+      "ccn": 1,
+      "exported": true
+    },
+    {
+      "name": "stub_export_locations",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 83,
+        "end": 114
+      },
+      "source": "aee-inventory",
+      "parameters": [],
+      "returnType": null,
+      "returns": [],
+      "nloc": 31,
+      "ccn": 2,
+      "exported": true
+    },
+    {
+      "name": "stub_access_list",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 117,
+        "end": 121
+      },
+      "source": "aee-inventory",
+      "parameters": [],
+      "returnType": null,
+      "returns": [],
+      "nloc": 5,
+      "ccn": 2,
+      "exported": true
+    },
+    {
+      "name": "stub_access",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 124,
+        "end": 150
+      },
+      "source": "aee-inventory",
+      "parameters": [],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "access",
+          "line": 150
+        }
+      ],
+      "nloc": 27,
+      "ccn": 1,
+      "exported": true
+    },
+    {
+      "name": "stub_lock",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 153,
+        "end": 178
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "share_id"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "lock",
+          "line": 178
+        }
+      ],
+      "nloc": 26,
+      "ccn": 1,
+      "exported": true
+    },
+    {
+      "name": "stub_resource_locks",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 181,
+        "end": 186
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "share_id"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 6,
+      "ccn": 2,
+      "exported": true
+    },
+    {
+      "name": "BaseManilaTestCase",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 189,
+        "end": 305
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "project_id",
+      "kind": "field",
+      "scope": "BaseManilaTestCase",
+      "lineRange": {
+        "start": 190,
+        "end": 190
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "setUp",
+      "kind": "method",
+      "scope": "BaseManilaTestCase",
+      "lineRange": {
+        "start": 192,
+        "end": 207
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 12,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "fake_conn",
+      "kind": "method",
+      "scope": "BaseManilaTestCase",
+      "lineRange": {
+        "start": 209,
+        "end": 271
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "*args"
+        },
+        {
+          "name": "**kwargs"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "FakeConnection()",
+          "line": 271
+        }
+      ],
+      "nloc": 14,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "FakeConnection",
+      "kind": "class",
+      "scope": "BaseManilaTestCase.fake_conn",
+      "lineRange": {
+        "start": 210,
+        "end": 212
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "__init__",
+      "kind": "method",
+      "scope": "BaseManilaTestCase.fake_conn.FakeConnection",
+      "lineRange": {
+        "start": 211,
+        "end": 212
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "visibility": "public"
+    },
+    {
+      "name": "FakeConnectionShareV2Proxy",
+      "kind": "class",
+      "scope": "BaseManilaTestCase.fake_conn",
+      "lineRange": {
+        "start": 214,
+        "end": 269
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "__init__",
+      "kind": "method",
+      "scope": "BaseManilaTestCase.fake_conn.FakeConnectionShareV2Proxy",
+      "lineRange": {
+        "start": 215,
+        "end": 216
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "visibility": "public"
+    },
+    {
+      "name": "get_share",
+      "kind": "method",
+      "scope": "BaseManilaTestCase.fake_conn.FakeConnectionShareV2Proxy",
+      "lineRange": {
+        "start": 218,
+        "end": 221
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "share_id"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "stub_share(share_id)",
+          "line": 221
+        }
+      ],
+      "visibility": "public"
+    },
+    {
+      "name": "export_locations",
+      "kind": "method",
+      "scope": "BaseManilaTestCase.fake_conn.FakeConnectionShareV2Proxy",
+      "lineRange": {
+        "start": 223,
+        "end": 224
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "share_id"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "stub_export_locations()",
+          "line": 224
+        }
+      ],
+      "visibility": "public"
+    },
+    {
+      "name": "access_rules",
+      "kind": "method",
+      "scope": "BaseManilaTestCase.fake_conn.FakeConnectionShareV2Proxy",
+      "lineRange": {
+        "start": 226,
+        "end": 233
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "share_id"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "[]",
+          "line": 232
+        },
+        {
+          "expr": "stub_access_list()",
+          "line": 233
+        }
+      ],
+      "visibility": "public"
+    },
+    {
+      "name": "create_access_rule",
+      "kind": "method",
+      "scope": "BaseManilaTestCase.fake_conn.FakeConnectionShareV2Proxy",
+      "lineRange": {
+        "start": 235,
+        "end": 240
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "share_id"
+        },
+        {
+          "name": "**kwargs"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "stub_access()",
+          "line": 240
+        }
+      ],
+      "visibility": "public"
+    },
+    {
+      "name": "delete_access_rule",
+      "kind": "method",
+      "scope": "BaseManilaTestCase.fake_conn.FakeConnectionShareV2Proxy",
+      "lineRange": {
+        "start": 242,
+        "end": 250
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "access_id"
+        },
+        {
+          "name": "share_id"
+        },
+        {
+          "name": "unrestrict"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "res",
+          "line": 250
+        }
+      ],
+      "visibility": "public"
+    },
+    {
+      "name": "get_all_resource_locks",
+      "kind": "method",
+      "scope": "BaseManilaTestCase.fake_conn.FakeConnectionShareV2Proxy",
+      "lineRange": {
+        "start": 252,
+        "end": 259
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "default": "None",
+          "name": "resource_id"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "[]",
+          "line": 254
+        },
+        {
+          "expr": "[]",
+          "line": 256
+        },
+        {
+          "expr": "[]",
+          "line": 258
+        },
+        {
+          "expr": "stub_resource_locks(resource_id)",
+          "line": 259
+        }
+      ],
+      "visibility": "public"
+    },
+    {
+      "name": "create_resource_lock",
+      "kind": "method",
+      "scope": "BaseManilaTestCase.fake_conn.FakeConnectionShareV2Proxy",
+      "lineRange": {
+        "start": 261,
+        "end": 266
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "default": "None",
+          "name": "resource_id"
+        },
+        {
+          "default": "None",
+          "name": "resource_type"
+        },
+        {
+          "default": "None",
+          "name": "lock_reason"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "stub_lock(resource_id)",
+          "line": 266
+        }
+      ],
+      "visibility": "public"
+    },
+    {
+      "name": "delete_resource_lock",
+      "kind": "method",
+      "scope": "BaseManilaTestCase.fake_conn.FakeConnectionShareV2Proxy",
+      "lineRange": {
+        "start": 268,
+        "end": 269
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "share_id"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "visibility": "public"
+    },
+    {
+      "name": "test_client",
+      "kind": "method",
+      "scope": "BaseManilaTestCase",
+      "lineRange": {
+        "start": 274,
+        "end": 288
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_get_sdk_adapter"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 15,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_client_admin",
+      "kind": "method",
+      "scope": "BaseManilaTestCase",
+      "lineRange": {
+        "start": 291,
+        "end": 305
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_get_sdk_adapter"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 15,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "ManilaTestCase",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 308,
+        "end": 621
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "test_get_fails_non_existing_share",
+      "kind": "method",
+      "scope": "ManilaTestCase",
+      "lineRange": {
+        "start": 309,
+        "end": 317
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 5,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_get_share",
+      "kind": "method",
+      "scope": "ManilaTestCase",
+      "lineRange": {
+        "start": 321,
+        "end": 359
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_get_sdk_adapter"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 37,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_get_access_fails_non_existing_share",
+      "kind": "method",
+      "scope": "ManilaTestCase",
+      "lineRange": {
+        "start": 361,
+        "end": 385
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 19,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_get_access",
+      "kind": "method",
+      "scope": "ManilaTestCase",
+      "lineRange": {
+        "start": 389,
+        "end": 407
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_get_sdk_adapter"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 16,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_get_access_not_existing",
+      "kind": "method",
+      "scope": "ManilaTestCase",
+      "lineRange": {
+        "start": 409,
+        "end": 416
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 5,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_get_access_rules",
+      "kind": "method",
+      "scope": "ManilaTestCase",
+      "lineRange": {
+        "start": 420,
+        "end": 437
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_get_sdk_adapter"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 16,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_get_access_rules_empty",
+      "kind": "method",
+      "scope": "ManilaTestCase",
+      "lineRange": {
+        "start": 439,
+        "end": 443
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 3,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_get_access_rules_fails_non_existing_share",
+      "kind": "method",
+      "scope": "ManilaTestCase",
+      "lineRange": {
+        "start": 445,
+        "end": 455
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 8,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_allow_access_fails_non_existing_share",
+      "kind": "method",
+      "scope": "ManilaTestCase",
+      "lineRange": {
+        "start": 457,
+        "end": 471
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 11,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_allow_access",
+      "kind": "method",
+      "scope": "ManilaTestCase",
+      "lineRange": {
+        "start": 475,
+        "end": 492
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_get_sdk_adapter"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 16,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_allow_access_sets_lock_reason",
+      "kind": "method",
+      "scope": "ManilaTestCase",
+      "lineRange": {
+        "start": 495,
+        "end": 506
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_client"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 12,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_allow_access_fails_already_exists",
+      "kind": "method",
+      "scope": "ManilaTestCase",
+      "lineRange": {
+        "start": 508,
+        "end": 523
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 13,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_deny_access_fails_non_existing_share",
+      "kind": "method",
+      "scope": "ManilaTestCase",
+      "lineRange": {
+        "start": 525,
+        "end": 538
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 10,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_deny_access",
+      "kind": "method",
+      "scope": "ManilaTestCase",
+      "lineRange": {
+        "start": 542,
+        "end": 585
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_get_sdk_adapter"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 40,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_deny_access_fails_id_missing",
+      "kind": "method",
+      "scope": "ManilaTestCase",
+      "lineRange": {
+        "start": 587,
+        "end": 603
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 14,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_deny_access_fails_access_not_found",
+      "kind": "method",
+      "scope": "ManilaTestCase",
+      "lineRange": {
+        "start": 605,
+        "end": 621
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 14,
+      "ccn": 1,
+      "visibility": "public"
+    }
+  ],
+  "referencedSymbols": [
+    {
+      "name": "sdk_share.Share",
+      "usage": "call",
+      "via": "openstack.shared_file_system.v2",
+      "count": 1,
+      "lineRange": {
+        "start": 44,
+        "end": 44
+      }
+    },
+    {
+      "name": "utils.Munch",
+      "usage": "call",
+      "via": "openstack",
+      "count": 8,
+      "lineRange": {
+        "start": 65,
+        "end": 65
+      }
+    },
+    {
+      "name": "sdk_share_export_locations.ShareExportLocation",
+      "usage": "call",
+      "via": "openstack.shared_file_system.v2",
+      "count": 1,
+      "lineRange": {
+        "start": 85,
+        "end": 85
+      }
+    },
+    {
+      "name": "sdk_share_access_rule.ShareAccessRule",
+      "usage": "call",
+      "via": "openstack.shared_file_system.v2",
+      "count": 1,
+      "lineRange": {
+        "start": 125,
+        "end": 125
+      }
+    },
+    {
+      "name": "sdk_resource_locks.ResourceLock",
+      "usage": "call",
+      "via": "openstack.shared_file_system.v2",
+      "count": 1,
+      "lineRange": {
+        "start": 154,
+        "end": 154
+      }
+    },
+    {
+      "name": "object",
+      "usage": "inherit",
+      "via": null,
+      "count": 3,
+      "lineRange": {
+        "start": 189,
+        "end": 189
+      }
+    },
+    {
+      "name": "super",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 194,
+        "end": 194
+      }
+    },
+    {
+      "name": "fixtures.MockPatch",
+      "usage": "call",
+      "via": "fixtures",
+      "count": 1,
+      "lineRange": {
+        "start": 198,
+        "end": 198
+      }
+    },
+    {
+      "name": "manila.API",
+      "usage": "call",
+      "via": "nova.share",
+      "count": 1,
+      "lineRange": {
+        "start": 203,
+        "end": 203
+      }
+    },
+    {
+      "name": "nova_context.RequestContext",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 205,
+        "end": 205
+      }
+    },
+    {
+      "name": "Response",
+      "usage": "call",
+      "via": "requests",
+      "count": 1,
+      "lineRange": {
+        "start": 245,
+        "end": 245
+      }
+    },
+    {
+      "name": "mock.patch",
+      "usage": "call",
+      "via": "unittest",
+      "count": 8,
+      "lineRange": {
+        "start": 273,
+        "end": 273
+      }
+    },
+    {
+      "name": "manila._manilaclient",
+      "usage": "call",
+      "via": "nova.share",
+      "count": 2,
+      "lineRange": {
+        "start": 275,
+        "end": 275
+      }
+    },
+    {
+      "name": "hasattr",
+      "usage": "call",
+      "via": null,
+      "count": 10,
+      "lineRange": {
+        "start": 276,
+        "end": 276
+      }
+    },
+    {
+      "name": "test.NoDBTestCase",
+      "usage": "inherit",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 308,
+        "end": 308
+      }
+    },
+    {
+      "name": "len",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 432,
+        "end": 432
+      }
+    },
+    {
+      "name": "ManilaAccess",
+      "usage": "call",
+      "via": "nova.tests.fixtures.manila",
+      "count": 1,
+      "lineRange": {
+        "start": 498,
+        "end": 498
+      }
+    }
+  ],
+  "dependencies": [
+    {
+      "style": "from",
+      "module": "unittest",
+      "names": [
+        {
+          "alias": null,
+          "name": "mock"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 13,
+        "end": 13
+      }
+    },
+    {
+      "style": "import",
+      "module": "fixtures",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 15,
+        "end": 15
+      }
+    },
+    {
+      "style": "from",
+      "module": "openstack",
+      "names": [
+        {
+          "alias": "sdk_exc",
+          "name": "exceptions"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 16,
+        "end": 16
+      }
+    },
+    {
+      "style": "from",
+      "module": "openstack.shared_file_system.v2",
+      "names": [
+        {
+          "alias": "sdk_resource_locks",
+          "name": "resource_locks"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 17,
+        "end": 19
+      }
+    },
+    {
+      "style": "from",
+      "module": "openstack.shared_file_system.v2",
+      "names": [
+        {
+          "alias": "sdk_share_access_rule",
+          "name": "share_access_rule"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 21,
+        "end": 23
+      }
+    },
+    {
+      "style": "from",
+      "module": "openstack.shared_file_system.v2",
+      "names": [
+        {
+          "alias": "sdk_share_export_locations",
+          "name": "share_export_locations"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 24,
+        "end": 26
+      }
+    },
+    {
+      "style": "from",
+      "module": "openstack.shared_file_system.v2",
+      "names": [
+        {
+          "alias": "sdk_share",
+          "name": "share"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 27,
+        "end": 27
+      }
+    },
+    {
+      "style": "from",
+      "module": "openstack",
+      "names": [
+        {
+          "alias": null,
+          "name": "utils"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 28,
+        "end": 28
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_utils.fixture",
+      "names": [
+        {
+          "alias": "uuids",
+          "name": "uuidsentinel"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 29,
+        "end": 29
+      }
+    },
+    {
+      "style": "from",
+      "module": "requests",
+      "names": [
+        {
+          "alias": null,
+          "name": "Response"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 30,
+        "end": 30
+      }
+    },
+    {
+      "style": "import",
+      "module": "nova.conf",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 32,
+        "end": 32
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": "nova_context",
+          "name": "context"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 33,
+        "end": 33
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "exception"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 34,
+        "end": 34
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.share",
+      "names": [
+        {
+          "alias": null,
+          "name": "manila"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 35,
+        "end": 35
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "test"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 36,
+        "end": 36
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.tests.fixtures.manila",
+      "names": [
+        {
+          "alias": null,
+          "name": "ManilaAccess"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 37,
+        "end": 37
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.tests.unit.api.openstack",
+      "names": [
+        {
+          "alias": null,
+          "name": "fakes"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 38,
+        "end": 38
+      }
+    }
+  ],
+  "sideEffects": [
+    {
+      "kind": "network",
+      "target": "from openstack.shared_file_system.v2 import (",
+      "lineRange": {
+        "start": 17,
+        "end": 17
+      }
+    },
+    {
+      "kind": "network",
+      "target": "from openstack.shared_file_system.v2 import (",
+      "lineRange": {
+        "start": 21,
+        "end": 21
+      }
+    },
+    {
+      "kind": "network",
+      "target": "from openstack.shared_file_system.v2 import (",
+      "lineRange": {
+        "start": 24,
+        "end": 24
+      }
+    },
+    {
+      "kind": "network",
+      "target": "from openstack.shared_file_system.v2 import share as sdk_share",
+      "lineRange": {
+        "start": 27,
+        "end": 27
+      }
+    },
+    {
+      "kind": "network",
+      "target": "@mock.patch('nova.utils.get_sdk_adapter')",
+      "lineRange": {
+        "start": 273,
+        "end": 273
+      }
+    },
+    {
+      "kind": "network",
+      "target": "@mock.patch('nova.utils.get_sdk_adapter')",
+      "lineRange": {
+        "start": 290,
+        "end": 290
+      }
+    },
+    {
+      "kind": "network",
+      "target": "'nova.utils.get_sdk_adapter', side_effect=nova.utils.get_sdk_adapter)",
+      "lineRange": {
+        "start": 320,
+        "end": 320
+      }
+    },
+    {
+      "kind": "network",
+      "target": "'nova.utils.get_sdk_adapter', side_effect=nova.utils.get_sdk_adapter)",
+      "lineRange": {
+        "start": 388,
+        "end": 388
+      }
+    },
+    {
+      "kind": "network",
+      "target": "'nova.utils.get_sdk_adapter', side_effect=nova.utils.get_sdk_adapter)",
+      "lineRange": {
+        "start": 419,
+        "end": 419
+      }
+    },
+    {
+      "kind": "network",
+      "target": "'nova.utils.get_sdk_adapter', side_effect=nova.utils.get_sdk_adapter)",
+      "lineRange": {
+        "start": 474,
+        "end": 474
+      }
+    },
+    {
+      "kind": "network",
+      "target": "'nova.utils.get_sdk_adapter', side_effect=nova.utils.get_sdk_adapter)",
+      "lineRange": {
+        "start": 541,
+        "end": 541
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "CONF = nova.conf.CONF",
+      "lineRange": {
+        "start": 40,
+        "end": 40
+      }
+    }
+  ],
+  "securitySurface": [],
+  "injection_flags": [],
+  "warnings": []
+}

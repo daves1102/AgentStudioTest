@@ -1,0 +1,2066 @@
+{
+  "file": "src/nova/tests/unit/api/openstack/compute/test_flavor_manage.py",
+  "hash": "e0d55e2634116512e4c7aa7f6c9edfe1cd4908cd15c008b83ba993d723dcdcbb",
+  "language": "Python",
+  "component": "nova",
+  "package": null,
+  "lines": {
+    "blank": 98,
+    "code": 460,
+    "comment": 29,
+    "total": 587
+  },
+  "symbols": [
+    {
+      "name": "fake_create",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 30,
+        "end": 40
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "newflavor"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 11,
+      "ccn": 1,
+      "exported": true
+    },
+    {
+      "name": "fake_create_without_swap",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 43,
+        "end": 54
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "newflavor"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 12,
+      "ccn": 1,
+      "exported": true
+    },
+    {
+      "name": "FlavorManageTestV21",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 57,
+        "end": 351
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "microversion",
+      "kind": "field",
+      "scope": "FlavorManageTestV21",
+      "lineRange": {
+        "start": 58,
+        "end": 58
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "setUp",
+      "kind": "method",
+      "scope": "FlavorManageTestV21",
+      "lineRange": {
+        "start": 60,
+        "end": 78
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 18,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "_get_http_request",
+      "kind": "method",
+      "scope": "FlavorManageTestV21",
+      "lineRange": {
+        "start": 80,
+        "end": 82
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "default": "''",
+          "name": "url"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "fakes.HTTPRequest.blank(url, version=self.microversion, use_admin_context=True)",
+          "line": 81
+        }
+      ],
+      "nloc": 3,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "test_delete",
+      "kind": "method",
+      "scope": "FlavorManageTestV21",
+      "lineRange": {
+        "start": 85,
+        "end": 96
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_destroy"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 9,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "_test_create_missing_parameter",
+      "kind": "method",
+      "scope": "FlavorManageTestV21",
+      "lineRange": {
+        "start": 98,
+        "end": 117
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "parameter"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 18,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "test_create_missing_name",
+      "kind": "method",
+      "scope": "FlavorManageTestV21",
+      "lineRange": {
+        "start": 119,
+        "end": 120
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_create_missing_ram",
+      "kind": "method",
+      "scope": "FlavorManageTestV21",
+      "lineRange": {
+        "start": 122,
+        "end": 123
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_create_missing_vcpus",
+      "kind": "method",
+      "scope": "FlavorManageTestV21",
+      "lineRange": {
+        "start": 125,
+        "end": 126
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_create_missing_disk",
+      "kind": "method",
+      "scope": "FlavorManageTestV21",
+      "lineRange": {
+        "start": 128,
+        "end": 129
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_create",
+      "kind": "method",
+      "scope": "FlavorManageTestV21",
+      "lineRange": {
+        "start": 131,
+        "end": 136
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 6,
+      "ccn": 2,
+      "visibility": "public"
+    },
+    {
+      "name": "test_create_public_default",
+      "kind": "method",
+      "scope": "FlavorManageTestV21",
+      "lineRange": {
+        "start": 138,
+        "end": 144
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 7,
+      "ccn": 2,
+      "visibility": "public"
+    },
+    {
+      "name": "test_create_without_flavorid",
+      "kind": "method",
+      "scope": "FlavorManageTestV21",
+      "lineRange": {
+        "start": 146,
+        "end": 152
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 7,
+      "ccn": 2,
+      "visibility": "public"
+    },
+    {
+      "name": "_create_flavor_bad_request_case",
+      "kind": "method",
+      "scope": "FlavorManageTestV21",
+      "lineRange": {
+        "start": 154,
+        "end": 157
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "body"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 4,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "test_create_invalid_name",
+      "kind": "method",
+      "scope": "FlavorManageTestV21",
+      "lineRange": {
+        "start": 159,
+        "end": 161
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 3,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_create_flavor_name_is_whitespace",
+      "kind": "method",
+      "scope": "FlavorManageTestV21",
+      "lineRange": {
+        "start": 163,
+        "end": 165
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 3,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_create_with_name_too_long",
+      "kind": "method",
+      "scope": "FlavorManageTestV21",
+      "lineRange": {
+        "start": 167,
+        "end": 169
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 3,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_create_with_short_name",
+      "kind": "method",
+      "scope": "FlavorManageTestV21",
+      "lineRange": {
+        "start": 171,
+        "end": 173
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 3,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_create_with_name_leading_trailing_spaces",
+      "kind": "method",
+      "scope": "FlavorManageTestV21",
+      "lineRange": {
+        "start": 175,
+        "end": 177
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 3,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_create_with_name_leading_trailing_spaces_compat_mode",
+      "kind": "method",
+      "scope": "FlavorManageTestV21",
+      "lineRange": {
+        "start": 179,
+        "end": 184
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 6,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_create_without_flavorname",
+      "kind": "method",
+      "scope": "FlavorManageTestV21",
+      "lineRange": {
+        "start": 186,
+        "end": 188
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 3,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_create_empty_body",
+      "kind": "method",
+      "scope": "FlavorManageTestV21",
+      "lineRange": {
+        "start": 190,
+        "end": 194
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 5,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_create_no_body",
+      "kind": "method",
+      "scope": "FlavorManageTestV21",
+      "lineRange": {
+        "start": 196,
+        "end": 198
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 3,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_create_invalid_format_body",
+      "kind": "method",
+      "scope": "FlavorManageTestV21",
+      "lineRange": {
+        "start": 200,
+        "end": 204
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 5,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_create_invalid_flavorid",
+      "kind": "method",
+      "scope": "FlavorManageTestV21",
+      "lineRange": {
+        "start": 206,
+        "end": 208
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 3,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_create_check_flavor_id_length",
+      "kind": "method",
+      "scope": "FlavorManageTestV21",
+      "lineRange": {
+        "start": 210,
+        "end": 213
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 4,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_create_with_leading_trailing_whitespaces_in_flavor_id",
+      "kind": "method",
+      "scope": "FlavorManageTestV21",
+      "lineRange": {
+        "start": 215,
+        "end": 217
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 3,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_create_without_ram",
+      "kind": "method",
+      "scope": "FlavorManageTestV21",
+      "lineRange": {
+        "start": 219,
+        "end": 221
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 3,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_create_with_0_ram",
+      "kind": "method",
+      "scope": "FlavorManageTestV21",
+      "lineRange": {
+        "start": 223,
+        "end": 225
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 3,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_create_with_ram_exceed_max_limit",
+      "kind": "method",
+      "scope": "FlavorManageTestV21",
+      "lineRange": {
+        "start": 227,
+        "end": 229
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 3,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_create_with_minus_ram",
+      "kind": "method",
+      "scope": "FlavorManageTestV21",
+      "lineRange": {
+        "start": 231,
+        "end": 233
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 3,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_create_with_invalid_ram",
+      "kind": "method",
+      "scope": "FlavorManageTestV21",
+      "lineRange": {
+        "start": 235,
+        "end": 237
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 3,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_create_without_vcpus",
+      "kind": "method",
+      "scope": "FlavorManageTestV21",
+      "lineRange": {
+        "start": 239,
+        "end": 241
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 3,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_create_with_0_vcpus",
+      "kind": "method",
+      "scope": "FlavorManageTestV21",
+      "lineRange": {
+        "start": 243,
+        "end": 245
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 3,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_create_with_vcpus_exceed_max_limit",
+      "kind": "method",
+      "scope": "FlavorManageTestV21",
+      "lineRange": {
+        "start": 247,
+        "end": 249
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 3,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_create_with_minus_vcpus",
+      "kind": "method",
+      "scope": "FlavorManageTestV21",
+      "lineRange": {
+        "start": 251,
+        "end": 253
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 3,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_create_with_invalid_vcpus",
+      "kind": "method",
+      "scope": "FlavorManageTestV21",
+      "lineRange": {
+        "start": 255,
+        "end": 257
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 3,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_create_without_disk",
+      "kind": "method",
+      "scope": "FlavorManageTestV21",
+      "lineRange": {
+        "start": 259,
+        "end": 261
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 3,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_create_with_disk_exceed_max_limit",
+      "kind": "method",
+      "scope": "FlavorManageTestV21",
+      "lineRange": {
+        "start": 263,
+        "end": 265
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 3,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_create_with_minus_disk",
+      "kind": "method",
+      "scope": "FlavorManageTestV21",
+      "lineRange": {
+        "start": 267,
+        "end": 269
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 3,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_create_with_invalid_disk",
+      "kind": "method",
+      "scope": "FlavorManageTestV21",
+      "lineRange": {
+        "start": 271,
+        "end": 273
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 3,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_create_with_minus_ephemeral",
+      "kind": "method",
+      "scope": "FlavorManageTestV21",
+      "lineRange": {
+        "start": 275,
+        "end": 277
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 3,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_create_with_invalid_ephemeral",
+      "kind": "method",
+      "scope": "FlavorManageTestV21",
+      "lineRange": {
+        "start": 279,
+        "end": 281
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 3,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_create_with_ephemeral_exceed_max_limit",
+      "kind": "method",
+      "scope": "FlavorManageTestV21",
+      "lineRange": {
+        "start": 283,
+        "end": 286
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 4,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_create_with_minus_swap",
+      "kind": "method",
+      "scope": "FlavorManageTestV21",
+      "lineRange": {
+        "start": 288,
+        "end": 290
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 3,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_create_with_invalid_swap",
+      "kind": "method",
+      "scope": "FlavorManageTestV21",
+      "lineRange": {
+        "start": 292,
+        "end": 294
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 3,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_create_with_swap_exceed_max_limit",
+      "kind": "method",
+      "scope": "FlavorManageTestV21",
+      "lineRange": {
+        "start": 296,
+        "end": 298
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 3,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_create_with_minus_rxtx_factor",
+      "kind": "method",
+      "scope": "FlavorManageTestV21",
+      "lineRange": {
+        "start": 300,
+        "end": 302
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 3,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_create_with_rxtx_factor_exceed_max_limit",
+      "kind": "method",
+      "scope": "FlavorManageTestV21",
+      "lineRange": {
+        "start": 304,
+        "end": 307
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 4,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_create_with_non_boolean_is_public",
+      "kind": "method",
+      "scope": "FlavorManageTestV21",
+      "lineRange": {
+        "start": 309,
+        "end": 311
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 3,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_flavor_exists_exception_returns_409",
+      "kind": "method",
+      "scope": "FlavorManageTestV21",
+      "lineRange": {
+        "start": 313,
+        "end": 334
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 18,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "fake_create",
+      "kind": "function",
+      "scope": "FlavorManageTestV21.test_flavor_exists_exception_returns_409",
+      "lineRange": {
+        "start": 328,
+        "end": 330
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "name"
+        },
+        {
+          "name": "memory_mb"
+        },
+        {
+          "name": "vcpus"
+        },
+        {
+          "name": "root_gb"
+        },
+        {
+          "name": "ephemeral_gb"
+        },
+        {
+          "name": "flavorid"
+        },
+        {
+          "name": "swap"
+        },
+        {
+          "name": "rxtx_factor"
+        },
+        {
+          "name": "is_public"
+        },
+        {
+          "name": "description"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "visibility": "public"
+    },
+    {
+      "name": "test_create_with_description",
+      "kind": "method",
+      "scope": "FlavorManageTestV21",
+      "lineRange": {
+        "start": 336,
+        "end": 342
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 6,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_flavor_update_description",
+      "kind": "method",
+      "scope": "FlavorManageTestV21",
+      "lineRange": {
+        "start": 344,
+        "end": 351
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 7,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "FlavorManageTestV255",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 354,
+        "end": 450
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "microversion",
+      "kind": "field",
+      "scope": "FlavorManageTestV255",
+      "lineRange": {
+        "start": 355,
+        "end": 355
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "get_flavor",
+      "kind": "method",
+      "scope": "FlavorManageTestV255",
+      "lineRange": {
+        "start": 357,
+        "end": 367
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "flavor"
+        },
+        {
+          "name": "**kwargs"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "objects.Flavor( flavorid=flavor['id'], name=flavor['name'], memory_mb=flavor['ram'], vcpus=flavor['vcpus'], root_gb=flavor['disk'], swap=flavor['swap'], ephemeral_gb=flavor['OS-FLV-EXT-DATA:ephemeral'",
+          "line": 358
+        }
+      ],
+      "nloc": 11,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "setUp",
+      "kind": "method",
+      "scope": "FlavorManageTestV255",
+      "lineRange": {
+        "start": 369,
+        "end": 372
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 3,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_create_with_description",
+      "kind": "method",
+      "scope": "FlavorManageTestV255",
+      "lineRange": {
+        "start": 374,
+        "end": 376
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_flavor_update_description",
+      "kind": "method",
+      "scope": "FlavorManageTestV255",
+      "lineRange": {
+        "start": 380,
+        "end": 395
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_flavor_save"
+        },
+        {
+          "name": "mock_get"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 12,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_flavor_update_not_found",
+      "kind": "method",
+      "scope": "FlavorManageTestV255",
+      "lineRange": {
+        "start": 399,
+        "end": 404
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_get"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 5,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_flavor_update_missing_description",
+      "kind": "method",
+      "scope": "FlavorManageTestV255",
+      "lineRange": {
+        "start": 406,
+        "end": 413
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 5,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_create_with_invalid_description",
+      "kind": "method",
+      "scope": "FlavorManageTestV255",
+      "lineRange": {
+        "start": 415,
+        "end": 424
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 7,
+      "ccn": 2,
+      "visibility": "public"
+    },
+    {
+      "name": "test_update_with_invalid_description",
+      "kind": "method",
+      "scope": "FlavorManageTestV255",
+      "lineRange": {
+        "start": 428,
+        "end": 450
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_flavor_save"
+        },
+        {
+          "name": "mock_get"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 19,
+      "ccn": 2,
+      "visibility": "public"
+    },
+    {
+      "name": "FlavorManageTestV261",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 453,
+        "end": 476
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "microversion",
+      "kind": "field",
+      "scope": "FlavorManageTestV261",
+      "lineRange": {
+        "start": 455,
+        "end": 455
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "get_flavor",
+      "kind": "method",
+      "scope": "FlavorManageTestV261",
+      "lineRange": {
+        "start": 457,
+        "end": 459
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "flavor"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "super().get_flavor( flavor, extra_specs={\"key1\": \"value1\"})",
+          "line": 458
+        }
+      ],
+      "nloc": 3,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "setUp",
+      "kind": "method",
+      "scope": "FlavorManageTestV261",
+      "lineRange": {
+        "start": 461,
+        "end": 464
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 4,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_flavor_update_extra_spec",
+      "kind": "method",
+      "scope": "FlavorManageTestV261",
+      "lineRange": {
+        "start": 468,
+        "end": 476
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_flavor_save"
+        },
+        {
+          "name": "mock_get"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 8,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "FlavorManageTestV275",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 479,
+        "end": 540
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "microversion",
+      "kind": "field",
+      "scope": "FlavorManageTestV275",
+      "lineRange": {
+        "start": 480,
+        "end": 480
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "FLAVOR_WITH_NO_SWAP",
+      "kind": "constant",
+      "scope": "FlavorManageTestV275",
+      "lineRange": {
+        "start": 482,
+        "end": 494
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "test_create_flavor_default_swap_value_old_version",
+      "kind": "method",
+      "scope": "FlavorManageTestV275",
+      "lineRange": {
+        "start": 496,
+        "end": 502
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 7,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_update_flavor_default_swap_value_old_version",
+      "kind": "method",
+      "scope": "FlavorManageTestV275",
+      "lineRange": {
+        "start": 506,
+        "end": 518
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_save"
+        },
+        {
+          "name": "mock_get"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 12,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_create_flavor_default_swap_value",
+      "kind": "method",
+      "scope": "FlavorManageTestV275",
+      "lineRange": {
+        "start": 521,
+        "end": 526
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_get"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 6,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_update_flavor_default_swap_value",
+      "kind": "method",
+      "scope": "FlavorManageTestV275",
+      "lineRange": {
+        "start": 530,
+        "end": 540
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_save"
+        },
+        {
+          "name": "mock_get"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 10,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "PrivateFlavorManageTestV21",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 543,
+        "end": 587
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "setUp",
+      "kind": "method",
+      "scope": "PrivateFlavorManageTestV21",
+      "lineRange": {
+        "start": 545,
+        "end": 559
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 15,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_create_private_flavor_should_not_grant_flavor_access",
+      "kind": "method",
+      "scope": "PrivateFlavorManageTestV21",
+      "lineRange": {
+        "start": 561,
+        "end": 579
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 16,
+      "ccn": 2,
+      "visibility": "public"
+    },
+    {
+      "name": "test_create_public_flavor_should_not_create_flavor_access",
+      "kind": "method",
+      "scope": "PrivateFlavorManageTestV21",
+      "lineRange": {
+        "start": 581,
+        "end": 587
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 7,
+      "ccn": 2,
+      "visibility": "public"
+    }
+  ],
+  "referencedSymbols": [
+    {
+      "name": "test.NoDBTestCase",
+      "usage": "inherit",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 57,
+        "end": 57
+      }
+    },
+    {
+      "name": "super",
+      "usage": "call",
+      "via": null,
+      "count": 5,
+      "lineRange": {
+        "start": 61,
+        "end": 61
+      }
+    },
+    {
+      "name": "flavors.FlavorsController",
+      "usage": "call",
+      "via": "nova.api.openstack.compute",
+      "count": 2,
+      "lineRange": {
+        "start": 78,
+        "end": 78
+      }
+    },
+    {
+      "name": "fakes.HTTPRequest.blank",
+      "usage": "call",
+      "via": "nova.tests.unit.api.openstack",
+      "count": 6,
+      "lineRange": {
+        "start": 81,
+        "end": 81
+      }
+    },
+    {
+      "name": "mock.patch",
+      "usage": "call",
+      "via": "unittest",
+      "count": 13,
+      "lineRange": {
+        "start": 84,
+        "end": 84
+      }
+    },
+    {
+      "name": "exception.FlavorNotFound",
+      "usage": "call",
+      "via": "nova",
+      "count": 2,
+      "lineRange": {
+        "start": 93,
+        "end": 93
+      }
+    },
+    {
+      "name": "exception.FlavorExists",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 330,
+        "end": 330
+      }
+    },
+    {
+      "name": "str",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 342,
+        "end": 342
+      }
+    },
+    {
+      "name": "objects.Flavor",
+      "usage": "call",
+      "via": "nova",
+      "count": 3,
+      "lineRange": {
+        "start": 358,
+        "end": 358
+      }
+    },
+    {
+      "name": "test.MatchType",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 394,
+        "end": 394
+      }
+    },
+    {
+      "name": "copy.deepcopy",
+      "usage": "call",
+      "via": "copy",
+      "count": 1,
+      "lineRange": {
+        "start": 463,
+        "end": 463
+      }
+    },
+    {
+      "name": "test.TestCase",
+      "usage": "inherit",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 543,
+        "end": 543
+      }
+    },
+    {
+      "name": "flavor_access.FlavorAccessController",
+      "usage": "call",
+      "via": "nova.api.openstack.compute",
+      "count": 1,
+      "lineRange": {
+        "start": 548,
+        "end": 548
+      }
+    }
+  ],
+  "dependencies": [
+    {
+      "style": "import",
+      "module": "copy",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 16,
+        "end": 16
+      }
+    },
+    {
+      "style": "from",
+      "module": "unittest",
+      "names": [
+        {
+          "alias": null,
+          "name": "mock"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 17,
+        "end": 17
+      }
+    },
+    {
+      "style": "import",
+      "module": "webob",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 19,
+        "end": 19
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.api.openstack.compute",
+      "names": [
+        {
+          "alias": null,
+          "name": "flavor_access"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 21,
+        "end": 21
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.api.openstack.compute",
+      "names": [
+        {
+          "alias": null,
+          "name": "flavors"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 22,
+        "end": 22
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.db",
+      "names": [
+        {
+          "alias": "db_const",
+          "name": "constants"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 23,
+        "end": 23
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "exception"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 24,
+        "end": 24
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "objects"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 25,
+        "end": 25
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "test"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 26,
+        "end": 26
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.tests.unit.api.openstack",
+      "names": [
+        {
+          "alias": null,
+          "name": "fakes"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 27,
+        "end": 27
+      }
+    }
+  ],
+  "sideEffects": [
+    {
+      "kind": "network",
+      "target": "from nova.api.openstack.compute import flavor_access",
+      "lineRange": {
+        "start": 21,
+        "end": 21
+      }
+    },
+    {
+      "kind": "network",
+      "target": "from nova.api.openstack.compute import flavors",
+      "lineRange": {
+        "start": 22,
+        "end": 22
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "MAX_LENGTH = 255",
+      "lineRange": {
+        "start": 211,
+        "end": 211
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "FLAVOR_WITH_NO_SWAP = objects.Flavor(",
+      "lineRange": {
+        "start": 482,
+        "end": 482
+      }
+    }
+  ],
+  "securitySurface": [
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "exception.VersionNotFoundForAPIMethod, self.controller.update,",
+      "lineRange": {
+        "start": 349,
+        "end": 349
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "flavor = self.controller.update(",
+      "lineRange": {
+        "start": 389,
+        "end": 389
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "self.controller.update,",
+      "lineRange": {
+        "start": 402,
+        "end": 402
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "is provided in the update request body.",
+      "lineRange": {
+        "start": 408,
+        "end": 408
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "self.controller.update,",
+      "lineRange": {
+        "start": 411,
+        "end": 411
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "exception.ValidationError, self.controller.update,",
+      "lineRange": {
+        "start": 448,
+        "end": 448
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "flavor = self.controller.update(",
+      "lineRange": {
+        "start": 473,
+        "end": 473
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "flavor = self.controller.update(",
+      "lineRange": {
+        "start": 515,
+        "end": 515
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "flavor = self.controller.update(",
+      "lineRange": {
+        "start": 537,
+        "end": 537
+      }
+    }
+  ],
+  "injection_flags": [],
+  "warnings": []
+}

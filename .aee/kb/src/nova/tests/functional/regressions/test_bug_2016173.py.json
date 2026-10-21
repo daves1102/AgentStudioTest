@@ -1,0 +1,229 @@
+{
+  "file": "src/nova/tests/functional/regressions/test_bug_2016173.py",
+  "hash": "7b17e4dd6231dee4c9648582da09dc7360f7635a694fece8c60107675c42ed58",
+  "language": "Python",
+  "component": "nova",
+  "package": null,
+  "lines": {
+    "blank": 12,
+    "code": 26,
+    "comment": 19,
+    "total": 57
+  },
+  "symbols": [
+    {
+      "name": "TestVolumeDetachRollback",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 20,
+        "end": 57
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "CAST_AS_CALL",
+      "kind": "constant",
+      "scope": "TestVolumeDetachRollback",
+      "lineRange": {
+        "start": 27,
+        "end": 27
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "setUp",
+      "kind": "method",
+      "scope": "TestVolumeDetachRollback",
+      "lineRange": {
+        "start": 29,
+        "end": 38
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 6,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "fail_detach",
+      "kind": "function",
+      "scope": "TestVolumeDetachRollback.setUp",
+      "lineRange": {
+        "start": 32,
+        "end": 33
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "*args"
+        },
+        {
+          "name": "**kwargs"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "visibility": "public"
+    },
+    {
+      "name": "test_server_create_volume_detach_fails",
+      "kind": "method",
+      "scope": "TestVolumeDetachRollback",
+      "lineRange": {
+        "start": 40,
+        "end": 57
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 9,
+      "ccn": 1,
+      "visibility": "public"
+    }
+  ],
+  "referencedSymbols": [
+    {
+      "name": "integrated_helpers._IntegratedTestBase",
+      "usage": "inherit",
+      "via": "nova.tests.functional",
+      "count": 1,
+      "lineRange": {
+        "start": 20,
+        "end": 20
+      }
+    },
+    {
+      "name": "super",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 30,
+        "end": 30
+      }
+    },
+    {
+      "name": "cinder_exception.ClientException",
+      "usage": "call",
+      "via": "cinderclient",
+      "count": 1,
+      "lineRange": {
+        "start": 33,
+        "end": 33
+      }
+    },
+    {
+      "name": "nova_context.get_admin_context",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 37,
+        "end": 37
+      }
+    },
+    {
+      "name": "cinder.API",
+      "usage": "call",
+      "via": "nova.volume",
+      "count": 1,
+      "lineRange": {
+        "start": 38,
+        "end": 38
+      }
+    }
+  ],
+  "dependencies": [
+    {
+      "style": "from",
+      "module": "cinderclient",
+      "names": [
+        {
+          "alias": "cinder_exception",
+          "name": "exceptions"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 13,
+        "end": 13
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": "nova_context",
+          "name": "context"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 15,
+        "end": 15
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.tests.functional",
+      "names": [
+        {
+          "alias": null,
+          "name": "integrated_helpers"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 16,
+        "end": 16
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.volume",
+      "names": [
+        {
+          "alias": null,
+          "name": "cinder"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 17,
+        "end": 17
+      }
+    }
+  ],
+  "sideEffects": [
+    {
+      "kind": "global-mutation",
+      "target": "CAST_AS_CALL = False",
+      "lineRange": {
+        "start": 27,
+        "end": 27
+      }
+    }
+  ],
+  "securitySurface": [],
+  "injection_flags": [],
+  "warnings": []
+}

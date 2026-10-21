@@ -1,0 +1,240 @@
+{
+  "file": "src/nova/tests/functional/api_sample_tests/test_multinic.py",
+  "hash": "838fa7b43a23278b149b98fe162a0dea72de8e938f537f63b62f070bd0b8a729",
+  "language": "Python",
+  "component": "nova",
+  "package": null,
+  "lines": {
+    "blank": 11,
+    "code": 32,
+    "comment": 15,
+    "total": 58
+  },
+  "symbols": [
+    {
+      "name": "MultinicSampleJsonTest",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 20,
+        "end": 58
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "ADMIN_API",
+      "kind": "constant",
+      "scope": "MultinicSampleJsonTest",
+      "lineRange": {
+        "start": 21,
+        "end": 21
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "sample_dir",
+      "kind": "field",
+      "scope": "MultinicSampleJsonTest",
+      "lineRange": {
+        "start": 22,
+        "end": 22
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "setUp",
+      "kind": "method",
+      "scope": "MultinicSampleJsonTest",
+      "lineRange": {
+        "start": 24,
+        "end": 29
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 6,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "_boot_a_server",
+      "kind": "method",
+      "scope": "MultinicSampleJsonTest",
+      "lineRange": {
+        "start": 31,
+        "end": 41
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "default": "'ACTIVE'",
+          "name": "expected_status"
+        },
+        {
+          "default": "None",
+          "name": "extra_params"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "found_server",
+          "line": 41
+        }
+      ],
+      "nloc": 8,
+      "ccn": 2,
+      "visibility": "private"
+    },
+    {
+      "name": "_add_fixed_ip",
+      "kind": "method",
+      "scope": "MultinicSampleJsonTest",
+      "lineRange": {
+        "start": 43,
+        "end": 47
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 5,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "test_add_fixed_ip",
+      "kind": "method",
+      "scope": "MultinicSampleJsonTest",
+      "lineRange": {
+        "start": 49,
+        "end": 50
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_remove_fixed_ip",
+      "kind": "method",
+      "scope": "MultinicSampleJsonTest",
+      "lineRange": {
+        "start": 52,
+        "end": 58
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 6,
+      "ccn": 1,
+      "visibility": "public"
+    }
+  ],
+  "referencedSymbols": [
+    {
+      "name": "api_sample_base.ApiSampleTestBaseV21",
+      "usage": "inherit",
+      "via": "nova.tests.functional.api_sample_tests",
+      "count": 1,
+      "lineRange": {
+        "start": 20,
+        "end": 20
+      }
+    },
+    {
+      "name": "super",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 25,
+        "end": 25
+      }
+    }
+  ],
+  "dependencies": [
+    {
+      "style": "from",
+      "module": "nova.tests",
+      "names": [
+        {
+          "alias": null,
+          "name": "fixtures"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 16,
+        "end": 16
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.tests.functional.api_sample_tests",
+      "names": [
+        {
+          "alias": null,
+          "name": "api_sample_base"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 17,
+        "end": 17
+      }
+    }
+  ],
+  "sideEffects": [
+    {
+      "kind": "global-mutation",
+      "target": "ADMIN_API = True",
+      "lineRange": {
+        "start": 21,
+        "end": 21
+      }
+    }
+  ],
+  "securitySurface": [
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "server.update(extra_params)",
+      "lineRange": {
+        "start": 34,
+        "end": 34
+      }
+    }
+  ],
+  "injection_flags": [],
+  "warnings": []
+}

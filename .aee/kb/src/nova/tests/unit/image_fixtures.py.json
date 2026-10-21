@@ -1,0 +1,157 @@
+{
+  "file": "src/nova/tests/unit/image_fixtures.py",
+  "hash": "8381bc51fad31d0438613fdad3b4201fe7dc3e17cde909b7f9811893d2c6c4d3",
+  "language": "Python",
+  "component": "nova",
+  "package": null,
+  "lines": {
+    "blank": 15,
+    "code": 47,
+    "comment": 17,
+    "total": 79
+  },
+  "symbols": [
+    {
+      "name": "NOW_DATE",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 19,
+        "end": 19
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "get_image_fixtures",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 22,
+        "end": 79
+      },
+      "source": "aee-inventory",
+      "parameters": [],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "fixtures",
+          "line": 79
+        }
+      ],
+      "nloc": 25,
+      "ccn": 4,
+      "exported": true
+    },
+    {
+      "name": "add_fixture",
+      "kind": "function",
+      "scope": "get_image_fixtures",
+      "lineRange": {
+        "start": 45,
+        "end": 48
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "**kwargs"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "visibility": "public"
+    }
+  ],
+  "referencedSymbols": [
+    {
+      "name": "datetime.datetime",
+      "usage": "call",
+      "via": "datetime",
+      "count": 1,
+      "lineRange": {
+        "start": 19,
+        "end": 19
+      }
+    },
+    {
+      "name": "uuidutils.generate_uuid",
+      "usage": "call",
+      "via": "oslo_utils",
+      "count": 4,
+      "lineRange": {
+        "start": 51,
+        "end": 51
+      }
+    },
+    {
+      "name": "str",
+      "usage": "call",
+      "via": null,
+      "count": 4,
+      "lineRange": {
+        "start": 52,
+        "end": 52
+      }
+    }
+  ],
+  "dependencies": [
+    {
+      "style": "import",
+      "module": "datetime",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 13,
+        "end": 13
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_utils",
+      "names": [
+        {
+          "alias": null,
+          "name": "uuidutils"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 15,
+        "end": 15
+      }
+    }
+  ],
+  "sideEffects": [
+    {
+      "kind": "network",
+      "target": "`glanceclient.client.Client.images.list`. The IDs of the images are random,",
+      "lineRange": {
+        "start": 27,
+        "end": 27
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "NOW_DATE = datetime.datetime(2010, 10, 11, 10, 30, 22)",
+      "lineRange": {
+        "start": 19,
+        "end": 19
+      }
+    }
+  ],
+  "securitySurface": [
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "kwargs.update(created_at=NOW_DATE,",
+      "lineRange": {
+        "start": 46,
+        "end": 46
+      }
+    }
+  ],
+  "injection_flags": [],
+  "warnings": []
+}

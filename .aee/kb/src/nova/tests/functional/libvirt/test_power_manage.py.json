@@ -1,0 +1,1233 @@
+{
+  "file": "src/nova/tests/functional/libvirt/test_power_manage.py",
+  "hash": "50864f98aafd1b2f04157d57f746387edc96fd1e6c794fdfd856aed161fc2f70",
+  "language": "Python",
+  "component": "nova",
+  "package": null,
+  "lines": {
+    "blank": 91,
+    "code": 340,
+    "comment": 71,
+    "total": 502
+  },
+  "symbols": [
+    {
+      "name": "PowerManagementTestsBase",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 27,
+        "end": 91
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "ADDITIONAL_FILTERS",
+      "kind": "constant",
+      "scope": "PowerManagementTestsBase",
+      "lineRange": {
+        "start": 29,
+        "end": 29
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "ADMIN_API",
+      "kind": "constant",
+      "scope": "PowerManagementTestsBase",
+      "lineRange": {
+        "start": 31,
+        "end": 31
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "setUp",
+      "kind": "method",
+      "scope": "PowerManagementTestsBase",
+      "lineRange": {
+        "start": 33,
+        "end": 70
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 29,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "_assert_server_cpus_state",
+      "kind": "method",
+      "scope": "PowerManagementTestsBase",
+      "lineRange": {
+        "start": 72,
+        "end": 79
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "server"
+        },
+        {
+          "default": "'online'",
+          "name": "expected"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "instance_pcpus",
+          "line": 79
+        }
+      ],
+      "nloc": 8,
+      "ccn": 2,
+      "visibility": "private"
+    },
+    {
+      "name": "_assert_cpu_set_state",
+      "kind": "method",
+      "scope": "PowerManagementTestsBase",
+      "lineRange": {
+        "start": 81,
+        "end": 91
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "cpu_set"
+        },
+        {
+          "default": "'online'",
+          "name": "expected"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 11,
+      "ccn": 6,
+      "visibility": "private"
+    },
+    {
+      "name": "FakeCore",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 94,
+        "end": 109
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "__init__",
+      "kind": "method",
+      "scope": "FakeCore",
+      "lineRange": {
+        "start": 96,
+        "end": 98
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "i"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 3,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "online",
+      "kind": "method",
+      "scope": "FakeCore",
+      "lineRange": {
+        "start": 101,
+        "end": 102
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "self.power_state == 'online'",
+          "line": 102
+        }
+      ],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "online",
+      "kind": "method",
+      "scope": "FakeCore",
+      "lineRange": {
+        "start": 105,
+        "end": 109
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "state"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 5,
+      "ccn": 2,
+      "visibility": "public"
+    },
+    {
+      "name": "CoresStub",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 112,
+        "end": 120
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "__init__",
+      "kind": "method",
+      "scope": "CoresStub",
+      "lineRange": {
+        "start": 114,
+        "end": 115
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "__call__",
+      "kind": "method",
+      "scope": "CoresStub",
+      "lineRange": {
+        "start": 117,
+        "end": 120
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "i"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "self.cores[i]",
+          "line": 120
+        }
+      ],
+      "nloc": 4,
+      "ccn": 2,
+      "visibility": "public"
+    },
+    {
+      "name": "PowerManagementLiveMigrationTestsBase",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 123,
+        "end": 163
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "setUp",
+      "kind": "method",
+      "scope": "PowerManagementLiveMigrationTestsBase",
+      "lineRange": {
+        "start": 126,
+        "end": 159
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 24,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "assert_cores",
+      "kind": "method",
+      "scope": "PowerManagementLiveMigrationTestsBase",
+      "lineRange": {
+        "start": 161,
+        "end": 163
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "host"
+        },
+        {
+          "name": "cores"
+        },
+        {
+          "default": "True",
+          "name": "online"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 3,
+      "ccn": 2,
+      "visibility": "public"
+    },
+    {
+      "name": "PowerManagementLiveMigrationTests",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 166,
+        "end": 189
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "test_live_migrate_server",
+      "kind": "method",
+      "scope": "PowerManagementLiveMigrationTests",
+      "lineRange": {
+        "start": 168,
+        "end": 177
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 8,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_live_migrate_server_with_emulator_threads_isolate",
+      "kind": "method",
+      "scope": "PowerManagementLiveMigrationTests",
+      "lineRange": {
+        "start": 179,
+        "end": 189
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 8,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "PowerManagementLiveMigrationRollbackTests",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 192,
+        "end": 221
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "_migrate_stub",
+      "kind": "method",
+      "scope": "PowerManagementLiveMigrationRollbackTests",
+      "lineRange": {
+        "start": 195,
+        "end": 198
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "domain"
+        },
+        {
+          "name": "destination"
+        },
+        {
+          "name": "params"
+        },
+        {
+          "name": "flags"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 4,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "test_live_migrate_server_rollback",
+      "kind": "method",
+      "scope": "PowerManagementLiveMigrationRollbackTests",
+      "lineRange": {
+        "start": 200,
+        "end": 208
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 9,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_live_migrate_server_with_emulator_threads_isolate_rollback",
+      "kind": "method",
+      "scope": "PowerManagementLiveMigrationRollbackTests",
+      "lineRange": {
+        "start": 210,
+        "end": 221
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 9,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "PowerManagementTests",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 224,
+        "end": 375
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "setUp",
+      "kind": "method",
+      "scope": "PowerManagementTests",
+      "lineRange": {
+        "start": 227,
+        "end": 245
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 14,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_compute_service_starts_with_power_management_and_zero_pcpu",
+      "kind": "method",
+      "scope": "PowerManagementTests",
+      "lineRange": {
+        "start": 247,
+        "end": 253
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 6,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_create_server",
+      "kind": "method",
+      "scope": "PowerManagementTests",
+      "lineRange": {
+        "start": 255,
+        "end": 268
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "server",
+          "line": 268
+        }
+      ],
+      "nloc": 11,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_delete_server",
+      "kind": "method",
+      "scope": "PowerManagementTests",
+      "lineRange": {
+        "start": 270,
+        "end": 275
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 5,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_delete_server_device_busy",
+      "kind": "method",
+      "scope": "PowerManagementTests",
+      "lineRange": {
+        "start": 277,
+        "end": 295
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 15,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_create_server_with_emulator_threads_isolate",
+      "kind": "method",
+      "scope": "PowerManagementTests",
+      "lineRange": {
+        "start": 297,
+        "end": 311
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 13,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_start_stop_server_with_emulator_threads_isolate",
+      "kind": "method",
+      "scope": "PowerManagementTests",
+      "lineRange": {
+        "start": 313,
+        "end": 331
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 16,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_stop_start_server",
+      "kind": "method",
+      "scope": "PowerManagementTests",
+      "lineRange": {
+        "start": 333,
+        "end": 344
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 8,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_resize",
+      "kind": "method",
+      "scope": "PowerManagementTests",
+      "lineRange": {
+        "start": 346,
+        "end": 367
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 15,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_changing_strategy_fails",
+      "kind": "method",
+      "scope": "PowerManagementTests",
+      "lineRange": {
+        "start": 369,
+        "end": 375
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 4,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "PowerManagementTestsGovernor",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 378,
+        "end": 420
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "setUp",
+      "kind": "method",
+      "scope": "PowerManagementTestsGovernor",
+      "lineRange": {
+        "start": 381,
+        "end": 397
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 13,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_create",
+      "kind": "method",
+      "scope": "PowerManagementTestsGovernor",
+      "lineRange": {
+        "start": 399,
+        "end": 410
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 7,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_changing_strategy_fails",
+      "kind": "method",
+      "scope": "PowerManagementTestsGovernor",
+      "lineRange": {
+        "start": 412,
+        "end": 420
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 5,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "PowerManagementTestsGovernorNotSupported",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 423,
+        "end": 453
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "setUp",
+      "kind": "method",
+      "scope": "PowerManagementTestsGovernorNotSupported",
+      "lineRange": {
+        "start": 426,
+        "end": 441
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 12,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_enabling_governor_strategy_fails",
+      "kind": "method",
+      "scope": "PowerManagementTestsGovernorNotSupported",
+      "lineRange": {
+        "start": 443,
+        "end": 446
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 4,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_enabling_cpu_state_strategy_works",
+      "kind": "method",
+      "scope": "PowerManagementTestsGovernorNotSupported",
+      "lineRange": {
+        "start": 448,
+        "end": 453
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 6,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "PowerManagementMixedInstances",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 456,
+        "end": 502
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "setUp",
+      "kind": "method",
+      "scope": "PowerManagementMixedInstances",
+      "lineRange": {
+        "start": 461,
+        "end": 482
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 14,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_standard_server_works_and_passes",
+      "kind": "method",
+      "scope": "PowerManagementMixedInstances",
+      "lineRange": {
+        "start": 484,
+        "end": 502
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 11,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "online",
+      "kind": "property",
+      "scope": "FakeCore",
+      "lineRange": {
+        "start": 100,
+        "end": 102
+      },
+      "visibility": "public",
+      "source": "manual"
+    }
+  ],
+  "referencedSymbols": [
+    {
+      "name": "base.ServersTestBase",
+      "usage": "inherit",
+      "via": "nova.tests.functional.libvirt",
+      "count": 1,
+      "lineRange": {
+        "start": 27,
+        "end": 27
+      }
+    },
+    {
+      "name": "super",
+      "usage": "call",
+      "via": null,
+      "count": 6,
+      "lineRange": {
+        "start": 34,
+        "end": 34
+      }
+    },
+    {
+      "name": "nova_context.get_admin_context",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 36,
+        "end": 36
+      }
+    },
+    {
+      "name": "mock.Mock",
+      "usage": "call",
+      "via": "unittest",
+      "count": 1,
+      "lineRange": {
+        "start": 42,
+        "end": 42
+      }
+    },
+    {
+      "name": "numa_filter_class",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 42,
+        "end": 42
+      }
+    },
+    {
+      "name": "mock.patch",
+      "usage": "call",
+      "via": "unittest",
+      "count": 2,
+      "lineRange": {
+        "start": 43,
+        "end": 43
+      }
+    },
+    {
+      "name": "fixtures.MockPatch",
+      "usage": "call",
+      "via": "fixtures",
+      "count": 2,
+      "lineRange": {
+        "start": 50,
+        "end": 50
+      }
+    },
+    {
+      "name": "nova_fixtures.PrivsepFixture",
+      "usage": "call",
+      "via": "nova.tests",
+      "count": 1,
+      "lineRange": {
+        "start": 55,
+        "end": 55
+      }
+    },
+    {
+      "name": "objects.Instance.get_by_uuid",
+      "usage": "call",
+      "via": "nova",
+      "count": 5,
+      "lineRange": {
+        "start": 73,
+        "end": 73
+      }
+    },
+    {
+      "name": "cpu_api.Core",
+      "usage": "call",
+      "via": "nova.virt.libvirt.cpu",
+      "count": 2,
+      "lineRange": {
+        "start": 83,
+        "end": 83
+      }
+    },
+    {
+      "name": "object",
+      "usage": "inherit",
+      "via": null,
+      "count": 2,
+      "lineRange": {
+        "start": 94,
+        "end": 94
+      }
+    },
+    {
+      "name": "base.LibvirtMigrationMixin",
+      "usage": "inherit",
+      "via": "nova.tests.functional.libvirt",
+      "count": 1,
+      "lineRange": {
+        "start": 123,
+        "end": 123
+      }
+    },
+    {
+      "name": "nova_fixtures.SysFileSystemFixture",
+      "usage": "call",
+      "via": "nova.tests",
+      "count": 5,
+      "lineRange": {
+        "start": 129,
+        "end": 129
+      }
+    },
+    {
+      "name": "fakelibvirt.HostInfo",
+      "usage": "call",
+      "via": "nova.tests.fixtures",
+      "count": 6,
+      "lineRange": {
+        "start": 144,
+        "end": 144
+      }
+    },
+    {
+      "name": "range",
+      "usage": "call",
+      "via": null,
+      "count": 8,
+      "lineRange": {
+        "start": 176,
+        "end": 176
+      }
+    },
+    {
+      "name": "hardware.get_cpu_dedicated_set",
+      "usage": "call",
+      "via": "nova.virt",
+      "count": 8,
+      "lineRange": {
+        "start": 244,
+        "end": 244
+      }
+    },
+    {
+      "name": "exception.DeviceBusy",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 286,
+        "end": 286
+      }
+    }
+  ],
+  "dependencies": [
+    {
+      "style": "import",
+      "module": "fixtures",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 13,
+        "end": 13
+      }
+    },
+    {
+      "style": "from",
+      "module": "unittest",
+      "names": [
+        {
+          "alias": null,
+          "name": "mock"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 15,
+        "end": 15
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": "nova_context",
+          "name": "context"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 17,
+        "end": 17
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "exception"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 18,
+        "end": 18
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "objects"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 19,
+        "end": 19
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.tests",
+      "names": [
+        {
+          "alias": "nova_fixtures",
+          "name": "fixtures"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 20,
+        "end": 20
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.tests.fixtures",
+      "names": [
+        {
+          "alias": "fakelibvirt",
+          "name": "libvirt"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 21,
+        "end": 21
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.tests.functional.libvirt",
+      "names": [
+        {
+          "alias": null,
+          "name": "base"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 22,
+        "end": 22
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.virt",
+      "names": [
+        {
+          "alias": null,
+          "name": "hardware"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 23,
+        "end": 23
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.virt.libvirt.cpu",
+      "names": [
+        {
+          "alias": "cpu_api",
+          "name": "api"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 24,
+        "end": 24
+      }
+    }
+  ],
+  "sideEffects": [
+    {
+      "kind": "global-mutation",
+      "target": "ADDITIONAL_FILTERS = ['NUMATopologyFilter']",
+      "lineRange": {
+        "start": 29,
+        "end": 29
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "ADMIN_API = True",
+      "lineRange": {
+        "start": 31,
+        "end": 31
+      }
+    }
+  ],
+  "securitySurface": [],
+  "injection_flags": [],
+  "warnings": []
+}

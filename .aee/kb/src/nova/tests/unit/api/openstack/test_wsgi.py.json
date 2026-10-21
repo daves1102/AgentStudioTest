@@ -1,0 +1,4488 @@
+{
+  "file": "src/nova/tests/unit/api/openstack/test_wsgi.py",
+  "hash": "8ed4657084dfc5c79338d5500b1a63df8f1b3faf5cb0aceaf1ac45fc909ff69a",
+  "language": "Python",
+  "component": "nova",
+  "package": null,
+  "lines": {
+    "blank": 175,
+    "code": 769,
+    "comment": 30,
+    "total": 974
+  },
+  "symbols": [
+    {
+      "name": "MicroversionedTest",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 28,
+        "end": 43
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "scenarios",
+      "kind": "field",
+      "scope": "MicroversionedTest",
+      "lineRange": {
+        "start": 30,
+        "end": 37
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "_make_microversion_header",
+      "kind": "method",
+      "scope": "MicroversionedTest",
+      "lineRange": {
+        "start": 39,
+        "end": 43
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "value"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "{self.header_name: value}",
+          "line": 41
+        },
+        {
+          "expr": "{self.header_name: 'compute %s' % value}",
+          "line": 43
+        }
+      ],
+      "nloc": 5,
+      "ccn": 2,
+      "visibility": "private"
+    },
+    {
+      "name": "RequestTest",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 46,
+        "end": 165
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "setUp",
+      "kind": "method",
+      "scope": "RequestTest",
+      "lineRange": {
+        "start": 48,
+        "end": 52
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 5,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_content_type_missing",
+      "kind": "method",
+      "scope": "RequestTest",
+      "lineRange": {
+        "start": 54,
+        "end": 57
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 4,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_content_type_unsupported",
+      "kind": "method",
+      "scope": "RequestTest",
+      "lineRange": {
+        "start": 59,
+        "end": 64
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 6,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_content_type_with_charset",
+      "kind": "method",
+      "scope": "RequestTest",
+      "lineRange": {
+        "start": 66,
+        "end": 70
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 5,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_content_type_accept_default",
+      "kind": "method",
+      "scope": "RequestTest",
+      "lineRange": {
+        "start": 72,
+        "end": 76
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 5,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_content_type_accept_with_quality_values",
+      "kind": "method",
+      "scope": "RequestTest",
+      "lineRange": {
+        "start": 78,
+        "end": 84
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 7,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_from_request",
+      "kind": "method",
+      "scope": "RequestTest",
+      "lineRange": {
+        "start": 86,
+        "end": 90
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 5,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_asterisk",
+      "kind": "method",
+      "scope": "RequestTest",
+      "lineRange": {
+        "start": 92,
+        "end": 102
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 5,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_asterisk_followed_by_other_language",
+      "kind": "method",
+      "scope": "RequestTest",
+      "lineRange": {
+        "start": 104,
+        "end": 108
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 5,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_truncate",
+      "kind": "method",
+      "scope": "RequestTest",
+      "lineRange": {
+        "start": 110,
+        "end": 114
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 5,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_secondary",
+      "kind": "method",
+      "scope": "RequestTest",
+      "lineRange": {
+        "start": 116,
+        "end": 120
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 5,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_none_found",
+      "kind": "method",
+      "scope": "RequestTest",
+      "lineRange": {
+        "start": 122,
+        "end": 126
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 5,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_no_lang_header",
+      "kind": "method",
+      "scope": "RequestTest",
+      "lineRange": {
+        "start": 128,
+        "end": 132
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 5,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_api_version_request_header_none",
+      "kind": "method",
+      "scope": "RequestTest",
+      "lineRange": {
+        "start": 134,
+        "end": 138
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 5,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_api_version_request_header",
+      "kind": "method",
+      "scope": "RequestTest",
+      "lineRange": {
+        "start": 141,
+        "end": 148
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_maxver"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 7,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_api_version_request_header_latest",
+      "kind": "method",
+      "scope": "RequestTest",
+      "lineRange": {
+        "start": 151,
+        "end": 158
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_maxver"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 7,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_api_version_request_header_invalid",
+      "kind": "method",
+      "scope": "RequestTest",
+      "lineRange": {
+        "start": 160,
+        "end": 165
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 5,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "ActionDispatcherTest",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 168,
+        "end": 184
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "test_dispatch",
+      "kind": "method",
+      "scope": "ActionDispatcherTest",
+      "lineRange": {
+        "start": 169,
+        "end": 172
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 4,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_dispatch_action_None",
+      "kind": "method",
+      "scope": "ActionDispatcherTest",
+      "lineRange": {
+        "start": 174,
+        "end": 178
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 5,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_dispatch_default",
+      "kind": "method",
+      "scope": "ActionDispatcherTest",
+      "lineRange": {
+        "start": 180,
+        "end": 184
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 5,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "JSONDictSerializerTest",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 187,
+        "end": 194
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "test_json",
+      "kind": "method",
+      "scope": "JSONDictSerializerTest",
+      "lineRange": {
+        "start": 188,
+        "end": 194
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 7,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "JSONDeserializerTest",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 197,
+        "end": 246
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "test_json",
+      "kind": "method",
+      "scope": "JSONDeserializerTest",
+      "lineRange": {
+        "start": 198,
+        "end": 217
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 20,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_json_valid_utf8",
+      "kind": "method",
+      "scope": "JSONDeserializerTest",
+      "lineRange": {
+        "start": 219,
+        "end": 235
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 13,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_json_invalid_utf8",
+      "kind": "method",
+      "scope": "JSONDeserializerTest",
+      "lineRange": {
+        "start": 237,
+        "end": 246
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 4,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "ResourceTest",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 249,
+        "end": 781
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "get_req_id_header_name",
+      "kind": "method",
+      "scope": "ResourceTest",
+      "lineRange": {
+        "start": 251,
+        "end": 256
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "request"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "header_name",
+          "line": 256
+        }
+      ],
+      "nloc": 5,
+      "ccn": 2,
+      "visibility": "public"
+    },
+    {
+      "name": "test_resource_receives_api_version_request_default",
+      "kind": "method",
+      "scope": "ResourceTest",
+      "lineRange": {
+        "start": 258,
+        "end": 271
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 8,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "Controller",
+      "kind": "class",
+      "scope": "ResourceTest.test_resource_receives_api_version_request_default",
+      "lineRange": {
+        "start": 259,
+        "end": 265
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "index",
+      "kind": "method",
+      "scope": "ResourceTest.test_resource_receives_api_version_request_default.Controller",
+      "lineRange": {
+        "start": 260,
+        "end": 265
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "req"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "'success'",
+          "line": 265
+        }
+      ],
+      "visibility": "public"
+    },
+    {
+      "name": "test_resource_receives_api_version_request",
+      "kind": "method",
+      "scope": "ResourceTest",
+      "lineRange": {
+        "start": 274,
+        "end": 290
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_maxver"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 11,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "Controller",
+      "kind": "class",
+      "scope": "ResourceTest.test_resource_receives_api_version_request",
+      "lineRange": {
+        "start": 278,
+        "end": 283
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "index",
+      "kind": "method",
+      "scope": "ResourceTest.test_resource_receives_api_version_request.Controller",
+      "lineRange": {
+        "start": 279,
+        "end": 283
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "req"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "'success'",
+          "line": 283
+        }
+      ],
+      "visibility": "public"
+    },
+    {
+      "name": "test_resource_receives_api_version_request_invalid",
+      "kind": "method",
+      "scope": "ResourceTest",
+      "lineRange": {
+        "start": 292,
+        "end": 303
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 9,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "Controller",
+      "kind": "class",
+      "scope": "ResourceTest.test_resource_receives_api_version_request_invalid",
+      "lineRange": {
+        "start": 295,
+        "end": 297
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "index",
+      "kind": "method",
+      "scope": "ResourceTest.test_resource_receives_api_version_request_invalid.Controller",
+      "lineRange": {
+        "start": 296,
+        "end": 297
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "req"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "'success'",
+          "line": 297
+        }
+      ],
+      "visibility": "public"
+    },
+    {
+      "name": "test_resource_call_with_method_get",
+      "kind": "method",
+      "scope": "ResourceTest",
+      "lineRange": {
+        "start": 305,
+        "end": 323
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 16,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "Controller",
+      "kind": "class",
+      "scope": "ResourceTest.test_resource_call_with_method_get",
+      "lineRange": {
+        "start": 306,
+        "end": 308
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "index",
+      "kind": "method",
+      "scope": "ResourceTest.test_resource_call_with_method_get.Controller",
+      "lineRange": {
+        "start": 307,
+        "end": 308
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "req"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "'success'",
+          "line": 308
+        }
+      ],
+      "visibility": "public"
+    },
+    {
+      "name": "test_resource_call_with_method_post",
+      "kind": "method",
+      "scope": "ResourceTest",
+      "lineRange": {
+        "start": 325,
+        "end": 358
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 27,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "Controller",
+      "kind": "class",
+      "scope": "ResourceTest.test_resource_call_with_method_post",
+      "lineRange": {
+        "start": 326,
+        "end": 332
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "create",
+      "kind": "method",
+      "scope": "ResourceTest.test_resource_call_with_method_post.Controller",
+      "lineRange": {
+        "start": 328,
+        "end": 332
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "req"
+        },
+        {
+          "name": "body"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "\"success\"",
+          "line": 332
+        }
+      ],
+      "visibility": "public"
+    },
+    {
+      "name": "test_resource_call_with_method_put",
+      "kind": "method",
+      "scope": "ResourceTest",
+      "lineRange": {
+        "start": 360,
+        "end": 393
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 28,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "Controller",
+      "kind": "class",
+      "scope": "ResourceTest.test_resource_call_with_method_put",
+      "lineRange": {
+        "start": 361,
+        "end": 366
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "update",
+      "kind": "method",
+      "scope": "ResourceTest.test_resource_call_with_method_put.Controller",
+      "lineRange": {
+        "start": 362,
+        "end": 366
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "req"
+        },
+        {
+          "name": "id"
+        },
+        {
+          "name": "body"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "\"success\"",
+          "line": 366
+        }
+      ],
+      "visibility": "public"
+    },
+    {
+      "name": "test_resource_call_with_method_delete",
+      "kind": "method",
+      "scope": "ResourceTest",
+      "lineRange": {
+        "start": 395,
+        "end": 410
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 12,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "Controller",
+      "kind": "class",
+      "scope": "ResourceTest.test_resource_call_with_method_delete",
+      "lineRange": {
+        "start": 396,
+        "end": 398
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "delete",
+      "kind": "method",
+      "scope": "ResourceTest.test_resource_call_with_method_delete.Controller",
+      "lineRange": {
+        "start": 397,
+        "end": 398
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "req"
+        },
+        {
+          "name": "id"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "\"success\"",
+          "line": 398
+        }
+      ],
+      "visibility": "public"
+    },
+    {
+      "name": "test_resource_forbidden",
+      "kind": "method",
+      "scope": "ResourceTest",
+      "lineRange": {
+        "start": 412,
+        "end": 420
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 7,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "Controller",
+      "kind": "class",
+      "scope": "ResourceTest.test_resource_forbidden",
+      "lineRange": {
+        "start": 413,
+        "end": 415
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "index",
+      "kind": "method",
+      "scope": "ResourceTest.test_resource_forbidden.Controller",
+      "lineRange": {
+        "start": 414,
+        "end": 415
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "req"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "visibility": "public"
+    },
+    {
+      "name": "test_resource_not_authorized",
+      "kind": "method",
+      "scope": "ResourceTest",
+      "lineRange": {
+        "start": 422,
+        "end": 430
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 7,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "Controller",
+      "kind": "class",
+      "scope": "ResourceTest.test_resource_not_authorized",
+      "lineRange": {
+        "start": 423,
+        "end": 425
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "index",
+      "kind": "method",
+      "scope": "ResourceTest.test_resource_not_authorized.Controller",
+      "lineRange": {
+        "start": 424,
+        "end": 425
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "req"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "visibility": "public"
+    },
+    {
+      "name": "test_dispatch",
+      "kind": "method",
+      "scope": "ResourceTest",
+      "lineRange": {
+        "start": 432,
+        "end": 442
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 9,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "Controller",
+      "kind": "class",
+      "scope": "ResourceTest.test_dispatch",
+      "lineRange": {
+        "start": 433,
+        "end": 435
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "index",
+      "kind": "method",
+      "scope": "ResourceTest.test_dispatch.Controller",
+      "lineRange": {
+        "start": 434,
+        "end": 435
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "req"
+        },
+        {
+          "default": "None",
+          "name": "pants"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "pants",
+          "line": 435
+        }
+      ],
+      "visibility": "public"
+    },
+    {
+      "name": "test_get_method_unknown_controller_method",
+      "kind": "method",
+      "scope": "ResourceTest",
+      "lineRange": {
+        "start": 444,
+        "end": 452
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 7,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "Controller",
+      "kind": "class",
+      "scope": "ResourceTest.test_get_method_unknown_controller_method",
+      "lineRange": {
+        "start": 445,
+        "end": 447
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "index",
+      "kind": "method",
+      "scope": "ResourceTest.test_get_method_unknown_controller_method.Controller",
+      "lineRange": {
+        "start": 446,
+        "end": 447
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "req"
+        },
+        {
+          "default": "None",
+          "name": "pants"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "pants",
+          "line": 447
+        }
+      ],
+      "visibility": "public"
+    },
+    {
+      "name": "test_get_method_action_json",
+      "kind": "method",
+      "scope": "ResourceTest",
+      "lineRange": {
+        "start": 454,
+        "end": 465
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 10,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "Controller",
+      "kind": "class",
+      "scope": "ResourceTest.test_get_method_action_json",
+      "lineRange": {
+        "start": 455,
+        "end": 458
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "_action_foo",
+      "kind": "method",
+      "scope": "ResourceTest.test_get_method_action_json.Controller",
+      "lineRange": {
+        "start": 457,
+        "end": 458
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "req"
+        },
+        {
+          "name": "id"
+        },
+        {
+          "name": "body"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "body",
+          "line": 458
+        }
+      ],
+      "visibility": "private"
+    },
+    {
+      "name": "test_get_method_action_bad_body",
+      "kind": "method",
+      "scope": "ResourceTest",
+      "lineRange": {
+        "start": 467,
+        "end": 476
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 8,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "Controller",
+      "kind": "class",
+      "scope": "ResourceTest.test_get_method_action_bad_body",
+      "lineRange": {
+        "start": 468,
+        "end": 471
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "_action_foo",
+      "kind": "method",
+      "scope": "ResourceTest.test_get_method_action_bad_body.Controller",
+      "lineRange": {
+        "start": 470,
+        "end": 471
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "req"
+        },
+        {
+          "name": "id"
+        },
+        {
+          "name": "body"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "body",
+          "line": 471
+        }
+      ],
+      "visibility": "private"
+    },
+    {
+      "name": "test_get_method_unknown_controller_action",
+      "kind": "method",
+      "scope": "ResourceTest",
+      "lineRange": {
+        "start": 478,
+        "end": 488
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 9,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "Controller",
+      "kind": "class",
+      "scope": "ResourceTest.test_get_method_unknown_controller_action",
+      "lineRange": {
+        "start": 479,
+        "end": 482
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "_action_foo",
+      "kind": "method",
+      "scope": "ResourceTest.test_get_method_unknown_controller_action.Controller",
+      "lineRange": {
+        "start": 481,
+        "end": 482
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "req"
+        },
+        {
+          "name": "id"
+        },
+        {
+          "name": "body"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "body",
+          "line": 482
+        }
+      ],
+      "visibility": "private"
+    },
+    {
+      "name": "test_get_method_action_method",
+      "kind": "method",
+      "scope": "ResourceTest",
+      "lineRange": {
+        "start": 490,
+        "end": 500
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 9,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "Controller",
+      "kind": "class",
+      "scope": "ResourceTest.test_get_method_action_method",
+      "lineRange": {
+        "start": 491,
+        "end": 493
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "action",
+      "kind": "method",
+      "scope": "ResourceTest.test_get_method_action_method.Controller",
+      "lineRange": {
+        "start": 492,
+        "end": 493
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "req"
+        },
+        {
+          "default": "None",
+          "name": "pants"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "pants",
+          "line": 493
+        }
+      ],
+      "visibility": "public"
+    },
+    {
+      "name": "test_get_action_args",
+      "kind": "method",
+      "scope": "ResourceTest",
+      "lineRange": {
+        "start": 502,
+        "end": 521
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 15,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "Controller",
+      "kind": "class",
+      "scope": "ResourceTest.test_get_action_args",
+      "lineRange": {
+        "start": 503,
+        "end": 505
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "index",
+      "kind": "method",
+      "scope": "ResourceTest.test_get_action_args.Controller",
+      "lineRange": {
+        "start": 504,
+        "end": 505
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "req"
+        },
+        {
+          "default": "None",
+          "name": "pants"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "pants",
+          "line": 505
+        }
+      ],
+      "visibility": "public"
+    },
+    {
+      "name": "test_get_body_bad_content",
+      "kind": "method",
+      "scope": "ResourceTest",
+      "lineRange": {
+        "start": 523,
+        "end": 536
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 10,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "Controller",
+      "kind": "class",
+      "scope": "ResourceTest.test_get_body_bad_content",
+      "lineRange": {
+        "start": 524,
+        "end": 526
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "index",
+      "kind": "method",
+      "scope": "ResourceTest.test_get_body_bad_content.Controller",
+      "lineRange": {
+        "start": 525,
+        "end": 526
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "req"
+        },
+        {
+          "default": "None",
+          "name": "pants"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "pants",
+          "line": 526
+        }
+      ],
+      "visibility": "public"
+    },
+    {
+      "name": "test_get_body_no_content_type",
+      "kind": "method",
+      "scope": "ResourceTest",
+      "lineRange": {
+        "start": 538,
+        "end": 551
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 10,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "Controller",
+      "kind": "class",
+      "scope": "ResourceTest.test_get_body_no_content_type",
+      "lineRange": {
+        "start": 539,
+        "end": 541
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "index",
+      "kind": "method",
+      "scope": "ResourceTest.test_get_body_no_content_type.Controller",
+      "lineRange": {
+        "start": 540,
+        "end": 541
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "req"
+        },
+        {
+          "default": "None",
+          "name": "pants"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "pants",
+          "line": 541
+        }
+      ],
+      "visibility": "public"
+    },
+    {
+      "name": "test_get_body_no_content_body",
+      "kind": "method",
+      "scope": "ResourceTest",
+      "lineRange": {
+        "start": 553,
+        "end": 567
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 11,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "Controller",
+      "kind": "class",
+      "scope": "ResourceTest.test_get_body_no_content_body",
+      "lineRange": {
+        "start": 554,
+        "end": 556
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "index",
+      "kind": "method",
+      "scope": "ResourceTest.test_get_body_no_content_body.Controller",
+      "lineRange": {
+        "start": 555,
+        "end": 556
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "req"
+        },
+        {
+          "default": "None",
+          "name": "pants"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "pants",
+          "line": 556
+        }
+      ],
+      "visibility": "public"
+    },
+    {
+      "name": "test_get_body_content_body_none",
+      "kind": "method",
+      "scope": "ResourceTest",
+      "lineRange": {
+        "start": 569,
+        "end": 577
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 7,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_get_body",
+      "kind": "method",
+      "scope": "ResourceTest",
+      "lineRange": {
+        "start": 579,
+        "end": 593
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 11,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "Controller",
+      "kind": "class",
+      "scope": "ResourceTest.test_get_body",
+      "lineRange": {
+        "start": 580,
+        "end": 582
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "index",
+      "kind": "method",
+      "scope": "ResourceTest.test_get_body.Controller",
+      "lineRange": {
+        "start": 581,
+        "end": 582
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "req"
+        },
+        {
+          "default": "None",
+          "name": "pants"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "pants",
+          "line": 582
+        }
+      ],
+      "visibility": "public"
+    },
+    {
+      "name": "test_get_request_id_with_dict_response_body",
+      "kind": "method",
+      "scope": "ResourceTest",
+      "lineRange": {
+        "start": 595,
+        "end": 605
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 9,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "Controller",
+      "kind": "class",
+      "scope": "ResourceTest.test_get_request_id_with_dict_response_body",
+      "lineRange": {
+        "start": 596,
+        "end": 598
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "index",
+      "kind": "method",
+      "scope": "ResourceTest.test_get_request_id_with_dict_response_body.Controller",
+      "lineRange": {
+        "start": 597,
+        "end": 598
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "req"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "{'foo': 'bar'}",
+          "line": 598
+        }
+      ],
+      "visibility": "public"
+    },
+    {
+      "name": "test_no_request_id_with_str_response_body",
+      "kind": "method",
+      "scope": "ResourceTest",
+      "lineRange": {
+        "start": 607,
+        "end": 621
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 10,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "Controller",
+      "kind": "class",
+      "scope": "ResourceTest.test_no_request_id_with_str_response_body",
+      "lineRange": {
+        "start": 608,
+        "end": 610
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "index",
+      "kind": "method",
+      "scope": "ResourceTest.test_no_request_id_with_str_response_body.Controller",
+      "lineRange": {
+        "start": 609,
+        "end": 610
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "req"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "'foo'",
+          "line": 610
+        }
+      ],
+      "visibility": "public"
+    },
+    {
+      "name": "test_get_request_id_no_response_body",
+      "kind": "method",
+      "scope": "ResourceTest",
+      "lineRange": {
+        "start": 623,
+        "end": 633
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 9,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "Controller",
+      "kind": "class",
+      "scope": "ResourceTest.test_get_request_id_no_response_body",
+      "lineRange": {
+        "start": 624,
+        "end": 626
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "index",
+      "kind": "method",
+      "scope": "ResourceTest.test_get_request_id_no_response_body.Controller",
+      "lineRange": {
+        "start": 625,
+        "end": 626
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "req"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "visibility": "public"
+    },
+    {
+      "name": "test_deserialize_default",
+      "kind": "method",
+      "scope": "ResourceTest",
+      "lineRange": {
+        "start": 635,
+        "end": 644
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 7,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "Controller",
+      "kind": "class",
+      "scope": "ResourceTest.test_deserialize_default",
+      "lineRange": {
+        "start": 636,
+        "end": 638
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "index",
+      "kind": "method",
+      "scope": "ResourceTest.test_deserialize_default.Controller",
+      "lineRange": {
+        "start": 637,
+        "end": 638
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "req"
+        },
+        {
+          "default": "None",
+          "name": "pants"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "pants",
+          "line": 638
+        }
+      ],
+      "visibility": "public"
+    },
+    {
+      "name": "test_register_actions",
+      "kind": "method",
+      "scope": "ResourceTest",
+      "lineRange": {
+        "start": 646,
+        "end": 669
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 17,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "Controller",
+      "kind": "class",
+      "scope": "ResourceTest.test_register_actions",
+      "lineRange": {
+        "start": 647,
+        "end": 649
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "index",
+      "kind": "method",
+      "scope": "ResourceTest.test_register_actions.Controller",
+      "lineRange": {
+        "start": 648,
+        "end": 649
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "req"
+        },
+        {
+          "default": "None",
+          "name": "pants"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "pants",
+          "line": 649
+        }
+      ],
+      "visibility": "public"
+    },
+    {
+      "name": "ControllerExtended",
+      "kind": "class",
+      "scope": "ResourceTest.test_register_actions",
+      "lineRange": {
+        "start": 651,
+        "end": 658
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "_action_foo",
+      "kind": "method",
+      "scope": "ResourceTest.test_register_actions.ControllerExtended",
+      "lineRange": {
+        "start": 653,
+        "end": 654
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "req"
+        },
+        {
+          "name": "id"
+        },
+        {
+          "name": "body"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "body",
+          "line": 654
+        }
+      ],
+      "visibility": "private"
+    },
+    {
+      "name": "_action_bar",
+      "kind": "method",
+      "scope": "ResourceTest.test_register_actions.ControllerExtended",
+      "lineRange": {
+        "start": 657,
+        "end": 658
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "req"
+        },
+        {
+          "name": "id"
+        },
+        {
+          "name": "body"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "body",
+          "line": 658
+        }
+      ],
+      "visibility": "private"
+    },
+    {
+      "name": "test_get_method",
+      "kind": "method",
+      "scope": "ResourceTest",
+      "lineRange": {
+        "start": 671,
+        "end": 679
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 7,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "Controller",
+      "kind": "class",
+      "scope": "ResourceTest.test_get_method",
+      "lineRange": {
+        "start": 672,
+        "end": 674
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "index",
+      "kind": "method",
+      "scope": "ResourceTest.test_get_method.Controller",
+      "lineRange": {
+        "start": 673,
+        "end": 674
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "req"
+        },
+        {
+          "default": "None",
+          "name": "pants"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "pants",
+          "line": 674
+        }
+      ],
+      "visibility": "public"
+    },
+    {
+      "name": "test_get_method_action",
+      "kind": "method",
+      "scope": "ResourceTest",
+      "lineRange": {
+        "start": 681,
+        "end": 695
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 11,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "Controller",
+      "kind": "class",
+      "scope": "ResourceTest.test_get_method_action",
+      "lineRange": {
+        "start": 682,
+        "end": 688
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "index",
+      "kind": "method",
+      "scope": "ResourceTest.test_get_method_action.Controller",
+      "lineRange": {
+        "start": 683,
+        "end": 684
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "req"
+        },
+        {
+          "default": "None",
+          "name": "pants"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "pants",
+          "line": 684
+        }
+      ],
+      "visibility": "public"
+    },
+    {
+      "name": "_action_foo",
+      "kind": "method",
+      "scope": "ResourceTest.test_get_method_action.Controller",
+      "lineRange": {
+        "start": 687,
+        "end": 688
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "req"
+        },
+        {
+          "name": "id"
+        },
+        {
+          "name": "body"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "body",
+          "line": 688
+        }
+      ],
+      "visibility": "private"
+    },
+    {
+      "name": "test_get_method_action_whitelist",
+      "kind": "method",
+      "scope": "ResourceTest",
+      "lineRange": {
+        "start": 697,
+        "end": 722
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 18,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "Controller",
+      "kind": "class",
+      "scope": "ResourceTest.test_get_method_action_whitelist",
+      "lineRange": {
+        "start": 698,
+        "end": 700
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "index",
+      "kind": "method",
+      "scope": "ResourceTest.test_get_method_action_whitelist.Controller",
+      "lineRange": {
+        "start": 699,
+        "end": 700
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "req"
+        },
+        {
+          "default": "None",
+          "name": "pants"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "pants",
+          "line": 700
+        }
+      ],
+      "visibility": "public"
+    },
+    {
+      "name": "ControllerExtended",
+      "kind": "class",
+      "scope": "ResourceTest.test_get_method_action_whitelist",
+      "lineRange": {
+        "start": 702,
+        "end": 709
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "_create",
+      "kind": "method",
+      "scope": "ResourceTest.test_get_method_action_whitelist.ControllerExtended",
+      "lineRange": {
+        "start": 704,
+        "end": 705
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "req"
+        },
+        {
+          "name": "body"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "visibility": "private"
+    },
+    {
+      "name": "_delete",
+      "kind": "method",
+      "scope": "ResourceTest.test_get_method_action_whitelist.ControllerExtended",
+      "lineRange": {
+        "start": 708,
+        "end": 709
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "req"
+        },
+        {
+          "name": "id"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "visibility": "private"
+    },
+    {
+      "name": "test_resource_exception_handler_type_error",
+      "kind": "method",
+      "scope": "ResourceTest",
+      "lineRange": {
+        "start": 724,
+        "end": 734
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 8,
+      "ccn": 2,
+      "visibility": "public"
+    },
+    {
+      "name": "foo",
+      "kind": "function",
+      "scope": "ResourceTest.test_resource_exception_handler_type_error",
+      "lineRange": {
+        "start": 726,
+        "end": 727
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "a"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "a",
+          "line": 727
+        }
+      ],
+      "visibility": "public"
+    },
+    {
+      "name": "test_resource_headers_are_utf8",
+      "kind": "method",
+      "scope": "ResourceTest",
+      "lineRange": {
+        "start": 736,
+        "end": 754
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 15,
+      "ccn": 2,
+      "visibility": "public"
+    },
+    {
+      "name": "Controller",
+      "kind": "class",
+      "scope": "ResourceTest.test_resource_headers_are_utf8",
+      "lineRange": {
+        "start": 742,
+        "end": 744
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "index",
+      "kind": "method",
+      "scope": "ResourceTest.test_resource_headers_are_utf8.Controller",
+      "lineRange": {
+        "start": 743,
+        "end": 744
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "req"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "resp",
+          "line": 744
+        }
+      ],
+      "visibility": "public"
+    },
+    {
+      "name": "test_resource_valid_utf8_body",
+      "kind": "method",
+      "scope": "ResourceTest",
+      "lineRange": {
+        "start": 756,
+        "end": 769
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 11,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "Controller",
+      "kind": "class",
+      "scope": "ResourceTest.test_resource_valid_utf8_body",
+      "lineRange": {
+        "start": 757,
+        "end": 759
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "update",
+      "kind": "method",
+      "scope": "ResourceTest.test_resource_valid_utf8_body.Controller",
+      "lineRange": {
+        "start": 758,
+        "end": 759
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "req"
+        },
+        {
+          "name": "id"
+        },
+        {
+          "name": "body"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "body",
+          "line": 759
+        }
+      ],
+      "visibility": "public"
+    },
+    {
+      "name": "test_resource_invalid_utf8",
+      "kind": "method",
+      "scope": "ResourceTest",
+      "lineRange": {
+        "start": 771,
+        "end": 781
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 8,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "Controller",
+      "kind": "class",
+      "scope": "ResourceTest.test_resource_invalid_utf8",
+      "lineRange": {
+        "start": 772,
+        "end": 774
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "update",
+      "kind": "method",
+      "scope": "ResourceTest.test_resource_invalid_utf8.Controller",
+      "lineRange": {
+        "start": 773,
+        "end": 774
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "req"
+        },
+        {
+          "name": "id"
+        },
+        {
+          "name": "body"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "body",
+          "line": 774
+        }
+      ],
+      "visibility": "public"
+    },
+    {
+      "name": "ResponseObjectTest",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 784,
+        "end": 824
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "test_default_code",
+      "kind": "method",
+      "scope": "ResponseObjectTest",
+      "lineRange": {
+        "start": 785,
+        "end": 787
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 3,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_modified_code",
+      "kind": "method",
+      "scope": "ResponseObjectTest",
+      "lineRange": {
+        "start": 789,
+        "end": 792
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 4,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_override_default_code",
+      "kind": "method",
+      "scope": "ResponseObjectTest",
+      "lineRange": {
+        "start": 794,
+        "end": 796
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 3,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_override_modified_code",
+      "kind": "method",
+      "scope": "ResponseObjectTest",
+      "lineRange": {
+        "start": 798,
+        "end": 801
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 4,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_set_header",
+      "kind": "method",
+      "scope": "ResponseObjectTest",
+      "lineRange": {
+        "start": 803,
+        "end": 806
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 4,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_get_header",
+      "kind": "method",
+      "scope": "ResponseObjectTest",
+      "lineRange": {
+        "start": 808,
+        "end": 811
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 4,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_del_header",
+      "kind": "method",
+      "scope": "ResponseObjectTest",
+      "lineRange": {
+        "start": 813,
+        "end": 817
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 5,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_header_isolation",
+      "kind": "method",
+      "scope": "ResponseObjectTest",
+      "lineRange": {
+        "start": 819,
+        "end": 824
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 6,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "ValidBodyTest",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 827,
+        "end": 853
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "setUp",
+      "kind": "method",
+      "scope": "ValidBodyTest",
+      "lineRange": {
+        "start": 829,
+        "end": 831
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 3,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_is_valid_body",
+      "kind": "method",
+      "scope": "ValidBodyTest",
+      "lineRange": {
+        "start": 833,
+        "end": 835
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 3,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_is_valid_body_none",
+      "kind": "method",
+      "scope": "ValidBodyTest",
+      "lineRange": {
+        "start": 837,
+        "end": 839
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 3,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_is_valid_body_empty",
+      "kind": "method",
+      "scope": "ValidBodyTest",
+      "lineRange": {
+        "start": 841,
+        "end": 843
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 3,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_is_valid_body_no_entity",
+      "kind": "method",
+      "scope": "ValidBodyTest",
+      "lineRange": {
+        "start": 845,
+        "end": 848
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 4,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_is_valid_body_malformed_entity",
+      "kind": "method",
+      "scope": "ValidBodyTest",
+      "lineRange": {
+        "start": 850,
+        "end": 853
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 4,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "APIVersionTestCase",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 856,
+        "end": 891
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "test_api_version",
+      "kind": "method",
+      "scope": "APIVersionTestCase",
+      "lineRange": {
+        "start": 858,
+        "end": 880
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 17,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "FakeController",
+      "kind": "class",
+      "scope": "APIVersionTestCase.test_api_version",
+      "lineRange": {
+        "start": 859,
+        "end": 862
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "fake_func",
+      "kind": "method",
+      "scope": "APIVersionTestCase.test_api_version.FakeController",
+      "lineRange": {
+        "start": 861,
+        "end": 862
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "req"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "{'resources': []}",
+          "line": 862
+        }
+      ],
+      "visibility": "public"
+    },
+    {
+      "name": "test_api_version_legacy",
+      "kind": "method",
+      "scope": "APIVersionTestCase",
+      "lineRange": {
+        "start": 882,
+        "end": 891
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 8,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "FakeController",
+      "kind": "class",
+      "scope": "APIVersionTestCase.test_api_version_legacy",
+      "lineRange": {
+        "start": 883,
+        "end": 886
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "fake_func",
+      "kind": "method",
+      "scope": "APIVersionTestCase.test_api_version_legacy.FakeController",
+      "lineRange": {
+        "start": 885,
+        "end": 886
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "req"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "{'resources': []}",
+          "line": 886
+        }
+      ],
+      "visibility": "public"
+    },
+    {
+      "name": "ExpectedErrorTestCase",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 894,
+        "end": 974
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "test_expected_error",
+      "kind": "method",
+      "scope": "ExpectedErrorTestCase",
+      "lineRange": {
+        "start": 896,
+        "end": 904
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 7,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "FakeController",
+      "kind": "class",
+      "scope": "ExpectedErrorTestCase.test_expected_error",
+      "lineRange": {
+        "start": 897,
+        "end": 900
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "fake_func",
+      "kind": "method",
+      "scope": "ExpectedErrorTestCase.test_expected_error.FakeController",
+      "lineRange": {
+        "start": 899,
+        "end": 900
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "req"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "visibility": "public"
+    },
+    {
+      "name": "test_expected_error_from_list",
+      "kind": "method",
+      "scope": "ExpectedErrorTestCase",
+      "lineRange": {
+        "start": 906,
+        "end": 914
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 7,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "FakeController",
+      "kind": "class",
+      "scope": "ExpectedErrorTestCase.test_expected_error_from_list",
+      "lineRange": {
+        "start": 907,
+        "end": 910
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "fake_func",
+      "kind": "method",
+      "scope": "ExpectedErrorTestCase.test_expected_error_from_list.FakeController",
+      "lineRange": {
+        "start": 909,
+        "end": 910
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "req"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "visibility": "public"
+    },
+    {
+      "name": "test_expected_error_with_microversion",
+      "kind": "method",
+      "scope": "ExpectedErrorTestCase",
+      "lineRange": {
+        "start": 916,
+        "end": 925
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 8,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "FakeController",
+      "kind": "class",
+      "scope": "ExpectedErrorTestCase.test_expected_error_with_microversion",
+      "lineRange": {
+        "start": 917,
+        "end": 921
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "fake_func",
+      "kind": "method",
+      "scope": "ExpectedErrorTestCase.test_expected_error_with_microversion.FakeController",
+      "lineRange": {
+        "start": 920,
+        "end": 921
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "req"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "visibility": "public"
+    },
+    {
+      "name": "test_unexpected_error",
+      "kind": "method",
+      "scope": "ExpectedErrorTestCase",
+      "lineRange": {
+        "start": 927,
+        "end": 937
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 9,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "FakeController",
+      "kind": "class",
+      "scope": "ExpectedErrorTestCase.test_unexpected_error",
+      "lineRange": {
+        "start": 928,
+        "end": 931
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "fake_func",
+      "kind": "method",
+      "scope": "ExpectedErrorTestCase.test_unexpected_error.FakeController",
+      "lineRange": {
+        "start": 930,
+        "end": 931
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "req"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "visibility": "public"
+    },
+    {
+      "name": "test_unexpected_error_from_list",
+      "kind": "method",
+      "scope": "ExpectedErrorTestCase",
+      "lineRange": {
+        "start": 939,
+        "end": 949
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 9,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "FakeController",
+      "kind": "class",
+      "scope": "ExpectedErrorTestCase.test_unexpected_error_from_list",
+      "lineRange": {
+        "start": 940,
+        "end": 943
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "fake_func",
+      "kind": "method",
+      "scope": "ExpectedErrorTestCase.test_unexpected_error_from_list.FakeController",
+      "lineRange": {
+        "start": 942,
+        "end": 943
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "req"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "visibility": "public"
+    },
+    {
+      "name": "test_unexpected_error_with_microversion",
+      "kind": "method",
+      "scope": "ExpectedErrorTestCase",
+      "lineRange": {
+        "start": 951,
+        "end": 962
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 10,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "FakeController",
+      "kind": "class",
+      "scope": "ExpectedErrorTestCase.test_unexpected_error_with_microversion",
+      "lineRange": {
+        "start": 952,
+        "end": 956
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "fake_func",
+      "kind": "method",
+      "scope": "ExpectedErrorTestCase.test_unexpected_error_with_microversion.FakeController",
+      "lineRange": {
+        "start": 955,
+        "end": 956
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "req"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "visibility": "public"
+    },
+    {
+      "name": "test_unexpected_policy_not_authorized_error",
+      "kind": "method",
+      "scope": "ExpectedErrorTestCase",
+      "lineRange": {
+        "start": 964,
+        "end": 974
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 9,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "FakeController",
+      "kind": "class",
+      "scope": "ExpectedErrorTestCase.test_unexpected_policy_not_authorized_error",
+      "lineRange": {
+        "start": 965,
+        "end": 968
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "fake_func",
+      "kind": "method",
+      "scope": "ExpectedErrorTestCase.test_unexpected_policy_not_authorized_error.FakeController",
+      "lineRange": {
+        "start": 967,
+        "end": 968
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "req"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "visibility": "public"
+    }
+  ],
+  "referencedSymbols": [
+    {
+      "name": "test.NoDBTestCase",
+      "usage": "inherit",
+      "via": "nova",
+      "count": 8,
+      "lineRange": {
+        "start": 28,
+        "end": 28
+      }
+    },
+    {
+      "name": "testscenarios.WithScenarios",
+      "usage": "inherit",
+      "via": "testscenarios",
+      "count": 1,
+      "lineRange": {
+        "start": 28,
+        "end": 28
+      }
+    },
+    {
+      "name": "super",
+      "usage": "call",
+      "via": null,
+      "count": 2,
+      "lineRange": {
+        "start": 49,
+        "end": 49
+      }
+    },
+    {
+      "name": "wsgi.Request.blank",
+      "usage": "call",
+      "via": "nova.api.openstack",
+      "count": 21,
+      "lineRange": {
+        "start": 55,
+        "end": 55
+      }
+    },
+    {
+      "name": "api_version.APIVersionRequest",
+      "usage": "call",
+      "via": "nova.api.openstack",
+      "count": 8,
+      "lineRange": {
+        "start": 137,
+        "end": 137
+      }
+    },
+    {
+      "name": "mock.patch",
+      "usage": "call",
+      "via": "unittest",
+      "count": 3,
+      "lineRange": {
+        "start": 140,
+        "end": 140
+      }
+    },
+    {
+      "name": "wsgi.ActionDispatcher",
+      "usage": "call",
+      "via": "nova.api.openstack",
+      "count": 3,
+      "lineRange": {
+        "start": 170,
+        "end": 170
+      }
+    },
+    {
+      "name": "dict",
+      "usage": "call",
+      "via": null,
+      "count": 2,
+      "lineRange": {
+        "start": 189,
+        "end": 189
+      }
+    },
+    {
+      "name": "wsgi.JSONDictSerializer",
+      "usage": "call",
+      "via": "nova.api.openstack",
+      "count": 1,
+      "lineRange": {
+        "start": 191,
+        "end": 191
+      }
+    },
+    {
+      "name": "wsgi.JSONDeserializer",
+      "usage": "call",
+      "via": "nova.api.openstack",
+      "count": 3,
+      "lineRange": {
+        "start": 216,
+        "end": 216
+      }
+    },
+    {
+      "name": "utils.get_api_version",
+      "usage": "call",
+      "via": "nova.tests.unit",
+      "count": 1,
+      "lineRange": {
+        "start": 253,
+        "end": 253
+      }
+    },
+    {
+      "name": "object",
+      "usage": "inherit",
+      "via": null,
+      "count": 24,
+      "lineRange": {
+        "start": 259,
+        "end": 259
+      }
+    },
+    {
+      "name": "webob.exc.HTTPInternalServerError",
+      "usage": "call",
+      "via": "webob",
+      "count": 2,
+      "lineRange": {
+        "start": 264,
+        "end": 264
+      }
+    },
+    {
+      "name": "fakes.TestRouter",
+      "usage": "call",
+      "via": "nova.tests.unit.api.openstack",
+      "count": 15,
+      "lineRange": {
+        "start": 267,
+        "end": 267
+      }
+    },
+    {
+      "name": "webob.Request.blank",
+      "usage": "call",
+      "via": "webob",
+      "count": 13,
+      "lineRange": {
+        "start": 268,
+        "end": 268
+      }
+    },
+    {
+      "name": "wsgi.expected_errors",
+      "usage": "call",
+      "via": "nova.api.openstack",
+      "count": 10,
+      "lineRange": {
+        "start": 327,
+        "end": 327
+      }
+    },
+    {
+      "name": "webob.exc.HTTPBadRequest",
+      "usage": "call",
+      "via": "webob",
+      "count": 4,
+      "lineRange": {
+        "start": 331,
+        "end": 331
+      }
+    },
+    {
+      "name": "jsonutils.loads",
+      "usage": "call",
+      "via": "oslo_serialization",
+      "count": 2,
+      "lineRange": {
+        "start": 358,
+        "end": 358
+      }
+    },
+    {
+      "name": "exception.Forbidden",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 415,
+        "end": 415
+      }
+    },
+    {
+      "name": "exception.Unauthorized",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 425,
+        "end": 425
+      }
+    },
+    {
+      "name": "wsgi.Resource",
+      "usage": "call",
+      "via": "nova.api.openstack",
+      "count": 21,
+      "lineRange": {
+        "start": 438,
+        "end": 438
+      }
+    },
+    {
+      "name": "wsgi.Controller",
+      "usage": "inherit",
+      "via": "nova.api.openstack",
+      "count": 18,
+      "lineRange": {
+        "start": 455,
+        "end": 455
+      }
+    },
+    {
+      "name": "wsgi.action",
+      "usage": "call",
+      "via": "nova.api.openstack",
+      "count": 8,
+      "lineRange": {
+        "start": 456,
+        "end": 456
+      }
+    },
+    {
+      "name": "fakes.HTTPRequest.blank",
+      "usage": "call",
+      "via": "nova.tests.unit.api.openstack",
+      "count": 15,
+      "lineRange": {
+        "start": 600,
+        "end": 600
+      }
+    },
+    {
+      "name": "hasattr",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 619,
+        "end": 619
+      }
+    },
+    {
+      "name": "wsgi.ResourceExceptionHandler",
+      "usage": "call",
+      "via": "nova.api.openstack",
+      "count": 1,
+      "lineRange": {
+        "start": 730,
+        "end": 730
+      }
+    },
+    {
+      "name": "webob.Response",
+      "usage": "call",
+      "via": "webob",
+      "count": 1,
+      "lineRange": {
+        "start": 737,
+        "end": 737
+      }
+    },
+    {
+      "name": "matchers.EncodedByUTF8",
+      "usage": "call",
+      "via": "nova.tests.unit",
+      "count": 1,
+      "lineRange": {
+        "start": 751,
+        "end": 751
+      }
+    },
+    {
+      "name": "wsgi.ResponseObject",
+      "usage": "call",
+      "via": "nova.api.openstack",
+      "count": 8,
+      "lineRange": {
+        "start": 786,
+        "end": 786
+      }
+    },
+    {
+      "name": "wsgi.Controller",
+      "usage": "call",
+      "via": "nova.api.openstack",
+      "count": 1,
+      "lineRange": {
+        "start": 831,
+        "end": 831
+      }
+    },
+    {
+      "name": "wsgi.api_version",
+      "usage": "call",
+      "via": "nova.api.openstack",
+      "count": 2,
+      "lineRange": {
+        "start": 860,
+        "end": 860
+      }
+    },
+    {
+      "name": "webob.exc.HTTPNotFound",
+      "usage": "call",
+      "via": "webob",
+      "count": 2,
+      "lineRange": {
+        "start": 900,
+        "end": 900
+      }
+    },
+    {
+      "name": "webob.exc.HTTPConflict",
+      "usage": "call",
+      "via": "webob",
+      "count": 2,
+      "lineRange": {
+        "start": 931,
+        "end": 931
+      }
+    },
+    {
+      "name": "exception.PolicyNotAuthorized",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 968,
+        "end": 968
+      }
+    }
+  ],
+  "dependencies": [
+    {
+      "style": "from",
+      "module": "unittest",
+      "names": [
+        {
+          "alias": null,
+          "name": "mock"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 13,
+        "end": 13
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_serialization",
+      "names": [
+        {
+          "alias": null,
+          "name": "jsonutils"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 15,
+        "end": 15
+      }
+    },
+    {
+      "style": "import",
+      "module": "testscenarios",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 16,
+        "end": 16
+      }
+    },
+    {
+      "style": "import",
+      "module": "webob",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 17,
+        "end": 17
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.api.openstack",
+      "names": [
+        {
+          "alias": "api_version",
+          "name": "api_version_request"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 19,
+        "end": 19
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.api.openstack",
+      "names": [
+        {
+          "alias": null,
+          "name": "wsgi"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 20,
+        "end": 20
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "exception"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 21,
+        "end": 21
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "test"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 22,
+        "end": 22
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.tests.unit.api.openstack",
+      "names": [
+        {
+          "alias": null,
+          "name": "fakes"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 23,
+        "end": 23
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.tests.unit",
+      "names": [
+        {
+          "alias": null,
+          "name": "matchers"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 24,
+        "end": 24
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.tests.unit",
+      "names": [
+        {
+          "alias": null,
+          "name": "utils"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 25,
+        "end": 25
+      }
+    }
+  ],
+  "sideEffects": [
+    {
+      "kind": "network",
+      "target": "\"application/vnd.openstack.compute+json;q=0.6\")",
+      "lineRange": {
+        "start": 82,
+        "end": 82
+      }
+    },
+    {
+      "kind": "network",
+      "target": "self.assertEqual(\"application/vnd.openstack.compute+json\", result)",
+      "lineRange": {
+        "start": 84,
+        "end": 84
+      }
+    },
+    {
+      "kind": "network",
+      "target": "@mock.patch(\"nova.api.openstack.api_version_request.max_api_version\")",
+      "lineRange": {
+        "start": 140,
+        "end": 140
+      }
+    },
+    {
+      "kind": "network",
+      "target": "@mock.patch(\"nova.api.openstack.api_version_request.max_api_version\")",
+      "lineRange": {
+        "start": 150,
+        "end": 150
+      }
+    },
+    {
+      "kind": "network",
+      "target": "@mock.patch(\"nova.api.openstack.api_version_request.max_api_version\")",
+      "lineRange": {
+        "start": 273,
+        "end": 273
+      }
+    }
+  ],
+  "securitySurface": [
+    {
+      "kind": "entry-point",
+      "category": "http-param",
+      "description": "request = wsgi.Request.blank('/tests/123', method='POST')",
+      "lineRange": {
+        "start": 55,
+        "end": 55
+      }
+    },
+    {
+      "kind": "entry-point",
+      "category": "http-param",
+      "description": "request.body = b\"<body />\"",
+      "lineRange": {
+        "start": 56,
+        "end": 56
+      }
+    },
+    {
+      "kind": "entry-point",
+      "category": "http-param",
+      "description": "request = wsgi.Request.blank('/tests/123', method='POST')",
+      "lineRange": {
+        "start": 60,
+        "end": 60
+      }
+    },
+    {
+      "kind": "entry-point",
+      "category": "http-param",
+      "description": "request.body = b\"asdf<br />\"",
+      "lineRange": {
+        "start": 62,
+        "end": 62
+      }
+    },
+    {
+      "kind": "entry-point",
+      "category": "http-param",
+      "description": "request = wsgi.Request.blank('/tests/123')",
+      "lineRange": {
+        "start": 67,
+        "end": 67
+      }
+    },
+    {
+      "kind": "entry-point",
+      "category": "http-param",
+      "description": "request = wsgi.Request.blank('/tests/123.unsupported')",
+      "lineRange": {
+        "start": 73,
+        "end": 73
+      }
+    },
+    {
+      "kind": "entry-point",
+      "category": "http-param",
+      "description": "request = wsgi.Request.blank('/tests/123')",
+      "lineRange": {
+        "start": 79,
+        "end": 79
+      }
+    },
+    {
+      "kind": "entry-point",
+      "category": "http-param",
+      "description": "request = wsgi.Request.blank('/')",
+      "lineRange": {
+        "start": 87,
+        "end": 87
+      }
+    },
+    {
+      "kind": "entry-point",
+      "category": "http-param",
+      "description": "request = wsgi.Request.blank('/')",
+      "lineRange": {
+        "start": 99,
+        "end": 99
+      }
+    },
+    {
+      "kind": "entry-point",
+      "category": "http-param",
+      "description": "request = wsgi.Request.blank('/')",
+      "lineRange": {
+        "start": 105,
+        "end": 105
+      }
+    },
+    {
+      "kind": "entry-point",
+      "category": "http-param",
+      "description": "request = wsgi.Request.blank('/')",
+      "lineRange": {
+        "start": 111,
+        "end": 111
+      }
+    },
+    {
+      "kind": "entry-point",
+      "category": "http-param",
+      "description": "request = wsgi.Request.blank('/')",
+      "lineRange": {
+        "start": 117,
+        "end": 117
+      }
+    },
+    {
+      "kind": "entry-point",
+      "category": "http-param",
+      "description": "request = wsgi.Request.blank('/')",
+      "lineRange": {
+        "start": 123,
+        "end": 123
+      }
+    },
+    {
+      "kind": "entry-point",
+      "category": "http-param",
+      "description": "request = wsgi.Request.blank('/')",
+      "lineRange": {
+        "start": 129,
+        "end": 129
+      }
+    },
+    {
+      "kind": "entry-point",
+      "category": "http-param",
+      "description": "request = wsgi.Request.blank('/')",
+      "lineRange": {
+        "start": 135,
+        "end": 135
+      }
+    },
+    {
+      "kind": "entry-point",
+      "category": "http-param",
+      "description": "request = wsgi.Request.blank('/')",
+      "lineRange": {
+        "start": 144,
+        "end": 144
+      }
+    },
+    {
+      "kind": "entry-point",
+      "category": "http-param",
+      "description": "request = wsgi.Request.blank('/')",
+      "lineRange": {
+        "start": 154,
+        "end": 154
+      }
+    },
+    {
+      "kind": "entry-point",
+      "category": "http-param",
+      "description": "request = wsgi.Request.blank('/')",
+      "lineRange": {
+        "start": 161,
+        "end": 161
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "self.assertEqual(serializer.dispatch({}, action='update'), 'trousers')",
+      "lineRange": {
+        "start": 184,
+        "end": 184
+      }
+    },
+    {
+      "kind": "entry-point",
+      "category": "http-param",
+      "description": "req = webob.Request.blank('/tests')",
+      "lineRange": {
+        "start": 268,
+        "end": 268
+      }
+    },
+    {
+      "kind": "entry-point",
+      "category": "http-param",
+      "description": "req = webob.Request.blank('/tests')",
+      "lineRange": {
+        "start": 286,
+        "end": 286
+      }
+    },
+    {
+      "kind": "entry-point",
+      "category": "http-param",
+      "description": "req = webob.Request.blank('/tests')",
+      "lineRange": {
+        "start": 300,
+        "end": 300
+      }
+    },
+    {
+      "kind": "entry-point",
+      "category": "http-param",
+      "description": "req = webob.Request.blank('/tests')",
+      "lineRange": {
+        "start": 312,
+        "end": 312
+      }
+    },
+    {
+      "kind": "entry-point",
+      "category": "http-param",
+      "description": "req = webob.Request.blank('/tests', method=\"POST\",",
+      "lineRange": {
+        "start": 335,
+        "end": 335
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "def update(self, req, id, body):",
+      "lineRange": {
+        "start": 362,
+        "end": 362
+      }
+    },
+    {
+      "kind": "entry-point",
+      "category": "http-param",
+      "description": "req = webob.Request.blank('/tests/test_id', method=\"PUT\",",
+      "lineRange": {
+        "start": 369,
+        "end": 369
+      }
+    },
+    {
+      "kind": "entry-point",
+      "category": "http-param",
+      "description": "req = webob.Request.blank('/tests/test_id', method=\"PUT\",",
+      "lineRange": {
+        "start": 384,
+        "end": 384
+      }
+    },
+    {
+      "kind": "entry-point",
+      "category": "http-param",
+      "description": "req = webob.Request.blank('/tests/test_id', method=\"DELETE\")",
+      "lineRange": {
+        "start": 402,
+        "end": 402
+      }
+    },
+    {
+      "kind": "entry-point",
+      "category": "http-param",
+      "description": "req = webob.Request.blank('/tests')",
+      "lineRange": {
+        "start": 417,
+        "end": 417
+      }
+    },
+    {
+      "kind": "entry-point",
+      "category": "http-param",
+      "description": "req = webob.Request.blank('/tests')",
+      "lineRange": {
+        "start": 427,
+        "end": 427
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "'action': 'update',",
+      "lineRange": {
+        "start": 514,
+        "end": 514
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "expected = {'action': 'update', 'id': 12}",
+      "lineRange": {
+        "start": 519,
+        "end": 519
+      }
+    },
+    {
+      "kind": "entry-point",
+      "category": "http-param",
+      "description": "request = wsgi.Request.blank('/', method='POST')",
+      "lineRange": {
+        "start": 531,
+        "end": 531
+      }
+    },
+    {
+      "kind": "entry-point",
+      "category": "http-param",
+      "description": "request.body = b'foo'",
+      "lineRange": {
+        "start": 533,
+        "end": 533
+      }
+    },
+    {
+      "kind": "entry-point",
+      "category": "http-param",
+      "description": "request = wsgi.Request.blank('/', method='POST')",
+      "lineRange": {
+        "start": 546,
+        "end": 546
+      }
+    },
+    {
+      "kind": "entry-point",
+      "category": "http-param",
+      "description": "request.body = b'foo'",
+      "lineRange": {
+        "start": 547,
+        "end": 547
+      }
+    },
+    {
+      "kind": "entry-point",
+      "category": "http-param",
+      "description": "request = wsgi.Request.blank('/', method='POST')",
+      "lineRange": {
+        "start": 561,
+        "end": 561
+      }
+    },
+    {
+      "kind": "entry-point",
+      "category": "http-param",
+      "description": "request.body = b''",
+      "lineRange": {
+        "start": 563,
+        "end": 563
+      }
+    },
+    {
+      "kind": "entry-point",
+      "category": "http-param",
+      "description": "request = wsgi.Request.blank('/', method='PUT')",
+      "lineRange": {
+        "start": 571,
+        "end": 571
+      }
+    },
+    {
+      "kind": "entry-point",
+      "category": "http-param",
+      "description": "request = wsgi.Request.blank('/', method='POST')",
+      "lineRange": {
+        "start": 587,
+        "end": 587
+      }
+    },
+    {
+      "kind": "entry-point",
+      "category": "http-param",
+      "description": "request.body = b'foo'",
+      "lineRange": {
+        "start": 589,
+        "end": 589
+      }
+    },
+    {
+      "kind": "entry-point",
+      "category": "http-param",
+      "description": "req = webob.Request.blank('/tests')",
+      "lineRange": {
+        "start": 746,
+        "end": 746
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "def update(self, req, id, body):",
+      "lineRange": {
+        "start": 758,
+        "end": 758
+      }
+    },
+    {
+      "kind": "entry-point",
+      "category": "http-param",
+      "description": "req = webob.Request.blank('/tests/test_id', method=\"PUT\")",
+      "lineRange": {
+        "start": 761,
+        "end": 761
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "def update(self, req, id, body):",
+      "lineRange": {
+        "start": 773,
+        "end": 773
+      }
+    },
+    {
+      "kind": "entry-point",
+      "category": "http-param",
+      "description": "req = webob.Request.blank('/tests/test_id', method=\"PUT\")",
+      "lineRange": {
+        "start": 776,
+        "end": 776
+      }
+    }
+  ],
+  "injection_flags": [],
+  "warnings": []
+}

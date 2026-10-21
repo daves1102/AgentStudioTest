@@ -1,0 +1,1613 @@
+{
+  "file": "src/nova/tests/unit/api/openstack/compute/test_server_tags.py",
+  "hash": "86f0644ca0e60467948ced461073874506947acb091aafa8a87ff8cb22e79485",
+  "language": "Python",
+  "component": "nova",
+  "package": null,
+  "lines": {
+    "blank": 54,
+    "code": 268,
+    "comment": 11,
+    "total": 333
+  },
+  "symbols": [
+    {
+      "name": "UUID",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 30,
+        "end": 30
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "TAG1",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 31,
+        "end": 31
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "TAG2",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 32,
+        "end": 32
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "TAG3",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 33,
+        "end": 33
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "TAGS",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 34,
+        "end": 34
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "NON_EXISTING_UUID",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 35,
+        "end": 35
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "return_server",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 38,
+        "end": 39
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "compute_api"
+        },
+        {
+          "name": "context"
+        },
+        {
+          "name": "instance_id"
+        },
+        {
+          "default": "None",
+          "name": "expected_attrs"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "fake_instance.fake_instance_obj(context, vm_state=vm_states.ACTIVE)",
+          "line": 39
+        }
+      ],
+      "nloc": 2,
+      "ccn": 1,
+      "exported": true
+    },
+    {
+      "name": "return_invalid_server",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 42,
+        "end": 45
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "compute_api"
+        },
+        {
+          "name": "context"
+        },
+        {
+          "name": "instance_id"
+        },
+        {
+          "default": "None",
+          "name": "expected_attrs"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "fake_instance.fake_instance_obj(context, vm_state=vm_states.BUILDING)",
+          "line": 44
+        }
+      ],
+      "nloc": 4,
+      "ccn": 1,
+      "exported": true
+    },
+    {
+      "name": "ServerTagsTest",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 48,
+        "end": 333
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "api_version",
+      "kind": "field",
+      "scope": "ServerTagsTest",
+      "lineRange": {
+        "start": 49,
+        "end": 49
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "setUp",
+      "kind": "method",
+      "scope": "ServerTagsTest",
+      "lineRange": {
+        "start": 51,
+        "end": 59
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 9,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "_get_tag",
+      "kind": "method",
+      "scope": "ServerTagsTest",
+      "lineRange": {
+        "start": 61,
+        "end": 65
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "tag_name"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "tag",
+          "line": 65
+        }
+      ],
+      "nloc": 5,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "_get_request",
+      "kind": "method",
+      "scope": "ServerTagsTest",
+      "lineRange": {
+        "start": 67,
+        "end": 70
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "url"
+        },
+        {
+          "name": "method"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "request",
+          "line": 70
+        }
+      ],
+      "nloc": 4,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "test_show",
+      "kind": "method",
+      "scope": "ServerTagsTest",
+      "lineRange": {
+        "start": 73,
+        "end": 79
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_exists"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 6,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_index",
+      "kind": "method",
+      "scope": "ServerTagsTest",
+      "lineRange": {
+        "start": 82,
+        "end": 90
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_db_get_inst_tags"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 7,
+      "ccn": 2,
+      "visibility": "public"
+    },
+    {
+      "name": "test_update_all",
+      "kind": "method",
+      "scope": "ServerTagsTest",
+      "lineRange": {
+        "start": 94,
+        "end": 103
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_db_set_inst_tags"
+        },
+        {
+          "name": "mock_notify"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 9,
+      "ccn": 2,
+      "visibility": "public"
+    },
+    {
+      "name": "test_update_all_too_many_tags",
+      "kind": "method",
+      "scope": "ServerTagsTest",
+      "lineRange": {
+        "start": 105,
+        "end": 113
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 8,
+      "ccn": 2,
+      "visibility": "public"
+    },
+    {
+      "name": "test_update_all_forbidden_characters",
+      "kind": "method",
+      "scope": "ServerTagsTest",
+      "lineRange": {
+        "start": 115,
+        "end": 121
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 7,
+      "ccn": 2,
+      "visibility": "public"
+    },
+    {
+      "name": "test_update_all_invalid_tag_type",
+      "kind": "method",
+      "scope": "ServerTagsTest",
+      "lineRange": {
+        "start": 123,
+        "end": 127
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 5,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_update_all_tags_with_one_tag_empty_string",
+      "kind": "method",
+      "scope": "ServerTagsTest",
+      "lineRange": {
+        "start": 129,
+        "end": 133
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 5,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_update_all_too_long_tag",
+      "kind": "method",
+      "scope": "ServerTagsTest",
+      "lineRange": {
+        "start": 135,
+        "end": 141
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 7,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_update_all_invalid_tag_list_type",
+      "kind": "method",
+      "scope": "ServerTagsTest",
+      "lineRange": {
+        "start": 143,
+        "end": 147
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 5,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_update_all_invalid_instance_state",
+      "kind": "method",
+      "scope": "ServerTagsTest",
+      "lineRange": {
+        "start": 149,
+        "end": 154
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 6,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_show_non_existing_tag",
+      "kind": "method",
+      "scope": "ServerTagsTest",
+      "lineRange": {
+        "start": 157,
+        "end": 162
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_exists"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 6,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_update",
+      "kind": "method",
+      "scope": "ServerTagsTest",
+      "lineRange": {
+        "start": 167,
+        "end": 183
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_db_get_inst_tags"
+        },
+        {
+          "name": "mock_db_add_inst_tags"
+        },
+        {
+          "name": "mock_notify"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 15,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_update_existing_tag",
+      "kind": "method",
+      "scope": "ServerTagsTest",
+      "lineRange": {
+        "start": 186,
+        "end": 196
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_db_get_inst_tags"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 9,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_update_tag_limit_exceed",
+      "kind": "method",
+      "scope": "ServerTagsTest",
+      "lineRange": {
+        "start": 199,
+        "end": 208
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_db_get_inst_tags"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 9,
+      "ccn": 2,
+      "visibility": "public"
+    },
+    {
+      "name": "test_update_too_long_tag",
+      "kind": "method",
+      "scope": "ServerTagsTest",
+      "lineRange": {
+        "start": 211,
+        "end": 219
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_db_get_inst_tags"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 8,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_update_forbidden_characters",
+      "kind": "method",
+      "scope": "ServerTagsTest",
+      "lineRange": {
+        "start": 222,
+        "end": 229
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_db_get_inst_tags"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 8,
+      "ccn": 2,
+      "visibility": "public"
+    },
+    {
+      "name": "test_update_invalid_instance_state",
+      "kind": "method",
+      "scope": "ServerTagsTest",
+      "lineRange": {
+        "start": 231,
+        "end": 237
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 7,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_delete",
+      "kind": "method",
+      "scope": "ServerTagsTest",
+      "lineRange": {
+        "start": 242,
+        "end": 250
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_db_delete_inst_tags"
+        },
+        {
+          "name": "mock_notify"
+        },
+        {
+          "name": "mock_db_get_inst_tags"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 9,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_delete_non_existing_tag",
+      "kind": "method",
+      "scope": "ServerTagsTest",
+      "lineRange": {
+        "start": 253,
+        "end": 265
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_db_delete_inst_tags"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 8,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "fake_db_delete_tag",
+      "kind": "function",
+      "scope": "ServerTagsTest.test_delete_non_existing_tag",
+      "lineRange": {
+        "start": 256,
+        "end": 260
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "context"
+        },
+        {
+          "name": "instance_uuid"
+        },
+        {
+          "name": "tag"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "visibility": "public"
+    },
+    {
+      "name": "test_delete_invalid_instance_state",
+      "kind": "method",
+      "scope": "ServerTagsTest",
+      "lineRange": {
+        "start": 267,
+        "end": 273
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 7,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_delete_all",
+      "kind": "method",
+      "scope": "ServerTagsTest",
+      "lineRange": {
+        "start": 277,
+        "end": 282
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_db_delete_inst_tags"
+        },
+        {
+          "name": "mock_notify"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 6,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_delete_all_invalid_instance_state",
+      "kind": "method",
+      "scope": "ServerTagsTest",
+      "lineRange": {
+        "start": 284,
+        "end": 289
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 6,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_show_non_existing_instance",
+      "kind": "method",
+      "scope": "ServerTagsTest",
+      "lineRange": {
+        "start": 291,
+        "end": 295
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 5,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_show_with_details_information_non_existing_instance",
+      "kind": "method",
+      "scope": "ServerTagsTest",
+      "lineRange": {
+        "start": 297,
+        "end": 302
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 6,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_index_non_existing_instance",
+      "kind": "method",
+      "scope": "ServerTagsTest",
+      "lineRange": {
+        "start": 304,
+        "end": 309
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 6,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_update_non_existing_instance",
+      "kind": "method",
+      "scope": "ServerTagsTest",
+      "lineRange": {
+        "start": 311,
+        "end": 315
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 5,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_update_all_non_existing_instance",
+      "kind": "method",
+      "scope": "ServerTagsTest",
+      "lineRange": {
+        "start": 317,
+        "end": 321
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 5,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_delete_non_existing_instance",
+      "kind": "method",
+      "scope": "ServerTagsTest",
+      "lineRange": {
+        "start": 323,
+        "end": 327
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 5,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_delete_all_non_existing_instance",
+      "kind": "method",
+      "scope": "ServerTagsTest",
+      "lineRange": {
+        "start": 329,
+        "end": 333
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 5,
+      "ccn": 1,
+      "visibility": "public"
+    }
+  ],
+  "referencedSymbols": [
+    {
+      "name": "fake_instance.fake_instance_obj",
+      "usage": "call",
+      "via": "nova.tests.unit",
+      "count": 2,
+      "lineRange": {
+        "start": 39,
+        "end": 39
+      }
+    },
+    {
+      "name": "test.TestCase",
+      "usage": "inherit",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 48,
+        "end": 48
+      }
+    },
+    {
+      "name": "super",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 52,
+        "end": 52
+      }
+    },
+    {
+      "name": "server_tags.ServerTagsController",
+      "usage": "call",
+      "via": "nova.api.openstack.compute",
+      "count": 1,
+      "lineRange": {
+        "start": 53,
+        "end": 53
+      }
+    },
+    {
+      "name": "objects.InstanceMapping",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 54,
+        "end": 54
+      }
+    },
+    {
+      "name": "objects.CellMappingList.get_all",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 56,
+        "end": 56
+      }
+    },
+    {
+      "name": "context.get_admin_context",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 57,
+        "end": 57
+      }
+    },
+    {
+      "name": "models.Tag",
+      "usage": "call",
+      "via": "nova.db.main",
+      "count": 1,
+      "lineRange": {
+        "start": 62,
+        "end": 62
+      }
+    },
+    {
+      "name": "fakes.HTTPRequest.blank",
+      "usage": "call",
+      "via": "nova.tests.unit.api.openstack",
+      "count": 1,
+      "lineRange": {
+        "start": 68,
+        "end": 68
+      }
+    },
+    {
+      "name": "mock.patch",
+      "usage": "call",
+      "via": "unittest",
+      "count": 18,
+      "lineRange": {
+        "start": 72,
+        "end": 72
+      }
+    },
+    {
+      "name": "range",
+      "usage": "call",
+      "via": null,
+      "count": 2,
+      "lineRange": {
+        "start": 107,
+        "end": 107
+      }
+    },
+    {
+      "name": "str",
+      "usage": "call",
+      "via": null,
+      "count": 2,
+      "lineRange": {
+        "start": 107,
+        "end": 107
+      }
+    },
+    {
+      "name": "len",
+      "usage": "call",
+      "via": null,
+      "count": 2,
+      "lineRange": {
+        "start": 179,
+        "end": 179
+      }
+    },
+    {
+      "name": "exception.InstanceTagNotFound",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 259,
+        "end": 259
+      }
+    },
+    {
+      "name": "servers.ServersController",
+      "usage": "call",
+      "via": "nova.api.openstack.compute",
+      "count": 1,
+      "lineRange": {
+        "start": 300,
+        "end": 300
+      }
+    }
+  ],
+  "dependencies": [
+    {
+      "style": "from",
+      "module": "unittest",
+      "names": [
+        {
+          "alias": null,
+          "name": "mock"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 13,
+        "end": 13
+      }
+    },
+    {
+      "style": "from",
+      "module": "webob",
+      "names": [
+        {
+          "alias": null,
+          "name": "exc"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 15,
+        "end": 15
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.api.openstack.compute",
+      "names": [
+        {
+          "alias": null,
+          "name": "server_tags"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 17,
+        "end": 17
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.api.openstack.compute",
+      "names": [
+        {
+          "alias": null,
+          "name": "servers"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 18,
+        "end": 18
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.compute",
+      "names": [
+        {
+          "alias": null,
+          "name": "vm_states"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 19,
+        "end": 19
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "context"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 20,
+        "end": 20
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.db.main",
+      "names": [
+        {
+          "alias": null,
+          "name": "models"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 21,
+        "end": 21
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "exception"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 22,
+        "end": 22
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "objects"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 23,
+        "end": 23
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.objects",
+      "names": [
+        {
+          "alias": null,
+          "name": "instance"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 24,
+        "end": 24
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.objects",
+      "names": [
+        {
+          "alias": "tag_obj",
+          "name": "tag"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 25,
+        "end": 25
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "test"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 26,
+        "end": 26
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.tests.unit.api.openstack",
+      "names": [
+        {
+          "alias": null,
+          "name": "fakes"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 27,
+        "end": 27
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.tests.unit",
+      "names": [
+        {
+          "alias": null,
+          "name": "fake_instance"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 28,
+        "end": 28
+      }
+    }
+  ],
+  "sideEffects": [
+    {
+      "kind": "network",
+      "target": "from nova.api.openstack.compute import server_tags",
+      "lineRange": {
+        "start": 17,
+        "end": 17
+      }
+    },
+    {
+      "kind": "network",
+      "target": "from nova.api.openstack.compute import servers",
+      "lineRange": {
+        "start": 18,
+        "end": 18
+      }
+    },
+    {
+      "kind": "network",
+      "target": "def test_update_all(self, mock_db_set_inst_tags, mock_notify):",
+      "lineRange": {
+        "start": 94,
+        "end": 94
+      }
+    },
+    {
+      "kind": "network",
+      "target": "self.stub_out('nova.api.openstack.common.get_instance', return_server)",
+      "lineRange": {
+        "start": 95,
+        "end": 95
+      }
+    },
+    {
+      "kind": "network",
+      "target": "self.assertEqual(1, mock_notify.call_count)",
+      "lineRange": {
+        "start": 103,
+        "end": 103
+      }
+    },
+    {
+      "kind": "network",
+      "target": "self.stub_out('nova.api.openstack.common.get_instance', return_server)",
+      "lineRange": {
+        "start": 106,
+        "end": 106
+      }
+    },
+    {
+      "kind": "network",
+      "target": "self.stub_out('nova.api.openstack.common.get_instance', return_server)",
+      "lineRange": {
+        "start": 116,
+        "end": 116
+      }
+    },
+    {
+      "kind": "network",
+      "target": "self.stub_out('nova.api.openstack.common.get_instance', return_server)",
+      "lineRange": {
+        "start": 136,
+        "end": 136
+      }
+    },
+    {
+      "kind": "network",
+      "target": "self.stub_out('nova.api.openstack.common.get_instance',",
+      "lineRange": {
+        "start": 150,
+        "end": 150
+      }
+    },
+    {
+      "kind": "network",
+      "target": "mock_notify):",
+      "lineRange": {
+        "start": 168,
+        "end": 168
+      }
+    },
+    {
+      "kind": "network",
+      "target": "self.stub_out('nova.api.openstack.common.get_instance', return_server)",
+      "lineRange": {
+        "start": 169,
+        "end": 169
+      }
+    },
+    {
+      "kind": "network",
+      "target": "self.assertEqual(1, mock_notify.call_count)",
+      "lineRange": {
+        "start": 183,
+        "end": 183
+      }
+    },
+    {
+      "kind": "network",
+      "target": "self.stub_out('nova.api.openstack.common.get_instance', return_server)",
+      "lineRange": {
+        "start": 187,
+        "end": 187
+      }
+    },
+    {
+      "kind": "network",
+      "target": "self.stub_out('nova.api.openstack.common.get_instance', return_server)",
+      "lineRange": {
+        "start": 200,
+        "end": 200
+      }
+    },
+    {
+      "kind": "network",
+      "target": "self.stub_out('nova.api.openstack.common.get_instance', return_server)",
+      "lineRange": {
+        "start": 212,
+        "end": 212
+      }
+    },
+    {
+      "kind": "network",
+      "target": "self.stub_out('nova.api.openstack.common.get_instance', return_server)",
+      "lineRange": {
+        "start": 223,
+        "end": 223
+      }
+    },
+    {
+      "kind": "network",
+      "target": "self.stub_out('nova.api.openstack.common.get_instance',",
+      "lineRange": {
+        "start": 232,
+        "end": 232
+      }
+    },
+    {
+      "kind": "network",
+      "target": "def test_delete(self, mock_db_delete_inst_tags, mock_notify,",
+      "lineRange": {
+        "start": 242,
+        "end": 242
+      }
+    },
+    {
+      "kind": "network",
+      "target": "self.stub_out('nova.api.openstack.common.get_instance', return_server)",
+      "lineRange": {
+        "start": 244,
+        "end": 244
+      }
+    },
+    {
+      "kind": "network",
+      "target": "self.assertEqual(1, mock_notify.call_count)",
+      "lineRange": {
+        "start": 250,
+        "end": 250
+      }
+    },
+    {
+      "kind": "network",
+      "target": "self.stub_out('nova.api.openstack.common.get_instance', return_server)",
+      "lineRange": {
+        "start": 254,
+        "end": 254
+      }
+    },
+    {
+      "kind": "network",
+      "target": "self.stub_out('nova.api.openstack.common.get_instance',",
+      "lineRange": {
+        "start": 268,
+        "end": 268
+      }
+    },
+    {
+      "kind": "network",
+      "target": "def test_delete_all(self, mock_db_delete_inst_tags, mock_notify):",
+      "lineRange": {
+        "start": 277,
+        "end": 277
+      }
+    },
+    {
+      "kind": "network",
+      "target": "self.stub_out('nova.api.openstack.common.get_instance', return_server)",
+      "lineRange": {
+        "start": 278,
+        "end": 278
+      }
+    },
+    {
+      "kind": "network",
+      "target": "self.assertEqual(1, mock_notify.call_count)",
+      "lineRange": {
+        "start": 282,
+        "end": 282
+      }
+    },
+    {
+      "kind": "network",
+      "target": "self.stub_out('nova.api.openstack.common.get_instance',",
+      "lineRange": {
+        "start": 285,
+        "end": 285
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "UUID = 'b48316c5-71e8-45e4-9884-6c78055b9b13'",
+      "lineRange": {
+        "start": 30,
+        "end": 30
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "TAG1 = 'tag1'",
+      "lineRange": {
+        "start": 31,
+        "end": 31
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "TAG2 = 'tag2'",
+      "lineRange": {
+        "start": 32,
+        "end": 32
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "TAG3 = 'tag3'",
+      "lineRange": {
+        "start": 33,
+        "end": 33
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "TAGS = [TAG1, TAG2, TAG3]",
+      "lineRange": {
+        "start": 34,
+        "end": 34
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "NON_EXISTING_UUID = '123'",
+      "lineRange": {
+        "start": 35,
+        "end": 35
+      }
+    }
+  ],
+  "securitySurface": [
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "res = self.controller.update(req, UUID, TAG2, body=None)",
+      "lineRange": {
+        "start": 176,
+        "end": 176
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "res = self.controller.update(req, UUID, TAG1, body=None)",
+      "lineRange": {
+        "start": 192,
+        "end": 192
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "self.assertRaises(exc.HTTPBadRequest, self.controller.update,",
+      "lineRange": {
+        "start": 207,
+        "end": 207
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "self.assertRaises(exc.HTTPBadRequest, self.controller.update,",
+      "lineRange": {
+        "start": 218,
+        "end": 218
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "self.assertRaises(exc.HTTPBadRequest, self.controller.update,",
+      "lineRange": {
+        "start": 228,
+        "end": 228
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "self.assertRaises(exc.HTTPConflict, self.controller.update, req, UUID,",
+      "lineRange": {
+        "start": 236,
+        "end": 236
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "self.assertRaises(exc.HTTPNotFound, self.controller.update, req,",
+      "lineRange": {
+        "start": 314,
+        "end": 314
+      }
+    }
+  ],
+  "injection_flags": [],
+  "warnings": []
+}

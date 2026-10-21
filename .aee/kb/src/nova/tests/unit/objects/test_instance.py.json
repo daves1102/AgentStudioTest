@@ -1,0 +1,4696 @@
+{
+  "file": "src/nova/tests/unit/objects/test_instance.py",
+  "hash": "a094e7ec4981d3707f38fa1423e29dad67c38c50b674ab614ae2292e462892fb",
+  "language": "Python",
+  "component": "nova",
+  "package": null,
+  "lines": {
+    "blank": 304,
+    "code": 1997,
+    "comment": 129,
+    "total": 2430
+  },
+  "symbols": [
+    {
+      "name": "_TestInstanceObject",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 52,
+        "end": 1641
+      },
+      "source": "aee-inventory",
+      "exported": false
+    },
+    {
+      "name": "fake_instance",
+      "kind": "method",
+      "scope": "_TestInstanceObject",
+      "lineRange": {
+        "start": 54,
+        "end": 84
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "db_inst",
+          "line": 84
+        }
+      ],
+      "nloc": 29,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_datetime_deserialization",
+      "kind": "method",
+      "scope": "_TestInstanceObject",
+      "lineRange": {
+        "start": 86,
+        "end": 102
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 17,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_ip_deserialization",
+      "kind": "method",
+      "scope": "_TestInstanceObject",
+      "lineRange": {
+        "start": 104,
+        "end": 122
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 19,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_get_without_expected",
+      "kind": "method",
+      "scope": "_TestInstanceObject",
+      "lineRange": {
+        "start": 125,
+        "end": 134
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_get"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 8,
+      "ccn": 2,
+      "visibility": "public"
+    },
+    {
+      "name": "test_get_with_expected",
+      "kind": "method",
+      "scope": "_TestInstanceObject",
+      "lineRange": {
+        "start": 139,
+        "end": 222
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_get"
+        },
+        {
+          "name": "mock_fault_get"
+        },
+        {
+          "name": "mock_extra_get"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 79,
+      "ccn": 4,
+      "visibility": "public"
+    },
+    {
+      "name": "test_lazy_load_services_on_deleted_instance",
+      "kind": "method",
+      "scope": "_TestInstanceObject",
+      "lineRange": {
+        "start": 224,
+        "end": 229
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 4,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_lazy_load_tags_on_deleted_instance",
+      "kind": "method",
+      "scope": "_TestInstanceObject",
+      "lineRange": {
+        "start": 231,
+        "end": 236
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 4,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_lazy_load_generic_on_deleted_instance",
+      "kind": "method",
+      "scope": "_TestInstanceObject",
+      "lineRange": {
+        "start": 238,
+        "end": 252
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 11,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_lazy_load_flavor_on_deleted_instance",
+      "kind": "method",
+      "scope": "_TestInstanceObject",
+      "lineRange": {
+        "start": 254,
+        "end": 270
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 13,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_lazy_load_tags",
+      "kind": "method",
+      "scope": "_TestInstanceObject",
+      "lineRange": {
+        "start": 272,
+        "end": 281
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 10,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_save_does_not_log_exception_after_tags_loaded",
+      "kind": "method",
+      "scope": "_TestInstanceObject",
+      "lineRange": {
+        "start": 284,
+        "end": 300
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_log"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 11,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_save_updates_host_not_compute_id",
+      "kind": "method",
+      "scope": "_TestInstanceObject",
+      "lineRange": {
+        "start": 302,
+        "end": 315
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 9,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_save_updates_host_not_compute_id_compat",
+      "kind": "method",
+      "scope": "_TestInstanceObject",
+      "lineRange": {
+        "start": 320,
+        "end": 338
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 13,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_create_with_host_not_compute_id",
+      "kind": "method",
+      "scope": "_TestInstanceObject",
+      "lineRange": {
+        "start": 340,
+        "end": 350
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 8,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_create_with_host_not_compute_id_compat",
+      "kind": "method",
+      "scope": "_TestInstanceObject",
+      "lineRange": {
+        "start": 355,
+        "end": 371
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 12,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_get_by_id",
+      "kind": "method",
+      "scope": "_TestInstanceObject",
+      "lineRange": {
+        "start": 374,
+        "end": 380
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_get"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 6,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_load",
+      "kind": "method",
+      "scope": "_TestInstanceObject",
+      "lineRange": {
+        "start": 383,
+        "end": 403
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_get"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 18,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_load_invalid",
+      "kind": "method",
+      "scope": "_TestInstanceObject",
+      "lineRange": {
+        "start": 405,
+        "end": 408
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 4,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_create_and_load_keypairs_from_extra",
+      "kind": "method",
+      "scope": "_TestInstanceObject",
+      "lineRange": {
+        "start": 410,
+        "end": 420
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 10,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_lazy_load_keypairs_from_extra",
+      "kind": "method",
+      "scope": "_TestInstanceObject",
+      "lineRange": {
+        "start": 422,
+        "end": 433
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 11,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_lazy_load_flavor_from_extra",
+      "kind": "method",
+      "scope": "_TestInstanceObject",
+      "lineRange": {
+        "start": 436,
+        "end": 456
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_get"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 16,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_get_remote",
+      "kind": "method",
+      "scope": "_TestInstanceObject",
+      "lineRange": {
+        "start": 459,
+        "end": 474
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_get"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 13,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_refresh",
+      "kind": "method",
+      "scope": "_TestInstanceObject",
+      "lineRange": {
+        "start": 478,
+        "end": 496
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_get"
+        },
+        {
+          "name": "mock_refresh"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 17,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_refresh_does_not_recurse",
+      "kind": "method",
+      "scope": "_TestInstanceObject",
+      "lineRange": {
+        "start": 499,
+        "end": 509
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_get"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 9,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "_save_test_helper",
+      "kind": "method",
+      "scope": "_TestInstanceObject",
+      "lineRange": {
+        "start": 515,
+        "end": 570
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "save_kwargs"
+        },
+        {
+          "name": "mock_db_instance_get_by_uuid"
+        },
+        {
+          "name": "mock_db_instance_update_and_get_original"
+        },
+        {
+          "name": "mock_db_instance_info_cache_update"
+        },
+        {
+          "name": "mock_notifications_send_update"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 51,
+      "ccn": 7,
+      "visibility": "private"
+    },
+    {
+      "name": "test_save",
+      "kind": "method",
+      "scope": "_TestInstanceObject",
+      "lineRange": {
+        "start": 572,
+        "end": 573
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_save_exp_vm_state",
+      "kind": "method",
+      "scope": "_TestInstanceObject",
+      "lineRange": {
+        "start": 575,
+        "end": 576
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_save_exp_task_state",
+      "kind": "method",
+      "scope": "_TestInstanceObject",
+      "lineRange": {
+        "start": 578,
+        "end": 579
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_save_rename_sends_notification",
+      "kind": "method",
+      "scope": "_TestInstanceObject",
+      "lineRange": {
+        "start": 584,
+        "end": 608
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_send"
+        },
+        {
+          "name": "mock_get"
+        },
+        {
+          "name": "mock_update_and_get"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 21,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_save_object_pci_requests",
+      "kind": "method",
+      "scope": "_TestInstanceObject",
+      "lineRange": {
+        "start": 611,
+        "end": 640
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_instance_extra_update"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 29,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_save_does_not_refresh_pci_devices",
+      "kind": "method",
+      "scope": "_TestInstanceObject",
+      "lineRange": {
+        "start": 644,
+        "end": 656
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_fdo"
+        },
+        {
+          "name": "mock_update"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 8,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_save_updates_numa_topology",
+      "kind": "method",
+      "scope": "_TestInstanceObject",
+      "lineRange": {
+        "start": 661,
+        "end": 694
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_fdo"
+        },
+        {
+          "name": "mock_update"
+        },
+        {
+          "name": "mock_extra_update"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 24,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_save_vcpu_model",
+      "kind": "method",
+      "scope": "_TestInstanceObject",
+      "lineRange": {
+        "start": 697,
+        "end": 714
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_update"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 18,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_save_migration_context_model",
+      "kind": "method",
+      "scope": "_TestInstanceObject",
+      "lineRange": {
+        "start": 717,
+        "end": 736
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_update"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 20,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_save_flavor_skips_unchanged_flavors",
+      "kind": "method",
+      "scope": "_TestInstanceObject",
+      "lineRange": {
+        "start": 738,
+        "end": 745
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 8,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_save_multiple_extras_updates_once",
+      "kind": "method",
+      "scope": "_TestInstanceObject",
+      "lineRange": {
+        "start": 748,
+        "end": 777
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_update"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 23,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_get_deleted",
+      "kind": "method",
+      "scope": "_TestInstanceObject",
+      "lineRange": {
+        "start": 780,
+        "end": 789
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_get"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 8,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_get_not_cleaned",
+      "kind": "method",
+      "scope": "_TestInstanceObject",
+      "lineRange": {
+        "start": 792,
+        "end": 801
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_get"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 8,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_get_cleaned",
+      "kind": "method",
+      "scope": "_TestInstanceObject",
+      "lineRange": {
+        "start": 804,
+        "end": 813
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_get"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 8,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_with_info_cache",
+      "kind": "method",
+      "scope": "_TestInstanceObject",
+      "lineRange": {
+        "start": 818,
+        "end": 844
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_get"
+        },
+        {
+          "name": "mock_upd_cache"
+        },
+        {
+          "name": "mock_upd_and_get"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 24,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_with_info_cache_none",
+      "kind": "method",
+      "scope": "_TestInstanceObject",
+      "lineRange": {
+        "start": 847,
+        "end": 856
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_get"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 9,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_get_network_info_with_cache",
+      "kind": "method",
+      "scope": "_TestInstanceObject",
+      "lineRange": {
+        "start": 858,
+        "end": 865
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 7,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_get_network_info_without_cache",
+      "kind": "method",
+      "scope": "_TestInstanceObject",
+      "lineRange": {
+        "start": 867,
+        "end": 871
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 4,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_with_security_groups",
+      "kind": "method",
+      "scope": "_TestInstanceObject",
+      "lineRange": {
+        "start": 876,
+        "end": 904
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_get"
+        },
+        {
+          "name": "mock_upd_and_get"
+        },
+        {
+          "name": "mock_upd_secgrp"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 25,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_with_empty_security_groups",
+      "kind": "method",
+      "scope": "_TestInstanceObject",
+      "lineRange": {
+        "start": 907,
+        "end": 915
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_get"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 8,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_with_empty_pci_devices",
+      "kind": "method",
+      "scope": "_TestInstanceObject",
+      "lineRange": {
+        "start": 918,
+        "end": 927
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_get"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 9,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_with_pci_devices",
+      "kind": "method",
+      "scope": "_TestInstanceObject",
+      "lineRange": {
+        "start": 930,
+        "end": 982
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_get"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 52,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_with_fault",
+      "kind": "method",
+      "scope": "_TestInstanceObject",
+      "lineRange": {
+        "start": 986,
+        "end": 1001
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_get"
+        },
+        {
+          "name": "mock_fault_get"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 13,
+      "ccn": 2,
+      "visibility": "public"
+    },
+    {
+      "name": "test_with_ec2_ids",
+      "kind": "method",
+      "scope": "_TestInstanceObject",
+      "lineRange": {
+        "start": 1005,
+        "end": 1016
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_get"
+        },
+        {
+          "name": "mock_ec2"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 11,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_with_image_meta",
+      "kind": "method",
+      "scope": "_TestInstanceObject",
+      "lineRange": {
+        "start": 1019,
+        "end": 1031
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_get"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 11,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_iteritems_with_extra_attrs",
+      "kind": "method",
+      "scope": "_TestInstanceObject",
+      "lineRange": {
+        "start": 1033,
+        "end": 1038
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 6,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "_test_metadata_change_tracking",
+      "kind": "method",
+      "scope": "_TestInstanceObject",
+      "lineRange": {
+        "start": 1040,
+        "end": 1047
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "which"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 8,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "test_create_skip_scheduled_at",
+      "kind": "method",
+      "scope": "_TestInstanceObject",
+      "lineRange": {
+        "start": 1050,
+        "end": 1074
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_create"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 24,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_metadata_change_tracking",
+      "kind": "method",
+      "scope": "_TestInstanceObject",
+      "lineRange": {
+        "start": 1076,
+        "end": 1077
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_system_metadata_change_tracking",
+      "kind": "method",
+      "scope": "_TestInstanceObject",
+      "lineRange": {
+        "start": 1079,
+        "end": 1080
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_create_stubbed",
+      "kind": "method",
+      "scope": "_TestInstanceObject",
+      "lineRange": {
+        "start": 1083,
+        "end": 1105
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_create"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 22,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_create",
+      "kind": "method",
+      "scope": "_TestInstanceObject",
+      "lineRange": {
+        "start": 1108,
+        "end": 1125
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_create"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 17,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_create_with_values",
+      "kind": "method",
+      "scope": "_TestInstanceObject",
+      "lineRange": {
+        "start": 1127,
+        "end": 1135
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 9,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_create_deleted",
+      "kind": "method",
+      "scope": "_TestInstanceObject",
+      "lineRange": {
+        "start": 1137,
+        "end": 1142
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 6,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_create_with_extras",
+      "kind": "method",
+      "scope": "_TestInstanceObject",
+      "lineRange": {
+        "start": 1144,
+        "end": 1174
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 31,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_recreate_fails",
+      "kind": "method",
+      "scope": "_TestInstanceObject",
+      "lineRange": {
+        "start": 1176,
+        "end": 1182
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 7,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_create_with_special_things",
+      "kind": "method",
+      "scope": "_TestInstanceObject",
+      "lineRange": {
+        "start": 1185,
+        "end": 1210
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_create"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 24,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_destroy_stubbed",
+      "kind": "method",
+      "scope": "_TestInstanceObject",
+      "lineRange": {
+        "start": 1213,
+        "end": 1227
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_destroy"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 14,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_destroy",
+      "kind": "method",
+      "scope": "_TestInstanceObject",
+      "lineRange": {
+        "start": 1229,
+        "end": 1238
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 10,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_destroy_host_constraint",
+      "kind": "method",
+      "scope": "_TestInstanceObject",
+      "lineRange": {
+        "start": 1240,
+        "end": 1248
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 9,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_destroy_hard",
+      "kind": "method",
+      "scope": "_TestInstanceObject",
+      "lineRange": {
+        "start": 1250,
+        "end": 1260
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 11,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_destroy_hard_host_constraint",
+      "kind": "method",
+      "scope": "_TestInstanceObject",
+      "lineRange": {
+        "start": 1262,
+        "end": 1271
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 10,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_name_does_not_trigger_lazy_loads",
+      "kind": "method",
+      "scope": "_TestInstanceObject",
+      "lineRange": {
+        "start": 1273,
+        "end": 1282
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 10,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_name_blank_if_no_id_pre_scheduling",
+      "kind": "method",
+      "scope": "_TestInstanceObject",
+      "lineRange": {
+        "start": 1284,
+        "end": 1289
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 5,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_name_uuid_if_no_id_post_scheduling",
+      "kind": "method",
+      "scope": "_TestInstanceObject",
+      "lineRange": {
+        "start": 1291,
+        "end": 1298
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 6,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_from_db_object_not_overwrite_info_cache",
+      "kind": "method",
+      "scope": "_TestInstanceObject",
+      "lineRange": {
+        "start": 1300,
+        "end": 1309
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 10,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_from_db_object_info_cache_not_set",
+      "kind": "method",
+      "scope": "_TestInstanceObject",
+      "lineRange": {
+        "start": 1311,
+        "end": 1318
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 8,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_from_db_object_security_groups_net_set",
+      "kind": "method",
+      "scope": "_TestInstanceObject",
+      "lineRange": {
+        "start": 1320,
+        "end": 1328
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 8,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_from_db_object_no_extra_db_calls",
+      "kind": "method",
+      "scope": "_TestInstanceObject",
+      "lineRange": {
+        "start": 1332,
+        "end": 1337
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_get"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 6,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_get_with_pci_requests",
+      "kind": "method",
+      "scope": "_TestInstanceObject",
+      "lineRange": {
+        "start": 1340,
+        "end": 1349
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_get"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 10,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_get_flavor",
+      "kind": "method",
+      "scope": "_TestInstanceObject",
+      "lineRange": {
+        "start": 1351,
+        "end": 1355
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 5,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_get_flavor_namespace",
+      "kind": "method",
+      "scope": "_TestInstanceObject",
+      "lineRange": {
+        "start": 1357,
+        "end": 1361
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 5,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_delete_metadata_key",
+      "kind": "method",
+      "scope": "_TestInstanceObject",
+      "lineRange": {
+        "start": 1364,
+        "end": 1372
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "db_delete"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 9,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_reset_changes",
+      "kind": "method",
+      "scope": "_TestInstanceObject",
+      "lineRange": {
+        "start": 1374,
+        "end": 1381
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 8,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_load_generic_calls_handler",
+      "kind": "method",
+      "scope": "_TestInstanceObject",
+      "lineRange": {
+        "start": 1383,
+        "end": 1391
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 7,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "fake_load",
+      "kind": "function",
+      "scope": "_TestInstanceObject.test_load_generic_calls_handler",
+      "lineRange": {
+        "start": 1386,
+        "end": 1387
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "name"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "visibility": "public"
+    },
+    {
+      "name": "test_load_fault_calls_handler",
+      "kind": "method",
+      "scope": "_TestInstanceObject",
+      "lineRange": {
+        "start": 1393,
+        "end": 1401
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 7,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "fake_load",
+      "kind": "function",
+      "scope": "_TestInstanceObject.test_load_fault_calls_handler",
+      "lineRange": {
+        "start": 1396,
+        "end": 1397
+      },
+      "source": "aee-inventory",
+      "parameters": [],
+      "returnType": null,
+      "returns": [],
+      "visibility": "public"
+    },
+    {
+      "name": "test_load_ec2_ids_calls_handler",
+      "kind": "method",
+      "scope": "_TestInstanceObject",
+      "lineRange": {
+        "start": 1403,
+        "end": 1412
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 7,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "fake_load",
+      "kind": "function",
+      "scope": "_TestInstanceObject.test_load_ec2_ids_calls_handler",
+      "lineRange": {
+        "start": 1406,
+        "end": 1408
+      },
+      "source": "aee-inventory",
+      "parameters": [],
+      "returnType": null,
+      "returns": [],
+      "visibility": "public"
+    },
+    {
+      "name": "test_load_migration_context",
+      "kind": "method",
+      "scope": "_TestInstanceObject",
+      "lineRange": {
+        "start": 1414,
+        "end": 1421
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 8,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_load_migration_context_no_context",
+      "kind": "method",
+      "scope": "_TestInstanceObject",
+      "lineRange": {
+        "start": 1423,
+        "end": 1432
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 10,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_load_migration_context_no_data",
+      "kind": "method",
+      "scope": "_TestInstanceObject",
+      "lineRange": {
+        "start": 1434,
+        "end": 1440
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 7,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_apply_revert_migration_context",
+      "kind": "method",
+      "scope": "_TestInstanceObject",
+      "lineRange": {
+        "start": 1442,
+        "end": 1460
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 18,
+      "ccn": 3,
+      "visibility": "public"
+    },
+    {
+      "name": "test_drop_migration_context",
+      "kind": "method",
+      "scope": "_TestInstanceObject",
+      "lineRange": {
+        "start": 1462,
+        "end": 1474
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 13,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_mutated_migration_context",
+      "kind": "method",
+      "scope": "_TestInstanceObject",
+      "lineRange": {
+        "start": 1476,
+        "end": 1513
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 35,
+      "ccn": 4,
+      "visibility": "public"
+    },
+    {
+      "name": "test_mutated_migration_context_early_exit",
+      "kind": "method",
+      "scope": "_TestInstanceObject",
+      "lineRange": {
+        "start": 1517,
+        "end": 1527
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "obj_load_attr"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 7,
+      "ccn": 3,
+      "visibility": "public"
+    },
+    {
+      "name": "test_clear_numa_topology",
+      "kind": "method",
+      "scope": "_TestInstanceObject",
+      "lineRange": {
+        "start": 1529,
+        "end": 1540
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 11,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_load_generic",
+      "kind": "method",
+      "scope": "_TestInstanceObject",
+      "lineRange": {
+        "start": 1543,
+        "end": 1547
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_get"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 5,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_load_something_unspecial",
+      "kind": "method",
+      "scope": "_TestInstanceObject",
+      "lineRange": {
+        "start": 1550,
+        "end": 1559
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_get"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 10,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_load_fault",
+      "kind": "method",
+      "scope": "_TestInstanceObject",
+      "lineRange": {
+        "start": 1562,
+        "end": 1571
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_get"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 10,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_load_ec2_ids",
+      "kind": "method",
+      "scope": "_TestInstanceObject",
+      "lineRange": {
+        "start": 1574,
+        "end": 1581
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_get"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 8,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_load_pci_devices",
+      "kind": "method",
+      "scope": "_TestInstanceObject",
+      "lineRange": {
+        "start": 1584,
+        "end": 1590
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_get"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 7,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_load_resources",
+      "kind": "method",
+      "scope": "_TestInstanceObject",
+      "lineRange": {
+        "start": 1593,
+        "end": 1599
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_get"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 7,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_get_with_extras",
+      "kind": "method",
+      "scope": "_TestInstanceObject",
+      "lineRange": {
+        "start": 1601,
+        "end": 1614
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 14,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_obj_clone",
+      "kind": "method",
+      "scope": "_TestInstanceObject",
+      "lineRange": {
+        "start": 1616,
+        "end": 1628
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 11,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_obj_make_compatible",
+      "kind": "method",
+      "scope": "_TestInstanceObject",
+      "lineRange": {
+        "start": 1630,
+        "end": 1641
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 10,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "TestInstanceObject",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 1644,
+        "end": 1693
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "_test_save_objectfield_fk_constraint_fails",
+      "kind": "method",
+      "scope": "TestInstanceObject",
+      "lineRange": {
+        "start": 1646,
+        "end": 1670
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "foreign_key"
+        },
+        {
+          "name": "expected_exception"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 14,
+      "ccn": 4,
+      "visibility": "private"
+    },
+    {
+      "name": "_test",
+      "kind": "function",
+      "scope": "TestInstanceObject._test_save_objectfield_fk_constraint_fails",
+      "lineRange": {
+        "start": 1663,
+        "end": 1669
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "mock_is_set"
+        },
+        {
+          "name": "mock_save_field"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "visibility": "private"
+    },
+    {
+      "name": "test_save_objectfield_missing_instance_row",
+      "kind": "method",
+      "scope": "TestInstanceObject",
+      "lineRange": {
+        "start": 1672,
+        "end": 1674
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 3,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_save_objectfield_reraises_if_not_instance_related",
+      "kind": "method",
+      "scope": "TestInstanceObject",
+      "lineRange": {
+        "start": 1676,
+        "end": 1678
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 3,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_obj_load_attr_log",
+      "kind": "method",
+      "scope": "TestInstanceObject",
+      "lineRange": {
+        "start": 1681,
+        "end": 1693
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_log_debug"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 11,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "TestRemoteInstanceObject",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 1696,
+        "end": 1698
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "_TestInstanceListObject",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 1701,
+        "end": 2136
+      },
+      "source": "aee-inventory",
+      "exported": false
+    },
+    {
+      "name": "fake_instance",
+      "kind": "method",
+      "scope": "_TestInstanceListObject",
+      "lineRange": {
+        "start": 1702,
+        "end": 1719
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "id"
+        },
+        {
+          "default": "None",
+          "name": "updates"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "db_inst",
+          "line": 1719
+        }
+      ],
+      "nloc": 16,
+      "ccn": 2,
+      "visibility": "public"
+    },
+    {
+      "name": "test_get_all_by_filters",
+      "kind": "method",
+      "scope": "_TestInstanceListObject",
+      "lineRange": {
+        "start": 1722,
+        "end": 1736
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_get_all"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 12,
+      "ccn": 2,
+      "visibility": "public"
+    },
+    {
+      "name": "test_get_all_by_filters_sorted",
+      "kind": "method",
+      "scope": "_TestInstanceListObject",
+      "lineRange": {
+        "start": 1739,
+        "end": 1755
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_get_all"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 14,
+      "ccn": 2,
+      "visibility": "public"
+    },
+    {
+      "name": "test_get_all_by_filters_calls_non_sort",
+      "kind": "method",
+      "scope": "_TestInstanceListObject",
+      "lineRange": {
+        "start": 1759,
+        "end": 1770
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_get_by_filters"
+        },
+        {
+          "name": "mock_get_by_filters_sort"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 10,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_get_all_by_filters_calls_sort",
+      "kind": "method",
+      "scope": "_TestInstanceListObject",
+      "lineRange": {
+        "start": 1774,
+        "end": 1787
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_get_by_filters"
+        },
+        {
+          "name": "mock_get_by_filters_sort"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 12,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_get_all_by_filters_works_for_cleaned",
+      "kind": "method",
+      "scope": "_TestInstanceListObject",
+      "lineRange": {
+        "start": 1790,
+        "end": 1810
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_get_all"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 18,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_get_by_host",
+      "kind": "method",
+      "scope": "_TestInstanceListObject",
+      "lineRange": {
+        "start": 1813,
+        "end": 1826
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_get_all"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 12,
+      "ccn": 2,
+      "visibility": "public"
+    },
+    {
+      "name": "test_get_by_host_and_node",
+      "kind": "method",
+      "scope": "_TestInstanceListObject",
+      "lineRange": {
+        "start": 1829,
+        "end": 1841
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_get_all"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 11,
+      "ccn": 2,
+      "visibility": "public"
+    },
+    {
+      "name": "test_get_by_host_and_not_type",
+      "kind": "method",
+      "scope": "_TestInstanceListObject",
+      "lineRange": {
+        "start": 1844,
+        "end": 1856
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_get_all"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 11,
+      "ccn": 2,
+      "visibility": "public"
+    },
+    {
+      "name": "test_get_all",
+      "kind": "method",
+      "scope": "_TestInstanceListObject",
+      "lineRange": {
+        "start": 1860,
+        "end": 1870
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_get_all"
+        },
+        {
+          "name": "mock_exp"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 11,
+      "ccn": 2,
+      "visibility": "public"
+    },
+    {
+      "name": "test_get_hung_in_rebooting",
+      "kind": "method",
+      "scope": "_TestInstanceListObject",
+      "lineRange": {
+        "start": 1873,
+        "end": 1885
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_get_all"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 11,
+      "ccn": 2,
+      "visibility": "public"
+    },
+    {
+      "name": "test_get_active_by_window_joined",
+      "kind": "method",
+      "scope": "_TestInstanceListObject",
+      "lineRange": {
+        "start": 1887,
+        "end": 1911
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 11,
+      "ccn": 2,
+      "visibility": "public"
+    },
+    {
+      "name": "fake_instance_get_active_by_window_joined",
+      "kind": "function",
+      "scope": "_TestInstanceListObject.test_get_active_by_window_joined",
+      "lineRange": {
+        "start": 1894,
+        "end": 1902
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "context"
+        },
+        {
+          "name": "begin"
+        },
+        {
+          "name": "end"
+        },
+        {
+          "name": "project_id"
+        },
+        {
+          "name": "host"
+        },
+        {
+          "name": "columns_to_join"
+        },
+        {
+          "default": "None",
+          "name": "limit"
+        },
+        {
+          "default": "None",
+          "name": "marker"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "fakes",
+          "line": 1902
+        }
+      ],
+      "visibility": "public"
+    },
+    {
+      "name": "test_with_fault",
+      "kind": "method",
+      "scope": "_TestInstanceListObject",
+      "lineRange": {
+        "start": 1915,
+        "end": 1938
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_get_all"
+        },
+        {
+          "name": "mock_fault_get"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 21,
+      "ccn": 2,
+      "visibility": "public"
+    },
+    {
+      "name": "test_fill_faults",
+      "kind": "method",
+      "scope": "_TestInstanceListObject",
+      "lineRange": {
+        "start": 1941,
+        "end": 1977
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_sg"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 31,
+      "ccn": 4,
+      "visibility": "public"
+    },
+    {
+      "name": "test_fill_faults_multicell",
+      "kind": "method",
+      "scope": "_TestInstanceListObject",
+      "lineRange": {
+        "start": 1980,
+        "end": 2027
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_sg"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 38,
+      "ccn": 3,
+      "visibility": "public"
+    },
+    {
+      "name": "test_fill_faults_cell_no_response",
+      "kind": "method",
+      "scope": "_TestInstanceListObject",
+      "lineRange": {
+        "start": 2030,
+        "end": 2065
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_sg"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 28,
+      "ccn": 3,
+      "visibility": "public"
+    },
+    {
+      "name": "test_fill_faults_cell_exception",
+      "kind": "method",
+      "scope": "_TestInstanceListObject",
+      "lineRange": {
+        "start": 2068,
+        "end": 2103
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_sg"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 28,
+      "ccn": 3,
+      "visibility": "public"
+    },
+    {
+      "name": "test_get_uuids_by_host_no_match",
+      "kind": "method",
+      "scope": "_TestInstanceListObject",
+      "lineRange": {
+        "start": 2106,
+        "end": 2111
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_get_all"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 6,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_get_uuids_by_host",
+      "kind": "method",
+      "scope": "_TestInstanceListObject",
+      "lineRange": {
+        "start": 2114,
+        "end": 2122
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_get_all"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 9,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_get_uuids_by_hosts",
+      "kind": "method",
+      "scope": "_TestInstanceListObject",
+      "lineRange": {
+        "start": 2125,
+        "end": 2136
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_get_all"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 12,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "TestInstanceListObject",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 2139,
+        "end": 2239
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "test_hidden_filter_query",
+      "kind": "method",
+      "scope": "TestInstanceListObject",
+      "lineRange": {
+        "start": 2142,
+        "end": 2189
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 27,
+      "ccn": 2,
+      "visibility": "public"
+    },
+    {
+      "name": "test_fill_metadata",
+      "kind": "method",
+      "scope": "TestInstanceListObject",
+      "lineRange": {
+        "start": 2191,
+        "end": 2232
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 23,
+      "ccn": 7,
+      "visibility": "public"
+    },
+    {
+      "name": "test_fill_metadata_nop",
+      "kind": "method",
+      "scope": "TestInstanceListObject",
+      "lineRange": {
+        "start": 2234,
+        "end": 2239
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 4,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "TestRemoteInstanceListObject",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 2242,
+        "end": 2244
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "TestInstanceObjectMisc",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 2247,
+        "end": 2269
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "test_expected_cols",
+      "kind": "method",
+      "scope": "TestInstanceObjectMisc",
+      "lineRange": {
+        "start": 2248,
+        "end": 2252
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 5,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_expected_cols_extra",
+      "kind": "method",
+      "scope": "TestInstanceObjectMisc",
+      "lineRange": {
+        "start": 2254,
+        "end": 2257
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 4,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_expected_cols_no_duplicates",
+      "kind": "method",
+      "scope": "TestInstanceObjectMisc",
+      "lineRange": {
+        "start": 2259,
+        "end": 2269
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 9,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "TestInstanceObjectGetPciDevices",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 2272,
+        "end": 2430
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "test_lazy_loading_pci_devices",
+      "kind": "method",
+      "scope": "TestInstanceObjectGetPciDevices",
+      "lineRange": {
+        "start": 2273,
+        "end": 2285
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 11,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_lazy_loading_pci_requests",
+      "kind": "method",
+      "scope": "TestInstanceObjectGetPciDevices",
+      "lineRange": {
+        "start": 2287,
+        "end": 2319
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 30,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_no_filter",
+      "kind": "method",
+      "scope": "TestInstanceObjectGetPciDevices",
+      "lineRange": {
+        "start": 2321,
+        "end": 2328
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 6,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_no_filter_by_request_id",
+      "kind": "method",
+      "scope": "TestInstanceObjectGetPciDevices",
+      "lineRange": {
+        "start": 2330,
+        "end": 2340
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 9,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_no_filter_by_source",
+      "kind": "method",
+      "scope": "TestInstanceObjectGetPciDevices",
+      "lineRange": {
+        "start": 2342,
+        "end": 2369
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 26,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_no_filter_by_request_id_and_source",
+      "kind": "method",
+      "scope": "TestInstanceObjectGetPciDevices",
+      "lineRange": {
+        "start": 2371,
+        "end": 2400
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 28,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_old_pci_dev_and_req",
+      "kind": "method",
+      "scope": "TestInstanceObjectGetPciDevices",
+      "lineRange": {
+        "start": 2402,
+        "end": 2430
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 22,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "fake_instance",
+      "kind": "property",
+      "scope": "_TestInstanceObject",
+      "lineRange": {
+        "start": 53,
+        "end": 84
+      },
+      "visibility": "public",
+      "source": "manual"
+    }
+  ],
+  "referencedSymbols": [
+    {
+      "name": "object",
+      "usage": "inherit",
+      "via": null,
+      "count": 2,
+      "lineRange": {
+        "start": 52,
+        "end": 52
+      }
+    },
+    {
+      "name": "fake_instance.fake_db_instance",
+      "usage": "call",
+      "via": "nova.tests.unit",
+      "count": 12,
+      "lineRange": {
+        "start": 55,
+        "end": 55
+      }
+    },
+    {
+      "name": "datetime.datetime",
+      "usage": "call",
+      "via": "datetime",
+      "count": 4,
+      "lineRange": {
+        "start": 64,
+        "end": 64
+      }
+    },
+    {
+      "name": "dict",
+      "usage": "call",
+      "via": null,
+      "count": 34,
+      "lineRange": {
+        "start": 73,
+        "end": 73
+      }
+    },
+    {
+      "name": "timeutils.parse_isotime",
+      "usage": "call",
+      "via": "oslo_utils",
+      "count": 1,
+      "lineRange": {
+        "start": 87,
+        "end": 87
+      }
+    },
+    {
+      "name": "utils.isotime",
+      "usage": "call",
+      "via": "nova",
+      "count": 2,
+      "lineRange": {
+        "start": 88,
+        "end": 88
+      }
+    },
+    {
+      "name": "objects.Instance",
+      "usage": "call",
+      "via": "nova",
+      "count": 70,
+      "lineRange": {
+        "start": 89,
+        "end": 89
+      }
+    },
+    {
+      "name": "objects.Instance.obj_from_primitive",
+      "usage": "call",
+      "via": "nova",
+      "count": 4,
+      "lineRange": {
+        "start": 100,
+        "end": 100
+      }
+    },
+    {
+      "name": "netaddr.IPAddress",
+      "usage": "call",
+      "via": "netaddr",
+      "count": 2,
+      "lineRange": {
+        "start": 121,
+        "end": 121
+      }
+    },
+    {
+      "name": "mock.patch.object",
+      "usage": "call",
+      "via": "unittest",
+      "count": 65,
+      "lineRange": {
+        "start": 124,
+        "end": 124
+      }
+    },
+    {
+      "name": "objects.Instance.get_by_uuid",
+      "usage": "call",
+      "via": "nova",
+      "count": 27,
+      "lineRange": {
+        "start": 128,
+        "end": 128
+      }
+    },
+    {
+      "name": "jsonutils.dumps",
+      "usage": "call",
+      "via": "oslo_serialization",
+      "count": 11,
+      "lineRange": {
+        "start": 158,
+        "end": 158
+      }
+    },
+    {
+      "name": "objects.Flavor",
+      "usage": "call",
+      "via": "nova",
+      "count": 6,
+      "lineRange": {
+        "start": 163,
+        "end": 163
+      }
+    },
+    {
+      "name": "test_vcpu_model.fake_vcpumodel.obj_to_primitive",
+      "usage": "call",
+      "via": "nova.tests.unit.objects",
+      "count": 3,
+      "lineRange": {
+        "start": 166,
+        "end": 166
+      }
+    },
+    {
+      "name": "test_mig_ctxt.fake_migration_context_obj.obj_to_primitive",
+      "usage": "call",
+      "via": "nova.tests.unit.objects",
+      "count": 1,
+      "lineRange": {
+        "start": 168,
+        "end": 168
+      }
+    },
+    {
+      "name": "objects.KeyPairList",
+      "usage": "call",
+      "via": "nova",
+      "count": 4,
+      "lineRange": {
+        "start": 169,
+        "end": 169
+      }
+    },
+    {
+      "name": "objects.KeyPair",
+      "usage": "call",
+      "via": "nova",
+      "count": 4,
+      "lineRange": {
+        "start": 170,
+        "end": 170
+      }
+    },
+    {
+      "name": "objects.TrustedCerts",
+      "usage": "call",
+      "via": "nova",
+      "count": 3,
+      "lineRange": {
+        "start": 174,
+        "end": 174
+      }
+    },
+    {
+      "name": "objects.Resource",
+      "usage": "call",
+      "via": "nova",
+      "count": 2,
+      "lineRange": {
+        "start": 175,
+        "end": 175
+      }
+    },
+    {
+      "name": "objects.ResourceList",
+      "usage": "call",
+      "via": "nova",
+      "count": 4,
+      "lineRange": {
+        "start": 178,
+        "end": 178
+      }
+    },
+    {
+      "name": "len",
+      "usage": "call",
+      "via": null,
+      "count": 29,
+      "lineRange": {
+        "start": 229,
+        "end": 229
+      }
+    },
+    {
+      "name": "instance.create",
+      "usage": "call",
+      "via": "nova.objects",
+      "count": 8,
+      "lineRange": {
+        "start": 244,
+        "end": 244
+      }
+    },
+    {
+      "name": "instance.destroy",
+      "usage": "call",
+      "via": "nova.objects",
+      "count": 2,
+      "lineRange": {
+        "start": 245,
+        "end": 245
+      }
+    },
+    {
+      "name": "objects.Tag",
+      "usage": "call",
+      "via": "nova",
+      "count": 2,
+      "lineRange": {
+        "start": 277,
+        "end": 277
+      }
+    },
+    {
+      "name": "mock.patch",
+      "usage": "call",
+      "via": "unittest",
+      "count": 32,
+      "lineRange": {
+        "start": 283,
+        "end": 283
+      }
+    },
+    {
+      "name": "instance.save",
+      "usage": "call",
+      "via": "nova.objects",
+      "count": 3,
+      "lineRange": {
+        "start": 298,
+        "end": 298
+      }
+    },
+    {
+      "name": "ovo_base.obj_tree_get_versions",
+      "usage": "call",
+      "via": "oslo_versionedobjects",
+      "count": 3,
+      "lineRange": {
+        "start": 329,
+        "end": 329
+      }
+    },
+    {
+      "name": "instance.obj_to_primitive",
+      "usage": "call",
+      "via": "nova.objects",
+      "count": 2,
+      "lineRange": {
+        "start": 331,
+        "end": 331
+      }
+    },
+    {
+      "name": "objects.Instance.get_by_id",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 377,
+        "end": 377
+      }
+    },
+    {
+      "name": "hasattr",
+      "usage": "call",
+      "via": null,
+      "count": 3,
+      "lineRange": {
+        "start": 390,
+        "end": 390
+      }
+    },
+    {
+      "name": "mock.call",
+      "usage": "call",
+      "via": "unittest",
+      "count": 4,
+      "lineRange": {
+        "start": 398,
+        "end": 398
+      }
+    },
+    {
+      "name": "str",
+      "usage": "call",
+      "via": null,
+      "count": 3,
+      "lineRange": {
+        "start": 469,
+        "end": 469
+      }
+    },
+    {
+      "name": "set",
+      "usage": "call",
+      "via": null,
+      "count": 19,
+      "lineRange": {
+        "start": 488,
+        "end": 488
+      }
+    },
+    {
+      "name": "objects.Instance._from_db_object",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 618,
+        "end": 618
+      }
+    },
+    {
+      "name": "objects.InstancePCIRequest",
+      "usage": "call",
+      "via": "nova",
+      "count": 10,
+      "lineRange": {
+        "start": 621,
+        "end": 621
+      }
+    },
+    {
+      "name": "objects.InstancePCIRequests",
+      "usage": "call",
+      "via": "nova",
+      "count": 9,
+      "lineRange": {
+        "start": 624,
+        "end": 624
+      }
+    },
+    {
+      "name": "pci_device.PciDeviceList",
+      "usage": "call",
+      "via": "nova.objects",
+      "count": 3,
+      "lineRange": {
+        "start": 653,
+        "end": 653
+      }
+    },
+    {
+      "name": "objects.InstanceNUMATopology",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 663,
+        "end": 663
+      }
+    },
+    {
+      "name": "objects.InstanceNUMACell",
+      "usage": "call",
+      "via": "nova",
+      "count": 2,
+      "lineRange": {
+        "start": 664,
+        "end": 664
+      }
+    },
+    {
+      "name": "fake_instance.fake_instance_obj",
+      "usage": "call",
+      "via": "nova.tests.unit",
+      "count": 4,
+      "lineRange": {
+        "start": 698,
+        "end": 698
+      }
+    },
+    {
+      "name": "list",
+      "usage": "call",
+      "via": null,
+      "count": 5,
+      "lineRange": {
+        "start": 706,
+        "end": 706
+      }
+    },
+    {
+      "name": "test_mig_ctxt.get_fake_migration_context_obj",
+      "usage": "call",
+      "via": "nova.tests.unit.objects",
+      "count": 4,
+      "lineRange": {
+        "start": 719,
+        "end": 719
+      }
+    },
+    {
+      "name": "objects.MigrationContext.obj_from_db_obj",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 729,
+        "end": 729
+      }
+    },
+    {
+      "name": "network_model.NetworkInfo.hydrate",
+      "usage": "call",
+      "via": "nova.network",
+      "count": 4,
+      "lineRange": {
+        "start": 821,
+        "end": 821
+      }
+    },
+    {
+      "name": "instance_info_cache.InstanceInfoCache",
+      "usage": "call",
+      "via": "nova.objects",
+      "count": 3,
+      "lineRange": {
+        "start": 859,
+        "end": 859
+      }
+    },
+    {
+      "name": "objects.EC2Ids",
+      "usage": "call",
+      "via": "nova",
+      "count": 3,
+      "lineRange": {
+        "start": 1009,
+        "end": 1009
+      }
+    },
+    {
+      "name": "instance.Instance.get_by_uuid",
+      "usage": "call",
+      "via": "nova.objects",
+      "count": 1,
+      "lineRange": {
+        "start": 1023,
+        "end": 1023
+      }
+    },
+    {
+      "name": "sorted",
+      "usage": "call",
+      "via": null,
+      "count": 2,
+      "lineRange": {
+        "start": 1036,
+        "end": 1036
+      }
+    },
+    {
+      "name": "setattr",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 1042,
+        "end": 1042
+      }
+    },
+    {
+      "name": "getattr",
+      "usage": "call",
+      "via": null,
+      "count": 9,
+      "lineRange": {
+        "start": 1044,
+        "end": 1044
+      }
+    },
+    {
+      "name": "objects.InstanceNUMATopology.get_by_instance_uuid",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 1163,
+        "end": 1163
+      }
+    },
+    {
+      "name": "objects.InstancePCIRequests.get_by_instance_uuid",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 1167,
+        "end": 1167
+      }
+    },
+    {
+      "name": "objects.VirtCPUModel.get_by_instance_uuid",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 1170,
+        "end": 1170
+      }
+    },
+    {
+      "name": "network_model.NetworkInfo",
+      "usage": "call",
+      "via": "nova.network",
+      "count": 1,
+      "lineRange": {
+        "start": 1190,
+        "end": 1190
+      }
+    },
+    {
+      "name": "timeutils.normalize_time",
+      "usage": "call",
+      "via": "oslo_utils",
+      "count": 2,
+      "lineRange": {
+        "start": 1222,
+        "end": 1222
+      }
+    },
+    {
+      "name": "db.instance_create",
+      "usage": "call",
+      "via": "nova.db.main",
+      "count": 8,
+      "lineRange": {
+        "start": 1232,
+        "end": 1232
+      }
+    },
+    {
+      "name": "instance.Instance",
+      "usage": "call",
+      "via": "nova.objects",
+      "count": 20,
+      "lineRange": {
+        "start": 1312,
+        "end": 1312
+      }
+    },
+    {
+      "name": "instance.Instance._from_db_object",
+      "usage": "call",
+      "via": "nova.objects",
+      "count": 1,
+      "lineRange": {
+        "start": 1334,
+        "end": 1334
+      }
+    },
+    {
+      "name": "instance.obj_attr_is_set",
+      "usage": "call",
+      "via": "nova.objects",
+      "count": 1,
+      "lineRange": {
+        "start": 1348,
+        "end": 1348
+      }
+    },
+    {
+      "name": "objects.Flavor.get_by_name",
+      "usage": "call",
+      "via": "nova",
+      "count": 2,
+      "lineRange": {
+        "start": 1352,
+        "end": 1352
+      }
+    },
+    {
+      "name": "exception.MigrationContextNotFound",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 1427,
+        "end": 1427
+      }
+    },
+    {
+      "name": "test_instance_numa.fake_obj_numa_topology.obj_clone",
+      "usage": "call",
+      "via": "nova.tests.unit.objects",
+      "count": 2,
+      "lineRange": {
+        "start": 1477,
+        "end": 1477
+      }
+    },
+    {
+      "name": "data",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 1638,
+        "end": 1638
+      }
+    },
+    {
+      "name": "test_objects._LocalTest",
+      "usage": "inherit",
+      "via": "nova.tests.unit.objects",
+      "count": 2,
+      "lineRange": {
+        "start": 1644,
+        "end": 1644
+      }
+    },
+    {
+      "name": "db_exc.DBReferenceError",
+      "usage": "call",
+      "via": "oslo_db",
+      "count": 1,
+      "lineRange": {
+        "start": 1652,
+        "end": 1652
+      }
+    },
+    {
+      "name": "instance.obj_reset_changes",
+      "usage": "call",
+      "via": "nova.objects",
+      "count": 2,
+      "lineRange": {
+        "start": 1666,
+        "end": 1666
+      }
+    },
+    {
+      "name": "instance._changed_fields.add",
+      "usage": "call",
+      "via": "nova.objects",
+      "count": 1,
+      "lineRange": {
+        "start": 1667,
+        "end": 1667
+      }
+    },
+    {
+      "name": "test_objects._RemoteTest",
+      "usage": "inherit",
+      "via": "nova.tests.unit.objects",
+      "count": 2,
+      "lineRange": {
+        "start": 1696,
+        "end": 1696
+      }
+    },
+    {
+      "name": "objects.InstanceList.get_by_filters",
+      "usage": "call",
+      "via": "nova",
+      "count": 8,
+      "lineRange": {
+        "start": 1726,
+        "end": 1726
+      }
+    },
+    {
+      "name": "range",
+      "usage": "call",
+      "via": null,
+      "count": 8,
+      "lineRange": {
+        "start": 1730,
+        "end": 1730
+      }
+    },
+    {
+      "name": "objects.InstanceList.get_by_host",
+      "usage": "call",
+      "via": "nova",
+      "count": 2,
+      "lineRange": {
+        "start": 1818,
+        "end": 1818
+      }
+    },
+    {
+      "name": "objects.InstanceList.get_by_host_and_node",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 1834,
+        "end": 1834
+      }
+    },
+    {
+      "name": "objects.InstanceList.get_by_host_and_not_type",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 1849,
+        "end": 1849
+      }
+    },
+    {
+      "name": "objects.InstanceList.get_all",
+      "usage": "call",
+      "via": "nova",
+      "count": 2,
+      "lineRange": {
+        "start": 1864,
+        "end": 1864
+      }
+    },
+    {
+      "name": "objects.InstanceList.get_hung_in_rebooting",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 1879,
+        "end": 1879
+      }
+    },
+    {
+      "name": "timeutils.utcnow",
+      "usage": "call",
+      "via": "oslo_utils",
+      "count": 1,
+      "lineRange": {
+        "start": 1892,
+        "end": 1892
+      }
+    },
+    {
+      "name": "objects.InstanceList.get_active_by_window_joined",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 1906,
+        "end": 1906
+      }
+    },
+    {
+      "name": "zip",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 1909,
+        "end": 1909
+      }
+    },
+    {
+      "name": "objects.InstanceFault",
+      "usage": "call",
+      "via": "nova",
+      "count": 5,
+      "lineRange": {
+        "start": 1949,
+        "end": 1949
+      }
+    },
+    {
+      "name": "objects.InstanceFaultList",
+      "usage": "call",
+      "via": "nova",
+      "count": 5,
+      "lineRange": {
+        "start": 1961,
+        "end": 1961
+      }
+    },
+    {
+      "name": "objects.InstanceList",
+      "usage": "call",
+      "via": "nova",
+      "count": 5,
+      "lineRange": {
+        "start": 1964,
+        "end": 1964
+      }
+    },
+    {
+      "name": "Exception",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 2090,
+        "end": 2090
+      }
+    },
+    {
+      "name": "collections.defaultdict",
+      "usage": "call",
+      "via": "collections",
+      "count": 1,
+      "lineRange": {
+        "start": 2107,
+        "end": 2107
+      }
+    },
+    {
+      "name": "objects.InstanceList.get_uuids_by_host",
+      "usage": "call",
+      "via": "nova",
+      "count": 2,
+      "lineRange": {
+        "start": 2108,
+        "end": 2108
+      }
+    },
+    {
+      "name": "objects.InstanceList.get_uuids_by_hosts",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 2133,
+        "end": 2133
+      }
+    },
+    {
+      "name": "db.get_engine",
+      "usage": "call",
+      "via": "nova.db.main",
+      "count": 1,
+      "lineRange": {
+        "start": 2160,
+        "end": 2160
+      }
+    },
+    {
+      "name": "test.NoDBTestCase",
+      "usage": "inherit",
+      "via": "nova",
+      "count": 2,
+      "lineRange": {
+        "start": 2247,
+        "end": 2247
+      }
+    },
+    {
+      "name": "instance._expected_cols",
+      "usage": "call",
+      "via": "nova.objects",
+      "count": 4,
+      "lineRange": {
+        "start": 2251,
+        "end": 2251
+      }
+    },
+    {
+      "name": "context.RequestContext",
+      "usage": "call",
+      "via": "nova",
+      "count": 2,
+      "lineRange": {
+        "start": 2276,
+        "end": 2276
+      }
+    },
+    {
+      "name": "objects.PciDeviceList",
+      "usage": "call",
+      "via": "nova",
+      "count": 7,
+      "lineRange": {
+        "start": 2281,
+        "end": 2281
+      }
+    },
+    {
+      "name": "objects.PciDevice",
+      "usage": "call",
+      "via": "nova",
+      "count": 12,
+      "lineRange": {
+        "start": 2292,
+        "end": 2292
+      }
+    }
+  ],
+  "dependencies": [
+    {
+      "style": "import",
+      "module": "collections",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 15,
+        "end": 15
+      }
+    },
+    {
+      "style": "import",
+      "module": "datetime",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 16,
+        "end": 16
+      }
+    },
+    {
+      "style": "from",
+      "module": "unittest",
+      "names": [
+        {
+          "alias": null,
+          "name": "mock"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 17,
+        "end": 17
+      }
+    },
+    {
+      "style": "import",
+      "module": "netaddr",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 19,
+        "end": 19
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_db",
+      "names": [
+        {
+          "alias": "db_exc",
+          "name": "exception"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 20,
+        "end": 20
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_serialization",
+      "names": [
+        {
+          "alias": null,
+          "name": "jsonutils"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 21,
+        "end": 21
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_utils.fixture",
+      "names": [
+        {
+          "alias": "uuids",
+          "name": "uuidsentinel"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 22,
+        "end": 22
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_utils",
+      "names": [
+        {
+          "alias": null,
+          "name": "timeutils"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 23,
+        "end": 23
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_versionedobjects",
+      "names": [
+        {
+          "alias": "ovo_base",
+          "name": "base"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 24,
+        "end": 24
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.compute",
+      "names": [
+        {
+          "alias": null,
+          "name": "task_states"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 26,
+        "end": 26
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.compute",
+      "names": [
+        {
+          "alias": null,
+          "name": "vm_states"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 27,
+        "end": 27
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "context"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 28,
+        "end": 28
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.db.main",
+      "names": [
+        {
+          "alias": "db",
+          "name": "api"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 29,
+        "end": 29
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.db.main",
+      "names": [
+        {
+          "alias": "sql_models",
+          "name": "models"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 30,
+        "end": 30
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "exception"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 31,
+        "end": 31
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.network",
+      "names": [
+        {
+          "alias": "network_model",
+          "name": "model"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 32,
+        "end": 32
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "notifications"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 33,
+        "end": 33
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "objects"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 34,
+        "end": 34
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.objects",
+      "names": [
+        {
+          "alias": null,
+          "name": "fields"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 35,
+        "end": 35
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.objects",
+      "names": [
+        {
+          "alias": null,
+          "name": "instance"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 36,
+        "end": 36
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.objects",
+      "names": [
+        {
+          "alias": null,
+          "name": "instance_info_cache"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 37,
+        "end": 37
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.objects",
+      "names": [
+        {
+          "alias": null,
+          "name": "pci_device"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 38,
+        "end": 38
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "test"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 39,
+        "end": 39
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.tests.unit",
+      "names": [
+        {
+          "alias": null,
+          "name": "fake_instance"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 40,
+        "end": 40
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.tests.unit.objects",
+      "names": [
+        {
+          "alias": null,
+          "name": "test_instance_device_metadata"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 41,
+        "end": 41
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.tests.unit.objects",
+      "names": [
+        {
+          "alias": null,
+          "name": "test_instance_fault"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 42,
+        "end": 42
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.tests.unit.objects",
+      "names": [
+        {
+          "alias": null,
+          "name": "test_instance_info_cache"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 43,
+        "end": 43
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.tests.unit.objects",
+      "names": [
+        {
+          "alias": null,
+          "name": "test_instance_numa"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 44,
+        "end": 44
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.tests.unit.objects",
+      "names": [
+        {
+          "alias": null,
+          "name": "test_instance_pci_requests"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 45,
+        "end": 45
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.tests.unit.objects",
+      "names": [
+        {
+          "alias": "test_mig_ctxt",
+          "name": "test_migration_context"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 46,
+        "end": 46
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.tests.unit.objects",
+      "names": [
+        {
+          "alias": null,
+          "name": "test_objects"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 47,
+        "end": 47
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.tests.unit.objects",
+      "names": [
+        {
+          "alias": null,
+          "name": "test_vcpu_model"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 48,
+        "end": 48
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "utils"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 49,
+        "end": 49
+      }
+    }
+  ],
+  "sideEffects": [],
+  "securitySurface": [
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "db_inst.update(updates)",
+      "lineRange": {
+        "start": 1718,
+        "end": 1718
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "translate those values on SELECT.",
+      "lineRange": {
+        "start": 2147,
+        "end": 2147
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "update = table.insert().values(",
+      "lineRange": {
+        "start": 2163,
+        "end": 2163
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "conn.execute(update)",
+      "lineRange": {
+        "start": 2170,
+        "end": 2170
+      }
+    }
+  ],
+  "injection_flags": [],
+  "warnings": []
+}

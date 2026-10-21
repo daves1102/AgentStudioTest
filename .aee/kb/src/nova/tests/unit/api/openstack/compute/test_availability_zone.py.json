@@ -1,0 +1,1029 @@
+{
+  "file": "src/nova/tests/unit/api/openstack/compute/test_availability_zone.py",
+  "hash": "7650d4ee435472ea12b5615c9358608b47afc2c35ad12027f340037eb28d768f",
+  "language": "Python",
+  "component": "nova",
+  "package": null,
+  "lines": {
+    "blank": 41,
+    "code": 264,
+    "comment": 16,
+    "total": 321
+  },
+  "symbols": [
+    {
+      "name": "FAKE_UUID",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 37,
+        "end": 37
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "fake_service_get_all",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 40,
+        "end": 82
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "context"
+        },
+        {
+          "default": "None",
+          "name": "filters"
+        },
+        {
+          "name": "**kwargs"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "objects.ServiceList(objects=svcs)",
+          "line": 82
+        }
+      ],
+      "nloc": 25,
+      "ccn": 5,
+      "exported": true
+    },
+    {
+      "name": "__fake_service",
+      "kind": "function",
+      "scope": "fake_service_get_all",
+      "lineRange": {
+        "start": 42,
+        "end": 54
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "binary"
+        },
+        {
+          "name": "availability_zone"
+        },
+        {
+          "name": "created_at"
+        },
+        {
+          "name": "updated_at"
+        },
+        {
+          "name": "host"
+        },
+        {
+          "name": "disabled"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "objects.Service(context, **db_s)",
+          "line": 54
+        }
+      ],
+      "visibility": "private"
+    },
+    {
+      "name": "AvailabilityZoneApiTestV21",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 85,
+        "end": 208
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "availability_zone",
+      "kind": "field",
+      "scope": "AvailabilityZoneApiTestV21",
+      "lineRange": {
+        "start": 86,
+        "end": 86
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "setUp",
+      "kind": "method",
+      "scope": "AvailabilityZoneApiTestV21",
+      "lineRange": {
+        "start": 88,
+        "end": 100
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 13,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_filtered_availability_zones",
+      "kind": "method",
+      "scope": "AvailabilityZoneApiTestV21",
+      "lineRange": {
+        "start": 102,
+        "end": 115
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 13,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_availability_zone_index",
+      "kind": "method",
+      "scope": "AvailabilityZoneApiTestV21",
+      "lineRange": {
+        "start": 117,
+        "end": 129
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 12,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_availability_zone_index_invalid_query_params",
+      "kind": "method",
+      "scope": "AvailabilityZoneApiTestV21",
+      "lineRange": {
+        "start": 131,
+        "end": 137
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 7,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_availability_zone_detail",
+      "kind": "method",
+      "scope": "AvailabilityZoneApiTestV21",
+      "lineRange": {
+        "start": 139,
+        "end": 187
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 48,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_availability_zone_detail_no_services",
+      "kind": "method",
+      "scope": "AvailabilityZoneApiTestV21",
+      "lineRange": {
+        "start": 191,
+        "end": 200
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_get_az"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 9,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_availability_zone_detail_invalid_query_params",
+      "kind": "method",
+      "scope": "AvailabilityZoneApiTestV21",
+      "lineRange": {
+        "start": 202,
+        "end": 208
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 7,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "ServersControllerCreateTestV21",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 211,
+        "end": 321
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "base_url",
+      "kind": "field",
+      "scope": "ServersControllerCreateTestV21",
+      "lineRange": {
+        "start": 212,
+        "end": 212
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "setUp",
+      "kind": "method",
+      "scope": "ServersControllerCreateTestV21",
+      "lineRange": {
+        "start": 214,
+        "end": 229
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 9,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "_populate_instance_for_create",
+      "kind": "function",
+      "scope": "ServersControllerCreateTestV21.setUp",
+      "lineRange": {
+        "start": 222,
+        "end": 225
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "*args"
+        },
+        {
+          "name": "**kwargs"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "instance",
+          "line": 225
+        }
+      ],
+      "visibility": "private"
+    },
+    {
+      "name": "_set_up_controller",
+      "kind": "method",
+      "scope": "ServersControllerCreateTestV21",
+      "lineRange": {
+        "start": 231,
+        "end": 232
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "_create_instance_with_availability_zone",
+      "kind": "method",
+      "scope": "ServersControllerCreateTestV21",
+      "lineRange": {
+        "start": 234,
+        "end": 273
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "zone_name"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "req, body",
+          "line": 273
+        }
+      ],
+      "nloc": 34,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "create",
+      "kind": "function",
+      "scope": "ServersControllerCreateTestV21._create_instance_with_availability_zone",
+      "lineRange": {
+        "start": 235,
+        "end": 238
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "*args"
+        },
+        {
+          "name": "**kwargs"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "old_create(*args, **kwargs)",
+          "line": 238
+        }
+      ],
+      "visibility": "public"
+    },
+    {
+      "name": "test_create_instance_with_availability_zone",
+      "kind": "method",
+      "scope": "ServersControllerCreateTestV21",
+      "lineRange": {
+        "start": 275,
+        "end": 280
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 6,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_create_instance_with_invalid_availability_zone_too_long",
+      "kind": "method",
+      "scope": "ServersControllerCreateTestV21",
+      "lineRange": {
+        "start": 282,
+        "end": 286
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 5,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_create_instance_with_invalid_availability_zone_too_short",
+      "kind": "method",
+      "scope": "ServersControllerCreateTestV21",
+      "lineRange": {
+        "start": 288,
+        "end": 292
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 5,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_create_instance_with_invalid_availability_zone_not_str",
+      "kind": "method",
+      "scope": "ServersControllerCreateTestV21",
+      "lineRange": {
+        "start": 294,
+        "end": 298
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 5,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_create_instance_without_availability_zone",
+      "kind": "method",
+      "scope": "ServersControllerCreateTestV21",
+      "lineRange": {
+        "start": 300,
+        "end": 321
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 21,
+      "ccn": 1,
+      "visibility": "public"
+    }
+  ],
+  "referencedSymbols": [
+    {
+      "name": "dict",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 44,
+        "end": 44
+      }
+    },
+    {
+      "name": "objects.Service",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 54,
+        "end": 54
+      }
+    },
+    {
+      "name": "datetime.datetime",
+      "usage": "call",
+      "via": "datetime",
+      "count": 10,
+      "lineRange": {
+        "start": 57,
+        "end": 57
+      }
+    },
+    {
+      "name": "objects.ServiceList",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 82,
+        "end": 82
+      }
+    },
+    {
+      "name": "test.NoDBTestCase",
+      "usage": "inherit",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 85,
+        "end": 85
+      }
+    },
+    {
+      "name": "super",
+      "usage": "call",
+      "via": null,
+      "count": 2,
+      "lineRange": {
+        "start": 89,
+        "end": 89
+      }
+    },
+    {
+      "name": "availability_zones.reset_cache",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 90,
+        "end": 90
+      }
+    },
+    {
+      "name": "fakes.stub_out_nw_api",
+      "usage": "call",
+      "via": "nova.tests.unit.api.openstack",
+      "count": 2,
+      "lineRange": {
+        "start": 91,
+        "end": 91
+      }
+    },
+    {
+      "name": "mock.patch.object",
+      "usage": "call",
+      "via": "unittest",
+      "count": 2,
+      "lineRange": {
+        "start": 97,
+        "end": 97
+      }
+    },
+    {
+      "name": "fakes.HTTPRequest.blank",
+      "usage": "call",
+      "via": "nova.tests.unit.api.openstack",
+      "count": 7,
+      "lineRange": {
+        "start": 118,
+        "end": 118
+      }
+    },
+    {
+      "name": "len",
+      "usage": "call",
+      "via": null,
+      "count": 2,
+      "lineRange": {
+        "start": 123,
+        "end": 123
+      }
+    },
+    {
+      "name": "timeutils.parse_isotime",
+      "usage": "call",
+      "via": "oslo_utils",
+      "count": 1,
+      "lineRange": {
+        "start": 146,
+        "end": 146
+      }
+    },
+    {
+      "name": "matchers.DictMatches",
+      "usage": "call",
+      "via": "nova.tests.unit",
+      "count": 1,
+      "lineRange": {
+        "start": 200,
+        "end": 200
+      }
+    },
+    {
+      "name": "test.TestCase",
+      "usage": "inherit",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 211,
+        "end": 211
+      }
+    },
+    {
+      "name": "fixtures.GlanceFixture",
+      "usage": "call",
+      "via": "nova.tests",
+      "count": 1,
+      "lineRange": {
+        "start": 227,
+        "end": 227
+      }
+    },
+    {
+      "name": "servers_v21.ServersController",
+      "usage": "call",
+      "via": "nova.api.openstack.compute",
+      "count": 1,
+      "lineRange": {
+        "start": 232,
+        "end": 232
+      }
+    },
+    {
+      "name": "old_create",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 238,
+        "end": 238
+      }
+    },
+    {
+      "name": "jsonutils.dump_as_bytes",
+      "usage": "call",
+      "via": "oslo_serialization",
+      "count": 2,
+      "lineRange": {
+        "start": 259,
+        "end": 259
+      }
+    },
+    {
+      "name": "context.get_admin_context",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 262,
+        "end": 262
+      }
+    },
+    {
+      "name": "db.service_create",
+      "usage": "call",
+      "via": "nova.db.main",
+      "count": 1,
+      "lineRange": {
+        "start": 263,
+        "end": 263
+      }
+    },
+    {
+      "name": "objects.Aggregate",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 267,
+        "end": 267
+      }
+    }
+  ],
+  "dependencies": [
+    {
+      "style": "import",
+      "module": "datetime",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 15,
+        "end": 15
+      }
+    },
+    {
+      "style": "from",
+      "module": "unittest",
+      "names": [
+        {
+          "alias": null,
+          "name": "mock"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 16,
+        "end": 16
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_serialization",
+      "names": [
+        {
+          "alias": null,
+          "name": "jsonutils"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 18,
+        "end": 18
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_utils.fixture",
+      "names": [
+        {
+          "alias": null,
+          "name": "uuidsentinel"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 19,
+        "end": 19
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_utils",
+      "names": [
+        {
+          "alias": null,
+          "name": "timeutils"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 20,
+        "end": 20
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.api.openstack.compute",
+      "names": [
+        {
+          "alias": "az_v21",
+          "name": "availability_zone"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 22,
+        "end": 22
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.api.openstack.compute",
+      "names": [
+        {
+          "alias": "servers_v21",
+          "name": "servers"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 23,
+        "end": 23
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "availability_zones"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 24,
+        "end": 24
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.compute",
+      "names": [
+        {
+          "alias": "compute_api",
+          "name": "api"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 25,
+        "end": 25
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "context"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 26,
+        "end": 26
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.db.main",
+      "names": [
+        {
+          "alias": "db",
+          "name": "api"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 27,
+        "end": 27
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "exception"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 28,
+        "end": 28
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "objects"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 29,
+        "end": 29
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "test"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 30,
+        "end": 30
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.tests",
+      "names": [
+        {
+          "alias": null,
+          "name": "fixtures"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 31,
+        "end": 31
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.tests.unit.api.openstack",
+      "names": [
+        {
+          "alias": null,
+          "name": "fakes"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 32,
+        "end": 32
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.tests.unit",
+      "names": [
+        {
+          "alias": null,
+          "name": "matchers"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 33,
+        "end": 33
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.tests.unit.objects",
+      "names": [
+        {
+          "alias": null,
+          "name": "test_service"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 34,
+        "end": 34
+      }
+    }
+  ],
+  "sideEffects": [
+    {
+      "kind": "network",
+      "target": "from nova.api.openstack.compute import availability_zone as az_v21",
+      "lineRange": {
+        "start": 22,
+        "end": 22
+      }
+    },
+    {
+      "kind": "network",
+      "target": "from nova.api.openstack.compute import servers as servers_v21",
+      "lineRange": {
+        "start": 23,
+        "end": 23
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "FAKE_UUID = fakes.FAKE_UUID",
+      "lineRange": {
+        "start": 37,
+        "end": 37
+      }
+    }
+  ],
+  "securitySurface": [],
+  "injection_flags": [],
+  "warnings": []
+}

@@ -1,0 +1,1844 @@
+{
+  "file": "src/nova/tests/unit/virt/libvirt/volume/test_mount.py",
+  "hash": "fd3c20273719a124aa2f3d7163cd7535541093cdb3de381ddfa4cb350b8ebef8",
+  "language": "Python",
+  "component": "nova",
+  "package": null,
+  "lines": {
+    "blank": 128,
+    "code": 439,
+    "comment": 105,
+    "total": 672
+  },
+  "symbols": [
+    {
+      "name": "MAX_WAIT",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 38,
+        "end": 38
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "ThreadController",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 41,
+        "end": 169
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "all_threads",
+      "kind": "field",
+      "scope": "ThreadController",
+      "lineRange": {
+        "start": 65,
+        "end": 65
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "__init__",
+      "kind": "method",
+      "scope": "ThreadController",
+      "lineRange": {
+        "start": 67,
+        "end": 101
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "fn"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 13,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "deferred_start",
+      "kind": "function",
+      "scope": "ThreadController.__init__",
+      "lineRange": {
+        "start": 91,
+        "end": 97
+      },
+      "source": "aee-inventory",
+      "parameters": [],
+      "returnType": null,
+      "returns": [],
+      "visibility": "public"
+    },
+    {
+      "name": "current",
+      "kind": "method",
+      "scope": "ThreadController",
+      "lineRange": {
+        "start": 104,
+        "end": 105
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "cls"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "cls.all_threads.get(threading.current_thread())",
+          "line": 105
+        }
+      ],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "_ensure_running",
+      "kind": "method",
+      "scope": "ThreadController",
+      "lineRange": {
+        "start": 107,
+        "end": 110
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 4,
+      "ccn": 2,
+      "visibility": "private"
+    },
+    {
+      "name": "waitpoint",
+      "kind": "method",
+      "scope": "ThreadController",
+      "lineRange": {
+        "start": 112,
+        "end": 124
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "name"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 11,
+      "ccn": 2,
+      "visibility": "public"
+    },
+    {
+      "name": "runto",
+      "kind": "method",
+      "scope": "ThreadController",
+      "lineRange": {
+        "start": 126,
+        "end": 146
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "name"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 10,
+      "ccn": 3,
+      "visibility": "public"
+    },
+    {
+      "name": "start",
+      "kind": "method",
+      "scope": "ThreadController",
+      "lineRange": {
+        "start": 148,
+        "end": 152
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "finish",
+      "kind": "method",
+      "scope": "ThreadController",
+      "lineRange": {
+        "start": 154,
+        "end": 169
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 10,
+      "ccn": 2,
+      "visibility": "public"
+    },
+    {
+      "name": "MountFixture",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 172,
+        "end": 202
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "__init__",
+      "kind": "method",
+      "scope": "MountFixture",
+      "lineRange": {
+        "start": 173,
+        "end": 178
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "test"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 5,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "setUp",
+      "kind": "method",
+      "scope": "MountFixture",
+      "lineRange": {
+        "start": 180,
+        "end": 193
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 12,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "_fake_mount",
+      "kind": "method",
+      "scope": "MountFixture",
+      "lineRange": {
+        "start": 195,
+        "end": 196
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "fstype"
+        },
+        {
+          "name": "export"
+        },
+        {
+          "name": "mountpoint"
+        },
+        {
+          "name": "options"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "_fake_umount",
+      "kind": "method",
+      "scope": "MountFixture",
+      "lineRange": {
+        "start": 198,
+        "end": 199
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mountpoint"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "_fake_ismount",
+      "kind": "method",
+      "scope": "MountFixture",
+      "lineRange": {
+        "start": 201,
+        "end": 202
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mountpoint"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "mountpoint in self.mounts",
+          "line": 202
+        }
+      ],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "HostMountStateTestCase",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 205,
+        "end": 607
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "setUp",
+      "kind": "method",
+      "scope": "HostMountStateTestCase",
+      "lineRange": {
+        "start": 206,
+        "end": 209
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 3,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_init",
+      "kind": "method",
+      "scope": "HostMountStateTestCase",
+      "lineRange": {
+        "start": 211,
+        "end": 261
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 31,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "fake_disk",
+      "kind": "function",
+      "scope": "HostMountStateTestCase.test_init",
+      "lineRange": {
+        "start": 214,
+        "end": 218
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "disk"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "libvirt_disk",
+          "line": 218
+        }
+      ],
+      "visibility": "public"
+    },
+    {
+      "name": "mock_guest",
+      "kind": "function",
+      "scope": "HostMountStateTestCase.test_init",
+      "lineRange": {
+        "start": 220,
+        "end": 224
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "uuid"
+        },
+        {
+          "name": "disks"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "guest",
+          "line": 224
+        }
+      ],
+      "visibility": "public"
+    },
+    {
+      "name": "_get_clean_hostmountstate",
+      "kind": "method",
+      "scope": "HostMountStateTestCase",
+      "lineRange": {
+        "start": 264,
+        "end": 269
+      },
+      "source": "aee-inventory",
+      "parameters": [],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "mount._HostMountState(host, 0)",
+          "line": 269
+        }
+      ],
+      "nloc": 4,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "_sentinel_mount",
+      "kind": "method",
+      "scope": "HostMountStateTestCase",
+      "lineRange": {
+        "start": 271,
+        "end": 279
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "m"
+        },
+        {
+          "name": "vol"
+        },
+        {
+          "default": "mock.sentinel.mountpoint",
+          "name": "mountpoint"
+        },
+        {
+          "default": "None",
+          "name": "instance"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 8,
+      "ccn": 2,
+      "visibility": "private"
+    },
+    {
+      "name": "_sentinel_umount",
+      "kind": "method",
+      "scope": "HostMountStateTestCase",
+      "lineRange": {
+        "start": 281,
+        "end": 283
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "m"
+        },
+        {
+          "name": "vol"
+        },
+        {
+          "default": "mock.sentinel.mountpoint",
+          "name": "mountpoint"
+        },
+        {
+          "default": "mock.sentinel.instance",
+          "name": "instance"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 3,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "test_mount_umount",
+      "kind": "method",
+      "scope": "HostMountStateTestCase",
+      "lineRange": {
+        "start": 285,
+        "end": 328
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 34,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_mount_umount_multi_attach",
+      "kind": "method",
+      "scope": "HostMountStateTestCase",
+      "lineRange": {
+        "start": 330,
+        "end": 359
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 19,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_mount_concurrent",
+      "kind": "method",
+      "scope": "HostMountStateTestCase",
+      "lineRange": {
+        "start": 361,
+        "end": 489
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 72,
+      "ccn": 2,
+      "visibility": "public"
+    },
+    {
+      "name": "mount_a",
+      "kind": "function",
+      "scope": "HostMountStateTestCase.test_mount_concurrent",
+      "lineRange": {
+        "start": 376,
+        "end": 380
+      },
+      "source": "aee-inventory",
+      "parameters": [],
+      "returnType": null,
+      "returns": [],
+      "visibility": "public"
+    },
+    {
+      "name": "mount_b",
+      "kind": "function",
+      "scope": "HostMountStateTestCase.test_mount_concurrent",
+      "lineRange": {
+        "start": 382,
+        "end": 385
+      },
+      "source": "aee-inventory",
+      "parameters": [],
+      "returnType": null,
+      "returns": [],
+      "visibility": "public"
+    },
+    {
+      "name": "mount_c",
+      "kind": "function",
+      "scope": "HostMountStateTestCase.test_mount_concurrent",
+      "lineRange": {
+        "start": 387,
+        "end": 388
+      },
+      "source": "aee-inventory",
+      "parameters": [],
+      "returnType": null,
+      "returns": [],
+      "visibility": "public"
+    },
+    {
+      "name": "mount_d",
+      "kind": "function",
+      "scope": "HostMountStateTestCase.test_mount_concurrent",
+      "lineRange": {
+        "start": 390,
+        "end": 391
+      },
+      "source": "aee-inventory",
+      "parameters": [],
+      "returnType": null,
+      "returns": [],
+      "visibility": "public"
+    },
+    {
+      "name": "trap_mount",
+      "kind": "function",
+      "scope": "HostMountStateTestCase.test_mount_concurrent",
+      "lineRange": {
+        "start": 398,
+        "end": 402
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "*args"
+        },
+        {
+          "name": "**kwargs"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "visibility": "public"
+    },
+    {
+      "name": "trap_umount",
+      "kind": "function",
+      "scope": "HostMountStateTestCase.test_mount_concurrent",
+      "lineRange": {
+        "start": 404,
+        "end": 408
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "*args"
+        },
+        {
+          "name": "**kwargs"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "visibility": "public"
+    },
+    {
+      "name": "test_mount_concurrent_no_interfere",
+      "kind": "method",
+      "scope": "HostMountStateTestCase",
+      "lineRange": {
+        "start": 491,
+        "end": 532
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 23,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "mount_a",
+      "kind": "function",
+      "scope": "HostMountStateTestCase.test_mount_concurrent_no_interfere",
+      "lineRange": {
+        "start": 496,
+        "end": 502
+      },
+      "source": "aee-inventory",
+      "parameters": [],
+      "returnType": null,
+      "returns": [],
+      "visibility": "public"
+    },
+    {
+      "name": "mount_b",
+      "kind": "function",
+      "scope": "HostMountStateTestCase.test_mount_concurrent_no_interfere",
+      "lineRange": {
+        "start": 504,
+        "end": 509
+      },
+      "source": "aee-inventory",
+      "parameters": [],
+      "returnType": null,
+      "returns": [],
+      "visibility": "public"
+    },
+    {
+      "name": "test_mount_after_failed_umount",
+      "kind": "method",
+      "scope": "HostMountStateTestCase",
+      "lineRange": {
+        "start": 534,
+        "end": 569
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 19,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_umount_log_failure",
+      "kind": "method",
+      "scope": "HostMountStateTestCase",
+      "lineRange": {
+        "start": 572,
+        "end": 581
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_log"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 7,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_mount_failure",
+      "kind": "method",
+      "scope": "HostMountStateTestCase",
+      "lineRange": {
+        "start": 584,
+        "end": 607
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_log_exc"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 11,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "MountManagerTestCase",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 610,
+        "end": 672
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "FakeHostMountState",
+      "kind": "class",
+      "scope": "MountManagerTestCase",
+      "lineRange": {
+        "start": 611,
+        "end": 618
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "__init__",
+      "kind": "method",
+      "scope": "MountManagerTestCase.FakeHostMountState",
+      "lineRange": {
+        "start": 612,
+        "end": 618
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "host"
+        },
+        {
+          "name": "generation"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 6,
+      "ccn": 2,
+      "visibility": "public"
+    },
+    {
+      "name": "setUp",
+      "kind": "method",
+      "scope": "MountManagerTestCase",
+      "lineRange": {
+        "start": 620,
+        "end": 628
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 7,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "_get_state",
+      "kind": "method",
+      "scope": "MountManagerTestCase",
+      "lineRange": {
+        "start": 630,
+        "end": 632
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "state",
+          "line": 632
+        }
+      ],
+      "nloc": 3,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "test_host_up_down",
+      "kind": "method",
+      "scope": "MountManagerTestCase",
+      "lineRange": {
+        "start": 634,
+        "end": 641
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 7,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_host_up_waits_for_completion",
+      "kind": "method",
+      "scope": "MountManagerTestCase",
+      "lineRange": {
+        "start": 643,
+        "end": 672
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 13,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "txn",
+      "kind": "function",
+      "scope": "MountManagerTestCase.test_host_up_waits_for_completion",
+      "lineRange": {
+        "start": 646,
+        "end": 648
+      },
+      "source": "aee-inventory",
+      "parameters": [],
+      "returnType": null,
+      "returns": [],
+      "visibility": "public"
+    },
+    {
+      "name": "current",
+      "kind": "classmethod",
+      "scope": "ThreadController",
+      "lineRange": {
+        "start": 103,
+        "end": 105
+      },
+      "visibility": "public",
+      "source": "manual"
+    },
+    {
+      "name": "_get_clean_hostmountstate",
+      "kind": "staticmethod",
+      "scope": "HostMountStateTestCase",
+      "lineRange": {
+        "start": 263,
+        "end": 269
+      },
+      "visibility": "private",
+      "source": "manual"
+    }
+  ],
+  "referencedSymbols": [
+    {
+      "name": "object",
+      "usage": "inherit",
+      "via": null,
+      "count": 2,
+      "lineRange": {
+        "start": 41,
+        "end": 41
+      }
+    },
+    {
+      "name": "threading.Condition",
+      "usage": "call",
+      "via": "threading",
+      "count": 1,
+      "lineRange": {
+        "start": 75,
+        "end": 75
+      }
+    },
+    {
+      "name": "threading.Event",
+      "usage": "call",
+      "via": "threading",
+      "count": 1,
+      "lineRange": {
+        "start": 85,
+        "end": 85
+      }
+    },
+    {
+      "name": "fn",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 93,
+        "end": 93
+      }
+    },
+    {
+      "name": "threading.Thread",
+      "usage": "call",
+      "via": "threading",
+      "count": 1,
+      "lineRange": {
+        "start": 99,
+        "end": 99
+      }
+    },
+    {
+      "name": "threading.current_thread",
+      "usage": "call",
+      "via": "threading",
+      "count": 1,
+      "lineRange": {
+        "start": 105,
+        "end": 105
+      }
+    },
+    {
+      "name": "time.time",
+      "usage": "call",
+      "via": "time",
+      "count": 6,
+      "lineRange": {
+        "start": 115,
+        "end": 115
+      }
+    },
+    {
+      "name": "fixtures.Fixture",
+      "usage": "inherit",
+      "via": "fixtures",
+      "count": 1,
+      "lineRange": {
+        "start": 172,
+        "end": 172
+      }
+    },
+    {
+      "name": "super",
+      "usage": "call",
+      "via": null,
+      "count": 4,
+      "lineRange": {
+        "start": 174,
+        "end": 174
+      }
+    },
+    {
+      "name": "set",
+      "usage": "call",
+      "via": null,
+      "count": 3,
+      "lineRange": {
+        "start": 177,
+        "end": 177
+      }
+    },
+    {
+      "name": "fixtures.MockPatch",
+      "usage": "call",
+      "via": "fixtures",
+      "count": 5,
+      "lineRange": {
+        "start": 183,
+        "end": 183
+      }
+    },
+    {
+      "name": "test.NoDBTestCase",
+      "usage": "inherit",
+      "via": "nova",
+      "count": 2,
+      "lineRange": {
+        "start": 205,
+        "end": 205
+      }
+    },
+    {
+      "name": "libvirt_config.LibvirtConfigGuestDisk",
+      "usage": "call",
+      "via": "nova.virt.libvirt",
+      "count": 1,
+      "lineRange": {
+        "start": 215,
+        "end": 215
+      }
+    },
+    {
+      "name": "os.path.join",
+      "usage": "call",
+      "via": "os.path",
+      "count": 1,
+      "lineRange": {
+        "start": 217,
+        "end": 217
+      }
+    },
+    {
+      "name": "mock.create_autospec",
+      "usage": "call",
+      "via": "unittest",
+      "count": 3,
+      "lineRange": {
+        "start": 221,
+        "end": 221
+      }
+    },
+    {
+      "name": "map",
+      "usage": "call",
+      "via": null,
+      "count": 2,
+      "lineRange": {
+        "start": 223,
+        "end": 223
+      }
+    },
+    {
+      "name": "mount._HostMountState",
+      "usage": "call",
+      "via": "nova.virt.libvirt.volume",
+      "count": 2,
+      "lineRange": {
+        "start": 251,
+        "end": 251
+      }
+    },
+    {
+      "name": "sorted",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 254,
+        "end": 254
+      }
+    },
+    {
+      "name": "mock.call",
+      "usage": "call",
+      "via": "unittest",
+      "count": 34,
+      "lineRange": {
+        "start": 293,
+        "end": 293
+      }
+    },
+    {
+      "name": "time.sleep",
+      "usage": "call",
+      "via": "time",
+      "count": 3,
+      "lineRange": {
+        "start": 425,
+        "end": 425
+      }
+    },
+    {
+      "name": "mock.patch.object",
+      "usage": "call",
+      "via": "unittest",
+      "count": 2,
+      "lineRange": {
+        "start": 571,
+        "end": 571
+      }
+    },
+    {
+      "name": "processutils.ProcessExecutionError",
+      "usage": "call",
+      "via": "oslo_concurrency",
+      "count": 1,
+      "lineRange": {
+        "start": 573,
+        "end": 573
+      }
+    },
+    {
+      "name": "len",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 603,
+        "end": 603
+      }
+    },
+    {
+      "name": "fixtures.MonkeyPatch",
+      "usage": "call",
+      "via": "fixtures",
+      "count": 1,
+      "lineRange": {
+        "start": 623,
+        "end": 623
+      }
+    },
+    {
+      "name": "mount.get_manager",
+      "usage": "call",
+      "via": "nova.virt.libvirt.volume",
+      "count": 1,
+      "lineRange": {
+        "start": 627,
+        "end": 627
+      }
+    },
+    {
+      "name": "thread_pool_factory.spawn",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 659,
+        "end": 659
+      }
+    }
+  ],
+  "dependencies": [
+    {
+      "style": "import",
+      "module": "os.path",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 15,
+        "end": 15
+      }
+    },
+    {
+      "style": "import",
+      "module": "threading",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 16,
+        "end": 16
+      }
+    },
+    {
+      "style": "import",
+      "module": "time",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 17,
+        "end": 17
+      }
+    },
+    {
+      "style": "from",
+      "module": "unittest",
+      "names": [
+        {
+          "alias": null,
+          "name": "mock"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 18,
+        "end": 18
+      }
+    },
+    {
+      "style": "import",
+      "module": "fixtures",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 20,
+        "end": 20
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_concurrency",
+      "names": [
+        {
+          "alias": null,
+          "name": "processutils"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 21,
+        "end": 21
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_utils.fixture",
+      "names": [
+        {
+          "alias": "uuids",
+          "name": "uuidsentinel"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 22,
+        "end": 22
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "exception"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 24,
+        "end": 24
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "test"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 25,
+        "end": 25
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "thread_pool_factory"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 26,
+        "end": 26
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.virt.libvirt",
+      "names": [
+        {
+          "alias": "libvirt_config",
+          "name": "config"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 27,
+        "end": 27
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.virt.libvirt",
+      "names": [
+        {
+          "alias": "libvirt_guest",
+          "name": "guest"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 28,
+        "end": 28
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.virt.libvirt",
+      "names": [
+        {
+          "alias": "libvirt_host",
+          "name": "host"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 29,
+        "end": 29
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.virt.libvirt.volume",
+      "names": [
+        {
+          "alias": null,
+          "name": "mount"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 30,
+        "end": 30
+      }
+    }
+  ],
+  "sideEffects": [
+    {
+      "kind": "process-spawn",
+      "target": "'nova.privsep.fs.mount', side_effect=self._fake_mount)).mock",
+      "lineRange": {
+        "start": 184,
+        "end": 184
+      }
+    },
+    {
+      "kind": "process-spawn",
+      "target": "'nova.privsep.fs.umount', side_effect=self._fake_umount)).mock",
+      "lineRange": {
+        "start": 186,
+        "end": 186
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "'os.path.ismount', side_effect=self._fake_ismount)).mock",
+      "lineRange": {
+        "start": 188,
+        "end": 188
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "'oslo_utils.fileutils.ensure_tree')).mock",
+      "lineRange": {
+        "start": 191,
+        "end": 191
+      }
+    },
+    {
+      "kind": "process-spawn",
+      "target": "'nova.privsep.path.rmdir')).mock",
+      "lineRange": {
+        "start": 193,
+        "end": 193
+      }
+    },
+    {
+      "kind": "syscall",
+      "target": "def _fake_mount(self, fstype, export, mountpoint, options):",
+      "lineRange": {
+        "start": 195,
+        "end": 195
+      }
+    },
+    {
+      "kind": "syscall",
+      "target": "def _fake_umount(self, mountpoint):",
+      "lineRange": {
+        "start": 198,
+        "end": 198
+      }
+    },
+    {
+      "kind": "syscall",
+      "target": "def _fake_ismount(self, mountpoint):",
+      "lineRange": {
+        "start": 201,
+        "end": 201
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "libvirt_disk.source_path = os.path.join(*disk[1])",
+      "lineRange": {
+        "start": 217,
+        "end": 217
+      }
+    },
+    {
+      "kind": "syscall",
+      "target": "def _sentinel_mount(self, m, vol, mountpoint=mock.sentinel.mountpoint,",
+      "lineRange": {
+        "start": 271,
+        "end": 271
+      }
+    },
+    {
+      "kind": "syscall",
+      "target": "m.mount(mock.sentinel.fstype, mock.sentinel.export,",
+      "lineRange": {
+        "start": 277,
+        "end": 277
+      }
+    },
+    {
+      "kind": "syscall",
+      "target": "def _sentinel_umount(self, m, vol, mountpoint=mock.sentinel.mountpoint,",
+      "lineRange": {
+        "start": 281,
+        "end": 281
+      }
+    },
+    {
+      "kind": "syscall",
+      "target": "m.umount(vol, mountpoint, instance)",
+      "lineRange": {
+        "start": 283,
+        "end": 283
+      }
+    },
+    {
+      "kind": "syscall",
+      "target": "def test_mount_umount(self):",
+      "lineRange": {
+        "start": 285,
+        "end": 285
+      }
+    },
+    {
+      "kind": "syscall",
+      "target": "self._sentinel_mount(m, mock.sentinel.vol_a)",
+      "lineRange": {
+        "start": 291,
+        "end": 291
+      }
+    },
+    {
+      "kind": "syscall",
+      "target": "self._sentinel_mount(m, mock.sentinel.vol_b)",
+      "lineRange": {
+        "start": 300,
+        "end": 300
+      }
+    },
+    {
+      "kind": "syscall",
+      "target": "self._sentinel_umount(m, mock.sentinel.vol_a)",
+      "lineRange": {
+        "start": 309,
+        "end": 309
+      }
+    },
+    {
+      "kind": "syscall",
+      "target": "self._sentinel_umount(m, mock.sentinel.vol_b)",
+      "lineRange": {
+        "start": 318,
+        "end": 318
+      }
+    },
+    {
+      "kind": "syscall",
+      "target": "self._sentinel_mount(m, mock.sentinel.vol_a, instance=instance_a)",
+      "lineRange": {
+        "start": 341,
+        "end": 341
+      }
+    },
+    {
+      "kind": "syscall",
+      "target": "self._sentinel_mount(m, mock.sentinel.vol_a, instance=instance_b)",
+      "lineRange": {
+        "start": 349,
+        "end": 349
+      }
+    },
+    {
+      "kind": "syscall",
+      "target": "self._sentinel_umount(m, mock.sentinel.vol_a, instance=instance_a)",
+      "lineRange": {
+        "start": 353,
+        "end": 353
+      }
+    },
+    {
+      "kind": "syscall",
+      "target": "self._sentinel_umount(m, mock.sentinel.vol_a, instance=instance_b)",
+      "lineRange": {
+        "start": 357,
+        "end": 357
+      }
+    },
+    {
+      "kind": "syscall",
+      "target": "self._sentinel_mount(m, mock.sentinel.vol_a)",
+      "lineRange": {
+        "start": 378,
+        "end": 378
+      }
+    },
+    {
+      "kind": "syscall",
+      "target": "self._sentinel_umount(m, mock.sentinel.vol_a)",
+      "lineRange": {
+        "start": 380,
+        "end": 380
+      }
+    },
+    {
+      "kind": "syscall",
+      "target": "self._sentinel_mount(m, mock.sentinel.vol_b)",
+      "lineRange": {
+        "start": 384,
+        "end": 384
+      }
+    },
+    {
+      "kind": "syscall",
+      "target": "self._sentinel_umount(m, mock.sentinel.vol_b)",
+      "lineRange": {
+        "start": 385,
+        "end": 385
+      }
+    },
+    {
+      "kind": "syscall",
+      "target": "self._sentinel_mount(m, mock.sentinel.vol_c)",
+      "lineRange": {
+        "start": 388,
+        "end": 388
+      }
+    },
+    {
+      "kind": "syscall",
+      "target": "self._sentinel_mount(m, mock.sentinel.vol_d)",
+      "lineRange": {
+        "start": 391,
+        "end": 391
+      }
+    },
+    {
+      "kind": "syscall",
+      "target": "def trap_mount(*args, **kwargs):",
+      "lineRange": {
+        "start": 398,
+        "end": 398
+      }
+    },
+    {
+      "kind": "syscall",
+      "target": "self.mountfixture._fake_mount(*args, **kwargs)",
+      "lineRange": {
+        "start": 401,
+        "end": 401
+      }
+    },
+    {
+      "kind": "syscall",
+      "target": "def trap_umount(*args, **kwargs):",
+      "lineRange": {
+        "start": 404,
+        "end": 404
+      }
+    },
+    {
+      "kind": "syscall",
+      "target": "self.mountfixture._fake_umount(*args, **kwargs)",
+      "lineRange": {
+        "start": 407,
+        "end": 407
+      }
+    },
+    {
+      "kind": "syscall",
+      "target": "self._sentinel_mount(m, mock.sentinel.vol,",
+      "lineRange": {
+        "start": 498,
+        "end": 498
+      }
+    },
+    {
+      "kind": "syscall",
+      "target": "self._sentinel_umount(m, mock.sentinel.vol,",
+      "lineRange": {
+        "start": 501,
+        "end": 501
+      }
+    },
+    {
+      "kind": "syscall",
+      "target": "self._sentinel_mount(m, mock.sentinel.vol,",
+      "lineRange": {
+        "start": 506,
+        "end": 506
+      }
+    },
+    {
+      "kind": "syscall",
+      "target": "self._sentinel_umount(m, mock.sentinel.vol,",
+      "lineRange": {
+        "start": 508,
+        "end": 508
+      }
+    },
+    {
+      "kind": "syscall",
+      "target": "def test_mount_after_failed_umount(self):",
+      "lineRange": {
+        "start": 534,
+        "end": 534
+      }
+    },
+    {
+      "kind": "syscall",
+      "target": "self._sentinel_mount(m, mock.sentinel.vol_a)",
+      "lineRange": {
+        "start": 543,
+        "end": 543
+      }
+    },
+    {
+      "kind": "syscall",
+      "target": "self._sentinel_umount(m, mock.sentinel.vol_a)",
+      "lineRange": {
+        "start": 551,
+        "end": 551
+      }
+    },
+    {
+      "kind": "syscall",
+      "target": "self._sentinel_mount(m, mock.sentinel.vol_a)",
+      "lineRange": {
+        "start": 560,
+        "end": 560
+      }
+    },
+    {
+      "kind": "syscall",
+      "target": "self._sentinel_umount(m, mock.sentinel.vol_a)",
+      "lineRange": {
+        "start": 567,
+        "end": 567
+      }
+    },
+    {
+      "kind": "syscall",
+      "target": "self._sentinel_mount(m, mock.sentinel.vol_a)",
+      "lineRange": {
+        "start": 578,
+        "end": 578
+      }
+    },
+    {
+      "kind": "syscall",
+      "target": "self._sentinel_umount(m, mock.sentinel.vol_a)",
+      "lineRange": {
+        "start": 579,
+        "end": 579
+      }
+    },
+    {
+      "kind": "syscall",
+      "target": "self._sentinel_mount(m, mock.sentinel.vol_a)",
+      "lineRange": {
+        "start": 600,
+        "end": 600
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "MAX_WAIT = 2",
+      "lineRange": {
+        "start": 38,
+        "end": 38
+      }
+    }
+  ],
+  "securitySurface": [
+    {
+      "kind": "privilege",
+      "category": "privsep-entrypoint",
+      "description": "'nova.privsep.fs.mount', side_effect=self._fake_mount)).mock",
+      "lineRange": {
+        "start": 184,
+        "end": 184
+      }
+    },
+    {
+      "kind": "privilege",
+      "category": "privsep-entrypoint",
+      "description": "'nova.privsep.fs.umount', side_effect=self._fake_umount)).mock",
+      "lineRange": {
+        "start": 186,
+        "end": 186
+      }
+    },
+    {
+      "kind": "privilege",
+      "category": "privsep-entrypoint",
+      "description": "'nova.privsep.path.rmdir')).mock",
+      "lineRange": {
+        "start": 193,
+        "end": 193
+      }
+    }
+  ],
+  "injection_flags": [],
+  "warnings": []
+}

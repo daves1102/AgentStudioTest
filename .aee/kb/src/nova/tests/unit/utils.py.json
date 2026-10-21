@@ -1,0 +1,1864 @@
+{
+  "file": "src/nova/tests/unit/utils.py",
+  "hash": "15fdff52e1103bfff96a6724d5de86367afdfa986d7d7eb37c944479481f7a8e",
+  "language": "Python",
+  "component": "nova",
+  "package": null,
+  "lines": {
+    "blank": 86,
+    "code": 289,
+    "comment": 18,
+    "total": 393
+  },
+  "symbols": [
+    {
+      "name": "CONF",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 36,
+        "end": 36
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "get_test_admin_context",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 39,
+        "end": 40
+      },
+      "source": "aee-inventory",
+      "parameters": [],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "nova.context.get_admin_context()",
+          "line": 40
+        }
+      ],
+      "nloc": 2,
+      "ccn": 1,
+      "exported": true
+    },
+    {
+      "name": "get_test_image_object",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 43,
+        "end": 51
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "context"
+        },
+        {
+          "name": "instance_ref"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "objects.ImageMeta.from_dict( image_service.show(context, image_id))",
+          "line": 50
+        }
+      ],
+      "nloc": 8,
+      "ccn": 2,
+      "exported": true
+    },
+    {
+      "name": "get_test_flavor",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 54,
+        "end": 74
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "default": "None",
+          "name": "context"
+        },
+        {
+          "default": "None",
+          "name": "options"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "flavor_ref",
+          "line": 74
+        }
+      ],
+      "nloc": 19,
+      "ccn": 4,
+      "exported": true
+    },
+    {
+      "name": "get_test_instance",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 77,
+        "end": 105
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "default": "None",
+          "name": "context"
+        },
+        {
+          "default": "None",
+          "name": "flavor"
+        },
+        {
+          "default": "False",
+          "name": "obj"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "instance",
+          "line": 105
+        }
+      ],
+      "nloc": 26,
+      "ccn": 4,
+      "exported": true
+    },
+    {
+      "name": "FAKE_NETWORK_VLAN",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 108,
+        "end": 108
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "FAKE_NETWORK_BRIDGE",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 109,
+        "end": 109
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "FAKE_NETWORK_INTERFACE",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 110,
+        "end": 110
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "FAKE_NETWORK_IP4_ADDR1",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 112,
+        "end": 112
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "FAKE_NETWORK_IP4_ADDR2",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 113,
+        "end": 113
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "FAKE_NETWORK_IP6_ADDR1",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 114,
+        "end": 114
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "FAKE_NETWORK_IP6_ADDR2",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 115,
+        "end": 115
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "FAKE_NETWORK_IP6_ADDR3",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 116,
+        "end": 116
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "FAKE_NETWORK_IP4_GATEWAY",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 118,
+        "end": 118
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "FAKE_NETWORK_IP6_GATEWAY",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 119,
+        "end": 119
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "FAKE_NETWORK_IP4_CIDR",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 121,
+        "end": 121
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "FAKE_NETWORK_IP6_CIDR",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 122,
+        "end": 122
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "FAKE_NETWORK_DNS_IP4_ADDR1",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 124,
+        "end": 124
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "FAKE_NETWORK_DNS_IP4_ADDR2",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 125,
+        "end": 125
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "FAKE_NETWORK_DNS_IP6_ADDR1",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 126,
+        "end": 126
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "FAKE_NETWORK_DNS_IP6_ADDR2",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 127,
+        "end": 127
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "FAKE_NETWORK_DHCP_IP4_ADDR",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 129,
+        "end": 129
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "FAKE_NETWORK_UUID",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 131,
+        "end": 131
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "FAKE_VIF_UUID",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 133,
+        "end": 133
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "FAKE_VIF_MAC",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 134,
+        "end": 134
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "get_test_network_info",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 137,
+        "end": 175
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "default": "1",
+          "name": "count"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "network_model.NetworkInfo([current() for x in range(0, count)])",
+          "line": 175
+        }
+      ],
+      "nloc": 3,
+      "ccn": 2,
+      "exported": true
+    },
+    {
+      "name": "current",
+      "kind": "function",
+      "scope": "get_test_network_info",
+      "lineRange": {
+        "start": 138,
+        "end": 173
+      },
+      "source": "aee-inventory",
+      "parameters": [],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "vif",
+          "line": 173
+        }
+      ],
+      "visibility": "public"
+    },
+    {
+      "name": "is_osx",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 178,
+        "end": 179
+      },
+      "source": "aee-inventory",
+      "parameters": [],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "platform.mac_ver()[0] != ''",
+          "line": 179
+        }
+      ],
+      "nloc": 2,
+      "ccn": 1,
+      "exported": true
+    },
+    {
+      "name": "is_linux",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 182,
+        "end": 183
+      },
+      "source": "aee-inventory",
+      "parameters": [],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "platform.system() == 'Linux'",
+          "line": 183
+        }
+      ],
+      "nloc": 2,
+      "ccn": 1,
+      "exported": true
+    },
+    {
+      "name": "killer_xml_body",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 186,
+        "end": 200
+      },
+      "source": "aee-inventory",
+      "parameters": [],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "((\"\"\"<!DOCTYPE x [ <!ENTITY a \"%(a)s\"> <!ENTITY b \"%(b)s\"> <!ENTITY c \"%(c)s\">]> <foo> <bar> <v1>%(d)s</v1> </bar> </foo>\"\"\") % { 'a': 'A' * 10, 'b': '&a;' * 10, 'c': '&b;' * 10, 'd': '&c;' * 9999, })",
+          "line": 187
+        }
+      ],
+      "nloc": 15,
+      "ccn": 1,
+      "exported": true
+    },
+    {
+      "name": "is_ipv6_supported",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 203,
+        "end": 224
+      },
+      "source": "aee-inventory",
+      "parameters": [],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "has_ipv6_support",
+          "line": 224
+        }
+      ],
+      "nloc": 19,
+      "ccn": 8,
+      "exported": true
+    },
+    {
+      "name": "get_api_version",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 227,
+        "end": 229
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "request"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "int(request.path[2:3])",
+          "line": 229
+        }
+      ],
+      "nloc": 3,
+      "ccn": 2,
+      "exported": true
+    },
+    {
+      "name": "compare_obj_primitive",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 232,
+        "end": 236
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "thing1"
+        },
+        {
+          "name": "thing2"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "thing1.obj_to_primitive() == thing2.obj_to_primitive()",
+          "line": 234
+        },
+        {
+          "expr": "thing1 == thing2",
+          "line": 236
+        }
+      ],
+      "nloc": 5,
+      "ccn": 2,
+      "exported": true
+    },
+    {
+      "name": "_compare_args",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 239,
+        "end": 240
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "args1"
+        },
+        {
+          "name": "args2"
+        },
+        {
+          "name": "cmp"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "all(cmp(*pair) for pair in zip(args1, args2))",
+          "line": 240
+        }
+      ],
+      "nloc": 2,
+      "ccn": 2,
+      "exported": false
+    },
+    {
+      "name": "_compare_kwargs",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 243,
+        "end": 245
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "kwargs1"
+        },
+        {
+          "name": "kwargs2"
+        },
+        {
+          "name": "cmp"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "all(cmp(kwargs1[k], kwargs2[k]) for k in set(list(kwargs1.keys()) + list(kwargs2.keys())))",
+          "line": 244
+        }
+      ],
+      "nloc": 3,
+      "ccn": 2,
+      "exported": false
+    },
+    {
+      "name": "_obj_called_with",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 248,
+        "end": 260
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "the_mock"
+        },
+        {
+          "name": "*args"
+        },
+        {
+          "name": "**kwargs"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "count",
+          "line": 260
+        }
+      ],
+      "nloc": 11,
+      "ccn": 5,
+      "exported": false
+    },
+    {
+      "name": "obj_called_with",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 263,
+        "end": 264
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "the_mock"
+        },
+        {
+          "name": "*args"
+        },
+        {
+          "name": "**kwargs"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "_obj_called_with(the_mock, *args, **kwargs) != 0",
+          "line": 264
+        }
+      ],
+      "nloc": 2,
+      "ccn": 1,
+      "exported": true
+    },
+    {
+      "name": "obj_called_once_with",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 267,
+        "end": 268
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "the_mock"
+        },
+        {
+          "name": "*args"
+        },
+        {
+          "name": "**kwargs"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "_obj_called_with(the_mock, *args, **kwargs) == 1",
+          "line": 268
+        }
+      ],
+      "nloc": 2,
+      "ccn": 1,
+      "exported": true
+    },
+    {
+      "name": "CustomMockCallMatcher",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 271,
+        "end": 276
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "__init__",
+      "kind": "method",
+      "scope": "CustomMockCallMatcher",
+      "lineRange": {
+        "start": 272,
+        "end": 273
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "comparator"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "__eq__",
+      "kind": "method",
+      "scope": "CustomMockCallMatcher",
+      "lineRange": {
+        "start": 275,
+        "end": 276
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "other"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "self.comparator(other)",
+          "line": 276
+        }
+      ],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "ItemsMatcher",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 279,
+        "end": 316
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "__init__",
+      "kind": "method",
+      "scope": "ItemsMatcher",
+      "lineRange": {
+        "start": 304,
+        "end": 312
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "iterable"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 4,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "__repr__",
+      "kind": "method",
+      "scope": "ItemsMatcher",
+      "lineRange": {
+        "start": 314,
+        "end": 316
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "'ItemsMatcher(%r)' % list(self.bag.elements())",
+          "line": 316
+        }
+      ],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "assert_instance_delete_notification_by_uuid",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 319,
+        "end": 333
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "mock_legacy_notify"
+        },
+        {
+          "name": "mock_notify"
+        },
+        {
+          "name": "expected_instance_uuid"
+        },
+        {
+          "name": "expected_notifier"
+        },
+        {
+          "name": "expected_context"
+        },
+        {
+          "default": "False",
+          "name": "expect_targeted_context"
+        },
+        {
+          "default": "'nova-api'",
+          "name": "expected_source"
+        },
+        {
+          "default": "'fake-mini'",
+          "name": "expected_host"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 13,
+      "ccn": 1,
+      "exported": true
+    },
+    {
+      "name": "assert_versioned_instance_delete_notification_by_uuid",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 336,
+        "end": 352
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "mock_notify"
+        },
+        {
+          "name": "instance_matcher"
+        },
+        {
+          "name": "expected_context"
+        },
+        {
+          "name": "expected_source"
+        },
+        {
+          "name": "expected_host"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 16,
+      "ccn": 1,
+      "exported": true
+    },
+    {
+      "name": "assert_legacy_instance_delete_notification_by_uuid",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 355,
+        "end": 373
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "mock_notify"
+        },
+        {
+          "name": "instance_matcher"
+        },
+        {
+          "name": "expected_notifier"
+        },
+        {
+          "name": "expected_context"
+        },
+        {
+          "name": "expect_targeted_context"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 17,
+      "ccn": 3,
+      "exported": true
+    },
+    {
+      "name": "ExceptionHelper",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 376,
+        "end": 393
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "__init__",
+      "kind": "method",
+      "scope": "ExceptionHelper",
+      "lineRange": {
+        "start": 381,
+        "end": 382
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "target"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "__getattr__",
+      "kind": "method",
+      "scope": "ExceptionHelper",
+      "lineRange": {
+        "start": 384,
+        "end": 393
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "name"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "wrapper",
+          "line": 393
+        }
+      ],
+      "nloc": 5,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "wrapper",
+      "kind": "function",
+      "scope": "ExceptionHelper.__getattr__",
+      "lineRange": {
+        "start": 388,
+        "end": 392
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "*args"
+        },
+        {
+          "name": "**kwargs"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "func(*args, **kwargs)",
+          "line": 390
+        }
+      ],
+      "visibility": "public"
+    }
+  ],
+  "referencedSymbols": [
+    {
+      "name": "nova.context.get_admin_context",
+      "usage": "call",
+      "via": "nova.conf",
+      "count": 1,
+      "lineRange": {
+        "start": 40,
+        "end": 40
+      }
+    },
+    {
+      "name": "glance.get_remote_image_service",
+      "usage": "call",
+      "via": "nova.image",
+      "count": 1,
+      "lineRange": {
+        "start": 48,
+        "end": 48
+      }
+    },
+    {
+      "name": "objects.ImageMeta.from_dict",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 50,
+        "end": 50
+      }
+    },
+    {
+      "name": "objects.Flavor",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 68,
+        "end": 68
+      }
+    },
+    {
+      "name": "objects.Flavor.get_by_flavor_id",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 72,
+        "end": 72
+      }
+    },
+    {
+      "name": "objects.Instance",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 99,
+        "end": 99
+      }
+    },
+    {
+      "name": "objects.Flavor.get_by_id",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 100,
+        "end": 100
+      }
+    },
+    {
+      "name": "flavors.save_flavor_info",
+      "usage": "call",
+      "via": "nova.compute",
+      "count": 1,
+      "lineRange": {
+        "start": 103,
+        "end": 103
+      }
+    },
+    {
+      "name": "db.instance_create",
+      "usage": "call",
+      "via": "nova.db.main",
+      "count": 1,
+      "lineRange": {
+        "start": 104,
+        "end": 104
+      }
+    },
+    {
+      "name": "network_model.Subnet",
+      "usage": "call",
+      "via": "nova.network",
+      "count": 2,
+      "lineRange": {
+        "start": 139,
+        "end": 139
+      }
+    },
+    {
+      "name": "network_model.IP",
+      "usage": "call",
+      "via": "nova.network",
+      "count": 9,
+      "lineRange": {
+        "start": 141,
+        "end": 141
+      }
+    },
+    {
+      "name": "network_model.Network",
+      "usage": "call",
+      "via": "nova.network",
+      "count": 1,
+      "lineRange": {
+        "start": 157,
+        "end": 157
+      }
+    },
+    {
+      "name": "network_model.VIF",
+      "usage": "call",
+      "via": "nova.network",
+      "count": 1,
+      "lineRange": {
+        "start": 165,
+        "end": 165
+      }
+    },
+    {
+      "name": "network_model.NetworkInfo",
+      "usage": "call",
+      "via": "nova.network",
+      "count": 1,
+      "lineRange": {
+        "start": 175,
+        "end": 175
+      }
+    },
+    {
+      "name": "range",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 175,
+        "end": 175
+      }
+    },
+    {
+      "name": "platform.mac_ver",
+      "usage": "call",
+      "via": "platform",
+      "count": 1,
+      "lineRange": {
+        "start": 179,
+        "end": 179
+      }
+    },
+    {
+      "name": "platform.system",
+      "usage": "call",
+      "via": "platform",
+      "count": 1,
+      "lineRange": {
+        "start": 183,
+        "end": 183
+      }
+    },
+    {
+      "name": "socket.socket",
+      "usage": "call",
+      "via": "socket",
+      "count": 1,
+      "lineRange": {
+        "start": 206,
+        "end": 206
+      }
+    },
+    {
+      "name": "sys.platform.startswith",
+      "usage": "call",
+      "via": "sys",
+      "count": 1,
+      "lineRange": {
+        "start": 216,
+        "end": 216
+      }
+    },
+    {
+      "name": "open",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 218,
+        "end": 218
+      }
+    },
+    {
+      "name": "int",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 229,
+        "end": 229
+      }
+    },
+    {
+      "name": "isinstance",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 233,
+        "end": 233
+      }
+    },
+    {
+      "name": "all",
+      "usage": "call",
+      "via": null,
+      "count": 2,
+      "lineRange": {
+        "start": 240,
+        "end": 240
+      }
+    },
+    {
+      "name": "cmp",
+      "usage": "call",
+      "via": null,
+      "count": 2,
+      "lineRange": {
+        "start": 240,
+        "end": 240
+      }
+    },
+    {
+      "name": "zip",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 240,
+        "end": 240
+      }
+    },
+    {
+      "name": "list",
+      "usage": "call",
+      "via": null,
+      "count": 3,
+      "lineRange": {
+        "start": 245,
+        "end": 245
+      }
+    },
+    {
+      "name": "set",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 245,
+        "end": 245
+      }
+    },
+    {
+      "name": "object",
+      "usage": "inherit",
+      "via": null,
+      "count": 2,
+      "lineRange": {
+        "start": 271,
+        "end": 271
+      }
+    },
+    {
+      "name": "collections.Counter",
+      "usage": "call",
+      "via": "collections",
+      "count": 2,
+      "lineRange": {
+        "start": 309,
+        "end": 309
+      }
+    },
+    {
+      "name": "iter",
+      "usage": "call",
+      "via": null,
+      "count": 2,
+      "lineRange": {
+        "start": 309,
+        "end": 309
+      }
+    },
+    {
+      "name": "super",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 311,
+        "end": 311
+      }
+    },
+    {
+      "name": "mock.call",
+      "usage": "call",
+      "via": "unittest",
+      "count": 4,
+      "lineRange": {
+        "start": 341,
+        "end": 341
+      }
+    },
+    {
+      "name": "getattr",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 385,
+        "end": 385
+      }
+    },
+    {
+      "name": "functools.wraps",
+      "usage": "call",
+      "via": "functools",
+      "count": 1,
+      "lineRange": {
+        "start": 387,
+        "end": 387
+      }
+    },
+    {
+      "name": "func",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 390,
+        "end": 390
+      }
+    }
+  ],
+  "dependencies": [
+    {
+      "style": "import",
+      "module": "collections",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 15,
+        "end": 15
+      }
+    },
+    {
+      "style": "import",
+      "module": "errno",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 16,
+        "end": 16
+      }
+    },
+    {
+      "style": "import",
+      "module": "functools",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 17,
+        "end": 17
+      }
+    },
+    {
+      "style": "import",
+      "module": "platform",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 18,
+        "end": 18
+      }
+    },
+    {
+      "style": "import",
+      "module": "socket",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 19,
+        "end": 19
+      }
+    },
+    {
+      "style": "import",
+      "module": "sys",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 20,
+        "end": 20
+      }
+    },
+    {
+      "style": "from",
+      "module": "unittest",
+      "names": [
+        {
+          "alias": null,
+          "name": "mock"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 21,
+        "end": 21
+      }
+    },
+    {
+      "style": "import",
+      "module": "oslo_messaging",
+      "names": [],
+      "alias": "messaging",
+      "relative": false,
+      "lineRange": {
+        "start": 23,
+        "end": 23
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.compute",
+      "names": [
+        {
+          "alias": null,
+          "name": "flavors"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 25,
+        "end": 25
+      }
+    },
+    {
+      "style": "import",
+      "module": "nova.conf",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 26,
+        "end": 26
+      }
+    },
+    {
+      "style": "import",
+      "module": "nova.context",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 27,
+        "end": 27
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.db.main",
+      "names": [
+        {
+          "alias": "db",
+          "name": "api"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 28,
+        "end": 28
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "exception"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 29,
+        "end": 29
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.image",
+      "names": [
+        {
+          "alias": null,
+          "name": "glance"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 30,
+        "end": 30
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.network",
+      "names": [
+        {
+          "alias": "network_model",
+          "name": "model"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 31,
+        "end": 31
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "objects"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 32,
+        "end": 32
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.objects",
+      "names": [
+        {
+          "alias": "obj_base",
+          "name": "base"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 33,
+        "end": 33
+      }
+    },
+    {
+      "style": "import",
+      "module": "nova.utils",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 34,
+        "end": 34
+      }
+    }
+  ],
+  "sideEffects": [
+    {
+      "kind": "file-io",
+      "target": "with open('/proc/net/if_inet6') as f:",
+      "lineRange": {
+        "start": 218,
+        "end": 218
+      }
+    },
+    {
+      "kind": "network",
+      "target": "mock_legacy_notify, mock_notify, expected_instance_uuid,",
+      "lineRange": {
+        "start": 320,
+        "end": 320
+      }
+    },
+    {
+      "kind": "network",
+      "target": "mock_legacy_notify, match_by_instance_uuid, expected_notifier,",
+      "lineRange": {
+        "start": 329,
+        "end": 329
+      }
+    },
+    {
+      "kind": "network",
+      "target": "mock_notify, match_by_instance_uuid,",
+      "lineRange": {
+        "start": 332,
+        "end": 332
+      }
+    },
+    {
+      "kind": "network",
+      "target": "mock_notify, instance_matcher,",
+      "lineRange": {
+        "start": 337,
+        "end": 337
+      }
+    },
+    {
+      "kind": "network",
+      "target": "mock_notify.assert_has_calls([",
+      "lineRange": {
+        "start": 340,
+        "end": 340
+      }
+    },
+    {
+      "kind": "network",
+      "target": "mock_notify, instance_matcher, expected_notifier,",
+      "lineRange": {
+        "start": 356,
+        "end": 356
+      }
+    },
+    {
+      "kind": "network",
+      "target": "mock_notify.assert_has_calls([",
+      "lineRange": {
+        "start": 359,
+        "end": 359
+      }
+    },
+    {
+      "kind": "network",
+      "target": "for call in mock_notify.call_args_list:",
+      "lineRange": {
+        "start": 369,
+        "end": 369
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "CONF = nova.conf.CONF",
+      "lineRange": {
+        "start": 36,
+        "end": 36
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "FAKE_NETWORK_VLAN = 100",
+      "lineRange": {
+        "start": 108,
+        "end": 108
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "FAKE_NETWORK_BRIDGE = 'br0'",
+      "lineRange": {
+        "start": 109,
+        "end": 109
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "FAKE_NETWORK_INTERFACE = 'eth0'",
+      "lineRange": {
+        "start": 110,
+        "end": 110
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "FAKE_NETWORK_IP4_ADDR1 = '10.0.0.73'",
+      "lineRange": {
+        "start": 112,
+        "end": 112
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "FAKE_NETWORK_IP4_ADDR2 = '10.0.0.74'",
+      "lineRange": {
+        "start": 113,
+        "end": 113
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "FAKE_NETWORK_IP6_ADDR1 = '2001:b105:f00d::1'",
+      "lineRange": {
+        "start": 114,
+        "end": 114
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "FAKE_NETWORK_IP6_ADDR2 = '2001:b105:f00d::2'",
+      "lineRange": {
+        "start": 115,
+        "end": 115
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "FAKE_NETWORK_IP6_ADDR3 = '2001:b105:f00d::3'",
+      "lineRange": {
+        "start": 116,
+        "end": 116
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "FAKE_NETWORK_IP4_GATEWAY = '10.0.0.254'",
+      "lineRange": {
+        "start": 118,
+        "end": 118
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "FAKE_NETWORK_IP6_GATEWAY = '2001:b105:f00d::ff'",
+      "lineRange": {
+        "start": 119,
+        "end": 119
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "FAKE_NETWORK_IP4_CIDR = '10.0.0.0/24'",
+      "lineRange": {
+        "start": 121,
+        "end": 121
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "FAKE_NETWORK_IP6_CIDR = '2001:b105:f00d::0/64'",
+      "lineRange": {
+        "start": 122,
+        "end": 122
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "FAKE_NETWORK_DNS_IP4_ADDR1 = '192.168.122.1'",
+      "lineRange": {
+        "start": 124,
+        "end": 124
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "FAKE_NETWORK_DNS_IP4_ADDR2 = '192.168.122.2'",
+      "lineRange": {
+        "start": 125,
+        "end": 125
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "FAKE_NETWORK_DNS_IP6_ADDR1 = '2001:dead:beef::1'",
+      "lineRange": {
+        "start": 126,
+        "end": 126
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "FAKE_NETWORK_DNS_IP6_ADDR2 = '2001:dead:beef::2'",
+      "lineRange": {
+        "start": 127,
+        "end": 127
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "FAKE_NETWORK_DHCP_IP4_ADDR = '192.168.122.253'",
+      "lineRange": {
+        "start": 129,
+        "end": 129
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "FAKE_NETWORK_UUID = '4587c867-a2e6-4356-8c5b-bc077dcb8620'",
+      "lineRange": {
+        "start": 131,
+        "end": 131
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "FAKE_VIF_UUID = '51a9642b-1414-4bd6-9a92-1320ddc55a63'",
+      "lineRange": {
+        "start": 133,
+        "end": 133
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "FAKE_VIF_MAC = 'de:ad:be:ef:ca:fe'",
+      "lineRange": {
+        "start": 134,
+        "end": 134
+      }
+    }
+  ],
+  "securitySurface": [
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "test_flavor.update(options)",
+      "lineRange": {
+        "start": 67,
+        "end": 67
+      }
+    }
+  ],
+  "injection_flags": [],
+  "warnings": []
+}

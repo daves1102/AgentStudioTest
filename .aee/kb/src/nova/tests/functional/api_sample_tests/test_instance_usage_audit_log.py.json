@@ -1,0 +1,364 @@
+{
+  "file": "src/nova/tests/functional/api_sample_tests/test_instance_usage_audit_log.py",
+  "hash": "9bbfe9bd4a7f8db9e8d672845735f70944845beaf895b73c899fe3582b806eb5",
+  "language": "Python",
+  "component": "nova",
+  "package": null,
+  "lines": {
+    "blank": 13,
+    "code": 50,
+    "comment": 15,
+    "total": 78
+  },
+  "symbols": [
+    {
+      "name": "InstanceUsageAuditLogJsonTest",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 24,
+        "end": 78
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "ADMIN_API",
+      "kind": "constant",
+      "scope": "InstanceUsageAuditLogJsonTest",
+      "lineRange": {
+        "start": 25,
+        "end": 25
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "sample_dir",
+      "kind": "field",
+      "scope": "InstanceUsageAuditLogJsonTest",
+      "lineRange": {
+        "start": 26,
+        "end": 26
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "setUp",
+      "kind": "method",
+      "scope": "InstanceUsageAuditLogJsonTest",
+      "lineRange": {
+        "start": 28,
+        "end": 52
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 16,
+      "ccn": 2,
+      "visibility": "public"
+    },
+    {
+      "name": "fake_service_get_all",
+      "kind": "function",
+      "scope": "InstanceUsageAuditLogJsonTest.setUp",
+      "lineRange": {
+        "start": 38,
+        "end": 40
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "context"
+        },
+        {
+          "default": "None",
+          "name": "filters"
+        },
+        {
+          "default": "False",
+          "name": "set_zones"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "[objects.Service(host=host) for host in hosts]",
+          "line": 40
+        }
+      ],
+      "visibility": "public"
+    },
+    {
+      "name": "fake_utcnow",
+      "kind": "function",
+      "scope": "InstanceUsageAuditLogJsonTest.setUp",
+      "lineRange": {
+        "start": 42,
+        "end": 44
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "default": "False",
+          "name": "with_timezone"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "datetime(2012, 7, 3, 19, 36, 5, 0)",
+          "line": 44
+        }
+      ],
+      "visibility": "public"
+    },
+    {
+      "name": "_create_task_log",
+      "kind": "method",
+      "scope": "InstanceUsageAuditLogJsonTest",
+      "lineRange": {
+        "start": 54,
+        "end": 67
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "host"
+        },
+        {
+          "name": "num_instances"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 14,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "test_show_instance_usage_audit_log",
+      "kind": "method",
+      "scope": "InstanceUsageAuditLogJsonTest",
+      "lineRange": {
+        "start": 69,
+        "end": 73
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 5,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_index_instance_usage_audit_log",
+      "kind": "method",
+      "scope": "InstanceUsageAuditLogJsonTest",
+      "lineRange": {
+        "start": 75,
+        "end": 78
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 4,
+      "ccn": 1,
+      "visibility": "public"
+    }
+  ],
+  "referencedSymbols": [
+    {
+      "name": "api_sample_base.ApiSampleTestBaseV21",
+      "usage": "inherit",
+      "via": "nova.tests.functional.api_sample_tests",
+      "count": 1,
+      "lineRange": {
+        "start": 24,
+        "end": 24
+      }
+    },
+    {
+      "name": "super",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 29,
+        "end": 29
+      }
+    },
+    {
+      "name": "objects.Service",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 40,
+        "end": 40
+      }
+    },
+    {
+      "name": "datetime",
+      "usage": "call",
+      "via": "datetime",
+      "count": 1,
+      "lineRange": {
+        "start": 44,
+        "end": 44
+      }
+    },
+    {
+      "name": "range",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 51,
+        "end": 51
+      }
+    },
+    {
+      "name": "context.get_admin_context",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 55,
+        "end": 55
+      }
+    },
+    {
+      "name": "objects.TaskLog",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 55,
+        "end": 55
+      }
+    },
+    {
+      "name": "urllib.parse.quote",
+      "usage": "call",
+      "via": "urllib",
+      "count": 1,
+      "lineRange": {
+        "start": 71,
+        "end": 71
+      }
+    }
+  ],
+  "dependencies": [
+    {
+      "style": "from",
+      "module": "datetime",
+      "names": [
+        {
+          "alias": null,
+          "name": "datetime"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 16,
+        "end": 16
+      }
+    },
+    {
+      "style": "import",
+      "module": "urllib",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 17,
+        "end": 17
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "context"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 19,
+        "end": 19
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "objects"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 20,
+        "end": 20
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.tests.functional.api_sample_tests",
+      "names": [
+        {
+          "alias": null,
+          "name": "api_sample_base"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 21,
+        "end": 21
+      }
+    }
+  ],
+  "sideEffects": [
+    {
+      "kind": "global-mutation",
+      "target": "ADMIN_API = True",
+      "lineRange": {
+        "start": 25,
+        "end": 25
+      }
+    }
+  ],
+  "securitySurface": [],
+  "injection_flags": [],
+  "warnings": []
+}

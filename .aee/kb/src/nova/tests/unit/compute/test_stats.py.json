@@ -1,0 +1,616 @@
+{
+  "file": "src/nova/tests/unit/compute/test_stats.py",
+  "hash": "48afb5d02e949dd9930cab3333c53f9751fa685a6b7dadef6382122ed735f684",
+  "language": "Python",
+  "component": "nova",
+  "package": null,
+  "lines": {
+    "blank": 48,
+    "code": 210,
+    "comment": 14,
+    "total": 272
+  },
+  "symbols": [
+    {
+      "name": "StatsTestCase",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 26,
+        "end": 272
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "setUp",
+      "kind": "method",
+      "scope": "StatsTestCase",
+      "lineRange": {
+        "start": 27,
+        "end": 29
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 3,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "_fake_object",
+      "kind": "method",
+      "scope": "StatsTestCase",
+      "lineRange": {
+        "start": 31,
+        "end": 32
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "updates"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "fake_instance.fake_instance_obj(None, **updates)",
+          "line": 32
+        }
+      ],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "_create_instance",
+      "kind": "method",
+      "scope": "StatsTestCase",
+      "lineRange": {
+        "start": 34,
+        "end": 45
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "default": "None",
+          "name": "values"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "self._fake_object(instance)",
+          "line": 45
+        }
+      ],
+      "nloc": 12,
+      "ccn": 2,
+      "visibility": "private"
+    },
+    {
+      "name": "test_os_type_count",
+      "kind": "method",
+      "scope": "StatsTestCase",
+      "lineRange": {
+        "start": 47,
+        "end": 55
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 9,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_update_project_count",
+      "kind": "method",
+      "scope": "StatsTestCase",
+      "lineRange": {
+        "start": 57,
+        "end": 67
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 8,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "_get",
+      "kind": "function",
+      "scope": "StatsTestCase.test_update_project_count",
+      "lineRange": {
+        "start": 60,
+        "end": 61
+      },
+      "source": "aee-inventory",
+      "parameters": [],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "self.stats.num_instances_for_project(proj_id)",
+          "line": 61
+        }
+      ],
+      "visibility": "private"
+    },
+    {
+      "name": "test_instance_count",
+      "kind": "method",
+      "scope": "StatsTestCase",
+      "lineRange": {
+        "start": 69,
+        "end": 74
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 6,
+      "ccn": 2,
+      "visibility": "public"
+    },
+    {
+      "name": "test_add_stats_for_instance",
+      "kind": "method",
+      "scope": "StatsTestCase",
+      "lineRange": {
+        "start": 76,
+        "end": 142
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 56,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_calculate_workload",
+      "kind": "method",
+      "scope": "StatsTestCase",
+      "lineRange": {
+        "start": 144,
+        "end": 148
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 5,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_update_stats_for_instance_no_change",
+      "kind": "method",
+      "scope": "StatsTestCase",
+      "lineRange": {
+        "start": 150,
+        "end": 159
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 9,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_update_stats_for_instance_vm_change",
+      "kind": "method",
+      "scope": "StatsTestCase",
+      "lineRange": {
+        "start": 161,
+        "end": 171
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 10,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_update_stats_for_instance_task_change",
+      "kind": "method",
+      "scope": "StatsTestCase",
+      "lineRange": {
+        "start": 173,
+        "end": 183
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 10,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_update_stats_for_instance_deleted",
+      "kind": "method",
+      "scope": "StatsTestCase",
+      "lineRange": {
+        "start": 185,
+        "end": 196
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 10,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_update_stats_for_instance_offloaded",
+      "kind": "method",
+      "scope": "StatsTestCase",
+      "lineRange": {
+        "start": 198,
+        "end": 209
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 10,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_update_stats_for_instance_being_unshelved",
+      "kind": "method",
+      "scope": "StatsTestCase",
+      "lineRange": {
+        "start": 211,
+        "end": 225
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 13,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_io_workload",
+      "kind": "method",
+      "scope": "StatsTestCase",
+      "lineRange": {
+        "start": 227,
+        "end": 239
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 11,
+      "ccn": 3,
+      "visibility": "public"
+    },
+    {
+      "name": "test_io_workload_saved_to_stats",
+      "kind": "method",
+      "scope": "StatsTestCase",
+      "lineRange": {
+        "start": 241,
+        "end": 245
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 5,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_clear",
+      "kind": "method",
+      "scope": "StatsTestCase",
+      "lineRange": {
+        "start": 247,
+        "end": 256
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 8,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_build_failed_succeded",
+      "kind": "method",
+      "scope": "StatsTestCase",
+      "lineRange": {
+        "start": 258,
+        "end": 267
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 10,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_build_succeeded_first",
+      "kind": "method",
+      "scope": "StatsTestCase",
+      "lineRange": {
+        "start": 269,
+        "end": 272
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 4,
+      "ccn": 1,
+      "visibility": "public"
+    }
+  ],
+  "referencedSymbols": [
+    {
+      "name": "test.NoDBTestCase",
+      "usage": "inherit",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 26,
+        "end": 26
+      }
+    },
+    {
+      "name": "super",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 28,
+        "end": 28
+      }
+    },
+    {
+      "name": "stats.Stats",
+      "usage": "call",
+      "via": "nova.compute",
+      "count": 1,
+      "lineRange": {
+        "start": 29,
+        "end": 29
+      }
+    },
+    {
+      "name": "fake_instance.fake_instance_obj",
+      "usage": "call",
+      "via": "nova.tests.unit",
+      "count": 1,
+      "lineRange": {
+        "start": 32,
+        "end": 32
+      }
+    },
+    {
+      "name": "range",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 71,
+        "end": 71
+      }
+    },
+    {
+      "name": "len",
+      "usage": "call",
+      "via": null,
+      "count": 4,
+      "lineRange": {
+        "start": 251,
+        "end": 251
+      }
+    }
+  ],
+  "dependencies": [
+    {
+      "style": "from",
+      "module": "oslo_utils.fixture",
+      "names": [
+        {
+          "alias": "uuids",
+          "name": "uuidsentinel"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 17,
+        "end": 17
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.compute",
+      "names": [
+        {
+          "alias": null,
+          "name": "stats"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 19,
+        "end": 19
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.compute",
+      "names": [
+        {
+          "alias": null,
+          "name": "task_states"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 20,
+        "end": 20
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.compute",
+      "names": [
+        {
+          "alias": null,
+          "name": "vm_states"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 21,
+        "end": 21
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "test"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 22,
+        "end": 22
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.tests.unit",
+      "names": [
+        {
+          "alias": null,
+          "name": "fake_instance"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 23,
+        "end": 23
+      }
+    }
+  ],
+  "sideEffects": [],
+  "securitySurface": [
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "instance.update(values)",
+      "lineRange": {
+        "start": 44,
+        "end": 44
+      }
+    }
+  ],
+  "injection_flags": [],
+  "warnings": []
+}

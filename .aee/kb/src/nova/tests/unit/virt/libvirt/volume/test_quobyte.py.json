@@ -1,0 +1,1515 @@
+{
+  "file": "src/nova/tests/unit/virt/libvirt/volume/test_quobyte.py",
+  "hash": "5616023ac3be3403051c76b44cf9e53878da1430667c08b3f96024fc48d65f56",
+  "language": "Python",
+  "component": "nova",
+  "package": null,
+  "lines": {
+    "blank": 90,
+    "code": 404,
+    "comment": 15,
+    "total": 509
+  },
+  "symbols": [
+    {
+      "name": "QuobyteTestCase",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 36,
+        "end": 321
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "TEST_MNT_POINT",
+      "kind": "constant",
+      "scope": "QuobyteTestCase",
+      "lineRange": {
+        "start": 39,
+        "end": 39
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "assertRaisesAndMessageMatches",
+      "kind": "method",
+      "scope": "QuobyteTestCase",
+      "lineRange": {
+        "start": 41,
+        "end": 56
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "excClass"
+        },
+        {
+          "name": "msg"
+        },
+        {
+          "name": "callableObj"
+        },
+        {
+          "name": "*args"
+        },
+        {
+          "name": "**kwargs"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 13,
+      "ccn": 3,
+      "visibility": "public"
+    },
+    {
+      "name": "get_mock_partitions",
+      "kind": "method",
+      "scope": "QuobyteTestCase",
+      "lineRange": {
+        "start": 58,
+        "end": 62
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "[mypart]",
+          "line": 62
+        }
+      ],
+      "nloc": 5,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_quobyte_is_systemd_ok",
+      "kind": "method",
+      "scope": "QuobyteTestCase",
+      "lineRange": {
+        "start": 67,
+        "end": 75
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "value"
+        },
+        {
+          "name": "mock_execute"
+        },
+        {
+          "name": "mock_proc"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 8,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_quobyte_is_systemd_not",
+      "kind": "method",
+      "scope": "QuobyteTestCase",
+      "lineRange": {
+        "start": 79,
+        "end": 83
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_exists"
+        },
+        {
+          "name": "mock_proc"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 5,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_quobyte_is_systemd_invalid_state",
+      "kind": "method",
+      "scope": "QuobyteTestCase",
+      "lineRange": {
+        "start": 88,
+        "end": 99
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_exists"
+        },
+        {
+          "name": "mock_execute"
+        },
+        {
+          "name": "mock_proc"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 10,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_quobyte_mount_volume_not_systemd",
+      "kind": "method",
+      "scope": "QuobyteTestCase",
+      "lineRange": {
+        "start": 104,
+        "end": 117
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "cfg_file"
+        },
+        {
+          "name": "mock_mount"
+        },
+        {
+          "name": "mock_ensure_tree"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 12,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_quobyte_mount_volume_systemd",
+      "kind": "method",
+      "scope": "QuobyteTestCase",
+      "lineRange": {
+        "start": 122,
+        "end": 135
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "cfg_file"
+        },
+        {
+          "name": "mock_ensure_tree"
+        },
+        {
+          "name": "mock_privsep_sysdr"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 12,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_quobyte_mount_volume_fails",
+      "kind": "method",
+      "scope": "QuobyteTestCase",
+      "lineRange": {
+        "start": 140,
+        "end": 150
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_mount"
+        },
+        {
+          "name": "mock_ensure_tree"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 11,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_quobyte_umount_volume_non_sysd",
+      "kind": "method",
+      "scope": "QuobyteTestCase",
+      "lineRange": {
+        "start": 153,
+        "end": 162
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_lv_umount"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 8,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_quobyte_umount_volume_sysd",
+      "kind": "method",
+      "scope": "QuobyteTestCase",
+      "lineRange": {
+        "start": 165,
+        "end": 174
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_lv_umount"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 8,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_quobyte_umount_volume_warns",
+      "kind": "method",
+      "scope": "QuobyteTestCase",
+      "lineRange": {
+        "start": 178,
+        "end": 195
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_execute"
+        },
+        {
+          "name": "mock_debug"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 12,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "exec_side_effect",
+      "kind": "function",
+      "scope": "QuobyteTestCase.test_quobyte_umount_volume_warns",
+      "lineRange": {
+        "start": 185,
+        "end": 188
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "*cmd"
+        },
+        {
+          "name": "**kwargs"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "visibility": "public"
+    },
+    {
+      "name": "test_quobyte_umount_volume_fails",
+      "kind": "method",
+      "scope": "QuobyteTestCase",
+      "lineRange": {
+        "start": 200,
+        "end": 213
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_unmount"
+        },
+        {
+          "name": "mock_exception"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 12,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_validate_volume_all_good_prefix_val",
+      "kind": "method",
+      "scope": "QuobyteTestCase",
+      "lineRange": {
+        "start": 217,
+        "end": 232
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "stat_mock"
+        },
+        {
+          "name": "part_mock"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 8,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "statMockCall",
+      "kind": "function",
+      "scope": "QuobyteTestCase.test_validate_volume_all_good_prefix_val",
+      "lineRange": {
+        "start": 221,
+        "end": 226
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "*args"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "stat_result",
+          "line": 225
+        },
+        {
+          "expr": "os.stat(args)",
+          "line": 226
+        }
+      ],
+      "visibility": "public"
+    },
+    {
+      "name": "test_validate_volume_all_good_fs_type",
+      "kind": "method",
+      "scope": "QuobyteTestCase",
+      "lineRange": {
+        "start": 236,
+        "end": 253
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "stat_mock"
+        },
+        {
+          "name": "part_mock"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 10,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "statMockCall",
+      "kind": "function",
+      "scope": "QuobyteTestCase.test_validate_volume_all_good_fs_type",
+      "lineRange": {
+        "start": 242,
+        "end": 247
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "*args"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "stat_result",
+          "line": 246
+        },
+        {
+          "expr": "os.stat(args)",
+          "line": 247
+        }
+      ],
+      "visibility": "public"
+    },
+    {
+      "name": "test_validate_volume_mount_not_working",
+      "kind": "method",
+      "scope": "QuobyteTestCase",
+      "lineRange": {
+        "start": 257,
+        "end": 271
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "stat_mock"
+        },
+        {
+          "name": "part_mock"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 11,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "statMockCall",
+      "kind": "function",
+      "scope": "QuobyteTestCase.test_validate_volume_mount_not_working",
+      "lineRange": {
+        "start": 261,
+        "end": 263
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "*args"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "visibility": "public"
+    },
+    {
+      "name": "test_validate_volume_no_mtab_entry",
+      "kind": "method",
+      "scope": "QuobyteTestCase",
+      "lineRange": {
+        "start": 274,
+        "end": 284
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "part_mock"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 10,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_validate_volume_wrong_mount_type",
+      "kind": "method",
+      "scope": "QuobyteTestCase",
+      "lineRange": {
+        "start": 287,
+        "end": 301
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "part_mock"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 14,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_validate_volume_stale_mount",
+      "kind": "method",
+      "scope": "QuobyteTestCase",
+      "lineRange": {
+        "start": 305,
+        "end": 321
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "part_mock"
+        },
+        {
+          "name": "stat_mock"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 9,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "statMockCall",
+      "kind": "function",
+      "scope": "QuobyteTestCase.test_validate_volume_stale_mount",
+      "lineRange": {
+        "start": 308,
+        "end": 313
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "*args"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "stat_result",
+          "line": 312
+        },
+        {
+          "expr": "os.stat(args)",
+          "line": 313
+        }
+      ],
+      "visibility": "public"
+    },
+    {
+      "name": "LibvirtQuobyteVolumeDriverTestCase",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 324,
+        "end": 509
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "test_libvirt_quobyte_driver_mount",
+      "kind": "method",
+      "scope": "LibvirtQuobyteVolumeDriverTestCase",
+      "lineRange": {
+        "start": 332,
+        "end": 365
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_is_mounted"
+        },
+        {
+          "name": "mock_mount_volume"
+        },
+        {
+          "name": "mock_validate_volume"
+        },
+        {
+          "name": "mock_umount_volume"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 28,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_libvirt_quobyte_driver_umount",
+      "kind": "method",
+      "scope": "LibvirtQuobyteVolumeDriverTestCase",
+      "lineRange": {
+        "start": 369,
+        "end": 395
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_umount_volume"
+        },
+        {
+          "name": "mock_validate_volume"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 22,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_libvirt_quobyte_driver_already_mounted",
+      "kind": "method",
+      "scope": "LibvirtQuobyteVolumeDriverTestCase",
+      "lineRange": {
+        "start": 400,
+        "end": 428
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_is_mounted"
+        },
+        {
+          "name": "mock_umount_volume"
+        },
+        {
+          "name": "mock_validate_volume"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 24,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_libvirt_quobyte_driver_qcow2",
+      "kind": "method",
+      "scope": "LibvirtQuobyteVolumeDriverTestCase",
+      "lineRange": {
+        "start": 433,
+        "end": 467
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_mount_volume"
+        },
+        {
+          "name": "mock_validate_volume"
+        },
+        {
+          "name": "mock_umount"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 30,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_libvirt_quobyte_driver_mount_non_quobyte_volume",
+      "kind": "method",
+      "scope": "LibvirtQuobyteVolumeDriverTestCase",
+      "lineRange": {
+        "start": 470,
+        "end": 491
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_is_mounted"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 16,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "exe_side_effect",
+      "kind": "function",
+      "scope": "LibvirtQuobyteVolumeDriverTestCase.test_libvirt_quobyte_driver_mount_non_quobyte_volume",
+      "lineRange": {
+        "start": 481,
+        "end": 483
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "*cmd"
+        },
+        {
+          "name": "**kwargs"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "visibility": "public"
+    },
+    {
+      "name": "test_libvirt_quobyte_driver_normalize_export_with_protocol",
+      "kind": "method",
+      "scope": "LibvirtQuobyteVolumeDriverTestCase",
+      "lineRange": {
+        "start": 493,
+        "end": 500
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 7,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_libvirt_quobyte_driver_normalize_export_without_protocol",
+      "kind": "method",
+      "scope": "LibvirtQuobyteVolumeDriverTestCase",
+      "lineRange": {
+        "start": 502,
+        "end": 509
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 7,
+      "ccn": 1,
+      "visibility": "public"
+    }
+  ],
+  "referencedSymbols": [
+    {
+      "name": "mock.patch.object",
+      "usage": "call",
+      "via": "unittest",
+      "count": 37,
+      "lineRange": {
+        "start": 35,
+        "end": 35
+      }
+    },
+    {
+      "name": "test.NoDBTestCase",
+      "usage": "inherit",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 36,
+        "end": 36
+      }
+    },
+    {
+      "name": "callableObj",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 47,
+        "end": 47
+      }
+    },
+    {
+      "name": "traceback.format_exc",
+      "usage": "call",
+      "via": "traceback",
+      "count": 1,
+      "lineRange": {
+        "start": 52,
+        "end": 52
+      }
+    },
+    {
+      "name": "str",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 53,
+        "end": 53
+      }
+    },
+    {
+      "name": "mock.Mock",
+      "usage": "call",
+      "via": "unittest",
+      "count": 5,
+      "lineRange": {
+        "start": 59,
+        "end": 59
+      }
+    },
+    {
+      "name": "ddt.data",
+      "usage": "call",
+      "via": "ddt",
+      "count": 3,
+      "lineRange": {
+        "start": 64,
+        "end": 64
+      }
+    },
+    {
+      "name": "quobyte.is_systemd",
+      "usage": "call",
+      "via": "nova.virt.libvirt.volume",
+      "count": 6,
+      "lineRange": {
+        "start": 70,
+        "end": 70
+      }
+    },
+    {
+      "name": "mock.patch",
+      "usage": "call",
+      "via": "unittest",
+      "count": 7,
+      "lineRange": {
+        "start": 103,
+        "end": 103
+      }
+    },
+    {
+      "name": "os.path.join",
+      "usage": "call",
+      "via": "os",
+      "count": 14,
+      "lineRange": {
+        "start": 108,
+        "end": 108
+      }
+    },
+    {
+      "name": "utils.get_hash_str",
+      "usage": "call",
+      "via": "nova",
+      "count": 11,
+      "lineRange": {
+        "start": 109,
+        "end": 109
+      }
+    },
+    {
+      "name": "quobyte.mount_volume",
+      "usage": "call",
+      "via": "nova.virt.libvirt.volume",
+      "count": 2,
+      "lineRange": {
+        "start": 112,
+        "end": 112
+      }
+    },
+    {
+      "name": "mock.call",
+      "usage": "call",
+      "via": "unittest",
+      "count": 8,
+      "lineRange": {
+        "start": 115,
+        "end": 115
+      }
+    },
+    {
+      "name": "quobyte.umount_volume",
+      "usage": "call",
+      "via": "nova.virt.libvirt.volume",
+      "count": 4,
+      "lineRange": {
+        "start": 160,
+        "end": 160
+      }
+    },
+    {
+      "name": "processutils.ProcessExecutionError",
+      "usage": "call",
+      "via": "oslo_concurrency",
+      "count": 1,
+      "lineRange": {
+        "start": 186,
+        "end": 186
+      }
+    },
+    {
+      "name": "os.stat",
+      "usage": "call",
+      "via": "os",
+      "count": 3,
+      "lineRange": {
+        "start": 226,
+        "end": 226
+      }
+    },
+    {
+      "name": "nova_exception.InvalidVolume",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 263,
+        "end": 263
+      }
+    },
+    {
+      "name": "test_volume.LibvirtVolumeBaseTestCase",
+      "usage": "inherit",
+      "via": "nova.tests.unit.virt.libvirt.volume",
+      "count": 1,
+      "lineRange": {
+        "start": 325,
+        "end": 325
+      }
+    },
+    {
+      "name": "quobyte.LibvirtQuobyteVolumeDriver",
+      "usage": "call",
+      "via": "nova.virt.libvirt.volume",
+      "count": 7,
+      "lineRange": {
+        "start": 341,
+        "end": 341
+      }
+    },
+    {
+      "name": "nova_exception.StaleVolumeMount",
+      "usage": "call",
+      "via": "nova",
+      "count": 2,
+      "lineRange": {
+        "start": 350,
+        "end": 350
+      }
+    },
+    {
+      "name": "nova_exception.NovaException",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 483,
+        "end": 483
+      }
+    }
+  ],
+  "dependencies": [
+    {
+      "style": "import",
+      "module": "os",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 17,
+        "end": 17
+      }
+    },
+    {
+      "style": "import",
+      "module": "traceback",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 18,
+        "end": 18
+      }
+    },
+    {
+      "style": "from",
+      "module": "unittest",
+      "names": [
+        {
+          "alias": null,
+          "name": "mock"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 19,
+        "end": 19
+      }
+    },
+    {
+      "style": "import",
+      "module": "ddt",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 21,
+        "end": 21
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_concurrency",
+      "names": [
+        {
+          "alias": null,
+          "name": "processutils"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 22,
+        "end": 22
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_utils",
+      "names": [
+        {
+          "alias": null,
+          "name": "fileutils"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 23,
+        "end": 23
+      }
+    },
+    {
+      "style": "import",
+      "module": "psutil",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 24,
+        "end": 24
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": "nova_exception",
+          "name": "exception"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 26,
+        "end": 26
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "test"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 27,
+        "end": 27
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.tests.unit.virt.libvirt.volume",
+      "names": [
+        {
+          "alias": null,
+          "name": "test_volume"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 28,
+        "end": 28
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "utils"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 29,
+        "end": 29
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.virt.libvirt",
+      "names": [
+        {
+          "alias": "libvirt_utils",
+          "name": "utils"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 30,
+        "end": 30
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.virt.libvirt.volume",
+      "names": [
+        {
+          "alias": null,
+          "name": "quobyte"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 31,
+        "end": 31
+      }
+    }
+  ],
+  "sideEffects": [
+    {
+      "kind": "process-spawn",
+      "target": "@mock.patch('nova.privsep.libvirt.unprivileged_qb_mount')",
+      "lineRange": {
+        "start": 103,
+        "end": 103
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "export_mnt_base = os.path.join(mnt_base,",
+      "lineRange": {
+        "start": 108,
+        "end": 108
+      }
+    },
+    {
+      "kind": "process-spawn",
+      "target": "@mock.patch('nova.privsep.libvirt.systemd_run_qb_mount')",
+      "lineRange": {
+        "start": 120,
+        "end": 120
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "export_mnt_base = os.path.join(mnt_base,",
+      "lineRange": {
+        "start": 126,
+        "end": 126
+      }
+    },
+    {
+      "kind": "process-spawn",
+      "target": "@mock.patch('nova.privsep.libvirt.unprivileged_qb_mount',",
+      "lineRange": {
+        "start": 138,
+        "end": 138
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "export_mnt_base = os.path.join(mnt_base,",
+      "lineRange": {
+        "start": 143,
+        "end": 143
+      }
+    },
+    {
+      "kind": "process-spawn",
+      "target": "@mock.patch('nova.privsep.libvirt.unprivileged_umount')",
+      "lineRange": {
+        "start": 152,
+        "end": 152
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "export_mnt_base = os.path.join(mnt_base,",
+      "lineRange": {
+        "start": 156,
+        "end": 156
+      }
+    },
+    {
+      "kind": "process-spawn",
+      "target": "@mock.patch('nova.privsep.libvirt.umount')",
+      "lineRange": {
+        "start": 164,
+        "end": 164
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "export_mnt_base = os.path.join(mnt_base,",
+      "lineRange": {
+        "start": 168,
+        "end": 168
+      }
+    },
+    {
+      "kind": "process-spawn",
+      "target": "@mock.patch('nova.privsep.libvirt.umount')",
+      "lineRange": {
+        "start": 177,
+        "end": 177
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "export_mnt_base = os.path.join(mnt_base,",
+      "lineRange": {
+        "start": 181,
+        "end": 181
+      }
+    },
+    {
+      "kind": "process-spawn",
+      "target": "@mock.patch('nova.privsep.libvirt.umount',",
+      "lineRange": {
+        "start": 198,
+        "end": 198
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "export_mnt_base = os.path.join(mnt_base,",
+      "lineRange": {
+        "start": 203,
+        "end": 203
+      }
+    },
+    {
+      "kind": "syscall",
+      "target": "def test_validate_volume_stale_mount(self, part_mock, stat_mock):",
+      "lineRange": {
+        "start": 305,
+        "end": 305
+      }
+    },
+    {
+      "kind": "syscall",
+      "target": "def test_libvirt_quobyte_driver_mount(self,",
+      "lineRange": {
+        "start": 332,
+        "end": 332
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "export_mnt_base = os.path.join(mnt_base,",
+      "lineRange": {
+        "start": 344,
+        "end": 344
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "file_path = os.path.join(export_mnt_base, self.name)",
+      "lineRange": {
+        "start": 346,
+        "end": 346
+      }
+    },
+    {
+      "kind": "syscall",
+      "target": "def test_libvirt_quobyte_driver_umount(self, mock_umount_volume,",
+      "lineRange": {
+        "start": 369,
+        "end": 369
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "export_mnt_base = os.path.join(mnt_base,",
+      "lineRange": {
+        "start": 377,
+        "end": 377
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "file_path = os.path.join(export_mnt_base, self.name)",
+      "lineRange": {
+        "start": 379,
+        "end": 379
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "export_mnt_base = os.path.join(mnt_base,",
+      "lineRange": {
+        "start": 411,
+        "end": 411
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "file_path = os.path.join(export_mnt_base, self.name)",
+      "lineRange": {
+        "start": 413,
+        "end": 413
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "export_mnt_base = os.path.join(mnt_base,",
+      "lineRange": {
+        "start": 447,
+        "end": 447
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "TEST_MNT_POINT = mock.sentinel.TEST_MNT_POINT",
+      "lineRange": {
+        "start": 39,
+        "end": 39
+      }
+    }
+  ],
+  "securitySurface": [
+    {
+      "kind": "privilege",
+      "category": "privsep-entrypoint",
+      "description": "@mock.patch('nova.privsep.libvirt.unprivileged_qb_mount')",
+      "lineRange": {
+        "start": 103,
+        "end": 103
+      }
+    },
+    {
+      "kind": "privilege",
+      "category": "privsep-entrypoint",
+      "description": "@mock.patch('nova.privsep.libvirt.systemd_run_qb_mount')",
+      "lineRange": {
+        "start": 120,
+        "end": 120
+      }
+    },
+    {
+      "kind": "privilege",
+      "category": "privsep-entrypoint",
+      "description": "@mock.patch('nova.privsep.libvirt.unprivileged_qb_mount',",
+      "lineRange": {
+        "start": 138,
+        "end": 138
+      }
+    },
+    {
+      "kind": "privilege",
+      "category": "privsep-entrypoint",
+      "description": "@mock.patch('nova.privsep.libvirt.unprivileged_umount')",
+      "lineRange": {
+        "start": 152,
+        "end": 152
+      }
+    },
+    {
+      "kind": "privilege",
+      "category": "privsep-entrypoint",
+      "description": "@mock.patch('nova.privsep.libvirt.umount')",
+      "lineRange": {
+        "start": 164,
+        "end": 164
+      }
+    },
+    {
+      "kind": "privilege",
+      "category": "privsep-entrypoint",
+      "description": "@mock.patch('nova.privsep.libvirt.umount')",
+      "lineRange": {
+        "start": 177,
+        "end": 177
+      }
+    },
+    {
+      "kind": "privilege",
+      "category": "privsep-entrypoint",
+      "description": "@mock.patch('nova.privsep.libvirt.umount',",
+      "lineRange": {
+        "start": 198,
+        "end": 198
+      }
+    }
+  ],
+  "injection_flags": [],
+  "warnings": []
+}

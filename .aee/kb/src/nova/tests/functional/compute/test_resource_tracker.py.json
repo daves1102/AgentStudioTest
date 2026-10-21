@@ -1,0 +1,1267 @@
+{
+  "file": "src/nova/tests/functional/compute/test_resource_tracker.py",
+  "hash": "22c479e6919de103670fec5a305cf8231324e4126c36f8da3877e43467a5d25b",
+  "language": "Python",
+  "component": "nova",
+  "package": null,
+  "lines": {
+    "blank": 77,
+    "code": 531,
+    "comment": 113,
+    "total": 721
+  },
+  "symbols": [
+    {
+      "name": "CONF",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 37,
+        "end": 37
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "VCPU",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 38,
+        "end": 38
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "MEMORY_MB",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 39,
+        "end": 39
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "DISK_GB",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 40,
+        "end": 40
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "COMPUTE_HOST",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 41,
+        "end": 41
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "IronicResourceTrackerTest",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 44,
+        "end": 277
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "FLAVOR_FIXTURES",
+      "kind": "constant",
+      "scope": "IronicResourceTrackerTest",
+      "lineRange": {
+        "start": 51,
+        "end": 72
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "COMPUTE_NODE_FIXTURES",
+      "kind": "constant",
+      "scope": "IronicResourceTrackerTest",
+      "lineRange": {
+        "start": 74,
+        "end": 126
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "INSTANCE_FIXTURES",
+      "kind": "constant",
+      "scope": "IronicResourceTrackerTest",
+      "lineRange": {
+        "start": 128,
+        "end": 138
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "_set_client",
+      "kind": "method",
+      "scope": "IronicResourceTrackerTest",
+      "lineRange": {
+        "start": 140,
+        "end": 145
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "client"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 3,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "setUp",
+      "kind": "method",
+      "scope": "IronicResourceTrackerTest",
+      "lineRange": {
+        "start": 147,
+        "end": 177
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 16,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "fake_upt",
+      "kind": "function",
+      "scope": "IronicResourceTrackerTest.setUp",
+      "lineRange": {
+        "start": 161,
+        "end": 172
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "provider_tree"
+        },
+        {
+          "name": "nodename"
+        },
+        {
+          "default": "None",
+          "name": "allocations"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "visibility": "public"
+    },
+    {
+      "name": "create_fixtures",
+      "kind": "method",
+      "scope": "IronicResourceTrackerTest",
+      "lineRange": {
+        "start": 179,
+        "end": 208
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "instances",
+          "line": 208
+        }
+      ],
+      "nloc": 19,
+      "ccn": 4,
+      "visibility": "public"
+    },
+    {
+      "name": "test_node_stats_isolation",
+      "kind": "method",
+      "scope": "IronicResourceTrackerTest",
+      "lineRange": {
+        "start": 213,
+        "end": 277
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 33,
+      "ccn": 2,
+      "visibility": "public"
+    },
+    {
+      "name": "_assert_stats",
+      "kind": "function",
+      "scope": "IronicResourceTrackerTest.test_node_stats_isolation",
+      "lineRange": {
+        "start": 258,
+        "end": 268
+      },
+      "source": "aee-inventory",
+      "parameters": [],
+      "returnType": null,
+      "returns": [],
+      "visibility": "private"
+    },
+    {
+      "name": "TestUpdateComputeNodeReservedAndAllocationRatio",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 280,
+        "end": 478
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "compute_driver",
+      "kind": "field",
+      "scope": "TestUpdateComputeNodeReservedAndAllocationRatio",
+      "lineRange": {
+        "start": 286,
+        "end": 286
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "_get_reserved_host_values_from_config",
+      "kind": "method",
+      "scope": "TestUpdateComputeNodeReservedAndAllocationRatio",
+      "lineRange": {
+        "start": 289,
+        "end": 295
+      },
+      "source": "aee-inventory",
+      "parameters": [],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "{ 'VCPU': CONF.reserved_host_cpus, 'MEMORY_MB': CONF.reserved_host_memory_mb, 'DISK_GB': compute_utils.convert_mb_to_ceil_gb( CONF.reserved_host_disk_mb) }",
+          "line": 290
+        }
+      ],
+      "nloc": 7,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "_assert_reserved_inventory",
+      "kind": "method",
+      "scope": "TestUpdateComputeNodeReservedAndAllocationRatio",
+      "lineRange": {
+        "start": 297,
+        "end": 303
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "inventories"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 7,
+      "ccn": 2,
+      "visibility": "private"
+    },
+    {
+      "name": "test_update_inventory_reserved_and_allocation_ratio_from_conf",
+      "kind": "method",
+      "scope": "TestUpdateComputeNodeReservedAndAllocationRatio",
+      "lineRange": {
+        "start": 305,
+        "end": 374
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 46,
+      "ccn": 3,
+      "visibility": "public"
+    },
+    {
+      "name": "test_allocation_ratio_create_with_initial_allocation_ratio",
+      "kind": "method",
+      "scope": "TestUpdateComputeNodeReservedAndAllocationRatio",
+      "lineRange": {
+        "start": 376,
+        "end": 413
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 26,
+      "ccn": 2,
+      "visibility": "public"
+    },
+    {
+      "name": "test_allocation_ratio_overwritten_from_config",
+      "kind": "method",
+      "scope": "TestUpdateComputeNodeReservedAndAllocationRatio",
+      "lineRange": {
+        "start": 415,
+        "end": 478
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 42,
+      "ccn": 5,
+      "visibility": "public"
+    },
+    {
+      "name": "TestProviderConfig",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 481,
+        "end": 721
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "compute_driver",
+      "kind": "field",
+      "scope": "TestProviderConfig",
+      "lineRange": {
+        "start": 486,
+        "end": 486
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "BASE_CONFIG",
+      "kind": "constant",
+      "scope": "TestProviderConfig",
+      "lineRange": {
+        "start": 488,
+        "end": 493
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "EMPTY_PROVIDER",
+      "kind": "constant",
+      "scope": "TestProviderConfig",
+      "lineRange": {
+        "start": 494,
+        "end": 503
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "setUp",
+      "kind": "method",
+      "scope": "TestProviderConfig",
+      "lineRange": {
+        "start": 505,
+        "end": 511
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 4,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "_create_config_entry",
+      "kind": "method",
+      "scope": "TestProviderConfig",
+      "lineRange": {
+        "start": 513,
+        "end": 543
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "id_value"
+        },
+        {
+          "default": "\"uuid\"",
+          "name": "id_method"
+        },
+        {
+          "default": "None",
+          "name": "cfg_file"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "cfg_file",
+          "line": 543
+        }
+      ],
+      "nloc": 19,
+      "ccn": 2,
+      "visibility": "private"
+    },
+    {
+      "name": "_assert_inventory_and_traits",
+      "kind": "method",
+      "scope": "TestProviderConfig",
+      "lineRange": {
+        "start": 545,
+        "end": 617
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "provider"
+        },
+        {
+          "name": "config"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 50,
+      "ccn": 25,
+      "visibility": "private"
+    },
+    {
+      "name": "_place_config_file",
+      "kind": "method",
+      "scope": "TestProviderConfig",
+      "lineRange": {
+        "start": 619,
+        "end": 627
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "file_name"
+        },
+        {
+          "name": "file_data"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 3,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "test_single_config_file",
+      "kind": "method",
+      "scope": "TestProviderConfig",
+      "lineRange": {
+        "start": 629,
+        "end": 643
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 7,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_multiple_config_files",
+      "kind": "method",
+      "scope": "TestProviderConfig",
+      "lineRange": {
+        "start": 645,
+        "end": 662
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 9,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_multiple_compute_nodes",
+      "kind": "method",
+      "scope": "TestProviderConfig",
+      "lineRange": {
+        "start": 664,
+        "end": 690
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 15,
+      "ccn": 4,
+      "visibility": "public"
+    },
+    {
+      "name": "test_end_to_end",
+      "kind": "method",
+      "scope": "TestProviderConfig",
+      "lineRange": {
+        "start": 692,
+        "end": 721
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 18,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "_get_reserved_host_values_from_config",
+      "kind": "staticmethod",
+      "scope": "TestUpdateComputeNodeReservedAndAllocationRatio",
+      "lineRange": {
+        "start": 288,
+        "end": 295
+      },
+      "visibility": "private",
+      "source": "manual"
+    }
+  ],
+  "referencedSymbols": [
+    {
+      "name": "test.TestCase",
+      "usage": "inherit",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 44,
+        "end": 44
+      }
+    },
+    {
+      "name": "objects.Flavor",
+      "usage": "call",
+      "via": "nova",
+      "count": 2,
+      "lineRange": {
+        "start": 52,
+        "end": 52
+      }
+    },
+    {
+      "name": "objects.ComputeNode",
+      "usage": "call",
+      "via": "nova",
+      "count": 3,
+      "lineRange": {
+        "start": 75,
+        "end": 75
+      }
+    },
+    {
+      "name": "objects.Instance",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 129,
+        "end": 129
+      }
+    },
+    {
+      "name": "super",
+      "usage": "call",
+      "via": null,
+      "count": 2,
+      "lineRange": {
+        "start": 148,
+        "end": 148
+      }
+    },
+    {
+      "name": "context.RequestContext",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 156,
+        "end": 156
+      }
+    },
+    {
+      "name": "mock.MagicMock",
+      "usage": "call",
+      "via": "unittest",
+      "count": 1,
+      "lineRange": {
+        "start": 158,
+        "end": 158
+      }
+    },
+    {
+      "name": "resource_tracker.ResourceTracker",
+      "usage": "call",
+      "via": "nova.compute",
+      "count": 1,
+      "lineRange": {
+        "start": 176,
+        "end": 176
+      }
+    },
+    {
+      "name": "mock.patch",
+      "usage": "call",
+      "via": "unittest",
+      "count": 2,
+      "lineRange": {
+        "start": 210,
+        "end": 210
+      }
+    },
+    {
+      "name": "mock.Mock",
+      "usage": "call",
+      "via": "unittest",
+      "count": 2,
+      "lineRange": {
+        "start": 211,
+        "end": 211
+      }
+    },
+    {
+      "name": "func_fixtures.PlacementFixture",
+      "usage": "call",
+      "via": "nova.tests.functional",
+      "count": 1,
+      "lineRange": {
+        "start": 222,
+        "end": 222
+      }
+    },
+    {
+      "name": "len",
+      "usage": "call",
+      "via": null,
+      "count": 4,
+      "lineRange": {
+        "start": 225,
+        "end": 225
+      }
+    },
+    {
+      "name": "sorted",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 232,
+        "end": 232
+      }
+    },
+    {
+      "name": "getattr",
+      "usage": "call",
+      "via": null,
+      "count": 2,
+      "lineRange": {
+        "start": 251,
+        "end": 251
+      }
+    },
+    {
+      "name": "str",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 251,
+        "end": 251
+      }
+    },
+    {
+      "name": "integrated_helpers.ProviderUsageBaseTestCase",
+      "usage": "inherit",
+      "via": "nova.tests.functional",
+      "count": 2,
+      "lineRange": {
+        "start": 281,
+        "end": 281
+      }
+    },
+    {
+      "name": "compute_utils.convert_mb_to_ceil_gb",
+      "usage": "call",
+      "via": "nova.compute",
+      "count": 1,
+      "lineRange": {
+        "start": 293,
+        "end": 293
+      }
+    },
+    {
+      "name": "context.get_admin_context",
+      "usage": "call",
+      "via": "nova",
+      "count": 3,
+      "lineRange": {
+        "start": 316,
+        "end": 316
+      }
+    },
+    {
+      "name": "objects.ComputeNode.get_by_uuid",
+      "usage": "call",
+      "via": "nova",
+      "count": 3,
+      "lineRange": {
+        "start": 320,
+        "end": 320
+      }
+    },
+    {
+      "name": "fixtures.TempDir",
+      "usage": "call",
+      "via": "fixtures",
+      "count": 1,
+      "lineRange": {
+        "start": 510,
+        "end": 510
+      }
+    },
+    {
+      "name": "copy.deepcopy",
+      "usage": "call",
+      "via": "copy",
+      "count": 2,
+      "lineRange": {
+        "start": 520,
+        "end": 520
+      }
+    },
+    {
+      "name": "orc.normalize_name",
+      "usage": "call",
+      "via": "os_resource_classes",
+      "count": 1,
+      "lineRange": {
+        "start": 529,
+        "end": 529
+      }
+    },
+    {
+      "name": "os_traits.normalize_name",
+      "usage": "call",
+      "via": "os_traits",
+      "count": 2,
+      "lineRange": {
+        "start": 539,
+        "end": 539
+      }
+    },
+    {
+      "name": "list",
+      "usage": "call",
+      "via": null,
+      "count": 3,
+      "lineRange": {
+        "start": 555,
+        "end": 555
+      }
+    },
+    {
+      "name": "open",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 626,
+        "end": 626
+      }
+    },
+    {
+      "name": "os.path.join",
+      "usage": "call",
+      "via": "os",
+      "count": 1,
+      "lineRange": {
+        "start": 626,
+        "end": 626
+      }
+    },
+    {
+      "name": "yaml.dump",
+      "usage": "call",
+      "via": "yaml",
+      "count": 1,
+      "lineRange": {
+        "start": 627,
+        "end": 627
+      }
+    }
+  ],
+  "dependencies": [
+    {
+      "style": "import",
+      "module": "copy",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 13,
+        "end": 13
+      }
+    },
+    {
+      "style": "import",
+      "module": "os",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 14,
+        "end": 14
+      }
+    },
+    {
+      "style": "from",
+      "module": "unittest",
+      "names": [
+        {
+          "alias": null,
+          "name": "mock"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 15,
+        "end": 15
+      }
+    },
+    {
+      "style": "import",
+      "module": "fixtures",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 17,
+        "end": 17
+      }
+    },
+    {
+      "style": "import",
+      "module": "os_resource_classes",
+      "names": [],
+      "alias": "orc",
+      "relative": false,
+      "lineRange": {
+        "start": 18,
+        "end": 18
+      }
+    },
+    {
+      "style": "import",
+      "module": "os_traits",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 19,
+        "end": 19
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_utils.fixture",
+      "names": [
+        {
+          "alias": "uuids",
+          "name": "uuidsentinel"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 20,
+        "end": 20
+      }
+    },
+    {
+      "style": "import",
+      "module": "yaml",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 21,
+        "end": 21
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.compute",
+      "names": [
+        {
+          "alias": null,
+          "name": "power_state"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 23,
+        "end": 23
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.compute",
+      "names": [
+        {
+          "alias": null,
+          "name": "resource_tracker"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 24,
+        "end": 24
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.compute",
+      "names": [
+        {
+          "alias": null,
+          "name": "task_states"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 25,
+        "end": 25
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.compute",
+      "names": [
+        {
+          "alias": "compute_utils",
+          "name": "utils"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 26,
+        "end": 26
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.compute",
+      "names": [
+        {
+          "alias": null,
+          "name": "vm_states"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 27,
+        "end": 27
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "conf"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 28,
+        "end": 28
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "context"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 29,
+        "end": 29
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "objects"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 30,
+        "end": 30
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "test"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 31,
+        "end": 31
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.tests.functional",
+      "names": [
+        {
+          "alias": "func_fixtures",
+          "name": "fixtures"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 32,
+        "end": 32
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.tests.functional",
+      "names": [
+        {
+          "alias": null,
+          "name": "integrated_helpers"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 33,
+        "end": 33
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.virt",
+      "names": [
+        {
+          "alias": "virt_driver",
+          "name": "driver"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 34,
+        "end": 34
+      }
+    }
+  ],
+  "sideEffects": [
+    {
+      "kind": "file-io",
+      "target": "with open(os.path.join(self.pconf_loc, file_name), \"w\") as open_file:",
+      "lineRange": {
+        "start": 626,
+        "end": 626
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "CONF = conf.CONF",
+      "lineRange": {
+        "start": 37,
+        "end": 37
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "VCPU = orc.VCPU",
+      "lineRange": {
+        "start": 38,
+        "end": 38
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "MEMORY_MB = orc.MEMORY_MB",
+      "lineRange": {
+        "start": 39,
+        "end": 39
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "DISK_GB = orc.DISK_GB",
+      "lineRange": {
+        "start": 40,
+        "end": 40
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "COMPUTE_HOST = 'compute-host'",
+      "lineRange": {
+        "start": 41,
+        "end": 41
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "FLAVOR_FIXTURES = {",
+      "lineRange": {
+        "start": 51,
+        "end": 51
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "COMPUTE_NODE_FIXTURES = {",
+      "lineRange": {
+        "start": 74,
+        "end": 74
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "INSTANCE_FIXTURES = {",
+      "lineRange": {
+        "start": 128,
+        "end": 128
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "BASE_CONFIG = {",
+      "lineRange": {
+        "start": 488,
+        "end": 488
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "EMPTY_PROVIDER = {",
+      "lineRange": {
+        "start": 494,
+        "end": 494
+      }
+    }
+  ],
+  "securitySurface": [],
+  "injection_flags": [],
+  "warnings": []
+}

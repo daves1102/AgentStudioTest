@@ -1,0 +1,256 @@
+{
+  "file": "src/nova/tests/json_ref.py",
+  "hash": "29913ee33b5b7ee50f81249d8bd927c932113a5f26ea9586dcb337326214b345",
+  "language": "Python",
+  "component": "nova",
+  "package": null,
+  "lines": {
+    "blank": 10,
+    "code": 37,
+    "comment": 18,
+    "total": 65
+  },
+  "symbols": [
+    {
+      "name": "_resolve_ref",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 20,
+        "end": 32
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "ref"
+        },
+        {
+          "name": "base_path"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "res",
+          "line": 32
+        }
+      ],
+      "nloc": 11,
+      "ccn": 2,
+      "exported": false
+    },
+    {
+      "name": "resolve_refs",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 35,
+        "end": 56
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "obj_with_refs"
+        },
+        {
+          "name": "base_path"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "resolved_ref",
+          "line": 48
+        },
+        {
+          "expr": "obj_with_refs",
+          "line": 56
+        }
+      ],
+      "nloc": 17,
+      "ccn": 6,
+      "exported": true
+    },
+    {
+      "name": "_update_dict_recursively",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 59,
+        "end": 65
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "d"
+        },
+        {
+          "name": "update"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 6,
+      "ccn": 5,
+      "exported": false
+    }
+  ],
+  "referencedSymbols": [
+    {
+      "name": "NotImplementedError",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 23,
+        "end": 23
+      }
+    },
+    {
+      "name": "os.path.join",
+      "usage": "call",
+      "via": "os",
+      "count": 1,
+      "lineRange": {
+        "start": 26,
+        "end": 26
+      }
+    },
+    {
+      "name": "open",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 28,
+        "end": 28
+      }
+    },
+    {
+      "name": "jsonutils.load",
+      "usage": "call",
+      "via": "oslo_serialization",
+      "count": 1,
+      "lineRange": {
+        "start": 29,
+        "end": 29
+      }
+    },
+    {
+      "name": "os.path.dirname",
+      "usage": "call",
+      "via": "os",
+      "count": 1,
+      "lineRange": {
+        "start": 30,
+        "end": 30
+      }
+    },
+    {
+      "name": "isinstance",
+      "usage": "call",
+      "via": null,
+      "count": 4,
+      "lineRange": {
+        "start": 36,
+        "end": 36
+      }
+    },
+    {
+      "name": "enumerate",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 37,
+        "end": 37
+      }
+    }
+  ],
+  "dependencies": [
+    {
+      "style": "import",
+      "module": "os",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 15,
+        "end": 15
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_serialization",
+      "names": [
+        {
+          "alias": null,
+          "name": "jsonutils"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 17,
+        "end": 17
+      }
+    }
+  ],
+  "sideEffects": [
+    {
+      "kind": "file-io",
+      "target": "path = os.path.join(base_path, file_path)",
+      "lineRange": {
+        "start": 26,
+        "end": 26
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "with open(path, 'r+b') as f:",
+      "lineRange": {
+        "start": 28,
+        "end": 28
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "base_path = os.path.dirname(path)",
+      "lineRange": {
+        "start": 30,
+        "end": 30
+      }
+    }
+  ],
+  "securitySurface": [
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "def _update_dict_recursively(d, update):",
+      "lineRange": {
+        "start": 59,
+        "end": 59
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "\"\"\"Update dict d recursively with data from dict update\"\"\"",
+      "lineRange": {
+        "start": 60,
+        "end": 60
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "for k, v in update.items():",
+      "lineRange": {
+        "start": 61,
+        "end": 61
+      }
+    }
+  ],
+  "injection_flags": [],
+  "warnings": []
+}

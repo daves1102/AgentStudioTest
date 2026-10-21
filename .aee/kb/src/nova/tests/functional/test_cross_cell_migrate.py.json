@@ -1,0 +1,1590 @@
+{
+  "file": "src/nova/tests/functional/test_cross_cell_migrate.py",
+  "hash": "fce6b2ccbedcf801660b4afaff6340111d31d1cada6604443df4ca9edc8a095c",
+  "language": "Python",
+  "component": "nova",
+  "package": null,
+  "lines": {
+    "blank": 126,
+    "code": 800,
+    "comment": 279,
+    "total": 1205
+  },
+  "symbols": [
+    {
+      "name": "CONF",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 36,
+        "end": 36
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "HostNameWeigher",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 39,
+        "end": 49
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "_weights",
+      "kind": "field",
+      "scope": "HostNameWeigher",
+      "lineRange": {
+        "start": 45,
+        "end": 45
+      },
+      "source": "aee-inventory",
+      "visibility": "private"
+    },
+    {
+      "name": "_weigh_object",
+      "kind": "method",
+      "scope": "HostNameWeigher",
+      "lineRange": {
+        "start": 47,
+        "end": 49
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "host_state"
+        },
+        {
+          "name": "weight_properties"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "self._weights.get(host_state.host, 0)",
+          "line": 49
+        }
+      ],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "TestMultiCellMigrate",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 52,
+        "end": 1205
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "NUMBER_OF_CELLS",
+      "kind": "constant",
+      "scope": "TestMultiCellMigrate",
+      "lineRange": {
+        "start": 55,
+        "end": 55
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "compute_driver",
+      "kind": "field",
+      "scope": "TestMultiCellMigrate",
+      "lineRange": {
+        "start": 56,
+        "end": 56
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "setUp",
+      "kind": "method",
+      "scope": "TestMultiCellMigrate",
+      "lineRange": {
+        "start": 58,
+        "end": 92
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 24,
+      "ccn": 2,
+      "visibility": "public"
+    },
+    {
+      "name": "_enable_cross_cell_resize",
+      "kind": "method",
+      "scope": "TestMultiCellMigrate",
+      "lineRange": {
+        "start": 94,
+        "end": 101
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 5,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "assertFlavorMatchesAllocation",
+      "kind": "method",
+      "scope": "TestMultiCellMigrate",
+      "lineRange": {
+        "start": 103,
+        "end": 111
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "flavor"
+        },
+        {
+          "name": "allocation"
+        },
+        {
+          "default": "False",
+          "name": "volume_backed"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 8,
+      "ccn": 2,
+      "visibility": "public"
+    },
+    {
+      "name": "assert_instance_fields_match_flavor",
+      "kind": "method",
+      "scope": "TestMultiCellMigrate",
+      "lineRange": {
+        "start": 113,
+        "end": 118
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "instance"
+        },
+        {
+          "name": "flavor"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 6,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "_count_volume_attachments",
+      "kind": "method",
+      "scope": "TestMultiCellMigrate",
+      "lineRange": {
+        "start": 120,
+        "end": 122
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "server_id"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "len(attachment_ids)",
+          "line": 122
+        }
+      ],
+      "nloc": 3,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "assert_quota_usage",
+      "kind": "method",
+      "scope": "TestMultiCellMigrate",
+      "lineRange": {
+        "start": 124,
+        "end": 126
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "expected_num_instances"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 3,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "_create_server",
+      "kind": "method",
+      "scope": "TestMultiCellMigrate",
+      "lineRange": {
+        "start": 128,
+        "end": 175
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "flavor"
+        },
+        {
+          "default": "False",
+          "name": "volume_backed"
+        },
+        {
+          "default": "None",
+          "name": "group_id"
+        },
+        {
+          "default": "False",
+          "name": "no_networking"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "server",
+          "line": 175
+        }
+      ],
+      "nloc": 31,
+      "ccn": 5,
+      "visibility": "private"
+    },
+    {
+      "name": "stub_image_create",
+      "kind": "method",
+      "scope": "TestMultiCellMigrate",
+      "lineRange": {
+        "start": 177,
+        "end": 189
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 7,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "image_create_snooper",
+      "kind": "function",
+      "scope": "TestMultiCellMigrate.stub_image_create",
+      "lineRange": {
+        "start": 181,
+        "end": 184
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "*args"
+        },
+        {
+          "name": "**kwargs"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "image",
+          "line": 184
+        }
+      ],
+      "visibility": "public"
+    },
+    {
+      "name": "_resize_and_validate",
+      "kind": "method",
+      "scope": "TestMultiCellMigrate",
+      "lineRange": {
+        "start": 191,
+        "end": 414
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "default": "False",
+          "name": "volume_backed"
+        },
+        {
+          "default": "False",
+          "name": "stopped"
+        },
+        {
+          "default": "None",
+          "name": "target_host"
+        },
+        {
+          "default": "None",
+          "name": "server"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "server, source_rp_uuid, target_rp_uuid, old_flavor, new_flavor",
+          "line": 414
+        }
+      ],
+      "nloc": 130,
+      "ccn": 16,
+      "visibility": "private"
+    },
+    {
+      "name": "_attach_volume_to_server",
+      "kind": "method",
+      "scope": "TestMultiCellMigrate",
+      "lineRange": {
+        "start": 416,
+        "end": 424
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "server_id"
+        },
+        {
+          "name": "volume_id"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 6,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "_detach_volume_from_server",
+      "kind": "method",
+      "scope": "TestMultiCellMigrate",
+      "lineRange": {
+        "start": 426,
+        "end": 433
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "server_id"
+        },
+        {
+          "name": "volume_id"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 5,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "assert_volume_is_attached",
+      "kind": "method",
+      "scope": "TestMultiCellMigrate",
+      "lineRange": {
+        "start": 435,
+        "end": 441
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "server_id"
+        },
+        {
+          "name": "volume_id"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 6,
+      "ccn": 2,
+      "visibility": "public"
+    },
+    {
+      "name": "assert_volume_is_detached",
+      "kind": "method",
+      "scope": "TestMultiCellMigrate",
+      "lineRange": {
+        "start": 443,
+        "end": 449
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "server_id"
+        },
+        {
+          "name": "volume_id"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 6,
+      "ccn": 2,
+      "visibility": "public"
+    },
+    {
+      "name": "assert_resize_confirm_notifications",
+      "kind": "method",
+      "scope": "TestMultiCellMigrate",
+      "lineRange": {
+        "start": 451,
+        "end": 462
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 9,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "delete_server_and_assert_cleanup",
+      "kind": "method",
+      "scope": "TestMultiCellMigrate",
+      "lineRange": {
+        "start": 464,
+        "end": 510
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "server"
+        },
+        {
+          "default": "False",
+          "name": "assert_confirmed_migration"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 23,
+      "ccn": 4,
+      "visibility": "public"
+    },
+    {
+      "name": "assert_resize_confirm_actions",
+      "kind": "method",
+      "scope": "TestMultiCellMigrate",
+      "lineRange": {
+        "start": 512,
+        "end": 527
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "server"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 16,
+      "ccn": 4,
+      "visibility": "public"
+    },
+    {
+      "name": "test_resize_confirm_image_backed",
+      "kind": "method",
+      "scope": "TestMultiCellMigrate",
+      "lineRange": {
+        "start": 529,
+        "end": 562
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 12,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "_assert_confirm",
+      "kind": "method",
+      "scope": "TestMultiCellMigrate",
+      "lineRange": {
+        "start": 564,
+        "end": 617
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "server"
+        },
+        {
+          "name": "source_rp_uuid"
+        },
+        {
+          "name": "target_rp_uuid"
+        },
+        {
+          "name": "new_flavor"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 38,
+      "ccn": 2,
+      "visibility": "private"
+    },
+    {
+      "name": "_archive_cell_dbs",
+      "kind": "method",
+      "scope": "TestMultiCellMigrate",
+      "lineRange": {
+        "start": 619,
+        "end": 629
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 10,
+      "ccn": 2,
+      "visibility": "private"
+    },
+    {
+      "name": "assert_resize_revert_notifications",
+      "kind": "method",
+      "scope": "TestMultiCellMigrate",
+      "lineRange": {
+        "start": 631,
+        "end": 645
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 11,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "assert_resize_revert_actions",
+      "kind": "method",
+      "scope": "TestMultiCellMigrate",
+      "lineRange": {
+        "start": 647,
+        "end": 691
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "server"
+        },
+        {
+          "name": "source_host"
+        },
+        {
+          "name": "dest_host"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 28,
+      "ccn": 3,
+      "visibility": "public"
+    },
+    {
+      "name": "test_resize_revert_volume_backed",
+      "kind": "method",
+      "scope": "TestMultiCellMigrate",
+      "lineRange": {
+        "start": 693,
+        "end": 778
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 49,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_resize_revert_detach_volume_while_resized",
+      "kind": "method",
+      "scope": "TestMultiCellMigrate",
+      "lineRange": {
+        "start": 780,
+        "end": 805
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 13,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_delete_while_in_verify_resize_status",
+      "kind": "method",
+      "scope": "TestMultiCellMigrate",
+      "lineRange": {
+        "start": 807,
+        "end": 814
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 4,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_cold_migrate_target_host_in_other_cell",
+      "kind": "method",
+      "scope": "TestMultiCellMigrate",
+      "lineRange": {
+        "start": 816,
+        "end": 826
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 4,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_cold_migrate_cross_cell_weigher_stays_in_source_cell",
+      "kind": "method",
+      "scope": "TestMultiCellMigrate",
+      "lineRange": {
+        "start": 828,
+        "end": 844
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 7,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_resize_cross_cell_weigher_filtered_to_target_cell_by_spec",
+      "kind": "method",
+      "scope": "TestMultiCellMigrate",
+      "lineRange": {
+        "start": 846,
+        "end": 889
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 31,
+      "ccn": 2,
+      "visibility": "public"
+    },
+    {
+      "name": "test_anti_affinity_group",
+      "kind": "method",
+      "scope": "TestMultiCellMigrate",
+      "lineRange": {
+        "start": 897,
+        "end": 964
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 36,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_poll_unconfirmed_resizes_with_upcall",
+      "kind": "method",
+      "scope": "TestMultiCellMigrate",
+      "lineRange": {
+        "start": 970,
+        "end": 998
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 16,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_poll_unconfirmed_resizes_with_no_upcall",
+      "kind": "method",
+      "scope": "TestMultiCellMigrate",
+      "lineRange": {
+        "start": 1004,
+        "end": 1037
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 22,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_resize_confirm_from_stopped",
+      "kind": "method",
+      "scope": "TestMultiCellMigrate",
+      "lineRange": {
+        "start": 1043,
+        "end": 1060
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 10,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_resize_revert_from_stopped",
+      "kind": "method",
+      "scope": "TestMultiCellMigrate",
+      "lineRange": {
+        "start": 1062,
+        "end": 1081
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 12,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_finish_snapshot_based_resize_at_dest_spawn_fails",
+      "kind": "method",
+      "scope": "TestMultiCellMigrate",
+      "lineRange": {
+        "start": 1083,
+        "end": 1134
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 22,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "_assert_instance_not_in_cell",
+      "kind": "method",
+      "scope": "TestMultiCellMigrate",
+      "lineRange": {
+        "start": 1136,
+        "end": 1142
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "cell_name"
+        },
+        {
+          "name": "server_id"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 7,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "_assert_allocation_revert_on_fail",
+      "kind": "method",
+      "scope": "TestMultiCellMigrate",
+      "lineRange": {
+        "start": 1144,
+        "end": 1160
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "server"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 13,
+      "ccn": 2,
+      "visibility": "private"
+    },
+    {
+      "name": "test_prep_snapshot_based_resize_at_source_destroy_fails",
+      "kind": "method",
+      "scope": "TestMultiCellMigrate",
+      "lineRange": {
+        "start": 1162,
+        "end": 1205
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 21,
+      "ccn": 1,
+      "visibility": "public"
+    }
+  ],
+  "referencedSymbols": [
+    {
+      "name": "weights.BaseHostWeigher",
+      "usage": "inherit",
+      "via": "nova.scheduler",
+      "count": 1,
+      "lineRange": {
+        "start": 39,
+        "end": 39
+      }
+    },
+    {
+      "name": "integrated_helpers.ProviderUsageBaseTestCase",
+      "usage": "inherit",
+      "via": "nova.tests.functional",
+      "count": 1,
+      "lineRange": {
+        "start": 52,
+        "end": 52
+      }
+    },
+    {
+      "name": "super",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 67,
+        "end": 67
+      }
+    },
+    {
+      "name": "nova_fixtures.CinderFixture",
+      "usage": "call",
+      "via": "nova.tests",
+      "count": 1,
+      "lineRange": {
+        "start": 68,
+        "end": 68
+      }
+    },
+    {
+      "name": "sorted",
+      "usage": "call",
+      "via": null,
+      "count": 2,
+      "lineRange": {
+        "start": 82,
+        "end": 82
+      }
+    },
+    {
+      "name": "len",
+      "usage": "call",
+      "via": null,
+      "count": 16,
+      "lineRange": {
+        "start": 122,
+        "end": 122
+      }
+    },
+    {
+      "name": "dict",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 166,
+        "end": 166
+      }
+    },
+    {
+      "name": "original_create",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 182,
+        "end": 182
+      }
+    },
+    {
+      "name": "mock.patch.object",
+      "usage": "call",
+      "via": "unittest",
+      "count": 3,
+      "lineRange": {
+        "start": 186,
+        "end": 186
+      }
+    },
+    {
+      "name": "nova_context.get_admin_context",
+      "usage": "call",
+      "via": "nova",
+      "count": 7,
+      "lineRange": {
+        "start": 321,
+        "end": 321
+      }
+    },
+    {
+      "name": "nova_context.target_cell",
+      "usage": "call",
+      "via": "nova",
+      "count": 6,
+      "lineRange": {
+        "start": 322,
+        "end": 322
+      }
+    },
+    {
+      "name": "objects.Instance.get_by_uuid",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 323,
+        "end": 323
+      }
+    },
+    {
+      "name": "utils.temporary_mutation",
+      "usage": "call",
+      "via": "nova",
+      "count": 2,
+      "lineRange": {
+        "start": 410,
+        "end": 410
+      }
+    },
+    {
+      "name": "objects.Migration.get_by_uuid",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 491,
+        "end": 491
+      }
+    },
+    {
+      "name": "db_api.archive_deleted_rows",
+      "usage": "call",
+      "via": "nova.db.main",
+      "count": 1,
+      "lineRange": {
+        "start": 624,
+        "end": 624
+      }
+    },
+    {
+      "name": "objects.InstanceGroup.get_by_uuid",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 951,
+        "end": 951
+      }
+    },
+    {
+      "name": "scheduler_utils._get_instance_group_hosts_all_cells",
+      "usage": "call",
+      "via": "nova.scheduler",
+      "count": 1,
+      "lineRange": {
+        "start": 952,
+        "end": 952
+      }
+    },
+    {
+      "name": "mock.patch",
+      "usage": "call",
+      "via": "unittest",
+      "count": 5,
+      "lineRange": {
+        "start": 966,
+        "end": 966
+      }
+    },
+    {
+      "name": "mock.Mock",
+      "usage": "call",
+      "via": "unittest",
+      "count": 4,
+      "lineRange": {
+        "start": 967,
+        "end": 967
+      }
+    },
+    {
+      "name": "datetime.timedelta",
+      "usage": "call",
+      "via": "datetime",
+      "count": 2,
+      "lineRange": {
+        "start": 985,
+        "end": 985
+      }
+    },
+    {
+      "name": "timeutils.utcnow",
+      "usage": "call",
+      "via": "oslo_utils",
+      "count": 2,
+      "lineRange": {
+        "start": 985,
+        "end": 985
+      }
+    },
+    {
+      "name": "osloutils_fixture.TimeFixture",
+      "usage": "call",
+      "via": "oslo_utils",
+      "count": 2,
+      "lineRange": {
+        "start": 993,
+        "end": 993
+      }
+    },
+    {
+      "name": "nova_context.set_target_cell",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 1021,
+        "end": 1021
+      }
+    },
+    {
+      "name": "test.nested",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 1025,
+        "end": 1025
+      }
+    },
+    {
+      "name": "nova_fixtures.CastAsCallFixture",
+      "usage": "call",
+      "via": "nova.tests",
+      "count": 1,
+      "lineRange": {
+        "start": 1027,
+        "end": 1027
+      }
+    },
+    {
+      "name": "exception.HypervisorUnavailable",
+      "usage": "call",
+      "via": "nova",
+      "count": 2,
+      "lineRange": {
+        "start": 1098,
+        "end": 1098
+      }
+    }
+  ],
+  "dependencies": [
+    {
+      "style": "import",
+      "module": "datetime",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 13,
+        "end": 13
+      }
+    },
+    {
+      "style": "from",
+      "module": "unittest",
+      "names": [
+        {
+          "alias": null,
+          "name": "mock"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 14,
+        "end": 14
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_db",
+      "names": [
+        {
+          "alias": "oslo_db_exc",
+          "name": "exception"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 16,
+        "end": 16
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_utils",
+      "names": [
+        {
+          "alias": "osloutils_fixture",
+          "name": "fixture"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 17,
+        "end": 17
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_utils.fixture",
+      "names": [
+        {
+          "alias": "uuids",
+          "name": "uuidsentinel"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 18,
+        "end": 18
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_utils",
+      "names": [
+        {
+          "alias": null,
+          "name": "timeutils"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 19,
+        "end": 19
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.compute",
+      "names": [
+        {
+          "alias": null,
+          "name": "instance_actions"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 21,
+        "end": 21
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "conf"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 22,
+        "end": 22
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": "nova_context",
+          "name": "context"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 23,
+        "end": 23
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.db.main",
+      "names": [
+        {
+          "alias": "db_api",
+          "name": "api"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 24,
+        "end": 24
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "exception"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 25,
+        "end": 25
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "objects"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 26,
+        "end": 26
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.policies",
+      "names": [
+        {
+          "alias": "base_policies",
+          "name": "base"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 27,
+        "end": 27
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.policies",
+      "names": [
+        {
+          "alias": "servers_policies",
+          "name": "servers"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 28,
+        "end": 28
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.scheduler",
+      "names": [
+        {
+          "alias": "scheduler_utils",
+          "name": "utils"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 29,
+        "end": 29
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.scheduler",
+      "names": [
+        {
+          "alias": null,
+          "name": "weights"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 30,
+        "end": 30
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "test"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 31,
+        "end": 31
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.tests",
+      "names": [
+        {
+          "alias": "nova_fixtures",
+          "name": "fixtures"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 32,
+        "end": 32
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.tests.functional",
+      "names": [
+        {
+          "alias": null,
+          "name": "integrated_helpers"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 33,
+        "end": 33
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "utils"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 34,
+        "end": 34
+      }
+    }
+  ],
+  "sideEffects": [
+    {
+      "kind": "global-mutation",
+      "target": "CONF = conf.CONF",
+      "lineRange": {
+        "start": 36,
+        "end": 36
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "NUMBER_OF_CELLS = 2",
+      "lineRange": {
+        "start": 55,
+        "end": 55
+      }
+    }
+  ],
+  "securitySurface": [],
+  "injection_flags": [],
+  "warnings": []
+}

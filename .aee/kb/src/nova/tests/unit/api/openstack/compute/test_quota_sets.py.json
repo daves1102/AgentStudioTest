@@ -1,0 +1,2509 @@
+{
+  "file": "src/nova/tests/unit/api/openstack/compute/test_quota_sets.py",
+  "hash": "a146f8950a497873ad6d78eff7831bb3e2bf70fd645288476691baff6c59197d",
+  "language": "Python",
+  "component": "nova",
+  "package": null,
+  "lines": {
+    "blank": 129,
+    "code": 938,
+    "comment": 35,
+    "total": 1102
+  },
+  "symbols": [
+    {
+      "name": "quota_set",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 34,
+        "end": 46
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "id"
+        },
+        {
+          "default": "True",
+          "name": "include_server_group_quotas"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "res",
+          "line": 46
+        }
+      ],
+      "nloc": 13,
+      "ccn": 2,
+      "exported": true
+    },
+    {
+      "name": "BaseQuotaSetsTest",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 49,
+        "end": 60
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "setUp",
+      "kind": "method",
+      "scope": "BaseQuotaSetsTest",
+      "lineRange": {
+        "start": 51,
+        "end": 60
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 5,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "QuotaSetsTestV21",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 63,
+        "end": 324
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "validation_error",
+      "kind": "field",
+      "scope": "QuotaSetsTestV21",
+      "lineRange": {
+        "start": 64,
+        "end": 64
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "include_server_group_quotas",
+      "kind": "field",
+      "scope": "QuotaSetsTestV21",
+      "lineRange": {
+        "start": 65,
+        "end": 65
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "setUp",
+      "kind": "method",
+      "scope": "QuotaSetsTestV21",
+      "lineRange": {
+        "start": 67,
+        "end": 85
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 19,
+      "ccn": 2,
+      "visibility": "public"
+    },
+    {
+      "name": "_get_http_request",
+      "kind": "method",
+      "scope": "QuotaSetsTestV21",
+      "lineRange": {
+        "start": 87,
+        "end": 88
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "default": "''",
+          "name": "url"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "fakes.HTTPRequest.blank(url)",
+          "line": 88
+        }
+      ],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "test_format_quota_set",
+      "kind": "method",
+      "scope": "QuotaSetsTestV21",
+      "lineRange": {
+        "start": 90,
+        "end": 110
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 20,
+      "ccn": 2,
+      "visibility": "public"
+    },
+    {
+      "name": "test_validate_quota_limit",
+      "kind": "method",
+      "scope": "QuotaSetsTestV21",
+      "lineRange": {
+        "start": 112,
+        "end": 159
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 28,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_quotas_defaults",
+      "kind": "method",
+      "scope": "QuotaSetsTestV21",
+      "lineRange": {
+        "start": 161,
+        "end": 169
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 7,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_quotas_show",
+      "kind": "method",
+      "scope": "QuotaSetsTestV21",
+      "lineRange": {
+        "start": 171,
+        "end": 178
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 7,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_quotas_update",
+      "kind": "method",
+      "scope": "QuotaSetsTestV21",
+      "lineRange": {
+        "start": 180,
+        "end": 188
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 9,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_quotas_update_with_good_data",
+      "kind": "method",
+      "scope": "QuotaSetsTestV21",
+      "lineRange": {
+        "start": 191,
+        "end": 197
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_createlimit"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 7,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_quotas_update_with_bad_data",
+      "kind": "method",
+      "scope": "QuotaSetsTestV21",
+      "lineRange": {
+        "start": 201,
+        "end": 213
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_createlimit"
+        },
+        {
+          "name": "mock_validate"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 13,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_quotas_update_zero_value",
+      "kind": "method",
+      "scope": "QuotaSetsTestV21",
+      "lineRange": {
+        "start": 215,
+        "end": 231
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 16,
+      "ccn": 2,
+      "visibility": "public"
+    },
+    {
+      "name": "_quotas_update_bad_request_case",
+      "kind": "method",
+      "scope": "QuotaSetsTestV21",
+      "lineRange": {
+        "start": 233,
+        "end": 236
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "body"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 4,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "test_quotas_update_invalid_key",
+      "kind": "method",
+      "scope": "QuotaSetsTestV21",
+      "lineRange": {
+        "start": 238,
+        "end": 243
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 6,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_quotas_update_invalid_limit",
+      "kind": "method",
+      "scope": "QuotaSetsTestV21",
+      "lineRange": {
+        "start": 245,
+        "end": 250
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 6,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_quotas_update_empty_body",
+      "kind": "method",
+      "scope": "QuotaSetsTestV21",
+      "lineRange": {
+        "start": 252,
+        "end": 254
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 3,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_quotas_update_invalid_value_non_int",
+      "kind": "method",
+      "scope": "QuotaSetsTestV21",
+      "lineRange": {
+        "start": 256,
+        "end": 262
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 6,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_quotas_update_invalid_value_with_float",
+      "kind": "method",
+      "scope": "QuotaSetsTestV21",
+      "lineRange": {
+        "start": 264,
+        "end": 270
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 6,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_quotas_update_invalid_value_with_unicode",
+      "kind": "method",
+      "scope": "QuotaSetsTestV21",
+      "lineRange": {
+        "start": 272,
+        "end": 278
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 6,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_quotas_delete",
+      "kind": "method",
+      "scope": "QuotaSetsTestV21",
+      "lineRange": {
+        "start": 281,
+        "end": 286
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_destroy_all_by_project"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 6,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_duplicate_quota_filter",
+      "kind": "method",
+      "scope": "QuotaSetsTestV21",
+      "lineRange": {
+        "start": 288,
+        "end": 294
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 7,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_quota_filter_negative_int_as_string",
+      "kind": "method",
+      "scope": "QuotaSetsTestV21",
+      "lineRange": {
+        "start": 296,
+        "end": 301
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 6,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_quota_filter_int_as_string",
+      "kind": "method",
+      "scope": "QuotaSetsTestV21",
+      "lineRange": {
+        "start": 303,
+        "end": 308
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 6,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_unknown_quota_filter",
+      "kind": "method",
+      "scope": "QuotaSetsTestV21",
+      "lineRange": {
+        "start": 310,
+        "end": 316
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 7,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_quota_additional_filter",
+      "kind": "method",
+      "scope": "QuotaSetsTestV21",
+      "lineRange": {
+        "start": 318,
+        "end": 324
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 7,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "ExtendedQuotasTestV21",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 327,
+        "end": 409
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "fake_quotas",
+      "kind": "field",
+      "scope": "ExtendedQuotasTestV21",
+      "lineRange": {
+        "start": 328,
+        "end": 345
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "fake_get_quotas",
+      "kind": "method",
+      "scope": "ExtendedQuotasTestV21",
+      "lineRange": {
+        "start": 347,
+        "end": 351
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "context"
+        },
+        {
+          "name": "id"
+        },
+        {
+          "default": "None",
+          "name": "user_id"
+        },
+        {
+          "default": "False",
+          "name": "usages"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "self.fake_quotas",
+          "line": 349
+        },
+        {
+          "expr": "{k: v['limit'] for k, v in self.fake_quotas.items()}",
+          "line": 351
+        }
+      ],
+      "nloc": 5,
+      "ccn": 3,
+      "visibility": "public"
+    },
+    {
+      "name": "fake_get_settable_quotas",
+      "kind": "method",
+      "scope": "ExtendedQuotasTestV21",
+      "lineRange": {
+        "start": 353,
+        "end": 359
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "context"
+        },
+        {
+          "name": "project_id"
+        },
+        {
+          "default": "None",
+          "name": "user_id"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "{ k: { 'minimum': v['in_use'] + v['reserved'], 'maximum': -1, } for k, v in self.fake_quotas.items() }",
+          "line": 354
+        }
+      ],
+      "nloc": 7,
+      "ccn": 2,
+      "visibility": "public"
+    },
+    {
+      "name": "_get_http_request",
+      "kind": "method",
+      "scope": "ExtendedQuotasTestV21",
+      "lineRange": {
+        "start": 361,
+        "end": 362
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "default": "''",
+          "name": "url"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "fakes.HTTPRequest.blank(url)",
+          "line": 362
+        }
+      ],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "test_quotas_update_exceed_in_used",
+      "kind": "method",
+      "scope": "ExtendedQuotasTestV21",
+      "lineRange": {
+        "start": 365,
+        "end": 371
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "get_settable_quotas"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 6,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_quotas_force_update_exceed_in_used",
+      "kind": "method",
+      "scope": "ExtendedQuotasTestV21",
+      "lineRange": {
+        "start": 374,
+        "end": 383
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "get_settable_quotas"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 8,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_quotas_update_good_data",
+      "kind": "method",
+      "scope": "ExtendedQuotasTestV21",
+      "lineRange": {
+        "start": 386,
+        "end": 394
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_createlimit"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 9,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_quotas_update_bad_data",
+      "kind": "method",
+      "scope": "ExtendedQuotasTestV21",
+      "lineRange": {
+        "start": 398,
+        "end": 409
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_gsq"
+        },
+        {
+          "name": "mock_createlimit"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 11,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "UserQuotasTestV21",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 412,
+        "end": 486
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "plugin",
+      "kind": "field",
+      "scope": "UserQuotasTestV21",
+      "lineRange": {
+        "start": 413,
+        "end": 413
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "include_server_group_quotas",
+      "kind": "field",
+      "scope": "UserQuotasTestV21",
+      "lineRange": {
+        "start": 414,
+        "end": 414
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "_get_http_request",
+      "kind": "method",
+      "scope": "UserQuotasTestV21",
+      "lineRange": {
+        "start": 416,
+        "end": 417
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "default": "''",
+          "name": "url"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "fakes.HTTPRequest.blank(url)",
+          "line": 417
+        }
+      ],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "test_user_quotas_show",
+      "kind": "method",
+      "scope": "UserQuotasTestV21",
+      "lineRange": {
+        "start": 419,
+        "end": 425
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 7,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_user_quotas_update",
+      "kind": "method",
+      "scope": "UserQuotasTestV21",
+      "lineRange": {
+        "start": 427,
+        "end": 445
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 17,
+      "ccn": 2,
+      "visibility": "public"
+    },
+    {
+      "name": "test_user_quotas_update_exceed_project",
+      "kind": "method",
+      "scope": "UserQuotasTestV21",
+      "lineRange": {
+        "start": 447,
+        "end": 453
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 6,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_user_quotas_delete",
+      "kind": "method",
+      "scope": "UserQuotasTestV21",
+      "lineRange": {
+        "start": 456,
+        "end": 463
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_destroy_all_by_project_and_user"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 8,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_user_quotas_update_good_data",
+      "kind": "method",
+      "scope": "UserQuotasTestV21",
+      "lineRange": {
+        "start": 466,
+        "end": 474
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_createlimit"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 8,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_user_quotas_update_bad_data",
+      "kind": "method",
+      "scope": "UserQuotasTestV21",
+      "lineRange": {
+        "start": 477,
+        "end": 486
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_createlimit"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 9,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "QuotaSetsTestV236",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 489,
+        "end": 583
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "microversion",
+      "kind": "field",
+      "scope": "QuotaSetsTestV236",
+      "lineRange": {
+        "start": 490,
+        "end": 490
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "setUp",
+      "kind": "method",
+      "scope": "QuotaSetsTestV236",
+      "lineRange": {
+        "start": 492,
+        "end": 532
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 40,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_quotas_show_filtered",
+      "kind": "method",
+      "scope": "QuotaSetsTestV236",
+      "lineRange": {
+        "start": 534,
+        "end": 541
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 7,
+      "ccn": 3,
+      "visibility": "public"
+    },
+    {
+      "name": "test_quotas_default_filtered",
+      "kind": "method",
+      "scope": "QuotaSetsTestV236",
+      "lineRange": {
+        "start": 543,
+        "end": 550
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 7,
+      "ccn": 3,
+      "visibility": "public"
+    },
+    {
+      "name": "test_quotas_detail_filtered",
+      "kind": "method",
+      "scope": "QuotaSetsTestV236",
+      "lineRange": {
+        "start": 552,
+        "end": 559
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 7,
+      "ccn": 3,
+      "visibility": "public"
+    },
+    {
+      "name": "test_quotas_update_input_filtered",
+      "kind": "method",
+      "scope": "QuotaSetsTestV236",
+      "lineRange": {
+        "start": 561,
+        "end": 570
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 9,
+      "ccn": 3,
+      "visibility": "public"
+    },
+    {
+      "name": "test_quotas_update_output_filtered",
+      "kind": "method",
+      "scope": "QuotaSetsTestV236",
+      "lineRange": {
+        "start": 572,
+        "end": 583
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 11,
+      "ccn": 3,
+      "visibility": "public"
+    },
+    {
+      "name": "QuotaSetsTestV257",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 586,
+        "end": 591
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "microversion",
+      "kind": "field",
+      "scope": "QuotaSetsTestV257",
+      "lineRange": {
+        "start": 587,
+        "end": 587
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "setUp",
+      "kind": "method",
+      "scope": "QuotaSetsTestV257",
+      "lineRange": {
+        "start": 589,
+        "end": 591
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 3,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "QuotaSetsTestV275",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 594,
+        "end": 632
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "microversion",
+      "kind": "field",
+      "scope": "QuotaSetsTestV275",
+      "lineRange": {
+        "start": 595,
+        "end": 595
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "test_quota_additional_filter_older_version",
+      "kind": "method",
+      "scope": "QuotaSetsTestV275",
+      "lineRange": {
+        "start": 597,
+        "end": 604
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 8,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_quota_update_additional_filter",
+      "kind": "method",
+      "scope": "QuotaSetsTestV275",
+      "lineRange": {
+        "start": 606,
+        "end": 611
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 6,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_quota_show_additional_filter",
+      "kind": "method",
+      "scope": "QuotaSetsTestV275",
+      "lineRange": {
+        "start": 613,
+        "end": 618
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 6,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_quota_detail_additional_filter",
+      "kind": "method",
+      "scope": "QuotaSetsTestV275",
+      "lineRange": {
+        "start": 620,
+        "end": 625
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 6,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_quota_delete_additional_filter",
+      "kind": "method",
+      "scope": "QuotaSetsTestV275",
+      "lineRange": {
+        "start": 627,
+        "end": 632
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 6,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "NoopQuotaSetsTest",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 635,
+        "end": 831
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "quota_driver",
+      "kind": "field",
+      "scope": "NoopQuotaSetsTest",
+      "lineRange": {
+        "start": 636,
+        "end": 636
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "expected_detail",
+      "kind": "field",
+      "scope": "NoopQuotaSetsTest",
+      "lineRange": {
+        "start": 637,
+        "end": 637
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "setUp",
+      "kind": "method",
+      "scope": "NoopQuotaSetsTest",
+      "lineRange": {
+        "start": 639,
+        "end": 642
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 4,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_show_v21",
+      "kind": "method",
+      "scope": "NoopQuotaSetsTest",
+      "lineRange": {
+        "start": 644,
+        "end": 666
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 23,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_show_v257",
+      "kind": "method",
+      "scope": "NoopQuotaSetsTest",
+      "lineRange": {
+        "start": 668,
+        "end": 681
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 14,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_detail_v21",
+      "kind": "method",
+      "scope": "NoopQuotaSetsTest",
+      "lineRange": {
+        "start": 683,
+        "end": 706
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 23,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_detail_v21_user",
+      "kind": "method",
+      "scope": "NoopQuotaSetsTest",
+      "lineRange": {
+        "start": 708,
+        "end": 730
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 23,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_update_still_rejects_badrequests",
+      "kind": "method",
+      "scope": "NoopQuotaSetsTest",
+      "lineRange": {
+        "start": 732,
+        "end": 737
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 6,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_update_v21",
+      "kind": "method",
+      "scope": "NoopQuotaSetsTest",
+      "lineRange": {
+        "start": 740,
+        "end": 765
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_create"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 26,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_update_v21_user",
+      "kind": "method",
+      "scope": "NoopQuotaSetsTest",
+      "lineRange": {
+        "start": 768,
+        "end": 793
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_create"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 26,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_defaults_v21",
+      "kind": "method",
+      "scope": "NoopQuotaSetsTest",
+      "lineRange": {
+        "start": 795,
+        "end": 817
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 23,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_quotas_delete",
+      "kind": "method",
+      "scope": "NoopQuotaSetsTest",
+      "lineRange": {
+        "start": 820,
+        "end": 824
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_destroy_all_by_project"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 5,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_user_quotas_delete",
+      "kind": "method",
+      "scope": "NoopQuotaSetsTest",
+      "lineRange": {
+        "start": 827,
+        "end": 831
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_destroy_all_by_user"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 5,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "UnifiedLimitsQuotaSetsTest",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 834,
+        "end": 1102
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "quota_driver",
+      "kind": "field",
+      "scope": "UnifiedLimitsQuotaSetsTest",
+      "lineRange": {
+        "start": 835,
+        "end": 835
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "expected_detail",
+      "kind": "field",
+      "scope": "UnifiedLimitsQuotaSetsTest",
+      "lineRange": {
+        "start": 837,
+        "end": 837
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "setUp",
+      "kind": "method",
+      "scope": "UnifiedLimitsQuotaSetsTest",
+      "lineRange": {
+        "start": 839,
+        "end": 849
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 11,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_show_v21",
+      "kind": "method",
+      "scope": "UnifiedLimitsQuotaSetsTest",
+      "lineRange": {
+        "start": 852,
+        "end": 875
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_proj"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 24,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_show_v257",
+      "kind": "method",
+      "scope": "UnifiedLimitsQuotaSetsTest",
+      "lineRange": {
+        "start": 878,
+        "end": 892
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_proj"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 15,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_detail_v21",
+      "kind": "method",
+      "scope": "UnifiedLimitsQuotaSetsTest",
+      "lineRange": {
+        "start": 897,
+        "end": 932
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_count"
+        },
+        {
+          "name": "mock_proj"
+        },
+        {
+          "name": "mock_kcount"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 36,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_detail_v21_user",
+      "kind": "method",
+      "scope": "UnifiedLimitsQuotaSetsTest",
+      "lineRange": {
+        "start": 937,
+        "end": 972
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_count"
+        },
+        {
+          "name": "mock_proj"
+        },
+        {
+          "name": "mock_kcount"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 36,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_update_v21",
+      "kind": "method",
+      "scope": "UnifiedLimitsQuotaSetsTest",
+      "lineRange": {
+        "start": 976,
+        "end": 1001
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_create"
+        },
+        {
+          "name": "mock_proj"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 25,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_update_v21_user",
+      "kind": "method",
+      "scope": "UnifiedLimitsQuotaSetsTest",
+      "lineRange": {
+        "start": 1005,
+        "end": 1029
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_create"
+        },
+        {
+          "name": "mock_proj"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 25,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_defaults_v21",
+      "kind": "method",
+      "scope": "UnifiedLimitsQuotaSetsTest",
+      "lineRange": {
+        "start": 1032,
+        "end": 1055
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_default"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 24,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_defaults_v21_different_limit_values",
+      "kind": "method",
+      "scope": "UnifiedLimitsQuotaSetsTest",
+      "lineRange": {
+        "start": 1057,
+        "end": 1088
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 31,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_quotas_delete",
+      "kind": "method",
+      "scope": "UnifiedLimitsQuotaSetsTest",
+      "lineRange": {
+        "start": 1091,
+        "end": 1095
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_destroy_all_by_project"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 4,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_user_quotas_delete",
+      "kind": "method",
+      "scope": "UnifiedLimitsQuotaSetsTest",
+      "lineRange": {
+        "start": 1098,
+        "end": 1102
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_destroy_all_by_user"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 4,
+      "ccn": 1,
+      "visibility": "public"
+    }
+  ],
+  "referencedSymbols": [
+    {
+      "name": "test.TestCase",
+      "usage": "inherit",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 49,
+        "end": 49
+      }
+    },
+    {
+      "name": "super",
+      "usage": "call",
+      "via": null,
+      "count": 6,
+      "lineRange": {
+        "start": 52,
+        "end": 52
+      }
+    },
+    {
+      "name": "quota_sets.QuotaSetsController",
+      "usage": "call",
+      "via": "nova.api.openstack.compute",
+      "count": 3,
+      "lineRange": {
+        "start": 54,
+        "end": 54
+      }
+    },
+    {
+      "name": "fakes.HTTPRequest.blank",
+      "usage": "call",
+      "via": "nova.tests.unit.api.openstack",
+      "count": 40,
+      "lineRange": {
+        "start": 88,
+        "end": 88
+      }
+    },
+    {
+      "name": "mock.patch",
+      "usage": "call",
+      "via": "unittest",
+      "count": 13,
+      "lineRange": {
+        "start": 190,
+        "end": 190
+      }
+    },
+    {
+      "name": "len",
+      "usage": "call",
+      "via": null,
+      "count": 7,
+      "lineRange": {
+        "start": 196,
+        "end": 196
+      }
+    },
+    {
+      "name": "mock.patch.object",
+      "usage": "call",
+      "via": "unittest",
+      "count": 19,
+      "lineRange": {
+        "start": 364,
+        "end": 364
+      }
+    },
+    {
+      "name": "limit_fixture.LimitFixture",
+      "usage": "call",
+      "via": "oslo_limit",
+      "count": 1,
+      "lineRange": {
+        "start": 849,
+        "end": 849
+      }
+    }
+  ],
+  "dependencies": [
+    {
+      "style": "from",
+      "module": "unittest",
+      "names": [
+        {
+          "alias": null,
+          "name": "mock"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 17,
+        "end": 17
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_limit",
+      "names": [
+        {
+          "alias": "limit_fixture",
+          "name": "fixture"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 19,
+        "end": 19
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_utils.fixture",
+      "names": [
+        {
+          "alias": "uuids",
+          "name": "uuidsentinel"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 20,
+        "end": 20
+      }
+    },
+    {
+      "style": "import",
+      "module": "webob",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 21,
+        "end": 21
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.api.openstack.compute",
+      "names": [
+        {
+          "alias": null,
+          "name": "quota_sets"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 23,
+        "end": 23
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.db",
+      "names": [
+        {
+          "alias": "db_const",
+          "name": "constants"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 24,
+        "end": 24
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "exception"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 25,
+        "end": 25
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.limit",
+      "names": [
+        {
+          "alias": "local_limit",
+          "name": "local"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 26,
+        "end": 26
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.limit",
+      "names": [
+        {
+          "alias": "placement_limit",
+          "name": "placement"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 27,
+        "end": 27
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "objects"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 28,
+        "end": 28
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "quota"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 29,
+        "end": 29
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "test"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 30,
+        "end": 30
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.tests.unit.api.openstack",
+      "names": [
+        {
+          "alias": null,
+          "name": "fakes"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 31,
+        "end": 31
+      }
+    }
+  ],
+  "sideEffects": [
+    {
+      "kind": "network",
+      "target": "from nova.api.openstack.compute import quota_sets",
+      "lineRange": {
+        "start": 23,
+        "end": 23
+      }
+    },
+    {
+      "kind": "network",
+      "target": "self.stub_out('nova.api.openstack.identity.verify_project_id',",
+      "lineRange": {
+        "start": 59,
+        "end": 59
+      }
+    }
+  ],
+  "securitySurface": [
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "self.default_quotas.update({'id': fakes.FAKE_PROJECT_ID})",
+      "lineRange": {
+        "start": 166,
+        "end": 166
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "self.default_quotas.update({",
+      "lineRange": {
+        "start": 181,
+        "end": 181
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "res_dict = self.controller.update(req, 'update_me', body=body)",
+      "lineRange": {
+        "start": 187,
+        "end": 187
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "self.default_quotas.update({})",
+      "lineRange": {
+        "start": 192,
+        "end": 192
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "self.controller.update(req, 'update_me', body=body)",
+      "lineRange": {
+        "start": 195,
+        "end": 195
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "self.default_quotas.update({",
+      "lineRange": {
+        "start": 204,
+        "end": 204
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "self.assertRaises(webob.exc.HTTPBadRequest, self.controller.update,",
+      "lineRange": {
+        "start": 210,
+        "end": 210
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "res_dict = self.controller.update(req, 'update_me', body=body)",
+      "lineRange": {
+        "start": 230,
+        "end": 230
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "self.assertRaises(self.validation_error, self.controller.update,",
+      "lineRange": {
+        "start": 235,
+        "end": 235
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "self.default_quotas.update({",
+      "lineRange": {
+        "start": 258,
+        "end": 258
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "self.default_quotas.update({",
+      "lineRange": {
+        "start": 266,
+        "end": 266
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "self.default_quotas.update({",
+      "lineRange": {
+        "start": 274,
+        "end": 274
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "self.controller.update(req, uuids.project_id, body={'quota_set': {}})",
+      "lineRange": {
+        "start": 292,
+        "end": 292
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "self.controller.update(req, uuids.project_id, body={'quota_set': {}})",
+      "lineRange": {
+        "start": 299,
+        "end": 299
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "self.controller.update(req, uuids.project_id, body={'quota_set': {}})",
+      "lineRange": {
+        "start": 306,
+        "end": 306
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "self.controller.update(req, uuids.project_id, body={'quota_set': {}})",
+      "lineRange": {
+        "start": 314,
+        "end": 314
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "self.controller.update(req, uuids.project_id, body={'quota_set': {}})",
+      "lineRange": {
+        "start": 322,
+        "end": 322
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "self.assertRaises(webob.exc.HTTPBadRequest, self.controller.update,",
+      "lineRange": {
+        "start": 370,
+        "end": 370
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "self.controller.update(req, 'update_me', body=body)",
+      "lineRange": {
+        "start": 383,
+        "end": 383
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "self.controller.update(req, 'update_me', body=body)",
+      "lineRange": {
+        "start": 392,
+        "end": 392
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "self.assertRaises(webob.exc.HTTPBadRequest, self.controller.update,",
+      "lineRange": {
+        "start": 406,
+        "end": 406
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "res_dict = self.controller.update(req, 'update_me', body=body)",
+      "lineRange": {
+        "start": 443,
+        "end": 443
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "self.assertRaises(webob.exc.HTTPBadRequest, self.controller.update,",
+      "lineRange": {
+        "start": 452,
+        "end": 452
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "self.controller.update(req, 'update_me', body=body)",
+      "lineRange": {
+        "start": 472,
+        "end": 472
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "self.assertRaises(webob.exc.HTTPBadRequest, self.controller.update,",
+      "lineRange": {
+        "start": 483,
+        "end": 483
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "self.controller.update(",
+      "lineRange": {
+        "start": 562,
+        "end": 562
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "self.controller.update, self.req, uuids.project_id,",
+      "lineRange": {
+        "start": 569,
+        "end": 569
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "res_dict = self.controller.update(",
+      "lineRange": {
+        "start": 573,
+        "end": 573
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "res_dict = self.controller.update(",
+      "lineRange": {
+        "start": 579,
+        "end": 579
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "self.controller.update(req, uuids.project_id, body={'quota_set': {}})",
+      "lineRange": {
+        "start": 602,
+        "end": 602
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "self.assertRaises(exception.ValidationError, self.controller.update,",
+      "lineRange": {
+        "start": 610,
+        "end": 610
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "self.assertRaises(exception.ValidationError, self.controller.update,",
+      "lineRange": {
+        "start": 736,
+        "end": 736
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "response = self.controller.update(req, uuids.project_id, body=body)",
+      "lineRange": {
+        "start": 743,
+        "end": 743
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "response = self.controller.update(req, uuids.project_id, body=body)",
+      "lineRange": {
+        "start": 771,
+        "end": 771
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "response = self.controller.update(req, uuids.project_id, body=body)",
+      "lineRange": {
+        "start": 981,
+        "end": 981
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "response = self.controller.update(req, uuids.project_id, body=body)",
+      "lineRange": {
+        "start": 1009,
+        "end": 1009
+      }
+    }
+  ],
+  "injection_flags": [],
+  "warnings": []
+}

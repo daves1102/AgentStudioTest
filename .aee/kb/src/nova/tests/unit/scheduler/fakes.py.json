@@ -1,0 +1,378 @@
+{
+  "file": "src/nova/tests/unit/scheduler/fakes.py",
+  "hash": "589cf7536e81d8c4b9fef817c4b7e407d05b6d4e002e7dbc87f684bfd26d4ffb",
+  "language": "Python",
+  "component": "nova",
+  "package": null,
+  "lines": {
+    "blank": 16,
+    "code": 194,
+    "comment": 17,
+    "total": 227
+  },
+  "symbols": [
+    {
+      "name": "NUMA_TOPOLOGY",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 29,
+        "end": 55
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "NUMA_TOPOLOGIES_W_HT",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 57,
+        "end": 112
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "COMPUTE_NODES",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 114,
+        "end": 168
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "get_fake_alloc_reqs",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 171,
+        "end": 184
+      },
+      "source": "aee-inventory",
+      "parameters": [],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "[ { 'allocations': { cn.uuid: { 'resources': { 'VCPU': 1, 'MEMORY_MB': 512, 'DISK_GB': 512, }, } } } for cn in COMPUTE_NODES ]",
+          "line": 172
+        }
+      ],
+      "nloc": 14,
+      "ccn": 2,
+      "exported": true
+    },
+    {
+      "name": "RESOURCE_PROVIDERS",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 187,
+        "end": 204
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "SERVICES",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 206,
+        "end": 211
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "get_service_by_host",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 214,
+        "end": 216
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "host"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "services[0]",
+          "line": 216
+        }
+      ],
+      "nloc": 3,
+      "ccn": 3,
+      "exported": true
+    },
+    {
+      "name": "FakeHostState",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 219,
+        "end": 227
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "__init__",
+      "kind": "method",
+      "scope": "FakeHostState",
+      "lineRange": {
+        "start": 220,
+        "end": 227
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "host"
+        },
+        {
+          "name": "node"
+        },
+        {
+          "name": "attribute_dict"
+        },
+        {
+          "default": "None",
+          "name": "instances"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 8,
+      "ccn": 4,
+      "visibility": "public"
+    }
+  ],
+  "referencedSymbols": [
+    {
+      "name": "objects.NUMATopology",
+      "usage": "call",
+      "via": "nova",
+      "count": 3,
+      "lineRange": {
+        "start": 29,
+        "end": 29
+      }
+    },
+    {
+      "name": "objects.NUMACell",
+      "usage": "call",
+      "via": "nova",
+      "count": 7,
+      "lineRange": {
+        "start": 30,
+        "end": 30
+      }
+    },
+    {
+      "name": "set",
+      "usage": "call",
+      "via": null,
+      "count": 37,
+      "lineRange": {
+        "start": 32,
+        "end": 32
+      }
+    },
+    {
+      "name": "objects.NUMAPagesTopology",
+      "usage": "call",
+      "via": "nova",
+      "count": 4,
+      "lineRange": {
+        "start": 40,
+        "end": 40
+      }
+    },
+    {
+      "name": "objects.ComputeNode",
+      "usage": "call",
+      "via": "nova",
+      "count": 5,
+      "lineRange": {
+        "start": 115,
+        "end": 115
+      }
+    },
+    {
+      "name": "datetime.datetime",
+      "usage": "call",
+      "via": "datetime",
+      "count": 4,
+      "lineRange": {
+        "start": 120,
+        "end": 120
+      }
+    },
+    {
+      "name": "dict",
+      "usage": "call",
+      "via": null,
+      "count": 4,
+      "lineRange": {
+        "start": 188,
+        "end": 188
+      }
+    },
+    {
+      "name": "objects.Service",
+      "usage": "call",
+      "via": "nova",
+      "count": 4,
+      "lineRange": {
+        "start": 207,
+        "end": 207
+      }
+    },
+    {
+      "name": "host_manager.HostState",
+      "usage": "inherit",
+      "via": "nova.scheduler",
+      "count": 1,
+      "lineRange": {
+        "start": 219,
+        "end": 219
+      }
+    },
+    {
+      "name": "super",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 221,
+        "end": 221
+      }
+    },
+    {
+      "name": "setattr",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 227,
+        "end": 227
+      }
+    }
+  ],
+  "dependencies": [
+    {
+      "style": "import",
+      "module": "datetime",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 19,
+        "end": 19
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_utils.fixture",
+      "names": [
+        {
+          "alias": null,
+          "name": "uuidsentinel"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 21,
+        "end": 21
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "objects"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 23,
+        "end": 23
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.scheduler",
+      "names": [
+        {
+          "alias": null,
+          "name": "host_manager"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 24,
+        "end": 24
+      }
+    }
+  ],
+  "sideEffects": [
+    {
+      "kind": "global-mutation",
+      "target": "NUMA_TOPOLOGY = objects.NUMATopology(cells=[",
+      "lineRange": {
+        "start": 29,
+        "end": 29
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "NUMA_TOPOLOGIES_W_HT = [",
+      "lineRange": {
+        "start": 57,
+        "end": 57
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "COMPUTE_NODES = [",
+      "lineRange": {
+        "start": 114,
+        "end": 114
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "RESOURCE_PROVIDERS = [",
+      "lineRange": {
+        "start": 187,
+        "end": 187
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "SERVICES = [",
+      "lineRange": {
+        "start": 206,
+        "end": 206
+      }
+    }
+  ],
+  "securitySurface": [],
+  "injection_flags": [],
+  "warnings": []
+}

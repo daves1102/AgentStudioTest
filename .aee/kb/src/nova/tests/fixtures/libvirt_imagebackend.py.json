@@ -1,0 +1,695 @@
+{
+  "file": "src/nova/tests/fixtures/libvirt_imagebackend.py",
+  "hash": "86a109f5cb8d45dd1c905184a8e024a97edb3137cdaeb9c9d1c7d7272332f208",
+  "language": "Python",
+  "component": "nova",
+  "package": null,
+  "lines": {
+    "blank": 43,
+    "code": 136,
+    "comment": 88,
+    "total": 267
+  },
+  "symbols": [
+    {
+      "name": "CONF",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 30,
+        "end": 30
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "LibvirtImageBackendFixture",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 33,
+        "end": 267
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "__init__",
+      "kind": "method",
+      "scope": "LibvirtImageBackendFixture",
+      "lineRange": {
+        "start": 35,
+        "end": 53
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "default": "None",
+          "name": "got_files"
+        },
+        {
+          "default": "None",
+          "name": "imported_files"
+        },
+        {
+          "default": "None",
+          "name": "exists"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 5,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "setUp",
+      "kind": "method",
+      "scope": "LibvirtImageBackendFixture",
+      "lineRange": {
+        "start": 55,
+        "end": 84
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 23,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "created_disks",
+      "kind": "method",
+      "scope": "LibvirtImageBackendFixture",
+      "lineRange": {
+        "start": 87,
+        "end": 95
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "{ name: disk for name, disk in self.disks.items() if any([disk.cache.called, disk.import_file.called]) }",
+          "line": 92
+        }
+      ],
+      "nloc": 5,
+      "ccn": 3,
+      "visibility": "public"
+    },
+    {
+      "name": "_mock_disk",
+      "kind": "method",
+      "scope": "LibvirtImageBackendFixture",
+      "lineRange": {
+        "start": 97,
+        "end": 130
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "disk",
+          "line": 130
+        }
+      ],
+      "nloc": 9,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "_mock_backend",
+      "kind": "method",
+      "scope": "LibvirtImageBackendFixture",
+      "lineRange": {
+        "start": 132,
+        "end": 220
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "backend_self"
+        },
+        {
+          "default": "None",
+          "name": "image_type"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "image_init",
+          "line": 220
+        }
+      ],
+      "nloc": 12,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "image_init",
+      "kind": "function",
+      "scope": "LibvirtImageBackendFixture._mock_backend",
+      "lineRange": {
+        "start": 161,
+        "end": 196
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "default": "None",
+          "name": "instance"
+        },
+        {
+          "default": "None",
+          "name": "disk_name"
+        },
+        {
+          "default": "None",
+          "name": "path"
+        },
+        {
+          "default": "None",
+          "name": "disk_info_mapping"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "disk",
+          "line": 196
+        }
+      ],
+      "visibility": "public"
+    },
+    {
+      "name": "is_shared_block_storage",
+      "kind": "function",
+      "scope": "LibvirtImageBackendFixture._mock_backend",
+      "lineRange": {
+        "start": 207,
+        "end": 208
+      },
+      "source": "aee-inventory",
+      "parameters": [],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "False",
+          "line": 208
+        }
+      ],
+      "visibility": "public"
+    },
+    {
+      "name": "is_file_in_instance_path",
+      "kind": "function",
+      "scope": "LibvirtImageBackendFixture._mock_backend",
+      "lineRange": {
+        "start": 210,
+        "end": 211
+      },
+      "source": "aee-inventory",
+      "parameters": [],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "False",
+          "line": 211
+        }
+      ],
+      "visibility": "public"
+    },
+    {
+      "name": "_fake_cache",
+      "kind": "method",
+      "scope": "LibvirtImageBackendFixture",
+      "lineRange": {
+        "start": 222,
+        "end": 231
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "fetch_func"
+        },
+        {
+          "name": "filename"
+        },
+        {
+          "default": "None",
+          "name": "size"
+        },
+        {
+          "default": "False",
+          "name": "safe"
+        },
+        {
+          "name": "*args"
+        },
+        {
+          "name": "**kwargs"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 6,
+      "ccn": 2,
+      "visibility": "private"
+    },
+    {
+      "name": "_fake_import_file",
+      "kind": "method",
+      "scope": "LibvirtImageBackendFixture",
+      "lineRange": {
+        "start": 233,
+        "end": 236
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "instance"
+        },
+        {
+          "name": "local_filename"
+        },
+        {
+          "name": "remote_filename"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 3,
+      "ccn": 2,
+      "visibility": "private"
+    },
+    {
+      "name": "_fake_libvirt_info",
+      "kind": "method",
+      "scope": "LibvirtImageBackendFixture",
+      "lineRange": {
+        "start": 238,
+        "end": 267
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_disk"
+        },
+        {
+          "name": "cache_mode"
+        },
+        {
+          "name": "extra_specs"
+        },
+        {
+          "default": "None",
+          "name": "disk_unit"
+        },
+        {
+          "default": "None",
+          "name": "boot_order"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "info",
+          "line": 267
+        }
+      ],
+      "nloc": 25,
+      "ccn": 3,
+      "visibility": "private"
+    },
+    {
+      "name": "created_disks",
+      "kind": "property",
+      "scope": "LibvirtImageBackendFixture",
+      "lineRange": {
+        "start": 86,
+        "end": 95
+      },
+      "visibility": "public",
+      "source": "manual"
+    }
+  ],
+  "referencedSymbols": [
+    {
+      "name": "fixtures.Fixture",
+      "usage": "inherit",
+      "via": "fixtures",
+      "count": 1,
+      "lineRange": {
+        "start": 33,
+        "end": 33
+      }
+    },
+    {
+      "name": "collections.defaultdict",
+      "usage": "call",
+      "via": "collections",
+      "count": 1,
+      "lineRange": {
+        "start": 49,
+        "end": 49
+      }
+    },
+    {
+      "name": "super",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 56,
+        "end": 56
+      }
+    },
+    {
+      "name": "mock.create_autospec",
+      "usage": "call",
+      "via": "unittest",
+      "count": 5,
+      "lineRange": {
+        "start": 59,
+        "end": 59
+      }
+    },
+    {
+      "name": "fixtures.MonkeyPatch",
+      "usage": "call",
+      "via": "fixtures",
+      "count": 5,
+      "lineRange": {
+        "start": 60,
+        "end": 60
+      }
+    },
+    {
+      "name": "any",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 94,
+        "end": 94
+      }
+    },
+    {
+      "name": "functools.partial",
+      "usage": "call",
+      "via": "functools",
+      "count": 1,
+      "lineRange": {
+        "start": 124,
+        "end": 124
+      }
+    },
+    {
+      "name": "NotImplementedError",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 127,
+        "end": 127
+      }
+    },
+    {
+      "name": "os.path.join",
+      "usage": "call",
+      "via": "os",
+      "count": 1,
+      "lineRange": {
+        "start": 167,
+        "end": 167
+      }
+    },
+    {
+      "name": "libvirt_utils.get_instance_path",
+      "usage": "call",
+      "via": "nova.virt.libvirt",
+      "count": 1,
+      "lineRange": {
+        "start": 168,
+        "end": 168
+      }
+    },
+    {
+      "name": "os.path.basename",
+      "usage": "call",
+      "via": "os",
+      "count": 1,
+      "lineRange": {
+        "start": 170,
+        "end": 170
+      }
+    },
+    {
+      "name": "setattr",
+      "usage": "call",
+      "via": null,
+      "count": 6,
+      "lineRange": {
+        "start": 176,
+        "end": 176
+      }
+    },
+    {
+      "name": "fetch_func",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 227,
+        "end": 227
+      }
+    },
+    {
+      "name": "config.LibvirtConfigGuestDisk",
+      "usage": "call",
+      "via": "nova.virt.libvirt",
+      "count": 1,
+      "lineRange": {
+        "start": 246,
+        "end": 246
+      }
+    },
+    {
+      "name": "config.LibvirtConfigGuestDiskEncryption",
+      "usage": "call",
+      "via": "nova.virt.libvirt",
+      "count": 1,
+      "lineRange": {
+        "start": 258,
+        "end": 258
+      }
+    },
+    {
+      "name": "config.LibvirtConfigGuestDiskEncryptionSecret",
+      "usage": "call",
+      "via": "nova.virt.libvirt",
+      "count": 1,
+      "lineRange": {
+        "start": 260,
+        "end": 260
+      }
+    }
+  ],
+  "dependencies": [
+    {
+      "style": "import",
+      "module": "collections",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 16,
+        "end": 16
+      }
+    },
+    {
+      "style": "import",
+      "module": "functools",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 17,
+        "end": 17
+      }
+    },
+    {
+      "style": "import",
+      "module": "os",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 18,
+        "end": 18
+      }
+    },
+    {
+      "style": "from",
+      "module": "unittest",
+      "names": [
+        {
+          "alias": null,
+          "name": "mock"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 19,
+        "end": 19
+      }
+    },
+    {
+      "style": "import",
+      "module": "fixtures",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 21,
+        "end": 21
+      }
+    },
+    {
+      "style": "import",
+      "module": "nova.conf",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 23,
+        "end": 23
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.virt.libvirt",
+      "names": [
+        {
+          "alias": null,
+          "name": "config"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 24,
+        "end": 24
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.virt.libvirt",
+      "names": [
+        {
+          "alias": null,
+          "name": "driver"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 25,
+        "end": 25
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.virt.libvirt",
+      "names": [
+        {
+          "alias": null,
+          "name": "imagebackend"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 26,
+        "end": 26
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.virt.libvirt",
+      "names": [
+        {
+          "alias": "libvirt_utils",
+          "name": "utils"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 27,
+        "end": 27
+      }
+    }
+  ],
+  "sideEffects": [
+    {
+      "kind": "file-io",
+      "target": "path = os.path.join(",
+      "lineRange": {
+        "start": 167,
+        "end": 167
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "disk_name = os.path.basename(path)",
+      "lineRange": {
+        "start": 170,
+        "end": 170
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "CONF = nova.conf.CONF",
+      "lineRange": {
+        "start": 30,
+        "end": 30
+      }
+    }
+  ],
+  "securitySurface": [],
+  "injection_flags": [],
+  "warnings": []
+}

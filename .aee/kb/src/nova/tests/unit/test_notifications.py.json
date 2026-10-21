@@ -1,0 +1,1338 @@
+{
+  "file": "src/nova/tests/unit/test_notifications.py",
+  "hash": "c5c6c536943544e681cd41438241ff9361db0e4b769f98b5b982a6a53131c986",
+  "language": "Python",
+  "component": "nova",
+  "package": null,
+  "lines": {
+    "blank": 96,
+    "code": 406,
+    "comment": 34,
+    "total": 536
+  },
+  "symbols": [
+    {
+      "name": "CONF",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 39,
+        "end": 39
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "NotificationsTestCase",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 42,
+        "end": 500
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "setUp",
+      "kind": "method",
+      "scope": "NotificationsTestCase",
+      "lineRange": {
+        "start": 44,
+        "end": 66
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 16,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "_wrapped_create",
+      "kind": "method",
+      "scope": "NotificationsTestCase",
+      "lineRange": {
+        "start": 68,
+        "end": 88
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "default": "None",
+          "name": "params"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "inst",
+          "line": 88
+        }
+      ],
+      "nloc": 21,
+      "ccn": 2,
+      "visibility": "private"
+    },
+    {
+      "name": "test_notif_disabled",
+      "kind": "method",
+      "scope": "NotificationsTestCase",
+      "lineRange": {
+        "start": 90,
+        "end": 109
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 14,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_task_notif",
+      "kind": "method",
+      "scope": "NotificationsTestCase",
+      "lineRange": {
+        "start": 111,
+        "end": 142
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 21,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_send_no_notif",
+      "kind": "method",
+      "scope": "NotificationsTestCase",
+      "lineRange": {
+        "start": 144,
+        "end": 157
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 10,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_send_on_vm_change",
+      "kind": "method",
+      "scope": "NotificationsTestCase",
+      "lineRange": {
+        "start": 159,
+        "end": 177
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 15,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_send_on_task_change",
+      "kind": "method",
+      "scope": "NotificationsTestCase",
+      "lineRange": {
+        "start": 179,
+        "end": 191
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 10,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_no_update_with_states",
+      "kind": "method",
+      "scope": "NotificationsTestCase",
+      "lineRange": {
+        "start": 193,
+        "end": 199
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 6,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_vm_update_with_states",
+      "kind": "method",
+      "scope": "NotificationsTestCase",
+      "lineRange": {
+        "start": 201,
+        "end": 209
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 7,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "_verify_notification",
+      "kind": "method",
+      "scope": "NotificationsTestCase",
+      "lineRange": {
+        "start": 211,
+        "end": 265
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "default": "vm_states.ACTIVE",
+          "name": "expected_state"
+        },
+        {
+          "default": "task_states.SPAWNING",
+          "name": "expected_new_task_state"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 52,
+      "ccn": 2,
+      "visibility": "private"
+    },
+    {
+      "name": "test_task_update_with_states",
+      "kind": "method",
+      "scope": "NotificationsTestCase",
+      "lineRange": {
+        "start": 267,
+        "end": 277
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 10,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_update_no_service_name",
+      "kind": "method",
+      "scope": "NotificationsTestCase",
+      "lineRange": {
+        "start": 279,
+        "end": 292
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 10,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_update_with_service_name",
+      "kind": "method",
+      "scope": "NotificationsTestCase",
+      "lineRange": {
+        "start": 294,
+        "end": 306
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 10,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_update_with_host_name",
+      "kind": "method",
+      "scope": "NotificationsTestCase",
+      "lineRange": {
+        "start": 308,
+        "end": 320
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 10,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_payload_has_fixed_ip_labels",
+      "kind": "method",
+      "scope": "NotificationsTestCase",
+      "lineRange": {
+        "start": 322,
+        "end": 326
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 5,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_payload_has_vif_mac_address",
+      "kind": "method",
+      "scope": "NotificationsTestCase",
+      "lineRange": {
+        "start": 328,
+        "end": 333
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 6,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_payload_has_cell_name_empty",
+      "kind": "method",
+      "scope": "NotificationsTestCase",
+      "lineRange": {
+        "start": 335,
+        "end": 340
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 6,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_payload_has_cell_name",
+      "kind": "method",
+      "scope": "NotificationsTestCase",
+      "lineRange": {
+        "start": 342,
+        "end": 347
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 6,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_payload_has_progress_empty",
+      "kind": "method",
+      "scope": "NotificationsTestCase",
+      "lineRange": {
+        "start": 349,
+        "end": 354
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 6,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_payload_has_progress",
+      "kind": "method",
+      "scope": "NotificationsTestCase",
+      "lineRange": {
+        "start": 356,
+        "end": 361
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 6,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_payload_has_flavor_attributes",
+      "kind": "method",
+      "scope": "NotificationsTestCase",
+      "lineRange": {
+        "start": 363,
+        "end": 379
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 14,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_payload_has_timestamp_fields",
+      "kind": "method",
+      "scope": "NotificationsTestCase",
+      "lineRange": {
+        "start": 381,
+        "end": 393
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 9,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_send_access_ip_update",
+      "kind": "method",
+      "scope": "NotificationsTestCase",
+      "lineRange": {
+        "start": 395,
+        "end": 404
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 9,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_send_name_update",
+      "kind": "method",
+      "scope": "NotificationsTestCase",
+      "lineRange": {
+        "start": 406,
+        "end": 422
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 14,
+      "ccn": 2,
+      "visibility": "public"
+    },
+    {
+      "name": "test_send_versioned_tags_update",
+      "kind": "method",
+      "scope": "NotificationsTestCase",
+      "lineRange": {
+        "start": 424,
+        "end": 432
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 8,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_send_versioned_action_initiator_update",
+      "kind": "method",
+      "scope": "NotificationsTestCase",
+      "lineRange": {
+        "start": 434,
+        "end": 447
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 13,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_send_no_state_change",
+      "kind": "method",
+      "scope": "NotificationsTestCase",
+      "lineRange": {
+        "start": 449,
+        "end": 458
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 8,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "sending_no_state_change",
+      "kind": "function",
+      "scope": "NotificationsTestCase.test_send_no_state_change",
+      "lineRange": {
+        "start": 452,
+        "end": 453
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "context"
+        },
+        {
+          "name": "instance"
+        },
+        {
+          "name": "**kwargs"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "visibility": "public"
+    },
+    {
+      "name": "test_fail_sending_update",
+      "kind": "method",
+      "scope": "NotificationsTestCase",
+      "lineRange": {
+        "start": 460,
+        "end": 468
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 7,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "fail_sending",
+      "kind": "function",
+      "scope": "NotificationsTestCase.test_fail_sending_update",
+      "lineRange": {
+        "start": 461,
+        "end": 462
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "context"
+        },
+        {
+          "name": "instance"
+        },
+        {
+          "name": "**kwargs"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "visibility": "public"
+    },
+    {
+      "name": "test_fail_sending_update_instance_not_found",
+      "kind": "method",
+      "scope": "NotificationsTestCase",
+      "lineRange": {
+        "start": 471,
+        "end": 481
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_log_exception"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 9,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "test_fail_send_update_with_states_inst_not_found",
+      "kind": "method",
+      "scope": "NotificationsTestCase",
+      "lineRange": {
+        "start": 484,
+        "end": 497
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mock_log_exception"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 12,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "_decorated_function",
+      "kind": "method",
+      "scope": "NotificationsTestCase",
+      "lineRange": {
+        "start": 499,
+        "end": 500
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "arg1"
+        },
+        {
+          "name": "arg2"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "NotificationsFormatTestCase",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 503,
+        "end": 536
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "test_state_computation",
+      "kind": "method",
+      "scope": "NotificationsFormatTestCase",
+      "lineRange": {
+        "start": 505,
+        "end": 536
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 29,
+      "ccn": 1,
+      "visibility": "public"
+    }
+  ],
+  "referencedSymbols": [
+    {
+      "name": "test.TestCase",
+      "usage": "inherit",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 42,
+        "end": 42
+      }
+    },
+    {
+      "name": "super",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 45,
+        "end": 45
+      }
+    },
+    {
+      "name": "o_fixture.ClearRequestContext",
+      "usage": "call",
+      "via": "oslo_context",
+      "count": 1,
+      "lineRange": {
+        "start": 46,
+        "end": 46
+      }
+    },
+    {
+      "name": "fake_network.fake_get_instance_nw_info",
+      "usage": "call",
+      "via": "nova.tests.unit",
+      "count": 3,
+      "lineRange": {
+        "start": 48,
+        "end": 48
+      }
+    },
+    {
+      "name": "fixtures.NotificationFixture",
+      "usage": "call",
+      "via": "nova.tests",
+      "count": 1,
+      "lineRange": {
+        "start": 49,
+        "end": 49
+      }
+    },
+    {
+      "name": "context.RequestContext",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 59,
+        "end": 59
+      }
+    },
+    {
+      "name": "datetime.datetime",
+      "usage": "call",
+      "via": "datetime",
+      "count": 2,
+      "lineRange": {
+        "start": 61,
+        "end": 61
+      }
+    },
+    {
+      "name": "timeutils.set_time_override",
+      "usage": "call",
+      "via": "oslo_utils",
+      "count": 1,
+      "lineRange": {
+        "start": 62,
+        "end": 62
+      }
+    },
+    {
+      "name": "objects.Flavor.get_by_name",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 69,
+        "end": 69
+      }
+    },
+    {
+      "name": "objects.Instance",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 70,
+        "end": 70
+      }
+    },
+    {
+      "name": "copy.copy",
+      "usage": "call",
+      "via": "copy",
+      "count": 2,
+      "lineRange": {
+        "start": 95,
+        "end": 95
+      }
+    },
+    {
+      "name": "notifications.send_update_with_states",
+      "usage": "call",
+      "via": "nova.notifications",
+      "count": 10,
+      "lineRange": {
+        "start": 103,
+        "end": 103
+      }
+    },
+    {
+      "name": "notifications.send_update",
+      "usage": "call",
+      "via": "nova.notifications",
+      "count": 11,
+      "lineRange": {
+        "start": 107,
+        "end": 107
+      }
+    },
+    {
+      "name": "len",
+      "usage": "call",
+      "via": null,
+      "count": 31,
+      "lineRange": {
+        "start": 108,
+        "end": 108
+      }
+    },
+    {
+      "name": "obj_base.obj_to_primitive",
+      "usage": "call",
+      "via": "nova.objects",
+      "count": 2,
+      "lineRange": {
+        "start": 160,
+        "end": 160
+      }
+    },
+    {
+      "name": "str",
+      "usage": "call",
+      "via": null,
+      "count": 4,
+      "lineRange": {
+        "start": 218,
+        "end": 218
+      }
+    },
+    {
+      "name": "zip",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 258,
+        "end": 258
+      }
+    },
+    {
+      "name": "notifications.info_from_instance",
+      "usage": "call",
+      "via": "nova.notifications",
+      "count": 8,
+      "lineRange": {
+        "start": 323,
+        "end": 323
+      }
+    },
+    {
+      "name": "objects.TagList.create",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 425,
+        "end": 425
+      }
+    },
+    {
+      "name": "Exception",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 462,
+        "end": 462
+      }
+    },
+    {
+      "name": "mock.patch.object",
+      "usage": "call",
+      "via": "unittest",
+      "count": 4,
+      "lineRange": {
+        "start": 470,
+        "end": 470
+      }
+    },
+    {
+      "name": "exception.InstanceNotFound",
+      "usage": "call",
+      "via": "nova",
+      "count": 2,
+      "lineRange": {
+        "start": 474,
+        "end": 474
+      }
+    },
+    {
+      "name": "test.NoDBTestCase",
+      "usage": "inherit",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 503,
+        "end": 503
+      }
+    },
+    {
+      "name": "notifications._compute_states_payload",
+      "usage": "call",
+      "via": "nova.notifications",
+      "count": 3,
+      "lineRange": {
+        "start": 508,
+        "end": 508
+      }
+    }
+  ],
+  "dependencies": [
+    {
+      "style": "import",
+      "module": "copy",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 18,
+        "end": 18
+      }
+    },
+    {
+      "style": "import",
+      "module": "datetime",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 19,
+        "end": 19
+      }
+    },
+    {
+      "style": "from",
+      "module": "unittest",
+      "names": [
+        {
+          "alias": null,
+          "name": "mock"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 20,
+        "end": 20
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_config",
+      "names": [
+        {
+          "alias": null,
+          "name": "cfg"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 22,
+        "end": 22
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_context",
+      "names": [
+        {
+          "alias": "o_fixture",
+          "name": "fixture"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 23,
+        "end": 23
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_utils.fixture",
+      "names": [
+        {
+          "alias": "uuids",
+          "name": "uuidsentinel"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 24,
+        "end": 24
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_utils",
+      "names": [
+        {
+          "alias": null,
+          "name": "timeutils"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 25,
+        "end": 25
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.compute",
+      "names": [
+        {
+          "alias": null,
+          "name": "task_states"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 27,
+        "end": 27
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.compute",
+      "names": [
+        {
+          "alias": null,
+          "name": "vm_states"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 28,
+        "end": 28
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "context"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 29,
+        "end": 29
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "exception"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 30,
+        "end": 30
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.notifications",
+      "names": [
+        {
+          "alias": "notifications",
+          "name": "base"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 31,
+        "end": 31
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "objects"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 32,
+        "end": 32
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.objects",
+      "names": [
+        {
+          "alias": "obj_base",
+          "name": "base"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 33,
+        "end": 33
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "test"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 34,
+        "end": 34
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.tests",
+      "names": [
+        {
+          "alias": null,
+          "name": "fixtures"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 35,
+        "end": 35
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.tests.unit",
+      "names": [
+        {
+          "alias": null,
+          "name": "fake_network"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 36,
+        "end": 36
+      }
+    }
+  ],
+  "sideEffects": [
+    {
+      "kind": "network",
+      "target": "raise Exception('failed to notify')",
+      "lineRange": {
+        "start": 462,
+        "end": 462
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "CONF = cfg.CONF",
+      "lineRange": {
+        "start": 39,
+        "end": 39
+      }
+    }
+  ],
+  "securitySurface": [
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "inst.update(params)",
+      "lineRange": {
+        "start": 86,
+        "end": 86
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "'instance.update',",
+      "lineRange": {
+        "start": 141,
+        "end": 141
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "'instance.update',",
+      "lineRange": {
+        "start": 176,
+        "end": 176
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "'instance.update',",
+      "lineRange": {
+        "start": 190,
+        "end": 190
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "'instance.update',",
+      "lineRange": {
+        "start": 216,
+        "end": 216
+      }
+    }
+  ],
+  "injection_flags": [],
+  "warnings": []
+}
