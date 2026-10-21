@@ -1,0 +1,72 @@
+[
+  {
+    "file": "src/nova/tests/fixtures/libvirt.py",
+    "tool": "lizard",
+    "ruleId": null,
+    "lineRange": {
+      "start": 1,
+      "end": 1
+    },
+    "title": "File exceeds 1000 lines (2863 lines) \u2014 large test fixture",
+    "detail": "The libvirt fake-object library is 2863 lines, combining XML generation, device manipulation, domain simulation, and event dispatching in one module. Its size makes it hard to navigate and update. Splitting into separate fake-domain, fake-network, and fake-storage modules would reduce this complexity.",
+    "category": "test-quality",
+    "severity": "medium",
+    "confidence": "confirmed"
+  },
+  {
+    "file": "src/nova/tests/fixtures/libvirt.py",
+    "tool": "lizard",
+    "ruleId": null,
+    "lineRange": {
+      "start": 1590,
+      "end": 1900
+    },
+    "title": "XMLDesc: cyclomatic complexity 41, 277 lines \u2014 highest in test suite",
+    "detail": "CCN=41 in a 277-line function that generates XML from libvirt domain state. This is the codebase maximum in test code. The function branches on every possible device type, bus type, and configuration option. Any new device type requires touching this monolith. Extract device-type-specific XML builders to reduce complexity.",
+    "category": "test-quality",
+    "severity": "high",
+    "confidence": "confirmed"
+  },
+  {
+    "file": "src/nova/tests/fixtures/libvirt.py",
+    "tool": "lizard",
+    "ruleId": null,
+    "lineRange": {
+      "start": 1172,
+      "end": 1385
+    },
+    "title": "_parse_definition: cyclomatic complexity 38, 170 lines",
+    "detail": "CCN=38 for the XML-to-object parser that reconstructs libvirt domain state from XML. Every branch handles a different XML element type. When new device types are added to the XML builder (XMLDesc), this parser must also be updated \u2014 a tightly coupled and error-prone pattern. Consider a dispatch table keyed on element tag.",
+    "category": "test-quality",
+    "severity": "high",
+    "confidence": "confirmed"
+  },
+  {
+    "file": "src/nova/tests/fixtures/libvirt.py",
+    "tool": "lizard",
+    "ruleId": null,
+    "lineRange": {
+      "start": 365,
+      "end": 481
+    },
+    "title": "generate_xml: cyclomatic complexity 32, 97 lines",
+    "detail": "CCN=32 for the capability XML generator. Heavy branching on CPU features, NUMA topology, and device tree structure. Split into topology, CPU, and device sub-generators.",
+    "category": "test-quality",
+    "severity": "high",
+    "confidence": "confirmed"
+  },
+  {
+    "file": "src/nova/tests/fixtures/libvirt.py",
+    "tool": "lizard",
+    "ruleId": null,
+    "lineRange": {
+      "start": 1528,
+      "end": 1582
+    },
+    "title": "detachDevice: cyclomatic complexity 16",
+    "detail": "CCN=16 in the fake device-detachment method. Branching on device type, bus, and current state makes it a maintenance risk when new device types are added. Extract per-type detachment logic.",
+    "category": "test-quality",
+    "severity": "medium",
+    "confidence": "confirmed"
+  }
+]

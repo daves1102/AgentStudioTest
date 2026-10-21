@@ -1,0 +1,16 @@
+[
+  {
+    "file": "src/nova/servicegroup/drivers/db.py",
+    "tool": "pylint",
+    "ruleId": "W0703",
+    "lineRange": {
+      "start": 119,
+      "end": 124
+    },
+    "title": "Broad exception catch in service-status reporting thread",
+    "detail": "The bare `except Exception` at line 119 intentionally catches all errors from the DB service-status update to prevent the reporting thread from dying. A NOTE comment explains the rationale. While intentional, the broad catch hides unexpected errors that may indicate database connectivity issues. Consider narrowing to oslo_db and connection exceptions over time.",
+    "category": "error-handling",
+    "severity": "low",
+    "confidence": "confirmed"
+  }
+]

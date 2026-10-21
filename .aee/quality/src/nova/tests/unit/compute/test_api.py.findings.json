@@ -1,0 +1,44 @@
+[
+  {
+    "file": "src/nova/tests/unit/compute/test_api.py",
+    "tool": "lizard",
+    "ruleId": null,
+    "lineRange": {
+      "start": 1,
+      "end": 1
+    },
+    "title": "File exceeds 1000 lines (8 967 lines)",
+    "detail": "At 8,967 lines this is the largest test file for the compute API. Splitting by API operation would improve navigation.",
+    "category": "test-quality",
+    "severity": "medium",
+    "confidence": "confirmed"
+  },
+  {
+    "file": "src/nova/tests/unit/compute/test_api.py",
+    "tool": "lizard",
+    "ruleId": null,
+    "lineRange": {
+      "start": 2024,
+      "end": 2222
+    },
+    "title": "_test_resize: cyclomatic complexity 27, 166 lines",
+    "detail": "CCN=27 in the resize test helper. It accepts 20+ boolean parameters to control every aspect of a resize scenario \u2014 same host, same flavor, cross-cell, host name, etc. Each new parameter adds a branch. Extract individual resize scenarios into focused test methods.",
+    "category": "test-quality",
+    "severity": "high",
+    "confidence": "confirmed"
+  },
+  {
+    "file": "src/nova/tests/unit/compute/test_api.py",
+    "tool": "lizard",
+    "ruleId": null,
+    "lineRange": {
+      "start": 951,
+      "end": 1119
+    },
+    "title": "_do_delete: cyclomatic complexity 27, 133 lines",
+    "detail": "CCN=27 for the delete test helper that accepts 20+ mock parameters. The function covers soft-delete, terminate, and all failure modes in a single body. Split into focused delete-scenario methods.",
+    "category": "test-quality",
+    "severity": "high",
+    "confidence": "confirmed"
+  }
+]

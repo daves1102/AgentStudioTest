@@ -1,0 +1,16 @@
+[
+  {
+    "file": "src/nova/servicegroup/drivers/mc.py",
+    "tool": "pylint,ruff",
+    "ruleId": "W0703",
+    "lineRange": {
+      "start": 112,
+      "end": 119
+    },
+    "title": "Broad exception catch: TODO acknowledges it should be narrower",
+    "detail": "The `except Exception` at line 112 carries a `# TODO(vish): this should probably only catch connection errors` comment, signalling known technical debt. The broad catch prevents the memcache service-status reporting thread from dying, but also suppresses unexpected errors silently. Implement the TODO: narrow to the memcache connection error types.",
+    "category": "error-handling",
+    "severity": "low",
+    "confidence": "confirmed"
+  }
+]

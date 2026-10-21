@@ -1,0 +1,44 @@
+[
+  {
+    "file": "src/nova/tests/unit/network/test_neutron.py",
+    "tool": "lizard",
+    "ruleId": null,
+    "lineRange": {
+      "start": 1,
+      "end": 1
+    },
+    "title": "File exceeds 1000 lines (10 258 lines)",
+    "detail": "At 10,258 lines this neutron test file concentrates all neutron-client tests in one module. Splitting by operation (port allocation, network info, security groups) would help.",
+    "category": "test-quality",
+    "severity": "medium",
+    "confidence": "confirmed"
+  },
+  {
+    "file": "src/nova/tests/unit/network/test_neutron.py",
+    "tool": "lizard",
+    "ruleId": null,
+    "lineRange": {
+      "start": 514,
+      "end": 711
+    },
+    "title": "_test_allocate_for_instance: cyclomatic complexity 25, 164 lines",
+    "detail": "CCN=25 in the allocate-for-instance test helper. It parameterises over port selection, network index, exception scenarios, and context options in one function. Extract per-scenario test methods.",
+    "category": "test-quality",
+    "severity": "high",
+    "confidence": "confirmed"
+  },
+  {
+    "file": "src/nova/tests/unit/network/test_neutron.py",
+    "tool": "lizard",
+    "ruleId": null,
+    "lineRange": {
+      "start": 1001,
+      "end": 1140
+    },
+    "title": "_test_get_instance_nw_info_helper: cyclomatic complexity 18, 112 lines",
+    "detail": "CCN=18 for the network-info helper. Multiple optional parameters control port filtering, cache behaviour, and VLAN handling. Extract focused helper variants.",
+    "category": "test-quality",
+    "severity": "medium",
+    "confidence": "confirmed"
+  }
+]

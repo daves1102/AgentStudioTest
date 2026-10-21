@@ -49,3 +49,29 @@ No files of these types in batch 5.
 - ruff: project's `ruff.toml` / `pyproject.toml` (if present), else defaults
 - pylint: defaults (import errors E0401 dropped as environment noise)
 - lizard: default thresholds (CCN ≥ 15 = medium, CCN > 25 = high)
+
+## Batch 6 Suppressions (nova/servicegroup, nova/share, nova/storage, nova/tests/*)
+
+### Suppressed in test files (all categories)
+- `missing-function-docstring`, `missing-class-docstring`, `missing-module-docstring`: convention noise in tests — test methods do not require docstrings.
+- `protected-access` (5685 occurrences): tests legitimately access internal APIs to verify behavior.
+- `no-member`, `no-value-for-parameter` (8983 occurrences): mock/fixture environment — linter cannot resolve mock attributes.
+- `too-few-public-methods`, `too-many-public-methods`: test classes with single or many test methods are expected patterns.
+- `attribute-defined-outside-init` (439 occurrences): test setUp() patterns legitimately set test state outside __init__.
+- `duplicate-code`: test methods are intentionally parallel with minor variation.
+- `super-with-arguments`, `useless-object-inheritance`, `redundant-u-string-prefix`: Python 2 legacy, no functional impact.
+- `TRY002` (raise Exception in fakes): normal in test fixtures that simulate generic failures.
+- `BLE001` (broad catch in tests): accepted in test helpers that test error-handling paths.
+- `UP031` (printf→f-string), `C405/C408` (set/dict literal), `UP025` (redundant u-prefix): style, info level only.
+- `DTZ001` (naive datetime): common in test factories, not a test-correctness issue.
+- `RUF059` (unused loop variable): idiomatic Python in test data builders.
+- `invalid-name`: test fixtures use short names (m, e, ctx, etc.) by convention.
+- `RUF012` (mutable class vars in OVo classes): intentional framework pattern.
+- `redundant-u-string-prefix` (UP025 x709): Python 2 compat legacy, suppressed across all test files.
+- All pylint complexity flags (too-many-arguments, too-many-locals, too-many-branches) in test helpers: parameterised test helpers intentionally accept many arguments.
+
+### 76 test files between 1000–3000 lines
+Not individually reported; typical for comprehensive test suites. Files with > 3000 lines are reported as medium or high.
+
+### Languages not covered
+No JavaScript, TypeScript, Go, Shell, Dockerfile, or Java files in batch 6.

@@ -1,0 +1,30 @@
+[
+  {
+    "file": "src/nova/storage/rbd_utils.py",
+    "tool": "ruff",
+    "ruleId": "B025",
+    "lineRange": {
+      "start": 389,
+      "end": 392
+    },
+    "title": "Duplicate exception 'rbd.ImageHasSnapshots' \u2014 second except clause unreachable",
+    "detail": "In `_cleanup_vol`, the first `except rbd.ImageHasSnapshots:` catches and handles the snapshot case. The second `except (rbd.ImageBusy, rbd.ImageHasSnapshots):` then has a duplicate entry for `ImageHasSnapshots` that can never be triggered, because the first clause already consumed it. As written, a retry with `ImageHasSnapshots` will only remove the snapshot but will never decrement `retryctx['retries']` or log the warning \u2014 making the retry logic incorrect. Remove `rbd.ImageHasSnapshots` from the second except clause.",
+    "category": "bug-risk",
+    "severity": "medium",
+    "confidence": "confirmed"
+  },
+  {
+    "file": "src/nova/storage/rbd_utils.py",
+    "tool": "pylint",
+    "ruleId": "W0707",
+    "lineRange": {
+      "start": 273,
+      "end": 433
+    },
+    "title": "3 raise statements missing exception chaining",
+    "detail": "At lines 273, 302, and 433, exceptions are raised inside except blocks without `from exc`. The original traceback context is lost, making it harder to diagnose RBD failures. Add `from exc` to preserve the root cause.",
+    "category": "maintainability",
+    "severity": "low",
+    "confidence": "confirmed"
+  }
+]
