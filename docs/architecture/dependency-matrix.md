@@ -1,6 +1,6 @@
 # Component Dependency Matrix
 
-_Batch: `10997c0ea56f02ffec4fd9f8c917d68241ae9ea9` — 2026-10-20_
+_Batch: `da4f90f3140927b8c63f00b11af32787a70ff1ac` — 2026-10-21_
 
 ## N×N Dependency Matrix
 
@@ -8,13 +8,15 @@ Rows are the referencing component; columns are the providing component. Cell va
 
 | | **nova** |
 |---|---|
-| **nova** | 5164 |
+| **nova** | 13877 |
 
-**Derivation:** The Link Graph (`.aee/link-summary.md`, batch `10997c0e`) records 1,882 file edges, all with `crossComponent: false` (`summary.crossComponentEdges: 0`; "All 1882 file edges are intra-component (within the `nova` component)"). All 1,882 edges are in the `nova → nova` cell. The sum of their `count` fields equals the total resolved entries: 5,164 (`summary.resolved: 5164`, Link Summary `.aee/link-summary.md`).
+**Derivation:** The Link Graph (`.aee/link-summary.md`, batch `da4f90f3`) records 5,129 file edges, all with `crossComponent: false` (`summary.crossComponentEdges: 0`; "All 5129 file edges are intra-component (within the `nova` component)"). All 5,129 edges are in the `nova → nova` cell. The sum of their `count` fields equals the total resolved entries: 13,877 (`summary.resolved: 13877`, Link Summary `.aee/link-summary.md`).
+
+Note: batch 8 added the full test suite (1,388 total files vs 532 in batch 7); the large increase in resolved count (5,164 → 13,877) reflects test files importing production modules. This does not indicate cross-component coupling — all edges remain within the `nova` component.
 
 No confirmed taint chains exist (`.aee/security-chains.json`, `summary.confirmedChains: 0`); no cells are bolded.
 
-The Link Graph is incomplete by construction (static imports and shared literals only). The absence of an edge does not imply two components are independent; it means no edge was found. Two known blind spots: (1) scheduler filters are loaded dynamically by name from configuration; (2) `privsep/` functions are called via oslo.privsep IPC dispatch and produce no static import edges (`.aee/security-chains.json`, `evaluatedFindings`, privsep/libvirt.py entry).
+The Link Graph is incomplete by construction (static imports and shared literals only). The absence of an edge does not imply two components are independent; it means no edge was found. Three known blind spots: (1) scheduler filters loaded dynamically from config; (2) `privsep/` functions called via oslo.privsep IPC dispatch; (3) test `mock.patch` call sites do not produce static edges — `CyborgFixture` confirms `get_arq_by_uuid` is called in production but its caller is not visible in the link graph.
 
 ---
 
