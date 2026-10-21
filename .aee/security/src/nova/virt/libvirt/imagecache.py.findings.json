@@ -1,0 +1,32 @@
+[
+  {
+    "file": "src/nova/virt/libvirt/imagecache.py",
+    "tool": "semgrep, bandit",
+    "ruleId": "B324",
+    "lineRange": {
+      "start": 52,
+      "end": 52
+    },
+    "title": "SHA-1 hash used for image cache filename without usedforsecurity=False",
+    "detail": "hash_image_id() at line 52 calls hashlib.sha1(image_id.encode('utf-8')).hexdigest() to derive the cache filename from an image UUID. SHA-1 is a deprecated algorithm; while this is not a password hash, omitting usedforsecurity=False precludes FIPS-compliant deployments and signals that the call was not deliberately audited for security context. The same pattern appears at line 317 where a file-path fingerprint is derived via hashlib.sha1().",
+    "owaspCategory": "A02 Cryptographic Failures",
+    "cweId": "CWE-327",
+    "severity": "low",
+    "confidence": "confirmed"
+  },
+  {
+    "file": "src/nova/virt/libvirt/imagecache.py",
+    "tool": "semgrep, bandit",
+    "ruleId": "B324",
+    "lineRange": {
+      "start": 317,
+      "end": 318
+    },
+    "title": "SHA-1 hash used for image path fingerprint without usedforsecurity=False",
+    "detail": "At line 317-318, hashlib.sha1(encodeutils.safe_encode(img)).hexdigest() computes a fingerprint of an image file path string for cache lookup. SHA-1 is deprecated; the absence of usedforsecurity=False makes this call incompatible with FIPS mode and marks it as an unaudited security-relevant hash. The same pattern appears at line 52.",
+    "owaspCategory": "A02 Cryptographic Failures",
+    "cweId": "CWE-327",
+    "severity": "low",
+    "confidence": "confirmed"
+  }
+]

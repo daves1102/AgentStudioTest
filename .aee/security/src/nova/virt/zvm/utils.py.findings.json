@@ -1,0 +1,17 @@
+[
+  {
+    "file": "src/nova/virt/zvm/utils.py",
+    "tool": "manual",
+    "ruleId": null,
+    "lineRange": {
+      "start": 52,
+      "end": 55
+    },
+    "title": "TLS certificate verification disabled when z/VM connector URL lacks CA file",
+    "detail": "ConnectorClient.__init__() sets verify=False on the ZVMConnector when either (a) the configured URL scheme is not https or (b) the https URL is configured but no ca_file is provided. In case (b) the connection uses TLS but does not verify the server certificate, leaving the channel vulnerable to man-in-the-middle attacks against the z/VM Cloud Connector. The warning at line 44 covers the inverse case (non-https URL with ca_file) but no warning is emitted for the riskier case of https without ca_file.",
+    "owaspCategory": "A02 Cryptographic Failures",
+    "cweId": "CWE-295",
+    "severity": "medium",
+    "confidence": "confirmed"
+  }
+]

@@ -1,0 +1,17 @@
+[
+  {
+    "file": "src/nova/virt/disk/api.py",
+    "tool": "bandit, manual",
+    "ruleId": "B311",
+    "lineRange": {
+      "start": 612,
+      "end": 619
+    },
+    "title": "Non-cryptographic PRNG (random.choice) used to generate password hash salt",
+    "detail": "_generate_salt() at lines 612-619 builds a 16-character salt using random.choice() from Python's random module, which uses the Mersenne Twister PRNG \u2014 not suitable for security-sensitive operations. This salt is passed directly to secretutils.crypt_password() at line 645 to hash the admin password with the MD5-crypt or DES-crypt algorithm. An attacker with knowledge of the PRNG state could predict the salt, reducing the cost of offline dictionary attacks against stored password hashes. The OpenStack-approved pattern for security-sensitive randomness is secrets.choice() or os.urandom().",
+    "owaspCategory": "A02 Cryptographic Failures",
+    "cweId": "CWE-338",
+    "severity": "medium",
+    "confidence": "confirmed"
+  }
+]
