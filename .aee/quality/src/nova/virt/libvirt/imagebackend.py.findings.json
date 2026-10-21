@@ -1,0 +1,86 @@
+[
+  {
+    "file": "src/nova/virt/libvirt/imagebackend.py",
+    "tool": "lizard",
+    "ruleId": null,
+    "lineRange": {
+      "start": 1,
+      "end": 1414
+    },
+    "title": "File exceeds 1000 lines (1414 lines)",
+    "detail": "File is 1414 lines, well above the 1000-line maintainability threshold. Large files typically contain many unrelated concerns and make code review and change-isolation harder. Suggested fix: split into smaller modules by responsibility.",
+    "category": "maintainability",
+    "severity": "medium",
+    "confidence": "confirmed"
+  },
+  {
+    "file": "src/nova/virt/libvirt/imagebackend.py",
+    "tool": "pylint,ruff",
+    "ruleId": "broad-exception-caught/BLE001",
+    "lineRange": {
+      "start": 854,
+      "end": 1193
+    },
+    "title": "Broad exception caught (bare `except Exception`) at 3 sites (L854,L884,L1193)",
+    "detail": "`except Exception` catches all exceptions without re-raising, swallowing unexpected errors silently. This hides failures and makes the caller unable to distinguish success from silent failure. Suggested fix: catch only the exception types the callee can raise, or use `excutils.save_and_reraise_exception()` for cleanup handlers.",
+    "category": "error-handling",
+    "severity": "medium",
+    "confidence": "confirmed"
+  },
+  {
+    "file": "src/nova/virt/libvirt/imagebackend.py",
+    "tool": "pylint",
+    "ruleId": "R1710",
+    "lineRange": {
+      "start": 992,
+      "end": 992
+    },
+    "title": "Inconsistent return statements: 1 functions mix explicit/implicit returns (L992)",
+    "detail": "Some functions return a value on some paths and fall off the end (returning `None` implicitly) on others. Callers that rely on the return value may receive `None` unexpectedly. Suggested fix: add an explicit `return` on all branches or refactor to raise on error paths.",
+    "category": "bug-risk",
+    "severity": "medium",
+    "confidence": "confirmed"
+  },
+  {
+    "file": "src/nova/virt/libvirt/imagebackend.py",
+    "tool": "pylint",
+    "ruleId": "W0707",
+    "lineRange": {
+      "start": 916,
+      "end": 1089
+    },
+    "title": "Exception context suppressed: 2 `raise` statements without `from` (L916,L1089)",
+    "detail": "Raising a new exception inside an `except` block without `raise NewExc() from exc` discards the original traceback, making debugging harder. Suggested fix: use `raise NewExc() from exc` or `raise NewExc() from None` if suppression is intentional.",
+    "category": "maintainability",
+    "severity": "low",
+    "confidence": "confirmed"
+  },
+  {
+    "file": "src/nova/virt/libvirt/imagebackend.py",
+    "tool": "ruff",
+    "ruleId": "B026",
+    "lineRange": {
+      "start": 301,
+      "end": 1316
+    },
+    "title": "Star-arg unpacking after keyword argument (B026) at L301,305,614",
+    "detail": "Positional star-arg unpacking placed after a keyword argument is a Python SyntaxError in Python 3 when used in a function call. Ruff B026 flags calls that will raise `SyntaxError` at runtime. Suggested fix: move all positional arguments before keyword arguments.",
+    "category": "bug-risk",
+    "severity": "high",
+    "confidence": "confirmed"
+  },
+  {
+    "file": "src/nova/virt/libvirt/imagebackend.py",
+    "tool": "ruff",
+    "ruleId": "PIE790",
+    "lineRange": {
+      "start": 151,
+      "end": 546
+    },
+    "title": "Unnecessary `pass` in abstract/stub methods (7 instances)",
+    "detail": "Abstract method stubs or pure interface declarations contain a bare `pass` statement alongside a docstring or `raise NotImplementedError`. The `pass` is redundant when a docstring or `raise` already makes the function body non-empty. Suggested fix: remove the redundant `pass` statements.",
+    "category": "style",
+    "severity": "info",
+    "confidence": "confirmed"
+  }
+]

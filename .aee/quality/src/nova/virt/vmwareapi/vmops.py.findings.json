@@ -1,0 +1,58 @@
+[
+  {
+    "file": "src/nova/virt/vmwareapi/vmops.py",
+    "tool": "lizard",
+    "ruleId": null,
+    "lineRange": {
+      "start": 1,
+      "end": 2159
+    },
+    "title": "File exceeds 1000 lines (2159 lines)",
+    "detail": "File is 2159 lines, well above the 1000-line maintainability threshold. Large files typically contain many unrelated concerns and make code review and change-isolation harder. Suggested fix: split into smaller modules by responsibility.",
+    "category": "maintainability",
+    "severity": "medium",
+    "confidence": "confirmed"
+  },
+  {
+    "file": "src/nova/virt/vmwareapi/vmops.py",
+    "tool": "pylint,ruff",
+    "ruleId": "broad-exception-caught/BLE001",
+    "lineRange": {
+      "start": 179,
+      "end": 2043
+    },
+    "title": "Broad exception caught (bare `except Exception`) at 10 sites (L179,L412,L885,L1097,L1120,L1128)",
+    "detail": "`except Exception` catches all exceptions without re-raising, swallowing unexpected errors silently. This hides failures and makes the caller unable to distinguish success from silent failure. Suggested fix: catch only the exception types the callee can raise, or use `excutils.save_and_reraise_exception()` for cleanup handlers.",
+    "category": "error-handling",
+    "severity": "medium",
+    "confidence": "confirmed"
+  },
+  {
+    "file": "src/nova/virt/vmwareapi/vmops.py",
+    "tool": "pylint",
+    "ruleId": "R1710",
+    "lineRange": {
+      "start": 92,
+      "end": 1571
+    },
+    "title": "Inconsistent return statements: 4 functions mix explicit/implicit returns (L92,L99,L852,L1571)",
+    "detail": "Some functions return a value on some paths and fall off the end (returning `None` implicitly) on others. Callers that rely on the return value may receive `None` unexpectedly. Suggested fix: add an explicit `return` on all branches or refactor to raise on error paths.",
+    "category": "bug-risk",
+    "severity": "medium",
+    "confidence": "confirmed"
+  },
+  {
+    "file": "src/nova/virt/vmwareapi/vmops.py",
+    "tool": "pylint",
+    "ruleId": "W0707",
+    "lineRange": {
+      "start": 1695,
+      "end": 1695
+    },
+    "title": "Exception context suppressed: 1 `raise` statements without `from` (L1695)",
+    "detail": "Raising a new exception inside an `except` block without `raise NewExc() from exc` discards the original traceback, making debugging harder. Suggested fix: use `raise NewExc() from exc` or `raise NewExc() from None` if suppression is intentional.",
+    "category": "maintainability",
+    "severity": "low",
+    "confidence": "confirmed"
+  }
+]

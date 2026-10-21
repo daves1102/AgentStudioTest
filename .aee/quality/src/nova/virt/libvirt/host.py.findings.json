@@ -1,0 +1,58 @@
+[
+  {
+    "file": "src/nova/virt/libvirt/host.py",
+    "tool": "lizard",
+    "ruleId": null,
+    "lineRange": {
+      "start": 1,
+      "end": 2340
+    },
+    "title": "File exceeds 1000 lines (2340 lines)",
+    "detail": "File is 2340 lines, well above the 1000-line maintainability threshold. Large files typically contain many unrelated concerns and make code review and change-isolation harder. Suggested fix: split into smaller modules by responsibility.",
+    "category": "maintainability",
+    "severity": "medium",
+    "confidence": "confirmed"
+  },
+  {
+    "file": "src/nova/virt/libvirt/host.py",
+    "tool": "pylint,ruff",
+    "ruleId": "broad-exception-caught/BLE001",
+    "lineRange": {
+      "start": 379,
+      "end": 723
+    },
+    "title": "Broad exception caught (bare `except Exception`) at 4 sites (L379,L584,L622,L723)",
+    "detail": "`except Exception` catches all exceptions without re-raising, swallowing unexpected errors silently. This hides failures and makes the caller unable to distinguish success from silent failure. Suggested fix: catch only the exception types the callee can raise, or use `excutils.save_and_reraise_exception()` for cleanup handlers.",
+    "category": "error-handling",
+    "severity": "medium",
+    "confidence": "confirmed"
+  },
+  {
+    "file": "src/nova/virt/libvirt/host.py",
+    "tool": "pylint",
+    "ruleId": "R1710",
+    "lineRange": {
+      "start": 1147,
+      "end": 1172
+    },
+    "title": "Inconsistent return statements: 2 functions mix explicit/implicit returns (L1147,L1172)",
+    "detail": "Some functions return a value on some paths and fall off the end (returning `None` implicitly) on others. Callers that rely on the return value may receive `None` unexpectedly. Suggested fix: add an explicit `return` on all branches or refactor to raise on error paths.",
+    "category": "bug-risk",
+    "severity": "medium",
+    "confidence": "confirmed"
+  },
+  {
+    "file": "src/nova/virt/libvirt/host.py",
+    "tool": "ruff",
+    "ruleId": "RUF059",
+    "lineRange": {
+      "start": 820,
+      "end": 820
+    },
+    "title": "Unpacked output variable(s) silently discarded: cpu_map at L820",
+    "detail": "Function returns a tuple; one or more unpacked variables are never read. If the discarded variable carries error information (e.g. stderr from a subprocess call), silent discard means errors go unlogged. Suggested fix: check or log the discarded value, or use `_` if intentional.",
+    "category": "error-handling",
+    "severity": "low",
+    "confidence": "confirmed"
+  }
+]

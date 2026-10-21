@@ -1,0 +1,58 @@
+[
+  {
+    "file": "src/nova/virt/netutils.py",
+    "tool": "lizard",
+    "ruleId": null,
+    "lineRange": {
+      "start": 60,
+      "end": 165
+    },
+    "title": "High cyclomatic complexity: get_injected_network_template (CCN=20)",
+    "detail": "`get_injected_network_template` has a cyclomatic complexity of 20 over 82 lines (L60\u2013165). Functions this complex are hard to test exhaustively, tend to accumulate subtle conditional bugs, and resist refactoring. Suggested fix: extract cohesive sub-operations into smaller, named functions with clear preconditions.",
+    "category": "complexity",
+    "severity": "medium",
+    "confidence": "confirmed"
+  },
+  {
+    "file": "src/nova/virt/netutils.py",
+    "tool": "lizard",
+    "ruleId": null,
+    "lineRange": {
+      "start": 168,
+      "end": 224
+    },
+    "title": "High cyclomatic complexity: get_network_metadata (CCN=15)",
+    "detail": "`get_network_metadata` has a cyclomatic complexity of 15 over 34 lines (L168\u2013224). Functions this complex are hard to test exhaustively, tend to accumulate subtle conditional bugs, and resist refactoring. Suggested fix: extract cohesive sub-operations into smaller, named functions with clear preconditions.",
+    "category": "complexity",
+    "severity": "medium",
+    "confidence": "confirmed"
+  },
+  {
+    "file": "src/nova/virt/netutils.py",
+    "tool": "pylint",
+    "ruleId": "R1710",
+    "lineRange": {
+      "start": 49,
+      "end": 334
+    },
+    "title": "Inconsistent return statements: 4 functions mix explicit/implicit returns (L49,L60,L168,L334)",
+    "detail": "Some functions return a value on some paths and fall off the end (returning `None` implicitly) on others. Callers that rely on the return value may receive `None` unexpectedly. Suggested fix: add an explicit `return` on all branches or refactor to raise on error paths.",
+    "category": "bug-risk",
+    "severity": "medium",
+    "confidence": "confirmed"
+  },
+  {
+    "file": "src/nova/virt/netutils.py",
+    "tool": "pylint",
+    "ruleId": "W0631",
+    "lineRange": {
+      "start": 314,
+      "end": 319
+    },
+    "title": "Variable `netmask` possibly used before assignment at L314",
+    "detail": "Variable `netmask` is assigned only in `if version == 4:` and `elif version == 6:` branches. If `version` is any other value, `netmask` is unbound when used in the `net_info` dict at L{l}. In practice version is always 4 or 6, but no assert or else-raise prevents the NameError. Suggested fix: add `else: raise ValueError(...)` before the net_info dict.",
+    "category": "bug-risk",
+    "severity": "medium",
+    "confidence": "probable"
+  }
+]

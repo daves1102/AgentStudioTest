@@ -1,0 +1,30 @@
+[
+  {
+    "file": "src/nova/virt/node.py",
+    "tool": "pylint,ruff",
+    "ruleId": "broad-exception-caught/BLE001",
+    "lineRange": {
+      "start": 46,
+      "end": 46
+    },
+    "title": "Broad exception caught (bare `except Exception`) at 1 sites (L46)",
+    "detail": "`except Exception` catches all exceptions without re-raising, swallowing unexpected errors silently. This hides failures and makes the caller unable to distinguish success from silent failure. Suggested fix: catch only the exception types the callee can raise, or use `excutils.save_and_reraise_exception()` for cleanup handlers.",
+    "category": "error-handling",
+    "severity": "medium",
+    "confidence": "confirmed"
+  },
+  {
+    "file": "src/nova/virt/node.py",
+    "tool": "pylint",
+    "ruleId": "W0707",
+    "lineRange": {
+      "start": 44,
+      "end": 72
+    },
+    "title": "Exception context suppressed: 2 `raise` statements without `from` (L44,L72)",
+    "detail": "Raising a new exception inside an `except` block without `raise NewExc() from exc` discards the original traceback, making debugging harder. Suggested fix: use `raise NewExc() from exc` or `raise NewExc() from None` if suppression is intentional.",
+    "category": "maintainability",
+    "severity": "low",
+    "confidence": "confirmed"
+  }
+]

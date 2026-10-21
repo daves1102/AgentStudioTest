@@ -1,0 +1,44 @@
+[
+  {
+    "file": "src/nova/virt/images.py",
+    "tool": "lizard",
+    "ruleId": null,
+    "lineRange": {
+      "start": 226,
+      "end": 301
+    },
+    "title": "High cyclomatic complexity: fetch_to_raw (CCN=15)",
+    "detail": "`fetch_to_raw` has a cyclomatic complexity of 15 over 57 lines (L226\u2013301). Functions this complex are hard to test exhaustively, tend to accumulate subtle conditional bugs, and resist refactoring. Suggested fix: extract cohesive sub-operations into smaller, named functions with clear preconditions.",
+    "category": "complexity",
+    "severity": "medium",
+    "confidence": "confirmed"
+  },
+  {
+    "file": "src/nova/virt/images.py",
+    "tool": "pylint,ruff",
+    "ruleId": "broad-exception-caught/BLE001",
+    "lineRange": {
+      "start": 215,
+      "end": 215
+    },
+    "title": "Broad exception caught (bare `except Exception`) at 1 sites (L215)",
+    "detail": "`except Exception` catches all exceptions without re-raising, swallowing unexpected errors silently. This hides failures and makes the caller unable to distinguish success from silent failure. Suggested fix: catch only the exception types the callee can raise, or use `excutils.save_and_reraise_exception()` for cleanup handlers.",
+    "category": "error-handling",
+    "severity": "medium",
+    "confidence": "confirmed"
+  },
+  {
+    "file": "src/nova/virt/images.py",
+    "tool": "pylint",
+    "ruleId": "W0707",
+    "lineRange": {
+      "start": 135,
+      "end": 216
+    },
+    "title": "Exception context suppressed: 3 `raise` statements without `from` (L135,L212,L216)",
+    "detail": "Raising a new exception inside an `except` block without `raise NewExc() from exc` discards the original traceback, making debugging harder. Suggested fix: use `raise NewExc() from exc` or `raise NewExc() from None` if suppression is intentional.",
+    "category": "maintainability",
+    "severity": "low",
+    "confidence": "confirmed"
+  }
+]

@@ -1,0 +1,72 @@
+[
+  {
+    "file": "src/nova/virt/vmwareapi/vm_util.py",
+    "tool": "lizard",
+    "ruleId": null,
+    "lineRange": {
+      "start": 180,
+      "end": 289
+    },
+    "title": "High cyclomatic complexity: get_vm_create_spec (CCN=15)",
+    "detail": "`get_vm_create_spec` has a cyclomatic complexity of 15 over 81 lines (L180\u2013289). Functions this complex are hard to test exhaustively, tend to accumulate subtle conditional bugs, and resist refactoring. Suggested fix: extract cohesive sub-operations into smaller, named functions with clear preconditions.",
+    "category": "complexity",
+    "severity": "medium",
+    "confidence": "confirmed"
+  },
+  {
+    "file": "src/nova/virt/vmwareapi/vm_util.py",
+    "tool": "lizard",
+    "ruleId": null,
+    "lineRange": {
+      "start": 887,
+      "end": 952
+    },
+    "title": "High cyclomatic complexity: _create_virtual_disk_spec (CCN=15)",
+    "detail": "`_create_virtual_disk_spec` has a cyclomatic complexity of 15 over 52 lines (L887\u2013952). Functions this complex are hard to test exhaustively, tend to accumulate subtle conditional bugs, and resist refactoring. Suggested fix: extract cohesive sub-operations into smaller, named functions with clear preconditions.",
+    "category": "complexity",
+    "severity": "medium",
+    "confidence": "confirmed"
+  },
+  {
+    "file": "src/nova/virt/vmwareapi/vm_util.py",
+    "tool": "lizard",
+    "ruleId": null,
+    "lineRange": {
+      "start": 1,
+      "end": 1669
+    },
+    "title": "File exceeds 1000 lines (1669 lines)",
+    "detail": "File is 1669 lines, well above the 1000-line maintainability threshold. Large files typically contain many unrelated concerns and make code review and change-isolation harder. Suggested fix: split into smaller modules by responsibility.",
+    "category": "maintainability",
+    "severity": "medium",
+    "confidence": "confirmed"
+  },
+  {
+    "file": "src/nova/virt/vmwareapi/vm_util.py",
+    "tool": "pylint,ruff",
+    "ruleId": "broad-exception-caught/BLE001",
+    "lineRange": {
+      "start": 1304,
+      "end": 1373
+    },
+    "title": "Broad exception caught (bare `except Exception`) at 2 sites (L1304,L1373)",
+    "detail": "`except Exception` catches all exceptions without re-raising, swallowing unexpected errors silently. This hides failures and makes the caller unable to distinguish success from silent failure. Suggested fix: catch only the exception types the callee can raise, or use `excutils.save_and_reraise_exception()` for cleanup handlers.",
+    "category": "error-handling",
+    "severity": "medium",
+    "confidence": "confirmed"
+  },
+  {
+    "file": "src/nova/virt/vmwareapi/vm_util.py",
+    "tool": "pylint",
+    "ruleId": "R1710",
+    "lineRange": {
+      "start": 292,
+      "end": 1581
+    },
+    "title": "Inconsistent return statements: 14 functions mix explicit/implicit returns (L292,L304,L563,L752,L833,L1070)",
+    "detail": "Some functions return a value on some paths and fall off the end (returning `None` implicitly) on others. Callers that rely on the return value may receive `None` unexpectedly. Suggested fix: add an explicit `return` on all branches or refactor to raise on error paths.",
+    "category": "bug-risk",
+    "severity": "medium",
+    "confidence": "confirmed"
+  }
+]

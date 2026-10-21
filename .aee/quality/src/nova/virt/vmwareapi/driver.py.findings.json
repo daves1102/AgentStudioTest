@@ -1,0 +1,58 @@
+[
+  {
+    "file": "src/nova/virt/vmwareapi/driver.py",
+    "tool": "pylint,ruff",
+    "ruleId": "broad-exception-caught/BLE001",
+    "lineRange": {
+      "start": 602,
+      "end": 602
+    },
+    "title": "Broad exception caught (bare `except Exception`) at 1 sites (L602)",
+    "detail": "`except Exception` catches all exceptions without re-raising, swallowing unexpected errors silently. This hides failures and makes the caller unable to distinguish success from silent failure. Suggested fix: catch only the exception types the callee can raise, or use `excutils.save_and_reraise_exception()` for cleanup handlers.",
+    "category": "error-handling",
+    "severity": "medium",
+    "confidence": "confirmed"
+  },
+  {
+    "file": "src/nova/virt/vmwareapi/driver.py",
+    "tool": "pylint",
+    "ruleId": "R1710",
+    "lineRange": {
+      "start": 361,
+      "end": 361
+    },
+    "title": "Inconsistent return statements: 1 functions mix explicit/implicit returns (L361)",
+    "detail": "Some functions return a value on some paths and fall off the end (returning `None` implicitly) on others. Callers that rely on the return value may receive `None` unexpectedly. Suggested fix: add an explicit `return` on all branches or refactor to raise on error paths.",
+    "category": "bug-risk",
+    "severity": "medium",
+    "confidence": "confirmed"
+  },
+  {
+    "file": "src/nova/virt/vmwareapi/driver.py",
+    "tool": "pylint",
+    "ruleId": "W0707",
+    "lineRange": {
+      "start": 117,
+      "end": 117
+    },
+    "title": "Exception context suppressed: 1 `raise` statements without `from` (L117)",
+    "detail": "Raising a new exception inside an `except` block without `raise NewExc() from exc` discards the original traceback, making debugging harder. Suggested fix: use `raise NewExc() from exc` or `raise NewExc() from None` if suppression is intentional.",
+    "category": "maintainability",
+    "severity": "low",
+    "confidence": "confirmed"
+  },
+  {
+    "file": "src/nova/virt/vmwareapi/driver.py",
+    "tool": "ruff",
+    "ruleId": "RUF059",
+    "lineRange": {
+      "start": 371,
+      "end": 371
+    },
+    "title": "Unpacked output variable(s) silently discarded: remaining at L371",
+    "detail": "Function returns a tuple; one or more unpacked variables are never read. If the discarded variable carries error information (e.g. stderr from a subprocess call), silent discard means errors go unlogged. Suggested fix: check or log the discarded value, or use `_` if intentional.",
+    "category": "error-handling",
+    "severity": "low",
+    "confidence": "confirmed"
+  }
+]

@@ -1,0 +1,16 @@
+[
+  {
+    "file": "src/nova/virt/disk/api.py",
+    "tool": "pylint,ruff",
+    "ruleId": "broad-exception-caught/BLE001",
+    "lineRange": {
+      "start": 368,
+      "end": 474
+    },
+    "title": "Broad exception caught (bare `except Exception`) at 4 sites (L368,L430,L443,L474)",
+    "detail": "`except Exception` catches all exceptions without re-raising, swallowing unexpected errors silently. This hides failures and makes the caller unable to distinguish success from silent failure. Suggested fix: catch only the exception types the callee can raise, or use `excutils.save_and_reraise_exception()` for cleanup handlers.",
+    "category": "error-handling",
+    "severity": "medium",
+    "confidence": "confirmed"
+  }
+]

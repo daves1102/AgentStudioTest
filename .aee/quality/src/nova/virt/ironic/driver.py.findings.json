@@ -1,0 +1,72 @@
+[
+  {
+    "file": "src/nova/virt/ironic/driver.py",
+    "tool": "lizard",
+    "ruleId": null,
+    "lineRange": {
+      "start": 1149,
+      "end": 1291
+    },
+    "title": "High cyclomatic complexity: spawn (CCN=16)",
+    "detail": "`spawn` has a cyclomatic complexity of 16 over 99 lines (L1149\u20131291). Functions this complex are hard to test exhaustively, tend to accumulate subtle conditional bugs, and resist refactoring. Suggested fix: extract cohesive sub-operations into smaller, named functions with clear preconditions.",
+    "category": "complexity",
+    "severity": "medium",
+    "confidence": "confirmed"
+  },
+  {
+    "file": "src/nova/virt/ironic/driver.py",
+    "tool": "lizard",
+    "ruleId": null,
+    "lineRange": {
+      "start": 1,
+      "end": 2379
+    },
+    "title": "File exceeds 1000 lines (2379 lines)",
+    "detail": "File is 2379 lines, well above the 1000-line maintainability threshold. Large files typically contain many unrelated concerns and make code review and change-isolation harder. Suggested fix: split into smaller modules by responsibility.",
+    "category": "maintainability",
+    "severity": "medium",
+    "confidence": "confirmed"
+  },
+  {
+    "file": "src/nova/virt/ironic/driver.py",
+    "tool": "pylint,ruff",
+    "ruleId": "broad-exception-caught/BLE001",
+    "lineRange": {
+      "start": 626,
+      "end": 2368
+    },
+    "title": "Broad exception caught (bare `except Exception`) at 10 sites (L626,L1193,L1248,L1286,L1302,L1787)",
+    "detail": "Multiple `except Exception` handlers use `excutils.save_and_reraise_exception()`, which is acceptable OpenStack idiom. A few handlers only log without re-raising. Suggested fix: review non-reraise handlers and narrow the exception type where the specific exceptions from the callee are known.",
+    "category": "error-handling",
+    "severity": "low",
+    "confidence": "confirmed"
+  },
+  {
+    "file": "src/nova/virt/ironic/driver.py",
+    "tool": "pylint",
+    "ruleId": "R1710",
+    "lineRange": {
+      "start": 2239,
+      "end": 2239
+    },
+    "title": "Inconsistent return statements: 1 functions mix explicit/implicit returns (L2239)",
+    "detail": "Some functions return a value on some paths and fall off the end (returning `None` implicitly) on others. Callers that rely on the return value may receive `None` unexpectedly. Suggested fix: add an explicit `return` on all branches or refactor to raise on error paths.",
+    "category": "bug-risk",
+    "severity": "medium",
+    "confidence": "confirmed"
+  },
+  {
+    "file": "src/nova/virt/ironic/driver.py",
+    "tool": "pylint",
+    "ruleId": "W0707",
+    "lineRange": {
+      "start": 371,
+      "end": 2092
+    },
+    "title": "Exception context suppressed: 8 `raise` statements without `from` (L371,L480,L1316,L1912,L1999,L2023)",
+    "detail": "Raising a new exception inside an `except` block without `raise NewExc() from exc` discards the original traceback, making debugging harder. Suggested fix: use `raise NewExc() from exc` or `raise NewExc() from None` if suppression is intentional.",
+    "category": "maintainability",
+    "severity": "low",
+    "confidence": "confirmed"
+  }
+]

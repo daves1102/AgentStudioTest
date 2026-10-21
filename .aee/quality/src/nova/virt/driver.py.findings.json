@@ -1,0 +1,44 @@
+[
+  {
+    "file": "src/nova/virt/driver.py",
+    "tool": "lizard",
+    "ruleId": null,
+    "lineRange": {
+      "start": 1,
+      "end": 2117
+    },
+    "title": "File exceeds 1000 lines (2117 lines)",
+    "detail": "File is 2117 lines, well above the 1000-line maintainability threshold. Large files typically contain many unrelated concerns and make code review and change-isolation harder. Suggested fix: split into smaller modules by responsibility.",
+    "category": "maintainability",
+    "severity": "medium",
+    "confidence": "confirmed"
+  },
+  {
+    "file": "src/nova/virt/driver.py",
+    "tool": "pylint,ruff",
+    "ruleId": "broad-exception-caught/BLE001",
+    "lineRange": {
+      "start": 1907,
+      "end": 1907
+    },
+    "title": "Broad exception caught (bare `except Exception`) at 1 sites (L1907)",
+    "detail": "Several `except Exception` handlers log and continue without re-raising. While marked as best-effort, broad catches make it harder to track unexpected failure modes in production. Where possible, catch the specific exception types the called API documents. Suggested fix: refine catch clauses to known exception types.",
+    "category": "error-handling",
+    "severity": "low",
+    "confidence": "confirmed"
+  },
+  {
+    "file": "src/nova/virt/driver.py",
+    "tool": "ruff",
+    "ruleId": "PIE790",
+    "lineRange": {
+      "start": 391,
+      "end": 1807
+    },
+    "title": "Unnecessary `pass` in abstract/stub methods (10 instances)",
+    "detail": "Abstract method stubs or pure interface declarations contain a bare `pass` statement alongside a docstring or `raise NotImplementedError`. The `pass` is redundant when a docstring or `raise` already makes the function body non-empty. Suggested fix: remove the redundant `pass` statements.",
+    "category": "style",
+    "severity": "info",
+    "confidence": "confirmed"
+  }
+]

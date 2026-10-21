@@ -1,0 +1,30 @@
+[
+  {
+    "file": "src/nova/virt/libvirt/migration.py",
+    "tool": "lizard",
+    "ruleId": null,
+    "lineRange": {
+      "start": 416,
+      "end": 470
+    },
+    "title": "High cyclomatic complexity: _update_volume_xml (CCN=15)",
+    "detail": "`_update_volume_xml` has a cyclomatic complexity of 15 over 38 lines (L416\u2013470). Functions this complex are hard to test exhaustively, tend to accumulate subtle conditional bugs, and resist refactoring. Suggested fix: extract cohesive sub-operations into smaller, named functions with clear preconditions.",
+    "category": "complexity",
+    "severity": "medium",
+    "confidence": "confirmed"
+  },
+  {
+    "file": "src/nova/virt/libvirt/migration.py",
+    "tool": "pylint,ruff",
+    "ruleId": "broad-exception-caught/BLE001",
+    "lineRange": {
+      "start": 827,
+      "end": 862
+    },
+    "title": "Broad exception caught (bare `except Exception`) at 2 sites (L827,L862)",
+    "detail": "`except Exception` catches all exceptions without re-raising, swallowing unexpected errors silently. This hides failures and makes the caller unable to distinguish success from silent failure. Suggested fix: catch only the exception types the callee can raise, or use `excutils.save_and_reraise_exception()` for cleanup handlers.",
+    "category": "error-handling",
+    "severity": "medium",
+    "confidence": "confirmed"
+  }
+]

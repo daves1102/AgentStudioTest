@@ -75,3 +75,22 @@ Not individually reported; typical for comprehensive test suites. Files with > 3
 
 ### Languages not covered
 No JavaScript, TypeScript, Go, Shell, Dockerfile, or Java files in batch 6.
+
+## Batch 7 — nova/virt, nova/volume, nova/wsgi (2026-10-21)
+
+### Suppressions applied
+
+- **UP008** (271 hits): `super(ClassName, self)` → `super()` — Python 2 legacy pattern throughout nova/virt. Suppressed as style-only.
+- **UP031** (178 hits): printf-style → f-string — style noise, suppressed.
+- **SIM102** (40 hits): nested-if collapsing — style churn, suppressed.
+- **BLE001 / broad-exception-caught**: Many instances use `excutils.save_and_reraise_exception()` (OpenStack idiom) — these suppressed. Only genuine swallows and best-effort catches reported.
+- **PIE790** (unnecessary pass): Abstract interface stubs reported as `info`; driver/vfs interface pass-only stubs suppressed where alongside `raise NotImplementedError`.
+- **W0613 unused-argument**: Interface method signatures throughout virt driver hierarchy — suppressed (framework contract).
+- **R0902/R0904/R0913-R0915**: Too-many-* metrics — suppressed. Driver files are large by design (libvirt driver 14,026 lines).
+- **missing-function-docstring** (479 hits): Pervasive — suppressed as convention noise.
+- **super-with-arguments** (270 hits): Python 2 compat pattern — suppressed.
+- **RUF012** (34 hits): OVo mutable class vars — suppressed (OVo pattern).
+
+### Tools run
+
+ruff 0.16.10, pylint 4.1.2, lizard 1.24.1 — all completed successfully for all 96 files.

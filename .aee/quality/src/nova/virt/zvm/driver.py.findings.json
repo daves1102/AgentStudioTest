@@ -1,0 +1,30 @@
+[
+  {
+    "file": "src/nova/virt/zvm/driver.py",
+    "tool": "pylint,ruff",
+    "ruleId": "broad-exception-caught/BLE001",
+    "lineRange": {
+      "start": 89,
+      "end": 386
+    },
+    "title": "Broad exception caught (bare `except Exception`) at 7 sites (L89,L199,L208,L297,L340,L354)",
+    "detail": "Multiple `except Exception` handlers use `excutils.save_and_reraise_exception()`, which is acceptable OpenStack idiom. A few handlers only log without re-raising. Suggested fix: review non-reraise handlers and narrow the exception type where the specific exceptions from the callee are known.",
+    "category": "error-handling",
+    "severity": "low",
+    "confidence": "confirmed"
+  },
+  {
+    "file": "src/nova/virt/zvm/driver.py",
+    "tool": "pylint",
+    "ruleId": "W0707",
+    "lineRange": {
+      "start": 92,
+      "end": 296
+    },
+    "title": "Exception context suppressed: 2 `raise` statements without `from` (L92,L296)",
+    "detail": "Raising a new exception inside an `except` block without `raise NewExc() from exc` discards the original traceback, making debugging harder. Suggested fix: use `raise NewExc() from exc` or `raise NewExc() from None` if suppression is intentional.",
+    "category": "maintainability",
+    "severity": "low",
+    "confidence": "confirmed"
+  }
+]
