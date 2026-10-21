@@ -1,18 +1,18 @@
 # Security Chains Summary
 
-_Updated 2026-10-20 (pass 5). Source set: **532 files** (1882 file edges, 5164 resolved). nova.notifications, nova.pci, nova.policies, nova.privsep now included._
+_Updated 2026-10-21 (pass 6). Source set: **1388 files** (5129 file edges, 13877 resolved). nova.tests (unit + functional + fixtures) now included, plus nova.servicegroup + nova.share._
 
 ## Confirmed Chains by Severity
 
 _No confirmed multi-hop chains found._
 
-7 findings across 6 files evaluated. 4 confirmed findings and 2 `needs_cross_file` findings. None qualifies as a taint source: the 4 confirmed findings either lack entry-point overlap (KB securitySurface has no `entry-point` entries), or their finding lineRange does not overlap the only KB entry-point. The 2 `needs_cross_file` findings are sink candidates, but no confirmed/probable taint source can be traced to either.
+7 findings across 6 files evaluated. Same 6 finding files as pass 5 — no new findings from the large test batch. 4 confirmed findings and 2 `needs_cross_file` findings. None qualifies as a taint source.
 
 ## Partial Chains (1)
 
 | Chain ID | Stopped-At File | Stopped-At Lines | Reason |
 |---|---|---|---|
-| chain-001 | `src/nova/accelerator/cyborg.py` | 337–337 | `no-static-edge` — `get_arq_by_uuid` does not appear in any of the 532 source files except its own definition; callers are in files not yet extracted |
+| chain-001 | `src/nova/accelerator/cyborg.py` | 337–337 | `no-static-edge` — no production call to `get_arq_by_uuid` in 1388 files; test fixture confirms method IS used in production but caller not yet extracted |
 
 ## Terminated Chains
 
@@ -26,8 +26,8 @@ _None._
 | `src/nova/scheduler/filters/json_filter.py` | 104–112 | needs_cross_file | CWE-470 | Empty securitySurface; dynamic dispatch — no inbound static edges |
 | `src/nova/api/metadata/handler.py` | 276–280 | confirmed | CWE-306 | Finding (276-280) does not overlap entry-point (97); standalone auth-bypass |
 | `src/nova/console/rfb/authvencrypt.py` | 151–152 | confirmed | CWE-297 | Empty securitySurface; TLS config weakness on outbound connection |
-| `src/nova/privsep/libvirt.py` | 81–84 | confirmed | CWE-732 | KB has only `privilege` entries; no entry-point. Standalone file-permission misconfiguration |
-| `src/nova/privsep/libvirt.py` | 150–161 | needs_cross_file | CWE-73 | Sink candidate but no inbound static edges (privsep IPC blind spot); no source to chain from |
+| `src/nova/privsep/libvirt.py` | 81–84 | confirmed | CWE-732 | KB has only `privilege` entries; standalone file-permission misconfiguration |
+| `src/nova/privsep/libvirt.py` | 150–161 | needs_cross_file | CWE-73 | Sink candidate; no inbound static edges (privsep IPC blind spot); no source to chain from |
 
 ## Confirmed Chains Detail
 
@@ -52,11 +52,16 @@ Parameter `arq_uuid` accepted from caller by `_CyborgClient.get_arq_by_uuid`.
 **Sink:** `src/nova/accelerator/cyborg.py:358–359`
 `arq_uuid` concatenated into the Cyborg REST API URL via `"/".join([self.ARQ_URL, arq_uuid])` — no UUID-format or path-character filtering.
 
-**Why still partial (2026-10-20 pass 5, 532 files):** `grep` over `src/` confirms `get_arq_by_uuid` appears **only** at its definition (cyborg.py:337). Five callers import cyborg.py but call other methods. All new namespaces checked (nova.hacking, .image, .keymgr, .limit, .notifications, .pci, .policies, .privsep) — none contain callers of `get_arq_by_uuid`.
+**Why still partial (2026-10-21 pass 6, 1388 files):** `grep` over `src/` confirms `get_arq_by_uuid` has **no production call site** in any of the 1388 extracted files. It appears only at:
+- its definition (`cyborg.py:337`)
+- `tests/fixtures/cyborg.py:274-277, 341` (test mock setup and fake implementation)
+- `tests/unit/accelerator/test_cyborg.py:426-457` (unit tests calling via `self.client` — local variable, link-graph blind spot)
+
+The test fixture (`CyborgFixture`) mocks `_CyborgClient.get_arq_by_uuid` and is used by `tests/unit/compute/test_compute_mgr.py` and `tests/unit/virt/libvirt/test_driver.py` — strongly indicating the production caller is in `nova.virt.libvirt` or a compute manager accelerator workflow. Those files are not yet extracted.
 
 **Sanitisation gap:** No UUID format check or path-character filtering between method entry (line 337) and HTTP call (lines 358–359).
 
-**Human review required:** When the file(s) that call `cyborg_client.get_arq_by_uuid(arq_uuid)` are extracted (expected in nova.virt.libvirt or a compute manager task), confirm whether `arq_uuid` is validated as a well-formed UUID before the call. If not, promote this chain to `confirmed`.
+**Human review required:** The production caller is likely in `nova.virt.libvirt.driver` or `nova.compute.manager` (accelerator bind/unbind path). When extracted, confirm whether `arq_uuid` is validated as a well-formed UUID before the call. If not, promote this chain to `confirmed`.
 
 ---
 
@@ -66,25 +71,25 @@ Parameter `arq_uuid` accepted from caller by `_CyborgClient.get_arq_by_uuid`.
 
 **`src/nova/privsep/libvirt.py:81–84`** (confirmed, low, A05 Security Misconfiguration, CWE-732)
 
-`ploop_init` calls `os.chmod(disk_path, st.st_mode | stat.S_IROTH)` to set world-read on a ploop disk image. The inline comment acknowledges this is undesirable. Running inside `sys_admin_pctxt` with CAP_FOWNER, any local process on the compute host can read guest disk data. KB securitySurface has only `privilege` entries — no entry-point, so this cannot be a taint source. Standalone file-permission misconfiguration.
+`ploop_init` calls `os.chmod(disk_path, st.st_mode | stat.S_IROTH)` to set world-read on a ploop disk image inside `sys_admin_pctxt` with CAP_FOWNER. Standalone file-permission misconfiguration.
 
 ### privsep/libvirt.py — Unvalidated Path in readpty (CWE-73)
 
 **`src/nova/privsep/libvirt.py:150–161`** (needs_cross_file, medium, A01 Broken Access Control, CWE-73)
 
-`readpty(path)` runs as root with CAP_DAC_READ_SEARCH and opens any path without validating it is a PTY device. A caller passing an attacker-controlled path (e.g. `/etc/shadow`) would allow arbitrary file read as root. No inbound static edges exist (privsep IPC blind spot). Needs manual review when nova.virt.libvirt is extracted.
+`readpty(path)` runs as root with CAP_DAC_READ_SEARCH and opens any path without validating it is a PTY device. Needs manual review when `nova.virt.libvirt` is extracted.
 
 ### authvencrypt.py — TLS Hostname Verification Gap (CWE-297)
 
 **`src/nova/console/rfb/authvencrypt.py:151–152`** (confirmed, medium, A02 Cryptographic Failures, CWE-297)
 
-`ssl_ctx.check_hostname = False` disables TLS hostname validation on the proxy-to-QEMU connection. An attacker with a CA-signed certificate for a different compute node could redirect the proxy within the management network. Standalone TLS configuration issue.
+`ssl_ctx.check_hostname = False` disables TLS hostname validation on proxy-to-QEMU connection.
 
 ### handler.py — HMAC Authentication Bypass (CWE-306)
 
 **`src/nova/api/metadata/handler.py:276–280`** (confirmed, medium, A07 Identification and Authentication Failures, CWE-306)
 
-`_handle_instance_id_request_from_lb` skips HMAC validation when `metadata_proxy_shared_secret` is unconfigured, allowing provider_id spoofing and metadata disclosure. Standalone auth-bypass.
+`_handle_instance_id_request_from_lb` skips HMAC validation when `metadata_proxy_shared_secret` is unconfigured.
 
 ### utils.py — Weak Hash Algorithm (CWE-327)
 

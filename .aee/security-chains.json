@@ -20,7 +20,7 @@
         "file": "src/nova/accelerator/cyborg.py",
         "lineRange": { "start": 337, "end": 337 },
         "reason": "no-static-edge",
-        "detail": "get_arq_by_uuid (defined at cyborg.py:337) does not appear anywhere in the 532-file source set — grep over src/ confirms it is only the definition. Five files call into cyborg.py (compute/api.py, compute/manager.py, compute/utils.py, conductor/manager.py, network/neutron.py) but all call get_client, get_device_profile_request_groups, get_arq_pci_device_profile, or get_device_amount_of_dp_groups. New namespaces added across all passes (nova.hacking, nova.image, nova.keymgr, nova.limit, nova.notifications, nova.pci, nova.policies, nova.privsep) contain no callers. The method's callers remain in source files not yet extracted from the nova codebase."
+        "detail": "get_arq_by_uuid (defined at cyborg.py:337) has no production call site in the 1388-file source set. grep confirms it appears only at its definition (cyborg.py:337) and in test infrastructure (tests/fixtures/cyborg.py:274-277, tests/unit/accelerator/test_cyborg.py:426-457). The test fixture (CyborgFixture) mocks the method via oslo_fixtures.MockPatch, confirming it IS called from production code, but that call site is not yet extracted. Calls to get_arq_by_uuid in test files are on local variables (self.client.get_arq_by_uuid) — a documented link-graph blind spot. CyborgFixture is used by compute manager and virt/libvirt driver tests, suggesting the production caller is in nova.virt.libvirt or a compute manager accelerator workflow. All previously checked callers (compute/api.py, compute/manager.py, compute/utils.py, conductor/manager.py, network/neutron.py) call other _CyborgClient methods, not get_arq_by_uuid."
       },
       "owaspCategory": "A03 Injection",
       "cweId": "CWE-74",
@@ -47,7 +47,7 @@
       "confidence": "needs_cross_file",
       "title": "User-controlled scheduler hint used as getattr attribute on HostState",
       "disposition": "excluded-not-a-source",
-      "reason": "Confidence is needs_cross_file. KB securitySurface is empty. Scheduler filters are loaded by dynamic dispatch from config — no inbound static edges even with 532 files in source set."
+      "reason": "Confidence is needs_cross_file. KB securitySurface is empty. Scheduler filters are loaded by dynamic dispatch from config — no inbound static edges even with 1388 files in source set."
     },
     {
       "file": "src/nova/api/metadata/handler.py",
@@ -79,17 +79,17 @@
       "confidence": "needs_cross_file",
       "title": "readpty opens unvalidated path as root with CAP_DAC_READ_SEARCH",
       "disposition": "excluded-no-source-found",
-      "reason": "Confidence is needs_cross_file — used as sink candidate per protocol. KB has no entry-point entries. No inbound static edges to privsep/libvirt.py in the link graph: privsep functions are called via IPC/oslo.privsep dispatch, not direct Python imports (known blind spot). No confirmed/probable taint source elsewhere can be traced to readpty. Partial chain cannot be formed without a source."
+      "reason": "Confidence is needs_cross_file — used as sink candidate per protocol. KB has no entry-point entries. No inbound static edges to privsep/libvirt.py in the 1388-file link graph: privsep functions are called via oslo.privsep IPC, not direct Python imports (known blind spot). No confirmed/probable taint source elsewhere can be traced to readpty."
     }
   ],
   "summary": {
     "confirmedChains": 0,
     "partialChains": 1,
     "terminatedChains": 0,
-    "filesAnalysed": 532,
-    "linkGraphEdgesAvailable": 1882,
-    "unresolvedImports": 196,
+    "filesAnalysed": 1388,
+    "linkGraphEdgesAvailable": 5129,
+    "unresolvedImports": 1200,
     "crossComponentSeams": 0,
-    "analysedAt": "2026-10-20"
+    "analysedAt": "2026-10-21"
   }
 }
