@@ -2,54 +2,57 @@
 
 ## Overview
 
-The `nova` component encompasses the core OpenStack Compute service subsystems extracted across eight batches. All 1,388 files are classified as component `nova`; no other component exists in the current KB.
+The `nova` component encompasses the core OpenStack Compute service subsystems extracted across nine batches. All 1,484 files are classified as component `nova`; no other component exists in the current KB.
 
-**Production subsystems:** `api/`, `accelerator/`, `cmd/`, `compute/`, `conductor/`, `conf/`, `console/`, `exception.py`, `i18n.py`, `service_auth.py`, `utils.py`, `hacking/`, `image/`, `keymgr/`, `limit/`, `notifications/`, `objects/`, `db/`, `network/`, `pci/`, `policies/`, `privsep/`, `scheduler/`, `servicegroup/`, `share/`, `storage/`.
+**Production subsystems:** `api/`, `accelerator/`, `cmd/`, `compute/`, `conductor/`, `conf/`, `console/`, `exception.py`, `i18n.py`, `service_auth.py`, `utils.py`, `hacking/`, `image/`, `keymgr/`, `limit/`, `notifications/`, `objects/`, `db/`, `network/`, `pci/`, `policies/`, `privsep/`, `scheduler/`, `servicegroup/`, `share/`, `storage/`, `virt/`, `volume/`, `wsgi/`.
 
-**Test subsystems (batch 8):** `tests/unit/` (514 files), `tests/functional/` (314 files), `tests/fixtures/` (16 files).
+**Test subsystems:** `tests/unit/` (514 files), `tests/functional/` (314 files), `tests/fixtures/` (16 files).
 
-**Batch provenance** — batch 1 (`6d56e5a`, 2026-10-16): 2 files; batch 2 (`733c73`, 2026-10-19): 53 files; batch 3 (`868bfe40`, 2026-10-19): 67 files; batch 4 (`caa20451`, 2026-10-20): 205 files; batch 5 (`f56908d5`, 2026-10-20): 106 files; batch 6 (`c7012ab2`, 2026-10-20): 10 files; batch 7 (`10997c0e`, 2026-10-20): 89 files; batch 8 (`da4f90f3`, 2026-10-21): 856 files.
+**Batch provenance** -- batch 1 (`6d56e5a`, 2026-10-16): 2 files; batch 2 (`733c73`, 2026-10-19): 53 files; batch 3 (`868bfe40`, 2026-10-19): 67 files; batch 4 (`caa20451`, 2026-10-20): 205 files; batch 5 (`f56908d5`, 2026-10-20): 106 files; batch 6 (`c7012ab2`, 2026-10-20): 10 files; batch 7 (`10997c0e`, 2026-10-20): 89 files; batch 8 (`da4f90f3`, 2026-10-21): 856 files; batch 9 (`624338e5`, 2026-10-21): 96 files.
 
 Subsystem responsibilities:
 
 **Production:**
-- **api/** — WSGI framework, request dispatch, authentication middleware, API versioning, metadata service, and OpenStack Compute REST API including JSON schema validation and view serialisers.
-- **accelerator/** — HTTP client facade for the Cyborg accelerator API.
-- **cmd/** — CLI entry points for all Nova service daemons and `nova-manage`.
-- **compute/** — Core compute service API (`compute/api.py`) and manager (`compute/manager.py`) handling instance lifecycle.
-- **conductor/** — Conductor service coordinating cross-service operations (`conductor/manager.py`).
-- **conf/** — oslo.config option declarations for all Nova sub-systems.
-- **console/** — VNC/RFB, serial, and SPICE console proxy infrastructure.
-- **exception.py / i18n.py** — Exception class hierarchy and internationalisation factory.
-- **service_auth.py / utils.py** — Service-token authentication helpers and general utilities.
-- **hacking/** — pep8/hacking lint-check plug-ins for Nova-specific style rules.
-- **image/** — Glance image service client with cryptographic signature verification.
-- **keymgr/** — oslo.castellan key-manager wrapper for encryption-key storage.
-- **limit/** — oslo_limit-based quota enforcement (API-side, Placement-side, unified-limit detection).
-- **notifications/** — oslo.messaging versioned notification objects for all Nova events.
-- **objects/** — oslo.versionedobjects domain model for all Nova entities.
-- **db/api/** and **db/main/** — Alembic-managed database schemas with SQLAlchemy query API.
-- **network/** — Neutron integration, network model, os-vif utilities, and security group API.
-- **pci/** — PCI device specification, per-node tracker, pool-based stats, request resolution, and whitelist management.
-- **policies/** — oslo.policy RBAC rule definitions for every Nova API action (56 files).
-- **privsep/** — oslo.privsep privilege-separation wrappers executing in a root-privileged daemon subprocess.
-- **scheduler/** — Placement-aware scheduling: host manager, filters, weighers, RPC client, Placement report client.
-- **servicegroup/** — Service-group membership driver interface with database (`servicegroup/drivers/db.py`) and Memcache (`servicegroup/drivers/mc.py`) backends for service heartbeat.
-- **share/** — Manila share integration client (`share/manila.py`): openstack SDK wrapper for shared filesystem operations.
-- **storage/** — Ceph/RBD storage utilities (`storage/rbd_utils.py`): snapshot, clone, and image management via `rados`/`rbd` bindings.
+- **api/** -- WSGI framework, request dispatch, authentication middleware, API versioning, metadata service, and OpenStack Compute REST API including JSON schema validation and view serialisers.
+- **accelerator/** -- HTTP client facade for the Cyborg accelerator API.
+- **cmd/** -- CLI entry points for all Nova service daemons and `nova-manage`.
+- **compute/** -- Core compute service API (`compute/api.py`) and manager (`compute/manager.py`) handling instance lifecycle.
+- **conductor/** -- Conductor service coordinating cross-service operations (`conductor/manager.py`).
+- **conf/** -- oslo.config option declarations for all Nova sub-systems.
+- **console/** -- VNC/RFB, serial, and SPICE console proxy infrastructure.
+- **exception.py / i18n.py** -- Exception class hierarchy and internationalisation factory.
+- **service_auth.py / utils.py** -- Service-token authentication helpers and general utilities.
+- **hacking/** -- pep8/hacking lint-check plug-ins for Nova-specific style rules.
+- **image/** -- Glance image service client with cryptographic signature verification.
+- **keymgr/** -- oslo.castellan key-manager wrapper for encryption-key storage.
+- **limit/** -- oslo_limit-based quota enforcement (API-side, Placement-side, unified-limit detection).
+- **notifications/** -- oslo.messaging versioned notification objects for all Nova events.
+- **objects/** -- oslo.versionedobjects domain model for all Nova entities.
+- **db/api/** and **db/main/** -- Alembic-managed database schemas with SQLAlchemy query API.
+- **network/** -- Neutron integration, network model, os-vif utilities, and security group API.
+- **pci/** -- PCI device specification, per-node tracker, pool-based stats, request resolution, and whitelist management.
+- **policies/** -- oslo.policy RBAC rule definitions for every Nova API action (56 files).
+- **privsep/** -- oslo.privsep privilege-separation wrappers executing in a root-privileged daemon subprocess.
+- **scheduler/** -- Placement-aware scheduling: host manager, filters, weighers, RPC client, Placement report client.
+- **servicegroup/** -- Service-group membership driver interface with DB and Memcache backends for service heartbeat.
+- **share/** -- Manila share integration client (`share/manila.py`): openstack SDK wrapper for shared filesystem operations.
+- **storage/** -- Ceph/RBD storage utilities (`storage/rbd_utils.py`): snapshot, clone, and image management via rados/rbd bindings.
+- **virt/** -- Hypervisor abstraction layer (91 files): abstract driver interface (`virt/driver.py`), libvirt/KVM driver (`virt/libvirt/`, 40 files), VMware API driver (`virt/vmwareapi/`, 15 files), Ironic baremetal driver (`virt/ironic/`, 4 files), z/VM driver (`virt/zvm/`, 5 files), disk/VFS utilities (`virt/disk/`, 10 files), NUMA/CPU topology (`virt/hardware.py`), image backends (`virt/libvirt/imagebackend.py`), and volume drivers (`virt/libvirt/volume/`, 16 files).
+- **volume/** -- Cinder volume integration (`volume/cinder.py`): block-storage attachment, volume lifecycle, and snapshot management via the cinderclient.
+- **wsgi/** -- WSGI application bootstrapping: `wsgi/metadata.py` and `wsgi/osapi_compute.py` entry-point shims.
 
 **Test infrastructure:**
-- **tests/unit/** (514 files) — Unit tests for every production subsystem; uses `unittest.mock` extensively.
-- **tests/functional/** (314 files) — Functional/API-sample tests exercising the full HTTP stack against an in-process Nova API.
-- **tests/fixtures/** (16 files) — Shared test fixtures including a libvirt stub (`tests/fixtures/libvirt.py`, CCN 41) and Placement mock.
+- **tests/unit/** (514 files) -- Unit tests for every production subsystem; uses `unittest.mock` extensively.
+- **tests/functional/** (314 files) -- Functional/API-sample tests exercising the full HTTP stack against an in-process Nova API.
+- **tests/fixtures/** (16 files) -- Shared test fixtures including a libvirt XML stub (`tests/fixtures/libvirt.py`, CCN 41).
 
-Source: `.aee/intake-summary.md` (batch da4f90f3); `.aee/link-summary.md`.
+Source: `.aee/intake-summary.md` (batch 624338e5); `.aee/link-summary.md`.
 
 ---
 
 ## File Inventory
 
-All 1,388 KB records. LOC figures from each record's `lines` block. Source: `.aee/kb/src/nova/**/*.json`.
+All 1,484 KB records. LOC figures from each record's `lines` block. Source: `.aee/kb/src/nova/**/*.json`.
 
 | File | LOC (total) | LOC (code) | Component |
 |---|---|---|---|
@@ -1441,7 +1444,103 @@ All 1,388 KB records. LOC figures from each record's `lines` block. Source: `.ae
 | `tests/unit/volume/__init__.py` | 0 | 0 | nova |
 | `tests/unit/volume/test_cinder.py` | 1330 | 1064 | nova |
 | `utils.py` | 1209 | 829 | nova |
-| **Total (1388 files)** | **550,793** | **423,343** | nova |
+| `virt/__init__.py` | 0 | 0 | nova |
+| `virt/arch.py` | 65 | 43 | nova |
+| `virt/block_device.py` | 1068 | 775 | nova |
+| `virt/configdrive.py` | 181 | 116 | nova |
+| `virt/disk/__init__.py` | 19 | 4 | nova |
+| `virt/disk/api.py` | 684 | 477 | nova |
+| `virt/disk/mount/__init__.py` | 17 | 3 | nova |
+| `virt/disk/mount/api.py` | 295 | 215 | nova |
+| `virt/disk/mount/block.py` | 33 | 15 | nova |
+| `virt/disk/mount/loop.py` | 60 | 30 | nova |
+| `virt/disk/mount/nbd.py` | 137 | 93 | nova |
+| `virt/disk/vfs/__init__.py` | 17 | 3 | nova |
+| `virt/disk/vfs/api.py` | 141 | 93 | nova |
+| `virt/disk/vfs/guestfs.py` | 361 | 263 | nova |
+| `virt/driver.py` | 2117 | 1680 | nova |
+| `virt/event.py` | 122 | 81 | nova |
+| `virt/fake.py` | 1179 | 885 | nova |
+| `virt/hardware.py` | 3275 | 2433 | nova |
+| `virt/image/__init__.py` | 0 | 0 | nova |
+| `virt/image/model.py` | 131 | 84 | nova |
+| `virt/imagecache.py` | 132 | 95 | nova |
+| `virt/images.py` | 301 | 198 | nova |
+| `virt/ironic/__init__.py` | 18 | 2 | nova |
+| `virt/ironic/driver.py` | 2379 | 1795 | nova |
+| `virt/ironic/ironic_states.py` | 343 | 228 | nova |
+| `virt/ironic/patcher.py` | 138 | 90 | nova |
+| `virt/libvirt/__init__.py` | 17 | 2 | nova |
+| `virt/libvirt/blockinfo.py` | 783 | 573 | nova |
+| `virt/libvirt/config.py` | 4271 | 3239 | nova |
+| `virt/libvirt/cpu/__init__.py` | 0 | 0 | nova |
+| `virt/libvirt/cpu/api.py` | 201 | 151 | nova |
+| `virt/libvirt/cpu/core.py` | 88 | 48 | nova |
+| `virt/libvirt/designer.py` | 207 | 153 | nova |
+| `virt/libvirt/driver.py` | 14026 | 10031 | nova |
+| `virt/libvirt/event.py` | 46 | 24 | nova |
+| `virt/libvirt/guest.py` | 991 | 734 | nova |
+| `virt/libvirt/host.py` | 2340 | 1740 | nova |
+| `virt/libvirt/imagebackend.py` | 1414 | 1020 | nova |
+| `virt/libvirt/imagecache.py` | 418 | 291 | nova |
+| `virt/libvirt/instancejobtracker.py` | 93 | 57 | nova |
+| `virt/libvirt/machine_type_utils.py` | 225 | 154 | nova |
+| `virt/libvirt/migration.py` | 908 | 627 | nova |
+| `virt/libvirt/storage/__init__.py` | 0 | 0 | nova |
+| `virt/libvirt/storage/dmcrypt.py` | 90 | 53 | nova |
+| `virt/libvirt/storage/lvm.py` | 192 | 134 | nova |
+| `virt/libvirt/utils.py` | 799 | 561 | nova |
+| `virt/libvirt/vif.py` | 922 | 646 | nova |
+| `virt/libvirt/volume/__init__.py` | 0 | 0 | nova |
+| `virt/libvirt/volume/cephfs.py` | 52 | 26 | nova |
+| `virt/libvirt/volume/fibrechannel.py` | 87 | 52 | nova |
+| `virt/libvirt/volume/fs.py` | 130 | 83 | nova |
+| `virt/libvirt/volume/gpfs.py` | 28 | 12 | nova |
+| `virt/libvirt/volume/iscsi.py` | 92 | 61 | nova |
+| `virt/libvirt/volume/iser.py` | 40 | 18 | nova |
+| `virt/libvirt/volume/lightos.py` | 64 | 40 | nova |
+| `virt/libvirt/volume/mount.py` | 423 | 271 | nova |
+| `virt/libvirt/volume/net.py` | 100 | 54 | nova |
+| `virt/libvirt/volume/nfs.py` | 56 | 29 | nova |
+| `virt/libvirt/volume/nvme.py` | 64 | 39 | nova |
+| `virt/libvirt/volume/quobyte.py` | 215 | 157 | nova |
+| `virt/libvirt/volume/remotefs.py` | 316 | 230 | nova |
+| `virt/libvirt/volume/scaleio.py` | 75 | 46 | nova |
+| `virt/libvirt/volume/smbfs.py` | 77 | 49 | nova |
+| `virt/libvirt/volume/storpool.py` | 65 | 40 | nova |
+| `virt/libvirt/volume/volume.py` | 189 | 123 | nova |
+| `virt/libvirt/volume/vzstorage.py` | 139 | 90 | nova |
+| `virt/netutils.py` | 384 | 281 | nova |
+| `virt/node.py` | 108 | 65 | nova |
+| `virt/osinfo.py` | 147 | 101 | nova |
+| `virt/storage_users.py` | 102 | 49 | nova |
+| `virt/virtapi.py` | 36 | 17 | nova |
+| `virt/vmwareapi/__init__.py` | 21 | 5 | nova |
+| `virt/vmwareapi/constants.py` | 235 | 197 | nova |
+| `virt/vmwareapi/driver.py` | 744 | 573 | nova |
+| `virt/vmwareapi/ds_util.py` | 513 | 403 | nova |
+| `virt/vmwareapi/error_util.py` | 33 | 11 | nova |
+| `virt/vmwareapi/host.py` | 120 | 89 | nova |
+| `virt/vmwareapi/imagecache.py` | 197 | 142 | nova |
+| `virt/vmwareapi/images.py` | 473 | 366 | nova |
+| `virt/vmwareapi/network_util.py` | 115 | 73 | nova |
+| `virt/vmwareapi/session.py` | 157 | 109 | nova |
+| `virt/vmwareapi/vif.py` | 130 | 90 | nova |
+| `virt/vmwareapi/vim_util.py` | 170 | 128 | nova |
+| `virt/vmwareapi/vm_util.py` | 1669 | 1272 | nova |
+| `virt/vmwareapi/vmops.py` | 2159 | 1723 | nova |
+| `virt/vmwareapi/volumeops.py` | 673 | 527 | nova |
+| `virt/zvm/__init__.py` | 17 | 2 | nova |
+| `virt/zvm/driver.py` | 457 | 359 | nova |
+| `virt/zvm/guest.py` | 51 | 26 | nova |
+| `virt/zvm/hypervisor.py` | 167 | 106 | nova |
+| `virt/zvm/utils.py` | 125 | 80 | nova |
+| `volume/__init__.py` | 0 | 0 | nova |
+| `volume/cinder.py` | 954 | 712 | nova |
+| `wsgi/__init__.py` | 0 | 0 | nova |
+| `wsgi/metadata.py` | 29 | 11 | nova |
+| `wsgi/osapi_compute.py` | 29 | 11 | nova |
+| **Total (1484 files)** | **604,264** | **462,230** | nova |
 
 ### Top 5 Functions by Cyclomatic Complexity
 
@@ -1450,103 +1549,116 @@ Taken from the `ccn` field of each KB symbol record.
 | CCN | Function | File |
 |---|---|---|
 | 50 | `show` | `api/openstack/compute/views/servers.py` |
+| 45 | `format_dom` | `virt/libvirt/config.py` |
 | 43 | `_validate_bdm` | `compute/api.py` |
 | 42 | `obj_make_compatible` | `objects/image_meta.py` |
-| 41 | `XMLDesc` | `tests/fixtures/libvirt.py` |
-| 40 | `_init_instance` | `compute/manager.py` |
+| 42 | `numa_get_constraints` | `virt/hardware.py` |
 
-Additional high-complexity functions: `_parse_definition` (`tests/fixtures/libvirt.py`, CCN 38), `_compare_result` (`tests/functional/api_samples_test_base.py`, CCN 38), `build_instances` (`conductor/manager.py`, CCN 34), `_test_volume_attach` (`tests/unit/virt/test_block_device.py`, CCN 33), `_pass_exact_filters` (`objects/build_request.py`, CCN 32).
+Additional high-complexity functions: `XMLDesc` (`tests/fixtures/libvirt.py`, CCN 41), `_init_instance` (`compute/manager.py`, CCN 40), `_parse_definition` (`tests/fixtures/libvirt.py`, CCN 38), `_compare_result` (`tests/functional/api_samples_test_base.py`, CCN 38), `parse_dom` (`virt/libvirt/config.py`, CCN 37).
 
 ---
 
 ## Defined Symbols
 
-Across all 1,388 KB records the component defines **37,784 symbols** in total. Source: `symbols` arrays in `.aee/kb/src/nova/**/*.json`.
+Across all 1,484 KB records the component defines **41,277 symbols** in total. Source: `symbols` arrays in `.aee/kb/src/nova/**/*.json`.
 
 | Kind | Count |
 |---|---|
-| method | 23,125 |
-| class | 3,827 |
-| function | 3,351 |
-| field | 2,718 |
-| constant | 2,645 |
-| variable | 1,783 |
-| staticmethod | 158 |
-| property | 128 |
-| classmethod | 42 |
+| method | 25,123 |
+| class | 4,094 |
+| function | 3,876 |
+| constant | 3,044 |
+| field | 2,829 |
+| variable | 1,828 |
+| staticmethod | 224 |
+| property | 200 |
+| classmethod | 52 |
 | import | 7 |
 
-Production subsystems account for 10,536 symbols (see batches 1-7). Test subsystems add 27,122 symbols: method (19,800), class (2,606), function (1,969), field (1,313). Source: `.aee/kb/src/nova/tests/**/*.json`.
+Production subsystems (batches 1-8) account for 10,536 symbols. Test subsystems add 27,122 symbols. Batch 9 adds 3,423 new production symbols from `virt/` (method 1,966, function 500, constant 393, class 266, staticmethod 66, property 72) plus 60 from `volume/` and 10 from `wsgi/`.
 
-Key symbols for new batch 8 production subsystems:
+Selected key symbols for new batch 9 subsystems:
 
-**servicegroup/**
-- `servicegroup/api.py` (47 LOC): class `ServiceGroupDriver`, factory function `API`. Source: `.aee/kb/src/nova/servicegroup/api.py.json`.
-- `servicegroup/drivers/db.py` (78 LOC): class `DbDriver`, method `_report_state` (CCN 6) — heartbeat written to DB at L88. Source: `.aee/kb/src/nova/servicegroup/drivers/db.py.json`.
-- `servicegroup/drivers/mc.py` (70 LOC): class `MemcacheDriver`, method `_report_state` (CCN 6) — heartbeat written to Memcache at L93. Source: `.aee/kb/src/nova/servicegroup/drivers/mc.py.json`.
+**virt/**
+- `virt/driver.py` (1,680 LOC): abstract class `ComputeDriver` -- the hypervisor driver interface. 43 abstract methods defining the virt API. Source: `.aee/kb/src/nova/virt/driver.py.json`.
+- `virt/libvirt/driver.py` (10,031 LOC): class `LibvirtDriver(ComputeDriver)` -- the libvirt/KVM production driver. 70 security-surface entries. `format_dom` (CCN 45) in `virt/libvirt/config.py` generates libvirt XML. Source: `.aee/kb/src/nova/virt/libvirt/driver.py.json`.
+- `virt/libvirt/config.py`: `format_dom` (CCN 45) and `parse_dom` (CCN 37) -- XML serialisation/deserialisation for libvirt domain definitions.
+- `virt/hardware.py` (2,433 LOC): `numa_get_constraints` (CCN 42) -- NUMA topology calculation for instance placement. Source: `.aee/kb/src/nova/virt/hardware.py.json`.
+- `virt/libvirt/vif.py` (646 LOC): 22 security-surface entries -- VIF plug/unplug using privsep `linux_net` calls. Source: `.aee/kb/src/nova/virt/libvirt/vif.py.json`.
+- `virt/ironic/driver.py` (1,795 LOC): class `IronicDriver(ComputeDriver)` -- baremetal compute via Ironic API. Source: `.aee/kb/src/nova/virt/ironic/driver.py.json`.
+- `virt/vmwareapi/driver.py` (573 LOC): class `VMwareAPISession` -- VMware vCenter API driver. Source: `.aee/kb/src/nova/virt/vmwareapi/driver.py.json`.
+- `virt/fake.py` (885 LOC): class `FakeDriver(ComputeDriver)` -- in-memory fake driver for tests and CI.
+- `virt/block_device.py` (775 LOC): `DriverBlockDevice` hierarchy mapping Nova BDM objects to hypervisor block-device representations. 7 db-write sinks. Source: `.aee/kb/src/nova/virt/block_device.py.json`.
+- `virt/configdrive.py` (116 LOC): config-drive assembly; calls `privsep.fs.unprivileged_mkfs` and `privsep.fs.mount`. 8 security-surface entries.
+- `virt/libvirt/utils.py` (561 LOC): 14 security-surface entries including privsep.fs, privsep.idmapshift, privsep.libvirt, privsep.path calls.
+- `virt/libvirt/imagebackend.py` (1,020 LOC): image backend classes for raw, qcow2, LVM, RBD disk formats.
+- `virt/libvirt/migration.py` (627 LOC): live-migration XML surgery functions (10 db-write sinks).
+- `virt/libvirt/host.py` (1,740 LOC): class `Host` -- libvirt connection management and SR-IOV device enumeration.
+- `virt/libvirt/volume/` (16 files): per-backend volume attachment drivers (NFS, iSCSI, Ceph/CephFS, NVMe, Fibre Channel, GPFS, Quobyte, etc.).
+- `virt/disk/api.py` (477 LOC): 13 security-surface entries -- disk image manipulation via privsep.fs calls.
+- `virt/disk/mount/` (4 files): block, loop, NBD mount backends -- all invoke privsep.fs for privileged mount/umount.
+- `virt/zvm/` (5 files): z/VM driver using the zvmsdk; `zvm/driver.py` (359 LOC) with 1 db-write sink.
+- `virt/libvirt/cpu/core.py` (48 LOC): 3 privsep-entrypoint privileges -- CPU pinning via `@sys_admin_pctxt.entrypoint`.
+- `virt/libvirt/storage/dmcrypt.py` (53 LOC): dmcrypt device create/delete via `privsep.libvirt`.
+- `virt/libvirt/storage/lvm.py` (134 LOC): LVM volume operations via `privsep.fs` (lvcreate, lvinfo, vginfo).
+- `virt/node.py` (65 LOC): node UUID persistence to file (1 file-write sink). Source: `.aee/kb/src/nova/virt/node.py.json`.
+- `virt/images.py` (198 LOC): QEMU image conversion via privsep.qemu calls (5 privilege entries).
 
-**share/**
-- `share/manila.py` (301 LOC, 50 symbols): field classes and helper functions for Manila share lifecycle (get, create, delete, attach, detach) using the `openstack` SDK. 2 `network` side effects. Source: `.aee/kb/src/nova/share/manila.py.json`.
+**volume/**
+- `volume/cinder.py` (712 LOC, 60 symbols): class `API` -- Cinder client for all block-volume lifecycle, attachment, and snapshot operations. Uses cinderclient; service-token auth at L75 (`crypto-key` privilege). 6 db-write sinks. Source: `.aee/kb/src/nova/volume/cinder.py.json`.
 
-**storage/**
-- `storage/rbd_utils.py` (386 LOC, 46 symbols): class `RBDVolumeProxy`, functions `remove_snap` (CCN 7), `parse_url` (CCN 5), `is_cloneable` (CCN 5). Uses `rados` and `rbd` Python bindings for Ceph block-storage. Source: `.aee/kb/src/nova/storage/rbd_utils.py.json`.
-
-**tests/fixtures/**
-- `tests/fixtures/libvirt.py`: `XMLDesc` (CCN 41), `_parse_definition` (CCN 38) — libvirt XML stub for unit tests.
-- `tests/functional/api_samples_test_base.py`: `_compare_result` (CCN 38) — JSON comparison for API sample tests.
+**wsgi/**
+- `wsgi/metadata.py` and `wsgi/osapi_compute.py` (22 LOC total): WSGI entry-point shims referencing `nova.api` application. No security-surface entries. Source: `.aee/kb/src/nova/wsgi/**/*.json`.
 
 ---
 
 ## External Dependencies
 
-All non-`nova` modules imported across the 1,388 KB records. Source: `dependencies` arrays in `.aee/kb/src/nova/**/*.json`.
+All non-`nova` modules imported across the 1,484 KB records. Source: `dependencies` arrays in `.aee/kb/src/nova/**/*.json`.
 
 | Package | Files importing |
 |---|---|
-| `oslo_utils` | 625 |
+| `oslo_utils` | 698 |
 | `unittest` | 433 |
-| `oslo_log` | 174 |
+| `oslo_log` | 230 |
+| `oslo_serialization` | 172 |
 | `webob` | 165 |
-| `oslo_serialization` | 159 |
-| `copy` | 157 |
-| `fixtures` | 142 |
-| `oslo_config` | 118 |
-| `datetime` | 82 |
-| `os` | 77 |
+| `copy` | 162 |
+| `fixtures` | 143 |
+| `oslo_config` | 123 |
+| `os` | 106 |
+| `collections` | 86 |
 | `oslo_policy` | 55 |
-| `keystoneauth1` | 52 |
-| `ddt` | 48 |
-| `functools` | 43 |
-| `collections` | 40 |
-| `sqlalchemy` | 37 |
-| `oslo_db` | 35 |
-| `oslo_messaging` | 29 |
-| `re` | 26 |
-| `mock` | 22 |
+| `oslo_vmware` | 26 |
+| `os_brick` | 24 |
+| `oslo_concurrency` | 21 |
+| `cinderclient` | 3 |
 
-Additional packages (batch 8 additions from tests): `dataclasses`, `ddt`, `eventlet`, `greenlet`, `mock`, `oslotest`, `rados`, `rbd`, `requests`, `requests_mock`, `testtools`, and standard-library modules. Total unique external packages: 148.
+Additional packages (batch 9 additions from virt/volume): `cinderclient`, `guestfs`, `libvirt`, `oslo_vmware`, `os_brick`, `zvmsdk`, `pyudev`, `mmap`. Total unique external packages: 154.
+
+New packages added in batch 9: `oslo_vmware` (`virt/vmwareapi/`), `os_brick` (`virt/libvirt/volume/`), `cinderclient` (`volume/cinder.py`), `guestfs` (`virt/disk/vfs/guestfs.py`), `libvirt` (`virt/libvirt/`), `zvmsdk` (`virt/zvm/`).
 
 ---
 
 ## Side Effects
 
-5,762 side-effect records. Source: `sideEffects` arrays in `.aee/kb/src/nova/**/*.json`.
+6,646 side-effect records. Source: `sideEffects` arrays in `.aee/kb/src/nova/**/*.json`.
 
 | Kind | Count | Notes |
 |---|---|---|
-| global-mutation | 2,752 | Production (1,597) + tests (1,141) -- mock patching, test class-level state |
-| network | 1,882 | Production (573) + tests (1,307) -- mock HTTP calls and fixture network ops |
-| file-io | 624 | Production (65) + tests (559) -- test fixture file operations and temp-file usage |
-| process-spawn | 430 | Production (58, all privsep/) + tests (372) -- subprocess in virt driver tests |
-| syscall | 74 | Production (9) + tests (65) -- low-level OS calls in virt unit tests |
+| global-mutation | 3,155 | Production (2,014) + tests (1,141) |
+| network | 1,891 | Production (584) + tests (1,307) -- virt adds 8 network side effects |
+| file-io | 938 | Production (379) + tests (559) -- virt/disk adds 314 file-io (qemu-img, guest FS ops) |
+| process-spawn | 561 | Production (189) + tests (372) -- virt adds 131 (qemu-img subprocesses, libvirt fork) |
+| syscall | 101 | Production (36) + tests (65) -- virt adds 27 (ioctl, sysfs reads) |
 
-Test side effects reflect test-framework patterns (mock patching = `global-mutation`, mock HTTP = `network`) and do not represent production runtime behaviour. Source: `.aee/kb/src/nova/tests/**/*.json:sideEffects`.
+`virt/` is the primary source of new `file-io` (314), `process-spawn` (131), and `syscall` (27) entries, reflecting disk image manipulation, QEMU image conversion, and low-level OS calls in the hypervisor layer.
 
 ---
 
 ## Component Diagram
 
-All 5,129 file edges are intra-component (`crossComponent: false`). No cross-component seams exist. Source: `.aee/link-graph.json` (batch da4f90f3).
+All 5,884 file edges are intra-component (`crossComponent: false`). No cross-component seams exist. Source: `.aee/link-graph.json` (batch 624338e5).
 
 ```mermaid
 graph LR
@@ -2751,6 +2863,8 @@ graph LR
   tests-unit-test-weights["test_weights.py"]
   tests-unit-utils["utils.py"]
   tests-unit-virt-disk-mount-test-api["test_api.py"]
+  tests-unit-virt-disk-mount-test-block["test_block.py"]
+  tests-unit-virt-disk-mount-test-loop["test_loop.py"]
   tests-unit-virt-disk-mount-test-nbd["test_nbd.py"]
   tests-unit-virt-disk-test-api["test_api.py"]
   tests-unit-virt-disk-test-inject["test_inject.py"]
@@ -2763,6 +2877,7 @@ graph LR
   tests-unit-virt-ironic-utils["utils.py"]
   tests-unit-virt-libvirt-cpu-test-api["test_api.py"]
   tests-unit-virt-libvirt-cpu-test-core["test_core.py"]
+  tests-unit-virt-libvirt-storage-test-dmcrypt["test_dmcrypt.py"]
   tests-unit-virt-libvirt-storage-test-lvm["test_lvm.py"]
   tests-unit-virt-libvirt-test-blockinfo["test_blockinfo.py"]
   tests-unit-virt-libvirt-test-config["test_config.py"]
@@ -2788,6 +2903,7 @@ graph LR
   tests-unit-virt-libvirt-volume-test-nfs["test_nfs.py"]
   tests-unit-virt-libvirt-volume-test-nvme["test_nvme.py"]
   tests-unit-virt-libvirt-volume-test-quobyte["test_quobyte.py"]
+  tests-unit-virt-libvirt-volume-test-remotefs["test_remotefs.py"]
   tests-unit-virt-libvirt-volume-test-scaleio["test_scaleio.py"]
   tests-unit-virt-libvirt-volume-test-smbfs["test_smbfs.py"]
   tests-unit-virt-libvirt-volume-test-storpool["test_storpool.py"]
@@ -2795,6 +2911,7 @@ graph LR
   tests-unit-virt-libvirt-volume-test-vzstorage["test_vzstorage.py"]
   tests-unit-virt-test-block-device["test_block_device.py"]
   tests-unit-virt-test-configdrive["test_configdrive.py"]
+  tests-unit-virt-test-events["test_events.py"]
   tests-unit-virt-test-fake["test_fake.py"]
   tests-unit-virt-test-hardware["test_hardware.py"]
   tests-unit-virt-test-imagecache["test_imagecache.py"]
@@ -2802,12 +2919,14 @@ graph LR
   tests-unit-virt-test-netutils["test_netutils.py"]
   tests-unit-virt-test-node["test_node.py"]
   tests-unit-virt-test-osinfo["test_osinfo.py"]
+  tests-unit-virt-test-virt["test_virt.py"]
   tests-unit-virt-test-virt-drivers["test_virt_drivers.py"]
   tests-unit-virt-vmwareapi-fake["fake.py"]
   tests-unit-virt-vmwareapi-stubs["stubs.py"]
   tests-unit-virt-vmwareapi-test-configdrive["test_configdrive.py"]
   tests-unit-virt-vmwareapi-test-driver-api["test_driver_api.py"]
   tests-unit-virt-vmwareapi-test-ds-util["test_ds_util.py"]
+  tests-unit-virt-vmwareapi-test-ds-util-datastore-selection["test_ds_util_datastore_selection.py"]
   tests-unit-virt-vmwareapi-test-imagecache["test_imagecache.py"]
   tests-unit-virt-vmwareapi-test-images["test_images.py"]
   tests-unit-virt-vmwareapi-test-network-util["test_network_util.py"]
@@ -2823,6 +2942,93 @@ graph LR
   tests-unit-virt-zvm-test-utils["test_utils.py"]
   tests-unit-volume-test-cinder["test_cinder.py"]
   utils["utils.py"]
+  virt-arch["arch.py"]
+  virt-block-device["block_device.py"]
+  virt-configdrive["configdrive.py"]
+  virt-disk-api["api.py"]
+  virt-disk-mount-api["api.py"]
+  virt-disk-mount-block["block.py"]
+  virt-disk-mount-loop["loop.py"]
+  virt-disk-mount-nbd["nbd.py"]
+  virt-disk-vfs-api["api.py"]
+  virt-disk-vfs-guestfs["guestfs.py"]
+  virt-driver["driver.py"]
+  virt-event["event.py"]
+  virt-fake["fake.py"]
+  virt-hardware["hardware.py"]
+  virt-image-model["model.py"]
+  virt-imagecache["imagecache.py"]
+  virt-images["images.py"]
+  virt-ironic-driver["driver.py"]
+  virt-ironic-init["__init__.py"]
+  virt-ironic-ironic-states["ironic_states.py"]
+  virt-ironic-patcher["patcher.py"]
+  virt-libvirt-blockinfo["blockinfo.py"]
+  virt-libvirt-config["config.py"]
+  virt-libvirt-cpu-api["api.py"]
+  virt-libvirt-cpu-core["core.py"]
+  virt-libvirt-designer["designer.py"]
+  virt-libvirt-driver["driver.py"]
+  virt-libvirt-event["event.py"]
+  virt-libvirt-guest["guest.py"]
+  virt-libvirt-host["host.py"]
+  virt-libvirt-imagebackend["imagebackend.py"]
+  virt-libvirt-imagecache["imagecache.py"]
+  virt-libvirt-init["__init__.py"]
+  virt-libvirt-instancejobtracker["instancejobtracker.py"]
+  virt-libvirt-machine-type-utils["machine_type_utils.py"]
+  virt-libvirt-migration["migration.py"]
+  virt-libvirt-storage-dmcrypt["dmcrypt.py"]
+  virt-libvirt-storage-lvm["lvm.py"]
+  virt-libvirt-utils["utils.py"]
+  virt-libvirt-vif["vif.py"]
+  virt-libvirt-volume-cephfs["cephfs.py"]
+  virt-libvirt-volume-fibrechannel["fibrechannel.py"]
+  virt-libvirt-volume-fs["fs.py"]
+  virt-libvirt-volume-gpfs["gpfs.py"]
+  virt-libvirt-volume-iscsi["iscsi.py"]
+  virt-libvirt-volume-iser["iser.py"]
+  virt-libvirt-volume-lightos["lightos.py"]
+  virt-libvirt-volume-mount["mount.py"]
+  virt-libvirt-volume-net["net.py"]
+  virt-libvirt-volume-nfs["nfs.py"]
+  virt-libvirt-volume-nvme["nvme.py"]
+  virt-libvirt-volume-quobyte["quobyte.py"]
+  virt-libvirt-volume-remotefs["remotefs.py"]
+  virt-libvirt-volume-scaleio["scaleio.py"]
+  virt-libvirt-volume-smbfs["smbfs.py"]
+  virt-libvirt-volume-storpool["storpool.py"]
+  virt-libvirt-volume-volume["volume.py"]
+  virt-libvirt-volume-vzstorage["vzstorage.py"]
+  virt-netutils["netutils.py"]
+  virt-node["node.py"]
+  virt-osinfo["osinfo.py"]
+  virt-storage-users["storage_users.py"]
+  virt-virtapi["virtapi.py"]
+  virt-vmwareapi-constants["constants.py"]
+  virt-vmwareapi-driver["driver.py"]
+  virt-vmwareapi-ds-util["ds_util.py"]
+  virt-vmwareapi-error-util["error_util.py"]
+  virt-vmwareapi-host["host.py"]
+  virt-vmwareapi-imagecache["imagecache.py"]
+  virt-vmwareapi-images["images.py"]
+  virt-vmwareapi-init["__init__.py"]
+  virt-vmwareapi-network-util["network_util.py"]
+  virt-vmwareapi-session["session.py"]
+  virt-vmwareapi-vif["vif.py"]
+  virt-vmwareapi-vim-util["vim_util.py"]
+  virt-vmwareapi-vm-util["vm_util.py"]
+  virt-vmwareapi-vmops["vmops.py"]
+  virt-vmwareapi-volumeops["volumeops.py"]
+  virt-zvm-driver["driver.py"]
+  virt-zvm-guest["guest.py"]
+  virt-zvm-hypervisor["hypervisor.py"]
+  virt-zvm-init["__init__.py"]
+  virt-zvm-utils["utils.py"]
+  volume-cinder["cinder.py"]
+  volume-init["__init__.py"]
+  wsgi-metadata["metadata.py"]
+  wsgi-osapi-compute["osapi_compute.py"]
   accelerator-cyborg --> exception
   accelerator-cyborg --> i18n
   accelerator-cyborg --> objects-init
@@ -2842,6 +3048,7 @@ graph LR
   api-metadata-base --> objects-init
   api-metadata-base --> objects-virt-device-metadata
   api-metadata-base --> utils
+  api-metadata-base --> virt-netutils
   api-metadata-handler --> api-metadata-base
   api-metadata-handler --> api-wsgi
   api-metadata-handler --> conf-init
@@ -3361,6 +3568,7 @@ graph LR
   api-openstack-compute-security-groups --> i18n
   api-openstack-compute-security-groups --> network-security-group-api
   api-openstack-compute-security-groups --> policies-security-groups
+  api-openstack-compute-security-groups --> virt-netutils
   api-openstack-compute-server-diagnostics --> api-openstack-api-version-request
   api-openstack-compute-server-diagnostics --> api-openstack-common
   api-openstack-compute-server-diagnostics --> api-openstack-compute-schemas-server-diagnostics
@@ -3424,6 +3632,7 @@ graph LR
   api-openstack-compute-server-shares --> objects-init
   api-openstack-compute-server-shares --> policies-server-shares
   api-openstack-compute-server-shares --> share-manila
+  api-openstack-compute-server-shares --> virt-hardware
   api-openstack-compute-server-tags --> api-openstack-common
   api-openstack-compute-server-tags --> api-openstack-compute-schemas-server-tags
   api-openstack-compute-server-tags --> api-openstack-compute-views-server-tags
@@ -3498,6 +3707,7 @@ graph LR
   api-openstack-compute-snapshots --> api-validation-init
   api-openstack-compute-snapshots --> exception
   api-openstack-compute-snapshots --> policies-volumes
+  api-openstack-compute-snapshots --> volume-cinder
   api-openstack-compute-suspend-server --> api-openstack-common
   api-openstack-compute-suspend-server --> api-openstack-compute-schemas-suspend-server
   api-openstack-compute-suspend-server --> api-openstack-wsgi
@@ -3570,6 +3780,7 @@ graph LR
   api-openstack-compute-volume-attachments --> i18n
   api-openstack-compute-volume-attachments --> objects-init
   api-openstack-compute-volume-attachments --> policies-volumes-attachments
+  api-openstack-compute-volume-attachments --> volume-cinder
   api-openstack-compute-volumes --> api-openstack-api-version-request
   api-openstack-compute-volumes --> api-openstack-common
   api-openstack-compute-volumes --> api-openstack-compute-schemas-volumes
@@ -3577,6 +3788,7 @@ graph LR
   api-openstack-compute-volumes --> api-validation-init
   api-openstack-compute-volumes --> exception
   api-openstack-compute-volumes --> policies-volumes
+  api-openstack-compute-volumes --> volume-cinder
   api-openstack-compute-volumes-boot --> api-openstack-compute-schemas-servers
   api-openstack-compute-volumes-boot --> api-openstack-compute-servers
   api-openstack-compute-volumes-boot --> api-openstack-wsgi
@@ -3677,6 +3889,8 @@ graph LR
   cmd-manage --> scheduler-client-report
   cmd-manage --> scheduler-utils
   cmd-manage --> utils
+  cmd-manage --> virt-libvirt-machine-type-utils
+  cmd-manage --> volume-cinder
   cmd-novncproxy --> cmd-baseproxy
   cmd-novncproxy --> conf-init
   cmd-novncproxy --> conf-vnc
@@ -3707,6 +3921,8 @@ graph LR
   cmd-status --> objects-image-meta
   cmd-status --> objects-instance
   cmd-status --> utils
+  cmd-status --> virt-libvirt-machine-type-utils
+  cmd-status --> volume-cinder
   compute-api --> accelerator-cyborg
   compute-api --> compute-flavors
   compute-api --> compute-instance-actions
@@ -3747,9 +3963,12 @@ graph LR
   compute-api --> scheduler-utils
   compute-api --> servicegroup-init
   compute-api --> utils
+  compute-api --> virt-hardware
+  compute-api --> volume-cinder
   compute-claims --> exception
   compute-claims --> i18n
   compute-claims --> objects-init
+  compute-claims --> virt-hardware
   compute-flavors --> conf-init
   compute-flavors --> db-constants
   compute-flavors --> exception
@@ -3794,6 +4013,15 @@ graph LR
   compute-manager --> scheduler-utils
   compute-manager --> share-manila
   compute-manager --> utils
+  compute-manager --> virt-block-device
+  compute-manager --> virt-configdrive
+  compute-manager --> virt-driver
+  compute-manager --> virt-event
+  compute-manager --> virt-hardware
+  compute-manager --> virt-node
+  compute-manager --> virt-storage-users
+  compute-manager --> virt-virtapi
+  compute-manager --> volume-cinder
   compute-migration-list --> compute-multi-cell-list
   compute-migration-list --> db-main-api
   compute-migration-list --> exception
@@ -3839,6 +4067,8 @@ graph LR
   compute-resource-tracker --> pci-request
   compute-resource-tracker --> scheduler-client-report
   compute-resource-tracker --> utils
+  compute-resource-tracker --> virt-hardware
+  compute-resource-tracker --> virt-node
   compute-rpcapi --> conf-init
   compute-rpcapi --> exception
   compute-rpcapi --> i18n
@@ -3909,6 +4139,7 @@ graph LR
   conductor-manager --> scheduler-utils
   conductor-manager --> servicegroup-init
   conductor-manager --> utils
+  conductor-manager --> volume-cinder
   conductor-rpcapi --> conf-init
   conductor-rpcapi --> exception
   conductor-rpcapi --> i18n
@@ -3928,6 +4159,7 @@ graph LR
   conductor-tasks-cross-cell-migrate --> objects-fields
   conductor-tasks-cross-cell-migrate --> objects-init
   conductor-tasks-cross-cell-migrate --> scheduler-utils
+  conductor-tasks-cross-cell-migrate --> volume-cinder
   conductor-tasks-live-migrate --> compute-power-state
   conductor-tasks-live-migrate --> compute-utils
   conductor-tasks-live-migrate --> conductor-tasks-base
@@ -4001,6 +4233,7 @@ graph LR
   conf-manila --> conf-utils
   conf-neutron --> conf-utils
   conf-placement --> conf-utils
+  conf-scheduler --> virt-arch
   conf-zvm --> conf-paths
   console-rfb-authnone --> console-rfb-auth
   console-rfb-auths --> console-rfb-authnone
@@ -4213,6 +4446,7 @@ graph LR
   objects-fields --> exception
   objects-fields --> i18n
   objects-fields --> network-model
+  objects-fields --> virt-arch
   objects-flavor --> conf-init
   objects-flavor --> db-api-api
   objects-flavor --> db-api-models
@@ -4237,6 +4471,7 @@ graph LR
   objects-image-meta --> objects-fields
   objects-image-meta --> objects-init
   objects-image-meta --> utils
+  objects-image-meta --> virt-hardware
   objects-init --> objects-aggregate
   objects-init --> objects-block-device
   objects-init --> objects-build-request
@@ -4328,6 +4563,7 @@ graph LR
   objects-instance-numa --> exception
   objects-instance-numa --> objects-base
   objects-instance-numa --> objects-fields
+  objects-instance-numa --> virt-hardware
   objects-instance-pci-requests --> db-main-api
   objects-instance-pci-requests --> objects-base
   objects-instance-pci-requests --> objects-fields
@@ -4360,6 +4596,7 @@ graph LR
   objects-numa --> exception
   objects-numa --> objects-base
   objects-numa --> objects-fields
+  objects-numa --> virt-hardware
   objects-pci-device --> db-main-api
   objects-pci-device --> db-main-models
   objects-pci-device --> exception
@@ -4628,6 +4865,7 @@ graph LR
   scheduler-filters-numa-topology-filter --> objects-fields
   scheduler-filters-numa-topology-filter --> objects-init
   scheduler-filters-numa-topology-filter --> scheduler-filters-init
+  scheduler-filters-numa-topology-filter --> virt-hardware
   scheduler-filters-pci-passthrough-filter --> scheduler-filters-init
   scheduler-filters-type-filter --> scheduler-filters-init
   scheduler-filters-type-filter --> scheduler-filters-utils
@@ -4638,6 +4876,7 @@ graph LR
   scheduler-host-manager --> scheduler-filters-init
   scheduler-host-manager --> scheduler-weights-init
   scheduler-host-manager --> utils
+  scheduler-host-manager --> virt-hardware
   scheduler-manager --> compute-utils
   scheduler-manager --> conf-init
   scheduler-manager --> exception
@@ -4658,6 +4897,7 @@ graph LR
   scheduler-request-filter --> objects-init
   scheduler-request-filter --> scheduler-client-report
   scheduler-request-filter --> scheduler-utils
+  scheduler-request-filter --> virt-hardware
   scheduler-rpcapi --> conf-init
   scheduler-rpcapi --> exception
   scheduler-rpcapi --> objects-base
@@ -4673,6 +4913,7 @@ graph LR
   scheduler-utils --> pci-request
   scheduler-utils --> scheduler-client-report
   scheduler-utils --> scheduler-filters-utils
+  scheduler-utils --> virt-hardware
   scheduler-weights-affinity --> scheduler-utils
   scheduler-weights-affinity --> scheduler-weights-init
   scheduler-weights-compute --> conf-init
@@ -4736,6 +4977,7 @@ graph LR
   tests-fixtures-conf --> conf-neutron
   tests-fixtures-conf --> conf-paths
   tests-fixtures-cyborg --> exception
+  tests-fixtures-filesystem --> virt-libvirt-cpu-core
   tests-fixtures-glance --> exception
   tests-fixtures-glance --> objects-fields
   tests-fixtures-glance --> tests-fixtures-nova
@@ -4756,8 +4998,16 @@ graph LR
   tests-fixtures-libvirt --> conf-init
   tests-fixtures-libvirt --> objects-fields
   tests-fixtures-libvirt --> tests-fixtures-libvirt-data
+  tests-fixtures-libvirt --> virt-libvirt-config
+  tests-fixtures-libvirt --> virt-libvirt-driver
+  tests-fixtures-libvirt --> virt-libvirt-host
   tests-fixtures-libvirt-data --> objects-fields
+  tests-fixtures-libvirt-data --> virt-libvirt-config
   tests-fixtures-libvirt-imagebackend --> conf-init
+  tests-fixtures-libvirt-imagebackend --> virt-libvirt-config
+  tests-fixtures-libvirt-imagebackend --> virt-libvirt-driver
+  tests-fixtures-libvirt-imagebackend --> virt-libvirt-imagebackend
+  tests-fixtures-libvirt-imagebackend --> virt-libvirt-utils
   tests-fixtures-neutron --> exception
   tests-fixtures-neutron --> network-constants
   tests-fixtures-neutron --> network-model
@@ -4778,6 +5028,8 @@ graph LR
   tests-fixtures-nova --> scheduler-weights-init
   tests-fixtures-nova --> tests-functional-api-client
   tests-fixtures-nova --> utils
+  tests-fixtures-nova --> virt-libvirt-host
+  tests-fixtures-nova --> virt-node
   tests-fixtures-policy --> conf-init
   tests-fixtures-policy --> conf-paths
   tests-fixtures-policy --> policies-init
@@ -4950,6 +5202,7 @@ graph LR
   tests-functional-compute-test-resource-tracker --> objects-init
   tests-functional-compute-test-resource-tracker --> tests-functional-fixtures
   tests-functional-compute-test-resource-tracker --> tests-functional-integrated-helpers
+  tests-functional-compute-test-resource-tracker --> virt-driver
   tests-functional-db-test-aggregate --> db-api-api
   tests-functional-db-test-aggregate --> db-api-models
   tests-functional-db-test-aggregate --> exception
@@ -5059,9 +5312,13 @@ graph LR
   tests-functional-libvirt-test-amd-sev --> exception
   tests-functional-libvirt-test-amd-sev --> tests-fixtures-libvirt
   tests-functional-libvirt-test-amd-sev --> tests-functional-libvirt-base
+  tests-functional-libvirt-test-amd-sev --> virt-libvirt-driver
+  tests-functional-libvirt-test-amd-sev --> virt-libvirt-host
   tests-functional-libvirt-test-device-bus-migration --> cmd-manage
   tests-functional-libvirt-test-device-bus-migration --> objects-init
   tests-functional-libvirt-test-device-bus-migration --> tests-functional-libvirt-base
+  tests-functional-libvirt-test-device-bus-migration --> virt-libvirt-config
+  tests-functional-libvirt-test-device-bus-migration --> virt-libvirt-driver
   tests-functional-libvirt-test-evacuate --> conf-init
   tests-functional-libvirt-test-evacuate --> exception
   tests-functional-libvirt-test-evacuate --> objects-init
@@ -5070,14 +5327,17 @@ graph LR
   tests-functional-libvirt-test-evacuate --> tests-functional-fixtures
   tests-functional-libvirt-test-evacuate --> tests-functional-integrated-helpers
   tests-functional-libvirt-test-evacuate --> tests-unit-fake-network
+  tests-functional-libvirt-test-evacuate --> virt-libvirt-config
   tests-functional-libvirt-test-intel-tdx --> exception
   tests-functional-libvirt-test-intel-tdx --> tests-fixtures-libvirt
   tests-functional-libvirt-test-intel-tdx --> tests-functional-libvirt-base
+  tests-functional-libvirt-test-intel-tdx --> virt-libvirt-driver
   tests-functional-libvirt-test-live-migration --> tests-functional-integrated-helpers
   tests-functional-libvirt-test-live-migration --> tests-functional-libvirt-base
   tests-functional-libvirt-test-machine-type --> exception
   tests-functional-libvirt-test-machine-type --> objects-init
   tests-functional-libvirt-test-machine-type --> tests-functional-libvirt-base
+  tests-functional-libvirt-test-machine-type --> virt-libvirt-machine-type-utils
   tests-functional-libvirt-test-migration-addr --> tests-functional-libvirt-base
   tests-functional-libvirt-test-numa-live-migration --> compute-manager
   tests-functional-libvirt-test-numa-live-migration --> compute-resource-tracker
@@ -5106,20 +5366,26 @@ graph LR
   tests-functional-libvirt-test-pci-sriov-servers --> tests-fixtures-libvirt
   tests-functional-libvirt-test-pci-sriov-servers --> tests-functional-api-client
   tests-functional-libvirt-test-pci-sriov-servers --> tests-functional-libvirt-base
+  tests-functional-libvirt-test-pci-sriov-servers --> virt-hardware
+  tests-functional-libvirt-test-pci-sriov-servers --> virt-libvirt-driver
   tests-functional-libvirt-test-power-manage --> exception
   tests-functional-libvirt-test-power-manage --> objects-init
   tests-functional-libvirt-test-power-manage --> tests-fixtures-init
   tests-functional-libvirt-test-power-manage --> tests-fixtures-libvirt
   tests-functional-libvirt-test-power-manage --> tests-functional-libvirt-base
+  tests-functional-libvirt-test-power-manage --> virt-hardware
+  tests-functional-libvirt-test-power-manage --> virt-libvirt-cpu-api
   tests-functional-libvirt-test-report-cpu-traits --> conf-init
   tests-functional-libvirt-test-report-cpu-traits --> tests-fixtures-libvirt
   tests-functional-libvirt-test-report-cpu-traits --> tests-functional-libvirt-integrated-helpers
+  tests-functional-libvirt-test-report-cpu-traits --> virt-libvirt-host
   tests-functional-libvirt-test-rescue-deleted-base --> conf-init
   tests-functional-libvirt-test-rescue-deleted-base --> tests-fixtures-init
   tests-functional-libvirt-test-rescue-deleted-base --> tests-functional-libvirt-base
   tests-functional-libvirt-test-reshape --> objects-init
   tests-functional-libvirt-test-reshape --> tests-fixtures-libvirt
   tests-functional-libvirt-test-reshape --> tests-functional-libvirt-base
+  tests-functional-libvirt-test-reshape --> virt-libvirt-utils
   tests-functional-libvirt-test-rt-servers --> tests-functional-api-client
   tests-functional-libvirt-test-rt-servers --> tests-functional-libvirt-base
   tests-functional-libvirt-test-server-shares --> exception
@@ -5135,15 +5401,20 @@ graph LR
   tests-functional-libvirt-test-stateless-firmware --> conf-init
   tests-functional-libvirt-test-stateless-firmware --> objects-init
   tests-functional-libvirt-test-stateless-firmware --> tests-functional-libvirt-base
+  tests-functional-libvirt-test-stateless-firmware --> virt-libvirt-driver
+  tests-functional-libvirt-test-stateless-firmware --> virt-libvirt-migration
   tests-functional-libvirt-test-uefi --> conf-init
   tests-functional-libvirt-test-uefi --> objects-init
   tests-functional-libvirt-test-uefi --> tests-functional-libvirt-base
+  tests-functional-libvirt-test-uefi --> virt-hardware
   tests-functional-libvirt-test-vgpu --> compute-instance-actions
   tests-functional-libvirt-test-vgpu --> conf-init
   tests-functional-libvirt-test-vgpu --> objects-init
   tests-functional-libvirt-test-vgpu --> tests-fixtures-libvirt
   tests-functional-libvirt-test-vgpu --> tests-functional-api-client
   tests-functional-libvirt-test-vgpu --> tests-functional-libvirt-base
+  tests-functional-libvirt-test-vgpu --> virt-libvirt-driver
+  tests-functional-libvirt-test-vgpu --> virt-libvirt-utils
   tests-functional-libvirt-test-vif-model --> tests-functional-libvirt-base
   tests-functional-libvirt-test-vpmem --> objects-init
   tests-functional-libvirt-test-vpmem --> tests-fixtures-init
@@ -5174,12 +5445,14 @@ graph LR
   tests-functional-notification-sample-tests-test-instance --> tests-fixtures-init
   tests-functional-notification-sample-tests-test-instance --> tests-functional-api-client
   tests-functional-notification-sample-tests-test-instance --> tests-functional-notification-sample-tests-notification-sample-base
+  tests-functional-notification-sample-tests-test-instance --> volume-cinder
   tests-functional-notification-sample-tests-test-keypair --> tests-functional-notification-sample-tests-notification-sample-base
   tests-functional-notification-sample-tests-test-libvirt --> conf-init
   tests-functional-notification-sample-tests-test-libvirt --> exception
   tests-functional-notification-sample-tests-test-libvirt --> tests-fixtures-init
   tests-functional-notification-sample-tests-test-libvirt --> tests-fixtures-libvirt
   tests-functional-notification-sample-tests-test-libvirt --> tests-functional-notification-sample-tests-notification-sample-base
+  tests-functional-notification-sample-tests-test-libvirt --> virt-libvirt-host
   tests-functional-notification-sample-tests-test-metrics --> conf-init
   tests-functional-notification-sample-tests-test-metrics --> tests-functional-notification-sample-tests-notification-sample-base
   tests-functional-notification-sample-tests-test-server-group --> tests-fixtures-init
@@ -5207,6 +5480,7 @@ graph LR
   tests-functional-regressions-test-bug-1595962 --> tests-fixtures-init
   tests-functional-regressions-test-bug-1595962 --> tests-fixtures-libvirt
   tests-functional-regressions-test-bug-1595962 --> tests-functional-fixtures
+  tests-functional-regressions-test-bug-1595962 --> virt-libvirt-guest
   tests-functional-regressions-test-bug-1620248 --> tests-fixtures-init
   tests-functional-regressions-test-bug-1628606 --> tests-fixtures-init
   tests-functional-regressions-test-bug-1628606 --> tests-functional-api-client
@@ -5352,6 +5626,7 @@ graph LR
   tests-functional-regressions-test-bug-1839560 --> tests-functional-fixtures
   tests-functional-regressions-test-bug-1839560 --> tests-functional-integrated-helpers
   tests-functional-regressions-test-bug-1839560 --> utils
+  tests-functional-regressions-test-bug-1839560 --> virt-fake
   tests-functional-regressions-test-bug-1843090 --> compute-init
   tests-functional-regressions-test-bug-1843090 --> exception
   tests-functional-regressions-test-bug-1843090 --> tests-fixtures-init
@@ -5376,6 +5651,7 @@ graph LR
   tests-functional-regressions-test-bug-1852458 --> utils
   tests-functional-regressions-test-bug-1853009 --> objects-init
   tests-functional-regressions-test-bug-1853009 --> tests-functional-integrated-helpers
+  tests-functional-regressions-test-bug-1853009 --> virt-fake
   tests-functional-regressions-test-bug-1862633 --> tests-fixtures-init
   tests-functional-regressions-test-bug-1862633 --> tests-functional-fixtures
   tests-functional-regressions-test-bug-1862633 --> tests-functional-integrated-helpers
@@ -5384,6 +5660,7 @@ graph LR
   tests-functional-regressions-test-bug-1879878 --> policies-base
   tests-functional-regressions-test-bug-1879878 --> policies-servers
   tests-functional-regressions-test-bug-1879878 --> tests-functional-integrated-helpers
+  tests-functional-regressions-test-bug-1879878 --> virt-fake
   tests-functional-regressions-test-bug-1886418 --> tests-functional-integrated-helpers
   tests-functional-regressions-test-bug-1888395 --> network-constants
   tests-functional-regressions-test-bug-1888395 --> network-neutron
@@ -5410,6 +5687,7 @@ graph LR
   tests-functional-regressions-test-bug-1896463 --> tests-functional-fixtures
   tests-functional-regressions-test-bug-1896463 --> tests-functional-integrated-helpers
   tests-functional-regressions-test-bug-1896463 --> utils
+  tests-functional-regressions-test-bug-1896463 --> virt-fake
   tests-functional-regressions-test-bug-1899649 --> tests-fixtures-init
   tests-functional-regressions-test-bug-1899649 --> tests-fixtures-libvirt
   tests-functional-regressions-test-bug-1899649 --> tests-functional-libvirt-base
@@ -5446,6 +5724,7 @@ graph LR
   tests-functional-regressions-test-bug-1943431 --> tests-functional-api-client
   tests-functional-regressions-test-bug-1943431 --> tests-functional-integrated-helpers
   tests-functional-regressions-test-bug-1943431 --> tests-functional-libvirt-base
+  tests-functional-regressions-test-bug-1943431 --> virt-block-device
   tests-functional-regressions-test-bug-1944619 --> exception
   tests-functional-regressions-test-bug-1944619 --> tests-fixtures-libvirt
   tests-functional-regressions-test-bug-1944619 --> tests-functional-integrated-helpers
@@ -5467,6 +5746,7 @@ graph LR
   tests-functional-regressions-test-bug-2007968 --> tests-functional-api-client
   tests-functional-regressions-test-bug-2007968 --> tests-functional-libvirt-base
   tests-functional-regressions-test-bug-2016173 --> tests-functional-integrated-helpers
+  tests-functional-regressions-test-bug-2016173 --> volume-cinder
   tests-functional-regressions-test-bug-2025480 --> objects-compute-node
   tests-functional-regressions-test-bug-2025480 --> tests-fixtures-init
   tests-functional-regressions-test-bug-2025480 --> tests-functional-fixtures
@@ -5476,6 +5756,7 @@ graph LR
   tests-functional-regressions-test-bug-2044235 --> tests-functional-api-client
   tests-functional-regressions-test-bug-2044235 --> tests-functional-integrated-helpers
   tests-functional-regressions-test-bug-2048837 --> tests-functional-libvirt-base
+  tests-functional-regressions-test-bug-2048837 --> virt-libvirt-init
   tests-functional-regressions-test-bug-2062127 --> tests-fixtures-init
   tests-functional-regressions-test-bug-2062127 --> tests-functional-fixtures
   tests-functional-regressions-test-bug-2062127 --> tests-functional-integrated-helpers
@@ -5486,6 +5767,9 @@ graph LR
   tests-functional-regressions-test-bug-2077980 --> tests-functional-integrated-helpers
   tests-functional-regressions-test-bug-2079850 --> conf-init
   tests-functional-regressions-test-bug-2079850 --> objects-init
+  tests-functional-regressions-test-bug-2079850 --> virt-libvirt-driver
+  tests-functional-regressions-test-bug-2079850 --> virt-libvirt-imagebackend
+  tests-functional-regressions-test-bug-2079850 --> virt-libvirt-utils
   tests-functional-regressions-test-bug-2080531 --> objects-init
   tests-functional-regressions-test-bug-2080531 --> tests-fixtures-init
   tests-functional-regressions-test-bug-2080531 --> tests-functional-fixtures
@@ -5698,6 +5982,7 @@ graph LR
   tests-functional-test-server-group --> tests-functional-fixtures
   tests-functional-test-server-group --> tests-functional-integrated-helpers
   tests-functional-test-server-group --> utils
+  tests-functional-test-server-group --> virt-fake
   tests-functional-test-server-rescue --> tests-fixtures-init
   tests-functional-test-server-rescue --> tests-functional-api-client
   tests-functional-test-server-rescue --> tests-functional-integrated-helpers
@@ -5719,8 +6004,11 @@ graph LR
   tests-functional-test-servers --> tests-unit-fake-requests
   tests-functional-test-servers --> tests-unit-objects-test-instance-info-cache
   tests-functional-test-servers --> utils
+  tests-functional-test-servers --> virt-fake
+  tests-functional-test-servers --> volume-init
   tests-functional-test-servers-provider-tree --> exception
   tests-functional-test-servers-provider-tree --> tests-functional-integrated-helpers
+  tests-functional-test-servers-provider-tree --> virt-fake
   tests-functional-test-servers-resource-request --> compute-instance-actions
   tests-functional-test-servers-resource-request --> compute-manager
   tests-functional-test-servers-resource-request --> exception
@@ -5734,11 +6022,13 @@ graph LR
   tests-functional-test-servers-resource-request --> tests-functional-api-client
   tests-functional-test-servers-resource-request --> tests-functional-integrated-helpers
   tests-functional-test-servers-resource-request --> tests-unit-fake-requests
+  tests-functional-test-servers-resource-request --> virt-fake
   tests-functional-test-service --> exception
   tests-functional-test-service --> objects-service
   tests-functional-test-service --> tests-fixtures-init
   tests-functional-test-service --> tests-functional-fixtures
   tests-functional-test-service --> tests-functional-integrated-helpers
+  tests-functional-test-service --> virt-node
   tests-functional-test-unified-limits --> conf-init
   tests-functional-test-unified-limits --> limit-local
   tests-functional-test-unified-limits --> objects-flavor
@@ -6169,6 +6459,7 @@ graph LR
   tests-unit-api-openstack-compute-test-snapshots --> api-openstack-compute-snapshots
   tests-unit-api-openstack-compute-test-snapshots --> exception
   tests-unit-api-openstack-compute-test-snapshots --> tests-unit-api-openstack-fakes
+  tests-unit-api-openstack-compute-test-snapshots --> volume-cinder
   tests-unit-api-openstack-compute-test-suspend-server --> api-openstack-compute-suspend-server
   tests-unit-api-openstack-compute-test-suspend-server --> exception
   tests-unit-api-openstack-compute-test-suspend-server --> tests-unit-api-openstack-compute-admin-only-action-common
@@ -6193,11 +6484,13 @@ graph LR
   tests-unit-api-openstack-compute-test-volume-attachments --> tests-unit-api-openstack-fakes
   tests-unit-api-openstack-compute-test-volume-attachments --> tests-unit-fake-block-device
   tests-unit-api-openstack-compute-test-volume-attachments --> tests-unit-fake-instance
+  tests-unit-api-openstack-compute-test-volume-attachments --> volume-cinder
   tests-unit-api-openstack-compute-test-volumes --> api-openstack-compute-volumes
   tests-unit-api-openstack-compute-test-volumes --> compute-flavors
   tests-unit-api-openstack-compute-test-volumes --> conf-init
   tests-unit-api-openstack-compute-test-volumes --> exception
   tests-unit-api-openstack-compute-test-volumes --> tests-unit-api-openstack-fakes
+  tests-unit-api-openstack-compute-test-volumes --> volume-cinder
   tests-unit-api-openstack-compute-test-volumes-boot --> api-openstack-compute-volumes-boot
   tests-unit-api-openstack-compute-test-volumes-boot --> exception
   tests-unit-api-openstack-compute-test-volumes-boot --> tests-unit-api-openstack-fakes
@@ -6325,6 +6618,7 @@ graph LR
   tests-unit-compute-test-api --> tests-unit-objects-test-flavor
   tests-unit-compute-test-api --> tests-unit-objects-test-migration
   tests-unit-compute-test-api --> utils
+  tests-unit-compute-test-api --> volume-cinder
   tests-unit-compute-test-claims --> compute-claims
   tests-unit-compute-test-claims --> exception
   tests-unit-compute-test-claims --> objects-init
@@ -6370,6 +6664,11 @@ graph LR
   tests-unit-compute-test-compute --> tests-unit-objects-test-migration
   tests-unit-compute-test-compute --> tests-unit-utils
   tests-unit-compute-test-compute --> utils
+  tests-unit-compute-test-compute --> virt-block-device
+  tests-unit-compute-test-compute --> virt-event
+  tests-unit-compute-test-compute --> virt-fake
+  tests-unit-compute-test-compute --> virt-hardware
+  tests-unit-compute-test-compute --> volume-cinder
   tests-unit-compute-test-compute-mgr --> compute-build-results
   tests-unit-compute-test-compute-mgr --> compute-manager
   tests-unit-compute-test-compute-mgr --> compute-power-state
@@ -6406,11 +6705,19 @@ graph LR
   tests-unit-compute-test-compute-mgr --> tests-unit-objects-test-instance-fault
   tests-unit-compute-test-compute-mgr --> tests-unit-objects-test-instance-info-cache
   tests-unit-compute-test-compute-mgr --> utils
+  tests-unit-compute-test-compute-mgr --> virt-block-device
+  tests-unit-compute-test-compute-mgr --> virt-driver
+  tests-unit-compute-test-compute-mgr --> virt-event
+  tests-unit-compute-test-compute-mgr --> virt-fake
+  tests-unit-compute-test-compute-mgr --> virt-hardware
+  tests-unit-compute-test-compute-mgr --> virt-node
+  tests-unit-compute-test-compute-mgr --> volume-cinder
   tests-unit-compute-test-flavors --> compute-flavors
   tests-unit-compute-test-flavors --> db-constants
   tests-unit-compute-test-flavors --> exception
   tests-unit-compute-test-flavors --> objects-base
   tests-unit-compute-test-flavors --> objects-init
+  tests-unit-compute-test-flavors --> virt-hardware
   tests-unit-compute-test-host-api --> api-openstack-compute-services
   tests-unit-compute-test-host-api --> compute-api
   tests-unit-compute-test-host-api --> exception
@@ -6466,6 +6773,7 @@ graph LR
   tests-unit-compute-test-resource-tracker --> tests-unit-objects-test-pci-device
   tests-unit-compute-test-resource-tracker --> tests-unit-utils
   tests-unit-compute-test-resource-tracker --> utils
+  tests-unit-compute-test-resource-tracker --> virt-driver
   tests-unit-compute-test-rpcapi --> compute-rpcapi
   tests-unit-compute-test-rpcapi --> exception
   tests-unit-compute-test-rpcapi --> objects-block-device
@@ -6517,10 +6825,13 @@ graph LR
   tests-unit-compute-test-utils --> tests-unit-fake-network
   tests-unit-compute-test-utils --> tests-unit-fake-server-actions
   tests-unit-compute-test-utils --> tests-unit-objects-test-flavor
+  tests-unit-compute-test-utils --> volume-cinder
   tests-unit-compute-test-virtapi --> compute-manager
   tests-unit-compute-test-virtapi --> exception
   tests-unit-compute-test-virtapi --> objects-init
   tests-unit-compute-test-virtapi --> scheduler-client-report
+  tests-unit-compute-test-virtapi --> virt-fake
+  tests-unit-compute-test-virtapi --> virt-virtapi
   tests-unit-conductor-tasks-test-base --> conductor-tasks-base
   tests-unit-conductor-tasks-test-cross-cell-migrate --> compute-instance-actions
   tests-unit-conductor-tasks-test-cross-cell-migrate --> compute-power-state
@@ -6605,6 +6916,7 @@ graph LR
   tests-unit-conductor-test-conductor --> tests-unit-fake-volume
   tests-unit-conductor-test-conductor --> tests-unit-utils
   tests-unit-conductor-test-conductor --> utils
+  tests-unit-conductor-test-conductor --> volume-cinder
   tests-unit-conf-test-base --> conf-base
   tests-unit-conf-test-base --> conf-init
   tests-unit-conf-test-devices --> conf-init
@@ -6689,6 +7001,7 @@ graph LR
   tests-unit-fake-volume --> exception
   tests-unit-fixtures-test-libvirt --> objects-fields
   tests-unit-fixtures-test-libvirt --> tests-fixtures-libvirt
+  tests-unit-fixtures-test-libvirt --> virt-libvirt-config
   tests-unit-fixtures-test-notifications --> tests-fixtures-init
   tests-unit-image-fake --> conf-init
   tests-unit-image-fake --> objects-init
@@ -6715,6 +7028,7 @@ graph LR
   tests-unit-network-test-network-info --> exception
   tests-unit-network-test-network-info --> network-model
   tests-unit-network-test-network-info --> tests-unit-fake-network-cache-model
+  tests-unit-network-test-network-info --> virt-netutils
   tests-unit-network-test-neutron --> db-main-api
   tests-unit-network-test-neutron --> exception
   tests-unit-network-test-neutron --> network-constants
@@ -7558,12 +7872,15 @@ graph LR
   tests-unit-test-block-device --> objects-init
   tests-unit-test-block-device --> tests-unit-fake-block-device
   tests-unit-test-block-device --> tests-unit-matchers
+  tests-unit-test-block-device --> volume-cinder
   tests-unit-test-cinder --> conf-init
   tests-unit-test-cinder --> exception
   tests-unit-test-cinder --> service-auth
+  tests-unit-test-cinder --> volume-cinder
   tests-unit-test-conf --> conf-compute
   tests-unit-test-configdrive2 --> tests-unit-fake-instance
   tests-unit-test-configdrive2 --> utils
+  tests-unit-test-configdrive2 --> virt-configdrive
   tests-unit-test-context --> exception
   tests-unit-test-context --> objects-init
   tests-unit-test-context --> service-auth
@@ -7613,6 +7930,7 @@ graph LR
   tests-unit-test-metadata --> tests-unit-fake-network
   tests-unit-test-metadata --> tests-unit-fake-requests
   tests-unit-test-metadata --> utils
+  tests-unit-test-metadata --> virt-netutils
   tests-unit-test-notifications --> compute-task-states
   tests-unit-test-notifications --> compute-vm-states
   tests-unit-test-notifications --> exception
@@ -7668,13 +7986,33 @@ graph LR
   tests-unit-utils --> objects-init
   tests-unit-utils --> utils
   tests-unit-virt-disk-mount-test-api --> tests-fixtures-init
+  tests-unit-virt-disk-mount-test-api --> virt-disk-mount-api
+  tests-unit-virt-disk-mount-test-api --> virt-disk-mount-block
+  tests-unit-virt-disk-mount-test-api --> virt-disk-mount-loop
+  tests-unit-virt-disk-mount-test-api --> virt-disk-mount-nbd
+  tests-unit-virt-disk-mount-test-api --> virt-image-model
+  tests-unit-virt-disk-mount-test-block --> virt-disk-mount-block
+  tests-unit-virt-disk-mount-test-block --> virt-image-model
+  tests-unit-virt-disk-mount-test-loop --> virt-disk-mount-loop
+  tests-unit-virt-disk-mount-test-loop --> virt-image-model
   tests-unit-virt-disk-mount-test-nbd --> utils
+  tests-unit-virt-disk-mount-test-nbd --> virt-disk-mount-nbd
+  tests-unit-virt-disk-mount-test-nbd --> virt-image-model
   tests-unit-virt-disk-test-api --> exception
+  tests-unit-virt-disk-test-api --> virt-disk-api
+  tests-unit-virt-disk-test-api --> virt-disk-mount-api
+  tests-unit-virt-disk-test-api --> virt-image-model
   tests-unit-virt-disk-test-inject --> tests-unit-virt-disk-vfs-fakeguestfs
+  tests-unit-virt-disk-test-inject --> virt-disk-api
+  tests-unit-virt-disk-test-inject --> virt-disk-vfs-guestfs
+  tests-unit-virt-disk-test-inject --> virt-image-model
   tests-unit-virt-disk-vfs-test-guestfs --> exception
   tests-unit-virt-disk-vfs-test-guestfs --> tests-unit-virt-disk-vfs-fakeguestfs
   tests-unit-virt-disk-vfs-test-guestfs --> utils
+  tests-unit-virt-disk-vfs-test-guestfs --> virt-disk-vfs-guestfs
+  tests-unit-virt-disk-vfs-test-guestfs --> virt-image-model
   tests-unit-virt-image-test-model --> exception
+  tests-unit-virt-image-test-model --> virt-image-model
   tests-unit-virt-ironic-test-driver --> api-metadata-base
   tests-unit-virt-ironic-test-driver --> api-openstack-common
   tests-unit-virt-ironic-test-driver --> compute-power-state
@@ -7692,27 +8030,50 @@ graph LR
   tests-unit-virt-ironic-test-driver --> tests-unit-matchers
   tests-unit-virt-ironic-test-driver --> tests-unit-utils
   tests-unit-virt-ironic-test-driver --> tests-unit-virt-ironic-utils
+  tests-unit-virt-ironic-test-driver --> virt-block-device
+  tests-unit-virt-ironic-test-driver --> virt-configdrive
+  tests-unit-virt-ironic-test-driver --> virt-driver
+  tests-unit-virt-ironic-test-driver --> virt-fake
+  tests-unit-virt-ironic-test-driver --> virt-hardware
+  tests-unit-virt-ironic-test-driver --> virt-ironic-driver
+  tests-unit-virt-ironic-test-driver --> virt-ironic-ironic-states
   tests-unit-virt-ironic-test-patcher --> objects-init
   tests-unit-virt-ironic-test-patcher --> tests-unit-fake-instance
   tests-unit-virt-ironic-test-patcher --> tests-unit-virt-ironic-utils
+  tests-unit-virt-ironic-test-patcher --> virt-ironic-patcher
   tests-unit-virt-ironic-utils --> network-model
   tests-unit-virt-ironic-utils --> objects-init
+  tests-unit-virt-ironic-utils --> virt-driver
+  tests-unit-virt-ironic-utils --> virt-ironic-ironic-states
   tests-unit-virt-libvirt-cpu-test-api --> exception
   tests-unit-virt-libvirt-cpu-test-api --> objects-init
+  tests-unit-virt-libvirt-cpu-test-api --> virt-libvirt-cpu-api
+  tests-unit-virt-libvirt-cpu-test-api --> virt-libvirt-cpu-core
   tests-unit-virt-libvirt-cpu-test-core --> exception
   tests-unit-virt-libvirt-cpu-test-core --> tests-fixtures-init
+  tests-unit-virt-libvirt-cpu-test-core --> virt-libvirt-cpu-core
+  tests-unit-virt-libvirt-storage-test-dmcrypt --> virt-libvirt-storage-dmcrypt
   tests-unit-virt-libvirt-storage-test-lvm --> exception
+  tests-unit-virt-libvirt-storage-test-lvm --> virt-libvirt-storage-lvm
   tests-unit-virt-libvirt-test-blockinfo --> exception
   tests-unit-virt-libvirt-test-blockinfo --> objects-fields
   tests-unit-virt-libvirt-test-blockinfo --> objects-init
   tests-unit-virt-libvirt-test-blockinfo --> tests-fixtures-init
   tests-unit-virt-libvirt-test-blockinfo --> tests-unit-fake-block-device
   tests-unit-virt-libvirt-test-blockinfo --> tests-unit-virt-fakelibosinfo
+  tests-unit-virt-libvirt-test-blockinfo --> virt-block-device
+  tests-unit-virt-libvirt-test-blockinfo --> virt-driver
+  tests-unit-virt-libvirt-test-blockinfo --> virt-libvirt-blockinfo
   tests-unit-virt-libvirt-test-config --> exception
   tests-unit-virt-libvirt-test-config --> objects-fields
   tests-unit-virt-libvirt-test-config --> tests-fixtures-libvirt-data
+  tests-unit-virt-libvirt-test-config --> virt-driver
+  tests-unit-virt-libvirt-test-config --> virt-hardware
+  tests-unit-virt-libvirt-test-config --> virt-libvirt-config
   tests-unit-virt-libvirt-test-designer --> pci-utils
   tests-unit-virt-libvirt-test-designer --> tests-unit-matchers
+  tests-unit-virt-libvirt-test-designer --> virt-libvirt-config
+  tests-unit-virt-libvirt-test-designer --> virt-libvirt-designer
   tests-unit-virt-libvirt-test-driver --> api-metadata-base
   tests-unit-virt-libvirt-test-driver --> compute-manager
   tests-unit-virt-libvirt-test-driver --> compute-power-state
@@ -7750,8 +8111,30 @@ graph LR
   tests-unit-virt-libvirt-test-driver --> tests-unit-objects-test-vcpu-model
   tests-unit-virt-libvirt-test-driver --> tests-unit-utils
   tests-unit-virt-libvirt-test-driver --> utils
+  tests-unit-virt-libvirt-test-driver --> virt-block-device
+  tests-unit-virt-libvirt-test-driver --> virt-driver
+  tests-unit-virt-libvirt-test-driver --> virt-fake
+  tests-unit-virt-libvirt-test-driver --> virt-hardware
+  tests-unit-virt-libvirt-test-driver --> virt-image-model
+  tests-unit-virt-libvirt-test-driver --> virt-libvirt-blockinfo
+  tests-unit-virt-libvirt-test-driver --> virt-libvirt-config
+  tests-unit-virt-libvirt-test-driver --> virt-libvirt-driver
+  tests-unit-virt-libvirt-test-driver --> virt-libvirt-event
+  tests-unit-virt-libvirt-test-driver --> virt-libvirt-guest
+  tests-unit-virt-libvirt-test-driver --> virt-libvirt-host
+  tests-unit-virt-libvirt-test-driver --> virt-libvirt-imagebackend
+  tests-unit-virt-libvirt-test-driver --> virt-libvirt-imagecache
+  tests-unit-virt-libvirt-test-driver --> virt-libvirt-migration
+  tests-unit-virt-libvirt-test-driver --> virt-libvirt-storage-dmcrypt
+  tests-unit-virt-libvirt-test-driver --> virt-libvirt-storage-lvm
+  tests-unit-virt-libvirt-test-driver --> virt-libvirt-utils
+  tests-unit-virt-libvirt-test-driver --> virt-libvirt-vif
+  tests-unit-virt-libvirt-test-driver --> virt-libvirt-volume-volume
   tests-unit-virt-libvirt-test-guest --> tests-fixtures-init
   tests-unit-virt-libvirt-test-guest --> tests-fixtures-libvirt
+  tests-unit-virt-libvirt-test-guest --> virt-libvirt-config
+  tests-unit-virt-libvirt-test-guest --> virt-libvirt-guest
+  tests-unit-virt-libvirt-test-guest --> virt-libvirt-host
   tests-unit-virt-libvirt-test-host --> compute-manager
   tests-unit-virt-libvirt-test-host --> compute-vm-states
   tests-unit-virt-libvirt-test-host --> conf-init
@@ -7763,21 +8146,33 @@ graph LR
   tests-unit-virt-libvirt-test-host --> tests-fixtures-libvirt
   tests-unit-virt-libvirt-test-host --> tests-fixtures-libvirt-data
   tests-unit-virt-libvirt-test-host --> utils
+  tests-unit-virt-libvirt-test-host --> virt-event
+  tests-unit-virt-libvirt-test-host --> virt-libvirt-config
+  tests-unit-virt-libvirt-test-host --> virt-libvirt-event
+  tests-unit-virt-libvirt-test-host --> virt-libvirt-guest
+  tests-unit-virt-libvirt-test-host --> virt-libvirt-host
   tests-unit-virt-libvirt-test-imagebackend --> compute-utils
   tests-unit-virt-libvirt-test-imagebackend --> conf-init
   tests-unit-virt-libvirt-test-imagebackend --> exception
   tests-unit-virt-libvirt-test-imagebackend --> objects-init
   tests-unit-virt-libvirt-test-imagebackend --> storage-rbd-utils
   tests-unit-virt-libvirt-test-imagebackend --> tests-unit-fake-processutils
+  tests-unit-virt-libvirt-test-imagebackend --> virt-image-model
+  tests-unit-virt-libvirt-test-imagebackend --> virt-images
+  tests-unit-virt-libvirt-test-imagebackend --> virt-libvirt-config
+  tests-unit-virt-libvirt-test-imagebackend --> virt-libvirt-imagebackend
+  tests-unit-virt-libvirt-test-imagebackend --> virt-libvirt-utils
   tests-unit-virt-libvirt-test-imagecache --> compute-manager
   tests-unit-virt-libvirt-test-imagecache --> conf-init
   tests-unit-virt-libvirt-test-imagecache --> objects-init
   tests-unit-virt-libvirt-test-imagecache --> tests-unit-fake-instance
   tests-unit-virt-libvirt-test-imagecache --> utils
+  tests-unit-virt-libvirt-test-imagecache --> virt-libvirt-imagecache
   tests-unit-virt-libvirt-test-machine-type-utils --> compute-vm-states
   tests-unit-virt-libvirt-test-machine-type-utils --> exception
   tests-unit-virt-libvirt-test-machine-type-utils --> objects-init
   tests-unit-virt-libvirt-test-machine-type-utils --> tests-fixtures-init
+  tests-unit-virt-libvirt-test-machine-type-utils --> virt-libvirt-machine-type-utils
   tests-unit-virt-libvirt-test-migration --> compute-power-state
   tests-unit-virt-libvirt-test-migration --> exception
   tests-unit-virt-libvirt-test-migration --> network-model
@@ -7786,6 +8181,10 @@ graph LR
   tests-unit-virt-libvirt-test-migration --> tests-fixtures-init
   tests-unit-virt-libvirt-test-migration --> tests-fixtures-libvirt
   tests-unit-virt-libvirt-test-migration --> tests-unit-virt-libvirt-test-driver
+  tests-unit-virt-libvirt-test-migration --> virt-libvirt-config
+  tests-unit-virt-libvirt-test-migration --> virt-libvirt-guest
+  tests-unit-virt-libvirt-test-migration --> virt-libvirt-host
+  tests-unit-virt-libvirt-test-migration --> virt-libvirt-migration
   tests-unit-virt-libvirt-test-utils --> compute-utils
   tests-unit-virt-libvirt-test-utils --> exception
   tests-unit-virt-libvirt-test-utils --> objects-fields
@@ -7794,6 +8193,9 @@ graph LR
   tests-unit-virt-libvirt-test-utils --> privsep-qemu
   tests-unit-virt-libvirt-test-utils --> tests-fixtures-init
   tests-unit-virt-libvirt-test-utils --> tests-unit-fake-instance
+  tests-unit-virt-libvirt-test-utils --> virt-images
+  tests-unit-virt-libvirt-test-utils --> virt-libvirt-guest
+  tests-unit-virt-libvirt-test-utils --> virt-libvirt-utils
   tests-unit-virt-libvirt-test-vif --> exception
   tests-unit-virt-libvirt-test-vif --> network-model
   tests-unit-virt-libvirt-test-vif --> objects-init
@@ -7801,43 +8203,81 @@ graph LR
   tests-unit-virt-libvirt-test-vif --> tests-fixtures-init
   tests-unit-virt-libvirt-test-vif --> tests-fixtures-libvirt
   tests-unit-virt-libvirt-test-vif --> tests-unit-virt-fakelibosinfo
+  tests-unit-virt-libvirt-test-vif --> virt-libvirt-config
+  tests-unit-virt-libvirt-test-vif --> virt-libvirt-vif
   tests-unit-virt-libvirt-volume-test-cephfs --> tests-unit-virt-libvirt-volume-test-mount
   tests-unit-virt-libvirt-volume-test-cephfs --> tests-unit-virt-libvirt-volume-test-volume
   tests-unit-virt-libvirt-volume-test-cephfs --> utils
+  tests-unit-virt-libvirt-volume-test-cephfs --> virt-libvirt-volume-cephfs
+  tests-unit-virt-libvirt-volume-test-cephfs --> virt-libvirt-volume-mount
   tests-unit-virt-libvirt-volume-test-fibrechannel --> objects-fields
   tests-unit-virt-libvirt-volume-test-fibrechannel --> tests-unit-virt-libvirt-volume-test-volume
+  tests-unit-virt-libvirt-volume-test-fibrechannel --> virt-libvirt-volume-fibrechannel
   tests-unit-virt-libvirt-volume-test-fs --> utils
+  tests-unit-virt-libvirt-volume-test-fs --> virt-libvirt-volume-fs
   tests-unit-virt-libvirt-volume-test-gpfs --> tests-unit-virt-libvirt-volume-test-volume
+  tests-unit-virt-libvirt-volume-test-gpfs --> virt-libvirt-volume-gpfs
   tests-unit-virt-libvirt-volume-test-iscsi --> tests-unit-virt-libvirt-volume-test-volume
+  tests-unit-virt-libvirt-volume-test-iscsi --> virt-libvirt-volume-iscsi
   tests-unit-virt-libvirt-volume-test-iser --> tests-unit-virt-libvirt-volume-test-volume
+  tests-unit-virt-libvirt-volume-test-iser --> virt-libvirt-volume-iser
   tests-unit-virt-libvirt-volume-test-lightos --> tests-unit-virt-libvirt-volume-test-volume
+  tests-unit-virt-libvirt-volume-test-lightos --> virt-libvirt-volume-lightos
   tests-unit-virt-libvirt-volume-test-mount --> exception
+  tests-unit-virt-libvirt-volume-test-mount --> virt-libvirt-config
+  tests-unit-virt-libvirt-volume-test-mount --> virt-libvirt-guest
+  tests-unit-virt-libvirt-volume-test-mount --> virt-libvirt-host
+  tests-unit-virt-libvirt-volume-test-mount --> virt-libvirt-volume-mount
   tests-unit-virt-libvirt-volume-test-net --> conf-init
   tests-unit-virt-libvirt-volume-test-net --> tests-unit-virt-libvirt-volume-test-volume
+  tests-unit-virt-libvirt-volume-test-net --> virt-libvirt-volume-net
   tests-unit-virt-libvirt-volume-test-nfs --> tests-unit-virt-libvirt-volume-test-mount
   tests-unit-virt-libvirt-volume-test-nfs --> tests-unit-virt-libvirt-volume-test-volume
   tests-unit-virt-libvirt-volume-test-nfs --> utils
+  tests-unit-virt-libvirt-volume-test-nfs --> virt-libvirt-volume-mount
+  tests-unit-virt-libvirt-volume-test-nfs --> virt-libvirt-volume-nfs
   tests-unit-virt-libvirt-volume-test-nvme --> tests-unit-virt-libvirt-volume-test-volume
+  tests-unit-virt-libvirt-volume-test-nvme --> virt-libvirt-volume-nvme
   tests-unit-virt-libvirt-volume-test-quobyte --> exception
   tests-unit-virt-libvirt-volume-test-quobyte --> tests-unit-virt-libvirt-volume-test-volume
   tests-unit-virt-libvirt-volume-test-quobyte --> utils
+  tests-unit-virt-libvirt-volume-test-quobyte --> virt-libvirt-utils
+  tests-unit-virt-libvirt-volume-test-quobyte --> virt-libvirt-volume-quobyte
+  tests-unit-virt-libvirt-volume-test-remotefs --> virt-libvirt-volume-remotefs
   tests-unit-virt-libvirt-volume-test-scaleio --> tests-unit-virt-libvirt-volume-test-volume
+  tests-unit-virt-libvirt-volume-test-scaleio --> virt-libvirt-volume-scaleio
   tests-unit-virt-libvirt-volume-test-smbfs --> tests-unit-virt-libvirt-volume-test-volume
   tests-unit-virt-libvirt-volume-test-smbfs --> utils
+  tests-unit-virt-libvirt-volume-test-smbfs --> virt-libvirt-utils
+  tests-unit-virt-libvirt-volume-test-smbfs --> virt-libvirt-volume-smbfs
   tests-unit-virt-libvirt-volume-test-storpool --> tests-unit-virt-libvirt-volume-test-volume
+  tests-unit-virt-libvirt-volume-test-storpool --> virt-libvirt-volume-storpool
   tests-unit-virt-libvirt-volume-test-volume --> exception
   tests-unit-virt-libvirt-volume-test-volume --> tests-fixtures-init
+  tests-unit-virt-libvirt-volume-test-volume --> virt-fake
+  tests-unit-virt-libvirt-volume-test-volume --> virt-libvirt-driver
+  tests-unit-virt-libvirt-volume-test-volume --> virt-libvirt-host
+  tests-unit-virt-libvirt-volume-test-volume --> virt-libvirt-volume-volume
   tests-unit-virt-libvirt-volume-test-vzstorage --> exception
   tests-unit-virt-libvirt-volume-test-vzstorage --> tests-unit-virt-libvirt-volume-test-volume
   tests-unit-virt-libvirt-volume-test-vzstorage --> utils
+  tests-unit-virt-libvirt-volume-test-vzstorage --> virt-libvirt-volume-vzstorage
   tests-unit-virt-test-block-device --> exception
   tests-unit-virt-test-block-device --> objects-fields
   tests-unit-virt-test-block-device --> objects-init
   tests-unit-virt-test-block-device --> tests-unit-fake-block-device
   tests-unit-virt-test-block-device --> tests-unit-fake-instance
   tests-unit-virt-test-block-device --> tests-unit-matchers
+  tests-unit-virt-test-block-device --> virt-block-device
+  tests-unit-virt-test-block-device --> virt-driver
+  tests-unit-virt-test-block-device --> virt-fake
+  tests-unit-virt-test-block-device --> volume-cinder
   tests-unit-virt-test-configdrive --> objects-init
+  tests-unit-virt-test-configdrive --> virt-configdrive
+  tests-unit-virt-test-events --> virt-event
   tests-unit-virt-test-fake --> objects-init
+  tests-unit-virt-test-fake --> virt-driver
+  tests-unit-virt-test-fake --> virt-fake
   tests-unit-virt-test-hardware --> conf-init
   tests-unit-virt-test-hardware --> exception
   tests-unit-virt-test-hardware --> objects-fields
@@ -7845,20 +8285,29 @@ graph LR
   tests-unit-virt-test-hardware --> pci-stats
   tests-unit-virt-test-hardware --> tests-unit-fake-pci-device-pools
   tests-unit-virt-test-hardware --> tests-unit-image-fake
+  tests-unit-virt-test-hardware --> virt-hardware
   tests-unit-virt-test-imagecache --> compute-vm-states
   tests-unit-virt-test-imagecache --> conf-init
   tests-unit-virt-test-imagecache --> objects-block-device
   tests-unit-virt-test-imagecache --> objects-init
   tests-unit-virt-test-imagecache --> tests-unit-fake-instance
+  tests-unit-virt-test-imagecache --> virt-imagecache
   tests-unit-virt-test-images --> compute-utils
   tests-unit-virt-test-images --> exception
+  tests-unit-virt-test-images --> virt-images
   tests-unit-virt-test-netutils --> network-model
   tests-unit-virt-test-netutils --> tests-unit-fake-network
+  tests-unit-virt-test-netutils --> virt-netutils
   tests-unit-virt-test-node --> exception
   tests-unit-virt-test-node --> tests-fixtures-init
+  tests-unit-virt-test-node --> virt-node
   tests-unit-virt-test-osinfo --> exception
   tests-unit-virt-test-osinfo --> objects-init
   tests-unit-virt-test-osinfo --> tests-unit-virt-fakelibosinfo
+  tests-unit-virt-test-osinfo --> virt-osinfo
+  tests-unit-virt-test-virt --> virt-disk-api
+  tests-unit-virt-test-virt --> virt-driver
+  tests-unit-virt-test-virt --> virt-fake
   tests-unit-virt-test-virt-drivers --> compute-manager
   tests-unit-virt-test-virt-drivers --> conf-init
   tests-unit-virt-test-virt-drivers --> console-type
@@ -7868,7 +8317,14 @@ graph LR
   tests-unit-virt-test-virt-drivers --> tests-fixtures-libvirt
   tests-unit-virt-test-virt-drivers --> tests-unit-fake-block-device
   tests-unit-virt-test-virt-drivers --> tests-unit-utils
+  tests-unit-virt-test-virt-drivers --> virt-block-device
+  tests-unit-virt-test-virt-drivers --> virt-event
+  tests-unit-virt-test-virt-drivers --> virt-fake
+  tests-unit-virt-test-virt-drivers --> virt-hardware
+  tests-unit-virt-test-virt-drivers --> virt-libvirt-imagebackend
+  tests-unit-virt-test-virt-drivers --> virt-libvirt-init
   tests-unit-virt-vmwareapi-fake --> exception
+  tests-unit-virt-vmwareapi-fake --> virt-vmwareapi-constants
   tests-unit-virt-vmwareapi-stubs --> conf-init
   tests-unit-virt-vmwareapi-stubs --> tests-unit-virt-vmwareapi-fake
   tests-unit-virt-vmwareapi-test-configdrive --> image-glance
@@ -7878,6 +8334,10 @@ graph LR
   tests-unit-virt-vmwareapi-test-configdrive --> tests-unit-utils
   tests-unit-virt-vmwareapi-test-configdrive --> tests-unit-virt-vmwareapi-fake
   tests-unit-virt-vmwareapi-test-configdrive --> tests-unit-virt-vmwareapi-stubs
+  tests-unit-virt-vmwareapi-test-configdrive --> virt-fake
+  tests-unit-virt-vmwareapi-test-configdrive --> virt-vmwareapi-driver
+  tests-unit-virt-vmwareapi-test-configdrive --> virt-vmwareapi-vm-util
+  tests-unit-virt-vmwareapi-test-configdrive --> virt-vmwareapi-vmops
   tests-unit-virt-vmwareapi-test-driver-api --> compute-api
   tests-unit-virt-vmwareapi-test-driver-api --> compute-power-state
   tests-unit-virt-vmwareapi-test-driver-api --> compute-provider-tree
@@ -7896,27 +8356,57 @@ graph LR
   tests-unit-virt-vmwareapi-test-driver-api --> tests-unit-utils
   tests-unit-virt-vmwareapi-test-driver-api --> tests-unit-virt-vmwareapi-fake
   tests-unit-virt-vmwareapi-test-driver-api --> tests-unit-virt-vmwareapi-stubs
+  tests-unit-virt-vmwareapi-test-driver-api --> virt-driver
+  tests-unit-virt-vmwareapi-test-driver-api --> virt-vmwareapi-constants
+  tests-unit-virt-vmwareapi-test-driver-api --> virt-vmwareapi-driver
+  tests-unit-virt-vmwareapi-test-driver-api --> virt-vmwareapi-ds-util
+  tests-unit-virt-vmwareapi-test-driver-api --> virt-vmwareapi-error-util
+  tests-unit-virt-vmwareapi-test-driver-api --> virt-vmwareapi-imagecache
+  tests-unit-virt-vmwareapi-test-driver-api --> virt-vmwareapi-images
+  tests-unit-virt-vmwareapi-test-driver-api --> virt-vmwareapi-session
+  tests-unit-virt-vmwareapi-test-driver-api --> virt-vmwareapi-vif
+  tests-unit-virt-vmwareapi-test-driver-api --> virt-vmwareapi-vim-util
+  tests-unit-virt-vmwareapi-test-driver-api --> virt-vmwareapi-vm-util
+  tests-unit-virt-vmwareapi-test-driver-api --> virt-vmwareapi-vmops
+  tests-unit-virt-vmwareapi-test-driver-api --> virt-vmwareapi-volumeops
   tests-unit-virt-vmwareapi-test-ds-util --> exception
   tests-unit-virt-vmwareapi-test-ds-util --> tests-unit-virt-vmwareapi-fake
+  tests-unit-virt-vmwareapi-test-ds-util --> virt-vmwareapi-ds-util
+  tests-unit-virt-vmwareapi-test-ds-util-datastore-selection --> virt-vmwareapi-ds-util
   tests-unit-virt-vmwareapi-test-imagecache --> objects-init
   tests-unit-virt-vmwareapi-test-imagecache --> tests-unit-fake-instance
   tests-unit-virt-vmwareapi-test-imagecache --> tests-unit-virt-vmwareapi-fake
+  tests-unit-virt-vmwareapi-test-imagecache --> virt-vmwareapi-ds-util
+  tests-unit-virt-vmwareapi-test-imagecache --> virt-vmwareapi-imagecache
   tests-unit-virt-vmwareapi-test-images --> exception
   tests-unit-virt-vmwareapi-test-images --> objects-init
+  tests-unit-virt-vmwareapi-test-images --> virt-vmwareapi-constants
+  tests-unit-virt-vmwareapi-test-images --> virt-vmwareapi-images
+  tests-unit-virt-vmwareapi-test-images --> virt-vmwareapi-vm-util
   tests-unit-virt-vmwareapi-test-network-util --> tests-unit-virt-vmwareapi-fake
   tests-unit-virt-vmwareapi-test-network-util --> tests-unit-virt-vmwareapi-stubs
+  tests-unit-virt-vmwareapi-test-network-util --> virt-vmwareapi-network-util
+  tests-unit-virt-vmwareapi-test-network-util --> virt-vmwareapi-session
   tests-unit-virt-vmwareapi-test-session --> tests-unit-virt-vmwareapi-fake
+  tests-unit-virt-vmwareapi-test-session --> virt-vmwareapi-session
   tests-unit-virt-vmwareapi-test-vif --> exception
   tests-unit-virt-vmwareapi-test-vif --> network-model
   tests-unit-virt-vmwareapi-test-vif --> tests-unit-utils
   tests-unit-virt-vmwareapi-test-vif --> tests-unit-virt-vmwareapi-fake
+  tests-unit-virt-vmwareapi-test-vif --> virt-vmwareapi-constants
+  tests-unit-virt-vmwareapi-test-vif --> virt-vmwareapi-network-util
+  tests-unit-virt-vmwareapi-test-vif --> virt-vmwareapi-vif
   tests-unit-virt-vmwareapi-test-vim-util --> tests-unit-virt-vmwareapi-fake
+  tests-unit-virt-vmwareapi-test-vim-util --> virt-vmwareapi-vim-util
   tests-unit-virt-vmwareapi-test-vm-util --> exception
   tests-unit-virt-vmwareapi-test-vm-util --> network-model
   tests-unit-virt-vmwareapi-test-vm-util --> tests-fixtures-init
   tests-unit-virt-vmwareapi-test-vm-util --> tests-unit-fake-instance
   tests-unit-virt-vmwareapi-test-vm-util --> tests-unit-virt-vmwareapi-fake
   tests-unit-virt-vmwareapi-test-vm-util --> tests-unit-virt-vmwareapi-stubs
+  tests-unit-virt-vmwareapi-test-vm-util --> virt-vmwareapi-constants
+  tests-unit-virt-vmwareapi-test-vm-util --> virt-vmwareapi-session
+  tests-unit-virt-vmwareapi-test-vm-util --> virt-vmwareapi-vm-util
   tests-unit-virt-vmwareapi-test-vmops --> compute-power-state
   tests-unit-virt-vmwareapi-test-vmops --> exception
   tests-unit-virt-vmwareapi-test-vmops --> network-model
@@ -7925,33 +8415,504 @@ graph LR
   tests-unit-virt-vmwareapi-test-vmops --> tests-unit-fake-instance
   tests-unit-virt-vmwareapi-test-vmops --> tests-unit-virt-vmwareapi-fake
   tests-unit-virt-vmwareapi-test-vmops --> tests-unit-virt-vmwareapi-stubs
+  tests-unit-virt-vmwareapi-test-vmops --> virt-hardware
+  tests-unit-virt-vmwareapi-test-vmops --> virt-vmwareapi-constants
+  tests-unit-virt-vmwareapi-test-vmops --> virt-vmwareapi-ds-util
+  tests-unit-virt-vmwareapi-test-vmops --> virt-vmwareapi-images
+  tests-unit-virt-vmwareapi-test-vmops --> virt-vmwareapi-session
+  tests-unit-virt-vmwareapi-test-vmops --> virt-vmwareapi-vif
+  tests-unit-virt-vmwareapi-test-vmops --> virt-vmwareapi-vim-util
+  tests-unit-virt-vmwareapi-test-vmops --> virt-vmwareapi-vm-util
+  tests-unit-virt-vmwareapi-test-vmops --> virt-vmwareapi-vmops
   tests-unit-virt-vmwareapi-test-volumeops --> compute-power-state
   tests-unit-virt-vmwareapi-test-volumeops --> compute-vm-states
   tests-unit-virt-vmwareapi-test-volumeops --> exception
   tests-unit-virt-vmwareapi-test-volumeops --> tests-unit-fake-instance
   tests-unit-virt-vmwareapi-test-volumeops --> tests-unit-virt-vmwareapi-fake
   tests-unit-virt-vmwareapi-test-volumeops --> tests-unit-virt-vmwareapi-stubs
+  tests-unit-virt-vmwareapi-test-volumeops --> virt-vmwareapi-constants
+  tests-unit-virt-vmwareapi-test-volumeops --> virt-vmwareapi-session
+  tests-unit-virt-vmwareapi-test-volumeops --> virt-vmwareapi-vm-util
+  tests-unit-virt-vmwareapi-test-volumeops --> virt-vmwareapi-volumeops
   tests-unit-virt-zvm-test-driver --> compute-provider-tree
   tests-unit-virt-zvm-test-driver --> conf-init
   tests-unit-virt-zvm-test-driver --> exception
   tests-unit-virt-zvm-test-driver --> network-model
   tests-unit-virt-zvm-test-driver --> objects-init
   tests-unit-virt-zvm-test-driver --> tests-unit-fake-instance
+  tests-unit-virt-zvm-test-driver --> virt-fake
+  tests-unit-virt-zvm-test-driver --> virt-zvm-driver
   tests-unit-virt-zvm-test-guest --> compute-power-state
   tests-unit-virt-zvm-test-guest --> exception
   tests-unit-virt-zvm-test-guest --> tests-unit-fake-instance
+  tests-unit-virt-zvm-test-guest --> virt-fake
+  tests-unit-virt-zvm-test-guest --> virt-zvm-driver
+  tests-unit-virt-zvm-test-guest --> virt-zvm-guest
   tests-unit-virt-zvm-test-hypervisor --> exception
   tests-unit-virt-zvm-test-hypervisor --> tests-unit-fake-instance
+  tests-unit-virt-zvm-test-hypervisor --> virt-zvm-driver
   tests-unit-virt-zvm-test-utils --> exception
   tests-unit-virt-zvm-test-utils --> tests-unit-fake-instance
+  tests-unit-virt-zvm-test-utils --> virt-zvm-utils
   tests-unit-volume-test-cinder --> conf-init
   tests-unit-volume-test-cinder --> exception
   tests-unit-volume-test-cinder --> service-auth
   tests-unit-volume-test-cinder --> tests-unit-fake-instance
+  tests-unit-volume-test-cinder --> volume-cinder
   utils --> conf-init
   utils --> exception
   utils --> i18n
   utils --> objects-service
+  virt-block-device --> conf-init
+  virt-block-device --> exception
+  virt-configdrive --> conf-init
+  virt-configdrive --> exception
+  virt-configdrive --> objects-fields
+  virt-configdrive --> privsep-fs
+  virt-configdrive --> utils
+  virt-disk-api --> conf-init
+  virt-disk-api --> exception
+  virt-disk-api --> i18n
+  virt-disk-api --> privsep-fs
+  virt-disk-api --> privsep-libvirt
+  virt-disk-api --> virt-disk-mount-api
+  virt-disk-api --> virt-disk-vfs-api
+  virt-disk-api --> virt-image-model
+  virt-disk-api --> virt-images
+  virt-disk-mount-api --> exception
+  virt-disk-mount-api --> i18n
+  virt-disk-mount-api --> privsep-fs
+  virt-disk-mount-api --> virt-image-model
+  virt-disk-mount-block --> virt-disk-mount-api
+  virt-disk-mount-loop --> i18n
+  virt-disk-mount-loop --> privsep-fs
+  virt-disk-mount-loop --> virt-disk-mount-api
+  virt-disk-mount-nbd --> conf-init
+  virt-disk-mount-nbd --> i18n
+  virt-disk-mount-nbd --> privsep-fs
+  virt-disk-mount-nbd --> utils
+  virt-disk-mount-nbd --> virt-disk-mount-api
+  virt-disk-vfs-guestfs --> conf-init
+  virt-disk-vfs-guestfs --> exception
+  virt-disk-vfs-guestfs --> i18n
+  virt-disk-vfs-guestfs --> utils
+  virt-disk-vfs-guestfs --> virt-disk-vfs-api
+  virt-disk-vfs-guestfs --> virt-image-model
+  virt-driver --> compute-utils
+  virt-driver --> conf-init
+  virt-driver --> i18n
+  virt-driver --> network-model
+  virt-driver --> objects-init
+  virt-driver --> virt-block-device
+  virt-driver --> virt-event
+  virt-driver --> virt-node
+  virt-event --> i18n
+  virt-fake --> compute-power-state
+  virt-fake --> compute-task-states
+  virt-fake --> compute-vm-states
+  virt-fake --> conf-init
+  virt-fake --> console-type
+  virt-fake --> exception
+  virt-fake --> objects-diagnostics
+  virt-fake --> objects-fields
+  virt-fake --> objects-init
+  virt-fake --> objects-migrate-data
+  virt-fake --> virt-driver
+  virt-fake --> virt-hardware
+  virt-fake --> virt-ironic-driver
+  virt-fake --> virt-node
+  virt-fake --> virt-virtapi
+  virt-hardware --> compute-init
+  virt-hardware --> conf-init
+  virt-hardware --> exception
+  virt-hardware --> i18n
+  virt-hardware --> objects-compute-node
+  virt-hardware --> objects-fields
+  virt-hardware --> objects-init
+  virt-hardware --> objects-service
+  virt-hardware --> pci-stats
+  virt-hardware --> scheduler-client-report
+  virt-image-model --> exception
+  virt-imagecache --> compute-task-states
+  virt-imagecache --> compute-vm-states
+  virt-imagecache --> conf-init
+  virt-imagecache --> objects-init
+  virt-imagecache --> virt-block-device
+  virt-images --> compute-utils
+  virt-images --> conf-init
+  virt-images --> exception
+  virt-images --> i18n
+  virt-images --> image-glance
+  virt-images --> privsep-qemu
+  virt-ironic-driver --> api-metadata-base
+  virt-ironic-driver --> compute-power-state
+  virt-ironic-driver --> compute-task-states
+  virt-ironic-driver --> compute-vm-states
+  virt-ironic-driver --> conf-init
+  virt-ironic-driver --> console-type
+  virt-ironic-driver --> exception
+  virt-ironic-driver --> i18n
+  virt-ironic-driver --> objects-external-event
+  virt-ironic-driver --> objects-fields
+  virt-ironic-driver --> objects-init
+  virt-ironic-driver --> servicegroup-init
+  virt-ironic-driver --> utils
+  virt-ironic-driver --> virt-configdrive
+  virt-ironic-driver --> virt-driver
+  virt-ironic-driver --> virt-hardware
+  virt-ironic-driver --> virt-ironic-ironic-states
+  virt-ironic-driver --> virt-ironic-patcher
+  virt-ironic-driver --> virt-netutils
+  virt-ironic-init --> virt-ironic-driver
+  virt-ironic-patcher --> conf-init
+  virt-libvirt-blockinfo --> exception
+  virt-libvirt-blockinfo --> i18n
+  virt-libvirt-blockinfo --> objects-base
+  virt-libvirt-blockinfo --> objects-fields
+  virt-libvirt-blockinfo --> virt-configdrive
+  virt-libvirt-blockinfo --> virt-driver
+  virt-libvirt-blockinfo --> virt-libvirt-utils
+  virt-libvirt-blockinfo --> virt-osinfo
+  virt-libvirt-config --> exception
+  virt-libvirt-config --> i18n
+  virt-libvirt-config --> objects-fields
+  virt-libvirt-config --> pci-utils
+  virt-libvirt-config --> virt-hardware
+  virt-libvirt-cpu-api --> conf-init
+  virt-libvirt-cpu-api --> exception
+  virt-libvirt-cpu-api --> i18n
+  virt-libvirt-cpu-api --> objects-init
+  virt-libvirt-cpu-api --> virt-hardware
+  virt-libvirt-cpu-api --> virt-libvirt-cpu-core
+  virt-libvirt-cpu-core --> exception
+  virt-libvirt-cpu-core --> privsep-init
+  virt-libvirt-cpu-core --> virt-hardware
+  virt-libvirt-designer --> pci-utils
+  virt-libvirt-driver --> api-metadata-base
+  virt-libvirt-driver --> api-metadata-password
+  virt-libvirt-driver --> compute-power-state
+  virt-libvirt-driver --> compute-provider-tree
+  virt-libvirt-driver --> compute-task-states
+  virt-libvirt-driver --> compute-utils
+  virt-libvirt-driver --> compute-vm-states
+  virt-libvirt-driver --> conf-init
+  virt-libvirt-driver --> console-serial
+  virt-libvirt-driver --> console-type
+  virt-libvirt-driver --> exception
+  virt-libvirt-driver --> i18n
+  virt-libvirt-driver --> image-glance
+  virt-libvirt-driver --> network-model
+  virt-libvirt-driver --> network-neutron
+  virt-libvirt-driver --> objects-diagnostics
+  virt-libvirt-driver --> objects-fields
+  virt-libvirt-driver --> objects-init
+  virt-libvirt-driver --> objects-migrate-data
+  virt-libvirt-driver --> pci-utils
+  virt-libvirt-driver --> pci-whitelist
+  virt-libvirt-driver --> privsep-libvirt
+  virt-libvirt-driver --> privsep-path
+  virt-libvirt-driver --> privsep-utils
+  virt-libvirt-driver --> storage-rbd-utils
+  virt-libvirt-driver --> utils
+  virt-libvirt-driver --> virt-block-device
+  virt-libvirt-driver --> virt-configdrive
+  virt-libvirt-driver --> virt-disk-api
+  virt-libvirt-driver --> virt-disk-vfs-guestfs
+  virt-libvirt-driver --> virt-driver
+  virt-libvirt-driver --> virt-event
+  virt-libvirt-driver --> virt-hardware
+  virt-libvirt-driver --> virt-image-model
+  virt-libvirt-driver --> virt-images
+  virt-libvirt-driver --> virt-libvirt-blockinfo
+  virt-libvirt-driver --> virt-libvirt-config
+  virt-libvirt-driver --> virt-libvirt-cpu-api
+  virt-libvirt-driver --> virt-libvirt-designer
+  virt-libvirt-driver --> virt-libvirt-event
+  virt-libvirt-driver --> virt-libvirt-guest
+  virt-libvirt-driver --> virt-libvirt-host
+  virt-libvirt-driver --> virt-libvirt-imagebackend
+  virt-libvirt-driver --> virt-libvirt-imagecache
+  virt-libvirt-driver --> virt-libvirt-instancejobtracker
+  virt-libvirt-driver --> virt-libvirt-migration
+  virt-libvirt-driver --> virt-libvirt-storage-dmcrypt
+  virt-libvirt-driver --> virt-libvirt-storage-lvm
+  virt-libvirt-driver --> virt-libvirt-utils
+  virt-libvirt-driver --> virt-libvirt-vif
+  virt-libvirt-driver --> virt-libvirt-volume-cephfs
+  virt-libvirt-driver --> virt-libvirt-volume-fs
+  virt-libvirt-driver --> virt-libvirt-volume-mount
+  virt-libvirt-driver --> virt-libvirt-volume-nfs
+  virt-libvirt-driver --> virt-libvirt-volume-remotefs
+  virt-libvirt-driver --> virt-libvirt-volume-volume
+  virt-libvirt-driver --> virt-netutils
+  virt-libvirt-driver --> volume-cinder
+  virt-libvirt-event --> virt-event
+  virt-libvirt-guest --> compute-power-state
+  virt-libvirt-guest --> exception
+  virt-libvirt-guest --> i18n
+  virt-libvirt-guest --> virt-hardware
+  virt-libvirt-guest --> virt-libvirt-config
+  virt-libvirt-host --> compute-utils
+  virt-libvirt-host --> conf-init
+  virt-libvirt-host --> exception
+  virt-libvirt-host --> i18n
+  virt-libvirt-host --> objects-fields
+  virt-libvirt-host --> pci-utils
+  virt-libvirt-host --> utils
+  virt-libvirt-host --> virt-event
+  virt-libvirt-host --> virt-libvirt-config
+  virt-libvirt-host --> virt-libvirt-event
+  virt-libvirt-host --> virt-libvirt-guest
+  virt-libvirt-host --> virt-libvirt-migration
+  virt-libvirt-host --> virt-libvirt-utils
+  virt-libvirt-host --> virt-node
+  virt-libvirt-imagebackend --> conf-init
+  virt-libvirt-imagebackend --> exception
+  virt-libvirt-imagebackend --> i18n
+  virt-libvirt-imagebackend --> image-glance
+  virt-libvirt-imagebackend --> privsep-libvirt
+  virt-libvirt-imagebackend --> privsep-path
+  virt-libvirt-imagebackend --> storage-rbd-utils
+  virt-libvirt-imagebackend --> utils
+  virt-libvirt-imagebackend --> virt-disk-api
+  virt-libvirt-imagebackend --> virt-image-model
+  virt-libvirt-imagebackend --> virt-images
+  virt-libvirt-imagebackend --> virt-libvirt-config
+  virt-libvirt-imagebackend --> virt-libvirt-storage-dmcrypt
+  virt-libvirt-imagebackend --> virt-libvirt-storage-lvm
+  virt-libvirt-imagebackend --> virt-libvirt-utils
+  virt-libvirt-imagecache --> conf-init
+  virt-libvirt-imagecache --> privsep-path
+  virt-libvirt-imagecache --> utils
+  virt-libvirt-imagecache --> virt-imagecache
+  virt-libvirt-imagecache --> virt-libvirt-utils
+  virt-libvirt-init --> virt-libvirt-driver
+  virt-libvirt-machine-type-utils --> compute-vm-states
+  virt-libvirt-machine-type-utils --> exception
+  virt-libvirt-machine-type-utils --> objects-init
+  virt-libvirt-migration --> compute-power-state
+  virt-libvirt-migration --> conf-init
+  virt-libvirt-migration --> exception
+  virt-libvirt-migration --> objects-init
+  virt-libvirt-migration --> storage-rbd-utils
+  virt-libvirt-migration --> virt-hardware
+  virt-libvirt-migration --> virt-libvirt-config
+  virt-libvirt-storage-dmcrypt --> privsep-libvirt
+  virt-libvirt-storage-lvm --> conf-init
+  virt-libvirt-storage-lvm --> exception
+  virt-libvirt-storage-lvm --> i18n
+  virt-libvirt-storage-lvm --> privsep-fs
+  virt-libvirt-utils --> conf-init
+  virt-libvirt-utils --> exception
+  virt-libvirt-utils --> i18n
+  virt-libvirt-utils --> objects-fields
+  virt-libvirt-utils --> objects-init
+  virt-libvirt-utils --> privsep-fs
+  virt-libvirt-utils --> privsep-idmapshift
+  virt-libvirt-utils --> privsep-libvirt
+  virt-libvirt-utils --> privsep-path
+  virt-libvirt-utils --> scheduler-utils
+  virt-libvirt-utils --> utils
+  virt-libvirt-utils --> virt-images
+  virt-libvirt-utils --> virt-libvirt-config
+  virt-libvirt-utils --> virt-libvirt-guest
+  virt-libvirt-utils --> virt-libvirt-volume-remotefs
+  virt-libvirt-vif --> conf-init
+  virt-libvirt-vif --> exception
+  virt-libvirt-vif --> i18n
+  virt-libvirt-vif --> network-model
+  virt-libvirt-vif --> network-os-vif-util
+  virt-libvirt-vif --> objects-init
+  virt-libvirt-vif --> pci-utils
+  virt-libvirt-vif --> privsep-linux-net
+  virt-libvirt-vif --> utils
+  virt-libvirt-vif --> virt-hardware
+  virt-libvirt-vif --> virt-libvirt-config
+  virt-libvirt-vif --> virt-libvirt-designer
+  virt-libvirt-vif --> virt-libvirt-host
+  virt-libvirt-vif --> virt-osinfo
+  virt-libvirt-volume-cephfs --> conf-init
+  virt-libvirt-volume-cephfs --> virt-libvirt-volume-fs
+  virt-libvirt-volume-fibrechannel --> conf-init
+  virt-libvirt-volume-fibrechannel --> utils
+  virt-libvirt-volume-fibrechannel --> virt-libvirt-volume-volume
+  virt-libvirt-volume-fs --> utils
+  virt-libvirt-volume-fs --> virt-libvirt-volume-mount
+  virt-libvirt-volume-fs --> virt-libvirt-volume-volume
+  virt-libvirt-volume-gpfs --> virt-libvirt-volume-fs
+  virt-libvirt-volume-iscsi --> conf-init
+  virt-libvirt-volume-iscsi --> utils
+  virt-libvirt-volume-iscsi --> virt-libvirt-volume-volume
+  virt-libvirt-volume-iser --> conf-init
+  virt-libvirt-volume-iser --> utils
+  virt-libvirt-volume-iser --> virt-libvirt-volume-iscsi
+  virt-libvirt-volume-lightos --> conf-init
+  virt-libvirt-volume-lightos --> utils
+  virt-libvirt-volume-lightos --> virt-libvirt-volume-volume
+  virt-libvirt-volume-mount --> conf-init
+  virt-libvirt-volume-mount --> exception
+  virt-libvirt-volume-mount --> privsep-fs
+  virt-libvirt-volume-mount --> privsep-path
+  virt-libvirt-volume-net --> conf-init
+  virt-libvirt-volume-net --> virt-libvirt-volume-volume
+  virt-libvirt-volume-nfs --> conf-init
+  virt-libvirt-volume-nfs --> virt-libvirt-volume-fs
+  virt-libvirt-volume-nvme --> conf-init
+  virt-libvirt-volume-nvme --> utils
+  virt-libvirt-volume-nvme --> virt-libvirt-volume-volume
+  virt-libvirt-volume-quobyte --> conf-init
+  virt-libvirt-volume-quobyte --> exception
+  virt-libvirt-volume-quobyte --> i18n
+  virt-libvirt-volume-quobyte --> privsep-libvirt
+  virt-libvirt-volume-quobyte --> utils
+  virt-libvirt-volume-quobyte --> virt-libvirt-volume-fs
+  virt-libvirt-volume-remotefs --> conf-init
+  virt-libvirt-volume-remotefs --> privsep-fs
+  virt-libvirt-volume-remotefs --> utils
+  virt-libvirt-volume-scaleio --> conf-init
+  virt-libvirt-volume-scaleio --> utils
+  virt-libvirt-volume-scaleio --> virt-libvirt-volume-volume
+  virt-libvirt-volume-smbfs --> conf-init
+  virt-libvirt-volume-smbfs --> virt-libvirt-utils
+  virt-libvirt-volume-smbfs --> virt-libvirt-volume-fs
+  virt-libvirt-volume-smbfs --> virt-libvirt-volume-remotefs
+  virt-libvirt-volume-storpool --> utils
+  virt-libvirt-volume-storpool --> virt-libvirt-volume-volume
+  virt-libvirt-volume-volume --> conf-init
+  virt-libvirt-volume-volume --> exception
+  virt-libvirt-volume-volume --> virt-block-device
+  virt-libvirt-volume-volume --> virt-libvirt-config
+  virt-libvirt-volume-vzstorage --> exception
+  virt-libvirt-volume-vzstorage --> i18n
+  virt-libvirt-volume-vzstorage --> utils
+  virt-libvirt-volume-vzstorage --> virt-libvirt-volume-fs
+  virt-netutils --> conf-init
+  virt-netutils --> network-model
+  virt-node --> conf-init
+  virt-node --> exception
+  virt-osinfo --> exception
+  virt-osinfo --> objects-fields
+  virt-storage-users --> utils
+  virt-vmwareapi-constants --> compute-power-state
+  virt-vmwareapi-constants --> network-model
+  virt-vmwareapi-driver --> compute-power-state
+  virt-vmwareapi-driver --> compute-task-states
+  virt-vmwareapi-driver --> compute-utils
+  virt-vmwareapi-driver --> conf-init
+  virt-vmwareapi-driver --> exception
+  virt-vmwareapi-driver --> i18n
+  virt-vmwareapi-driver --> objects-init
+  virt-vmwareapi-driver --> privsep-path
+  virt-vmwareapi-driver --> virt-driver
+  virt-vmwareapi-driver --> virt-vmwareapi-constants
+  virt-vmwareapi-driver --> virt-vmwareapi-ds-util
+  virt-vmwareapi-driver --> virt-vmwareapi-error-util
+  virt-vmwareapi-driver --> virt-vmwareapi-host
+  virt-vmwareapi-driver --> virt-vmwareapi-session
+  virt-vmwareapi-driver --> virt-vmwareapi-vim-util
+  virt-vmwareapi-driver --> virt-vmwareapi-vm-util
+  virt-vmwareapi-driver --> virt-vmwareapi-vmops
+  virt-vmwareapi-driver --> virt-vmwareapi-volumeops
+  virt-vmwareapi-ds-util --> exception
+  virt-vmwareapi-ds-util --> i18n
+  virt-vmwareapi-ds-util --> virt-vmwareapi-constants
+  virt-vmwareapi-ds-util --> virt-vmwareapi-vim-util
+  virt-vmwareapi-ds-util --> virt-vmwareapi-vm-util
+  virt-vmwareapi-error-util --> exception
+  virt-vmwareapi-error-util --> i18n
+  virt-vmwareapi-host --> conf-init
+  virt-vmwareapi-host --> exception
+  virt-vmwareapi-host --> objects-fields
+  virt-vmwareapi-host --> objects-init
+  virt-vmwareapi-host --> virt-vmwareapi-ds-util
+  virt-vmwareapi-host --> virt-vmwareapi-vim-util
+  virt-vmwareapi-host --> virt-vmwareapi-vm-util
+  virt-vmwareapi-imagecache --> virt-imagecache
+  virt-vmwareapi-imagecache --> virt-vmwareapi-ds-util
+  virt-vmwareapi-images --> exception
+  virt-vmwareapi-images --> i18n
+  virt-vmwareapi-images --> image-glance
+  virt-vmwareapi-images --> objects-fields
+  virt-vmwareapi-images --> virt-vmwareapi-constants
+  virt-vmwareapi-images --> virt-vmwareapi-vm-util
+  virt-vmwareapi-init --> virt-vmwareapi-driver
+  virt-vmwareapi-network-util --> virt-vmwareapi-vim-util
+  virt-vmwareapi-network-util --> virt-vmwareapi-vm-util
+  virt-vmwareapi-session --> conf-init
+  virt-vmwareapi-vif --> conf-init
+  virt-vmwareapi-vif --> exception
+  virt-vmwareapi-vif --> i18n
+  virt-vmwareapi-vif --> network-model
+  virt-vmwareapi-vif --> virt-vmwareapi-constants
+  virt-vmwareapi-vif --> virt-vmwareapi-network-util
+  virt-vmwareapi-vif --> virt-vmwareapi-vm-util
+  virt-vmwareapi-vim-util --> conf-init
+  virt-vmwareapi-vm-util --> conf-init
+  virt-vmwareapi-vm-util --> exception
+  virt-vmwareapi-vm-util --> i18n
+  virt-vmwareapi-vm-util --> network-model
+  virt-vmwareapi-vm-util --> virt-vmwareapi-constants
+  virt-vmwareapi-vm-util --> virt-vmwareapi-session
+  virt-vmwareapi-vm-util --> virt-vmwareapi-vim-util
+  virt-vmwareapi-vmops --> api-metadata-base
+  virt-vmwareapi-vmops --> compute-api
+  virt-vmwareapi-vmops --> compute-power-state
+  virt-vmwareapi-vmops --> compute-task-states
+  virt-vmwareapi-vmops --> conf-init
+  virt-vmwareapi-vmops --> console-type
+  virt-vmwareapi-vmops --> exception
+  virt-vmwareapi-vmops --> i18n
+  virt-vmwareapi-vmops --> network-neutron
+  virt-vmwareapi-vmops --> objects-fields
+  virt-vmwareapi-vmops --> objects-init
+  virt-vmwareapi-vmops --> utils
+  virt-vmwareapi-vmops --> virt-configdrive
+  virt-vmwareapi-vmops --> virt-driver
+  virt-vmwareapi-vmops --> virt-hardware
+  virt-vmwareapi-vmops --> virt-vmwareapi-constants
+  virt-vmwareapi-vmops --> virt-vmwareapi-ds-util
+  virt-vmwareapi-vmops --> virt-vmwareapi-error-util
+  virt-vmwareapi-vmops --> virt-vmwareapi-imagecache
+  virt-vmwareapi-vmops --> virt-vmwareapi-images
+  virt-vmwareapi-vmops --> virt-vmwareapi-vif
+  virt-vmwareapi-vmops --> virt-vmwareapi-vim-util
+  virt-vmwareapi-vmops --> virt-vmwareapi-vm-util
+  virt-vmwareapi-volumeops --> compute-power-state
+  virt-vmwareapi-volumeops --> conf-init
+  virt-vmwareapi-volumeops --> exception
+  virt-vmwareapi-volumeops --> i18n
+  virt-vmwareapi-volumeops --> virt-vmwareapi-constants
+  virt-vmwareapi-volumeops --> virt-vmwareapi-session
+  virt-vmwareapi-volumeops --> virt-vmwareapi-vm-util
+  virt-zvm-driver --> compute-task-states
+  virt-zvm-driver --> conf-init
+  virt-zvm-driver --> exception
+  virt-zvm-driver --> i18n
+  virt-zvm-driver --> image-glance
+  virt-zvm-driver --> objects-fields
+  virt-zvm-driver --> virt-driver
+  virt-zvm-driver --> virt-images
+  virt-zvm-driver --> virt-zvm-guest
+  virt-zvm-driver --> virt-zvm-hypervisor
+  virt-zvm-driver --> virt-zvm-utils
+  virt-zvm-guest --> compute-power-state
+  virt-zvm-guest --> conf-init
+  virt-zvm-guest --> virt-hardware
+  virt-zvm-hypervisor --> compute-power-state
+  virt-zvm-hypervisor --> conf-init
+  virt-zvm-hypervisor --> exception
+  virt-zvm-hypervisor --> virt-zvm-utils
+  virt-zvm-init --> virt-zvm-driver
+  virt-zvm-utils --> api-metadata-base
+  virt-zvm-utils --> conf-init
+  virt-zvm-utils --> exception
+  virt-zvm-utils --> virt-configdrive
+  volume-cinder --> conf-init
+  volume-cinder --> exception
+  volume-cinder --> i18n
+  volume-cinder --> service-auth
+  wsgi-metadata --> api-openstack-wsgi-app
+  wsgi-osapi-compute --> api-openstack-wsgi-app
 ```
 
 ---
@@ -7960,9 +8921,9 @@ graph LR
 
 Source: `securitySurface` arrays in `.aee/kb/src/nova/**/*.json`.
 
-**Entry points (174 total -- 121 added in batch 8 from tests/):**
+**Entry points (174 total -- unchanged from batch 8):**
 
-Production entry points (53, unchanged from batch 7):
+Production entry points (53):
 
 | File | Line | Category | Description |
 |---|---|---|---|
@@ -7987,49 +8948,57 @@ Production entry points (53, unchanged from batch 7):
 
 (35 further production entry points in `api/` controller and `cmd/` launcher files. Source: `.aee/kb/src/nova/api/**/*.json`, `.aee/kb/src/nova/cmd/**/*.json:securitySurface`.)
 
-Test entry points (121): Located in `tests/unit/` and `tests/functional/`. Categories include `http-param` (functional test request construction via `webob.Request`), `cli-args` (test invocations of `config.parse_args`), and `network-socket` (functional test server socket bindings). These represent test framework inputs and do not expose production attack surface. Source: `.aee/kb/src/nova/tests/**/*.json:securitySurface`.
+Test entry points (121): `tests/unit/` and `tests/functional/` -- `http-param`, `cli-args`, `network-socket` categories. Test framework inputs; not production attack surface.
 
-**Sinks (1,683 total -- 908 added in batch 8):**
+**Sinks (1,827 total -- 144 added in batch 9):**
 
-| Category | Count | Primary files |
+| Category | Count | Primary sources |
 |---|---|---|
-| db-write | 1,562 | Production (766) + tests (796) -- mock DB write assertions and functional test DB operations |
-| network-send | 7 | `accelerator/cyborg.py` (production only) |
-| file-write | 114 | Production (7) + tests (107) -- test fixture file writes and temp-file usage |
+| db-write | 1,706 | Production (900) + tests (806) -- virt adds 138: block_device.py (7), driver.py (5), libvirt/driver.py (70), libvirt/migration.py (10), libvirt/host.py (6), ironic/driver.py (8), vmwareapi/* (9), hardware.py (3), etc. |
+| network-send | 7 | `accelerator/cyborg.py` (unchanged) |
+| file-write | 114 | Production (14) + tests (100) -- virt adds: configdrive.py (2), disk/vfs/guestfs.py (1), libvirt/imagebackend.py (1), libvirt/host.py (1), libvirt/utils.py (1), node.py (1), storage_users.py (2), vmwareapi/images.py (2) |
 
-New production sinks (batch 8):
-- `servicegroup/drivers/db.py:L88` -- `db-write`: service heartbeat state written to database. Source: `.aee/kb/src/nova/servicegroup/drivers/db.py.json:securitySurface`.
-- `servicegroup/drivers/mc.py:L93` -- `db-write`: service heartbeat state written to Memcache. Source: `.aee/kb/src/nova/servicegroup/drivers/mc.py.json:securitySurface`.
+New production sinks from batch 9:
+- `virt/libvirt/driver.py` -- 70 security surface entries; privsep-entrypoint privileges dominate, with `db-write` sinks for driver capability updates. Source: `.aee/kb/src/nova/virt/libvirt/driver.py.json:securitySurface`.
+- `virt/libvirt/vif.py:L103-L137` -- privsep calls to `linux_net` for VIF MAC address configuration and VLAN tagging (22 privilege entries). Source: `.aee/kb/src/nova/virt/libvirt/vif.py.json:securitySurface`.
+- `virt/block_device.py:L94-L332` -- 7 db-write sinks from `DriverBlockDevice.save()` and `update()` calls. Source: `.aee/kb/src/nova/virt/block_device.py.json:securitySurface`.
+- `virt/configdrive.py:L63, L68, L103` -- file-write sinks for config-drive ISO/VFAT assembly. Source: `.aee/kb/src/nova/virt/configdrive.py.json:securitySurface`.
+- `virt/node.py:L39` -- file-write sink: node UUID written to disk. Source: `.aee/kb/src/nova/virt/node.py.json:securitySurface`.
+- `volume/cinder.py:L284, L660, L865, L892, L899, L936` -- 6 db-write sinks for volume attachment updates and Cinder API calls. Source: `.aee/kb/src/nova/volume/cinder.py.json:securitySurface`.
 
 **Data flow paths (production):**
 
 1. **CLI entry points -> service startup.** Each `cmd/*.py` calls `config.parse_args(sys.argv)`; no sink within `cmd/`.
-2. **API layer -> downstream.** HTTP requests enter at `@webob.dec.wsgify`; validated via `api/validation/`; dispatched to controllers -> `compute/api.py` -> `db/main/api.py`. Policy checks via `policies/*.py`.
+2. **API layer -> downstream.** HTTP requests enter at `@webob.dec.wsgify`; validated; dispatched -> `compute/api.py` -> `db/main/api.py`. Policy checks via `policies/*.py`.
 3. **Compute API -> instance lifecycle.** `compute/api.py` (`_validate_bdm` CCN 43, `_delete` CCN 29, `resize` CCN 28) and `compute/manager.py` (`_init_instance` CCN 40).
 4. **Conductor -> multi-node orchestration.** `conductor/manager.py:build_instances` (CCN 34).
-5. **Accelerator -> Cyborg HTTP.** Parameters at `cyborg.py:L56/L88/L255/L291/L337` reach network-send sinks.
-6. **Image service -> Glance HTTP + local file.** `image/glance.py` streams with signature verification (`_verify_and_write` CCN 17) to file-write sinks at `L413`, `L429`.
-7. **Privsep -> privileged subprocess.** `privsep/` `@entrypoint`-decorated functions execute in root-privileged daemon; file-write sinks in `privsep/path.py`, `privsep/qemu.py`, `privsep/utils.py`.
-8. **PCI tracker -> DB.** `pci/manager.py` and `pci/stats.py` update PCI device records.
-9. **Notifications -> oslo.messaging bus.** `notifications/base.py` dispatches versioned notifications.
-10. **Limit enforcement -> oslo_limit + Placement.** `limit/local.py`, `limit/placement.py`, `limit/utils.py`.
-11. **Objects -> db/main/api.py.** OVO domain objects serialise through `objects/base.py` -> SQLAlchemy writes.
-12. **Network -> Neutron HTTP.** `network/neutron.py` REST calls for port and security-group operations.
-13. **Scheduler -> Placement HTTP.** `scheduler/client/report.py` GET/PUT/POST to Placement API.
-14. **Console -> network socket.** `console/serial.py:L83` opens raw TCP socket for serial console proxying.
-15. **Servicegroup -> DB/Memcache heartbeat.** `servicegroup/drivers/db.py:L88` and `servicegroup/drivers/mc.py:L93` write service heartbeat state. Source: `.aee/kb/src/nova/servicegroup/**/*.json:securitySurface`.
-16. **Share -> Manila HTTP.** `share/manila.py` calls Manila API via `openstack` SDK (2 network side effects). No security surface entries. Source: `.aee/kb/src/nova/share/manila.py.json`.
+5. **Hypervisor driver -> VM operations.** `compute/manager.py` calls `virt/driver.py:ComputeDriver` methods; the libvirt driver (`virt/libvirt/driver.py`) executes disk, network, and CPU operations via privsep. Disk images prepared via `virt/images.py` (privsep.qemu calls), mounted via `virt/disk/mount/` (privsep.fs calls). Source: link-graph edges `compute-manager-py` -> `virt-libvirt-driver-py` etc.
+6. **Config-drive -> file-write (privileged).** `virt/configdrive.py:L63,L68,L103` writes ISO/VFAT drive data; privsep.fs.unprivileged_mkfs/mount at L106/L111. Source: `.aee/kb/src/nova/virt/configdrive.py.json:securitySurface`.
+7. **VIF plug/unplug -> privsep linux_net.** `virt/libvirt/vif.py:L103-L137` calls `privsep.linux_net` for MAC address, VLAN, trust configuration on SR-IOV VFs. Source: `.aee/kb/src/nova/virt/libvirt/vif.py.json:securitySurface`.
+8. **Volume attach -> Cinder API.** `volume/cinder.py` uses service-token auth (`L75`) to call Cinder v3 API; attachment records updated at `L892`. Source: `.aee/kb/src/nova/volume/cinder.py.json:securitySurface`.
+9. **Accelerator -> Cyborg HTTP.** Parameters at `cyborg.py:L56/L88/L255/L291/L337` reach network-send sinks.
+10. **Image service -> Glance HTTP + local file.** `image/glance.py` with signature verification (`_verify_and_write` CCN 17) -> file-write sinks at L413, L429.
+11. **Privsep -> privileged subprocess.** All `privsep/` and calling `virt/` functions (`virt/disk/`, `virt/libvirt/`, `virt/configdrive.py`, `virt/images.py`) route through oslo.privsep daemon.
+12. **PCI tracker -> DB.** `pci/manager.py` and `pci/stats.py` update PCI device records.
+13. **Notifications -> oslo.messaging bus.** `notifications/base.py` dispatches versioned notifications.
+14. **Limit enforcement -> oslo_limit + Placement.** `limit/local.py`, `limit/placement.py`, `limit/utils.py`.
+15. **Objects -> db/main/api.py.** OVO domain objects -> SQLAlchemy writes.
+16. **Network -> Neutron HTTP.** `network/neutron.py`.
+17. **Scheduler -> Placement HTTP.** `scheduler/client/report.py`.
+18. **Console -> network socket.** `console/serial.py:L83`.
+19. **Servicegroup -> DB/Memcache heartbeat.** `servicegroup/drivers/db.py:L88` and `servicegroup/drivers/mc.py:L93`.
+20. **Share -> Manila HTTP.** `share/manila.py` via openstack SDK.
 
-**Privileges (618 total -- 495 added in batch 8 from tests):**
+**Privileges (747 total -- 129 added in batch 9):**
 
-Production privileges (123, unchanged from batch 7): 58 `privsep-entrypoint` entries across `privsep/` files; 65 `crypto-key` entries from `keystoneauth1`/`cryptography` imports in `scheduler/client/report.py`, `service_auth.py`, `api/auth.py`, `network/neutron.py`, `compute/manager.py`, `conductor/manager.py`, `image/glance.py`.
+Batch 9 adds 127 `privsep-entrypoint` privileges from `virt/` (the caller side of privsep calls: `virt/libvirt/driver.py` 70, `virt/libvirt/vif.py` 22, `virt/disk/api.py` 13, `virt/libvirt/utils.py` 14, `virt/disk/mount/*` 13, `virt/configdrive.py` 3, `virt/images.py` 5, `virt/libvirt/storage/*` 12, `virt/libvirt/volume/mount.py` 5, others) and 2 `crypto-key` from `volume/cinder.py:L30,L75`. All `privsep-entrypoint` entries represent callers of oslo.privsep-decorated functions in `privsep/`. Source: `.aee/kb/src/nova/virt/**/*.json:securitySurface`, `.aee/kb/src/nova/volume/cinder.py.json:securitySurface`.
 
-Test privileges (495): Located in `tests/unit/` and `tests/functional/`. Reflect test infrastructure dependencies (`keystoneauth1` imports in test fixtures, privsep stubs) rather than production privilege escalation. Source: `.aee/kb/src/nova/tests/**/*.json:securitySurface`.
+Total production privileges: 252 (58 in privsep/ decorated functions + 127 new virt/ callers + 67 crypto-key). Test privileges: 495.
 
-No untrusted-input sanitisation steps are recorded in any production `securitySurface` entry across the 1,388 KB records.
+No untrusted-input sanitisation steps are recorded in any production `securitySurface` entry across the 1,484 KB records.
 
 ---
 
 ## Cross-Component Interfaces
 
-The link graph records **0 cross-component file edges** and **0 cross-component seams**. All 5,129 file edges are intra-component. The link summary notes 1,200 unresolved imports (up from 196 in batch 7; increase driven by test-suite extraction importing `nova.virt.*` sub-modules not yet in the KB): bare `nova` (884 refs), `nova.virt` (97), `nova.virt.libvirt` (72), `nova.virt.vmwareapi` (45), `nova.volume` (23), `nova.virt.libvirt.volume` (21), and others. No previously resolved modules regressed. Source: `.aee/link-summary.md`.
+The link graph records **0 cross-component file edges** and **0 cross-component seams**. All 5,884 file edges are intra-component. The link summary notes 923 unresolved imports (down from 1,200 in batch 8): bare `nova` (913 refs, representing dynamic attribute-access patterns across all files rather than a missing module), `nova.context` (7), `nova.policy` (2), `nova.quota` (1). All named module-level gaps from previous runs are now resolved -- `nova.virt.*` cluster (283 refs) and `nova.volume` (23 refs) fully resolved in this batch. Source: `.aee/link-summary.md`.
