@@ -4,18 +4,18 @@
 
 | Metric | Value |
 |---|---|
-| Files | 1484 |
-| File edges | 5884 |
+| Files | 1509 |
+| File edges | 6902 |
 | Cross-component edges | 0 |
-| Resolved | 16347 |
+| Resolved | 18812 |
 | Ambiguous | 0 |
-| Unresolved | 923 |
-| External imports | 3905 |
+| Unresolved | 10 |
+| External imports | 4049 |
 | Seams | 0 |
 
 ## Component Dependencies
 
-No cross-component file edges found. All 5884 file edges are intra-component (within the `nova` component).
+No cross-component file edges found. All 6902 file edges are intra-component (within the `nova` component).
 
 ## Seams
 
@@ -32,29 +32,32 @@ No cross-component seams found in `src/`. All seam kinds produced no results.
 
 ## Unresolved Imports
 
-923 unresolved imports across only **4 distinct symbol roots** (down from 1200 with 22 roots last run). This batch extracted `nova.virt.*` production code (libvirt, vmwareapi, zvm, ironic drivers, disk utilities, etc.) and `nova.volume.*`, resolving the entire 283-ref `nova.virt.*` cluster and the 23-ref `nova.volume` gap in one go. All named module-level gaps from previous runs are now resolved.
+**10 unresolved imports — 1 distinct symbol root.** This batch extracted `nova.context`, `nova.policy`, `nova.quota`, and 17 other top-level nova modules, resolving all named-module gaps from the previous run. The graph is now effectively complete.
 
 **Summary by unresolved module root:**
 
-| Symbol | Refs | vs prev run |
-|---|---|---|
-| nova | 913 | +29 (was 884) — newly extracted virt files add references |
-| nova.context | 7 | — |
-| nova.policy | 2 | — |
-| nova.quota | 1 | — |
-
-**Resolved vs previous run:** `nova.virt` (97), `nova.virt.libvirt` (72), `nova.virt.vmwareapi` (45), `nova.virt.libvirt.volume` (21), `nova.virt.image` (10), `nova.virt.disk.mount` (8), `nova.virt.libvirt.cpu` (5), `nova.virt.zvm` (5), `nova.virt.ironic` (4), `nova.virt.libvirt.storage` (4), `nova.virt.disk` (3), `nova.virt.libvirt.host` (2), `nova.virt.block_device` (2), `nova.virt.disk.vfs` (2), `nova.virt.node` (1), `nova.virt.hardware` (1), `nova.virt.libvirt.driver` (1), `nova.volume` (23), `nova.share` (3), `nova.storage` (1) — all now in the KB.
-
-**Remaining gaps:**
-
 | Symbol | Refs | Notes |
 |---|---|---|
-| nova | 913 | Top-level package access patterns across all extracted files; not a single missing module — will reduce only as remaining top-level nova modules are completed |
-| nova.context | 7 | Request context module — may be part of nova.compute or a standalone module not yet extracted |
-| nova.policy | 2 | Policy enforcer (distinct from nova.policies which is resolved) |
-| nova.quota | 1 | Quota enforcement |
+| nova | 10 | Bare top-level package access in test/functional files |
 
-**State assessment:** The graph is now near-complete for named module imports. The remaining 923 unresolved entries are dominated by the bare `nova` pattern (913 refs) which represents dynamic attribute access and re-export patterns rather than a single missing file. The 10 remaining named-module refs (`nova.context`, `nova.policy`, `nova.quota`) are minor gaps.
+**All 10 remaining unresolved entries (for human review):**
+
+| File | Line | Symbol | Reason |
+|---|---|---|---|
+| src/nova/tests/fixtures/manila.py | 14 | nova | module-not-found |
+| src/nova/tests/functional/libvirt/test_numa_servers.py | 22 | nova | module-not-found |
+| src/nova/tests/functional/libvirt/test_pci_sriov_servers.py | 31 | nova | module-not-found |
+| src/nova/tests/functional/libvirt/test_vif_model.py | 20 | nova | module-not-found |
+| src/nova/tests/functional/regressions/test_bug_1845291.py | 14 | nova | module-not-found |
+| src/nova/tests/functional/regressions/test_bug_1849165.py | 14 | nova | module-not-found |
+| src/nova/tests/functional/regressions/test_bug_2143972.py | 13 | nova | module-not-found |
+| src/nova/tests/unit/compute/test_compute.py | 47 | nova | module-not-found |
+| src/nova/tests/unit/compute/test_compute_mgr.py | 37 | nova | module-not-found |
+| src/nova/tests/unit/scheduler/test_host_manager.py | 28 | nova | module-not-found |
+
+These 10 references use the bare `nova` package name (e.g. `import nova` or `nova.<attr>`) in test files. They may reference dynamically-loaded sub-modules (compute, scheduler, fixtures) whose source files have not been extracted yet — `nova.compute`, `nova.scheduler`, and `nova.tests.fixtures.*` are the likely targets. They may also resolve in a later run once the remaining test infrastructure files land.
+
+**Resolved vs previous run:** `nova.context` (7 refs), `nova.policy` (2 refs), `nova.quota` (1 ref), plus 903 bare `nova` references that resolved to the newly-extracted top-level modules (`nova.context.py`, `nova.policy.py`, `nova.quota.py`, `nova.rpc.py`, `nova.service.py`, `nova.manager.py`, etc.).
 
 ## Ambiguous References
 
@@ -62,4 +65,4 @@ None.
 
 ## Warnings
 
-None. All 1484 KB records were usable.
+None. All 1509 KB records were usable.
