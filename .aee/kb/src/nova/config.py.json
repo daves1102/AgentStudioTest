@@ -1,0 +1,417 @@
+{
+  "file": "src/nova/config.py",
+  "hash": "16bb6de69b3d1c14e22578d3cb6aff9832d9fdc86fcaf78e5957e06a1b7f40ba",
+  "language": "Python",
+  "component": "nova",
+  "package": null,
+  "lines": {
+    "blank": 26,
+    "code": 52,
+    "comment": 28,
+    "total": 106
+  },
+  "symbols": [
+    {
+      "name": "profiler",
+      "kind": "variable",
+      "scope": "",
+      "lineRange": {
+        "start": 30,
+        "end": 30
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "CONF",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 33,
+        "end": 33
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "set_lib_defaults",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 36,
+        "end": 53
+      },
+      "source": "aee-inventory",
+      "parameters": [],
+      "returnType": null,
+      "returns": [],
+      "nloc": 4,
+      "ccn": 1,
+      "exported": true
+    },
+    {
+      "name": "rabbit_heartbeat_filter",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 56,
+        "end": 58
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "log_record"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "message not in log_record.msg",
+          "line": 58
+        }
+      ],
+      "nloc": 3,
+      "ccn": 1,
+      "exported": true
+    },
+    {
+      "name": "set_log_defaults",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 61,
+        "end": 78
+      },
+      "source": "aee-inventory",
+      "parameters": [],
+      "returnType": null,
+      "returns": [],
+      "nloc": 10,
+      "ccn": 3,
+      "exported": true
+    },
+    {
+      "name": "parse_args",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 81,
+        "end": 106
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "argv"
+        },
+        {
+          "default": "None",
+          "name": "default_config_files"
+        },
+        {
+          "default": "True",
+          "name": "configure_db"
+        },
+        {
+          "default": "True",
+          "name": "init_rpc"
+        },
+        {
+          "default": "None",
+          "name": "prog"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 18,
+      "ccn": 4,
+      "exported": true
+    }
+  ],
+  "referencedSymbols": [
+    {
+      "name": "importutils.try_import",
+      "usage": "call",
+      "via": "oslo_utils",
+      "count": 1,
+      "lineRange": {
+        "start": 30,
+        "end": 30
+      }
+    },
+    {
+      "name": "middleware.set_defaults",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 46,
+        "end": 46
+      }
+    },
+    {
+      "name": "rpc.set_defaults",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 49,
+        "end": 49
+      }
+    },
+    {
+      "name": "log.get_default_log_levels",
+      "usage": "call",
+      "via": "oslo_log",
+      "count": 1,
+      "lineRange": {
+        "start": 77,
+        "end": 77
+      }
+    },
+    {
+      "name": "log.set_defaults",
+      "usage": "call",
+      "via": "oslo_log",
+      "count": 1,
+      "lineRange": {
+        "start": 77,
+        "end": 77
+      }
+    },
+    {
+      "name": "log.register_options",
+      "usage": "call",
+      "via": "oslo_log",
+      "count": 1,
+      "lineRange": {
+        "start": 83,
+        "end": 83
+      }
+    },
+    {
+      "name": "logging.getLogger",
+      "usage": "call",
+      "via": "logging",
+      "count": 1,
+      "lineRange": {
+        "start": 88,
+        "end": 88
+      }
+    },
+    {
+      "name": "version.version_string",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 98,
+        "end": 98
+      }
+    },
+    {
+      "name": "rpc.init",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 102,
+        "end": 102
+      }
+    },
+    {
+      "name": "main_db_api.configure",
+      "usage": "call",
+      "via": "nova.db.main",
+      "count": 1,
+      "lineRange": {
+        "start": 105,
+        "end": 105
+      }
+    },
+    {
+      "name": "api_db_api.configure",
+      "usage": "call",
+      "via": "nova.db.api",
+      "count": 1,
+      "lineRange": {
+        "start": 106,
+        "end": 106
+      }
+    }
+  ],
+  "dependencies": [
+    {
+      "style": "import",
+      "module": "logging",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 18,
+        "end": 18
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_log",
+      "names": [
+        {
+          "alias": null,
+          "name": "log"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 20,
+        "end": 20
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_utils",
+      "names": [
+        {
+          "alias": null,
+          "name": "importutils"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 21,
+        "end": 21
+      }
+    },
+    {
+      "style": "import",
+      "module": "nova.conf",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 23,
+        "end": 23
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.db.api",
+      "names": [
+        {
+          "alias": "api_db_api",
+          "name": "api"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 24,
+        "end": 24
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.db.main",
+      "names": [
+        {
+          "alias": "main_db_api",
+          "name": "api"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 25,
+        "end": 25
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "middleware"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 26,
+        "end": 26
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "rpc"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 27,
+        "end": 27
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "version"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 28,
+        "end": 28
+      }
+    }
+  ],
+  "sideEffects": [
+    {
+      "kind": "network",
+      "target": "https://docs.openstack.org/oslo.config/latest/cli/",
+      "lineRange": {
+        "start": 41,
+        "end": 41
+      }
+    },
+    {
+      "kind": "process-spawn",
+      "target": "extra_default_log_levels.append('oslo.privsep.daemon=INFO')",
+      "lineRange": {
+        "start": 75,
+        "end": 75
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "CONF = nova.conf.CONF",
+      "lineRange": {
+        "start": 33,
+        "end": 33
+      }
+    }
+  ],
+  "securitySurface": [
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "\"\"\"Update default value for configuration options from other namespace.",
+      "lineRange": {
+        "start": 37,
+        "end": 37
+      }
+    }
+  ],
+  "injection_flags": [],
+  "warnings": []
+}

@@ -1,0 +1,400 @@
+{
+  "file": "src/nova/baserpc.py",
+  "hash": "8f220e58296b75cd8a116781bb6467c63437f27e37ba76f0c2afd18f725c339f",
+  "language": "Python",
+  "component": "nova",
+  "package": null,
+  "lines": {
+    "blank": 20,
+    "code": 43,
+    "comment": 16,
+    "total": 79
+  },
+  "symbols": [
+    {
+      "name": "CONF",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 28,
+        "end": 28
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "_NAMESPACE",
+      "kind": "variable",
+      "scope": "",
+      "lineRange": {
+        "start": 30,
+        "end": 30
+      },
+      "source": "aee-inventory",
+      "exported": false
+    },
+    {
+      "name": "BaseAPI",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 33,
+        "end": 62
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "VERSION_ALIASES",
+      "kind": "constant",
+      "scope": "BaseAPI",
+      "lineRange": {
+        "start": 42,
+        "end": 44
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "__init__",
+      "kind": "method",
+      "scope": "BaseAPI",
+      "lineRange": {
+        "start": 46,
+        "end": 53
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "topic"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 8,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "ping",
+      "kind": "method",
+      "scope": "BaseAPI",
+      "lineRange": {
+        "start": 55,
+        "end": 58
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "context"
+        },
+        {
+          "name": "arg"
+        },
+        {
+          "default": "None",
+          "name": "timeout"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "cctxt.call(context, 'ping', arg=arg_p)",
+          "line": 58
+        }
+      ],
+      "nloc": 4,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "get_backdoor_port",
+      "kind": "method",
+      "scope": "BaseAPI",
+      "lineRange": {
+        "start": 60,
+        "end": 62
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "context"
+        },
+        {
+          "name": "host"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "cctxt.call(context, 'get_backdoor_port')",
+          "line": 62
+        }
+      ],
+      "nloc": 3,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "BaseRPCAPI",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 65,
+        "end": 79
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "target",
+      "kind": "field",
+      "scope": "BaseRPCAPI",
+      "lineRange": {
+        "start": 68,
+        "end": 68
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "__init__",
+      "kind": "method",
+      "scope": "BaseRPCAPI",
+      "lineRange": {
+        "start": 70,
+        "end": 72
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "service_name"
+        },
+        {
+          "name": "backdoor_port"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 3,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "ping",
+      "kind": "method",
+      "scope": "BaseRPCAPI",
+      "lineRange": {
+        "start": 74,
+        "end": 76
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "context"
+        },
+        {
+          "name": "arg"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "jsonutils.to_primitive(resp)",
+          "line": 76
+        }
+      ],
+      "nloc": 3,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "get_backdoor_port",
+      "kind": "method",
+      "scope": "BaseRPCAPI",
+      "lineRange": {
+        "start": 78,
+        "end": 79
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "context"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "self.backdoor_port",
+          "line": 79
+        }
+      ],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "public"
+    }
+  ],
+  "referencedSymbols": [
+    {
+      "name": "object",
+      "usage": "inherit",
+      "via": null,
+      "count": 2,
+      "lineRange": {
+        "start": 33,
+        "end": 33
+      }
+    },
+    {
+      "name": "super",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 47,
+        "end": 47
+      }
+    },
+    {
+      "name": "messaging.Target",
+      "usage": "call",
+      "via": "oslo_messaging",
+      "count": 2,
+      "lineRange": {
+        "start": 48,
+        "end": 48
+      }
+    },
+    {
+      "name": "rpc.get_client",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 53,
+        "end": 53
+      }
+    },
+    {
+      "name": "jsonutils.to_primitive",
+      "usage": "call",
+      "via": "oslo_serialization",
+      "count": 2,
+      "lineRange": {
+        "start": 56,
+        "end": 56
+      }
+    }
+  ],
+  "dependencies": [
+    {
+      "style": "import",
+      "module": "oslo_messaging",
+      "names": [],
+      "alias": "messaging",
+      "relative": false,
+      "lineRange": {
+        "start": 21,
+        "end": 21
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_serialization",
+      "names": [
+        {
+          "alias": null,
+          "name": "jsonutils"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 22,
+        "end": 22
+      }
+    },
+    {
+      "style": "import",
+      "module": "nova.conf",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 24,
+        "end": 24
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "rpc"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 25,
+        "end": 25
+      }
+    }
+  ],
+  "sideEffects": [
+    {
+      "kind": "network",
+      "target": "cctxt = self.client.prepare(timeout=timeout)",
+      "lineRange": {
+        "start": 57,
+        "end": 57
+      }
+    },
+    {
+      "kind": "network",
+      "target": "cctxt = self.client.prepare(server=host, version='1.1')",
+      "lineRange": {
+        "start": 61,
+        "end": 61
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "CONF = nova.conf.CONF",
+      "lineRange": {
+        "start": 28,
+        "end": 28
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "VERSION_ALIASES = {",
+      "lineRange": {
+        "start": 42,
+        "end": 42
+      }
+    }
+  ],
+  "securitySurface": [],
+  "injection_flags": [],
+  "warnings": []
+}

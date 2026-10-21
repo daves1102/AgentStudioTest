@@ -1,0 +1,1864 @@
+{
+  "file": "src/nova/context.py",
+  "hash": "c054c2f2bc921528a711b210fd6c8bf2fd92c7f069fe06b4f3e96aef4bd6d6b9",
+  "language": "Python",
+  "component": "nova",
+  "package": null,
+  "lines": {
+    "blank": 108,
+    "code": 445,
+    "comment": 59,
+    "total": 612
+  },
+  "symbols": [
+    {
+      "name": "LOG",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 40,
+        "end": 40
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "CONF",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 41,
+        "end": 41
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "CELL_CACHE",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 42,
+        "end": 42
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "did_not_respond_sentinel",
+      "kind": "variable",
+      "scope": "",
+      "lineRange": {
+        "start": 45,
+        "end": 45
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "CELLS",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 49,
+        "end": 49
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "CELL_TIMEOUT",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 51,
+        "end": 51
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "reset_globals",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 54,
+        "end": 59
+      },
+      "source": "aee-inventory",
+      "parameters": [],
+      "returnType": null,
+      "returns": [],
+      "nloc": 6,
+      "ccn": 1,
+      "exported": true
+    },
+    {
+      "name": "_ContextAuthPlugin",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 62,
+        "end": 107
+      },
+      "source": "aee-inventory",
+      "exported": false
+    },
+    {
+      "name": "__init__",
+      "kind": "method",
+      "scope": "_ContextAuthPlugin",
+      "lineRange": {
+        "start": 70,
+        "end": 74
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "auth_token"
+        },
+        {
+          "name": "sc"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 4,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "get_token",
+      "kind": "method",
+      "scope": "_ContextAuthPlugin",
+      "lineRange": {
+        "start": 76,
+        "end": 77
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "*args"
+        },
+        {
+          "name": "**kwargs"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "self.auth_token",
+          "line": 77
+        }
+      ],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "get_endpoint",
+      "kind": "method",
+      "scope": "_ContextAuthPlugin",
+      "lineRange": {
+        "start": 79,
+        "end": 84
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "session"
+        },
+        {
+          "default": "None",
+          "name": "service_type"
+        },
+        {
+          "default": "None",
+          "name": "interface"
+        },
+        {
+          "default": "None",
+          "name": "region_name"
+        },
+        {
+          "default": "None",
+          "name": "service_name"
+        },
+        {
+          "name": "**kwargs"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "self.service_catalog.url_for(service_type=service_type, service_name=service_name, interface=interface, region_name=region_name)",
+          "line": 81
+        }
+      ],
+      "nloc": 6,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "get_endpoint_data",
+      "kind": "method",
+      "scope": "_ContextAuthPlugin",
+      "lineRange": {
+        "start": 86,
+        "end": 107
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "session"
+        },
+        {
+          "name": "*"
+        },
+        {
+          "default": "None",
+          "name": "endpoint_override"
+        },
+        {
+          "default": "True",
+          "name": "discover_versions"
+        },
+        {
+          "name": "**kwargs"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "super().get_endpoint_data( session, endpoint_override=endpoint_override, discover_versions=discover_versions, **kwargs)",
+          "line": 105
+        }
+      ],
+      "nloc": 7,
+      "ccn": 2,
+      "visibility": "public"
+    },
+    {
+      "name": "RequestContext",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 111,
+        "end": 286
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "__init__",
+      "kind": "method",
+      "scope": "RequestContext",
+      "lineRange": {
+        "start": 118,
+        "end": 172
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "default": "None",
+          "name": "user_id"
+        },
+        {
+          "default": "None",
+          "name": "project_id"
+        },
+        {
+          "default": "None",
+          "name": "is_admin"
+        },
+        {
+          "default": "\"no\"",
+          "name": "read_deleted"
+        },
+        {
+          "default": "None",
+          "name": "remote_address"
+        },
+        {
+          "default": "None",
+          "name": "timestamp"
+        },
+        {
+          "default": "None",
+          "name": "quota_class"
+        },
+        {
+          "default": "None",
+          "name": "service_catalog"
+        },
+        {
+          "default": "None",
+          "name": "user_auth_plugin"
+        },
+        {
+          "name": "**kwargs"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 30,
+      "ccn": 9,
+      "visibility": "public"
+    },
+    {
+      "name": "get_auth_plugin",
+      "kind": "method",
+      "scope": "RequestContext",
+      "lineRange": {
+        "start": 174,
+        "end": 178
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "self.user_auth_plugin",
+          "line": 176
+        },
+        {
+          "expr": "_ContextAuthPlugin(self.auth_token, self.service_catalog)",
+          "line": 178
+        }
+      ],
+      "nloc": 5,
+      "ccn": 2,
+      "visibility": "public"
+    },
+    {
+      "name": "_get_read_deleted",
+      "kind": "method",
+      "scope": "RequestContext",
+      "lineRange": {
+        "start": 180,
+        "end": 181
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "self._read_deleted",
+          "line": 181
+        }
+      ],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "_set_read_deleted",
+      "kind": "method",
+      "scope": "RequestContext",
+      "lineRange": {
+        "start": 183,
+        "end": 187
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "read_deleted"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 5,
+      "ccn": 2,
+      "visibility": "private"
+    },
+    {
+      "name": "_del_read_deleted",
+      "kind": "method",
+      "scope": "RequestContext",
+      "lineRange": {
+        "start": 189,
+        "end": 190
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "read_deleted",
+      "kind": "field",
+      "scope": "RequestContext",
+      "lineRange": {
+        "start": 192,
+        "end": 193
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "to_dict",
+      "kind": "method",
+      "scope": "RequestContext",
+      "lineRange": {
+        "start": 195,
+        "end": 221
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "values",
+          "line": 221
+        }
+      ],
+      "nloc": 20,
+      "ccn": 2,
+      "visibility": "public"
+    },
+    {
+      "name": "from_dict",
+      "kind": "method",
+      "scope": "RequestContext",
+      "lineRange": {
+        "start": 224,
+        "end": 237
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "cls"
+        },
+        {
+          "name": "values"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "super(RequestContext, cls).from_dict( values, user_id=values.get('user_id'), project_id=values.get('project_id'), # TODO(sdague): oslo.context has show_deleted, if # possible, we should migrate to tha",
+          "line": 225
+        }
+      ],
+      "nloc": 11,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "elevated",
+      "kind": "method",
+      "scope": "RequestContext",
+      "lineRange": {
+        "start": 239,
+        "end": 253
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "default": "None",
+          "name": "read_deleted"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "context",
+          "line": 253
+        }
+      ],
+      "nloc": 9,
+      "ccn": 3,
+      "visibility": "public"
+    },
+    {
+      "name": "can",
+      "kind": "method",
+      "scope": "RequestContext",
+      "lineRange": {
+        "start": 255,
+        "end": 278
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "action"
+        },
+        {
+          "default": "None",
+          "name": "target"
+        },
+        {
+          "default": "True",
+          "name": "fatal"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "policy.authorize(self, action, target)",
+          "line": 274
+        },
+        {
+          "expr": "False",
+          "line": 278
+        }
+      ],
+      "nloc": 7,
+      "ccn": 3,
+      "visibility": "public"
+    },
+    {
+      "name": "to_policy_values",
+      "kind": "method",
+      "scope": "RequestContext",
+      "lineRange": {
+        "start": 280,
+        "end": 283
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "policy",
+          "line": 283
+        }
+      ],
+      "nloc": 4,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "__str__",
+      "kind": "method",
+      "scope": "RequestContext",
+      "lineRange": {
+        "start": 285,
+        "end": 286
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "\"<Context %s>\" % self.to_dict()",
+          "line": 286
+        }
+      ],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "get_context",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 289,
+        "end": 298
+      },
+      "source": "aee-inventory",
+      "parameters": [],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "RequestContext(user_id=None, project_id=None, is_admin=False, overwrite=False)",
+          "line": 295
+        }
+      ],
+      "nloc": 5,
+      "ccn": 1,
+      "exported": true
+    },
+    {
+      "name": "get_admin_context",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 301,
+        "end": 312
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "default": "\"no\"",
+          "name": "read_deleted"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "RequestContext(user_id=None, project_id=None, is_admin=True, read_deleted=read_deleted, overwrite=False)",
+          "line": 308
+        }
+      ],
+      "nloc": 6,
+      "ccn": 1,
+      "exported": true
+    },
+    {
+      "name": "get_nova_service_user_context",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 315,
+        "end": 339
+      },
+      "source": "aee-inventory",
+      "parameters": [],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "RequestContext(user_id=auth.get_user_id(session), project_id=auth.get_project_id(session), roles=auth.get_access(session).role_names, user_auth_plugin=auth, overwrite=False)",
+          "line": 336
+        }
+      ],
+      "nloc": 13,
+      "ccn": 3,
+      "exported": true
+    },
+    {
+      "name": "is_user_context",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 342,
+        "end": 350
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "context"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "False",
+          "line": 345
+        },
+        {
+          "expr": "False",
+          "line": 347
+        },
+        {
+          "expr": "False",
+          "line": 349
+        },
+        {
+          "expr": "True",
+          "line": 350
+        }
+      ],
+      "nloc": 8,
+      "ccn": 5,
+      "exported": true
+    },
+    {
+      "name": "require_context",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 353,
+        "end": 358
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "ctxt"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 3,
+      "ccn": 3,
+      "exported": true
+    },
+    {
+      "name": "authorize_project_context",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 361,
+        "end": 367
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "context"
+        },
+        {
+          "name": "project_id"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 6,
+      "ccn": 4,
+      "exported": true
+    },
+    {
+      "name": "authorize_user_context",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 370,
+        "end": 376
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "context"
+        },
+        {
+          "name": "user_id"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 6,
+      "ccn": 4,
+      "exported": true
+    },
+    {
+      "name": "authorize_quota_class_context",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 379,
+        "end": 385
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "context"
+        },
+        {
+          "name": "class_name"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 6,
+      "ccn": 4,
+      "exported": true
+    },
+    {
+      "name": "set_target_cell",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 388,
+        "end": 429
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "context"
+        },
+        {
+          "name": "cell_mapping"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 11,
+      "ccn": 2,
+      "exported": true
+    },
+    {
+      "name": "get_or_set_cached_cell_and_set_connections",
+      "kind": "function",
+      "scope": "set_target_cell",
+      "lineRange": {
+        "start": 407,
+        "end": 423
+      },
+      "source": "aee-inventory",
+      "parameters": [],
+      "returnType": null,
+      "returns": [],
+      "visibility": "public"
+    },
+    {
+      "name": "target_cell",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 433,
+        "end": 453
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "context"
+        },
+        {
+          "name": "cell_mapping"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 4,
+      "ccn": 1,
+      "exported": true
+    },
+    {
+      "name": "scatter_gather_cells",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 456,
+        "end": 525
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "context"
+        },
+        {
+          "name": "cell_mappings"
+        },
+        {
+          "name": "timeout"
+        },
+        {
+          "name": "fn"
+        },
+        {
+          "name": "*args"
+        },
+        {
+          "name": "**kwargs"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "results",
+          "line": 525
+        }
+      ],
+      "nloc": 37,
+      "ccn": 6,
+      "exported": true
+    },
+    {
+      "name": "gather_result",
+      "kind": "function",
+      "scope": "scatter_gather_cells",
+      "lineRange": {
+        "start": 479,
+        "end": 488
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "cell_uuid"
+        },
+        {
+          "name": "fn"
+        },
+        {
+          "name": "*args"
+        },
+        {
+          "name": "**kwargs"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "result",
+          "line": 488
+        }
+      ],
+      "visibility": "public"
+    },
+    {
+      "name": "load_cells",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 528,
+        "end": 537
+      },
+      "source": "aee-inventory",
+      "parameters": [],
+      "returnType": null,
+      "returns": [],
+      "nloc": 9,
+      "ccn": 4,
+      "exported": true
+    },
+    {
+      "name": "is_cell_failure_sentinel",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 540,
+        "end": 542
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "record"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "(record is did_not_respond_sentinel or isinstance(record, Exception))",
+          "line": 541
+        }
+      ],
+      "nloc": 3,
+      "ccn": 2,
+      "exported": true
+    },
+    {
+      "name": "scatter_gather_skip_cell0",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 545,
+        "end": 566
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "context"
+        },
+        {
+          "name": "fn"
+        },
+        {
+          "name": "*args"
+        },
+        {
+          "name": "**kwargs"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "scatter_gather_cells(context, cell_mappings, CELL_TIMEOUT, fn, *args, **kwargs)",
+          "line": 565
+        }
+      ],
+      "nloc": 5,
+      "ccn": 3,
+      "exported": true
+    },
+    {
+      "name": "scatter_gather_single_cell",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 569,
+        "end": 589
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "context"
+        },
+        {
+          "name": "cell_mapping"
+        },
+        {
+          "name": "fn"
+        },
+        {
+          "name": "*args"
+        },
+        {
+          "name": "**kwargs"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "scatter_gather_cells(context, [cell_mapping], CELL_TIMEOUT, fn, *args, **kwargs)",
+          "line": 588
+        }
+      ],
+      "nloc": 3,
+      "ccn": 1,
+      "exported": true
+    },
+    {
+      "name": "scatter_gather_all_cells",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 592,
+        "end": 612
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "context"
+        },
+        {
+          "name": "fn"
+        },
+        {
+          "name": "*args"
+        },
+        {
+          "name": "**kwargs"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "scatter_gather_cells(context, CELLS, CELL_TIMEOUT, fn, *args, **kwargs)",
+          "line": 611
+        }
+      ],
+      "nloc": 4,
+      "ccn": 1,
+      "exported": true
+    },
+    {
+      "name": "from_dict",
+      "kind": "classmethod",
+      "scope": "RequestContext",
+      "lineRange": {
+        "start": 223,
+        "end": 237
+      },
+      "visibility": "public",
+      "source": "manual"
+    }
+  ],
+  "referencedSymbols": [
+    {
+      "name": "logging.getLogger",
+      "usage": "call",
+      "via": "oslo_log",
+      "count": 1,
+      "lineRange": {
+        "start": 40,
+        "end": 40
+      }
+    },
+    {
+      "name": "object",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 45,
+        "end": 45
+      }
+    },
+    {
+      "name": "service_auth.reset_globals",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 59,
+        "end": 59
+      }
+    },
+    {
+      "name": "plugin.BaseAuthPlugin",
+      "usage": "inherit",
+      "via": "keystoneauth1",
+      "count": 1,
+      "lineRange": {
+        "start": 62,
+        "end": 62
+      }
+    },
+    {
+      "name": "super",
+      "usage": "call",
+      "via": null,
+      "count": 6,
+      "lineRange": {
+        "start": 71,
+        "end": 71
+      }
+    },
+    {
+      "name": "ksa_service_catalog.ServiceCatalogV2",
+      "usage": "call",
+      "via": "keystoneauth1.access",
+      "count": 1,
+      "lineRange": {
+        "start": 74,
+        "end": 74
+      }
+    },
+    {
+      "name": "context.RequestContext",
+      "usage": "inherit",
+      "via": "oslo_context",
+      "count": 1,
+      "lineRange": {
+        "start": 111,
+        "end": 111
+      }
+    },
+    {
+      "name": "timeutils.utcnow",
+      "usage": "call",
+      "via": "oslo_utils",
+      "count": 1,
+      "lineRange": {
+        "start": 142,
+        "end": 142
+      }
+    },
+    {
+      "name": "isinstance",
+      "usage": "call",
+      "via": null,
+      "count": 3,
+      "lineRange": {
+        "start": 143,
+        "end": 143
+      }
+    },
+    {
+      "name": "timeutils.parse_strtime",
+      "usage": "call",
+      "via": "oslo_utils",
+      "count": 1,
+      "lineRange": {
+        "start": 144,
+        "end": 144
+      }
+    },
+    {
+      "name": "policy.check_is_admin",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 172,
+        "end": 172
+      }
+    },
+    {
+      "name": "ValueError",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 185,
+        "end": 185
+      }
+    },
+    {
+      "name": "_",
+      "usage": "call",
+      "via": "nova.i18n",
+      "count": 1,
+      "lineRange": {
+        "start": 185,
+        "end": 185
+      }
+    },
+    {
+      "name": "property",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 192,
+        "end": 192
+      }
+    },
+    {
+      "name": "getattr",
+      "usage": "call",
+      "via": null,
+      "count": 11,
+      "lineRange": {
+        "start": 201,
+        "end": 201
+      }
+    },
+    {
+      "name": "hasattr",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 206,
+        "end": 206
+      }
+    },
+    {
+      "name": "utils.strtime",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 206,
+        "end": 206
+      }
+    },
+    {
+      "name": "copy.copy",
+      "usage": "call",
+      "via": "copy",
+      "count": 1,
+      "lineRange": {
+        "start": 241,
+        "end": 241
+      }
+    },
+    {
+      "name": "copy.deepcopy",
+      "usage": "call",
+      "via": "copy",
+      "count": 1,
+      "lineRange": {
+        "start": 244,
+        "end": 244
+      }
+    },
+    {
+      "name": "context.roles.append",
+      "usage": "call",
+      "via": "oslo_context",
+      "count": 1,
+      "lineRange": {
+        "start": 248,
+        "end": 248
+      }
+    },
+    {
+      "name": "policy.authorize",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 274,
+        "end": 274
+      }
+    },
+    {
+      "name": "service_auth.get_service_auth_plugin",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 327,
+        "end": 327
+      }
+    },
+    {
+      "name": "service_auth.get_service_auth_session",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 328,
+        "end": 328
+      }
+    },
+    {
+      "name": "exception.InvalidConfiguration",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 331,
+        "end": 331
+      }
+    },
+    {
+      "name": "exception.Forbidden",
+      "usage": "call",
+      "via": "nova",
+      "count": 7,
+      "lineRange": {
+        "start": 358,
+        "end": 358
+      }
+    },
+    {
+      "name": "utils.synchronized",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 406,
+        "end": 406
+      }
+    },
+    {
+      "name": "db.create_context_manager",
+      "usage": "call",
+      "via": "nova.db.main",
+      "count": 1,
+      "lineRange": {
+        "start": 412,
+        "end": 412
+      }
+    },
+    {
+      "name": "rpc.create_transport",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 415,
+        "end": 415
+      }
+    },
+    {
+      "name": "context.to_dict",
+      "usage": "call",
+      "via": "oslo_context",
+      "count": 1,
+      "lineRange": {
+        "start": 451,
+        "end": 451
+      }
+    },
+    {
+      "name": "fn",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 481,
+        "end": 481
+      }
+    },
+    {
+      "name": "thread_pool_factory.spawn_on",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 492,
+        "end": 492
+      }
+    },
+    {
+      "name": "futurist.waiters.wait_for_all",
+      "usage": "call",
+      "via": "futurist.waiters",
+      "count": 1,
+      "lineRange": {
+        "start": 498,
+        "end": 498
+      }
+    },
+    {
+      "name": "utils.concurrency_mode_threading",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 505,
+        "end": 505
+      }
+    },
+    {
+      "name": "objects.CellMappingList.get_all",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 531,
+        "end": 531
+      }
+    },
+    {
+      "name": "dict",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 533,
+        "end": 533
+      }
+    },
+    {
+      "name": "len",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 533,
+        "end": 533
+      }
+    }
+  ],
+  "dependencies": [
+    {
+      "style": "from",
+      "module": "contextlib",
+      "names": [
+        {
+          "alias": null,
+          "name": "contextmanager"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 20,
+        "end": 20
+      }
+    },
+    {
+      "style": "import",
+      "module": "copy",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 21,
+        "end": 21
+      }
+    },
+    {
+      "style": "import",
+      "module": "futurist.waiters",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 23,
+        "end": 23
+      }
+    },
+    {
+      "style": "from",
+      "module": "keystoneauth1.access",
+      "names": [
+        {
+          "alias": "ksa_service_catalog",
+          "name": "service_catalog"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 24,
+        "end": 24
+      }
+    },
+    {
+      "style": "from",
+      "module": "keystoneauth1",
+      "names": [
+        {
+          "alias": null,
+          "name": "plugin"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 25,
+        "end": 25
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_context",
+      "names": [
+        {
+          "alias": null,
+          "name": "context"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 26,
+        "end": 26
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_db.sqlalchemy",
+      "names": [
+        {
+          "alias": null,
+          "name": "enginefacade"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 27,
+        "end": 27
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_log",
+      "names": [
+        {
+          "alias": "logging",
+          "name": "log"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 28,
+        "end": 28
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_utils",
+      "names": [
+        {
+          "alias": null,
+          "name": "timeutils"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 29,
+        "end": 29
+      }
+    },
+    {
+      "style": "import",
+      "module": "nova.conf",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 31,
+        "end": 31
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "exception"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 32,
+        "end": 32
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.i18n",
+      "names": [
+        {
+          "alias": null,
+          "name": "_"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 33,
+        "end": 33
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "objects"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 34,
+        "end": 34
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "policy"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 35,
+        "end": 35
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "service_auth"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 36,
+        "end": 36
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "thread_pool_factory"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 37,
+        "end": 37
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "utils"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 38,
+        "end": 38
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.db.main",
+      "names": [
+        {
+          "alias": "db",
+          "name": "api"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 402,
+        "end": 402
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "rpc"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 403,
+        "end": 403
+      }
+    }
+  ],
+  "sideEffects": [
+    {
+      "kind": "global-mutation",
+      "target": "LOG = logging.getLogger(__name__)",
+      "lineRange": {
+        "start": 40,
+        "end": 40
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "CONF = nova.conf.CONF",
+      "lineRange": {
+        "start": 41,
+        "end": 41
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "CELL_CACHE = {}",
+      "lineRange": {
+        "start": 42,
+        "end": 42
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "CELLS = []",
+      "lineRange": {
+        "start": 49,
+        "end": 49
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "CELL_TIMEOUT = 60",
+      "lineRange": {
+        "start": 51,
+        "end": 51
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "CELL_CACHE = {}",
+      "lineRange": {
+        "start": 57,
+        "end": 57
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "CELLS = []",
+      "lineRange": {
+        "start": 58,
+        "end": 58
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "CELLS = objects.CellMappingList.get_all(get_admin_context())",
+      "lineRange": {
+        "start": 531,
+        "end": 531
+      }
+    }
+  ],
+  "securitySurface": [
+    {
+      "kind": "privilege",
+      "category": "crypto-key",
+      "description": "from keystoneauth1.access import service_catalog as ksa_service_catalog",
+      "lineRange": {
+        "start": 24,
+        "end": 24
+      }
+    },
+    {
+      "kind": "privilege",
+      "category": "crypto-key",
+      "description": "from keystoneauth1 import plugin",
+      "lineRange": {
+        "start": 25,
+        "end": 25
+      }
+    },
+    {
+      "kind": "privilege",
+      "category": "crypto-key",
+      "description": "\"\"\"A keystoneauth auth plugin that uses the values from the Context.",
+      "lineRange": {
+        "start": 63,
+        "end": 63
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "values.update({",
+      "lineRange": {
+        "start": 200,
+        "end": 200
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "values.update({",
+      "lineRange": {
+        "start": 218,
+        "end": 218
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "Note that overwrite is False here so this context will not update the",
+      "lineRange": {
+        "start": 292,
+        "end": 292
+      }
+    }
+  ],
+  "injection_flags": [],
+  "warnings": []
+}

@@ -1,0 +1,1287 @@
+{
+  "file": "src/nova/crypto.py",
+  "hash": "64997dabda4be4653232b22bfb42e316afafac3fb62054d228a00ddf04d0b92f",
+  "language": "Python",
+  "component": "nova",
+  "package": null,
+  "lines": {
+    "blank": 56,
+    "code": 243,
+    "comment": 30,
+    "total": 329
+  },
+  "symbols": [
+    {
+      "name": "LOG",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 50,
+        "end": 50
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "CONF",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 52,
+        "end": 52
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "_KEYMGR",
+      "kind": "variable",
+      "scope": "",
+      "lineRange": {
+        "start": 54,
+        "end": 54
+      },
+      "source": "aee-inventory",
+      "exported": false
+    },
+    {
+      "name": "_VTPM_SECRET_BYTE_LENGTH",
+      "kind": "variable",
+      "scope": "",
+      "lineRange": {
+        "start": 56,
+        "end": 56
+      },
+      "source": "aee-inventory",
+      "exported": false
+    },
+    {
+      "name": "_EPHEMERAL_ENCRYPTION_SECRET_BYTE_LENGTH",
+      "kind": "variable",
+      "scope": "",
+      "lineRange": {
+        "start": 58,
+        "end": 58
+      },
+      "source": "aee-inventory",
+      "exported": false
+    },
+    {
+      "name": "_get_key_manager",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 61,
+        "end": 65
+      },
+      "source": "aee-inventory",
+      "parameters": [],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "_KEYMGR",
+          "line": 65
+        }
+      ],
+      "nloc": 5,
+      "ccn": 2,
+      "exported": false
+    },
+    {
+      "name": "generate_fingerprint",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 68,
+        "end": 81
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "public_key",
+          "type": "str"
+        }
+      ],
+      "returnType": "str",
+      "returns": [
+        {
+          "expr": "':'.join(a + b for a, b in zip(raw_fp[::2], raw_fp[1::2]))",
+          "line": 78
+        }
+      ],
+      "nloc": 11,
+      "ccn": 3,
+      "exported": true
+    },
+    {
+      "name": "generate_x509_fingerprint",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 84,
+        "end": 97
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "pem_key",
+          "type": "bytes | str"
+        }
+      ],
+      "returnType": "str",
+      "returns": [
+        {
+          "expr": "':'.join(a + b for a, b in zip(raw_fp[::2], raw_fp[1::2]))",
+          "line": 93
+        }
+      ],
+      "nloc": 14,
+      "ccn": 4,
+      "exported": true
+    },
+    {
+      "name": "generate_key_pair",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 100,
+        "end": 107
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "default": "2048",
+          "name": "bits",
+          "type": "int"
+        }
+      ],
+      "returnType": "tuple[str, str, str]",
+      "returns": [
+        {
+          "expr": "(private_key, public_key, fingerprint)",
+          "line": 107
+        }
+      ],
+      "nloc": 8,
+      "ccn": 1,
+      "exported": true
+    },
+    {
+      "name": "ssh_encrypt_text",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 110,
+        "end": 123
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "ssh_public_key",
+          "type": "str"
+        },
+        {
+          "name": "text",
+          "type": "str | bytes"
+        }
+      ],
+      "returnType": "bytes",
+      "returns": [
+        {
+          "expr": "pub_key.encrypt(text, padding.PKCS1v15())",
+          "line": 121
+        }
+      ],
+      "nloc": 10,
+      "ccn": 3,
+      "exported": true
+    },
+    {
+      "name": "generate_winrm_x509_cert",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 126,
+        "end": 156
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "user_id",
+          "type": "str"
+        },
+        {
+          "default": "2048",
+          "name": "bits",
+          "type": "int"
+        }
+      ],
+      "returnType": "tuple[str, str, str]",
+      "returns": [
+        {
+          "expr": "(private_key, certificate, fingerprint)",
+          "line": 156
+        }
+      ],
+      "nloc": 23,
+      "ccn": 1,
+      "exported": true
+    },
+    {
+      "name": "_create_x509_openssl_config",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 159,
+        "end": 167
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "conffile",
+          "type": "str"
+        },
+        {
+          "name": "upn",
+          "type": "str"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 8,
+      "ccn": 1,
+      "exported": false
+    },
+    {
+      "name": "_handle_key_manager_error_forbidden",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 170,
+        "end": 180
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "e"
+        },
+        {
+          "name": "instance"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 5,
+      "ccn": 2,
+      "exported": false
+    },
+    {
+      "name": "ensure_vtpm_secret",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 183,
+        "end": 239
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "context",
+          "type": "nova_context.RequestContext"
+        },
+        {
+          "name": "instance",
+          "type": "'objects.Instance'"
+        }
+      ],
+      "returnType": "tuple[str, bytes]",
+      "returns": [
+        {
+          "expr": "secret.id, secret.get_encoded()",
+          "line": 212
+        },
+        {
+          "expr": "secret_uuid, secret",
+          "line": 239
+        }
+      ],
+      "nloc": 35,
+      "ccn": 5,
+      "exported": true
+    },
+    {
+      "name": "delete_vtpm_secret",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 242,
+        "end": 277
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "context",
+          "type": "nova_context.RequestContext"
+        },
+        {
+          "name": "instance",
+          "type": "'objects.Instance'"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "",
+          "line": 263
+        }
+      ],
+      "nloc": 19,
+      "ccn": 4,
+      "exported": true
+    },
+    {
+      "name": "create_encryption_secret",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 280,
+        "end": 299
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "context",
+          "type": "nova_context.RequestContext"
+        },
+        {
+          "name": "instance",
+          "type": "'objects.Instance'"
+        },
+        {
+          "name": "driver_bdm",
+          "type": "'driver_block_device.DriverBlockDevice'"
+        },
+        {
+          "default": "None",
+          "name": "for_detail",
+          "type": "str | None"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "secret_uuid, secret",
+          "line": 299
+        }
+      ],
+      "nloc": 19,
+      "ccn": 2,
+      "exported": true
+    },
+    {
+      "name": "get_encryption_secret",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 302,
+        "end": 313
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "context",
+          "type": "nova_context.RequestContext"
+        },
+        {
+          "name": "secret_uuid",
+          "type": "str"
+        }
+      ],
+      "returnType": "str | None",
+      "returns": [
+        {
+          "expr": "key.get_encoded()",
+          "line": 310
+        },
+        {
+          "expr": "None",
+          "line": 313
+        }
+      ],
+      "nloc": 12,
+      "ccn": 2,
+      "exported": true
+    },
+    {
+      "name": "delete_encryption_secret",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 316,
+        "end": 329
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "context",
+          "type": "nova_context.RequestContext"
+        },
+        {
+          "name": "instance_uuid",
+          "type": "str"
+        },
+        {
+          "name": "secret_uuid",
+          "type": "str"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 14,
+      "ccn": 2,
+      "exported": true
+    }
+  ],
+  "referencedSymbols": [
+    {
+      "name": "logging.getLogger",
+      "usage": "call",
+      "via": "oslo_log",
+      "count": 1,
+      "lineRange": {
+        "start": 50,
+        "end": 50
+      }
+    },
+    {
+      "name": "key_manager.API",
+      "usage": "call",
+      "via": "castellan",
+      "count": 1,
+      "lineRange": {
+        "start": 64,
+        "end": 64
+      }
+    },
+    {
+      "name": "serialization.load_ssh_public_key",
+      "usage": "call",
+      "via": "cryptography.hazmat.primitives",
+      "count": 2,
+      "lineRange": {
+        "start": 74,
+        "end": 74
+      }
+    },
+    {
+      "name": "backends.default_backend",
+      "usage": "call",
+      "via": "cryptography.hazmat",
+      "count": 3,
+      "lineRange": {
+        "start": 75,
+        "end": 75
+      }
+    },
+    {
+      "name": "base64.b64decode",
+      "usage": "call",
+      "via": "base64",
+      "count": 1,
+      "lineRange": {
+        "start": 76,
+        "end": 76
+      }
+    },
+    {
+      "name": "hashlib.md5",
+      "usage": "call",
+      "via": "hashlib",
+      "count": 1,
+      "lineRange": {
+        "start": 77,
+        "end": 77
+      }
+    },
+    {
+      "name": "zip",
+      "usage": "call",
+      "via": null,
+      "count": 2,
+      "lineRange": {
+        "start": 78,
+        "end": 78
+      }
+    },
+    {
+      "name": "exception.InvalidKeypair",
+      "usage": "call",
+      "via": "nova",
+      "count": 2,
+      "lineRange": {
+        "start": 80,
+        "end": 80
+      }
+    },
+    {
+      "name": "_",
+      "usage": "call",
+      "via": "nova.i18n",
+      "count": 2,
+      "lineRange": {
+        "start": 81,
+        "end": 81
+      }
+    },
+    {
+      "name": "isinstance",
+      "usage": "call",
+      "via": null,
+      "count": 2,
+      "lineRange": {
+        "start": 86,
+        "end": 86
+      }
+    },
+    {
+      "name": "x509.load_pem_x509_certificate",
+      "usage": "call",
+      "via": "cryptography",
+      "count": 1,
+      "lineRange": {
+        "start": 88,
+        "end": 88
+      }
+    },
+    {
+      "name": "binascii.hexlify",
+      "usage": "call",
+      "via": "binascii",
+      "count": 1,
+      "lineRange": {
+        "start": 90,
+        "end": 90
+      }
+    },
+    {
+      "name": "hashes.SHA1",
+      "usage": "call",
+      "via": "cryptography.hazmat.primitives",
+      "count": 1,
+      "lineRange": {
+        "start": 91,
+        "end": 91
+      }
+    },
+    {
+      "name": "tuple",
+      "usage": "type",
+      "via": null,
+      "count": 3,
+      "lineRange": {
+        "start": 100,
+        "end": 100
+      }
+    },
+    {
+      "name": "paramiko.RSAKey.generate",
+      "usage": "call",
+      "via": "paramiko",
+      "count": 1,
+      "lineRange": {
+        "start": 101,
+        "end": 101
+      }
+    },
+    {
+      "name": "io.StringIO",
+      "usage": "call",
+      "via": "io",
+      "count": 1,
+      "lineRange": {
+        "start": 102,
+        "end": 102
+      }
+    },
+    {
+      "name": "padding.PKCS1v15",
+      "usage": "call",
+      "via": "cryptography.hazmat.primitives.asymmetric",
+      "count": 1,
+      "lineRange": {
+        "start": 121,
+        "end": 121
+      }
+    },
+    {
+      "name": "exception.EncryptionFailure",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 123,
+        "end": 123
+      }
+    },
+    {
+      "name": "str",
+      "usage": "call",
+      "via": null,
+      "count": 4,
+      "lineRange": {
+        "start": 123,
+        "end": 123
+      }
+    },
+    {
+      "name": "utils.tempdir",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 134,
+        "end": 134
+      }
+    },
+    {
+      "name": "os.path.abspath",
+      "usage": "call",
+      "via": "os",
+      "count": 2,
+      "lineRange": {
+        "start": 135,
+        "end": 135
+      }
+    },
+    {
+      "name": "os.path.join",
+      "usage": "call",
+      "via": "os",
+      "count": 2,
+      "lineRange": {
+        "start": 135,
+        "end": 135
+      }
+    },
+    {
+      "name": "processutils.execute",
+      "usage": "call",
+      "via": "oslo_concurrency",
+      "count": 2,
+      "lineRange": {
+        "start": 140,
+        "end": 140
+      }
+    },
+    {
+      "name": "base64.b64encode",
+      "usage": "call",
+      "via": "base64",
+      "count": 2,
+      "lineRange": {
+        "start": 153,
+        "end": 153
+      }
+    },
+    {
+      "name": "open",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 166,
+        "end": 166
+      }
+    },
+    {
+      "name": "exception.VTPMSecretForbidden",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 180,
+        "end": 180
+      }
+    },
+    {
+      "name": "os.urandom",
+      "usage": "call",
+      "via": "os",
+      "count": 2,
+      "lineRange": {
+        "start": 226,
+        "end": 226
+      }
+    },
+    {
+      "name": "passphrase.Passphrase",
+      "usage": "call",
+      "via": "castellan.common.objects",
+      "count": 2,
+      "lineRange": {
+        "start": 228,
+        "end": 228
+      }
+    },
+    {
+      "name": "oslo_base64.encode_as_text",
+      "usage": "call",
+      "via": "oslo_serialization",
+      "count": 1,
+      "lineRange": {
+        "start": 287,
+        "end": 287
+      }
+    }
+  ],
+  "dependencies": [
+    {
+      "style": "import",
+      "module": "base64",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 22,
+        "end": 22
+      }
+    },
+    {
+      "style": "import",
+      "module": "binascii",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 23,
+        "end": 23
+      }
+    },
+    {
+      "style": "import",
+      "module": "hashlib",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 24,
+        "end": 24
+      }
+    },
+    {
+      "style": "import",
+      "module": "io",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 25,
+        "end": 25
+      }
+    },
+    {
+      "style": "import",
+      "module": "os",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 26,
+        "end": 26
+      }
+    },
+    {
+      "style": "from",
+      "module": "castellan.common",
+      "names": [
+        {
+          "alias": "castellan_exception",
+          "name": "exception"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 28,
+        "end": 28
+      }
+    },
+    {
+      "style": "from",
+      "module": "castellan.common.objects",
+      "names": [
+        {
+          "alias": null,
+          "name": "passphrase"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 29,
+        "end": 29
+      }
+    },
+    {
+      "style": "from",
+      "module": "castellan",
+      "names": [
+        {
+          "alias": null,
+          "name": "key_manager"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 30,
+        "end": 30
+      }
+    },
+    {
+      "style": "from",
+      "module": "cryptography.hazmat",
+      "names": [
+        {
+          "alias": null,
+          "name": "backends"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 31,
+        "end": 31
+      }
+    },
+    {
+      "style": "from",
+      "module": "cryptography.hazmat.primitives.asymmetric",
+      "names": [
+        {
+          "alias": null,
+          "name": "padding"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 32,
+        "end": 32
+      }
+    },
+    {
+      "style": "from",
+      "module": "cryptography.hazmat.primitives",
+      "names": [
+        {
+          "alias": null,
+          "name": "hashes"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 33,
+        "end": 33
+      }
+    },
+    {
+      "style": "from",
+      "module": "cryptography.hazmat.primitives",
+      "names": [
+        {
+          "alias": null,
+          "name": "serialization"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 34,
+        "end": 34
+      }
+    },
+    {
+      "style": "from",
+      "module": "cryptography",
+      "names": [
+        {
+          "alias": null,
+          "name": "x509"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 35,
+        "end": 35
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_concurrency",
+      "names": [
+        {
+          "alias": null,
+          "name": "processutils"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 36,
+        "end": 36
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_log",
+      "names": [
+        {
+          "alias": "logging",
+          "name": "log"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 37,
+        "end": 37
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_serialization",
+      "names": [
+        {
+          "alias": "oslo_base64",
+          "name": "base64"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 38,
+        "end": 38
+      }
+    },
+    {
+      "style": "import",
+      "module": "paramiko",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 39,
+        "end": 39
+      }
+    },
+    {
+      "style": "import",
+      "module": "nova.conf",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 41,
+        "end": 41
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": "nova_context",
+          "name": "context"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 42,
+        "end": 42
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "exception"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 43,
+        "end": 43
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.i18n",
+      "names": [
+        {
+          "alias": null,
+          "name": "_"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 44,
+        "end": 44
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "objects"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 45,
+        "end": 45
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "utils"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 46,
+        "end": 46
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.virt",
+      "names": [
+        {
+          "alias": "driver_block_device",
+          "name": "block_device"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 47,
+        "end": 47
+      }
+    }
+  ],
+  "sideEffects": [
+    {
+      "kind": "file-io",
+      "target": "keyfile = os.path.abspath(os.path.join(tmpdir, 'temp.key'))",
+      "lineRange": {
+        "start": 135,
+        "end": 135
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "conffile = os.path.abspath(os.path.join(tmpdir, 'temp.conf'))",
+      "lineRange": {
+        "start": 136,
+        "end": 136
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "with open(conffile, 'w') as file:",
+      "lineRange": {
+        "start": 166,
+        "end": 166
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "LOG = logging.getLogger(__name__)",
+      "lineRange": {
+        "start": 50,
+        "end": 50
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "CONF = nova.conf.CONF",
+      "lineRange": {
+        "start": 52,
+        "end": 52
+      }
+    }
+  ],
+  "securitySurface": [
+    {
+      "kind": "privilege",
+      "category": "crypto-key",
+      "description": "from cryptography.hazmat import backends",
+      "lineRange": {
+        "start": 31,
+        "end": 31
+      }
+    },
+    {
+      "kind": "privilege",
+      "category": "crypto-key",
+      "description": "from cryptography.hazmat.primitives.asymmetric import padding",
+      "lineRange": {
+        "start": 32,
+        "end": 32
+      }
+    },
+    {
+      "kind": "privilege",
+      "category": "crypto-key",
+      "description": "from cryptography.hazmat.primitives import hashes",
+      "lineRange": {
+        "start": 33,
+        "end": 33
+      }
+    },
+    {
+      "kind": "privilege",
+      "category": "crypto-key",
+      "description": "from cryptography.hazmat.primitives import serialization",
+      "lineRange": {
+        "start": 34,
+        "end": 34
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "file-write",
+      "description": "with open(conffile, 'w') as file:",
+      "lineRange": {
+        "start": 166,
+        "end": 166
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "file-write",
+      "description": "file.write(content % upn)",
+      "lineRange": {
+        "start": 167,
+        "end": 167
+      }
+    },
+    {
+      "kind": "privilege",
+      "category": "crypto-key",
+      "description": "key_mgr = _get_key_manager()",
+      "lineRange": {
+        "start": 201,
+        "end": 201
+      }
+    },
+    {
+      "kind": "privilege",
+      "category": "crypto-key",
+      "description": "secret = key_mgr.get(context, secret_uuid)",
+      "lineRange": {
+        "start": 207,
+        "end": 207
+      }
+    },
+    {
+      "kind": "privilege",
+      "category": "crypto-key",
+      "description": "secret_uuid = key_mgr.store(context, cmo)",
+      "lineRange": {
+        "start": 231,
+        "end": 231
+      }
+    },
+    {
+      "kind": "privilege",
+      "category": "crypto-key",
+      "description": "key_mgr = _get_key_manager()",
+      "lineRange": {
+        "start": 265,
+        "end": 265
+      }
+    },
+    {
+      "kind": "privilege",
+      "category": "crypto-key",
+      "description": "key_mgr.delete(context, secret_uuid)",
+      "lineRange": {
+        "start": 267,
+        "end": 267
+      }
+    },
+    {
+      "kind": "privilege",
+      "category": "crypto-key",
+      "description": "key_mgr = _get_key_manager()",
+      "lineRange": {
+        "start": 293,
+        "end": 293
+      }
+    },
+    {
+      "kind": "privilege",
+      "category": "crypto-key",
+      "description": "secret_uuid = key_mgr.store(context, cmo)",
+      "lineRange": {
+        "start": 294,
+        "end": 294
+      }
+    },
+    {
+      "kind": "privilege",
+      "category": "crypto-key",
+      "description": "key_mgr = _get_key_manager()",
+      "lineRange": {
+        "start": 306,
+        "end": 306
+      }
+    },
+    {
+      "kind": "privilege",
+      "category": "crypto-key",
+      "description": "key = key_mgr.get(context, secret_uuid)",
+      "lineRange": {
+        "start": 308,
+        "end": 308
+      }
+    },
+    {
+      "kind": "privilege",
+      "category": "crypto-key",
+      "description": "key_mgr = _get_key_manager()",
+      "lineRange": {
+        "start": 321,
+        "end": 321
+      }
+    },
+    {
+      "kind": "privilege",
+      "category": "crypto-key",
+      "description": "key_mgr.delete(context, secret_uuid)",
+      "lineRange": {
+        "start": 323,
+        "end": 323
+      }
+    }
+  ],
+  "injection_flags": [],
+  "warnings": []
+}

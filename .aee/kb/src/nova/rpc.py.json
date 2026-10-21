@@ -1,0 +1,1622 @@
+{
+  "file": "src/nova/rpc.py",
+  "hash": "74c1f940dd880bc0bf43917276e3d5f2990ef41c6cce8f5b85e27534910696f9",
+  "language": "Python",
+  "component": "nova",
+  "package": null,
+  "lines": {
+    "blank": 72,
+    "code": 339,
+    "comment": 33,
+    "total": 444
+  },
+  "symbols": [
+    {
+      "name": "__all__",
+      "kind": "variable",
+      "scope": "",
+      "lineRange": {
+        "start": 30,
+        "end": 41
+      },
+      "source": "aee-inventory",
+      "exported": false
+    },
+    {
+      "name": "profiler",
+      "kind": "variable",
+      "scope": "",
+      "lineRange": {
+        "start": 43,
+        "end": 43
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "CONF",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 46,
+        "end": 46
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "LOG",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 48,
+        "end": 48
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "TRANSPORT",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 51,
+        "end": 51
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "LEGACY_NOTIFIER",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 52,
+        "end": 52
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "NOTIFICATION_TRANSPORT",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 53,
+        "end": 53
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "NOTIFIER",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 54,
+        "end": 54
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "HEARTBEAT_THRESHOLD",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 58,
+        "end": 58
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "ALLOWED_EXMODS",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 60,
+        "end": 62
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "EXTRA_EXMODS",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 63,
+        "end": 63
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "init",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 66,
+        "end": 92
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "conf"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 27,
+      "ccn": 3,
+      "exported": true
+    },
+    {
+      "name": "cleanup",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 95,
+        "end": 103
+      },
+      "source": "aee-inventory",
+      "parameters": [],
+      "returnType": null,
+      "returns": [],
+      "nloc": 9,
+      "ccn": 1,
+      "exported": true
+    },
+    {
+      "name": "set_defaults",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 106,
+        "end": 107
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "control_exchange"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 2,
+      "ccn": 1,
+      "exported": true
+    },
+    {
+      "name": "add_extra_exmods",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 110,
+        "end": 111
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "*args"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 2,
+      "ccn": 1,
+      "exported": true
+    },
+    {
+      "name": "clear_extra_exmods",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 114,
+        "end": 115
+      },
+      "source": "aee-inventory",
+      "parameters": [],
+      "returnType": null,
+      "returns": [],
+      "nloc": 2,
+      "ccn": 1,
+      "exported": true
+    },
+    {
+      "name": "get_allowed_exmods",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 118,
+        "end": 119
+      },
+      "source": "aee-inventory",
+      "parameters": [],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "ALLOWED_EXMODS + EXTRA_EXMODS",
+          "line": 119
+        }
+      ],
+      "nloc": 2,
+      "ccn": 1,
+      "exported": true
+    },
+    {
+      "name": "JsonPayloadSerializer",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 122,
+        "end": 143
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "fallback",
+      "kind": "method",
+      "scope": "JsonPayloadSerializer",
+      "lineRange": {
+        "start": 125,
+        "end": 139
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "obj"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "obj.to_dict()",
+          "line": 137
+        },
+        {
+          "expr": "str(obj)",
+          "line": 139
+        }
+      ],
+      "nloc": 4,
+      "ccn": 2,
+      "visibility": "public"
+    },
+    {
+      "name": "serialize_entity",
+      "kind": "method",
+      "scope": "JsonPayloadSerializer",
+      "lineRange": {
+        "start": 141,
+        "end": 143
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "context"
+        },
+        {
+          "name": "entity"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "jsonutils.to_primitive(entity, convert_instances=True, fallback=self.fallback)",
+          "line": 142
+        }
+      ],
+      "nloc": 3,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "RequestContextSerializer",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 146,
+        "end": 165
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "__init__",
+      "kind": "method",
+      "scope": "RequestContextSerializer",
+      "lineRange": {
+        "start": 148,
+        "end": 149
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "base"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "serialize_entity",
+      "kind": "method",
+      "scope": "RequestContextSerializer",
+      "lineRange": {
+        "start": 151,
+        "end": 154
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "context"
+        },
+        {
+          "name": "entity"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "entity",
+          "line": 153
+        },
+        {
+          "expr": "self._base.serialize_entity(context, entity)",
+          "line": 154
+        }
+      ],
+      "nloc": 4,
+      "ccn": 2,
+      "visibility": "public"
+    },
+    {
+      "name": "deserialize_entity",
+      "kind": "method",
+      "scope": "RequestContextSerializer",
+      "lineRange": {
+        "start": 156,
+        "end": 159
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "context"
+        },
+        {
+          "name": "entity"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "entity",
+          "line": 158
+        },
+        {
+          "expr": "self._base.deserialize_entity(context, entity)",
+          "line": 159
+        }
+      ],
+      "nloc": 4,
+      "ccn": 2,
+      "visibility": "public"
+    },
+    {
+      "name": "serialize_context",
+      "kind": "method",
+      "scope": "RequestContextSerializer",
+      "lineRange": {
+        "start": 161,
+        "end": 162
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "context"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "context.to_dict()",
+          "line": 162
+        }
+      ],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "deserialize_context",
+      "kind": "method",
+      "scope": "RequestContextSerializer",
+      "lineRange": {
+        "start": 164,
+        "end": 165
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "context"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "nova.context.RequestContext.from_dict(context)",
+          "line": 165
+        }
+      ],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "ProfilerRequestContextSerializer",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 168,
+        "end": 192
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "serialize_context",
+      "kind": "method",
+      "scope": "ProfilerRequestContextSerializer",
+      "lineRange": {
+        "start": 169,
+        "end": 184
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "context"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "_context",
+          "line": 184
+        }
+      ],
+      "nloc": 12,
+      "ccn": 2,
+      "visibility": "public"
+    },
+    {
+      "name": "deserialize_context",
+      "kind": "method",
+      "scope": "ProfilerRequestContextSerializer",
+      "lineRange": {
+        "start": 186,
+        "end": 192
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "context"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "super(ProfilerRequestContextSerializer, self).deserialize_context(context)",
+          "line": 191
+        }
+      ],
+      "nloc": 6,
+      "ccn": 2,
+      "visibility": "public"
+    },
+    {
+      "name": "get_transport_url",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 195,
+        "end": 196
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "default": "None",
+          "name": "url_str"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "messaging.TransportURL.parse(CONF, url_str)",
+          "line": 196
+        }
+      ],
+      "nloc": 2,
+      "ccn": 1,
+      "exported": true
+    },
+    {
+      "name": "get_client",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 199,
+        "end": 210
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "target"
+        },
+        {
+          "default": "None",
+          "name": "version_cap"
+        },
+        {
+          "default": "None",
+          "name": "serializer"
+        },
+        {
+          "default": "None",
+          "name": "call_monitor_timeout"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "messaging.get_rpc_client(TRANSPORT, target, version_cap=version_cap, serializer=serializer, call_monitor_timeout=call_monitor_timeout)",
+          "line": 208
+        }
+      ],
+      "nloc": 10,
+      "ccn": 2,
+      "exported": true
+    },
+    {
+      "name": "get_server",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 213,
+        "end": 227
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "target"
+        },
+        {
+          "name": "endpoints"
+        },
+        {
+          "default": "None",
+          "name": "serializer"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "messaging.get_rpc_server(TRANSPORT, target, endpoints, executor=exc, serializer=serializer, access_policy=access_policy)",
+          "line": 222
+        }
+      ],
+      "nloc": 14,
+      "ccn": 3,
+      "exported": true
+    },
+    {
+      "name": "get_notifier",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 230,
+        "end": 234
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "service"
+        },
+        {
+          "default": "None",
+          "name": "host"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "LegacyValidatingNotifier( LEGACY_NOTIFIER.prepare(publisher_id=publisher_id))",
+          "line": 233
+        }
+      ],
+      "nloc": 5,
+      "ccn": 2,
+      "exported": true
+    },
+    {
+      "name": "get_versioned_notifier",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 237,
+        "end": 239
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "publisher_id"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "NOTIFIER.prepare(publisher_id=publisher_id)",
+          "line": 239
+        }
+      ],
+      "nloc": 3,
+      "ccn": 1,
+      "exported": true
+    },
+    {
+      "name": "if_notifications_enabled",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 242,
+        "end": 252
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "f"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "wrapped",
+          "line": 252
+        }
+      ],
+      "nloc": 4,
+      "ccn": 1,
+      "exported": true
+    },
+    {
+      "name": "wrapped",
+      "kind": "function",
+      "scope": "if_notifications_enabled",
+      "lineRange": {
+        "start": 245,
+        "end": 251
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "*args"
+        },
+        {
+          "name": "**kwargs"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "f(*args, **kwargs)",
+          "line": 249
+        },
+        {
+          "expr": "None",
+          "line": 251
+        }
+      ],
+      "visibility": "public"
+    },
+    {
+      "name": "create_transport",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 255,
+        "end": 259
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "url"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "messaging.get_rpc_transport(CONF, url=url, allowed_remote_exmods=exmods)",
+          "line": 257
+        }
+      ],
+      "nloc": 5,
+      "ccn": 1,
+      "exported": true
+    },
+    {
+      "name": "LegacyValidatingNotifier",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 262,
+        "end": 420
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "fatal",
+      "kind": "field",
+      "scope": "LegacyValidatingNotifier",
+      "lineRange": {
+        "start": 267,
+        "end": 267
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "allowed_legacy_notification_event_types",
+      "kind": "field",
+      "scope": "LegacyValidatingNotifier",
+      "lineRange": {
+        "start": 274,
+        "end": 392
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "message",
+      "kind": "field",
+      "scope": "LegacyValidatingNotifier",
+      "lineRange": {
+        "start": 394,
+        "end": 395
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "__init__",
+      "kind": "method",
+      "scope": "LegacyValidatingNotifier",
+      "lineRange": {
+        "start": 397,
+        "end": 401
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "notifier"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 5,
+      "ccn": 2,
+      "visibility": "public"
+    },
+    {
+      "name": "_is_wrap_exception_notification",
+      "kind": "method",
+      "scope": "LegacyValidatingNotifier",
+      "lineRange": {
+        "start": 403,
+        "end": 410
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "payload"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "{'exception', 'args'} == set(payload.keys())",
+          "line": 410
+        }
+      ],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "_notify",
+      "kind": "method",
+      "scope": "LegacyValidatingNotifier",
+      "lineRange": {
+        "start": 412,
+        "end": 420
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "priority"
+        },
+        {
+          "name": "ctxt"
+        },
+        {
+          "name": "event_type"
+        },
+        {
+          "name": "payload"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 8,
+      "ccn": 4,
+      "visibility": "private"
+    },
+    {
+      "name": "ClientRouter",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 423,
+        "end": 444
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "__init__",
+      "kind": "method",
+      "scope": "ClientRouter",
+      "lineRange": {
+        "start": 428,
+        "end": 433
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "default_client"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 6,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "client",
+      "kind": "method",
+      "scope": "ClientRouter",
+      "lineRange": {
+        "start": 435,
+        "end": 444
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "context"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "messaging.get_rpc_client(transport, self.target, version_cap=self.version_cap, serializer=self.serializer, call_monitor_timeout=cmt)",
+          "line": 439
+        },
+        {
+          "expr": "self.default_client",
+          "line": 444
+        }
+      ],
+      "nloc": 10,
+      "ccn": 2,
+      "visibility": "public"
+    },
+    {
+      "name": "fallback",
+      "kind": "staticmethod",
+      "scope": "JsonPayloadSerializer",
+      "lineRange": {
+        "start": 124,
+        "end": 139
+      },
+      "visibility": "public",
+      "source": "manual"
+    }
+  ],
+  "referencedSymbols": [
+    {
+      "name": "importutils.try_import",
+      "usage": "call",
+      "via": "oslo_utils",
+      "count": 1,
+      "lineRange": {
+        "start": 43,
+        "end": 43
+      }
+    },
+    {
+      "name": "logging.getLogger",
+      "usage": "call",
+      "via": "oslo_log",
+      "count": 1,
+      "lineRange": {
+        "start": 48,
+        "end": 48
+      }
+    },
+    {
+      "name": "messaging.get_notification_transport",
+      "usage": "call",
+      "via": "oslo_messaging",
+      "count": 1,
+      "lineRange": {
+        "start": 70,
+        "end": 70
+      }
+    },
+    {
+      "name": "messaging.Notifier",
+      "usage": "call",
+      "via": "oslo_messaging",
+      "count": 6,
+      "lineRange": {
+        "start": 74,
+        "end": 74
+      }
+    },
+    {
+      "name": "messaging.set_transport_defaults",
+      "usage": "call",
+      "via": "oslo_messaging",
+      "count": 1,
+      "lineRange": {
+        "start": 107,
+        "end": 107
+      }
+    },
+    {
+      "name": "messaging.NoOpSerializer",
+      "usage": "inherit",
+      "via": "oslo_messaging",
+      "count": 1,
+      "lineRange": {
+        "start": 122,
+        "end": 122
+      }
+    },
+    {
+      "name": "isinstance",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 135,
+        "end": 135
+      }
+    },
+    {
+      "name": "str",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 139,
+        "end": 139
+      }
+    },
+    {
+      "name": "jsonutils.to_primitive",
+      "usage": "call",
+      "via": "oslo_serialization",
+      "count": 1,
+      "lineRange": {
+        "start": 142,
+        "end": 142
+      }
+    },
+    {
+      "name": "messaging.Serializer",
+      "usage": "inherit",
+      "via": "oslo_messaging",
+      "count": 1,
+      "lineRange": {
+        "start": 146,
+        "end": 146
+      }
+    },
+    {
+      "name": "nova.context.RequestContext.from_dict",
+      "usage": "call",
+      "via": "nova.conf",
+      "count": 1,
+      "lineRange": {
+        "start": 165,
+        "end": 165
+      }
+    },
+    {
+      "name": "super",
+      "usage": "call",
+      "via": null,
+      "count": 3,
+      "lineRange": {
+        "start": 170,
+        "end": 170
+      }
+    },
+    {
+      "name": "messaging.TransportURL.parse",
+      "usage": "call",
+      "via": "oslo_messaging",
+      "count": 1,
+      "lineRange": {
+        "start": 196,
+        "end": 196
+      }
+    },
+    {
+      "name": "messaging.get_rpc_client",
+      "usage": "call",
+      "via": "oslo_messaging",
+      "count": 2,
+      "lineRange": {
+        "start": 208,
+        "end": 208
+      }
+    },
+    {
+      "name": "utils.concurrency_mode_threading",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 221,
+        "end": 221
+      }
+    },
+    {
+      "name": "messaging.get_rpc_server",
+      "usage": "call",
+      "via": "oslo_messaging",
+      "count": 1,
+      "lineRange": {
+        "start": 222,
+        "end": 222
+      }
+    },
+    {
+      "name": "functools.wraps",
+      "usage": "call",
+      "via": "functools",
+      "count": 1,
+      "lineRange": {
+        "start": 244,
+        "end": 244
+      }
+    },
+    {
+      "name": "f",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 249,
+        "end": 249
+      }
+    },
+    {
+      "name": "messaging.get_rpc_transport",
+      "usage": "call",
+      "via": "oslo_messaging",
+      "count": 1,
+      "lineRange": {
+        "start": 257,
+        "end": 257
+      }
+    },
+    {
+      "name": "object",
+      "usage": "inherit",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 262,
+        "end": 262
+      }
+    },
+    {
+      "name": "_",
+      "usage": "call",
+      "via": "nova.i18n",
+      "count": 1,
+      "lineRange": {
+        "start": 394,
+        "end": 394
+      }
+    },
+    {
+      "name": "setattr",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 400,
+        "end": 400
+      }
+    },
+    {
+      "name": "functools.partial",
+      "usage": "call",
+      "via": "functools",
+      "count": 1,
+      "lineRange": {
+        "start": 401,
+        "end": 401
+      }
+    },
+    {
+      "name": "set",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 410,
+        "end": 410
+      }
+    },
+    {
+      "name": "AssertionError",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 416,
+        "end": 416
+      }
+    },
+    {
+      "name": "getattr",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 420,
+        "end": 420
+      }
+    },
+    {
+      "name": "periodic_task.PeriodicTasks",
+      "usage": "inherit",
+      "via": "oslo_service",
+      "count": 1,
+      "lineRange": {
+        "start": 423,
+        "end": 423
+      }
+    }
+  ],
+  "dependencies": [
+    {
+      "style": "import",
+      "module": "functools",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 15,
+        "end": 15
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_log",
+      "names": [
+        {
+          "alias": "logging",
+          "name": "log"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 17,
+        "end": 17
+      }
+    },
+    {
+      "style": "import",
+      "module": "oslo_messaging",
+      "names": [],
+      "alias": "messaging",
+      "relative": false,
+      "lineRange": {
+        "start": 18,
+        "end": 18
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_messaging.rpc",
+      "names": [
+        {
+          "alias": null,
+          "name": "dispatcher"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 19,
+        "end": 19
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_serialization",
+      "names": [
+        {
+          "alias": null,
+          "name": "jsonutils"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 20,
+        "end": 20
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_service",
+      "names": [
+        {
+          "alias": null,
+          "name": "periodic_task"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 21,
+        "end": 21
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_utils",
+      "names": [
+        {
+          "alias": null,
+          "name": "importutils"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 22,
+        "end": 22
+      }
+    },
+    {
+      "style": "import",
+      "module": "nova.conf",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 24,
+        "end": 24
+      }
+    },
+    {
+      "style": "import",
+      "module": "nova.context",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 25,
+        "end": 25
+      }
+    },
+    {
+      "style": "import",
+      "module": "nova.exception",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 26,
+        "end": 26
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.i18n",
+      "names": [
+        {
+          "alias": null,
+          "name": "_"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 27,
+        "end": 27
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "utils"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 28,
+        "end": 28
+      }
+    }
+  ],
+  "sideEffects": [
+    {
+      "kind": "network",
+      "target": "from oslo_messaging.rpc import dispatcher",
+      "lineRange": {
+        "start": 19,
+        "end": 19
+      }
+    },
+    {
+      "kind": "network",
+      "target": "functools.partial(self._notify, priority))",
+      "lineRange": {
+        "start": 401,
+        "end": 401
+      }
+    },
+    {
+      "kind": "network",
+      "target": "def _notify(self, priority, ctxt, event_type, payload):",
+      "lineRange": {
+        "start": 412,
+        "end": 412
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "CONF = nova.conf.CONF",
+      "lineRange": {
+        "start": 46,
+        "end": 46
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "LOG = logging.getLogger(__name__)",
+      "lineRange": {
+        "start": 48,
+        "end": 48
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "TRANSPORT = None",
+      "lineRange": {
+        "start": 51,
+        "end": 51
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "LEGACY_NOTIFIER = None",
+      "lineRange": {
+        "start": 52,
+        "end": 52
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "NOTIFICATION_TRANSPORT = None",
+      "lineRange": {
+        "start": 53,
+        "end": 53
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "NOTIFIER = None",
+      "lineRange": {
+        "start": 54,
+        "end": 54
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "HEARTBEAT_THRESHOLD = 60",
+      "lineRange": {
+        "start": 58,
+        "end": 58
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "ALLOWED_EXMODS = [",
+      "lineRange": {
+        "start": 60,
+        "end": 60
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "EXTRA_EXMODS = []",
+      "lineRange": {
+        "start": 63,
+        "end": 63
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "TRANSPORT = create_transport(get_transport_url())",
+      "lineRange": {
+        "start": 69,
+        "end": 69
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "NOTIFICATION_TRANSPORT = messaging.get_notification_transport(",
+      "lineRange": {
+        "start": 70,
+        "end": 70
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "LEGACY_NOTIFIER = messaging.Notifier(NOTIFICATION_TRANSPORT,",
+      "lineRange": {
+        "start": 74,
+        "end": 74
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "NOTIFIER = messaging.Notifier(NOTIFICATION_TRANSPORT,",
+      "lineRange": {
+        "start": 76,
+        "end": 76
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "LEGACY_NOTIFIER = messaging.Notifier(NOTIFICATION_TRANSPORT,",
+      "lineRange": {
+        "start": 79,
+        "end": 79
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "NOTIFIER = messaging.Notifier(",
+      "lineRange": {
+        "start": 81,
+        "end": 81
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "LEGACY_NOTIFIER = messaging.Notifier(NOTIFICATION_TRANSPORT,",
+      "lineRange": {
+        "start": 86,
+        "end": 86
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "NOTIFIER = messaging.Notifier(",
+      "lineRange": {
+        "start": 89,
+        "end": 89
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "TRANSPORT = NOTIFICATION_TRANSPORT = LEGACY_NOTIFIER = NOTIFIER = None",
+      "lineRange": {
+        "start": 103,
+        "end": 103
+      }
+    }
+  ],
+  "securitySurface": [
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "_context.update({\"trace_info\": trace_info})",
+      "lineRange": {
+        "start": 182,
+        "end": 182
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "'compute.instance.update',",
+      "lineRange": {
+        "start": 362,
+        "end": 362
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "'compute.metrics.update',",
+      "lineRange": {
+        "start": 366,
+        "end": 366
+      }
+    }
+  ],
+  "injection_flags": [],
+  "warnings": []
+}

@@ -1,0 +1,477 @@
+{
+  "file": "src/nova/weights.py",
+  "hash": "703f5f39cfdf243bedb50095c3dc98e943a295be47696b43b7db75bd06a1adf3",
+  "language": "Python",
+  "component": "nova",
+  "package": null,
+  "lines": {
+    "blank": 46,
+    "code": 109,
+    "comment": 17,
+    "total": 172
+  },
+  "symbols": [
+    {
+      "name": "LOG",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 27,
+        "end": 27
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "normalize",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 30,
+        "end": 56
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "weight_list"
+        },
+        {
+          "default": "None",
+          "name": "minval"
+        },
+        {
+          "default": "None",
+          "name": "maxval"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "()",
+          "line": 41
+        },
+        {
+          "expr": "[0] * len(weight_list)",
+          "line": 53
+        },
+        {
+          "expr": "((i - minval) / range_ for i in weight_list)",
+          "line": 56
+        }
+      ],
+      "nloc": 13,
+      "ccn": 6,
+      "exported": true
+    },
+    {
+      "name": "WeighedObject",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 59,
+        "end": 67
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "__init__",
+      "kind": "method",
+      "scope": "WeighedObject",
+      "lineRange": {
+        "start": 62,
+        "end": 64
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "obj"
+        },
+        {
+          "name": "weight"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 3,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "__repr__",
+      "kind": "method",
+      "scope": "WeighedObject",
+      "lineRange": {
+        "start": 66,
+        "end": 67
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "\"<WeighedObject '%s': %s>\" % (self.obj, self.weight)",
+          "line": 67
+        }
+      ],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "BaseWeigher",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 70,
+        "end": 120
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "minval",
+      "kind": "field",
+      "scope": "BaseWeigher",
+      "lineRange": {
+        "start": 79,
+        "end": 79
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "maxval",
+      "kind": "field",
+      "scope": "BaseWeigher",
+      "lineRange": {
+        "start": 80,
+        "end": 80
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "weight_multiplier",
+      "kind": "method",
+      "scope": "BaseWeigher",
+      "lineRange": {
+        "start": 82,
+        "end": 94
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "host_state"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "1.0",
+          "line": 94
+        }
+      ],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "_weigh_object",
+      "kind": "method",
+      "scope": "BaseWeigher",
+      "lineRange": {
+        "start": 97,
+        "end": 98
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "obj"
+        },
+        {
+          "name": "weight_properties"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 1,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "weigh_objects",
+      "kind": "method",
+      "scope": "BaseWeigher",
+      "lineRange": {
+        "start": 100,
+        "end": 120
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "weighed_obj_list"
+        },
+        {
+          "name": "weight_properties"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "weights",
+          "line": 120
+        }
+      ],
+      "nloc": 10,
+      "ccn": 4,
+      "visibility": "public"
+    },
+    {
+      "name": "BaseWeightHandler",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 123,
+        "end": 172
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "object_class",
+      "kind": "field",
+      "scope": "BaseWeightHandler",
+      "lineRange": {
+        "start": 124,
+        "end": 124
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "get_weighed_objects",
+      "kind": "method",
+      "scope": "BaseWeightHandler",
+      "lineRange": {
+        "start": 126,
+        "end": 172
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "weighers"
+        },
+        {
+          "name": "obj_list"
+        },
+        {
+          "name": "weighing_properties"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "weighed_objs",
+          "line": 131
+        },
+        {
+          "expr": "sorted(weighed_objs, key=lambda x: x.weight, reverse=True)",
+          "line": 172
+        }
+      ],
+      "nloc": 35,
+      "ccn": 8,
+      "visibility": "public"
+    }
+  ],
+  "referencedSymbols": [
+    {
+      "name": "logging.getLogger",
+      "usage": "call",
+      "via": "oslo_log",
+      "count": 1,
+      "lineRange": {
+        "start": 27,
+        "end": 27
+      }
+    },
+    {
+      "name": "max",
+      "usage": "call",
+      "via": null,
+      "count": 2,
+      "lineRange": {
+        "start": 44,
+        "end": 44
+      }
+    },
+    {
+      "name": "min",
+      "usage": "call",
+      "via": null,
+      "count": 2,
+      "lineRange": {
+        "start": 47,
+        "end": 47
+      }
+    },
+    {
+      "name": "float",
+      "usage": "call",
+      "via": null,
+      "count": 2,
+      "lineRange": {
+        "start": 49,
+        "end": 49
+      }
+    },
+    {
+      "name": "len",
+      "usage": "call",
+      "via": null,
+      "count": 2,
+      "lineRange": {
+        "start": 53,
+        "end": 53
+      }
+    },
+    {
+      "name": "object",
+      "usage": "inherit",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 59,
+        "end": 59
+      }
+    },
+    {
+      "name": "loadables.BaseLoader",
+      "usage": "inherit",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 123,
+        "end": 123
+      }
+    },
+    {
+      "name": "zip",
+      "usage": "call",
+      "via": null,
+      "count": 2,
+      "lineRange": {
+        "start": 140,
+        "end": 140
+      }
+    },
+    {
+      "name": "list",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 144,
+        "end": 144
+      }
+    },
+    {
+      "name": "enumerate",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 157,
+        "end": 157
+      }
+    },
+    {
+      "name": "sorted",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 172,
+        "end": 172
+      }
+    }
+  ],
+  "dependencies": [
+    {
+      "style": "import",
+      "module": "abc",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 20,
+        "end": 20
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_log",
+      "names": [
+        {
+          "alias": "logging",
+          "name": "log"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 22,
+        "end": 22
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "loadables"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 24,
+        "end": 24
+      }
+    }
+  ],
+  "sideEffects": [
+    {
+      "kind": "global-mutation",
+      "target": "LOG = logging.getLogger(__name__)",
+      "lineRange": {
+        "start": 27,
+        "end": 27
+      }
+    }
+  ],
+  "securitySurface": [],
+  "injection_flags": [],
+  "warnings": []
+}

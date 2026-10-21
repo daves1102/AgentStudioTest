@@ -1,0 +1,378 @@
+{
+  "file": "src/nova/profiler.py",
+  "hash": "19b75ad3acf0107007e84c0ea0b2ef0e2181e2266890e5d44cdcc5b661b4d4b5",
+  "language": "Python",
+  "component": "nova",
+  "package": null,
+  "lines": {
+    "blank": 18,
+    "code": 39,
+    "comment": 16,
+    "total": 73
+  },
+  "symbols": [
+    {
+      "name": "profiler",
+      "kind": "variable",
+      "scope": "",
+      "lineRange": {
+        "start": 21,
+        "end": 21
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "profiler_web",
+      "kind": "variable",
+      "scope": "",
+      "lineRange": {
+        "start": 22,
+        "end": 22
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "CONF",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 24,
+        "end": 24
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "WsgiMiddleware",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 27,
+        "end": 45
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "__init__",
+      "kind": "method",
+      "scope": "WsgiMiddleware",
+      "lineRange": {
+        "start": 29,
+        "end": 30
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "application"
+        },
+        {
+          "name": "**kwargs"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "factory",
+      "kind": "method",
+      "scope": "WsgiMiddleware",
+      "lineRange": {
+        "start": 33,
+        "end": 41
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "cls"
+        },
+        {
+          "name": "global_conf"
+        },
+        {
+          "name": "**local_conf"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "profiler_web.WsgiMiddleware.factory(global_conf, **local_conf)",
+          "line": 35
+        },
+        {
+          "expr": "filter_",
+          "line": 41
+        }
+      ],
+      "nloc": 6,
+      "ccn": 2,
+      "visibility": "public"
+    },
+    {
+      "name": "filter_",
+      "kind": "function",
+      "scope": "WsgiMiddleware.factory",
+      "lineRange": {
+        "start": 38,
+        "end": 39
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "app"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "cls(app, **local_conf)",
+          "line": 39
+        }
+      ],
+      "visibility": "public"
+    },
+    {
+      "name": "__call__",
+      "kind": "method",
+      "scope": "WsgiMiddleware",
+      "lineRange": {
+        "start": 44,
+        "end": 45
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "request"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "request.get_response(self.application)",
+          "line": 45
+        }
+      ],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "get_traced_meta",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 48,
+        "end": 56
+      },
+      "source": "aee-inventory",
+      "parameters": [],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "profiler.TracedMeta",
+          "line": 50
+        },
+        {
+          "expr": "NoopMeta",
+          "line": 56
+        }
+      ],
+      "nloc": 7,
+      "ccn": 4,
+      "exported": true
+    },
+    {
+      "name": "NoopMeta",
+      "kind": "class",
+      "scope": "get_traced_meta",
+      "lineRange": {
+        "start": 54,
+        "end": 55
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "trace_cls",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 59,
+        "end": 73
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "name"
+        },
+        {
+          "name": "**kwargs"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "decorator",
+          "line": 73
+        }
+      ],
+      "nloc": 3,
+      "ccn": 1,
+      "exported": true
+    },
+    {
+      "name": "decorator",
+      "kind": "function",
+      "scope": "trace_cls",
+      "lineRange": {
+        "start": 67,
+        "end": 71
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "cls"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "trace_decorator(cls)",
+          "line": 70
+        },
+        {
+          "expr": "cls",
+          "line": 71
+        }
+      ],
+      "visibility": "public"
+    },
+    {
+      "name": "factory",
+      "kind": "classmethod",
+      "scope": "WsgiMiddleware",
+      "lineRange": {
+        "start": 32,
+        "end": 41
+      },
+      "visibility": "public",
+      "source": "manual"
+    }
+  ],
+  "referencedSymbols": [
+    {
+      "name": "importutils.try_import",
+      "usage": "call",
+      "via": "oslo_utils",
+      "count": 2,
+      "lineRange": {
+        "start": 21,
+        "end": 21
+      }
+    },
+    {
+      "name": "object",
+      "usage": "inherit",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 27,
+        "end": 27
+      }
+    },
+    {
+      "name": "cls",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 39,
+        "end": 39
+      }
+    },
+    {
+      "name": "type",
+      "usage": "inherit",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 54,
+        "end": 54
+      }
+    },
+    {
+      "name": "trace_decorator",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 70,
+        "end": 70
+      }
+    }
+  ],
+  "dependencies": [
+    {
+      "style": "from",
+      "module": "oslo_utils",
+      "names": [
+        {
+          "alias": null,
+          "name": "importutils"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 16,
+        "end": 16
+      }
+    },
+    {
+      "style": "import",
+      "module": "webob.dec",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 17,
+        "end": 17
+      }
+    },
+    {
+      "style": "import",
+      "module": "nova.conf",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 19,
+        "end": 19
+      }
+    }
+  ],
+  "sideEffects": [
+    {
+      "kind": "global-mutation",
+      "target": "CONF = nova.conf.CONF",
+      "lineRange": {
+        "start": 24,
+        "end": 24
+      }
+    }
+  ],
+  "securitySurface": [],
+  "injection_flags": [],
+  "warnings": []
+}

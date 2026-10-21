@@ -1,0 +1,396 @@
+{
+  "file": "src/nova/loadables.py",
+  "hash": "c63d09eec7d0aafa60f25abfcad315cd8a440d7648c21fe1b8407fb5ac7d0267",
+  "language": "Python",
+  "component": "nova",
+  "package": null,
+  "lines": {
+    "blank": 17,
+    "code": 84,
+    "comment": 16,
+    "total": 117
+  },
+  "symbols": [
+    {
+      "name": "BaseLoader",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 50,
+        "end": 117
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "__init__",
+      "kind": "method",
+      "scope": "BaseLoader",
+      "lineRange": {
+        "start": 51,
+        "end": 55
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "loadable_cls_type"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 5,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "_is_correct_class",
+      "kind": "method",
+      "scope": "BaseLoader",
+      "lineRange": {
+        "start": 57,
+        "end": 63
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "obj"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "(inspect.isclass(obj) and (not obj.__name__.startswith('_')) and issubclass(obj, self.loadable_cls_type))",
+          "line": 61
+        }
+      ],
+      "nloc": 4,
+      "ccn": 3,
+      "visibility": "private"
+    },
+    {
+      "name": "_get_classes_from_module",
+      "kind": "method",
+      "scope": "BaseLoader",
+      "lineRange": {
+        "start": 65,
+        "end": 76
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "module_name"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "classes",
+          "line": 76
+        }
+      ],
+      "nloc": 10,
+      "ccn": 4,
+      "visibility": "private"
+    },
+    {
+      "name": "get_all_classes",
+      "kind": "method",
+      "scope": "BaseLoader",
+      "lineRange": {
+        "start": 78,
+        "end": 96
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "classes",
+          "line": 96
+        }
+      ],
+      "nloc": 16,
+      "ccn": 6,
+      "visibility": "public"
+    },
+    {
+      "name": "get_matching_classes",
+      "kind": "method",
+      "scope": "BaseLoader",
+      "lineRange": {
+        "start": 98,
+        "end": 117
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "loadable_class_names"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "classes",
+          "line": 117
+        }
+      ],
+      "nloc": 14,
+      "ccn": 5,
+      "visibility": "public"
+    }
+  ],
+  "referencedSymbols": [
+    {
+      "name": "object",
+      "usage": "inherit",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 50,
+        "end": 50
+      }
+    },
+    {
+      "name": "os.path.abspath",
+      "usage": "call",
+      "via": "os",
+      "count": 1,
+      "lineRange": {
+        "start": 53,
+        "end": 53
+      }
+    },
+    {
+      "name": "inspect.isclass",
+      "usage": "call",
+      "via": "inspect",
+      "count": 1,
+      "lineRange": {
+        "start": 61,
+        "end": 61
+      }
+    },
+    {
+      "name": "issubclass",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 63,
+        "end": 63
+      }
+    },
+    {
+      "name": "importutils.import_module",
+      "usage": "call",
+      "via": "oslo_utils",
+      "count": 1,
+      "lineRange": {
+        "start": 68,
+        "end": 68
+      }
+    },
+    {
+      "name": "dir",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 69,
+        "end": 69
+      }
+    },
+    {
+      "name": "getattr",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 73,
+        "end": 73
+      }
+    },
+    {
+      "name": "os.walk",
+      "usage": "call",
+      "via": "os",
+      "count": 1,
+      "lineRange": {
+        "start": 83,
+        "end": 83
+      }
+    },
+    {
+      "name": "os.path.relpath",
+      "usage": "call",
+      "via": "os",
+      "count": 1,
+      "lineRange": {
+        "start": 84,
+        "end": 84
+      }
+    },
+    {
+      "name": "os.path.splitext",
+      "usage": "call",
+      "via": "os",
+      "count": 1,
+      "lineRange": {
+        "start": 90,
+        "end": 90
+      }
+    },
+    {
+      "name": "importutils.import_class",
+      "usage": "call",
+      "via": "oslo_utils",
+      "count": 1,
+      "lineRange": {
+        "start": 106,
+        "end": 106
+      }
+    },
+    {
+      "name": "inspect.isfunction",
+      "usage": "call",
+      "via": "inspect",
+      "count": 1,
+      "lineRange": {
+        "start": 109,
+        "end": 109
+      }
+    },
+    {
+      "name": "obj",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 111,
+        "end": 111
+      }
+    },
+    {
+      "name": "exception.ClassNotFound",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 115,
+        "end": 115
+      }
+    }
+  ],
+  "dependencies": [
+    {
+      "style": "import",
+      "module": "inspect",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 41,
+        "end": 41
+      }
+    },
+    {
+      "style": "import",
+      "module": "os",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 42,
+        "end": 42
+      }
+    },
+    {
+      "style": "import",
+      "module": "sys",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 43,
+        "end": 43
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_utils",
+      "names": [
+        {
+          "alias": null,
+          "name": "importutils"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 45,
+        "end": 45
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "exception"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 47,
+        "end": 47
+      }
+    }
+  ],
+  "sideEffects": [
+    {
+      "kind": "file-io",
+      "target": "self.path = os.path.abspath(mod.__path__[0])",
+      "lineRange": {
+        "start": 53,
+        "end": 53
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "relpath = os.path.relpath(dirpath, self.path)",
+      "lineRange": {
+        "start": 84,
+        "end": 84
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "root, ext = os.path.splitext(fname)",
+      "lineRange": {
+        "start": 90,
+        "end": 90
+      }
+    }
+  ],
+  "securitySurface": [],
+  "injection_flags": [],
+  "warnings": []
+}

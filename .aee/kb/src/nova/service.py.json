@@ -1,0 +1,1535 @@
+{
+  "file": "src/nova/service.py",
+  "hash": "6e364b7756a472da484091dee2b8aeb3b7a2043ca208e7a8a2d2fb55463fe483",
+  "language": "Python",
+  "component": "nova",
+  "package": null,
+  "lines": {
+    "blank": 76,
+    "code": 356,
+    "comment": 83,
+    "total": 515
+  },
+  "symbols": [
+    {
+      "name": "osprofiler",
+      "kind": "variable",
+      "scope": "",
+      "lineRange": {
+        "start": 47,
+        "end": 47
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "osprofiler_initializer",
+      "kind": "variable",
+      "scope": "",
+      "lineRange": {
+        "start": 48,
+        "end": 48
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "CONF",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 50,
+        "end": 50
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "LOG",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 51,
+        "end": 51
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "SERVICE_MANAGERS",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 53,
+        "end": 57
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "_TrackingEndpointWrapper",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 60,
+        "end": 111
+      },
+      "source": "aee-inventory",
+      "exported": false
+    },
+    {
+      "name": "__init__",
+      "kind": "method",
+      "scope": "_TrackingEndpointWrapper",
+      "lineRange": {
+        "start": 74,
+        "end": 76
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "endpoint"
+        },
+        {
+          "default": "None",
+          "name": "tracker"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 3,
+      "ccn": 2,
+      "visibility": "public"
+    },
+    {
+      "name": "__getattr__",
+      "kind": "method",
+      "scope": "_TrackingEndpointWrapper",
+      "lineRange": {
+        "start": 78,
+        "end": 111
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "name"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "attr",
+          "line": 83
+        },
+        {
+          "expr": "_tracked",
+          "line": 111
+        }
+      ],
+      "nloc": 10,
+      "ccn": 3,
+      "visibility": "public"
+    },
+    {
+      "name": "_tracked",
+      "kind": "function",
+      "scope": "_TrackingEndpointWrapper.__getattr__",
+      "lineRange": {
+        "start": 86,
+        "end": 104
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "*args"
+        },
+        {
+          "name": "**kwargs"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "result",
+          "line": 104
+        }
+      ],
+      "visibility": "private"
+    },
+    {
+      "name": "_create_service_ref",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 114,
+        "end": 121
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "this_service"
+        },
+        {
+          "name": "context"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "service",
+          "line": 121
+        }
+      ],
+      "nloc": 8,
+      "ccn": 1,
+      "exported": false
+    },
+    {
+      "name": "_update_service_ref",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 124,
+        "end": 133
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "service"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 10,
+      "ccn": 2,
+      "exported": false
+    },
+    {
+      "name": "setup_profiler",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 136,
+        "end": 144
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "binary"
+        },
+        {
+          "name": "host"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 9,
+      "ccn": 3,
+      "exported": true
+    },
+    {
+      "name": "Service",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 147,
+        "end": 496
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "__init__",
+      "kind": "method",
+      "scope": "Service",
+      "lineRange": {
+        "start": 155,
+        "end": 185
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "host"
+        },
+        {
+          "name": "binary"
+        },
+        {
+          "name": "topic"
+        },
+        {
+          "name": "manager"
+        },
+        {
+          "default": "None",
+          "name": "report_interval"
+        },
+        {
+          "default": "None",
+          "name": "periodic_enable"
+        },
+        {
+          "default": "None",
+          "name": "periodic_fuzzy_delay"
+        },
+        {
+          "default": "None",
+          "name": "periodic_interval_max"
+        },
+        {
+          "default": "None",
+          "name": "topic_alt"
+        },
+        {
+          "name": "*args"
+        },
+        {
+          "name": "**kwargs"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 25,
+      "ccn": 2,
+      "visibility": "public"
+    },
+    {
+      "name": "__repr__",
+      "kind": "method",
+      "scope": "Service",
+      "lineRange": {
+        "start": 187,
+        "end": 194
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "\"<%(cls_name)s: host=%(host)s, binary=%(binary)s, \" \\ \"manager_class_name=%(manager)s>\" % { 'cls_name': self.__class__.__name__, 'host': self.host, 'binary': self.binary, 'manager': self.manager_class",
+          "line": 188
+        }
+      ],
+      "nloc": 8,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "start",
+      "kind": "method",
+      "scope": "Service",
+      "lineRange": {
+        "start": 196,
+        "end": 302
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 59,
+      "ccn": 8,
+      "visibility": "public"
+    },
+    {
+      "name": "__getattr__",
+      "kind": "method",
+      "scope": "Service",
+      "lineRange": {
+        "start": 304,
+        "end": 306
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "key"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "getattr(manager, key)",
+          "line": 306
+        }
+      ],
+      "nloc": 3,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "create",
+      "kind": "method",
+      "scope": "Service",
+      "lineRange": {
+        "start": 309,
+        "end": 362
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "cls"
+        },
+        {
+          "default": "None",
+          "name": "host"
+        },
+        {
+          "default": "None",
+          "name": "binary"
+        },
+        {
+          "default": "None",
+          "name": "topic"
+        },
+        {
+          "default": "None",
+          "name": "manager"
+        },
+        {
+          "default": "None",
+          "name": "report_interval"
+        },
+        {
+          "default": "None",
+          "name": "periodic_enable"
+        },
+        {
+          "default": "None",
+          "name": "periodic_fuzzy_delay"
+        },
+        {
+          "default": "None",
+          "name": "periodic_interval_max"
+        },
+        {
+          "default": "None",
+          "name": "topic_alt"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "service_obj",
+          "line": 362
+        }
+      ],
+      "nloc": 32,
+      "ccn": 10,
+      "visibility": "public"
+    },
+    {
+      "name": "kill",
+      "kind": "method",
+      "scope": "Service",
+      "lineRange": {
+        "start": 364,
+        "end": 377
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 7,
+      "ccn": 3,
+      "visibility": "public"
+    },
+    {
+      "name": "_stop_rpc_server",
+      "kind": "method",
+      "scope": "Service",
+      "lineRange": {
+        "start": 379,
+        "end": 387
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "rpc_server"
+        },
+        {
+          "name": "topic"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "True",
+          "line": 384
+        },
+        {
+          "expr": "False",
+          "line": 387
+        }
+      ],
+      "nloc": 9,
+      "ccn": 2,
+      "visibility": "private"
+    },
+    {
+      "name": "_wait_rpc_server",
+      "kind": "method",
+      "scope": "Service",
+      "lineRange": {
+        "start": 389,
+        "end": 395
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "rpc_server"
+        },
+        {
+          "name": "topic"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 7,
+      "ccn": 2,
+      "visibility": "private"
+    },
+    {
+      "name": "_shutdown_rpc_server",
+      "kind": "method",
+      "scope": "Service",
+      "lineRange": {
+        "start": 397,
+        "end": 399
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "rpc_server"
+        },
+        {
+          "name": "topic"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 3,
+      "ccn": 2,
+      "visibility": "private"
+    },
+    {
+      "name": "_get_manager_shutdown_timeout",
+      "kind": "method",
+      "scope": "Service",
+      "lineRange": {
+        "start": 401,
+        "end": 409
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "max(0, CONF.graceful_shutdown_timeout - 10)",
+          "line": 408
+        },
+        {
+          "expr": "CONF.manager_shutdown_timeout",
+          "line": 409
+        }
+      ],
+      "nloc": 9,
+      "ccn": 2,
+      "visibility": "private"
+    },
+    {
+      "name": "_run_manager_graceful_shutdown",
+      "kind": "method",
+      "scope": "Service",
+      "lineRange": {
+        "start": 411,
+        "end": 442
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 12,
+      "ccn": 2,
+      "visibility": "private"
+    },
+    {
+      "name": "_run",
+      "kind": "function",
+      "scope": "Service._run_manager_graceful_shutdown",
+      "lineRange": {
+        "start": 415,
+        "end": 426
+      },
+      "source": "aee-inventory",
+      "parameters": [],
+      "returnType": null,
+      "returns": [],
+      "visibility": "private"
+    },
+    {
+      "name": "stop",
+      "kind": "method",
+      "scope": "Service",
+      "lineRange": {
+        "start": 444,
+        "end": 475
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 15,
+      "ccn": 4,
+      "visibility": "public"
+    },
+    {
+      "name": "periodic_tasks",
+      "kind": "method",
+      "scope": "Service",
+      "lineRange": {
+        "start": 477,
+        "end": 480
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "default": "False",
+          "name": "raise_on_error"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "self.manager.periodic_tasks(ctxt, raise_on_error=raise_on_error)",
+          "line": 480
+        }
+      ],
+      "nloc": 3,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "basic_config_check",
+      "kind": "method",
+      "scope": "Service",
+      "lineRange": {
+        "start": 482,
+        "end": 490
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 7,
+      "ccn": 2,
+      "visibility": "public"
+    },
+    {
+      "name": "reset",
+      "kind": "method",
+      "scope": "Service",
+      "lineRange": {
+        "start": 492,
+        "end": 496
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 3,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "_launcher",
+      "kind": "variable",
+      "scope": "",
+      "lineRange": {
+        "start": 502,
+        "end": 502
+      },
+      "source": "aee-inventory",
+      "exported": false
+    },
+    {
+      "name": "serve",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 505,
+        "end": 511
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "server"
+        },
+        {
+          "default": "None",
+          "name": "workers"
+        },
+        {
+          "default": "False",
+          "name": "no_fork"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 6,
+      "ccn": 2,
+      "exported": true
+    },
+    {
+      "name": "wait",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 514,
+        "end": 515
+      },
+      "source": "aee-inventory",
+      "parameters": [],
+      "returnType": null,
+      "returns": [],
+      "nloc": 2,
+      "ccn": 1,
+      "exported": true
+    },
+    {
+      "name": "create",
+      "kind": "classmethod",
+      "scope": "Service",
+      "lineRange": {
+        "start": 308,
+        "end": 362
+      },
+      "visibility": "public",
+      "source": "manual"
+    }
+  ],
+  "referencedSymbols": [
+    {
+      "name": "importutils.try_import",
+      "usage": "call",
+      "via": "oslo_utils",
+      "count": 2,
+      "lineRange": {
+        "start": 47,
+        "end": 47
+      }
+    },
+    {
+      "name": "logging.getLogger",
+      "usage": "call",
+      "via": "oslo_log",
+      "count": 1,
+      "lineRange": {
+        "start": 51,
+        "end": 51
+      }
+    },
+    {
+      "name": "getattr",
+      "usage": "call",
+      "via": null,
+      "count": 4,
+      "lineRange": {
+        "start": 79,
+        "end": 79
+      }
+    },
+    {
+      "name": "inspect.ismethod",
+      "usage": "call",
+      "via": "inspect",
+      "count": 1,
+      "lineRange": {
+        "start": 80,
+        "end": 80
+      }
+    },
+    {
+      "name": "setattr",
+      "usage": "call",
+      "via": null,
+      "count": 2,
+      "lineRange": {
+        "start": 82,
+        "end": 82
+      }
+    },
+    {
+      "name": "functools.wraps",
+      "usage": "call",
+      "via": "functools",
+      "count": 1,
+      "lineRange": {
+        "start": 85,
+        "end": 85
+      }
+    },
+    {
+      "name": "isinstance",
+      "usage": "call",
+      "via": null,
+      "count": 2,
+      "lineRange": {
+        "start": 89,
+        "end": 89
+      }
+    },
+    {
+      "name": "len",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 91,
+        "end": 91
+      }
+    },
+    {
+      "name": "attr",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 99,
+        "end": 99
+      }
+    },
+    {
+      "name": "objects.Service",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 115,
+        "end": 115
+      }
+    },
+    {
+      "name": "service.create",
+      "usage": "call",
+      "via": "oslo_service",
+      "count": 1,
+      "lineRange": {
+        "start": 120,
+        "end": 120
+      }
+    },
+    {
+      "name": "service.save",
+      "usage": "call",
+      "via": "oslo_service",
+      "count": 1,
+      "lineRange": {
+        "start": 133,
+        "end": 133
+      }
+    },
+    {
+      "name": "context.get_admin_context",
+      "usage": "call",
+      "via": "nova",
+      "count": 4,
+      "lineRange": {
+        "start": 140,
+        "end": 140
+      }
+    },
+    {
+      "name": "service.Service",
+      "usage": "inherit",
+      "via": "oslo_service",
+      "count": 1,
+      "lineRange": {
+        "start": 147,
+        "end": 147
+      }
+    },
+    {
+      "name": "super",
+      "usage": "call",
+      "via": null,
+      "count": 2,
+      "lineRange": {
+        "start": 159,
+        "end": 159
+      }
+    },
+    {
+      "name": "servicegroup.API",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 171,
+        "end": 171
+      }
+    },
+    {
+      "name": "importutils.import_class",
+      "usage": "call",
+      "via": "oslo_utils",
+      "count": 1,
+      "lineRange": {
+        "start": 172,
+        "end": 172
+      }
+    },
+    {
+      "name": "conductor.API",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 174,
+        "end": 174
+      }
+    },
+    {
+      "name": "manager_class",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 176,
+        "end": 176
+      }
+    },
+    {
+      "name": "version.version_string_with_package",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 216,
+        "end": 216
+      }
+    },
+    {
+      "name": "objects.Service.get_by_host_and_binary",
+      "usage": "call",
+      "via": "nova",
+      "count": 2,
+      "lineRange": {
+        "start": 221,
+        "end": 221
+      }
+    },
+    {
+      "name": "messaging.Target",
+      "usage": "call",
+      "via": "oslo_messaging",
+      "count": 2,
+      "lineRange": {
+        "start": 243,
+        "end": 243
+      }
+    },
+    {
+      "name": "baserpc.BaseRPCAPI",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 254,
+        "end": 254
+      }
+    },
+    {
+      "name": "objects_base.NovaObjectSerializer",
+      "usage": "call",
+      "via": "nova.objects",
+      "count": 1,
+      "lineRange": {
+        "start": 260,
+        "end": 260
+      }
+    },
+    {
+      "name": "rpc.get_server",
+      "usage": "call",
+      "via": "nova",
+      "count": 2,
+      "lineRange": {
+        "start": 264,
+        "end": 264
+      }
+    },
+    {
+      "name": "random.randint",
+      "usage": "call",
+      "via": "random",
+      "count": 1,
+      "lineRange": {
+        "start": 295,
+        "end": 295
+      }
+    },
+    {
+      "name": "os.path.basename",
+      "usage": "call",
+      "via": "os",
+      "count": 1,
+      "lineRange": {
+        "start": 329,
+        "end": 329
+      }
+    },
+    {
+      "name": "cls",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 341,
+        "end": 341
+      }
+    },
+    {
+      "name": "utils.raise_if_old_compute",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 355,
+        "end": 355
+      }
+    },
+    {
+      "name": "str",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 358,
+        "end": 358
+      }
+    },
+    {
+      "name": "max",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 408,
+        "end": 408
+      }
+    },
+    {
+      "name": "threading.Event",
+      "usage": "call",
+      "via": "threading",
+      "count": 1,
+      "lineRange": {
+        "start": 413,
+        "end": 413
+      }
+    },
+    {
+      "name": "threading.Thread",
+      "usage": "call",
+      "via": "threading",
+      "count": 1,
+      "lineRange": {
+        "start": 433,
+        "end": 433
+      }
+    },
+    {
+      "name": "utils.tempdir",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 486,
+        "end": 486
+      }
+    },
+    {
+      "name": "sys.exit",
+      "usage": "call",
+      "via": "sys",
+      "count": 1,
+      "lineRange": {
+        "start": 490,
+        "end": 490
+      }
+    },
+    {
+      "name": "RuntimeError",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 508,
+        "end": 508
+      }
+    },
+    {
+      "name": "_",
+      "usage": "call",
+      "via": "nova.i18n",
+      "count": 1,
+      "lineRange": {
+        "start": 508,
+        "end": 508
+      }
+    },
+    {
+      "name": "service.launch",
+      "usage": "call",
+      "via": "oslo_service",
+      "count": 1,
+      "lineRange": {
+        "start": 510,
+        "end": 510
+      }
+    }
+  ],
+  "dependencies": [
+    {
+      "style": "import",
+      "module": "functools",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 20,
+        "end": 20
+      }
+    },
+    {
+      "style": "import",
+      "module": "inspect",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 21,
+        "end": 21
+      }
+    },
+    {
+      "style": "import",
+      "module": "os",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 22,
+        "end": 22
+      }
+    },
+    {
+      "style": "import",
+      "module": "os.path",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 23,
+        "end": 23
+      }
+    },
+    {
+      "style": "import",
+      "module": "random",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 24,
+        "end": 24
+      }
+    },
+    {
+      "style": "import",
+      "module": "sys",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 25,
+        "end": 25
+      }
+    },
+    {
+      "style": "import",
+      "module": "threading",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 26,
+        "end": 26
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_log",
+      "names": [
+        {
+          "alias": "logging",
+          "name": "log"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 28,
+        "end": 28
+      }
+    },
+    {
+      "style": "import",
+      "module": "oslo_messaging",
+      "names": [],
+      "alias": "messaging",
+      "relative": false,
+      "lineRange": {
+        "start": 29,
+        "end": 29
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_service",
+      "names": [
+        {
+          "alias": null,
+          "name": "service"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 30,
+        "end": 30
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_utils",
+      "names": [
+        {
+          "alias": null,
+          "name": "importutils"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 31,
+        "end": 31
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "baserpc"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 33,
+        "end": 33
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "conductor"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 34,
+        "end": 34
+      }
+    },
+    {
+      "style": "import",
+      "module": "nova.conf",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 35,
+        "end": 35
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "context"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 36,
+        "end": 36
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "exception"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 37,
+        "end": 37
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.i18n",
+      "names": [
+        {
+          "alias": null,
+          "name": "_"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 38,
+        "end": 38
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "objects"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 39,
+        "end": 39
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.objects",
+      "names": [
+        {
+          "alias": "objects_base",
+          "name": "base"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 40,
+        "end": 40
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.objects",
+      "names": [
+        {
+          "alias": "service_obj",
+          "name": "service"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 41,
+        "end": 41
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "rpc"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 42,
+        "end": 42
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "servicegroup"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 43,
+        "end": 43
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "utils"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 44,
+        "end": 44
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "version"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 45,
+        "end": 45
+      }
+    }
+  ],
+  "sideEffects": [
+    {
+      "kind": "file-io",
+      "target": "binary = os.path.basename(sys.argv[0])",
+      "lineRange": {
+        "start": 329,
+        "end": 329
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "CONF = nova.conf.CONF",
+      "lineRange": {
+        "start": 50,
+        "end": 50
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "LOG = logging.getLogger(__name__)",
+      "lineRange": {
+        "start": 51,
+        "end": 51
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "SERVICE_MANAGERS = {",
+      "lineRange": {
+        "start": 53,
+        "end": 53
+      }
+    }
+  ],
+  "securitySurface": [
+    {
+      "kind": "entry-point",
+      "category": "cli-args",
+      "description": "binary = os.path.basename(sys.argv[0])",
+      "lineRange": {
+        "start": 329,
+        "end": 329
+      }
+    }
+  ],
+  "injection_flags": [],
+  "warnings": []
+}

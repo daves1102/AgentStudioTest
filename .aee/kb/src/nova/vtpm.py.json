@@ -1,0 +1,267 @@
+{
+  "file": "src/nova/vtpm.py",
+  "hash": "6c5b551780cd1cdbc57d60dace0337045552dbf9fe0521845f371623936a1d62",
+  "language": "Python",
+  "component": "nova",
+  "package": null,
+  "lines": {
+    "blank": 16,
+    "code": 48,
+    "comment": 11,
+    "total": 75
+  },
+  "symbols": [
+    {
+      "name": "get_instance_tpm_secret_security",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 23,
+        "end": 25
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "flavor"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "secret_security or 'user'",
+          "line": 25
+        }
+      ],
+      "nloc": 3,
+      "ccn": 2,
+      "exported": true
+    },
+    {
+      "name": "get_or_create_secret",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 28,
+        "end": 37
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "context",
+          "type": "nova_context.RequestContext"
+        },
+        {
+          "name": "instance",
+          "type": "'objects.Instance'"
+        }
+      ],
+      "returnType": "tuple[str, bytes]",
+      "returns": [
+        {
+          "expr": "crypto.ensure_vtpm_secret(use_context, instance)",
+          "line": 37
+        }
+      ],
+      "nloc": 6,
+      "ccn": 1,
+      "exported": true
+    },
+    {
+      "name": "delete_secret",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 40,
+        "end": 59
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "context",
+          "type": "nova_context.RequestContext"
+        },
+        {
+          "name": "instance",
+          "type": "'objects.Instance'"
+        },
+        {
+          "default": "None",
+          "name": "flavor",
+          "type": "ty.Optional['objects.Flavor']"
+        }
+      ],
+      "returnType": "None",
+      "returns": [],
+      "nloc": 8,
+      "ccn": 2,
+      "exported": true
+    },
+    {
+      "name": "get_request_context",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 62,
+        "end": 75
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "context",
+          "type": "nova_context.RequestContext"
+        },
+        {
+          "name": "flavor",
+          "type": "'objects.Flavor'"
+        }
+      ],
+      "returnType": "nova_context.RequestContext",
+      "returns": [
+        {
+          "expr": "nova_context.get_nova_service_user_context()",
+          "line": 74
+        },
+        {
+          "expr": "context",
+          "line": 75
+        }
+      ],
+      "nloc": 7,
+      "ccn": 2,
+      "exported": true
+    }
+  ],
+  "referencedSymbols": [
+    {
+      "name": "hardware.get_tpm_secret_security_constraint",
+      "usage": "call",
+      "via": "nova.virt",
+      "count": 1,
+      "lineRange": {
+        "start": 24,
+        "end": 24
+      }
+    },
+    {
+      "name": "tuple",
+      "usage": "type",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 31,
+        "end": 31
+      }
+    },
+    {
+      "name": "crypto.ensure_vtpm_secret",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 37,
+        "end": 37
+      }
+    },
+    {
+      "name": "crypto.delete_vtpm_secret",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 59,
+        "end": 59
+      }
+    },
+    {
+      "name": "nova_context.get_nova_service_user_context",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 74,
+        "end": 74
+      }
+    }
+  ],
+  "dependencies": [
+    {
+      "style": "import",
+      "module": "typing",
+      "names": [],
+      "alias": "ty",
+      "relative": false,
+      "lineRange": {
+        "start": 13,
+        "end": 13
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "objects"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 16,
+        "end": 16
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": "nova_context",
+          "name": "context"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 18,
+        "end": 18
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "crypto"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 19,
+        "end": 19
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.virt",
+      "names": [
+        {
+          "alias": null,
+          "name": "hardware"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 20,
+        "end": 20
+      }
+    }
+  ],
+  "sideEffects": [],
+  "securitySurface": [],
+  "injection_flags": [],
+  "warnings": []
+}

@@ -1,0 +1,557 @@
+{
+  "file": "src/nova/monkey_patch.py",
+  "hash": "67430d7a1d3b997c0243cec993748690bd7f8ec8056a4e4368beaa3d049adb49",
+  "language": "Python",
+  "component": "nova",
+  "package": null,
+  "lines": {
+    "blank": 31,
+    "code": 115,
+    "comment": 54,
+    "total": 200
+  },
+  "symbols": [
+    {
+      "name": "MONKEY_PATCHED",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 24,
+        "end": 24
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "_config_file_args",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 27,
+        "end": 46
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "argv"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "result",
+          "line": 46
+        }
+      ],
+      "nloc": 14,
+      "ccn": 6,
+      "exported": false
+    },
+    {
+      "name": "_get_concurrency_from_config",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 49,
+        "end": 69
+      },
+      "source": "aee-inventory",
+      "parameters": [],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "conf.concurrency_backend",
+          "line": 69
+        }
+      ],
+      "nloc": 11,
+      "ccn": 1,
+      "exported": false
+    },
+    {
+      "name": "is_patched",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 72,
+        "end": 73
+      },
+      "source": "aee-inventory",
+      "parameters": [],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "MONKEY_PATCHED",
+          "line": 73
+        }
+      ],
+      "nloc": 2,
+      "ccn": 1,
+      "exported": true
+    },
+    {
+      "name": "_monkey_patch",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 76,
+        "end": 117
+      },
+      "source": "aee-inventory",
+      "parameters": [],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "False",
+          "line": 78
+        },
+        {
+          "expr": "True",
+          "line": 117
+        }
+      ],
+      "nloc": 16,
+      "ccn": 3,
+      "exported": false
+    },
+    {
+      "name": "patch",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 120,
+        "end": 180
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "default": "'eventlet'",
+          "name": "backend"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 40,
+      "ccn": 8,
+      "exported": true
+    },
+    {
+      "name": "poison_eventlet",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 183,
+        "end": 200
+      },
+      "source": "aee-inventory",
+      "parameters": [],
+      "returnType": null,
+      "returns": [],
+      "nloc": 11,
+      "ccn": 2,
+      "exported": true
+    },
+    {
+      "name": "PoisonEventletImport",
+      "kind": "class",
+      "scope": "poison_eventlet",
+      "lineRange": {
+        "start": 193,
+        "end": 198
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "find_spec",
+      "kind": "method",
+      "scope": "poison_eventlet.PoisonEventletImport",
+      "lineRange": {
+        "start": 194,
+        "end": 198
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "fullname"
+        },
+        {
+          "name": "path"
+        },
+        {
+          "default": "None",
+          "name": "target"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "visibility": "public"
+    }
+  ],
+  "referencedSymbols": [
+    {
+      "name": "iter",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 35,
+        "end": 35
+      }
+    },
+    {
+      "name": "next",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 40,
+        "end": 40
+      }
+    },
+    {
+      "name": "cfg.StrOpt",
+      "usage": "call",
+      "via": "oslo_config",
+      "count": 1,
+      "lineRange": {
+        "start": 61,
+        "end": 61
+      }
+    },
+    {
+      "name": "cfg.ConfigOpts",
+      "usage": "call",
+      "via": "oslo_config",
+      "count": 1,
+      "lineRange": {
+        "start": 66,
+        "end": 66
+      }
+    },
+    {
+      "name": "conf",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 68,
+        "end": 68
+      }
+    },
+    {
+      "name": "set",
+      "usage": "call",
+      "via": null,
+      "count": 2,
+      "lineRange": {
+        "start": 91,
+        "end": 91
+      }
+    },
+    {
+      "name": "sys.modules.keys",
+      "usage": "call",
+      "via": "sys",
+      "count": 1,
+      "lineRange": {
+        "start": 92,
+        "end": 92
+      }
+    },
+    {
+      "name": "eventlet.monkey_patch",
+      "usage": "call",
+      "via": "eventlet",
+      "count": 1,
+      "lineRange": {
+        "start": 94,
+        "end": 94
+      }
+    },
+    {
+      "name": "logging.getLogger",
+      "usage": "call",
+      "via": "oslo_log",
+      "count": 3,
+      "lineRange": {
+        "start": 110,
+        "end": 110
+      }
+    },
+    {
+      "name": "ValueError",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 131,
+        "end": 131
+      }
+    },
+    {
+      "name": "os.environ.get",
+      "usage": "call",
+      "via": "os",
+      "count": 2,
+      "lineRange": {
+        "start": 134,
+        "end": 134
+      }
+    },
+    {
+      "name": "service.init_backend",
+      "usage": "call",
+      "via": "oslo_service.backend",
+      "count": 2,
+      "lineRange": {
+        "start": 156,
+        "end": 156
+      }
+    },
+    {
+      "name": "RuntimeError",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 186,
+        "end": 186
+      }
+    },
+    {
+      "name": "ImportError",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 196,
+        "end": 196
+      }
+    },
+    {
+      "name": "sys.meta_path.insert",
+      "usage": "call",
+      "via": "sys",
+      "count": 1,
+      "lineRange": {
+        "start": 200,
+        "end": 200
+      }
+    }
+  ],
+  "dependencies": [
+    {
+      "style": "import",
+      "module": "os",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 21,
+        "end": 21
+      }
+    },
+    {
+      "style": "import",
+      "module": "sys",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 22,
+        "end": 22
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_config",
+      "names": [
+        {
+          "alias": null,
+          "name": "cfg"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 59,
+        "end": 59
+      }
+    },
+    {
+      "style": "import",
+      "module": "eventlet",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 85,
+        "end": 85
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_log",
+      "names": [
+        {
+          "alias": "logging",
+          "name": "log"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 108,
+        "end": 108
+      }
+    },
+    {
+      "style": "import",
+      "module": "oslo_service.backend",
+      "names": [],
+      "alias": "service",
+      "relative": false,
+      "lineRange": {
+        "start": 155,
+        "end": 155
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_log",
+      "names": [
+        {
+          "alias": "logging",
+          "name": "log"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 157,
+        "end": 157
+      }
+    },
+    {
+      "style": "import",
+      "module": "oslo_service.backend",
+      "names": [],
+      "alias": "service",
+      "relative": false,
+      "lineRange": {
+        "start": 173,
+        "end": 173
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_log",
+      "names": [
+        {
+          "alias": "logging",
+          "name": "log"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 178,
+        "end": 178
+      }
+    }
+  ],
+  "sideEffects": [
+    {
+      "kind": "network",
+      "target": "\"https://docs.openstack.org/nova/latest/admin/concurrency\"",
+      "lineRange": {
+        "start": 165,
+        "end": 165
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "MONKEY_PATCHED = False",
+      "lineRange": {
+        "start": 24,
+        "end": 24
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "LOG = logging.getLogger(__name__)",
+      "lineRange": {
+        "start": 110,
+        "end": 110
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "MONKEY_PATCHED = True",
+      "lineRange": {
+        "start": 153,
+        "end": 153
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "LOG = logging.getLogger(__name__)",
+      "lineRange": {
+        "start": 158,
+        "end": 158
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "LOG = logging.getLogger(__name__)",
+      "lineRange": {
+        "start": 179,
+        "end": 179
+      }
+    }
+  ],
+  "securitySurface": [
+    {
+      "kind": "entry-point",
+      "category": "cli-args",
+      "description": "conf(_config_file_args(sys.argv[1:]))",
+      "lineRange": {
+        "start": 68,
+        "end": 68
+      }
+    },
+    {
+      "kind": "entry-point",
+      "category": "env",
+      "description": "env = os.environ.get('OS_NOVA_DISABLE_EVENTLET_PATCHING', '').lower()",
+      "lineRange": {
+        "start": 134,
+        "end": 134
+      }
+    },
+    {
+      "kind": "entry-point",
+      "category": "env",
+      "description": "% os.environ.get('OS_NOVA_DISABLE_EVENTLET_PATCHING', ''))",
+      "lineRange": {
+        "start": 191,
+        "end": 191
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "sys.meta_path.insert(0, PoisonEventletImport())",
+      "lineRange": {
+        "start": 200,
+        "end": 200
+      }
+    }
+  ],
+  "injection_flags": [],
+  "warnings": []
+}
