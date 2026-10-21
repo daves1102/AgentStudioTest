@@ -20,7 +20,7 @@
         "file": "src/nova/accelerator/cyborg.py",
         "lineRange": { "start": 337, "end": 337 },
         "reason": "no-static-edge",
-        "detail": "get_arq_by_uuid (defined at cyborg.py:337) has no production call site in the 1388-file source set. grep confirms it appears only at its definition (cyborg.py:337) and in test infrastructure (tests/fixtures/cyborg.py:274-277, tests/unit/accelerator/test_cyborg.py:426-457). The test fixture (CyborgFixture) mocks the method via oslo_fixtures.MockPatch, confirming it IS called from production code, but that call site is not yet extracted. Calls to get_arq_by_uuid in test files are on local variables (self.client.get_arq_by_uuid) — a documented link-graph blind spot. CyborgFixture is used by compute manager and virt/libvirt driver tests, suggesting the production caller is in nova.virt.libvirt or a compute manager accelerator workflow. All previously checked callers (compute/api.py, compute/manager.py, compute/utils.py, conductor/manager.py, network/neutron.py) call other _CyborgClient methods, not get_arq_by_uuid."
+        "detail": "get_arq_by_uuid (defined at cyborg.py:337) has no production call site in the 1484-file source set. virt/libvirt/driver.py (now extracted) uses accel_info ARQ dicts passed in from the compute manager but does not call get_arq_by_uuid. grep confirms no production call anywhere. Test fixture (CyborgFixture at tests/fixtures/cyborg.py:274-277) still provides the only evidence that the method is called in production — via MockPatch consumed by compute manager and libvirt driver tests. The production call site has not been found in any extracted file across all 1484 files."
       },
       "owaspCategory": "A03 Injection",
       "cweId": "CWE-74",
@@ -47,7 +47,7 @@
       "confidence": "needs_cross_file",
       "title": "User-controlled scheduler hint used as getattr attribute on HostState",
       "disposition": "excluded-not-a-source",
-      "reason": "Confidence is needs_cross_file. KB securitySurface is empty. Scheduler filters are loaded by dynamic dispatch from config — no inbound static edges even with 1388 files in source set."
+      "reason": "Confidence is needs_cross_file. KB securitySurface is empty. Scheduler filters are loaded by dynamic dispatch from config — no inbound static edges even with 1484 files in source set."
     },
     {
       "file": "src/nova/api/metadata/handler.py",
@@ -71,7 +71,7 @@
       "confidence": "confirmed",
       "title": "ploop disk image set world-readable (S_IROTH) inside privsep",
       "disposition": "excluded-not-a-source",
-      "reason": "KB securitySurface has 16 entries, all kind 'privilege' (privsep-entrypoint). No entry-point entries. CWE-732 file-permission misconfiguration is a standalone privilege misuse inside sys_admin_pctxt; no tainted input flows to it."
+      "reason": "KB securitySurface has 16 entries, all kind 'privilege' (privsep-entrypoint). No entry-point entries. Standalone file-permission misconfiguration."
     },
     {
       "file": "src/nova/privsep/libvirt.py",
@@ -79,16 +79,48 @@
       "confidence": "needs_cross_file",
       "title": "readpty opens unvalidated path as root with CAP_DAC_READ_SEARCH",
       "disposition": "excluded-no-source-found",
-      "reason": "Confidence is needs_cross_file — used as sink candidate per protocol. KB has no entry-point entries. No inbound static edges to privsep/libvirt.py in the 1388-file link graph: privsep functions are called via oslo.privsep IPC, not direct Python imports (known blind spot). No confirmed/probable taint source elsewhere can be traced to readpty."
+      "reason": "Confidence is needs_cross_file — sink candidate per protocol. KB has no entry-point entries. No inbound static edges to privsep/libvirt.py (privsep IPC blind spot). No confirmed/probable taint source can be traced to readpty."
+    },
+    {
+      "file": "src/nova/virt/disk/api.py",
+      "lineRange": { "start": 612, "end": 619 },
+      "confidence": "confirmed",
+      "title": "Non-cryptographic PRNG (random.choice) used to generate password hash salt",
+      "disposition": "excluded-not-a-source",
+      "reason": "KB securitySurface has 13 entries: 12 kind 'privilege' (privsep-entrypoint), 1 kind 'sink' (db-write). No entry-point entries. CWE-338 weak PRNG is a standalone cryptographic weakness inside privsep context — no attacker-controlled input reaches _generate_salt()."
+    },
+    {
+      "file": "src/nova/virt/libvirt/imagecache.py",
+      "lineRange": { "start": 52, "end": 52 },
+      "confidence": "confirmed",
+      "title": "SHA-1 hash used for image cache filename without usedforsecurity=False",
+      "disposition": "excluded-not-a-source",
+      "reason": "KB securitySurface has 5 entries: 4 kind 'privilege' (privsep-entrypoint), 1 kind 'sink' (db-write). No entry-point entries. CWE-327 SHA-1 for cache filename is a standalone FIPS compliance issue, not a taint source."
+    },
+    {
+      "file": "src/nova/virt/libvirt/imagecache.py",
+      "lineRange": { "start": 317, "end": 318 },
+      "confidence": "confirmed",
+      "title": "SHA-1 hash used for image path fingerprint without usedforsecurity=False",
+      "disposition": "excluded-not-a-source",
+      "reason": "Same file and KB as the finding at line 52. No entry-point entries. Standalone FIPS compliance issue."
+    },
+    {
+      "file": "src/nova/virt/zvm/utils.py",
+      "lineRange": { "start": 52, "end": 55 },
+      "confidence": "confirmed",
+      "title": "TLS certificate verification disabled when z/VM connector URL lacks CA file",
+      "disposition": "excluded-not-a-source",
+      "reason": "KB securitySurface is empty — no entries of any kind. CWE-295 TLS misconfiguration on z/VM Cloud Connector is a standalone deployment configuration weakness."
     }
   ],
   "summary": {
     "confirmedChains": 0,
     "partialChains": 1,
     "terminatedChains": 0,
-    "filesAnalysed": 1388,
-    "linkGraphEdgesAvailable": 5129,
-    "unresolvedImports": 1200,
+    "filesAnalysed": 1484,
+    "linkGraphEdgesAvailable": 5884,
+    "unresolvedImports": 923,
     "crossComponentSeams": 0,
     "analysedAt": "2026-10-21"
   }
