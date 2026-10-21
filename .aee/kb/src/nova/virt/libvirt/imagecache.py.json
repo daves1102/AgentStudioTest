@@ -1,0 +1,1389 @@
+{
+  "file": "src/nova/virt/libvirt/imagecache.py",
+  "hash": "05d8f83dcef025888f475e4faa21ba885b96fb69f6c252f8961140e88c7d5ffe",
+  "language": "Python",
+  "component": "nova",
+  "package": null,
+  "lines": {
+    "blank": 72,
+    "code": 291,
+    "comment": 55,
+    "total": 418
+  },
+  "symbols": [
+    {
+      "name": "LOG",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 39,
+        "end": 39
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "CONF",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 41,
+        "end": 41
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "get_cache_fname",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 44,
+        "end": 52
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "image_id"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "hashlib.sha1(image_id.encode('utf-8')).hexdigest()",
+          "line": 52
+        }
+      ],
+      "nloc": 2,
+      "ccn": 1,
+      "exported": true
+    },
+    {
+      "name": "ImageCacheManager",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 55,
+        "end": 418
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "__init__",
+      "kind": "method",
+      "scope": "ImageCacheManager",
+      "lineRange": {
+        "start": 56,
+        "end": 59
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 4,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "_reset_state",
+      "kind": "method",
+      "scope": "ImageCacheManager",
+      "lineRange": {
+        "start": 61,
+        "end": 76
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 11,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "_store_image",
+      "kind": "method",
+      "scope": "ImageCacheManager",
+      "lineRange": {
+        "start": 78,
+        "end": 84
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "base_dir"
+        },
+        {
+          "name": "ent"
+        },
+        {
+          "default": "False",
+          "name": "original"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 6,
+      "ccn": 3,
+      "visibility": "private"
+    },
+    {
+      "name": "_store_swap_image",
+      "kind": "method",
+      "scope": "ImageCacheManager",
+      "lineRange": {
+        "start": 86,
+        "end": 92
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "ent"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 6,
+      "ccn": 5,
+      "visibility": "private"
+    },
+    {
+      "name": "_store_ephemeral_image",
+      "kind": "method",
+      "scope": "ImageCacheManager",
+      "lineRange": {
+        "start": 94,
+        "end": 101
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "ent"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 7,
+      "ccn": 7,
+      "visibility": "private"
+    },
+    {
+      "name": "_scan_base_images",
+      "kind": "method",
+      "scope": "ImageCacheManager",
+      "lineRange": {
+        "start": 103,
+        "end": 119
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "base_dir"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 10,
+      "ccn": 5,
+      "visibility": "private"
+    },
+    {
+      "name": "_list_backing_images",
+      "kind": "method",
+      "scope": "ImageCacheManager",
+      "lineRange": {
+        "start": 121,
+        "end": 161
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "inuse_images",
+          "line": 161
+        }
+      ],
+      "nloc": 37,
+      "ccn": 9,
+      "visibility": "private"
+    },
+    {
+      "name": "_find_base_file",
+      "kind": "method",
+      "scope": "ImageCacheManager",
+      "lineRange": {
+        "start": 163,
+        "end": 187
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "base_dir"
+        },
+        {
+          "name": "fingerprint"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 12,
+      "ccn": 5,
+      "visibility": "private"
+    },
+    {
+      "name": "_get_age_of_file",
+      "kind": "method",
+      "scope": "ImageCacheManager",
+      "lineRange": {
+        "start": 190,
+        "end": 198
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "base_file"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "(False, 0)",
+          "line": 193
+        },
+        {
+          "expr": "(True, age)",
+          "line": 198
+        }
+      ],
+      "nloc": 7,
+      "ccn": 2,
+      "visibility": "private"
+    },
+    {
+      "name": "_remove_old_enough_file",
+      "kind": "method",
+      "scope": "ImageCacheManager",
+      "lineRange": {
+        "start": 200,
+        "end": 245
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "base_file"
+        },
+        {
+          "name": "maxage"
+        },
+        {
+          "default": "True",
+          "name": "remove_lock"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "",
+          "line": 204
+        }
+      ],
+      "nloc": 22,
+      "ccn": 5,
+      "visibility": "private"
+    },
+    {
+      "name": "_inner_remove_old_enough_file",
+      "kind": "function",
+      "scope": "ImageCacheManager._remove_old_enough_file",
+      "lineRange": {
+        "start": 210,
+        "end": 225
+      },
+      "source": "aee-inventory",
+      "parameters": [],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "",
+          "line": 216
+        }
+      ],
+      "visibility": "private"
+    },
+    {
+      "name": "_remove_ephemeral_file",
+      "kind": "method",
+      "scope": "ImageCacheManager",
+      "lineRange": {
+        "start": 247,
+        "end": 251
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "base_file"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 3,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "_remove_swap_file",
+      "kind": "method",
+      "scope": "ImageCacheManager",
+      "lineRange": {
+        "start": 253,
+        "end": 257
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "base_file"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 3,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "_remove_base_file",
+      "kind": "method",
+      "scope": "ImageCacheManager",
+      "lineRange": {
+        "start": 259,
+        "end": 266
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "base_file"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 6,
+      "ccn": 2,
+      "visibility": "private"
+    },
+    {
+      "name": "_mark_in_use",
+      "kind": "method",
+      "scope": "ImageCacheManager",
+      "lineRange": {
+        "start": 268,
+        "end": 281
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "img_id"
+        },
+        {
+          "name": "base_file"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 9,
+      "ccn": 2,
+      "visibility": "private"
+    },
+    {
+      "name": "_age_and_verify_ephemeral_images",
+      "kind": "method",
+      "scope": "ImageCacheManager",
+      "lineRange": {
+        "start": 283,
+        "end": 296
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "context"
+        },
+        {
+          "name": "base_dir"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 12,
+      "ccn": 6,
+      "visibility": "private"
+    },
+    {
+      "name": "_age_and_verify_swap_images",
+      "kind": "method",
+      "scope": "ImageCacheManager",
+      "lineRange": {
+        "start": 298,
+        "end": 311
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "context"
+        },
+        {
+          "name": "base_dir"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 12,
+      "ccn": 6,
+      "visibility": "private"
+    },
+    {
+      "name": "_age_and_verify_cached_images",
+      "kind": "method",
+      "scope": "ImageCacheManager",
+      "lineRange": {
+        "start": 313,
+        "end": 350
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "context"
+        },
+        {
+          "name": "all_instances"
+        },
+        {
+          "name": "base_dir"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 27,
+      "ccn": 10,
+      "visibility": "private"
+    },
+    {
+      "name": "_get_base",
+      "kind": "method",
+      "scope": "ImageCacheManager",
+      "lineRange": {
+        "start": 352,
+        "end": 370
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "",
+          "line": 369
+        },
+        {
+          "expr": "base_dir",
+          "line": 370
+        }
+      ],
+      "nloc": 8,
+      "ccn": 2,
+      "visibility": "private"
+    },
+    {
+      "name": "update",
+      "kind": "method",
+      "scope": "ImageCacheManager",
+      "lineRange": {
+        "start": 372,
+        "end": 389
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "context"
+        },
+        {
+          "name": "all_instances"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "",
+          "line": 375
+        }
+      ],
+      "nloc": 14,
+      "ccn": 2,
+      "visibility": "public"
+    },
+    {
+      "name": "get_disk_usage",
+      "kind": "method",
+      "scope": "ImageCacheManager",
+      "lineRange": {
+        "start": 391,
+        "end": 413
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "0",
+          "line": 397
+        },
+        {
+          "expr": "sum( os.stat(os.path.join(self.cache_dir, f)).st_blocks * 512 for f in os.listdir(self.cache_dir) if os.path.isfile(os.path.join(self.cache_dir, f)))",
+          "line": 404
+        },
+        {
+          "expr": "0",
+          "line": 413
+        }
+      ],
+      "nloc": 11,
+      "ccn": 5,
+      "visibility": "public"
+    },
+    {
+      "name": "cache_dir",
+      "kind": "method",
+      "scope": "ImageCacheManager",
+      "lineRange": {
+        "start": 416,
+        "end": 418
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "os.path.join( CONF.instances_path, CONF.image_cache.subdirectory_name)",
+          "line": 417
+        }
+      ],
+      "nloc": 3,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "_get_age_of_file",
+      "kind": "staticmethod",
+      "scope": "ImageCacheManager",
+      "lineRange": {
+        "start": 189,
+        "end": 198
+      },
+      "visibility": "private",
+      "source": "manual"
+    },
+    {
+      "name": "cache_dir",
+      "kind": "property",
+      "scope": "ImageCacheManager",
+      "lineRange": {
+        "start": 415,
+        "end": 418
+      },
+      "visibility": "public",
+      "source": "manual"
+    }
+  ],
+  "referencedSymbols": [
+    {
+      "name": "logging.getLogger",
+      "usage": "call",
+      "via": "oslo_log",
+      "count": 1,
+      "lineRange": {
+        "start": 39,
+        "end": 39
+      }
+    },
+    {
+      "name": "hashlib.sha1",
+      "usage": "call",
+      "via": "hashlib",
+      "count": 3,
+      "lineRange": {
+        "start": 52,
+        "end": 52
+      }
+    },
+    {
+      "name": "imagecache.ImageCacheManager",
+      "usage": "inherit",
+      "via": "nova.virt",
+      "count": 1,
+      "lineRange": {
+        "start": 55,
+        "end": 55
+      }
+    },
+    {
+      "name": "super",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 57,
+        "end": 57
+      }
+    },
+    {
+      "name": "os.path.join",
+      "usage": "call",
+      "via": "os",
+      "count": 12,
+      "lineRange": {
+        "start": 58,
+        "end": 58
+      }
+    },
+    {
+      "name": "set",
+      "usage": "call",
+      "via": null,
+      "count": 5,
+      "lineRange": {
+        "start": 65,
+        "end": 65
+      }
+    },
+    {
+      "name": "os.path.isfile",
+      "usage": "call",
+      "via": "os",
+      "count": 2,
+      "lineRange": {
+        "start": 81,
+        "end": 81
+      }
+    },
+    {
+      "name": "len",
+      "usage": "call",
+      "via": null,
+      "count": 7,
+      "lineRange": {
+        "start": 89,
+        "end": 89
+      }
+    },
+    {
+      "name": "isinstance",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 99,
+        "end": 99
+      }
+    },
+    {
+      "name": "os.listdir",
+      "usage": "call",
+      "via": "os",
+      "count": 3,
+      "lineRange": {
+        "start": 110,
+        "end": 110
+      }
+    },
+    {
+      "name": "os.path.exists",
+      "usage": "call",
+      "via": "os",
+      "count": 8,
+      "lineRange": {
+        "start": 128,
+        "end": 128
+      }
+    },
+    {
+      "name": "libvirt_utils.get_disk_backing_file",
+      "usage": "call",
+      "via": "nova.virt.libvirt",
+      "count": 1,
+      "lineRange": {
+        "start": 131,
+        "end": 131
+      }
+    },
+    {
+      "name": "re.compile",
+      "usage": "call",
+      "via": "re",
+      "count": 1,
+      "lineRange": {
+        "start": 183,
+        "end": 183
+      }
+    },
+    {
+      "name": "os.path.getmtime",
+      "usage": "call",
+      "via": "os",
+      "count": 1,
+      "lineRange": {
+        "start": 195,
+        "end": 195
+      }
+    },
+    {
+      "name": "time.time",
+      "usage": "call",
+      "via": "time",
+      "count": 1,
+      "lineRange": {
+        "start": 196,
+        "end": 196
+      }
+    },
+    {
+      "name": "os.path.split",
+      "usage": "call",
+      "via": "os",
+      "count": 1,
+      "lineRange": {
+        "start": 206,
+        "end": 206
+      }
+    },
+    {
+      "name": "utils.synchronized",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 208,
+        "end": 208
+      }
+    },
+    {
+      "name": "os.remove",
+      "usage": "call",
+      "via": "os",
+      "count": 1,
+      "lineRange": {
+        "start": 220,
+        "end": 220
+      }
+    },
+    {
+      "name": "lockutils.remove_external_lock_file",
+      "usage": "call",
+      "via": "oslo_concurrency",
+      "count": 1,
+      "lineRange": {
+        "start": 239,
+        "end": 239
+      }
+    },
+    {
+      "name": "nova.privsep.path.utime",
+      "usage": "call",
+      "via": "nova.conf",
+      "count": 3,
+      "lineRange": {
+        "start": 281,
+        "end": 281
+      }
+    },
+    {
+      "name": "encodeutils.safe_encode",
+      "usage": "call",
+      "via": "oslo_utils",
+      "count": 1,
+      "lineRange": {
+        "start": 318,
+        "end": 318
+      }
+    },
+    {
+      "name": "os.stat",
+      "usage": "call",
+      "via": "os",
+      "count": 3,
+      "lineRange": {
+        "start": 395,
+        "end": 395
+      }
+    },
+    {
+      "name": "sum",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 404,
+        "end": 404
+      }
+    }
+  ],
+  "dependencies": [
+    {
+      "style": "import",
+      "module": "hashlib",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 23,
+        "end": 23
+      }
+    },
+    {
+      "style": "import",
+      "module": "os",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 24,
+        "end": 24
+      }
+    },
+    {
+      "style": "import",
+      "module": "re",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 25,
+        "end": 25
+      }
+    },
+    {
+      "style": "import",
+      "module": "time",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 26,
+        "end": 26
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_concurrency",
+      "names": [
+        {
+          "alias": null,
+          "name": "lockutils"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 28,
+        "end": 28
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_concurrency",
+      "names": [
+        {
+          "alias": null,
+          "name": "processutils"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 29,
+        "end": 29
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_log",
+      "names": [
+        {
+          "alias": "logging",
+          "name": "log"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 30,
+        "end": 30
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_utils",
+      "names": [
+        {
+          "alias": null,
+          "name": "encodeutils"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 31,
+        "end": 31
+      }
+    },
+    {
+      "style": "import",
+      "module": "nova.conf",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 33,
+        "end": 33
+      }
+    },
+    {
+      "style": "import",
+      "module": "nova.privsep.path",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 34,
+        "end": 34
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "utils"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 35,
+        "end": 35
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.virt",
+      "names": [
+        {
+          "alias": null,
+          "name": "imagecache"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 36,
+        "end": 36
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.virt.libvirt",
+      "names": [
+        {
+          "alias": "libvirt_utils",
+          "name": "utils"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 37,
+        "end": 37
+      }
+    }
+  ],
+  "sideEffects": [
+    {
+      "kind": "network",
+      "target": "http://wiki.openstack.org/nova-image-cache-management.",
+      "lineRange": {
+        "start": 19,
+        "end": 19
+      }
+    },
+    {
+      "kind": "process-spawn",
+      "target": "import nova.privsep.path",
+      "lineRange": {
+        "start": 34,
+        "end": 34
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "self.lock_path = os.path.join(CONF.instances_path, 'locks')",
+      "lineRange": {
+        "start": 58,
+        "end": 58
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "entpath = os.path.join(base_dir, ent)",
+      "lineRange": {
+        "start": 80,
+        "end": 80
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "if os.path.isfile(entpath):",
+      "lineRange": {
+        "start": 81,
+        "end": 81
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "for ent in os.listdir(base_dir):",
+      "lineRange": {
+        "start": 110,
+        "end": 110
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "for ent in os.listdir(CONF.instances_path):",
+      "lineRange": {
+        "start": 124,
+        "end": 124
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "disk_path = os.path.join(CONF.instances_path, ent, 'disk')",
+      "lineRange": {
+        "start": 127,
+        "end": 127
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "if os.path.exists(disk_path):",
+      "lineRange": {
+        "start": 128,
+        "end": 128
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "if not os.path.exists(disk_path):",
+      "lineRange": {
+        "start": 135,
+        "end": 135
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "backing_path = os.path.join(",
+      "lineRange": {
+        "start": 147,
+        "end": 147
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "base_file = os.path.join(base_dir, fingerprint)",
+      "lineRange": {
+        "start": 173,
+        "end": 173
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "if os.path.exists(base_file):",
+      "lineRange": {
+        "start": 174,
+        "end": 174
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "base_file = os.path.join(base_dir, fingerprint + '_sm')",
+      "lineRange": {
+        "start": 178,
+        "end": 178
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "if os.path.exists(base_file):",
+      "lineRange": {
+        "start": 179,
+        "end": 179
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "if not os.path.exists(base_file):",
+      "lineRange": {
+        "start": 191,
+        "end": 191
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "mtime = os.path.getmtime(base_file)",
+      "lineRange": {
+        "start": 195,
+        "end": 195
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "lock_file = os.path.split(base_file)[-1]",
+      "lineRange": {
+        "start": 206,
+        "end": 206
+      }
+    },
+    {
+      "kind": "process-spawn",
+      "target": "nova.privsep.path.utime(base_file)",
+      "lineRange": {
+        "start": 281,
+        "end": 281
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "base_file = os.path.join(base_dir, ent)",
+      "lineRange": {
+        "start": 287,
+        "end": 287
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "if ent in self.used_ephemeral_images and os.path.exists(base_file):",
+      "lineRange": {
+        "start": 288,
+        "end": 288
+      }
+    },
+    {
+      "kind": "process-spawn",
+      "target": "nova.privsep.path.utime(base_file)",
+      "lineRange": {
+        "start": 289,
+        "end": 289
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "base_file = os.path.join(base_dir, ent)",
+      "lineRange": {
+        "start": 302,
+        "end": 302
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "if ent in self.used_swap_images and os.path.exists(base_file):",
+      "lineRange": {
+        "start": 303,
+        "end": 303
+      }
+    },
+    {
+      "kind": "process-spawn",
+      "target": "nova.privsep.path.utime(base_file)",
+      "lineRange": {
+        "start": 304,
+        "end": 304
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "base_dir = os.path.join(CONF.instances_path,",
+      "lineRange": {
+        "start": 364,
+        "end": 364
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "if not os.path.exists(base_dir):",
+      "lineRange": {
+        "start": 366,
+        "end": 366
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "os.stat(os.path.join(self.cache_dir, f)).st_blocks * 512",
+      "lineRange": {
+        "start": 405,
+        "end": 405
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "for f in os.listdir(self.cache_dir)",
+      "lineRange": {
+        "start": 406,
+        "end": 406
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "if os.path.isfile(os.path.join(self.cache_dir, f)))",
+      "lineRange": {
+        "start": 407,
+        "end": 407
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "return os.path.join(",
+      "lineRange": {
+        "start": 417,
+        "end": 417
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "LOG = logging.getLogger(__name__)",
+      "lineRange": {
+        "start": 39,
+        "end": 39
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "CONF = nova.conf.CONF",
+      "lineRange": {
+        "start": 41,
+        "end": 41
+      }
+    }
+  ],
+  "securitySurface": [
+    {
+      "kind": "privilege",
+      "category": "privsep-entrypoint",
+      "description": "import nova.privsep.path",
+      "lineRange": {
+        "start": 34,
+        "end": 34
+      }
+    },
+    {
+      "kind": "privilege",
+      "category": "privsep-entrypoint",
+      "description": "nova.privsep.path.utime(base_file)",
+      "lineRange": {
+        "start": 281,
+        "end": 281
+      }
+    },
+    {
+      "kind": "privilege",
+      "category": "privsep-entrypoint",
+      "description": "nova.privsep.path.utime(base_file)",
+      "lineRange": {
+        "start": 289,
+        "end": 289
+      }
+    },
+    {
+      "kind": "privilege",
+      "category": "privsep-entrypoint",
+      "description": "nova.privsep.path.utime(base_file)",
+      "lineRange": {
+        "start": 304,
+        "end": 304
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "def update(self, context, all_instances):",
+      "lineRange": {
+        "start": 372,
+        "end": 372
+      }
+    }
+  ],
+  "injection_flags": [],
+  "warnings": []
+}

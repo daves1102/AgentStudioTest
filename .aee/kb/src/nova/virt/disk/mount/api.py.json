@@ -1,0 +1,1086 @@
+{
+  "file": "src/nova/virt/disk/mount/api.py",
+  "hash": "c3d3047c38676f86b4c62f9f82d3f12bc0af723ab02bd82324d61936f286e4ee",
+  "language": "Python",
+  "component": "nova",
+  "package": null,
+  "lines": {
+    "blank": 43,
+    "code": 215,
+    "comment": 37,
+    "total": 295
+  },
+  "symbols": [
+    {
+      "name": "LOG",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 28,
+        "end": 28
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "MAX_DEVICE_WAIT",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 30,
+        "end": 30
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "MAX_FILE_CHECKS",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 31,
+        "end": 31
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "FILE_CHECK_INTERVAL",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 32,
+        "end": 32
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "Mount",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 35,
+        "end": 295
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "mode",
+      "kind": "field",
+      "scope": "Mount",
+      "lineRange": {
+        "start": 42,
+        "end": 42
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "instance_for_format",
+      "kind": "method",
+      "scope": "Mount",
+      "lineRange": {
+        "start": 45,
+        "end": 82
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "image"
+        },
+        {
+          "name": "mountdir"
+        },
+        {
+          "name": "partition"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "importutils.import_object( \"nova.virt.disk.mount.loop.LoopMount\", image, mountdir, partition)",
+          "line": 60
+        },
+        {
+          "expr": "importutils.import_object( \"nova.virt.disk.mount.nbd.NbdMount\", image, mountdir, partition)",
+          "line": 65
+        },
+        {
+          "expr": "importutils.import_object( \"nova.virt.disk.mount.block.BlockMount\", image, mountdir, partition)",
+          "line": 70
+        }
+      ],
+      "nloc": 24,
+      "ccn": 4,
+      "visibility": "public"
+    },
+    {
+      "name": "instance_for_device",
+      "kind": "method",
+      "scope": "Mount",
+      "lineRange": {
+        "start": 85,
+        "end": 114
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "image"
+        },
+        {
+          "name": "mountdir"
+        },
+        {
+          "name": "partition"
+        },
+        {
+          "name": "device"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "importutils.import_object( \"nova.virt.disk.mount.loop.LoopMount\", image, mountdir, partition, device)",
+          "line": 102
+        },
+        {
+          "expr": "importutils.import_object( \"nova.virt.disk.mount.nbd.NbdMount\", image, mountdir, partition, device)",
+          "line": 107
+        },
+        {
+          "expr": "importutils.import_object( \"nova.virt.disk.mount.block.BlockMount\", image, mountdir, partition, device)",
+          "line": 112
+        }
+      ],
+      "nloc": 21,
+      "ccn": 3,
+      "visibility": "public"
+    },
+    {
+      "name": "__init__",
+      "kind": "method",
+      "scope": "Mount",
+      "lineRange": {
+        "start": 116,
+        "end": 138
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "image"
+        },
+        {
+          "name": "mount_dir"
+        },
+        {
+          "default": "None",
+          "name": "partition"
+        },
+        {
+          "default": "None",
+          "name": "device"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 8,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "reset_dev",
+      "kind": "method",
+      "scope": "Mount",
+      "lineRange": {
+        "start": 140,
+        "end": 153
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "",
+          "line": 143
+        }
+      ],
+      "nloc": 11,
+      "ccn": 6,
+      "visibility": "public"
+    },
+    {
+      "name": "get_dev",
+      "kind": "method",
+      "scope": "Mount",
+      "lineRange": {
+        "start": 155,
+        "end": 159
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "True",
+          "line": 159
+        }
+      ],
+      "nloc": 4,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "_get_dev_retry_helper",
+      "kind": "method",
+      "scope": "Mount",
+      "lineRange": {
+        "start": 161,
+        "end": 176
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "False",
+          "line": 174
+        },
+        {
+          "expr": "True",
+          "line": 176
+        }
+      ],
+      "nloc": 11,
+      "ccn": 3,
+      "visibility": "private"
+    },
+    {
+      "name": "_inner_get_dev",
+      "kind": "method",
+      "scope": "Mount",
+      "lineRange": {
+        "start": 178,
+        "end": 179
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "unget_dev",
+      "kind": "method",
+      "scope": "Mount",
+      "lineRange": {
+        "start": 181,
+        "end": 183
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "map_dev",
+      "kind": "method",
+      "scope": "Mount",
+      "lineRange": {
+        "start": 185,
+        "end": 234
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "self.mapped",
+          "line": 234
+        }
+      ],
+      "nloc": 33,
+      "ccn": 8,
+      "visibility": "public"
+    },
+    {
+      "name": "recheck_path",
+      "kind": "function",
+      "scope": "Mount.map_dev",
+      "lineRange": {
+        "start": 208,
+        "end": 210
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "map_path"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "visibility": "public"
+    },
+    {
+      "name": "unmap_dev",
+      "kind": "method",
+      "scope": "Mount",
+      "lineRange": {
+        "start": 236,
+        "end": 244
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "",
+          "line": 239
+        }
+      ],
+      "nloc": 8,
+      "ccn": 4,
+      "visibility": "public"
+    },
+    {
+      "name": "mnt_dev",
+      "kind": "method",
+      "scope": "Mount",
+      "lineRange": {
+        "start": 246,
+        "end": 258
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "False",
+          "line": 255
+        },
+        {
+          "expr": "True",
+          "line": 258
+        }
+      ],
+      "nloc": 11,
+      "ccn": 2,
+      "visibility": "public"
+    },
+    {
+      "name": "unmnt_dev",
+      "kind": "method",
+      "scope": "Mount",
+      "lineRange": {
+        "start": 260,
+        "end": 267
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "",
+          "line": 263
+        }
+      ],
+      "nloc": 7,
+      "ccn": 2,
+      "visibility": "public"
+    },
+    {
+      "name": "flush_dev",
+      "kind": "method",
+      "scope": "Mount",
+      "lineRange": {
+        "start": 269,
+        "end": 270
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "do_mount",
+      "kind": "method",
+      "scope": "Mount",
+      "lineRange": {
+        "start": 272,
+        "end": 281
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "status",
+          "line": 281
+        }
+      ],
+      "nloc": 9,
+      "ccn": 5,
+      "visibility": "public"
+    },
+    {
+      "name": "do_umount",
+      "kind": "method",
+      "scope": "Mount",
+      "lineRange": {
+        "start": 283,
+        "end": 286
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 3,
+      "ccn": 2,
+      "visibility": "public"
+    },
+    {
+      "name": "do_teardown",
+      "kind": "method",
+      "scope": "Mount",
+      "lineRange": {
+        "start": 288,
+        "end": 295
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 7,
+      "ccn": 4,
+      "visibility": "public"
+    },
+    {
+      "name": "instance_for_format",
+      "kind": "staticmethod",
+      "scope": "Mount",
+      "lineRange": {
+        "start": 44,
+        "end": 82
+      },
+      "visibility": "public",
+      "source": "manual"
+    },
+    {
+      "name": "instance_for_device",
+      "kind": "staticmethod",
+      "scope": "Mount",
+      "lineRange": {
+        "start": 84,
+        "end": 114
+      },
+      "visibility": "public",
+      "source": "manual"
+    }
+  ],
+  "referencedSymbols": [
+    {
+      "name": "logging.getLogger",
+      "usage": "call",
+      "via": "oslo_log",
+      "count": 1,
+      "lineRange": {
+        "start": 28,
+        "end": 28
+      }
+    },
+    {
+      "name": "object",
+      "usage": "inherit",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 35,
+        "end": 35
+      }
+    },
+    {
+      "name": "isinstance",
+      "usage": "call",
+      "via": null,
+      "count": 2,
+      "lineRange": {
+        "start": 57,
+        "end": 57
+      }
+    },
+    {
+      "name": "importutils.import_object",
+      "usage": "call",
+      "via": "oslo_utils",
+      "count": 6,
+      "lineRange": {
+        "start": 60,
+        "end": 60
+      }
+    },
+    {
+      "name": "exception.UnsupportedImageModel",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 81,
+        "end": 81
+      }
+    },
+    {
+      "name": "os.path.exists",
+      "usage": "call",
+      "via": "os",
+      "count": 6,
+      "lineRange": {
+        "start": 148,
+        "end": 148
+      }
+    },
+    {
+      "name": "os.path.isabs",
+      "usage": "call",
+      "via": "os",
+      "count": 1,
+      "lineRange": {
+        "start": 148,
+        "end": 148
+      }
+    },
+    {
+      "name": "os.path.basename",
+      "usage": "call",
+      "via": "os",
+      "count": 3,
+      "lineRange": {
+        "start": 150,
+        "end": 150
+      }
+    },
+    {
+      "name": "os.path.join",
+      "usage": "call",
+      "via": "os",
+      "count": 1,
+      "lineRange": {
+        "start": 153,
+        "end": 153
+      }
+    },
+    {
+      "name": "time.time",
+      "usage": "call",
+      "via": "time",
+      "count": 2,
+      "lineRange": {
+        "start": 167,
+        "end": 167
+      }
+    },
+    {
+      "name": "time.sleep",
+      "usage": "call",
+      "via": "time",
+      "count": 1,
+      "lineRange": {
+        "start": 171,
+        "end": 171
+      }
+    },
+    {
+      "name": "NotImplementedError",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 179,
+        "end": 179
+      }
+    },
+    {
+      "name": "_",
+      "usage": "call",
+      "via": "nova.i18n",
+      "count": 4,
+      "lineRange": {
+        "start": 193,
+        "end": 193
+      }
+    },
+    {
+      "name": "nova.privsep.fs.create_device_maps",
+      "usage": "call",
+      "via": "nova.privsep.fs",
+      "count": 1,
+      "lineRange": {
+        "start": 202,
+        "end": 202
+      }
+    },
+    {
+      "name": "loopingcall.RetryDecorator",
+      "usage": "call",
+      "via": "oslo_service",
+      "count": 1,
+      "lineRange": {
+        "start": 204,
+        "end": 204
+      }
+    },
+    {
+      "name": "IOError",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 210,
+        "end": 210
+      }
+    },
+    {
+      "name": "nova.privsep.fs.remove_device_maps",
+      "usage": "call",
+      "via": "nova.privsep.fs",
+      "count": 1,
+      "lineRange": {
+        "start": 242,
+        "end": 242
+      }
+    },
+    {
+      "name": "nova.privsep.fs.mount",
+      "usage": "call",
+      "via": "nova.privsep.fs",
+      "count": 1,
+      "lineRange": {
+        "start": 250,
+        "end": 250
+      }
+    },
+    {
+      "name": "nova.privsep.fs.umount",
+      "usage": "call",
+      "via": "nova.privsep.fs",
+      "count": 1,
+      "lineRange": {
+        "start": 266,
+        "end": 266
+      }
+    }
+  ],
+  "dependencies": [
+    {
+      "style": "import",
+      "module": "os",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 16,
+        "end": 16
+      }
+    },
+    {
+      "style": "import",
+      "module": "time",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 17,
+        "end": 17
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_log",
+      "names": [
+        {
+          "alias": "logging",
+          "name": "log"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 19,
+        "end": 19
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_service",
+      "names": [
+        {
+          "alias": null,
+          "name": "loopingcall"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 20,
+        "end": 20
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_utils",
+      "names": [
+        {
+          "alias": null,
+          "name": "importutils"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 21,
+        "end": 21
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "exception"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 23,
+        "end": 23
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.i18n",
+      "names": [
+        {
+          "alias": null,
+          "name": "_"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 24,
+        "end": 24
+      }
+    },
+    {
+      "style": "import",
+      "module": "nova.privsep.fs",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 25,
+        "end": 25
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.virt.image",
+      "names": [
+        {
+          "alias": "imgmodel",
+          "name": "model"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 26,
+        "end": 26
+      }
+    }
+  ],
+  "sideEffects": [
+    {
+      "kind": "process-spawn",
+      "target": "import nova.privsep.fs",
+      "lineRange": {
+        "start": 25,
+        "end": 25
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "if os.path.isabs(device) and os.path.exists(device):",
+      "lineRange": {
+        "start": 148,
+        "end": 148
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "device = os.path.basename(device)",
+      "lineRange": {
+        "start": 150,
+        "end": 150
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "self.device = os.path.join('/dev', device)",
+      "lineRange": {
+        "start": 153,
+        "end": 153
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "assert os.path.exists(self.device)",
+      "lineRange": {
+        "start": 187,
+        "end": 187
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "automapped_path = '/dev/%sp%s' % (os.path.basename(self.device),",
+      "lineRange": {
+        "start": 189,
+        "end": 189
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "elif self.partition and not os.path.exists(automapped_path):",
+      "lineRange": {
+        "start": 194,
+        "end": 194
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "map_path = '/dev/mapper/%sp%s' % (os.path.basename(self.device),",
+      "lineRange": {
+        "start": 195,
+        "end": 195
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "assert not os.path.exists(map_path)",
+      "lineRange": {
+        "start": 197,
+        "end": 197
+      }
+    },
+    {
+      "kind": "process-spawn",
+      "target": "_out, err = nova.privsep.fs.create_device_maps(self.device)",
+      "lineRange": {
+        "start": 202,
+        "end": 202
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "if not os.path.exists(map_path):",
+      "lineRange": {
+        "start": 209,
+        "end": 209
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "elif self.partition and os.path.exists(automapped_path):",
+      "lineRange": {
+        "start": 222,
+        "end": 222
+      }
+    },
+    {
+      "kind": "process-spawn",
+      "target": "nova.privsep.fs.remove_device_maps(self.device)",
+      "lineRange": {
+        "start": 242,
+        "end": 242
+      }
+    },
+    {
+      "kind": "process-spawn",
+      "target": "out, err = nova.privsep.fs.mount(None, self.mapped_device,",
+      "lineRange": {
+        "start": 250,
+        "end": 250
+      }
+    },
+    {
+      "kind": "process-spawn",
+      "target": "nova.privsep.fs.umount(self.mapped_device)",
+      "lineRange": {
+        "start": 266,
+        "end": 266
+      }
+    },
+    {
+      "kind": "syscall",
+      "target": "def do_mount(self):",
+      "lineRange": {
+        "start": 272,
+        "end": 272
+      }
+    },
+    {
+      "kind": "syscall",
+      "target": "def do_umount(self):",
+      "lineRange": {
+        "start": 283,
+        "end": 283
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "LOG = logging.getLogger(__name__)",
+      "lineRange": {
+        "start": 28,
+        "end": 28
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "MAX_DEVICE_WAIT = 30",
+      "lineRange": {
+        "start": 30,
+        "end": 30
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "MAX_FILE_CHECKS = 6",
+      "lineRange": {
+        "start": 31,
+        "end": 31
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "FILE_CHECK_INTERVAL = 0.25",
+      "lineRange": {
+        "start": 32,
+        "end": 32
+      }
+    }
+  ],
+  "securitySurface": [
+    {
+      "kind": "privilege",
+      "category": "privsep-entrypoint",
+      "description": "import nova.privsep.fs",
+      "lineRange": {
+        "start": 25,
+        "end": 25
+      }
+    },
+    {
+      "kind": "privilege",
+      "category": "privsep-entrypoint",
+      "description": "_out, err = nova.privsep.fs.create_device_maps(self.device)",
+      "lineRange": {
+        "start": 202,
+        "end": 202
+      }
+    },
+    {
+      "kind": "privilege",
+      "category": "privsep-entrypoint",
+      "description": "nova.privsep.fs.remove_device_maps(self.device)",
+      "lineRange": {
+        "start": 242,
+        "end": 242
+      }
+    },
+    {
+      "kind": "privilege",
+      "category": "privsep-entrypoint",
+      "description": "out, err = nova.privsep.fs.mount(None, self.mapped_device,",
+      "lineRange": {
+        "start": 250,
+        "end": 250
+      }
+    },
+    {
+      "kind": "privilege",
+      "category": "privsep-entrypoint",
+      "description": "nova.privsep.fs.umount(self.mapped_device)",
+      "lineRange": {
+        "start": 266,
+        "end": 266
+      }
+    }
+  ],
+  "injection_flags": [],
+  "warnings": []
+}

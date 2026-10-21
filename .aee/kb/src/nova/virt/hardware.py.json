@@ -1,0 +1,4602 @@
+{
+  "file": "src/nova/virt/hardware.py",
+  "hash": "2139ed32c86a09e8baa82d2d532445044a10c64049eda9b877bdb48a00c6032e",
+  "language": "Python",
+  "component": "nova",
+  "package": null,
+  "lines": {
+    "blank": 531,
+    "code": 2433,
+    "comment": 311,
+    "total": 3275
+  },
+  "symbols": [
+    {
+      "name": "CONF",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 39,
+        "end": 39
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "LOG",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 40,
+        "end": 40
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "MEMPAGES_SMALL",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 42,
+        "end": 42
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "MEMPAGES_LARGE",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 43,
+        "end": 43
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "MEMPAGES_ANY",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 44,
+        "end": 44
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "VTPMConfig",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 47,
+        "end": 49
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "version",
+      "kind": "field",
+      "scope": "VTPMConfig",
+      "lineRange": {
+        "start": 48,
+        "end": 48
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "model",
+      "kind": "field",
+      "scope": "VTPMConfig",
+      "lineRange": {
+        "start": 49,
+        "end": 49
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "MemEncryptionConfig",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 52,
+        "end": 191
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "model",
+      "kind": "method",
+      "scope": "MemEncryptionConfig",
+      "lineRange": {
+        "start": 55,
+        "end": 56
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": "str",
+      "returns": [],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "needs_locked_memory",
+      "kind": "method",
+      "scope": "MemEncryptionConfig",
+      "lineRange": {
+        "start": 60,
+        "end": 61
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": "bool",
+      "returns": [],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "required_trait",
+      "kind": "method",
+      "scope": "MemEncryptionConfig",
+      "lineRange": {
+        "start": 65,
+        "end": 66
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": "str",
+      "returns": [],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "required_firmware_type",
+      "kind": "method",
+      "scope": "MemEncryptionConfig",
+      "lineRange": {
+        "start": 70,
+        "end": 71
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": "str",
+      "returns": [],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "required_machine_type",
+      "kind": "method",
+      "scope": "MemEncryptionConfig",
+      "lineRange": {
+        "start": 75,
+        "end": 76
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": "str",
+      "returns": [],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "needs_stateless_firmware",
+      "kind": "method",
+      "scope": "MemEncryptionConfig",
+      "lineRange": {
+        "start": 80,
+        "end": 81
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": "bool",
+      "returns": [],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "_check_firmware_type",
+      "kind": "method",
+      "scope": "MemEncryptionConfig",
+      "lineRange": {
+        "start": 83,
+        "end": 95
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "image_meta",
+          "type": "'objects.ImageMeta'"
+        },
+        {
+          "name": "requesters",
+          "type": "list[str]"
+        }
+      ],
+      "returnType": "None",
+      "returns": [
+        {
+          "expr": "",
+          "line": 87
+        }
+      ],
+      "nloc": 12,
+      "ccn": 2,
+      "visibility": "private"
+    },
+    {
+      "name": "_check_machine_type",
+      "kind": "method",
+      "scope": "MemEncryptionConfig",
+      "lineRange": {
+        "start": 97,
+        "end": 141
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "image_meta",
+          "type": "'objects.ImageMeta'"
+        },
+        {
+          "name": "machine_type",
+          "type": "str | None"
+        }
+      ],
+      "returnType": "None",
+      "returns": [
+        {
+          "expr": "",
+          "line": 126
+        }
+      ],
+      "nloc": 17,
+      "ccn": 6,
+      "visibility": "private"
+    },
+    {
+      "name": "_check_stateless_firmware",
+      "kind": "method",
+      "scope": "MemEncryptionConfig",
+      "lineRange": {
+        "start": 143,
+        "end": 155
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "image_meta",
+          "type": "'objects.ImageMeta'"
+        }
+      ],
+      "returnType": "None",
+      "returns": [
+        {
+          "expr": "",
+          "line": 147
+        }
+      ],
+      "nloc": 12,
+      "ccn": 3,
+      "visibility": "private"
+    },
+    {
+      "name": "check_constraints",
+      "kind": "method",
+      "scope": "MemEncryptionConfig",
+      "lineRange": {
+        "start": 157,
+        "end": 162
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "image_meta",
+          "type": "'objects.ImageMeta'"
+        },
+        {
+          "name": "machine_type",
+          "type": "str | None"
+        },
+        {
+          "name": "requesters",
+          "type": "list[str]"
+        }
+      ],
+      "returnType": "None",
+      "returns": [],
+      "nloc": 6,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "__eq__",
+      "kind": "method",
+      "scope": "MemEncryptionConfig",
+      "lineRange": {
+        "start": 164,
+        "end": 167
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "other"
+        }
+      ],
+      "returnType": "bool",
+      "returns": [
+        {
+          "expr": "False",
+          "line": 166
+        },
+        {
+          "expr": "self.model == other.model",
+          "line": 167
+        }
+      ],
+      "nloc": 4,
+      "ccn": 2,
+      "visibility": "public"
+    },
+    {
+      "name": "__hash__",
+      "kind": "method",
+      "scope": "MemEncryptionConfig",
+      "lineRange": {
+        "start": 169,
+        "end": 170
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": "int",
+      "returns": [
+        {
+          "expr": "hash(self.model)",
+          "line": 170
+        }
+      ],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "create",
+      "kind": "method",
+      "scope": "MemEncryptionConfig",
+      "lineRange": {
+        "start": 173,
+        "end": 191
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "cls"
+        },
+        {
+          "name": "model",
+          "type": "str"
+        }
+      ],
+      "returnType": "'MemEncryptionConfig'",
+      "returns": [
+        {
+          "expr": "model2cls[model]()",
+          "line": 191
+        }
+      ],
+      "nloc": 15,
+      "ccn": 2,
+      "visibility": "public"
+    },
+    {
+      "name": "MemEncryptionConfigSev",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 194,
+        "end": 217
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "model",
+      "kind": "method",
+      "scope": "MemEncryptionConfigSev",
+      "lineRange": {
+        "start": 196,
+        "end": 197
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": "str",
+      "returns": [
+        {
+          "expr": "fields.MemEncryptionModel.AMD_SEV",
+          "line": 197
+        }
+      ],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "needs_locked_memory",
+      "kind": "method",
+      "scope": "MemEncryptionConfigSev",
+      "lineRange": {
+        "start": 200,
+        "end": 201
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": "bool",
+      "returns": [
+        {
+          "expr": "True",
+          "line": 201
+        }
+      ],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "required_trait",
+      "kind": "method",
+      "scope": "MemEncryptionConfigSev",
+      "lineRange": {
+        "start": 204,
+        "end": 205
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": "str",
+      "returns": [
+        {
+          "expr": "os_traits.HW_CPU_X86_AMD_SEV",
+          "line": 205
+        }
+      ],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "required_firmware_type",
+      "kind": "method",
+      "scope": "MemEncryptionConfigSev",
+      "lineRange": {
+        "start": 208,
+        "end": 209
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": "str",
+      "returns": [
+        {
+          "expr": "\"uefi\"",
+          "line": 209
+        }
+      ],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "required_machine_type",
+      "kind": "method",
+      "scope": "MemEncryptionConfigSev",
+      "lineRange": {
+        "start": 212,
+        "end": 213
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": "str",
+      "returns": [
+        {
+          "expr": "\"q35\"",
+          "line": 213
+        }
+      ],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "needs_stateless_firmware",
+      "kind": "method",
+      "scope": "MemEncryptionConfigSev",
+      "lineRange": {
+        "start": 216,
+        "end": 217
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": "bool",
+      "returns": [
+        {
+          "expr": "False",
+          "line": 217
+        }
+      ],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "MemEncryptionConfigSevEs",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 220,
+        "end": 227
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "model",
+      "kind": "method",
+      "scope": "MemEncryptionConfigSevEs",
+      "lineRange": {
+        "start": 222,
+        "end": 223
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": "str",
+      "returns": [
+        {
+          "expr": "fields.MemEncryptionModel.AMD_SEV_ES",
+          "line": 223
+        }
+      ],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "required_trait",
+      "kind": "method",
+      "scope": "MemEncryptionConfigSevEs",
+      "lineRange": {
+        "start": 226,
+        "end": 227
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": "str",
+      "returns": [
+        {
+          "expr": "os_traits.HW_CPU_X86_AMD_SEV_ES",
+          "line": 227
+        }
+      ],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "MemEncryptionConfigSevSnp",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 230,
+        "end": 245
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "model",
+      "kind": "method",
+      "scope": "MemEncryptionConfigSevSnp",
+      "lineRange": {
+        "start": 232,
+        "end": 233
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": "str",
+      "returns": [
+        {
+          "expr": "fields.MemEncryptionModel.AMD_SEV_SNP",
+          "line": 233
+        }
+      ],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "required_trait",
+      "kind": "method",
+      "scope": "MemEncryptionConfigSevSnp",
+      "lineRange": {
+        "start": 236,
+        "end": 237
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": "str",
+      "returns": [
+        {
+          "expr": "os_traits.HW_CPU_X86_AMD_SEV_SNP",
+          "line": 237
+        }
+      ],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "needs_locked_memory",
+      "kind": "method",
+      "scope": "MemEncryptionConfigSevSnp",
+      "lineRange": {
+        "start": 240,
+        "end": 241
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": "bool",
+      "returns": [
+        {
+          "expr": "False",
+          "line": 241
+        }
+      ],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "needs_stateless_firmware",
+      "kind": "method",
+      "scope": "MemEncryptionConfigSevSnp",
+      "lineRange": {
+        "start": 244,
+        "end": 245
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": "bool",
+      "returns": [
+        {
+          "expr": "True",
+          "line": 245
+        }
+      ],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "MemEncryptionConfigTDX",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 248,
+        "end": 285
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "model",
+      "kind": "method",
+      "scope": "MemEncryptionConfigTDX",
+      "lineRange": {
+        "start": 250,
+        "end": 251
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": "str",
+      "returns": [
+        {
+          "expr": "fields.MemEncryptionModel.INTEL_TDX",
+          "line": 251
+        }
+      ],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "needs_locked_memory",
+      "kind": "method",
+      "scope": "MemEncryptionConfigTDX",
+      "lineRange": {
+        "start": 254,
+        "end": 255
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": "bool",
+      "returns": [
+        {
+          "expr": "False",
+          "line": 255
+        }
+      ],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "required_trait",
+      "kind": "method",
+      "scope": "MemEncryptionConfigTDX",
+      "lineRange": {
+        "start": 258,
+        "end": 259
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": "str",
+      "returns": [
+        {
+          "expr": "os_traits.HW_CPU_X86_INTEL_TDX",
+          "line": 259
+        }
+      ],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "required_firmware_type",
+      "kind": "method",
+      "scope": "MemEncryptionConfigTDX",
+      "lineRange": {
+        "start": 262,
+        "end": 263
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": "str",
+      "returns": [
+        {
+          "expr": "\"uefi\"",
+          "line": 263
+        }
+      ],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "required_machine_type",
+      "kind": "method",
+      "scope": "MemEncryptionConfigTDX",
+      "lineRange": {
+        "start": 266,
+        "end": 267
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": "str",
+      "returns": [
+        {
+          "expr": "\"q35\"",
+          "line": 267
+        }
+      ],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "needs_stateless_firmware",
+      "kind": "method",
+      "scope": "MemEncryptionConfigTDX",
+      "lineRange": {
+        "start": 270,
+        "end": 271
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": "bool",
+      "returns": [
+        {
+          "expr": "True",
+          "line": 271
+        }
+      ],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "check_constraints",
+      "kind": "method",
+      "scope": "MemEncryptionConfigTDX",
+      "lineRange": {
+        "start": 273,
+        "end": 285
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "image_meta",
+          "type": "'objects.ImageMeta'"
+        },
+        {
+          "name": "machine_type",
+          "type": "str | None"
+        },
+        {
+          "name": "requesters",
+          "type": "list[str]"
+        }
+      ],
+      "returnType": "None",
+      "returns": [],
+      "nloc": 12,
+      "ccn": 2,
+      "visibility": "public"
+    },
+    {
+      "name": "get_vcpu_pin_set",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 288,
+        "end": 301
+      },
+      "source": "aee-inventory",
+      "parameters": [],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "None",
+          "line": 295
+        },
+        {
+          "expr": "cpuset_ids",
+          "line": 301
+        }
+      ],
+      "nloc": 8,
+      "ccn": 3,
+      "exported": true
+    },
+    {
+      "name": "get_cpu_dedicated_set",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 304,
+        "end": 317
+      },
+      "source": "aee-inventory",
+      "parameters": [],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "None",
+          "line": 310
+        },
+        {
+          "expr": "cpu_ids",
+          "line": 317
+        }
+      ],
+      "nloc": 9,
+      "ccn": 3,
+      "exported": true
+    },
+    {
+      "name": "get_cpu_dedicated_set_nozero",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 320,
+        "end": 322
+      },
+      "source": "aee-inventory",
+      "parameters": [],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "(get_cpu_dedicated_set() or set()) - {0}",
+          "line": 322
+        }
+      ],
+      "nloc": 2,
+      "ccn": 2,
+      "exported": true
+    },
+    {
+      "name": "get_cpu_shared_set",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 325,
+        "end": 339
+      },
+      "source": "aee-inventory",
+      "parameters": [],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "None",
+          "line": 332
+        },
+        {
+          "expr": "shared_ids",
+          "line": 339
+        }
+      ],
+      "nloc": 9,
+      "ccn": 3,
+      "exported": true
+    },
+    {
+      "name": "parse_cpu_spec",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 342,
+        "end": 401
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "spec",
+          "type": "str"
+        }
+      ],
+      "returnType": "set[int]",
+      "returns": [
+        {
+          "expr": "cpuset_ids",
+          "line": 401
+        }
+      ],
+      "nloc": 39,
+      "ccn": 13,
+      "exported": true
+    },
+    {
+      "name": "format_cpu_spec",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 404,
+        "end": 441
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "cpuset",
+          "type": "set[int]"
+        },
+        {
+          "default": "True",
+          "name": "allow_ranges",
+          "type": "bool"
+        }
+      ],
+      "returnType": "str",
+      "returns": [
+        {
+          "expr": "\",\".join(parts)",
+          "line": 439
+        },
+        {
+          "expr": "\",\".join(str(id) for id in sorted(cpuset))",
+          "line": 441
+        }
+      ],
+      "nloc": 21,
+      "ccn": 8,
+      "exported": true
+    },
+    {
+      "name": "get_number_of_serial_ports",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 444,
+        "end": 484
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "flavor"
+        },
+        {
+          "name": "image_meta"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "image_num_ports",
+          "line": 482
+        },
+        {
+          "expr": "flavor_num_ports or image_num_ports or 1",
+          "line": 484
+        }
+      ],
+      "nloc": 14,
+      "ccn": 8,
+      "exported": true
+    },
+    {
+      "name": "InstanceInfo",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 487,
+        "end": 501
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "__init__",
+      "kind": "method",
+      "scope": "InstanceInfo",
+      "lineRange": {
+        "start": 489,
+        "end": 497
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "state"
+        },
+        {
+          "default": "None",
+          "name": "internal_id"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 3,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "__eq__",
+      "kind": "method",
+      "scope": "InstanceInfo",
+      "lineRange": {
+        "start": 499,
+        "end": 501
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "other"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "(self.__class__ == other.__class__ and self.__dict__ == other.__dict__)",
+          "line": 500
+        }
+      ],
+      "nloc": 3,
+      "ccn": 2,
+      "visibility": "public"
+    },
+    {
+      "name": "_score_cpu_topology",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 504,
+        "end": 529
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "topology"
+        },
+        {
+          "name": "wanttopology"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "score",
+          "line": 529
+        }
+      ],
+      "nloc": 9,
+      "ccn": 7,
+      "exported": false
+    },
+    {
+      "name": "get_cpu_topology_constraints",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 532,
+        "end": 681
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "flavor"
+        },
+        {
+          "name": "image_meta"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "(objects.VirtCPUTopology(sockets=sockets, cores=cores, threads=threads), objects.VirtCPUTopology(sockets=max_sockets, cores=max_cores, threads=max_threads))",
+          "line": 678
+        }
+      ],
+      "nloc": 88,
+      "ccn": 22,
+      "exported": true
+    },
+    {
+      "name": "_get_possible_cpu_topologies",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 684,
+        "end": 749
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "vcpus"
+        },
+        {
+          "name": "maxtopology"
+        },
+        {
+          "name": "allow_threads"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "possible",
+          "line": 749
+        }
+      ],
+      "nloc": 32,
+      "ccn": 7,
+      "exported": false
+    },
+    {
+      "name": "_sort_possible_cpu_topologies",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 752,
+        "end": 786
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "possible"
+        },
+        {
+          "name": "wanttopology"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "desired",
+          "line": 786
+        }
+      ],
+      "nloc": 13,
+      "ccn": 2,
+      "exported": false
+    },
+    {
+      "name": "_get_desirable_cpu_topologies",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 789,
+        "end": 819
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "flavor"
+        },
+        {
+          "name": "image_meta"
+        },
+        {
+          "default": "True",
+          "name": "allow_threads"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "desired",
+          "line": 819
+        }
+      ],
+      "nloc": 15,
+      "ccn": 1,
+      "exported": false
+    },
+    {
+      "name": "get_best_cpu_topology",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 822,
+        "end": 836
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "flavor"
+        },
+        {
+          "name": "image_meta"
+        },
+        {
+          "default": "True",
+          "name": "allow_threads"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "_get_desirable_cpu_topologies( flavor, image_meta, allow_threads)[0]",
+          "line": 835
+        }
+      ],
+      "nloc": 3,
+      "ccn": 1,
+      "exported": true
+    },
+    {
+      "name": "_numa_cell_supports_pagesize_request",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 839,
+        "end": 865
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "host_cell"
+        },
+        {
+          "name": "inst_cell"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "verify_pagesizes(host_cell, inst_cell, avail_pagesize[-1:])",
+          "line": 859
+        },
+        {
+          "expr": "verify_pagesizes(host_cell, inst_cell, avail_pagesize[:-1])",
+          "line": 861
+        },
+        {
+          "expr": "verify_pagesizes(host_cell, inst_cell, avail_pagesize)",
+          "line": 863
+        },
+        {
+          "expr": "verify_pagesizes(host_cell, inst_cell, [inst_cell.pagesize])",
+          "line": 865
+        }
+      ],
+      "nloc": 12,
+      "ccn": 5,
+      "exported": false
+    },
+    {
+      "name": "verify_pagesizes",
+      "kind": "function",
+      "scope": "_numa_cell_supports_pagesize_request",
+      "lineRange": {
+        "start": 852,
+        "end": 856
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "host_cell"
+        },
+        {
+          "name": "inst_cell"
+        },
+        {
+          "name": "avail_pagesize"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "pagesize",
+          "line": 856
+        }
+      ],
+      "visibility": "public"
+    },
+    {
+      "name": "_pack_instance_onto_cores",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 868,
+        "end": 1152
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "host_cell"
+        },
+        {
+          "name": "instance_cell"
+        },
+        {
+          "default": "0",
+          "name": "num_cpu_reserved"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "",
+          "line": 1050
+        },
+        {
+          "expr": "",
+          "line": 1074
+        },
+        {
+          "expr": "",
+          "line": 1094
+        },
+        {
+          "expr": "",
+          "line": 1145
+        },
+        {
+          "expr": "instance_cell",
+          "line": 1152
+        }
+      ],
+      "nloc": 108,
+      "ccn": 29,
+      "exported": false
+    },
+    {
+      "name": "_get_pinning",
+      "kind": "function",
+      "scope": "_pack_instance_onto_cores",
+      "lineRange": {
+        "start": 930,
+        "end": 974
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "threads_no"
+        },
+        {
+          "name": "sibling_set"
+        },
+        {
+          "name": "instance_cores"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "None",
+          "line": 947
+        },
+        {
+          "expr": "vcpus_pinning",
+          "line": 974
+        }
+      ],
+      "visibility": "private"
+    },
+    {
+      "name": "_get_reserved",
+      "kind": "function",
+      "scope": "_pack_instance_onto_cores",
+      "lineRange": {
+        "start": 976,
+        "end": 1025
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "sibling_set"
+        },
+        {
+          "name": "vcpus_pinning"
+        },
+        {
+          "default": "0",
+          "name": "num_cpu_reserved"
+        },
+        {
+          "default": "False",
+          "name": "cpu_thread_isolate"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "None",
+          "line": 990
+        },
+        {
+          "expr": "cpuset_reserved or None",
+          "line": 1025
+        }
+      ],
+      "visibility": "private"
+    },
+    {
+      "name": "_numa_fit_instance_cell",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 1155,
+        "end": 1341
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "host_cell",
+          "type": "'objects.NUMACell'"
+        },
+        {
+          "name": "instance_cell",
+          "type": "'objects.InstanceNUMACell'"
+        },
+        {
+          "default": "None",
+          "name": "limits",
+          "type": "'objects.NUMATopologyLimits | None'"
+        },
+        {
+          "default": "0",
+          "name": "cpuset_reserved",
+          "type": "int"
+        }
+      ],
+      "returnType": "'objects.InstanceNUMACell | None'",
+      "returns": [
+        {
+          "expr": "None",
+          "line": 1190
+        },
+        {
+          "expr": "None",
+          "line": 1224
+        },
+        {
+          "expr": "None",
+          "line": 1248
+        },
+        {
+          "expr": "None",
+          "line": 1256
+        },
+        {
+          "expr": "None",
+          "line": 1273
+        },
+        {
+          "expr": "None",
+          "line": 1287
+        },
+        {
+          "expr": "None",
+          "line": 1304
+        },
+        {
+          "expr": "None",
+          "line": 1312
+        },
+        {
+          "expr": "None",
+          "line": 1329
+        },
+        {
+          "expr": "None",
+          "line": 1338
+        },
+        {
+          "expr": "instance_cell",
+          "line": 1341
+        }
+      ],
+      "nloc": 144,
+      "ccn": 20,
+      "exported": false
+    },
+    {
+      "name": "_get_flavor_image_meta",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 1344,
+        "end": 1358
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "key",
+          "type": "str"
+        },
+        {
+          "name": "flavor",
+          "type": "'objects.Flavor'"
+        },
+        {
+          "name": "image_meta",
+          "type": "'objects.ImageMeta'"
+        },
+        {
+          "default": "None",
+          "name": "default",
+          "type": "ty.Any"
+        },
+        {
+          "default": "'hw'",
+          "name": "prefix",
+          "type": "str"
+        }
+      ],
+      "returnType": "tuple[ty.Any, ty.Any]",
+      "returns": [
+        {
+          "expr": "flavor_value, image_value",
+          "line": 1358
+        }
+      ],
+      "nloc": 12,
+      "ccn": 1,
+      "exported": false
+    },
+    {
+      "name": "_get_unique_flavor_image_meta",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 1361,
+        "end": 1390
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "key",
+          "type": "str"
+        },
+        {
+          "name": "flavor",
+          "type": "'objects.Flavor'"
+        },
+        {
+          "name": "image_meta",
+          "type": "'objects.ImageMeta'"
+        },
+        {
+          "default": "None",
+          "name": "default",
+          "type": "ty.Any"
+        },
+        {
+          "default": "'hw'",
+          "name": "prefix",
+          "type": "str"
+        }
+      ],
+      "returnType": "ty.Any",
+      "returns": [
+        {
+          "expr": "flavor_value or image_value",
+          "line": 1390
+        }
+      ],
+      "nloc": 28,
+      "ccn": 5,
+      "exported": false
+    },
+    {
+      "name": "get_mem_encryption_constraint",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 1393,
+        "end": 1497
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "flavor",
+          "type": "'objects.Flavor'"
+        },
+        {
+          "name": "image_meta",
+          "type": "'objects.ImageMeta'"
+        },
+        {
+          "default": "None",
+          "name": "machine_type",
+          "type": "str | None"
+        }
+      ],
+      "returnType": "MemEncryptionConfig | None",
+      "returns": [
+        {
+          "expr": "None",
+          "line": 1447
+        },
+        {
+          "expr": "mem_enc_config",
+          "line": 1497
+        }
+      ],
+      "nloc": 47,
+      "ccn": 11,
+      "exported": true
+    },
+    {
+      "name": "_check_for_mem_encryption_requirement_conflicts",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 1500,
+        "end": 1521
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "flavor_mem_enc_str"
+        },
+        {
+          "name": "flavor_mem_enc"
+        },
+        {
+          "name": "image_mem_enc"
+        },
+        {
+          "name": "flavor"
+        },
+        {
+          "name": "image_meta"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 18,
+      "ccn": 5,
+      "exported": false
+    },
+    {
+      "name": "_check_for_mem_encryption_model_conflicts",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 1524,
+        "end": 1546
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "flavor_mem_enc_model"
+        },
+        {
+          "name": "image_mem_enc_model"
+        },
+        {
+          "name": "flavor"
+        },
+        {
+          "name": "image_meta"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 19,
+      "ccn": 5,
+      "exported": false
+    },
+    {
+      "name": "_get_numa_pagesize_constraint",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 1549,
+        "end": 1602
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "flavor",
+          "type": "'objects.Flavor'"
+        },
+        {
+          "name": "image_meta",
+          "type": "'objects.ImageMeta'"
+        }
+      ],
+      "returnType": "int | None",
+      "returns": [
+        {
+          "expr": "None",
+          "line": 1592
+        },
+        {
+          "expr": "check_and_return_pages_size(image_request)",
+          "line": 1596
+        },
+        {
+          "expr": "pagesize",
+          "line": 1602
+        }
+      ],
+      "nloc": 21,
+      "ccn": 7,
+      "exported": false
+    },
+    {
+      "name": "check_and_return_pages_size",
+      "kind": "function",
+      "scope": "_get_numa_pagesize_constraint",
+      "lineRange": {
+        "start": 1565,
+        "end": 1579
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "request"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "MEMPAGES_ANY",
+          "line": 1567
+        },
+        {
+          "expr": "MEMPAGES_LARGE",
+          "line": 1569
+        },
+        {
+          "expr": "MEMPAGES_SMALL",
+          "line": 1571
+        },
+        {
+          "expr": "int(request)",
+          "line": 1573
+        },
+        {
+          "expr": "strutils.string_to_bytes( request, return_int=True) / units.Ki",
+          "line": 1576
+        }
+      ],
+      "visibility": "public"
+    },
+    {
+      "name": "_get_constraint_mappings_from_flavor",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 1605,
+        "end": 1614
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "flavor"
+        },
+        {
+          "name": "key"
+        },
+        {
+          "name": "func"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "hw_numa_map or None",
+          "line": 1614
+        }
+      ],
+      "nloc": 9,
+      "ccn": 4,
+      "exported": false
+    },
+    {
+      "name": "get_locked_memory_constraint",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 1617,
+        "end": 1680
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "flavor",
+          "type": "'objects.Flavor'"
+        },
+        {
+          "name": "image_meta",
+          "type": "'objects.ImageMeta'"
+        },
+        {
+          "default": "None",
+          "name": "mach_type",
+          "type": "str | None"
+        }
+      ],
+      "returnType": "bool | None",
+      "returns": [
+        {
+          "expr": "True",
+          "line": 1671
+        },
+        {
+          "expr": "True",
+          "line": 1678
+        },
+        {
+          "expr": "locked_memory",
+          "line": 1680
+        }
+      ],
+      "nloc": 29,
+      "ccn": 10,
+      "exported": true
+    },
+    {
+      "name": "_get_numa_cpu_constraint",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 1683,
+        "end": 1712
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "flavor",
+          "type": "'objects.Flavor'"
+        },
+        {
+          "name": "image_meta",
+          "type": "'objects.ImageMeta'"
+        }
+      ],
+      "returnType": "list[set[int]] | None",
+      "returns": [
+        {
+          "expr": "image_cpu_list",
+          "line": 1706
+        },
+        {
+          "expr": "flavor_cpu_list",
+          "line": 1712
+        }
+      ],
+      "nloc": 13,
+      "ccn": 3,
+      "exported": false
+    },
+    {
+      "name": "_get_numa_mem_constraint",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 1715,
+        "end": 1744
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "flavor",
+          "type": "'objects.Flavor'"
+        },
+        {
+          "name": "image_meta",
+          "type": "'objects.ImageMeta'"
+        }
+      ],
+      "returnType": "list[int] | None",
+      "returns": [
+        {
+          "expr": "image_mem_list",
+          "line": 1738
+        },
+        {
+          "expr": "flavor_mem_list",
+          "line": 1744
+        }
+      ],
+      "nloc": 13,
+      "ccn": 3,
+      "exported": false
+    },
+    {
+      "name": "_get_numa_node_count_constraint",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 1747,
+        "end": 1772
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "flavor",
+          "type": "'objects.Flavor'"
+        },
+        {
+          "name": "image_meta",
+          "type": "'objects.ImageMeta'"
+        }
+      ],
+      "returnType": "int | None",
+      "returns": [
+        {
+          "expr": "int(nodes) if nodes else nodes",
+          "line": 1772
+        }
+      ],
+      "nloc": 13,
+      "ccn": 8,
+      "exported": false
+    },
+    {
+      "name": "get_cpu_policy_constraint",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 1776,
+        "end": 1823
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "flavor",
+          "type": "'objects.Flavor'"
+        },
+        {
+          "name": "image_meta",
+          "type": "'objects.ImageMeta'"
+        }
+      ],
+      "returnType": "str | None",
+      "returns": [
+        {
+          "expr": "cpu_policy",
+          "line": 1823
+        }
+      ],
+      "nloc": 34,
+      "ccn": 11,
+      "exported": true
+    },
+    {
+      "name": "get_cpu_thread_policy_constraint",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 1827,
+        "end": 1865
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "flavor",
+          "type": "'objects.Flavor'"
+        },
+        {
+          "name": "image_meta",
+          "type": "'objects.ImageMeta'"
+        }
+      ],
+      "returnType": "str | None",
+      "returns": [
+        {
+          "expr": "policy",
+          "line": 1865
+        }
+      ],
+      "nloc": 25,
+      "ccn": 9,
+      "exported": true
+    },
+    {
+      "name": "_get_numa_topology_auto",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 1868,
+        "end": 1898
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "nodes",
+          "type": "int"
+        },
+        {
+          "name": "flavor",
+          "type": "'objects.Flavor'"
+        },
+        {
+          "name": "vcpus",
+          "type": "set[int]"
+        },
+        {
+          "name": "pcpus",
+          "type": "set[int]"
+        }
+      ],
+      "returnType": "'objects.InstanceNUMATopology'",
+      "returns": [
+        {
+          "expr": "objects.InstanceNUMATopology(cells=cells)",
+          "line": 1898
+        }
+      ],
+      "nloc": 17,
+      "ccn": 4,
+      "exported": false
+    },
+    {
+      "name": "_get_numa_topology_manual",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 1901,
+        "end": 1955
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "nodes",
+          "type": "int"
+        },
+        {
+          "name": "flavor",
+          "type": "'objects.Flavor'"
+        },
+        {
+          "name": "vcpus",
+          "type": "set[int]"
+        },
+        {
+          "name": "pcpus",
+          "type": "set[int]"
+        },
+        {
+          "name": "cpu_list",
+          "type": "list[set[int]]"
+        },
+        {
+          "name": "mem_list",
+          "type": "list[int]"
+        }
+      ],
+      "returnType": "'objects.InstanceNUMATopology'",
+      "returns": [
+        {
+          "expr": "objects.InstanceNUMATopology(cells=cells)",
+          "line": 1955
+        }
+      ],
+      "nloc": 33,
+      "ccn": 7,
+      "exported": false
+    },
+    {
+      "name": "is_realtime_enabled",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 1958,
+        "end": 1960
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "flavor"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "strutils.bool_from_string(flavor_rt)",
+          "line": 1960
+        }
+      ],
+      "nloc": 3,
+      "ccn": 1,
+      "exported": true
+    },
+    {
+      "name": "_get_vcpu_pcpu_resources",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 1963,
+        "end": 1983
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "flavor",
+          "type": "'objects.Flavor'"
+        }
+      ],
+      "returnType": "tuple[int, int]",
+      "returns": [
+        {
+          "expr": "requested_vcpu, requested_pcpu",
+          "line": 1983
+        }
+      ],
+      "nloc": 17,
+      "ccn": 6,
+      "exported": false
+    },
+    {
+      "name": "_get_hyperthreading_trait",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 1986,
+        "end": 1999
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "flavor",
+          "type": "'objects.Flavor'"
+        },
+        {
+          "name": "image_meta",
+          "type": "'objects.ImageMeta'"
+        }
+      ],
+      "returnType": "str | None",
+      "returns": [
+        {
+          "expr": "val",
+          "line": 1993
+        },
+        {
+          "expr": "'required'",
+          "line": 1997
+        },
+        {
+          "expr": "None",
+          "line": 1999
+        }
+      ],
+      "nloc": 12,
+      "ccn": 4,
+      "exported": false
+    },
+    {
+      "name": "get_dedicated_cpu_constraint",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 2003,
+        "end": 2030
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "flavor",
+          "type": "'objects.Flavor'"
+        }
+      ],
+      "returnType": "set[int] | None",
+      "returns": [
+        {
+          "expr": "None",
+          "line": 2013
+        },
+        {
+          "expr": "pcpus",
+          "line": 2030
+        }
+      ],
+      "nloc": 19,
+      "ccn": 6,
+      "exported": true
+    },
+    {
+      "name": "get_realtime_cpu_constraint",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 2034,
+        "end": 2077
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "flavor",
+          "type": "'objects.Flavor'"
+        },
+        {
+          "name": "image_meta",
+          "type": "'objects.ImageMeta'"
+        }
+      ],
+      "returnType": "set[int] | None",
+      "returns": [
+        {
+          "expr": "None",
+          "line": 2045
+        },
+        {
+          "expr": "vcpus_rt",
+          "line": 2077
+        }
+      ],
+      "nloc": 28,
+      "ccn": 9,
+      "exported": true
+    },
+    {
+      "name": "get_emulator_thread_policy_constraint",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 2081,
+        "end": 2102
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "flavor",
+          "type": "'objects.Flavor'"
+        }
+      ],
+      "returnType": "str | None",
+      "returns": [
+        {
+          "expr": "None",
+          "line": 2095
+        },
+        {
+          "expr": "emu_threads_policy",
+          "line": 2102
+        }
+      ],
+      "nloc": 12,
+      "ccn": 3,
+      "exported": true
+    },
+    {
+      "name": "get_pci_numa_policy_constraint",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 2105,
+        "end": 2127
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "flavor",
+          "type": "'objects.Flavor'"
+        },
+        {
+          "name": "image_meta",
+          "type": "'objects.ImageMeta'"
+        }
+      ],
+      "returnType": "str",
+      "returns": [
+        {
+          "expr": "policy",
+          "line": 2127
+        }
+      ],
+      "nloc": 12,
+      "ccn": 7,
+      "exported": true
+    },
+    {
+      "name": "get_pmu_constraint",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 2130,
+        "end": 2178
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "flavor",
+          "type": "'objects.Flavor'"
+        },
+        {
+          "name": "image_meta",
+          "type": "'objects.ImageMeta'"
+        }
+      ],
+      "returnType": "bool | None",
+      "returns": [
+        {
+          "expr": "flavor_value if flavor_value is not None else image_value",
+          "line": 2178
+        }
+      ],
+      "nloc": 31,
+      "ccn": 6,
+      "exported": true
+    },
+    {
+      "name": "get_vif_multiqueue_constraint",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 2181,
+        "end": 2227
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "flavor",
+          "type": "'objects.Flavor'"
+        },
+        {
+          "name": "image_meta",
+          "type": "'objects.ImageMeta'"
+        }
+      ],
+      "returnType": "bool",
+      "returns": [
+        {
+          "expr": "False",
+          "line": 2196
+        },
+        {
+          "expr": "flavor_value or image_value or False",
+          "line": 2227
+        }
+      ],
+      "nloc": 33,
+      "ccn": 8,
+      "exported": true
+    },
+    {
+      "name": "get_packed_virtqueue_constraint",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 2230,
+        "end": 2281
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "flavor"
+        },
+        {
+          "name": "image_meta"
+        }
+      ],
+      "returnType": "bool",
+      "returns": [
+        {
+          "expr": "flavor_value or image_value or False",
+          "line": 2281
+        }
+      ],
+      "nloc": 39,
+      "ccn": 9,
+      "exported": true
+    },
+    {
+      "name": "get_vtpm_constraint",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 2284,
+        "end": 2322
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "flavor",
+          "type": "'objects.Flavor'"
+        },
+        {
+          "name": "image_meta",
+          "type": "'objects.ImageMeta'"
+        }
+      ],
+      "returnType": "VTPMConfig | None",
+      "returns": [
+        {
+          "expr": "None",
+          "line": 2300
+        },
+        {
+          "expr": "VTPMConfig(version, model)",
+          "line": 2322
+        }
+      ],
+      "nloc": 25,
+      "ccn": 7,
+      "exported": true
+    },
+    {
+      "name": "get_tpm_secret_security_constraint",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 2325,
+        "end": 2336
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "flavor",
+          "type": "'objects.Flavor'"
+        }
+      ],
+      "returnType": "str | None",
+      "returns": [
+        {
+          "expr": "flavor.get('extra_specs', {}).get('hw:tpm_secret_security')",
+          "line": 2336
+        }
+      ],
+      "nloc": 4,
+      "ccn": 1,
+      "exported": true
+    },
+    {
+      "name": "get_secure_boot_constraint",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 2339,
+        "end": 2366
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "flavor",
+          "type": "'objects.Flavor'"
+        },
+        {
+          "name": "image_meta",
+          "type": "'objects.ImageMeta'"
+        }
+      ],
+      "returnType": "str | None",
+      "returns": [
+        {
+          "expr": "None",
+          "line": 2355
+        },
+        {
+          "expr": "policy",
+          "line": 2366
+        }
+      ],
+      "nloc": 18,
+      "ccn": 3,
+      "exported": true
+    },
+    {
+      "name": "get_stateless_firmware_constraint",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 2369,
+        "end": 2384
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "image_meta",
+          "type": "'objects.ImageMeta'"
+        }
+      ],
+      "returnType": "bool | None",
+      "returns": [
+        {
+          "expr": "None",
+          "line": 2377
+        },
+        {
+          "expr": "None",
+          "line": 2382
+        },
+        {
+          "expr": "image_meta.properties.get('hw_firmware_stateless', False)",
+          "line": 2384
+        }
+      ],
+      "nloc": 10,
+      "ccn": 3,
+      "exported": true
+    },
+    {
+      "name": "numa_get_constraints",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 2387,
+        "end": 2600
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "flavor"
+        },
+        {
+          "name": "image_meta"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "numa_topology",
+          "line": 2600
+        }
+      ],
+      "nloc": 99,
+      "ccn": 42,
+      "exported": true
+    },
+    {
+      "name": "_numa_cells_support_network_metadata",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 2603,
+        "end": 2702
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "host_topology",
+          "type": "'objects.NUMATopology'"
+        },
+        {
+          "name": "chosen_host_cells",
+          "type": "list['objects.NUMACell']"
+        },
+        {
+          "name": "network_metadata",
+          "type": "'objects.NetworkMetadata'"
+        }
+      ],
+      "returnType": "bool",
+      "returns": [
+        {
+          "expr": "True",
+          "line": 2621
+        },
+        {
+          "expr": "False",
+          "line": 2670
+        },
+        {
+          "expr": "True",
+          "line": 2680
+        },
+        {
+          "expr": "False",
+          "line": 2700
+        },
+        {
+          "expr": "True",
+          "line": 2702
+        }
+      ],
+      "nloc": 57,
+      "ccn": 19,
+      "exported": false
+    },
+    {
+      "name": "numa_fit_instance_to_host",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 2705,
+        "end": 2894
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "host_topology",
+          "type": "'objects.NUMATopology'"
+        },
+        {
+          "name": "instance_topology",
+          "type": "'objects.InstanceNUMATopology'"
+        },
+        {
+          "name": "provider_mapping",
+          "type": "dict[str, list[str]] | None"
+        },
+        {
+          "default": "None",
+          "name": "limits",
+          "type": "'objects.NUMATopologyLimits | None'"
+        },
+        {
+          "default": "None",
+          "name": "pci_requests",
+          "type": "'objects.InstancePCIRequests | None'"
+        },
+        {
+          "default": "None",
+          "name": "pci_stats",
+          "type": "stats.PciDeviceStats | None"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "",
+          "line": 2740
+        },
+        {
+          "expr": "",
+          "line": 2747
+        },
+        {
+          "expr": "objects.InstanceNUMATopology( cells=chosen_instance_cells, emulator_threads_policy=emulator_threads_policy)",
+          "line": 2892
+        }
+      ],
+      "nloc": 102,
+      "ccn": 27,
+      "exported": true
+    },
+    {
+      "name": "numa_get_reserved_huge_pages",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 2897,
+        "end": 2925
+      },
+      "source": "aee-inventory",
+      "parameters": [],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "{}",
+          "line": 2910
+        },
+        {
+          "expr": "bucket",
+          "line": 2925
+        }
+      ],
+      "nloc": 16,
+      "ccn": 5,
+      "exported": true
+    },
+    {
+      "name": "_get_smallest_pagesize",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 2928,
+        "end": 2932
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "host_cell"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "avail_pagesize[0]",
+          "line": 2932
+        }
+      ],
+      "nloc": 4,
+      "ccn": 2,
+      "exported": false
+    },
+    {
+      "name": "_numa_pagesize_usage_from_cell",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 2935,
+        "end": 2953
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "host_cell"
+        },
+        {
+          "name": "instance_cell"
+        },
+        {
+          "name": "sign"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "topo",
+          "line": 2953
+        }
+      ],
+      "nloc": 18,
+      "ccn": 6,
+      "exported": false
+    },
+    {
+      "name": "numa_usage_from_instance_numa",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 2956,
+        "end": 3039
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "host_topology"
+        },
+        {
+          "name": "instance_topology"
+        },
+        {
+          "default": "False",
+          "name": "free"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "host_topology",
+          "line": 2972
+        },
+        {
+          "expr": "objects.NUMATopology(cells=cells)",
+          "line": 3039
+        }
+      ],
+      "nloc": 55,
+      "ccn": 14,
+      "exported": true
+    },
+    {
+      "name": "get_vpmems",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 3042,
+        "end": 3057
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "flavor"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "[]",
+          "line": 3050
+        },
+        {
+          "expr": "formed_labels",
+          "line": 3057
+        }
+      ],
+      "nloc": 11,
+      "ccn": 4,
+      "exported": true
+    },
+    {
+      "name": "get_maxphysaddr_mode",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 3060,
+        "end": 3084
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "flavor",
+          "type": "'objects.Flavor'"
+        },
+        {
+          "name": "image_meta",
+          "type": "'objects.ImageMeta'"
+        }
+      ],
+      "returnType": "str | None",
+      "returns": [
+        {
+          "expr": "None",
+          "line": 3076
+        },
+        {
+          "expr": "mode",
+          "line": 3084
+        }
+      ],
+      "nloc": 15,
+      "ccn": 3,
+      "exported": true
+    },
+    {
+      "name": "check_hw_rescue_props",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 3087,
+        "end": 3091
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "image_meta"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "any(key in image_meta.properties for key in hw_rescue_props)",
+          "line": 3091
+        }
+      ],
+      "nloc": 3,
+      "ccn": 2,
+      "exported": true
+    },
+    {
+      "name": "get_ephemeral_encryption_constraint",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 3094,
+        "end": 3137
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "flavor",
+          "type": "'objects.Flavor'"
+        },
+        {
+          "name": "image_meta",
+          "type": "'objects.ImageMeta'"
+        }
+      ],
+      "returnType": "bool",
+      "returns": [
+        {
+          "expr": "flavor_eph_encryption or image_eph_encryption",
+          "line": 3137
+        }
+      ],
+      "nloc": 29,
+      "ccn": 6,
+      "exported": true
+    },
+    {
+      "name": "get_ephemeral_encryption_format",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 3140,
+        "end": 3161
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "flavor",
+          "type": "'objects.Flavor'"
+        },
+        {
+          "name": "image_meta",
+          "type": "'objects.ImageMeta'"
+        }
+      ],
+      "returnType": "str | None",
+      "returns": [
+        {
+          "expr": "eph_format",
+          "line": 3160
+        },
+        {
+          "expr": "None",
+          "line": 3161
+        }
+      ],
+      "nloc": 15,
+      "ccn": 3,
+      "exported": true
+    },
+    {
+      "name": "check_shares_supported",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 3164,
+        "end": 3188
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "context"
+        },
+        {
+          "name": "instance"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 20,
+      "ccn": 6,
+      "exported": true
+    },
+    {
+      "name": "get_sound_model",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 3191,
+        "end": 3212
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "flavor",
+          "type": "'objects.Flavor'"
+        },
+        {
+          "name": "image_meta",
+          "type": "'objects.ImageMeta'"
+        }
+      ],
+      "returnType": "str | None",
+      "returns": [
+        {
+          "expr": "model",
+          "line": 3212
+        }
+      ],
+      "nloc": 11,
+      "ccn": 3,
+      "exported": true
+    },
+    {
+      "name": "get_usb_model",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 3215,
+        "end": 3239
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "flavor",
+          "type": "'objects.Flavor'"
+        },
+        {
+          "name": "image_meta",
+          "type": "'objects.ImageMeta'"
+        }
+      ],
+      "returnType": "str | None",
+      "returns": [
+        {
+          "expr": "model",
+          "line": 3239
+        }
+      ],
+      "nloc": 14,
+      "ccn": 3,
+      "exported": true
+    },
+    {
+      "name": "get_redirected_usb_ports",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 3242,
+        "end": 3275
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "flavor",
+          "type": "'objects.Flavor'"
+        },
+        {
+          "name": "image_meta",
+          "type": "'objects.ImageMeta'"
+        }
+      ],
+      "returnType": "int",
+      "returns": [
+        {
+          "expr": "count",
+          "line": 3275
+        }
+      ],
+      "nloc": 19,
+      "ccn": 5,
+      "exported": true
+    },
+    {
+      "name": "create",
+      "kind": "classmethod",
+      "scope": "MemEncryptionConfig",
+      "lineRange": {
+        "start": 172,
+        "end": 191
+      },
+      "visibility": "public",
+      "source": "manual"
+    },
+    {
+      "name": "model",
+      "kind": "property",
+      "scope": "MemEncryptionConfigSev",
+      "lineRange": {
+        "start": 195,
+        "end": 197
+      },
+      "visibility": "public",
+      "source": "manual"
+    },
+    {
+      "name": "needs_locked_memory",
+      "kind": "property",
+      "scope": "MemEncryptionConfigSev",
+      "lineRange": {
+        "start": 199,
+        "end": 201
+      },
+      "visibility": "public",
+      "source": "manual"
+    },
+    {
+      "name": "required_trait",
+      "kind": "property",
+      "scope": "MemEncryptionConfigSev",
+      "lineRange": {
+        "start": 203,
+        "end": 205
+      },
+      "visibility": "public",
+      "source": "manual"
+    },
+    {
+      "name": "required_firmware_type",
+      "kind": "property",
+      "scope": "MemEncryptionConfigSev",
+      "lineRange": {
+        "start": 207,
+        "end": 209
+      },
+      "visibility": "public",
+      "source": "manual"
+    },
+    {
+      "name": "required_machine_type",
+      "kind": "property",
+      "scope": "MemEncryptionConfigSev",
+      "lineRange": {
+        "start": 211,
+        "end": 213
+      },
+      "visibility": "public",
+      "source": "manual"
+    },
+    {
+      "name": "needs_stateless_firmware",
+      "kind": "property",
+      "scope": "MemEncryptionConfigSev",
+      "lineRange": {
+        "start": 215,
+        "end": 217
+      },
+      "visibility": "public",
+      "source": "manual"
+    },
+    {
+      "name": "model",
+      "kind": "property",
+      "scope": "MemEncryptionConfigSevEs",
+      "lineRange": {
+        "start": 221,
+        "end": 223
+      },
+      "visibility": "public",
+      "source": "manual"
+    },
+    {
+      "name": "required_trait",
+      "kind": "property",
+      "scope": "MemEncryptionConfigSevEs",
+      "lineRange": {
+        "start": 225,
+        "end": 227
+      },
+      "visibility": "public",
+      "source": "manual"
+    },
+    {
+      "name": "model",
+      "kind": "property",
+      "scope": "MemEncryptionConfigSevSnp",
+      "lineRange": {
+        "start": 231,
+        "end": 233
+      },
+      "visibility": "public",
+      "source": "manual"
+    },
+    {
+      "name": "required_trait",
+      "kind": "property",
+      "scope": "MemEncryptionConfigSevSnp",
+      "lineRange": {
+        "start": 235,
+        "end": 237
+      },
+      "visibility": "public",
+      "source": "manual"
+    },
+    {
+      "name": "needs_locked_memory",
+      "kind": "property",
+      "scope": "MemEncryptionConfigSevSnp",
+      "lineRange": {
+        "start": 239,
+        "end": 241
+      },
+      "visibility": "public",
+      "source": "manual"
+    },
+    {
+      "name": "needs_stateless_firmware",
+      "kind": "property",
+      "scope": "MemEncryptionConfigSevSnp",
+      "lineRange": {
+        "start": 243,
+        "end": 245
+      },
+      "visibility": "public",
+      "source": "manual"
+    },
+    {
+      "name": "model",
+      "kind": "property",
+      "scope": "MemEncryptionConfigTDX",
+      "lineRange": {
+        "start": 249,
+        "end": 251
+      },
+      "visibility": "public",
+      "source": "manual"
+    },
+    {
+      "name": "needs_locked_memory",
+      "kind": "property",
+      "scope": "MemEncryptionConfigTDX",
+      "lineRange": {
+        "start": 253,
+        "end": 255
+      },
+      "visibility": "public",
+      "source": "manual"
+    },
+    {
+      "name": "required_trait",
+      "kind": "property",
+      "scope": "MemEncryptionConfigTDX",
+      "lineRange": {
+        "start": 257,
+        "end": 259
+      },
+      "visibility": "public",
+      "source": "manual"
+    },
+    {
+      "name": "required_firmware_type",
+      "kind": "property",
+      "scope": "MemEncryptionConfigTDX",
+      "lineRange": {
+        "start": 261,
+        "end": 263
+      },
+      "visibility": "public",
+      "source": "manual"
+    },
+    {
+      "name": "required_machine_type",
+      "kind": "property",
+      "scope": "MemEncryptionConfigTDX",
+      "lineRange": {
+        "start": 265,
+        "end": 267
+      },
+      "visibility": "public",
+      "source": "manual"
+    },
+    {
+      "name": "needs_stateless_firmware",
+      "kind": "property",
+      "scope": "MemEncryptionConfigTDX",
+      "lineRange": {
+        "start": 269,
+        "end": 271
+      },
+      "visibility": "public",
+      "source": "manual"
+    }
+  ],
+  "referencedSymbols": [
+    {
+      "name": "logging.getLogger",
+      "usage": "call",
+      "via": "oslo_log",
+      "count": 1,
+      "lineRange": {
+        "start": 40,
+        "end": 40
+      }
+    },
+    {
+      "name": "ty.NamedTuple",
+      "usage": "inherit",
+      "via": "typing",
+      "count": 1,
+      "lineRange": {
+        "start": 47,
+        "end": 47
+      }
+    },
+    {
+      "name": "list",
+      "usage": "type",
+      "via": null,
+      "count": 15,
+      "lineRange": {
+        "start": 84,
+        "end": 84
+      }
+    },
+    {
+      "name": "_",
+      "usage": "call",
+      "via": "nova.i18n",
+      "count": 23,
+      "lineRange": {
+        "start": 89,
+        "end": 89
+      }
+    },
+    {
+      "name": "exception.FlavorImageConflict",
+      "usage": "call",
+      "via": "nova",
+      "count": 8,
+      "lineRange": {
+        "start": 95,
+        "end": 95
+      }
+    },
+    {
+      "name": "exception.InvalidMachineType",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 137,
+        "end": 137
+      }
+    },
+    {
+      "name": "exception.StatelessFirmwareRequired",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 155,
+        "end": 155
+      }
+    },
+    {
+      "name": "isinstance",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 165,
+        "end": 165
+      }
+    },
+    {
+      "name": "hash",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 170,
+        "end": 170
+      }
+    },
+    {
+      "name": "exception.Invalid",
+      "usage": "call",
+      "via": "nova",
+      "count": 19,
+      "lineRange": {
+        "start": 185,
+        "end": 185
+      }
+    },
+    {
+      "name": "super",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 276,
+        "end": 276
+      }
+    },
+    {
+      "name": "exception.InvalidVideoMode",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 285,
+        "end": 285
+      }
+    },
+    {
+      "name": "set",
+      "usage": "call",
+      "via": null,
+      "count": 21,
+      "lineRange": {
+        "start": 322,
+        "end": 322
+      }
+    },
+    {
+      "name": "set",
+      "usage": "type",
+      "via": null,
+      "count": 14,
+      "lineRange": {
+        "start": 342,
+        "end": 342
+      }
+    },
+    {
+      "name": "len",
+      "usage": "call",
+      "via": null,
+      "count": 39,
+      "lineRange": {
+        "start": 358,
+        "end": 358
+      }
+    },
+    {
+      "name": "str",
+      "usage": "call",
+      "via": null,
+      "count": 11,
+      "lineRange": {
+        "start": 366,
+        "end": 366
+      }
+    },
+    {
+      "name": "int",
+      "usage": "call",
+      "via": null,
+      "count": 21,
+      "lineRange": {
+        "start": 370,
+        "end": 370
+      }
+    },
+    {
+      "name": "range",
+      "usage": "call",
+      "via": null,
+      "count": 16,
+      "lineRange": {
+        "start": 380,
+        "end": 380
+      }
+    },
+    {
+      "name": "sorted",
+      "usage": "call",
+      "via": null,
+      "count": 10,
+      "lineRange": {
+        "start": 427,
+        "end": 427
+      }
+    },
+    {
+      "name": "exception.ImageSerialPortNumberInvalid",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 476,
+        "end": 476
+      }
+    },
+    {
+      "name": "exception.ImageSerialPortNumberExceedFlavorValue",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 481,
+        "end": 481
+      }
+    },
+    {
+      "name": "object",
+      "usage": "inherit",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 487,
+        "end": 487
+      }
+    },
+    {
+      "name": "exception.InvalidRequest",
+      "usage": "call",
+      "via": "nova",
+      "count": 7,
+      "lineRange": {
+        "start": 587,
+        "end": 587
+      }
+    },
+    {
+      "name": "exception.ImageVCPULimitsRangeExceeded",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 603,
+        "end": 603
+      }
+    },
+    {
+      "name": "exception.ImageVCPUTopologyRangeExceeded",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 650,
+        "end": 650
+      }
+    },
+    {
+      "name": "any",
+      "usage": "call",
+      "via": null,
+      "count": 2,
+      "lineRange": {
+        "start": 662,
+        "end": 662
+      }
+    },
+    {
+      "name": "objects.VirtCPUTopology",
+      "usage": "call",
+      "via": "nova",
+      "count": 3,
+      "lineRange": {
+        "start": 678,
+        "end": 678
+      }
+    },
+    {
+      "name": "min",
+      "usage": "call",
+      "via": null,
+      "count": 3,
+      "lineRange": {
+        "start": 705,
+        "end": 705
+      }
+    },
+    {
+      "name": "exception.ImageVCPULimitsRangeImpossible",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 744,
+        "end": 744
+      }
+    },
+    {
+      "name": "dict",
+      "usage": "type",
+      "via": null,
+      "count": 6,
+      "lineRange": {
+        "start": 771,
+        "end": 771
+      }
+    },
+    {
+      "name": "collections.defaultdict",
+      "usage": "call",
+      "via": "collections",
+      "count": 3,
+      "lineRange": {
+        "start": 772,
+        "end": 772
+      }
+    },
+    {
+      "name": "map",
+      "usage": "call",
+      "via": null,
+      "count": 3,
+      "lineRange": {
+        "start": 902,
+        "end": 902
+      }
+    },
+    {
+      "name": "max",
+      "usage": "call",
+      "via": null,
+      "count": 4,
+      "lineRange": {
+        "start": 902,
+        "end": 902
+      }
+    },
+    {
+      "name": "list",
+      "usage": "call",
+      "via": null,
+      "count": 7,
+      "lineRange": {
+        "start": 957,
+        "end": 957
+      }
+    },
+    {
+      "name": "zip",
+      "usage": "call",
+      "via": null,
+      "count": 2,
+      "lineRange": {
+        "start": 964,
+        "end": 964
+      }
+    },
+    {
+      "name": "itertools.chain",
+      "usage": "call",
+      "via": "itertools",
+      "count": 3,
+      "lineRange": {
+        "start": 965,
+        "end": 965
+      }
+    },
+    {
+      "name": "tuple",
+      "usage": "type",
+      "via": null,
+      "count": 2,
+      "lineRange": {
+        "start": 1350,
+        "end": 1350
+      }
+    },
+    {
+      "name": "strutils.bool_from_string",
+      "usage": "call",
+      "via": "oslo_utils",
+      "count": 8,
+      "lineRange": {
+        "start": 1441,
+        "end": 1441
+      }
+    },
+    {
+      "name": "strutils.string_to_bytes",
+      "usage": "call",
+      "via": "oslo_utils",
+      "count": 2,
+      "lineRange": {
+        "start": 1576,
+        "end": 1576
+      }
+    },
+    {
+      "name": "exception.MemoryPageSizeInvalid",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 1579,
+        "end": 1579
+      }
+    },
+    {
+      "name": "exception.MemoryPageSizeForbidden",
+      "usage": "call",
+      "via": "nova",
+      "count": 2,
+      "lineRange": {
+        "start": 1585,
+        "end": 1585
+      }
+    },
+    {
+      "name": "func",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 1612,
+        "end": 1612
+      }
+    },
+    {
+      "name": "exception.FlavorImageLockedMemoryConflict",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 1655,
+        "end": 1655
+      }
+    },
+    {
+      "name": "exception.LockMemoryForbidden",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 1666,
+        "end": 1666
+      }
+    },
+    {
+      "name": "exception.ImageNUMATopologyForbidden",
+      "usage": "call",
+      "via": "nova",
+      "count": 3,
+      "lineRange": {
+        "start": 1709,
+        "end": 1709
+      }
+    },
+    {
+      "name": "strutils.is_int_like",
+      "usage": "call",
+      "via": "oslo_utils",
+      "count": 1,
+      "lineRange": {
+        "start": 1768,
+        "end": 1768
+      }
+    },
+    {
+      "name": "exception.InvalidNUMANodesNumber",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 1770,
+        "end": 1770
+      }
+    },
+    {
+      "name": "exception.InvalidCPUAllocationPolicy",
+      "usage": "call",
+      "via": "nova",
+      "count": 2,
+      "lineRange": {
+        "start": 1794,
+        "end": 1794
+      }
+    },
+    {
+      "name": "exception.ImageCPUPinningForbidden",
+      "usage": "call",
+      "via": "nova",
+      "count": 2,
+      "lineRange": {
+        "start": 1809,
+        "end": 1809
+      }
+    },
+    {
+      "name": "exception.InvalidCPUThreadAllocationPolicy",
+      "usage": "call",
+      "via": "nova",
+      "count": 2,
+      "lineRange": {
+        "start": 1846,
+        "end": 1846
+      }
+    },
+    {
+      "name": "exception.ImageCPUThreadPolicyForbidden",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 1861,
+        "end": 1861
+      }
+    },
+    {
+      "name": "exception.ImageNUMATopologyAsymmetric",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 1886,
+        "end": 1886
+      }
+    },
+    {
+      "name": "objects.InstanceNUMACell",
+      "usage": "call",
+      "via": "nova",
+      "count": 2,
+      "lineRange": {
+        "start": 1895,
+        "end": 1895
+      }
+    },
+    {
+      "name": "objects.InstanceNUMATopology",
+      "usage": "call",
+      "via": "nova",
+      "count": 3,
+      "lineRange": {
+        "start": 1898,
+        "end": 1898
+      }
+    },
+    {
+      "name": "exception.ImageNUMATopologyCPUOutOfRange",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 1933,
+        "end": 1933
+      }
+    },
+    {
+      "name": "exception.ImageNUMATopologyCPUDuplicates",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 1937,
+        "end": 1937
+      }
+    },
+    {
+      "name": "exception.ImageNUMATopologyCPUsUnassigned",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 1947,
+        "end": 1947
+      }
+    },
+    {
+      "name": "exception.ImageNUMATopologyMemoryOutOfRange",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 1951,
+        "end": 1951
+      }
+    },
+    {
+      "name": "re.match",
+      "usage": "call",
+      "via": "re",
+      "count": 3,
+      "lineRange": {
+        "start": 1970,
+        "end": 1970
+      }
+    },
+    {
+      "name": "exception.InvalidMixedInstanceDedicatedMask",
+      "usage": "call",
+      "via": "nova",
+      "count": 2,
+      "lineRange": {
+        "start": 2023,
+        "end": 2023
+      }
+    },
+    {
+      "name": "exception.RealtimeMaskNotFoundOrInvalid",
+      "usage": "call",
+      "via": "nova",
+      "count": 3,
+      "lineRange": {
+        "start": 2064,
+        "end": 2064
+      }
+    },
+    {
+      "name": "exception.InvalidEmulatorThreadsPolicy",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 2098,
+        "end": 2098
+      }
+    },
+    {
+      "name": "exception.ImagePCINUMAPolicyForbidden",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 2120,
+        "end": 2120
+      }
+    },
+    {
+      "name": "exception.InvalidPCINUMAAffinity",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 2125,
+        "end": 2125
+      }
+    },
+    {
+      "name": "type",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 2244,
+        "end": 2244
+      }
+    },
+    {
+      "name": "exception.CPUThreadPolicyConfigurationInvalid",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 2507,
+        "end": 2507
+      }
+    },
+    {
+      "name": "exception.BadRequirementEmulatorThreadsPolicy",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 2510,
+        "end": 2510
+      }
+    },
+    {
+      "name": "exception.RequiredMixedInstancePolicy",
+      "usage": "call",
+      "via": "nova",
+      "count": 2,
+      "lineRange": {
+        "start": 2515,
+        "end": 2515
+      }
+    },
+    {
+      "name": "exception.RealtimeConfigurationInvalid",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 2518,
+        "end": 2518
+      }
+    },
+    {
+      "name": "exception.RequiredMixedOrRealtimeCPUMask",
+      "usage": "call",
+      "via": "nova",
+      "count": 2,
+      "lineRange": {
+        "start": 2526,
+        "end": 2526
+      }
+    },
+    {
+      "name": "exception.ImageNUMATopologyIncomplete",
+      "usage": "call",
+      "via": "nova",
+      "count": 2,
+      "lineRange": {
+        "start": 2578,
+        "end": 2578
+      }
+    },
+    {
+      "name": "setattr",
+      "usage": "call",
+      "via": null,
+      "count": 3,
+      "lineRange": {
+        "start": 2591,
+        "end": 2591
+      }
+    },
+    {
+      "name": "itertools.permutations",
+      "usage": "call",
+      "via": "itertools",
+      "count": 1,
+      "lineRange": {
+        "start": 2827,
+        "end": 2827
+      }
+    },
+    {
+      "name": "exception.InvalidReservedMemoryPagesOption",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 2922,
+        "end": 2922
+      }
+    },
+    {
+      "name": "objects.NUMAPagesTopology",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 2944,
+        "end": 2944
+      }
+    },
+    {
+      "name": "objects.NUMACell",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 2981,
+        "end": 2981
+      }
+    },
+    {
+      "name": "enumerate",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 2996,
+        "end": 2996
+      }
+    },
+    {
+      "name": "objects.NUMATopology",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 3039,
+        "end": 3039
+      }
+    },
+    {
+      "name": "service.Service",
+      "usage": "call",
+      "via": "nova.objects",
+      "count": 1,
+      "lineRange": {
+        "start": 3168,
+        "end": 3168
+      }
+    },
+    {
+      "name": "exception.ForbiddenSharesNotSupported",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 3171,
+        "end": 3171
+      }
+    },
+    {
+      "name": "compute_node.ComputeNode",
+      "usage": "call",
+      "via": "nova.objects",
+      "count": 1,
+      "lineRange": {
+        "start": 3173,
+        "end": 3173
+      }
+    },
+    {
+      "name": "report.report_client_singleton",
+      "usage": "call",
+      "via": "nova.scheduler.client",
+      "count": 1,
+      "lineRange": {
+        "start": 3175,
+        "end": 3175
+      }
+    },
+    {
+      "name": "exception.ForbiddenSharesNotConfiguredCorrectly",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 3188,
+        "end": 3188
+      }
+    }
+  ],
+  "dependencies": [
+    {
+      "style": "import",
+      "module": "abc",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 15,
+        "end": 15
+      }
+    },
+    {
+      "style": "import",
+      "module": "collections",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 16,
+        "end": 16
+      }
+    },
+    {
+      "style": "import",
+      "module": "itertools",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 17,
+        "end": 17
+      }
+    },
+    {
+      "style": "import",
+      "module": "re",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 18,
+        "end": 18
+      }
+    },
+    {
+      "style": "import",
+      "module": "typing",
+      "names": [],
+      "alias": "ty",
+      "relative": false,
+      "lineRange": {
+        "start": 19,
+        "end": 19
+      }
+    },
+    {
+      "style": "import",
+      "module": "os_resource_classes",
+      "names": [],
+      "alias": "orc",
+      "relative": false,
+      "lineRange": {
+        "start": 21,
+        "end": 21
+      }
+    },
+    {
+      "style": "import",
+      "module": "os_traits",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 22,
+        "end": 22
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_log",
+      "names": [
+        {
+          "alias": "logging",
+          "name": "log"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 23,
+        "end": 23
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_utils",
+      "names": [
+        {
+          "alias": null,
+          "name": "strutils"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 24,
+        "end": 24
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_utils",
+      "names": [
+        {
+          "alias": null,
+          "name": "units"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 25,
+        "end": 25
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "compute"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 27,
+        "end": 27
+      }
+    },
+    {
+      "style": "import",
+      "module": "nova.conf",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 28,
+        "end": 28
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "exception"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 29,
+        "end": 29
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.i18n",
+      "names": [
+        {
+          "alias": null,
+          "name": "_"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 30,
+        "end": 30
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "objects"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 31,
+        "end": 31
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.objects",
+      "names": [
+        {
+          "alias": null,
+          "name": "compute_node"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 32,
+        "end": 32
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.objects",
+      "names": [
+        {
+          "alias": null,
+          "name": "fields"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 33,
+        "end": 33
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.objects",
+      "names": [
+        {
+          "alias": null,
+          "name": "service"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 34,
+        "end": 34
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.pci",
+      "names": [
+        {
+          "alias": null,
+          "name": "stats"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 35,
+        "end": 35
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.scheduler.client",
+      "names": [
+        {
+          "alias": null,
+          "name": "report"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 36,
+        "end": 36
+      }
+    }
+  ],
+  "sideEffects": [
+    {
+      "kind": "global-mutation",
+      "target": "CONF = nova.conf.CONF",
+      "lineRange": {
+        "start": 39,
+        "end": 39
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "LOG = logging.getLogger(__name__)",
+      "lineRange": {
+        "start": 40,
+        "end": 40
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "MEMPAGES_SMALL = -1",
+      "lineRange": {
+        "start": 42,
+        "end": 42
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "MEMPAGES_LARGE = -2",
+      "lineRange": {
+        "start": 43,
+        "end": 43
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "MEMPAGES_ANY = -3",
+      "lineRange": {
+        "start": 44,
+        "end": 44
+      }
+    }
+  ],
+  "securitySurface": [
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "\"\"\"Update the host topology usage.",
+      "lineRange": {
+        "start": 2958,
+        "end": 2958
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "Update the host NUMA topology based on usage by the provided instance NUMA",
+      "lineRange": {
+        "start": 2960,
+        "end": 2960
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": ":param host_topology: objects.NUMATopology to update usage information",
+      "lineRange": {
+        "start": 2963,
+        "end": 2963
+      }
+    }
+  ],
+  "injection_flags": [],
+  "warnings": []
+}

@@ -1,0 +1,2460 @@
+{
+  "file": "src/nova/virt/libvirt/utils.py",
+  "hash": "96b2b92a98cddaded87ca9e8bc2d58da6bcaff2df2f5b61cb620b8683f4a1626",
+  "language": "Python",
+  "component": "nova",
+  "package": null,
+  "lines": {
+    "blank": 130,
+    "code": 561,
+    "comment": 108,
+    "total": 799
+  },
+  "symbols": [
+    {
+      "name": "CONF",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 54,
+        "end": 54
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "LOG",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 55,
+        "end": 55
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "RESIZE_SNAPSHOT_NAME",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 57,
+        "end": 57
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "CPU_TRAITS_MAPPING",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 61,
+        "end": 110
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "make_reverse_cpu_traits_mapping",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 113,
+        "end": 121
+      },
+      "source": "aee-inventory",
+      "parameters": [],
+      "returnType": "dict[str, str]",
+      "returns": [
+        {
+          "expr": "traits_cpu_mapping",
+          "line": 121
+        }
+      ],
+      "nloc": 9,
+      "ccn": 4,
+      "exported": true
+    },
+    {
+      "name": "TRAITS_CPU_MAPPING",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 125,
+        "end": 125
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "VTPM_DIR",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 128,
+        "end": 128
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "EncryptionOptions",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 131,
+        "end": 133
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "secret",
+      "kind": "field",
+      "scope": "EncryptionOptions",
+      "lineRange": {
+        "start": 132,
+        "end": 132
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "format",
+      "kind": "field",
+      "scope": "EncryptionOptions",
+      "lineRange": {
+        "start": 133,
+        "end": 133
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "create_image",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 136,
+        "end": 266
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "path",
+          "type": "str"
+        },
+        {
+          "name": "disk_format",
+          "type": "str"
+        },
+        {
+          "name": "disk_size",
+          "type": "str | int | None"
+        },
+        {
+          "default": "None",
+          "name": "backing_file",
+          "type": "str | None"
+        },
+        {
+          "default": "None",
+          "name": "encryption",
+          "type": "EncryptionOptions | None"
+        },
+        {
+          "default": "False",
+          "name": "safe",
+          "type": "bool"
+        }
+      ],
+      "returnType": "None",
+      "returns": [],
+      "nloc": 72,
+      "ccn": 13,
+      "exported": true
+    },
+    {
+      "name": "create_ploop_image",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 269,
+        "end": 289
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "disk_format",
+          "type": "str"
+        },
+        {
+          "name": "path",
+          "type": "str"
+        },
+        {
+          "name": "size",
+          "type": "int | str"
+        },
+        {
+          "name": "fs_type",
+          "type": "str"
+        }
+      ],
+      "returnType": "None",
+      "returns": [],
+      "nloc": 9,
+      "ccn": 3,
+      "exported": true
+    },
+    {
+      "name": "get_disk_size",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 292,
+        "end": 301
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "path",
+          "type": "str"
+        },
+        {
+          "default": "None",
+          "name": "format",
+          "type": "str | None"
+        }
+      ],
+      "returnType": "int",
+      "returns": [
+        {
+          "expr": "int(size)",
+          "line": 301
+        }
+      ],
+      "nloc": 3,
+      "ccn": 1,
+      "exported": true
+    },
+    {
+      "name": "get_disk_backing_file",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 304,
+        "end": 316
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "path",
+          "type": "str"
+        },
+        {
+          "default": "True",
+          "name": "basename",
+          "type": "bool"
+        },
+        {
+          "default": "None",
+          "name": "format",
+          "type": "str | None"
+        }
+      ],
+      "returnType": "str | None",
+      "returns": [
+        {
+          "expr": "backing_file",
+          "line": 316
+        }
+      ],
+      "nloc": 7,
+      "ccn": 3,
+      "exported": true
+    },
+    {
+      "name": "copy_image",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 319,
+        "end": 356
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "src",
+          "type": "str"
+        },
+        {
+          "name": "dest",
+          "type": "str"
+        },
+        {
+          "default": "None",
+          "name": "host",
+          "type": "str | None"
+        },
+        {
+          "default": "False",
+          "name": "receive",
+          "type": "bool"
+        },
+        {
+          "default": "None",
+          "name": "on_execute",
+          "type": "Callable[[subprocess.Popen], None] | None"
+        },
+        {
+          "default": "None",
+          "name": "on_completion",
+          "type": "Callable[[subprocess.Popen], None] | None"
+        },
+        {
+          "default": "True",
+          "name": "compression",
+          "type": "bool"
+        }
+      ],
+      "returnType": "None",
+      "returns": [],
+      "nloc": 20,
+      "ccn": 3,
+      "exported": true
+    },
+    {
+      "name": "chown_for_id_maps",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 359,
+        "end": 372
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "path",
+          "type": "str"
+        },
+        {
+          "name": "id_maps",
+          "type": "list[vconfig.LibvirtConfigGuestIDMap]"
+        }
+      ],
+      "returnType": "None",
+      "returns": [],
+      "nloc": 8,
+      "ccn": 5,
+      "exported": true
+    },
+    {
+      "name": "extract_snapshot",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 375,
+        "end": 392
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "disk_path",
+          "type": "str"
+        },
+        {
+          "name": "source_fmt",
+          "type": "str"
+        },
+        {
+          "name": "out_path",
+          "type": "str"
+        },
+        {
+          "name": "dest_fmt",
+          "type": "str"
+        }
+      ],
+      "returnType": "None",
+      "returns": [],
+      "nloc": 10,
+      "ccn": 4,
+      "exported": true
+    },
+    {
+      "name": "load_file",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 396,
+        "end": 402
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "path",
+          "type": "str"
+        }
+      ],
+      "returnType": "str",
+      "returns": [
+        {
+          "expr": "fp.read()",
+          "line": 402
+        }
+      ],
+      "nloc": 3,
+      "ccn": 1,
+      "exported": true
+    },
+    {
+      "name": "file_open",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 407,
+        "end": 416
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "*args"
+        },
+        {
+          "name": "**kwargs"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "open(*args, **kwargs)",
+          "line": 416
+        }
+      ],
+      "nloc": 2,
+      "ccn": 1,
+      "exported": true
+    },
+    {
+      "name": "find_disk",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 419,
+        "end": 453
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "guest",
+          "type": "libvirt_guest.Guest"
+        }
+      ],
+      "returnType": "tuple[str, str | None]",
+      "returns": [
+        {
+          "expr": "disk_path, disk_format",
+          "line": 453
+        }
+      ],
+      "nloc": 28,
+      "ccn": 15,
+      "exported": true
+    },
+    {
+      "name": "get_disk_type_from_path",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 456,
+        "end": 467
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "path",
+          "type": "str"
+        }
+      ],
+      "returnType": "str | None",
+      "returns": [
+        {
+          "expr": "'lvm'",
+          "line": 459
+        },
+        {
+          "expr": "'rbd'",
+          "line": 461
+        },
+        {
+          "expr": "'ploop'",
+          "line": 464
+        },
+        {
+          "expr": "None",
+          "line": 467
+        }
+      ],
+      "nloc": 9,
+      "ccn": 5,
+      "exported": true
+    },
+    {
+      "name": "get_fs_info",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 470,
+        "end": 484
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "path",
+          "type": "str"
+        }
+      ],
+      "returnType": "dict[str, int]",
+      "returns": [
+        {
+          "expr": "{'total': total, 'free': free, 'used': used}",
+          "line": 484
+        }
+      ],
+      "nloc": 6,
+      "ccn": 1,
+      "exported": true
+    },
+    {
+      "name": "fetch_image",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 487,
+        "end": 500
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "context",
+          "type": "nova_context.RequestContext"
+        },
+        {
+          "name": "target",
+          "type": "str"
+        },
+        {
+          "name": "image_id",
+          "type": "str"
+        },
+        {
+          "default": "None",
+          "name": "trusted_certs",
+          "type": "'objects.TrustedCerts | None'"
+        }
+      ],
+      "returnType": "None",
+      "returns": [],
+      "nloc": 7,
+      "ccn": 1,
+      "exported": true
+    },
+    {
+      "name": "fetch_raw_image",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 503,
+        "end": 519
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "context",
+          "type": "nova_context.RequestContext"
+        },
+        {
+          "name": "target",
+          "type": "str"
+        },
+        {
+          "name": "image_id",
+          "type": "str"
+        },
+        {
+          "default": "None",
+          "name": "trusted_certs",
+          "type": "'objects.TrustedCerts | None'"
+        }
+      ],
+      "returnType": "None",
+      "returns": [],
+      "nloc": 7,
+      "ccn": 1,
+      "exported": true
+    },
+    {
+      "name": "get_instance_path",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 522,
+        "end": 536
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "instance",
+          "type": "'objects.Instance'"
+        },
+        {
+          "default": "False",
+          "name": "relative",
+          "type": "bool"
+        }
+      ],
+      "returnType": "str",
+      "returns": [
+        {
+          "expr": "instance.uuid",
+          "line": 535
+        },
+        {
+          "expr": "os.path.join(CONF.instances_path, instance.uuid)",
+          "line": 536
+        }
+      ],
+      "nloc": 6,
+      "ccn": 2,
+      "exported": true
+    },
+    {
+      "name": "get_instance_path_at_destination",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 539,
+        "end": 566
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "instance",
+          "type": "'objects.Instance'"
+        },
+        {
+          "default": "None",
+          "name": "migrate_data",
+          "type": "'objects.LibvirtLiveMigrateData | None'"
+        }
+      ],
+      "returnType": "str",
+      "returns": [
+        {
+          "expr": "instance_dir",
+          "line": 566
+        }
+      ],
+      "nloc": 13,
+      "ccn": 3,
+      "exported": true
+    },
+    {
+      "name": "get_arch",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 569,
+        "end": 586
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "image_meta",
+          "type": "'objects.ImageMeta'"
+        }
+      ],
+      "returnType": "str",
+      "returns": [
+        {
+          "expr": "image_arch",
+          "line": 584
+        },
+        {
+          "expr": "obj_fields.Architecture.from_host()",
+          "line": 586
+        }
+      ],
+      "nloc": 6,
+      "ccn": 3,
+      "exported": true
+    },
+    {
+      "name": "is_mounted",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 589,
+        "end": 599
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "mount_path",
+          "type": "str"
+        },
+        {
+          "default": "None",
+          "name": "source",
+          "type": "str | None"
+        }
+      ],
+      "returnType": "bool",
+      "returns": [
+        {
+          "expr": "False",
+          "line": 592
+        },
+        {
+          "expr": "True",
+          "line": 595
+        },
+        {
+          "expr": "any(mnt[0] == source and mnt[1] == mount_path for mnt in mounts)",
+          "line": 599
+        }
+      ],
+      "nloc": 8,
+      "ccn": 6,
+      "exported": true
+    },
+    {
+      "name": "is_valid_hostname",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 602,
+        "end": 603
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "hostname",
+          "type": "str"
+        }
+      ],
+      "returnType": "bool",
+      "returns": [
+        {
+          "expr": "bool(re.match(r\"^[\\w\\-\\.:]+$\", hostname))",
+          "line": 603
+        }
+      ],
+      "nloc": 2,
+      "ccn": 1,
+      "exported": true
+    },
+    {
+      "name": "version_to_string",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 606,
+        "end": 608
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "version",
+          "type": "tuple[int, int, int]"
+        }
+      ],
+      "returnType": "str",
+      "returns": [
+        {
+          "expr": "'.'.join([str(x) for x in version])",
+          "line": 608
+        }
+      ],
+      "nloc": 2,
+      "ccn": 2,
+      "exported": true
+    },
+    {
+      "name": "cpu_features_to_traits",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 611,
+        "end": 625
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "features",
+          "type": "set[str]"
+        }
+      ],
+      "returnType": "dict[str, bool]",
+      "returns": [
+        {
+          "expr": "traits",
+          "line": 625
+        }
+      ],
+      "nloc": 7,
+      "ccn": 4,
+      "exported": true
+    },
+    {
+      "name": "get_cpu_model_from_arch",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 628,
+        "end": 641
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "arch",
+          "type": "str"
+        }
+      ],
+      "returnType": "str",
+      "returns": [
+        {
+          "expr": "mode",
+          "line": 641
+        }
+      ],
+      "nloc": 9,
+      "ccn": 4,
+      "exported": true
+    },
+    {
+      "name": "get_machine_type",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 644,
+        "end": 654
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "image_meta",
+          "type": "'objects.ImageMeta'"
+        }
+      ],
+      "returnType": "str | None",
+      "returns": [
+        {
+          "expr": "image_meta.properties.hw_machine_type",
+          "line": 651
+        },
+        {
+          "expr": "get_default_machine_type(get_arch(image_meta))",
+          "line": 654
+        }
+      ],
+      "nloc": 4,
+      "ccn": 2,
+      "exported": true
+    },
+    {
+      "name": "get_default_machine_type",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 657,
+        "end": 685
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "arch",
+          "type": "str"
+        }
+      ],
+      "returnType": "str | None",
+      "returns": [
+        {
+          "expr": "machine_type",
+          "line": 665
+        },
+        {
+          "expr": "default_mtypes.get(arch)",
+          "line": 685
+        }
+      ],
+      "nloc": 17,
+      "ccn": 5,
+      "exported": true
+    },
+    {
+      "name": "mdev_name2uuid",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 688,
+        "end": 699
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "mdev_name",
+          "type": "str"
+        }
+      ],
+      "returnType": "str",
+      "returns": [
+        {
+          "expr": "str(uuid.UUID(mdev_uuid))",
+          "line": 699
+        }
+      ],
+      "nloc": 4,
+      "ccn": 1,
+      "exported": true
+    },
+    {
+      "name": "mdev_uuid2name",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 702,
+        "end": 713
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "mdev_uuid",
+          "type": "str"
+        },
+        {
+          "default": "None",
+          "name": "parent",
+          "type": "str | None"
+        }
+      ],
+      "returnType": "str",
+      "returns": [
+        {
+          "expr": "name",
+          "line": 713
+        }
+      ],
+      "nloc": 5,
+      "ccn": 3,
+      "exported": true
+    },
+    {
+      "name": "get_flags_by_flavor_specs",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 716,
+        "end": 725
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "flavor",
+          "type": "'objects.Flavor'"
+        }
+      ],
+      "returnType": "set[str]",
+      "returns": [
+        {
+          "expr": "set(flags)",
+          "line": 725
+        }
+      ],
+      "nloc": 8,
+      "ccn": 3,
+      "exported": true
+    },
+    {
+      "name": "save_and_migrate_vtpm_dir",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 728,
+        "end": 773
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "instance_uuid",
+          "type": "str"
+        },
+        {
+          "name": "inst_base_resize",
+          "type": "str"
+        },
+        {
+          "name": "inst_base",
+          "type": "str"
+        },
+        {
+          "name": "dest",
+          "type": "str"
+        },
+        {
+          "default": "None",
+          "name": "on_execute",
+          "type": "Callable[[subprocess.Popen], None] | None"
+        },
+        {
+          "default": "None",
+          "name": "on_completion",
+          "type": "Callable[[subprocess.Popen], None] | None"
+        }
+      ],
+      "returnType": "None",
+      "returns": [
+        {
+          "expr": "",
+          "line": 754
+        }
+      ],
+      "nloc": 19,
+      "ccn": 2,
+      "exported": true
+    },
+    {
+      "name": "restore_vtpm_dir",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 776,
+        "end": 799
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "swtpm_dir",
+          "type": "str"
+        }
+      ],
+      "returnType": "None",
+      "returns": [],
+      "nloc": 12,
+      "ccn": 3,
+      "exported": true
+    }
+  ],
+  "referencedSymbols": [
+    {
+      "name": "logging.getLogger",
+      "usage": "call",
+      "via": "oslo_log",
+      "count": 1,
+      "lineRange": {
+        "start": 55,
+        "end": 55
+      }
+    },
+    {
+      "name": "dict",
+      "usage": "type",
+      "via": null,
+      "count": 3,
+      "lineRange": {
+        "start": 113,
+        "end": 113
+      }
+    },
+    {
+      "name": "dict",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 114,
+        "end": 114
+      }
+    },
+    {
+      "name": "isinstance",
+      "usage": "call",
+      "via": null,
+      "count": 7,
+      "lineRange": {
+        "start": 116,
+        "end": 116
+      }
+    },
+    {
+      "name": "ty.TypedDict",
+      "usage": "inherit",
+      "via": "typing",
+      "count": 1,
+      "lineRange": {
+        "start": 131,
+        "end": 131
+      }
+    },
+    {
+      "name": "images.get_image_format",
+      "usage": "call",
+      "via": "nova.virt",
+      "count": 1,
+      "lineRange": {
+        "start": 171,
+        "end": 171
+      }
+    },
+    {
+      "name": "exception.InvalidDiskInfo",
+      "usage": "call",
+      "via": "nova",
+      "count": 3,
+      "lineRange": {
+        "start": 180,
+        "end": 180
+      }
+    },
+    {
+      "name": "_",
+      "usage": "call",
+      "via": "nova.i18n",
+      "count": 5,
+      "lineRange": {
+        "start": 181,
+        "end": 181
+      }
+    },
+    {
+      "name": "images.qemu_img_info",
+      "usage": "call",
+      "via": "nova.virt",
+      "count": 3,
+      "lineRange": {
+        "start": 183,
+        "end": 183
+      }
+    },
+    {
+      "name": "images.check_vmdk_image",
+      "usage": "call",
+      "via": "nova.virt",
+      "count": 1,
+      "lineRange": {
+        "start": 185,
+        "end": 185
+      }
+    },
+    {
+      "name": "str",
+      "usage": "call",
+      "via": null,
+      "count": 3,
+      "lineRange": {
+        "start": 216,
+        "end": 216
+      }
+    },
+    {
+      "name": "tempfile.NamedTemporaryFile",
+      "usage": "call",
+      "via": "tempfile",
+      "count": 1,
+      "lineRange": {
+        "start": 219,
+        "end": 219
+      }
+    },
+    {
+      "name": "processutils.execute",
+      "usage": "call",
+      "via": "oslo_concurrency",
+      "count": 3,
+      "lineRange": {
+        "start": 263,
+        "end": 263
+      }
+    },
+    {
+      "name": "fileutils.ensure_tree",
+      "usage": "call",
+      "via": "oslo_utils",
+      "count": 2,
+      "lineRange": {
+        "start": 287,
+        "end": 287
+      }
+    },
+    {
+      "name": "os.path.join",
+      "usage": "call",
+      "via": "os",
+      "count": 7,
+      "lineRange": {
+        "start": 288,
+        "end": 288
+      }
+    },
+    {
+      "name": "nova.privsep.libvirt.ploop_init",
+      "usage": "call",
+      "via": "nova.conf",
+      "count": 1,
+      "lineRange": {
+        "start": 289,
+        "end": 289
+      }
+    },
+    {
+      "name": "int",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 301,
+        "end": 301
+      }
+    },
+    {
+      "name": "os.path.basename",
+      "usage": "call",
+      "via": "os",
+      "count": 1,
+      "lineRange": {
+        "start": 314,
+        "end": 314
+      }
+    },
+    {
+      "name": "Callable",
+      "usage": "type",
+      "via": "collections.abc",
+      "count": 4,
+      "lineRange": {
+        "start": 324,
+        "end": 324
+      }
+    },
+    {
+      "name": "utils.safe_ip_format",
+      "usage": "call",
+      "via": "nova",
+      "count": 2,
+      "lineRange": {
+        "start": 349,
+        "end": 349
+      }
+    },
+    {
+      "name": "remotefs.RemoteFilesystem",
+      "usage": "call",
+      "via": "nova.virt.libvirt.volume",
+      "count": 1,
+      "lineRange": {
+        "start": 353,
+        "end": 353
+      }
+    },
+    {
+      "name": "list",
+      "usage": "type",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 360,
+        "end": 360
+      }
+    },
+    {
+      "name": "nova.privsep.idmapshift.shift",
+      "usage": "call",
+      "via": "nova.conf",
+      "count": 1,
+      "lineRange": {
+        "start": 372,
+        "end": 372
+      }
+    },
+    {
+      "name": "images.convert_image",
+      "usage": "call",
+      "via": "nova.virt",
+      "count": 1,
+      "lineRange": {
+        "start": 391,
+        "end": 391
+      }
+    },
+    {
+      "name": "open",
+      "usage": "call",
+      "via": null,
+      "count": 3,
+      "lineRange": {
+        "start": 401,
+        "end": 401
+      }
+    },
+    {
+      "name": "tuple",
+      "usage": "type",
+      "via": null,
+      "count": 2,
+      "lineRange": {
+        "start": 419,
+        "end": 419
+      }
+    },
+    {
+      "name": "next",
+      "usage": "call",
+      "via": null,
+      "count": 3,
+      "lineRange": {
+        "start": 428,
+        "end": 428
+      }
+    },
+    {
+      "name": "RuntimeError",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 450,
+        "end": 450
+      }
+    },
+    {
+      "name": "os.path.isdir",
+      "usage": "call",
+      "via": "os",
+      "count": 2,
+      "lineRange": {
+        "start": 462,
+        "end": 462
+      }
+    },
+    {
+      "name": "os.path.exists",
+      "usage": "call",
+      "via": "os",
+      "count": 3,
+      "lineRange": {
+        "start": 463,
+        "end": 463
+      }
+    },
+    {
+      "name": "os.statvfs",
+      "usage": "call",
+      "via": "os",
+      "count": 1,
+      "lineRange": {
+        "start": 480,
+        "end": 480
+      }
+    },
+    {
+      "name": "images.fetch_to_raw",
+      "usage": "call",
+      "via": "nova.virt",
+      "count": 1,
+      "lineRange": {
+        "start": 500,
+        "end": 500
+      }
+    },
+    {
+      "name": "images.fetch",
+      "usage": "call",
+      "via": "nova.virt",
+      "count": 1,
+      "lineRange": {
+        "start": 519,
+        "end": 519
+      }
+    },
+    {
+      "name": "obj_fields.Architecture.from_host",
+      "usage": "call",
+      "via": "nova.objects",
+      "count": 1,
+      "lineRange": {
+        "start": 586,
+        "end": 586
+      }
+    },
+    {
+      "name": "os.path.ismount",
+      "usage": "call",
+      "via": "os",
+      "count": 1,
+      "lineRange": {
+        "start": 591,
+        "end": 591
+      }
+    },
+    {
+      "name": "any",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 599,
+        "end": 599
+      }
+    },
+    {
+      "name": "bool",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 603,
+        "end": 603
+      }
+    },
+    {
+      "name": "re.match",
+      "usage": "call",
+      "via": "re",
+      "count": 1,
+      "lineRange": {
+        "start": 603,
+        "end": 603
+      }
+    },
+    {
+      "name": "set",
+      "usage": "type",
+      "via": null,
+      "count": 2,
+      "lineRange": {
+        "start": 611,
+        "end": 611
+      }
+    },
+    {
+      "name": "uuid.UUID",
+      "usage": "call",
+      "via": "uuid",
+      "count": 1,
+      "lineRange": {
+        "start": 699,
+        "end": 699
+      }
+    },
+    {
+      "name": "objects.RequestSpec",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 717,
+        "end": 717
+      }
+    },
+    {
+      "name": "scheduler_utils.ResourceRequest.from_request_spec",
+      "usage": "call",
+      "via": "nova.scheduler",
+      "count": 1,
+      "lineRange": {
+        "start": 718,
+        "end": 718
+      }
+    },
+    {
+      "name": "set",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 725,
+        "end": 725
+      }
+    },
+    {
+      "name": "nova.privsep.path.move_tree",
+      "usage": "call",
+      "via": "nova.conf",
+      "count": 2,
+      "lineRange": {
+        "start": 766,
+        "end": 766
+      }
+    },
+    {
+      "name": "nova.privsep.path.chown",
+      "usage": "call",
+      "via": "nova.conf",
+      "count": 2,
+      "lineRange": {
+        "start": 768,
+        "end": 768
+      }
+    },
+    {
+      "name": "os.getegid",
+      "usage": "call",
+      "via": "os",
+      "count": 1,
+      "lineRange": {
+        "start": 769,
+        "end": 769
+      }
+    },
+    {
+      "name": "os.geteuid",
+      "usage": "call",
+      "via": "os",
+      "count": 1,
+      "lineRange": {
+        "start": 769,
+        "end": 769
+      }
+    },
+    {
+      "name": "nova.privsep.path.makedirs",
+      "usage": "call",
+      "via": "nova.conf",
+      "count": 1,
+      "lineRange": {
+        "start": 785,
+        "end": 785
+      }
+    },
+    {
+      "name": "nova.privsep.path.chmod",
+      "usage": "call",
+      "via": "nova.conf",
+      "count": 1,
+      "lineRange": {
+        "start": 786,
+        "end": 786
+      }
+    },
+    {
+      "name": "exception.Invalid",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 790,
+        "end": 790
+      }
+    },
+    {
+      "name": "pwd.getpwnam",
+      "usage": "call",
+      "via": "pwd",
+      "count": 1,
+      "lineRange": {
+        "start": 793,
+        "end": 793
+      }
+    },
+    {
+      "name": "grp.getgrnam",
+      "usage": "call",
+      "via": "grp",
+      "count": 1,
+      "lineRange": {
+        "start": 794,
+        "end": 794
+      }
+    }
+  ],
+  "dependencies": [
+    {
+      "style": "from",
+      "module": "collections.abc",
+      "names": [
+        {
+          "alias": null,
+          "name": "Callable"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 21,
+        "end": 21
+      }
+    },
+    {
+      "style": "import",
+      "module": "grp",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 22,
+        "end": 22
+      }
+    },
+    {
+      "style": "import",
+      "module": "os",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 23,
+        "end": 23
+      }
+    },
+    {
+      "style": "import",
+      "module": "pwd",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 24,
+        "end": 24
+      }
+    },
+    {
+      "style": "import",
+      "module": "re",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 25,
+        "end": 25
+      }
+    },
+    {
+      "style": "import",
+      "module": "subprocess",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 26,
+        "end": 26
+      }
+    },
+    {
+      "style": "import",
+      "module": "tempfile",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 27,
+        "end": 27
+      }
+    },
+    {
+      "style": "import",
+      "module": "typing",
+      "names": [],
+      "alias": "ty",
+      "relative": false,
+      "lineRange": {
+        "start": 28,
+        "end": 28
+      }
+    },
+    {
+      "style": "import",
+      "module": "uuid",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 29,
+        "end": 29
+      }
+    },
+    {
+      "style": "import",
+      "module": "os_traits",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 31,
+        "end": 31
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_concurrency",
+      "names": [
+        {
+          "alias": null,
+          "name": "processutils"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 32,
+        "end": 32
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_log",
+      "names": [
+        {
+          "alias": "logging",
+          "name": "log"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 33,
+        "end": 33
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_utils",
+      "names": [
+        {
+          "alias": null,
+          "name": "fileutils"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 34,
+        "end": 34
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_utils.imageutils",
+      "names": [
+        {
+          "alias": null,
+          "name": "format_inspector"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 35,
+        "end": 35
+      }
+    },
+    {
+      "style": "import",
+      "module": "nova.conf",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 37,
+        "end": 37
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": "nova_context",
+          "name": "context"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 38,
+        "end": 38
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "exception"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 39,
+        "end": 39
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.i18n",
+      "names": [
+        {
+          "alias": null,
+          "name": "_"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 40,
+        "end": 40
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "objects"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 41,
+        "end": 41
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.objects",
+      "names": [
+        {
+          "alias": "obj_fields",
+          "name": "fields"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 42,
+        "end": 42
+      }
+    },
+    {
+      "style": "import",
+      "module": "nova.privsep.fs",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 43,
+        "end": 43
+      }
+    },
+    {
+      "style": "import",
+      "module": "nova.privsep.idmapshift",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 44,
+        "end": 44
+      }
+    },
+    {
+      "style": "import",
+      "module": "nova.privsep.libvirt",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 45,
+        "end": 45
+      }
+    },
+    {
+      "style": "import",
+      "module": "nova.privsep.path",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 46,
+        "end": 46
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.scheduler",
+      "names": [
+        {
+          "alias": "scheduler_utils",
+          "name": "utils"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 47,
+        "end": 47
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "utils"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 48,
+        "end": 48
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.virt",
+      "names": [
+        {
+          "alias": null,
+          "name": "images"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 49,
+        "end": 49
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.virt.libvirt",
+      "names": [
+        {
+          "alias": "vconfig",
+          "name": "config"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 50,
+        "end": 50
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.virt.libvirt",
+      "names": [
+        {
+          "alias": "libvirt_guest",
+          "name": "guest"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 51,
+        "end": 51
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.virt.libvirt.volume",
+      "names": [
+        {
+          "alias": null,
+          "name": "remotefs"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 52,
+        "end": 52
+      }
+    }
+  ],
+  "sideEffects": [
+    {
+      "kind": "process-spawn",
+      "target": "import nova.privsep.fs",
+      "lineRange": {
+        "start": 43,
+        "end": 43
+      }
+    },
+    {
+      "kind": "process-spawn",
+      "target": "import nova.privsep.idmapshift",
+      "lineRange": {
+        "start": 44,
+        "end": 44
+      }
+    },
+    {
+      "kind": "process-spawn",
+      "target": "import nova.privsep.libvirt",
+      "lineRange": {
+        "start": 45,
+        "end": 45
+      }
+    },
+    {
+      "kind": "process-spawn",
+      "target": "import nova.privsep.path",
+      "lineRange": {
+        "start": 46,
+        "end": 46
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "with tempfile.NamedTemporaryFile(mode='tr+', encoding='utf-8') as f:",
+      "lineRange": {
+        "start": 219,
+        "end": 219
+      }
+    },
+    {
+      "kind": "process-spawn",
+      "target": "nova.privsep.fs.FS_FORMAT_EXT4",
+      "lineRange": {
+        "start": 286,
+        "end": 286
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "fileutils.ensure_tree(path)",
+      "lineRange": {
+        "start": 287,
+        "end": 287
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "disk_path = os.path.join(path, 'root.hds')",
+      "lineRange": {
+        "start": 288,
+        "end": 288
+      }
+    },
+    {
+      "kind": "process-spawn",
+      "target": "nova.privsep.libvirt.ploop_init(size, disk_format, fs_type, disk_path)",
+      "lineRange": {
+        "start": 289,
+        "end": 289
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "backing_file = os.path.basename(backing_file)",
+      "lineRange": {
+        "start": 314,
+        "end": 314
+      }
+    },
+    {
+      "kind": "process-spawn",
+      "target": "on_execute: Callable[[subprocess.Popen], None] | None = None,",
+      "lineRange": {
+        "start": 324,
+        "end": 324
+      }
+    },
+    {
+      "kind": "process-spawn",
+      "target": "on_completion: Callable[[subprocess.Popen], None] | None = None,",
+      "lineRange": {
+        "start": 325,
+        "end": 325
+      }
+    },
+    {
+      "kind": "process-spawn",
+      "target": "nova.privsep.idmapshift.shift(path, uid_maps, gid_maps)",
+      "lineRange": {
+        "start": 372,
+        "end": 372
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "with open(path, 'r') as fp:",
+      "lineRange": {
+        "start": 401,
+        "end": 401
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "see built-in open() documentation for more details",
+      "lineRange": {
+        "start": 410,
+        "end": 410
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "return open(*args, **kwargs)",
+      "lineRange": {
+        "start": 416,
+        "end": 416
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "disk_path = os.path.join(disk_path, 'disk')",
+      "lineRange": {
+        "start": 432,
+        "end": 432
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "elif (os.path.isdir(path) and",
+      "lineRange": {
+        "start": 462,
+        "end": 462
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "os.path.exists(os.path.join(path, \"DiskDescriptor.xml\"))):",
+      "lineRange": {
+        "start": 463,
+        "end": 463
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "return os.path.join(CONF.instances_path, instance.uuid)",
+      "lineRange": {
+        "start": 536,
+        "end": 536
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "instance_dir = os.path.join(CONF.instances_path,",
+      "lineRange": {
+        "start": 562,
+        "end": 562
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "if not os.path.ismount(mount_path):",
+      "lineRange": {
+        "start": 591,
+        "end": 591
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "with open('/proc/mounts', 'r') as proc_mounts:",
+      "lineRange": {
+        "start": 597,
+        "end": 597
+      }
+    },
+    {
+      "kind": "process-spawn",
+      "target": "on_execute: Callable[[subprocess.Popen], None] | None = None,",
+      "lineRange": {
+        "start": 733,
+        "end": 733
+      }
+    },
+    {
+      "kind": "process-spawn",
+      "target": "on_completion: Callable[[subprocess.Popen], None] | None = None,",
+      "lineRange": {
+        "start": 734,
+        "end": 734
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "vtpm_dir = os.path.join(VTPM_DIR, instance_uuid)",
+      "lineRange": {
+        "start": 752,
+        "end": 752
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "if not os.path.exists(vtpm_dir):",
+      "lineRange": {
+        "start": 753,
+        "end": 753
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "swtpm_dir = os.path.join(inst_base_resize, 'swtpm')",
+      "lineRange": {
+        "start": 762,
+        "end": 762
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "fileutils.ensure_tree(swtpm_dir)",
+      "lineRange": {
+        "start": 763,
+        "end": 763
+      }
+    },
+    {
+      "kind": "process-spawn",
+      "target": "nova.privsep.path.move_tree(vtpm_dir, swtpm_dir)",
+      "lineRange": {
+        "start": 766,
+        "end": 766
+      }
+    },
+    {
+      "kind": "process-spawn",
+      "target": "nova.privsep.path.chown(",
+      "lineRange": {
+        "start": 768,
+        "end": 768
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "if not os.path.exists(VTPM_DIR):",
+      "lineRange": {
+        "start": 784,
+        "end": 784
+      }
+    },
+    {
+      "kind": "process-spawn",
+      "target": "nova.privsep.path.makedirs(VTPM_DIR)",
+      "lineRange": {
+        "start": 785,
+        "end": 785
+      }
+    },
+    {
+      "kind": "process-spawn",
+      "target": "nova.privsep.path.chmod(VTPM_DIR, 0o711)",
+      "lineRange": {
+        "start": 786,
+        "end": 786
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "elif not os.path.isdir(VTPM_DIR):",
+      "lineRange": {
+        "start": 787,
+        "end": 787
+      }
+    },
+    {
+      "kind": "process-spawn",
+      "target": "nova.privsep.path.chown(swtpm_dir, uid, gid, recursive=True)",
+      "lineRange": {
+        "start": 797,
+        "end": 797
+      }
+    },
+    {
+      "kind": "process-spawn",
+      "target": "nova.privsep.path.move_tree(swtpm_dir, VTPM_DIR)",
+      "lineRange": {
+        "start": 799,
+        "end": 799
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "CONF = nova.conf.CONF",
+      "lineRange": {
+        "start": 54,
+        "end": 54
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "LOG = logging.getLogger(__name__)",
+      "lineRange": {
+        "start": 55,
+        "end": 55
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "RESIZE_SNAPSHOT_NAME = 'nova-resize'",
+      "lineRange": {
+        "start": 57,
+        "end": 57
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "CPU_TRAITS_MAPPING = {",
+      "lineRange": {
+        "start": 61,
+        "end": 61
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "TRAITS_CPU_MAPPING = make_reverse_cpu_traits_mapping()",
+      "lineRange": {
+        "start": 125,
+        "end": 125
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "VTPM_DIR = '/var/lib/libvirt/swtpm/'",
+      "lineRange": {
+        "start": 128,
+        "end": 128
+      }
+    }
+  ],
+  "securitySurface": [
+    {
+      "kind": "privilege",
+      "category": "privsep-entrypoint",
+      "description": "import nova.privsep.fs",
+      "lineRange": {
+        "start": 43,
+        "end": 43
+      }
+    },
+    {
+      "kind": "privilege",
+      "category": "privsep-entrypoint",
+      "description": "import nova.privsep.idmapshift",
+      "lineRange": {
+        "start": 44,
+        "end": 44
+      }
+    },
+    {
+      "kind": "privilege",
+      "category": "privsep-entrypoint",
+      "description": "import nova.privsep.libvirt",
+      "lineRange": {
+        "start": 45,
+        "end": 45
+      }
+    },
+    {
+      "kind": "privilege",
+      "category": "privsep-entrypoint",
+      "description": "import nova.privsep.path",
+      "lineRange": {
+        "start": 46,
+        "end": 46
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "file-write",
+      "description": "f.write(encryption['secret'])",
+      "lineRange": {
+        "start": 221,
+        "end": 221
+      }
+    },
+    {
+      "kind": "privilege",
+      "category": "privsep-entrypoint",
+      "description": "nova.privsep.fs.FS_FORMAT_EXT4",
+      "lineRange": {
+        "start": 286,
+        "end": 286
+      }
+    },
+    {
+      "kind": "privilege",
+      "category": "privsep-entrypoint",
+      "description": "nova.privsep.libvirt.ploop_init(size, disk_format, fs_type, disk_path)",
+      "lineRange": {
+        "start": 289,
+        "end": 289
+      }
+    },
+    {
+      "kind": "privilege",
+      "category": "privsep-entrypoint",
+      "description": "nova.privsep.idmapshift.shift(path, uid_maps, gid_maps)",
+      "lineRange": {
+        "start": 372,
+        "end": 372
+      }
+    },
+    {
+      "kind": "privilege",
+      "category": "privsep-entrypoint",
+      "description": "nova.privsep.path.move_tree(vtpm_dir, swtpm_dir)",
+      "lineRange": {
+        "start": 766,
+        "end": 766
+      }
+    },
+    {
+      "kind": "privilege",
+      "category": "privsep-entrypoint",
+      "description": "nova.privsep.path.chown(",
+      "lineRange": {
+        "start": 768,
+        "end": 768
+      }
+    },
+    {
+      "kind": "privilege",
+      "category": "privsep-entrypoint",
+      "description": "nova.privsep.path.makedirs(VTPM_DIR)",
+      "lineRange": {
+        "start": 785,
+        "end": 785
+      }
+    },
+    {
+      "kind": "privilege",
+      "category": "privsep-entrypoint",
+      "description": "nova.privsep.path.chmod(VTPM_DIR, 0o711)",
+      "lineRange": {
+        "start": 786,
+        "end": 786
+      }
+    },
+    {
+      "kind": "privilege",
+      "category": "privsep-entrypoint",
+      "description": "nova.privsep.path.chown(swtpm_dir, uid, gid, recursive=True)",
+      "lineRange": {
+        "start": 797,
+        "end": 797
+      }
+    },
+    {
+      "kind": "privilege",
+      "category": "privsep-entrypoint",
+      "description": "nova.privsep.path.move_tree(swtpm_dir, VTPM_DIR)",
+      "lineRange": {
+        "start": 799,
+        "end": 799
+      }
+    }
+  ],
+  "injection_flags": [],
+  "warnings": []
+}

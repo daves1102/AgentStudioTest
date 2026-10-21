@@ -1,0 +1,516 @@
+{
+  "file": "src/nova/virt/osinfo.py",
+  "hash": "f9dd23e16cfc60325816ea5e6b5497732b9479d375692fbfebb8d952dfdac696",
+  "language": "Python",
+  "component": "nova",
+  "package": null,
+  "lines": {
+    "blank": 24,
+    "code": 101,
+    "comment": 22,
+    "total": 147
+  },
+  "symbols": [
+    {
+      "name": "libosinfo",
+      "kind": "variable",
+      "scope": "",
+      "lineRange": {
+        "start": 21,
+        "end": 21
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "LOG",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 22,
+        "end": 22
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "_OsInfoDatabase",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 31,
+        "end": 82
+      },
+      "source": "aee-inventory",
+      "exported": false
+    },
+    {
+      "name": "_instance",
+      "kind": "field",
+      "scope": "_OsInfoDatabase",
+      "lineRange": {
+        "start": 33,
+        "end": 33
+      },
+      "source": "aee-inventory",
+      "visibility": "private"
+    },
+    {
+      "name": "__init__",
+      "kind": "method",
+      "scope": "_OsInfoDatabase",
+      "lineRange": {
+        "start": 35,
+        "end": 49
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 13,
+      "ccn": 3,
+      "visibility": "public"
+    },
+    {
+      "name": "get_instance",
+      "kind": "method",
+      "scope": "_OsInfoDatabase",
+      "lineRange": {
+        "start": 52,
+        "end": 58
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "cls"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "cls._instance",
+          "line": 58
+        }
+      ],
+      "nloc": 4,
+      "ccn": 2,
+      "visibility": "public"
+    },
+    {
+      "name": "get_os",
+      "kind": "method",
+      "scope": "_OsInfoDatabase",
+      "lineRange": {
+        "start": 60,
+        "end": 82
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "os_name"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "",
+          "line": 72
+        },
+        {
+          "expr": "filtered.get_nth(0)",
+          "line": 82
+        }
+      ],
+      "nloc": 13,
+      "ccn": 5,
+      "visibility": "public"
+    },
+    {
+      "name": "OsInfo",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 85,
+        "end": 127
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "__init__",
+      "kind": "method",
+      "scope": "OsInfo",
+      "lineRange": {
+        "start": 89,
+        "end": 90
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "os_name"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "_get_os_obj",
+      "kind": "method",
+      "scope": "OsInfo",
+      "lineRange": {
+        "start": 92,
+        "end": 97
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "os_name"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "_OsInfoDatabase.get_instance().get_os(os_name)",
+          "line": 95
+        }
+      ],
+      "nloc": 6,
+      "ccn": 3,
+      "visibility": "private"
+    },
+    {
+      "name": "network_model",
+      "kind": "method",
+      "scope": "OsInfo",
+      "lineRange": {
+        "start": 100,
+        "end": 112
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "'virtio'",
+          "line": 109
+        },
+        {
+          "expr": "net_model",
+          "line": 112
+        }
+      ],
+      "nloc": 11,
+      "ccn": 5,
+      "visibility": "public"
+    },
+    {
+      "name": "disk_model",
+      "kind": "method",
+      "scope": "OsInfo",
+      "lineRange": {
+        "start": 115,
+        "end": 127
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "'virtio'",
+          "line": 124
+        },
+        {
+          "expr": "disk_model",
+          "line": 127
+        }
+      ],
+      "nloc": 11,
+      "ccn": 5,
+      "visibility": "public"
+    },
+    {
+      "name": "HardwareProperties",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 130,
+        "end": 147
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "__init__",
+      "kind": "method",
+      "scope": "HardwareProperties",
+      "lineRange": {
+        "start": 132,
+        "end": 137
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "image_meta"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 4,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "network_model",
+      "kind": "method",
+      "scope": "HardwareProperties",
+      "lineRange": {
+        "start": 140,
+        "end": 142
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "self.img_props.get('hw_vif_model', self.os_info_obj.network_model)",
+          "line": 141
+        }
+      ],
+      "nloc": 3,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "disk_model",
+      "kind": "method",
+      "scope": "HardwareProperties",
+      "lineRange": {
+        "start": 145,
+        "end": 147
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "self.img_props.get('hw_disk_bus', self.os_info_obj.disk_model)",
+          "line": 146
+        }
+      ],
+      "nloc": 3,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "get_instance",
+      "kind": "classmethod",
+      "scope": "_OsInfoDatabase",
+      "lineRange": {
+        "start": 51,
+        "end": 58
+      },
+      "visibility": "public",
+      "source": "manual"
+    },
+    {
+      "name": "network_model",
+      "kind": "property",
+      "scope": "OsInfo",
+      "lineRange": {
+        "start": 99,
+        "end": 112
+      },
+      "visibility": "public",
+      "source": "manual"
+    },
+    {
+      "name": "disk_model",
+      "kind": "property",
+      "scope": "OsInfo",
+      "lineRange": {
+        "start": 114,
+        "end": 127
+      },
+      "visibility": "public",
+      "source": "manual"
+    },
+    {
+      "name": "network_model",
+      "kind": "property",
+      "scope": "HardwareProperties",
+      "lineRange": {
+        "start": 139,
+        "end": 142
+      },
+      "visibility": "public",
+      "source": "manual"
+    },
+    {
+      "name": "disk_model",
+      "kind": "property",
+      "scope": "HardwareProperties",
+      "lineRange": {
+        "start": 144,
+        "end": 147
+      },
+      "visibility": "public",
+      "source": "manual"
+    }
+  ],
+  "referencedSymbols": [
+    {
+      "name": "logging.getLogger",
+      "usage": "call",
+      "via": "oslo_log",
+      "count": 1,
+      "lineRange": {
+        "start": 22,
+        "end": 22
+      }
+    },
+    {
+      "name": "object",
+      "usage": "inherit",
+      "via": null,
+      "count": 3,
+      "lineRange": {
+        "start": 31,
+        "end": 31
+      }
+    },
+    {
+      "name": "importutils.import_module",
+      "usage": "call",
+      "via": "oslo_utils",
+      "count": 1,
+      "lineRange": {
+        "start": 40,
+        "end": 40
+      }
+    },
+    {
+      "name": "exception.OsInfoNotFound",
+      "usage": "call",
+      "via": "nova",
+      "count": 2,
+      "lineRange": {
+        "start": 74,
+        "end": 74
+      }
+    }
+  ],
+  "dependencies": [
+    {
+      "style": "from",
+      "module": "oslo_log",
+      "names": [
+        {
+          "alias": "logging",
+          "name": "log"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 15,
+        "end": 15
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_utils",
+      "names": [
+        {
+          "alias": null,
+          "name": "importutils"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 16,
+        "end": 16
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "exception"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 18,
+        "end": 18
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.objects",
+      "names": [
+        {
+          "alias": null,
+          "name": "fields"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 19,
+        "end": 19
+      }
+    }
+  ],
+  "sideEffects": [
+    {
+      "kind": "global-mutation",
+      "target": "LOG = logging.getLogger(__name__)",
+      "lineRange": {
+        "start": 22,
+        "end": 22
+      }
+    }
+  ],
+  "securitySurface": [],
+  "injection_flags": [],
+  "warnings": []
+}

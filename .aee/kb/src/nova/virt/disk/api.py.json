@@ -1,0 +1,1898 @@
+{
+  "file": "src/nova/virt/disk/api.py",
+  "hash": "2dc83d1a70b3b6876b600805f86281334fee4741f64a095e1fbafca01b0cfb5b",
+  "language": "Python",
+  "component": "nova",
+  "package": null,
+  "lines": {
+    "blank": 140,
+    "code": 477,
+    "comment": 67,
+    "total": 684
+  },
+  "symbols": [
+    {
+      "name": "LOG",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 46,
+        "end": 46
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "CONF",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 48,
+        "end": 48
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "SUPPORTED_FS_TO_EXTEND",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 52,
+        "end": 52
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "mkfs",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 63,
+        "end": 66
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "os_type"
+        },
+        {
+          "name": "fs_label"
+        },
+        {
+          "name": "target"
+        },
+        {
+          "default": "True",
+          "name": "run_as_root"
+        },
+        {
+          "default": "None",
+          "name": "specified_fs"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 4,
+      "ccn": 1,
+      "exported": true
+    },
+    {
+      "name": "resize2fs",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 69,
+        "end": 86
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "image"
+        },
+        {
+          "default": "False",
+          "name": "check_exit_code"
+        },
+        {
+          "default": "False",
+          "name": "run_as_root"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 14,
+      "ccn": 4,
+      "exported": true
+    },
+    {
+      "name": "get_disk_info",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 89,
+        "end": 95
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "path"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "images.qemu_img_info(path)",
+          "line": 95
+        }
+      ],
+      "nloc": 2,
+      "ccn": 1,
+      "exported": true
+    },
+    {
+      "name": "get_disk_size",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 98,
+        "end": 105
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "path"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "images.qemu_img_info(path).virtual_size",
+          "line": 105
+        }
+      ],
+      "nloc": 2,
+      "ccn": 1,
+      "exported": true
+    },
+    {
+      "name": "extend",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 108,
+        "end": 170
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "image"
+        },
+        {
+          "name": "size"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "",
+          "line": 117
+        },
+        {
+          "expr": "",
+          "line": 120
+        },
+        {
+          "expr": "",
+          "line": 124
+        },
+        {
+          "expr": "",
+          "line": 144
+        },
+        {
+          "expr": "",
+          "line": 148
+        }
+      ],
+      "nloc": 32,
+      "ccn": 11,
+      "exported": true
+    },
+    {
+      "name": "safe_resize2fs",
+      "kind": "function",
+      "scope": "extend",
+      "lineRange": {
+        "start": 150,
+        "end": 157
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "dev"
+        },
+        {
+          "default": "False",
+          "name": "run_as_root"
+        },
+        {
+          "default": "lambda: None",
+          "name": "finally_call"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "visibility": "public"
+    },
+    {
+      "name": "can_resize_image",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 173,
+        "end": 187
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "image"
+        },
+        {
+          "name": "size"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "False",
+          "line": 186
+        },
+        {
+          "expr": "True",
+          "line": 187
+        }
+      ],
+      "nloc": 9,
+      "ccn": 2,
+      "exported": true
+    },
+    {
+      "name": "is_image_extendable",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 190,
+        "end": 230
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "image"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "True",
+          "line": 204
+        },
+        {
+          "expr": "False",
+          "line": 218
+        },
+        {
+          "expr": "False",
+          "line": 228
+        },
+        {
+          "expr": "True",
+          "line": 230
+        }
+      ],
+      "nloc": 29,
+      "ccn": 8,
+      "exported": true
+    },
+    {
+      "name": "_DiskImage",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 233,
+        "end": 331
+      },
+      "source": "aee-inventory",
+      "exported": false
+    },
+    {
+      "name": "tmp_prefix",
+      "kind": "field",
+      "scope": "_DiskImage",
+      "lineRange": {
+        "start": 236,
+        "end": 236
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "__init__",
+      "kind": "method",
+      "scope": "_DiskImage",
+      "lineRange": {
+        "start": 238,
+        "end": 261
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "image"
+        },
+        {
+          "default": "None",
+          "name": "partition"
+        },
+        {
+          "default": "None",
+          "name": "mount_dir"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 13,
+      "ccn": 3,
+      "visibility": "public"
+    },
+    {
+      "name": "_device_for_path",
+      "kind": "method",
+      "scope": "_DiskImage",
+      "lineRange": {
+        "start": 264,
+        "end": 273
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "path"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "device",
+          "line": 273
+        }
+      ],
+      "nloc": 10,
+      "ccn": 3,
+      "visibility": "private"
+    },
+    {
+      "name": "_reset",
+      "kind": "method",
+      "scope": "_DiskImage",
+      "lineRange": {
+        "start": 275,
+        "end": 283
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "device"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 7,
+      "ccn": 2,
+      "visibility": "private"
+    },
+    {
+      "name": "errors",
+      "kind": "method",
+      "scope": "_DiskImage",
+      "lineRange": {
+        "start": 286,
+        "end": 288
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "'\\n--\\n'.join([''] + self._errors)",
+          "line": 288
+        }
+      ],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "mount",
+      "kind": "method",
+      "scope": "_DiskImage",
+      "lineRange": {
+        "start": 290,
+        "end": 315
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "self._mounter.device",
+          "line": 311
+        },
+        {
+          "expr": "None",
+          "line": 315
+        }
+      ],
+      "nloc": 16,
+      "ccn": 4,
+      "visibility": "public"
+    },
+    {
+      "name": "umount",
+      "kind": "method",
+      "scope": "_DiskImage",
+      "lineRange": {
+        "start": 317,
+        "end": 321
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 4,
+      "ccn": 2,
+      "visibility": "public"
+    },
+    {
+      "name": "teardown",
+      "kind": "method",
+      "scope": "_DiskImage",
+      "lineRange": {
+        "start": 323,
+        "end": 331
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 8,
+      "ccn": 4,
+      "visibility": "public"
+    },
+    {
+      "name": "inject_data",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 336,
+        "end": 383
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "image"
+        },
+        {
+          "default": "None",
+          "name": "key"
+        },
+        {
+          "default": "None",
+          "name": "net"
+        },
+        {
+          "default": "None",
+          "name": "metadata"
+        },
+        {
+          "default": "None",
+          "name": "admin_password"
+        },
+        {
+          "default": "None",
+          "name": "files"
+        },
+        {
+          "default": "None",
+          "name": "partition"
+        },
+        {
+          "default": "()",
+          "name": "mandatory"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "False",
+          "line": 377
+        },
+        {
+          "expr": "inject_data_into_fs(fs, key, net, metadata, admin_password, files, mandatory)",
+          "line": 380
+        }
+      ],
+      "nloc": 23,
+      "ccn": 5,
+      "exported": true
+    },
+    {
+      "name": "setup_container",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 386,
+        "end": 406
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "image"
+        },
+        {
+          "name": "container_dir"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "dev",
+          "line": 406
+        }
+      ],
+      "nloc": 10,
+      "ccn": 2,
+      "exported": true
+    },
+    {
+      "name": "teardown_container",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 409,
+        "end": 431
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "container_dir"
+        },
+        {
+          "default": "None",
+          "name": "container_root_device"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 16,
+      "ccn": 5,
+      "exported": true
+    },
+    {
+      "name": "clean_lxc_namespace",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 434,
+        "end": 444
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "container_dir"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 6,
+      "ccn": 2,
+      "exported": true
+    },
+    {
+      "name": "inject_data_into_fs",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 447,
+        "end": 480
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "fs"
+        },
+        {
+          "name": "key"
+        },
+        {
+          "name": "net"
+        },
+        {
+          "name": "metadata"
+        },
+        {
+          "name": "admin_password"
+        },
+        {
+          "name": "files"
+        },
+        {
+          "default": "()",
+          "name": "mandatory"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "status",
+          "line": 480
+        }
+      ],
+      "nloc": 24,
+      "ccn": 5,
+      "exported": true
+    },
+    {
+      "name": "_inject_files_into_fs",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 483,
+        "end": 492
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "files"
+        },
+        {
+          "name": "fs"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 9,
+      "ccn": 5,
+      "exported": false
+    },
+    {
+      "name": "_inject_file_into_fs",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 495,
+        "end": 501
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "fs"
+        },
+        {
+          "name": "path"
+        },
+        {
+          "name": "contents"
+        },
+        {
+          "default": "False",
+          "name": "append"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 7,
+      "ccn": 2,
+      "exported": false
+    },
+    {
+      "name": "_inject_metadata_into_fs",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 504,
+        "end": 507
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "metadata"
+        },
+        {
+          "name": "fs"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 4,
+      "ccn": 1,
+      "exported": false
+    },
+    {
+      "name": "_setup_selinux_for_keys",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 510,
+        "end": 535
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "fs"
+        },
+        {
+          "name": "sshdir"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "",
+          "line": 514
+        }
+      ],
+      "nloc": 16,
+      "ccn": 5,
+      "exported": false
+    },
+    {
+      "name": "_inject_key_into_fs",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 538,
+        "end": 564
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "key"
+        },
+        {
+          "name": "fs"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 17,
+      "ccn": 1,
+      "exported": false
+    },
+    {
+      "name": "_inject_net_into_fs",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 567,
+        "end": 580
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "net"
+        },
+        {
+          "name": "fs"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 8,
+      "ccn": 1,
+      "exported": false
+    },
+    {
+      "name": "_inject_admin_password_into_fs",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 583,
+        "end": 611
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "admin_passwd"
+        },
+        {
+          "name": "fs"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 11,
+      "ccn": 1,
+      "exported": false
+    },
+    {
+      "name": "_generate_salt",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 614,
+        "end": 619
+      },
+      "source": "aee-inventory",
+      "parameters": [],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "''.join([random.choice(salt_set) for c in salt])",
+          "line": 619
+        }
+      ],
+      "nloc": 6,
+      "ccn": 2,
+      "exported": false
+    },
+    {
+      "name": "_set_passwd",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 622,
+        "end": 684
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "username"
+        },
+        {
+          "name": "admin_passwd"
+        },
+        {
+          "name": "passwd_data"
+        },
+        {
+          "name": "shadow_data"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "\"\\n\".join(new_shadow)",
+          "line": 684
+        }
+      ],
+      "nloc": 32,
+      "ccn": 7,
+      "exported": false
+    },
+    {
+      "name": "_device_for_path",
+      "kind": "staticmethod",
+      "scope": "_DiskImage",
+      "lineRange": {
+        "start": 263,
+        "end": 273
+      },
+      "visibility": "private",
+      "source": "manual"
+    },
+    {
+      "name": "errors",
+      "kind": "property",
+      "scope": "_DiskImage",
+      "lineRange": {
+        "start": 285,
+        "end": 288
+      },
+      "visibility": "public",
+      "source": "manual"
+    }
+  ],
+  "referencedSymbols": [
+    {
+      "name": "logging.getLogger",
+      "usage": "call",
+      "via": "oslo_log",
+      "count": 1,
+      "lineRange": {
+        "start": 46,
+        "end": 46
+      }
+    },
+    {
+      "name": "nova.privsep.fs.load_mkfs_command",
+      "usage": "call",
+      "via": "nova.conf",
+      "count": 1,
+      "lineRange": {
+        "start": 60,
+        "end": 60
+      }
+    },
+    {
+      "name": "nova.privsep.fs.configurable_mkfs",
+      "usage": "call",
+      "via": "nova.conf",
+      "count": 1,
+      "lineRange": {
+        "start": 64,
+        "end": 64
+      }
+    },
+    {
+      "name": "nova.privsep.fs.e2fsck",
+      "usage": "call",
+      "via": "nova.conf",
+      "count": 1,
+      "lineRange": {
+        "start": 74,
+        "end": 74
+      }
+    },
+    {
+      "name": "nova.privsep.fs.unprivileged_e2fsck",
+      "usage": "call",
+      "via": "nova.conf",
+      "count": 1,
+      "lineRange": {
+        "start": 76,
+        "end": 76
+      }
+    },
+    {
+      "name": "nova.privsep.fs.resize2fs",
+      "usage": "call",
+      "via": "nova.conf",
+      "count": 1,
+      "lineRange": {
+        "start": 84,
+        "end": 84
+      }
+    },
+    {
+      "name": "nova.privsep.fs.unprivileged_resize2fs",
+      "usage": "call",
+      "via": "nova.conf",
+      "count": 1,
+      "lineRange": {
+        "start": 86,
+        "end": 86
+      }
+    },
+    {
+      "name": "images.qemu_img_info",
+      "usage": "call",
+      "via": "nova.virt",
+      "count": 2,
+      "lineRange": {
+        "start": 95,
+        "end": 95
+      }
+    },
+    {
+      "name": "isinstance",
+      "usage": "call",
+      "via": null,
+      "count": 2,
+      "lineRange": {
+        "start": 116,
+        "end": 116
+      }
+    },
+    {
+      "name": "nova.privsep.libvirt.ploop_resize",
+      "usage": "call",
+      "via": "nova.conf",
+      "count": 1,
+      "lineRange": {
+        "start": 123,
+        "end": 123
+      }
+    },
+    {
+      "name": "exception.InvalidDiskFormat",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 139,
+        "end": 139
+      }
+    },
+    {
+      "name": "processutils.execute",
+      "usage": "call",
+      "via": "oslo_concurrency",
+      "count": 2,
+      "lineRange": {
+        "start": 140,
+        "end": 140
+      }
+    },
+    {
+      "name": "finally_call",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 157,
+        "end": 157
+      }
+    },
+    {
+      "name": "mount.Mount.instance_for_format",
+      "usage": "call",
+      "via": "nova.virt.disk.mount",
+      "count": 2,
+      "lineRange": {
+        "start": 163,
+        "end": 163
+      }
+    },
+    {
+      "name": "vfs.VFS.instance_for_image",
+      "usage": "call",
+      "via": "nova.virt.disk.vfs",
+      "count": 2,
+      "lineRange": {
+        "start": 201,
+        "end": 201
+      }
+    },
+    {
+      "name": "object",
+      "usage": "inherit",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 233,
+        "end": 233
+      }
+    },
+    {
+      "name": "os.path.realpath",
+      "usage": "call",
+      "via": "os",
+      "count": 1,
+      "lineRange": {
+        "start": 266,
+        "end": 266
+      }
+    },
+    {
+      "name": "open",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 267,
+        "end": 267
+      }
+    },
+    {
+      "name": "mount.Mount.instance_for_device",
+      "usage": "call",
+      "via": "nova.virt.disk.mount",
+      "count": 1,
+      "lineRange": {
+        "start": 277,
+        "end": 277
+      }
+    },
+    {
+      "name": "os.path.basename",
+      "usage": "call",
+      "via": "os",
+      "count": 1,
+      "lineRange": {
+        "start": 282,
+        "end": 282
+      }
+    },
+    {
+      "name": "_",
+      "usage": "call",
+      "via": "nova.i18n",
+      "count": 3,
+      "lineRange": {
+        "start": 299,
+        "end": 299
+      }
+    },
+    {
+      "name": "exception.NovaException",
+      "usage": "call",
+      "via": "nova",
+      "count": 4,
+      "lineRange": {
+        "start": 299,
+        "end": 299
+      }
+    },
+    {
+      "name": "tempfile.mkdtemp",
+      "usage": "call",
+      "via": "tempfile",
+      "count": 1,
+      "lineRange": {
+        "start": 302,
+        "end": 302
+      }
+    },
+    {
+      "name": "os.rmdir",
+      "usage": "call",
+      "via": "os",
+      "count": 1,
+      "lineRange": {
+        "start": 331,
+        "end": 331
+      }
+    },
+    {
+      "name": "nova.privsep.fs.loopremove",
+      "usage": "call",
+      "via": "nova.conf",
+      "count": 1,
+      "lineRange": {
+        "start": 423,
+        "end": 423
+      }
+    },
+    {
+      "name": "nova.privsep.fs.nbd_disconnect",
+      "usage": "call",
+      "via": "nova.conf",
+      "count": 1,
+      "lineRange": {
+        "start": 426,
+        "end": 426
+      }
+    },
+    {
+      "name": "inject_func",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 473,
+        "end": 473
+      }
+    },
+    {
+      "name": "os.path.dirname",
+      "usage": "call",
+      "via": "os",
+      "count": 1,
+      "lineRange": {
+        "start": 486,
+        "end": 486
+      }
+    },
+    {
+      "name": "len",
+      "usage": "call",
+      "via": null,
+      "count": 2,
+      "lineRange": {
+        "start": 487,
+        "end": 487
+      }
+    },
+    {
+      "name": "jsonutils.dumps",
+      "usage": "call",
+      "via": "oslo_serialization",
+      "count": 1,
+      "lineRange": {
+        "start": 507,
+        "end": 507
+      }
+    },
+    {
+      "name": "os.path.join",
+      "usage": "call",
+      "via": "os",
+      "count": 10,
+      "lineRange": {
+        "start": 513,
+        "end": 513
+      }
+    },
+    {
+      "name": "random.choice",
+      "usage": "call",
+      "via": "random",
+      "count": 1,
+      "lineRange": {
+        "start": 619,
+        "end": 619
+      }
+    },
+    {
+      "name": "secretutils.crypt_password",
+      "usage": "call",
+      "via": "oslo_utils",
+      "count": 2,
+      "lineRange": {
+        "start": 648,
+        "end": 648
+      }
+    },
+    {
+      "name": "list",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 670,
+        "end": 670
+      }
+    }
+  ],
+  "dependencies": [
+    {
+      "style": "import",
+      "module": "os",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 26,
+        "end": 26
+      }
+    },
+    {
+      "style": "import",
+      "module": "random",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 27,
+        "end": 27
+      }
+    },
+    {
+      "style": "import",
+      "module": "tempfile",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 28,
+        "end": 28
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_concurrency",
+      "names": [
+        {
+          "alias": null,
+          "name": "processutils"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 30,
+        "end": 30
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_log",
+      "names": [
+        {
+          "alias": "logging",
+          "name": "log"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 31,
+        "end": 31
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_serialization",
+      "names": [
+        {
+          "alias": null,
+          "name": "jsonutils"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 32,
+        "end": 32
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_utils",
+      "names": [
+        {
+          "alias": null,
+          "name": "secretutils"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 33,
+        "end": 33
+      }
+    },
+    {
+      "style": "import",
+      "module": "nova.conf",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 35,
+        "end": 35
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "exception"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 36,
+        "end": 36
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.i18n",
+      "names": [
+        {
+          "alias": null,
+          "name": "_"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 37,
+        "end": 37
+      }
+    },
+    {
+      "style": "import",
+      "module": "nova.privsep.fs",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 38,
+        "end": 38
+      }
+    },
+    {
+      "style": "import",
+      "module": "nova.privsep.libvirt",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 39,
+        "end": 39
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.virt.disk.mount",
+      "names": [
+        {
+          "alias": "mount",
+          "name": "api"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 40,
+        "end": 40
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.virt.disk.vfs",
+      "names": [
+        {
+          "alias": "vfs",
+          "name": "api"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 41,
+        "end": 41
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.virt.image",
+      "names": [
+        {
+          "alias": "imgmodel",
+          "name": "model"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 42,
+        "end": 42
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.virt",
+      "names": [
+        {
+          "alias": null,
+          "name": "images"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 43,
+        "end": 43
+      }
+    }
+  ],
+  "sideEffects": [
+    {
+      "kind": "process-spawn",
+      "target": "import nova.privsep.fs",
+      "lineRange": {
+        "start": 38,
+        "end": 38
+      }
+    },
+    {
+      "kind": "process-spawn",
+      "target": "import nova.privsep.libvirt",
+      "lineRange": {
+        "start": 39,
+        "end": 39
+      }
+    },
+    {
+      "kind": "process-spawn",
+      "target": "SUPPORTED_FS_TO_EXTEND = nova.privsep.fs.SUPPORTED_FS_TO_EXTEND",
+      "lineRange": {
+        "start": 52,
+        "end": 52
+      }
+    },
+    {
+      "kind": "process-spawn",
+      "target": "nova.privsep.fs.load_mkfs_command(os_type, mkfs_command)",
+      "lineRange": {
+        "start": 60,
+        "end": 60
+      }
+    },
+    {
+      "kind": "process-spawn",
+      "target": "nova.privsep.fs.configurable_mkfs(",
+      "lineRange": {
+        "start": 64,
+        "end": 64
+      }
+    },
+    {
+      "kind": "process-spawn",
+      "target": "nova.privsep.fs.e2fsck(image)",
+      "lineRange": {
+        "start": 74,
+        "end": 74
+      }
+    },
+    {
+      "kind": "process-spawn",
+      "target": "nova.privsep.fs.unprivileged_e2fsck(image)",
+      "lineRange": {
+        "start": 76,
+        "end": 76
+      }
+    },
+    {
+      "kind": "process-spawn",
+      "target": "nova.privsep.fs.resize2fs(image, check_exit_code)",
+      "lineRange": {
+        "start": 84,
+        "end": 84
+      }
+    },
+    {
+      "kind": "process-spawn",
+      "target": "nova.privsep.fs.unprivileged_resize2fs(image, check_exit_code)",
+      "lineRange": {
+        "start": 86,
+        "end": 86
+      }
+    },
+    {
+      "kind": "process-spawn",
+      "target": "nova.privsep.libvirt.ploop_resize(image.path, size)",
+      "lineRange": {
+        "start": 123,
+        "end": 123
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "path = os.path.realpath(path)",
+      "lineRange": {
+        "start": 266,
+        "end": 266
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "with open(\"/proc/mounts\", 'r') as ifp:",
+      "lineRange": {
+        "start": 267,
+        "end": 267
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "mount_name = os.path.basename(self.mount_dir or '')",
+      "lineRange": {
+        "start": 282,
+        "end": 282
+      }
+    },
+    {
+      "kind": "syscall",
+      "target": "def mount(self):",
+      "lineRange": {
+        "start": 290,
+        "end": 290
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "self.mount_dir = tempfile.mkdtemp(prefix=self.tmp_prefix)",
+      "lineRange": {
+        "start": 302,
+        "end": 302
+      }
+    },
+    {
+      "kind": "syscall",
+      "target": "if mounter.do_mount():",
+      "lineRange": {
+        "start": 309,
+        "end": 309
+      }
+    },
+    {
+      "kind": "syscall",
+      "target": "def umount(self):",
+      "lineRange": {
+        "start": 317,
+        "end": 317
+      }
+    },
+    {
+      "kind": "syscall",
+      "target": "self._mounter.do_umount()",
+      "lineRange": {
+        "start": 320,
+        "end": 320
+      }
+    },
+    {
+      "kind": "syscall",
+      "target": "dev = img.mount()",
+      "lineRange": {
+        "start": 398,
+        "end": 398
+      }
+    },
+    {
+      "kind": "process-spawn",
+      "target": "nova.privsep.fs.loopremove(container_root_device)",
+      "lineRange": {
+        "start": 423,
+        "end": 423
+      }
+    },
+    {
+      "kind": "process-spawn",
+      "target": "nova.privsep.fs.nbd_disconnect(container_root_device)",
+      "lineRange": {
+        "start": 426,
+        "end": 426
+      }
+    },
+    {
+      "kind": "syscall",
+      "target": "img.umount()",
+      "lineRange": {
+        "start": 442,
+        "end": 442
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "parent_dir = os.path.dirname(path)",
+      "lineRange": {
+        "start": 486,
+        "end": 486
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "if not fs.has_file(os.path.join(\"etc\", \"selinux\")):",
+      "lineRange": {
+        "start": 513,
+        "end": 513
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "rclocal = os.path.join('etc', 'rc.local')",
+      "lineRange": {
+        "start": 516,
+        "end": 516
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "rc_d = os.path.join('etc', 'rc.d')",
+      "lineRange": {
+        "start": 517,
+        "end": 517
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "rclocal = os.path.join(rc_d, 'rc.local')",
+      "lineRange": {
+        "start": 520,
+        "end": 520
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "sshdir = os.path.join('root', '.ssh')",
+      "lineRange": {
+        "start": 546,
+        "end": 546
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "keyfile = os.path.join(sshdir, 'authorized_keys')",
+      "lineRange": {
+        "start": 551,
+        "end": 551
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "netdir = os.path.join('etc', 'network')",
+      "lineRange": {
+        "start": 574,
+        "end": 574
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "netfile = os.path.join('etc', 'network', 'interfaces')",
+      "lineRange": {
+        "start": 579,
+        "end": 579
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "passwd_path = os.path.join('etc', 'passwd')",
+      "lineRange": {
+        "start": 602,
+        "end": 602
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "shadow_path = os.path.join('etc', 'shadow')",
+      "lineRange": {
+        "start": 603,
+        "end": 603
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "LOG = logging.getLogger(__name__)",
+      "lineRange": {
+        "start": 46,
+        "end": 46
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "CONF = nova.conf.CONF",
+      "lineRange": {
+        "start": 48,
+        "end": 48
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "SUPPORTED_FS_TO_EXTEND = nova.privsep.fs.SUPPORTED_FS_TO_EXTEND",
+      "lineRange": {
+        "start": 52,
+        "end": 52
+      }
+    }
+  ],
+  "securitySurface": [
+    {
+      "kind": "privilege",
+      "category": "privsep-entrypoint",
+      "description": "import nova.privsep.fs",
+      "lineRange": {
+        "start": 38,
+        "end": 38
+      }
+    },
+    {
+      "kind": "privilege",
+      "category": "privsep-entrypoint",
+      "description": "import nova.privsep.libvirt",
+      "lineRange": {
+        "start": 39,
+        "end": 39
+      }
+    },
+    {
+      "kind": "privilege",
+      "category": "privsep-entrypoint",
+      "description": "SUPPORTED_FS_TO_EXTEND = nova.privsep.fs.SUPPORTED_FS_TO_EXTEND",
+      "lineRange": {
+        "start": 52,
+        "end": 52
+      }
+    },
+    {
+      "kind": "privilege",
+      "category": "privsep-entrypoint",
+      "description": "nova.privsep.fs.load_mkfs_command(os_type, mkfs_command)",
+      "lineRange": {
+        "start": 60,
+        "end": 60
+      }
+    },
+    {
+      "kind": "privilege",
+      "category": "privsep-entrypoint",
+      "description": "nova.privsep.fs.configurable_mkfs(",
+      "lineRange": {
+        "start": 64,
+        "end": 64
+      }
+    },
+    {
+      "kind": "privilege",
+      "category": "privsep-entrypoint",
+      "description": "nova.privsep.fs.e2fsck(image)",
+      "lineRange": {
+        "start": 74,
+        "end": 74
+      }
+    },
+    {
+      "kind": "privilege",
+      "category": "privsep-entrypoint",
+      "description": "nova.privsep.fs.unprivileged_e2fsck(image)",
+      "lineRange": {
+        "start": 76,
+        "end": 76
+      }
+    },
+    {
+      "kind": "privilege",
+      "category": "privsep-entrypoint",
+      "description": "nova.privsep.fs.resize2fs(image, check_exit_code)",
+      "lineRange": {
+        "start": 84,
+        "end": 84
+      }
+    },
+    {
+      "kind": "privilege",
+      "category": "privsep-entrypoint",
+      "description": "nova.privsep.fs.unprivileged_resize2fs(image, check_exit_code)",
+      "lineRange": {
+        "start": 86,
+        "end": 86
+      }
+    },
+    {
+      "kind": "privilege",
+      "category": "privsep-entrypoint",
+      "description": "nova.privsep.libvirt.ploop_resize(image.path, size)",
+      "lineRange": {
+        "start": 123,
+        "end": 123
+      }
+    },
+    {
+      "kind": "privilege",
+      "category": "privsep-entrypoint",
+      "description": "nova.privsep.fs.loopremove(container_root_device)",
+      "lineRange": {
+        "start": 423,
+        "end": 423
+      }
+    },
+    {
+      "kind": "privilege",
+      "category": "privsep-entrypoint",
+      "description": "nova.privsep.fs.nbd_disconnect(container_root_device)",
+      "lineRange": {
+        "start": 426,
+        "end": 426
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "restorecon.insert(0, '#!/bin/sh')",
+      "lineRange": {
+        "start": 532,
+        "end": 532
+      }
+    }
+  ],
+  "injection_flags": [],
+  "warnings": []
+}

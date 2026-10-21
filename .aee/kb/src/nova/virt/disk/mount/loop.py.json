@@ -1,0 +1,305 @@
+{
+  "file": "src/nova/virt/disk/mount/loop.py",
+  "hash": "77881578f85d929ab21a23d1200aa352f84614fb3f193c1f5a37682354dbcfc0",
+  "language": "Python",
+  "component": "nova",
+  "package": null,
+  "lines": {
+    "blank": 10,
+    "code": 30,
+    "comment": 20,
+    "total": 60
+  },
+  "symbols": [
+    {
+      "name": "LOG",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 22,
+        "end": 22
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "LoopMount",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 25,
+        "end": 60
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "mode",
+      "kind": "field",
+      "scope": "LoopMount",
+      "lineRange": {
+        "start": 27,
+        "end": 27
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "_inner_get_dev",
+      "kind": "method",
+      "scope": "LoopMount",
+      "lineRange": {
+        "start": 29,
+        "end": 41
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "False",
+          "line": 36
+        },
+        {
+          "expr": "True",
+          "line": 41
+        }
+      ],
+      "nloc": 12,
+      "ccn": 2,
+      "visibility": "private"
+    },
+    {
+      "name": "get_dev",
+      "kind": "method",
+      "scope": "LoopMount",
+      "lineRange": {
+        "start": 43,
+        "end": 48
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "self._get_dev_retry_helper()",
+          "line": 48
+        }
+      ],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "unget_dev",
+      "kind": "method",
+      "scope": "LoopMount",
+      "lineRange": {
+        "start": 50,
+        "end": 60
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "",
+          "line": 52
+        }
+      ],
+      "nloc": 7,
+      "ccn": 2,
+      "visibility": "public"
+    }
+  ],
+  "referencedSymbols": [
+    {
+      "name": "logging.getLogger",
+      "usage": "call",
+      "via": "oslo_log",
+      "count": 1,
+      "lineRange": {
+        "start": 22,
+        "end": 22
+      }
+    },
+    {
+      "name": "api.Mount",
+      "usage": "inherit",
+      "via": "nova.virt.disk.mount",
+      "count": 1,
+      "lineRange": {
+        "start": 25,
+        "end": 25
+      }
+    },
+    {
+      "name": "nova.privsep.fs.loopsetup",
+      "usage": "call",
+      "via": "nova.privsep.fs",
+      "count": 1,
+      "lineRange": {
+        "start": 30,
+        "end": 30
+      }
+    },
+    {
+      "name": "_",
+      "usage": "call",
+      "via": "nova.i18n",
+      "count": 1,
+      "lineRange": {
+        "start": 32,
+        "end": 32
+      }
+    },
+    {
+      "name": "nova.privsep.fs.loopremove",
+      "usage": "call",
+      "via": "nova.privsep.fs",
+      "count": 1,
+      "lineRange": {
+        "start": 58,
+        "end": 58
+      }
+    }
+  ],
+  "dependencies": [
+    {
+      "style": "from",
+      "module": "oslo_log",
+      "names": [
+        {
+          "alias": "logging",
+          "name": "log"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 16,
+        "end": 16
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.i18n",
+      "names": [
+        {
+          "alias": null,
+          "name": "_"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 18,
+        "end": 18
+      }
+    },
+    {
+      "style": "import",
+      "module": "nova.privsep.fs",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 19,
+        "end": 19
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.virt.disk.mount",
+      "names": [
+        {
+          "alias": null,
+          "name": "api"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 20,
+        "end": 20
+      }
+    }
+  ],
+  "sideEffects": [
+    {
+      "kind": "process-spawn",
+      "target": "import nova.privsep.fs",
+      "lineRange": {
+        "start": 19,
+        "end": 19
+      }
+    },
+    {
+      "kind": "process-spawn",
+      "target": "out, err = nova.privsep.fs.loopsetup(self.image.path)",
+      "lineRange": {
+        "start": 30,
+        "end": 30
+      }
+    },
+    {
+      "kind": "process-spawn",
+      "target": "nova.privsep.fs.loopremove(self.device)",
+      "lineRange": {
+        "start": 58,
+        "end": 58
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "LOG = logging.getLogger(__name__)",
+      "lineRange": {
+        "start": 22,
+        "end": 22
+      }
+    }
+  ],
+  "securitySurface": [
+    {
+      "kind": "privilege",
+      "category": "privsep-entrypoint",
+      "description": "import nova.privsep.fs",
+      "lineRange": {
+        "start": 19,
+        "end": 19
+      }
+    },
+    {
+      "kind": "privilege",
+      "category": "privsep-entrypoint",
+      "description": "out, err = nova.privsep.fs.loopsetup(self.image.path)",
+      "lineRange": {
+        "start": 30,
+        "end": 30
+      }
+    },
+    {
+      "kind": "privilege",
+      "category": "privsep-entrypoint",
+      "description": "nova.privsep.fs.loopremove(self.device)",
+      "lineRange": {
+        "start": 58,
+        "end": 58
+      }
+    }
+  ],
+  "injection_flags": [],
+  "warnings": []
+}

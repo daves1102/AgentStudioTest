@@ -1,0 +1,2534 @@
+{
+  "file": "src/nova/virt/libvirt/guest.py",
+  "hash": "fa77db6535a7f78d81de0c876e44dfa8890eff30043e41b2b5798823ab8a3d5b",
+  "language": "Python",
+  "component": "nova",
+  "package": null,
+  "lines": {
+    "blank": 158,
+    "code": 734,
+    "comment": 99,
+    "total": 991
+  },
+  "symbols": [
+    {
+      "name": "libvirt",
+      "kind": "variable",
+      "scope": "",
+      "lineRange": {
+        "start": 48,
+        "end": 48
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "libvirtmod_qemu",
+      "kind": "variable",
+      "scope": "",
+      "lineRange": {
+        "start": 53,
+        "end": 53
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "LOG",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 56,
+        "end": 56
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "VIR_DOMAIN_NOSTATE",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 58,
+        "end": 58
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "VIR_DOMAIN_RUNNING",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 59,
+        "end": 59
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "VIR_DOMAIN_BLOCKED",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 60,
+        "end": 60
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "VIR_DOMAIN_PAUSED",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 61,
+        "end": 61
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "VIR_DOMAIN_SHUTDOWN",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 62,
+        "end": 62
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "VIR_DOMAIN_SHUTOFF",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 63,
+        "end": 63
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "VIR_DOMAIN_CRASHED",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 64,
+        "end": 64
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "VIR_DOMAIN_PMSUSPENDED",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 65,
+        "end": 65
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "LIBVIRT_POWER_STATE",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 67,
+        "end": 83
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "VIR_DOMAIN_BLOCK_JOB_TYPE_UNKNOWN",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 86,
+        "end": 86
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "VIR_DOMAIN_BLOCK_JOB_TYPE_PULL",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 87,
+        "end": 87
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "VIR_DOMAIN_BLOCK_JOB_TYPE_COPY",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 88,
+        "end": 88
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "VIR_DOMAIN_BLOCK_JOB_TYPE_COMMIT",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 89,
+        "end": 89
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "VIR_DOMAIN_BLOCK_JOB_TYPE_ACTIVE_COMMIT",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 90,
+        "end": 90
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "VIR_DOMAIN_BLOCK_JOB_TYPE_BACKUP",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 91,
+        "end": 91
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "VIR_DOMAIN_BLOCK_JOB_TYPE_LAST",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 92,
+        "end": 92
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "LIBVIRT_BLOCK_JOB_TYPE",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 94,
+        "end": 102
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "Guest",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 105,
+        "end": 725
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "__init__",
+      "kind": "method",
+      "scope": "Guest",
+      "lineRange": {
+        "start": 107,
+        "end": 108
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "domain"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "__repr__",
+      "kind": "method",
+      "scope": "Guest",
+      "lineRange": {
+        "start": 110,
+        "end": 115
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "\"<Guest %(id)d %(name)s %(uuid)s>\" % { 'id': self.id, 'name': self.name, 'uuid': self.uuid }",
+          "line": 111
+        }
+      ],
+      "nloc": 6,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "id",
+      "kind": "method",
+      "scope": "Guest",
+      "lineRange": {
+        "start": 118,
+        "end": 119
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "self._domain.ID()",
+          "line": 119
+        }
+      ],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "uuid",
+      "kind": "method",
+      "scope": "Guest",
+      "lineRange": {
+        "start": 122,
+        "end": 123
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "self._domain.UUIDString()",
+          "line": 123
+        }
+      ],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "name",
+      "kind": "method",
+      "scope": "Guest",
+      "lineRange": {
+        "start": 126,
+        "end": 127
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "self._domain.name()",
+          "line": 127
+        }
+      ],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "_encoded_xml",
+      "kind": "method",
+      "scope": "Guest",
+      "lineRange": {
+        "start": 130,
+        "end": 131
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "encodeutils.safe_decode(self._domain.XMLDesc(0))",
+          "line": 131
+        }
+      ],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "create",
+      "kind": "method",
+      "scope": "Guest",
+      "lineRange": {
+        "start": 134,
+        "end": 150
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "cls"
+        },
+        {
+          "name": "xml"
+        },
+        {
+          "name": "host"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "guest",
+          "line": 150
+        }
+      ],
+      "nloc": 10,
+      "ccn": 3,
+      "visibility": "public"
+    },
+    {
+      "name": "launch",
+      "kind": "method",
+      "scope": "Guest",
+      "lineRange": {
+        "start": 152,
+        "end": 163
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "default": "False",
+          "name": "pause"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "self._domain.createWithFlags(flags)",
+          "line": 159
+        }
+      ],
+      "nloc": 8,
+      "ccn": 4,
+      "visibility": "public"
+    },
+    {
+      "name": "poweroff",
+      "kind": "method",
+      "scope": "Guest",
+      "lineRange": {
+        "start": 165,
+        "end": 167
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "sync_guest_time",
+      "kind": "method",
+      "scope": "Guest",
+      "lineRange": {
+        "start": 169,
+        "end": 207
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 27,
+      "ccn": 6,
+      "visibility": "public"
+    },
+    {
+      "name": "inject_nmi",
+      "kind": "method",
+      "scope": "Guest",
+      "lineRange": {
+        "start": 209,
+        "end": 211
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "resume",
+      "kind": "method",
+      "scope": "Guest",
+      "lineRange": {
+        "start": 213,
+        "end": 215
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "get_interfaces",
+      "kind": "method",
+      "scope": "Guest",
+      "lineRange": {
+        "start": 217,
+        "end": 232
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "[]",
+          "line": 224
+        },
+        {
+          "expr": "interfaces",
+          "line": 232
+        }
+      ],
+      "nloc": 11,
+      "ccn": 3,
+      "visibility": "public"
+    },
+    {
+      "name": "get_interface_by_cfg",
+      "kind": "method",
+      "scope": "Guest",
+      "lineRange": {
+        "start": 234,
+        "end": 280
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "cfg",
+          "type": "vconfig.LibvirtConfigGuestDevice"
+        },
+        {
+          "default": "False",
+          "name": "from_persistent_config",
+          "type": "bool"
+        }
+      ],
+      "returnType": "vconfig.LibvirtConfigGuestDevice | None",
+      "returns": [
+        {
+          "expr": "None",
+          "line": 256
+        },
+        {
+          "expr": "interface",
+          "line": 269
+        },
+        {
+          "expr": "None",
+          "line": 280
+        }
+      ],
+      "nloc": 21,
+      "ccn": 5,
+      "visibility": "public"
+    },
+    {
+      "name": "get_vcpus_info",
+      "kind": "method",
+      "scope": "Guest",
+      "lineRange": {
+        "start": 282,
+        "end": 290
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 5,
+      "ccn": 2,
+      "visibility": "public"
+    },
+    {
+      "name": "delete_configuration",
+      "kind": "method",
+      "scope": "Guest",
+      "lineRange": {
+        "start": 292,
+        "end": 331
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "default": "False",
+          "name": "keep_vtpm"
+        },
+        {
+          "default": "False",
+          "name": "keep_nvram"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 21,
+      "ccn": 7,
+      "visibility": "public"
+    },
+    {
+      "name": "has_persistent_configuration",
+      "kind": "method",
+      "scope": "Guest",
+      "lineRange": {
+        "start": 333,
+        "end": 335
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "self._domain.isPersistent()",
+          "line": 335
+        }
+      ],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "attach_device",
+      "kind": "method",
+      "scope": "Guest",
+      "lineRange": {
+        "start": 337,
+        "end": 352
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "conf"
+        },
+        {
+          "default": "False",
+          "name": "persistent"
+        },
+        {
+          "default": "False",
+          "name": "live"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 6,
+      "ccn": 5,
+      "visibility": "public"
+    },
+    {
+      "name": "set_metadata",
+      "kind": "method",
+      "scope": "Guest",
+      "lineRange": {
+        "start": 354,
+        "end": 374
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "metadata"
+        },
+        {
+          "default": "False",
+          "name": "persistent"
+        },
+        {
+          "default": "False",
+          "name": "live"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 8,
+      "ccn": 5,
+      "visibility": "public"
+    },
+    {
+      "name": "get_config",
+      "kind": "method",
+      "scope": "Guest",
+      "lineRange": {
+        "start": 376,
+        "end": 383
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "config",
+          "line": 383
+        }
+      ],
+      "nloc": 4,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "get_disk",
+      "kind": "method",
+      "scope": "Guest",
+      "lineRange": {
+        "start": 385,
+        "end": 419
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "device",
+          "type": "str"
+        },
+        {
+          "default": "False",
+          "name": "from_persistent_config",
+          "type": "bool"
+        }
+      ],
+      "returnType": "vconfig.LibvirtConfigGuestDisk | None",
+      "returns": [
+        {
+          "expr": "None",
+          "line": 404
+        },
+        {
+          "expr": "conf",
+          "line": 417
+        },
+        {
+          "expr": "None",
+          "line": 419
+        }
+      ],
+      "nloc": 20,
+      "ccn": 5,
+      "visibility": "public"
+    },
+    {
+      "name": "get_all_disks",
+      "kind": "method",
+      "scope": "Guest",
+      "lineRange": {
+        "start": 421,
+        "end": 427
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "self.get_all_devices(vconfig.LibvirtConfigGuestDisk)",
+          "line": 427
+        }
+      ],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "get_device_by_alias",
+      "kind": "method",
+      "scope": "Guest",
+      "lineRange": {
+        "start": 429,
+        "end": 433
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "devalias"
+        },
+        {
+          "default": "None",
+          "name": "devtype"
+        },
+        {
+          "default": "False",
+          "name": "from_persistent_config"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "dev",
+          "line": 433
+        }
+      ],
+      "nloc": 5,
+      "ccn": 4,
+      "visibility": "public"
+    },
+    {
+      "name": "get_all_devices",
+      "kind": "method",
+      "scope": "Guest",
+      "lineRange": {
+        "start": 435,
+        "end": 465
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "default": "None",
+          "name": "devtype",
+          "type": "vconfig.LibvirtConfigGuestDevice"
+        },
+        {
+          "default": "False",
+          "name": "from_persistent_config",
+          "type": "bool"
+        }
+      ],
+      "returnType": "list[vconfig.LibvirtConfigGuestDevice]",
+      "returns": [
+        {
+          "expr": "[]",
+          "line": 458
+        },
+        {
+          "expr": "devs",
+          "line": 465
+        }
+      ],
+      "nloc": 20,
+      "ccn": 6,
+      "visibility": "public"
+    },
+    {
+      "name": "detach_device",
+      "kind": "method",
+      "scope": "Guest",
+      "lineRange": {
+        "start": 467,
+        "end": 482
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "conf"
+        },
+        {
+          "default": "False",
+          "name": "persistent"
+        },
+        {
+          "default": "False",
+          "name": "live"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 6,
+      "ccn": 5,
+      "visibility": "public"
+    },
+    {
+      "name": "get_xml_desc",
+      "kind": "method",
+      "scope": "Guest",
+      "lineRange": {
+        "start": 484,
+        "end": 497
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "default": "False",
+          "name": "dump_inactive"
+        },
+        {
+          "default": "False",
+          "name": "dump_sensitive"
+        },
+        {
+          "default": "False",
+          "name": "dump_migratable"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "self._domain.XMLDesc(flags=flags)",
+          "line": 497
+        }
+      ],
+      "nloc": 6,
+      "ccn": 7,
+      "visibility": "public"
+    },
+    {
+      "name": "save_memory_state",
+      "kind": "method",
+      "scope": "Guest",
+      "lineRange": {
+        "start": 499,
+        "end": 504
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "get_block_device",
+      "kind": "method",
+      "scope": "Guest",
+      "lineRange": {
+        "start": 506,
+        "end": 508
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "disk"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "BlockDevice(self, disk)",
+          "line": 508
+        }
+      ],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "set_user_password",
+      "kind": "method",
+      "scope": "Guest",
+      "lineRange": {
+        "start": 510,
+        "end": 512
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "user"
+        },
+        {
+          "name": "new_pass"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "_get_domain_info",
+      "kind": "method",
+      "scope": "Guest",
+      "lineRange": {
+        "start": 514,
+        "end": 519
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "self._domain.info()",
+          "line": 519
+        }
+      ],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "get_info",
+      "kind": "method",
+      "scope": "Guest",
+      "lineRange": {
+        "start": 521,
+        "end": 546
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "host"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "hardware.InstanceInfo( state=LIBVIRT_POWER_STATE[dom_info[0]], internal_id=self.id)",
+          "line": 544
+        }
+      ],
+      "nloc": 16,
+      "ccn": 3,
+      "visibility": "public"
+    },
+    {
+      "name": "get_power_state",
+      "kind": "method",
+      "scope": "Guest",
+      "lineRange": {
+        "start": 548,
+        "end": 549
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "host"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "self.get_info(host).state",
+          "line": 549
+        }
+      ],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "is_active",
+      "kind": "method",
+      "scope": "Guest",
+      "lineRange": {
+        "start": 551,
+        "end": 553
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "self._domain.isActive()",
+          "line": 553
+        }
+      ],
+      "nloc": 3,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "freeze_filesystems",
+      "kind": "method",
+      "scope": "Guest",
+      "lineRange": {
+        "start": 555,
+        "end": 557
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "thaw_filesystems",
+      "kind": "method",
+      "scope": "Guest",
+      "lineRange": {
+        "start": 559,
+        "end": 561
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "snapshot",
+      "kind": "method",
+      "scope": "Guest",
+      "lineRange": {
+        "start": 563,
+        "end": 583
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "conf"
+        },
+        {
+          "default": "False",
+          "name": "no_metadata"
+        },
+        {
+          "default": "False",
+          "name": "disk_only"
+        },
+        {
+          "default": "False",
+          "name": "reuse_ext"
+        },
+        {
+          "default": "False",
+          "name": "quiesce"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 11,
+      "ccn": 9,
+      "visibility": "public"
+    },
+    {
+      "name": "shutdown",
+      "kind": "method",
+      "scope": "Guest",
+      "lineRange": {
+        "start": 585,
+        "end": 587
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "pause",
+      "kind": "method",
+      "scope": "Guest",
+      "lineRange": {
+        "start": 589,
+        "end": 598
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "migrate",
+      "kind": "method",
+      "scope": "Guest",
+      "lineRange": {
+        "start": 600,
+        "end": 663
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "destination"
+        },
+        {
+          "default": "None",
+          "name": "migrate_uri"
+        },
+        {
+          "default": "None",
+          "name": "migrate_disks"
+        },
+        {
+          "default": "None",
+          "name": "destination_xml"
+        },
+        {
+          "default": "0",
+          "name": "flags"
+        },
+        {
+          "default": "0",
+          "name": "bandwidth"
+        },
+        {
+          "default": "0",
+          "name": "parallel"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 19,
+      "ccn": 7,
+      "visibility": "public"
+    },
+    {
+      "name": "abort_job",
+      "kind": "method",
+      "scope": "Guest",
+      "lineRange": {
+        "start": 665,
+        "end": 667
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "migrate_configure_max_downtime",
+      "kind": "method",
+      "scope": "Guest",
+      "lineRange": {
+        "start": 669,
+        "end": 674
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mstime"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "migrate_start_postcopy",
+      "kind": "method",
+      "scope": "Guest",
+      "lineRange": {
+        "start": 676,
+        "end": 678
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "announce_self",
+      "kind": "method",
+      "scope": "Guest",
+      "lineRange": {
+        "start": 680,
+        "end": 682
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 3,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "get_job_info",
+      "kind": "method",
+      "scope": "Guest",
+      "lineRange": {
+        "start": 684,
+        "end": 725
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "JobInfo(**stats)",
+          "line": 695
+        },
+        {
+          "expr": "JobInfo._get_job_stats_compat(self._domain)",
+          "line": 702
+        },
+        {
+          "expr": "JobInfo(type=libvirt.VIR_DOMAIN_JOB_COMPLETED)",
+          "line": 709
+        },
+        {
+          "expr": "JobInfo(type=libvirt.VIR_DOMAIN_JOB_NONE)",
+          "line": 715
+        },
+        {
+          "expr": "JobInfo._get_job_stats_compat(self._domain)",
+          "line": 723
+        },
+        {
+          "expr": "JobInfo._get_job_stats_compat(self._domain)",
+          "line": 725
+        }
+      ],
+      "nloc": 31,
+      "ccn": 9,
+      "visibility": "public"
+    },
+    {
+      "name": "BlockDevice",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 728,
+        "end": 881
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "REBASE_DEFAULT_BANDWIDTH",
+      "kind": "constant",
+      "scope": "BlockDevice",
+      "lineRange": {
+        "start": 731,
+        "end": 731
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "COMMIT_DEFAULT_BANDWIDTH",
+      "kind": "constant",
+      "scope": "BlockDevice",
+      "lineRange": {
+        "start": 732,
+        "end": 732
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "__init__",
+      "kind": "method",
+      "scope": "BlockDevice",
+      "lineRange": {
+        "start": 734,
+        "end": 736
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "guest"
+        },
+        {
+          "name": "disk"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 3,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "abort_job",
+      "kind": "method",
+      "scope": "BlockDevice",
+      "lineRange": {
+        "start": 738,
+        "end": 751
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "default": "False",
+          "name": "async_"
+        },
+        {
+          "default": "False",
+          "name": "pivot"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 4,
+      "ccn": 5,
+      "visibility": "public"
+    },
+    {
+      "name": "get_job_info",
+      "kind": "method",
+      "scope": "BlockDevice",
+      "lineRange": {
+        "start": 753,
+        "end": 773
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "None",
+          "line": 767
+        },
+        {
+          "expr": "BlockDeviceJobInfo( job=status['type'], bandwidth=status['bandwidth'], cur=status['cur'], end=status['end'])",
+          "line": 769
+        }
+      ],
+      "nloc": 9,
+      "ccn": 2,
+      "visibility": "public"
+    },
+    {
+      "name": "copy",
+      "kind": "method",
+      "scope": "BlockDevice",
+      "lineRange": {
+        "start": 775,
+        "end": 789
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "dest_xml"
+        },
+        {
+          "default": "False",
+          "name": "shallow"
+        },
+        {
+          "default": "False",
+          "name": "reuse_ext"
+        },
+        {
+          "default": "False",
+          "name": "transient"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "self._guest._domain.blockCopy(self._disk, dest_xml, flags=flags)",
+          "line": 789
+        }
+      ],
+      "nloc": 5,
+      "ccn": 7,
+      "visibility": "public"
+    },
+    {
+      "name": "rebase",
+      "kind": "method",
+      "scope": "BlockDevice",
+      "lineRange": {
+        "start": 791,
+        "end": 813
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "base"
+        },
+        {
+          "default": "False",
+          "name": "shallow"
+        },
+        {
+          "default": "False",
+          "name": "reuse_ext"
+        },
+        {
+          "default": "False",
+          "name": "copy"
+        },
+        {
+          "default": "False",
+          "name": "relative"
+        },
+        {
+          "default": "False",
+          "name": "copy_dev"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "self._guest._domain.blockRebase( self._disk, base, self.REBASE_DEFAULT_BANDWIDTH, flags=flags)",
+          "line": 812
+        }
+      ],
+      "nloc": 9,
+      "ccn": 11,
+      "visibility": "public"
+    },
+    {
+      "name": "commit",
+      "kind": "method",
+      "scope": "BlockDevice",
+      "lineRange": {
+        "start": 815,
+        "end": 825
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "base"
+        },
+        {
+          "name": "top"
+        },
+        {
+          "default": "False",
+          "name": "relative"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "self._guest._domain.blockCommit( self._disk, base, top, self.COMMIT_DEFAULT_BANDWIDTH, flags=flags)",
+          "line": 824
+        }
+      ],
+      "nloc": 4,
+      "ccn": 3,
+      "visibility": "public"
+    },
+    {
+      "name": "resize",
+      "kind": "method",
+      "scope": "BlockDevice",
+      "lineRange": {
+        "start": 827,
+        "end": 835
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "size"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 3,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "is_job_complete",
+      "kind": "method",
+      "scope": "BlockDevice",
+      "lineRange": {
+        "start": 837,
+        "end": 877
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "True",
+          "line": 861
+        },
+        {
+          "expr": "disk.mirror.ready == 'yes'",
+          "line": 875
+        },
+        {
+          "expr": "False",
+          "line": 877
+        }
+      ],
+      "nloc": 14,
+      "ccn": 5,
+      "visibility": "public"
+    },
+    {
+      "name": "blockStats",
+      "kind": "method",
+      "scope": "BlockDevice",
+      "lineRange": {
+        "start": 879,
+        "end": 881
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "self._guest._domain.blockStats(self._disk)",
+          "line": 881
+        }
+      ],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "VCPUInfo",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 884,
+        "end": 897
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "__init__",
+      "kind": "method",
+      "scope": "VCPUInfo",
+      "lineRange": {
+        "start": 885,
+        "end": 897
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "id"
+        },
+        {
+          "name": "cpu"
+        },
+        {
+          "name": "state"
+        },
+        {
+          "name": "time"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 5,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "BlockDeviceJobInfo",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 900,
+        "end": 913
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "__init__",
+      "kind": "method",
+      "scope": "BlockDeviceJobInfo",
+      "lineRange": {
+        "start": 901,
+        "end": 913
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "job"
+        },
+        {
+          "name": "bandwidth"
+        },
+        {
+          "name": "cur"
+        },
+        {
+          "name": "end"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 5,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "JobInfo",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 916,
+        "end": 991
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "_have_job_stats",
+      "kind": "field",
+      "scope": "JobInfo",
+      "lineRange": {
+        "start": 926,
+        "end": 926
+      },
+      "source": "aee-inventory",
+      "visibility": "private"
+    },
+    {
+      "name": "__init__",
+      "kind": "method",
+      "scope": "JobInfo",
+      "lineRange": {
+        "start": 928,
+        "end": 954
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "**kwargs"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 26,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "_get_job_stats_compat",
+      "kind": "method",
+      "scope": "JobInfo",
+      "lineRange": {
+        "start": 957,
+        "end": 991
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "cls"
+        },
+        {
+          "name": "dom"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "cls(type=libvirt.VIR_DOMAIN_JOB_COMPLETED)",
+          "line": 974
+        },
+        {
+          "expr": "cls( type=info[0], time_elapsed=info[1], time_remaining=info[2], data_total=info[3], data_processed=info[4], data_remaining=info[5], memory_total=info[6], memory_processed=info[7], memory_remaining=in",
+          "line": 979
+        }
+      ],
+      "nloc": 24,
+      "ccn": 3,
+      "visibility": "private"
+    },
+    {
+      "name": "id",
+      "kind": "property",
+      "scope": "Guest",
+      "lineRange": {
+        "start": 117,
+        "end": 119
+      },
+      "visibility": "public",
+      "source": "manual"
+    },
+    {
+      "name": "uuid",
+      "kind": "property",
+      "scope": "Guest",
+      "lineRange": {
+        "start": 121,
+        "end": 123
+      },
+      "visibility": "public",
+      "source": "manual"
+    },
+    {
+      "name": "name",
+      "kind": "property",
+      "scope": "Guest",
+      "lineRange": {
+        "start": 125,
+        "end": 127
+      },
+      "visibility": "public",
+      "source": "manual"
+    },
+    {
+      "name": "_encoded_xml",
+      "kind": "property",
+      "scope": "Guest",
+      "lineRange": {
+        "start": 129,
+        "end": 131
+      },
+      "visibility": "private",
+      "source": "manual"
+    },
+    {
+      "name": "create",
+      "kind": "classmethod",
+      "scope": "Guest",
+      "lineRange": {
+        "start": 133,
+        "end": 150
+      },
+      "visibility": "public",
+      "source": "manual"
+    },
+    {
+      "name": "_get_job_stats_compat",
+      "kind": "classmethod",
+      "scope": "JobInfo",
+      "lineRange": {
+        "start": 956,
+        "end": 991
+      },
+      "visibility": "private",
+      "source": "manual"
+    }
+  ],
+  "referencedSymbols": [
+    {
+      "name": "logging.getLogger",
+      "usage": "call",
+      "via": "oslo_log",
+      "count": 1,
+      "lineRange": {
+        "start": 56,
+        "end": 56
+      }
+    },
+    {
+      "name": "encodeutils.safe_decode",
+      "usage": "call",
+      "via": "oslo_utils",
+      "count": 2,
+      "lineRange": {
+        "start": 131,
+        "end": 131
+      }
+    },
+    {
+      "name": "isinstance",
+      "usage": "call",
+      "via": null,
+      "count": 2,
+      "lineRange": {
+        "start": 143,
+        "end": 143
+      }
+    },
+    {
+      "name": "excutils.save_and_reraise_exception",
+      "usage": "call",
+      "via": "oslo_utils",
+      "count": 2,
+      "lineRange": {
+        "start": 147,
+        "end": 147
+      }
+    },
+    {
+      "name": "time.time",
+      "usage": "call",
+      "via": "time",
+      "count": 1,
+      "lineRange": {
+        "start": 179,
+        "end": 179
+      }
+    },
+    {
+      "name": "int",
+      "usage": "call",
+      "via": null,
+      "count": 2,
+      "lineRange": {
+        "start": 180,
+        "end": 180
+      }
+    },
+    {
+      "name": "etree.fromstring",
+      "usage": "call",
+      "via": "lxml",
+      "count": 2,
+      "lineRange": {
+        "start": 222,
+        "end": 222
+      }
+    },
+    {
+      "name": "type",
+      "usage": "call",
+      "via": null,
+      "count": 2,
+      "lineRange": {
+        "start": 253,
+        "end": 253
+      }
+    },
+    {
+      "name": "vconfig.LibvirtConfigGuest",
+      "usage": "call",
+      "via": "nova.virt.libvirt",
+      "count": 2,
+      "lineRange": {
+        "start": 381,
+        "end": 381
+      }
+    },
+    {
+      "name": "vconfig.LibvirtConfigGuestDisk",
+      "usage": "call",
+      "via": "nova.virt.libvirt",
+      "count": 1,
+      "lineRange": {
+        "start": 415,
+        "end": 415
+      }
+    },
+    {
+      "name": "hasattr",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 432,
+        "end": 432
+      }
+    },
+    {
+      "name": "list",
+      "usage": "type",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 439,
+        "end": 439
+      }
+    },
+    {
+      "name": "exception.InstanceNotFound",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 535,
+        "end": 535
+      }
+    },
+    {
+      "name": "_",
+      "usage": "call",
+      "via": "nova.i18n",
+      "count": 1,
+      "lineRange": {
+        "start": 537,
+        "end": 537
+      }
+    },
+    {
+      "name": "exception.InternalError",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 542,
+        "end": 542
+      }
+    },
+    {
+      "name": "hardware.InstanceInfo",
+      "usage": "call",
+      "via": "nova.virt",
+      "count": 1,
+      "lineRange": {
+        "start": 544,
+        "end": 544
+      }
+    },
+    {
+      "name": "libvirtmod_qemu.virDomainQemuMonitorCommand",
+      "usage": "call",
+      "via": "libvirtmod_qemu",
+      "count": 1,
+      "lineRange": {
+        "start": 681,
+        "end": 681
+      }
+    },
+    {
+      "name": "object",
+      "usage": "inherit",
+      "via": null,
+      "count": 4,
+      "lineRange": {
+        "start": 728,
+        "end": 728
+      }
+    },
+    {
+      "name": "cls",
+      "usage": "call",
+      "via": null,
+      "count": 2,
+      "lineRange": {
+        "start": 974,
+        "end": 974
+      }
+    }
+  ],
+  "dependencies": [
+    {
+      "style": "import",
+      "module": "time",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 30,
+        "end": 30
+      }
+    },
+    {
+      "style": "from",
+      "module": "lxml",
+      "names": [
+        {
+          "alias": null,
+          "name": "etree"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 32,
+        "end": 32
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_log",
+      "names": [
+        {
+          "alias": "logging",
+          "name": "log"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 33,
+        "end": 33
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_utils",
+      "names": [
+        {
+          "alias": null,
+          "name": "encodeutils"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 34,
+        "end": 34
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_utils",
+      "names": [
+        {
+          "alias": null,
+          "name": "excutils"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 35,
+        "end": 35
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.compute",
+      "names": [
+        {
+          "alias": null,
+          "name": "power_state"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 37,
+        "end": 37
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "exception"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 38,
+        "end": 38
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.i18n",
+      "names": [
+        {
+          "alias": null,
+          "name": "_"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 39,
+        "end": 39
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.virt",
+      "names": [
+        {
+          "alias": null,
+          "name": "hardware"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 40,
+        "end": 40
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.virt.libvirt",
+      "names": [
+        {
+          "alias": "vconfig",
+          "name": "config"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 41,
+        "end": 41
+      }
+    },
+    {
+      "style": "import",
+      "module": "libvirt",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 46,
+        "end": 46
+      }
+    },
+    {
+      "style": "import",
+      "module": "libvirtmod_qemu",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 51,
+        "end": 51
+      }
+    }
+  ],
+  "sideEffects": [
+    {
+      "kind": "global-mutation",
+      "target": "LOG = logging.getLogger(__name__)",
+      "lineRange": {
+        "start": 56,
+        "end": 56
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "VIR_DOMAIN_NOSTATE = 0",
+      "lineRange": {
+        "start": 58,
+        "end": 58
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "VIR_DOMAIN_RUNNING = 1",
+      "lineRange": {
+        "start": 59,
+        "end": 59
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "VIR_DOMAIN_BLOCKED = 2",
+      "lineRange": {
+        "start": 60,
+        "end": 60
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "VIR_DOMAIN_PAUSED = 3",
+      "lineRange": {
+        "start": 61,
+        "end": 61
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "VIR_DOMAIN_SHUTDOWN = 4",
+      "lineRange": {
+        "start": 62,
+        "end": 62
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "VIR_DOMAIN_SHUTOFF = 5",
+      "lineRange": {
+        "start": 63,
+        "end": 63
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "VIR_DOMAIN_CRASHED = 6",
+      "lineRange": {
+        "start": 64,
+        "end": 64
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "VIR_DOMAIN_PMSUSPENDED = 7",
+      "lineRange": {
+        "start": 65,
+        "end": 65
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "LIBVIRT_POWER_STATE = {",
+      "lineRange": {
+        "start": 67,
+        "end": 67
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "VIR_DOMAIN_BLOCK_JOB_TYPE_UNKNOWN = 0",
+      "lineRange": {
+        "start": 86,
+        "end": 86
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "VIR_DOMAIN_BLOCK_JOB_TYPE_PULL = 1",
+      "lineRange": {
+        "start": 87,
+        "end": 87
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "VIR_DOMAIN_BLOCK_JOB_TYPE_COPY = 2",
+      "lineRange": {
+        "start": 88,
+        "end": 88
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "VIR_DOMAIN_BLOCK_JOB_TYPE_COMMIT = 3",
+      "lineRange": {
+        "start": 89,
+        "end": 89
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "VIR_DOMAIN_BLOCK_JOB_TYPE_ACTIVE_COMMIT = 4",
+      "lineRange": {
+        "start": 90,
+        "end": 90
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "VIR_DOMAIN_BLOCK_JOB_TYPE_BACKUP = 5",
+      "lineRange": {
+        "start": 91,
+        "end": 91
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "VIR_DOMAIN_BLOCK_JOB_TYPE_LAST = 6",
+      "lineRange": {
+        "start": 92,
+        "end": 92
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "LIBVIRT_BLOCK_JOB_TYPE = {",
+      "lineRange": {
+        "start": 94,
+        "end": 94
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "REBASE_DEFAULT_BANDWIDTH = 0  # in MiB/s - 0 unlimited",
+      "lineRange": {
+        "start": 731,
+        "end": 731
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "COMMIT_DEFAULT_BANDWIDTH = 0  # in MiB/s - 0 unlimited",
+      "lineRange": {
+        "start": 732,
+        "end": 732
+      }
+    }
+  ],
+  "securitySurface": [],
+  "injection_flags": [],
+  "warnings": []
+}

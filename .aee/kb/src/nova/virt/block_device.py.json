@@ -1,0 +1,2451 @@
+{
+  "file": "src/nova/virt/block_device.py",
+  "hash": "e972d6627f9bbeb2eb704049a462e6e1678140725725715c29825a88ea4f67f2",
+  "language": "Python",
+  "component": "nova",
+  "package": null,
+  "lines": {
+    "blank": 155,
+    "code": 775,
+    "comment": 138,
+    "total": 1068
+  },
+  "symbols": [
+    {
+      "name": "CONF",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 29,
+        "end": 29
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "LOG",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 31,
+        "end": 31
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "_NotTransformable",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 34,
+        "end": 35
+      },
+      "source": "aee-inventory",
+      "exported": false
+    },
+    {
+      "name": "_InvalidType",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 38,
+        "end": 39
+      },
+      "source": "aee-inventory",
+      "exported": false
+    },
+    {
+      "name": "update_db",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 42,
+        "end": 50
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "method"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "wrapped",
+          "line": 50
+        }
+      ],
+      "nloc": 4,
+      "ccn": 1,
+      "exported": true
+    },
+    {
+      "name": "wrapped",
+      "kind": "function",
+      "scope": "update_db",
+      "lineRange": {
+        "start": 44,
+        "end": 49
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "obj"
+        },
+        {
+          "name": "context"
+        },
+        {
+          "name": "*args"
+        },
+        {
+          "name": "**kwargs"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "ret_val",
+          "line": 49
+        }
+      ],
+      "visibility": "public"
+    },
+    {
+      "name": "_get_volume_create_az_value",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 53,
+        "end": 78
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "instance"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "None",
+          "line": 66
+        },
+        {
+          "expr": "instance.availability_zone",
+          "line": 78
+        }
+      ],
+      "nloc": 4,
+      "ccn": 2,
+      "exported": false
+    },
+    {
+      "name": "DriverBlockDevice",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 81,
+        "end": 217
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "_fields",
+      "kind": "field",
+      "scope": "DriverBlockDevice",
+      "lineRange": {
+        "start": 104,
+        "end": 104
+      },
+      "source": "aee-inventory",
+      "visibility": "private"
+    },
+    {
+      "name": "_readonly_fields",
+      "kind": "field",
+      "scope": "DriverBlockDevice",
+      "lineRange": {
+        "start": 105,
+        "end": 105
+      },
+      "source": "aee-inventory",
+      "visibility": "private"
+    },
+    {
+      "name": "_proxy_as_attr_inherited",
+      "kind": "field",
+      "scope": "DriverBlockDevice",
+      "lineRange": {
+        "start": 107,
+        "end": 107
+      },
+      "source": "aee-inventory",
+      "visibility": "private"
+    },
+    {
+      "name": "_update_on_save",
+      "kind": "field",
+      "scope": "DriverBlockDevice",
+      "lineRange": {
+        "start": 108,
+        "end": 110
+      },
+      "source": "aee-inventory",
+      "visibility": "private"
+    },
+    {
+      "name": "_proxy_as_attr_by_class",
+      "kind": "field",
+      "scope": "DriverBlockDevice",
+      "lineRange": {
+        "start": 114,
+        "end": 114
+      },
+      "source": "aee-inventory",
+      "visibility": "private"
+    },
+    {
+      "name": "__init__",
+      "kind": "method",
+      "scope": "DriverBlockDevice",
+      "lineRange": {
+        "start": 116,
+        "end": 123
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "bdm"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 6,
+      "ccn": 3,
+      "visibility": "public"
+    },
+    {
+      "name": "_proxy_as_attr",
+      "kind": "method",
+      "scope": "DriverBlockDevice",
+      "lineRange": {
+        "start": 126,
+        "end": 141
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "self._proxy_as_attr_by_class[self.__class__]",
+          "line": 141
+        }
+      ],
+      "nloc": 9,
+      "ccn": 4,
+      "visibility": "private"
+    },
+    {
+      "name": "__getattr__",
+      "kind": "method",
+      "scope": "DriverBlockDevice",
+      "lineRange": {
+        "start": 143,
+        "end": 149
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "name"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "getattr(self._bdm_obj, name)",
+          "line": 145
+        },
+        {
+          "expr": "self[name]",
+          "line": 147
+        },
+        {
+          "expr": "super(DriverBlockDevice, self).__getattr__(name)",
+          "line": 149
+        }
+      ],
+      "nloc": 7,
+      "ccn": 3,
+      "visibility": "public"
+    },
+    {
+      "name": "__setattr__",
+      "kind": "method",
+      "scope": "DriverBlockDevice",
+      "lineRange": {
+        "start": 151,
+        "end": 157
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "name"
+        },
+        {
+          "name": "value"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 7,
+      "ccn": 3,
+      "visibility": "public"
+    },
+    {
+      "name": "__getitem__",
+      "kind": "method",
+      "scope": "DriverBlockDevice",
+      "lineRange": {
+        "start": 159,
+        "end": 162
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "name"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "getattr(self._bdm_obj, name)",
+          "line": 161
+        },
+        {
+          "expr": "super(DriverBlockDevice, self).__getitem__(name)",
+          "line": 162
+        }
+      ],
+      "nloc": 4,
+      "ccn": 2,
+      "visibility": "public"
+    },
+    {
+      "name": "__setitem__",
+      "kind": "method",
+      "scope": "DriverBlockDevice",
+      "lineRange": {
+        "start": 164,
+        "end": 167
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "name"
+        },
+        {
+          "name": "value"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 4,
+      "ccn": 2,
+      "visibility": "public"
+    },
+    {
+      "name": "_transform",
+      "kind": "method",
+      "scope": "DriverBlockDevice",
+      "lineRange": {
+        "start": 169,
+        "end": 171
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "get",
+      "kind": "method",
+      "scope": "DriverBlockDevice",
+      "lineRange": {
+        "start": 173,
+        "end": 179
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "name"
+        },
+        {
+          "default": "None",
+          "name": "default"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "getattr(self._bdm_obj, name)",
+          "line": 175
+        },
+        {
+          "expr": "self[name]",
+          "line": 177
+        },
+        {
+          "expr": "super(DriverBlockDevice, self).get(name, default)",
+          "line": 179
+        }
+      ],
+      "nloc": 7,
+      "ccn": 3,
+      "visibility": "public"
+    },
+    {
+      "name": "attach",
+      "kind": "method",
+      "scope": "DriverBlockDevice",
+      "lineRange": {
+        "start": 181,
+        "end": 187
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "**kwargs"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "detach",
+      "kind": "method",
+      "scope": "DriverBlockDevice",
+      "lineRange": {
+        "start": 189,
+        "end": 197
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "**kwargs"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "driver_detach",
+      "kind": "method",
+      "scope": "DriverBlockDevice",
+      "lineRange": {
+        "start": 199,
+        "end": 205
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "**kwargs"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "save",
+      "kind": "method",
+      "scope": "DriverBlockDevice",
+      "lineRange": {
+        "start": 207,
+        "end": 217
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 10,
+      "ccn": 6,
+      "visibility": "public"
+    },
+    {
+      "name": "DriverSwapBlockDevice",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 220,
+        "end": 253
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "_fields",
+      "kind": "field",
+      "scope": "DriverSwapBlockDevice",
+      "lineRange": {
+        "start": 221,
+        "end": 229
+      },
+      "source": "aee-inventory",
+      "visibility": "private"
+    },
+    {
+      "name": "_readonly_fields",
+      "kind": "field",
+      "scope": "DriverSwapBlockDevice",
+      "lineRange": {
+        "start": 230,
+        "end": 230
+      },
+      "source": "aee-inventory",
+      "visibility": "private"
+    },
+    {
+      "name": "_update_on_save",
+      "kind": "field",
+      "scope": "DriverSwapBlockDevice",
+      "lineRange": {
+        "start": 231,
+        "end": 240
+      },
+      "source": "aee-inventory",
+      "visibility": "private"
+    },
+    {
+      "name": "_transform",
+      "kind": "method",
+      "scope": "DriverSwapBlockDevice",
+      "lineRange": {
+        "start": 242,
+        "end": 253
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 12,
+      "ccn": 3,
+      "visibility": "private"
+    },
+    {
+      "name": "DriverImageBlockDevice",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 256,
+        "end": 303
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "_valid_source",
+      "kind": "field",
+      "scope": "DriverImageBlockDevice",
+      "lineRange": {
+        "start": 257,
+        "end": 257
+      },
+      "source": "aee-inventory",
+      "visibility": "private"
+    },
+    {
+      "name": "_proxy_as_attr_inherited",
+      "kind": "field",
+      "scope": "DriverImageBlockDevice",
+      "lineRange": {
+        "start": 258,
+        "end": 258
+      },
+      "source": "aee-inventory",
+      "visibility": "private"
+    },
+    {
+      "name": "_new_only_fields",
+      "kind": "field",
+      "scope": "DriverImageBlockDevice",
+      "lineRange": {
+        "start": 259,
+        "end": 268
+      },
+      "source": "aee-inventory",
+      "visibility": "private"
+    },
+    {
+      "name": "_fields",
+      "kind": "field",
+      "scope": "DriverImageBlockDevice",
+      "lineRange": {
+        "start": 269,
+        "end": 271
+      },
+      "source": "aee-inventory",
+      "visibility": "private"
+    },
+    {
+      "name": "_readonly_fields",
+      "kind": "field",
+      "scope": "DriverImageBlockDevice",
+      "lineRange": {
+        "start": 272,
+        "end": 272
+      },
+      "source": "aee-inventory",
+      "visibility": "private"
+    },
+    {
+      "name": "_legacy_fields",
+      "kind": "field",
+      "scope": "DriverImageBlockDevice",
+      "lineRange": {
+        "start": 273,
+        "end": 274
+      },
+      "source": "aee-inventory",
+      "visibility": "private"
+    },
+    {
+      "name": "_update_on_save",
+      "kind": "field",
+      "scope": "DriverImageBlockDevice",
+      "lineRange": {
+        "start": 275,
+        "end": 285
+      },
+      "source": "aee-inventory",
+      "visibility": "private"
+    },
+    {
+      "name": "_transform",
+      "kind": "method",
+      "scope": "DriverImageBlockDevice",
+      "lineRange": {
+        "start": 287,
+        "end": 303
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 17,
+      "ccn": 4,
+      "visibility": "private"
+    },
+    {
+      "name": "DriverEphemeralBlockDevice",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 306,
+        "end": 342
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "_new_only_fields",
+      "kind": "field",
+      "scope": "DriverEphemeralBlockDevice",
+      "lineRange": {
+        "start": 307,
+        "end": 314
+      },
+      "source": "aee-inventory",
+      "visibility": "private"
+    },
+    {
+      "name": "_fields",
+      "kind": "field",
+      "scope": "DriverEphemeralBlockDevice",
+      "lineRange": {
+        "start": 315,
+        "end": 315
+      },
+      "source": "aee-inventory",
+      "visibility": "private"
+    },
+    {
+      "name": "_readonly_fields",
+      "kind": "field",
+      "scope": "DriverEphemeralBlockDevice",
+      "lineRange": {
+        "start": 316,
+        "end": 316
+      },
+      "source": "aee-inventory",
+      "visibility": "private"
+    },
+    {
+      "name": "_update_on_save",
+      "kind": "field",
+      "scope": "DriverEphemeralBlockDevice",
+      "lineRange": {
+        "start": 317,
+        "end": 327
+      },
+      "source": "aee-inventory",
+      "visibility": "private"
+    },
+    {
+      "name": "_transform",
+      "kind": "method",
+      "scope": "DriverEphemeralBlockDevice",
+      "lineRange": {
+        "start": 329,
+        "end": 342
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 14,
+      "ccn": 3,
+      "visibility": "private"
+    },
+    {
+      "name": "DriverVolumeBlockDevice",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 345,
+        "end": 858
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "_new_fields",
+      "kind": "field",
+      "scope": "DriverVolumeBlockDevice",
+      "lineRange": {
+        "start": 346,
+        "end": 351
+      },
+      "source": "aee-inventory",
+      "visibility": "private"
+    },
+    {
+      "name": "_fields",
+      "kind": "field",
+      "scope": "DriverVolumeBlockDevice",
+      "lineRange": {
+        "start": 352,
+        "end": 356
+      },
+      "source": "aee-inventory",
+      "visibility": "private"
+    },
+    {
+      "name": "_valid_source",
+      "kind": "field",
+      "scope": "DriverVolumeBlockDevice",
+      "lineRange": {
+        "start": 358,
+        "end": 358
+      },
+      "source": "aee-inventory",
+      "visibility": "private"
+    },
+    {
+      "name": "_valid_destination",
+      "kind": "field",
+      "scope": "DriverVolumeBlockDevice",
+      "lineRange": {
+        "start": 359,
+        "end": 359
+      },
+      "source": "aee-inventory",
+      "visibility": "private"
+    },
+    {
+      "name": "_proxy_as_attr_inherited",
+      "kind": "field",
+      "scope": "DriverVolumeBlockDevice",
+      "lineRange": {
+        "start": 361,
+        "end": 361
+      },
+      "source": "aee-inventory",
+      "visibility": "private"
+    },
+    {
+      "name": "_update_on_save",
+      "kind": "field",
+      "scope": "DriverVolumeBlockDevice",
+      "lineRange": {
+        "start": 362,
+        "end": 366
+      },
+      "source": "aee-inventory",
+      "visibility": "private"
+    },
+    {
+      "name": "_transform",
+      "kind": "method",
+      "scope": "DriverVolumeBlockDevice",
+      "lineRange": {
+        "start": 368,
+        "end": 388
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 16,
+      "ccn": 7,
+      "visibility": "private"
+    },
+    {
+      "name": "_preserve_multipath_id",
+      "kind": "method",
+      "scope": "DriverVolumeBlockDevice",
+      "lineRange": {
+        "start": 390,
+        "end": 396
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "connection_info"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 7,
+      "ccn": 4,
+      "visibility": "private"
+    },
+    {
+      "name": "driver_detach",
+      "kind": "method",
+      "scope": "DriverVolumeBlockDevice",
+      "lineRange": {
+        "start": 398,
+        "end": 432
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "context"
+        },
+        {
+          "name": "instance"
+        },
+        {
+          "name": "volume_api"
+        },
+        {
+          "name": "virt_driver"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 33,
+      "ccn": 5,
+      "visibility": "public"
+    },
+    {
+      "name": "_get_volume",
+      "kind": "method",
+      "scope": "DriverVolumeBlockDevice",
+      "lineRange": {
+        "start": 435,
+        "end": 443
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "context"
+        },
+        {
+          "name": "volume_api"
+        },
+        {
+          "name": "volume_id"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "volume_api.get(context, volume_id, microversion=mv)",
+          "line": 441
+        }
+      ],
+      "nloc": 7,
+      "ccn": 3,
+      "visibility": "private"
+    },
+    {
+      "name": "_create_volume",
+      "kind": "method",
+      "scope": "DriverVolumeBlockDevice",
+      "lineRange": {
+        "start": 445,
+        "end": 480
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "context"
+        },
+        {
+          "name": "instance"
+        },
+        {
+          "name": "volume_api"
+        },
+        {
+          "name": "size"
+        },
+        {
+          "default": "None",
+          "name": "wait_func"
+        },
+        {
+          "name": "**create_kwargs"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "vol['id'], attachment_id",
+          "line": 480
+        }
+      ],
+      "nloc": 14,
+      "ccn": 2,
+      "visibility": "private"
+    },
+    {
+      "name": "_do_detach",
+      "kind": "method",
+      "scope": "DriverVolumeBlockDevice",
+      "lineRange": {
+        "start": 482,
+        "end": 594
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "context"
+        },
+        {
+          "name": "instance"
+        },
+        {
+          "name": "volume_api"
+        },
+        {
+          "name": "virt_driver"
+        },
+        {
+          "default": "None",
+          "name": "attachment_id"
+        },
+        {
+          "default": "False",
+          "name": "destroy_bdm"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 77,
+      "ccn": 13,
+      "visibility": "private"
+    },
+    {
+      "name": "detach",
+      "kind": "method",
+      "scope": "DriverVolumeBlockDevice",
+      "lineRange": {
+        "start": 596,
+        "end": 604
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "context"
+        },
+        {
+          "name": "instance"
+        },
+        {
+          "name": "volume_api"
+        },
+        {
+          "name": "virt_driver"
+        },
+        {
+          "default": "None",
+          "name": "attachment_id"
+        },
+        {
+          "default": "False",
+          "name": "destroy_bdm"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 6,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "_legacy_volume_attach",
+      "kind": "method",
+      "scope": "DriverVolumeBlockDevice",
+      "lineRange": {
+        "start": 606,
+        "end": 675
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "context"
+        },
+        {
+          "name": "volume"
+        },
+        {
+          "name": "connector"
+        },
+        {
+          "name": "instance"
+        },
+        {
+          "name": "volume_api"
+        },
+        {
+          "name": "virt_driver"
+        },
+        {
+          "default": "False",
+          "name": "do_driver_attach"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 56,
+      "ccn": 10,
+      "visibility": "private"
+    },
+    {
+      "name": "_volume_attach",
+      "kind": "method",
+      "scope": "DriverVolumeBlockDevice",
+      "lineRange": {
+        "start": 677,
+        "end": 768
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "context"
+        },
+        {
+          "name": "volume"
+        },
+        {
+          "name": "connector"
+        },
+        {
+          "name": "instance"
+        },
+        {
+          "name": "volume_api"
+        },
+        {
+          "name": "virt_driver"
+        },
+        {
+          "name": "attachment_id"
+        },
+        {
+          "default": "False",
+          "name": "do_driver_attach"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 59,
+      "ccn": 11,
+      "visibility": "private"
+    },
+    {
+      "name": "_do_attach",
+      "kind": "method",
+      "scope": "DriverVolumeBlockDevice",
+      "lineRange": {
+        "start": 770,
+        "end": 787
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "context"
+        },
+        {
+          "name": "instance"
+        },
+        {
+          "name": "volume"
+        },
+        {
+          "name": "volume_api"
+        },
+        {
+          "name": "virt_driver"
+        },
+        {
+          "name": "do_driver_attach"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 13,
+      "ccn": 2,
+      "visibility": "private"
+    },
+    {
+      "name": "attach",
+      "kind": "method",
+      "scope": "DriverVolumeBlockDevice",
+      "lineRange": {
+        "start": 790,
+        "end": 800
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "context"
+        },
+        {
+          "name": "instance"
+        },
+        {
+          "name": "volume_api"
+        },
+        {
+          "name": "virt_driver"
+        },
+        {
+          "default": "False",
+          "name": "do_driver_attach"
+        },
+        {
+          "name": "**kwargs"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 8,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "refresh_connection_info",
+      "kind": "method",
+      "scope": "DriverVolumeBlockDevice",
+      "lineRange": {
+        "start": 803,
+        "end": 832
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "context"
+        },
+        {
+          "name": "instance"
+        },
+        {
+          "name": "volume_api"
+        },
+        {
+          "name": "virt_driver"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "",
+          "line": 807
+        }
+      ],
+      "nloc": 20,
+      "ccn": 5,
+      "visibility": "public"
+    },
+    {
+      "name": "save",
+      "kind": "method",
+      "scope": "DriverVolumeBlockDevice",
+      "lineRange": {
+        "start": 834,
+        "end": 844
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 9,
+      "ccn": 3,
+      "visibility": "public"
+    },
+    {
+      "name": "_call_wait_func",
+      "kind": "method",
+      "scope": "DriverVolumeBlockDevice",
+      "lineRange": {
+        "start": 846,
+        "end": 858
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "context"
+        },
+        {
+          "name": "wait_func"
+        },
+        {
+          "name": "volume_api"
+        },
+        {
+          "name": "volume_id"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 13,
+      "ccn": 4,
+      "visibility": "private"
+    },
+    {
+      "name": "DriverVolSnapshotBlockDevice",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 861,
+        "end": 885
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "_valid_source",
+      "kind": "field",
+      "scope": "DriverVolSnapshotBlockDevice",
+      "lineRange": {
+        "start": 863,
+        "end": 863
+      },
+      "source": "aee-inventory",
+      "visibility": "private"
+    },
+    {
+      "name": "_proxy_as_attr_inherited",
+      "kind": "field",
+      "scope": "DriverVolSnapshotBlockDevice",
+      "lineRange": {
+        "start": 864,
+        "end": 864
+      },
+      "source": "aee-inventory",
+      "visibility": "private"
+    },
+    {
+      "name": "attach",
+      "kind": "method",
+      "scope": "DriverVolSnapshotBlockDevice",
+      "lineRange": {
+        "start": 866,
+        "end": 885
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "context"
+        },
+        {
+          "name": "instance"
+        },
+        {
+          "name": "volume_api"
+        },
+        {
+          "name": "virt_driver"
+        },
+        {
+          "default": "None",
+          "name": "wait_func"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 14,
+      "ccn": 4,
+      "visibility": "public"
+    },
+    {
+      "name": "DriverVolImageBlockDevice",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 888,
+        "end": 901
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "_valid_source",
+      "kind": "field",
+      "scope": "DriverVolImageBlockDevice",
+      "lineRange": {
+        "start": 890,
+        "end": 890
+      },
+      "source": "aee-inventory",
+      "visibility": "private"
+    },
+    {
+      "name": "_proxy_as_attr_inherited",
+      "kind": "field",
+      "scope": "DriverVolImageBlockDevice",
+      "lineRange": {
+        "start": 891,
+        "end": 891
+      },
+      "source": "aee-inventory",
+      "visibility": "private"
+    },
+    {
+      "name": "attach",
+      "kind": "method",
+      "scope": "DriverVolImageBlockDevice",
+      "lineRange": {
+        "start": 893,
+        "end": 901
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "context"
+        },
+        {
+          "name": "instance"
+        },
+        {
+          "name": "volume_api"
+        },
+        {
+          "name": "virt_driver"
+        },
+        {
+          "default": "None",
+          "name": "wait_func"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 8,
+      "ccn": 2,
+      "visibility": "public"
+    },
+    {
+      "name": "DriverVolBlankBlockDevice",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 904,
+        "end": 918
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "_valid_source",
+      "kind": "field",
+      "scope": "DriverVolBlankBlockDevice",
+      "lineRange": {
+        "start": 906,
+        "end": 906
+      },
+      "source": "aee-inventory",
+      "visibility": "private"
+    },
+    {
+      "name": "_proxy_as_attr_inherited",
+      "kind": "field",
+      "scope": "DriverVolBlankBlockDevice",
+      "lineRange": {
+        "start": 907,
+        "end": 907
+      },
+      "source": "aee-inventory",
+      "visibility": "private"
+    },
+    {
+      "name": "attach",
+      "kind": "method",
+      "scope": "DriverVolBlankBlockDevice",
+      "lineRange": {
+        "start": 909,
+        "end": 918
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "context"
+        },
+        {
+          "name": "instance"
+        },
+        {
+          "name": "volume_api"
+        },
+        {
+          "name": "virt_driver"
+        },
+        {
+          "default": "None",
+          "name": "wait_func"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 9,
+      "ccn": 2,
+      "visibility": "public"
+    },
+    {
+      "name": "_convert_block_devices",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 921,
+        "end": 929
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "device_type"
+        },
+        {
+          "name": "block_device_mapping"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "devices",
+          "line": 929
+        }
+      ],
+      "nloc": 8,
+      "ccn": 3,
+      "exported": false
+    },
+    {
+      "name": "convert_swap",
+      "kind": "variable",
+      "scope": "",
+      "lineRange": {
+        "start": 932,
+        "end": 933
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "convert_local_images",
+      "kind": "variable",
+      "scope": "",
+      "lineRange": {
+        "start": 935,
+        "end": 936
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "convert_ephemerals",
+      "kind": "variable",
+      "scope": "",
+      "lineRange": {
+        "start": 938,
+        "end": 939
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "convert_volumes",
+      "kind": "variable",
+      "scope": "",
+      "lineRange": {
+        "start": 941,
+        "end": 942
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "convert_snapshots",
+      "kind": "variable",
+      "scope": "",
+      "lineRange": {
+        "start": 944,
+        "end": 945
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "convert_images",
+      "kind": "variable",
+      "scope": "",
+      "lineRange": {
+        "start": 947,
+        "end": 948
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "convert_blanks",
+      "kind": "variable",
+      "scope": "",
+      "lineRange": {
+        "start": 950,
+        "end": 951
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "convert_all_volumes",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 954,
+        "end": 962
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "*volume_bdms"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "[vol for vol in itertools.chain(source_volume, source_snapshot, source_image, source_blank)]",
+          "line": 960
+        }
+      ],
+      "nloc": 8,
+      "ccn": 2,
+      "exported": true
+    },
+    {
+      "name": "convert_volume",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 965,
+        "end": 969
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "volume_bdm"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "convert_all_volumes(volume_bdm)[0]",
+          "line": 967
+        }
+      ],
+      "nloc": 5,
+      "ccn": 2,
+      "exported": true
+    },
+    {
+      "name": "attach_block_devices",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 972,
+        "end": 1002
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "block_device_mapping"
+        },
+        {
+          "name": "*attach_args"
+        },
+        {
+          "name": "**attach_kwargs"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "block_device_mapping",
+          "line": 1002
+        }
+      ],
+      "nloc": 5,
+      "ccn": 2,
+      "exported": true
+    },
+    {
+      "name": "_log_and_attach",
+      "kind": "function",
+      "scope": "attach_block_devices",
+      "lineRange": {
+        "start": 973,
+        "end": 998
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "bdm"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "visibility": "private"
+    },
+    {
+      "name": "refresh_conn_infos",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 1005,
+        "end": 1011
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "block_device_mapping"
+        },
+        {
+          "name": "*refresh_args"
+        },
+        {
+          "name": "**refresh_kwargs"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "block_device_mapping",
+          "line": 1011
+        }
+      ],
+      "nloc": 5,
+      "ccn": 3,
+      "exported": true
+    },
+    {
+      "name": "get_swap",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 1014,
+        "end": 1027
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "transformed_list"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "None",
+          "line": 1023
+        },
+        {
+          "expr": "transformed_list.pop()",
+          "line": 1025
+        },
+        {
+          "expr": "None",
+          "line": 1027
+        }
+      ],
+      "nloc": 9,
+      "ccn": 5,
+      "exported": true
+    },
+    {
+      "name": "_IMPLEMENTED_CLASSES",
+      "kind": "variable",
+      "scope": "",
+      "lineRange": {
+        "start": 1030,
+        "end": 1038
+      },
+      "source": "aee-inventory",
+      "exported": false
+    },
+    {
+      "name": "is_implemented",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 1041,
+        "end": 1048
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "bdm"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "True",
+          "line": 1045
+        },
+        {
+          "expr": "False",
+          "line": 1048
+        }
+      ],
+      "nloc": 8,
+      "ccn": 3,
+      "exported": true
+    },
+    {
+      "name": "is_local_image",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 1051,
+        "end": 1052
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "bdm"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "bdm.source_type == 'image' and bdm.destination_type == 'local'",
+          "line": 1052
+        }
+      ],
+      "nloc": 2,
+      "ccn": 2,
+      "exported": true
+    },
+    {
+      "name": "is_block_device_mapping",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 1055,
+        "end": 1058
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "bdm"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "(bdm.source_type in ('image', 'volume', 'snapshot', 'blank') and bdm.destination_type == 'volume' and is_implemented(bdm))",
+          "line": 1056
+        }
+      ],
+      "nloc": 4,
+      "ccn": 3,
+      "exported": true
+    },
+    {
+      "name": "get_volume_id",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 1061,
+        "end": 1068
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "connection_info"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "volume_id",
+          "line": 1068
+        }
+      ],
+      "nloc": 6,
+      "ccn": 3,
+      "exported": true
+    },
+    {
+      "name": "_proxy_as_attr",
+      "kind": "property",
+      "scope": "DriverBlockDevice",
+      "lineRange": {
+        "start": 125,
+        "end": 141
+      },
+      "visibility": "private",
+      "source": "manual"
+    },
+    {
+      "name": "_get_volume",
+      "kind": "staticmethod",
+      "scope": "DriverVolumeBlockDevice",
+      "lineRange": {
+        "start": 434,
+        "end": 443
+      },
+      "visibility": "private",
+      "source": "manual"
+    }
+  ],
+  "referencedSymbols": [
+    {
+      "name": "logging.getLogger",
+      "usage": "call",
+      "via": "oslo_log",
+      "count": 1,
+      "lineRange": {
+        "start": 31,
+        "end": 31
+      }
+    },
+    {
+      "name": "Exception",
+      "usage": "inherit",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 34,
+        "end": 34
+      }
+    },
+    {
+      "name": "functools.wraps",
+      "usage": "call",
+      "via": "functools",
+      "count": 1,
+      "lineRange": {
+        "start": 43,
+        "end": 43
+      }
+    },
+    {
+      "name": "method",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 46,
+        "end": 46
+      }
+    },
+    {
+      "name": "dict",
+      "usage": "inherit",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 81,
+        "end": 81
+      }
+    },
+    {
+      "name": "set",
+      "usage": "call",
+      "via": null,
+      "count": 21,
+      "lineRange": {
+        "start": 104,
+        "end": 104
+      }
+    },
+    {
+      "name": "getattr",
+      "usage": "call",
+      "via": null,
+      "count": 6,
+      "lineRange": {
+        "start": 132,
+        "end": 132
+      }
+    },
+    {
+      "name": "super",
+      "usage": "call",
+      "via": null,
+      "count": 9,
+      "lineRange": {
+        "start": 149,
+        "end": 149
+      }
+    },
+    {
+      "name": "setattr",
+      "usage": "call",
+      "via": null,
+      "count": 3,
+      "lineRange": {
+        "start": 153,
+        "end": 153
+      }
+    },
+    {
+      "name": "NotImplementedError",
+      "usage": "call",
+      "via": null,
+      "count": 4,
+      "lineRange": {
+        "start": 171,
+        "end": 171
+      }
+    },
+    {
+      "name": "AttributeError",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 210,
+        "end": 210
+      }
+    },
+    {
+      "name": "block_device.new_format_is_swap",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 243,
+        "end": 243
+      }
+    },
+    {
+      "name": "block_device.new_format_is_ephemeral",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 330,
+        "end": 330
+      }
+    },
+    {
+      "name": "jsonutils.loads",
+      "usage": "call",
+      "via": "oslo_serialization",
+      "count": 1,
+      "lineRange": {
+        "start": 381,
+        "end": 381
+      }
+    },
+    {
+      "name": "encryptors.get_encryption_metadata",
+      "usage": "call",
+      "via": "os_brick",
+      "count": 3,
+      "lineRange": {
+        "start": 411,
+        "end": 411
+      }
+    },
+    {
+      "name": "excutils.save_and_reraise_exception",
+      "usage": "call",
+      "via": "oslo_utils",
+      "count": 7,
+      "lineRange": {
+        "start": 422,
+        "end": 422
+      }
+    },
+    {
+      "name": "brick_utils.guard_connection",
+      "usage": "call",
+      "via": "os_brick.initiator",
+      "count": 2,
+      "lineRange": {
+        "start": 602,
+        "end": 602
+      }
+    },
+    {
+      "name": "exception.MultiattachNotSupportedByVirtDriver",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 693,
+        "end": 693
+      }
+    },
+    {
+      "name": "jsonutils.dumps",
+      "usage": "call",
+      "via": "oslo_serialization",
+      "count": 1,
+      "lineRange": {
+        "start": 838,
+        "end": 838
+      }
+    },
+    {
+      "name": "wait_func",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 848,
+        "end": 848
+      }
+    },
+    {
+      "name": "device_type",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 925,
+        "end": 925
+      }
+    },
+    {
+      "name": "functools.partial",
+      "usage": "call",
+      "via": "functools",
+      "count": 7,
+      "lineRange": {
+        "start": 932,
+        "end": 932
+      }
+    },
+    {
+      "name": "itertools.chain",
+      "usage": "call",
+      "via": "itertools",
+      "count": 1,
+      "lineRange": {
+        "start": 961,
+        "end": 961
+      }
+    },
+    {
+      "name": "hasattr",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 1009,
+        "end": 1009
+      }
+    },
+    {
+      "name": "all",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 1020,
+        "end": 1020
+      }
+    },
+    {
+      "name": "isinstance",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 1020,
+        "end": 1020
+      }
+    },
+    {
+      "name": "cls",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 1044,
+        "end": 1044
+      }
+    }
+  ],
+  "dependencies": [
+    {
+      "style": "import",
+      "module": "functools",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 15,
+        "end": 15
+      }
+    },
+    {
+      "style": "import",
+      "module": "itertools",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 16,
+        "end": 16
+      }
+    },
+    {
+      "style": "from",
+      "module": "os_brick",
+      "names": [
+        {
+          "alias": null,
+          "name": "encryptors"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 18,
+        "end": 18
+      }
+    },
+    {
+      "style": "from",
+      "module": "os_brick.initiator",
+      "names": [
+        {
+          "alias": "brick_utils",
+          "name": "utils"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 19,
+        "end": 19
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_log",
+      "names": [
+        {
+          "alias": "logging",
+          "name": "log"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 20,
+        "end": 20
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_serialization",
+      "names": [
+        {
+          "alias": null,
+          "name": "jsonutils"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 21,
+        "end": 21
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_utils",
+      "names": [
+        {
+          "alias": null,
+          "name": "excutils"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 22,
+        "end": 22
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "block_device"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 25,
+        "end": 25
+      }
+    },
+    {
+      "style": "import",
+      "module": "nova.conf",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 26,
+        "end": 26
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "exception"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 27,
+        "end": 27
+      }
+    }
+  ],
+  "sideEffects": [
+    {
+      "kind": "global-mutation",
+      "target": "CONF = nova.conf.CONF",
+      "lineRange": {
+        "start": 29,
+        "end": 29
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "LOG = logging.getLogger(__name__)",
+      "lineRange": {
+        "start": 31,
+        "end": 31
+      }
+    }
+  ],
+  "securitySurface": [
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "The save() method allows us to update the database using the underlying",
+      "lineRange": {
+        "start": 94,
+        "end": 94
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "dict, before the actual database update is done.",
+      "lineRange": {
+        "start": 101,
+        "end": 101
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "self.update({field: None for field in self._fields})",
+      "lineRange": {
+        "start": 122,
+        "end": 122
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "self.update({",
+      "lineRange": {
+        "start": 245,
+        "end": 245
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "self.update({",
+      "lineRange": {
+        "start": 291,
+        "end": 291
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "self.update({",
+      "lineRange": {
+        "start": 332,
+        "end": 332
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "self.update(",
+      "lineRange": {
+        "start": 373,
+        "end": 373
+      }
+    }
+  ],
+  "injection_flags": [],
+  "warnings": []
+}

@@ -1,0 +1,1290 @@
+{
+  "file": "src/nova/virt/ironic/ironic_states.py",
+  "hash": "ae73829068244f0e98a73c638b737d04874cea4fe793f1a05723deb95607c833",
+  "language": "Python",
+  "component": "nova",
+  "package": null,
+  "lines": {
+    "blank": 87,
+    "code": 228,
+    "comment": 28,
+    "total": 343
+  },
+  "symbols": [
+    {
+      "name": "VERBS",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 28,
+        "end": 43
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "NOSTATE",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 56,
+        "end": 56
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "ENROLL",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 63,
+        "end": 63
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "VERIFYING",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 69,
+        "end": 69
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "MANAGEABLE",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 72,
+        "end": 72
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "AVAILABLE",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 80,
+        "end": 80
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "ACTIVE",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 86,
+        "end": 86
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "DEPLOY",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 89,
+        "end": 89
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "DEPLOYWAIT",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 94,
+        "end": 94
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "DEPLOYING",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 101,
+        "end": 101
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "DEPLOYFAIL",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 110,
+        "end": 110
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "DEPLOYDONE",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 113,
+        "end": 113
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "DEPLOYHOLD",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 120,
+        "end": 120
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "DELETING",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 123,
+        "end": 123
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "DELETED",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 126,
+        "end": 126
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "CLEANING",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 133,
+        "end": 133
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "UNDEPLOY",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 136,
+        "end": 136
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "CLEANWAIT",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 142,
+        "end": 142
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "CLEANFAIL",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 149,
+        "end": 149
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "CLEANHOLD",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 152,
+        "end": 152
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "ERROR",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 155,
+        "end": 155
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "REBUILD",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 161,
+        "end": 161
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "INSPECTING",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 168,
+        "end": 168
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "INSPECTFAIL",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 176,
+        "end": 176
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "INSPECTWAIT",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 179,
+        "end": 179
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "ADOPTING",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 186,
+        "end": 186
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "ADOPTFAIL",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 194,
+        "end": 194
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "RESCUE",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 202,
+        "end": 202
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "RESCUEFAIL",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 205,
+        "end": 205
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "RESCUEWAIT",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 208,
+        "end": 208
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "RESCUING",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 215,
+        "end": 215
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "UNRESCUEFAIL",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 218,
+        "end": 218
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "UNRESCUING",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 221,
+        "end": 221
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "SERVICE",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 224,
+        "end": 224
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "SERVICING",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 227,
+        "end": 227
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "SERVICEWAIT",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 230,
+        "end": 230
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "SERVICEFAIL",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 233,
+        "end": 233
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "SERVICEHOLD",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 236,
+        "end": 236
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "SERVICING_STATES",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 241,
+        "end": 242
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "UPDATE_ALLOWED_STATES",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 247,
+        "end": 249
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "DELETE_ALLOWED_STATES",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 252,
+        "end": 252
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "STABLE_STATES",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 255,
+        "end": 255
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "UNSTABLE_STATES",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 258,
+        "end": 260
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "STUCK_STATES_TREATED_AS_FAIL",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 263,
+        "end": 265
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "_LOOKUP_ALLOWED_STATES",
+      "kind": "variable",
+      "scope": "",
+      "lineRange": {
+        "start": 273,
+        "end": 274
+      },
+      "source": "aee-inventory",
+      "exported": false
+    },
+    {
+      "name": "LOOKUP_ALLOWED_STATES",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 275,
+        "end": 275
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "_FASTTRACK_LOOKUP_ALLOWED_STATES",
+      "kind": "variable",
+      "scope": "",
+      "lineRange": {
+        "start": 279,
+        "end": 285
+      },
+      "source": "aee-inventory",
+      "exported": false
+    },
+    {
+      "name": "FASTTRACK_LOOKUP_ALLOWED_STATES",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 286,
+        "end": 286
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "FAILURE_STATES",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 289,
+        "end": 291
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "ALL_STATES",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 295,
+        "end": 300
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "POWER_ON",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 306,
+        "end": 306
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "POWER_OFF",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 309,
+        "end": 309
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "REBOOT",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 312,
+        "end": 312
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "SOFT_REBOOT",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 315,
+        "end": 315
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "SOFT_POWER_OFF",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 318,
+        "end": 318
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "ALLOCATING",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 325,
+        "end": 325
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "PROVISIONING",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 333,
+        "end": 333
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "TAKEOVER",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 334,
+        "end": 334
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "INTROSPECTION",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 335,
+        "end": 335
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "CONDUCTOR",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 336,
+        "end": 336
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "TRANSITION",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 337,
+        "end": 337
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "STARTFAIL",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 338,
+        "end": 338
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "UNPROVISION",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 339,
+        "end": 339
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "ADOPTION",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 340,
+        "end": 340
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "CONSOLE",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 341,
+        "end": 341
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "MONITORING",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 342,
+        "end": 342
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "VERIFY",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 343,
+        "end": 343
+      },
+      "source": "aee-inventory",
+      "exported": true
+    }
+  ],
+  "referencedSymbols": [
+    {
+      "name": "frozenset",
+      "usage": "call",
+      "via": null,
+      "count": 5,
+      "lineRange": {
+        "start": 241,
+        "end": 241
+      }
+    }
+  ],
+  "dependencies": [],
+  "sideEffects": [
+    {
+      "kind": "global-mutation",
+      "target": "VERBS = {",
+      "lineRange": {
+        "start": 28,
+        "end": 28
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "NOSTATE = None",
+      "lineRange": {
+        "start": 56,
+        "end": 56
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "ENROLL = 'enroll'",
+      "lineRange": {
+        "start": 63,
+        "end": 63
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "VERIFYING = 'verifying'",
+      "lineRange": {
+        "start": 69,
+        "end": 69
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "MANAGEABLE = 'manageable'",
+      "lineRange": {
+        "start": 72,
+        "end": 72
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "AVAILABLE = 'available'",
+      "lineRange": {
+        "start": 80,
+        "end": 80
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "ACTIVE = 'active'",
+      "lineRange": {
+        "start": 86,
+        "end": 86
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "DEPLOY = 'deploy'",
+      "lineRange": {
+        "start": 89,
+        "end": 89
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "DEPLOYWAIT = 'wait call-back'",
+      "lineRange": {
+        "start": 94,
+        "end": 94
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "DEPLOYING = 'deploying'",
+      "lineRange": {
+        "start": 101,
+        "end": 101
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "DEPLOYFAIL = 'deploy failed'",
+      "lineRange": {
+        "start": 110,
+        "end": 110
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "DEPLOYDONE = 'deploy complete'",
+      "lineRange": {
+        "start": 113,
+        "end": 113
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "DEPLOYHOLD = 'deploy hold'",
+      "lineRange": {
+        "start": 120,
+        "end": 120
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "DELETING = 'deleting'",
+      "lineRange": {
+        "start": 123,
+        "end": 123
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "DELETED = 'deleted'",
+      "lineRange": {
+        "start": 126,
+        "end": 126
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "CLEANING = 'cleaning'",
+      "lineRange": {
+        "start": 133,
+        "end": 133
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "UNDEPLOY = 'undeploy'",
+      "lineRange": {
+        "start": 136,
+        "end": 136
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "CLEANWAIT = 'clean wait'",
+      "lineRange": {
+        "start": 142,
+        "end": 142
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "CLEANFAIL = 'clean failed'",
+      "lineRange": {
+        "start": 149,
+        "end": 149
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "CLEANHOLD = 'clean hold'",
+      "lineRange": {
+        "start": 152,
+        "end": 152
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "ERROR = 'error'",
+      "lineRange": {
+        "start": 155,
+        "end": 155
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "REBUILD = 'rebuild'",
+      "lineRange": {
+        "start": 161,
+        "end": 161
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "INSPECTING = 'inspecting'",
+      "lineRange": {
+        "start": 168,
+        "end": 168
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "INSPECTFAIL = 'inspect failed'",
+      "lineRange": {
+        "start": 176,
+        "end": 176
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "INSPECTWAIT = 'inspect wait'",
+      "lineRange": {
+        "start": 179,
+        "end": 179
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "ADOPTING = 'adopting'",
+      "lineRange": {
+        "start": 186,
+        "end": 186
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "ADOPTFAIL = 'adopt failed'",
+      "lineRange": {
+        "start": 194,
+        "end": 194
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "RESCUE = 'rescue'",
+      "lineRange": {
+        "start": 202,
+        "end": 202
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "RESCUEFAIL = 'rescue failed'",
+      "lineRange": {
+        "start": 205,
+        "end": 205
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "RESCUEWAIT = 'rescue wait'",
+      "lineRange": {
+        "start": 208,
+        "end": 208
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "RESCUING = 'rescuing'",
+      "lineRange": {
+        "start": 215,
+        "end": 215
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "UNRESCUEFAIL = 'unrescue failed'",
+      "lineRange": {
+        "start": 218,
+        "end": 218
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "UNRESCUING = 'unrescuing'",
+      "lineRange": {
+        "start": 221,
+        "end": 221
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "SERVICE = 'service'",
+      "lineRange": {
+        "start": 224,
+        "end": 224
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "SERVICING = 'servicing'",
+      "lineRange": {
+        "start": 227,
+        "end": 227
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "SERVICEWAIT = 'service wait'",
+      "lineRange": {
+        "start": 230,
+        "end": 230
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "SERVICEFAIL = 'service failed'",
+      "lineRange": {
+        "start": 233,
+        "end": 233
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "SERVICEHOLD = 'service hold'",
+      "lineRange": {
+        "start": 236,
+        "end": 236
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "SERVICING_STATES = frozenset((SERVICING, SERVICEWAIT,",
+      "lineRange": {
+        "start": 241,
+        "end": 241
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "UPDATE_ALLOWED_STATES = (DEPLOYFAIL, INSPECTING, INSPECTFAIL, INSPECTWAIT,",
+      "lineRange": {
+        "start": 247,
+        "end": 247
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "DELETE_ALLOWED_STATES = (MANAGEABLE, ENROLL, ADOPTFAIL)",
+      "lineRange": {
+        "start": 252,
+        "end": 252
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "STABLE_STATES = (ENROLL, MANAGEABLE, AVAILABLE, ACTIVE, ERROR, RESCUE)",
+      "lineRange": {
+        "start": 255,
+        "end": 255
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "UNSTABLE_STATES = (DEPLOYING, DEPLOYWAIT, CLEANING, CLEANWAIT, VERIFYING,",
+      "lineRange": {
+        "start": 258,
+        "end": 258
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "STUCK_STATES_TREATED_AS_FAIL = (DEPLOYING, CLEANING, VERIFYING, INSPECTING,",
+      "lineRange": {
+        "start": 263,
+        "end": 263
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "LOOKUP_ALLOWED_STATES = frozenset(_LOOKUP_ALLOWED_STATES)",
+      "lineRange": {
+        "start": 275,
+        "end": 275
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "FASTTRACK_LOOKUP_ALLOWED_STATES = frozenset(_FASTTRACK_LOOKUP_ALLOWED_STATES)",
+      "lineRange": {
+        "start": 286,
+        "end": 286
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "FAILURE_STATES = frozenset((DEPLOYFAIL, CLEANFAIL, INSPECTFAIL,",
+      "lineRange": {
+        "start": 289,
+        "end": 289
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "ALL_STATES = frozenset((ACTIVE, ADOPTFAIL, ADOPTING, AVAILABLE, CLEANFAIL,",
+      "lineRange": {
+        "start": 295,
+        "end": 295
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "POWER_ON = 'power on'",
+      "lineRange": {
+        "start": 306,
+        "end": 306
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "POWER_OFF = 'power off'",
+      "lineRange": {
+        "start": 309,
+        "end": 309
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "REBOOT = 'rebooting'",
+      "lineRange": {
+        "start": 312,
+        "end": 312
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "SOFT_REBOOT = 'soft rebooting'",
+      "lineRange": {
+        "start": 315,
+        "end": 315
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "SOFT_POWER_OFF = 'soft power off'",
+      "lineRange": {
+        "start": 318,
+        "end": 318
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "ALLOCATING = 'allocating'",
+      "lineRange": {
+        "start": 325,
+        "end": 325
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "PROVISIONING = \"provisioning\"",
+      "lineRange": {
+        "start": 333,
+        "end": 333
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "TAKEOVER = \"takeover\"",
+      "lineRange": {
+        "start": 334,
+        "end": 334
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "INTROSPECTION = \"introspection\"",
+      "lineRange": {
+        "start": 335,
+        "end": 335
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "CONDUCTOR = \"conductor\"",
+      "lineRange": {
+        "start": 336,
+        "end": 336
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "TRANSITION = \"transition\"",
+      "lineRange": {
+        "start": 337,
+        "end": 337
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "STARTFAIL = \"startup failure\"",
+      "lineRange": {
+        "start": 338,
+        "end": 338
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "UNPROVISION = \"unprovision\"",
+      "lineRange": {
+        "start": 339,
+        "end": 339
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "ADOPTION = \"adoption\"",
+      "lineRange": {
+        "start": 340,
+        "end": 340
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "CONSOLE = \"console\"",
+      "lineRange": {
+        "start": 341,
+        "end": 341
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "MONITORING = \"monitoring\"",
+      "lineRange": {
+        "start": 342,
+        "end": 342
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "VERIFY = \"verify\"",
+      "lineRange": {
+        "start": 343,
+        "end": 343
+      }
+    }
+  ],
+  "securitySurface": [],
+  "injection_flags": [],
+  "warnings": []
+}

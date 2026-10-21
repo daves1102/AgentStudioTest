@@ -1,0 +1,1585 @@
+{
+  "file": "src/nova/virt/libvirt/migration.py",
+  "hash": "fe952e5a9dbee33be2c8cb7038a49be9aeea604788e095347200dfcd24ec487c",
+  "language": "Python",
+  "component": "nova",
+  "package": null,
+  "lines": {
+    "blank": 168,
+    "code": 627,
+    "comment": 113,
+    "total": 908
+  },
+  "symbols": [
+    {
+      "name": "libvirt",
+      "kind": "variable",
+      "scope": "",
+      "lineRange": {
+        "start": 35,
+        "end": 35
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "LOG",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 37,
+        "end": 37
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "CONF",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 38,
+        "end": 38
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "graphics_listen_addrs",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 41,
+        "end": 52
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "migrate_data"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "listen_addrs",
+          "line": 52
+        }
+      ],
+      "nloc": 11,
+      "ccn": 5,
+      "exported": true
+    },
+    {
+      "name": "get_updated_guest_xml",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 55,
+        "end": 98
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "instance"
+        },
+        {
+          "name": "guest"
+        },
+        {
+          "name": "migrate_data"
+        },
+        {
+          "name": "get_volume_config"
+        },
+        {
+          "default": "None",
+          "name": "get_vif_config"
+        },
+        {
+          "default": "None",
+          "name": "new_resources"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "etree.tostring(xml_doc, encoding='unicode')",
+          "line": 98
+        }
+      ],
+      "nloc": 34,
+      "ccn": 10,
+      "exported": true
+    },
+    {
+      "name": "_update_quota_xml",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 101,
+        "end": 110
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "instance"
+        },
+        {
+          "name": "xml_doc"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "xml_doc",
+          "line": 110
+        }
+      ],
+      "nloc": 9,
+      "ccn": 5,
+      "exported": false
+    },
+    {
+      "name": "_update_device_resources_xml",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 113,
+        "end": 123
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "xml_doc"
+        },
+        {
+          "name": "new_resources"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "xml_doc",
+          "line": 123
+        }
+      ],
+      "nloc": 9,
+      "ccn": 4,
+      "exported": false
+    },
+    {
+      "name": "_update_vpmems_xml",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 126,
+        "end": 132
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "xml_doc"
+        },
+        {
+          "name": "vpmems"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "xml_doc",
+          "line": 132
+        }
+      ],
+      "nloc": 7,
+      "ccn": 3,
+      "exported": false
+    },
+    {
+      "name": "_update_mdev_xml",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 135,
+        "end": 154
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "xml_doc"
+        },
+        {
+          "name": "target_mdevs"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "xml_doc",
+          "line": 154
+        }
+      ],
+      "nloc": 18,
+      "ccn": 6,
+      "exported": false
+    },
+    {
+      "name": "_update_pci_dev_xml",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 157,
+        "end": 171
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "xml_doc"
+        },
+        {
+          "name": "pci_dev_map_src_dst"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "xml_doc",
+          "line": 171
+        }
+      ],
+      "nloc": 12,
+      "ccn": 3,
+      "exported": false
+    },
+    {
+      "name": "_get_pci_address_fields_with_prefix",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 174,
+        "end": 176
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "addr"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "(f\"0x{domain}\", f\"0x{bus}\", f\"0x{slot}\", f\"0x{func}\")",
+          "line": 176
+        }
+      ],
+      "nloc": 3,
+      "ccn": 1,
+      "exported": false
+    },
+    {
+      "name": "_update_hostdev_address",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 179,
+        "end": 199
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "hostdevs"
+        },
+        {
+          "name": "src_fields"
+        },
+        {
+          "name": "dst_fields"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "True",
+          "line": 197
+        },
+        {
+          "expr": "False",
+          "line": 199
+        }
+      ],
+      "nloc": 17,
+      "ccn": 5,
+      "exported": false
+    },
+    {
+      "name": "_address_matches",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 202,
+        "end": 208
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "address_tag"
+        },
+        {
+          "name": "domain"
+        },
+        {
+          "name": "bus"
+        },
+        {
+          "name": "slot"
+        },
+        {
+          "name": "function"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "( address_tag.get('domain') == domain and address_tag.get('bus') == bus and address_tag.get('slot') == slot and address_tag.get('function') == function )",
+          "line": 203
+        }
+      ],
+      "nloc": 7,
+      "ccn": 4,
+      "exported": false
+    },
+    {
+      "name": "_set_address_fields",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 211,
+        "end": 215
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "address_tag"
+        },
+        {
+          "name": "domain"
+        },
+        {
+          "name": "bus"
+        },
+        {
+          "name": "slot"
+        },
+        {
+          "name": "function"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 5,
+      "ccn": 1,
+      "exported": false
+    },
+    {
+      "name": "_raise_hostdev_not_found_exception",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 218,
+        "end": 225
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "xml_doc"
+        },
+        {
+          "name": "src_addr"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 8,
+      "ccn": 1,
+      "exported": false
+    },
+    {
+      "name": "_update_cpu_shared_set_xml",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 228,
+        "end": 238
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "xml_doc"
+        },
+        {
+          "name": "migrate_data"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "xml_doc",
+          "line": 238
+        }
+      ],
+      "nloc": 9,
+      "ccn": 1,
+      "exported": false
+    },
+    {
+      "name": "_remove_cpu_shared_set_xml",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 241,
+        "end": 253
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "xml_doc"
+        },
+        {
+          "name": "migrate_data"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "xml_doc",
+          "line": 253
+        }
+      ],
+      "nloc": 11,
+      "ccn": 3,
+      "exported": false
+    },
+    {
+      "name": "_update_numa_xml",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 256,
+        "end": 315
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "xml_doc"
+        },
+        {
+          "name": "migrate_data"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "xml_doc",
+          "line": 315
+        }
+      ],
+      "nloc": 40,
+      "ccn": 10,
+      "exported": false
+    },
+    {
+      "name": "_update_graphics_xml",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 318,
+        "end": 330
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "xml_doc"
+        },
+        {
+          "name": "migrate_data"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "xml_doc",
+          "line": 330
+        }
+      ],
+      "nloc": 11,
+      "ccn": 5,
+      "exported": false
+    },
+    {
+      "name": "_update_serial_xml",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 333,
+        "end": 360
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "xml_doc"
+        },
+        {
+          "name": "migrate_data"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "xml_doc",
+          "line": 360
+        }
+      ],
+      "nloc": 9,
+      "ccn": 3,
+      "exported": false
+    },
+    {
+      "name": "set_listen_addr_and_port",
+      "kind": "function",
+      "scope": "_update_serial_xml",
+      "lineRange": {
+        "start": 337,
+        "end": 350
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "source"
+        },
+        {
+          "name": "listen_addr"
+        },
+        {
+          "name": "serial_listen_ports"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "visibility": "public"
+    },
+    {
+      "name": "_update_rbd_xml",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 363,
+        "end": 413
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "xml_doc"
+        },
+        {
+          "name": "migrate_data"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "xml_doc",
+          "line": 374
+        },
+        {
+          "expr": "xml_doc",
+          "line": 413
+        }
+      ],
+      "nloc": 26,
+      "ccn": 11,
+      "exported": false
+    },
+    {
+      "name": "_update_volume_xml",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 416,
+        "end": 470
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "xml_doc"
+        },
+        {
+          "name": "migrate_data"
+        },
+        {
+          "name": "instance"
+        },
+        {
+          "name": "get_volume_config"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "xml_doc",
+          "line": 470
+        }
+      ],
+      "nloc": 38,
+      "ccn": 15,
+      "exported": false
+    },
+    {
+      "name": "_update_perf_events_xml",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 473,
+        "end": 504
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "xml_doc"
+        },
+        {
+          "name": "migrate_data"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "xml_doc",
+          "line": 494
+        },
+        {
+          "expr": "xml_doc",
+          "line": 504
+        }
+      ],
+      "nloc": 21,
+      "ccn": 7,
+      "exported": false
+    },
+    {
+      "name": "_update_memory_backing_xml",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 507,
+        "end": 551
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "xml_doc"
+        },
+        {
+          "name": "migrate_data"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "xml_doc",
+          "line": 540
+        },
+        {
+          "expr": "xml_doc",
+          "line": 551
+        }
+      ],
+      "nloc": 24,
+      "ccn": 7,
+      "exported": false
+    },
+    {
+      "name": "_update_vif_xml",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 554,
+        "end": 618
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "xml_doc"
+        },
+        {
+          "name": "migrate_data"
+        },
+        {
+          "name": "get_vif_config"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "xml_doc",
+          "line": 618
+        }
+      ],
+      "nloc": 35,
+      "ccn": 9,
+      "exported": false
+    },
+    {
+      "name": "find_job_type",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 621,
+        "end": 660
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "guest"
+        },
+        {
+          "name": "instance"
+        },
+        {
+          "default": "True",
+          "name": "logging_ok"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "libvirt.VIR_DOMAIN_JOB_FAILED",
+          "line": 645
+        },
+        {
+          "expr": "libvirt.VIR_DOMAIN_JOB_COMPLETED",
+          "line": 649
+        },
+        {
+          "expr": "libvirt.VIR_DOMAIN_JOB_COMPLETED",
+          "line": 656
+        },
+        {
+          "expr": "libvirt.VIR_DOMAIN_JOB_FAILED",
+          "line": 660
+        }
+      ],
+      "nloc": 22,
+      "ccn": 4,
+      "exported": true
+    },
+    {
+      "name": "_log",
+      "kind": "function",
+      "scope": "find_job_type",
+      "lineRange": {
+        "start": 637,
+        "end": 639
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "func"
+        },
+        {
+          "name": "msg"
+        },
+        {
+          "name": "*args"
+        },
+        {
+          "name": "**kwargs"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "visibility": "private"
+    },
+    {
+      "name": "should_trigger_timeout_action",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 663,
+        "end": 692
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "instance"
+        },
+        {
+          "name": "elapsed"
+        },
+        {
+          "name": "completion_timeout"
+        },
+        {
+          "name": "migration_status"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "False",
+          "line": 682
+        },
+        {
+          "expr": "False",
+          "line": 685
+        },
+        {
+          "expr": "True",
+          "line": 690
+        },
+        {
+          "expr": "False",
+          "line": 692
+        }
+      ],
+      "nloc": 11,
+      "ccn": 4,
+      "exported": true
+    },
+    {
+      "name": "update_downtime",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 695,
+        "end": 747
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "guest"
+        },
+        {
+          "name": "instance"
+        },
+        {
+          "name": "olddowntime"
+        },
+        {
+          "name": "downtime_steps"
+        },
+        {
+          "name": "elapsed"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "olddowntime",
+          "line": 729
+        },
+        {
+          "expr": "olddowntime",
+          "line": 734
+        },
+        {
+          "expr": "thisstep[1]",
+          "line": 747
+        }
+      ],
+      "nloc": 28,
+      "ccn": 6,
+      "exported": true
+    },
+    {
+      "name": "save_stats",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 750,
+        "end": 773
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "instance"
+        },
+        {
+          "name": "migration"
+        },
+        {
+          "name": "info"
+        },
+        {
+          "name": "remaining"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 10,
+      "ccn": 1,
+      "exported": true
+    },
+    {
+      "name": "trigger_postcopy_switch",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 776,
+        "end": 789
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "guest"
+        },
+        {
+          "name": "instance"
+        },
+        {
+          "name": "migration"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 11,
+      "ccn": 2,
+      "exported": true
+    },
+    {
+      "name": "run_tasks",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 792,
+        "end": 833
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "guest"
+        },
+        {
+          "name": "instance"
+        },
+        {
+          "name": "active_migrations"
+        },
+        {
+          "name": "on_migration_failure"
+        },
+        {
+          "name": "migration"
+        },
+        {
+          "name": "is_post_copy_enabled"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 23,
+      "ccn": 6,
+      "exported": true
+    },
+    {
+      "name": "run_recover_tasks",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 836,
+        "end": 868
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "host"
+        },
+        {
+          "name": "guest"
+        },
+        {
+          "name": "instance"
+        },
+        {
+          "name": "on_migration_failure"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 15,
+      "ccn": 5,
+      "exported": true
+    },
+    {
+      "name": "downtime_steps",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 871,
+        "end": 908
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "data_gb"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 9,
+      "ccn": 2,
+      "exported": true
+    }
+  ],
+  "referencedSymbols": [
+    {
+      "name": "logging.getLogger",
+      "usage": "call",
+      "via": "oslo_log",
+      "count": 1,
+      "lineRange": {
+        "start": 37,
+        "end": 37
+      }
+    },
+    {
+      "name": "str",
+      "usage": "call",
+      "via": null,
+      "count": 3,
+      "lineRange": {
+        "start": 48,
+        "end": 48
+      }
+    },
+    {
+      "name": "etree.fromstring",
+      "usage": "call",
+      "via": "lxml",
+      "count": 1,
+      "lineRange": {
+        "start": 57,
+        "end": 57
+      }
+    },
+    {
+      "name": "etree.tostring",
+      "usage": "call",
+      "via": "lxml",
+      "count": 11,
+      "lineRange": {
+        "start": 98,
+        "end": 98
+      }
+    },
+    {
+      "name": "list",
+      "usage": "call",
+      "via": null,
+      "count": 2,
+      "lineRange": {
+        "start": 108,
+        "end": 108
+      }
+    },
+    {
+      "name": "isinstance",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 118,
+        "end": 118
+      }
+    },
+    {
+      "name": "enumerate",
+      "usage": "call",
+      "via": null,
+      "count": 5,
+      "lineRange": {
+        "start": 128,
+        "end": 128
+      }
+    },
+    {
+      "name": "exception.NovaException",
+      "usage": "call",
+      "via": "nova",
+      "count": 3,
+      "lineRange": {
+        "start": 147,
+        "end": 147
+      }
+    },
+    {
+      "name": "nova.pci.utils.get_pci_address_fields",
+      "usage": "call",
+      "via": "nova.conf",
+      "count": 1,
+      "lineRange": {
+        "start": 175,
+        "end": 175
+      }
+    },
+    {
+      "name": "hardware.format_cpu_spec",
+      "usage": "call",
+      "via": "nova.virt",
+      "count": 6,
+      "lineRange": {
+        "start": 233,
+        "end": 233
+      }
+    },
+    {
+      "name": "int",
+      "usage": "call",
+      "via": null,
+      "count": 6,
+      "lineRange": {
+        "start": 267,
+        "end": 267
+      }
+    },
+    {
+      "name": "set",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 291,
+        "end": 291
+      }
+    },
+    {
+      "name": "vconfig.LibvirtConfigGuestCPUTuneVCPUSched",
+      "usage": "call",
+      "via": "nova.virt.libvirt",
+      "count": 1,
+      "lineRange": {
+        "start": 301,
+        "end": 301
+      }
+    },
+    {
+      "name": "len",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 349,
+        "end": 349
+      }
+    },
+    {
+      "name": "rbd_utils.RBDDriver",
+      "usage": "call",
+      "via": "nova.storage",
+      "count": 1,
+      "lineRange": {
+        "start": 376,
+        "end": 376
+      }
+    },
+    {
+      "name": "vconfig.parse_libvirt_device_alias",
+      "usage": "call",
+      "via": "nova.virt.libvirt",
+      "count": 1,
+      "lineRange": {
+        "start": 383,
+        "end": 383
+      }
+    },
+    {
+      "name": "zip",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 409,
+        "end": 409
+      }
+    },
+    {
+      "name": "etree.Element",
+      "usage": "call",
+      "via": "lxml",
+      "count": 8,
+      "lineRange": {
+        "start": 410,
+        "end": 410
+      }
+    },
+    {
+      "name": "etree.XMLParser",
+      "usage": "call",
+      "via": "lxml",
+      "count": 2,
+      "lineRange": {
+        "start": 421,
+        "end": 421
+      }
+    },
+    {
+      "name": "get_volume_config",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 432,
+        "end": 432
+      }
+    },
+    {
+      "name": "vconfig.LibvirtConfigGuestDiskEncryption",
+      "usage": "call",
+      "via": "nova.virt.libvirt",
+      "count": 1,
+      "lineRange": {
+        "start": 436,
+        "end": 436
+      }
+    },
+    {
+      "name": "vconfig.LibvirtConfigGuestDiskEncryptionSecret",
+      "usage": "call",
+      "via": "nova.virt.libvirt",
+      "count": 1,
+      "lineRange": {
+        "start": 438,
+        "end": 438
+      }
+    },
+    {
+      "name": "etree.XML",
+      "usage": "call",
+      "via": "lxml",
+      "count": 2,
+      "lineRange": {
+        "start": 443,
+        "end": 443
+      }
+    },
+    {
+      "name": "get_vif_config",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 582,
+        "end": 582
+      }
+    },
+    {
+      "name": "func",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 639,
+        "end": 639
+      }
+    },
+    {
+      "name": "deque",
+      "usage": "call",
+      "via": "collections",
+      "count": 1,
+      "lineRange": {
+        "start": 813,
+        "end": 813
+      }
+    },
+    {
+      "name": "range",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 907,
+        "end": 907
+      }
+    }
+  ],
+  "dependencies": [
+    {
+      "style": "from",
+      "module": "collections",
+      "names": [
+        {
+          "alias": null,
+          "name": "deque"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 17,
+        "end": 17
+      }
+    },
+    {
+      "style": "from",
+      "module": "lxml",
+      "names": [
+        {
+          "alias": null,
+          "name": "etree"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 19,
+        "end": 19
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_log",
+      "names": [
+        {
+          "alias": "logging",
+          "name": "log"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 20,
+        "end": 20
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.compute",
+      "names": [
+        {
+          "alias": null,
+          "name": "power_state"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 22,
+        "end": 22
+      }
+    },
+    {
+      "style": "import",
+      "module": "nova.conf",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 23,
+        "end": 23
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "exception"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 24,
+        "end": 24
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "objects"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 25,
+        "end": 25
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.storage",
+      "names": [
+        {
+          "alias": null,
+          "name": "rbd_utils"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 26,
+        "end": 26
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.virt",
+      "names": [
+        {
+          "alias": null,
+          "name": "hardware"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 27,
+        "end": 27
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.virt.libvirt",
+      "names": [
+        {
+          "alias": "vconfig",
+          "name": "config"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 28,
+        "end": 28
+      }
+    },
+    {
+      "style": "import",
+      "module": "libvirt",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 33,
+        "end": 33
+      }
+    }
+  ],
+  "sideEffects": [
+    {
+      "kind": "global-mutation",
+      "target": "LOG = logging.getLogger(__name__)",
+      "lineRange": {
+        "start": 37,
+        "end": 37
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "CONF = nova.conf.CONF",
+      "lineRange": {
+        "start": 38,
+        "end": 38
+      }
+    }
+  ],
+  "securitySurface": [
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "\"\"\"Update XML for rbd disk drives (ephemeral, root disk and config drive)",
+      "lineRange": {
+        "start": 364,
+        "end": 364
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "\"\"\"Update XML using device information of destination host.\"\"\"",
+      "lineRange": {
+        "start": 417,
+        "end": 417
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "disk_dev.insert(cnt, item_dst)",
+      "lineRange": {
+        "start": 461,
+        "end": 461
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "disk_dev.insert(cnt, item_dst)",
+      "lineRange": {
+        "start": 469,
+        "end": 469
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "\"\"\"Update XML by the supported events of destination host.\"\"\"",
+      "lineRange": {
+        "start": 474,
+        "end": 474
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "\"\"\"Update libvirt domain XML for file-backed memory",
+      "lineRange": {
+        "start": 508,
+        "end": 508
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "interface_dev.insert(index, dest_interface_subelem)",
+      "lineRange": {
+        "start": 614,
+        "end": 614
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "interface_dev.insert(index + 1, address)",
+      "lineRange": {
+        "start": 616,
+        "end": 616
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "\"\"\"Update max downtime if needed",
+      "lineRange": {
+        "start": 698,
+        "end": 698
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "Update the migration and instance objects with",
+      "lineRange": {
+        "start": 758,
+        "end": 758
+      }
+    }
+  ],
+  "injection_flags": [],
+  "warnings": []
+}

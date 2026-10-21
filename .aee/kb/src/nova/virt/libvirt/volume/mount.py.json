@@ -1,0 +1,1143 @@
+{
+  "file": "src/nova/virt/libvirt/volume/mount.py",
+  "hash": "c1ee8e47af28a7eb7cb268e2a0f257146edb960a6114dc4fb02be36a809da688",
+  "language": "Python",
+  "component": "nova",
+  "package": null,
+  "lines": {
+    "blank": 86,
+    "code": 271,
+    "comment": 66,
+    "total": 423
+  },
+  "symbols": [
+    {
+      "name": "CONF",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 29,
+        "end": 29
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "LOG",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 30,
+        "end": 30
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "_HostMountStateManager",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 33,
+        "end": 149
+      },
+      "source": "aee-inventory",
+      "exported": false
+    },
+    {
+      "name": "__init__",
+      "kind": "method",
+      "scope": "_HostMountStateManager",
+      "lineRange": {
+        "start": 49,
+        "end": 50
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "_reset_state",
+      "kind": "method",
+      "scope": "_HostMountStateManager",
+      "lineRange": {
+        "start": 52,
+        "end": 66
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 5,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "get_state",
+      "kind": "method",
+      "scope": "_HostMountStateManager",
+      "lineRange": {
+        "start": 69,
+        "end": 98
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 14,
+      "ccn": 3,
+      "visibility": "public"
+    },
+    {
+      "name": "host_up",
+      "kind": "method",
+      "scope": "_HostMountStateManager",
+      "lineRange": {
+        "start": 100,
+        "end": 133
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "host"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 12,
+      "ccn": 4,
+      "visibility": "public"
+    },
+    {
+      "name": "host_down",
+      "kind": "method",
+      "scope": "_HostMountStateManager",
+      "lineRange": {
+        "start": 135,
+        "end": 144
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "",
+          "line": 142
+        }
+      ],
+      "nloc": 6,
+      "ccn": 2,
+      "visibility": "public"
+    },
+    {
+      "name": "_host_down",
+      "kind": "method",
+      "scope": "_HostMountStateManager",
+      "lineRange": {
+        "start": 146,
+        "end": 149
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 4,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "_HostMountState",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 152,
+        "end": 395
+      },
+      "source": "aee-inventory",
+      "exported": false
+    },
+    {
+      "name": "_MountPoint",
+      "kind": "class",
+      "scope": "_HostMountState",
+      "lineRange": {
+        "start": 175,
+        "end": 194
+      },
+      "source": "aee-inventory",
+      "visibility": "private"
+    },
+    {
+      "name": "__init__",
+      "kind": "method",
+      "scope": "_HostMountState._MountPoint",
+      "lineRange": {
+        "start": 178,
+        "end": 185
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 3,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "add_attachment",
+      "kind": "method",
+      "scope": "_HostMountState._MountPoint",
+      "lineRange": {
+        "start": 187,
+        "end": 188
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "vol_name"
+        },
+        {
+          "name": "instance_uuid"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "remove_attachment",
+      "kind": "method",
+      "scope": "_HostMountState._MountPoint",
+      "lineRange": {
+        "start": 190,
+        "end": 191
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "vol_name"
+        },
+        {
+          "name": "instance_uuid"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "in_use",
+      "kind": "method",
+      "scope": "_HostMountState._MountPoint",
+      "lineRange": {
+        "start": 193,
+        "end": 194
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "len(self.attachments) > 0",
+          "line": 194
+        }
+      ],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "__init__",
+      "kind": "method",
+      "scope": "_HostMountState",
+      "lineRange": {
+        "start": 196,
+        "end": 238
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "host"
+        },
+        {
+          "name": "generation"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 16,
+      "ccn": 5,
+      "visibility": "public"
+    },
+    {
+      "name": "_get_locked",
+      "kind": "method",
+      "scope": "_HostMountState",
+      "lineRange": {
+        "start": 241,
+        "end": 260
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mountpoint"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 7,
+      "ccn": 3,
+      "visibility": "private"
+    },
+    {
+      "name": "mount",
+      "kind": "method",
+      "scope": "_HostMountState",
+      "lineRange": {
+        "start": 262,
+        "end": 337
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "fstype"
+        },
+        {
+          "name": "export"
+        },
+        {
+          "name": "vol_name"
+        },
+        {
+          "name": "mountpoint"
+        },
+        {
+          "name": "instance"
+        },
+        {
+          "name": "options"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 36,
+      "ccn": 4,
+      "visibility": "public"
+    },
+    {
+      "name": "umount",
+      "kind": "method",
+      "scope": "_HostMountState",
+      "lineRange": {
+        "start": 339,
+        "end": 377
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "vol_name"
+        },
+        {
+          "name": "mountpoint"
+        },
+        {
+          "name": "instance"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "mount.in_use()",
+          "line": 377
+        }
+      ],
+      "nloc": 24,
+      "ccn": 5,
+      "visibility": "public"
+    },
+    {
+      "name": "_real_umount",
+      "kind": "method",
+      "scope": "_HostMountState",
+      "lineRange": {
+        "start": 379,
+        "end": 395
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "mountpoint"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "False",
+          "line": 393
+        },
+        {
+          "expr": "True",
+          "line": 395
+        }
+      ],
+      "nloc": 12,
+      "ccn": 3,
+      "visibility": "private"
+    },
+    {
+      "name": "__manager__",
+      "kind": "variable",
+      "scope": "",
+      "lineRange": {
+        "start": 398,
+        "end": 398
+      },
+      "source": "aee-inventory",
+      "exported": false
+    },
+    {
+      "name": "get_manager",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 401,
+        "end": 406
+      },
+      "source": "aee-inventory",
+      "parameters": [],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "__manager__",
+          "line": 406
+        }
+      ],
+      "nloc": 2,
+      "ccn": 1,
+      "exported": true
+    },
+    {
+      "name": "mount",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 409,
+        "end": 415
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "fstype"
+        },
+        {
+          "name": "export"
+        },
+        {
+          "name": "vol_name"
+        },
+        {
+          "name": "mountpoint"
+        },
+        {
+          "name": "instance"
+        },
+        {
+          "default": "None",
+          "name": "options"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 4,
+      "ccn": 1,
+      "exported": true
+    },
+    {
+      "name": "umount",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 418,
+        "end": 423
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "vol_name"
+        },
+        {
+          "name": "mountpoint"
+        },
+        {
+          "name": "instance"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "mount_state.umount(vol_name, mountpoint, instance)",
+          "line": 423
+        }
+      ],
+      "nloc": 3,
+      "ccn": 1,
+      "exported": true
+    }
+  ],
+  "referencedSymbols": [
+    {
+      "name": "log.getLogger",
+      "usage": "call",
+      "via": "oslo_log",
+      "count": 1,
+      "lineRange": {
+        "start": 30,
+        "end": 30
+      }
+    },
+    {
+      "name": "object",
+      "usage": "inherit",
+      "via": null,
+      "count": 3,
+      "lineRange": {
+        "start": 33,
+        "end": 33
+      }
+    },
+    {
+      "name": "threading.Condition",
+      "usage": "call",
+      "via": "threading",
+      "count": 1,
+      "lineRange": {
+        "start": 62,
+        "end": 62
+      }
+    },
+    {
+      "name": "exception.HypervisorUnavailable",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 87,
+        "end": 87
+      }
+    },
+    {
+      "name": "threading.Lock",
+      "usage": "call",
+      "via": "threading",
+      "count": 1,
+      "lineRange": {
+        "start": 182,
+        "end": 182
+      }
+    },
+    {
+      "name": "set",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 185,
+        "end": 185
+      }
+    },
+    {
+      "name": "len",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 194,
+        "end": 194
+      }
+    },
+    {
+      "name": "collections.defaultdict",
+      "usage": "call",
+      "via": "collections",
+      "count": 1,
+      "lineRange": {
+        "start": 208,
+        "end": 208
+      }
+    },
+    {
+      "name": "os.path.dirname",
+      "usage": "call",
+      "via": "os.path",
+      "count": 1,
+      "lineRange": {
+        "start": 228,
+        "end": 228
+      }
+    },
+    {
+      "name": "os.path.ismount",
+      "usage": "call",
+      "via": "os.path",
+      "count": 5,
+      "lineRange": {
+        "start": 229,
+        "end": 229
+      }
+    },
+    {
+      "name": "os.path.basename",
+      "usage": "call",
+      "via": "os.path",
+      "count": 1,
+      "lineRange": {
+        "start": 232,
+        "end": 232
+      }
+    },
+    {
+      "name": "fileutils.ensure_tree",
+      "usage": "call",
+      "via": "oslo_utils",
+      "count": 1,
+      "lineRange": {
+        "start": 305,
+        "end": 305
+      }
+    },
+    {
+      "name": "nova.privsep.fs.mount",
+      "usage": "call",
+      "via": "nova.conf",
+      "count": 1,
+      "lineRange": {
+        "start": 308,
+        "end": 308
+      }
+    },
+    {
+      "name": "nova.privsep.fs.umount",
+      "usage": "call",
+      "via": "nova.conf",
+      "count": 1,
+      "lineRange": {
+        "start": 386,
+        "end": 386
+      }
+    },
+    {
+      "name": "str",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 389,
+        "end": 389
+      }
+    },
+    {
+      "name": "nova.privsep.path.rmdir",
+      "usage": "call",
+      "via": "nova.conf",
+      "count": 1,
+      "lineRange": {
+        "start": 392,
+        "end": 392
+      }
+    }
+  ],
+  "dependencies": [
+    {
+      "style": "import",
+      "module": "collections",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 15,
+        "end": 15
+      }
+    },
+    {
+      "style": "import",
+      "module": "contextlib",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 16,
+        "end": 16
+      }
+    },
+    {
+      "style": "import",
+      "module": "os.path",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 17,
+        "end": 17
+      }
+    },
+    {
+      "style": "import",
+      "module": "threading",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 18,
+        "end": 18
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_concurrency",
+      "names": [
+        {
+          "alias": null,
+          "name": "processutils"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 20,
+        "end": 20
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_log",
+      "names": [
+        {
+          "alias": null,
+          "name": "log"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 21,
+        "end": 21
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_utils",
+      "names": [
+        {
+          "alias": null,
+          "name": "fileutils"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 22,
+        "end": 22
+      }
+    },
+    {
+      "style": "import",
+      "module": "nova.conf",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 24,
+        "end": 24
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "exception"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 25,
+        "end": 25
+      }
+    },
+    {
+      "style": "import",
+      "module": "nova.privsep.fs",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 26,
+        "end": 26
+      }
+    },
+    {
+      "style": "import",
+      "module": "nova.privsep.path",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 27,
+        "end": 27
+      }
+    }
+  ],
+  "sideEffects": [
+    {
+      "kind": "process-spawn",
+      "target": "import nova.privsep.fs",
+      "lineRange": {
+        "start": 26,
+        "end": 26
+      }
+    },
+    {
+      "kind": "process-spawn",
+      "target": "import nova.privsep.path",
+      "lineRange": {
+        "start": 27,
+        "end": 27
+      }
+    },
+    {
+      "kind": "syscall",
+      "target": "state.mount(...)",
+      "lineRange": {
+        "start": 163,
+        "end": 163
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "mountpoint = os.path.dirname(disk.source_path)",
+      "lineRange": {
+        "start": 228,
+        "end": 228
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "if not os.path.ismount(mountpoint):",
+      "lineRange": {
+        "start": 229,
+        "end": 229
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "name = os.path.basename(disk.source_path)",
+      "lineRange": {
+        "start": 232,
+        "end": 232
+      }
+    },
+    {
+      "kind": "syscall",
+      "target": "def mount(self, fstype, export, vol_name, mountpoint, instance, options):",
+      "lineRange": {
+        "start": 262,
+        "end": 262
+      }
+    },
+    {
+      "kind": "syscall",
+      "target": "LOG.debug('_HostMountState.mount(fstype=%(fstype)s, '",
+      "lineRange": {
+        "start": 288,
+        "end": 288
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "if os.path.ismount(mountpoint):",
+      "lineRange": {
+        "start": 295,
+        "end": 295
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "fileutils.ensure_tree(mountpoint)",
+      "lineRange": {
+        "start": 305,
+        "end": 305
+      }
+    },
+    {
+      "kind": "process-spawn",
+      "target": "nova.privsep.fs.mount(fstype, export, mountpoint, options)",
+      "lineRange": {
+        "start": 308,
+        "end": 308
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "if os.path.ismount(mountpoint):",
+      "lineRange": {
+        "start": 312,
+        "end": 312
+      }
+    },
+    {
+      "kind": "syscall",
+      "target": "LOG.debug('_HostMountState.mount() for %(mountpoint)s '",
+      "lineRange": {
+        "start": 334,
+        "end": 334
+      }
+    },
+    {
+      "kind": "syscall",
+      "target": "def umount(self, vol_name, mountpoint, instance):",
+      "lineRange": {
+        "start": 339,
+        "end": 339
+      }
+    },
+    {
+      "kind": "syscall",
+      "target": "LOG.debug('_HostMountState.umount(vol_name=%(vol_name)s, '",
+      "lineRange": {
+        "start": 349,
+        "end": 349
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "mounted = os.path.ismount(mountpoint)",
+      "lineRange": {
+        "start": 363,
+        "end": 363
+      }
+    },
+    {
+      "kind": "syscall",
+      "target": "mounted = self._real_umount(mountpoint)",
+      "lineRange": {
+        "start": 366,
+        "end": 366
+      }
+    },
+    {
+      "kind": "syscall",
+      "target": "LOG.debug('_HostMountState.umount() for %(mountpoint)s '",
+      "lineRange": {
+        "start": 372,
+        "end": 372
+      }
+    },
+    {
+      "kind": "syscall",
+      "target": "def _real_umount(self, mountpoint):",
+      "lineRange": {
+        "start": 379,
+        "end": 379
+      }
+    },
+    {
+      "kind": "process-spawn",
+      "target": "nova.privsep.fs.umount(mountpoint)",
+      "lineRange": {
+        "start": 386,
+        "end": 386
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "if not os.path.ismount(mountpoint):",
+      "lineRange": {
+        "start": 391,
+        "end": 391
+      }
+    },
+    {
+      "kind": "process-spawn",
+      "target": "nova.privsep.path.rmdir(mountpoint)",
+      "lineRange": {
+        "start": 392,
+        "end": 392
+      }
+    },
+    {
+      "kind": "syscall",
+      "target": "def mount(fstype, export, vol_name, mountpoint, instance, options=None):",
+      "lineRange": {
+        "start": 409,
+        "end": 409
+      }
+    },
+    {
+      "kind": "syscall",
+      "target": "\"\"\"A convenience wrapper around _HostMountState.mount(), called via the",
+      "lineRange": {
+        "start": 410,
+        "end": 410
+      }
+    },
+    {
+      "kind": "syscall",
+      "target": "mount_state.mount(fstype, export, vol_name, mountpoint, instance,",
+      "lineRange": {
+        "start": 414,
+        "end": 414
+      }
+    },
+    {
+      "kind": "syscall",
+      "target": "def umount(vol_name, mountpoint, instance):",
+      "lineRange": {
+        "start": 418,
+        "end": 418
+      }
+    },
+    {
+      "kind": "syscall",
+      "target": "\"\"\"A convenience wrapper around _HostMountState.umount(), called via the",
+      "lineRange": {
+        "start": 419,
+        "end": 419
+      }
+    },
+    {
+      "kind": "syscall",
+      "target": "return mount_state.umount(vol_name, mountpoint, instance)",
+      "lineRange": {
+        "start": 423,
+        "end": 423
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "CONF = nova.conf.CONF",
+      "lineRange": {
+        "start": 29,
+        "end": 29
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "LOG = log.getLogger(__name__)",
+      "lineRange": {
+        "start": 30,
+        "end": 30
+      }
+    }
+  ],
+  "securitySurface": [
+    {
+      "kind": "privilege",
+      "category": "privsep-entrypoint",
+      "description": "import nova.privsep.fs",
+      "lineRange": {
+        "start": 26,
+        "end": 26
+      }
+    },
+    {
+      "kind": "privilege",
+      "category": "privsep-entrypoint",
+      "description": "import nova.privsep.path",
+      "lineRange": {
+        "start": 27,
+        "end": 27
+      }
+    },
+    {
+      "kind": "privilege",
+      "category": "privsep-entrypoint",
+      "description": "nova.privsep.fs.mount(fstype, export, mountpoint, options)",
+      "lineRange": {
+        "start": 308,
+        "end": 308
+      }
+    },
+    {
+      "kind": "privilege",
+      "category": "privsep-entrypoint",
+      "description": "nova.privsep.fs.umount(mountpoint)",
+      "lineRange": {
+        "start": 386,
+        "end": 386
+      }
+    },
+    {
+      "kind": "privilege",
+      "category": "privsep-entrypoint",
+      "description": "nova.privsep.path.rmdir(mountpoint)",
+      "lineRange": {
+        "start": 392,
+        "end": 392
+      }
+    }
+  ],
+  "injection_flags": [],
+  "warnings": []
+}

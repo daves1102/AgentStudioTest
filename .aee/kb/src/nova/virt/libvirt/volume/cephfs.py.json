@@ -1,0 +1,252 @@
+{
+  "file": "src/nova/virt/libvirt/volume/cephfs.py",
+  "hash": "902116664cf90c849963ce2260ef104059635794d5c0cfd0caa1c2cd483f7420",
+  "language": "Python",
+  "component": "nova",
+  "package": null,
+  "lines": {
+    "blank": 11,
+    "code": 26,
+    "comment": 15,
+    "total": 52
+  },
+  "symbols": [
+    {
+      "name": "CONF",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 21,
+        "end": 21
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "LibvirtCEPHFSVolumeDriver",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 24,
+        "end": 52
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "__init__",
+      "kind": "method",
+      "scope": "LibvirtCEPHFSVolumeDriver",
+      "lineRange": {
+        "start": 27,
+        "end": 28
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "connection"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "_get_mount_point_base",
+      "kind": "method",
+      "scope": "LibvirtCEPHFSVolumeDriver",
+      "lineRange": {
+        "start": 30,
+        "end": 31
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "CONF.libvirt.ceph_mount_point_base",
+          "line": 31
+        }
+      ],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "get_config",
+      "kind": "method",
+      "scope": "LibvirtCEPHFSVolumeDriver",
+      "lineRange": {
+        "start": 33,
+        "end": 34
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "connection_info"
+        },
+        {
+          "name": "disk_info"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "_mount_options",
+      "kind": "method",
+      "scope": "LibvirtCEPHFSVolumeDriver",
+      "lineRange": {
+        "start": 36,
+        "end": 49
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "connection_info"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "options",
+          "line": 49
+        }
+      ],
+      "nloc": 13,
+      "ccn": 4,
+      "visibility": "private"
+    },
+    {
+      "name": "extend_volume",
+      "kind": "method",
+      "scope": "LibvirtCEPHFSVolumeDriver",
+      "lineRange": {
+        "start": 51,
+        "end": 52
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "connection_info"
+        },
+        {
+          "name": "instance"
+        },
+        {
+          "name": "requested_size"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "public"
+    }
+  ],
+  "referencedSymbols": [
+    {
+      "name": "fs.LibvirtMountedFileSystemVolumeDriver",
+      "usage": "inherit",
+      "via": "nova.virt.libvirt.volume",
+      "count": 1,
+      "lineRange": {
+        "start": 24,
+        "end": 24
+      }
+    },
+    {
+      "name": "super",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 28,
+        "end": 28
+      }
+    },
+    {
+      "name": "NotImplementedError",
+      "usage": "call",
+      "via": null,
+      "count": 2,
+      "lineRange": {
+        "start": 34,
+        "end": 34
+      }
+    }
+  ],
+  "dependencies": [
+    {
+      "style": "import",
+      "module": "nova.conf",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 18,
+        "end": 18
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.virt.libvirt.volume",
+      "names": [
+        {
+          "alias": null,
+          "name": "fs"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 19,
+        "end": 19
+      }
+    }
+  ],
+  "sideEffects": [
+    {
+      "kind": "global-mutation",
+      "target": "CONF = nova.conf.CONF",
+      "lineRange": {
+        "start": 21,
+        "end": 21
+      }
+    }
+  ],
+  "securitySurface": [
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "options.insert(0, '-o')",
+      "lineRange": {
+        "start": 44,
+        "end": 44
+      }
+    }
+  ],
+  "injection_flags": [],
+  "warnings": []
+}

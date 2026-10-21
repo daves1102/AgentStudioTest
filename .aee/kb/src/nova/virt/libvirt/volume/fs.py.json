@@ -1,0 +1,455 @@
+{
+  "file": "src/nova/virt/libvirt/volume/fs.py",
+  "hash": "186a4c2afa313f8aa258cf405a0776c5ed058d85b9a0dcfe5827e143e7fb18bc",
+  "language": "Python",
+  "component": "nova",
+  "package": null,
+  "lines": {
+    "blank": 30,
+    "code": 83,
+    "comment": 17,
+    "total": 130
+  },
+  "symbols": [
+    {
+      "name": "LibvirtBaseFileSystemVolumeDriver",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 23,
+        "end": 93
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "__init__",
+      "kind": "method",
+      "scope": "LibvirtBaseFileSystemVolumeDriver",
+      "lineRange": {
+        "start": 27,
+        "end": 29
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "host"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 3,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "_get_mount_point_base",
+      "kind": "method",
+      "scope": "LibvirtBaseFileSystemVolumeDriver",
+      "lineRange": {
+        "start": 32,
+        "end": 39
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "_normalize_export",
+      "kind": "method",
+      "scope": "LibvirtBaseFileSystemVolumeDriver",
+      "lineRange": {
+        "start": 41,
+        "end": 51
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "export"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "export",
+          "line": 51
+        }
+      ],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "_get_mount_path",
+      "kind": "method",
+      "scope": "LibvirtBaseFileSystemVolumeDriver",
+      "lineRange": {
+        "start": 53,
+        "end": 72
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "connection_info"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "os.path.join(self._get_mount_point_base(), utils.get_hash_str(share))",
+          "line": 71
+        }
+      ],
+      "nloc": 4,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "_get_device_path",
+      "kind": "method",
+      "scope": "LibvirtBaseFileSystemVolumeDriver",
+      "lineRange": {
+        "start": 74,
+        "end": 93
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "connection_info"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "os.path.join(mount_path, connection_info['data']['name'])",
+          "line": 93
+        }
+      ],
+      "nloc": 3,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "LibvirtMountedFileSystemVolumeDriver",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 96,
+        "end": 130
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "__init__",
+      "kind": "method",
+      "scope": "LibvirtMountedFileSystemVolumeDriver",
+      "lineRange": {
+        "start": 102,
+        "end": 105
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "host"
+        },
+        {
+          "name": "fstype"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 3,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "connect_volume",
+      "kind": "method",
+      "scope": "LibvirtMountedFileSystemVolumeDriver",
+      "lineRange": {
+        "start": 107,
+        "end": 117
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "connection_info"
+        },
+        {
+          "name": "instance"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 8,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "disconnect_volume",
+      "kind": "method",
+      "scope": "LibvirtMountedFileSystemVolumeDriver",
+      "lineRange": {
+        "start": 119,
+        "end": 124
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "connection_info"
+        },
+        {
+          "name": "instance"
+        },
+        {
+          "default": "False",
+          "name": "force"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "mount.umount(vol_name, mountpoint, instance)",
+          "line": 124
+        }
+      ],
+      "nloc": 4,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "_mount_options",
+      "kind": "method",
+      "scope": "LibvirtMountedFileSystemVolumeDriver",
+      "lineRange": {
+        "start": 127,
+        "end": 130
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "connection_info"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "private"
+    }
+  ],
+  "referencedSymbols": [
+    {
+      "name": "libvirt_volume.LibvirtBaseVolumeDriver",
+      "usage": "inherit",
+      "via": "nova.virt.libvirt.volume",
+      "count": 1,
+      "lineRange": {
+        "start": 24,
+        "end": 24
+      }
+    },
+    {
+      "name": "super",
+      "usage": "call",
+      "via": null,
+      "count": 2,
+      "lineRange": {
+        "start": 28,
+        "end": 28
+      }
+    },
+    {
+      "name": "NotImplementedError",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 39,
+        "end": 39
+      }
+    },
+    {
+      "name": "os.path.join",
+      "usage": "call",
+      "via": "os",
+      "count": 2,
+      "lineRange": {
+        "start": 71,
+        "end": 71
+      }
+    },
+    {
+      "name": "utils.get_hash_str",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 72,
+        "end": 72
+      }
+    },
+    {
+      "name": "mount.mount",
+      "usage": "call",
+      "via": "nova.virt.libvirt.volume",
+      "count": 1,
+      "lineRange": {
+        "start": 113,
+        "end": 113
+      }
+    },
+    {
+      "name": "mount.umount",
+      "usage": "call",
+      "via": "nova.virt.libvirt.volume",
+      "count": 1,
+      "lineRange": {
+        "start": 124,
+        "end": 124
+      }
+    }
+  ],
+  "dependencies": [
+    {
+      "style": "import",
+      "module": "abc",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 15,
+        "end": 15
+      }
+    },
+    {
+      "style": "import",
+      "module": "os",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 16,
+        "end": 16
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "utils"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 18,
+        "end": 18
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.virt.libvirt.volume",
+      "names": [
+        {
+          "alias": null,
+          "name": "mount"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 19,
+        "end": 19
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.virt.libvirt.volume",
+      "names": [
+        {
+          "alias": "libvirt_volume",
+          "name": "volume"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 20,
+        "end": 20
+      }
+    }
+  ],
+  "sideEffects": [
+    {
+      "kind": "file-io",
+      "target": "return os.path.join(self._get_mount_point_base(),",
+      "lineRange": {
+        "start": 71,
+        "end": 71
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "return os.path.join(mount_path, connection_info['data']['name'])",
+      "lineRange": {
+        "start": 93,
+        "end": 93
+      }
+    },
+    {
+      "kind": "syscall",
+      "target": "mount.mount(self.fstype, export, vol_name, mountpoint, instance,",
+      "lineRange": {
+        "start": 113,
+        "end": 113
+      }
+    },
+    {
+      "kind": "syscall",
+      "target": "return mount.umount(vol_name, mountpoint, instance)",
+      "lineRange": {
+        "start": 124,
+        "end": 124
+      }
+    }
+  ],
+  "securitySurface": [],
+  "injection_flags": [],
+  "warnings": []
+}

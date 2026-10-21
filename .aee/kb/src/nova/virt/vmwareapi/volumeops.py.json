@@ -1,0 +1,1560 @@
+{
+  "file": "src/nova/virt/vmwareapi/volumeops.py",
+  "hash": "55316a4a2d19bc6eff95cd499ebdfe30afb7a9f9331667fc7fd7295fee2ec75b",
+  "language": "Python",
+  "component": "nova",
+  "package": null,
+  "lines": {
+    "blank": 87,
+    "code": 527,
+    "comment": 59,
+    "total": 673
+  },
+  "symbols": [
+    {
+      "name": "CONF",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 32,
+        "end": 32
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "LOG",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 33,
+        "end": 33
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "VolumeMoRefProxy",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 36,
+        "end": 50
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "__init__",
+      "kind": "method",
+      "scope": "VolumeMoRefProxy",
+      "lineRange": {
+        "start": 37,
+        "end": 43
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "connection_info_data"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 7,
+      "ccn": 2,
+      "visibility": "public"
+    },
+    {
+      "name": "fetch_moref",
+      "kind": "method",
+      "scope": "VolumeMoRefProxy",
+      "lineRange": {
+        "start": 45,
+        "end": 50
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "session"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 6,
+      "ccn": 3,
+      "visibility": "public"
+    },
+    {
+      "name": "VMwareVolumeOps",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 53,
+        "end": 673
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "__init__",
+      "kind": "method",
+      "scope": "VMwareVolumeOps",
+      "lineRange": {
+        "start": 56,
+        "end": 58
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "session"
+        },
+        {
+          "default": "None",
+          "name": "cluster"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 3,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "attach_disk_to_vm",
+      "kind": "method",
+      "scope": "VMwareVolumeOps",
+      "lineRange": {
+        "start": 60,
+        "end": 93
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "vm_ref"
+        },
+        {
+          "name": "instance"
+        },
+        {
+          "name": "adapter_type"
+        },
+        {
+          "name": "disk_type"
+        },
+        {
+          "default": "None",
+          "name": "vmdk_path"
+        },
+        {
+          "default": "None",
+          "name": "disk_size"
+        },
+        {
+          "default": "False",
+          "name": "linked_clone"
+        },
+        {
+          "default": "None",
+          "name": "device_name"
+        },
+        {
+          "default": "None",
+          "name": "disk_io_limits"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 31,
+      "ccn": 2,
+      "visibility": "public"
+    },
+    {
+      "name": "_update_volume_details",
+      "kind": "method",
+      "scope": "VMwareVolumeOps",
+      "lineRange": {
+        "start": 95,
+        "end": 103
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "vm_ref"
+        },
+        {
+          "name": "volume_uuid"
+        },
+        {
+          "name": "device_uuid"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 7,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "_get_volume_uuid",
+      "kind": "method",
+      "scope": "VMwareVolumeOps",
+      "lineRange": {
+        "start": 105,
+        "end": 112
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "vm_ref"
+        },
+        {
+          "name": "volume_uuid"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "opt_val.value",
+          "line": 112
+        }
+      ],
+      "nloc": 8,
+      "ccn": 2,
+      "visibility": "private"
+    },
+    {
+      "name": "detach_disk_from_vm",
+      "kind": "method",
+      "scope": "VMwareVolumeOps",
+      "lineRange": {
+        "start": 114,
+        "end": 130
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "vm_ref"
+        },
+        {
+          "name": "instance"
+        },
+        {
+          "name": "device"
+        },
+        {
+          "default": "False",
+          "name": "destroy_disk"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 16,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "_iscsi_get_target",
+      "kind": "method",
+      "scope": "VMwareVolumeOps",
+      "lineRange": {
+        "start": 132,
+        "end": 202
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "data"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "result",
+          "line": 156
+        },
+        {
+          "expr": "result",
+          "line": 159
+        },
+        {
+          "expr": "result",
+          "line": 165
+        },
+        {
+          "expr": "result",
+          "line": 168
+        },
+        {
+          "expr": "result",
+          "line": 171
+        },
+        {
+          "expr": "result",
+          "line": 176
+        },
+        {
+          "expr": "result",
+          "line": 182
+        },
+        {
+          "expr": "result",
+          "line": 191
+        },
+        {
+          "expr": "result",
+          "line": 194
+        },
+        {
+          "expr": "result",
+          "line": 197
+        },
+        {
+          "expr": "(scsi_lun.deviceName, scsi_lun.uuid)",
+          "line": 200
+        },
+        {
+          "expr": "result",
+          "line": 202
+        }
+      ],
+      "nloc": 63,
+      "ccn": 23,
+      "visibility": "private"
+    },
+    {
+      "name": "_iscsi_add_send_target_host",
+      "kind": "method",
+      "scope": "VMwareVolumeOps",
+      "lineRange": {
+        "start": 204,
+        "end": 213
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "storage_system_mor"
+        },
+        {
+          "name": "hba_device"
+        },
+        {
+          "name": "target_portal"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 9,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "_iscsi_rescan_hba",
+      "kind": "method",
+      "scope": "VMwareVolumeOps",
+      "lineRange": {
+        "start": 215,
+        "end": 253
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "target_portal"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "",
+          "line": 230
+        },
+        {
+          "expr": "",
+          "line": 233
+        },
+        {
+          "expr": "",
+          "line": 249
+        }
+      ],
+      "nloc": 35,
+      "ccn": 8,
+      "visibility": "private"
+    },
+    {
+      "name": "_iscsi_discover_target",
+      "kind": "method",
+      "scope": "VMwareVolumeOps",
+      "lineRange": {
+        "start": 255,
+        "end": 282
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "data"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "(device_name, uuid)",
+          "line": 265
+        },
+        {
+          "expr": "(device_name, uuid)",
+          "line": 282
+        }
+      ],
+      "nloc": 23,
+      "ccn": 3,
+      "visibility": "private"
+    },
+    {
+      "name": "_iscsi_get_host_iqn",
+      "kind": "method",
+      "scope": "VMwareVolumeOps",
+      "lineRange": {
+        "start": 284,
+        "end": 305
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "instance"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "",
+          "line": 299
+        },
+        {
+          "expr": "",
+          "line": 302
+        },
+        {
+          "expr": "hba.iScsiName",
+          "line": 305
+        }
+      ],
+      "nloc": 18,
+      "ccn": 6,
+      "visibility": "private"
+    },
+    {
+      "name": "get_volume_connector",
+      "kind": "method",
+      "scope": "VMwareVolumeOps",
+      "lineRange": {
+        "start": 307,
+        "end": 319
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "instance"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "connector",
+          "line": 319
+        }
+      ],
+      "nloc": 12,
+      "ccn": 3,
+      "visibility": "public"
+    },
+    {
+      "name": "_get_volume_ref",
+      "kind": "method",
+      "scope": "VMwareVolumeOps",
+      "lineRange": {
+        "start": 322,
+        "end": 324
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "connection_info_data"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "VolumeMoRefProxy(connection_info_data)",
+          "line": 324
+        }
+      ],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "_get_vmdk_base_volume_device",
+      "kind": "method",
+      "scope": "VMwareVolumeOps",
+      "lineRange": {
+        "start": 326,
+        "end": 330
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "volume_ref"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "vm_util.get_vmdk_volume_disk(hardware_devices)",
+          "line": 330
+        }
+      ],
+      "nloc": 4,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "_attach_volume_vmdk",
+      "kind": "method",
+      "scope": "VMwareVolumeOps",
+      "lineRange": {
+        "start": 332,
+        "end": 361
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "connection_info"
+        },
+        {
+          "name": "instance"
+        },
+        {
+          "default": "None",
+          "name": "adapter_type"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 19,
+      "ccn": 4,
+      "visibility": "private"
+    },
+    {
+      "name": "_attach_volume_iscsi",
+      "kind": "method",
+      "scope": "VMwareVolumeOps",
+      "lineRange": {
+        "start": 363,
+        "end": 387
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "connection_info"
+        },
+        {
+          "name": "instance"
+        },
+        {
+          "default": "None",
+          "name": "adapter_type"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 18,
+      "ccn": 3,
+      "visibility": "private"
+    },
+    {
+      "name": "_get_controller_key_and_unit",
+      "kind": "method",
+      "scope": "VMwareVolumeOps",
+      "lineRange": {
+        "start": 389,
+        "end": 399
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "vm_ref"
+        },
+        {
+          "name": "adapter_type"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "vm_util.allocate_controller_key_and_unit_number( client_factory, devices, adapter_type)",
+          "line": 398
+        }
+      ],
+      "nloc": 11,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "_attach_fcd",
+      "kind": "method",
+      "scope": "VMwareVolumeOps",
+      "lineRange": {
+        "start": 401,
+        "end": 418
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "vm_ref"
+        },
+        {
+          "name": "adapter_type"
+        },
+        {
+          "name": "fcd_id"
+        },
+        {
+          "name": "ds_ref_val"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 15,
+      "ccn": 2,
+      "visibility": "private"
+    },
+    {
+      "name": "_attach_volume_fcd",
+      "kind": "method",
+      "scope": "VMwareVolumeOps",
+      "lineRange": {
+        "start": 420,
+        "end": 434
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "connection_info"
+        },
+        {
+          "name": "instance"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 12,
+      "ccn": 3,
+      "visibility": "private"
+    },
+    {
+      "name": "attach_volume",
+      "kind": "method",
+      "scope": "VMwareVolumeOps",
+      "lineRange": {
+        "start": 436,
+        "end": 448
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "connection_info"
+        },
+        {
+          "name": "instance"
+        },
+        {
+          "default": "None",
+          "name": "adapter_type"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 12,
+      "ccn": 4,
+      "visibility": "public"
+    },
+    {
+      "name": "_get_host_of_vm",
+      "kind": "method",
+      "scope": "VMwareVolumeOps",
+      "lineRange": {
+        "start": 450,
+        "end": 453
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "vm_ref"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "self._session._call_method(vutil, 'get_object_property', vm_ref, 'runtime').host",
+          "line": 452
+        }
+      ],
+      "nloc": 3,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "_get_res_pool_of_host",
+      "kind": "method",
+      "scope": "VMwareVolumeOps",
+      "lineRange": {
+        "start": 455,
+        "end": 466
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "host"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "self._session._call_method(vutil, 'get_object_property', compute_res, 'resourcePool')",
+          "line": 463
+        }
+      ],
+      "nloc": 9,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "_get_res_pool_of_vm",
+      "kind": "method",
+      "scope": "VMwareVolumeOps",
+      "lineRange": {
+        "start": 468,
+        "end": 473
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "vm_ref"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "self._get_res_pool_of_host(host)",
+          "line": 473
+        }
+      ],
+      "nloc": 3,
+      "ccn": 1,
+      "visibility": "private"
+    },
+    {
+      "name": "_consolidate_vmdk_volume",
+      "kind": "method",
+      "scope": "VMwareVolumeOps",
+      "lineRange": {
+        "start": 475,
+        "end": 552
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "instance"
+        },
+        {
+          "name": "vm_ref"
+        },
+        {
+          "name": "device"
+        },
+        {
+          "name": "volume_ref"
+        },
+        {
+          "default": "None",
+          "name": "adapter_type"
+        },
+        {
+          "default": "None",
+          "name": "disk_type"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "",
+          "line": 507
+        }
+      ],
+      "nloc": 42,
+      "ccn": 5,
+      "visibility": "private"
+    },
+    {
+      "name": "_get_vmdk_backed_disk_device",
+      "kind": "method",
+      "scope": "VMwareVolumeOps",
+      "lineRange": {
+        "start": 554,
+        "end": 565
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "vm_ref"
+        },
+        {
+          "name": "connection_info_data"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "device",
+          "line": 565
+        }
+      ],
+      "nloc": 9,
+      "ccn": 2,
+      "visibility": "private"
+    },
+    {
+      "name": "_detach_volume_vmdk",
+      "kind": "method",
+      "scope": "VMwareVolumeOps",
+      "lineRange": {
+        "start": 567,
+        "end": 605
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "connection_info"
+        },
+        {
+          "name": "instance"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 26,
+      "ccn": 5,
+      "visibility": "private"
+    },
+    {
+      "name": "_detach_volume_iscsi",
+      "kind": "method",
+      "scope": "VMwareVolumeOps",
+      "lineRange": {
+        "start": 607,
+        "end": 627
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "connection_info"
+        },
+        {
+          "name": "instance"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 15,
+      "ccn": 3,
+      "visibility": "private"
+    },
+    {
+      "name": "_detach_volume_fcd",
+      "kind": "method",
+      "scope": "VMwareVolumeOps",
+      "lineRange": {
+        "start": 629,
+        "end": 641
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "connection_info"
+        },
+        {
+          "name": "instance"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 10,
+      "ccn": 3,
+      "visibility": "private"
+    },
+    {
+      "name": "detach_volume",
+      "kind": "method",
+      "scope": "VMwareVolumeOps",
+      "lineRange": {
+        "start": 643,
+        "end": 655
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "connection_info"
+        },
+        {
+          "name": "instance"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 12,
+      "ccn": 4,
+      "visibility": "public"
+    },
+    {
+      "name": "attach_root_volume",
+      "kind": "method",
+      "scope": "VMwareVolumeOps",
+      "lineRange": {
+        "start": 657,
+        "end": 673
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "connection_info"
+        },
+        {
+          "name": "instance"
+        },
+        {
+          "name": "datastore"
+        },
+        {
+          "default": "None",
+          "name": "adapter_type"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 12,
+      "ccn": 2,
+      "visibility": "public"
+    },
+    {
+      "name": "_get_volume_ref",
+      "kind": "staticmethod",
+      "scope": "VMwareVolumeOps",
+      "lineRange": {
+        "start": 321,
+        "end": 324
+      },
+      "visibility": "private",
+      "source": "manual"
+    }
+  ],
+  "referencedSymbols": [
+    {
+      "name": "logging.getLogger",
+      "usage": "call",
+      "via": "oslo_log",
+      "count": 1,
+      "lineRange": {
+        "start": 33,
+        "end": 33
+      }
+    },
+    {
+      "name": "session.StableMoRefProxy",
+      "usage": "inherit",
+      "via": "nova.virt.vmwareapi",
+      "count": 1,
+      "lineRange": {
+        "start": 36,
+        "end": 36
+      }
+    },
+    {
+      "name": "vutil.get_moref",
+      "usage": "call",
+      "via": "oslo_vmware",
+      "count": 1,
+      "lineRange": {
+        "start": 41,
+        "end": 41
+      }
+    },
+    {
+      "name": "super",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 42,
+        "end": 42
+      }
+    },
+    {
+      "name": "vm_util._get_vm_ref_from_vm_uuid",
+      "usage": "call",
+      "via": "nova.virt.vmwareapi",
+      "count": 1,
+      "lineRange": {
+        "start": 50,
+        "end": 50
+      }
+    },
+    {
+      "name": "object",
+      "usage": "inherit",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 53,
+        "end": 53
+      }
+    },
+    {
+      "name": "vm_util.get_hardware_devices",
+      "usage": "call",
+      "via": "nova.virt.vmwareapi",
+      "count": 6,
+      "lineRange": {
+        "start": 67,
+        "end": 67
+      }
+    },
+    {
+      "name": "vm_util.allocate_controller_key_and_unit_number",
+      "usage": "call",
+      "via": "nova.virt.vmwareapi",
+      "count": 2,
+      "lineRange": {
+        "start": 69,
+        "end": 69
+      }
+    },
+    {
+      "name": "vm_util.get_vmdk_attach_config_spec",
+      "usage": "call",
+      "via": "nova.virt.vmwareapi",
+      "count": 1,
+      "lineRange": {
+        "start": 74,
+        "end": 74
+      }
+    },
+    {
+      "name": "vm_util.reconfigure_vm",
+      "usage": "call",
+      "via": "nova.virt.vmwareapi",
+      "count": 4,
+      "lineRange": {
+        "start": 87,
+        "end": 87
+      }
+    },
+    {
+      "name": "vm_util.get_vm_extra_config_spec",
+      "usage": "call",
+      "via": "nova.virt.vmwareapi",
+      "count": 1,
+      "lineRange": {
+        "start": 101,
+        "end": 101
+      }
+    },
+    {
+      "name": "vm_util.get_vmdk_detach_config_spec",
+      "usage": "call",
+      "via": "nova.virt.vmwareapi",
+      "count": 1,
+      "lineRange": {
+        "start": 119,
+        "end": 119
+      }
+    },
+    {
+      "name": "vm_util.get_host_ref",
+      "usage": "call",
+      "via": "nova.virt.vmwareapi",
+      "count": 3,
+      "lineRange": {
+        "start": 136,
+        "end": 136
+      }
+    },
+    {
+      "name": "getattr",
+      "usage": "call",
+      "via": null,
+      "count": 3,
+      "lineRange": {
+        "start": 175,
+        "end": 175
+      }
+    },
+    {
+      "name": "vm_util.get_host_ref_for_vm",
+      "usage": "call",
+      "via": "nova.virt.vmwareapi",
+      "count": 1,
+      "lineRange": {
+        "start": 287,
+        "end": 287
+      }
+    },
+    {
+      "name": "vm_util.get_vm_ref",
+      "usage": "call",
+      "via": "nova.virt.vmwareapi",
+      "count": 8,
+      "lineRange": {
+        "start": 310,
+        "end": 310
+      }
+    },
+    {
+      "name": "vutil.get_moref_value",
+      "usage": "call",
+      "via": "oslo_vmware",
+      "count": 1,
+      "lineRange": {
+        "start": 318,
+        "end": 318
+      }
+    },
+    {
+      "name": "vm_util.get_vmdk_volume_disk",
+      "usage": "call",
+      "via": "nova.virt.vmwareapi",
+      "count": 1,
+      "lineRange": {
+        "start": 330,
+        "end": 330
+      }
+    },
+    {
+      "name": "vm_util.get_vmdk_info",
+      "usage": "call",
+      "via": "nova.virt.vmwareapi",
+      "count": 1,
+      "lineRange": {
+        "start": 343,
+        "end": 343
+      }
+    },
+    {
+      "name": "vm_util.get_vm_state",
+      "usage": "call",
+      "via": "nova.virt.vmwareapi",
+      "count": 4,
+      "lineRange": {
+        "start": 348,
+        "end": 348
+      }
+    },
+    {
+      "name": "_",
+      "usage": "call",
+      "via": "nova.i18n",
+      "count": 8,
+      "lineRange": {
+        "start": 350,
+        "end": 350
+      }
+    },
+    {
+      "name": "exception.Invalid",
+      "usage": "call",
+      "via": "nova",
+      "count": 4,
+      "lineRange": {
+        "start": 350,
+        "end": 350
+      }
+    },
+    {
+      "name": "exception.StorageError",
+      "usage": "call",
+      "via": "nova",
+      "count": 2,
+      "lineRange": {
+        "start": 376,
+        "end": 376
+      }
+    },
+    {
+      "name": "vm_util.get_scsi_adapter_type",
+      "usage": "call",
+      "via": "nova.virt.vmwareapi",
+      "count": 1,
+      "lineRange": {
+        "start": 382,
+        "end": 382
+      }
+    },
+    {
+      "name": "vm_util.attach_fcd",
+      "usage": "call",
+      "via": "nova.virt.vmwareapi",
+      "count": 1,
+      "lineRange": {
+        "start": 416,
+        "end": 416
+      }
+    },
+    {
+      "name": "exception.VolumeDriverNotFound",
+      "usage": "call",
+      "via": "nova",
+      "count": 2,
+      "lineRange": {
+        "start": 448,
+        "end": 448
+      }
+    },
+    {
+      "name": "vm_util.relocate_vm",
+      "usage": "call",
+      "via": "nova.virt.vmwareapi",
+      "count": 3,
+      "lineRange": {
+        "start": 525,
+        "end": 525
+      }
+    },
+    {
+      "name": "vm_util.get_vmdk_backed_disk_device",
+      "usage": "call",
+      "via": "nova.virt.vmwareapi",
+      "count": 1,
+      "lineRange": {
+        "start": 561,
+        "end": 561
+      }
+    },
+    {
+      "name": "exception.DiskNotFound",
+      "usage": "call",
+      "via": "nova",
+      "count": 2,
+      "lineRange": {
+        "start": 564,
+        "end": 564
+      }
+    },
+    {
+      "name": "vm_util.CONTROLLER_TO_ADAPTER_TYPE.get",
+      "usage": "call",
+      "via": "nova.virt.vmwareapi",
+      "count": 1,
+      "lineRange": {
+        "start": 582,
+        "end": 582
+      }
+    },
+    {
+      "name": "vm_util._get_device_disk_type",
+      "usage": "call",
+      "via": "nova.virt.vmwareapi",
+      "count": 1,
+      "lineRange": {
+        "start": 593,
+        "end": 593
+      }
+    },
+    {
+      "name": "vm_util.get_rdm_disk",
+      "usage": "call",
+      "via": "nova.virt.vmwareapi",
+      "count": 1,
+      "lineRange": {
+        "start": 623,
+        "end": 623
+      }
+    },
+    {
+      "name": "vm_util.detach_fcd",
+      "usage": "call",
+      "via": "nova.virt.vmwareapi",
+      "count": 1,
+      "lineRange": {
+        "start": 641,
+        "end": 641
+      }
+    }
+  ],
+  "dependencies": [
+    {
+      "style": "from",
+      "module": "oslo_log",
+      "names": [
+        {
+          "alias": "logging",
+          "name": "log"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 20,
+        "end": 20
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_vmware",
+      "names": [
+        {
+          "alias": "oslo_vmw_exceptions",
+          "name": "exceptions"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 21,
+        "end": 21
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_vmware",
+      "names": [
+        {
+          "alias": "vutil",
+          "name": "vim_util"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 22,
+        "end": 22
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.compute",
+      "names": [
+        {
+          "alias": null,
+          "name": "power_state"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 24,
+        "end": 24
+      }
+    },
+    {
+      "style": "import",
+      "module": "nova.conf",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 25,
+        "end": 25
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "exception"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 26,
+        "end": 26
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.i18n",
+      "names": [
+        {
+          "alias": null,
+          "name": "_"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 27,
+        "end": 27
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.virt.vmwareapi",
+      "names": [
+        {
+          "alias": null,
+          "name": "constants"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 28,
+        "end": 28
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.virt.vmwareapi",
+      "names": [
+        {
+          "alias": null,
+          "name": "session"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 29,
+        "end": 29
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.virt.vmwareapi",
+      "names": [
+        {
+          "alias": null,
+          "name": "vm_util"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 30,
+        "end": 30
+      }
+    }
+  ],
+  "sideEffects": [
+    {
+      "kind": "global-mutation",
+      "target": "CONF = nova.conf.CONF",
+      "lineRange": {
+        "start": 32,
+        "end": 32
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "LOG = logging.getLogger(__name__)",
+      "lineRange": {
+        "start": 33,
+        "end": 33
+      }
+    }
+  ],
+  "securitySurface": [],
+  "injection_flags": [],
+  "warnings": []
+}

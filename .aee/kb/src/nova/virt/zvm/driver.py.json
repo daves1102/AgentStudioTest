@@ -1,0 +1,1508 @@
+{
+  "file": "src/nova/virt/zvm/driver.py",
+  "hash": "e6151dabd718edb35ca3e585b797c35f7a5a86a194a5d32dc13bcd6718216df1",
+  "language": "Python",
+  "component": "nova",
+  "package": null,
+  "lines": {
+    "blank": 72,
+    "code": 359,
+    "comment": 26,
+    "total": 457
+  },
+  "symbols": [
+    {
+      "name": "LOG",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 37,
+        "end": 37
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "CONF",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 38,
+        "end": 38
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "DEFAULT_EPH_DISK_FMT",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 41,
+        "end": 41
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "ZVMDriver",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 44,
+        "end": 457
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "capabilities",
+      "kind": "field",
+      "scope": "ZVMDriver",
+      "lineRange": {
+        "start": 46,
+        "end": 67
+      },
+      "source": "aee-inventory",
+      "visibility": "public"
+    },
+    {
+      "name": "__init__",
+      "kind": "method",
+      "scope": "ZVMDriver",
+      "lineRange": {
+        "start": 69,
+        "end": 77
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "virtapi"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 6,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "_validate_options",
+      "kind": "method",
+      "scope": "ZVMDriver",
+      "lineRange": {
+        "start": 80,
+        "end": 100
+      },
+      "source": "aee-inventory",
+      "parameters": [],
+      "returnType": null,
+      "returns": [],
+      "nloc": 17,
+      "ccn": 4,
+      "visibility": "private"
+    },
+    {
+      "name": "init_host",
+      "kind": "method",
+      "scope": "ZVMDriver",
+      "lineRange": {
+        "start": 102,
+        "end": 103
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "host"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "list_instances",
+      "kind": "method",
+      "scope": "ZVMDriver",
+      "lineRange": {
+        "start": 105,
+        "end": 106
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "self._hypervisor.list_names()",
+          "line": 106
+        }
+      ],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "instance_exists",
+      "kind": "method",
+      "scope": "ZVMDriver",
+      "lineRange": {
+        "start": 108,
+        "end": 111
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "instance"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "self._hypervisor.guest_exists(instance)",
+          "line": 111
+        }
+      ],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "get_available_resource",
+      "kind": "method",
+      "scope": "ZVMDriver",
+      "lineRange": {
+        "start": 113,
+        "end": 141
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "default": "None",
+          "name": "nodename"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "res",
+          "line": 141
+        }
+      ],
+      "nloc": 26,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "get_available_nodes",
+      "kind": "method",
+      "scope": "ZVMDriver",
+      "lineRange": {
+        "start": 143,
+        "end": 144
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "default": "False",
+          "name": "refresh"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "self._hypervisor.get_available_nodes(refresh=refresh)",
+          "line": 144
+        }
+      ],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "get_info",
+      "kind": "method",
+      "scope": "ZVMDriver",
+      "lineRange": {
+        "start": 146,
+        "end": 148
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "instance"
+        },
+        {
+          "default": "True",
+          "name": "use_cache"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "_guest.get_info()",
+          "line": 148
+        }
+      ],
+      "nloc": 3,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "spawn",
+      "kind": "method",
+      "scope": "ZVMDriver",
+      "lineRange": {
+        "start": 150,
+        "end": 210
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "context"
+        },
+        {
+          "name": "instance"
+        },
+        {
+          "name": "image_meta"
+        },
+        {
+          "name": "injected_files"
+        },
+        {
+          "name": "admin_password"
+        },
+        {
+          "name": "allocations"
+        },
+        {
+          "default": "None",
+          "name": "network_info"
+        },
+        {
+          "default": "None",
+          "name": "block_device_info"
+        },
+        {
+          "default": "True",
+          "name": "power_on"
+        },
+        {
+          "default": "None",
+          "name": "accel_info"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 47,
+      "ccn": 7,
+      "visibility": "public"
+    },
+    {
+      "name": "_get_image_info",
+      "kind": "method",
+      "scope": "ZVMDriver",
+      "lineRange": {
+        "start": 213,
+        "end": 224
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "context"
+        },
+        {
+          "name": "image_meta_id"
+        },
+        {
+          "name": "os_distro"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "res[0]['imagename']",
+          "line": 224
+        }
+      ],
+      "nloc": 10,
+      "ccn": 3,
+      "visibility": "private"
+    },
+    {
+      "name": "_set_disk_list",
+      "kind": "method",
+      "scope": "ZVMDriver",
+      "lineRange": {
+        "start": 226,
+        "end": 250
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "instance"
+        },
+        {
+          "name": "image_name"
+        },
+        {
+          "name": "block_device_info"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "disk_list, eph_list",
+          "line": 250
+        }
+      ],
+      "nloc": 22,
+      "ccn": 5,
+      "visibility": "private"
+    },
+    {
+      "name": "_setup_network",
+      "kind": "method",
+      "scope": "ZVMDriver",
+      "lineRange": {
+        "start": 252,
+        "end": 266
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "vm_name"
+        },
+        {
+          "name": "os_distro"
+        },
+        {
+          "name": "network_info"
+        },
+        {
+          "name": "instance"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 14,
+      "ccn": 3,
+      "visibility": "private"
+    },
+    {
+      "name": "_get_neutron_event",
+      "kind": "method",
+      "scope": "ZVMDriver",
+      "lineRange": {
+        "start": 269,
+        "end": 274
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "network_info"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "[('network-vif-plugged', vif['id']) for vif in network_info if vif.get('active') is False]",
+          "line": 271
+        },
+        {
+          "expr": "[]",
+          "line": 274
+        }
+      ],
+      "nloc": 5,
+      "ccn": 4,
+      "visibility": "private"
+    },
+    {
+      "name": "_neutron_failed_callback",
+      "kind": "method",
+      "scope": "ZVMDriver",
+      "lineRange": {
+        "start": 277,
+        "end": 281
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "event_name"
+        },
+        {
+          "name": "instance"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 5,
+      "ccn": 2,
+      "visibility": "private"
+    },
+    {
+      "name": "_wait_vif_plug_events",
+      "kind": "method",
+      "scope": "ZVMDriver",
+      "lineRange": {
+        "start": 283,
+        "end": 300
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "vm_name"
+        },
+        {
+          "name": "os_distro"
+        },
+        {
+          "name": "network_info"
+        },
+        {
+          "name": "instance"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 18,
+      "ccn": 4,
+      "visibility": "private"
+    },
+    {
+      "name": "_import_spawn_image",
+      "kind": "method",
+      "scope": "ZVMDriver",
+      "lineRange": {
+        "start": 302,
+        "end": 311
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "context"
+        },
+        {
+          "name": "image_meta_id"
+        },
+        {
+          "name": "image_os_version"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 10,
+      "ccn": 2,
+      "visibility": "private"
+    },
+    {
+      "name": "destroy",
+      "kind": "method",
+      "scope": "ZVMDriver",
+      "lineRange": {
+        "start": 313,
+        "end": 326
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "context"
+        },
+        {
+          "name": "instance"
+        },
+        {
+          "default": "None",
+          "name": "network_info"
+        },
+        {
+          "default": "None",
+          "name": "block_device_info"
+        },
+        {
+          "default": "False",
+          "name": "destroy_disks"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 14,
+      "ccn": 4,
+      "visibility": "public"
+    },
+    {
+      "name": "get_host_uptime",
+      "kind": "method",
+      "scope": "ZVMDriver",
+      "lineRange": {
+        "start": 328,
+        "end": 329
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "self._hypervisor.get_host_uptime()",
+          "line": 329
+        }
+      ],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "snapshot",
+      "kind": "method",
+      "scope": "ZVMDriver",
+      "lineRange": {
+        "start": 331,
+        "end": 393
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "context"
+        },
+        {
+          "name": "instance"
+        },
+        {
+          "name": "image_id"
+        },
+        {
+          "name": "update_task_state"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 52,
+      "ccn": 5,
+      "visibility": "public"
+    },
+    {
+      "name": "power_off",
+      "kind": "method",
+      "scope": "ZVMDriver",
+      "lineRange": {
+        "start": 395,
+        "end": 400
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "instance"
+        },
+        {
+          "default": "0",
+          "name": "timeout"
+        },
+        {
+          "default": "0",
+          "name": "retry_interval"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 6,
+      "ccn": 3,
+      "visibility": "public"
+    },
+    {
+      "name": "power_on",
+      "kind": "method",
+      "scope": "ZVMDriver",
+      "lineRange": {
+        "start": 402,
+        "end": 404
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "context"
+        },
+        {
+          "name": "instance"
+        },
+        {
+          "name": "network_info"
+        },
+        {
+          "default": "None",
+          "name": "block_device_info"
+        },
+        {
+          "default": "None",
+          "name": "accel_info"
+        },
+        {
+          "default": "None",
+          "name": "share_info"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 3,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "pause",
+      "kind": "method",
+      "scope": "ZVMDriver",
+      "lineRange": {
+        "start": 406,
+        "end": 407
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "instance"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "unpause",
+      "kind": "method",
+      "scope": "ZVMDriver",
+      "lineRange": {
+        "start": 409,
+        "end": 410
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "instance"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "reboot",
+      "kind": "method",
+      "scope": "ZVMDriver",
+      "lineRange": {
+        "start": 412,
+        "end": 419
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "context"
+        },
+        {
+          "name": "instance"
+        },
+        {
+          "name": "network_info"
+        },
+        {
+          "name": "reboot_type"
+        },
+        {
+          "default": "None",
+          "name": "block_device_info"
+        },
+        {
+          "default": "None",
+          "name": "bad_volumes_callback"
+        },
+        {
+          "default": "None",
+          "name": "accel_info"
+        },
+        {
+          "default": "None",
+          "name": "share_info"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 7,
+      "ccn": 2,
+      "visibility": "public"
+    },
+    {
+      "name": "get_console_output",
+      "kind": "method",
+      "scope": "ZVMDriver",
+      "lineRange": {
+        "start": 421,
+        "end": 422
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "context"
+        },
+        {
+          "name": "instance"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "self._hypervisor.guest_get_console_output(instance.name)",
+          "line": 422
+        }
+      ],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "update_provider_tree",
+      "kind": "method",
+      "scope": "ZVMDriver",
+      "lineRange": {
+        "start": 424,
+        "end": 457
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "provider_tree"
+        },
+        {
+          "name": "nodename"
+        },
+        {
+          "default": "None",
+          "name": "allocations"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 31,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "_validate_options",
+      "kind": "staticmethod",
+      "scope": "ZVMDriver",
+      "lineRange": {
+        "start": 79,
+        "end": 100
+      },
+      "visibility": "private",
+      "source": "manual"
+    },
+    {
+      "name": "_get_neutron_event",
+      "kind": "staticmethod",
+      "scope": "ZVMDriver",
+      "lineRange": {
+        "start": 268,
+        "end": 274
+      },
+      "visibility": "private",
+      "source": "manual"
+    },
+    {
+      "name": "_neutron_failed_callback",
+      "kind": "staticmethod",
+      "scope": "ZVMDriver",
+      "lineRange": {
+        "start": 276,
+        "end": 281
+      },
+      "visibility": "private",
+      "source": "manual"
+    }
+  ],
+  "referencedSymbols": [
+    {
+      "name": "logging.getLogger",
+      "usage": "call",
+      "via": "oslo_log",
+      "count": 1,
+      "lineRange": {
+        "start": 37,
+        "end": 37
+      }
+    },
+    {
+      "name": "driver.ComputeDriver",
+      "usage": "inherit",
+      "via": "nova.virt",
+      "count": 1,
+      "lineRange": {
+        "start": 44,
+        "end": 44
+      }
+    },
+    {
+      "name": "super",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 70,
+        "end": 70
+      }
+    },
+    {
+      "name": "hypervisor.Hypervisor",
+      "usage": "call",
+      "via": "nova.virt.zvm",
+      "count": 1,
+      "lineRange": {
+        "start": 74,
+        "end": 74
+      }
+    },
+    {
+      "name": "_",
+      "usage": "call",
+      "via": "nova.i18n",
+      "count": 4,
+      "lineRange": {
+        "start": 82,
+        "end": 82
+      }
+    },
+    {
+      "name": "exception.ZVMDriverException",
+      "usage": "call",
+      "via": "nova",
+      "count": 3,
+      "lineRange": {
+        "start": 84,
+        "end": 84
+      }
+    },
+    {
+      "name": "len",
+      "usage": "call",
+      "via": null,
+      "count": 2,
+      "lineRange": {
+        "start": 95,
+        "end": 95
+      }
+    },
+    {
+      "name": "jsonutils.dumps",
+      "usage": "call",
+      "via": "oslo_serialization",
+      "count": 1,
+      "lineRange": {
+        "start": 129,
+        "end": 129
+      }
+    },
+    {
+      "name": "guest.Guest",
+      "usage": "call",
+      "via": "nova.virt.zvm",
+      "count": 1,
+      "lineRange": {
+        "start": 147,
+        "end": 147
+      }
+    },
+    {
+      "name": "exception.InstanceExists",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 158,
+        "end": 158
+      }
+    },
+    {
+      "name": "exception.InvalidInput",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 163,
+        "end": 163
+      }
+    },
+    {
+      "name": "time.time",
+      "usage": "call",
+      "via": "time",
+      "count": 2,
+      "lineRange": {
+        "start": 166,
+        "end": 166
+      }
+    },
+    {
+      "name": "zvmutils.generate_configdrive",
+      "usage": "call",
+      "via": "nova.virt.zvm",
+      "count": 1,
+      "lineRange": {
+        "start": 168,
+        "end": 168
+      }
+    },
+    {
+      "name": "excutils.save_and_reraise_exception",
+      "usage": "call",
+      "via": "oslo_utils",
+      "count": 6,
+      "lineRange": {
+        "start": 200,
+        "end": 200
+      }
+    },
+    {
+      "name": "lockutils.synchronized",
+      "usage": "call",
+      "via": "oslo_concurrency",
+      "count": 1,
+      "lineRange": {
+        "start": 212,
+        "end": 212
+      }
+    },
+    {
+      "name": "driver.block_device_info_get_ephemerals",
+      "usage": "call",
+      "via": "nova.virt",
+      "count": 1,
+      "lineRange": {
+        "start": 238,
+        "end": 238
+      }
+    },
+    {
+      "name": "exception.VirtualInterfaceCreateException",
+      "usage": "call",
+      "via": "nova",
+      "count": 2,
+      "lineRange": {
+        "start": 281,
+        "end": 281
+      }
+    },
+    {
+      "name": "str",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 299,
+        "end": 299
+      }
+    },
+    {
+      "name": "os.path.join",
+      "usage": "call",
+      "via": "os",
+      "count": 2,
+      "lineRange": {
+        "start": 305,
+        "end": 305
+      }
+    },
+    {
+      "name": "os.path.normpath",
+      "usage": "call",
+      "via": "os",
+      "count": 2,
+      "lineRange": {
+        "start": 305,
+        "end": 305
+      }
+    },
+    {
+      "name": "os.path.exists",
+      "usage": "call",
+      "via": "os",
+      "count": 1,
+      "lineRange": {
+        "start": 307,
+        "end": 307
+      }
+    },
+    {
+      "name": "images.fetch",
+      "usage": "call",
+      "via": "nova.virt",
+      "count": 1,
+      "lineRange": {
+        "start": 308,
+        "end": 308
+      }
+    },
+    {
+      "name": "glance.get_remote_image_service",
+      "usage": "call",
+      "via": "nova.image",
+      "count": 1,
+      "lineRange": {
+        "start": 333,
+        "end": 333
+      }
+    },
+    {
+      "name": "update_task_state",
+      "usage": "call",
+      "via": null,
+      "count": 2,
+      "lineRange": {
+        "start": 336,
+        "end": 336
+      }
+    },
+    {
+      "name": "open",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 380,
+        "end": 380
+      }
+    },
+    {
+      "name": "zvmutils.clean_up_file",
+      "usage": "call",
+      "via": "nova.virt.zvm",
+      "count": 1,
+      "lineRange": {
+        "start": 390,
+        "end": 390
+      }
+    }
+  ],
+  "dependencies": [
+    {
+      "style": "import",
+      "module": "os",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 15,
+        "end": 15
+      }
+    },
+    {
+      "style": "import",
+      "module": "time",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 16,
+        "end": 16
+      }
+    },
+    {
+      "style": "import",
+      "module": "os_resource_classes",
+      "names": [],
+      "alias": "orc",
+      "relative": false,
+      "lineRange": {
+        "start": 18,
+        "end": 18
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_concurrency",
+      "names": [
+        {
+          "alias": null,
+          "name": "lockutils"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 19,
+        "end": 19
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_log",
+      "names": [
+        {
+          "alias": "logging",
+          "name": "log"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 20,
+        "end": 20
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_serialization",
+      "names": [
+        {
+          "alias": null,
+          "name": "jsonutils"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 21,
+        "end": 21
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_utils",
+      "names": [
+        {
+          "alias": null,
+          "name": "excutils"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 22,
+        "end": 22
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.compute",
+      "names": [
+        {
+          "alias": null,
+          "name": "task_states"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 24,
+        "end": 24
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "conf"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 25,
+        "end": 25
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "exception"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 26,
+        "end": 26
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.i18n",
+      "names": [
+        {
+          "alias": null,
+          "name": "_"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 27,
+        "end": 27
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.image",
+      "names": [
+        {
+          "alias": null,
+          "name": "glance"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 28,
+        "end": 28
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.objects",
+      "names": [
+        {
+          "alias": "obj_fields",
+          "name": "fields"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 29,
+        "end": 29
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.virt",
+      "names": [
+        {
+          "alias": null,
+          "name": "driver"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 30,
+        "end": 30
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.virt",
+      "names": [
+        {
+          "alias": null,
+          "name": "images"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 31,
+        "end": 31
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.virt.zvm",
+      "names": [
+        {
+          "alias": null,
+          "name": "guest"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 32,
+        "end": 32
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.virt.zvm",
+      "names": [
+        {
+          "alias": null,
+          "name": "hypervisor"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 33,
+        "end": 33
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.virt.zvm",
+      "names": [
+        {
+          "alias": "zvmutils",
+          "name": "utils"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 34,
+        "end": 34
+      }
+    }
+  ],
+  "sideEffects": [
+    {
+      "kind": "file-io",
+      "target": "image_path = os.path.join(os.path.normpath(CONF.zvm.image_tmp_path),",
+      "lineRange": {
+        "start": 305,
+        "end": 305
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "if not os.path.exists(image_path):",
+      "lineRange": {
+        "start": 307,
+        "end": 307
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "image_path = os.path.join(os.path.normpath(",
+      "lineRange": {
+        "start": 349,
+        "end": 349
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "with open(image_path, 'r') as image_file:",
+      "lineRange": {
+        "start": 380,
+        "end": 380
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "LOG = logging.getLogger(__name__)",
+      "lineRange": {
+        "start": 37,
+        "end": 37
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "CONF = conf.CONF",
+      "lineRange": {
+        "start": 38,
+        "end": 38
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "DEFAULT_EPH_DISK_FMT = 'ext3'",
+      "lineRange": {
+        "start": 41,
+        "end": 41
+      }
+    }
+  ],
+  "securitySurface": [
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "image_service.update(context,",
+      "lineRange": {
+        "start": 381,
+        "end": 381
+      }
+    }
+  ],
+  "injection_flags": [],
+  "warnings": []
+}

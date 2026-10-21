@@ -1,0 +1,720 @@
+{
+  "file": "src/nova/virt/libvirt/storage/lvm.py",
+  "hash": "0d6ffcb802274f4b6f8813fad59c7d2d1f2236bb532adbfbfdd5d771420aa3dc",
+  "language": "Python",
+  "component": "nova",
+  "package": null,
+  "lines": {
+    "blank": 37,
+    "code": 134,
+    "comment": 21,
+    "total": 192
+  },
+  "symbols": [
+    {
+      "name": "CONF",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 33,
+        "end": 33
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "LOG",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 34,
+        "end": 34
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "create_volume",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 38,
+        "end": 79
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "vg"
+        },
+        {
+          "name": "lv"
+        },
+        {
+          "name": "size"
+        },
+        {
+          "default": "False",
+          "name": "sparse"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 22,
+      "ccn": 3,
+      "exported": true
+    },
+    {
+      "name": "check_size",
+      "kind": "function",
+      "scope": "create_volume",
+      "lineRange": {
+        "start": 51,
+        "end": 60
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "vg"
+        },
+        {
+          "name": "lv"
+        },
+        {
+          "name": "size"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "visibility": "public"
+    },
+    {
+      "name": "get_volume_group_info",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 82,
+        "end": 100
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "vg"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "{'total': int(info[0]), 'free': int(info[1]), 'used': int(info[0]) - int(info[1])}",
+          "line": 98
+        }
+      ],
+      "nloc": 8,
+      "ccn": 2,
+      "exported": true
+    },
+    {
+      "name": "list_volumes",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 103,
+        "end": 112
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "vg"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "[line.strip() for line in out.splitlines()]",
+          "line": 112
+        }
+      ],
+      "nloc": 3,
+      "ccn": 2,
+      "exported": true
+    },
+    {
+      "name": "volume_info",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 115,
+        "end": 137
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "path"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "dict(zip(*info))",
+          "line": 137
+        }
+      ],
+      "nloc": 6,
+      "ccn": 3,
+      "exported": true
+    },
+    {
+      "name": "get_volume_size",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 140,
+        "end": 155
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "path"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "int(out)",
+          "line": 155
+        }
+      ],
+      "nloc": 9,
+      "ccn": 3,
+      "exported": true
+    },
+    {
+      "name": "clear_volume",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 158,
+        "end": 178
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "path"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "",
+          "line": 164
+        },
+        {
+          "expr": "",
+          "line": 172
+        }
+      ],
+      "nloc": 13,
+      "ccn": 5,
+      "exported": true
+    },
+    {
+      "name": "remove_volumes",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 181,
+        "end": 192
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "paths"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 10,
+      "ccn": 4,
+      "exported": true
+    }
+  ],
+  "referencedSymbols": [
+    {
+      "name": "logging.getLogger",
+      "usage": "call",
+      "via": "oslo_log",
+      "count": 1,
+      "lineRange": {
+        "start": 34,
+        "end": 34
+      }
+    },
+    {
+      "name": "RuntimeError",
+      "usage": "call",
+      "via": null,
+      "count": 3,
+      "lineRange": {
+        "start": 53,
+        "end": 53
+      }
+    },
+    {
+      "name": "_",
+      "usage": "call",
+      "via": "nova.i18n",
+      "count": 3,
+      "lineRange": {
+        "start": 53,
+        "end": 53
+      }
+    },
+    {
+      "name": "nova.privsep.fs.lvcreate",
+      "usage": "call",
+      "via": "nova.conf",
+      "count": 2,
+      "lineRange": {
+        "start": 75,
+        "end": 75
+      }
+    },
+    {
+      "name": "nova.privsep.fs.vginfo",
+      "usage": "call",
+      "via": "nova.conf",
+      "count": 1,
+      "lineRange": {
+        "start": 92,
+        "end": 92
+      }
+    },
+    {
+      "name": "len",
+      "usage": "call",
+      "via": null,
+      "count": 2,
+      "lineRange": {
+        "start": 95,
+        "end": 95
+      }
+    },
+    {
+      "name": "int",
+      "usage": "call",
+      "via": null,
+      "count": 6,
+      "lineRange": {
+        "start": 98,
+        "end": 98
+      }
+    },
+    {
+      "name": "nova.privsep.fs.lvlist",
+      "usage": "call",
+      "via": "nova.conf",
+      "count": 1,
+      "lineRange": {
+        "start": 111,
+        "end": 111
+      }
+    },
+    {
+      "name": "nova.privsep.fs.lvinfo",
+      "usage": "call",
+      "via": "nova.conf",
+      "count": 1,
+      "lineRange": {
+        "start": 131,
+        "end": 131
+      }
+    },
+    {
+      "name": "dict",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 137,
+        "end": 137
+      }
+    },
+    {
+      "name": "zip",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 137,
+        "end": 137
+      }
+    },
+    {
+      "name": "nova.privsep.fs.blockdev_size",
+      "usage": "call",
+      "via": "nova.conf",
+      "count": 1,
+      "lineRange": {
+        "start": 149,
+        "end": 149
+      }
+    },
+    {
+      "name": "os.path.exists",
+      "usage": "call",
+      "via": "os",
+      "count": 1,
+      "lineRange": {
+        "start": 151,
+        "end": 151
+      }
+    },
+    {
+      "name": "exception.VolumeBDMPathNotFound",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 152,
+        "end": 152
+      }
+    },
+    {
+      "name": "nova.privsep.fs.clear",
+      "usage": "call",
+      "via": "nova.conf",
+      "count": 1,
+      "lineRange": {
+        "start": 177,
+        "end": 177
+      }
+    },
+    {
+      "name": "nova.privsep.fs.lvremove",
+      "usage": "call",
+      "via": "nova.conf",
+      "count": 1,
+      "lineRange": {
+        "start": 188,
+        "end": 188
+      }
+    },
+    {
+      "name": "str",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 190,
+        "end": 190
+      }
+    },
+    {
+      "name": "exception.VolumesNotRemoved",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 192,
+        "end": 192
+      }
+    }
+  ],
+  "dependencies": [
+    {
+      "style": "import",
+      "module": "os",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 22,
+        "end": 22
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_concurrency",
+      "names": [
+        {
+          "alias": null,
+          "name": "processutils"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 24,
+        "end": 24
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_log",
+      "names": [
+        {
+          "alias": "logging",
+          "name": "log"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 25,
+        "end": 25
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_utils",
+      "names": [
+        {
+          "alias": null,
+          "name": "units"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 26,
+        "end": 26
+      }
+    },
+    {
+      "style": "import",
+      "module": "nova.conf",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 28,
+        "end": 28
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "exception"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 29,
+        "end": 29
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.i18n",
+      "names": [
+        {
+          "alias": null,
+          "name": "_"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 30,
+        "end": 30
+      }
+    },
+    {
+      "style": "import",
+      "module": "nova.privsep.fs",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 31,
+        "end": 31
+      }
+    }
+  ],
+  "sideEffects": [
+    {
+      "kind": "process-spawn",
+      "target": "import nova.privsep.fs",
+      "lineRange": {
+        "start": 31,
+        "end": 31
+      }
+    },
+    {
+      "kind": "process-spawn",
+      "target": "nova.privsep.fs.lvcreate(size, lv, vg,",
+      "lineRange": {
+        "start": 75,
+        "end": 75
+      }
+    },
+    {
+      "kind": "process-spawn",
+      "target": "nova.privsep.fs.lvcreate(size, lv, vg)",
+      "lineRange": {
+        "start": 79,
+        "end": 79
+      }
+    },
+    {
+      "kind": "process-spawn",
+      "target": "out, err = nova.privsep.fs.vginfo(vg)",
+      "lineRange": {
+        "start": 92,
+        "end": 92
+      }
+    },
+    {
+      "kind": "process-spawn",
+      "target": "out, err = nova.privsep.fs.lvlist(vg)",
+      "lineRange": {
+        "start": 111,
+        "end": 111
+      }
+    },
+    {
+      "kind": "process-spawn",
+      "target": "out, err = nova.privsep.fs.lvinfo(path)",
+      "lineRange": {
+        "start": 131,
+        "end": 131
+      }
+    },
+    {
+      "kind": "process-spawn",
+      "target": "out, _err = nova.privsep.fs.blockdev_size(path)",
+      "lineRange": {
+        "start": 149,
+        "end": 149
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "if not os.path.exists(path):",
+      "lineRange": {
+        "start": 151,
+        "end": 151
+      }
+    },
+    {
+      "kind": "process-spawn",
+      "target": "nova.privsep.fs.clear(path, volume_size,",
+      "lineRange": {
+        "start": 177,
+        "end": 177
+      }
+    },
+    {
+      "kind": "process-spawn",
+      "target": "nova.privsep.fs.lvremove(path)",
+      "lineRange": {
+        "start": 188,
+        "end": 188
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "CONF = nova.conf.CONF",
+      "lineRange": {
+        "start": 33,
+        "end": 33
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "LOG = logging.getLogger(__name__)",
+      "lineRange": {
+        "start": 34,
+        "end": 34
+      }
+    }
+  ],
+  "securitySurface": [
+    {
+      "kind": "privilege",
+      "category": "privsep-entrypoint",
+      "description": "import nova.privsep.fs",
+      "lineRange": {
+        "start": 31,
+        "end": 31
+      }
+    },
+    {
+      "kind": "privilege",
+      "category": "privsep-entrypoint",
+      "description": "nova.privsep.fs.lvcreate(size, lv, vg,",
+      "lineRange": {
+        "start": 75,
+        "end": 75
+      }
+    },
+    {
+      "kind": "privilege",
+      "category": "privsep-entrypoint",
+      "description": "nova.privsep.fs.lvcreate(size, lv, vg)",
+      "lineRange": {
+        "start": 79,
+        "end": 79
+      }
+    },
+    {
+      "kind": "privilege",
+      "category": "privsep-entrypoint",
+      "description": "out, err = nova.privsep.fs.vginfo(vg)",
+      "lineRange": {
+        "start": 92,
+        "end": 92
+      }
+    },
+    {
+      "kind": "privilege",
+      "category": "privsep-entrypoint",
+      "description": "out, err = nova.privsep.fs.lvlist(vg)",
+      "lineRange": {
+        "start": 111,
+        "end": 111
+      }
+    },
+    {
+      "kind": "privilege",
+      "category": "privsep-entrypoint",
+      "description": "out, err = nova.privsep.fs.lvinfo(path)",
+      "lineRange": {
+        "start": 131,
+        "end": 131
+      }
+    },
+    {
+      "kind": "privilege",
+      "category": "privsep-entrypoint",
+      "description": "out, _err = nova.privsep.fs.blockdev_size(path)",
+      "lineRange": {
+        "start": 149,
+        "end": 149
+      }
+    },
+    {
+      "kind": "privilege",
+      "category": "privsep-entrypoint",
+      "description": "nova.privsep.fs.clear(path, volume_size,",
+      "lineRange": {
+        "start": 177,
+        "end": 177
+      }
+    },
+    {
+      "kind": "privilege",
+      "category": "privsep-entrypoint",
+      "description": "nova.privsep.fs.lvremove(path)",
+      "lineRange": {
+        "start": 188,
+        "end": 188
+      }
+    }
+  ],
+  "injection_flags": [],
+  "warnings": []
+}

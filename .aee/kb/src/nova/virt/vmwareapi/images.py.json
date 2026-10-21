@@ -1,0 +1,1263 @@
+{
+  "file": "src/nova/virt/vmwareapi/images.py",
+  "hash": "d9406aee7f77f7311a0a6384d0486770af54003347868b6f2a54e79dec1090ca",
+  "language": "Python",
+  "component": "nova",
+  "package": null,
+  "lines": {
+    "blank": 73,
+    "code": 366,
+    "comment": 34,
+    "total": 473
+  },
+  "symbols": [
+    {
+      "name": "CONF",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 45,
+        "end": 45
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "LOG",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 47,
+        "end": 47
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "IMAGE_API",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 48,
+        "end": 48
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "QUEUE_BUFFER_SIZE",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 50,
+        "end": 50
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "NFC_LEASE_UPDATE_PERIOD",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 51,
+        "end": 51
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "CHUNK_SIZE",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 52,
+        "end": 52
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "VMwareImage",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 55,
+        "end": 180
+      },
+      "source": "aee-inventory",
+      "exported": true
+    },
+    {
+      "name": "__init__",
+      "kind": "method",
+      "scope": "VMwareImage",
+      "lineRange": {
+        "start": 56,
+        "end": 98
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "image_id"
+        },
+        {
+          "default": "0",
+          "name": "file_size"
+        },
+        {
+          "default": "constants.DEFAULT_OS_TYPE",
+          "name": "os_type"
+        },
+        {
+          "default": "constants.DEFAULT_ADAPTER_TYPE",
+          "name": "adapter_type"
+        },
+        {
+          "default": "constants.DEFAULT_DISK_TYPE",
+          "name": "disk_type"
+        },
+        {
+          "default": "constants.CONTAINER_FORMAT_BARE",
+          "name": "container_format"
+        },
+        {
+          "default": "constants.DEFAULT_DISK_FORMAT",
+          "name": "file_type"
+        },
+        {
+          "default": "None",
+          "name": "linked_clone"
+        },
+        {
+          "default": "None",
+          "name": "vsphere_location"
+        },
+        {
+          "default": "constants.DEFAULT_VIF_MODEL",
+          "name": "vif_model"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 26,
+      "ccn": 4,
+      "visibility": "public"
+    },
+    {
+      "name": "file_size_in_kb",
+      "kind": "method",
+      "scope": "VMwareImage",
+      "lineRange": {
+        "start": 101,
+        "end": 102
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "self.file_size / units.Ki",
+          "line": 102
+        }
+      ],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "is_sparse",
+      "kind": "method",
+      "scope": "VMwareImage",
+      "lineRange": {
+        "start": 105,
+        "end": 106
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "self.disk_type == constants.DISK_TYPE_SPARSE",
+          "line": 106
+        }
+      ],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "is_iso",
+      "kind": "method",
+      "scope": "VMwareImage",
+      "lineRange": {
+        "start": 109,
+        "end": 110
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "self.file_type == constants.DISK_FORMAT_ISO",
+          "line": 110
+        }
+      ],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "is_ova",
+      "kind": "method",
+      "scope": "VMwareImage",
+      "lineRange": {
+        "start": 113,
+        "end": 114
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "self.container_format == constants.CONTAINER_FORMAT_OVA",
+          "line": 114
+        }
+      ],
+      "nloc": 2,
+      "ccn": 1,
+      "visibility": "public"
+    },
+    {
+      "name": "from_image",
+      "kind": "method",
+      "scope": "VMwareImage",
+      "lineRange": {
+        "start": 117,
+        "end": 180
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "cls"
+        },
+        {
+          "name": "context"
+        },
+        {
+          "name": "image_id"
+        },
+        {
+          "name": "image_meta"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "cls(**props)",
+          "line": 180
+        }
+      ],
+      "nloc": 45,
+      "ccn": 9,
+      "visibility": "public"
+    },
+    {
+      "name": "get_vsphere_location",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 183,
+        "end": 194
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "context"
+        },
+        {
+          "name": "image_id"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "loc_url",
+          "line": 193
+        },
+        {
+          "expr": "None",
+          "line": 194
+        }
+      ],
+      "nloc": 10,
+      "ccn": 6,
+      "exported": true
+    },
+    {
+      "name": "image_transfer",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 197,
+        "end": 212
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "read_handle"
+        },
+        {
+          "name": "write_handle"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 14,
+      "ccn": 4,
+      "exported": true
+    },
+    {
+      "name": "upload_iso_to_datastore",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 215,
+        "end": 238
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "iso_path"
+        },
+        {
+          "name": "instance"
+        },
+        {
+          "name": "**kwargs"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 22,
+      "ccn": 2,
+      "exported": true
+    },
+    {
+      "name": "fetch_image",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 241,
+        "end": 264
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "context"
+        },
+        {
+          "name": "instance"
+        },
+        {
+          "name": "host"
+        },
+        {
+          "name": "port"
+        },
+        {
+          "name": "dc_name"
+        },
+        {
+          "name": "ds_name"
+        },
+        {
+          "name": "file_path"
+        },
+        {
+          "default": "None",
+          "name": "cookies"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 22,
+      "ccn": 3,
+      "exported": true
+    },
+    {
+      "name": "_build_shadow_vm_config_spec",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 267,
+        "end": 319
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "session"
+        },
+        {
+          "name": "name"
+        },
+        {
+          "name": "size_kb"
+        },
+        {
+          "name": "disk_type"
+        },
+        {
+          "name": "ds_name"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "create_spec",
+          "line": 319
+        }
+      ],
+      "nloc": 36,
+      "ccn": 3,
+      "exported": false
+    },
+    {
+      "name": "_build_import_spec_for_import_vapp",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 322,
+        "end": 329
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "session"
+        },
+        {
+          "name": "vm_name"
+        },
+        {
+          "name": "datastore_name"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "vm_import_spec",
+          "line": 329
+        }
+      ],
+      "nloc": 7,
+      "ccn": 1,
+      "exported": false
+    },
+    {
+      "name": "fetch_image_stream_optimized",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 332,
+        "end": 366
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "context"
+        },
+        {
+          "name": "instance"
+        },
+        {
+          "name": "session"
+        },
+        {
+          "name": "vm_name"
+        },
+        {
+          "name": "ds_name"
+        },
+        {
+          "name": "vm_folder_ref"
+        },
+        {
+          "name": "res_pool_ref"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "vmdk.capacity_in_bytes",
+          "line": 366
+        }
+      ],
+      "nloc": 28,
+      "ccn": 1,
+      "exported": true
+    },
+    {
+      "name": "get_vmdk_name_from_ovf",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 369,
+        "end": 381
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "xmlstr"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "vmdk_name",
+          "line": 381
+        }
+      ],
+      "nloc": 9,
+      "ccn": 1,
+      "exported": true
+    },
+    {
+      "name": "fetch_image_ova",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 384,
+        "end": 435
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "context"
+        },
+        {
+          "name": "instance"
+        },
+        {
+          "name": "session"
+        },
+        {
+          "name": "vm_name"
+        },
+        {
+          "name": "ds_name"
+        },
+        {
+          "name": "vm_folder_ref"
+        },
+        {
+          "name": "res_pool_ref"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "vmdk.capacity_in_bytes",
+          "line": 432
+        }
+      ],
+      "nloc": 44,
+      "ccn": 6,
+      "exported": true
+    },
+    {
+      "name": "upload_image_stream_optimized",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 438,
+        "end": 473
+      },
+      "source": "aee-inventory",
+      "parameters": [
+        {
+          "name": "context"
+        },
+        {
+          "name": "image_id"
+        },
+        {
+          "name": "instance"
+        },
+        {
+          "name": "session"
+        },
+        {
+          "name": "vm"
+        },
+        {
+          "name": "vmdk_size"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "nloc": 27,
+      "ccn": 2,
+      "exported": true
+    },
+    {
+      "name": "file_size_in_kb",
+      "kind": "property",
+      "scope": "VMwareImage",
+      "lineRange": {
+        "start": 100,
+        "end": 102
+      },
+      "visibility": "public",
+      "source": "manual"
+    },
+    {
+      "name": "is_sparse",
+      "kind": "property",
+      "scope": "VMwareImage",
+      "lineRange": {
+        "start": 104,
+        "end": 106
+      },
+      "visibility": "public",
+      "source": "manual"
+    },
+    {
+      "name": "is_iso",
+      "kind": "property",
+      "scope": "VMwareImage",
+      "lineRange": {
+        "start": 108,
+        "end": 110
+      },
+      "visibility": "public",
+      "source": "manual"
+    },
+    {
+      "name": "is_ova",
+      "kind": "property",
+      "scope": "VMwareImage",
+      "lineRange": {
+        "start": 112,
+        "end": 114
+      },
+      "visibility": "public",
+      "source": "manual"
+    },
+    {
+      "name": "from_image",
+      "kind": "classmethod",
+      "scope": "VMwareImage",
+      "lineRange": {
+        "start": 116,
+        "end": 180
+      },
+      "visibility": "public",
+      "source": "manual"
+    }
+  ],
+  "referencedSymbols": [
+    {
+      "name": "logging.getLogger",
+      "usage": "call",
+      "via": "oslo_log",
+      "count": 1,
+      "lineRange": {
+        "start": 47,
+        "end": 47
+      }
+    },
+    {
+      "name": "glance.API",
+      "usage": "call",
+      "via": "nova.image",
+      "count": 1,
+      "lineRange": {
+        "start": 48,
+        "end": 48
+      }
+    },
+    {
+      "name": "object",
+      "usage": "inherit",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 55,
+        "end": 55
+      }
+    },
+    {
+      "name": "exception.InvalidDiskFormat",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 92,
+        "end": 92
+      }
+    },
+    {
+      "name": "strutils.bool_from_string",
+      "usage": "call",
+      "via": "oslo_utils",
+      "count": 1,
+      "lineRange": {
+        "start": 134,
+        "end": 134
+      }
+    },
+    {
+      "name": "cls",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 180,
+        "end": 180
+      }
+    },
+    {
+      "name": "getattr",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 200,
+        "end": 200
+      }
+    },
+    {
+      "name": "loopingcall.FixedIntervalLoopingCall",
+      "usage": "call",
+      "via": "oslo_service",
+      "count": 2,
+      "lineRange": {
+        "start": 201,
+        "end": 201
+      }
+    },
+    {
+      "name": "open",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 218,
+        "end": 218
+      }
+    },
+    {
+      "name": "rw_handles.FileWriteHandle",
+      "usage": "call",
+      "via": "oslo_vmware",
+      "count": 2,
+      "lineRange": {
+        "start": 219,
+        "end": 219
+      }
+    },
+    {
+      "name": "os.fstat",
+      "usage": "call",
+      "via": "os",
+      "count": 2,
+      "lineRange": {
+        "start": 226,
+        "end": 226
+      }
+    },
+    {
+      "name": "len",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 232,
+        "end": 232
+      }
+    },
+    {
+      "name": "int",
+      "usage": "call",
+      "via": null,
+      "count": 4,
+      "lineRange": {
+        "start": 252,
+        "end": 252
+      }
+    },
+    {
+      "name": "rw_handles.ImageReadHandle",
+      "usage": "call",
+      "via": "oslo_vmware",
+      "count": 3,
+      "lineRange": {
+        "start": 254,
+        "end": 254
+      }
+    },
+    {
+      "name": "max",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 291,
+        "end": 291
+      }
+    },
+    {
+      "name": "rw_handles.VmdkWriteHandle",
+      "usage": "call",
+      "via": "oslo_vmware",
+      "count": 2,
+      "lineRange": {
+        "start": 350,
+        "end": 350
+      }
+    },
+    {
+      "name": "vm_util.get_vmdk_info",
+      "usage": "call",
+      "via": "nova.virt.vmwareapi",
+      "count": 2,
+      "lineRange": {
+        "start": 363,
+        "end": 363
+      }
+    },
+    {
+      "name": "encodeutils.safe_encode",
+      "usage": "call",
+      "via": "oslo_utils",
+      "count": 1,
+      "lineRange": {
+        "start": 372,
+        "end": 372
+      }
+    },
+    {
+      "name": "etree.fromstring",
+      "usage": "call",
+      "via": "lxml",
+      "count": 1,
+      "lineRange": {
+        "start": 372,
+        "end": 372
+      }
+    },
+    {
+      "name": "tarfile.open",
+      "usage": "call",
+      "via": "tarfile",
+      "count": 1,
+      "lineRange": {
+        "start": 404,
+        "end": 404
+      }
+    },
+    {
+      "name": "exception.ImageUnacceptable",
+      "usage": "call",
+      "via": "nova",
+      "count": 1,
+      "lineRange": {
+        "start": 433,
+        "end": 433
+      }
+    },
+    {
+      "name": "_",
+      "usage": "call",
+      "via": "nova.i18n",
+      "count": 1,
+      "lineRange": {
+        "start": 434,
+        "end": 434
+      }
+    },
+    {
+      "name": "rw_handles.VmdkReadHandle",
+      "usage": "call",
+      "via": "oslo_vmware",
+      "count": 1,
+      "lineRange": {
+        "start": 444,
+        "end": 444
+      }
+    }
+  ],
+  "dependencies": [
+    {
+      "style": "import",
+      "module": "os",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 20,
+        "end": 20
+      }
+    },
+    {
+      "style": "import",
+      "module": "tarfile",
+      "names": [],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 21,
+        "end": 21
+      }
+    },
+    {
+      "style": "from",
+      "module": "lxml",
+      "names": [
+        {
+          "alias": null,
+          "name": "etree"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 23,
+        "end": 23
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_config",
+      "names": [
+        {
+          "alias": null,
+          "name": "cfg"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 24,
+        "end": 24
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_log",
+      "names": [
+        {
+          "alias": "logging",
+          "name": "log"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 25,
+        "end": 25
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_service",
+      "names": [
+        {
+          "alias": null,
+          "name": "loopingcall"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 26,
+        "end": 26
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_utils",
+      "names": [
+        {
+          "alias": null,
+          "name": "encodeutils"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 27,
+        "end": 27
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_utils",
+      "names": [
+        {
+          "alias": null,
+          "name": "strutils"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 28,
+        "end": 28
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_utils",
+      "names": [
+        {
+          "alias": null,
+          "name": "units"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 29,
+        "end": 29
+      }
+    },
+    {
+      "style": "from",
+      "module": "oslo_vmware",
+      "names": [
+        {
+          "alias": null,
+          "name": "rw_handles"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 30,
+        "end": 30
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova",
+      "names": [
+        {
+          "alias": null,
+          "name": "exception"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 33,
+        "end": 33
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.i18n",
+      "names": [
+        {
+          "alias": null,
+          "name": "_"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 34,
+        "end": 34
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.image",
+      "names": [
+        {
+          "alias": null,
+          "name": "glance"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 35,
+        "end": 35
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.objects",
+      "names": [
+        {
+          "alias": null,
+          "name": "fields"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 36,
+        "end": 36
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.virt.vmwareapi",
+      "names": [
+        {
+          "alias": null,
+          "name": "constants"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 37,
+        "end": 37
+      }
+    },
+    {
+      "style": "from",
+      "module": "nova.virt.vmwareapi",
+      "names": [
+        {
+          "alias": null,
+          "name": "vm_util"
+        }
+      ],
+      "alias": null,
+      "relative": false,
+      "lineRange": {
+        "start": 38,
+        "end": 38
+      }
+    }
+  ],
+  "sideEffects": [
+    {
+      "kind": "file-io",
+      "target": "with open(iso_path, 'r') as iso_file:",
+      "lineRange": {
+        "start": 218,
+        "end": 218
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "with tarfile.open(mode=\"r|\", fileobj=read_handle) as tar:",
+      "lineRange": {
+        "start": 404,
+        "end": 404
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "CONF = cfg.CONF",
+      "lineRange": {
+        "start": 45,
+        "end": 45
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "LOG = logging.getLogger(__name__)",
+      "lineRange": {
+        "start": 47,
+        "end": 47
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "IMAGE_API = glance.API()",
+      "lineRange": {
+        "start": 48,
+        "end": 48
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "QUEUE_BUFFER_SIZE = 10",
+      "lineRange": {
+        "start": 50,
+        "end": 50
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "NFC_LEASE_UPDATE_PERIOD = 60  # update NFC lease every 60sec.",
+      "lineRange": {
+        "start": 51,
+        "end": 51
+      }
+    },
+    {
+      "kind": "global-mutation",
+      "target": "CHUNK_SIZE = 64 * units.Ki  # default chunk size for image transfer",
+      "lineRange": {
+        "start": 52,
+        "end": 52
+      }
+    }
+  ],
+  "securitySurface": [
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "NFC_LEASE_UPDATE_PERIOD = 60  # update NFC lease every 60sec.",
+      "lineRange": {
+        "start": 51,
+        "end": 51
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "file-write",
+      "description": "write_handle.write(data)",
+      "lineRange": {
+        "start": 208,
+        "end": 208
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "file-write",
+      "description": "write_file_handle.write(data)",
+      "lineRange": {
+        "start": 233,
+        "end": 233
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "db-write",
+      "description": "IMAGE_API.update(context, image_id, image_metadata, data=read_handle)",
+      "lineRange": {
+        "start": 467,
+        "end": 467
+      }
+    }
+  ],
+  "injection_flags": [],
+  "warnings": []
+}
