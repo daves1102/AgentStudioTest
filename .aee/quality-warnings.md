@@ -94,3 +94,23 @@ No JavaScript, TypeScript, Go, Shell, Dockerfile, or Java files in batch 6.
 ### Tools run
 
 ruff 0.16.10, pylint 4.1.2, lizard 1.24.1 — all completed successfully for all 96 files.
+
+## Batch 8 — nova/ top-level package files (2026-10-21)
+
+### Suppressions applied
+
+- **thread_pool_factory.py L513**: `except BaseException as e: task.future.set_exception(e)` — correct thread-pool pattern, propagating exceptions through Futures. Suppressed.
+- **UP031** (38 hits): printf→f-string style noise — suppressed.
+- **UP008** (19 hits): `super(Cls, self)` Python 2 compat — suppressed.
+- **UP004** (17 hits): useless-object-inheritance Python 2 compat — suppressed.
+- **I001** (18 hits): import sort — suppressed.
+- **RUF012** (5 hits): OVo mutable class vars — suppressed.
+- **manager.py PIE790** (6 hits): abstract/stub `pass` statements in nova.manager base class — suppressed (interface stubs).
+
+### Tools run
+
+ruff 0.16.10, pylint 4.1.2, lizard 1.24.1 — all completed successfully for all 25 files.
+
+### Pipeline status
+
+**All 1509 source files now analyzed. Pipeline complete.**

@@ -1,0 +1,30 @@
+[
+  {
+    "file": "src/nova/service.py",
+    "tool": "pylint,ruff",
+    "ruleId": "broad-exception-caught/BLE001",
+    "lineRange": {
+      "start": 385,
+      "end": 488
+    },
+    "title": "Broad exception caught at 4 sites (L385,L394,L422,L488)",
+    "detail": "Best-effort handlers log and continue without re-raising. While intentional, broad `except Exception` obscures unexpected failures. Suggested fix: narrow the exception type or add a sentinel for truly unexpected cases.",
+    "category": "error-handling",
+    "severity": "low",
+    "confidence": "confirmed"
+  },
+  {
+    "file": "src/nova/service.py",
+    "tool": "ruff",
+    "ruleId": "B026",
+    "lineRange": {
+      "start": 176,
+      "end": 176
+    },
+    "title": "Star-arg unpacking after keyword argument at L176 (B026 \u2014 runtime SyntaxError risk)",
+    "detail": "At L176, `manager_class(host=self.host, *args, **kwargs)` passes positional `*args` after a keyword argument. In Python 3, this is a `SyntaxError`. If `args` is ever non-empty this call will fail immediately. Suggested fix: reorder to `manager_class(*args, host=self.host, **kwargs)`.",
+    "category": "bug-risk",
+    "severity": "high",
+    "confidence": "confirmed"
+  }
+]

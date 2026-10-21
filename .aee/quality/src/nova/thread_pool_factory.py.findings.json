@@ -1,0 +1,30 @@
+[
+  {
+    "file": "src/nova/thread_pool_factory.py",
+    "tool": "pylint,ruff",
+    "ruleId": "broad-exception-caught/BLE001",
+    "lineRange": {
+      "start": 513,
+      "end": 592
+    },
+    "title": "Broad exception caught at 2 sites (L513,L592)",
+    "detail": "`except Exception` without re-raise swallows unexpected errors silently. Suggested fix: catch only known exception types from the callee.",
+    "category": "error-handling",
+    "severity": "medium",
+    "confidence": "confirmed"
+  },
+  {
+    "file": "src/nova/thread_pool_factory.py",
+    "tool": "ruff",
+    "ruleId": "B009",
+    "lineRange": {
+      "start": 253,
+      "end": 253
+    },
+    "title": "getattr() with constant attribute name at L253",
+    "detail": "Using `getattr(obj, 'literal_name')` provides no safety benefit over direct attribute access `obj.literal_name`. It misleads readers into thinking the attribute name is dynamic. Suggested fix: use direct attribute access.",
+    "category": "readability",
+    "severity": "low",
+    "confidence": "confirmed"
+  }
+]

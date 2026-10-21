@@ -1,0 +1,44 @@
+[
+  {
+    "file": "src/nova/crypto.py",
+    "tool": "pylint,ruff",
+    "ruleId": "broad-exception-caught/BLE001",
+    "lineRange": {
+      "start": 79,
+      "end": 122
+    },
+    "title": "Broad exception caught at 2 sites (L79,L122)",
+    "detail": "`except Exception` without re-raise swallows unexpected errors silently. Suggested fix: catch only known exception types from the callee.",
+    "category": "error-handling",
+    "severity": "medium",
+    "confidence": "confirmed"
+  },
+  {
+    "file": "src/nova/crypto.py",
+    "tool": "pylint",
+    "ruleId": "W0707",
+    "lineRange": {
+      "start": 80,
+      "end": 80
+    },
+    "title": "Exception context suppressed: 1 raise without `from` (L80)",
+    "detail": "Raising a new exception inside an `except` block without `raise NewExc() from exc` discards the original traceback. Suggested fix: add `from exc` or `from None`.",
+    "category": "maintainability",
+    "severity": "low",
+    "confidence": "confirmed"
+  },
+  {
+    "file": "src/nova/crypto.py",
+    "tool": "ruff",
+    "ruleId": "PLE0704",
+    "lineRange": {
+      "start": 178,
+      "end": 179
+    },
+    "title": "Bare `raise` in non-except scope at L178 \u2014 depends on caller holding active exception",
+    "detail": "Function `_handle_key_manager_error_forbidden` uses a bare `raise` at L178 to re-raise the caller's active exception. If ever called outside an exception handler, this raises `RuntimeError: No active exception to re-raise`. The design relies on an invisible invariant with no enforcement or documentation. Suggested fix: pass the exception explicitly as a parameter and raise it directly.",
+    "category": "bug-risk",
+    "severity": "medium",
+    "confidence": "probable"
+  }
+]

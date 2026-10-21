@@ -1,0 +1,44 @@
+[
+  {
+    "file": "src/nova/policy.py",
+    "tool": "pylint,ruff",
+    "ruleId": "broad-exception-caught/BLE001",
+    "lineRange": {
+      "start": 200,
+      "end": 200
+    },
+    "title": "Broad exception caught at 1 sites (L200)",
+    "detail": "`except Exception` without re-raise swallows unexpected errors silently. Suggested fix: catch only known exception types from the callee.",
+    "category": "error-handling",
+    "severity": "medium",
+    "confidence": "confirmed"
+  },
+  {
+    "file": "src/nova/policy.py",
+    "tool": "pylint",
+    "ruleId": "R1710",
+    "lineRange": {
+      "start": 241,
+      "end": 241
+    },
+    "title": "Inconsistent return statements: 1 functions mix explicit/implicit returns",
+    "detail": "Functions return a value on some paths and fall off the end (returning `None`) on others. Callers expecting a return value may receive `None` unexpectedly. Suggested fix: add explicit `return` on all branches.",
+    "category": "bug-risk",
+    "severity": "medium",
+    "confidence": "confirmed"
+  },
+  {
+    "file": "src/nova/policy.py",
+    "tool": "pylint",
+    "ruleId": "W0707",
+    "lineRange": {
+      "start": 199,
+      "end": 199
+    },
+    "title": "Exception context suppressed: 1 raise without `from` (L199)",
+    "detail": "Raising a new exception inside an `except` block without `raise NewExc() from exc` discards the original traceback. Suggested fix: add `from exc` or `from None`.",
+    "category": "maintainability",
+    "severity": "low",
+    "confidence": "confirmed"
+  }
+]

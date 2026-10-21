@@ -1,0 +1,44 @@
+[
+  {
+    "file": "src/nova/test.py",
+    "tool": "pylint",
+    "ruleId": "W0707",
+    "lineRange": {
+      "start": 703,
+      "end": 703
+    },
+    "title": "Exception context suppressed: 1 raise without `from` (L703)",
+    "detail": "Raising a new exception inside an `except` block without `raise NewExc() from exc` discards the original traceback. Suggested fix: add `from exc` or `from None`.",
+    "category": "maintainability",
+    "severity": "low",
+    "confidence": "confirmed"
+  },
+  {
+    "file": "src/nova/test.py",
+    "tool": "ruff",
+    "ruleId": "PLW0211",
+    "lineRange": {
+      "start": 141,
+      "end": 826
+    },
+    "title": "Static method(s) use `self`/`cls` as first argument at L141,L790,L826",
+    "detail": "Static methods at multiple locations declare `self` or `cls` as their first parameter, but since they are `@staticmethod`, no instance or class is passed \u2014 the parameter receives the first positional argument instead, silently misrouting values. This is a common copy-paste error from instance methods. Suggested fix: rename the parameter or convert to an instance/class method.",
+    "category": "bug-risk",
+    "severity": "medium",
+    "confidence": "confirmed"
+  },
+  {
+    "file": "src/nova/test.py",
+    "tool": "ruff",
+    "ruleId": "B009",
+    "lineRange": {
+      "start": 819,
+      "end": 819
+    },
+    "title": "getattr() with constant attribute name at L819",
+    "detail": "Using `getattr(obj, 'literal_name')` provides no safety benefit over direct attribute access. Suggested fix: use direct attribute access.",
+    "category": "readability",
+    "severity": "low",
+    "confidence": "confirmed"
+  }
+]

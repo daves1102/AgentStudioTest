@@ -1,0 +1,16 @@
+[
+  {
+    "file": "src/nova/availability_zones.py",
+    "tool": "ruff",
+    "ruleId": "RUF015",
+    "lineRange": {
+      "start": 63,
+      "end": 63
+    },
+    "title": "Inefficient single-element slice from dict.values() at L63",
+    "detail": "`.values()[0]` or `.values()[:1]` over a dict view creates a full copy of the values list just to read the first element. `next(iter(...))` is O(1) and avoids the allocation. Suggested fix: use `next(iter(aggregate.metadata.values()))`.",
+    "category": "maintainability",
+    "severity": "low",
+    "confidence": "confirmed"
+  }
+]

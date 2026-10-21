@@ -167,3 +167,34 @@ None. ruff, pylint, and lizard completed successfully for all 6 batches.
 - **src/nova/virt/libvirt/imagebackend.py L301,305,614**: B026 — star-arg unpacking after keyword argument; will raise `SyntaxError` at runtime in affected call paths.
 - **src/nova/virt/netutils.py L314**: `netmask` used before assignment if `version` is neither 4 nor 6 — probable NameError in edge cases.
 - **src/nova/virt/libvirt/storage/lvm.py**: Privsep call `err` output silently discarded at 3 sites — partial privsep failures would go undetected.
+
+---
+
+## Batch 8 — nova/ top-level package files (2026-10-21)
+
+### Overview
+
+| Metric | Value |
+|---|---|
+| Files analyzed | 25 |
+| Files with findings | 14 |
+| High | 2 |
+| Medium | 18 |
+| Low | ~8 |
+
+### Notable Batch 8 Findings
+
+- **src/nova/service.py L176**: B026 — star-arg `*args` after keyword `host=self.host` in `manager_class()` call. Raises `SyntaxError` at runtime if `args` is non-empty. *(high)*
+- **src/nova/quota.py**: `limit_check_project_and_user` CCN=29, `limit_check` CCN=15 — quota enforcement is the most complex logic in the top-level package. *(high)*
+- **src/nova/crypto.py L178**: Bare `raise` in `_handle_key_manager_error_forbidden()` without being inside an `except` block — calls from outside an active exception handler would raise `RuntimeError`. *(medium, probable)*
+- **src/nova/test.py**: Three `@staticmethod` methods named `self`/`cls` — the parameter receives the first positional argument, not the instance. Silently misroutes values. *(medium)*
+- **src/nova/block_device.py**: 5 findings (3 high-CCN functions, 5 raise-missing-from, broad-except at L653/660).
+
+### Final Cumulative Totals (All 8 Batches — Pipeline Complete)
+
+| Metric | B1–B6 | B7 | B8 | **Grand Total** |
+|---|---|---|---|---|
+| Files analyzed | 1388 | 96 | 25 | **1509** |
+| Files with findings | 190 | 37 | 14 | **241** |
+| High | 44 | 11 | 2 | **57** |
+| Medium | 200 | 74 | 18 | **292** |
