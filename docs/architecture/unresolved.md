@@ -1,6 +1,6 @@
 # Unresolved Items Index
 
-_Batch: `da4f90f3140927b8c63f00b11af32787a70ff1ac` — 2026-10-21_
+_Batch: `624338e5475ffbce89d00d3abf4134e98314eb03` — 2026-10-21_
 
 Verification Summary (`.aee/verification-summary.md`) reports 0 errors — this document is not an escalation.
 
@@ -10,49 +10,21 @@ Verification Summary (`.aee/verification-summary.md`) reports 0 errors — this 
 
 Source: `.aee/link-summary.md` (Unresolved Imports table).
 
-### Unresolved References (1,200 total)
+### Unresolved References (923 total)
 
-The increase from 196 (batch 7) to 1,200 is driven by the test suite extraction (856 new files). Test files import heavily from `nova.virt.*` sub-modules not yet in the KB. No previously resolved modules regressed.
+The decrease from 1,200 (batch 8) to 923 is driven by batch 9 extracting `nova.virt.*` production code (libvirt, vmwareapi, zvm, ironic drivers, disk utilities, etc.) and `nova.volume.*`, resolving the entire 283-ref `nova.virt.*` cluster and the 23-ref `nova.volume` gap in one pass. The remaining 923 unresolved entries are dominated by the bare `nova` pattern (913 refs), which represents dynamic attribute access and re-export patterns rather than a single missing file.
 
-**Summary by unresolved module root** (22 distinct roots):
+**Summary by unresolved module root** (4 distinct roots):
 
 | Symbol root | Refs | Notes |
 |-------------|------|-------|
-| `nova` | 884 | top-level package patterns + test suite imports |
-| `nova.virt` | 97 | hypervisor abstraction layer — not yet extracted |
-| `nova.virt.libvirt` | 72 | libvirt driver — not yet extracted |
-| `nova.virt.vmwareapi` | 45 | VMware API driver — not yet extracted |
-| `nova.volume` | 23 | Cinder integration — not yet extracted |
-| `nova.virt.libvirt.volume` | 21 | libvirt volume handling — not yet extracted |
-| `nova.virt.image` | 10 | VM image management — not yet extracted |
-| `nova.virt.disk.mount` | 8 | Disk mount utilities — not yet extracted |
-| `nova.context` | 7 | Request context module — not yet extracted |
-| `nova.virt.libvirt.cpu` | 5 | libvirt CPU pinning — not yet extracted |
-| `nova.virt.zvm` | 5 | z/VM driver — not yet extracted |
-| `nova.virt.ironic` | 4 | Ironic driver — not yet extracted |
-| `nova.virt.libvirt.storage` | 4 | libvirt storage — not yet extracted |
-| `nova.virt.disk` | 3 | Disk utilities — not yet extracted |
-| `nova.policy` | 2 | Policy enforcer — not yet extracted |
-| `nova.virt.libvirt.host` | 2 | libvirt host management — not yet extracted |
-| `nova.virt.block_device` | 2 | Block device management — not yet extracted |
-| `nova.virt.disk.vfs` | 2 | Virtual filesystem utilities — not yet extracted |
-| `nova.quota` | 1 | Quota enforcement — not yet extracted |
-| `nova.virt.node` | 1 | Node resource tracking — not yet extracted |
-| `nova.virt.hardware` | 1 | Hardware topology — not yet extracted |
-| `nova.virt.libvirt.driver` | 1 | libvirt main driver — not yet extracted |
-| **Total** | **1,200** | |
+| `nova` | 913 | top-level package access patterns across all extracted files; not a single missing module |
+| `nova.context` | 7 | request context module — may be part of nova.compute or a standalone module not yet extracted |
+| `nova.policy` | 2 | policy enforcer (distinct from nova.policies, which is resolved) |
+| `nova.quota` | 1 | quota enforcement |
+| **Total** | **923** | |
 
-The `nova.virt.*` family accounts for 283 refs across 14 sub-modules and will collapse significantly when `nova/virt/` is extracted.
-
-**Selected unresolved entries**:
-
-| File | Symbol | Reason |
-|------|--------|--------|
-| `src/nova/tests/unit/virt/test_block_device.py` | `nova.virt.libvirt` | module-not-found |
-| `src/nova/tests/unit/virt/vmwareapi/*` (multiple) | `nova.virt.vmwareapi` | module-not-found |
-| `src/nova/tests/unit/virt/zvm/*` | `nova.virt.zvm` | module-not-found |
-| `src/nova/tests/unit/compute/*` (multiple) | `nova.virt` | module-not-found |
-| `src/nova/api/*`, `src/nova/compute/*` (multiple) | `nova.volume` | module-not-found |
+Modules resolved in batch 9 (previously unresolved): `nova.virt` (97 refs), `nova.virt.libvirt` (72), `nova.virt.vmwareapi` (45), `nova.virt.libvirt.volume` (21), `nova.virt.image` (10), `nova.virt.disk.mount` (8), `nova.virt.libvirt.cpu` (5), `nova.virt.zvm` (5), `nova.virt.ironic` (4), `nova.virt.libvirt.storage` (4), `nova.virt.disk` (3), `nova.virt.libvirt.host` (2), `nova.virt.block_device` (2), `nova.virt.disk.vfs` (2), `nova.virt.node` (1), `nova.virt.hardware` (1), `nova.virt.libvirt.driver` (1), `nova.volume` (23), `nova.share` (3), `nova.storage` (1) — all now in the KB.
 
 ### Ambiguous References
 
@@ -66,7 +38,7 @@ Source: `.aee/security-chains.json` (`chains` array, `status: "partial"`).
 
 | Chain ID | Source File | Source Lines | Sink File | Sink Lines | Stopped-At File | Stopped-At Lines | Reason |
 |----------|------------|-------------|----------|-----------|----------------|-----------------|--------|
-| chain-001 | `src/nova/accelerator/cyborg.py` | 337–337 | `src/nova/accelerator/cyborg.py` | 358–359 | `src/nova/accelerator/cyborg.py` | 337–337 | `no-static-edge` — no production call site in 1,388-file source set; test evidence (batch 8) confirms production caller exists but is not yet extracted: `tests/fixtures/cyborg.py` mocks `get_arq_by_uuid` via `CyborgFixture` (used in compute manager and virt/libvirt driver tests), suggesting caller is in `nova.virt.libvirt` or a compute manager accelerator workflow |
+| chain-001 | `src/nova/accelerator/cyborg.py` | 337–337 | `src/nova/accelerator/cyborg.py` | 358–359 | `src/nova/accelerator/cyborg.py` | 337–337 | `no-static-edge` — no production call site across all 1,484 extracted files; `virt/libvirt/driver.py` (extracted in batch 9) uses accel_info ARQ dicts passed from compute manager but does not call `get_arq_by_uuid` — grep confirmed; test fixture `tests/fixtures/cyborg.py` (CyborgFixture) remains the only evidence the method is called from production |
 
 No terminated chains. (`.aee/security-chains.json`, `summary.terminatedChains: 0`)
 
@@ -76,13 +48,9 @@ Note: `privsep/libvirt.py:L150–161` (readpty, CWE-73) was evaluated as a poten
 
 ## UNKNOWN-Language Files (Intake Summary)
 
-One UNKNOWN file requiring human review:
+No UNKNOWN files in batch 9. (`.aee/intake-summary.md`, batch `624338e5`: "UNKNOWN Files — Flagged for Human Review: None.")
 
-| File | Reason |
-|------|--------|
-| `src/nova/tests/unit/ssl_cert/new_cert.sh` | Shell script — source code in unsupported language (bash/sh) |
-
-Source: `.aee/intake-summary.md` (UNKNOWN Files table).
+Note: batch 9 contains 1 OTHER file (1 × `.template` — network interface config template), which is non-source and not flagged as UNKNOWN.
 
 ---
 
