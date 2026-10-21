@@ -20,7 +20,7 @@
         "file": "src/nova/accelerator/cyborg.py",
         "lineRange": { "start": 337, "end": 337 },
         "reason": "no-static-edge",
-        "detail": "get_arq_by_uuid (defined at cyborg.py:337) has no production call site in the 1484-file source set. virt/libvirt/driver.py (now extracted) uses accel_info ARQ dicts passed in from the compute manager but does not call get_arq_by_uuid. grep confirms no production call anywhere. Test fixture (CyborgFixture at tests/fixtures/cyborg.py:274-277) still provides the only evidence that the method is called in production — via MockPatch consumed by compute manager and libvirt driver tests. The production call site has not been found in any extracted file across all 1484 files."
+        "detail": "get_arq_by_uuid (defined at cyborg.py:337) has NO production call site in the 1509-file near-complete source set (only 10 unresolved imports remain, all in test files). grep for both 'get_arq_by_uuid' and '.get_arq_by_uuid' over all production files returns only the definition at cyborg.py:337. Five production files call cyborg.get_client() and store the result in a local variable (compute/api.py:4578, compute/manager.py:3024, compute/utils.py:1622, conductor/manager.py:938, network/neutron.py:673) then call other methods on the client, but not get_arq_by_uuid. The method is tested directly in tests/unit/accelerator/test_cyborg.py and mocked by CyborgFixture but mock_get_arq_by_uuid is never asserted in any test. The method may be dead code in the current codebase version, or called only via a local-variable dispatch pattern invisible to both static analysis and grep. Per protocol, the chain remains partial rather than terminated because the local-variable blind spot cannot be ruled out."
       },
       "owaspCategory": "A03 Injection",
       "cweId": "CWE-74",
@@ -47,7 +47,7 @@
       "confidence": "needs_cross_file",
       "title": "User-controlled scheduler hint used as getattr attribute on HostState",
       "disposition": "excluded-not-a-source",
-      "reason": "Confidence is needs_cross_file. KB securitySurface is empty. Scheduler filters are loaded by dynamic dispatch from config — no inbound static edges even with 1484 files in source set."
+      "reason": "Confidence is needs_cross_file. KB securitySurface is empty. Scheduler filters are loaded by dynamic dispatch from config — no inbound static edges in full 1509-file source set."
     },
     {
       "file": "src/nova/api/metadata/handler.py",
@@ -79,7 +79,7 @@
       "confidence": "needs_cross_file",
       "title": "readpty opens unvalidated path as root with CAP_DAC_READ_SEARCH",
       "disposition": "excluded-no-source-found",
-      "reason": "Confidence is needs_cross_file — sink candidate per protocol. KB has no entry-point entries. No inbound static edges to privsep/libvirt.py (privsep IPC blind spot). No confirmed/probable taint source can be traced to readpty."
+      "reason": "Confidence is needs_cross_file — sink candidate per protocol. KB has no entry-point entries. No inbound static edges to privsep/libvirt.py (privsep IPC blind spot). No confirmed/probable taint source can be traced to readpty in the 1509-file source set."
     },
     {
       "file": "src/nova/virt/disk/api.py",
@@ -87,7 +87,7 @@
       "confidence": "confirmed",
       "title": "Non-cryptographic PRNG (random.choice) used to generate password hash salt",
       "disposition": "excluded-not-a-source",
-      "reason": "KB securitySurface has 13 entries: 12 kind 'privilege' (privsep-entrypoint), 1 kind 'sink' (db-write). No entry-point entries. CWE-338 weak PRNG is a standalone cryptographic weakness inside privsep context — no attacker-controlled input reaches _generate_salt()."
+      "reason": "KB securitySurface has 13 entries: 12 kind 'privilege' (privsep-entrypoint), 1 kind 'sink' (db-write). No entry-point entries. Standalone cryptographic weakness inside privsep context."
     },
     {
       "file": "src/nova/virt/libvirt/imagecache.py",
@@ -95,7 +95,7 @@
       "confidence": "confirmed",
       "title": "SHA-1 hash used for image cache filename without usedforsecurity=False",
       "disposition": "excluded-not-a-source",
-      "reason": "KB securitySurface has 5 entries: 4 kind 'privilege' (privsep-entrypoint), 1 kind 'sink' (db-write). No entry-point entries. CWE-327 SHA-1 for cache filename is a standalone FIPS compliance issue, not a taint source."
+      "reason": "KB securitySurface has 5 entries: 4 kind 'privilege', 1 kind 'sink'. No entry-point entries. Standalone FIPS compliance issue."
     },
     {
       "file": "src/nova/virt/libvirt/imagecache.py",
@@ -103,7 +103,7 @@
       "confidence": "confirmed",
       "title": "SHA-1 hash used for image path fingerprint without usedforsecurity=False",
       "disposition": "excluded-not-a-source",
-      "reason": "Same file and KB as the finding at line 52. No entry-point entries. Standalone FIPS compliance issue."
+      "reason": "Same KB as finding at line 52. No entry-point entries. Standalone FIPS compliance issue."
     },
     {
       "file": "src/nova/virt/zvm/utils.py",
@@ -111,16 +111,24 @@
       "confidence": "confirmed",
       "title": "TLS certificate verification disabled when z/VM connector URL lacks CA file",
       "disposition": "excluded-not-a-source",
-      "reason": "KB securitySurface is empty — no entries of any kind. CWE-295 TLS misconfiguration on z/VM Cloud Connector is a standalone deployment configuration weakness."
+      "reason": "KB securitySurface is empty. CWE-295 TLS misconfiguration on z/VM Cloud Connector. Standalone deployment configuration weakness."
+    },
+    {
+      "file": "src/nova/crypto.py",
+      "lineRange": { "start": 91, "end": 92 },
+      "confidence": "confirmed",
+      "title": "SHA-1 algorithm used for X509 certificate fingerprint generation",
+      "disposition": "excluded-not-a-source",
+      "reason": "KB securitySurface has 17 entries: 15 kind 'privilege' (crypto-key), 2 kind 'sink' (file-write). No entry-point entries. CWE-327 SHA-1 fingerprint is a standalone deprecation issue — fingerprints used for display rather than authentication."
     }
   ],
   "summary": {
     "confirmedChains": 0,
     "partialChains": 1,
     "terminatedChains": 0,
-    "filesAnalysed": 1484,
-    "linkGraphEdgesAvailable": 5884,
-    "unresolvedImports": 923,
+    "filesAnalysed": 1509,
+    "linkGraphEdgesAvailable": 6902,
+    "unresolvedImports": 10,
     "crossComponentSeams": 0,
     "analysedAt": "2026-10-21"
   }
