@@ -1,6 +1,6 @@
 # Unresolved Items Index
 
-_Batch: `624338e5475ffbce89d00d3abf4134e98314eb03` — 2026-10-21_
+_Batch: `c7e94e29eea2e3abd5797fc0759b0d98232c7830` — 2026-10-21_
 
 Verification Summary (`.aee/verification-summary.md`) reports 0 errors — this document is not an escalation.
 
@@ -10,21 +10,33 @@ Verification Summary (`.aee/verification-summary.md`) reports 0 errors — this 
 
 Source: `.aee/link-summary.md` (Unresolved Imports table).
 
-### Unresolved References (923 total)
+### Unresolved References (10 total)
 
-The decrease from 1,200 (batch 8) to 923 is driven by batch 9 extracting `nova.virt.*` production code (libvirt, vmwareapi, zvm, ironic drivers, disk utilities, etc.) and `nova.volume.*`, resolving the entire 283-ref `nova.virt.*` cluster and the 23-ref `nova.volume` gap in one pass. The remaining 923 unresolved entries are dominated by the bare `nova` pattern (913 refs), which represents dynamic attribute access and re-export patterns rather than a single missing file.
+The decrease from 923 (batch 9) to 10 is driven by batch 10 extracting `nova.context`, `nova.policy`, `nova.quota`, and 22 other top-level modules, resolving all previously named-module gaps. The 10 remaining references use the bare `nova` package name in test files. Per the Link Summary, the graph is now near-complete. All 10 entries are enumerated below.
 
-**Summary by unresolved module root** (4 distinct roots):
+**Summary by unresolved module root** (1 distinct root):
 
 | Symbol root | Refs | Notes |
 |-------------|------|-------|
-| `nova` | 913 | top-level package access patterns across all extracted files; not a single missing module |
-| `nova.context` | 7 | request context module — may be part of nova.compute or a standalone module not yet extracted |
-| `nova.policy` | 2 | policy enforcer (distinct from nova.policies, which is resolved) |
-| `nova.quota` | 1 | quota enforcement |
-| **Total** | **923** | |
+| `nova` | 10 | Bare top-level package access in test/functional files |
+| **Total** | **10** | |
 
-Modules resolved in batch 9 (previously unresolved): `nova.virt` (97 refs), `nova.virt.libvirt` (72), `nova.virt.vmwareapi` (45), `nova.virt.libvirt.volume` (21), `nova.virt.image` (10), `nova.virt.disk.mount` (8), `nova.virt.libvirt.cpu` (5), `nova.virt.zvm` (5), `nova.virt.ironic` (4), `nova.virt.libvirt.storage` (4), `nova.virt.disk` (3), `nova.virt.libvirt.host` (2), `nova.virt.block_device` (2), `nova.virt.disk.vfs` (2), `nova.virt.node` (1), `nova.virt.hardware` (1), `nova.virt.libvirt.driver` (1), `nova.volume` (23), `nova.share` (3), `nova.storage` (1) — all now in the KB.
+**All 10 unresolved entries:**
+
+| File | Line | Symbol | Reason |
+|------|------|--------|--------|
+| `src/nova/tests/fixtures/manila.py` | 14 | `nova` | module-not-found |
+| `src/nova/tests/functional/libvirt/test_numa_servers.py` | 22 | `nova` | module-not-found |
+| `src/nova/tests/functional/libvirt/test_pci_sriov_servers.py` | 31 | `nova` | module-not-found |
+| `src/nova/tests/functional/libvirt/test_vif_model.py` | 20 | `nova` | module-not-found |
+| `src/nova/tests/functional/regressions/test_bug_1845291.py` | 14 | `nova` | module-not-found |
+| `src/nova/tests/functional/regressions/test_bug_1849165.py` | 14 | `nova` | module-not-found |
+| `src/nova/tests/functional/regressions/test_bug_2143972.py` | 13 | `nova` | module-not-found |
+| `src/nova/tests/unit/compute/test_compute.py` | 47 | `nova` | module-not-found |
+| `src/nova/tests/unit/compute/test_compute_mgr.py` | 37 | `nova` | module-not-found |
+| `src/nova/tests/unit/scheduler/test_host_manager.py` | 28 | `nova` | module-not-found |
+
+These references use `import nova` or `nova.<attr>` in test files and may target dynamically-loaded sub-modules (`nova.compute`, `nova.scheduler`, `nova.tests.fixtures.*`) whose source files have not been extracted yet, or may resolve in a later run.
 
 ### Ambiguous References
 
@@ -38,19 +50,17 @@ Source: `.aee/security-chains.json` (`chains` array, `status: "partial"`).
 
 | Chain ID | Source File | Source Lines | Sink File | Sink Lines | Stopped-At File | Stopped-At Lines | Reason |
 |----------|------------|-------------|----------|-----------|----------------|-----------------|--------|
-| chain-001 | `src/nova/accelerator/cyborg.py` | 337–337 | `src/nova/accelerator/cyborg.py` | 358–359 | `src/nova/accelerator/cyborg.py` | 337–337 | `no-static-edge` — no production call site across all 1,484 extracted files; `virt/libvirt/driver.py` (extracted in batch 9) uses accel_info ARQ dicts passed from compute manager but does not call `get_arq_by_uuid` — grep confirmed; test fixture `tests/fixtures/cyborg.py` (CyborgFixture) remains the only evidence the method is called from production |
+| chain-001 | `src/nova/accelerator/cyborg.py` | 337–337 | `src/nova/accelerator/cyborg.py` | 358–359 | `src/nova/accelerator/cyborg.py` | 337–337 | `no-static-edge` — no production call site found via grep in the near-complete 1,509-file source set (only 10 unresolved imports remain, all in test files); method may be dead code or called via local-variable dispatch invisible to static analysis; chain remains partial (not terminated) because local-variable blind spot cannot be ruled out |
 
 No terminated chains. (`.aee/security-chains.json`, `summary.terminatedChains: 0`)
 
-Note: `privsep/libvirt.py:L150–161` (readpty, CWE-73) was evaluated as a potential sink but no partial chain formable — privsep IPC dispatch produces no static inbound edges.
+Note: `privsep/libvirt.py:L150–161` (readpty, CWE-73) was evaluated as a potential sink but no partial chain is formable — privsep IPC dispatch produces no static inbound edges.
 
 ---
 
 ## UNKNOWN-Language Files (Intake Summary)
 
-No UNKNOWN files in batch 9. (`.aee/intake-summary.md`, batch `624338e5`: "UNKNOWN Files — Flagged for Human Review: None.")
-
-Note: batch 9 contains 1 OTHER file (1 × `.template` — network interface config template), which is non-source and not flagged as UNKNOWN.
+No UNKNOWN files in batch 10. (`.aee/intake-summary.md`, batch `c7e94e29`: "UNKNOWN Files — Flagged for Human Review: None.")
 
 ---
 
