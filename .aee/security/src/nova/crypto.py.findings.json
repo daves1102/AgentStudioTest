@@ -1,0 +1,17 @@
+[
+  {
+    "file": "src/nova/crypto.py",
+    "tool": "semgrep, bandit",
+    "ruleId": "B303",
+    "lineRange": {
+      "start": 91,
+      "end": 92
+    },
+    "title": "SHA-1 algorithm used for X509 certificate fingerprint generation",
+    "detail": "generate_x509_fingerprint() at lines 91-92 calls cert.fingerprint(hashes.SHA1()) via cryptography.hazmat.primitives.hashes to produce a hex fingerprint of a PEM certificate. SHA-1 is deprecated and collision-vulnerable; while fingerprints are used for display rather than authentication, an attacker who can engineer a certificate collision could present a fraudulent certificate with a matching fingerprint. The OpenSSH-style SSH key fingerprint on line 77 correctly uses MD5 with usedforsecurity=False; the X509 path lacks an analogous opt-out and relies on a weaker algorithm.",
+    "owaspCategory": "A02 Cryptographic Failures",
+    "cweId": "CWE-327",
+    "severity": "low",
+    "confidence": "confirmed"
+  }
+]
