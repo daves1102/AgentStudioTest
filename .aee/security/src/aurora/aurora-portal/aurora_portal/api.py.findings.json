@@ -1,1 +1,107 @@
-[]
+[
+  {
+    "file": "src/aurora/aurora-portal/aurora_portal/api.py",
+    "tool": "manual",
+    "ruleId": null,
+    "lineRange": {
+      "start": 10,
+      "end": 10
+    },
+    "title": "Hardcoded production database password stored as a module-level constant",
+    "detail": "src/aurora/aurora-portal/aurora_portal/api.py:L10 declares DATABASE_PASSWORD as a plain string literal at module level; anyone with read access to the source code has the production database credential, enabling direct database access outside the application.",
+    "owaspCategory": "A07 Identification and Authentication Failures",
+    "cweId": "CWE-798",
+    "severity": "high",
+    "confidence": "confirmed"
+  },
+  {
+    "file": "src/aurora/aurora-portal/aurora_portal/api.py",
+    "tool": "bandit",
+    "ruleId": "B506",
+    "lineRange": {
+      "start": 17,
+      "end": 17
+    },
+    "title": "yaml.load() without SafeLoader allows arbitrary Python object instantiation",
+    "detail": "src/aurora/aurora-portal/aurora_portal/api.py:L17 calls yaml.load(handle.read()) with no Loader argument; PyYAML's default loader executes arbitrary Python constructors embedded in the YAML document, enabling remote code execution if the file contents are attacker-controlled. Reclassified from CWE-20 to CWE-502 (deserialization).",
+    "owaspCategory": "A08 Software and Data Integrity Failures",
+    "cweId": "CWE-502",
+    "severity": "high",
+    "confidence": "needs_cross_file"
+  },
+  {
+    "file": "src/aurora/aurora-portal/aurora_portal/api.py",
+    "tool": "semgrep,bandit",
+    "ruleId": "python.requests.security.disabled-cert-validation.disabled-cert-validation",
+    "lineRange": {
+      "start": 21,
+      "end": 25
+    },
+    "title": "TLS certificate validation disabled in fetch_project() request",
+    "detail": "src/aurora/aurora-portal/aurora_portal/api.py:L24 sets verify=False in the requests.get() call at L21-25; this disables TLS certificate verification for the outbound API call, allowing a man-in-the-middle to intercept the Bearer token and response data.",
+    "owaspCategory": "A07 Identification and Authentication Failures",
+    "cweId": "CWE-295",
+    "severity": "high",
+    "confidence": "confirmed"
+  },
+  {
+    "file": "src/aurora/aurora-portal/aurora_portal/api.py",
+    "tool": "bandit",
+    "ruleId": "B113",
+    "lineRange": {
+      "start": 21,
+      "end": 25
+    },
+    "title": "HTTP request in fetch_project() has no timeout \u2014 resource exhaustion risk",
+    "detail": "src/aurora/aurora-portal/aurora_portal/api.py:L21-25 calls requests.get() without a timeout parameter; a slow or non-responding server causes the calling thread to block indefinitely, enabling denial of service if many concurrent requests are outstanding.",
+    "owaspCategory": "A05 Security Misconfiguration",
+    "cweId": "CWE-400",
+    "severity": "medium",
+    "confidence": "confirmed"
+  },
+  {
+    "file": "src/aurora/aurora-portal/aurora_portal/api.py",
+    "tool": "bandit",
+    "ruleId": "B605",
+    "lineRange": {
+      "start": 30,
+      "end": 31
+    },
+    "title": "Command injection via os.system() with string-formatted project_id and destination",
+    "detail": "src/aurora/aurora-portal/aurora_portal/api.py:L30-31 builds a shell command by interpolating project_id and destination into a format string passed to os.system(); shell metacharacters in either parameter allow execution of arbitrary commands as the portal process.",
+    "owaspCategory": "A03 Injection",
+    "cweId": "CWE-78",
+    "severity": "high",
+    "confidence": "needs_cross_file"
+  },
+  {
+    "file": "src/aurora/aurora-portal/aurora_portal/api.py",
+    "tool": "manual",
+    "ruleId": null,
+    "lineRange": {
+      "start": 35,
+      "end": 35
+    },
+    "title": "Path traversal in render_template() via caller-supplied template_path",
+    "detail": "src/aurora/aurora-portal/aurora_portal/api.py:L35 opens template_path without normalizing or rejecting path traversal sequences; if template_path is attacker-controlled, '../' components can read files outside the intended templates directory.",
+    "owaspCategory": "A01 Broken Access Control",
+    "cweId": "CWE-22",
+    "severity": "medium",
+    "confidence": "needs_cross_file"
+  },
+  {
+    "file": "src/aurora/aurora-portal/aurora_portal/api.py",
+    "tool": "manual",
+    "ruleId": null,
+    "lineRange": {
+      "start": 43,
+      "end": 43
+    },
+    "title": "subprocess.run() with caller-supplied argv list allows arbitrary process execution",
+    "detail": "src/aurora/aurora-portal/aurora_portal/api.py:L43 passes argv directly to subprocess.run() without restricting the executable; a caller that controls argv[0] can execute any program accessible to the portal process.",
+    "owaspCategory": "A03 Injection",
+    "cweId": "CWE-78",
+    "severity": "medium",
+    "confidence": "needs_cross_file"
+  }
+]

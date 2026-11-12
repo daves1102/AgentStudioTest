@@ -1,1 +1,32 @@
-[]
+[
+  {
+    "file": "src/aurora/aurora-identity/src/main/java/cloud/aurora/identity/TokenService.java",
+    "tool": "gitleaks",
+    "ruleId": "generic-api-key",
+    "lineRange": {
+      "start": 18,
+      "end": 18
+    },
+    "title": "Hardcoded signing key in TokenService allows arbitrary token forgery",
+    "detail": "src/aurora/aurora-identity/src/main/java/cloud/aurora/identity/TokenService.java:L18 declares SIGNING_KEY as a static final String literal; this key is used at L23 to compute token signatures, so anyone with read access to the source or compiled class can forge any token issued by this service.",
+    "owaspCategory": "A07 Identification and Authentication Failures",
+    "cweId": "CWE-798",
+    "severity": "high",
+    "confidence": "confirmed"
+  },
+  {
+    "file": "src/aurora/aurora-identity/src/main/java/cloud/aurora/identity/TokenService.java",
+    "tool": "semgrep",
+    "ruleId": "java.lang.security.audit.crypto.use-of-md5.use-of-md5",
+    "lineRange": {
+      "start": 22,
+      "end": 22
+    },
+    "title": "MD5 used to sign authentication tokens \u2014 tokens are forgeable",
+    "detail": "src/aurora/aurora-identity/src/main/java/cloud/aurora/identity/TokenService.java:L22 uses MessageDigest.getInstance('MD5') to compute the token signature applied at L23-25; MD5 is collision-prone and cannot serve as a MAC, allowing an attacker to forge valid-looking tokens. Upgraded to high because MD5 directly undermines token integrity for authentication.",
+    "owaspCategory": "A02 Cryptographic Failures",
+    "cweId": "CWE-328",
+    "severity": "high",
+    "confidence": "confirmed"
+  }
+]

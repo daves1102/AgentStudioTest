@@ -1,0 +1,340 @@
+{
+  "addressedVerdictRound": 0,
+  "candidates": [
+    {
+      "id": "C001",
+      "action": "drop",
+      "reason": "src/aurora/aurora-compute/api/profile.go:L31 uses unsafe.Pointer only for the idiomatic C.free(unsafe.Pointer(clabel)) CGO cleanup call; this is the required pattern for releasing a C string in Go and carries no exploitable memory-safety risk beyond the CGO boundary itself"
+    },
+    {
+      "id": "C002",
+      "action": "keep",
+      "file": "src/aurora/aurora-compute/api/server.go",
+      "line": 17,
+      "cweId": "CWE-295"
+    },
+    {
+      "id": "C003",
+      "action": "keep",
+      "file": "src/aurora/aurora-identity/src/main/java/cloud/aurora/identity/CryptoUtil.java",
+      "line": 19,
+      "cweId": "CWE-327"
+    },
+    {
+      "id": "C004",
+      "action": "keep",
+      "file": "src/aurora/aurora-identity/src/main/java/cloud/aurora/identity/CryptoUtil.java",
+      "line": 19,
+      "cweId": "CWE-327"
+    },
+    {
+      "id": "C005",
+      "action": "keep",
+      "file": "src/aurora/aurora-identity/src/main/java/cloud/aurora/identity/CryptoUtil.java",
+      "line": 25,
+      "cweId": "CWE-327"
+    },
+    {
+      "id": "C006",
+      "action": "keep",
+      "file": "src/aurora/aurora-identity/src/main/java/cloud/aurora/identity/CryptoUtil.java",
+      "line": 25,
+      "cweId": "CWE-327"
+    },
+    {
+      "id": "C007",
+      "action": "keep",
+      "file": "src/aurora/aurora-identity/src/main/java/cloud/aurora/identity/TokenService.java",
+      "line": 18,
+      "cweId": "CWE-798"
+    },
+    {
+      "id": "C008",
+      "action": "keep",
+      "file": "src/aurora/aurora-identity/src/main/java/cloud/aurora/identity/TokenService.java",
+      "line": 22,
+      "cweId": "CWE-328"
+    },
+    {
+      "id": "C009",
+      "action": "keep",
+      "file": "src/aurora/aurora-identity/src/main/java/cloud/aurora/identity/UserRepository.java",
+      "line": 27,
+      "cweId": "CWE-89"
+    },
+    {
+      "id": "C010",
+      "action": "keep",
+      "file": "src/aurora/aurora-identity/src/main/java/cloud/aurora/identity/UserRepository.java",
+      "line": 33,
+      "cweId": "CWE-89"
+    },
+    {
+      "id": "C036",
+      "action": "keep",
+      "file": "src/aurora/aurora-network/src/packet_parse.c",
+      "line": 20,
+      "cweId": "CWE-121"
+    },
+    {
+      "id": "C039",
+      "action": "keep",
+      "file": "src/aurora/aurora-network/src/profile_label.c",
+      "line": 29,
+      "cweId": "CWE-121"
+    },
+    {
+      "id": "C060",
+      "action": "keep",
+      "file": "src/aurora/aurora-portal/aurora_portal/api.py",
+      "line": 17,
+      "cweId": "CWE-502"
+    },
+    {
+      "id": "C061",
+      "action": "keep",
+      "file": "src/aurora/aurora-portal/aurora_portal/api.py",
+      "line": 21,
+      "cweId": "CWE-295"
+    },
+    {
+      "id": "C062",
+      "action": "keep",
+      "file": "src/aurora/aurora-portal/aurora_portal/api.py",
+      "line": 21,
+      "cweId": "CWE-400"
+    },
+    {
+      "id": "C063",
+      "action": "keep",
+      "file": "src/aurora/aurora-portal/aurora_portal/api.py",
+      "line": 30,
+      "cweId": "CWE-78"
+    },
+    {
+      "id": "C064",
+      "action": "keep",
+      "file": "src/aurora/aurora-portal/aurora_portal/region_lookup.py",
+      "line": 10,
+      "cweId": "CWE-89"
+    },
+    {
+      "id": "C065",
+      "action": "keep",
+      "file": "src/aurora/aurora-portal/aurora_portal/session.py",
+      "line": 15,
+      "cweId": "CWE-327"
+    },
+    {
+      "id": "C066",
+      "action": "keep",
+      "file": "src/aurora/aurora-portal/aurora_portal/telemetry_consumer.py",
+      "line": 17,
+      "cweId": "CWE-502"
+    }
+  ],
+  "groups": [
+    {
+      "group": "R01",
+      "action": "drop",
+      "sampled": [
+        "C011",
+        "C012",
+        "C040"
+      ],
+      "except": [
+        "C036",
+        "C039"
+      ],
+      "reason": "every boilerplate *_ops.c member uses strncpy bounded by sizeof(dst)-1 with an explicit null-terminator on the following line, as verified in account_ops.c:L31-32, alarm_ops.c:L31-32, and profile_ops.c:L31-32; packet_parse.c (C036) and profile_label.c (C039) are non-boilerplate files with real strcpy-without-bounds patterns and are decided individually"
+    }
+  ],
+  "gaps": [
+    {
+      "id": "G001",
+      "action": "manual",
+      "file": "src/aurora/aurora-cli/src/index.js",
+      "line": 15
+    },
+    {
+      "id": "G002",
+      "action": "manual",
+      "file": "src/aurora/aurora-compute/api/server.go",
+      "line": 24
+    },
+    {
+      "id": "G003",
+      "action": "benign",
+      "reason": "src/aurora/aurora-identity/src/main/java/cloud/aurora/identity/RegionAssignmentDao.java:L28-29 uses PreparedStatement with TABLE ('tenant_region_assignment') as a static constant concatenated before the placeholder portion; all three user values (project, region, note) use parameterized '?' placeholders and are never interpolated as SQL text"
+    },
+    {
+      "id": "G004",
+      "action": "benign",
+      "reason": "the fixed-size char fields flagged across the boilerplate *_ops.c files are struct members in a static global table written via strncpy bounded by sizeof(dst)-1 (confirmed account_ops.c:L31-32 and alarm_ops.c:L31-32); the two non-boilerplate exceptions with real strcpy patterns (profile_label.c:L29 and packet_parse.c:L20) are covered by findings from C039 and C036"
+    },
+    {
+      "id": "G005",
+      "action": "benign",
+      "reason": "src/aurora/aurora-network/src/flow_table.c:L48 calls memcpy(&e->key, key, sizeof(*key)) where both source and destination are struct flow_key pointers and the length is the compile-time sizeof(struct flow_key); this is a type-safe fixed-size struct copy with no caller-supplied length"
+    },
+    {
+      "id": "G006",
+      "action": "manual",
+      "file": "src/aurora/aurora-network/src/tunnel.c",
+      "line": 19
+    },
+    {
+      "id": "G007",
+      "action": "manual",
+      "file": "src/aurora/aurora-network/src/tunnel.c",
+      "line": 20
+    },
+    {
+      "id": "G008",
+      "action": "manual",
+      "file": "src/aurora/aurora-network/src/tunnel.c",
+      "line": 27
+    },
+    {
+      "id": "G009",
+      "action": "manual",
+      "file": "src/aurora/aurora-network/src/tunnel.c",
+      "line": 37
+    },
+    {
+      "id": "G010",
+      "action": "manual",
+      "file": "src/aurora/aurora-portal/aurora_portal/session.py",
+      "line": 11
+    },
+    {
+      "id": "G011",
+      "action": "manual",
+      "file": "src/aurora/aurora-storage/src/chunk.cpp",
+      "line": 27
+    },
+    {
+      "id": "G012",
+      "action": "benign",
+      "reason": "src/aurora/aurora-storage/src/chunk.cpp:L35-36 uses std::rand() seeded by id.size() only for internal chunk placement group selection, not for secret generation or any security-sensitive operation; predictable distribution is a performance concern, not an exploitable security defect with a linkable CWE pattern"
+    },
+    {
+      "id": "G013",
+      "action": "manual",
+      "file": "src/aurora/aurora-storage/src/object_store.cpp",
+      "line": 50
+    },
+    {
+      "id": "G014",
+      "action": "benign",
+      "reason": "src/aurora/aurora-compute/api/server.go:L15-19 is the newClient() function whose InsecureSkipVerify: true is already captured by the finding from C002 at L17"
+    },
+    {
+      "id": "G015",
+      "action": "benign",
+      "reason": "src/aurora/aurora-compute/api/server.go:L15-19 is the newClient() function whose InsecureSkipVerify: true is already captured by the finding from C002 at L17"
+    },
+    {
+      "id": "G016",
+      "action": "benign",
+      "reason": "src/aurora/aurora-identity/src/main/java/cloud/aurora/identity/RegionAssignmentDao.java:L28 uses PreparedStatement; the INSERT statement concatenates only the TABLE static constant before the parameterized portion \u2014 all user values use '?' placeholders, so this is not injectable"
+    },
+    {
+      "id": "G017",
+      "action": "benign",
+      "reason": "src/aurora/aurora-identity/src/main/java/cloud/aurora/identity/RegionAssignmentDao.java:L33 is statement.executeUpdate() on a PreparedStatement with parameterized placeholders; all user values are bound safely via setString()"
+    },
+    {
+      "id": "G018",
+      "action": "benign",
+      "reason": "src/aurora/aurora-identity/src/main/java/cloud/aurora/identity/UserRepository.java:L26 is the Statement creation that leads to the SQL injection already captured by findings from C009 (L27-28) and C010 (L33-34)"
+    },
+    {
+      "id": "G019",
+      "action": "manual",
+      "file": "src/aurora/aurora-portal/aurora_portal/api.py",
+      "line": 35
+    },
+    {
+      "id": "G020",
+      "action": "manual",
+      "file": "src/aurora/aurora-portal/aurora_portal/api.py",
+      "line": 43
+    },
+    {
+      "id": "G021",
+      "action": "benign",
+      "reason": "src/aurora/aurora-portal/aurora_portal/maintenance.py:L19-23 calls subprocess.run with a list (no shell=True) where the form input is passed as the argument value '--name', 'name'; the list form prevents shell metacharacter interpretation, so name cannot inject shell commands"
+    },
+    {
+      "id": "G022",
+      "action": "benign",
+      "reason": "src/aurora/aurora-portal/aurora_portal/maintenance.py:L28-30 calls subprocess.run([CLI_BINARY, 'profile-list']) with a fixed list and no user-supplied input; there is no security sink here"
+    },
+    {
+      "id": "G023",
+      "action": "benign",
+      "reason": "src/aurora/aurora-storage/src/chunk.cpp:L35 is the same std::rand() placement call as G012 \u2014 not security-sensitive; decided benign for the same reason"
+    },
+    {
+      "id": "G024",
+      "action": "benign",
+      "reason": "src/aurora/aurora-storage/src/object_store.cpp:L25 is the ofstream open() inside put() whose path comes from path_for(key); the path traversal risk is captured by the manual finding for G013 at L50"
+    },
+    {
+      "id": "G025",
+      "action": "benign",
+      "reason": "src/aurora/aurora-storage/src/object_store.cpp:L36 is the ifstream open() inside get() whose path comes from path_for(key); the path traversal risk is captured by the manual finding for G013 at L50"
+    },
+    {
+      "id": "G026",
+      "action": "benign",
+      "reason": "src/aurora/aurora-cli/bin/aurora-cli.js:L13 reads process.argv and uses the first element only as a lookup key into the fixed COMMANDS map; unrecognised commands exit cleanly, so there is no attacker-reachable security sink in this file"
+    },
+    {
+      "id": "G027",
+      "action": "benign",
+      "reason": "src/aurora/aurora-cli/src/profile.js:L7 reads AURORA_API from the environment; environment variables are deployment-time configuration set by trusted operators and are not attacker-controlled in a standard deployment model"
+    },
+    {
+      "id": "G028",
+      "action": "benign",
+      "reason": "src/aurora/aurora-cli/src/profile.js:L16 reads AURORA_ADMIN_TOKEN from the environment; this is deployment-time trusted configuration, not an attacker-reachable input"
+    },
+    {
+      "id": "G029",
+      "action": "benign",
+      "reason": "src/aurora/aurora-compute/api/profile.go:L25 is the HTTP POST body decode that supplies req.Label to aurora_profile_label(); the resulting buffer overflow risk is captured by the finding from C039 at profile_label.c:L29"
+    },
+    {
+      "id": "G030",
+      "action": "benign",
+      "reason": "src/aurora/aurora-compute/api/routes.go:L13 registers the '/v1/profile/apply' route; route registration is infrastructure with no direct security sink \u2014 the handler-level risks are captured by findings for ApplyProfile"
+    },
+    {
+      "id": "G031",
+      "action": "benign",
+      "reason": "src/aurora/aurora-compute/api/routes.go:L14 registers the '/v1/profile/list' route; route registration infrastructure with no direct security sink"
+    },
+    {
+      "id": "G032",
+      "action": "benign",
+      "reason": "src/aurora/aurora-compute/api/routes.go:L15 registers the '/v1/health' route; route registration infrastructure with no direct security sink"
+    },
+    {
+      "id": "G033",
+      "action": "benign",
+      "reason": "src/aurora/aurora-compute/api/routes.go:L20 reads AURORA_ADMIN_TOKEN from the environment for token comparison; this is the expected authentication mechanism using trusted deployment configuration, not an attacker-controlled value"
+    },
+    {
+      "id": "G034",
+      "action": "benign",
+      "reason": "src/aurora/aurora-network/src/main.c:L15 reads argc to guard the argv[1] access that feeds parse_tenant_tag(); the resulting buffer overflow is captured by the finding from C036 at packet_parse.c:L20"
+    },
+    {
+      "id": "G035",
+      "action": "benign",
+      "reason": "src/aurora/aurora-network/src/main.c:L22 passes argv[1] to parse_tenant_tag(); the buffer overflow risk from this call is captured by the finding from C036 at packet_parse.c:L20"
+    }
+  ]
+}

@@ -1,1 +1,32 @@
-[]
+[
+  {
+    "file": "src/aurora/aurora-network/src/packet_parse.c",
+    "tool": "semgrep",
+    "ruleId": "c.lang.security.insecure-use-string-copy-fn.insecure-use-string-copy-fn",
+    "lineRange": {
+      "start": 20,
+      "end": 20
+    },
+    "title": "strcpy into 16-byte stack buffer without length check in parse_tenant_tag()",
+    "detail": "src/aurora/aurora-network/src/packet_parse.c:L20 calls strcpy(tag, header) where tag is a 16-byte stack buffer and header is a function parameter with no length validation; a header string longer than 15 characters overflows adjacent stack memory. The scanner rule fired as CWE-676 but the actual defect is CWE-121 (stack-based buffer overflow).",
+    "owaspCategory": "A04 Insecure Design",
+    "cweId": "CWE-121",
+    "severity": "high",
+    "confidence": "needs_cross_file"
+  },
+  {
+    "file": "src/aurora/aurora-network/src/packet_parse.c",
+    "tool": "manual",
+    "ruleId": null,
+    "lineRange": {
+      "start": 39,
+      "end": 39
+    },
+    "title": "Off-by-one in copy_labels() writes one byte past end of key->labels[MAX_LABELS]",
+    "detail": "src/aurora/aurora-network/src/packet_parse.c:L39 loops with i <= count instead of i < count; with key->labels declared as unsigned char labels[MAX_LABELS] (MAX_LABELS=8 per packet.h), a caller passing count=8 causes key->labels[8] to be written, overflowing the struct field by one byte and potentially corrupting adjacent struct members.",
+    "owaspCategory": "A04 Insecure Design",
+    "cweId": "CWE-787",
+    "severity": "high",
+    "confidence": "needs_cross_file"
+  }
+]

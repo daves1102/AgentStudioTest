@@ -1,1 +1,32 @@
-[]
+[
+  {
+    "file": "src/aurora/aurora-compute/api/server.go",
+    "tool": "semgrep",
+    "ruleId": "go.lang.security.audit.crypto.missing-ssl-minversion.missing-ssl-minversion",
+    "lineRange": {
+      "start": 17,
+      "end": 17
+    },
+    "title": "TLS certificate verification disabled in HTTP client via InsecureSkipVerify",
+    "detail": "src/aurora/aurora-compute/api/server.go:L17 sets InsecureSkipVerify: true in the tls.Config returned by newClient(); this disables all server certificate validation, enabling man-in-the-middle attacks against every connection made with this client. The scanner rule fired as 'missing-ssl-minversion' but the actual defect is CWE-295 (certificate validation absent, not merely weak).",
+    "owaspCategory": "A02 Cryptographic Failures",
+    "cweId": "CWE-295",
+    "severity": "high",
+    "confidence": "confirmed"
+  },
+  {
+    "file": "src/aurora/aurora-compute/api/server.go",
+    "tool": "manual",
+    "ruleId": null,
+    "lineRange": {
+      "start": 24,
+      "end": 24
+    },
+    "title": "Command injection via fmt.Sprintf interpolation into exec.Command(sh,-c,...)",
+    "detail": "src/aurora/aurora-compute/api/server.go:L24 builds a shell command string using fmt.Sprintf(\"virsh console %s\", instance) and passes it to exec.Command(\"sh\", \"-c\", ...) without sanitizing instance; shell metacharacters in instance cause the shell to execute additional commands.",
+    "owaspCategory": "A03 Injection",
+    "cweId": "CWE-78",
+    "severity": "high",
+    "confidence": "needs_cross_file"
+  }
+]

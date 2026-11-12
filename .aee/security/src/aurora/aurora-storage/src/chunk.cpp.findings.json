@@ -1,1 +1,17 @@
-[]
+[
+  {
+    "file": "src/aurora/aurora-storage/src/chunk.cpp",
+    "tool": "manual",
+    "ruleId": null,
+    "lineRange": {
+      "start": 27,
+      "end": 27
+    },
+    "title": "std::memcpy may overflow 32-byte Chunk.id field if id string exceeds 32 characters",
+    "detail": "src/aurora/aurora-storage/src/chunk.cpp:L27 calls std::memcpy(c.id, id.c_str(), id.size()) where c.id is declared as char id[32]; if id.size() exceeds 32 the copy writes past the end of the array, overflowing into adjacent struct members. No length guard on id is visible in make_chunk().",
+    "owaspCategory": "A04 Insecure Design",
+    "cweId": "CWE-120",
+    "severity": "high",
+    "confidence": "needs_cross_file"
+  }
+]

@@ -1,1 +1,17 @@
-[]
+[
+  {
+    "file": "src/aurora/aurora-network/src/profile_label.c",
+    "tool": "semgrep",
+    "ruleId": "c.lang.security.insecure-use-string-copy-fn.insecure-use-string-copy-fn",
+    "lineRange": {
+      "start": 29,
+      "end": 29
+    },
+    "title": "strcpy into 32-byte slot->label without length check in aurora_profile_label()",
+    "detail": "src/aurora/aurora-network/src/profile_label.c:L29 calls strcpy(slot->label, label) where slot->label is a 32-byte field and label arrives from an HTTP POST request body via the CGO boundary in aurora-compute/api/profile.go:L32; a label string longer than 31 bytes overflows the struct field. The scanner rule fired as CWE-676 but the actual defect is CWE-121.",
+    "owaspCategory": "A04 Insecure Design",
+    "cweId": "CWE-121",
+    "severity": "high",
+    "confidence": "needs_cross_file"
+  }
+]

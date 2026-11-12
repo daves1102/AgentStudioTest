@@ -1,1 +1,17 @@
-[]
+[
+  {
+    "file": "src/aurora/aurora-portal/aurora_portal/region_lookup.py",
+    "tool": "bandit",
+    "ruleId": "B608",
+    "lineRange": {
+      "start": 10,
+      "end": 11
+    },
+    "title": "SQL injection in region_for() via string interpolation of project parameter",
+    "detail": "src/aurora/aurora-portal/aurora_portal/region_lookup.py:L10-11 passes a format-string SQL query to cursor.execute() where the project parameter is substituted with '%s'; the TABLE portion is a module constant and is safe, but the project value is caller-supplied and allows SQL injection via the unquoted context. Upgraded to high because project is an external parameter with an injectable quoting context.",
+    "owaspCategory": "A03 Injection",
+    "cweId": "CWE-89",
+    "severity": "high",
+    "confidence": "needs_cross_file"
+  }
+]

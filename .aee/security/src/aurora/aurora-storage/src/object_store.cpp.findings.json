@@ -1,1 +1,17 @@
-[]
+[
+  {
+    "file": "src/aurora/aurora-storage/src/object_store.cpp",
+    "tool": "manual",
+    "ruleId": null,
+    "lineRange": {
+      "start": 50,
+      "end": 50
+    },
+    "title": "Path traversal in path_for() \u2014 key concatenated to root without normalisation",
+    "detail": "src/aurora/aurora-storage/src/object_store.cpp:L50 builds a file path as root_ + '/' + key without normalizing key or rejecting '../' components; a caller that supplies a key containing directory traversal sequences can read or write files outside the root_ directory.",
+    "owaspCategory": "A01 Broken Access Control",
+    "cweId": "CWE-22",
+    "severity": "high",
+    "confidence": "needs_cross_file"
+  }
+]

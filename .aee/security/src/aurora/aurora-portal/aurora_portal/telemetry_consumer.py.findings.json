@@ -1,1 +1,17 @@
-[]
+[
+  {
+    "file": "src/aurora/aurora-portal/aurora_portal/telemetry_consumer.py",
+    "tool": "bandit",
+    "ruleId": "B506",
+    "lineRange": {
+      "start": 17,
+      "end": 17
+    },
+    "title": "yaml.load() on bus message body allows arbitrary Python object instantiation",
+    "detail": "src/aurora/aurora-portal/aurora_portal/telemetry_consumer.py:L17 calls yaml.load(message.body) with no SafeLoader; message.body arrives from the aurora.telemetry.tenant bus topic (produced by aurora-compute); a compromised or malicious producer can send YAML with arbitrary Python constructors, enabling remote code execution. Reclassified from CWE-20 to CWE-502.",
+    "owaspCategory": "A08 Software and Data Integrity Failures",
+    "cweId": "CWE-502",
+    "severity": "high",
+    "confidence": "needs_cross_file"
+  }
+]

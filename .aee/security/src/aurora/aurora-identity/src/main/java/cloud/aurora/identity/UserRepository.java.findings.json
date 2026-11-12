@@ -1,1 +1,32 @@
-[]
+[
+  {
+    "file": "src/aurora/aurora-identity/src/main/java/cloud/aurora/identity/UserRepository.java",
+    "tool": "semgrep",
+    "ruleId": "java.lang.security.audit.formatted-sql-string.formatted-sql-string",
+    "lineRange": {
+      "start": 27,
+      "end": 28
+    },
+    "title": "SQL injection in findByName() \u2014 name parameter concatenated into query",
+    "detail": "src/aurora/aurora-identity/src/main/java/cloud/aurora/identity/UserRepository.java:L27 builds a SQL query by concatenating the name parameter into a string literal; at L28 this string is executed via a plain Statement, exposing all rows in the users table to extraction or manipulation via SQL injection.",
+    "owaspCategory": "A03 Injection",
+    "cweId": "CWE-89",
+    "severity": "high",
+    "confidence": "confirmed"
+  },
+  {
+    "file": "src/aurora/aurora-identity/src/main/java/cloud/aurora/identity/UserRepository.java",
+    "tool": "semgrep",
+    "ruleId": "java.lang.security.audit.formatted-sql-string.formatted-sql-string",
+    "lineRange": {
+      "start": 33,
+      "end": 34
+    },
+    "title": "SQL injection in countByProject() \u2014 project parameter concatenated into query",
+    "detail": "src/aurora/aurora-identity/src/main/java/cloud/aurora/identity/UserRepository.java:L33-34 passes a string-concatenated SQL query to statement.executeQuery() where the project parameter is embedded with '+'; an attacker can inject arbitrary SQL to manipulate the query.",
+    "owaspCategory": "A03 Injection",
+    "cweId": "CWE-89",
+    "severity": "high",
+    "confidence": "confirmed"
+  }
+]

@@ -1,1 +1,32 @@
-[]
+[
+  {
+    "file": "src/aurora/aurora-cli/src/index.js",
+    "tool": "manual",
+    "ruleId": null,
+    "lineRange": {
+      "start": 7,
+      "end": 7
+    },
+    "title": "Hardcoded support token stored as a module-level constant",
+    "detail": "src/aurora/aurora-cli/src/index.js:L7 declares SUPPORT_TOKEN as a string literal with a hardcoded credential value beginning 'xoxb-'; this constant is re-exported at L25, exposing the credential to any code that imports the module.",
+    "owaspCategory": "A07 Identification and Authentication Failures",
+    "cweId": "CWE-798",
+    "severity": "high",
+    "confidence": "confirmed"
+  },
+  {
+    "file": "src/aurora/aurora-cli/src/index.js",
+    "tool": "manual",
+    "ruleId": null,
+    "lineRange": {
+      "start": 15,
+      "end": 15
+    },
+    "title": "eval() executes caller-supplied expression string without restriction",
+    "detail": "src/aurora/aurora-cli/src/index.js:L15 passes the expression parameter directly to eval() inside a filter callback; any caller that supplies an attacker-controlled string gains arbitrary JavaScript code execution in the Node.js process.",
+    "owaspCategory": "A03 Injection",
+    "cweId": "CWE-95",
+    "severity": "high",
+    "confidence": "needs_cross_file"
+  }
+]

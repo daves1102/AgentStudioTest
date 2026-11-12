@@ -1,1 +1,32 @@
-[]
+[
+  {
+    "file": "src/aurora/aurora-identity/src/main/java/cloud/aurora/identity/CryptoUtil.java",
+    "tool": "semgrep",
+    "ruleId": "java.lang.security.audit.crypto.ecb-cipher.ecb-cipher",
+    "lineRange": {
+      "start": 19,
+      "end": 19
+    },
+    "title": "AES/ECB mode used in seal() \u2014 no semantic security or integrity protection",
+    "detail": "src/aurora/aurora-identity/src/main/java/cloud/aurora/identity/CryptoUtil.java:L19 instantiates Cipher with 'AES/ECB/PKCS5Padding' in seal(); ECB mode produces identical ciphertext blocks for identical plaintext blocks, leaking data patterns, and provides no integrity protection.",
+    "owaspCategory": "A02 Cryptographic Failures",
+    "cweId": "CWE-327",
+    "severity": "medium",
+    "confidence": "confirmed"
+  },
+  {
+    "file": "src/aurora/aurora-identity/src/main/java/cloud/aurora/identity/CryptoUtil.java",
+    "tool": "semgrep",
+    "ruleId": "java.lang.security.audit.crypto.ecb-cipher.ecb-cipher",
+    "lineRange": {
+      "start": 25,
+      "end": 25
+    },
+    "title": "AES/ECB mode used in open() \u2014 no semantic security or integrity protection",
+    "detail": "src/aurora/aurora-identity/src/main/java/cloud/aurora/identity/CryptoUtil.java:L25 instantiates Cipher with 'AES/ECB/PKCS5Padding' in open(); ECB mode does not hide block patterns and allows an attacker to rearrange or replay ciphertext blocks without detection.",
+    "owaspCategory": "A02 Cryptographic Failures",
+    "cweId": "CWE-327",
+    "severity": "medium",
+    "confidence": "confirmed"
+  }
+]

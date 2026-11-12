@@ -1,1 +1,32 @@
-[]
+[
+  {
+    "file": "src/aurora/aurora-portal/aurora_portal/session.py",
+    "tool": "manual",
+    "ruleId": null,
+    "lineRange": {
+      "start": 11,
+      "end": 11
+    },
+    "title": "Non-cryptographic random used to generate session identifiers",
+    "detail": "src/aurora/aurora-portal/aurora_portal/session.py:L11 uses random.choice() from the standard random module to build session IDs; random is seeded from the system clock and is not cryptographically unpredictable, making session IDs guessable. Use secrets.choice() instead.",
+    "owaspCategory": "A07 Identification and Authentication Failures",
+    "cweId": "CWE-330",
+    "severity": "high",
+    "confidence": "confirmed"
+  },
+  {
+    "file": "src/aurora/aurora-portal/aurora_portal/session.py",
+    "tool": "semgrep,bandit",
+    "ruleId": "python.lang.security.insecure-hash-algorithms.insecure-hash-algorithm-sha1",
+    "lineRange": {
+      "start": 15,
+      "end": 15
+    },
+    "title": "SHA-1 used for password hashing \u2014 weak against brute-force attacks",
+    "detail": "src/aurora/aurora-portal/aurora_portal/session.py:L15 hashes passwords with hashlib.sha1(); SHA-1 is a fast general-purpose hash without work-factor tuning, making offline brute-force attacks feasible. A purpose-built algorithm such as bcrypt, scrypt, or argon2 is required for password storage.",
+    "owaspCategory": "A02 Cryptographic Failures",
+    "cweId": "CWE-327",
+    "severity": "high",
+    "confidence": "confirmed"
+  }
+]

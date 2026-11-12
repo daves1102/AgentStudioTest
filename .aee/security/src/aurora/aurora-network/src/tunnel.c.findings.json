@@ -1,1 +1,62 @@
-[]
+[
+  {
+    "file": "src/aurora/aurora-network/src/tunnel.c",
+    "tool": "manual",
+    "ruleId": null,
+    "lineRange": {
+      "start": 19,
+      "end": 19
+    },
+    "title": "sprintf into 512-byte cmd buffer without length check in tunnel_up()",
+    "detail": "src/aurora/aurora-network/src/tunnel.c:L19 calls sprintf(cmd, \"ip link add %s type gre remote %s\", name, remote) where cmd is a 512-byte stack buffer; if the combined length of name and remote exceeds ~475 bytes the buffer overflows. Both parameters arrive with no prior length validation.",
+    "owaspCategory": "A04 Insecure Design",
+    "cweId": "CWE-120",
+    "severity": "high",
+    "confidence": "needs_cross_file"
+  },
+  {
+    "file": "src/aurora/aurora-network/src/tunnel.c",
+    "tool": "manual",
+    "ruleId": null,
+    "lineRange": {
+      "start": 20,
+      "end": 20
+    },
+    "title": "Command injection via system() in tunnel_up() with unvalidated name and remote",
+    "detail": "src/aurora/aurora-network/src/tunnel.c:L20 passes cmd to system() where cmd was built from name and remote at L19 without metacharacter sanitization; a semicolon, backtick, or pipe in name or remote causes the shell to execute additional commands as the process owner.",
+    "owaspCategory": "A03 Injection",
+    "cweId": "CWE-78",
+    "severity": "high",
+    "confidence": "needs_cross_file"
+  },
+  {
+    "file": "src/aurora/aurora-network/src/tunnel.c",
+    "tool": "manual",
+    "ruleId": null,
+    "lineRange": {
+      "start": 27,
+      "end": 27
+    },
+    "title": "Command injection via system() in tunnel_down() with unvalidated name parameter",
+    "detail": "src/aurora/aurora-network/src/tunnel.c:L27 passes cmd to system() where cmd is built from name via snprintf at L26; although snprintf bounds the buffer, name is not validated for shell metacharacters, so a semicolon or backtick in name enables injection of additional shell commands.",
+    "owaspCategory": "A03 Injection",
+    "cweId": "CWE-78",
+    "severity": "medium",
+    "confidence": "needs_cross_file"
+  },
+  {
+    "file": "src/aurora/aurora-network/src/tunnel.c",
+    "tool": "manual",
+    "ruleId": null,
+    "lineRange": {
+      "start": 37,
+      "end": 37
+    },
+    "title": "Command injection via system() in tunnel_mtu() with unvalidated name parameter",
+    "detail": "src/aurora/aurora-network/src/tunnel.c:L37 passes cmd to system() where cmd is built from name and mtu at L36; mtu is validated (576\u20139000) but name receives no metacharacter check, so a crafted name containing shell metacharacters enables command injection.",
+    "owaspCategory": "A03 Injection",
+    "cweId": "CWE-78",
+    "severity": "medium",
+    "confidence": "needs_cross_file"
+  }
+]
