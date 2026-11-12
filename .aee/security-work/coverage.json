@@ -1,0 +1,564 @@
+{
+  "generatedAt": "2026-11-12T17:57:21Z",
+  "sinkGaps": [
+    {
+      "gapType": "uncovered-sink",
+      "file": "src/aurora/aurora-cli/src/index.js",
+      "lineRange": {
+        "start": 15,
+        "end": 15
+      },
+      "rule": "js-eval",
+      "cwe": "CWE-95",
+      "what": "eval",
+      "text": "return eval(expression);",
+      "id": "G001"
+    },
+    {
+      "gapType": "uncovered-sink",
+      "file": "src/aurora/aurora-compute/api/server.go",
+      "lineRange": {
+        "start": 24,
+        "end": 24
+      },
+      "rule": "go-exec",
+      "cwe": "CWE-78",
+      "what": "process execution",
+      "text": "cmd := exec.Command(\"sh\", \"-c\", fmt.Sprintf(\"virsh console %s\", instance))",
+      "id": "G002"
+    },
+    {
+      "gapType": "uncovered-sink",
+      "file": "src/aurora/aurora-identity/src/main/java/cloud/aurora/identity/RegionAssignmentDao.java",
+      "lineRange": {
+        "start": 29,
+        "end": 29
+      },
+      "rule": "java-sql-concat",
+      "cwe": "CWE-89",
+      "what": "SQL built by concatenation",
+      "text": "\"INSERT INTO \" + TABLE + \" (project, region, note) VALUES (?, ?, ?)\");",
+      "id": "G003"
+    },
+    {
+      "gapType": "uncovered-sink",
+      "file": "src/aurora/aurora-network/src/account_ops.c",
+      "lineRange": {
+        "start": 18,
+        "end": 18
+      },
+      "rule": "c-stack-buffer",
+      "cwe": "CWE-121",
+      "what": "fixed-size stack buffer",
+      "text": "char name[64];",
+      "count": 53,
+      "files": 51,
+      "occurrences": [
+        {
+          "file": "src/aurora/aurora-network/src/account_ops.c",
+          "line": 18
+        },
+        {
+          "file": "src/aurora/aurora-network/src/alarm_ops.c",
+          "line": 18
+        },
+        {
+          "file": "src/aurora/aurora-network/src/backup_ops.c",
+          "line": 18
+        },
+        {
+          "file": "src/aurora/aurora-network/src/catalog_ops.c",
+          "line": 18
+        },
+        {
+          "file": "src/aurora/aurora-network/src/cluster_ops.c",
+          "line": 18
+        },
+        {
+          "file": "src/aurora/aurora-network/src/config_ops.c",
+          "line": 18
+        },
+        {
+          "file": "src/aurora/aurora-network/src/console_ops.c",
+          "line": 18
+        },
+        {
+          "file": "src/aurora/aurora-network/src/device_ops.c",
+          "line": 18
+        },
+        {
+          "file": "src/aurora/aurora-network/src/domain_ops.c",
+          "line": 18
+        },
+        {
+          "file": "src/aurora/aurora-network/src/event_ops.c",
+          "line": 18
+        },
+        {
+          "file": "src/aurora/aurora-network/src/export_ops.c",
+          "line": 18
+        },
+        {
+          "file": "src/aurora/aurora-network/src/firewall_ops.c",
+          "line": 18
+        },
+        {
+          "file": "src/aurora/aurora-network/src/gateway_ops.c",
+          "line": 18
+        },
+        {
+          "file": "src/aurora/aurora-network/src/health_ops.c",
+          "line": 18
+        },
+        {
+          "file": "src/aurora/aurora-network/src/image_ops.c",
+          "line": 18
+        },
+        {
+          "file": "src/aurora/aurora-network/src/inventory_ops.c",
+          "line": 18
+        },
+        {
+          "file": "src/aurora/aurora-network/src/job_ops.c",
+          "line": 18
+        },
+        {
+          "file": "src/aurora/aurora-network/src/keypair_ops.c",
+          "line": 18
+        },
+        {
+          "file": "src/aurora/aurora-network/src/label_ops.c",
+          "line": 18
+        },
+        {
+          "file": "src/aurora/aurora-network/src/limit_ops.c",
+          "line": 18
+        },
+        {
+          "file": "src/aurora/aurora-network/src/lock_ops.c",
+          "line": 18
+        },
+        {
+          "file": "src/aurora/aurora-network/src/main.c",
+          "line": 18
+        },
+        {
+          "file": "src/aurora/aurora-network/src/meter_ops.c",
+          "line": 18
+        },
+        {
+          "file": "src/aurora/aurora-network/src/network_ops.c",
+          "line": 18
+        },
+        {
+          "file": "src/aurora/aurora-network/src/node_ops.c",
+          "line": 18
+        },
+        {
+          "file": "src/aurora/aurora-network/src/object_ops.c",
+          "line": 18
+        },
+        {
+          "file": "src/aurora/aurora-network/src/policy_ops.c",
+          "line": 18
+        },
+        {
+          "file": "src/aurora/aurora-network/src/port_ops.c",
+          "line": 18
+        },
+        {
+          "file": "src/aurora/aurora-network/src/profile_label.c",
+          "line": 18
+        },
+        {
+          "file": "src/aurora/aurora-network/src/profile_ops.c",
+          "line": 18
+        }
+      ],
+      "id": "G004"
+    },
+    {
+      "gapType": "uncovered-sink",
+      "file": "src/aurora/aurora-network/src/flow_table.c",
+      "lineRange": {
+        "start": 48,
+        "end": 48
+      },
+      "rule": "c-memcpy",
+      "cwe": "CWE-120",
+      "what": "memcpy - where does the length come from?",
+      "text": "memcpy(&e->key, key, sizeof(*key));",
+      "id": "G005"
+    },
+    {
+      "gapType": "uncovered-sink",
+      "file": "src/aurora/aurora-network/src/tunnel.c",
+      "lineRange": {
+        "start": 19,
+        "end": 19
+      },
+      "rule": "c-unbounded-copy",
+      "cwe": "CWE-120",
+      "what": "unbounded copy / format",
+      "text": "sprintf(cmd, \"ip link add %s type gre remote %s\", name, remote);",
+      "id": "G006"
+    },
+    {
+      "gapType": "uncovered-sink",
+      "file": "src/aurora/aurora-network/src/tunnel.c",
+      "lineRange": {
+        "start": 20,
+        "end": 20
+      },
+      "rule": "c-shell",
+      "cwe": "CWE-78",
+      "what": "shell command execution",
+      "text": "return system(cmd);",
+      "id": "G007"
+    },
+    {
+      "gapType": "uncovered-sink",
+      "file": "src/aurora/aurora-network/src/tunnel.c",
+      "lineRange": {
+        "start": 27,
+        "end": 27
+      },
+      "rule": "c-shell",
+      "cwe": "CWE-78",
+      "what": "shell command execution",
+      "text": "return system(cmd);",
+      "id": "G008"
+    },
+    {
+      "gapType": "uncovered-sink",
+      "file": "src/aurora/aurora-network/src/tunnel.c",
+      "lineRange": {
+        "start": 37,
+        "end": 37
+      },
+      "rule": "c-shell",
+      "cwe": "CWE-78",
+      "what": "shell command execution",
+      "text": "return system(cmd);",
+      "id": "G009"
+    },
+    {
+      "gapType": "uncovered-sink",
+      "file": "src/aurora/aurora-portal/aurora_portal/session.py",
+      "lineRange": {
+        "start": 11,
+        "end": 11
+      },
+      "rule": "py-weak-random",
+      "cwe": "CWE-330",
+      "what": "non-cryptographic random",
+      "text": "return \"\".join(random.choice(alphabet) for _ in range(length))",
+      "id": "G010"
+    },
+    {
+      "gapType": "uncovered-sink",
+      "file": "src/aurora/aurora-storage/src/chunk.cpp",
+      "lineRange": {
+        "start": 27,
+        "end": 27
+      },
+      "rule": "cpp-memcpy",
+      "cwe": "CWE-120",
+      "what": "memcpy - where does the length come from?",
+      "text": "std::memcpy(c.id, id.c_str(), id.size());",
+      "id": "G011"
+    },
+    {
+      "gapType": "uncovered-sink",
+      "file": "src/aurora/aurora-storage/src/chunk.cpp",
+      "lineRange": {
+        "start": 36,
+        "end": 36
+      },
+      "rule": "cpp-rand",
+      "cwe": "CWE-338",
+      "what": "predictable random number",
+      "text": "return std::rand() % groups;",
+      "id": "G012"
+    },
+    {
+      "gapType": "uncovered-sink",
+      "file": "src/aurora/aurora-storage/src/object_store.cpp",
+      "lineRange": {
+        "start": 50,
+        "end": 50
+      },
+      "rule": "cpp-path-concat",
+      "cwe": "CWE-22",
+      "what": "path concatenation without normalisation",
+      "text": "return root_ + \"/\" + key;",
+      "id": "G013"
+    }
+  ],
+  "surfaceGaps": [
+    {
+      "gapType": "uncovered-surface",
+      "file": "src/aurora/aurora-compute/api/server.go",
+      "lineRange": {
+        "start": 15,
+        "end": 15
+      },
+      "surfaceKind": "sink",
+      "category": "http-client",
+      "what": "outgoing HTTP request",
+      "id": "G014"
+    },
+    {
+      "gapType": "uncovered-surface",
+      "file": "src/aurora/aurora-compute/api/server.go",
+      "lineRange": {
+        "start": 19,
+        "end": 19
+      },
+      "surfaceKind": "sink",
+      "category": "http-client",
+      "what": "outgoing HTTP request",
+      "id": "G015"
+    },
+    {
+      "gapType": "uncovered-surface",
+      "file": "src/aurora/aurora-identity/src/main/java/cloud/aurora/identity/RegionAssignmentDao.java",
+      "lineRange": {
+        "start": 28,
+        "end": 28
+      },
+      "surfaceKind": "sink",
+      "category": "sql",
+      "what": "SQL statement execution",
+      "id": "G016"
+    },
+    {
+      "gapType": "uncovered-surface",
+      "file": "src/aurora/aurora-identity/src/main/java/cloud/aurora/identity/RegionAssignmentDao.java",
+      "lineRange": {
+        "start": 33,
+        "end": 33
+      },
+      "surfaceKind": "sink",
+      "category": "sql",
+      "what": "SQL statement execution",
+      "id": "G017"
+    },
+    {
+      "gapType": "uncovered-surface",
+      "file": "src/aurora/aurora-identity/src/main/java/cloud/aurora/identity/UserRepository.java",
+      "lineRange": {
+        "start": 26,
+        "end": 26
+      },
+      "surfaceKind": "sink",
+      "category": "sql",
+      "what": "SQL statement execution",
+      "id": "G018"
+    },
+    {
+      "gapType": "uncovered-surface",
+      "file": "src/aurora/aurora-portal/aurora_portal/api.py",
+      "lineRange": {
+        "start": 35,
+        "end": 35
+      },
+      "surfaceKind": "sink",
+      "category": "file-access",
+      "what": "call to open: file access",
+      "id": "G019"
+    },
+    {
+      "gapType": "uncovered-surface",
+      "file": "src/aurora/aurora-portal/aurora_portal/api.py",
+      "lineRange": {
+        "start": 43,
+        "end": 43
+      },
+      "surfaceKind": "sink",
+      "category": "command-exec",
+      "what": "call to subprocess.run: process / shell execution",
+      "id": "G020"
+    },
+    {
+      "gapType": "uncovered-surface",
+      "file": "src/aurora/aurora-portal/aurora_portal/maintenance.py",
+      "lineRange": {
+        "start": 19,
+        "end": 23
+      },
+      "surfaceKind": "sink",
+      "category": "command-exec",
+      "what": "call to subprocess.run: process / shell execution",
+      "id": "G021"
+    },
+    {
+      "gapType": "uncovered-surface",
+      "file": "src/aurora/aurora-portal/aurora_portal/maintenance.py",
+      "lineRange": {
+        "start": 28,
+        "end": 30
+      },
+      "surfaceKind": "sink",
+      "category": "command-exec",
+      "what": "call to subprocess.run: process / shell execution",
+      "id": "G022"
+    },
+    {
+      "gapType": "uncovered-surface",
+      "file": "src/aurora/aurora-storage/src/chunk.cpp",
+      "lineRange": {
+        "start": 35,
+        "end": 35
+      },
+      "surfaceKind": "sink",
+      "category": "random",
+      "what": "non-cryptographic random",
+      "id": "G023"
+    },
+    {
+      "gapType": "uncovered-surface",
+      "file": "src/aurora/aurora-storage/src/object_store.cpp",
+      "lineRange": {
+        "start": 25,
+        "end": 25
+      },
+      "surfaceKind": "sink",
+      "category": "file-access",
+      "what": "file access",
+      "id": "G024"
+    },
+    {
+      "gapType": "uncovered-surface",
+      "file": "src/aurora/aurora-storage/src/object_store.cpp",
+      "lineRange": {
+        "start": 36,
+        "end": 36
+      },
+      "surfaceKind": "sink",
+      "category": "file-access",
+      "what": "file access",
+      "id": "G025"
+    },
+    {
+      "gapType": "uncovered-surface",
+      "file": "src/aurora/aurora-cli/bin/aurora-cli.js",
+      "lineRange": {
+        "start": 13,
+        "end": 13
+      },
+      "surfaceKind": "entry-point",
+      "category": "cli-args",
+      "what": "command line input",
+      "id": "G026"
+    },
+    {
+      "gapType": "uncovered-surface",
+      "file": "src/aurora/aurora-cli/src/profile.js",
+      "lineRange": {
+        "start": 7,
+        "end": 7
+      },
+      "surfaceKind": "entry-point",
+      "category": "env",
+      "what": "environment variable",
+      "id": "G027"
+    },
+    {
+      "gapType": "uncovered-surface",
+      "file": "src/aurora/aurora-cli/src/profile.js",
+      "lineRange": {
+        "start": 16,
+        "end": 16
+      },
+      "surfaceKind": "entry-point",
+      "category": "env",
+      "what": "environment variable",
+      "id": "G028"
+    },
+    {
+      "gapType": "uncovered-surface",
+      "file": "src/aurora/aurora-compute/api/profile.go",
+      "lineRange": {
+        "start": 25,
+        "end": 25
+      },
+      "surfaceKind": "entry-point",
+      "category": "http-param",
+      "what": "request data",
+      "id": "G029"
+    },
+    {
+      "gapType": "uncovered-surface",
+      "file": "src/aurora/aurora-compute/api/routes.go",
+      "lineRange": {
+        "start": 13,
+        "end": 13
+      },
+      "surfaceKind": "entry-point",
+      "category": "http-route",
+      "what": "HTTP route registration",
+      "id": "G030"
+    },
+    {
+      "gapType": "uncovered-surface",
+      "file": "src/aurora/aurora-compute/api/routes.go",
+      "lineRange": {
+        "start": 14,
+        "end": 14
+      },
+      "surfaceKind": "entry-point",
+      "category": "http-route",
+      "what": "HTTP route registration",
+      "id": "G031"
+    },
+    {
+      "gapType": "uncovered-surface",
+      "file": "src/aurora/aurora-compute/api/routes.go",
+      "lineRange": {
+        "start": 15,
+        "end": 15
+      },
+      "surfaceKind": "entry-point",
+      "category": "http-route",
+      "what": "HTTP route registration",
+      "id": "G032"
+    },
+    {
+      "gapType": "uncovered-surface",
+      "file": "src/aurora/aurora-compute/api/routes.go",
+      "lineRange": {
+        "start": 20,
+        "end": 20
+      },
+      "surfaceKind": "entry-point",
+      "category": "env",
+      "what": "environment variable",
+      "id": "G033"
+    },
+    {
+      "gapType": "uncovered-surface",
+      "file": "src/aurora/aurora-network/src/main.c",
+      "lineRange": {
+        "start": 15,
+        "end": 15
+      },
+      "surfaceKind": "entry-point",
+      "category": "cli-args",
+      "what": "command line arguments",
+      "id": "G034"
+    },
+    {
+      "gapType": "uncovered-surface",
+      "file": "src/aurora/aurora-network/src/main.c",
+      "lineRange": {
+        "start": 22,
+        "end": 22
+      },
+      "surfaceKind": "entry-point",
+      "category": "cli-args",
+      "what": "command line arguments",
+      "id": "G035"
+    }
+  ]
+}
