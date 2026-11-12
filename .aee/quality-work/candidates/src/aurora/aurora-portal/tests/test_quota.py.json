@@ -1,0 +1,112 @@
+{
+  "file": "src/aurora/aurora-portal/tests/test_quota.py",
+  "language": "python",
+  "role": "test",
+  "toolsRun": [
+    "ruff",
+    "pylint",
+    "lizard"
+  ],
+  "toolsMissing": [],
+  "thresholds": {
+    "ccn": 15,
+    "function_lines": 100,
+    "params": 6,
+    "nesting": 4,
+    "file_lines": 1000
+  },
+  "toolCandidates": [
+    {
+      "canonical": "pylint:C0114",
+      "tools": [
+        "pylint"
+      ],
+      "ruleIds": [
+        "C0114"
+      ],
+      "line": 1,
+      "endLine": 1,
+      "message": "Missing module docstring",
+      "toolSeverity": "info",
+      "count": 1,
+      "occurrences": [
+        {
+          "line": 1,
+          "endLine": 1
+        }
+      ],
+      "id": "T1"
+    },
+    {
+      "canonical": "pylint:R0801",
+      "tools": [
+        "pylint"
+      ],
+      "ruleIds": [
+        "R0801"
+      ],
+      "line": 1,
+      "endLine": 1,
+      "message": "Similar lines in 2 files\n==adapter:[10:31]\n==collector:[10:31]\n        self.options = options or {}\n        self.processed = 0\n\n    def handle(self, payload):\n        self.processed += 1\n        if not isinstance(payload, dict):\n            raise TypeError(\"payload must be a mapping\")\n        return {key: self.transform(value) for key, value in payload.items()}\n\n    def transform(self, value):\n        if isinstance(value, str):\n            return value.strip()\n        if isinstance(value, (list, tuple)):\n            return [self.transform(item) for item in value]\n        return value\n\n    def stats(self):\n        return {\"processed\": self.processed, \"options\": len(self.options)}\n\n\ndef build(options=None):",
+      "toolSeverity": "warning",
+      "count": 5,
+      "occurrences": [
+        {
+          "line": 1,
+          "endLine": 1
+        }
+      ],
+      "id": "T2"
+    },
+    {
+      "canonical": "pylint:C0116",
+      "tools": [
+        "pylint"
+      ],
+      "ruleIds": [
+        "C0116"
+      ],
+      "line": 4,
+      "endLine": 4,
+      "message": "Missing function or method docstring",
+      "toolSeverity": "info",
+      "count": 2,
+      "occurrences": [
+        {
+          "line": 4,
+          "endLine": 4
+        },
+        {
+          "line": 12,
+          "endLine": 12
+        }
+      ],
+      "id": "T3",
+      "ruleGroup": "R01"
+    }
+  ],
+  "metricCandidates": [],
+  "functions": [
+    {
+      "function": "test_remaining",
+      "startLine": 4,
+      "endLine": 9,
+      "ccn": 1,
+      "nloc": 6,
+      "params": 0,
+      "maxNesting": 0
+    },
+    {
+      "function": "test_exceeded",
+      "startLine": 12,
+      "endLine": 15,
+      "ccn": 1,
+      "nloc": 4,
+      "params": 0,
+      "maxNesting": 0
+    }
+  ],
+  "dropped": {
+    "env_noise": 1
+  }
+}
