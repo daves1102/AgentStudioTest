@@ -1,0 +1,375 @@
+{
+  "file": "src/aurora/aurora-compute/api/server.go",
+  "hash": "54476f853369203be7fb205293dd9063d892621746648355f55d526b489ea50d",
+  "language": "Go",
+  "component": "aurora-compute",
+  "package": "api",
+  "lines": {
+    "blank": 6,
+    "code": 22,
+    "comment": 3,
+    "total": 31
+  },
+  "symbols": [
+    {
+      "name": "\"crypto/tls\"",
+      "kind": "import",
+      "scope": "",
+      "lineRange": {
+        "start": 7,
+        "end": 7
+      },
+      "source": "aee-inventory"
+    },
+    {
+      "name": "\"fmt\"",
+      "kind": "import",
+      "scope": "",
+      "lineRange": {
+        "start": 8,
+        "end": 8
+      },
+      "source": "aee-inventory"
+    },
+    {
+      "name": "\"net/http\"",
+      "kind": "import",
+      "scope": "",
+      "lineRange": {
+        "start": 9,
+        "end": 9
+      },
+      "source": "aee-inventory"
+    },
+    {
+      "name": "\"os/exec\"",
+      "kind": "import",
+      "scope": "",
+      "lineRange": {
+        "start": 10,
+        "end": 10
+      },
+      "source": "aee-inventory"
+    },
+    {
+      "name": "metricsToken",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 13,
+        "end": 13
+      },
+      "source": "aee-inventory"
+    },
+    {
+      "name": "newClient",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 15,
+        "end": 20
+      },
+      "parameters": [],
+      "returnType": "*http.Client",
+      "returns": [
+        {
+          "expr": "&http.Client{Transport: tr}",
+          "line": 19
+        }
+      ],
+      "source": "aee-inventory",
+      "nloc": 6,
+      "ccn": 1
+    },
+    {
+      "name": "Console",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 23,
+        "end": 26
+      },
+      "parameters": [
+        {
+          "name": "instance",
+          "type": "string"
+        }
+      ],
+      "returnType": "([]byte, error)",
+      "returns": [
+        {
+          "expr": "cmd.CombinedOutput()",
+          "line": 25
+        }
+      ],
+      "source": "aee-inventory",
+      "nloc": 4,
+      "ccn": 1
+    },
+    {
+      "name": "Health",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 28,
+        "end": 31
+      },
+      "parameters": [
+        {
+          "name": "w",
+          "type": "http.ResponseWriter"
+        },
+        {
+          "name": "r",
+          "type": "*http.Request"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "source": "aee-inventory",
+      "nloc": 4,
+      "ccn": 1
+    }
+  ],
+  "referencedSymbols": [
+    {
+      "name": "http.Client",
+      "usage": "type",
+      "via": "net/http",
+      "count": 2,
+      "lineRange": {
+        "start": 15,
+        "end": 15
+      }
+    },
+    {
+      "name": "http.Transport",
+      "usage": "type",
+      "via": "net/http",
+      "count": 1,
+      "lineRange": {
+        "start": 16,
+        "end": 16
+      }
+    },
+    {
+      "name": "tls.Config",
+      "usage": "type",
+      "via": "crypto/tls",
+      "count": 1,
+      "lineRange": {
+        "start": 17,
+        "end": 17
+      }
+    },
+    {
+      "name": "byte",
+      "usage": "type",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 23,
+        "end": 23
+      }
+    },
+    {
+      "name": "error",
+      "usage": "type",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 23,
+        "end": 23
+      }
+    },
+    {
+      "name": "string",
+      "usage": "type",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 23,
+        "end": 23
+      }
+    },
+    {
+      "name": "exec.Command",
+      "usage": "call",
+      "via": "os/exec",
+      "count": 1,
+      "lineRange": {
+        "start": 24,
+        "end": 24
+      }
+    },
+    {
+      "name": "fmt.Sprintf",
+      "usage": "call",
+      "via": "fmt",
+      "count": 1,
+      "lineRange": {
+        "start": 24,
+        "end": 24
+      }
+    },
+    {
+      "name": "http.Request",
+      "usage": "type",
+      "via": "net/http",
+      "count": 1,
+      "lineRange": {
+        "start": 28,
+        "end": 28
+      }
+    },
+    {
+      "name": "http.ResponseWriter",
+      "usage": "type",
+      "via": "net/http",
+      "count": 1,
+      "lineRange": {
+        "start": 28,
+        "end": 28
+      }
+    },
+    {
+      "name": "fmt.Fprintf",
+      "usage": "call",
+      "via": "fmt",
+      "count": 1,
+      "lineRange": {
+        "start": 30,
+        "end": 30
+      }
+    }
+  ],
+  "dependencies": [
+    {
+      "alias": null,
+      "module": "crypto/tls",
+      "names": [],
+      "relative": false,
+      "style": "import",
+      "lineRange": {
+        "start": 7,
+        "end": 7
+      }
+    },
+    {
+      "alias": null,
+      "module": "fmt",
+      "names": [],
+      "relative": false,
+      "style": "import",
+      "lineRange": {
+        "start": 8,
+        "end": 8
+      }
+    },
+    {
+      "alias": null,
+      "module": "net/http",
+      "names": [],
+      "relative": false,
+      "style": "import",
+      "lineRange": {
+        "start": 9,
+        "end": 9
+      }
+    },
+    {
+      "alias": null,
+      "module": "os/exec",
+      "names": [],
+      "relative": false,
+      "style": "import",
+      "lineRange": {
+        "start": 10,
+        "end": 10
+      }
+    }
+  ],
+  "sideEffects": [
+    {
+      "kind": "network",
+      "target": "outgoing HTTP request",
+      "lineRange": {
+        "start": 15,
+        "end": 15
+      }
+    },
+    {
+      "kind": "network",
+      "target": "outgoing HTTP request",
+      "lineRange": {
+        "start": 16,
+        "end": 16
+      }
+    },
+    {
+      "kind": "network",
+      "target": "outgoing HTTP request",
+      "lineRange": {
+        "start": 19,
+        "end": 19
+      }
+    },
+    {
+      "kind": "process-spawn",
+      "target": "process execution",
+      "lineRange": {
+        "start": 24,
+        "end": 24
+      }
+    }
+  ],
+  "securitySurface": [
+    {
+      "kind": "sink",
+      "category": "http-client",
+      "description": "outgoing HTTP request",
+      "lineRange": {
+        "start": 15,
+        "end": 15
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "http-client",
+      "description": "outgoing HTTP request",
+      "lineRange": {
+        "start": 16,
+        "end": 16
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "tls-config",
+      "description": "TLS client configuration",
+      "lineRange": {
+        "start": 17,
+        "end": 17
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "http-client",
+      "description": "outgoing HTTP request",
+      "lineRange": {
+        "start": 19,
+        "end": 19
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "command-exec",
+      "description": "process execution",
+      "lineRange": {
+        "start": 24,
+        "end": 24
+      }
+    }
+  ],
+  "injection_flags": [],
+  "warnings": []
+}

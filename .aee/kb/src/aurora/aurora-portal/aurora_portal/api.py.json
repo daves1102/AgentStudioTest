@@ -1,0 +1,412 @@
+{
+  "file": "src/aurora/aurora-portal/aurora_portal/api.py",
+  "hash": "9968b4b81fbd737a682f15272e0321e85bf7a189ef7269741e74043ddad65d5e",
+  "language": "Python",
+  "component": "aurora-portal",
+  "package": null,
+  "lines": {
+    "blank": 14,
+    "code": 27,
+    "comment": 2,
+    "total": 43
+  },
+  "symbols": [
+    {
+      "name": "import os",
+      "kind": "import",
+      "scope": "",
+      "lineRange": {
+        "start": 4,
+        "end": 4
+      },
+      "source": "aee-inventory"
+    },
+    {
+      "name": "import subprocess",
+      "kind": "import",
+      "scope": "",
+      "lineRange": {
+        "start": 5,
+        "end": 5
+      },
+      "source": "aee-inventory"
+    },
+    {
+      "name": "import requests",
+      "kind": "import",
+      "scope": "",
+      "lineRange": {
+        "start": 7,
+        "end": 7
+      },
+      "source": "aee-inventory"
+    },
+    {
+      "name": "import yaml",
+      "kind": "import",
+      "scope": "",
+      "lineRange": {
+        "start": 8,
+        "end": 8
+      },
+      "source": "aee-inventory"
+    },
+    {
+      "name": "DATABASE_PASSWORD",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 10,
+        "end": 10
+      },
+      "source": "aee-inventory"
+    },
+    {
+      "name": "API_BASE",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 12,
+        "end": 12
+      },
+      "source": "aee-inventory"
+    },
+    {
+      "name": "load_quota_profile",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 15,
+        "end": 17
+      },
+      "parameters": [
+        {
+          "name": "path"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "yaml.load(handle.read())",
+          "line": 17
+        }
+      ],
+      "source": "aee-inventory",
+      "nloc": 3,
+      "ccn": 1
+    },
+    {
+      "name": "fetch_project",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 20,
+        "end": 26
+      },
+      "parameters": [
+        {
+          "name": "project_id"
+        },
+        {
+          "name": "token"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "response.json()",
+          "line": 26
+        }
+      ],
+      "source": "aee-inventory",
+      "nloc": 7,
+      "ccn": 1
+    },
+    {
+      "name": "export_report",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 29,
+        "end": 31
+      },
+      "parameters": [
+        {
+          "name": "project_id"
+        },
+        {
+          "name": "destination"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "os.system(command)",
+          "line": 31
+        }
+      ],
+      "source": "aee-inventory",
+      "nloc": 3,
+      "ccn": 1
+    },
+    {
+      "name": "render_template",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 34,
+        "end": 39
+      },
+      "parameters": [
+        {
+          "name": "template_path"
+        },
+        {
+          "name": "context"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "body",
+          "line": 39
+        }
+      ],
+      "source": "aee-inventory",
+      "nloc": 6,
+      "ccn": 2
+    },
+    {
+      "name": "call_backend",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 42,
+        "end": 43
+      },
+      "parameters": [
+        {
+          "name": "argv"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "subprocess.run(argv, capture_output=True, check=False)",
+          "line": 43
+        }
+      ],
+      "source": "aee-inventory",
+      "nloc": 2,
+      "ccn": 1
+    }
+  ],
+  "referencedSymbols": [
+    {
+      "name": "open",
+      "usage": "call",
+      "via": null,
+      "count": 2,
+      "lineRange": {
+        "start": 16,
+        "end": 16
+      }
+    },
+    {
+      "name": "yaml.load",
+      "usage": "call",
+      "via": "yaml",
+      "count": 1,
+      "lineRange": {
+        "start": 17,
+        "end": 17
+      }
+    },
+    {
+      "name": "requests.get",
+      "usage": "call",
+      "via": "requests",
+      "count": 1,
+      "lineRange": {
+        "start": 21,
+        "end": 21
+      }
+    },
+    {
+      "name": "os.system",
+      "usage": "call",
+      "via": "os",
+      "count": 1,
+      "lineRange": {
+        "start": 31,
+        "end": 31
+      }
+    },
+    {
+      "name": "str",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 38,
+        "end": 38
+      }
+    },
+    {
+      "name": "subprocess.run",
+      "usage": "call",
+      "via": "subprocess",
+      "count": 1,
+      "lineRange": {
+        "start": 43,
+        "end": 43
+      }
+    }
+  ],
+  "dependencies": [
+    {
+      "alias": null,
+      "module": "os",
+      "names": [],
+      "relative": false,
+      "style": "import",
+      "lineRange": {
+        "start": 4,
+        "end": 4
+      }
+    },
+    {
+      "alias": null,
+      "module": "subprocess",
+      "names": [],
+      "relative": false,
+      "style": "import",
+      "lineRange": {
+        "start": 5,
+        "end": 5
+      }
+    },
+    {
+      "alias": null,
+      "module": "requests",
+      "names": [],
+      "relative": false,
+      "style": "import",
+      "lineRange": {
+        "start": 7,
+        "end": 7
+      }
+    },
+    {
+      "alias": null,
+      "module": "yaml",
+      "names": [],
+      "relative": false,
+      "style": "import",
+      "lineRange": {
+        "start": 8,
+        "end": 8
+      }
+    }
+  ],
+  "sideEffects": [
+    {
+      "kind": "file-io",
+      "target": "open",
+      "lineRange": {
+        "start": 16,
+        "end": 16
+      }
+    },
+    {
+      "kind": "network",
+      "target": "requests.get",
+      "lineRange": {
+        "start": 21,
+        "end": 25
+      }
+    },
+    {
+      "kind": "process-spawn",
+      "target": "os.system",
+      "lineRange": {
+        "start": 31,
+        "end": 31
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "open",
+      "lineRange": {
+        "start": 35,
+        "end": 35
+      }
+    },
+    {
+      "kind": "process-spawn",
+      "target": "subprocess.run",
+      "lineRange": {
+        "start": 43,
+        "end": 43
+      }
+    }
+  ],
+  "securitySurface": [
+    {
+      "kind": "sink",
+      "category": "file-access",
+      "description": "call to open: file access",
+      "lineRange": {
+        "start": 16,
+        "end": 16
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "deserialization",
+      "description": "call to yaml.load: deserialization of data",
+      "lineRange": {
+        "start": 17,
+        "end": 17
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "http-client",
+      "description": "call to requests.get: outgoing HTTP request",
+      "lineRange": {
+        "start": 21,
+        "end": 25
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "command-exec",
+      "description": "call to os.system: process / shell execution",
+      "lineRange": {
+        "start": 31,
+        "end": 31
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "file-access",
+      "description": "call to open: file access",
+      "lineRange": {
+        "start": 35,
+        "end": 35
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "command-exec",
+      "description": "call to subprocess.run: process / shell execution",
+      "lineRange": {
+        "start": 43,
+        "end": 43
+      }
+    }
+  ],
+  "injection_flags": [],
+  "warnings": []
+}

@@ -1,0 +1,251 @@
+{
+  "file": "src/aurora/aurora-compute/api/routes.go",
+  "hash": "fd6584f558a0415d60e11fbc241e69b63dc36fc0bf15572ab5f9fbd68043e10b",
+  "language": "Go",
+  "component": "aurora-compute",
+  "package": "api",
+  "lines": {
+    "blank": 5,
+    "code": 23,
+    "comment": 4,
+    "total": 32
+  },
+  "symbols": [
+    {
+      "name": "\"net/http\"",
+      "kind": "import",
+      "scope": "",
+      "lineRange": {
+        "start": 7,
+        "end": 7
+      },
+      "source": "aee-inventory"
+    },
+    {
+      "name": "\"os\"",
+      "kind": "import",
+      "scope": "",
+      "lineRange": {
+        "start": 8,
+        "end": 8
+      },
+      "source": "aee-inventory"
+    },
+    {
+      "name": "Register",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 12,
+        "end": 16
+      },
+      "parameters": [
+        {
+          "name": "mux",
+          "type": "*http.ServeMux"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "source": "aee-inventory",
+      "nloc": 5,
+      "ccn": 1
+    },
+    {
+      "name": "requireToken",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 18,
+        "end": 26
+      },
+      "parameters": [
+        {
+          "name": "next",
+          "type": "http.HandlerFunc"
+        }
+      ],
+      "returnType": "http.HandlerFunc",
+      "returns": [
+        {
+          "expr": "func(w http.ResponseWriter, r *http.Request) { if r.Header.Get(\"X-Aurora-Token\") != os.Getenv(\"AURORA_ADMIN_TOKEN\") { http.Error(w, \"forbidden\", http.StatusForbidden) return } next(w, r) }",
+          "line": 19
+        }
+      ],
+      "source": "aee-inventory",
+      "nloc": 3,
+      "ccn": 1
+    },
+    {
+      "name": "ListProfiles",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 29,
+        "end": 32
+      },
+      "parameters": [
+        {
+          "name": "w",
+          "type": "http.ResponseWriter"
+        },
+        {
+          "name": "r",
+          "type": "*http.Request"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "source": "aee-inventory",
+      "nloc": 4,
+      "ccn": 1
+    }
+  ],
+  "referencedSymbols": [
+    {
+      "name": "http.ServeMux",
+      "usage": "type",
+      "via": "net/http",
+      "count": 1,
+      "lineRange": {
+        "start": 12,
+        "end": 12
+      }
+    },
+    {
+      "name": "http.HandlerFunc",
+      "usage": "type",
+      "via": "net/http",
+      "count": 2,
+      "lineRange": {
+        "start": 18,
+        "end": 18
+      }
+    },
+    {
+      "name": "http.Request",
+      "usage": "type",
+      "via": "net/http",
+      "count": 2,
+      "lineRange": {
+        "start": 19,
+        "end": 19
+      }
+    },
+    {
+      "name": "http.ResponseWriter",
+      "usage": "type",
+      "via": "net/http",
+      "count": 2,
+      "lineRange": {
+        "start": 19,
+        "end": 19
+      }
+    },
+    {
+      "name": "os.Getenv",
+      "usage": "call",
+      "via": "os",
+      "count": 1,
+      "lineRange": {
+        "start": 20,
+        "end": 20
+      }
+    },
+    {
+      "name": "http.Error",
+      "usage": "call",
+      "via": "net/http",
+      "count": 1,
+      "lineRange": {
+        "start": 21,
+        "end": 21
+      }
+    },
+    {
+      "name": "next",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 24,
+        "end": 24
+      }
+    },
+    {
+      "name": "byte",
+      "usage": "type",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 31,
+        "end": 31
+      }
+    }
+  ],
+  "dependencies": [
+    {
+      "alias": null,
+      "module": "net/http",
+      "names": [],
+      "relative": false,
+      "style": "import",
+      "lineRange": {
+        "start": 7,
+        "end": 7
+      }
+    },
+    {
+      "alias": null,
+      "module": "os",
+      "names": [],
+      "relative": false,
+      "style": "import",
+      "lineRange": {
+        "start": 8,
+        "end": 8
+      }
+    }
+  ],
+  "sideEffects": [],
+  "securitySurface": [
+    {
+      "kind": "entry-point",
+      "category": "http-route",
+      "description": "HTTP route registration",
+      "lineRange": {
+        "start": 13,
+        "end": 13
+      }
+    },
+    {
+      "kind": "entry-point",
+      "category": "http-route",
+      "description": "HTTP route registration",
+      "lineRange": {
+        "start": 14,
+        "end": 14
+      }
+    },
+    {
+      "kind": "entry-point",
+      "category": "http-route",
+      "description": "HTTP route registration",
+      "lineRange": {
+        "start": 15,
+        "end": 15
+      }
+    },
+    {
+      "kind": "entry-point",
+      "category": "env",
+      "description": "environment variable",
+      "lineRange": {
+        "start": 20,
+        "end": 20
+      }
+    }
+  ],
+  "injection_flags": [],
+  "warnings": []
+}

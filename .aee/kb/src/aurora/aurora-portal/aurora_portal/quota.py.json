@@ -1,0 +1,173 @@
+{
+  "file": "src/aurora/aurora-portal/aurora_portal/quota.py",
+  "hash": "9761576dbaba20fa27b8c2c4f15c893d0209b962b8c94a7d884c2bbf4e1bb2be",
+  "language": "Python",
+  "component": "aurora-portal",
+  "package": null,
+  "lines": {
+    "blank": 9,
+    "code": 21,
+    "comment": 2,
+    "total": 32
+  },
+  "symbols": [
+    {
+      "name": "from dataclasses import dataclass",
+      "kind": "import",
+      "scope": "",
+      "lineRange": {
+        "start": 4,
+        "end": 4
+      },
+      "source": "aee-inventory"
+    },
+    {
+      "name": "Quota",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 8,
+        "end": 12
+      },
+      "source": "aee-inventory"
+    },
+    {
+      "name": "instances",
+      "kind": "field",
+      "scope": "Quota",
+      "lineRange": {
+        "start": 9,
+        "end": 9
+      },
+      "source": "aee-inventory"
+    },
+    {
+      "name": "vcpus",
+      "kind": "field",
+      "scope": "Quota",
+      "lineRange": {
+        "start": 10,
+        "end": 10
+      },
+      "source": "aee-inventory"
+    },
+    {
+      "name": "memory_mib",
+      "kind": "field",
+      "scope": "Quota",
+      "lineRange": {
+        "start": 11,
+        "end": 11
+      },
+      "source": "aee-inventory"
+    },
+    {
+      "name": "volumes",
+      "kind": "field",
+      "scope": "Quota",
+      "lineRange": {
+        "start": 12,
+        "end": 12
+      },
+      "source": "aee-inventory"
+    },
+    {
+      "name": "DEFAULT",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 15,
+        "end": 15
+      },
+      "source": "aee-inventory"
+    },
+    {
+      "name": "remaining",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 18,
+        "end": 24
+      },
+      "parameters": [
+        {
+          "name": "limit"
+        },
+        {
+          "name": "used"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "Quota( instances=limit.instances - used.instances, vcpus=limit.vcpus - used.vcpus, memory_mib=limit.memory_mib - used.memory_mib, volumes=limit.volumes - used.volumes, )",
+          "line": 19
+        }
+      ],
+      "source": "aee-inventory",
+      "nloc": 7,
+      "ccn": 1
+    },
+    {
+      "name": "exceeded",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 27,
+        "end": 32
+      },
+      "parameters": [
+        {
+          "name": "limit"
+        },
+        {
+          "name": "used"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "any( value < 0 for value in (left.instances, left.vcpus, left.memory_mib, left.volumes) )",
+          "line": 29
+        }
+      ],
+      "source": "aee-inventory",
+      "nloc": 6,
+      "ccn": 2
+    }
+  ],
+  "referencedSymbols": [
+    {
+      "name": "any",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 29,
+        "end": 29
+      }
+    }
+  ],
+  "dependencies": [
+    {
+      "alias": null,
+      "module": "dataclasses",
+      "names": [
+        {
+          "alias": null,
+          "name": "dataclass"
+        }
+      ],
+      "relative": false,
+      "style": "from",
+      "lineRange": {
+        "start": 4,
+        "end": 4
+      }
+    }
+  ],
+  "sideEffects": [],
+  "securitySurface": [],
+  "injection_flags": [],
+  "warnings": []
+}

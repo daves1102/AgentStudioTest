@@ -1,0 +1,254 @@
+{
+  "file": "src/aurora/aurora-network/src/acl.c",
+  "hash": "13ff801822ba2608b86b50629c1d26ae85895d86bd7ff339390167f800b86f6f",
+  "language": "C",
+  "component": "aurora-network",
+  "package": null,
+  "lines": {
+    "blank": 6,
+    "code": 36,
+    "comment": 9,
+    "total": 51
+  },
+  "symbols": [
+    {
+      "name": "#include <string.h>",
+      "kind": "import",
+      "scope": "",
+      "lineRange": {
+        "start": 11,
+        "end": 11
+      },
+      "source": "aee-inventory"
+    },
+    {
+      "name": "#include <stdio.h>",
+      "kind": "import",
+      "scope": "",
+      "lineRange": {
+        "start": 12,
+        "end": 12
+      },
+      "source": "aee-inventory"
+    },
+    {
+      "name": "#include \"packet.h\"",
+      "kind": "import",
+      "scope": "",
+      "lineRange": {
+        "start": 13,
+        "end": 13
+      },
+      "source": "aee-inventory"
+    },
+    {
+      "name": "acl_rule",
+      "kind": "type",
+      "scope": "",
+      "lineRange": {
+        "start": 15,
+        "end": 19
+      },
+      "source": "aee-inventory"
+    },
+    {
+      "name": "tenant",
+      "kind": "field",
+      "scope": "acl_rule",
+      "lineRange": {
+        "start": 16,
+        "end": 16
+      },
+      "source": "aee-inventory"
+    },
+    {
+      "name": "dport",
+      "kind": "field",
+      "scope": "acl_rule",
+      "lineRange": {
+        "start": 17,
+        "end": 17
+      },
+      "source": "aee-inventory"
+    },
+    {
+      "name": "allow",
+      "kind": "field",
+      "scope": "acl_rule",
+      "lineRange": {
+        "start": 18,
+        "end": 18
+      },
+      "source": "aee-inventory"
+    },
+    {
+      "name": "rules",
+      "kind": "variable",
+      "scope": "",
+      "lineRange": {
+        "start": 21,
+        "end": 21
+      },
+      "source": "aee-inventory"
+    },
+    {
+      "name": "rule_count",
+      "kind": "variable",
+      "scope": "",
+      "lineRange": {
+        "start": 22,
+        "end": 22
+      },
+      "source": "aee-inventory"
+    },
+    {
+      "name": "acl_add",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 24,
+        "end": 34
+      },
+      "parameters": [
+        {
+          "name": "tenant",
+          "type": "unsigned int"
+        },
+        {
+          "name": "dport",
+          "type": "unsigned int"
+        },
+        {
+          "name": "allow",
+          "type": "int"
+        }
+      ],
+      "returnType": "int",
+      "returns": [
+        {
+          "expr": "-1",
+          "line": 27
+        },
+        {
+          "expr": "0",
+          "line": 33
+        }
+      ],
+      "source": "aee-inventory",
+      "nloc": 11,
+      "ccn": 2
+    },
+    {
+      "name": "acl_check",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 36,
+        "end": 45
+      },
+      "parameters": [
+        {
+          "name": "key",
+          "type": "struct flow_key*"
+        }
+      ],
+      "returnType": "int",
+      "returns": [
+        {
+          "expr": "rules[i].allow",
+          "line": 41
+        },
+        {
+          "expr": "0",
+          "line": 44
+        }
+      ],
+      "source": "aee-inventory",
+      "nloc": 10,
+      "ccn": 4
+    },
+    {
+      "name": "acl_reset",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 47,
+        "end": 51
+      },
+      "parameters": [
+        {
+          "type": "void"
+        }
+      ],
+      "returnType": "void",
+      "returns": [],
+      "source": "aee-inventory",
+      "nloc": 5,
+      "ccn": 1
+    }
+  ],
+  "referencedSymbols": [
+    {
+      "name": "flow_key",
+      "usage": "type",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 36,
+        "end": 36
+      }
+    },
+    {
+      "name": "memset",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 50,
+        "end": 50
+      }
+    }
+  ],
+  "dependencies": [
+    {
+      "alias": null,
+      "module": "string.h",
+      "names": [],
+      "relative": false,
+      "style": "include",
+      "system": true,
+      "lineRange": {
+        "start": 11,
+        "end": 11
+      }
+    },
+    {
+      "alias": null,
+      "module": "stdio.h",
+      "names": [],
+      "relative": false,
+      "style": "include",
+      "system": true,
+      "lineRange": {
+        "start": 12,
+        "end": 12
+      }
+    },
+    {
+      "alias": null,
+      "module": "packet.h",
+      "names": [],
+      "relative": false,
+      "style": "include",
+      "system": false,
+      "lineRange": {
+        "start": 13,
+        "end": 13
+      }
+    }
+  ],
+  "sideEffects": [],
+  "securitySurface": [],
+  "injection_flags": [],
+  "warnings": []
+}

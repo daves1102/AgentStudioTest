@@ -1,0 +1,293 @@
+{
+  "file": "src/aurora/aurora-storage/src/chunk.cpp",
+  "hash": "4ae2cd6a10f3b965833d7128f5c2523c3452ebd4600869d9d3e9348579133f90",
+  "language": "C++",
+  "component": "aurora-storage",
+  "package": null,
+  "lines": {
+    "blank": 7,
+    "code": 26,
+    "comment": 11,
+    "total": 44
+  },
+  "symbols": [
+    {
+      "name": "#include <cstring>",
+      "kind": "import",
+      "scope": "",
+      "lineRange": {
+        "start": 11,
+        "end": 11
+      },
+      "source": "aee-inventory"
+    },
+    {
+      "name": "#include <cstdlib>",
+      "kind": "import",
+      "scope": "",
+      "lineRange": {
+        "start": 12,
+        "end": 12
+      },
+      "source": "aee-inventory"
+    },
+    {
+      "name": "#include <string>",
+      "kind": "import",
+      "scope": "",
+      "lineRange": {
+        "start": 13,
+        "end": 13
+      },
+      "source": "aee-inventory"
+    },
+    {
+      "name": "#include <vector>",
+      "kind": "import",
+      "scope": "",
+      "lineRange": {
+        "start": 14,
+        "end": 14
+      },
+      "source": "aee-inventory"
+    },
+    {
+      "name": "aurora",
+      "kind": "module",
+      "scope": "",
+      "lineRange": {
+        "start": 16,
+        "end": 44
+      },
+      "source": "aee-inventory"
+    },
+    {
+      "name": "Chunk",
+      "kind": "type",
+      "scope": "aurora",
+      "lineRange": {
+        "start": 18,
+        "end": 21
+      },
+      "source": "aee-inventory"
+    },
+    {
+      "name": "id",
+      "kind": "field",
+      "scope": "aurora.Chunk",
+      "lineRange": {
+        "start": 19,
+        "end": 19
+      },
+      "source": "aee-inventory"
+    },
+    {
+      "name": "data",
+      "kind": "field",
+      "scope": "aurora.Chunk",
+      "lineRange": {
+        "start": 20,
+        "end": 20
+      },
+      "source": "aee-inventory"
+    },
+    {
+      "name": "make_chunk",
+      "kind": "function",
+      "scope": "aurora",
+      "lineRange": {
+        "start": 24,
+        "end": 30
+      },
+      "parameters": [
+        {
+          "type": "std::string*"
+        },
+        {
+          "name": "body",
+          "type": "unsigned char*"
+        },
+        {
+          "name": "len",
+          "type": "size_t"
+        }
+      ],
+      "returnType": "Chunk",
+      "returns": [
+        {
+          "expr": "c",
+          "line": 29
+        }
+      ],
+      "source": "aee-inventory",
+      "nloc": 7,
+      "ccn": 1
+    },
+    {
+      "name": "placement_group",
+      "kind": "function",
+      "scope": "aurora",
+      "lineRange": {
+        "start": 33,
+        "end": 37
+      },
+      "parameters": [
+        {
+          "type": "std::string*"
+        },
+        {
+          "name": "groups",
+          "type": "int"
+        }
+      ],
+      "returnType": "int",
+      "returns": [
+        {
+          "expr": "std::rand() % groups",
+          "line": 36
+        }
+      ],
+      "source": "aee-inventory",
+      "nloc": 5,
+      "ccn": 1
+    },
+    {
+      "name": "chunk_size",
+      "kind": "function",
+      "scope": "aurora",
+      "lineRange": {
+        "start": 39,
+        "end": 42
+      },
+      "parameters": [
+        {
+          "type": "Chunk*"
+        }
+      ],
+      "returnType": "size_t",
+      "returns": [
+        {
+          "expr": "c.data.size()",
+          "line": 41
+        }
+      ],
+      "source": "aee-inventory",
+      "nloc": 4,
+      "ccn": 1
+    }
+  ],
+  "referencedSymbols": [
+    {
+      "name": "std::vector",
+      "usage": "type",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 20,
+        "end": 20
+      }
+    },
+    {
+      "name": "std::string",
+      "usage": "type",
+      "via": null,
+      "count": 2,
+      "lineRange": {
+        "start": 24,
+        "end": 24
+      }
+    },
+    {
+      "name": "static_cast",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 35,
+        "end": 35
+      }
+    }
+  ],
+  "dependencies": [
+    {
+      "alias": null,
+      "module": "cstring",
+      "names": [],
+      "relative": false,
+      "style": "include",
+      "system": true,
+      "lineRange": {
+        "start": 11,
+        "end": 11
+      }
+    },
+    {
+      "alias": null,
+      "module": "cstdlib",
+      "names": [],
+      "relative": false,
+      "style": "include",
+      "system": true,
+      "lineRange": {
+        "start": 12,
+        "end": 12
+      }
+    },
+    {
+      "alias": null,
+      "module": "string",
+      "names": [],
+      "relative": false,
+      "style": "include",
+      "system": true,
+      "lineRange": {
+        "start": 13,
+        "end": 13
+      }
+    },
+    {
+      "alias": null,
+      "module": "vector",
+      "names": [],
+      "relative": false,
+      "style": "include",
+      "system": true,
+      "lineRange": {
+        "start": 14,
+        "end": 14
+      }
+    }
+  ],
+  "sideEffects": [],
+  "securitySurface": [
+    {
+      "kind": "sink",
+      "category": "memory-copy",
+      "description": "memory copy",
+      "lineRange": {
+        "start": 27,
+        "end": 27
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "random",
+      "description": "non-cryptographic random",
+      "lineRange": {
+        "start": 35,
+        "end": 35
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "random",
+      "description": "non-cryptographic random",
+      "lineRange": {
+        "start": 36,
+        "end": 36
+      }
+    }
+  ],
+  "injection_flags": [],
+  "warnings": []
+}

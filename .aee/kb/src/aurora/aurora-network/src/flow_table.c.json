@@ -1,0 +1,335 @@
+{
+  "file": "src/aurora/aurora-network/src/flow_table.c",
+  "hash": "bfadfdd6785811cfb3a1e85e4b81a88307ca938f706053151059b575e12334b7",
+  "language": "C",
+  "component": "aurora-network",
+  "package": null,
+  "lines": {
+    "blank": 8,
+    "code": 57,
+    "comment": 9,
+    "total": 74
+  },
+  "symbols": [
+    {
+      "name": "#include <stdlib.h>",
+      "kind": "import",
+      "scope": "",
+      "lineRange": {
+        "start": 11,
+        "end": 11
+      },
+      "source": "aee-inventory"
+    },
+    {
+      "name": "#include <string.h>",
+      "kind": "import",
+      "scope": "",
+      "lineRange": {
+        "start": 12,
+        "end": 12
+      },
+      "source": "aee-inventory"
+    },
+    {
+      "name": "#include \"packet.h\"",
+      "kind": "import",
+      "scope": "",
+      "lineRange": {
+        "start": 13,
+        "end": 13
+      },
+      "source": "aee-inventory"
+    },
+    {
+      "name": "entry",
+      "kind": "type",
+      "scope": "",
+      "lineRange": {
+        "start": 15,
+        "end": 20
+      },
+      "source": "aee-inventory"
+    },
+    {
+      "name": "key",
+      "kind": "field",
+      "scope": "entry",
+      "lineRange": {
+        "start": 16,
+        "end": 16
+      },
+      "source": "aee-inventory"
+    },
+    {
+      "name": "packets",
+      "kind": "field",
+      "scope": "entry",
+      "lineRange": {
+        "start": 17,
+        "end": 17
+      },
+      "source": "aee-inventory"
+    },
+    {
+      "name": "bytes",
+      "kind": "field",
+      "scope": "entry",
+      "lineRange": {
+        "start": 18,
+        "end": 18
+      },
+      "source": "aee-inventory"
+    },
+    {
+      "name": "next",
+      "kind": "field",
+      "scope": "entry",
+      "lineRange": {
+        "start": 19,
+        "end": 19
+      },
+      "source": "aee-inventory"
+    },
+    {
+      "name": "table",
+      "kind": "variable",
+      "scope": "",
+      "lineRange": {
+        "start": 22,
+        "end": 22
+      },
+      "source": "aee-inventory"
+    },
+    {
+      "name": "hash_key",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 24,
+        "end": 27
+      },
+      "parameters": [
+        {
+          "name": "key",
+          "type": "struct flow_key*"
+        }
+      ],
+      "returnType": "unsigned int",
+      "returns": [
+        {
+          "expr": "(key->tenant * 2654435761u + key->sport * 97u + key->dport) & 4095u",
+          "line": 26
+        }
+      ],
+      "source": "aee-inventory",
+      "nloc": 4,
+      "ccn": 1
+    },
+    {
+      "name": "flow_lookup",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 29,
+        "end": 39
+      },
+      "parameters": [
+        {
+          "name": "key",
+          "type": "struct flow_key*"
+        }
+      ],
+      "returnType": "struct entry*",
+      "returns": [
+        {
+          "expr": "e",
+          "line": 34
+        },
+        {
+          "expr": "NULL",
+          "line": 38
+        }
+      ],
+      "source": "aee-inventory",
+      "nloc": 11,
+      "ccn": 3
+    },
+    {
+      "name": "flow_insert",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 41,
+        "end": 54
+      },
+      "parameters": [
+        {
+          "name": "key",
+          "type": "struct flow_key*"
+        }
+      ],
+      "returnType": "int",
+      "returns": [
+        {
+          "expr": "-1",
+          "line": 46
+        },
+        {
+          "expr": "0",
+          "line": 53
+        }
+      ],
+      "source": "aee-inventory",
+      "nloc": 14,
+      "ccn": 2
+    },
+    {
+      "name": "flow_account",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 56,
+        "end": 60
+      },
+      "parameters": [
+        {
+          "name": "e",
+          "type": "struct entry*"
+        },
+        {
+          "name": "bytes",
+          "type": "unsigned long"
+        }
+      ],
+      "returnType": "void",
+      "returns": [],
+      "source": "aee-inventory",
+      "nloc": 5,
+      "ccn": 1
+    },
+    {
+      "name": "flow_flush",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 62,
+        "end": 74
+      },
+      "parameters": [
+        {
+          "type": "void"
+        }
+      ],
+      "returnType": "void",
+      "returns": [],
+      "source": "aee-inventory",
+      "nloc": 13,
+      "ccn": 3
+    }
+  ],
+  "referencedSymbols": [
+    {
+      "name": "flow_key",
+      "usage": "type",
+      "via": null,
+      "count": 4,
+      "lineRange": {
+        "start": 16,
+        "end": 16
+      }
+    },
+    {
+      "name": "memcmp",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 33,
+        "end": 33
+      }
+    },
+    {
+      "name": "malloc",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 44,
+        "end": 44
+      }
+    },
+    {
+      "name": "memcpy",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 48,
+        "end": 48
+      }
+    },
+    {
+      "name": "free",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 69,
+        "end": 69
+      }
+    }
+  ],
+  "dependencies": [
+    {
+      "alias": null,
+      "module": "stdlib.h",
+      "names": [],
+      "relative": false,
+      "style": "include",
+      "system": true,
+      "lineRange": {
+        "start": 11,
+        "end": 11
+      }
+    },
+    {
+      "alias": null,
+      "module": "string.h",
+      "names": [],
+      "relative": false,
+      "style": "include",
+      "system": true,
+      "lineRange": {
+        "start": 12,
+        "end": 12
+      }
+    },
+    {
+      "alias": null,
+      "module": "packet.h",
+      "names": [],
+      "relative": false,
+      "style": "include",
+      "system": false,
+      "lineRange": {
+        "start": 13,
+        "end": 13
+      }
+    }
+  ],
+  "sideEffects": [],
+  "securitySurface": [
+    {
+      "kind": "sink",
+      "category": "memory-copy",
+      "description": "memory copy",
+      "lineRange": {
+        "start": 48,
+        "end": 48
+      }
+    }
+  ],
+  "injection_flags": [],
+  "warnings": []
+}

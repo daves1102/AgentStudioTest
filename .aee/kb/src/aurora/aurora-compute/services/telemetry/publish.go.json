@@ -1,0 +1,172 @@
+{
+  "file": "src/aurora/aurora-compute/services/telemetry/publish.go",
+  "hash": "3f2b50032f8efc96ed33762c01c586cee0ef9cb1ddb239b2701d0d51966313cf",
+  "language": "Go",
+  "component": "aurora-compute",
+  "package": "telemetry",
+  "lines": {
+    "blank": 7,
+    "code": 22,
+    "comment": 6,
+    "total": 35
+  },
+  "symbols": [
+    {
+      "name": "\"gopkg.in/yaml.v2\"",
+      "kind": "import",
+      "scope": "",
+      "lineRange": {
+        "start": 6,
+        "end": 6
+      },
+      "source": "aee-inventory"
+    },
+    {
+      "name": "TenantTopic",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 9,
+        "end": 9
+      },
+      "source": "aee-inventory"
+    },
+    {
+      "name": "Sample",
+      "kind": "type",
+      "scope": "",
+      "lineRange": {
+        "start": 11,
+        "end": 16
+      },
+      "source": "aee-inventory"
+    },
+    {
+      "name": "Encode",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 19,
+        "end": 21
+      },
+      "parameters": [
+        {
+          "name": "s",
+          "type": "Sample"
+        }
+      ],
+      "returnType": "([]byte, error)",
+      "returns": [
+        {
+          "expr": "yaml.Marshal(s)",
+          "line": 20
+        }
+      ],
+      "source": "aee-inventory",
+      "nloc": 3,
+      "ccn": 1
+    },
+    {
+      "name": "Publish",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 24,
+        "end": 30
+      },
+      "parameters": [
+        {
+          "name": "bus",
+          "type": "Bus"
+        },
+        {
+          "name": "s",
+          "type": "Sample"
+        }
+      ],
+      "returnType": "error",
+      "returns": [
+        {
+          "expr": "err",
+          "line": 27
+        },
+        {
+          "expr": "bus.Send(TenantTopic, body)",
+          "line": 29
+        }
+      ],
+      "source": "aee-inventory",
+      "nloc": 7,
+      "ccn": 2
+    },
+    {
+      "name": "Bus",
+      "kind": "type",
+      "scope": "",
+      "lineRange": {
+        "start": 33,
+        "end": 35
+      },
+      "source": "aee-inventory"
+    }
+  ],
+  "referencedSymbols": [
+    {
+      "name": "string",
+      "usage": "type",
+      "via": null,
+      "count": 4,
+      "lineRange": {
+        "start": 12,
+        "end": 12
+      }
+    },
+    {
+      "name": "int64",
+      "usage": "type",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 14,
+        "end": 14
+      }
+    },
+    {
+      "name": "byte",
+      "usage": "type",
+      "via": null,
+      "count": 2,
+      "lineRange": {
+        "start": 19,
+        "end": 19
+      }
+    },
+    {
+      "name": "error",
+      "usage": "type",
+      "via": null,
+      "count": 3,
+      "lineRange": {
+        "start": 19,
+        "end": 19
+      }
+    }
+  ],
+  "dependencies": [
+    {
+      "alias": null,
+      "module": "gopkg.in/yaml.v2",
+      "names": [],
+      "relative": false,
+      "style": "import",
+      "lineRange": {
+        "start": 6,
+        "end": 6
+      }
+    }
+  ],
+  "sideEffects": [],
+  "securitySurface": [],
+  "injection_flags": [],
+  "warnings": []
+}

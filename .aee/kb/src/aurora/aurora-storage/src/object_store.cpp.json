@@ -1,0 +1,404 @@
+{
+  "file": "src/aurora/aurora-storage/src/object_store.cpp",
+  "hash": "35a06f96072f52b7c566cee6ee4634de81541c84787b8776694fe8f34299bceb",
+  "language": "C++",
+  "component": "aurora-storage",
+  "package": null,
+  "lines": {
+    "blank": 9,
+    "code": 40,
+    "comment": 9,
+    "total": 58
+  },
+  "symbols": [
+    {
+      "name": "#include <fstream>",
+      "kind": "import",
+      "scope": "",
+      "lineRange": {
+        "start": 11,
+        "end": 11
+      },
+      "source": "aee-inventory"
+    },
+    {
+      "name": "#include <string>",
+      "kind": "import",
+      "scope": "",
+      "lineRange": {
+        "start": 12,
+        "end": 12
+      },
+      "source": "aee-inventory"
+    },
+    {
+      "name": "#include <map>",
+      "kind": "import",
+      "scope": "",
+      "lineRange": {
+        "start": 13,
+        "end": 13
+      },
+      "source": "aee-inventory"
+    },
+    {
+      "name": "#include <mutex>",
+      "kind": "import",
+      "scope": "",
+      "lineRange": {
+        "start": 14,
+        "end": 14
+      },
+      "source": "aee-inventory"
+    },
+    {
+      "name": "aurora",
+      "kind": "module",
+      "scope": "",
+      "lineRange": {
+        "start": 16,
+        "end": 58
+      },
+      "source": "aee-inventory"
+    },
+    {
+      "name": "ObjectStore",
+      "kind": "class",
+      "scope": "aurora",
+      "lineRange": {
+        "start": 18,
+        "end": 56
+      },
+      "source": "aee-inventory"
+    },
+    {
+      "name": "ObjectStore",
+      "kind": "method",
+      "scope": "aurora.ObjectStore",
+      "lineRange": {
+        "start": 20,
+        "end": 20
+      },
+      "parameters": [
+        {
+          "name": "root",
+          "type": "std::string"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "source": "aee-inventory",
+      "nloc": 1,
+      "ccn": 1
+    },
+    {
+      "name": "put",
+      "kind": "method",
+      "scope": "aurora.ObjectStore",
+      "lineRange": {
+        "start": 22,
+        "end": 32
+      },
+      "parameters": [
+        {
+          "type": "std::string*"
+        },
+        {
+          "type": "std::string*"
+        }
+      ],
+      "returnType": "bool",
+      "returns": [
+        {
+          "expr": "false",
+          "line": 27
+        },
+        {
+          "expr": "true",
+          "line": 31
+        }
+      ],
+      "source": "aee-inventory",
+      "nloc": 11,
+      "ccn": 2
+    },
+    {
+      "name": "get",
+      "kind": "method",
+      "scope": "aurora.ObjectStore",
+      "lineRange": {
+        "start": 34,
+        "end": 43
+      },
+      "parameters": [
+        {
+          "type": "std::string*"
+        },
+        {
+          "name": "body",
+          "type": "std::string*"
+        }
+      ],
+      "returnType": "bool",
+      "returns": [
+        {
+          "expr": "false",
+          "line": 38
+        },
+        {
+          "expr": "true",
+          "line": 42
+        }
+      ],
+      "source": "aee-inventory",
+      "nloc": 10,
+      "ccn": 2
+    },
+    {
+      "name": "count",
+      "kind": "method",
+      "scope": "aurora.ObjectStore",
+      "lineRange": {
+        "start": 45,
+        "end": 45
+      },
+      "parameters": [],
+      "returnType": "size_t",
+      "returns": [
+        {
+          "expr": "index_.size()",
+          "line": 45
+        }
+      ],
+      "source": "aee-inventory",
+      "nloc": 1,
+      "ccn": 1
+    },
+    {
+      "name": "path_for",
+      "kind": "method",
+      "scope": "aurora.ObjectStore",
+      "lineRange": {
+        "start": 48,
+        "end": 51
+      },
+      "parameters": [
+        {
+          "type": "std::string*"
+        }
+      ],
+      "returnType": "std::string",
+      "returns": [
+        {
+          "expr": "root_ + \"/\" + key",
+          "line": 50
+        }
+      ],
+      "source": "aee-inventory",
+      "nloc": 4,
+      "ccn": 1
+    },
+    {
+      "name": "root_",
+      "kind": "field",
+      "scope": "aurora.ObjectStore",
+      "lineRange": {
+        "start": 53,
+        "end": 53
+      },
+      "source": "aee-inventory"
+    },
+    {
+      "name": "index_",
+      "kind": "field",
+      "scope": "aurora.ObjectStore",
+      "lineRange": {
+        "start": 54,
+        "end": 54
+      },
+      "source": "aee-inventory"
+    },
+    {
+      "name": "lock_",
+      "kind": "field",
+      "scope": "aurora.ObjectStore",
+      "lineRange": {
+        "start": 55,
+        "end": 55
+      },
+      "source": "aee-inventory"
+    }
+  ],
+  "referencedSymbols": [
+    {
+      "name": "std::string",
+      "usage": "type",
+      "via": null,
+      "count": 9,
+      "lineRange": {
+        "start": 20,
+        "end": 20
+      }
+    },
+    {
+      "name": "std::lock_guard",
+      "usage": "type",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 24,
+        "end": 24
+      }
+    },
+    {
+      "name": "std::mutex",
+      "usage": "type",
+      "via": null,
+      "count": 2,
+      "lineRange": {
+        "start": 24,
+        "end": 24
+      }
+    },
+    {
+      "name": "std::ofstream",
+      "usage": "type",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 25,
+        "end": 25
+      }
+    },
+    {
+      "name": "static_cast",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 29,
+        "end": 29
+      }
+    },
+    {
+      "name": "std::streamsize",
+      "usage": "type",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 29,
+        "end": 29
+      }
+    },
+    {
+      "name": "std::ifstream",
+      "usage": "type",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 36,
+        "end": 36
+      }
+    },
+    {
+      "name": "std::map",
+      "usage": "type",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 54,
+        "end": 54
+      }
+    }
+  ],
+  "dependencies": [
+    {
+      "alias": null,
+      "module": "fstream",
+      "names": [],
+      "relative": false,
+      "style": "include",
+      "system": true,
+      "lineRange": {
+        "start": 11,
+        "end": 11
+      }
+    },
+    {
+      "alias": null,
+      "module": "string",
+      "names": [],
+      "relative": false,
+      "style": "include",
+      "system": true,
+      "lineRange": {
+        "start": 12,
+        "end": 12
+      }
+    },
+    {
+      "alias": null,
+      "module": "map",
+      "names": [],
+      "relative": false,
+      "style": "include",
+      "system": true,
+      "lineRange": {
+        "start": 13,
+        "end": 13
+      }
+    },
+    {
+      "alias": null,
+      "module": "mutex",
+      "names": [],
+      "relative": false,
+      "style": "include",
+      "system": true,
+      "lineRange": {
+        "start": 14,
+        "end": 14
+      }
+    }
+  ],
+  "sideEffects": [
+    {
+      "kind": "file-io",
+      "target": "file access",
+      "lineRange": {
+        "start": 25,
+        "end": 25
+      }
+    },
+    {
+      "kind": "file-io",
+      "target": "file access",
+      "lineRange": {
+        "start": 36,
+        "end": 36
+      }
+    }
+  ],
+  "securitySurface": [
+    {
+      "kind": "sink",
+      "category": "file-access",
+      "description": "file access",
+      "lineRange": {
+        "start": 25,
+        "end": 25
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "file-access",
+      "description": "file access",
+      "lineRange": {
+        "start": 36,
+        "end": 36
+      }
+    }
+  ],
+  "injection_flags": [],
+  "warnings": []
+}

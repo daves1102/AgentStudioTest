@@ -1,0 +1,196 @@
+{
+  "file": "src/aurora/aurora-portal/aurora_portal/adapter.py",
+  "hash": "ca7620e6a11664206520589faf9dc78d7167628396229c2fef55896d75440f74",
+  "language": "Python",
+  "component": "aurora-portal",
+  "package": null,
+  "lines": {
+    "blank": 9,
+    "code": 21,
+    "comment": 2,
+    "total": 32
+  },
+  "symbols": [
+    {
+      "name": "Adapter",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 7,
+        "end": 28
+      },
+      "source": "aee-inventory"
+    },
+    {
+      "name": "__init__",
+      "kind": "method",
+      "scope": "Adapter",
+      "lineRange": {
+        "start": 10,
+        "end": 12
+      },
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "default": "None",
+          "name": "options"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "source": "aee-inventory",
+      "nloc": 3,
+      "ccn": 2
+    },
+    {
+      "name": "handle",
+      "kind": "method",
+      "scope": "Adapter",
+      "lineRange": {
+        "start": 14,
+        "end": 18
+      },
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "payload"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "{key: self.transform(value) for key, value in payload.items()}",
+          "line": 18
+        }
+      ],
+      "source": "aee-inventory",
+      "nloc": 5,
+      "ccn": 3
+    },
+    {
+      "name": "transform",
+      "kind": "method",
+      "scope": "Adapter",
+      "lineRange": {
+        "start": 20,
+        "end": 25
+      },
+      "parameters": [
+        {
+          "name": "self"
+        },
+        {
+          "name": "value"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "value.strip()",
+          "line": 22
+        },
+        {
+          "expr": "[self.transform(item) for item in value]",
+          "line": 24
+        },
+        {
+          "expr": "value",
+          "line": 25
+        }
+      ],
+      "source": "aee-inventory",
+      "nloc": 6,
+      "ccn": 4
+    },
+    {
+      "name": "stats",
+      "kind": "method",
+      "scope": "Adapter",
+      "lineRange": {
+        "start": 27,
+        "end": 28
+      },
+      "parameters": [
+        {
+          "name": "self"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "{\"processed\": self.processed, \"options\": len(self.options)}",
+          "line": 28
+        }
+      ],
+      "source": "aee-inventory",
+      "nloc": 2,
+      "ccn": 1
+    },
+    {
+      "name": "build",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 31,
+        "end": 32
+      },
+      "parameters": [
+        {
+          "default": "None",
+          "name": "options"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "Adapter(options)",
+          "line": 32
+        }
+      ],
+      "source": "aee-inventory",
+      "nloc": 2,
+      "ccn": 1
+    }
+  ],
+  "referencedSymbols": [
+    {
+      "name": "isinstance",
+      "usage": "call",
+      "via": null,
+      "count": 3,
+      "lineRange": {
+        "start": 16,
+        "end": 16
+      }
+    },
+    {
+      "name": "TypeError",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 17,
+        "end": 17
+      }
+    },
+    {
+      "name": "len",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 28,
+        "end": 28
+      }
+    }
+  ],
+  "dependencies": [],
+  "sideEffects": [],
+  "securitySurface": [],
+  "injection_flags": [],
+  "warnings": []
+}

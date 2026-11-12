@@ -1,0 +1,81 @@
+{
+  "file": "src/aurora/third_party/regex-engine/regex.c",
+  "hash": "f0387334acd7e255951faefb725034a491a2e3b7c2bd709d638aa1c83b328b51",
+  "language": "C",
+  "component": "third_party",
+  "package": null,
+  "lines": {
+    "blank": 1,
+    "code": 11,
+    "comment": 1,
+    "total": 13
+  },
+  "symbols": [
+    {
+      "name": "#include <string.h>",
+      "kind": "import",
+      "scope": "",
+      "lineRange": {
+        "start": 2,
+        "end": 2
+      },
+      "source": "aee-inventory"
+    },
+    {
+      "name": "regex_match",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 4,
+        "end": 13
+      },
+      "parameters": [
+        {
+          "name": "pattern",
+          "type": "char*"
+        },
+        {
+          "name": "text",
+          "type": "char*"
+        }
+      ],
+      "returnType": "int",
+      "returns": [
+        {
+          "expr": "*text == '\\0'",
+          "line": 7
+        },
+        {
+          "expr": "*text != '\\0' && regex_match(pattern + 1, text + 1)",
+          "line": 10
+        },
+        {
+          "expr": "*pattern == *text && regex_match(pattern + 1, text + 1)",
+          "line": 12
+        }
+      ],
+      "source": "aee-inventory",
+      "nloc": 10,
+      "ccn": 5
+    }
+  ],
+  "referencedSymbols": [],
+  "dependencies": [
+    {
+      "alias": null,
+      "module": "string.h",
+      "names": [],
+      "relative": false,
+      "style": "include",
+      "system": true,
+      "lineRange": {
+        "start": 2,
+        "end": 2
+      }
+    }
+  ],
+  "sideEffects": [],
+  "securitySurface": [],
+  "injection_flags": [],
+  "warnings": []
+}

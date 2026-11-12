@@ -1,0 +1,218 @@
+{
+  "file": "src/aurora/aurora-network/src/profile_label.c",
+  "hash": "f27a318b1453b86d7c4145f1178cf0a64f3d9b02aead755678ef9d6374fba885",
+  "language": "C",
+  "component": "aurora-network",
+  "package": null,
+  "lines": {
+    "blank": 8,
+    "code": 28,
+    "comment": 9,
+    "total": 45
+  },
+  "symbols": [
+    {
+      "name": "#include <stdio.h>",
+      "kind": "import",
+      "scope": "",
+      "lineRange": {
+        "start": 11,
+        "end": 11
+      },
+      "source": "aee-inventory"
+    },
+    {
+      "name": "#include <string.h>",
+      "kind": "import",
+      "scope": "",
+      "lineRange": {
+        "start": 12,
+        "end": 12
+      },
+      "source": "aee-inventory"
+    },
+    {
+      "name": "#include \"profile_label.h\"",
+      "kind": "import",
+      "scope": "",
+      "lineRange": {
+        "start": 13,
+        "end": 13
+      },
+      "source": "aee-inventory"
+    },
+    {
+      "name": "PROFILE_SLOTS",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 15,
+        "end": 15
+      },
+      "source": "aee-inventory"
+    },
+    {
+      "name": "profile_slot",
+      "kind": "type",
+      "scope": "",
+      "lineRange": {
+        "start": 17,
+        "end": 20
+      },
+      "source": "aee-inventory"
+    },
+    {
+      "name": "label",
+      "kind": "field",
+      "scope": "profile_slot",
+      "lineRange": {
+        "start": 18,
+        "end": 18
+      },
+      "source": "aee-inventory"
+    },
+    {
+      "name": "applied",
+      "kind": "field",
+      "scope": "profile_slot",
+      "lineRange": {
+        "start": 19,
+        "end": 19
+      },
+      "source": "aee-inventory"
+    },
+    {
+      "name": "slots",
+      "kind": "variable",
+      "scope": "",
+      "lineRange": {
+        "start": 22,
+        "end": 22
+      },
+      "source": "aee-inventory"
+    },
+    {
+      "name": "slot_next",
+      "kind": "variable",
+      "scope": "",
+      "lineRange": {
+        "start": 23,
+        "end": 23
+      },
+      "source": "aee-inventory"
+    },
+    {
+      "name": "aurora_profile_label",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 25,
+        "end": 34
+      },
+      "parameters": [
+        {
+          "name": "label",
+          "type": "char*"
+        }
+      ],
+      "returnType": "int",
+      "returns": [
+        {
+          "expr": "0",
+          "line": 33
+        }
+      ],
+      "source": "aee-inventory",
+      "nloc": 8,
+      "ccn": 1
+    },
+    {
+      "name": "aurora_profile_count",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 36,
+        "end": 45
+      },
+      "parameters": [
+        {
+          "type": "void"
+        }
+      ],
+      "returnType": "int",
+      "returns": [
+        {
+          "expr": "n",
+          "line": 44
+        }
+      ],
+      "source": "aee-inventory",
+      "nloc": 10,
+      "ccn": 3
+    }
+  ],
+  "referencedSymbols": [
+    {
+      "name": "strcpy",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 29,
+        "end": 29
+      }
+    }
+  ],
+  "dependencies": [
+    {
+      "alias": null,
+      "module": "stdio.h",
+      "names": [],
+      "relative": false,
+      "style": "include",
+      "system": true,
+      "lineRange": {
+        "start": 11,
+        "end": 11
+      }
+    },
+    {
+      "alias": null,
+      "module": "string.h",
+      "names": [],
+      "relative": false,
+      "style": "include",
+      "system": true,
+      "lineRange": {
+        "start": 12,
+        "end": 12
+      }
+    },
+    {
+      "alias": null,
+      "module": "profile_label.h",
+      "names": [],
+      "relative": false,
+      "style": "include",
+      "system": false,
+      "lineRange": {
+        "start": 13,
+        "end": 13
+      }
+    }
+  ],
+  "sideEffects": [],
+  "securitySurface": [
+    {
+      "kind": "sink",
+      "category": "memory-unsafe",
+      "description": "unbounded copy or format",
+      "lineRange": {
+        "start": 29,
+        "end": 29
+      }
+    }
+  ],
+  "injection_flags": [],
+  "warnings": []
+}

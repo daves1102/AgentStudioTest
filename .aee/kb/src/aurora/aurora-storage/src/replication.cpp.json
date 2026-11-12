@@ -1,0 +1,226 @@
+{
+  "file": "src/aurora/aurora-storage/src/replication.cpp",
+  "hash": "ffb1f481e219a0fff2fd4a780663417783b7df4b2a65ca4fae95fdbfec622737",
+  "language": "C++",
+  "component": "aurora-storage",
+  "package": null,
+  "lines": {
+    "blank": 6,
+    "code": 26,
+    "comment": 9,
+    "total": 41
+  },
+  "symbols": [
+    {
+      "name": "#include <string>",
+      "kind": "import",
+      "scope": "",
+      "lineRange": {
+        "start": 11,
+        "end": 11
+      },
+      "source": "aee-inventory"
+    },
+    {
+      "name": "#include <vector>",
+      "kind": "import",
+      "scope": "",
+      "lineRange": {
+        "start": 12,
+        "end": 12
+      },
+      "source": "aee-inventory"
+    },
+    {
+      "name": "#include <algorithm>",
+      "kind": "import",
+      "scope": "",
+      "lineRange": {
+        "start": 13,
+        "end": 13
+      },
+      "source": "aee-inventory"
+    },
+    {
+      "name": "aurora",
+      "kind": "module",
+      "scope": "",
+      "lineRange": {
+        "start": 15,
+        "end": 41
+      },
+      "source": "aee-inventory"
+    },
+    {
+      "name": "Target",
+      "kind": "type",
+      "scope": "aurora",
+      "lineRange": {
+        "start": 17,
+        "end": 21
+      },
+      "source": "aee-inventory"
+    },
+    {
+      "name": "host",
+      "kind": "field",
+      "scope": "aurora.Target",
+      "lineRange": {
+        "start": 18,
+        "end": 18
+      },
+      "source": "aee-inventory"
+    },
+    {
+      "name": "weight",
+      "kind": "field",
+      "scope": "aurora.Target",
+      "lineRange": {
+        "start": 19,
+        "end": 19
+      },
+      "source": "aee-inventory"
+    },
+    {
+      "name": "healthy",
+      "kind": "field",
+      "scope": "aurora.Target",
+      "lineRange": {
+        "start": 20,
+        "end": 20
+      },
+      "source": "aee-inventory"
+    },
+    {
+      "name": "select_targets",
+      "kind": "function",
+      "scope": "aurora",
+      "lineRange": {
+        "start": 23,
+        "end": 34
+      },
+      "parameters": [
+        {
+          "type": "std::vector<Target>*"
+        },
+        {
+          "name": "copies",
+          "type": "int"
+        }
+      ],
+      "returnType": "std::vector<Target>",
+      "returns": [
+        {
+          "expr": "healthy",
+          "line": 33
+        }
+      ],
+      "source": "aee-inventory",
+      "nloc": 12,
+      "ccn": 2
+    },
+    {
+      "name": "quorum_reached",
+      "kind": "function",
+      "scope": "aurora",
+      "lineRange": {
+        "start": 36,
+        "end": 39
+      },
+      "parameters": [
+        {
+          "name": "acknowledged",
+          "type": "int"
+        },
+        {
+          "name": "copies",
+          "type": "int"
+        }
+      ],
+      "returnType": "bool",
+      "returns": [
+        {
+          "expr": "acknowledged > copies / 2",
+          "line": 38
+        }
+      ],
+      "source": "aee-inventory",
+      "nloc": 4,
+      "ccn": 1
+    }
+  ],
+  "referencedSymbols": [
+    {
+      "name": "std::string",
+      "usage": "type",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 18,
+        "end": 18
+      }
+    },
+    {
+      "name": "std::vector",
+      "usage": "type",
+      "via": null,
+      "count": 3,
+      "lineRange": {
+        "start": 23,
+        "end": 23
+      }
+    },
+    {
+      "name": "static_cast",
+      "usage": "call",
+      "via": null,
+      "count": 2,
+      "lineRange": {
+        "start": 30,
+        "end": 30
+      }
+    }
+  ],
+  "dependencies": [
+    {
+      "alias": null,
+      "module": "string",
+      "names": [],
+      "relative": false,
+      "style": "include",
+      "system": true,
+      "lineRange": {
+        "start": 11,
+        "end": 11
+      }
+    },
+    {
+      "alias": null,
+      "module": "vector",
+      "names": [],
+      "relative": false,
+      "style": "include",
+      "system": true,
+      "lineRange": {
+        "start": 12,
+        "end": 12
+      }
+    },
+    {
+      "alias": null,
+      "module": "algorithm",
+      "names": [],
+      "relative": false,
+      "style": "include",
+      "system": true,
+      "lineRange": {
+        "start": 13,
+        "end": 13
+      }
+    }
+  ],
+  "sideEffects": [],
+  "securitySurface": [],
+  "injection_flags": [],
+  "warnings": []
+}

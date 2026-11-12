@@ -1,0 +1,229 @@
+{
+  "file": "src/aurora/aurora-identity/src/main/java/cloud/aurora/identity/RegionAssignmentDao.java",
+  "hash": "a9445ffee1f1d28a9192e13b9c42898032d92768a647b065519c98c66a1fe52c",
+  "language": "Java",
+  "component": "aurora-identity",
+  "package": "cloud.aurora.identity",
+  "lines": {
+    "blank": 7,
+    "code": 18,
+    "comment": 10,
+    "total": 35
+  },
+  "symbols": [
+    {
+      "name": "import java.sql.Connection;",
+      "kind": "import",
+      "scope": "",
+      "lineRange": {
+        "start": 13,
+        "end": 13
+      },
+      "source": "aee-inventory"
+    },
+    {
+      "name": "import java.sql.PreparedStatement;",
+      "kind": "import",
+      "scope": "",
+      "lineRange": {
+        "start": 14,
+        "end": 14
+      },
+      "source": "aee-inventory"
+    },
+    {
+      "name": "RegionAssignmentDao",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 17,
+        "end": 35
+      },
+      "source": "aee-inventory"
+    },
+    {
+      "name": "TABLE",
+      "kind": "constant",
+      "scope": "RegionAssignmentDao",
+      "lineRange": {
+        "start": 19,
+        "end": 19
+      },
+      "source": "aee-inventory"
+    },
+    {
+      "name": "connection",
+      "kind": "field",
+      "scope": "RegionAssignmentDao",
+      "lineRange": {
+        "start": 21,
+        "end": 21
+      },
+      "source": "aee-inventory"
+    },
+    {
+      "name": "RegionAssignmentDao",
+      "kind": "method",
+      "scope": "RegionAssignmentDao",
+      "lineRange": {
+        "start": 23,
+        "end": 25
+      },
+      "parameters": [
+        {
+          "name": "connection",
+          "type": "Connection"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "source": "aee-inventory",
+      "nloc": 3,
+      "ccn": 1
+    },
+    {
+      "name": "assign",
+      "kind": "method",
+      "scope": "RegionAssignmentDao",
+      "lineRange": {
+        "start": 27,
+        "end": 34
+      },
+      "parameters": [
+        {
+          "name": "project",
+          "type": "String"
+        },
+        {
+          "name": "region",
+          "type": "String"
+        },
+        {
+          "name": "note",
+          "type": "String"
+        }
+      ],
+      "returnType": "void",
+      "returns": [],
+      "source": "aee-inventory",
+      "nloc": 8,
+      "ccn": 1
+    }
+  ],
+  "referencedSymbols": [
+    {
+      "name": "String",
+      "usage": "type",
+      "via": null,
+      "count": 4,
+      "lineRange": {
+        "start": 19,
+        "end": 19
+      }
+    },
+    {
+      "name": "Connection",
+      "usage": "type",
+      "via": "java.sql",
+      "count": 2,
+      "lineRange": {
+        "start": 21,
+        "end": 21
+      }
+    },
+    {
+      "name": "Exception",
+      "usage": "type",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 27,
+        "end": 27
+      }
+    },
+    {
+      "name": "PreparedStatement",
+      "usage": "type",
+      "via": "java.sql",
+      "count": 1,
+      "lineRange": {
+        "start": 28,
+        "end": 28
+      }
+    }
+  ],
+  "dependencies": [
+    {
+      "alias": null,
+      "module": "java.sql",
+      "names": [
+        {
+          "alias": null,
+          "name": "Connection"
+        }
+      ],
+      "relative": false,
+      "style": "import",
+      "lineRange": {
+        "start": 13,
+        "end": 13
+      }
+    },
+    {
+      "alias": null,
+      "module": "java.sql",
+      "names": [
+        {
+          "alias": null,
+          "name": "PreparedStatement"
+        }
+      ],
+      "relative": false,
+      "style": "import",
+      "lineRange": {
+        "start": 14,
+        "end": 14
+      }
+    }
+  ],
+  "sideEffects": [
+    {
+      "kind": "network",
+      "target": "SQL statement execution",
+      "lineRange": {
+        "start": 28,
+        "end": 28
+      }
+    },
+    {
+      "kind": "network",
+      "target": "SQL statement execution",
+      "lineRange": {
+        "start": 33,
+        "end": 33
+      }
+    }
+  ],
+  "securitySurface": [
+    {
+      "kind": "sink",
+      "category": "sql",
+      "description": "SQL statement execution",
+      "lineRange": {
+        "start": 28,
+        "end": 28
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "sql",
+      "description": "SQL statement execution",
+      "lineRange": {
+        "start": 33,
+        "end": 33
+      }
+    }
+  ],
+  "injection_flags": [],
+  "warnings": []
+}

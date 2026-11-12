@@ -1,0 +1,190 @@
+{
+  "file": "src/aurora/aurora-cli/src/index.js",
+  "hash": "08de08f7828d681c6dc43d6ffedfebb2b17682aa4cf83d86e661c8e2506f544a",
+  "language": "JavaScript",
+  "component": "aurora-cli",
+  "package": null,
+  "lines": {
+    "blank": 6,
+    "code": 17,
+    "comment": 2,
+    "total": 25
+  },
+  "symbols": [
+    {
+      "name": "yaml",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 4,
+        "end": 4
+      },
+      "source": "aee-inventory"
+    },
+    {
+      "name": "fs",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 5,
+        "end": 5
+      },
+      "source": "aee-inventory"
+    },
+    {
+      "name": "SUPPORT_TOKEN",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 7,
+        "end": 7
+      },
+      "source": "aee-inventory"
+    },
+    {
+      "name": "loadProfile",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 9,
+        "end": 11
+      },
+      "parameters": [
+        {
+          "name": "path"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "yaml.load(fs.readFileSync(path, 'utf8'))",
+          "line": 10
+        }
+      ],
+      "source": "aee-inventory",
+      "nloc": 3,
+      "ccn": 1
+    },
+    {
+      "name": "applyFilter",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 13,
+        "end": 17
+      },
+      "parameters": [
+        {
+          "name": "items"
+        },
+        {
+          "name": "expression"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "items.filter(function (item) { return eval(expression); })",
+          "line": 14
+        }
+      ],
+      "source": "aee-inventory",
+      "nloc": 3,
+      "ccn": 1
+    },
+    {
+      "name": "formatTable",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 19,
+        "end": 23
+      },
+      "parameters": [
+        {
+          "name": "rows"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "rows.map(function (row) { return row.join('\\t'); }).join('\\n')",
+          "line": 20
+        }
+      ],
+      "source": "aee-inventory",
+      "nloc": 3,
+      "ccn": 1
+    }
+  ],
+  "referencedSymbols": [
+    {
+      "name": "fs.readFileSync",
+      "usage": "call",
+      "via": "fs",
+      "count": 1,
+      "lineRange": {
+        "start": 10,
+        "end": 10
+      }
+    },
+    {
+      "name": "yaml.load",
+      "usage": "call",
+      "via": "js-yaml",
+      "count": 1,
+      "lineRange": {
+        "start": 10,
+        "end": 10
+      }
+    },
+    {
+      "name": "eval",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 15,
+        "end": 15
+      }
+    }
+  ],
+  "dependencies": [
+    {
+      "alias": "yaml",
+      "module": "js-yaml",
+      "names": [],
+      "relative": false,
+      "style": "require",
+      "lineRange": {
+        "start": 4,
+        "end": 4
+      }
+    },
+    {
+      "alias": "fs",
+      "module": "fs",
+      "names": [],
+      "relative": false,
+      "style": "require",
+      "lineRange": {
+        "start": 5,
+        "end": 5
+      }
+    }
+  ],
+  "sideEffects": [],
+  "securitySurface": [
+    {
+      "kind": "sink",
+      "category": "code-eval",
+      "description": "dynamic code evaluation",
+      "lineRange": {
+        "start": 15,
+        "end": 15
+      }
+    }
+  ],
+  "injection_flags": [],
+  "warnings": []
+}

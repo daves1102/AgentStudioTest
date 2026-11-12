@@ -1,0 +1,359 @@
+{
+  "file": "src/aurora/aurora-compute/services/billing/billing.go",
+  "hash": "3d31ce2f43045cdc09201cb4f4f28e56952657d92d4fa891bb741ca13c116184",
+  "language": "Go",
+  "component": "aurora-compute",
+  "package": "billing",
+  "lines": {
+    "blank": 12,
+    "code": 50,
+    "comment": 3,
+    "total": 65
+  },
+  "symbols": [
+    {
+      "name": "\"errors\"",
+      "kind": "import",
+      "scope": "",
+      "lineRange": {
+        "start": 7,
+        "end": 7
+      },
+      "source": "aee-inventory"
+    },
+    {
+      "name": "\"strings\"",
+      "kind": "import",
+      "scope": "",
+      "lineRange": {
+        "start": 8,
+        "end": 8
+      },
+      "source": "aee-inventory"
+    },
+    {
+      "name": "Record",
+      "kind": "type",
+      "scope": "",
+      "lineRange": {
+        "start": 12,
+        "end": 17
+      },
+      "source": "aee-inventory"
+    },
+    {
+      "name": "ErrNotFound",
+      "kind": "variable",
+      "scope": "",
+      "lineRange": {
+        "start": 19,
+        "end": 19
+      },
+      "source": "aee-inventory"
+    },
+    {
+      "name": "Store",
+      "kind": "type",
+      "scope": "",
+      "lineRange": {
+        "start": 21,
+        "end": 23
+      },
+      "source": "aee-inventory"
+    },
+    {
+      "name": "NewStore",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 25,
+        "end": 27
+      },
+      "parameters": [],
+      "returnType": "*Store",
+      "returns": [
+        {
+          "expr": "&Store{records: make(map[string]Record)}",
+          "line": 26
+        }
+      ],
+      "source": "aee-inventory",
+      "nloc": 3,
+      "ccn": 1
+    },
+    {
+      "name": "Put",
+      "kind": "method",
+      "scope": "",
+      "lineRange": {
+        "start": 29,
+        "end": 31
+      },
+      "parameters": [
+        {
+          "name": "r",
+          "type": "Record"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "source": "aee-inventory",
+      "nloc": 3,
+      "ccn": 1
+    },
+    {
+      "name": "Get",
+      "kind": "method",
+      "scope": "",
+      "lineRange": {
+        "start": 33,
+        "end": 39
+      },
+      "parameters": [
+        {
+          "name": "id",
+          "type": "string"
+        }
+      ],
+      "returnType": "(Record, error)",
+      "returns": [
+        {
+          "expr": "Record{}, ErrNotFound",
+          "line": 36
+        },
+        {
+          "expr": "r, nil",
+          "line": 38
+        }
+      ],
+      "source": "aee-inventory",
+      "nloc": 7,
+      "ccn": 2
+    },
+    {
+      "name": "ByProject",
+      "kind": "method",
+      "scope": "",
+      "lineRange": {
+        "start": 41,
+        "end": 49
+      },
+      "parameters": [
+        {
+          "name": "project",
+          "type": "string"
+        }
+      ],
+      "returnType": "[]Record",
+      "returns": [
+        {
+          "expr": "out",
+          "line": 48
+        }
+      ],
+      "source": "aee-inventory",
+      "nloc": 9,
+      "ccn": 3
+    },
+    {
+      "name": "Total",
+      "kind": "method",
+      "scope": "",
+      "lineRange": {
+        "start": 51,
+        "end": 57
+      },
+      "parameters": [
+        {
+          "name": "project",
+          "type": "string"
+        }
+      ],
+      "returnType": "int64",
+      "returns": [
+        {
+          "expr": "total",
+          "line": 56
+        }
+      ],
+      "source": "aee-inventory",
+      "nloc": 7,
+      "ccn": 2
+    },
+    {
+      "name": "Normalise",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 59,
+        "end": 61
+      },
+      "parameters": [
+        {
+          "name": "tag",
+          "type": "string"
+        }
+      ],
+      "returnType": "string",
+      "returns": [
+        {
+          "expr": "strings.ToLower(strings.TrimSpace(tag))",
+          "line": 60
+        }
+      ],
+      "source": "aee-inventory",
+      "nloc": 3,
+      "ccn": 1
+    },
+    {
+      "name": "Count",
+      "kind": "method",
+      "scope": "",
+      "lineRange": {
+        "start": 63,
+        "end": 65
+      },
+      "parameters": [],
+      "returnType": "int",
+      "returns": [
+        {
+          "expr": "len(s.records)",
+          "line": 64
+        }
+      ],
+      "source": "aee-inventory",
+      "nloc": 3,
+      "ccn": 1
+    }
+  ],
+  "referencedSymbols": [
+    {
+      "name": "string",
+      "usage": "type",
+      "via": null,
+      "count": 10,
+      "lineRange": {
+        "start": 13,
+        "end": 13
+      }
+    },
+    {
+      "name": "int64",
+      "usage": "type",
+      "via": null,
+      "count": 3,
+      "lineRange": {
+        "start": 15,
+        "end": 15
+      }
+    },
+    {
+      "name": "errors.New",
+      "usage": "call",
+      "via": "errors",
+      "count": 1,
+      "lineRange": {
+        "start": 19,
+        "end": 19
+      }
+    },
+    {
+      "name": "make",
+      "usage": "call",
+      "via": null,
+      "count": 2,
+      "lineRange": {
+        "start": 26,
+        "end": 26
+      }
+    },
+    {
+      "name": "error",
+      "usage": "type",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 33,
+        "end": 33
+      }
+    },
+    {
+      "name": "append",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 45,
+        "end": 45
+      }
+    },
+    {
+      "name": "strings.ToLower",
+      "usage": "call",
+      "via": "strings",
+      "count": 1,
+      "lineRange": {
+        "start": 60,
+        "end": 60
+      }
+    },
+    {
+      "name": "strings.TrimSpace",
+      "usage": "call",
+      "via": "strings",
+      "count": 1,
+      "lineRange": {
+        "start": 60,
+        "end": 60
+      }
+    },
+    {
+      "name": "int",
+      "usage": "type",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 63,
+        "end": 63
+      }
+    },
+    {
+      "name": "len",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 64,
+        "end": 64
+      }
+    }
+  ],
+  "dependencies": [
+    {
+      "alias": null,
+      "module": "errors",
+      "names": [],
+      "relative": false,
+      "style": "import",
+      "lineRange": {
+        "start": 7,
+        "end": 7
+      }
+    },
+    {
+      "alias": null,
+      "module": "strings",
+      "names": [],
+      "relative": false,
+      "style": "import",
+      "lineRange": {
+        "start": 8,
+        "end": 8
+      }
+    }
+  ],
+  "sideEffects": [],
+  "securitySurface": [],
+  "injection_flags": [],
+  "warnings": []
+}

@@ -1,0 +1,233 @@
+{
+  "file": "src/aurora/aurora-identity/src/main/java/cloud/aurora/identity/TokenService.java",
+  "hash": "f221cc705227a98d469244270578c91221450935824d0427ceec2d81f1ad430f",
+  "language": "Java",
+  "component": "aurora-identity",
+  "package": "cloud.aurora.identity",
+  "lines": {
+    "blank": 6,
+    "code": 22,
+    "comment": 9,
+    "total": 37
+  },
+  "symbols": [
+    {
+      "name": "import java.security.MessageDigest;",
+      "kind": "import",
+      "scope": "",
+      "lineRange": {
+        "start": 13,
+        "end": 13
+      },
+      "source": "aee-inventory"
+    },
+    {
+      "name": "import java.util.Base64;",
+      "kind": "import",
+      "scope": "",
+      "lineRange": {
+        "start": 14,
+        "end": 14
+      },
+      "source": "aee-inventory"
+    },
+    {
+      "name": "TokenService",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 16,
+        "end": 37
+      },
+      "source": "aee-inventory"
+    },
+    {
+      "name": "SIGNING_KEY",
+      "kind": "constant",
+      "scope": "TokenService",
+      "lineRange": {
+        "start": 18,
+        "end": 18
+      },
+      "source": "aee-inventory"
+    },
+    {
+      "name": "issue",
+      "kind": "method",
+      "scope": "TokenService",
+      "lineRange": {
+        "start": 20,
+        "end": 26
+      },
+      "parameters": [
+        {
+          "name": "subject",
+          "type": "String"
+        },
+        {
+          "name": "validitySeconds",
+          "type": "long"
+        }
+      ],
+      "returnType": "String",
+      "returns": [
+        {
+          "expr": "Base64.getEncoder().encodeToString(payload.getBytes(\"UTF-8\")) + \".\" + Base64.getEncoder().encodeToString(digest)",
+          "line": 24
+        }
+      ],
+      "source": "aee-inventory",
+      "nloc": 7,
+      "ccn": 1
+    },
+    {
+      "name": "expired",
+      "kind": "method",
+      "scope": "TokenService",
+      "lineRange": {
+        "start": 28,
+        "end": 36
+      },
+      "parameters": [
+        {
+          "name": "token",
+          "type": "String"
+        }
+      ],
+      "returnType": "boolean",
+      "returns": [
+        {
+          "expr": "true",
+          "line": 31
+        },
+        {
+          "expr": "Long.parseLong(fields[1]) < System.currentTimeMillis() / 1000",
+          "line": 35
+        }
+      ],
+      "source": "aee-inventory",
+      "nloc": 9,
+      "ccn": 2
+    }
+  ],
+  "referencedSymbols": [
+    {
+      "name": "String",
+      "usage": "type",
+      "via": null,
+      "count": 8,
+      "lineRange": {
+        "start": 18,
+        "end": 18
+      }
+    },
+    {
+      "name": "Exception",
+      "usage": "type",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 20,
+        "end": 20
+      }
+    },
+    {
+      "name": "MessageDigest.getInstance",
+      "usage": "call",
+      "via": "java.security",
+      "count": 1,
+      "lineRange": {
+        "start": 22,
+        "end": 22
+      }
+    },
+    {
+      "name": "MessageDigest",
+      "usage": "type",
+      "via": "java.security",
+      "count": 1,
+      "lineRange": {
+        "start": 22,
+        "end": 22
+      }
+    },
+    {
+      "name": "Base64.getEncoder",
+      "usage": "call",
+      "via": "java.util",
+      "count": 2,
+      "lineRange": {
+        "start": 24,
+        "end": 24
+      }
+    },
+    {
+      "name": "Base64.getDecoder",
+      "usage": "call",
+      "via": "java.util",
+      "count": 1,
+      "lineRange": {
+        "start": 33,
+        "end": 33
+      }
+    },
+    {
+      "name": "String",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 33,
+        "end": 33
+      }
+    }
+  ],
+  "dependencies": [
+    {
+      "alias": null,
+      "module": "java.security",
+      "names": [
+        {
+          "alias": null,
+          "name": "MessageDigest"
+        }
+      ],
+      "relative": false,
+      "style": "import",
+      "lineRange": {
+        "start": 13,
+        "end": 13
+      }
+    },
+    {
+      "alias": null,
+      "module": "java.util",
+      "names": [
+        {
+          "alias": null,
+          "name": "Base64"
+        }
+      ],
+      "relative": false,
+      "style": "import",
+      "lineRange": {
+        "start": 14,
+        "end": 14
+      }
+    }
+  ],
+  "sideEffects": [],
+  "securitySurface": [
+    {
+      "kind": "sink",
+      "category": "crypto",
+      "description": "cryptographic primitive",
+      "lineRange": {
+        "start": 22,
+        "end": 22
+      }
+    }
+  ],
+  "injection_flags": [],
+  "warnings": []
+}

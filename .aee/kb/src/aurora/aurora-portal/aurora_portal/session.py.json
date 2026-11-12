@@ -1,0 +1,248 @@
+{
+  "file": "src/aurora/aurora-portal/aurora_portal/session.py",
+  "hash": "a4f1c4ae0fd302d4e6aec0510ce2bd56c9ef098e0e96303f344ad3fe440b171f",
+  "language": "Python",
+  "component": "aurora-portal",
+  "package": null,
+  "lines": {
+    "blank": 7,
+    "code": 15,
+    "comment": 2,
+    "total": 24
+  },
+  "symbols": [
+    {
+      "name": "import hashlib",
+      "kind": "import",
+      "scope": "",
+      "lineRange": {
+        "start": 4,
+        "end": 4
+      },
+      "source": "aee-inventory"
+    },
+    {
+      "name": "import random",
+      "kind": "import",
+      "scope": "",
+      "lineRange": {
+        "start": 5,
+        "end": 5
+      },
+      "source": "aee-inventory"
+    },
+    {
+      "name": "import string",
+      "kind": "import",
+      "scope": "",
+      "lineRange": {
+        "start": 6,
+        "end": 6
+      },
+      "source": "aee-inventory"
+    },
+    {
+      "name": "new_session_id",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 9,
+        "end": 11
+      },
+      "parameters": [
+        {
+          "default": "32",
+          "name": "length"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "\"\".join(random.choice(alphabet) for _ in range(length))",
+          "line": 11
+        }
+      ],
+      "source": "aee-inventory",
+      "nloc": 3,
+      "ccn": 2
+    },
+    {
+      "name": "password_hash",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 14,
+        "end": 15
+      },
+      "parameters": [
+        {
+          "name": "password"
+        },
+        {
+          "name": "salt"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "hashlib.sha1((salt + password).encode(\"utf-8\")).hexdigest()",
+          "line": 15
+        }
+      ],
+      "source": "aee-inventory",
+      "nloc": 2,
+      "ccn": 1
+    },
+    {
+      "name": "constant_time_equal",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 18,
+        "end": 24
+      },
+      "parameters": [
+        {
+          "name": "left"
+        },
+        {
+          "name": "right"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "False",
+          "line": 20
+        },
+        {
+          "expr": "result == 0",
+          "line": 24
+        }
+      ],
+      "source": "aee-inventory",
+      "nloc": 7,
+      "ccn": 3
+    }
+  ],
+  "referencedSymbols": [
+    {
+      "name": "random.choice",
+      "usage": "call",
+      "via": "random",
+      "count": 1,
+      "lineRange": {
+        "start": 11,
+        "end": 11
+      }
+    },
+    {
+      "name": "range",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 11,
+        "end": 11
+      }
+    },
+    {
+      "name": "hashlib.sha1",
+      "usage": "call",
+      "via": "hashlib",
+      "count": 1,
+      "lineRange": {
+        "start": 15,
+        "end": 15
+      }
+    },
+    {
+      "name": "len",
+      "usage": "call",
+      "via": null,
+      "count": 2,
+      "lineRange": {
+        "start": 19,
+        "end": 19
+      }
+    },
+    {
+      "name": "zip",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 22,
+        "end": 22
+      }
+    },
+    {
+      "name": "ord",
+      "usage": "call",
+      "via": null,
+      "count": 2,
+      "lineRange": {
+        "start": 23,
+        "end": 23
+      }
+    }
+  ],
+  "dependencies": [
+    {
+      "alias": null,
+      "module": "hashlib",
+      "names": [],
+      "relative": false,
+      "style": "import",
+      "lineRange": {
+        "start": 4,
+        "end": 4
+      }
+    },
+    {
+      "alias": null,
+      "module": "random",
+      "names": [],
+      "relative": false,
+      "style": "import",
+      "lineRange": {
+        "start": 5,
+        "end": 5
+      }
+    },
+    {
+      "alias": null,
+      "module": "string",
+      "names": [],
+      "relative": false,
+      "style": "import",
+      "lineRange": {
+        "start": 6,
+        "end": 6
+      }
+    }
+  ],
+  "sideEffects": [],
+  "securitySurface": [
+    {
+      "kind": "sink",
+      "category": "random",
+      "description": "call to random.choice: non-cryptographic random",
+      "lineRange": {
+        "start": 11,
+        "end": 11
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "crypto",
+      "description": "call to hashlib.sha1: hash / MAC computation",
+      "lineRange": {
+        "start": 15,
+        "end": 15
+      }
+    }
+  ],
+  "injection_flags": [],
+  "warnings": []
+}

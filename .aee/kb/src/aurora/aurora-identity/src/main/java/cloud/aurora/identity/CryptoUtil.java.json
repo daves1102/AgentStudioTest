@@ -1,0 +1,220 @@
+{
+  "file": "src/aurora/aurora-identity/src/main/java/cloud/aurora/identity/CryptoUtil.java",
+  "hash": "1bf81ee5e7c2bdba35d05272f3fb0d6394be50b313e0342d744738784a50608f",
+  "language": "Java",
+  "component": "aurora-identity",
+  "package": "cloud.aurora.identity",
+  "lines": {
+    "blank": 5,
+    "code": 15,
+    "comment": 9,
+    "total": 29
+  },
+  "symbols": [
+    {
+      "name": "import javax.crypto.Cipher;",
+      "kind": "import",
+      "scope": "",
+      "lineRange": {
+        "start": 13,
+        "end": 13
+      },
+      "source": "aee-inventory"
+    },
+    {
+      "name": "import javax.crypto.spec.SecretKeySpec;",
+      "kind": "import",
+      "scope": "",
+      "lineRange": {
+        "start": 14,
+        "end": 14
+      },
+      "source": "aee-inventory"
+    },
+    {
+      "name": "CryptoUtil",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 16,
+        "end": 29
+      },
+      "source": "aee-inventory"
+    },
+    {
+      "name": "seal",
+      "kind": "method",
+      "scope": "CryptoUtil",
+      "lineRange": {
+        "start": 18,
+        "end": 22
+      },
+      "parameters": [
+        {
+          "name": "plaintext",
+          "type": "byte[]"
+        },
+        {
+          "name": "key",
+          "type": "byte[]"
+        }
+      ],
+      "returnType": "byte[]",
+      "returns": [
+        {
+          "expr": "cipher.doFinal(plaintext)",
+          "line": 21
+        }
+      ],
+      "source": "aee-inventory",
+      "nloc": 5,
+      "ccn": 1
+    },
+    {
+      "name": "open",
+      "kind": "method",
+      "scope": "CryptoUtil",
+      "lineRange": {
+        "start": 24,
+        "end": 28
+      },
+      "parameters": [
+        {
+          "name": "ciphertext",
+          "type": "byte[]"
+        },
+        {
+          "name": "key",
+          "type": "byte[]"
+        }
+      ],
+      "returnType": "byte[]",
+      "returns": [
+        {
+          "expr": "cipher.doFinal(ciphertext)",
+          "line": 27
+        }
+      ],
+      "source": "aee-inventory",
+      "nloc": 5,
+      "ccn": 1
+    }
+  ],
+  "referencedSymbols": [
+    {
+      "name": "Exception",
+      "usage": "type",
+      "via": null,
+      "count": 2,
+      "lineRange": {
+        "start": 18,
+        "end": 18
+      }
+    },
+    {
+      "name": "Cipher.getInstance",
+      "usage": "call",
+      "via": "javax.crypto",
+      "count": 2,
+      "lineRange": {
+        "start": 19,
+        "end": 19
+      }
+    },
+    {
+      "name": "Cipher",
+      "usage": "type",
+      "via": "javax.crypto",
+      "count": 2,
+      "lineRange": {
+        "start": 19,
+        "end": 19
+      }
+    },
+    {
+      "name": "SecretKeySpec",
+      "usage": "call",
+      "via": "javax.crypto.spec",
+      "count": 2,
+      "lineRange": {
+        "start": 20,
+        "end": 20
+      }
+    }
+  ],
+  "dependencies": [
+    {
+      "alias": null,
+      "module": "javax.crypto",
+      "names": [
+        {
+          "alias": null,
+          "name": "Cipher"
+        }
+      ],
+      "relative": false,
+      "style": "import",
+      "lineRange": {
+        "start": 13,
+        "end": 13
+      }
+    },
+    {
+      "alias": null,
+      "module": "javax.crypto.spec",
+      "names": [
+        {
+          "alias": null,
+          "name": "SecretKeySpec"
+        }
+      ],
+      "relative": false,
+      "style": "import",
+      "lineRange": {
+        "start": 14,
+        "end": 14
+      }
+    }
+  ],
+  "sideEffects": [],
+  "securitySurface": [
+    {
+      "kind": "sink",
+      "category": "crypto",
+      "description": "cryptographic primitive",
+      "lineRange": {
+        "start": 19,
+        "end": 19
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "crypto",
+      "description": "cryptographic primitive",
+      "lineRange": {
+        "start": 20,
+        "end": 20
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "crypto",
+      "description": "cryptographic primitive",
+      "lineRange": {
+        "start": 25,
+        "end": 25
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "crypto",
+      "description": "cryptographic primitive",
+      "lineRange": {
+        "start": 26,
+        "end": 26
+      }
+    }
+  ],
+  "injection_flags": [],
+  "warnings": []
+}

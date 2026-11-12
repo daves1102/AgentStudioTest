@@ -1,0 +1,117 @@
+{
+  "file": "src/aurora/aurora-portal/aurora_portal/telemetry_consumer.py",
+  "hash": "08ca2b89206ea91ac68e3e8f20661404570dea5bd486835af89ebf32cd9db960",
+  "language": "Python",
+  "component": "aurora-portal",
+  "package": null,
+  "lines": {
+    "blank": 7,
+    "code": 13,
+    "comment": 2,
+    "total": 22
+  },
+  "symbols": [
+    {
+      "name": "import yaml",
+      "kind": "import",
+      "scope": "",
+      "lineRange": {
+        "start": 6,
+        "end": 6
+      },
+      "source": "aee-inventory"
+    },
+    {
+      "name": "TENANT_TOPIC",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 8,
+        "end": 8
+      },
+      "source": "aee-inventory"
+    },
+    {
+      "name": "consume",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 11,
+        "end": 13
+      },
+      "parameters": [
+        {
+          "name": "bus"
+        }
+      ],
+      "returnType": null,
+      "returns": [],
+      "source": "aee-inventory",
+      "nloc": 3,
+      "ccn": 2
+    },
+    {
+      "name": "handle",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 16,
+        "end": 22
+      },
+      "parameters": [
+        {
+          "name": "message"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "{ \"project\": document.get(\"project\"), \"metric\": document.get(\"metric\"), \"value\": document.get(\"value\"), }",
+          "line": 18
+        }
+      ],
+      "source": "aee-inventory",
+      "nloc": 7,
+      "ccn": 1
+    }
+  ],
+  "referencedSymbols": [
+    {
+      "name": "yaml.load",
+      "usage": "call",
+      "via": "yaml",
+      "count": 1,
+      "lineRange": {
+        "start": 17,
+        "end": 17
+      }
+    }
+  ],
+  "dependencies": [
+    {
+      "alias": null,
+      "module": "yaml",
+      "names": [],
+      "relative": false,
+      "style": "import",
+      "lineRange": {
+        "start": 6,
+        "end": 6
+      }
+    }
+  ],
+  "sideEffects": [],
+  "securitySurface": [
+    {
+      "kind": "sink",
+      "category": "deserialization",
+      "description": "call to yaml.load: deserialization of data",
+      "lineRange": {
+        "start": 17,
+        "end": 17
+      }
+    }
+  ],
+  "injection_flags": [],
+  "warnings": []
+}

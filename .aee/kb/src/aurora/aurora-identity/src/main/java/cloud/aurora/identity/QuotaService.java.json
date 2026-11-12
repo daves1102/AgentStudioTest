@@ -1,0 +1,281 @@
+{
+  "file": "src/aurora/aurora-identity/src/main/java/cloud/aurora/identity/QuotaService.java",
+  "hash": "e31572e0dbae6f9f711c864e65374ac0ecdfed8b95db610a9a6aac99e633bb0e",
+  "language": "Java",
+  "component": "aurora-identity",
+  "package": "cloud.aurora.identity",
+  "lines": {
+    "blank": 9,
+    "code": 25,
+    "comment": 10,
+    "total": 44
+  },
+  "symbols": [
+    {
+      "name": "import java.util.ArrayList;",
+      "kind": "import",
+      "scope": "",
+      "lineRange": {
+        "start": 13,
+        "end": 13
+      },
+      "source": "aee-inventory"
+    },
+    {
+      "name": "import java.util.List;",
+      "kind": "import",
+      "scope": "",
+      "lineRange": {
+        "start": 14,
+        "end": 14
+      },
+      "source": "aee-inventory"
+    },
+    {
+      "name": "import java.util.Optional;",
+      "kind": "import",
+      "scope": "",
+      "lineRange": {
+        "start": 15,
+        "end": 15
+      },
+      "source": "aee-inventory"
+    },
+    {
+      "name": "QuotaService",
+      "kind": "class",
+      "scope": "",
+      "lineRange": {
+        "start": 18,
+        "end": 44
+      },
+      "source": "aee-inventory"
+    },
+    {
+      "name": "items",
+      "kind": "field",
+      "scope": "QuotaService",
+      "lineRange": {
+        "start": 20,
+        "end": 20
+      },
+      "source": "aee-inventory"
+    },
+    {
+      "name": "add",
+      "kind": "method",
+      "scope": "QuotaService",
+      "lineRange": {
+        "start": 22,
+        "end": 27
+      },
+      "parameters": [
+        {
+          "name": "id",
+          "type": "String"
+        }
+      ],
+      "returnType": "void",
+      "returns": [],
+      "source": "aee-inventory",
+      "nloc": 6,
+      "ccn": 3
+    },
+    {
+      "name": "find",
+      "kind": "method",
+      "scope": "QuotaService",
+      "lineRange": {
+        "start": 29,
+        "end": 31
+      },
+      "parameters": [
+        {
+          "name": "id",
+          "type": "String"
+        }
+      ],
+      "returnType": "Optional<String>",
+      "returns": [
+        {
+          "expr": "items.stream().filter(i -> i.equals(id)).findFirst()",
+          "line": 30
+        }
+      ],
+      "source": "aee-inventory",
+      "nloc": 3,
+      "ccn": 1
+    },
+    {
+      "name": "all",
+      "kind": "method",
+      "scope": "QuotaService",
+      "lineRange": {
+        "start": 33,
+        "end": 35
+      },
+      "parameters": [],
+      "returnType": "List<String>",
+      "returns": [
+        {
+          "expr": "new ArrayList<>(items)",
+          "line": 34
+        }
+      ],
+      "source": "aee-inventory",
+      "nloc": 3,
+      "ccn": 1
+    },
+    {
+      "name": "remove",
+      "kind": "method",
+      "scope": "QuotaService",
+      "lineRange": {
+        "start": 37,
+        "end": 39
+      },
+      "parameters": [
+        {
+          "name": "id",
+          "type": "String"
+        }
+      ],
+      "returnType": "boolean",
+      "returns": [
+        {
+          "expr": "items.remove(id)",
+          "line": 38
+        }
+      ],
+      "source": "aee-inventory",
+      "nloc": 3,
+      "ccn": 1
+    },
+    {
+      "name": "size",
+      "kind": "method",
+      "scope": "QuotaService",
+      "lineRange": {
+        "start": 41,
+        "end": 43
+      },
+      "parameters": [],
+      "returnType": "int",
+      "returns": [
+        {
+          "expr": "items.size()",
+          "line": 42
+        }
+      ],
+      "source": "aee-inventory",
+      "nloc": 3,
+      "ccn": 1
+    }
+  ],
+  "referencedSymbols": [
+    {
+      "name": "ArrayList",
+      "usage": "call",
+      "via": "java.util",
+      "count": 2,
+      "lineRange": {
+        "start": 20,
+        "end": 20
+      }
+    },
+    {
+      "name": "List",
+      "usage": "type",
+      "via": "java.util",
+      "count": 2,
+      "lineRange": {
+        "start": 20,
+        "end": 20
+      }
+    },
+    {
+      "name": "String",
+      "usage": "type",
+      "via": null,
+      "count": 6,
+      "lineRange": {
+        "start": 20,
+        "end": 20
+      }
+    },
+    {
+      "name": "IllegalArgumentException",
+      "usage": "call",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 24,
+        "end": 24
+      }
+    },
+    {
+      "name": "Optional",
+      "usage": "type",
+      "via": "java.util",
+      "count": 1,
+      "lineRange": {
+        "start": 29,
+        "end": 29
+      }
+    }
+  ],
+  "dependencies": [
+    {
+      "alias": null,
+      "module": "java.util",
+      "names": [
+        {
+          "alias": null,
+          "name": "ArrayList"
+        }
+      ],
+      "relative": false,
+      "style": "import",
+      "lineRange": {
+        "start": 13,
+        "end": 13
+      }
+    },
+    {
+      "alias": null,
+      "module": "java.util",
+      "names": [
+        {
+          "alias": null,
+          "name": "List"
+        }
+      ],
+      "relative": false,
+      "style": "import",
+      "lineRange": {
+        "start": 14,
+        "end": 14
+      }
+    },
+    {
+      "alias": null,
+      "module": "java.util",
+      "names": [
+        {
+          "alias": null,
+          "name": "Optional"
+        }
+      ],
+      "relative": false,
+      "style": "import",
+      "lineRange": {
+        "start": 15,
+        "end": 15
+      }
+    }
+  ],
+  "sideEffects": [],
+  "securitySurface": [],
+  "injection_flags": [],
+  "warnings": []
+}

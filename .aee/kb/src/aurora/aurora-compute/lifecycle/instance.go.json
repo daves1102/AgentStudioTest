@@ -1,0 +1,210 @@
+{
+  "file": "src/aurora/aurora-compute/lifecycle/instance.go",
+  "hash": "e730fe1d743adc149897704303e57344e151d7e124e6e6e6798d7de65e1f2300",
+  "language": "Go",
+  "component": "aurora-compute",
+  "package": "lifecycle",
+  "lines": {
+    "blank": 7,
+    "code": 30,
+    "comment": 2,
+    "total": 39
+  },
+  "symbols": [
+    {
+      "name": "\"time\"",
+      "kind": "import",
+      "scope": "",
+      "lineRange": {
+        "start": 6,
+        "end": 6
+      },
+      "source": "aee-inventory"
+    },
+    {
+      "name": "State",
+      "kind": "type",
+      "scope": "",
+      "lineRange": {
+        "start": 8,
+        "end": 8
+      },
+      "source": "aee-inventory"
+    },
+    {
+      "name": "Building",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 11,
+        "end": 11
+      },
+      "source": "aee-inventory"
+    },
+    {
+      "name": "Active",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 12,
+        "end": 12
+      },
+      "source": "aee-inventory"
+    },
+    {
+      "name": "Stopped",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 13,
+        "end": 13
+      },
+      "source": "aee-inventory"
+    },
+    {
+      "name": "Error",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 14,
+        "end": 14
+      },
+      "source": "aee-inventory"
+    },
+    {
+      "name": "Instance",
+      "kind": "type",
+      "scope": "",
+      "lineRange": {
+        "start": 17,
+        "end": 22
+      },
+      "source": "aee-inventory"
+    },
+    {
+      "name": "Transition",
+      "kind": "method",
+      "scope": "",
+      "lineRange": {
+        "start": 24,
+        "end": 35
+      },
+      "parameters": [
+        {
+          "name": "next",
+          "type": "State"
+        }
+      ],
+      "returnType": "bool",
+      "returns": [
+        {
+          "expr": "next == Active || next == Error",
+          "line": 27
+        },
+        {
+          "expr": "next == Stopped || next == Error",
+          "line": 29
+        },
+        {
+          "expr": "next == Active",
+          "line": 31
+        },
+        {
+          "expr": "false",
+          "line": 33
+        }
+      ],
+      "source": "aee-inventory",
+      "nloc": 12,
+      "ccn": 6
+    },
+    {
+      "name": "Age",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 37,
+        "end": 39
+      },
+      "parameters": [
+        {
+          "name": "i",
+          "type": "Instance"
+        },
+        {
+          "name": "now",
+          "type": "time.Time"
+        }
+      ],
+      "returnType": "time.Duration",
+      "returns": [
+        {
+          "expr": "now.Sub(i.CreatedAt)",
+          "line": 38
+        }
+      ],
+      "source": "aee-inventory",
+      "nloc": 3,
+      "ccn": 1
+    }
+  ],
+  "referencedSymbols": [
+    {
+      "name": "string",
+      "usage": "type",
+      "via": null,
+      "count": 3,
+      "lineRange": {
+        "start": 8,
+        "end": 8
+      }
+    },
+    {
+      "name": "time.Time",
+      "usage": "type",
+      "via": "time",
+      "count": 2,
+      "lineRange": {
+        "start": 21,
+        "end": 21
+      }
+    },
+    {
+      "name": "bool",
+      "usage": "type",
+      "via": null,
+      "count": 1,
+      "lineRange": {
+        "start": 24,
+        "end": 24
+      }
+    },
+    {
+      "name": "time.Duration",
+      "usage": "type",
+      "via": "time",
+      "count": 1,
+      "lineRange": {
+        "start": 37,
+        "end": 37
+      }
+    }
+  ],
+  "dependencies": [
+    {
+      "alias": null,
+      "module": "time",
+      "names": [],
+      "relative": false,
+      "style": "import",
+      "lineRange": {
+        "start": 6,
+        "end": 6
+      }
+    }
+  ],
+  "sideEffects": [],
+  "securitySurface": [],
+  "injection_flags": [],
+  "warnings": []
+}

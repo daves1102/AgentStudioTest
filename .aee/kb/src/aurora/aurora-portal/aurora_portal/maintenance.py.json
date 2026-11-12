@@ -1,0 +1,144 @@
+{
+  "file": "src/aurora/aurora-portal/aurora_portal/maintenance.py",
+  "hash": "a0b467d6c06f3c530e878abf082d6a3786b0e984e99de2e3dad4a9739c70199e",
+  "language": "Python",
+  "component": "aurora-portal",
+  "package": null,
+  "lines": {
+    "blank": 9,
+    "code": 20,
+    "comment": 2,
+    "total": 31
+  },
+  "symbols": [
+    {
+      "name": "import subprocess",
+      "kind": "import",
+      "scope": "",
+      "lineRange": {
+        "start": 6,
+        "end": 6
+      },
+      "source": "aee-inventory"
+    },
+    {
+      "name": "CLI_BINARY",
+      "kind": "constant",
+      "scope": "",
+      "lineRange": {
+        "start": 9,
+        "end": 9
+      },
+      "source": "aee-inventory"
+    },
+    {
+      "name": "apply_profile",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 12,
+        "end": 24
+      },
+      "parameters": [
+        {
+          "name": "request"
+        }
+      ],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "{\"status\": result.returncode, \"output\": result.stdout.decode(\"utf-8\")}",
+          "line": 24
+        }
+      ],
+      "source": "aee-inventory",
+      "nloc": 8,
+      "ccn": 1
+    },
+    {
+      "name": "list_profiles",
+      "kind": "function",
+      "scope": "",
+      "lineRange": {
+        "start": 27,
+        "end": 31
+      },
+      "parameters": [],
+      "returnType": null,
+      "returns": [
+        {
+          "expr": "result.stdout.decode(\"utf-8\").splitlines()",
+          "line": 31
+        }
+      ],
+      "source": "aee-inventory",
+      "nloc": 5,
+      "ccn": 1
+    }
+  ],
+  "referencedSymbols": [
+    {
+      "name": "subprocess.run",
+      "usage": "call",
+      "via": "subprocess",
+      "count": 2,
+      "lineRange": {
+        "start": 19,
+        "end": 19
+      }
+    }
+  ],
+  "dependencies": [
+    {
+      "alias": null,
+      "module": "subprocess",
+      "names": [],
+      "relative": false,
+      "style": "import",
+      "lineRange": {
+        "start": 6,
+        "end": 6
+      }
+    }
+  ],
+  "sideEffects": [
+    {
+      "kind": "process-spawn",
+      "target": "subprocess.run",
+      "lineRange": {
+        "start": 19,
+        "end": 23
+      }
+    },
+    {
+      "kind": "process-spawn",
+      "target": "subprocess.run",
+      "lineRange": {
+        "start": 28,
+        "end": 30
+      }
+    }
+  ],
+  "securitySurface": [
+    {
+      "kind": "sink",
+      "category": "command-exec",
+      "description": "call to subprocess.run: process / shell execution",
+      "lineRange": {
+        "start": 19,
+        "end": 23
+      }
+    },
+    {
+      "kind": "sink",
+      "category": "command-exec",
+      "description": "call to subprocess.run: process / shell execution",
+      "lineRange": {
+        "start": 28,
+        "end": 30
+      }
+    }
+  ],
+  "injection_flags": [],
+  "warnings": []
+}
