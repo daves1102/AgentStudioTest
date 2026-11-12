@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: aurora-portal
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: aurora-portal
+  template:
+    metadata:
+      labels:
+        app: aurora-portal
+    spec:
+      containers:
+      - name: portal
+        image: registry.aurora.example.com/portal:latest
+        securityContext:
+          privileged: true
+          runAsUser: 0
+        env:
+        - name: AURORA_DB_PASSWORD
+          value: "Aur0ra-Portal-Prod-2026!"
+        ports:
+        - containerPort: 8080
